@@ -1,10 +1,10 @@
 # DCAT-AP Schema Plugin for GeoNetwork
 
-This repository contains a [DCAT-AP v1.2](https://joinup.ec.europa.eu/release/dcat-ap-for-services/12) schema plugin for [GeoNetwork](http://geonetwork-opensource.org/) 3.8.3.
+This repository contains a [DCAT-AP v2.0](https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic/solution/dcat-application-profile-data-portals-europe/release/200) schema plugin for [GeoNetwork](http://geonetwork-opensource.org/) 3.8.3.
 
 ## Reference documents
 * [W3C Data Catalog Vocabulary (DCAT)](https://www.w3.org/TR/vocab-dcat/), Fadi Maali, John Erickson, 2014.
-* [DCAT Application profile for data portals in Europe (DCAT-AP) v1.2](https://joinup.ec.europa.eu/release/dcat-ap-for-services/12)
+* [DCAT Application profile for data portals in Europe (DCAT-AP) v2.0](https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic/solution/dcat-application-profile-data-portals-europe/release/200)
 * Interoperability between metadata standards: a reference implementation for metadata catalogues, Geraldine Nolf, W3C SDSVoc 2016. [[paper](https://www.w3.org/2016/11/sdsvoc/SDSVoc16_paper_11)] [[slides](https://www.w3.org/2016/11/sdsvoc/SDSVoc16_PPT_v02)]
 
 ## Description
@@ -18,7 +18,7 @@ This plugin has the following features:
 * **directory support for licences**: Licences are directory entries. The [subtemplates](/src/main/plugin/dcat-ap-for-services/subtemplates/) folder contains sample licence templates. These licences can be imported via the 'Contribute' > 'Import new records' dialog. Select 'Directory entry' as type of record. Alternatively, templates can be edited via the 'Contribute' > 'Manage directory' form.
 * **viewing**: A custom 'full view' to visualise DCAT-AP records. 
 * **multilingual metadata support**: The editor, view, and search benefit from the already existing multilingual capabilities of GeoNetwork.
-* **validation (XSD and Schematron)**: Validation steps are first XSD validation made on the schema, then the schematron validation defined in folder  [dcat-ap-for-services/schematron](/src/main/plugin/dcat-ap-for-services/schematron). Two rule sets are available: schematron-rules-dcat-ap-for-services, and schematron-rules-dcat-ap-for-services-recommendations.
+* **validation (XSD and Schematron)**: Validation steps are first XSD validation made on the schema, then the schematron validation defined in folder  [dcat-ap-for-services/schematron](/src/main/plugin/dcat-ap-for-services/-for-servicesschematron). Two rule sets are available: schematron-rules-dcat-ap-for-services, and schematron-rules-dcat-ap-for-services-recommendations.
 * **Export in DCAT-AP RDF format**: The plugin exports DCAT-AP RDF metadata using the GeoNetwork API (/geonetwork/srv/api/0.1/records), which can in turn be harvested by e.g. [CKAN](https://github.com/ckan/ckanext-dcat). To get the records in DCAT-AP RDF format, use the standard /geonetwork/srv/api/0.1/record endpoint (the DCAT/RDF output to GeoNetwork). Consider cherry picking from this [pull request](https://github.com/geonetwork/core-geonetwork/pull/3553) to enable paging, or apply the patch as explained in the next section.
 
 ## Installing the plugin
@@ -40,7 +40,7 @@ The best approach is to add the plugin as a submodule into GeoNetwork schema mod
 
 ```
 cd schemas
-git submodule add https://github.com/metadata101/dcat-ap-for-services1.1.git dcat-ap-for-services
+git submodule add <dcat-ap-for-services remote URL>
 git submodule init
 git submodule update
 ```
