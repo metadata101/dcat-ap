@@ -29,7 +29,7 @@ Schematron validation for DCAT-AP
 This script was written by GIM.
 
 Source:
-- DCAT-AP v1.1: https://joinup.ec.europa.eu/release/dcat-ap-v11
+- DCAT-AP v1.1: https://joinup.ec.europa.eu/release/dcat-ap-for-services-v11
 - VODAP Validator: https://github.com/tenforce/vodap-dcatap-validation
 
 -->

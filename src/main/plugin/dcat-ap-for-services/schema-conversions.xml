@@ -33,6 +33,6 @@
      in the convert dir of the schema
 -->
 <conversions>
-  <converter name="xml_dcat-ap" nsUri="" schemaLocation="http://not.published.yet" xslt=""/> <!-- built in -->
-  <converter name="xml_dcat-apTooai_dc" nsUri="http://www.openarchives.org/OAI/2.0/" schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xslt="oai_dc.xsl"/>
+  <converter name="xml_dcat-ap-for-services" nsUri="" schemaLocation="http://not.published.yet" xslt=""/> <!-- built in -->
+  <converter name="xml_dcat-ap-for-servicesTooai_dc" nsUri="http://www.openarchives.org/OAI/2.0/" schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xslt="oai_dc.xsl"/>
 </conversions>

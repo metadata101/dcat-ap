@@ -28,11 +28,11 @@
         xmlns:dcat="http://www.w3.org/ns/dcat#"
         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                xmlns:util="java:org.fao.geonet.util.XslUtil"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
-        xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
-                exclude-result-prefixes="#all">
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:util="java:org.fao.geonet.util.XslUtil"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:gn-fn-dcat-ap-for-services="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap-for-services"
+        exclude-result-prefixes="#all">
 
 
   <!-- A set of templates use to convert thesaurus concept to ISO19139 fragments. -->
@@ -44,23 +44,23 @@
   <!-- Surround the concept with parent based on  related parent xml element
     If no keyword is provided, only thesaurus section is adaded.
     -->
-  <xsl:template name="to-dcat-ap-concept">
+  <xsl:template name="to-dcat-ap-for-services-concept">
     <xsl:variable name="listOfLanguage" select="tokenize(/root/request/lang, ',')"/>
-    <xsl:apply-templates mode="to-dcat-ap-concept" select=".">
+    <xsl:apply-templates mode="to-dcat-ap-for-services-concept" select=".">
       <xsl:with-param name="listOfLanguage" select="$listOfLanguage"/>
     </xsl:apply-templates>
   </xsl:template>
 
   <!-- Surround the skos:Concept xml element with a parent xml element on the thesaurus key -->
-  <xsl:template mode="to-dcat-ap-concept" match="*[not(/root/request/skipdescriptivekeywords)]">
+  <xsl:template mode="to-dcat-ap-for-services-concept" match="*[not(/root/request/skipdescriptivekeywords)]">
     <xsl:param name="listOfLanguage"/>
     <xsl:variable name="concept">
-         <xsl:call-template name="to-md-concept">
-           <xsl:with-param name="listOfLanguage" select="$listOfLanguage"/>
-         </xsl:call-template>
+      <xsl:call-template name="to-md-concept">
+        <xsl:with-param name="listOfLanguage" select="$listOfLanguage"/>
+      </xsl:call-template>
     </xsl:variable>
     <xsl:variable name="thesaurusKey"
-                select="if (thesaurus/key) then thesaurus/key else /root/request/thesaurus"/>
+                  select="if (thesaurus/key) then thesaurus/key else /root/request/thesaurus"/>
     <xsl:choose>
        <xsl:when test="ends-with($thesaurusKey,'publisher-type')">
         <dct:type>
@@ -126,7 +126,7 @@
     <xsl:variable name="currentThesaurus"
                   select="if (thesaurus/key) then thesaurus/key else /root/request/thesaurus"/>
     <!-- Get  -->
-    <xsl:variable name="inSchemeURI" select="gn-fn-dcat-ap:getInSchemeURIByThesaurusId($currentThesaurus)"/>
+    <xsl:variable name="inSchemeURI" select="gn-fn-dcat-ap-for-services:getInSchemeURIByThesaurusId($currentThesaurus)"/>
     <!-- Loop on all keyword from the same thesaurus -->
     <xsl:for-each select="//keyword[thesaurus/key = $currentThesaurus]">
       <skos:Concept>

@@ -32,7 +32,7 @@
                 exclude-result-prefixes="#all">
 
   <!-- Get the main metadata languages -->
-  <xsl:template name="get-dcat-ap-language">
+  <xsl:template name="get-dcat-ap-for-services-language">
     <xsl:variable name="authorityLanguage" select="$metadata/descendant::node()/dcat:Dataset/dct:language[1]/skos:Concept/@rdf:about" />
     <xsl:choose>
       <xsl:when test="ends-with($authorityLanguage,'NLD')">dut</xsl:when>
@@ -44,10 +44,10 @@
   </xsl:template>
 
   <!-- Get the list of other languages in JSON -->
-  <xsl:template name="get-dcat-ap-other-languages-as-json">
+  <xsl:template name="get-dcat-ap-for-services-other-languages-as-json">
     <xsl:variable name="langs">
     <xsl:variable name="mainLanguage">
-      <xsl:call-template name="get-dcat-ap-language"/>
+      <xsl:call-template name="get-dcat-ap-for-services-language"/>
     </xsl:variable>
     <lang>
       <xsl:value-of select="concat('&quot;', $mainLanguage, '&quot;:&quot;#', upper-case($mainLanguage), '&quot;')"/>
@@ -67,7 +67,7 @@
   </xsl:template>
 
   <!-- Get the list of other languages -->
-  <xsl:template name="get-dcat-ap-other-languages">
+  <xsl:template name="get-dcat-ap-for-services-other-languages">
   <xsl:choose>
     <xsl:when test="count($metadata/descendant::node()/*[@xml:lang!=''])>1">
           <xsl:for-each select="distinct-values($metadata/descendant::node()/*/@xml:lang)">
@@ -77,7 +77,7 @@
     </xsl:when>
     <xsl:otherwise>
     <xsl:variable name="mainLanguage">
-      <xsl:call-template name="get-dcat-ap-language"/>
+      <xsl:call-template name="get-dcat-ap-for-services-language"/>
     </xsl:variable>
     <lang id="{upper-case($mainLanguage)}" code="{$mainLanguage}"/>
     </xsl:otherwise>

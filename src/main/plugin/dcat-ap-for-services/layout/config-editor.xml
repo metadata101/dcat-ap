@@ -42,7 +42,7 @@
       <template>
         <values>
           <key label="FieldId212" xpath="." use="gn-date-picker">
-            <directiveAttributes data-tag-name="schema:startDate" tooltip="dcat-ap|schema:startDate|dcat:Dataset|/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal/dct:PeriodOfTime/schema:startDate"/>
+            <directiveAttributes data-tag-name="schema:startDate" tooltip="dcat-ap-for-services|schema:startDate|dcat:Dataset|/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal/dct:PeriodOfTime/schema:startDate"/>
           </key>
         </values>
         <snippet>
@@ -54,7 +54,7 @@
       <template>
         <values>
           <key label="FieldId214" xpath="." use="gn-date-picker">
-            <directiveAttributes data-tag-name="schema:startDate" tooltip="dcat-ap|schema:endDate|dcat:Dataset|/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal/dct:PeriodOfTime/schema:endDate"/>
+            <directiveAttributes data-tag-name="schema:startDate" tooltip="dcat-ap-for-services|schema:endDate|dcat:Dataset|/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal/dct:PeriodOfTime/schema:endDate"/>
           </key>
         </values>
         <snippet>

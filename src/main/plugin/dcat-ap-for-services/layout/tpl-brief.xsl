@@ -30,7 +30,7 @@
   exclude-result-prefixes="xs" version="2.0">
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!-- dcat-ap brief and superBrief formatting -->
+  <!-- dcat-ap-for-services brief and superBrief formatting -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <xsl:template mode="superBrief" match="dataset">
     <id>
@@ -51,7 +51,7 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template name="dcat-apBrief">
+  <xsl:template name="dcat-ap-for-servicesBrief">
     <metadata>
       <xsl:if test="dct:title">
         <title>
@@ -100,19 +100,19 @@
           </northBL>
         </geoBox>
       </xsl:if>
-      
+
       <xsl:for-each select="dcat:downloadURL/@rdf:resource">
           <link type="download">
             <xsl:value-of select="."/>
           </link>
       </xsl:for-each>
-      
+
       <xsl:for-each select="dcat:accessURL/@rdf:resource|dcat:landingPage/@rdf:resource">
           <link type="url">
             <xsl:value-of select="."/>
           </link>
       </xsl:for-each>
-      
+
 
       <xsl:copy-of select="gn:*"/>
     </metadata>

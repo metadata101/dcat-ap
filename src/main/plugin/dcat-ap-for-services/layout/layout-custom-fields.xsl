@@ -38,7 +38,7 @@
     xmlns:gml="http://www.opengis.net/gml"
     xmlns:gn="http://www.fao.org/geonetwork"
     xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
-    xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
+    xmlns:gn-fn-dcat-ap-for-services="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap-for-services"
     xmlns:saxon="http://saxon.sf.net/"
     extension-element-prefixes="saxon"
     version="2.0"
@@ -47,7 +47,7 @@
   <xsl:include href="layout-custom-fields-concepts.xsl"/>
   <xsl:include href="layout-custom-fields-sds.xsl"/>
 
-  <xsl:template mode="mode-dcat-ap" match="dct:spatial" priority="2000">
+  <xsl:template mode="mode-dcat-ap-for-services" match="dct:spatial" priority="2000">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
     <xsl:param name="refToDelete" required="no"/>
@@ -86,7 +86,7 @@
         <xsl:variable name="cleanedGeometry" as="node()">
           <xsl:apply-templates select="$geometry" mode="gn-element-cleaner"/>
         </xsl:variable>
-        <xsl:variable name="bbox" select="gn-fn-dcat-ap:getBboxCoordinates($cleanedGeometry)"/>
+        <xsl:variable name="bbox" select="gn-fn-dcat-ap-for-services:getBboxCoordinates($cleanedGeometry)"/>
         <xsl:variable name="bboxCoordinates" select="tokenize(replace($bbox,',','.'), '\|')"/>
         <xsl:if test="count($bboxCoordinates)>4">
           <div class="alert alert-danger">

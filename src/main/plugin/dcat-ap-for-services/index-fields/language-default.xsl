@@ -49,7 +49,7 @@
   <!-- ========================================================================================= -->
 
   <xsl:variable name="isoDocLangId">
-    <xsl:call-template name="langId-dcat-ap" />
+    <xsl:call-template name="langId-dcat-ap-for-services" />
   </xsl:variable>
 
   <xsl:template match="/">

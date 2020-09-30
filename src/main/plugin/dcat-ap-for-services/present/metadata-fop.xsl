@@ -26,10 +26,10 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="xs"
   version="2.0">
-  
-  <xsl:template name="metadata-fop-dcat-ap">
+
+  <xsl:template name="metadata-fop-dcat-ap-for-services">
     <xsl:param name="schema"/>
-    
+
     <xsl:for-each select="*">
       <xsl:call-template name="blockElementFop">
         <xsl:with-param name="block">

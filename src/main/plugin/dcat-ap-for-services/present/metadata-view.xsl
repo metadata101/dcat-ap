@@ -24,8 +24,8 @@
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-    <xsl:template name="view-with-header-dcat-ap">
-        <xsl:call-template name="metadata-dcat-apview-simple"></xsl:call-template>
+    <xsl:template name="view-with-header-dcat-ap-for-services">
+        <xsl:call-template name="metadata-dcat-ap-for-servicesview-simple"></xsl:call-template>
   </xsl:template>
 
 </xsl:stylesheet>

@@ -29,7 +29,7 @@ Schematron validation for DCAT-AP-VL - Flemish Government.
 This script was written by GIM.
 
 Source:
-- DCAT-AP v1.1: https://joinup.ec.europa.eu/release/dcat-ap-v11
+- DCAT-AP v1.1: https://joinup.ec.europa.eu/release/dcat-ap-for-services-v11
 - Vlaamse Open Data Handleiding: https://overheid.vlaanderen.be/open-data-handleiding (bijlage 3)
 
 -->

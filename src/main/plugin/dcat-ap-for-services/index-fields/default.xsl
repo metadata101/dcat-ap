@@ -36,7 +36,7 @@
 
   <!-- The main metadata language -->
   <xsl:variable name="isoLangId">
-    <xsl:call-template name="langId-dcat-ap" />
+    <xsl:call-template name="langId-dcat-ap-for-services" />
   </xsl:variable>
 
   <xsl:variable name="langId">

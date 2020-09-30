@@ -24,7 +24,7 @@
 
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
+  xmlns:gn-fn-dcat-ap-for-services="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap-for-services"
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:java="java:org.fao.geonet.util.XslUtil"
   xmlns:java2="java:org.fao.geonet.schema.dcatap.util.XslUtil"
@@ -37,7 +37,7 @@
   <xsl:variable name="inSchemeAdmsBaseUrl" select="'http://purl.org/adms/'"/>
   <xsl:variable name="thesaurusIdentifierBaseKey" select="'geonetwork.thesaurus.external.theme.'"/>
 
-  <xsl:function name="gn-fn-dcat-ap:getInSchemeURIByElementName" as="xs:string">
+  <xsl:function name="gn-fn-dcat-ap-for-services:getInSchemeURIByElementName" as="xs:string">
     <xsl:param name="elementName"/>
     <xsl:param name="parentElementName"/>
     <xsl:choose>
@@ -77,7 +77,7 @@
     </xsl:choose>
   </xsl:function>
 
-  <xsl:function name="gn-fn-dcat-ap:getRdfTypeByElementName" as="xs:string">
+  <xsl:function name="gn-fn-dcat-ap-for-services:getRdfTypeByElementName" as="xs:string">
     <xsl:param name="elementName"/>
     <xsl:param name="parentElementName"/>
     <xsl:choose>
@@ -117,7 +117,7 @@
     </xsl:choose>
   </xsl:function>
 
-  <xsl:function name="gn-fn-dcat-ap:getThesaurusTitle" as="xs:string">
+  <xsl:function name="gn-fn-dcat-ap-for-services:getThesaurusTitle" as="xs:string">
     <xsl:param name="resource"/>
     <xsl:choose>
       <xsl:when test="$resource = concat($inSchemeAdmsBaseUrl,'publishertype/1.0')">
@@ -153,7 +153,7 @@
     </xsl:choose>
   </xsl:function>
 
-  <xsl:function name="gn-fn-dcat-ap:getThesaurusIdentifier" as="xs:string">
+  <xsl:function name="gn-fn-dcat-ap-for-services:getThesaurusIdentifier" as="xs:string">
     <xsl:param name="resource"/>
     <xsl:choose>
       <xsl:when test="$resource = concat($inSchemeAdmsBaseUrl,'publishertype/1.0')">
@@ -193,7 +193,7 @@
     </xsl:choose>
   </xsl:function>
 
-  <xsl:function name="gn-fn-dcat-ap:isNotMultilingualField" as="xs:boolean">
+  <xsl:function name="gn-fn-dcat-ap-for-services:isNotMultilingualField" as="xs:boolean">
     <xsl:param name="element" as="node()"/>
     <xsl:param name="editorConfig" as="node()"/>
 
@@ -244,7 +244,7 @@
 
   The child element take priority if defined.
   -->
-  <xsl:function name="gn-fn-dcat-ap:getField" as="node()">
+  <xsl:function name="gn-fn-dcat-ap-for-services:getField" as="node()">
     <xsl:param name="configuration" as="node()"/>
     <!-- The container element -->
     <xsl:param name="name" as="xs:string"/>
@@ -268,7 +268,7 @@
     </xsl:choose>
   </xsl:function>
 
-  <xsl:function name="gn-fn-dcat-ap:isForceDisplayAttributes" as="xs:boolean">
+  <xsl:function name="gn-fn-dcat-ap-for-services:isForceDisplayAttributes" as="xs:boolean">
     <xsl:param name="element" as="node()"/>
     <xsl:choose>
       <xsl:when test="$element[@xml:lang or @rdf:about or @rdf:resource]">
@@ -280,7 +280,7 @@
     </xsl:choose>
   </xsl:function>
 
-  <xsl:function name="gn-fn-dcat-ap:getBboxCoordinates" as="xs:string">
+  <xsl:function name="gn-fn-dcat-ap-for-services:getBboxCoordinates" as="xs:string">
     <xsl:param name="geometryElement" as="node()"/>
     <xsl:variable name="bbox">
       <xsl:choose>
@@ -303,7 +303,7 @@
     </xsl:choose>
   </xsl:function>
 
-  <xsl:function name="gn-fn-dcat-ap:concatXPaths" as="xs:string">
+  <xsl:function name="gn-fn-dcat-ap-for-services:concatXPaths" as="xs:string">
     <xsl:param name="parentXPath" as="xs:string"/>
     <xsl:param name="childXPath" as="xs:string"/>
     <xsl:param name="childNodeName" as="xs:string"/>

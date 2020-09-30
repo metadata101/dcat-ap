@@ -37,7 +37,7 @@
                 xmlns:gml="http://www.opengis.net/gml"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
-                xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
+                xmlns:gn-fn-dcat-ap-for-services="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap-for-services"
                 xmlns:saxon="http://saxon.sf.net/"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
                 extension-element-prefixes="saxon"
@@ -226,8 +226,8 @@
     priority="10">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <xsl:variable name="inScheme" select="gn-fn-dcat-ap:getInSchemeURIByElementName(name(.),name(..))"/>
-      <xsl:variable name="rdfType" select="gn-fn-dcat-ap:getRdfTypeByElementName(name(.),name(..))"/>
+      <xsl:variable name="inScheme" select="gn-fn-dcat-ap-for-services:getInSchemeURIByElementName(name(.),name(..))"/>
+      <xsl:variable name="rdfType" select="gn-fn-dcat-ap-for-services:getRdfTypeByElementName(name(.),name(..))"/>
       <xsl:choose>
         <xsl:when test="count(*)=0 or count(skos:Concept/*[name(.)='skos:prefLabel'])=0">
           <skos:Concept>

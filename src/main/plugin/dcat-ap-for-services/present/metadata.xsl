@@ -33,13 +33,13 @@
 
   <xsl:include href="metadata-fop.xsl"/>
 
-  <!-- main template - the way into processing dcat-ap -->
-  <xsl:template name="metadata-dcat-ap">
+  <!-- main template - the way into processing dcat-ap-for-services -->
+  <xsl:template name="metadata-dcat-ap-for-services">
     <xsl:param name="schema"/>
     <xsl:param name="edit" select="false()"/>
     <xsl:param name="embedded"/>
 
-    <xsl:apply-templates mode="dcat-ap" select="." >
+    <xsl:apply-templates mode="dcat-ap-for-services" select="." >
       <xsl:with-param name="schema" select="$schema"/>
        <xsl:with-param name="edit"   select="$edit"/>
        <xsl:with-param name="embedded" select="$embedded" />
@@ -48,7 +48,7 @@
 
   <!-- CompleteTab template - dc just calls completeTab from
        metadata-utils.xsl -->
-  <xsl:template name="dcat-apCompleteTab">
+  <xsl:template name="dcat-ap-for-servicesCompleteTab">
     <xsl:param name="tabLink"/>
 
     <xsl:call-template name="completeTab">
@@ -59,7 +59,7 @@
   <!--
   default: in simple mode just a flat list
   -->
-  <xsl:template mode="dcat-ap" match="*|@*">
+  <xsl:template mode="dcat-ap-for-services" match="*|@*">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
 
@@ -73,7 +73,7 @@
   <!--
   these elements should be boxed
   -->
-  <xsl:template mode="dcat-ap" match="dcat:Dataset|csw:Record">
+  <xsl:template mode="dcat-ap-for-services" match="dcat:Dataset|csw:Record">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
 
@@ -83,7 +83,7 @@
     </xsl:apply-templates>
   </xsl:template>
 
-  <xsl:template mode="dcat-ap" match="dct:anyCHOICE_ELEMENT0">
+  <xsl:template mode="dcat-ap-for-services" match="dct:anyCHOICE_ELEMENT0">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
 
@@ -107,7 +107,7 @@
   <!--
   identifier
   -->
-  <xsl:template mode="dcat-ap" match="dct:identifier">
+  <xsl:template mode="dcat-ap-for-services" match="dct:identifier">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
 
@@ -122,7 +122,7 @@
     references
     Add file upload support
     -->
-  <xsl:template mode="dcat-ap"  match="dct:references">
+  <xsl:template mode="dcat-ap-for-services"  match="dct:references">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
 
@@ -233,10 +233,10 @@
   </xsl:template>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!-- dcat-ap brief formatting -->
+  <!-- dcat-ap-for-services brief formatting -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-  <xsl:template name="dcat-apBrief">
+  <xsl:template name="dcat-ap-for-servicesBrief">
     <metadata>
       <xsl:if test="dct:title">
         <title><xsl:value-of select="dct:title"/></title>
@@ -310,5 +310,5 @@
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template name="dcat-ap-javascript"/>
+  <xsl:template name="dcat-ap-for-services-javascript"/>
 </xsl:stylesheet>

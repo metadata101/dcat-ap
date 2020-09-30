@@ -88,7 +88,7 @@ index e49664a0f7..e7e2e5fb65 100644
                  }
              }
 +
-+            if(schemaIdentifier.equals("dcat-ap")) {
++            if(schemaIdentifier.equals("dcat-ap-for-services")) {
 +                DcatapAssociatedResourcesSchemaPlugin dcatapSchemaPlugin = (DcatapAssociatedResourcesSchemaPlugin)schemaPlugin;
 +                if (listOfTypes.size() == 0 ||
 +                    listOfTypes.contains(RelatedItemType.dcatapsources)) {

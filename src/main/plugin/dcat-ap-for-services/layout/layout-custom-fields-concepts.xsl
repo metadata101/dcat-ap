@@ -10,18 +10,18 @@
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:xslutil="java:org.fao.geonet.util.XslUtil"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
-        xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
+        xmlns:gn-fn-dcat-ap-for-services="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap-for-services"
                 version="2.0"
                 exclude-result-prefixes="#all">
 
   <!--  Template to prepare data-gn-keyword component for xml elements based on a thesaurus -->
-  <xsl:template mode="mode-dcat-ap" priority="2000" match="foaf:Agent/dct:type[not($isFlatMode)]|dcat:theme|dct:accrualPeriodicity|dct:language|dcat:Dataset/dct:type|dct:format|dcat:mediaType|adms:status|dct:LicenseDocument/dct:type|dct:accessRights">
+  <xsl:template mode="mode-dcat-ap-for-services" priority="2000" match="foaf:Agent/dct:type[not($isFlatMode)]|dcat:theme|dct:accrualPeriodicity|dct:language|dcat:Dataset/dct:type|dct:format|dcat:mediaType|adms:status|dct:LicenseDocument/dct:type|dct:accessRights">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
 
     <xsl:variable name="xpath" select="gn-fn-metadata:getXPath(.)"/>
     <xsl:variable name="existingInScheme" select="normalize-space(skos:Concept/skos:inScheme/@rdf:resource)"/>
-    <xsl:variable name="createdInSchemeByParentElementName" select="gn-fn-dcat-ap:getInSchemeURIByElementName(name(.),name(..))"/>
+    <xsl:variable name="createdInSchemeByParentElementName" select="gn-fn-dcat-ap-for-services:getInSchemeURIByElementName(name(.),name(..))"/>
 
     <xsl:variable name="inScheme">
       <xsl:choose>
@@ -33,13 +33,13 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <xsl:variable name="thesaurusTitle" select="gn-fn-dcat-ap:getThesaurusTitle($inScheme)"/>
-    <xsl:variable name="thesaurusIdentifier" select="gn-fn-dcat-ap:getThesaurusIdentifier($inScheme)"/>
+    <xsl:variable name="thesaurusTitle" select="gn-fn-dcat-ap-for-services:getThesaurusTitle($inScheme)"/>
+    <xsl:variable name="thesaurusIdentifier" select="gn-fn-dcat-ap-for-services:getThesaurusIdentifier($inScheme)"/>
     <xsl:variable name="attributes">
       <xsl:if test="$isEditing">
         <!-- Create form for all existing attribute (not in gn namespace)
         and all non existing attributes not already present. -->
-        <xsl:apply-templates mode="render-for-field-for-attribute-dcat-ap"
+        <xsl:apply-templates mode="render-for-field-for-attribute-dcat-ap-for-services"
                              select="
           @*|
           gn:attribute[not(@name = parent::node()/@*/name())]">
@@ -57,7 +57,7 @@
                           else $listOfThesaurus/thesaurus[title=$thesaurusTitle]"/>
     <xsl:choose>
       <xsl:when test="$thesaurusConfig/@fieldset = 'false'">
-        <!--         <xsl:apply-templates mode="mode-dcat-ap" select="*">
+        <!--         <xsl:apply-templates mode="mode-dcat-ap-for-services" select="*">
                   <xsl:with-param name="schema" select="$schema"/>
                   <xsl:with-param name="labels" select="$labels"/>
                 </xsl:apply-templates>-->
@@ -71,7 +71,7 @@
           <xsl:with-param name="xpath" select="$xpath"/>
           <xsl:with-param name="attributesSnippet" select="$attributes"/>
           <xsl:with-param name="subTreeSnippet">
-            <xsl:apply-templates mode="mode-dcat-ap" select="*">
+            <xsl:apply-templates mode="mode-dcat-ap-for-services" select="*">
               <xsl:with-param name="schema" select="$schema"/>
               <xsl:with-param name="labels" select="$labels"/>
             </xsl:apply-templates>
@@ -89,7 +89,7 @@
           <xsl:with-param name="xpath" select="$xpath"/>
           <xsl:with-param name="attributesSnippet" select="$attributes"/>
           <xsl:with-param name="subTreeSnippet">
-            <xsl:apply-templates mode="mode-dcat-ap" select="*">
+            <xsl:apply-templates mode="mode-dcat-ap-for-services" select="*">
               <xsl:with-param name="schema" select="$schema"/>
               <xsl:with-param name="labels" select="$labels"/>
             </xsl:apply-templates>
@@ -100,11 +100,11 @@
   </xsl:template>
 
 
-  <xsl:template mode="mode-dcat-ap" match="skos:Concept" priority="2000">
+  <xsl:template mode="mode-dcat-ap-for-services" match="skos:Concept" priority="2000">
 
 
     <xsl:variable name="existingInScheme" select="normalize-space(skos:inScheme/@rdf:resource)"/>
-    <xsl:variable name="createdInSchemeByParentElementName" select="gn-fn-dcat-ap:getInSchemeURIByElementName(name(..),name(../..))"/>
+    <xsl:variable name="createdInSchemeByParentElementName" select="gn-fn-dcat-ap-for-services:getInSchemeURIByElementName(name(..),name(../..))"/>
 
     <xsl:variable name="inScheme">
       <xsl:choose>
@@ -112,9 +112,9 @@
         <xsl:otherwise><xsl:value-of select="$createdInSchemeByParentElementName"/></xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <xsl:variable name="thesaurusTitle" select="gn-fn-dcat-ap:getThesaurusTitle($inScheme)" />
+    <xsl:variable name="thesaurusTitle" select="gn-fn-dcat-ap-for-services:getThesaurusTitle($inScheme)" />
 
-    <xsl:variable name="thesaurusIdentifier" select="gn-fn-dcat-ap:getThesaurusIdentifier($inScheme)" />
+    <xsl:variable name="thesaurusIdentifier" select="gn-fn-dcat-ap-for-services:getThesaurusIdentifier($inScheme)" />
   <xsl:choose>
       <xsl:when test="$inScheme!=''">
       <xsl:variable name="thesaurusConfig"
@@ -156,11 +156,11 @@
                           as="xs:string"
                           select="if ($thesaurusConfig/@transformations != '')
                                   then $thesaurusConfig/@transformations
-                                  else 'to-dcat-ap-concept'"/>
+                                  else 'to-dcat-ap-for-services-concept'"/>
 
             <!-- Get current transformation mode based on XML fragment analysis -->
             <xsl:variable name="transformation"
-                          select="'to-dcat-ap-concept'"/>
+                          select="'to-dcat-ap-for-services-concept'"/>
 
             <xsl:variable name="parentName" select="name(..)"/>
 
@@ -205,12 +205,12 @@
             </xsl:if>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates mode="mode-dcat-ap" select="*"/>
+        <xsl:apply-templates mode="mode-dcat-ap-for-services" select="*"/>
       </xsl:otherwise>
       </xsl:choose>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates mode="mode-dcat-ap" select="*"/>
+        <xsl:apply-templates mode="mode-dcat-ap-for-services" select="*"/>
       </xsl:otherwise>
     </xsl:choose>
 

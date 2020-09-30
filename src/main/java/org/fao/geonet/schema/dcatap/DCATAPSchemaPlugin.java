@@ -48,7 +48,7 @@ import com.google.common.collect.ImmutableSet;
 public class DCATAPSchemaPlugin
     extends org.fao.geonet.kernel.schema.SchemaPlugin
     implements DcatapAssociatedResourcesSchemaPlugin, MultilingualSchemaPlugin {
-    public static final String IDENTIFIER = "dcat-ap";
+    public static final String IDENTIFIER = "dcat-ap-for-services";
 
     private static ImmutableSet<Namespace> allNamespaces;
     private static Map<String, Namespace> allTypenames;

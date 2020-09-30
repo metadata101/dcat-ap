@@ -34,24 +34,24 @@
   <xsl:include href="layout.xsl"/>
   <xsl:include href="evaluate.xsl"/>
 
-  <xsl:template name="get-dcat-ap-is-service">
+  <xsl:template name="get-dcat-ap-for-services-is-service">
     <xsl:value-of select="false()"/>
   </xsl:template>
 
   <!--
     Load the schema configuration for the editor.
       -->
-  <xsl:template name="get-dcat-ap-configuration">
+  <xsl:template name="get-dcat-ap-for-services-configuration">
     <xsl:copy-of select="document('config-editor.xml')"/>
   </xsl:template>
 
 
   <!-- Dispatching to the profile mode  -->
-  <xsl:template name="dispatch-dcat-ap">
+  <xsl:template name="dispatch-dcat-ap-for-services">
     <xsl:param name="base" as="node()"/>
     <xsl:param name="overrideLabel" as="xs:string" required="no" select="''"/>
     <xsl:param name="refToDelete" as="node()?" required="no"/>
-    <xsl:apply-templates mode="mode-dcat-ap" select="$base">
+    <xsl:apply-templates mode="mode-dcat-ap-for-services" select="$base">
       <xsl:with-param name="overrideLabel" select="$overrideLabel"/>
       <xsl:with-param name="refToDelete" select="$refToDelete"/>
     </xsl:apply-templates>

@@ -25,12 +25,12 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:geonet="http://www.fao.org/geonetwork"
-                xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
+                xmlns:gn-fn-dcat-ap-for-services="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap-for-services"
                 exclude-result-prefixes="#all"
                 version="2.0">
   <xsl:import href="../../iso19139/process/process-utility.xsl"/>
   <xsl:import href="../layout/utility-vacuum.xsl"/>
-  
+
   <!-- i18n information -->
   <xsl:variable name="vacuum-loc">
     <msg id="a" xml:lang="eng">Remove empty elements from this record.</msg>
@@ -51,6 +51,6 @@
   </xsl:template>
 
   <xsl:template match="/">
-        <xsl:copy-of select="gn-fn-dcat-ap:vacuum(.)"/>
+        <xsl:copy-of select="gn-fn-dcat-ap-for-services:vacuum(.)"/>
     </xsl:template>
 </xsl:stylesheet>

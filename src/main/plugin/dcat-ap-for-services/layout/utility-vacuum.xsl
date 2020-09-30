@@ -27,12 +27,12 @@
                 xmlns:gmd="http://www.isotc211.org/2005/gmd"
                 xmlns:gco="http://www.isotc211.org/2005/gco"
                 xmlns:gn="http://www.fao.org/geonetwork"
-                xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
+                xmlns:gn-fn-dcat-ap-for-services="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap-for-services"
                 exclude-result-prefixes="#all">
   <xsl:import href="../../iso19139/layout/utility-vacuum.xsl"/>
 
   <!-- Vacuum utility rely on ISO19139 one. -->
-  <xsl:function name="gn-fn-dcat-ap:vacuum" as="node()">
+  <xsl:function name="gn-fn-dcat-ap-for-services:vacuum" as="node()">
     <xsl:param name="metadata" as="node()"/>
     <xsl:for-each select="$metadata/*">
       <xsl:apply-templates mode="vacuum-iso19139"

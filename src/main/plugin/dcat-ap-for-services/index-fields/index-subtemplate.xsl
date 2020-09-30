@@ -39,7 +39,7 @@
     <xsl:template match="/">
         <xsl:variable name="root" select="/"/>
         <xsl:variable name="isoDocLangId">
-          <xsl:call-template name="langId-dcat-ap" />
+          <xsl:call-template name="langId-dcat-ap-for-services" />
         </xsl:variable>
 
         <Documents>
