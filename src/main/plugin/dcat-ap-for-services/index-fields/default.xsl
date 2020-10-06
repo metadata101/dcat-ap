@@ -15,14 +15,15 @@
 <xsl:stylesheet version="2.0" xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:schema="http://schema.org/"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
-                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:dct="http://purl.org/dc/terms/" xmlns:spdx="http://spdx.org/rdf/terms#"
                 xmlns:adms="http://www.w3.org/ns/adms#" xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:util="java:org.fao.geonet.util.XslUtil" xmlns:geonet="http://www.fao.org/geonetwork">
-  <xsl:include href="../convert/functions.xsl" />
-  <xsl:include href="../../../../xsl/utils-fn.xsl" />
+  <xsl:include href="../convert/functions.xsl"/>
+  <xsl:include href="../../../../xsl/utils-fn.xsl"/>
   <!-- This file defines what parts of the metadata are indexed by Lucene
         Searches can be conducted on indexes defined here. The Field@name attribute
         defines the name of the search variable. If a variable has to be maintained
@@ -31,17 +32,17 @@
         if they should work accross different metadata resources -->
   <!-- ========================================================================================= -->
   <xsl:output method="xml" version="1.0" encoding="UTF-8"
-              indent="yes" />
+              indent="yes"/>
   <!-- ========================================================================================= -->
 
   <!-- The main metadata language -->
   <xsl:variable name="isoLangId">
-    <xsl:call-template name="langId-dcat-ap-for-services" />
+    <xsl:call-template name="langId-dcat-ap-for-services"/>
   </xsl:variable>
 
   <xsl:variable name="langId">
     <xsl:call-template name="langId3to2">
-      <xsl:with-param name="langId-3char" select="$isoLangId" />
+      <xsl:with-param name="langId-3char" select="$isoLangId"/>
     </xsl:call-template>
   </xsl:variable>
 
@@ -51,49 +52,49 @@
     </Document>
   </xsl:template>
 
-  <xsl:template match="dcat:Dataset">
-    <Field name="_locale" string="{$isoLangId}" store="true" index="true" />
-    <Field name="_locale2" string="{$langId}" store="true" index="true" />
+  <xsl:template match="dcat:Dataset|dcat:DataService">
+    <Field name="_locale" string="{$isoLangId}" store="true" index="true"/>
+    <Field name="_locale2" string="{$langId}" store="true" index="true"/>
 
     <Field name="_docLocale" string="{$isoLangId}" store="true"
-           index="true" />
+           index="true"/>
 
     <xsl:variable name="_defaultTitle">
       <xsl:call-template name="defaultTitle">
-        <xsl:with-param name="isoDocLangId" select="$isoLangId" />
+        <xsl:with-param name="isoDocLangId" select="$isoLangId"/>
       </xsl:call-template>
     </xsl:variable>
 
     <Field name="_defaultTitle" string="{string($_defaultTitle)}"
-           store="true" index="true" />
+           store="true" index="true"/>
 
     <!-- not tokenized title for sorting, needed for multilingual sorting -->
     <xsl:if test="geonet:info/isTemplate != 's'">
       <Field name="_title" string="{string($_defaultTitle)}" store="true"
-             index="true" />
+             index="true"/>
     </xsl:if>
 
 
     <xsl:variable name="_defaultAbstract">
       <xsl:call-template name="defaultAbstract">
-        <xsl:with-param name="isoDocLangId" select="$isoLangId" />
+        <xsl:with-param name="isoDocLangId" select="$isoLangId"/>
       </xsl:call-template>
     </xsl:variable>
 
     <Field name="_defaultAbstract" string="{string($_defaultAbstract)}"
-           store="true" index="true" />
+           store="true" index="true"/>
 
 
-    <xsl:apply-templates select="." mode="dataset" />
+    <xsl:apply-templates select="." mode="dataset"/>
 
-    <xsl:apply-templates select="*" mode="index" />
+    <xsl:apply-templates select="*" mode="index"/>
   </xsl:template>
 
   <xsl:template mode="index" match="*|@*">
-    <xsl:apply-templates mode="index" select="*|@*" />
+    <xsl:apply-templates mode="index" select="*|@*"/>
   </xsl:template>
 
-  <xsl:template match="dcat:Dataset" mode="dataset">
+  <xsl:template match="dcat:Dataset|dcat:DataService" mode="dataset">
 
     <!-- === Free text search === -->
 
@@ -127,6 +128,7 @@
                               .//dct:accrualPeriodicity|
                               .//dct:language|
                               .//dct:type[name(..)='dcat:Dataset']|
+                              .//dct:type[name(..)='dcat:DataService']|
                               .//dct:format|
                               .//dcat:mediaType|
                               .//adms:status|
@@ -148,10 +150,10 @@
 
     </Field>
 
-    <xsl:for-each select="distinct-values(//dcat:dataset/dcat:Dataset/dct:title/@xml:lang)">
+    <xsl:for-each select="distinct-values(//dcat:dataset/dcat:Dataset/dct:title/@xml:lang|//dcat:service/dcat:DataService/dct:title/@xml:lang)">
       <xsl:variable name="mdLanguage">
         <xsl:call-template name="langId2to3">
-          <xsl:with-param name="langId-2char" select="." />
+          <xsl:with-param name="langId-2char" select="."/>
         </xsl:call-template>
       </xsl:variable>
       <xsl:if test="not($mdLanguage='')">
@@ -160,7 +162,14 @@
       </xsl:if>
     </xsl:for-each>
 
-    <Field name="type" string="dataset" store="true" index="true" />
+    <xsl:choose>
+      <xsl:when test="name() = 'dcat:Dataset'">
+        <Field name="type" string="dataset" store="true" index="true"/>
+      </xsl:when>
+      <xsl:when test="name() = 'dcat:DataService'">
+        <Field name="type" string="service" store="true" index="true" />
+      </xsl:when>
+    </xsl:choose>
 
     <!-- This is needed by the CITE test script to look for strings like 'a
             b*' strings that contain spaces -->
@@ -171,9 +180,9 @@
         <xsl:with-param name="isoLangId" select="$isoLangId"/>
       </xsl:call-template>
     </xsl:variable>
-    <Field name="title" string="{string($tmp_title)}" store="true" index="true" />
+    <Field name="title" string="{string($tmp_title)}" store="true" index="true"/>
     <!-- not tokenized title for sorting -->
-    <Field name="_title" string="{string($tmp_title)}" store="false" index="true" />
+    <Field name="_title" string="{string($tmp_title)}" store="false" index="true"/>
 
     <xsl:variable name="tmp_abstract">
       <xsl:call-template name="index-lang-tag-oneval">
@@ -182,25 +191,25 @@
         <xsl:with-param name="isoLangId" select="$isoLangId"/>
       </xsl:call-template>
     </xsl:variable>
-    <Field name="abstract" string="{string($tmp_abstract)}" store="true" index="true" />
-    <Field name="_abstract" string="{string($tmp_abstract)}" store="false" index="true" />
+    <Field name="abstract" string="{string($tmp_abstract)}" store="true" index="true"/>
+    <Field name="_abstract" string="{string($tmp_abstract)}" store="false" index="true"/>
 
     <xsl:for-each select="dct:identifier">
       <Field name="identifier" string="{string(.)}" store="true"
-             index="true" />
-      <Field name="fileId" string="{string(.)}" store="false" index="true" />
+             index="true"/>
+      <Field name="fileId" string="{string(.)}" store="false" index="true"/>
     </xsl:for-each>
 
     <xsl:for-each select="dct:issued">
       <Field name="createDate" string="{string(.)}" store="true"
-             index="true" />
+             index="true"/>
       <Field name="createDateYear" string="{substring(string(.), 0, 5)}"
-             store="true" index="true" />
+             store="true" index="true"/>
     </xsl:for-each>
 
     <xsl:for-each select="dct:modified">
       <Field name="changeDate" string="{string(.)}" store="true"
-             index="true" />
+             index="true"/>
       <!--<Field name="createDateYear" string="{substring(., 0, 5)}" store="true"
                 index="true"/> -->
     </xsl:for-each>
@@ -238,19 +247,19 @@
         </xsl:call-template>
       </xsl:variable>
       <xsl:if test="not($datasetLanguage='')">
-        <Field name="datasetLang" string="{$datasetLanguage}" store="true" index="true" />
+        <Field name="datasetLang" string="{$datasetLanguage}" store="true" index="true"/>
       </xsl:if>
     </xsl:for-each>
 
     <xsl:for-each select="dct:type">
-      <Field name="type" string="{string(.)}" store="true" index="true" />
+      <Field name="type" string="{string(.)}" store="true" index="true"/>
     </xsl:for-each>
     <xsl:for-each select="dct:source">
-      <Field name="lineage" string="{string(.)}" store="true" index="true" />
+      <Field name="lineage" string="{string(.)}" store="true" index="true"/>
     </xsl:for-each>
     <xsl:for-each select="dct:relation">
       <Field name="relation" string="{string(.)}" store="false"
-             index="true" />
+             index="true"/>
     </xsl:for-each>
 
     <xsl:for-each select="dct:conformsTo/dct:Standard">
@@ -262,24 +271,24 @@
         </xsl:call-template>
       </xsl:variable>
       <Field name="standardName" string="{string($title)}"
-             store="true" index="true" />
+             store="true" index="true"/>
     </xsl:for-each>
 
     <xsl:for-each select="dcat:landingPage/@rdf:resource">
       <Field name="groupWebsite" string="{string(.)}"
-             store="true" index="true" />
+             store="true" index="true"/>
     </xsl:for-each>
 
 
     <xsl:for-each select="dct:rights">
       <Field name="MD_LegalConstraintsUseLimitation" string="{string(.)}"
-             store="true" index="true" />
+             store="true" index="true"/>
     </xsl:for-each>
     <xsl:for-each select="dct:spatial">
       <xsl:if test="count(dct:Location/locn:geometry) &gt; 0">
         <xsl:apply-templates
           select="dct:Location"
-          mode="latLon" />
+          mode="latLon"/>
         <xsl:call-template name="index-lang-tag">
           <xsl:with-param name="tag" select="dct:Location/skos:prefLabel"/>
           <xsl:with-param name="field" select="'extentDesc'"/>
@@ -310,7 +319,7 @@
     </xsl:call-template>
 
     <xsl:for-each select="dcat:keyword">
-      <Field name="keyword" string="{.}" store="true" index="true" />
+      <Field name="keyword" string="{.}" store="true" index="true"/>
     </xsl:for-each>
     <xsl:variable name="listOfKeywords">{
       <xsl:variable name="keywordWithNoThesaurus"
@@ -345,7 +354,7 @@
            index="false"/>
 
     <xsl:for-each select="dcat:distribution/dcat:Distribution">
-      <xsl:variable name="tPosition" select="position()" />
+      <xsl:variable name="tPosition" select="position()"/>
 
       <xsl:variable name="title">
         <xsl:call-template name="index-lang-tag-oneval">
@@ -373,7 +382,7 @@
       <Field name="format" string="{string($format)}" store="true" index="true"/>
 
       <xsl:for-each select="dcat:downloadURL">
-        <xsl:variable name="downloadURLlinkage" select="string(@rdf:resource)" />
+        <xsl:variable name="downloadURLlinkage" select="string(@rdf:resource)"/>
 
         <Field name="link"
                string="{concat($title, '|', $desc, '|', $downloadURLlinkage,'|WWW:DOWNLOAD-1.0-http--download|WWW:DOWNLOAD-1.0-http--download|', $tPosition, '1', position())}"
@@ -381,7 +390,7 @@
       </xsl:for-each>
 
       <xsl:for-each select="dcat:accessURL">
-        <xsl:variable name="accessURLlinkage" select="string(@rdf:resource)" />
+        <xsl:variable name="accessURLlinkage" select="string(@rdf:resource)"/>
 
         <Field name="link"
                string="{concat($title, '|', $desc, '|', $accessURLlinkage,'|WWW:DOWNLOAD-1.0-http--download|WWW:DOWNLOAD-1.0-http--download|', $tPosition, '2', position())}"
@@ -417,22 +426,22 @@
 
     <xsl:for-each select="dcat:contactPoint">
       <xsl:apply-templates mode="index-contact" select="vcard:Organization">
-        <xsl:with-param name="type" select="'resource'" />
-        <xsl:with-param name="fieldPrefix" select="'responsibleParty'" />
-        <xsl:with-param name="position" select="position()" />
+        <xsl:with-param name="type" select="'resource'"/>
+        <xsl:with-param name="fieldPrefix" select="'responsibleParty'"/>
+        <xsl:with-param name="position" select="position()"/>
       </xsl:apply-templates>
     </xsl:for-each>
 
     <xsl:for-each select="dct:isPartOf">
-      <Field name="parentUuid" string="{string(.)}" store="true" index="true" />
+      <Field name="parentUuid" string="{string(.)}" store="true" index="true"/>
     </xsl:for-each>
     <xsl:for-each select="(dcat:landingPage)[normalize-space(.) != '']">
-      <xsl:variable name="name" select="tokenize(., '/')[last()]" />
-      <xsl:variable name="tPosition" select="position()" />
+      <xsl:variable name="name" select="tokenize(., '/')[last()]"/>
+      <xsl:variable name="tPosition" select="position()"/>
       <!-- Index link where last token after the last / is the link name. -->
       <Field name="link"
              string="{concat($name, '|description|', @rdf:resource, '|WWW:DOWNLOAD|WWW-DOWNLOAD|',$tPosition)}"
-             store="true" index="false" />
+             store="true" index="false"/>
     </xsl:for-each>
     <xsl:for-each
       select="(dcat:landingPage)[normalize-space(.) != ''
@@ -442,7 +451,7 @@
       <!-- First thumbnail is flagged as thumbnail and could be considered the
                 main one -->
       <Field name="image" string="{concat($thumbnailType, '|', ., '|')}"
-             store="true" index="false" />
+             store="true" index="false"/>
     </xsl:for-each>
 
     <xsl:for-each select="dct:publisher/foaf:Agent">
@@ -453,7 +462,7 @@
           <xsl:with-param name="isoLangId" select="$isoLangId"/>
         </xsl:call-template>
       </xsl:variable>
-      <Field name="orgName" string="{string($tmp_dcat_publisher)}" store="true" index="true" />
+      <Field name="orgName" string="{string($tmp_dcat_publisher)}" store="true" index="true"/>
     </xsl:for-each>
     <!--    <xsl:for-each select="dct:accrualPeriodicity">
           <Field name="updateFrequency" string="{string(.)}" store="true"
@@ -462,7 +471,7 @@
   </xsl:template>
 
   <xsl:template name="getLicenseDocumentTitle">
-    <xsl:param name="rdfAbout" />
+    <xsl:param name="rdfAbout"/>
     <xsl:choose>
       <xsl:when test="contains($rdfAbout,'modellicentie-gratis-hergebruik')">odellicentie voor gratis hergebruik</xsl:when>
       <xsl:when test="contains($rdfAbout,'creative-commons-zero-verklaring')">Creative Commons Zero verklaring</xsl:when>
@@ -473,26 +482,26 @@
   </xsl:template>
 
   <xsl:template mode="index-contact" match="vcard:Organization">
-    <xsl:param name="type" />
-    <xsl:param name="fieldPrefix" />
-    <xsl:param name="position" select="'0'" />
-    <xsl:variable name="orgName" select="vcard:organization-name" />
+    <xsl:param name="type"/>
+    <xsl:param name="fieldPrefix"/>
+    <xsl:param name="position" select="'0'"/>
+    <xsl:variable name="orgName" select="vcard:organization-name"/>
     <Field name="orgName" string="{string($orgName)}" store="true"
-           index="true" />
+           index="true"/>
     <Field name="orgNameTree" string="{string($orgName)}" store="true"
-           index="true" />
-    <xsl:variable name="role" select="'Contact'" />
+           index="true"/>
+    <xsl:variable name="role" select="'Contact'"/>
     <!--<xsl:variable name="roleTranslation" select="util:getCodelistTranslation('gmd:CI_RoleCode',
             string($role), string($isoLangId))"/> -->
-    <xsl:variable name="email" select="vcard:hasEmail/@rdf:resource" />
-    <xsl:variable name="url" select="vcard:hasURL/@rdf:resource" />
+    <xsl:variable name="email" select="vcard:hasEmail/@rdf:resource"/>
+    <xsl:variable name="url" select="vcard:hasURL/@rdf:resource"/>
     <xsl:variable name="phone"
-                  select="vcard:hasTelephone/text()" />
-    <xsl:variable name="individualName" select="vcard:fn/text()" />
+                  select="vcard:hasTelephone/text()"/>
+    <xsl:variable name="individualName" select="vcard:fn/text()"/>
     <xsl:variable name="address"
                   select="string-join(vcard:hasAddress/vcard:Address/(
                                         vcard:street-address|vcard:postal-code|vcard:locality|
-                                        vcard:locality|vcard:country-name)/text(), ', ')" />
+                                        vcard:locality|vcard:country-name)/text(), ', ')"/>
     <Field name="{$fieldPrefix}"
            string="{concat('contact', '|', $type,'|',
                              $orgName, '|',
@@ -504,10 +513,10 @@
                              string-join($phone, ','), '|',
                              'uuid', '|',
                              $position, '|', $url)}"
-           store="true" index="false" />
+           store="true" index="false"/>
     <xsl:for-each select="$email">
       <Field name="{$fieldPrefix}Email" string="{string(.)}" store="true"
-             index="true" />
+             index="true"/>
       <!-- <Field name="{$fieldPrefix}RoleAndEmail" string="{$role}|{string(.)}"
                 store="true" index="true"/> -->
     </xsl:for-each>

@@ -13,6 +13,7 @@
   <metadata-on-metadata>Metadata over metadata</metadata-on-metadata>
   <default>Standaard</default>
   <defaultDataset>Dataset</defaultDataset>
+  <defaultService>Service</defaultService>
   <defaultDistribution>Distributies</defaultDistribution>
   <advancedDataset>Dataset</advancedDataset>
   <advancedDistribution>Distributies</advancedDistribution>

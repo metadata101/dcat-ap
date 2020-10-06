@@ -42,10 +42,8 @@
       <xs:element name="record" type="dcat:CatalogRecord" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:rights" minOccurs="0" maxOccurs="1"/>
       <xs:element ref="dct:spatial" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:choice>
-        <xs:element name="dataset" type="dcat:Dataset" minOccurs="1" maxOccurs="unbounded"/>
-        <xs:element name="service" type="dcat:DataService" minOccurs="1" maxOccurs="unbounded"/>
-      </xs:choice>
+      <xs:element name="dataset" type="dcat:Dataset" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="service" type="dcat:DataService" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute ref="rdf:about"/>
   </xs:complexType>

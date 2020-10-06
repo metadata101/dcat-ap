@@ -204,7 +204,7 @@
 
       <!-- The name of the view and the id must be different in order to have different labels.
       A change in the core is then necessary. -> See "init" function in EditorController.js (line 154) -->
-      <tab id="defaultDataset" default="true" mode="flat">
+      <tab id="defaultDataset" default="true" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
         <!-- DON'T MOVE THIS SECTION, otherwise rendering stops at a certain point in the fields list -->
         <section name="basicInformation">
           <field name="FieldId109" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title" />
@@ -318,7 +318,7 @@
             <field name="FieldId183" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language" or="language" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           </section>
       </tab>
-      <tab id="defaultDistribution" mode="flat">
+      <tab id="defaultDistribution" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
         <section>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution" name="distribution"/>
           <action type="add" name="distribution" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset" required="true()">
@@ -335,6 +335,11 @@
               </snippet>
             </template>
           </action>
+        </section>
+      </tab>
+      <tab id="defaultService" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
+        <section>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title"/>
         </section>
       </tab>
       <flatModeExceptions>
