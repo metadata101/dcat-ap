@@ -47,7 +47,7 @@
 
   <xsl:template match="/">
     <Document locale="{$isoLangId}">
-      <xsl:apply-templates select="rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset" />
+      <xsl:apply-templates select="rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset|rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" />
     </Document>
   </xsl:template>
 

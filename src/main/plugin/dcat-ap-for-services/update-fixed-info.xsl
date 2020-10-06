@@ -136,7 +136,7 @@
           </skos:ConceptScheme>
         </dcat:themeTaxonomy>
       </xsl:for-each>
-      <xsl:apply-templates select="dcat:dataset"/>
+      <xsl:apply-templates select="dcat:dataset|dcat:service"/>
     </dcat:Catalog>
   </xsl:template>
   <!-- ================================================================= -->
@@ -221,9 +221,8 @@
   </xsl:template>
 
   <!-- Fill empty element and update existing with resourceType -->
-  <xsl:template
-    match="foaf:Agent/dct:type|dcat:theme|dct:accrualPeriodicity|dct:language|dcat:Dataset/dct:type|dct:format|dcat:mediaType|adms:status|dct:LicenseDocument/dct:type|dct:accessRights"
-    priority="10">
+  <xsl:template match="foaf:Agent/dct:type|dcat:theme|dct:accrualPeriodicity|dct:language|dcat:Dataset/dct:type|dct:format|dcat:mediaType|adms:status|dct:LicenseDocument/dct:type|dct:accessRights"
+                priority="10">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:variable name="inScheme" select="gn-fn-dcat-ap-for-services:getInSchemeURIByElementName(name(.),name(..))"/>
@@ -388,5 +387,11 @@
   <!-- Reformat 'Vlaamse Open data' -->
   <xsl:template match="dcat:keyword[translate(text(), 'abcdefghijklmonpqrstuvwxyz', 'ABCDEFGHIJKLMONPQRSTUVWXYZ') = 'VLAAMSE OPEN DATA']" priority="10">
     <dcat:keyword xml:lang="nl">Vlaamse Open data</dcat:keyword>
+  </xsl:template>
+
+  <xsl:template match="dcat:service" priority="10">
+    <xsl:copy copy-namespaces="no">
+      <xsl:apply-templates select="@*|*"/>
+    </xsl:copy>
   </xsl:template>
 </xsl:stylesheet>

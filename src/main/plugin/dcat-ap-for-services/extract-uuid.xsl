@@ -29,7 +29,7 @@
 
     <xsl:template match="/">
       <uuid>
-        <xsl:value-of select="rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier"/>
+        <xsl:value-of select="rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier|rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier"/>
       </uuid>
   </xsl:template>
 

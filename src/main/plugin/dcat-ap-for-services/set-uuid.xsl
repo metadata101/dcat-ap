@@ -37,7 +37,7 @@
 
   <!-- ================================================================= -->
 
-  <xsl:template match="dcat:Dataset">
+  <xsl:template match="dcat:Dataset|dcat:DataService">
     <xsl:copy>
       <dct:identifier><xsl:value-of select="/root/env/uuid"/></dct:identifier>
       <xsl:apply-templates select="*[name(.)!= 'dct:identifer']"/>

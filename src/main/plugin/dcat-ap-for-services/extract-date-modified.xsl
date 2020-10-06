@@ -30,7 +30,7 @@
   xmlns:dcat="http://www.w3.org/ns/dcat#">
 
     <xsl:template match="/">
-     <dateStamp><xsl:value-of select="rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified"/></dateStamp>
+     <dateStamp><xsl:value-of select="rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified|rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:modified"/></dateStamp>
   </xsl:template>
 
 </xsl:stylesheet>
