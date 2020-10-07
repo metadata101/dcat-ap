@@ -17,6 +17,7 @@
   <defaultDistribution>Distributies</defaultDistribution>
   <advancedDataset>Dataset</advancedDataset>
   <advancedDistribution>Distributies</advancedDistribution>
+  <advancedService>Service</advancedService>
   <!-- Section labels -->
   <basicInformation>Basic information</basicInformation>
   <versionInformation>Version information</versionInformation>
@@ -302,4 +303,10 @@
   <FieldId393>preferred label</FieldId393>
   <FieldId394>language</FieldId394>
   <FieldId395>in scheme</FieldId395>
+  <FieldId400>title</FieldId400>
+  <FieldId401>description</FieldId401>
+  <FieldId402>endpoint URL</FieldId402>
+  <FieldId403>endpoint description</FieldId403>
+  <FieldId404>service URL</FieldId404>
+  <FieldId405>identifier</FieldId405>
 </strings>

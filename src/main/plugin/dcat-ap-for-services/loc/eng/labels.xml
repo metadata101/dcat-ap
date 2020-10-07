@@ -1470,4 +1470,41 @@
     <description>Tooltip: in scheme</description>
     <btnLabel>in scheme</btnLabel>
   </element>
+  <element name="dct:title" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title">
+    <label>Titel</label>
+    <description>Vul aan met een beknopte en sprekende benaming van je dataset in een bepaalde taal (default is
+      Nederlands).
+    </description>
+    <btnLabel>Titel</btnLabel>
+  </element>
+  <element name="dct:description" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description">
+    <label>Beschrijving</label>
+    <description>Vul aan met een beknopte beschrijving van de inhoud, de bedoeling/functie, de belangrijkste kenmerken
+      van je dataset in een bepaalde taal (default is Nederlands).
+    </description>
+    <btnLabel>Beschrijving</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl/@rdf:resource">
+    <label>EndpointURL</label>
+    <description>EndpointURL</description>
+    <btnLabel>EndpointURL</btnLabel>
+  </element>
+  <element name="dcat:endpointDescription" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription">
+    <label>Endpointbeschrijving</label>
+    <description>Endpointbeschrijving</description>
+    <btnLabel>Endpointbeschrijving</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset/@rdf:resource">
+    <label>Dienst URL</label>
+    <description>Dienst URL</description>
+    <btnLabel>Dienst URL</btnLabel>
+  </element>
+  <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier">
+    <label>Identificator</label>
+    <description>Vul aan met een identificator waarmee een gebruiker naar je dataset kan verwijzen (bv. een URI of een
+      andere unieke identificator in de context van de catalogus). De vooraf ingevulde en niet te wijzigen waarde is de
+      UUID voor je dataset in GeoNetwork. Je kan één of meerdere eigen identificatoren toevoegen.
+    </description>
+    <btnLabel>Identificator</btnLabel>
+  </element>
 </labels>

@@ -136,6 +136,26 @@
         </snippet>
       </template>
     </for>
+    <for name="dcat:endpointUrl" templateModeOnly="true" forceLabel="true" label="FieldId242">
+      <template>
+        <values>
+          <key label="FieldId242" xpath="@rdf:resource" tooltip="dcat:endpointUrl|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
+        </values>
+        <snippet>
+          <dcat:endpointUrl rdf:resource="{{FieldId242}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="dcat:servesDataset" templateModeOnly="true" forceLabel="true" label="FieldId242">
+      <template>
+        <values>
+          <key label="FieldId242" xpath="@rdf:resource" tooltip="dcat:servesDataset|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
+        </values>
+        <snippet>
+          <dcat:servesDataset rdf:resource="{{FieldId242}}"/>
+        </snippet>
+      </template>
+    </for>
   </fields>
   <!-- Complex fields. -->
   <fieldsWithFieldset>
@@ -338,8 +358,13 @@
         </section>
       </tab>
       <tab id="defaultService" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
-        <section>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title"/>
+        <section name="basicInformation">
+          <field name="FieldId400" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title"/>
+          <field name="FieldId401" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description"/>
+          <field name="FieldId402" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
+          <field name="FieldId403" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription"/>
+          <field name="FieldId404" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
+          <field name="FieldId405" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier"/>
         </section>
       </tab>
       <flatModeExceptions>
@@ -400,7 +425,7 @@
         <directive data-gn-onlinesrc-list="" data-types="source"/>
         <directive data-gn-validation-report=""/>
       </sidePanel>
-      <tab id="advancedDataset" default="true">
+      <tab id="advancedDataset" default="true" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
         <!-- DON'T MOVE THIS SECTION, otherwise rendering stops at a certain point in the fields list -->
         <section name="basicInformation">
           <field name="FieldId109" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title"/>
@@ -665,7 +690,7 @@
           <!--</action>-->
         </section>
       </tab>
-      <tab id="advancedDistribution">
+      <tab id="advancedDistribution" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
         <section>
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution" name="distribution"/>
           <action type="add" name="distribution" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset" required="true()">
@@ -684,6 +709,58 @@
             </template>
           </action>
           <!--<section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample" or="sample" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset" name="FieldId315"/>-->
+        </section>
+      </tab>
+      <tab id="advancedService" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
+        <section name="basicInformation">
+          <field name="FieldId400" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title" />
+          <action type="add" name="FieldId400" or="title" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dct:title/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId401" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description"/>
+          <action type="add" name="FieldId401" or="description" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dct:description/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId402" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
+          <action type="add" btnLabel="FieldId402" or="endpointUrl" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:endpointUrl rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId403" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription" />
+          <action type="add" name="FieldId403" or="endpointDescription" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:endpointDescription/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId404" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
+          <action type="add" btnLabel="FieldId404" or="servesDataset" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:servesDataset rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId405" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier"/>
+          <action type="add" name="FieldId404" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dct:identifier/>
+              </snippet>
+            </template>
+          </action>
         </section>
       </tab>
       <flatModeExceptions>

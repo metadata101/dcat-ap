@@ -17,6 +17,7 @@
   <defaultDistribution>Distributies</defaultDistribution>
   <advancedDataset>Dataset</advancedDataset>
   <advancedDistribution>Distributies</advancedDistribution>
+  <advancedService>Service</advancedService>
   <!-- Section labels -->
   <basicInformation>Basisinformatie</basicInformation>
   <versionInformation>Versie informatie</versionInformation>
@@ -302,4 +303,10 @@
   <FieldId393>Label</FieldId393>
   <FieldId394>Taal</FieldId394>
   <FieldId395>In thesaurus</FieldId395>
+  <FieldId400>Titel</FieldId400>
+  <FieldId401>Beschrijving</FieldId401>
+  <FieldId402>EndpointURL</FieldId402>
+  <FieldId403>Endpointbeschrijving</FieldId403>
+  <FieldId404>Dienst URL</FieldId404>
+  <FieldId405>Identificator</FieldId405>
 </strings>

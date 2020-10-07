@@ -1,0 +1,46 @@
+From c557c880fcf12578567bc71a9208785aac3ce79b Mon Sep 17 00:00:00 2001
+From: Mathieu Chaussier <mathieu.chaussier@gim.be>
+Date: Wed, 7 Oct 2020 16:26:29 +0200
+Subject: [PATCH] #122114 - Handle mutliple default editor tabs based on
+ context
+
+---
+ .../main/webapp/xslt/ui-metadata/menu-builder.xsl | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/web/src/main/webapp/xslt/ui-metadata/menu-builder.xsl b/web/src/main/webapp/xslt/ui-metadata/menu-builder.xsl
+index bb28a1cb53..0f1a275750 100644
+--- a/web/src/main/webapp/xslt/ui-metadata/menu-builder.xsl
++++ b/web/src/main/webapp/xslt/ui-metadata/menu-builder.xsl
+@@ -85,6 +85,19 @@
+                                         @displayIfRecord,
+                                         @displayIfServiceInfo)"/>
+ 
++                <xsl:variable name="defaultTab">
++                  <xsl:for-each select="tab[@default]">
++                    <xsl:variable name="isTabDisplayed"
++                                  as="xs:boolean"
++                                  select="gn-fn-metadata:check-viewtab-visibility(
++                                        $schema, $metadata, $serviceInfo,
++                                        @displayIfRecord,
++                                        @displayIfServiceInfo)"/>
++                    <xsl:if test="$isTabDisplayed">
++                      <xsl:copy-of select="."/>
++                    </xsl:if>
++                  </xsl:for-each>
++                </xsl:variable>
+ 
+                 <xsl:if test="$isViewDisplayed">
+                   <li role="menuitem">
+@@ -93,7 +106,7 @@
+                     </xsl:if>
+                     <!-- When a view contains multiple tab, the one with
+                   the default attribute is the one to open -->
+-                    <a data-ng-click="switchToTab('{tab[@default]/@id}', '{tab[@default]/@mode}')"
++                    <a data-ng-click="switchToTab('{$defaultTab/tab/@id}', '{$defaultTab/tab/@mode}')"
+                        href="">
+                       <xsl:variable name="viewName" select="@name"/>
+                       <xsl:value-of select="$strings/*[name() = $viewName]"/>
+-- 
+2.26.2.windows.1
+
