@@ -320,7 +320,7 @@
                           ((gn:element/@down = 'true' and not(gn:element/@up)) or
                           (not(gn:element/@down) and not(gn:element/@up)))"/>
           <xsl:with-param name="isForceLabel" select="true()"/>
-          <xsl:with-param name="isDisabled" select="name(.)='dct:identifier' and count(preceding-sibling::*[name(.) = 'dct:identifier'])=0 and name(..)='dcat:Dataset'"/>
+          <xsl:with-param name="isDisabled" select="name(.) = 'dct:identifier' and count(preceding-sibling::*[name(.) = 'dct:identifier']) = 0 and name(..) = ('dcat:Dataset', 'dcat:DataService')"/>
           <!-- Boolean that allow to show the mandatory "*" in black instead of red -->
           <xsl:with-param name="subRequired" select="(name() = 'vcard:street-address' and name(..) = 'vcard:Address') or
                                                      (name() = 'vcard:locality' and name(..) = 'vcard:Address') or

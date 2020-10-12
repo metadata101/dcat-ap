@@ -5,6 +5,7 @@
     <for name="dcat:byteSize" use="number"/>
     <for name="adms:versionNotes" use="textarea"/>
     <for name="dct:description" use="textarea"/>
+    <for name="dcat:endpointDescription" use="textarea"/>
     <for name="dct:issued" templateModeOnly="true" forceLabel="true" label="FieldId129" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued">
       <template>
         <values>
@@ -218,7 +219,7 @@
   <views>
     <view name="default" displayTooltips="true" upAndDownControlHidden="true">
       <sidePanel>
-        <directive data-gn-onlinesrc-list="" data-types="source"/>
+        <directive data-gn-onlinesrc-list="" data-types="source|dataset"/>
         <directive data-gn-validation-report=""/>
       </sidePanel>
 
