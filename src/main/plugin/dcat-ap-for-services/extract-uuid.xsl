@@ -22,10 +22,10 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 <xsl:stylesheet version="1.0"
-  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:dct="http://purl.org/dc/terms/"
-  xmlns:dcat="http://www.w3.org/ns/dcat#">
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:dcat="http://www.w3.org/ns/dcat#">
 
     <xsl:template match="/">
       <uuid>

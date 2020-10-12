@@ -1597,12 +1597,22 @@
     <description>EndpointURL</description>
     <btnLabel>EndpointURL</btnLabel>
   </element>
+  <element name="dcat:endpointUrl" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl">
+    <label>EndpointURL</label>
+    <description>EndpointURL</description>
+    <btnLabel>EndpointURL</btnLabel>
+  </element>
   <element name="dcat:endpointDescription" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription">
     <label>Endpointbeschrijving</label>
     <description>Endpointbeschrijving</description>
     <btnLabel>Endpointbeschrijving</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset/@rdf:resource">
+    <label>Dienst URL</label>
+    <description>Dienst URL</description>
+    <btnLabel>Dienst URL</btnLabel>
+  </element>
+  <element name="dcat:servesDataset" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset">
     <label>Dienst URL</label>
     <description>Dienst URL</description>
     <btnLabel>Dienst URL</btnLabel>

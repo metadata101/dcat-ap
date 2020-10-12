@@ -136,23 +136,23 @@
         </snippet>
       </template>
     </for>
-    <for name="dcat:endpointUrl" templateModeOnly="true" forceLabel="true" label="FieldId242">
+    <for name="dcat:endpointUrl" templateModeOnly="true" forceLabel="true" label="FieldId402">
       <template>
         <values>
-          <key label="FieldId242" xpath="@rdf:resource" tooltip="dcat:endpointUrl|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
+          <key label="FieldId402" xpath="@rdf:resource" tooltip="dcat:endpointUrl|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
         </values>
         <snippet>
-          <dcat:endpointUrl rdf:resource="{{FieldId242}}"/>
+          <dcat:endpointUrl rdf:resource="{{FieldId402}}"/>
         </snippet>
       </template>
     </for>
-    <for name="dcat:servesDataset" templateModeOnly="true" forceLabel="true" label="FieldId242">
+    <for name="dcat:servesDataset" templateModeOnly="true" forceLabel="true" label="FieldId404">
       <template>
         <values>
-          <key label="FieldId242" xpath="@rdf:resource" tooltip="dcat:servesDataset|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
+          <key label="FieldId404" xpath="@rdf:resource" tooltip="dcat:servesDataset|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
         </values>
         <snippet>
-          <dcat:servesDataset rdf:resource="{{FieldId242}}"/>
+          <dcat:servesDataset rdf:resource="{{FieldId404}}"/>
         </snippet>
       </template>
     </for>
