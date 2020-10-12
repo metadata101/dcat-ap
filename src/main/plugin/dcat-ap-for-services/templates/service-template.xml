@@ -16,7 +16,7 @@
     <dcat:service>
       <dcat:DataService>
         <dct:identifier>69705bd3-2e59-415a-8118-7c74a1367379</dct:identifier>
-        <dct:title xml:lang="nl">Sjabloon voor Metadata van Generieke Open service DCAT-AP (versie 2.0)</dct:title>
+        <dct:title xml:lang="nl">Sjabloon voor Metadata van Services (DCAT versie 2.0)</dct:title>
         <dct:description/>
         <dcat:endpointUrl rdf:resource=""/>
         <dcat:endpointDescription/>
