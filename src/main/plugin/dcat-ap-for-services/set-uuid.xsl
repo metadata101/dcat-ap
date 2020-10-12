@@ -23,16 +23,16 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 
-<xsl:stylesheet version="1.0"
-  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:dct="http://purl.org/dc/terms/"
-  xmlns:dcat="http://www.w3.org/ns/dcat#">
+<xsl:stylesheet version="2.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:dcat="http://www.w3.org/ns/dcat#">
 
   <!-- ================================================================= -->
 
-  <xsl:template match="/root">
-     <xsl:apply-templates select="rdf:RDF"/>
+  <xsl:template match="/">
+    <xsl:apply-templates select="root/rdf:RDF"/>
   </xsl:template>
 
   <!-- ================================================================= -->
@@ -40,7 +40,7 @@
   <xsl:template match="dcat:Dataset|dcat:DataService">
     <xsl:copy>
       <dct:identifier><xsl:value-of select="/root/env/uuid"/></dct:identifier>
-      <xsl:apply-templates select="*[name(.)!= 'dct:identifer']"/>
+      <xsl:apply-templates select="*[name(.) != 'dct:identifier']"/>
     </xsl:copy>
   </xsl:template>
 
