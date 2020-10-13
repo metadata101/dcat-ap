@@ -34,10 +34,6 @@
   <xsl:include href="layout.xsl"/>
   <xsl:include href="evaluate.xsl"/>
 
-  <xsl:template name="get-dcat-ap-for-services-is-service">
-    <xsl:value-of select="false()"/>
-  </xsl:template>
-
   <!--
     Load the schema configuration for the editor.
       -->

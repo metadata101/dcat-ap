@@ -45,10 +45,9 @@ import com.google.common.collect.ImmutableSet;
 /**
  *
  */
-public class DCATAPSchemaPlugin
-    extends org.fao.geonet.kernel.schema.SchemaPlugin
-    implements DcatapAssociatedResourcesSchemaPlugin, MultilingualSchemaPlugin {
+public class DCATAPSchemaPlugin extends org.fao.geonet.kernel.schema.SchemaPlugin implements DcatapAssociatedResourcesSchemaPlugin, MultilingualSchemaPlugin {
     public static final String IDENTIFIER = "dcat-ap-for-services";
+    private static final Pattern UUID_PATTERN = Pattern.compile("([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}");
 
     private static ImmutableSet<Namespace> allNamespaces;
     private static Map<String, Namespace> allTypenames;
@@ -79,6 +78,7 @@ public class DCATAPSchemaPlugin
      * @param metadata
      * @return
      */
+    @Override
     public Set<AssociatedResource> getAssociatedResourcesUUIDs(Element metadata) {
         return null;
     }
@@ -93,37 +93,24 @@ public class DCATAPSchemaPlugin
             null);
     }
 
+    @Override
     public Set<String> getAssociatedDatasetUUIDs(Element metadata) {
-        return null;
+        ElementFilter elementFilter = new ElementFilter("servesDataset", DCATAPNamespaces.DCAT);
+        return this.getAssociatedRdfUUIDs(metadata, elementFilter);
     }
 
-    ;
-
+    @Override
     public Set<String> getAssociatedFeatureCatalogueUUIDs(Element metadata) {
         return null;
     }
 
-    ;
-
+    @Override
     public Set<String> getAssociatedSourceUUIDs(Element metadata) {
         ElementFilter elementFilter = new ElementFilter("relation", DCATAPNamespaces.DCT);
-        Set<String> rdfAboutAttributes = Xml.filterElementValues(
-            metadata,
-            elementFilter,
-            null, null, "resource",
-            DCATAPNamespaces.RDF);
-        Set<String> uuids = new HashSet<String>();
-        for (String rdfAboutAttribute : rdfAboutAttributes) {
-            Pattern pattern = Pattern
-                .compile("([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}");
-            Matcher matcher = pattern.matcher(rdfAboutAttribute);
-            if (matcher.find()) {
-                uuids.add(rdfAboutAttribute.substring(matcher.start(), matcher.end()));
-            }
-        }
-        return uuids;
+        return this.getAssociatedRdfUUIDs(metadata, elementFilter);
     }
 
+    @Override
     public Set<String> getAssociatedRelationUUIDs(Element metadata) {
         return null;
     }
@@ -132,7 +119,6 @@ public class DCATAPSchemaPlugin
     public Map<String, Namespace> getCswTypeNames() {
         return allTypenames;
     }
-
 
     @Override
     public List<Element> getTranslationForElement(Element element, String languageIdentifier) {
@@ -150,4 +136,21 @@ public class DCATAPSchemaPlugin
         return null;
     }
 
+    private Set<String> getAssociatedRdfUUIDs(Element metadata, ElementFilter filter) {
+        Set<String> rdfAboutAttributes = Xml.filterElementValues(
+            metadata,
+            filter,
+            null,
+            null,
+            "resource",
+            DCATAPNamespaces.RDF);
+        Set<String> uuids = new HashSet<String>();
+        for (String rdfAboutAttribute : rdfAboutAttributes) {
+            Matcher matcher = UUID_PATTERN.matcher(rdfAboutAttribute);
+            if (matcher.find()) {
+                uuids.add(rdfAboutAttribute.substring(matcher.start(), matcher.end()));
+            }
+        }
+        return uuids;
+    }
 }

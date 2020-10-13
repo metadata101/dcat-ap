@@ -28,13 +28,13 @@ Stylesheet used to update metadata adding a reference to a parent record.
 <xsl:stylesheet version="2.0"
                 xmlns:dc="http://purl.org/dc/elements/1.1/"
                 xmlns:dct="http://purl.org/dc/terms/"
-        xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:param name="url"/>
   <xsl:param name="name"/>
 
-  <xsl:template match="/dcat:Dataset">
+  <xsl:template match="dcat:Dataset">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
       <xsl:copy-of
@@ -47,4 +47,11 @@ Stylesheet used to update metadata adding a reference to a parent record.
       </xsl:if>
     </xsl:copy>
   </xsl:template>
+
+  <xsl:template match="@*|*">
+    <xsl:copy>
+      <xsl:apply-templates select="@*|*"/>
+    </xsl:copy>
+  </xsl:template>
+
 </xsl:stylesheet>
