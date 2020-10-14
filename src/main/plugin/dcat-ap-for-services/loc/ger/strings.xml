@@ -313,4 +313,7 @@
   <FieldId407>keyword</FieldId407>
   <FieldId408>language</FieldId408>
   <FieldId409>landing page</FieldId409>
+  <FieldId410>version</FieldId410>
+  <FieldId411>e-mail</FieldId411>
+  <FieldId412>website</FieldId412>
 </strings>

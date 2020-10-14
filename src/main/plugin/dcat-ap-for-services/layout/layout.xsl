@@ -77,8 +77,7 @@
                   select="gn-fn-metadata:isFieldFlatModeException($viewConfig, $name, $xpath) or gn-fn-metadata:isFieldFlatModeException($viewConfig, concat(name(..), '/', $name), $xpath)"/>
 
     <!-- TODO: this should be common to all schemas -->
-    <xsl:if test="$isEditing and
-      (not($isFlatMode) or $flatModeException)">
+    <xsl:if test="$isEditing and (not($isFlatMode) or $flatModeException)">
 
       <xsl:variable name="directive"
                     select="gn-fn-metadata:getFieldAddDirective($editorConfig, $name)"/>

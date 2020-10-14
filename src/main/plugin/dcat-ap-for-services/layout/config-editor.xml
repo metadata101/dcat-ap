@@ -107,7 +107,7 @@
         </snippet>
       </template>
     </for>
-    <for name="vcard:hasEmail" templateModeOnly="true" forceLabel="true" label="FieldId126">
+    <for name="vcard:hasEmail" templateModeOnly="true" forceLabel="true" label="FieldId126" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasEmail">
       <template>
         <values>
           <key label="FieldId126" xpath="@rdf:resource" tooltip="vcard:hasEmail|dcat:Dataset|/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasEmail"/>
@@ -117,7 +117,7 @@
         </snippet>
       </template>
     </for>
-    <for name="vcard:hasURL" templateModeOnly="true" forceLabel="true" label="FieldId127">
+    <for name="vcard:hasURL" templateModeOnly="true" forceLabel="true" label="FieldId127" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasEmail">
       <template>
         <values>
           <key label="FieldId127" xpath="@rdf:resource" tooltip="vcard:hasURL|dcat:Dataset|/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasURL"/>
@@ -154,6 +154,26 @@
         </values>
         <snippet>
           <dcat:servesDataset rdf:resource="{{FieldId404}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="vcard:hasEmail" templateModeOnly="true" forceLabel="true" label="FieldId411" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasEmail">
+      <template>
+        <values>
+          <key label="FieldId411" xpath="@rdf:resource" tooltip="vcard:hasEmail|dcat:Dataset|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasEmail"/>
+        </values>
+        <snippet>
+          <vcard:hasEmail rdf:resource="{{FieldId411}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="vcard:hasURL" templateModeOnly="true" forceLabel="true" label="FieldId127" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasEmail">
+      <template>
+        <values>
+          <key label="FieldId127" xpath="@rdf:resource" tooltip="vcard:hasURL|dcat:Dataset|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasURL"/>
+        </values>
+        <snippet>
+          <vcard:hasEmail rdf:resource="{{FieldId127}}"/>
         </snippet>
       </template>
     </for>
@@ -365,7 +385,6 @@
           <field name="FieldId402" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
           <field name="FieldId403" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription"/>
           <field name="FieldId404" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
-          <field name="FieldId409" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage"/>
           <field name="FieldId407" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword"/>
           <action type="add" name="FieldId407" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
@@ -376,9 +395,19 @@
           </action>
           <field name="FieldId405" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier"/>
         </section>
+        <section name="versionInformation">
+          <field name="FieldId410" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/owl:versionInfo"/>
+          <action type="add" name="FieldId410" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <owl:versionInfo/>
+              </snippet>
+            </template>
+          </action>
+        </section>
         <section name="usageInformation">
           <section name="FieldId406" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint"/>
-          <action type="add" name="FieldId405" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" required="true()">
+          <action type="add" name="FieldId406" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" required="true()">
             <template>
               <snippet>
                 <dcat:contactPoint>
@@ -389,6 +418,16 @@
               </snippet>
             </template>
           </action>
+          <field name="FieldId409" notDisplayedIfMissing="true" templateModeOnly="true" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage">
+            <template>
+              <values>
+                <key label="FieldId409" xpath="@rdf:resource" tooltip="dcat:landingPage|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage"/>
+              </values>
+              <snippet>
+                <dcat:landingPage rdf:resource="{{FieldId409}}"/>
+              </snippet>
+            </template>
+          </field>
         </section>
         <section name="extraInformation">
           <field name="FieldId408" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
@@ -466,7 +505,7 @@
     </view>
     <view name="advanced" displayTooltips="true" upAndDownControlHidden="true">
       <sidePanel>
-        <directive data-gn-onlinesrc-list="" data-types="source"/>
+        <directive data-gn-onlinesrc-list="" data-types="source|dataset"/>
         <directive data-gn-validation-report=""/>
       </sidePanel>
       <tab id="advancedDataset" default="true" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
@@ -797,6 +836,15 @@
               </snippet>
             </template>
           </action>
+
+          <field name="FieldId407" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword"/>
+          <action type="add" name="FieldId407" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dct:identifier/>
+              </snippet>
+            </template>
+          </action>
           <field name="FieldId405" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier"/>
           <action type="add" name="FieldId404" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
@@ -806,8 +854,77 @@
             </template>
           </action>
         </section>
+        <section name="versionInformation">
+          <field name="FieldId410" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/owl:versionInfo"/>
+          <action type="add" name="FieldId410" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <owl:versionInfo/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+        <section name="usageInformation">
+          <field name="FieldId406" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint"/>
+          <action type="add" name="FieldId406" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" required="true()">
+            <template>
+              <snippet>
+                <dcat:contactPoint>
+                  <vcard:Organization>
+                    <vcard:hasEmail rdf:resource=""/>
+                  </vcard:Organization>
+                </dcat:contactPoint>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId409" notDisplayedIfMissing="true" templateModeOnly="true" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage">
+            <template>
+              <values>
+                <key label="FieldId409" xpath="@rdf:resource" tooltip="dcat:landingPage|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage"/>
+              </values>
+              <snippet>
+                <dcat:landingPage rdf:resource="{{FieldId409}}"/>
+              </snippet>
+            </template>
+          </field>
+          <action type="add" btnLabel="FieldId409" or="landingPage" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:landingPage rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+        <section name="extraInformation">
+          <field name="FieldId408" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
+          <action type="add" name="FieldId408" or="language" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" required="true()">
+            <template>
+              <snippet>
+                <dct:language>
+                  <skos:Concept>
+                    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+                    <skos:prefLabel xml:lang="nl"/>
+                    <skos:prefLabel xml:lang="en"/>
+                    <skos:prefLabel xml:lang="fr"/>
+                    <skos:prefLabel xml:lang="de"/>
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+                  </skos:Concept>
+                </dct:language>
+              </snippet>
+            </template>
+          </action>
+        </section>
       </tab>
       <flatModeExceptions>
+        <!-- Contact Point -->
+        <for name="vcard:Organization"/>
+        <for name="vcard:fn"/>
+        <for name="vcard:organization-name"/>
+        <for name="vcard:hasAddress"/>
+        <for name="vcard:Address"/>
+        <for name="vcard:hasEmail"/>
+        <for name="vcard:hasURL"/>
+        <for name="vcard:hasTelephone"/>
       </flatModeExceptions>
       <thesaurusList>
         <thesaurus key="external.theme.publisher-type" maxtags="1" transformations="" fieldset="false"/>

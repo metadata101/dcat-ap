@@ -1626,30 +1626,9 @@
     <description>Een taal van het item. Dit verwijst naar de natuurlijke taal die wordt gebruikt voor tekstuele metagegevens (d.w.z. titels, berschrijvingen, enz.) van een catalogus of de tekstuele waarden van een datasetdistributie.</description>
     <btnLabel>Taal</btnLabel>
   </element>
-  <element name="dct:hasVersion" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:hasVersion">
-    <label>Heeft als versie</label>
-    <description>Vul aan met een verwijzing (titel, identificator,...) naar een dataset die een versie of een uitgave is
-      van je dataset.
-    </description>
-    <btnLabel>Heeft als versie</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:hasVersion/@rdf:resource">
-    <label>Heeft als versie</label>
-    <description>Vul aan met een verwijzing (titel, identificator,...) naar een dataset die een versie of een uitgave is
-      van je dataset.
-    </description>
-    <btnLabel>Heeft als versie</btnLabel>
-  </element>
-  <element name="dct:isVersionOf" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:isVersionOf">
-    <label>Is een versie van</label>
-    <description>Vul aan met een verwijzing (titel, identificator,...) naar een dataset waarvan je dataset een versie of
-      een uitgave is.
-    </description>
-    <btnLabel>Is een versie van</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:isVersionOf/@rdf:resource">
-    <label>Is een versie van</label>
-    <description>Tooltip: Is een versie van</description>
-    <btnLabel>Is een versie van</btnLabel>
+  <element name="owl:versionInfo" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/owl:versionInfo">
+    <label>Versie</label>
+    <description>Tooltip: Versie</description>
+    <btnLabel>Versie</btnLabel>
   </element>
 </labels>
