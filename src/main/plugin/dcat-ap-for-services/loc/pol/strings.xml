@@ -307,6 +307,13 @@
   <FieldId401>description</FieldId401>
   <FieldId402>endpoint URL</FieldId402>
   <FieldId403>endpoint description</FieldId403>
-  <FieldId404>service URL</FieldId404>
+  <FieldId404>serve dataset</FieldId404>
   <FieldId405>identifier</FieldId405>
+  <FieldId406>contact point</FieldId406>
+  <FieldId407>keyword</FieldId407>
+  <FieldId408>language</FieldId408>
+  <FieldId409>landing page</FieldId409>
+  <FieldId410>version</FieldId410>
+  <FieldId411>e-mail</FieldId411>
+  <FieldId412>website</FieldId412>
 </strings>
