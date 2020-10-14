@@ -337,7 +337,7 @@
         </section>
         <section name="extraInformation">
             <field name="FieldId183" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language" or="language" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          </section>
+        </section>
       </tab>
       <tab id="defaultDistribution" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
         <section>
@@ -365,7 +365,48 @@
           <field name="FieldId402" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
           <field name="FieldId403" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription"/>
           <field name="FieldId404" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage"/>
+          <field name="FieldId407" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword"/>
+          <action type="add" name="FieldId407" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dct:identifier/>
+              </snippet>
+            </template>
+          </action>
           <field name="FieldId405" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier"/>
+        </section>
+        <section name="usageInformation">
+          <section name="FieldId406" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint"/>
+          <action type="add" name="FieldId405" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" required="true()">
+            <template>
+              <snippet>
+                <dcat:contactPoint>
+                  <vcard:Organization>
+                    <vcard:hasEmail rdf:resource=""/>
+                  </vcard:Organization>
+                </dcat:contactPoint>
+              </snippet>
+            </template>
+          </action>
+        </section>
+        <section name="extraInformation">
+          <field name="FieldId408" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
+          <action type="add" name="FieldId408" or="language" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" required="true()">
+            <template>
+              <snippet>
+                <dct:language>
+                  <skos:Concept>
+                    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+                    <skos:prefLabel xml:lang="nl"/>
+                    <skos:prefLabel xml:lang="en"/>
+                    <skos:prefLabel xml:lang="fr"/>
+                    <skos:prefLabel xml:lang="de"/>
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+                  </skos:Concept>
+                </dct:language>
+              </snippet>
+            </template>
+          </action>
         </section>
       </tab>
       <flatModeExceptions>
@@ -407,6 +448,7 @@
         <for name="dct:LicenseDocument/dct:type"/>
         <!-- Extra info -->
         <for name="dct:language" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language"/>
+        <for name="dct:language" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
       </flatModeExceptions>
       <thesaurusList>
         <thesaurus key="external.theme.publisher-type" maxtags="1" transformations="" fieldset="false"/>

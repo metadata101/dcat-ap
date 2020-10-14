@@ -14,6 +14,7 @@
   <xsl:template match="dcat:DataService ">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
+
       <xsl:copy-of select="dct:identifier|
                            dct:title|
                            dct:description|
@@ -23,6 +24,11 @@
       <xsl:copy-of select="dcat:landingPage[not(ends-with(normalize-space(@rdf:resource), $uuidref) or ends-with(normalize-space(@rdf:resource), $idRef))]"/>
 
       <!-- Copy others elements -->
+      <xsl:copy-of select="dcat:contactPoint|
+                           dcat:keyword|
+                           dct:language|
+                           dct:hasVersion|
+                           dct:isVersionOf"/>
     </xsl:copy>
   </xsl:template>
 

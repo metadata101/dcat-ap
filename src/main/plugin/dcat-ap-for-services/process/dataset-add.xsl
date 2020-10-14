@@ -18,6 +18,7 @@
   <xsl:template match="dcat:DataService ">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
+
       <xsl:copy-of select="dct:identifier|
                            dct:title|
                            dct:description|
@@ -31,7 +32,13 @@
         <xsl:attribute name="rdf:resource" select="concat($siteUrl, 'catalog.search#/metadata/', $uuidDS)"/>
       </xsl:element>
 
-    <!-- Copy others elements -->
+      <!-- Copy others elements -->
+      <xsl:copy-of select="dcat:contactPoint|
+                           dcat:keyword|
+                           dct:language|
+                           dct:hasVersion|
+                           dct:isVersionOf"/>
+
     </xsl:copy>
   </xsl:template>
 

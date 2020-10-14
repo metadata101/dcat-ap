@@ -21,6 +21,12 @@
         <dcat:endpointUrl rdf:resource=""/>
         <dcat:endpointDescription/>
         <dcat:landingPage rdf:resource=""/>
+        <dcat:contactPoint>
+          <vcard:Organization>
+            <vcard:hasEmail rdf:resource=""/>
+          </vcard:Organization>
+        </dcat:contactPoint>
+        <dcat:keyword xml:lang="nl"/>
       </dcat:DataService>
     </dcat:service>
   </dcat:Catalog>

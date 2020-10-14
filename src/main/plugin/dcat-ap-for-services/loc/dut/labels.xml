@@ -1578,51 +1578,176 @@
     <description>Tooltip: In thesaurus</description>
     <btnLabel>In thesaurus</btnLabel>
   </element>
+
+  <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier">
+    <label>Identificator</label>
+    <description>Een unieke identificator van de dataservice.</description>
+    <btnLabel>Identificator</btnLabel>
+  </element>
   <element name="dct:title" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title">
     <label>Titel</label>
-    <description>Vul aan met een beknopte en sprekende benaming van je dataset in een bepaalde taal (default is
-      Nederlands).
-    </description>
+    <description>Een naam die aan de dataservice wordt gegeven.</description>
     <btnLabel>Titel</btnLabel>
   </element>
   <element name="dct:description" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description">
     <label>Beschrijving</label>
-    <description>Vul aan met een beknopte beschrijving van de inhoud, de bedoeling/functie, de belangrijkste kenmerken
-      van je dataset in een bepaalde taal (default is Nederlands).
-    </description>
+    <description>Descriptie van het item.</description>
     <btnLabel>Beschrijving</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl/@rdf:resource">
-    <label>EndpointURL</label>
-    <description>EndpointURL</description>
-    <btnLabel>EndpointURL</btnLabel>
   </element>
   <element name="dcat:endpointUrl" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl">
     <label>EndpointURL</label>
-    <description>EndpointURL</description>
+    <description>De rootlocatie of het primaire eindpunt van de dienst (een web-resolvable URI).</description>
+    <btnLabel>EndpointURL</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl/@rdf:resource">
+    <label>EndpointURL</label>
+    <description>De rootlocatie of het primaire eindpunt van de dienst (een web-resolvable URI).</description>
     <btnLabel>EndpointURL</btnLabel>
   </element>
   <element name="dcat:endpointDescription" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription">
     <label>Endpointbeschrijving</label>
-    <description>Endpointbeschrijving</description>
+    <description>Een beschrijving van de diensten die beschikbaar zijn via de end-points, met inbegrip van hun werking, parameters, enz.</description>
     <btnLabel>Endpointbeschrijving</btnLabel>
   </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset/@rdf:resource">
-    <label>Dienst URL</label>
-    <description>Dienst URL</description>
-    <btnLabel>Dienst URL</btnLabel>
+  <element name="dcat:landingPage" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage">
+    <label>Landingspagina</label>
+    <description>Een webpagina waarnaar een webbrowser kan worden genavigeerd om toegang te krijgen tot de catalogus, een dataset, de distributie en/of aanvullende informatie.</description>
+    <btnLabel>Landingspagina</btnLabel>
   </element>
-  <element name="dcat:servesDataset" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset">
-    <label>Dienst URL</label>
-    <description>Dienst URL</description>
-    <btnLabel>Dienst URL</btnLabel>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage/@rdf:resource">
+    <label>Landingspagina</label>
+    <description>Een webpagina waarnaar een webbrowser kan worden genavigeerd om toegang te krijgen tot de catalogus, een dataset, de distributie en/of aanvullende informatie.</description>
+    <btnLabel>Landingspagina</btnLabel>
   </element>
-  <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier">
-    <label>Identificator</label>
-    <description>Vul aan met een identificator waarmee een gebruiker naar je dataset kan verwijzen (bv. een URI of een
-      andere unieke identificator in de context van de catalogus). De vooraf ingevulde en niet te wijzigen waarde is de
-      UUID voor je dataset in GeoNetwork. Je kan één of meerdere eigen identificatoren toevoegen.
+  <element name="dcat:contactPoint" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint">
+    <label>Contactinformatie</label>
+    <description>Relevante contactinformatie voor de dataservice.</description>
+    <btnLabel>Contactinformatie</btnLabel>
+  </element>
+  <element name="vcard:Organization" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization">
+    <label>Organisatie</label>
+    <description>Tooltip: Organisatie</description>
+    <btnLabel>Organisatie</btnLabel>
+  </element>
+  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/@rdf:about">
+    <label>URI</label>
+    <description>Vul aan met de URI van het contactpunt voor je dataset. Via een contactpunt kunnen gebruikers
+      bijkomende informatie over je dataset bekomen of opmerkingen over je dataset bezorgen.  
     </description>
-    <btnLabel>Identificator</btnLabel>
+    <btnLabel>URI</btnLabel>
+  </element>
+  <element name="vcard:fn" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:fn">
+    <label>Naam Contactpunt</label>
+    <description>Vul aan met de naam/benaming van het contactpunt voor je dataset (bv. 'helpdesk van Informatie
+      Vlaanderen'). Via een contactpunt kunnen gebruikers bijkomende informatie over je dataset bekomen of opmerkingen
+      over je dataset bezorgen.
+    </description>
+    <btnLabel>Naam Contactpunt</btnLabel>
+  </element>
+  <element name="vcard:organization-name" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:organization-name">
+    <label>Organisatie</label>
+    <description>Vul aan met de naam van de organisatie die instaat voor het contactpunt.</description>
+    <btnLabel>Organisatie</btnLabel>
+  </element>
+  <element name="vcard:hasAddress" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
+    <label>Adres</label>
+    <description>Tooltip: Adres</description>
+    <btnLabel>Adres</btnLabel>
+  </element>
+  <element name="vcard:Address" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress/vcard:Address">
+    <label>Adresinformatie</label>
+    <description>Tooltip: Adresinformatie</description>
+    <btnLabel>Adresinformatie</btnLabel>
+  </element>
+  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress/vcard:Address/@rdf:about">
+    <label>URI</label>
+    <description>Vul aan met de URI van het adres van het contactpunt voor je dataset.</description>
+    <btnLabel>URI</btnLabel>
+  </element>
+  <element name="vcard:street-address" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress/vcard:Address/vcard:street-address">
+    <label>Straat</label>
+    <description>Vul aan met straatnaam en huisnummer uit het adres van het contactpunt</description>
+    <btnLabel>Straat</btnLabel>
+  </element>
+  <element name="vcard:locality" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress/vcard:Address/vcard:locality">
+    <label>Gemeente</label>
+    <description>Vul aan met de gemeentenaam uit het adres van het contactpunt </description>
+    <btnLabel>Gemeente</btnLabel>
+  </element>
+  <element name="vcard:postal-code" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress/vcard:Address/vcard:postal-code">
+    <label>Postcode</label>
+    <description>Vul aan met de postcode uit het adres van het contactpunt</description>
+    <btnLabel>Postcode</btnLabel>
+  </element>
+  <element name="vcard:country-name" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress/vcard:Address/vcard:country-name">
+    <label>Land</label>
+    <description>Vul aan met de naam van het land uit het adres van van het contactpunt</description>
+    <btnLabel>Land</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasEmail/@rdf:resource">
+    <label>E-mail</label>
+    <description>Vul aan met het e-mailadres van het contactpunt</description>
+    <btnLabel>E-mail</btnLabel>
+  </element>
+  <element name="vcard:hasEmail" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasEmail">
+    <label>E-mail</label>
+    <description>Vul aan met het e-mailadres van het contactpunt</description>
+    <btnLabel>E-mail</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasURL/@rdf:resource">
+    <label>Website</label>
+    <description>Vul aan met de website van het contactpunt</description>
+    <btnLabel>Website</btnLabel>
+  </element>
+  <element name="vcard:hasURL" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasURL">
+    <label>Website</label>
+    <description>Vul aan met de website van het contactpunt</description>
+    <btnLabel>Website</btnLabel>
+  </element>
+  <element name="vcard:hasTelephone" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasTelephone">
+    <label>Telefoonnummer</label>
+    <description>Vul aan met het telefoonnummer van het contactpunt</description>
+    <btnLabel>Telefoonnummer</btnLabel>
+  </element>
+  <element name="dcat:keyword" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword">
+    <label>Trefwoord</label>
+    <description>Een trefwoord of tag die de resource beschrijft.</description>
+    <btnLabel>Trefwoord</btnLabel>
+  </element>
+  <element name="dct:language" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language">
+    <label>Taal</label>
+    <description>Een taal van het item. Dit verwijst naar de natuurlijke taal die wordt gebruikt voor tekstuele metagegevens (d.w.z. titels, berschrijvingen, enz.) van een catalogus of de tekstuele waarden van een datasetdistributie.</description>
+    <btnLabel>Taal</btnLabel>
+  </element>
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language/skos:Concept">
+    <label>Taal</label>
+    <description>Een taal van het item. Dit verwijst naar de natuurlijke taal die wordt gebruikt voor tekstuele metagegevens (d.w.z. titels, berschrijvingen, enz.) van een catalogus of de tekstuele waarden van een datasetdistributie.</description>
+    <btnLabel>Taal</btnLabel>
+  </element>
+  <element name="dct:hasVersion" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:hasVersion">
+    <label>Heeft als versie</label>
+    <description>Vul aan met een verwijzing (titel, identificator,...) naar een dataset die een versie of een uitgave is
+      van je dataset.
+    </description>
+    <btnLabel>Heeft als versie</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:hasVersion/@rdf:resource">
+    <label>Heeft als versie</label>
+    <description>Vul aan met een verwijzing (titel, identificator,...) naar een dataset die een versie of een uitgave is
+      van je dataset.
+    </description>
+    <btnLabel>Heeft als versie</btnLabel>
+  </element>
+  <element name="dct:isVersionOf" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:isVersionOf">
+    <label>Is een versie van</label>
+    <description>Vul aan met een verwijzing (titel, identificator,...) naar een dataset waarvan je dataset een versie of
+      een uitgave is.
+    </description>
+    <btnLabel>Is een versie van</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:isVersionOf/@rdf:resource">
+    <label>Is een versie van</label>
+    <description>Tooltip: Is een versie van</description>
+    <btnLabel>Is een versie van</btnLabel>
   </element>
 </labels>

@@ -309,4 +309,7 @@
   <FieldId403>endpoint description</FieldId403>
   <FieldId404>service URL</FieldId404>
   <FieldId405>identifier</FieldId405>
+  <FieldId406>contact point</FieldId406>
+  <FieldId407>keyword</FieldId407>
+  <FieldId408>language</FieldId408>
 </strings>

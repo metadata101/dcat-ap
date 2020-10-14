@@ -307,6 +307,9 @@
   <FieldId401>Beschrijving</FieldId401>
   <FieldId402>EndpointURL</FieldId402>
   <FieldId403>Endpointbeschrijving</FieldId403>
-  <FieldId404>Dienst URL</FieldId404>
+  <FieldId404>Landingspagina</FieldId404>
   <FieldId405>Identificator</FieldId405>
+  <FieldId406>Contactinformatie</FieldId406>
+  <FieldId407>Trefwoord</FieldId407>
+  <FieldId408>Taal</FieldId408>
 </strings>
