@@ -95,7 +95,7 @@ public class DCATAPSchemaPlugin extends org.fao.geonet.kernel.schema.SchemaPlugi
 
     @Override
     public Set<String> getAssociatedDatasetUUIDs(Element metadata) {
-        ElementFilter elementFilter = new ElementFilter("landingPage", DCATAPNamespaces.DCAT);
+        ElementFilter elementFilter = new ElementFilter("servesDataset", DCATAPNamespaces.DCAT);
         return this.getAssociatedRdfUUIDs(metadata, elementFilter);
     }
 

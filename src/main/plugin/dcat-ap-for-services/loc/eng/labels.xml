@@ -1501,6 +1501,16 @@
     <description>Een beschrijving van de diensten die beschikbaar zijn via de end-points, met inbegrip van hun werking, parameters, enz.</description>
     <btnLabel>Endpointbeschrijving</btnLabel>
   </element>
+  <element name="dcat:servesDataset" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset">
+    <label>Biedt informatie aan over</label>
+    <description>Tooltip: biedt informatie aan over</description>
+    <btnLabel>biedt informatie aan over</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset/@rdf:resource">
+    <label>biedt informatie aan over</label>
+    <description>Tooltip: biedt informatie aan over</description>
+    <btnLabel>biedt informatie aan over</btnLabel>
+  </element>
   <element name="dcat:landingPage" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage">
     <label>Landingspagina</label>
     <description>Een webpagina waarnaar een webbrowser kan worden genavigeerd om toegang te krijgen tot de catalogus, een dataset, de distributie en/of aanvullende informatie.</description>

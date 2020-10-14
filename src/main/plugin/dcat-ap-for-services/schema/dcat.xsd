@@ -161,6 +161,7 @@
             <xs:element ref="dct:description" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element name="endpointUrl" type="rdf:Resource" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element name="endpointDescription" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="servesDataset" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="landingPage" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="contactPoint" type="vcard:Organization" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>

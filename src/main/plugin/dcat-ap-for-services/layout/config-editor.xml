@@ -147,13 +147,13 @@
         </snippet>
       </template>
     </for>
-    <for name="dcat:landingPage" templateModeOnly="true" forceLabel="true" label="FieldId404">
+    <for name="dcat:servesDataset" templateModeOnly="true" forceLabel="true" label="FieldId404">
       <template>
         <values>
-          <key label="FieldId404" xpath="@rdf:resource" tooltip="dcat:landingPage|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage"/>
+          <key label="FieldId404" xpath="@rdf:resource" tooltip="dcat:servesDataset|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
         </values>
         <snippet>
-          <dcat:landingPage rdf:resource="{{FieldId404}}"/>
+          <dcat:servesDataset rdf:resource="{{FieldId404}}"/>
         </snippet>
       </template>
     </for>
@@ -364,7 +364,8 @@
           <field name="FieldId401" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description"/>
           <field name="FieldId402" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
           <field name="FieldId403" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription"/>
-          <field name="FieldId404" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage"/>
+          <field name="FieldId404" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
+          <field name="FieldId409" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage"/>
           <field name="FieldId407" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword"/>
           <action type="add" name="FieldId407" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
@@ -788,11 +789,11 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId404" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage"/>
-          <action type="add" btnLabel="FieldId404" or="landingPage" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId404" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
+          <action type="add" btnLabel="FieldId404" or="servesDataset" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
-                <dcat:landingPage rdf:resource=""/>
+                <dcat:servesDataset rdf:resource=""/>
               </snippet>
             </template>
           </action>
