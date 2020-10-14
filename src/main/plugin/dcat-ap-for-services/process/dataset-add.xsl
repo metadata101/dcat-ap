@@ -24,10 +24,10 @@
                            dcat:endpointUrl|
                            dcat:endpointDescription"/>
 
-      <xsl:copy-of select="dcat:servesDataset[normalize-space(@rdf:resource) != '']"/>
+      <xsl:copy-of select="dcat:landingPage[normalize-space(@rdf:resource) != '']"/>
 
       <!-- Add link to dataset -->
-      <xsl:element name="dcat:servesDataset">
+      <xsl:element name="dcat:landingPage">
         <xsl:attribute name="rdf:resource" select="concat($siteUrl, 'catalog.search#/metadata/', $uuidDS)"/>
       </xsl:element>
 

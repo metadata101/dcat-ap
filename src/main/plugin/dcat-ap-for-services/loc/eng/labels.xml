@@ -1486,18 +1486,18 @@
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl/@rdf:resource">
     <label>EndpointURL</label>
-    <description>EndpointURL</description>
+    <description>Tooltip: EndpointURL</description>
     <btnLabel>EndpointURL</btnLabel>
   </element>
   <element name="dcat:endpointDescription" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription">
     <label>Endpointbeschrijving</label>
-    <description>Endpointbeschrijving</description>
+    <description>Tooltip: Endpointbeschrijving</description>
     <btnLabel>Endpointbeschrijving</btnLabel>
   </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset/@rdf:resource">
-    <label>Dienst URL</label>
-    <description>Dienst URL</description>
-    <btnLabel>Dienst URL</btnLabel>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage/@rdf:resource">
+    <label>Landing page</label>
+    <description>Tooltip: Landing page</description>
+    <btnLabel>Landing page</btnLabel>
   </element>
   <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier">
     <label>Identificator</label>

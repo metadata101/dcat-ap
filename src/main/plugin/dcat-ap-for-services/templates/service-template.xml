@@ -20,7 +20,7 @@
         <dct:description/>
         <dcat:endpointUrl rdf:resource=""/>
         <dcat:endpointDescription/>
-        <dcat:servesDataset rdf:resource=""/>
+        <dcat:landingPage rdf:resource=""/>
       </dcat:DataService>
     </dcat:service>
   </dcat:Catalog>

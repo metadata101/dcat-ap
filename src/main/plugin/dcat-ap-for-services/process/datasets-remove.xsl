@@ -20,7 +20,7 @@
                            dcat:endpointUrl|
                            dcat:endpointDescription"/>
 
-      <xsl:copy-of select="dcat:servesDataset[not(ends-with(normalize-space(@rdf:resource), $uuidref) or ends-with(normalize-space(@rdf:resource), $idRef))]"/>
+      <xsl:copy-of select="dcat:landingPage[not(ends-with(normalize-space(@rdf:resource), $uuidref) or ends-with(normalize-space(@rdf:resource), $idRef))]"/>
 
       <!-- Copy others elements -->
     </xsl:copy>
