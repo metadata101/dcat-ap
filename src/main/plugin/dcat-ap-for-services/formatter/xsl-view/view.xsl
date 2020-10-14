@@ -86,23 +86,43 @@
        3) First field of the list
      -->
     <xsl:choose>
-      <xsl:when test="//dcat:Dataset/dct:title[@xml:lang = $langId-2char]">
-        <xsl:value-of select="//dcat:Dataset/dct:title[@xml:lang = $langId-2char][1]"/>
-      </xsl:when>
-      <xsl:when test="//dcat:Dataset/dct:title[@xml:lang = $defaultLang-2char]">
-        <xsl:value-of select="concat(//dcat:Dataset/dct:title[@xml:lang = $defaultLang-2char][1], ' (', normalize-space(//dcat:Dataset/dct:title[@xml:lang = $defaultLang-2char][1]/@xml:lang), ')')"/>
+      <xsl:when test="count(//dcat:Dataset) > 0">
+        <xsl:choose>
+          <xsl:when test="//dcat:Dataset/dct:title[@xml:lang = $langId-2char]">
+            <xsl:value-of select="//dcat:Dataset/dct:title[@xml:lang = $langId-2char][1]"/>
+          </xsl:when>
+          <xsl:when test="//dcat:Dataset/dct:title[@xml:lang = $defaultLang-2char]">
+            <xsl:value-of select="concat(//dcat:Dataset/dct:title[@xml:lang = $defaultLang-2char][1], ' (', normalize-space(//dcat:Dataset/dct:title[@xml:lang = $defaultLang-2char][1]/@xml:lang), ')')"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="//dcat:Dataset/dct:title[1]"/>
+            <xsl:if test="//dcat:Dataset/dct:title[1]/@xml:lang and normalize-space(//dcat:Dataset/dct:title[1]/@xml:lang) != '' ">
+              <xsl:value-of select="concat(' (',//dcat:Dataset/dct:title[1]/@xml:lang,')')" />
+            </xsl:if>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="//dcat:Dataset/dct:title[1]"/>
-        <xsl:if test="//dcat:Dataset/dct:title[1]/@xml:lang and normalize-space(//dcat:Dataset/dct:title[1]/@xml:lang) != '' ">
-          <xsl:value-of select="concat(' (',//dcat:Dataset/dct:title[1]/@xml:lang,')')" />
-        </xsl:if>
+        <xsl:choose>
+          <xsl:when test="//dcat:DataService/dct:title[@xml:lang = $langId-2char]">
+            <xsl:value-of select="//dcat:DataService/dct:title[@xml:lang = $langId-2char][1]"/>
+          </xsl:when>
+          <xsl:when test="//dcat:DataService/dct:title[@xml:lang = $defaultLang-2char]">
+            <xsl:value-of select="concat(//dcat:DataService/dct:title[@xml:lang = $defaultLang-2char][1], ' (', normalize-space(//dcat:DataService/dct:title[@xml:lang = $defaultLang-2char][1]/@xml:lang), ')')"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="//dcat:DataService/dct:title[1]"/>
+            <xsl:if test="//dcat:DataService/dct:title[1]/@xml:lang and normalize-space(//dcat:DataService/dct:title[1]/@xml:lang) != '' ">
+              <xsl:value-of select="concat(' (',//dcat:DataService/dct:title[1]/@xml:lang,')')" />
+            </xsl:if>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
   <xsl:template mode="getMetadataAbstract" match="rdf:RDF">
-    <xsl:value-of select="//dcat:Dataset/dct:description" />
+    <xsl:value-of select="//dcat:Dataset/dct:description|//dcat:DataService/dct:description" />
   </xsl:template>
 
   <xsl:template mode="getMetadataHeader" match="rdf:RDF">

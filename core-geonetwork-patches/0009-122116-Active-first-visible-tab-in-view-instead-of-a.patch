@@ -1,0 +1,26 @@
+From a01d93f4174829f6eaae84f4db5d9645ce316e68 Mon Sep 17 00:00:00 2001
+From: Mathieu Chaussier <mathieu.chaussier@gim.be>
+Date: Wed, 14 Oct 2020 16:06:59 +0200
+Subject: [PATCH] #122116 - Active first visible tab in view instead of always
+ first one
+
+---
+ .../resources/catalog/components/search/mdview/mdviewModule.js  | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/web-ui/src/main/resources/catalog/components/search/mdview/mdviewModule.js b/web-ui/src/main/resources/catalog/components/search/mdview/mdviewModule.js
+index 5754e0564c..4f304c9293 100644
+--- a/web-ui/src/main/resources/catalog/components/search/mdview/mdviewModule.js
++++ b/web-ui/src/main/resources/catalog/components/search/mdview/mdviewModule.js
+@@ -131,7 +131,7 @@
+           })
+ 
+         // show the first tab
+-        $('.nav-tabs-advanced a:first').tab('show');
++        $('.nav-tabs-advanced a:visible:first').tab('show');
+       };
+ 
+       $scope.loadFormatter = function(url) {
+-- 
+2.26.2.windows.1
+
