@@ -1,24 +1,19 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:adms="http://www.w3.org/ns/adms#"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:owl="http://www.w3.org/2002/07/owl#"
                 exclude-result-prefixes="#all"
                 version="2.0">
 
-  <xsl:param name="uuidref"/>
   <xsl:param name="uuidDS"/>
-  <xsl:param name="scopedName"/>
   <xsl:param name="siteUrl"/>
-  <xsl:param name="url"/>
-  <xsl:param name="desc"/>
 
   <xsl:template match="dcat:DataService ">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
 
+      <!-- Copy elements before dcat:servesDataset -->
       <xsl:copy-of select="dct:identifier|
                            dct:title|
                            dct:description|
@@ -32,12 +27,12 @@
         <xsl:attribute name="rdf:resource" select="concat($siteUrl, 'catalog.search#/metadata/', $uuidDS)"/>
       </xsl:element>
 
-      <!-- Copy others elements -->
-      <xsl:copy-of select="dcat:contactPoint|
+      <!-- Copy elements after dcat:servesDataset -->
+      <xsl:copy-of select="dcat:landingPage|
+                           dcat:contactPoint|
                            dcat:keyword|
                            dct:language|
-                           dct:hasVersion|
-                           dct:isVersionOf"/>
+                           owl:versionInfo"/>
 
     </xsl:copy>
   </xsl:template>
