@@ -18,6 +18,9 @@
   <advancedDataset>Dataset</advancedDataset>
   <advancedDistribution>Distributies</advancedDistribution>
   <advancedService>Service</advancedService>
+  <providedBy>Provided by</providedBy>
+  <shareOnSocialSite>Share on social sites</shareOnSocialSite>
+  <associatedResources>Associated resources</associatedResources>
   <!-- Section labels -->
   <basicInformation>Basic information</basicInformation>
   <versionInformation>Version information</versionInformation>

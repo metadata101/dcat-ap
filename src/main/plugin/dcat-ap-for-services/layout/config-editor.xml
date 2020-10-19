@@ -389,7 +389,7 @@
           <action type="add" name="FieldId407" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
-                <dct:identifier/>
+                <dcat:keyword/>
               </snippet>
             </template>
           </action>
@@ -841,7 +841,7 @@
           <action type="add" name="FieldId407" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
-                <dct:identifier/>
+                <dcat:keyword/>
               </snippet>
             </template>
           </action>

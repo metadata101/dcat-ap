@@ -18,6 +18,9 @@
   <advancedDataset>Dataset</advancedDataset>
   <advancedDistribution>Distributies</advancedDistribution>
   <advancedService>Service</advancedService>
+  <providedBy>Provided by</providedBy>
+  <shareOnSocialSite>Deel op sociale sites</shareOnSocialSite>
+  <associatedResources>Gerelateerde bronnen</associatedResources>
   <!-- Section labels -->
   <basicInformation>Basisinformatie</basicInformation>
   <versionInformation>Versie informatie</versionInformation>
