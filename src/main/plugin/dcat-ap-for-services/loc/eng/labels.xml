@@ -1503,13 +1503,13 @@
   </element>
   <element name="dcat:servesDataset" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset">
     <label>Biedt informatie aan over</label>
-    <description>Tooltip: biedt informatie aan over</description>
-    <btnLabel>biedt informatie aan over</btnLabel>
+    <description>Tooltip: Biedt informatie aan over</description>
+    <btnLabel>Biedt informatie aan over</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset/@rdf:resource">
-    <label>biedt informatie aan over</label>
-    <description>Tooltip: biedt informatie aan over</description>
-    <btnLabel>biedt informatie aan over</btnLabel>
+    <label>Biedt informatie aan over</label>
+    <description>Tooltip: Biedt informatie aan over</description>
+    <btnLabel>Biedt informatie aan over</btnLabel>
   </element>
   <element name="dcat:landingPage" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage">
     <label>Landingspagina</label>
