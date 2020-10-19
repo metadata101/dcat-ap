@@ -46,6 +46,8 @@
     </xsl:call-template>
   </xsl:variable>
 
+  <xsl:variable name="uuidRegex" select="'^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$'"/>
+
   <xsl:template match="/">
     <Document locale="{$isoLangId}">
       <xsl:apply-templates select="rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset|rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" />
@@ -85,7 +87,7 @@
            store="true" index="true"/>
 
 
-    <xsl:apply-templates select="." mode="dataset"/>
+    <xsl:apply-templates select="." mode="dataset_service"/>
 
     <xsl:apply-templates select="*" mode="index"/>
   </xsl:template>
@@ -94,7 +96,7 @@
     <xsl:apply-templates mode="index" select="*|@*"/>
   </xsl:template>
 
-  <xsl:template match="dcat:Dataset|dcat:DataService" mode="dataset">
+  <xsl:template match="dcat:Dataset|dcat:DataService" mode="dataset_service">
 
     <!-- === Free text search === -->
 
@@ -435,23 +437,23 @@
     <xsl:for-each select="dct:isPartOf">
       <Field name="parentUuid" string="{string(.)}" store="true" index="true"/>
     </xsl:for-each>
-    <xsl:for-each select="(dcat:landingPage)[normalize-space(.) != '']">
-      <xsl:variable name="name" select="tokenize(., '/')[last()]"/>
-      <xsl:variable name="tPosition" select="position()"/>
+
+    <xsl:for-each select="dcat:landingPage[normalize-space(@rdf:resource) != '' and not(matches(@rdf:resource, '.*(.gif|.png.|.jpeg|.jpg)$', 'i'))]">
+      <xsl:variable name="name" select="tokenize(@rdf:resource, '/')[last()]" />
+      <xsl:variable name="tPosition" select="position()" />
       <!-- Index link where last token after the last / is the link name. -->
       <Field name="link"
              string="{concat($name, '|description|', @rdf:resource, '|WWW:DOWNLOAD|WWW-DOWNLOAD|',$tPosition)}"
-             store="true" index="false"/>
+             store="true" index="false" />
     </xsl:for-each>
-    <xsl:for-each
-      select="(dcat:landingPage)[normalize-space(.) != ''
-                              and matches(., '.*(.gif|.png.|.jpeg|.jpg)$', 'i')]">
+
+    <xsl:for-each select="dcat:landingPage[normalize-space(@rdf:resource) != '' and matches(@rdf:resource, '.*(.gif|.png.|.jpeg|.jpg)$', 'i')]">
       <xsl:variable name="thumbnailType"
                     select="if (position() = 1) then 'thumbnail' else 'overview'"/>
       <!-- First thumbnail is flagged as thumbnail and could be considered the
                 main one -->
-      <Field name="image" string="{concat($thumbnailType, '|', ., '|')}"
-             store="true" index="false"/>
+      <Field name="image" string="{concat($thumbnailType, '|', @rdf:resource, '|')}"
+             store="true" index="false" />
     </xsl:for-each>
 
     <xsl:for-each select="dct:publisher/foaf:Agent">
@@ -464,10 +466,55 @@
       </xsl:variable>
       <Field name="orgName" string="{string($tmp_dcat_publisher)}" store="true" index="true"/>
     </xsl:for-each>
-    <!--    <xsl:for-each select="dct:accrualPeriodicity">
-          <Field name="updateFrequency" string="{string(.)}" store="true"
-                 index="true" />
-        </xsl:for-each>-->
+
+    <xsl:for-each select="dcat:servesDataset">
+      <Field name="operatesOn" string="{string(@rdf:resource)}" store="true" index="true"/>
+      <xsl:variable name="fileIdentifier" select="substring-after(@rdf:resource, '/metadata/')"/>
+      <xsl:if test="matches($fileIdentifier, $uuidRegex)">
+        <Field name="operatesOn" string="{string($fileIdentifier)}" store="true" index="true"/>
+      </xsl:if>
+    </xsl:for-each>
+
+
+    <xsl:for-each select="dcat:endpointUrl">
+      <xsl:variable name="descr">
+        <xsl:choose>
+          <xsl:when test="../dcat:endpointDescription[position()]">
+            <xsl:value-of select="../dcat:endpointDescription[position()]"/>
+          </xsl:when>
+          <xsl:when test="../dcat:endpointDescription[1]">
+            <xsl:value-of select="../dcat:endpointDescription[1]"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="'description'"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+      <xsl:variable name="name">
+        <xsl:choose>
+          <xsl:when test="normalize-space(tokenize(@rdf:resource, '/')[last()]) != ''">
+            <xsl:value-of select="normalize-space(tokenize(@rdf:resource, '/')[last()])"/>
+          </xsl:when>
+          <xsl:when test="../dct:title[position()]">
+            <xsl:value-of select="../dct:title[position()]"/>
+          </xsl:when>
+          <xsl:when test="../dct:title[1]">
+            <xsl:value-of select="../dct:title[1]"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="''"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+      <!---->
+      <Field name="link"
+             string="{concat($name, '|',$descr, '|', @rdf:resource, '|WWW:LINK-1.0-http--link|WWW:LINK-1.0-http--link|', position())}"
+             store="true" index="false" />
+    </xsl:for-each>
+
+    <xsl:for-each select="dcat:endpointDescription">
+      <Field name="abstract" string="{string(.)}" store="true" index="true"/>
+    </xsl:for-each>
   </xsl:template>
 
   <xsl:template name="getLicenseDocumentTitle">
