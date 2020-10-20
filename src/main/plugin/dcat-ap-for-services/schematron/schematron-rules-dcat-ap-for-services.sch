@@ -1414,6 +1414,42 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
+    <sch:title>300. dcat:endpointUrl is a required property for dcat:DataService</sch:title>
+    <sch:rule context="//dcat:DataService">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="missingProperty" value="not(dcat:endpointUrl)"/>
+      <sch:assert test="$missingProperty = false()">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" should have a dcat:endpointUrl property</sch:assert>
+      <sch:report test="$missingProperty = false()">The dcat:DataService "<sch:value-of select="$id"/>" has a dcat:endpointUrl property.</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>320. dcat:endpointUrl property is a rdf:resource</sch:title>
+    <sch:rule context="//dcat:endpointUrl">
+      <sch:let name="resource" value="(* and not(*/@rdf:about)) or (@rdf:resource and @rdf:resource castable as xs:anyURI) or (*/@rdf:about and */@rdf:about castable as xs:anyURI)"/>
+      <sch:let name="content" value="@rdf:resource/string()"/>
+      <sch:assert test="$resource = true()">A dcat:endpointUrl has a value that is not a resource. Value: "<sch:value-of select="$content"/>"</sch:assert>
+      <sch:report test="$resource = true()">A dcat:endpointUrl has a value that is a resource. Value: "<sch:value-of select="$content"/>"</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>321. dcat:servesDataset property is a rdf:resource</sch:title>
+    <sch:rule context="//dcat:servesDataset">
+      <sch:let name="resource" value="(* and not(*/@rdf:about)) or (@rdf:resource and @rdf:resource castable as xs:anyURI) or (*/@rdf:about and */@rdf:about castable as xs:anyURI)"/>
+      <sch:let name="content" value="@rdf:resource/string()"/>
+      <sch:assert test="$resource = true()">A dcat:servesDataset has a value that is not a resource. Value: "<sch:value-of select="$content"/>"</sch:assert>
+      <sch:report test="$resource = true()">A dcat:servesDataset has a value that is a resource. Value: "<sch:value-of select="$content"/>"</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>322. dcat:landingPage is a rdf:resource.</sch:title>
+    <sch:rule context="//dcat:DataService/dcat:landingPage">
+      <sch:let name="resource" value="(* and not(*/@rdf:about)) or (@rdf:resource and @rdf:resource castable as xs:anyURI) or (*/@rdf:about and */@rdf:about castable as xs:anyURI)"/>
+      <sch:let name="content" value="@rdf:resource/string()"/>
+      <sch:assert test="$resource = true()">A dcat:landingPage has a value that is not a resource. Value: "<sch:value-of select="$content"/>"</sch:assert>
+      <sch:report test="$resource = true()">A dcat:landingPage has a value that is a resource. Value: "<sch:value-of select="$content"/>"</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
     <sch:title>500. dcat:catalog property is a rdf:resource.</sch:title>
     <sch:rule context="//dcat:catalog">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
