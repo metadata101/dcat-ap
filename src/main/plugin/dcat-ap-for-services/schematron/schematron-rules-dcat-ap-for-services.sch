@@ -97,13 +97,13 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>4. dcat:dataset is a required property for Catalog.</sch:title>
+    <sch:title>4. One of dcat:dataset or dcat:service is a required property for Catalog.</sch:title>
     <sch:rule context="//dcat:Catalog">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="missingProperty" value="not(dcat:dataset)"/>
-      <sch:assert test="$missingProperty = false()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" should have a dcat:dataset property.
+      <sch:let name="missingProperty" value="not(dcat:dataset) and not(dcat:service)"/>
+      <sch:assert test="$missingProperty = false()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" should have a dcat:dataset or a dcat:service property.
       </sch:assert>
-      <sch:report test="$missingProperty = false()">The dcat:Catalog "<sch:value-of select="$id"/>" has a dcat:dataset property.
+      <sch:report test="$missingProperty = false()">The dcat:Catalog "<sch:value-of select="$id"/>" has a <sch:value-of select="if (dcat:dataset) then 'dcat:dataset' else 'dcat:service'"/> property.
       </sch:report>
     </sch:rule>
   </sch:pattern>
@@ -954,11 +954,11 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>114. The mandatory class dcat:Dataset does not exist.</sch:title>
+    <sch:title>114. The mandatory class dcat:Dataset or dcat:DataService does not exist.</sch:title>
     <sch:rule context="/">
-      <sch:let name="noDataset" value="not(//dcat:Dataset)"/>
-      <sch:assert test="$noDataset = false()">ERROR: The mandatory class dcat:Dataset does not exist.</sch:assert>
-      <sch:report test="$noDataset = false()">The mandatory class dcat:Dataset does exist.</sch:report>
+      <sch:let name="noDatasetNorDataService" value="not(//dcat:Dataset) and not(//dcat:DataService)"/>
+      <sch:assert test="$noDatasetNorDataService = false()">ERROR: One of the mandatory classes dcat:Dataset and dcat:DataService does not exist.</sch:assert>
+      <sch:report test="$noDatasetNorDataService = false()">The mandatory class <sch:value-of select="if (//dcat:Dataset) then 'dcat:Dataset' else 'dcat:DataService'"/> does exist.</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -1262,7 +1262,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>163. The recommended class dcat:Distribution does not exist.</sch:title>
-    <sch:rule context="/">
+    <sch:rule context="//dcat:dataset">
       <sch:let name="noDistribution" value="not(//dcat:Distribution)"/>
       <sch:assert test="$noDistribution = false()">ERROR: The recommended class dcat:Distribution does not exist.
       </sch:assert>
@@ -1411,6 +1411,42 @@ Source:
       </sch:assert>
       <sch:report test="2 > $count">The adms:Identifier "<sch:value-of select="$id"/>" has no more than one skos:notation property.
       </sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>300. dcat:endpointUrl is a required property for dcat:DataService</sch:title>
+    <sch:rule context="//dcat:DataService">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="missingProperty" value="not(dcat:endpointUrl)"/>
+      <sch:assert test="$missingProperty = false()">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" should have a dcat:endpointUrl property</sch:assert>
+      <sch:report test="$missingProperty = false()">The dcat:DataService "<sch:value-of select="$id"/>" has a dcat:endpointUrl property.</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>320. dcat:endpointUrl property is a rdf:resource</sch:title>
+    <sch:rule context="//dcat:endpointUrl">
+      <sch:let name="resource" value="(* and not(*/@rdf:about)) or (@rdf:resource and @rdf:resource castable as xs:anyURI) or (*/@rdf:about and */@rdf:about castable as xs:anyURI)"/>
+      <sch:let name="content" value="@rdf:resource/string()"/>
+      <sch:assert test="$resource = true()">A dcat:endpointUrl has a value that is not a resource. Value: "<sch:value-of select="$content"/>"</sch:assert>
+      <sch:report test="$resource = true()">A dcat:endpointUrl has a value that is a resource. Value: "<sch:value-of select="$content"/>"</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>321. dcat:servesDataset property is a rdf:resource</sch:title>
+    <sch:rule context="//dcat:servesDataset">
+      <sch:let name="resource" value="(* and not(*/@rdf:about)) or (@rdf:resource and @rdf:resource castable as xs:anyURI) or (*/@rdf:about and */@rdf:about castable as xs:anyURI)"/>
+      <sch:let name="content" value="@rdf:resource/string()"/>
+      <sch:assert test="$resource = true()">A dcat:servesDataset has a value that is not a resource. Value: "<sch:value-of select="$content"/>"</sch:assert>
+      <sch:report test="$resource = true()">A dcat:servesDataset has a value that is a resource. Value: "<sch:value-of select="$content"/>"</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>322. dcat:landingPage is a rdf:resource.</sch:title>
+    <sch:rule context="//dcat:DataService/dcat:landingPage">
+      <sch:let name="resource" value="(* and not(*/@rdf:about)) or (@rdf:resource and @rdf:resource castable as xs:anyURI) or (*/@rdf:about and */@rdf:about castable as xs:anyURI)"/>
+      <sch:let name="content" value="@rdf:resource/string()"/>
+      <sch:assert test="$resource = true()">A dcat:landingPage has a value that is not a resource. Value: "<sch:value-of select="$content"/>"</sch:assert>
+      <sch:report test="$resource = true()">A dcat:landingPage has a value that is a resource. Value: "<sch:value-of select="$content"/>"</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>

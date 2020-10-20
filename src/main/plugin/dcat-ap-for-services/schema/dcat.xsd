@@ -168,6 +168,7 @@
             <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="1"/>
           </xs:sequence>
+          <xs:attribute ref="rdf:about"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>

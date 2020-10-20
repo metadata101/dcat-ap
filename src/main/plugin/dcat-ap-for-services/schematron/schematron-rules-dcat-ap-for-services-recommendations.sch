@@ -289,4 +289,15 @@ Source:
       </sch:report>
     </sch:rule>
   </sch:pattern>
+  <sch:pattern>
+    <sch:title>301. dcat:contactPoint is a recommended property for DataService.</sch:title>
+    <sch:rule context="//dcat:DataService">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="noContactPoint" value="not(dcat:contactPoint)"/>
+      <sch:assert test="$noContactPoint = false()">WARNING: The dcat:DataService "<sch:value-of select="$id"/>" does not have a dcat:contactPoint.
+      </sch:assert>
+      <sch:report test="$noContactPoint = false()">The dcat:DataService "<sch:value-of select="$id"/>" has a dcat:contactPoint "<sch:value-of select="dcat:contactPoint/*/@rdf:about/string()"/>".
+      </sch:report>
+    </sch:rule>
+  </sch:pattern>
 </sch:schema>

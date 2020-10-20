@@ -69,10 +69,10 @@
       <xsl:attribute name="rdf:about">
         <xsl:value-of select="concat($resourcePrefix,'/catalogs/',$env/system/site/siteId)"/>
       </xsl:attribute>
-      <dct:title  xml:lang="nl">
+      <dct:title xml:lang="nl">
         <xsl:value-of select="concat('Open Data Catalogus van ', $env/system/site/organization)"/>
       </dct:title>
-      <dct:description xml:lang="nl" >
+      <dct:description xml:lang="nl">
         <xsl:value-of select="concat('Deze catalogus bevat datasets ontsloten door ', $env/system/site/organization)"/>
       </dct:description>
       <dct:publisher>
@@ -87,20 +87,23 @@
               <skos:prefLabel xml:lang="en">Local Authority</skos:prefLabel>
               <skos:prefLabel xml:lang="fr">Local Authority</skos:prefLabel>
               <skos:prefLabel xml:lang="de">Local Authority</skos:prefLabel>
-              <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0" />
+              <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
             </skos:Concept>
           </dct:type>
         </foaf:Agent>
       </dct:publisher>
       <dct:license>
-        <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0" xmlns:dct="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+        <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0"
+                             xmlns:dct="http://purl.org/dc/terms/"
+                             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                             xmlns:skos="http://www.w3.org/2004/02/skos/core#">
           <dct:type>
             <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
               <skos:prefLabel xml:lang="nl">Public domain</skos:prefLabel>
               <skos:prefLabel xml:lang="en">Public domain</skos:prefLabel>
               <skos:prefLabel xml:lang="fr">Public domain</skos:prefLabel>
               <skos:prefLabel xml:lang="de">Public domain</skos:prefLabel>
-              <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0" />
+              <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
             </skos:Concept>
           </dct:type>
           <dct:title xml:lang="nl">Creative Commons Zero verklaring</dct:title>
@@ -109,14 +112,14 @@
         </dct:LicenseDocument>
       </dct:license>
       <dct:language>
-         <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
-            <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
-            <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
-            <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
-            <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
-            <skos:prefLabel xml:lang="de">NiederlÃ¤ndisch</skos:prefLabel>
-            <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
-         </skos:Concept>
+        <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+          <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+          <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+          <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+          <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
+          <skos:prefLabel xml:lang="de">NiederlÃ¤ndisch</skos:prefLabel>
+          <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+        </skos:Concept>
       </dct:language>
       <dct:issued>
         <xsl:value-of select="'2019-09-01'"/>
@@ -351,7 +354,8 @@
   </xsl:template>
 
   <!-- Ignore all empty rdf:about -->
-  <xsl:template match="@rdf:about[normalize-space() = '' and not(name(..)='dct:LicenseDocument')]|@rdf:datatype[normalize-space() = '']" priority="10"/>
+  <xsl:template match="@rdf:about[normalize-space() = '' and not(name(..)='dct:LicenseDocument')]|@rdf:datatype[normalize-space() = '']"
+                priority="10"/>
 
   <!-- Remove non numeric byteSize and format scientific notation to decimal -->
   <!--xsl:template match="dcat:byteSize" priority="10">
@@ -374,14 +378,14 @@
   <xsl:template match="spdx:checksumValue" priority="10">
     <xsl:copy>
       <xsl:copy-of select="@*[not(name()='rdf:datatype')]"/>
-    <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#hexBinary</xsl:attribute>
-    <xsl:value-of select="."/>
+      <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#hexBinary</xsl:attribute>
+      <xsl:value-of select="."/>
     </xsl:copy>
   </xsl:template>
 
   <!-- Fix value for attribute -->
   <xsl:template match="spdx:algorithm" priority="10">
-  <spdx:algorithm rdf:resource="http://spdx.org/rdf/terms#checksumAlgorithm_sha1"/>
+    <spdx:algorithm rdf:resource="http://spdx.org/rdf/terms#checksumAlgorithm_sha1"/>
   </xsl:template>
 
   <!-- Reformat 'Vlaamse Open data' -->
@@ -393,5 +397,34 @@
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*|*"/>
     </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="dcat:DataService" priority="10">
+    <dcat:DataService>
+      <xsl:apply-templates select="@*[not(name(.) = 'rdf:about')]"/>
+      <xsl:attribute name="rdf:about" select="replace(@rdf:about,'([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}',/root/env/uuid)"/>
+      <dct:identifier>
+        <xsl:value-of select="/root/env/uuid"/>
+      </dct:identifier>
+      <xsl:if test="/root/env/id!=''">
+        <xsl:for-each select="dct:identifier">
+          <xsl:variable name="previousIdentifierSiblingsCount"
+                        select="count(preceding-sibling::*[name(.) = 'dct:identifier'])"/>
+          <xsl:if test="$previousIdentifierSiblingsCount>0">
+            <xsl:apply-templates select="."/>
+          </xsl:if>
+        </xsl:for-each>
+      </xsl:if>
+      <xsl:apply-templates select="dct:title"/>
+      <xsl:apply-templates select="dct:description"/>
+      <xsl:apply-templates select="dcat:endpointUrl"/>
+      <xsl:apply-templates select="dcat:endpointDescription"/>
+      <xsl:apply-templates select="dcat:servesDataset"/>
+      <xsl:apply-templates select="dcat:landingPage"/>
+      <xsl:apply-templates select="dcat:contactPoint"/>
+      <xsl:apply-templates select="dcat:keyword"/>
+      <xsl:apply-templates select="dct:language"/>
+      <xsl:apply-templates select="owl:versionInfo"/>
+    </dcat:DataService>
   </xsl:template>
 </xsl:stylesheet>
