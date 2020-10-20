@@ -398,4 +398,33 @@
       <xsl:apply-templates select="@*|*"/>
     </xsl:copy>
   </xsl:template>
+
+  <xsl:template match="dcat:DataService" priority="10">
+    <dcat:DataService>
+      <xsl:apply-templates select="@*[not(name(.) = 'rdf:about')]"/>
+      <xsl:attribute name="rdf:about" select="replace(@rdf:about,'([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}',/root/env/uuid)"/>
+      <dct:identifier>
+        <xsl:value-of select="/root/env/uuid"/>
+      </dct:identifier>
+      <xsl:if test="/root/env/id!=''">
+        <xsl:for-each select="dct:identifier">
+          <xsl:variable name="previousIdentifierSiblingsCount"
+                        select="count(preceding-sibling::*[name(.) = 'dct:identifier'])"/>
+          <xsl:if test="$previousIdentifierSiblingsCount>0">
+            <xsl:apply-templates select="."/>
+          </xsl:if>
+        </xsl:for-each>
+      </xsl:if>
+      <xsl:apply-templates select="dct:title"/>
+      <xsl:apply-templates select="dct:description"/>
+      <xsl:apply-templates select="dcat:endpointUrl"/>
+      <xsl:apply-templates select="dcat:endpointDescription"/>
+      <xsl:apply-templates select="dcat:servesDataset"/>
+      <xsl:apply-templates select="dcat:landingPage"/>
+      <xsl:apply-templates select="dcat:contactPoint"/>
+      <xsl:apply-templates select="dcat:keyword"/>
+      <xsl:apply-templates select="dct:language"/>
+      <xsl:apply-templates select="owl:versionInfo"/>
+    </dcat:DataService>
+  </xsl:template>
 </xsl:stylesheet>
