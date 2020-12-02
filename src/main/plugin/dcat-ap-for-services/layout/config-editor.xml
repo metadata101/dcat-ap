@@ -192,6 +192,58 @@
         </snippet>
       </template>
     </for>
+    <for name="mvs:authenticatie" templateModeOnly="true" forceLabel="true" label="FieldId413" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:authenticatie">
+      <template>
+        <values>
+          <key label="FieldId413" xpath="@rdf:resource" tooltip="mvs:authenticatie|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:authenticatie"/>
+        </values>
+        <snippet>
+          <mvs:authenticatie rdf:resource="{{FieldId413}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="mvs:dienstverleningsKwaliteit" templateModeOnly="true" forceLabel="true" label="FieldId414" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:dienstverleningsKwaliteit">
+      <template>
+        <values>
+          <key label="FieldId414" xpath="@rdf:resource" tooltip="mvs:dienstverleningsKwaliteit|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:dienstverleningsKwaliteit"/>
+        </values>
+        <snippet>
+          <mvs:dienstverleningsKwaliteit rdf:resource="{{FieldId414}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="mvs:doelpopulatie" templateModeOnly="true" forceLabel="true" label="FieldId415" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie">
+      <template>
+        <values>
+          <key label="FieldId415" xpath="@rdf:resource" tooltip="mvs:doelpopulatie|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie"/>
+        </values>
+        <snippet>
+          <mvs:doelpopulatie rdf:resource="{{FieldId415}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="mvs:gebruiksbepaling" templateModeOnly="true" forceLabel="true" label="FieldId416" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling">
+      <template>
+        <values>
+          <key label="FieldId416" xpath="@rdf:resource" tooltip="mvs:gebruiksbepaling|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling"/>
+        </values>
+        <snippet>
+          <mvs:gebruiksbepaling rdf:resource="{{FieldId416}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="mvs:wettelijkeBeperkingen" templateModeOnly="true" forceLabel="true" label="FieldId419" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen">
+      <template>
+        <values>
+          <key label="FieldId419" xpath="@rdf:resource" tooltip="mvs:wettelijkeBeperkingen|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen"/>
+        </values>
+        <snippet>
+          <mvs:wettelijkeBeperkingen rdf:resource="{{FieldId419}}"/>
+        </snippet>
+      </template>
+    </for>
+
+
   </fields>
   <!-- Complex fields. -->
   <fieldsWithFieldset>
@@ -445,16 +497,7 @@
           </field>
         </section>
         <section name="serviceInformation">
-          <field name="FieldId413" notDisplayedIfMissing="true" templateModeOnly="true" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:authenticatie">
-            <template>
-              <values>
-                <key label="FieldId413" xpath="@rdf:resource" tooltip="mvs:authenticatie|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:authenticatie"/>
-              </values>
-              <snippet>
-                <mvs:authenticatie rdf:resource="{{FieldId413}}"/>
-              </snippet>
-            </template>
-          </field>
+          <field name="FieldId413" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:authenticatie"/>
           <action type="add" name="FieldId413" or="authenticatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
@@ -462,16 +505,7 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId414" notDisplayedIfMissing="true" templateModeOnly="true" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:dienstverleningsKwaliteit">
-            <template>
-              <values>
-                <key label="FieldId414" xpath="@rdf:resource" tooltip="mvs:dienstverleningsKwaliteit|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:dienstverleningsKwaliteit"/>
-              </values>
-              <snippet>
-                <mvs:dienstverleningsKwaliteit rdf:resource="{{FieldId414}}"/>
-              </snippet>
-            </template>
-          </field>
+          <field name="FieldId414" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:dienstverleningsKwaliteit"/>
           <action type="add" name="FieldId414" or="dienstverleningsKwaliteit" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
@@ -479,16 +513,7 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId415" notDisplayedIfMissing="true" templateModeOnly="true" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie">
-            <template>
-              <values>
-                <key label="FieldId415" xpath="@rdf:resource" tooltip="mvs:doelpopulatie|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie"/>
-              </values>
-              <snippet>
-                <mvs:doelpopulatie rdf:resource="{{FieldId415}}"/>
-              </snippet>
-            </template>
-          </field>
+          <field name="FieldId415" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie"/>
           <action type="add" name="FieldId415" or="doelpopulatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
@@ -496,16 +521,7 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId416" notDisplayedIfMissing="true" templateModeOnly="true" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling">
-            <template>
-              <values>
-                <key label="FieldId416" xpath="@rdf:resource" tooltip="mvs:gebruiksbepaling|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling"/>
-              </values>
-              <snippet>
-                <mvs:gebruiksbepaling rdf:resource="{{FieldId416}}"/>
-              </snippet>
-            </template>
-          </field>
+          <field name="FieldId416" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling"/>
           <action type="add" name="FieldId416" or="gebruiksbepaling" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
@@ -529,16 +545,7 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId419" notDisplayedIfMissing="true" templateModeOnly="true" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen">
-            <template>
-              <values>
-                <key label="FieldId419" xpath="@rdf:resource" tooltip="mvs:wettelijkeBeperkingen|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen"/>
-              </values>
-              <snippet>
-                <mvs:wettelijkeBeperkingen rdf:resource="{{FieldId419}}"/>
-              </snippet>
-            </template>
-          </field>
+          <field name="FieldId419" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen"/>
           <action type="add" name="FieldId419" or="wettelijkeBeperkingen" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
