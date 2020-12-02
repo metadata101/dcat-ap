@@ -24,6 +24,7 @@
   <usageInformation>Usage information</usageInformation>
   <geographicalInformation>Spatial and temporal extent</geographicalInformation>
   <relationInformation>Relation</relationInformation>
+  <serviceInformation>Service information</serviceInformation>
   <extraInformation>Extra information</extraInformation>
   <!-- DCAT-AP view labels and help -->
   <FieldId107>dataset</FieldId107>
@@ -316,4 +317,11 @@
   <FieldId410>version</FieldId410>
   <FieldId411>e-mail</FieldId411>
   <FieldId412>website</FieldId412>
+  <FieldId413>authentication</FieldId413>
+  <FieldId414>service quality</FieldId414>
+  <FieldId415>target population</FieldId415>
+  <FieldId416>term of usage</FieldId416>
+  <FieldId417>usage status</FieldId417>
+  <FieldId418>development state</FieldId418>
+  <FieldId419>legal restrictions</FieldId419>
 </strings>

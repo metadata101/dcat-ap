@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<editor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gn="http://www.fao.org/geonetwork" xmlns:spdx="http://spdx.org/rdf/terms#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:adms="http://www.w3.org/ns/adms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:schema="http://schema.org/" xmlns:locn="http://www.w3.org/ns/locn#" xsi:noNamespaceSchemaLocation="../../../../../../config-editor.xsd">
+<editor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:gn="http://www.fao.org/geonetwork"
+        xmlns:spdx="http://spdx.org/rdf/terms#"
+        xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+        xmlns:adms="http://www.w3.org/ns/adms#"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:dct="http://purl.org/dc/terms/"
+        xmlns:dcat="http://www.w3.org/ns/dcat#"
+        xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+        xmlns:foaf="http://xmlns.com/foaf/0.1/"
+        xmlns:owl="http://www.w3.org/2002/07/owl#"
+        xmlns:mvs="https://data.vlaanderen.be/ns/metadata-voor-servicesl#"
+        xmlns:schema="http://schema.org/"
+        xmlns:locn="http://www.w3.org/ns/locn#"
+        xsi:noNamespaceSchemaLocation="../../../../../../config-editor.xsd">
   <!-- Define form field types per metadata element. -->
   <fields>
     <for name="dcat:byteSize" use="number"/>
@@ -428,6 +443,109 @@
               </snippet>
             </template>
           </field>
+        </section>
+        <section name="serviceInformation">
+          <field name="FieldId413" notDisplayedIfMissing="true" templateModeOnly="true" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:authenticatie">
+            <template>
+              <values>
+                <key label="FieldId413" xpath="@rdf:resource" tooltip="mvs:authenticatie|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:authenticatie"/>
+              </values>
+              <snippet>
+                <mvs:authenticatie rdf:resource="{{FieldId413}}"/>
+              </snippet>
+            </template>
+          </field>
+          <action type="add" name="FieldId413" or="authenticatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:authenticatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId414" notDisplayedIfMissing="true" templateModeOnly="true" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:dienstverleningsKwaliteit">
+            <template>
+              <values>
+                <key label="FieldId414" xpath="@rdf:resource" tooltip="mvs:dienstverleningsKwaliteit|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:dienstverleningsKwaliteit"/>
+              </values>
+              <snippet>
+                <mvs:dienstverleningsKwaliteit rdf:resource="{{FieldId414}}"/>
+              </snippet>
+            </template>
+          </field>
+          <action type="add" name="FieldId414" or="dienstverleningsKwaliteit" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:dienstverleningsKwaliteit rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId415" notDisplayedIfMissing="true" templateModeOnly="true" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie">
+            <template>
+              <values>
+                <key label="FieldId415" xpath="@rdf:resource" tooltip="mvs:doelpopulatie|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie"/>
+              </values>
+              <snippet>
+                <mvs:doelpopulatie rdf:resource="{{FieldId415}}"/>
+              </snippet>
+            </template>
+          </field>
+          <action type="add" name="FieldId415" or="doelpopulatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:doelpopulatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId416" notDisplayedIfMissing="true" templateModeOnly="true" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling">
+            <template>
+              <values>
+                <key label="FieldId416" xpath="@rdf:resource" tooltip="mvs:gebruiksbepaling|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling"/>
+              </values>
+              <snippet>
+                <mvs:gebruiksbepaling rdf:resource="{{FieldId416}}"/>
+              </snippet>
+            </template>
+          </field>
+          <action type="add" name="FieldId416" or="gebruiksbepaling" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:gebruiksbepaling rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanGebruik"/>
+          <action type="add" name="FieldId417" or="statusVanGebruik" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:statusVanGebruik/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanOntwikkeling"/>
+          <action type="add" name="FieldId418" or="statusVanOntwikkeling" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:statusVanOntwikkeling/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId419" notDisplayedIfMissing="true" templateModeOnly="true" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen">
+            <template>
+              <values>
+                <key label="FieldId419" xpath="@rdf:resource" tooltip="mvs:wettelijkeBeperkingen|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen"/>
+              </values>
+              <snippet>
+                <mvs:wettelijkeBeperkingen rdf:resource="{{FieldId419}}"/>
+              </snippet>
+            </template>
+          </field>
+          <action type="add" name="FieldId419" or="wettelijkeBeperkingen" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:wettelijkeBeperkingen rdf:resource="{{FieldId419}}"/>
+              </snippet>
+            </template>
+          </action>
         </section>
         <section name="extraInformation">
           <field name="FieldId408" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>

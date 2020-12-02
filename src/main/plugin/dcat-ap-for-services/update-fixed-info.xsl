@@ -35,6 +35,7 @@
                 xmlns:schema="http://schema.org/"
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:gml="http://www.opengis.net/gml"
+                xmlns:mvs="https://data.vlaanderen.be/ns/metadata-voor-servicesl#"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 xmlns:gn-fn-dcat-ap-for-services="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap-for-services"
@@ -58,7 +59,7 @@
     <xsl:apply-templates select="//rdf:RDF"/>
   </xsl:template>
   <!-- =================================================================  -->
-  <xsl:template match="@*|node()[name(.)!= 'root']">
+  <xsl:template match="@*|*[name(.)!= 'root']">
     <xsl:copy>
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
@@ -425,6 +426,13 @@
       <xsl:apply-templates select="dcat:keyword"/>
       <xsl:apply-templates select="dct:language"/>
       <xsl:apply-templates select="owl:versionInfo"/>
+      <xsl:apply-templates select="mvs:authenticatie"/>
+      <xsl:apply-templates select="mvs:dienstverleningsKwaliteit"/>
+      <xsl:apply-templates select="mvs:doelpopulatie"/>
+      <xsl:apply-templates select="mvs:gebruiksbepaling"/>
+      <xsl:apply-templates select="mvs:statusVanGebruik"/>
+      <xsl:apply-templates select="mvs:statusVanOntwikkeling"/>
+      <xsl:apply-templates select="mvs:wettelijkeBeperkingen"/>
     </dcat:DataService>
   </xsl:template>
 </xsl:stylesheet>
