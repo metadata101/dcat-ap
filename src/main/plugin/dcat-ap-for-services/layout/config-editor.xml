@@ -242,8 +242,6 @@
         </snippet>
       </template>
     </for>
-
-
   </fields>
   <!-- Complex fields. -->
   <fieldsWithFieldset>
