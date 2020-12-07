@@ -35,7 +35,7 @@
                 xmlns:schema="http://schema.org/"
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:gml="http://www.opengis.net/gml"
-                xmlns:mvs="https://data.vlaanderen.be/ns/metadata-voor-servicesl#"
+                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-voor-servicesl#"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 xmlns:gn-fn-dcat-ap-for-services="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap-for-services"

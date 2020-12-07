@@ -11,7 +11,7 @@
         xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
         xmlns:foaf="http://xmlns.com/foaf/0.1/"
         xmlns:owl="http://www.w3.org/2002/07/owl#"
-        xmlns:mvs="https://data.vlaanderen.be/ns/metadata-voor-servicesl#"
+        xmlns:mvs="http://data.vlaanderen.be/ns/metadata-voor-servicesl#"
         xmlns:schema="http://schema.org/"
         xmlns:locn="http://www.w3.org/ns/locn#"
         xsi:noNamespaceSchemaLocation="../../../../../../config-editor.xsd">
