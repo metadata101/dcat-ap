@@ -27,6 +27,7 @@
   <usageInformation>Gebruiksinformatie</usageInformation>
   <geographicalInformation>Ruimtelijke en temporele begrenzing</geographicalInformation>
   <relationInformation>Verwantschappen</relationInformation>
+  <serviceInformation>Service informatie</serviceInformation>
   <extraInformation>Extra informatie</extraInformation>
   <!-- DCAT-AP view labels and help -->
   <FieldId107>Dataset</FieldId107>
@@ -319,4 +320,11 @@
   <FieldId410>Versie</FieldId410>
   <FieldId411>E-mail</FieldId411>
   <FieldId412>website</FieldId412>
+  <FieldId413>Authenticatie</FieldId413>
+  <FieldId414>Dienstverleningskwaliteit</FieldId414>
+  <FieldId415>Doelpopulatie</FieldId415>
+  <FieldId416>Gebruiksbepaling</FieldId416>
+  <FieldId417>Gebruiksstatus</FieldId417>
+  <FieldId418>Ontwikkelingsstatus</FieldId418>
+  <FieldId419>Wettelijke beperkingen</FieldId419>
 </strings>

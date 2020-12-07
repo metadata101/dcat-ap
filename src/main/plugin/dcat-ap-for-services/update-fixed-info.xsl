@@ -35,6 +35,7 @@
                 xmlns:schema="http://schema.org/"
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:gml="http://www.opengis.net/gml"
+                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-voor-servicesl#"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 xmlns:gn-fn-dcat-ap-for-services="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap-for-services"
@@ -54,12 +55,21 @@
   <xsl:variable name="iso2letterLanguageCode" select="lower-case(java:twoCharLangCode(/root/gui/language))"/>
   <xsl:variable name="resourcePrefix" select="$env/metadata/resourceIdentifierPrefix"/>
 
+  <xsl:variable name="isService" select="count(/root//rdf:RDF/dcat:Catalog/dcat:service) > 0"/>
+
   <xsl:template match="/root">
     <xsl:apply-templates select="//rdf:RDF"/>
   </xsl:template>
   <!-- =================================================================  -->
-  <xsl:template match="@*|node()[name(.)!= 'root']">
-    <xsl:copy>
+  <xsl:template match="rdf:RDF" priority="10">
+    <xsl:copy copy-namespaces="no">
+      <xsl:call-template name="add-namespaces"/>
+      <xsl:apply-templates select="@*|node()"/>
+    </xsl:copy>
+  </xsl:template>
+  <!-- =================================================================  -->
+  <xsl:template match="@*|*[name(.)!= 'root']">
+    <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
@@ -202,7 +212,7 @@
   </xsl:template>
 
   <xsl:template match="dcat:Dataset/dct:title" priority="10">
-    <xsl:copy>
+    <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
       <xsl:if test="not(@xml:lang)">
         <xsl:attribute name="xml:lang">nl</xsl:attribute>
@@ -214,7 +224,7 @@
   </xsl:template>
 
   <xsl:template match="dcat:Dataset/dct:description|dcat:Distribution/dct:title|dcat:Distribution/dct:description|foaf:Agent/foaf:name" priority="10">
-    <xsl:copy>
+    <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
       <xsl:if test="not(@xml:lang)">
         <xsl:attribute name="xml:lang">nl</xsl:attribute>
@@ -224,9 +234,9 @@
   </xsl:template>
 
   <!-- Fill empty element and update existing with resourceType -->
-  <xsl:template match="foaf:Agent/dct:type|dcat:theme|dct:accrualPeriodicity|dct:language|dcat:Dataset/dct:type|dct:format|dcat:mediaType|adms:status|dct:LicenseDocument/dct:type|dct:accessRights"
+  <xsl:template match="foaf:Agent/dct:type|dcat:theme|dct:accrualPeriodicity|dct:language|dcat:Dataset/dct:type|dct:format|dcat:mediaType|adms:status|dct:LicenseDocument/dct:type|dct:accessRights|mvs:statusVanGebruik|mvs:statusVanOntwikkeling"
                 priority="10">
-    <xsl:copy>
+    <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
       <xsl:variable name="inScheme" select="gn-fn-dcat-ap-for-services:getInSchemeURIByElementName(name(.),name(..))"/>
       <xsl:variable name="rdfType" select="gn-fn-dcat-ap-for-services:getRdfTypeByElementName(name(.),name(..))"/>
@@ -277,7 +287,7 @@
 
   <!-- Fix value for attribute -->
   <xsl:template match="rdf:Statement/rdf:object" priority="10">
-    <xsl:copy>
+    <xsl:copy copy-namespaces="no">
       <xsl:copy-of select="@*[not(name()='rdf:datatype')]"/>
       <xsl:attribute name="rdf:datatype">xs:dateTime</xsl:attribute>
     </xsl:copy>
@@ -285,7 +295,7 @@
 
   <!-- Fix value for attribute -->
   <xsl:template match="dct:issued|dct:modified|schema:startDate|schema:endDate" priority="10">
-    <xsl:copy>
+    <xsl:copy copy-namespaces="no">
       <xsl:copy-of select="@*[not(name()='rdf:datatype')]"/>
       <xsl:attribute name="rdf:datatype">
         <xsl:if test="not(contains(lower-case(.),'t'))">http://www.w3.org/2001/XMLSchema#date</xsl:if>
@@ -296,7 +306,7 @@
   </xsl:template>
 
   <xsl:template match="dct:Location" priority="10">
-    <xsl:copy>
+    <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
       <xsl:variable name="coverage">
         <xsl:choose>
@@ -360,7 +370,7 @@
   <!-- Remove non numeric byteSize and format scientific notation to decimal -->
   <!--xsl:template match="dcat:byteSize" priority="10">
     <xsl:if test="string(number(.)) != 'NaN'">
-      <xsl:copy>
+      <xsl:copy copy-namespaces="no">
     <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
         <xsl:choose>
           <xsl:when test="matches(string(.), '^\-?[\d\.,]*[Ee][+\-]*\d*$')">
@@ -376,7 +386,7 @@
 
   <!-- Fix value for attribute -->
   <xsl:template match="spdx:checksumValue" priority="10">
-    <xsl:copy>
+    <xsl:copy copy-namespaces="no">
       <xsl:copy-of select="@*[not(name()='rdf:datatype')]"/>
       <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#hexBinary</xsl:attribute>
       <xsl:value-of select="."/>
@@ -425,6 +435,33 @@
       <xsl:apply-templates select="dcat:keyword"/>
       <xsl:apply-templates select="dct:language"/>
       <xsl:apply-templates select="owl:versionInfo"/>
+      <xsl:apply-templates select="mvs:authenticatie"/>
+      <xsl:apply-templates select="mvs:dienstverleningsKwaliteit"/>
+      <xsl:apply-templates select="mvs:doelpopulatie"/>
+      <xsl:apply-templates select="mvs:gebruiksbepaling"/>
+      <xsl:apply-templates select="mvs:statusVanGebruik"/>
+      <xsl:apply-templates select="mvs:statusVanOntwikkeling"/>
+      <xsl:apply-templates select="mvs:wettelijkeBeperkingen"/>
     </dcat:DataService>
+  </xsl:template>
+
+
+  <xsl:template name="add-namespaces">
+    <xsl:namespace name="rdf" select="'http://www.w3.org/1999/02/22-rdf-syntax-ns#'"/>
+    <xsl:namespace name="skos" select="'http://www.w3.org/2004/02/skos/core#'"/>
+    <xsl:namespace name="spdx" select="'http://spdx.org/rdf/terms#'"/>
+    <xsl:namespace name="owl" select="'http://www.w3.org/2002/07/owl#'"/>
+    <xsl:namespace name="adms" select="'http://www.w3.org/ns/adms#'"/>
+    <xsl:namespace name="locn" select="'http://www.w3.org/ns/locn#'"/>
+    <xsl:namespace name="xsi" select="'http://www.w3.org/2001/XMLSchema-instance'"/>
+    <xsl:namespace name="foaf" select="'http://xmlns.com/foaf/0.1/'"/>
+    <xsl:namespace name="dct" select="'http://purl.org/dc/terms/'"/>
+    <xsl:namespace name="vcard" select="'http://www.w3.org/2006/vcard/ns#'"/>
+    <xsl:namespace name="dcat" select="'http://www.w3.org/ns/dcat#'"/>
+    <xsl:namespace name="schema" select="'http://schema.org/'"/>
+    <xsl:namespace name="dc" select="'http://purl.org/dc/elements/1.1/'"/>
+    <xsl:if test="$isService">
+      <xsl:namespace name="mvs" select="'http://data.vlaanderen.be/ns/metadata-voor-servicesl#'"/>
+    </xsl:if>
   </xsl:template>
 </xsl:stylesheet>
