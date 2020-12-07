@@ -195,7 +195,7 @@
     <for name="mvs:authenticatie" templateModeOnly="true" forceLabel="true" label="FieldId413" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:authenticatie">
       <template>
         <values>
-          <key label="FieldId413" xpath="@rdf:resource" tooltip="mvs:authenticatie|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:authenticatie"/>
+          <key label="FieldId413" xpath="@rdf:resource" tooltip="mvs:authenticatie|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:authenticatie"/>
         </values>
         <snippet>
           <mvs:authenticatie rdf:resource="{{FieldId413}}"/>
@@ -205,7 +205,7 @@
     <for name="mvs:dienstverleningsKwaliteit" templateModeOnly="true" forceLabel="true" label="FieldId414" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:dienstverleningsKwaliteit">
       <template>
         <values>
-          <key label="FieldId414" xpath="@rdf:resource" tooltip="mvs:dienstverleningsKwaliteit|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:dienstverleningsKwaliteit"/>
+          <key label="FieldId414" xpath="@rdf:resource" tooltip="mvs:dienstverleningsKwaliteit|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:dienstverleningsKwaliteit"/>
         </values>
         <snippet>
           <mvs:dienstverleningsKwaliteit rdf:resource="{{FieldId414}}"/>
@@ -215,7 +215,7 @@
     <for name="mvs:doelpopulatie" templateModeOnly="true" forceLabel="true" label="FieldId415" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie">
       <template>
         <values>
-          <key label="FieldId415" xpath="@rdf:resource" tooltip="mvs:doelpopulatie|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie"/>
+          <key label="FieldId415" xpath="@rdf:resource" tooltip="mvs:doelpopulatie|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie"/>
         </values>
         <snippet>
           <mvs:doelpopulatie rdf:resource="{{FieldId415}}"/>
@@ -225,7 +225,7 @@
     <for name="mvs:gebruiksbepaling" templateModeOnly="true" forceLabel="true" label="FieldId416" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling">
       <template>
         <values>
-          <key label="FieldId416" xpath="@rdf:resource" tooltip="mvs:gebruiksbepaling|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling"/>
+          <key label="FieldId416" xpath="@rdf:resource" tooltip="mvs:gebruiksbepaling|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling"/>
         </values>
         <snippet>
           <mvs:gebruiksbepaling rdf:resource="{{FieldId416}}"/>
@@ -235,7 +235,7 @@
     <for name="mvs:wettelijkeBeperkingen" templateModeOnly="true" forceLabel="true" label="FieldId419" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen">
       <template>
         <values>
-          <key label="FieldId419" xpath="@rdf:resource" tooltip="mvs:wettelijkeBeperkingen|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen"/>
+          <key label="FieldId419" xpath="@rdf:resource" tooltip="mvs:wettelijkeBeperkingen|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen"/>
         </values>
         <snippet>
           <mvs:wettelijkeBeperkingen rdf:resource="{{FieldId419}}"/>

@@ -1636,7 +1636,7 @@
     <description>Landingspagina met informatie over authenticatie</description>
     <btnLabel>Authenticatie</btnLabel>
   </element>
-  <element name="@rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:authenticatie/@rdf:resource">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:authenticatie/@rdf:resource">
     <label>Authenticatie</label>
     <description>Landingspagina met informatie over authenticatie</description>
     <btnLabel>Authenticatie</btnLabel>
@@ -1646,7 +1646,7 @@
     <description>Landingspagina met informatie over kwaliteit van de dienstverlening</description>
     <btnLabel>Dienstverleningskwaliteit</btnLabel>
   </element>
-  <element name="@rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:dienstverleningsKwaliteit/@rdf:resource">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:dienstverleningsKwaliteit/@rdf:resource">
     <label>Dienstverleningskwaliteit</label>
     <description>Landingspagina met informatie over kwaliteit van de dienstverlening</description>
     <btnLabel>Dienstverleningskwaliteit</btnLabel>
@@ -1656,7 +1656,7 @@
     <description>Landingspagina met informatie over de doelpopulatie</description>
     <btnLabel>Doelpopulatie</btnLabel>
   </element>
-  <element name="@rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie/@rdf:resource">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie/@rdf:resource">
     <label>Doelpopulatie</label>
     <description>Landingspagina met informatie over de doelpopulatie</description>
     <btnLabel>Doelpopulatie</btnLabel>
@@ -1666,7 +1666,7 @@
     <description>Landingspagina met informatie over de genomen voorwaarden om de service te mogen gebruiken.</description>
     <btnLabel>Gebruiksbepaling</btnLabel>
   </element>
-  <element name="@rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling/@rdf:resource">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling/@rdf:resource">
     <label>Gebruiksbepaling</label>
     <description>Landingspagina met informatie over de genomen voorwaarden om de service te mogen gebruiken.</description>
     <btnLabel>Gebruiksbepaling</btnLabel>
@@ -1686,7 +1686,7 @@
     <description>Landingspagina met informatie over de wettelijke beperkingen i.v.m. dataService</description>
     <btnLabel>Wettelijke beperkingen</btnLabel>
   </element>
-  <element name="@rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen/@rdf:resource">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen/@rdf:resource">
     <label>Wettelijke beperkingen</label>
     <description>Landingspagina met informatie over de wettelijke beperkingen i.v.m. dataService</description>
     <btnLabel>Wettelijke beperkingen</btnLabel>
