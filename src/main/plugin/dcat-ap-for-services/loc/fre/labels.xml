@@ -1519,7 +1519,17 @@
     <description>Huidige toestand van gebruiksmogelijkheden</description>
     <btnLabel>Gebruiksstatus</btnLabel>
   </element>
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanGebruik/skos:Concept">
+    <label>Gebruiksstatus</label>
+    <description>Huidige toestand van gebruiksmogelijkheden</description>
+    <btnLabel>Gebruiksstatus</btnLabel>
+  </element>
   <element name="mvs:statusVanOntwikkeling" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanOntwikkeling">
+    <label>Ontwikkelingsstatus</label>
+    <description>Huidige toestand van de ontwikkelingsstatus</description>
+    <btnLabel>Ontwikkelingsstatus</btnLabel>
+  </element>
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanOntwikkeling/skos:Concept">
     <label>Ontwikkelingsstatus</label>
     <description>Huidige toestand van de ontwikkelingsstatus</description>
     <btnLabel>Ontwikkelingsstatus</btnLabel>

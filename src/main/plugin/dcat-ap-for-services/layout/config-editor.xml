@@ -527,22 +527,40 @@
               </snippet>
             </template>
           </action>
-          <!--<field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanGebruik"/>-->
-          <!--<action type="add" name="FieldId417" or="statusVanGebruik" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">-->
-          <!--  <template>-->
-          <!--    <snippet>-->
-          <!--      <mvs:statusVanGebruik/>-->
-          <!--    </snippet>-->
-          <!--  </template>-->
-          <!--</action>-->
-          <!--<field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanOntwikkeling"/>-->
-          <!--<action type="add" name="FieldId418" or="statusVanOntwikkeling" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">-->
-          <!--  <template>-->
-          <!--    <snippet>-->
-          <!--      <mvs:statusVanOntwikkeling/>-->
-          <!--    </snippet>-->
-          <!--  </template>-->
-          <!--</action>-->
+          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanGebruik"/>
+          <action type="add" name="FieldId417" or="statusVanGebruik" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:statusVanGebruik>
+                  <skos:Concept>
+                    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+                    <skos:prefLabel xml:lang="nl"/>
+                    <skos:prefLabel xml:lang="en"/>
+                    <skos:prefLabel xml:lang="fr"/>
+                    <skos:prefLabel xml:lang="de"/>
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+                  </skos:Concept>
+                </mvs:statusVanGebruik>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanOntwikkeling"/>
+          <action type="add" name="FieldId418" or="statusVanOntwikkeling" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:statusVanOntwikkeling>
+                  <skos:Concept>
+                    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+                    <skos:prefLabel xml:lang="nl"/>
+                    <skos:prefLabel xml:lang="en"/>
+                    <skos:prefLabel xml:lang="fr"/>
+                    <skos:prefLabel xml:lang="de"/>
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+                  </skos:Concept>
+                </mvs:statusVanOntwikkeling>
+              </snippet>
+            </template>
+          </action>
           <field name="FieldId419" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen"/>
           <action type="add" name="FieldId419" or="wettelijkeBeperkingen" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
@@ -1051,22 +1069,40 @@
               </snippet>
             </template>
           </action>
-          <!--<field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanGebruik"/>-->
-          <!--<action type="add" name="FieldId417" or="statusVanGebruik" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">-->
-          <!--  <template>-->
-          <!--    <snippet>-->
-          <!--      <mvs:statusVanGebruik/>-->
-          <!--    </snippet>-->
-          <!--  </template>-->
-          <!--</action>-->
-          <!--<field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanOntwikkeling"/>-->
-          <!--<action type="add" name="FieldId418" or="statusVanOntwikkeling" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">-->
-          <!--  <template>-->
-          <!--    <snippet>-->
-          <!--      <mvs:statusVanOntwikkeling/>-->
-          <!--    </snippet>-->
-          <!--  </template>-->
-          <!--</action>-->
+          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanGebruik"/>
+          <action type="add" name="FieldId417" or="statusVanGebruik" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:statusVanGebruik>
+                  <skos:Concept>
+                    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+                    <skos:prefLabel xml:lang="nl"/>
+                    <skos:prefLabel xml:lang="en"/>
+                    <skos:prefLabel xml:lang="fr"/>
+                    <skos:prefLabel xml:lang="de"/>
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+                  </skos:Concept>
+                </mvs:statusVanGebruik>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanOntwikkeling"/>
+          <action type="add" name="FieldId418" or="statusVanOntwikkeling" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:statusVanOntwikkeling>
+                  <skos:Concept>
+                    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+                    <skos:prefLabel xml:lang="nl"/>
+                    <skos:prefLabel xml:lang="en"/>
+                    <skos:prefLabel xml:lang="fr"/>
+                    <skos:prefLabel xml:lang="de"/>
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+                  </skos:Concept>
+                </mvs:statusVanOntwikkeling>
+              </snippet>
+            </template>
+          </action>
           <field name="FieldId419" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen"/>
           <action type="add" name="FieldId419" or="wettelijkeBeperkingen" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>

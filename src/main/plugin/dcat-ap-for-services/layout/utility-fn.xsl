@@ -71,6 +71,12 @@
       <xsl:when test="$elementName = 'dct:accessRights'">
         <xsl:value-of select="concat($inSchemeAuthorityBaseUrl, 'access-right')"/>
       </xsl:when>
+      <xsl:when test="$elementName = 'mvs:statusVanGebruik'">
+        <xsl:value-of select="concat($inSchemeAuthorityBaseUrl,'language')"/>
+      </xsl:when>
+      <xsl:when test="$elementName = 'mvs:statusVanOntwikkeling'">
+        <xsl:value-of select="concat($inSchemeAuthorityBaseUrl,'language')"/>
+      </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="''"/>
       </xsl:otherwise>
@@ -110,6 +116,12 @@
       </xsl:when>
       <xsl:when test="$elementName = 'dct:accessRights'">
         <xsl:value-of select="'http://purl.org/dc/terms/RightsStatement'"/>
+      </xsl:when>
+      <xsl:when test="$elementName = 'mvs:statusVanGebruik'">
+        <xsl:value-of select="'http://purl.org/dc/terms/LinguisticSystem'"/>
+      </xsl:when>
+      <xsl:when test="$elementName = 'mvs:statusVanOntwikkeling'">
+        <xsl:value-of select="'http://purl.org/dc/terms/LinguisticSystem'"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="''"/>

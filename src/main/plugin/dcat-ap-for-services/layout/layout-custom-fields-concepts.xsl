@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-        xmlns:adms="http://www.w3.org/ns/adms#"
-        xmlns:dct="http://purl.org/dc/terms/"
-        xmlns:dcat="http://www.w3.org/ns/dcat#"
-        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-        xmlns:foaf="http://xmlns.com/foaf/0.1/"
-        xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                xmlns:adms="http://www.w3.org/ns/adms#"
+                xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:foaf="http://xmlns.com/foaf/0.1/"
+                xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-voor-servicesl#"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:xslutil="java:org.fao.geonet.util.XslUtil"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
-        xmlns:gn-fn-dcat-ap-for-services="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap-for-services"
+                xmlns:gn-fn-dcat-ap-for-services="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap-for-services"
                 version="2.0"
                 exclude-result-prefixes="#all">
 
   <!--  Template to prepare data-gn-keyword component for xml elements based on a thesaurus -->
-  <xsl:template mode="mode-dcat-ap-for-services" priority="2000" match="foaf:Agent/dct:type[not($isFlatMode)]|dcat:theme|dct:accrualPeriodicity|dct:language|dcat:Dataset/dct:type|dct:format|dcat:mediaType|adms:status|dct:LicenseDocument/dct:type|dct:accessRights">
+  <xsl:template mode="mode-dcat-ap-for-services" priority="2000" match="foaf:Agent/dct:type[not($isFlatMode)]|
+                                                                        dcat:theme|
+                                                                        dct:accrualPeriodicity|
+                                                                        dct:language|
+                                                                        dcat:Dataset/dct:type|
+                                                                        dct:format|
+                                                                        dcat:mediaType|
+                                                                        adms:status|
+                                                                        dct:LicenseDocument/dct:type|
+                                                                        dct:accessRights|
+                                                                        mvs:statusVanGebruik|
+                                                                        mvs:statusVanOntwikkeling">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
 
