@@ -527,22 +527,22 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanGebruik"/>
-          <action type="add" name="FieldId417" or="statusVanGebruik" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mvs:statusVanGebruik/>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanOntwikkeling"/>
-          <action type="add" name="FieldId418" or="statusVanOntwikkeling" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mvs:statusVanOntwikkeling/>
-              </snippet>
-            </template>
-          </action>
+          <!--<field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanGebruik"/>-->
+          <!--<action type="add" name="FieldId417" or="statusVanGebruik" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">-->
+          <!--  <template>-->
+          <!--    <snippet>-->
+          <!--      <mvs:statusVanGebruik/>-->
+          <!--    </snippet>-->
+          <!--  </template>-->
+          <!--</action>-->
+          <!--<field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanOntwikkeling"/>-->
+          <!--<action type="add" name="FieldId418" or="statusVanOntwikkeling" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">-->
+          <!--  <template>-->
+          <!--    <snippet>-->
+          <!--      <mvs:statusVanOntwikkeling/>-->
+          <!--    </snippet>-->
+          <!--  </template>-->
+          <!--</action>-->
           <field name="FieldId419" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen"/>
           <action type="add" name="FieldId419" or="wettelijkeBeperkingen" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
@@ -1014,6 +1014,64 @@
             <template>
               <snippet>
                 <dcat:landingPage rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+        <section name="serviceInformation">
+          <field name="FieldId413" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:authenticatie"/>
+          <action type="add" name="FieldId413" or="authenticatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:authenticatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId414" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:dienstverleningsKwaliteit"/>
+          <action type="add" name="FieldId414" or="dienstverleningsKwaliteit" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:dienstverleningsKwaliteit rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId415" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie"/>
+          <action type="add" name="FieldId415" or="doelpopulatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:doelpopulatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId416" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling"/>
+          <action type="add" name="FieldId416" or="gebruiksbepaling" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:gebruiksbepaling rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <!--<field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanGebruik"/>-->
+          <!--<action type="add" name="FieldId417" or="statusVanGebruik" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">-->
+          <!--  <template>-->
+          <!--    <snippet>-->
+          <!--      <mvs:statusVanGebruik/>-->
+          <!--    </snippet>-->
+          <!--  </template>-->
+          <!--</action>-->
+          <!--<field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanOntwikkeling"/>-->
+          <!--<action type="add" name="FieldId418" or="statusVanOntwikkeling" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">-->
+          <!--  <template>-->
+          <!--    <snippet>-->
+          <!--      <mvs:statusVanOntwikkeling/>-->
+          <!--    </snippet>-->
+          <!--  </template>-->
+          <!--</action>-->
+          <field name="FieldId419" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen"/>
+          <action type="add" name="FieldId419" or="wettelijkeBeperkingen" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mvs:wettelijkeBeperkingen rdf:resource="{{FieldId419}}"/>
               </snippet>
             </template>
           </action>

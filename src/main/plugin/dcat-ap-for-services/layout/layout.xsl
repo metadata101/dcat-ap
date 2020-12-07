@@ -34,6 +34,7 @@
     xmlns:foaf="http://xmlns.com/foaf/0.1/"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:schema="http://schema.org/"
+    xmlns:mvs="https://data.vlaanderen.be/ns/metadata-voor-servicesl#"
     xmlns:locn="http://www.w3.org/ns/locn#"
     xmlns:java="java:org.fao.geonet.util.XslUtil"
     xmlns:gn="http://www.fao.org/geonetwork"
@@ -192,7 +193,7 @@
                           contains(., 'file.disclaimer'))]" />
 
   <!-- the other elements in DC. -->
-  <xsl:template mode="mode-dcat-ap-for-services" priority="100" match="dc:*|dct:*|dcat:*|vcard:*|foaf:*|spdx:*|adms:*|owl:*|schema:*|skos:*">
+  <xsl:template mode="mode-dcat-ap-for-services" priority="100" match="dc:*|dct:*|dcat:*|vcard:*|foaf:*|spdx:*|adms:*|owl:*|schema:*|skos:*|mvs:*">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
     <xsl:param name="overrideLabel" select="''" required="no"/>
