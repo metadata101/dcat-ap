@@ -1809,4 +1809,14 @@
     <description>Landingspagina met informatie over de wettelijke beperkingen i.v.m. dataService</description>
     <btnLabel>Wettelijke beperkingen</btnLabel>
   </element>
+  <element name="dcat:accessService" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:accessService">
+    <label>Wordt aangeboden door</label>
+    <description>De dataservice die deze distributie aanbiedt</description>
+    <btnLabel>Wordt aangeboden door</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:accessService/@rdf:resource">
+    <label>Wordt aangeboden door</label>
+    <description>De dataservice die deze distributie aanbiedt</description>
+    <btnLabel>Wordt aangeboden door</btnLabel>
+  </element>
 </labels>

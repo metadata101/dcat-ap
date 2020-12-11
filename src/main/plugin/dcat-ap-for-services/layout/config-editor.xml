@@ -242,6 +242,16 @@
         </snippet>
       </template>
     </for>
+    <for name="dcat:accessService" templateModeOnly="true" forceLabel="true" label="FieldId420">
+      <template>
+        <values>
+          <key label="FieldId420" xpath="@rdf:resource" tooltip="dcat:accessService|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution"/>
+        </values>
+        <snippet>
+          <dcat:accessService rdf:resource="{{FieldId420}}"/>
+        </snippet>
+      </template>
+    </for>
   </fields>
   <!-- Complex fields. -->
   <fieldsWithFieldset>
@@ -627,6 +637,7 @@
         <for name="dct:license"/>
         <for name="dct:LicenseDocument"/>
         <for name="dct:LicenseDocument/dct:type"/>
+        <for name="dcat:accessService"/>
         <!-- Extra info -->
         <for name="dct:language" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language"/>
         <for name="dct:language" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>

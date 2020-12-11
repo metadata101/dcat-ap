@@ -156,6 +156,7 @@
             <xs:element ref="foaf:page" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="adms:status" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="accessService" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
           <xs:attribute ref="rdf:about"/>
           <xs:attribute ref="rdf:nodeID"/>

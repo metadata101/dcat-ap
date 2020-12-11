@@ -23,18 +23,26 @@
   -->
 
 
-<xsl:stylesheet version="2.0"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:adms="http://www.w3.org/ns/adms#"
-  xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/"
-  xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-  xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:locn="http://www.w3.org/ns/locn#"
-  xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#"
-  xmlns:spdx="http://spdx.org/rdf/terms#" xmlns:schema="http://schema.org/"
-  xmlns:gn-fn-render="http://geonetwork-opensource.org/xsl/functions/render"
-  xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
-  xmlns:gn-fn-dcat-ap-for-services="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap-for-services"
-  exclude-result-prefixes="#all">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:adms="http://www.w3.org/ns/adms#"
+                xmlns:dc="http://purl.org/dc/elements/1.1/"
+                xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+                xmlns:locn="http://www.w3.org/ns/locn#"
+                xmlns:foaf="http://xmlns.com/foaf/0.1/"
+                xmlns:owl="http://www.w3.org/2002/07/owl#"
+                xmlns:spdx="http://spdx.org/rdf/terms#"
+                xmlns:schema="http://schema.org/"
+                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-voor-servicesl#"
+                xmlns:gn-fn-render="http://geonetwork-opensource.org/xsl/functions/render"
+                xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
+                xmlns:gn-fn-dcat-ap-for-services="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap-for-services"
+                exclude-result-prefixes="#all"
+                version="2.0">
 
   <xsl:strip-space elements="*"/>
 
@@ -311,8 +319,18 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template mode="render-field"
-    match="foaf:Agent/dct:type|dcat:theme|dct:accrualPeriodicity|dct:language|dcat:Dataset/dct:type|dct:format|dcat:mediaType|adms:status|dct:LicenseDocument/dct:type|dct:accessRights">
+  <xsl:template mode="render-field" match="foaf:Agent/dct:type|
+                                           dcat:theme|
+                                           dct:accrualPeriodicity|
+                                           dct:language|
+                                           dcat:Dataset/dct:type|
+                                           dct:format|
+                                           dcat:mediaType|
+                                           adms:status|
+                                           dct:LicenseDocument/dct:type|
+                                           mvs:statusVanGebruik|
+                                           mvs:statusVanOntwikkeling|
+                                           dct:accessRights">
     <xsl:param name="xpath"/>
     <xsl:variable name="usedLang">
       <xsl:value-of select="
