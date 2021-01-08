@@ -17,7 +17,7 @@
     <dcat:service>
       <dcat:DataService rdf:about="https://metadata.vlaanderen.be/doc/dataset/1fda86f5-f007-49df-a6d0-c223420b3e2f">
         <dct:identifier>1fda86f5-f007-49df-a6d0-c223420b3e2f</dct:identifier>
-        <dct:title xml:lang="nl">Sjabloon voor Metadata van Services (DCAT versie 2.0)</dct:title>
+        <dct:title xml:lang="nl">Open data: Sjabloon voor Metadata van Services (DCAT versie 2.0)</dct:title>
         <dct:description/>
         <dcat:endpointUrl rdf:resource=""/>
         <dcat:endpointDescription/>
