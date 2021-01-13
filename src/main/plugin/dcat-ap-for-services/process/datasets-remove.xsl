@@ -3,6 +3,7 @@
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
+                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-voor-servicesl#"
                 exclude-result-prefixes="#all"
                 version="2.0">
 
@@ -27,7 +28,14 @@
                            dcat:contactPoint|
                            dcat:keyword|
                            dct:language|
-                           owl:versionInfo"/>
+                           owl:versionInfo|
+                           mvs:authenticatie|
+                           mvs:dienstverleningsKwaliteit|
+                           mvs:doelpopulatie|
+                           mvs:gebruiksbepaling|
+                           mvs:statusVanGebruik|
+                           mvs:statusVanOntwikkeling|
+                           mvs:wettelijkeBeperkingen"/>
     </xsl:copy>
   </xsl:template>
 
