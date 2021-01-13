@@ -18,9 +18,9 @@
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="@*|*">
+  <xsl:template match="@*|*|text()">
     <xsl:copy>
-      <xsl:apply-templates select="@*|*"/>
+      <xsl:apply-templates select="@*|*|text()"/>
     </xsl:copy>
   </xsl:template>
 </xsl:stylesheet>
