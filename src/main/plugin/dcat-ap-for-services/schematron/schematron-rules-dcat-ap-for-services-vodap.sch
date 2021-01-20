@@ -29,7 +29,7 @@ Schematron validation for DCAT-AP-VL - Flemish Government.
 This script was written by GIM.
 
 Source:
-- DCAT-AP v1.1: https://joinup.ec.europa.eu/release/dcat-ap-for-services-v11
+- DCAT-AP v2.0: https://joinup.ec.europa.eu/release/dcat-ap-for-services-v2
 - Vlaamse Open Data Handleiding: https://overheid.vlaanderen.be/open-data-handleiding (bijlage 3)
 
 -->
@@ -69,7 +69,8 @@ Source:
       <sch:let name="missingProperty" value="not(dcat:distribution )"/>
       <sch:assert test="$missingProperty = false()">WARNING: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dcat:distribution.
       </sch:assert>
-      <sch:report test="$missingProperty = false()">The dcat:Dataset "<sch:value-of select="$id"/>" has a dcat:distribution with id  "<sch:value-of select="dcat:distribution/*/@rdf:about/string()"/>".      </sch:report>
+      <sch:report test="$missingProperty = false()">The dcat:Dataset "<sch:value-of select="$id"/>" has a dcat:distribution with id  "<sch:value-of select="dcat:distribution/*/@rdf:about/string()"/>".
+      </sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -237,15 +238,15 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>210. dct:title should have a single value per language tag for dcat:Catalog</sch:title>
+    <sch:title>210. dct:title should have just one value per language tag for dcat:Catalog</sch:title>
     <sch:rule context="//dcat:Catalog/dct:title">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:title[@xml:lang = $lang])"/>
-      <sch:assert test="2 > $count">ERROR: The dcat:Catalog '<sch:value-of select="$id"/>' has more than one (<sch:value-of select="$count"/>) dct:title properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:assert>
-      <sch:report test="2 > $count">The dcat:Catalog '<sch:value-of select="$id"/>' has a maximum of one dct:title properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:report>
+      <sch:let name="messagePart1" value="concat('The dct:title (', ., ')')"/>
+      <sch:let name="messagePart2" value="concat(' one value per language tag ',$lang,' for dcat:Catalog ',$id)"/>
+      <sch:assert test="2 > $count"><sch:value-of select="$messagePart1"/> has more than <sch:value-of select="$messagePart2"/>.</sch:assert>
+      <sch:report test="2 > $count"><sch:value-of select="$messagePart1"/> has just <sch:value-of select="$messagePart2"/>.</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -255,7 +256,7 @@ Source:
       <sch:let name="noTag" value="not(./@xml:lang)"/>
       <sch:assert test="$noTag = false()">ERROR: The foaf:Agent '<sch:value-of select="$id"/>' does not have a language tag for its foaf:name '<sch:value-of select="./string()"/>'.
       </sch:assert>
-      <sch:report test="$noTag = false()">The foaf:Agent '<sch:value-of select="$id"/>' has  a language tag for its foaf:name '<sch:value-of select="./string()"/>'.
+      <sch:report test="$noTag = false()">The foaf:Agent '<sch:value-of select="$id"/>' has a language tag for its foaf:name '<sch:value-of select="./string()"/>'.
       </sch:report>
     </sch:rule>
   </sch:pattern>
@@ -265,10 +266,10 @@ Source:
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/foaf:name[@xml:lang = $lang])"/>
-      <sch:assert test="2 > $count">ERROR: The foaf:Agent '<sch:value-of select="$id"/>' has more than one (<sch:value-of select="$count"/>) foaf:name properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:assert>
-      <sch:report test="2 > $count">The foaf:Agent '<sch:value-of select="$id"/>' has a maximum of one foaf:name properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:report>
+      <sch:let name="messagePart1" value="concat('The foaf:name (', ., ')')"/>
+      <sch:let name="messagePart2" value="concat(' one value per language tag ',$lang,' for foaf:Agent ',$id)"/>
+      <sch:assert test="2 > $count"><sch:value-of select="$messagePart1"/> has more than <sch:value-of select="$messagePart2"/>.</sch:assert>
+      <sch:report test="2 > $count"><sch:value-of select="$messagePart1"/> has just <sch:value-of select="$messagePart2"/>.</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -277,10 +278,10 @@ Source:
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:description[@xml:lang = $lang])"/>
-      <sch:assert test="2 > $count">ERROR: The dcat:Catalog '<sch:value-of select="$id"/>' has more than one (<sch:value-of select="$count"/>) dct:description properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:assert>
-      <sch:report test="2 > $count">The dcat:Catalog '<sch:value-of select="$id"/>' has a maximum of one dct:description properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:report>
+      <sch:let name="messagePart1" value="concat('The dct:description (', ., ')')"/>
+      <sch:let name="messagePart2" value="concat(' one value per language tag ',$lang,' for dcat:Catalog ',$id)"/>
+      <sch:assert test="2 > $count"><sch:value-of select="$messagePart1"/> has more than <sch:value-of select="$messagePart2"/>.</sch:assert>
+      <sch:report test="2 > $count"><sch:value-of select="$messagePart1"/> has just <sch:value-of select="$messagePart2"/>.</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -289,10 +290,10 @@ Source:
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:title[@xml:lang = $lang])"/>
-      <sch:assert test="2 > $count">ERROR: The dcat:Dataset '<sch:value-of select="$id"/>' has more than one (<sch:value-of select="$count"/>) dct:title properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:assert>
-      <sch:report test="2 > $count">The dcat:Dataset '<sch:value-of select="$id"/>' has a maximum of one dct:title properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:report>
+      <sch:let name="messagePart1" value="concat('The dct:title (', ., ')')"/>
+      <sch:let name="messagePart2" value="concat(' one value per language tag ',$lang,' for dcat:Dataset ',$id)"/>
+      <sch:assert test="2 > $count"><sch:value-of select="$messagePart1"/> has more than <sch:value-of select="$messagePart2"/>.</sch:assert>
+      <sch:report test="2 > $count"><sch:value-of select="$messagePart1"/> has just <sch:value-of select="$messagePart2"/>.</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -301,23 +302,22 @@ Source:
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:description[@xml:lang = $lang])"/>
-      <sch:assert test="2 > $count">ERROR: The dcat:Dataset '<sch:value-of select="$id"/>' has more than one (<sch:value-of select="$count"/>) dct:description properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:assert>
-      <sch:report test="2 > $count">The dcat:Dataset '<sch:value-of select="$id"/>' has a maximum of one dct:description properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:report>
+      <sch:let name="messagePart1" value="concat('The dct:description (', ., ')')"/>
+      <sch:let name="messagePart2" value="concat(' one value per language tag ',$lang,' for dcat:Dataset ',$id)"/>
+      <sch:assert test="2 > $count"><sch:value-of select="$messagePart1"/> has more than <sch:value-of select="$messagePart2"/>.</sch:assert>
+      <sch:report test="2 > $count"><sch:value-of select="$messagePart1"/> has just <sch:value-of select="$messagePart2"/>.</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>216. dct:title should have a single value per language tag for dcat:Distribution</sch:title>
     <sch:rule context="//dcat:Distribution/dct:title">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="title" value="parent::node()/dct:title[1]"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:title[@xml:lang = $lang])"/>
-      <sch:assert test="2 > $count">ERROR: The dcat:Distribution '<sch:value-of select="if ($title!='') then $title else $id"/>' has more than one (<sch:value-of select="$count"/>) dct:title properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:assert>
-      <sch:report test="2 > $count">The dcat:Distribution '<sch:value-of select="if ($title!='') then $title else $id"/>' has a maximum of one dct:title properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:report>
+      <sch:let name="messagePart1" value="concat('The dct:title (', ., ')')"/>
+      <sch:let name="messagePart2" value="concat(' one value per language tag ',$lang,' for dcat:Distribution ',$id)"/>
+      <sch:assert test="2 > $count"><sch:value-of select="$messagePart1"/> has more than <sch:value-of select="$messagePart2"/>.</sch:assert>
+      <sch:report test="2 > $count"><sch:value-of select="$messagePart1"/> has just <sch:value-of select="$messagePart2"/>.</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -326,39 +326,34 @@ Source:
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:description[@xml:lang = $lang])"/>
-      <!--sch:let name="defaultTitle" value="parent::node()/dct:title[@xml:lang = $lang]"/-->
-      <sch:let name="title" value="parent::node()/dct:title[1]"/>
-      <sch:assert test="2 > $count">ERROR: The dcat:Distribution '<sch:value-of select="if ($title!='') then $title else $id"/>' has more than one (<sch:value-of select="$count"/>) dct:description properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:assert>
-      <sch:report test="2 > $count">The dcat:Distribution '<sch:value-of select="if ($title!='') then $title else $id"/>' has a maximum of one dct:description properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:report>
+      <sch:let name="messagePart1" value="concat('The dct:description (', ., ')')"/>
+      <sch:let name="messagePart2" value="concat(' one value per language tag ',$lang,' for dcat:Distribution ',$id)"/>
+      <sch:assert test="2 > $count"><sch:value-of select="$messagePart1"/> has more than <sch:value-of select="$messagePart2"/>.</sch:assert>
+      <sch:report test="2 > $count"><sch:value-of select="$messagePart1"/> has just <sch:value-of select="$messagePart2"/>.</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>216. dct:title should have a single value per language tag for dct:LicenseDocument</sch:title>
+    <sch:title>218. dct:title should have a single value per language tag for dct:LicenseDocument</sch:title>
     <sch:rule context="//dct:LicenseDocument/dct:title">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="title" value="parent::node()/dct:title[1]"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:title[@xml:lang = $lang])"/>
-      <sch:assert test="2 > $count">ERROR: The dct:LicenseDocument '<sch:value-of select="if ($title!='') then $title else $id"/>' has more than one (<sch:value-of select="$count"/>) dct:title properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:assert>
-      <sch:report test="2 > $count">The dct:LicenseDocument '<sch:value-of select="if ($title!='') then $title else $id"/>' has a maximum of one dct:title properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:report>
+      <sch:let name="messagePart1" value="concat('The dct:title (', ., ')')"/>
+      <sch:let name="messagePart2" value="concat(' one value per language tag ',$lang,' for dct:LicenseDocument ',$id)"/>
+      <sch:assert test="2 > $count"><sch:value-of select="$messagePart1"/> has more than <sch:value-of select="$messagePart2"/>.</sch:assert>
+      <sch:report test="2 > $count"><sch:value-of select="$messagePart1"/> has just <sch:value-of select="$messagePart2"/>.</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>217. dct:description should have a single value per language tag for dct:LicenseDocument</sch:title>
+    <sch:title>219. dct:description should have a single value per language tag for dct:LicenseDocument</sch:title>
     <sch:rule context="//dct:LicenseDocument/dct:description">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:description[@xml:lang = $lang])"/>
-      <!--sch:let name="defaultTitle" value="parent::node()/dct:title[@xml:lang = $lang]"/-->
-      <sch:let name="title" value="parent::node()/dct:title[1]"/>
-      <sch:assert test="2 > $count">ERROR: The dct:LicenseDocument '<sch:value-of select="if ($title!='') then $title else $id"/>' has more than one (<sch:value-of select="$count"/>) dct:description properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:assert>
-      <sch:report test="2 > $count">The dct:LicenseDocument '<sch:value-of select="if ($title!='') then $title else $id"/>' has a maximum of one dct:description properties with language tag '<sch:value-of select="$lang"/>'.
-      </sch:report>
+      <sch:let name="messagePart1" value="concat('The dct:description (', ., ')')"/>
+      <sch:let name="messagePart2" value="concat(' one value per language tag ',$lang,' for dct:LicenseDocument ',$id)"/>
+      <sch:assert test="2 > $count"><sch:value-of select="$messagePart1"/> has more than <sch:value-of select="$messagePart2"/>.</sch:assert>
+      <sch:report test="2 > $count"><sch:value-of select="$messagePart1"/> has just <sch:value-of select="$messagePart2"/>.</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -450,7 +445,7 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-  <sch:title>411. vcard:hasEmail has maximum cardinality of 1 for a contactpoint of a Dataset.</sch:title>
+    <sch:title>411. vcard:hasEmail has maximum cardinality of 1 for a contactpoint of a Dataset.</sch:title>
     <sch:rule context="//dcat:Dataset/dcat:contactPoint">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="count" value="count(*/vcard:hasEmail)"/>

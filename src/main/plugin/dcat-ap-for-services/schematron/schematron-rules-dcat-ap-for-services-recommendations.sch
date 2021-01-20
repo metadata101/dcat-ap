@@ -300,4 +300,34 @@ Source:
       </sch:report>
     </sch:rule>
   </sch:pattern>
+  <sch:pattern>
+    <sch:title>510. dcat:Catalog property should be an absolute URI.</sch:title>
+    <sch:rule context="//dcat:Catalog/*[name()=('foaf:homepage', 'dct:language', 'dct:rights', 'dct:license', 'dcat:themeTaxonomy', 'dct:hasPart', 'dct:isPartOf')]">
+      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
+      <sch:let name="elementName" value="name()"/>
+      <sch:let name="resource" value="(* and not(*/@rdf:about)) or ((starts-with(@rdf:resource,'http') or starts-with(@rdf:resource,'ftp') or starts-with(@rdf:resource,'urn')) and @rdf:resource castable as xs:anyURI) or ((starts-with(*/@rdf:about,'http') or starts-with(*/@rdf:about,'ftp') or starts-with(*/@rdf:about,'urn')) and */@rdf:about castable as xs:anyURI)"/>
+      <sch:let name="messageStart" value="concat('The property ', $elementName, ' of dcat:Catalog ',$id)"/>
+      <sch:assert test="$resource = true()"><sch:value-of select="$messageStart"/> should be an absolute URI.</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>511. dcat:Dataset property should be an absolute URI.</sch:title>
+    <sch:rule context="//dcat:Dataset/*[name()=('dcat:landingPage', 'dct:language', 'dct:type', 'dcat:theme', 'dct:accessRights', 'foaf:page', 'dct:hasVersion', 'dct:isVersionOf', 'dct:source', 'dct:relation')]">
+      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
+      <sch:let name="elementName" value="name()"/>
+      <sch:let name="resource" value="(* and not(*/@rdf:about)) or ((starts-with(@rdf:resource,'http') or starts-with(@rdf:resource,'ftp') or starts-with(@rdf:resource,'urn')) and @rdf:resource castable as xs:anyURI) or ((starts-with(*/@rdf:about,'http') or starts-with(*/@rdf:about,'ftp') or starts-with(*/@rdf:about,'urn')) and */@rdf:about castable as xs:anyURI)"/>
+      <sch:let name="messageStart" value="concat('The property ', $elementName, ' of dcat:Dataset ',$id)"/>
+      <sch:assert test="$resource = true()"><sch:value-of select="$messageStart"/> should be an absolute URI.</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>512. dcat:Distribution property should be an absolute URI.</sch:title>
+    <sch:rule context="//dcat:Distribution/*[name()=('dct:format', 'dct:license', 'dcat:mediaType', 'dct:rights', 'adms:status', 'foaf:page', 'dct:language', 'dct:conformsTo')]">
+      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
+      <sch:let name="elementName" value="name()"/>
+      <sch:let name="resource" value="(* and not(*/@rdf:about)) or ((starts-with(@rdf:resource,'http') or starts-with(@rdf:resource,'ftp') or starts-with(@rdf:resource,'urn')) and @rdf:resource castable as xs:anyURI) or ((starts-with(*/@rdf:about,'http') or starts-with(*/@rdf:about,'ftp') or starts-with(*/@rdf:about,'urn')) and */@rdf:about castable as xs:anyURI)"/>
+      <sch:let name="messageStart" value="concat('The property ', $elementName, ' of dcat:Distribution ',$id)"/>
+      <sch:assert test="$resource = true()"><sch:value-of select="$messageStart"/> should be an absolute URI.</sch:assert>
+    </sch:rule>
+  </sch:pattern>
 </sch:schema>

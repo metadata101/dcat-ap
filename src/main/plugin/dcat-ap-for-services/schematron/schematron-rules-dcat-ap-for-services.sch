@@ -972,11 +972,10 @@ Source:
       </sch:report>
     </sch:rule>
   </sch:pattern>
-  <sch:pattern>
+  <!--sch:pattern>
     <sch:title>118. dct:type has a maximum cardinality of 1 for dct:LicenseDocument.</sch:title>
     <sch:rule context="//dct:LicenseDocument">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <!--sch:let name="defaultTitle" value="dct:title[@xml:lang = $lang]"/-->
       <sch:let name="title" value="dct:title[1]"/>
       <sch:let name="count" value="count(dct:type)"/>
       <sch:assert test="2 > $count">ERROR: The dct:LicenseDocument "<sch:value-of select="if ($title!='') then $title else $id"/>" has more than one dct:type property.
@@ -984,7 +983,7 @@ Source:
       <sch:report test="2 > $count">The dct:LicenseDocument "<sch:value-of select="if ($title!='') then $title else $id"/>" has no more than one dct:type property.
       </sch:report>
     </sch:rule>
-  </sch:pattern>
+  </sch:pattern-->
 <!-- 119.  foaf:primaryTopic is a required property for Catalog Record-->
 <!-- 120.  dct:modified is a required property for Catalog Record-->
 <!-- 121.  foaf:primaryTopic has a maximum cardinality of 1 for Catalog Record-->
@@ -1516,14 +1515,13 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>505. dct:license property is a rdf:resource.</sch:title>
-    <sch:rule context="//dct:license">
+    <sch:title>505. dct:LicenseDocument property should not be a literal.</sch:title>
+    <sch:rule context="//dct:license/dct:LicenseDocument/dct:type">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="resource" value="(* and not(*/@rdf:about)) or (@rdf:resource and @rdf:resource castable as xs:anyURI) or (*/@rdf:about and */@rdf:about castable as xs:anyURI)"/>
-      <sch:assert test="$resource = true()">A dct:license property has a value that is not a resource.
-      </sch:assert>
-      <sch:report test="$resource = true()">A dct:license property has a value that is a resource.
-      </sch:report>
+      <sch:let name="resource" value="(* and not(*/@rdf:about)) or ((starts-with(@rdf:resource,'http') or starts-with(@rdf:resource,'ftp') or starts-with(@rdf:resource,'urn')) and @rdf:resource castable as xs:anyURI) or ((starts-with(*/@rdf:about,'http') or starts-with(*/@rdf:about,'ftp') or starts-with(*/@rdf:about,'urn')) and */@rdf:about castable as xs:anyURI)"/>
+      <sch:let name="messageStart" value="concat('The property dct:type of dct:LicenseDocument ',$id)"/>
+      <sch:assert test="$resource = true()"><sch:value-of select="$messageStart"/> should not be a literal.</sch:assert>
+      <sch:report test="$resource = true()"><sch:value-of select="$messageStart"/> is not a literal.</sch:report>
     </sch:rule>
   </sch:pattern>
 </sch:schema>
