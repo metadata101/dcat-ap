@@ -31,6 +31,7 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         xmlns:util="java:org.fao.geonet.util.XslUtil"
         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:mvs="http://data.vlaanderen.be/ns/metadata-dcat#"
         xmlns:gn-fn-dcat-metadata="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-metadata"
         exclude-result-prefixes="#all">
 
@@ -111,6 +112,16 @@
         <dct:accessRights>
           <xsl:copy-of select="$concept"/>
         </dct:accessRights>
+      </xsl:when>
+      <xsl:when test="ends-with($thesaurusKey, 'status-van-gebruik')">
+        <mvs:statusVanGebruik>
+          <xsl:copy-of select="$concept"/>
+        </mvs:statusVanGebruik>
+      </xsl:when>
+      <xsl:when test="ends-with($thesaurusKey, 'status-van-ontwikkeling')">
+        <mvs:statusVanOntwikkeling>
+          <xsl:copy-of select="$concept"/>
+        </mvs:statusVanOntwikkeling>
       </xsl:when>
       <xsl:otherwise>
         <xsl:message select="concat('No concept added for a field value of thesaurus ', $thesaurusKey, '. Verify thesaurus-transformation.xsl.')"/>

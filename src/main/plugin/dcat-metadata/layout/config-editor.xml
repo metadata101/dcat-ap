@@ -543,12 +543,11 @@
               <snippet>
                 <mvs:statusVanGebruik>
                   <skos:Concept>
-                    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
                     <skos:prefLabel xml:lang="nl"/>
                     <skos:prefLabel xml:lang="en"/>
                     <skos:prefLabel xml:lang="fr"/>
                     <skos:prefLabel xml:lang="de"/>
-                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+                    <skos:inScheme rdf:resource="http://data.vlaanderen.be/vocabulary/metadata-dcat/status-van-gebruik"/>
                   </skos:Concept>
                 </mvs:statusVanGebruik>
               </snippet>
@@ -560,12 +559,11 @@
               <snippet>
                 <mvs:statusVanOntwikkeling>
                   <skos:Concept>
-                    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
                     <skos:prefLabel xml:lang="nl"/>
                     <skos:prefLabel xml:lang="en"/>
                     <skos:prefLabel xml:lang="fr"/>
                     <skos:prefLabel xml:lang="de"/>
-                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+                    <skos:inScheme rdf:resource="http://data.vlaanderen.be/vocabulary/metadata-dcat/status-van-ontwikkeling"/>
                   </skos:Concept>
                 </mvs:statusVanOntwikkeling>
               </snippet>
@@ -1086,12 +1084,11 @@
               <snippet>
                 <mvs:statusVanGebruik>
                   <skos:Concept>
-                    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
                     <skos:prefLabel xml:lang="nl"/>
                     <skos:prefLabel xml:lang="en"/>
                     <skos:prefLabel xml:lang="fr"/>
                     <skos:prefLabel xml:lang="de"/>
-                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+                    <skos:inScheme rdf:resource="http://data.vlaanderen.be/vocabulary/metadata-dcat/status-van-gebruik"/>
                   </skos:Concept>
                 </mvs:statusVanGebruik>
               </snippet>
@@ -1103,12 +1100,11 @@
               <snippet>
                 <mvs:statusVanOntwikkeling>
                   <skos:Concept>
-                    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
                     <skos:prefLabel xml:lang="nl"/>
                     <skos:prefLabel xml:lang="en"/>
                     <skos:prefLabel xml:lang="fr"/>
                     <skos:prefLabel xml:lang="de"/>
-                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+                    <skos:inScheme rdf:resource="http://data.vlaanderen.be/vocabulary/metadata-dcat/status-van-ontwikkeling"/>
                   </skos:Concept>
                 </mvs:statusVanOntwikkeling>
               </snippet>
