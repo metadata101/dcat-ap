@@ -7,7 +7,7 @@
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-voor-servicesl#"
+                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:xslutil="java:org.fao.geonet.util.XslUtil"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"

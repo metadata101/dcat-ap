@@ -37,7 +37,7 @@
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
                 xmlns:spdx="http://spdx.org/rdf/terms#"
                 xmlns:schema="http://schema.org/"
-                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-voor-servicesl#"
+                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:gn-fn-render="http://geonetwork-opensource.org/xsl/functions/render"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 xmlns:gn-fn-dcat-metadata="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-metadata"

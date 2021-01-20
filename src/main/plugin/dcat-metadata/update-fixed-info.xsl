@@ -35,7 +35,7 @@
                 xmlns:schema="http://schema.org/"
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:gml="http://www.opengis.net/gml"
-                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-voor-servicesl#"
+                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 xmlns:gn-fn-dcat-metadata="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-metadata"
@@ -464,7 +464,7 @@
     <xsl:namespace name="schema" select="'http://schema.org/'"/>
     <xsl:namespace name="dc" select="'http://purl.org/dc/elements/1.1/'"/>
     <xsl:if test="$isService">
-      <xsl:namespace name="mvs" select="'http://data.vlaanderen.be/ns/metadata-voor-servicesl#'"/>
+      <xsl:namespace name="mvs" select="'http://data.vlaanderen.be/ns/metadata-dcat#'"/>
     </xsl:if>
   </xsl:template>
 </xsl:stylesheet>

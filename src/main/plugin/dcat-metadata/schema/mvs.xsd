@@ -2,14 +2,14 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
            xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-           xmlns:mvs="http://data.vlaanderen.be/ns/metadata-voor-servicesl#"
-           targetNamespace="http://data.vlaanderen.be/ns/metadata-voor-servicesl#"
+           xmlns:mvs="http://data.vlaanderen.be/ns/metadata-dcat#"
+           targetNamespace="http://data.vlaanderen.be/ns/metadata-dcat#"
            elementFormDefault="qualified"
            attributeFormDefault="qualified">
   <xs:annotation>
     <xs:documentation xml:lang="en">
       Metadata voor services Schema (relevant parts for DCAT-AP)
-      XML Schema for http://data.vlaanderen.be/ns/metadata-voor-servicesl# namespace
+      XML Schema for http://data.vlaanderen.be/ns/metadata-dcat# namespace
 
       Created 2020-12-02
       Modified 2020-12-02
