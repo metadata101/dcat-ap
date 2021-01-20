@@ -427,6 +427,7 @@
       </xsl:if>
       <xsl:apply-templates select="dct:title"/>
       <xsl:apply-templates select="dct:description"/>
+      <xsl:apply-templates select="dct:publisher"/>
       <xsl:apply-templates select="dcat:endpointUrl"/>
       <xsl:apply-templates select="dcat:endpointDescription"/>
       <xsl:apply-templates select="dcat:servesDataset"/>

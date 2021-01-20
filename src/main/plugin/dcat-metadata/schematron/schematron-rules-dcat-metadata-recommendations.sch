@@ -53,7 +53,7 @@ Source:
   <sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
   <sch:pattern>
     <sch:title>2. dct:type is a recommended property for Agent.</sch:title>
-    <sch:rule context="//foaf:Agent[not(name(../..) = 'dcat:Catalog')]">
+    <sch:rule context="//foaf:Agent[not(name(../..) = ('dcat:Catalog', 'dcat:DataService'))]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="missingProperty" value="not(dct:type)"/>
       <sch:assert test="$missingProperty = false()">WARNING: The foaf:Agent "<sch:value-of select="$id"/>" does not have a dct:type property.

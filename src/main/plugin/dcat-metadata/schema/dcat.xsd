@@ -101,8 +101,7 @@
             <xs:element name="contactPoint" type="vcard:Organization" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:modified" minOccurs="0" maxOccurs="1"/>
-            <!-- dct:publisher mandatory for DCAT-AP-VL otherwise minOccurs="0" -->
-            <xs:element ref="dct:publisher" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="1"/>
             <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="theme" type="skos:Concept" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/>
@@ -174,6 +173,7 @@
             <xs:element ref="dct:identifier" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="1"/>
             <xs:element name="endpointUrl" type="rdf:Resource" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element name="endpointDescription" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="servesDataset" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>

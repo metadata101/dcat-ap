@@ -18,6 +18,7 @@
       <xsl:copy-of select="dct:identifier|
                            dct:title|
                            dct:description|
+                           dct:publisher|
                            dcat:endpointUrl|
                            dcat:endpointDescription"/>
 

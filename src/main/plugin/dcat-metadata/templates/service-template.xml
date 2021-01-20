@@ -19,6 +19,11 @@
         <dct:identifier>1fda86f5-f007-49df-a6d0-c223420b3e2f</dct:identifier>
         <dct:title xml:lang="nl">Open data: Sjabloon voor Metadata van Services (DCAT versie 2.0)</dct:title>
         <dct:description/>
+        <dct:publisher>
+          <foaf:Agent>
+            <foaf:name xml:lang="nl"/>
+          </foaf:Agent>
+        </dct:publisher>
         <dcat:endpointUrl rdf:resource=""/>
         <dcat:endpointDescription/>
         <dcat:servesDataset rdf:resource=""/>

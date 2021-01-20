@@ -457,6 +457,18 @@
         <section name="basicInformation">
           <field name="FieldId400" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title"/>
           <field name="FieldId401" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description"/>
+          <field name="FieldId421" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher"/>
+          <action type="add" name="FieldId421" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" required="true()">
+            <template>
+              <snippet>
+                <dct:publisher>
+                  <foaf:Agent>
+                    <foaf:name xml:lang="nl"/>
+                  </foaf:Agent>
+                </dct:publisher>
+              </snippet>
+            </template>
+          </action>
           <field name="FieldId402" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
           <field name="FieldId403" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription"/>
           <field name="FieldId404" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
@@ -651,6 +663,8 @@
         <thesaurus key="external.theme.licence-type" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.status" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.access-right" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.status-van-gebruik" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.status-van-ontwikkeling" maxtags="1" transformations="" fieldset="false"/>
       </thesaurusList>
     </view>
     <view name="advanced" displayTooltips="true" upAndDownControlHidden="true">
@@ -962,6 +976,18 @@
               </snippet>
             </template>
           </action>
+          <field name="FieldId421" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher"/>
+          <action type="add" name="FieldId421" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" required="true()">
+            <template>
+              <snippet>
+                <dct:publisher>
+                  <foaf:Agent>
+                    <foaf:name xml:lang="nl"/>
+                  </foaf:Agent>
+                </dct:publisher>
+              </snippet>
+            </template>
+          </action>
           <field name="FieldId402" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
           <action type="add" btnLabel="FieldId402" or="endpointUrl" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
@@ -1161,6 +1187,8 @@
         <thesaurus key="external.theme.licence-type" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.status" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.access-right" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.status-van-gebruik" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.status-van-ontwikkeling" maxtags="1" transformations="" fieldset="false"/>
       </thesaurusList>
     </view>
     <view name="xml">
