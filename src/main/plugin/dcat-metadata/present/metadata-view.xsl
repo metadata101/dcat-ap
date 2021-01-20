@@ -22,13 +22,10 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 
-<beans
-    xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <bean id="dcat-metadataSchemaPlugin"
-        class="org.fao.geonet.schema.dcatap.DCATAPSchemaPlugin"/>
-  <bean id="dcatap" class="org.fao.geonet.kernel.harvest.harvester.dcatap.DCATAPHarvester"
-        scope="prototype"/>
-</beans>
+    <xsl:template name="view-with-header-dcat-metadata">
+        <xsl:call-template name="metadata-dcat-metadataview-simple"></xsl:call-template>
+  </xsl:template>
+
+</xsl:stylesheet>

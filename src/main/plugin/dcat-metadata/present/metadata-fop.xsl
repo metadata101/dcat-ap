@@ -22,13 +22,22 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 
-<beans
-    xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  exclude-result-prefixes="xs"
+  version="2.0">
 
-  <bean id="dcat-metadataSchemaPlugin"
-        class="org.fao.geonet.schema.dcatap.DCATAPSchemaPlugin"/>
-  <bean id="dcatap" class="org.fao.geonet.kernel.harvest.harvester.dcatap.DCATAPHarvester"
-        scope="prototype"/>
-</beans>
+  <xsl:template name="metadata-fop-dcat-metadata">
+    <xsl:param name="schema"/>
+
+    <xsl:for-each select="*">
+      <xsl:call-template name="blockElementFop">
+        <xsl:with-param name="block">
+          <xsl:apply-templates mode="elementFop" select=".">
+            <xsl:with-param name="schema" select="$schema"/>
+          </xsl:apply-templates>
+        </xsl:with-param>
+      </xsl:call-template>
+    </xsl:for-each>
+  </xsl:template>
+</xsl:stylesheet>

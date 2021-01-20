@@ -34,9 +34,9 @@ index fd2c6adb1b..c7f111e6bc 100644
                    //  return defaultTab;
                    //}
 +
-+                  //Default tab id for dcat-ap-for-services metadata is "defaultDataset" in order to differentiate it's label
++                  //Default tab id for dcat-metadata metadata is "defaultDataset" in order to differentiate it's label
 +                  //with "default" view.
-+                  'dcat-ap-for-services': function (md) {
++                  'dcat-metadata': function (md) {
 +                    return md.type.includes('dataset') ? 'defaultDataset' : 'defaultService';
 +                  }
                  };
@@ -53,7 +53,7 @@ index fd2c6adb1b..c7f111e6bc 100644
 @@ -274,6 +281,9 @@
                      + gnCurrentEdit.displayTooltipsMode ;
                  }
- 
+
 +                editorFormUrl += '&displaySections='
 +                	+ (gnCurrentEdit.displaySections === true ? 'true' : 'false');
 +
@@ -63,7 +63,7 @@ index fd2c6adb1b..c7f111e6bc 100644
 @@ -382,6 +392,14 @@
            gnUtilityService.scrollTo();
          }
- 
+
 +        // If switching between default and advanced view (or the opposite)
 +        // Stay on the current tab (Dataset/Distribution)
 +        if ($('#currTab')[0].value === 'defaultDistribution' && tabIdentifier === 'advancedDataset') {
@@ -74,7 +74,7 @@ index fd2c6adb1b..c7f111e6bc 100644
 +
          $('#currTab')[0].value = tabIdentifier;
          $('#flat')[0].value = mode === 'flat';
- 
+
 diff --git a/web/src/main/webapp/xslt/common/base-variables-metadata.xsl b/web/src/main/webapp/xslt/common/base-variables-metadata.xsl
 index a2327ebd49..0ba78db9f2 100644
 --- a/web/src/main/webapp/xslt/common/base-variables-metadata.xsl
@@ -89,8 +89,8 @@ index a2327ebd49..0ba78db9f2 100644
 +                        else if ($viewConfig/@displaySections)
 +                        then $viewConfig/@displaySections = 'true'
 +                        else true()"/>
- 
- 
+
+
  </xsl:stylesheet>
 diff --git a/web/src/main/webapp/xslt/ui-metadata/edit/edit.xsl b/web/src/main/webapp/xslt/ui-metadata/edit/edit.xsl
 index db348a5030..fe4a62a05f 100644
@@ -114,14 +114,14 @@ index a1c0ded633..1f0fd0ce0f 100644
      element of same kind. eg. do not display label. -->
      <xsl:param name="isFirst" required="no" as="xs:boolean" select="true()"/>
 +    <xsl:param name="isForceLabel" required="no" as="xs:boolean" select="false()"/>
- 
+
      <xsl:param name="isReadOnly" required="no" as="xs:boolean" select="false()"/>
- 
+
 +    <!-- Mandatory field inside optional fieldset. Black '*' instead of red -->
 +    <xsl:param name="subRequired" required="no" as="xs:boolean" select="false()"/>
 +
      <xsl:variable name="isMultilingual" select="count($value/values) > 0"/>
- 
+
      <xsl:variable name="isoType" select="if (../@gco:isoType) then ../@gco:isoType else ''"/>
 @@ -316,6 +320,7 @@
          <xsl:with-param name="childEditInfo" select="$parentEditInfo"/>
@@ -138,12 +138,12 @@ index a1c0ded633..1f0fd0ce0f 100644
 +    <!-- Collapsed fieldsets reopens when saving, this param can be
 +    used to collapse again the fieldset after loading -->
 +    <xsl:param name="isSlideToggle" select="false()" required="no"/>
- 
- 
+
+
      <xsl:variable name="hasXlink" select="@xlink:href"/>
 @@ -363,7 +371,7 @@
                class="{if ($hasXlink) then 'gn-has-xlink' else ''} gn-{substring-after(name(), ':')}">
- 
+
        <legend class="{$cls}"
 -              data-gn-slide-toggle=""
 +              data-gn-slide-toggle="{$isSlideToggle}"
@@ -186,16 +186,16 @@ index e49bf51848..59179b0ed5 100644
              ($nonExistingChildParent/* and count($nodes/*) = 0 and @ifNotExist)">
              <xsl:variable name="childName" select="@or"/>
 +            <xsl:variable name="xpath" select="@xpath"/>
- 
+
              <xsl:for-each select="$nonExistingChildParent/*/gn:child[@name = $childName]">
                <xsl:variable name="name" select="concat(@prefix, ':', @name)"/>
- 
+
 -              <xsl:variable name="labelConfig"
 -                            select="gn-fn-metadata:getLabel($schema, $name, $labels)"/>
 +              <xsl:if test="ends-with($xpath,$name) or not($xpath)">
 +                <xsl:variable name="labelConfig"
 +                              select="gn-fn-metadata:getLabel($schema, $name, $labels)"/>
- 
+
 -              <saxon:call-template name="{concat('dispatch-', $schema)}">
 -                <xsl:with-param name="base" select="."/>
 -                <xsl:with-param name="overrideLabel"
@@ -215,9 +215,9 @@ index e49bf51848..59179b0ed5 100644
 +              </xsl:if>
              </xsl:for-each>
            </xsl:if>
- 
+
 @@ -697,14 +700,14 @@
- 
+
        <!-- If multiple elements $elementName contains multiple values. Use the first one in getLabel to avoid failure. -->
        <xsl:variable name="labelConfig"
 -                    select="gn-fn-metadata:getLabel($schema, $elementName[1], $labels)"/>
@@ -231,7 +231,7 @@ index e49bf51848..59179b0ed5 100644
 -      <xsl:variable name="btnClass" select="if (@btnClass != '') then @btnLabel else $labelConfig/btnClass"/>
 +      <xsl:variable name="btnClass" select="if (@btnClass != '') then @btnClass else $labelConfig/btnClass"/>
        <xsl:variable name="btnLabelTranslation" select="$strings/*[name() = $btnLabel]"/>
- 
+
        <xsl:choose>
 @@ -745,7 +748,7 @@
                <xsl:with-param name="parentEditInfo" select="../gn:element"/>
@@ -242,6 +242,6 @@ index e49bf51848..59179b0ed5 100644
              </xsl:call-template>
            </xsl:for-each>
          </xsl:otherwise>
--- 
+--
 2.23.0.windows.1
 
