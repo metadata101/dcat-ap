@@ -399,7 +399,7 @@
   </xsl:template>
 
   <!-- Reformat 'Vlaamse Open data' -->
-  <xsl:template match="dcat:keyword[translate(text(), 'abcdefghijklmonpqrstuvwxyz', 'ABCDEFGHIJKLMONPQRSTUVWXYZ') = 'VLAAMSE OPEN DATA']" priority="10">
+  <xsl:template match="dcat:Dataset/dcat:keyword[translate(text(), 'abcdefghijklmonpqrstuvwxyz', 'ABCDEFGHIJKLMONPQRSTUVWXYZ') = 'VLAAMSE OPEN DATA']" priority="10">
     <dcat:keyword xml:lang="nl">Vlaamse Open data</dcat:keyword>
   </xsl:template>
 
@@ -433,10 +433,7 @@
       <xsl:apply-templates select="dcat:servesDataset"/>
       <xsl:apply-templates select="dcat:landingPage"/>
       <xsl:apply-templates select="dcat:contactPoint"/>
-      <xsl:apply-templates
-        select="dcat:keyword[not(translate(text(), 'abcdefghijklmonpqrstuvwxyz', 'ABCDEFGHIJKLMONPQRSTUVWXYZ') = 'VLAAMSE OPEN DATA')]"/>
-      <!-- Add the missing keyword -->
-      <dcat:keyword xml:lang="nl">Vlaamse Open data</dcat:keyword>
+      <xsl:apply-templates select="dcat:keyword"/>
       <xsl:apply-templates select="dct:language"/>
       <xsl:apply-templates select="owl:versionInfo"/>
       <xsl:apply-templates select="mvs:authenticatie"/>
