@@ -22,13 +22,22 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 
-<beans
-    xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:gmd="http://www.isotc211.org/2005/gmd"
+                xmlns:gco="http://www.isotc211.org/2005/gco"
+                xmlns:gn="http://www.fao.org/geonetwork"
+                xmlns:gn-fn-metadata-dcat="http://geonetwork-opensource.org/xsl/functions/profiles/metadata-dcat"
+                exclude-result-prefixes="#all">
+  <xsl:import href="../../iso19139/layout/utility-vacuum.xsl"/>
 
-  <bean id="metadata-dcatSchemaPlugin"
-        class="org.fao.geonet.schema.dcatap.DCATAPSchemaPlugin"/>
-  <bean id="dcatap" class="org.fao.geonet.kernel.harvest.harvester.dcatap.DCATAPHarvester"
-        scope="prototype"/>
-</beans>
+  <!-- Vacuum utility rely on ISO19139 one. -->
+  <xsl:function name="gn-fn-metadata-dcat:vacuum" as="node()">
+    <xsl:param name="metadata" as="node()"/>
+    <xsl:for-each select="$metadata/*">
+      <xsl:apply-templates mode="vacuum-iso19139"
+                           select="."/>
+    </xsl:for-each>
+  </xsl:function>
+
+</xsl:stylesheet>

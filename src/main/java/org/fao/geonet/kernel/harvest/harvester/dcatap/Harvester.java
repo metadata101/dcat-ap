@@ -115,7 +115,7 @@ class Harvester implements IHarvester<HarvestResult> {
         this.log = log;
         this.context = context;
         this.params = params;
-        this.xslFile = context.getApplicationContext().getBean(DataManager.class).getSchemaDir("dcat-metadata")
+        this.xslFile = context.getApplicationContext().getBean(DataManager.class).getSchemaDir("metadata-dcat")
             .resolve("import/rdf-to-xml.xsl");
     }
 
@@ -391,7 +391,7 @@ class Harvester implements IHarvester<HarvestResult> {
                 //xmlOutputter.output(dcatXML,System.out);
 
 
-                return new DCATAPRecordInfo(datasetUuid, datasetId, modified, "dcat-metadata", "TODO: source?", dcatXML);
+                return new DCATAPRecordInfo(datasetUuid, datasetId, modified, "metadata-dcat", "TODO: source?", dcatXML);
             } else {
                 String errorMessage = "No dcat:Dataset found with datasetId " + datasetId + ", rdf:about attribute empty?";
                 HarvestError harvestError = new HarvestError(context, new Exception(errorMessage));

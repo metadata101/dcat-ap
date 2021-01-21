@@ -22,13 +22,25 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 
-<beans
-    xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:dcat="http://www.w3.org/ns/dcat#"
+                version="2.0"
+                exclude-result-prefixes="#all">
 
-  <bean id="metadata-dcatSchemaPlugin"
-        class="org.fao.geonet.schema.dcatap.DCATAPSchemaPlugin"/>
-  <bean id="dcatap" class="org.fao.geonet.kernel.harvest.harvester.dcatap.DCATAPHarvester"
-        scope="prototype"/>
-</beans>
+  <xsl:include href="utility-tpl-multilingual.xsl"/>
+
+  <xsl:template name="get-metadata-dcat-is-service">
+    <xsl:value-of
+      select="count($metadata/dcat:Catalog/dcat:service) > 0"/>
+  </xsl:template>
+
+  <xsl:template name="get-metadata-dcat-title">
+    <xsl:value-of select="$metadata/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title[1]|$metadata/dcat:Catalog/dcat:service/dcat:DataService/dct:title[1]"/>
+  </xsl:template>
+
+  <xsl:template name="get-metadata-dcat-extents-as-json">[]</xsl:template>
+
+  <xsl:template name="get-metadata-dcat-online-source-config"/>
+
+</xsl:stylesheet>
