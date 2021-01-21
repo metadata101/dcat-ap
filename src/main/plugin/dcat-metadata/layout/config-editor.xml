@@ -619,6 +619,7 @@
         <for name="dct:modified" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified"/>
         <for name="dct:issued" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued"/>
         <for name="xml:lang" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher/foaf:Agent/foaf:name"/>
+        <for name="xml:lang" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/foaf:name"/>
         <!-- Publisher -->
         <for name="foaf:Agent"/>
         <for name="foaf:name"/>
@@ -977,7 +978,7 @@
             </template>
           </action>
           <field name="FieldId421" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher"/>
-          <action type="add" name="FieldId421" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" required="true()">
+          <action type="add" name="FieldId421" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
                 <dct:publisher>
@@ -1012,7 +1013,6 @@
               </snippet>
             </template>
           </action>
-
           <field name="FieldId407" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword"/>
           <action type="add" name="FieldId407" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
