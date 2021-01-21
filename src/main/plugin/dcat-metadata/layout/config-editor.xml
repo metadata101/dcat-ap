@@ -960,7 +960,7 @@
           <!--<section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample" or="sample" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset" name="FieldId315"/>-->
         </section>
       </tab>
-      <tab id="advancedService" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
+      <tab id="advancedService" default="true" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
         <section name="basicInformation">
           <field name="FieldId400" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title" />
           <action type="add" name="FieldId400" or="title" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
