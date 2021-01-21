@@ -347,8 +347,7 @@
 
   <!-- Hide from the editor in default view -->
   <xsl:template mode="mode-dcat-metadata" priority="2001"
-                match="*[((name(.) = 'dct:type' and name(..)='foaf:Agent') or
-                          (name(.) = 'dcat:downloadURL' and name(..)='dcat:Distribution') or
+                match="*[((name(.) = 'dcat:downloadURL' and name(..)='dcat:Distribution') or
                           (name(.) = 'dct:issued' and name(..)='dcat:Distribution') or
                           (name(.) = 'dct:modified' and name(..)='dcat:Distribution') or
                           (name(.) = 'dct:language' and name(..)='dcat:Distribution') or

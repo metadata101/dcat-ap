@@ -622,6 +622,7 @@
         <for name="xml:lang" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/foaf:name"/>
         <!-- Publisher -->
         <for name="foaf:Agent"/>
+        <for name="foaf:Agent/dct:type"/>
         <for name="foaf:name"/>
         <!-- Temporal -->
         <for name="dct:PeriodOfTime"/>
