@@ -30,8 +30,9 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.fao.geonet.kernel.schema.SchemaPlugin;
 import org.fao.geonet.kernel.schema.AssociatedResource;
-import org.fao.geonet.kernel.schema.DcatapAssociatedResourcesSchemaPlugin;
+import org.fao.geonet.kernel.schema.AssociatedResourcesSchemaPlugin;
 import org.fao.geonet.kernel.schema.MultilingualSchemaPlugin;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
@@ -45,12 +46,12 @@ import com.google.common.collect.ImmutableSet;
 /**
  *
  */
-public class DCATAPSchemaPlugin extends org.fao.geonet.kernel.schema.SchemaPlugin implements DcatapAssociatedResourcesSchemaPlugin, MultilingualSchemaPlugin {
+public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResourcesSchemaPlugin, MultilingualSchemaPlugin {
     public static final String IDENTIFIER = "metadata-dcat";
     private static final Pattern UUID_PATTERN = Pattern.compile("([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}");
 
-    private static ImmutableSet<Namespace> allNamespaces;
-    private static Map<String, Namespace> allTypenames;
+    private static final ImmutableSet<Namespace> allNamespaces;
+    private static final Map<String, Namespace> allTypenames;
 
     static {
         allNamespaces = ImmutableSet.<Namespace>builder()
@@ -108,11 +109,6 @@ public class DCATAPSchemaPlugin extends org.fao.geonet.kernel.schema.SchemaPlugi
     public Set<String> getAssociatedSourceUUIDs(Element metadata) {
         ElementFilter elementFilter = new ElementFilter("relation", DCATAPNamespaces.DCT);
         return this.getAssociatedRdfUUIDs(metadata, elementFilter);
-    }
-
-    @Override
-    public Set<String> getAssociatedRelationUUIDs(Element metadata) {
-        return null;
     }
 
     @Override
