@@ -434,7 +434,9 @@
       <xsl:apply-templates select="dcat:landingPage"/>
       <xsl:apply-templates select="dcat:contactPoint"/>
       <xsl:apply-templates select="dcat:keyword"/>
+      <xsl:apply-templates select="dct:accessRights"/>
       <xsl:apply-templates select="dct:language"/>
+      <xsl:apply-templates select="dct:license"/>
       <xsl:apply-templates select="owl:versionInfo"/>
       <xsl:apply-templates select="mvs:authenticatie"/>
       <xsl:apply-templates select="mvs:dienstverleningsKwaliteit"/>

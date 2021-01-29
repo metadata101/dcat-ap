@@ -33,7 +33,9 @@
       <xsl:copy-of select="dcat:landingPage|
                            dcat:contactPoint|
                            dcat:keyword|
+                           dct:accessRights|
                            dct:language|
+                           dct:license|
                            owl:versionInfo|
                            mvs:authenticatie|
                            mvs:dienstverleningsKwaliteit|
