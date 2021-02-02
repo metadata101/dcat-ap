@@ -524,4 +524,7 @@
       <xsl:value-of select="."/>
     </a>
   </xsl:template>
+
+  <!-- Hide fields from view -->
+  <xsl:template mode="render-field" match="dcat:compressFormat|dcat:packageFormat|dcat:spatialResolutionInMeters|dcat:temporalResolution" priority="10"/>
 </xsl:stylesheet>

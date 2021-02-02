@@ -150,6 +150,19 @@
         </dcat:themeTaxonomy>
       </xsl:for-each>
       <xsl:apply-templates select="dcat:dataset|dcat:service"/>
+
+      <xsl:copy-of select="dcat:contactPoint|
+                           dcat:keyword|
+                           dcat:landingPage|
+                           dcat:qualifiedRelation|
+                           dcat:theme|
+                           dct:accessRights|
+                           dct:conformsTo|
+                           dct:creator|
+                           dct:identifier|
+                           dct:isReferencedBy|
+                           dct:relation|
+                           dct:type"/>
     </dcat:Catalog>
   </xsl:template>
   <!-- ================================================================= -->
@@ -208,6 +221,12 @@
       <xsl:apply-templates select="dcat:extension"/>
       <xsl:apply-templates select="dcat:distribution"/>
       <xsl:apply-templates select="adms:sample"/>
+
+      <xsl:apply-templates select="dcat:qualifiedRelation"/>
+      <xsl:apply-templates select="dct:creator"/>
+      <xsl:apply-templates select="dct:isReferencedBy"/>
+      <xsl:apply-templates select="dct:license"/>
+      <xsl:apply-templates select="dct:rights"/>
     </dcat:Dataset>
   </xsl:template>
 
@@ -434,9 +453,7 @@
       <xsl:apply-templates select="dcat:landingPage"/>
       <xsl:apply-templates select="dcat:contactPoint"/>
       <xsl:apply-templates select="dcat:keyword"/>
-      <xsl:apply-templates select="dct:accessRights"/>
       <xsl:apply-templates select="dct:language"/>
-      <xsl:apply-templates select="dct:license"/>
       <xsl:apply-templates select="owl:versionInfo"/>
       <xsl:apply-templates select="mvs:authenticatie"/>
       <xsl:apply-templates select="mvs:dienstverleningsKwaliteit"/>
@@ -445,6 +462,19 @@
       <xsl:apply-templates select="mvs:statusVanGebruik"/>
       <xsl:apply-templates select="mvs:statusVanOntwikkeling"/>
       <xsl:apply-templates select="mvs:wettelijkeBeperkingen"/>
+
+      <xsl:apply-templates select="dcat:qualifiedRelation"/>
+      <xsl:apply-templates select="dcat:theme"/>
+      <xsl:apply-templates select="dct:accessRights"/>
+      <xsl:apply-templates select="dct:conformsTo"/>
+      <xsl:apply-templates select="dct:creator"/>
+      <xsl:apply-templates select="dct:isReferencedBy"/>
+      <xsl:apply-templates select="dct:issued"/>
+      <xsl:apply-templates select="dct:license"/>
+      <xsl:apply-templates select="dct:modified"/>
+      <xsl:apply-templates select="dct:relation"/>
+      <xsl:apply-templates select="dct:rights"/>
+      <xsl:apply-templates select="dct:type"/>
     </dcat:DataService>
   </xsl:template>
 

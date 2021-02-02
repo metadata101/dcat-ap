@@ -28,9 +28,7 @@
       <xsl:copy-of select="dcat:landingPage|
                            dcat:contactPoint|
                            dcat:keyword|
-                           dct:accessRights|
                            dct:language|
-                           dct:license|
                            owl:versionInfo|
                            mvs:authenticatie|
                            mvs:dienstverleningsKwaliteit|
@@ -39,6 +37,19 @@
                            mvs:statusVanGebruik|
                            mvs:statusVanOntwikkeling|
                            mvs:wettelijkeBeperkingen"/>
+
+      <xsl:copy-of select="dcat:qualifiedRelation|
+                           dcat:theme|
+                           dct:accessRights|
+                           dct:conformsTo|
+                           dct:creator|
+                           dct:isReferencedBy|
+                           dct:issued|
+                           dct:license|
+                           dct:modified|
+                           dct:relation|
+                           dct:rights|
+                           dct:type"/>
     </xsl:copy>
   </xsl:template>
 

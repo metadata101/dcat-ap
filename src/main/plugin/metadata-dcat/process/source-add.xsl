@@ -88,6 +88,13 @@ Stylesheet used to update metadata adding a reference to a source record.
                 dcat:extension|
                 dcat:distribution|
                 adms:sample"/>
+
+      <xsl:apply-templates select="dcat:landingPage|
+                                   dcat:qualifiedRelation|
+                                   dct:creator|
+                                   dct:isReferencedBy|
+                                   dct:license|
+                                   dct:rights"/>
     </xsl:copy>
   </xsl:template>
 

@@ -58,6 +58,7 @@
   <xs:element name="accessRights" type="skos:Concept"/>
   <xs:element name="license" type="dct:LicenseDocument"/>
   <xs:element name="bibliographicCitation" type="rdf:PlainLiteral"/>
+  <xs:element name="creator" type="foaf:Agent"/>
   <xs:element name="publisher" type="foaf:Agent"/>
   <xs:element name="type" type="skos:Concept"/>
   <xs:element name="identifier" type="rdf:PlainLiteral"/>

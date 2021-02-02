@@ -88,6 +88,11 @@
                            dct:conformsTo|
                            adms:status|
                            dcat:accessService"/>
+
+      <xsl:copy-of select="dcat:compressFormat|
+                           dcat:packageFormat|
+                           dcat:spatialResolutionInMeters|
+                           dcat:temporalResolution"/>
       <dcat:accessService rdf:resource="{$serviceUrl}"/>
     </xsl:copy>
   </xsl:template>
