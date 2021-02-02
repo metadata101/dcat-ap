@@ -135,9 +135,9 @@
     <btnLabel>URI</btnLabel>
   </element>
   <element name="vcard:street-address" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasAddress/vcard:Address/vcard:street-address">
-    <label>Straat</label>
+    <label>Straat en huisnummer</label>
     <description>Vul aan met straatnaam en huisnummer uit het adres van het contactpunt</description>
-    <btnLabel>Straat</btnLabel>
+    <btnLabel>Straat en huisnummer</btnLabel>
   </element>
   <element name="vcard:locality" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasAddress/vcard:Address/vcard:locality">
     <label>Gemeente</label>
@@ -1739,9 +1739,9 @@
     <btnLabel>URI</btnLabel>
   </element>
   <element name="vcard:street-address" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress/vcard:Address/vcard:street-address">
-    <label>Straat</label>
+    <label>Straat en huisnummer</label>
     <description>Vul aan met straatnaam en huisnummer uit het adres van het contactpunt</description>
-    <btnLabel>Straat</btnLabel>
+    <btnLabel>Straat en huisnummer</btnLabel>
   </element>
   <element name="vcard:locality" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress/vcard:Address/vcard:locality">
     <label>Gemeente</label>
