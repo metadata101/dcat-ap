@@ -314,7 +314,7 @@
   <views>
     <view name="default" displayTooltips="true" upAndDownControlHidden="true">
       <sidePanel>
-        <directive data-gn-onlinesrc-list="" data-types="source|dataset"/>
+        <directive data-gn-onlinesrc-list="" data-types="service|dataset"/>
         <directive data-gn-validation-report=""/>
       </sidePanel>
 
@@ -472,6 +472,14 @@
           <field name="FieldId402" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
           <field name="FieldId403" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription"/>
           <field name="FieldId404" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
+          <action type="add" btnLabel="FieldId404" or="servesDataset" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:servesDataset rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <directive data-gim-add-dataset=""/>
           <field name="FieldId407" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword"/>
           <action type="add" name="FieldId407" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
@@ -671,7 +679,7 @@
     </view>
     <view name="advanced" displayTooltips="true" upAndDownControlHidden="true">
       <sidePanel>
-        <directive data-gn-onlinesrc-list="" data-types="source|dataset"/>
+        <directive data-gn-onlinesrc-list="" data-types="service|dataset"/>
         <directive data-gn-validation-report=""/>
       </sidePanel>
       <tab id="advancedDataset" default="true" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
