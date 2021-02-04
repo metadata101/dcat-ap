@@ -479,11 +479,11 @@
     <xsl:for-each select="dcat:endpointUrl">
       <xsl:variable name="descr">
         <xsl:choose>
-          <xsl:when test="../dcat:endpointDescription[position()]">
-            <xsl:value-of select="../dcat:endpointDescription[position()]"/>
+          <xsl:when test="../dcat:endpointDescription[position()]/@rdf:resource">
+            <xsl:value-of select="../dcat:endpointDescription[position()]/@rdf:resource"/>
           </xsl:when>
-          <xsl:when test="../dcat:endpointDescription[1]">
-            <xsl:value-of select="../dcat:endpointDescription[1]"/>
+          <xsl:when test="../dcat:endpointDescription[1]/@rdf:resource">
+            <xsl:value-of select="../dcat:endpointDescription[1]/@rdf:resource"/>
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="'description'"/>
@@ -510,10 +510,6 @@
       <Field name="link"
              string="{concat($name, '|',$descr, '|', @rdf:resource, '|WWW:LINK-1.0-http--link|WWW:LINK-1.0-http--link|', position())}"
              store="true" index="false" />
-    </xsl:for-each>
-
-    <xsl:for-each select="dcat:endpointDescription">
-      <Field name="abstract" string="{string(.)}" store="true" index="true"/>
     </xsl:for-each>
   </xsl:template>
 

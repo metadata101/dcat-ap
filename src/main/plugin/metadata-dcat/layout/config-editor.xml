@@ -20,7 +20,6 @@
     <for name="dcat:byteSize" use="number"/>
     <for name="adms:versionNotes" use="textarea"/>
     <for name="dct:description" use="textarea"/>
-    <for name="dcat:endpointDescription" use="textarea"/>
     <for name="dct:issued" templateModeOnly="true" forceLabel="true" label="FieldId129" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued">
       <template>
         <values>
@@ -159,6 +158,16 @@
         </values>
         <snippet>
           <dcat:endpointUrl rdf:resource="{{FieldId402}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="dcat:endpointDescription" templateModeOnly="true" forceLabel="true" label="FieldId403">
+      <template>
+        <values>
+          <key label="FieldId403" xpath="@rdf:resource" tooltip="dcat:endpointDescription|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription"/>
+        </values>
+        <snippet>
+          <dcat:endpointDescription rdf:resource="{{FieldId403}}"/>
         </snippet>
       </template>
     </for>
@@ -1010,7 +1019,7 @@
           <action type="add" name="FieldId403" or="endpointDescription" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
-                <dcat:endpointDescription/>
+                <dcat:endpointDescription rdf:resource=""/>
               </snippet>
             </template>
           </action>

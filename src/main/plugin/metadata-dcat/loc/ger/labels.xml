@@ -1563,6 +1563,11 @@
     <description>Een beschrijving van de diensten die beschikbaar zijn via de end-points, met inbegrip van hun werking, parameters, enz.</description>
     <btnLabel>Endpointbeschrijving</btnLabel>
   </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription/@rdf:resource">
+    <label>Endpointbeschrijving</label>
+    <description>Een beschrijving van de diensten die beschikbaar zijn via de end-points, met inbegrip van hun werking, parameters, enz.</description>
+    <btnLabel>Endpointbeschrijving</btnLabel>
+  </element>
   <element name="dcat:servesDataset" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset">
     <label>Biedt informatie aan over</label>
     <description>Tooltip: Biedt informatie aan over</description>

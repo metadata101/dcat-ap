@@ -220,7 +220,7 @@
 
   <!-- Field with lang : display only field of current lang or first one if not exist -->
   <xsl:template mode="render-field"
-                match="dct:title|dct:description|dcat:endpointDescription|foaf:name|adms:versionNotes">
+                match="dct:title|dct:description|foaf:name|adms:versionNotes">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <xsl:variable name="name" select="name()"/>
@@ -467,7 +467,7 @@
 
   <!-- ########################## -->
   <!-- Render values for text with clickable URL ... -->
-  <xsl:template mode="render-value" match="dct:title|dct:description|dcat:endpointDescription|owl:versionInfo|adms:versionNotes|dct:LicenseDocument/dct:identifier">
+  <xsl:template mode="render-value" match="dct:title|dct:description|owl:versionInfo|adms:versionNotes|dct:LicenseDocument/dct:identifier">
     <xsl:call-template name="linkify">
       <xsl:with-param name="txt" select="."/>
     </xsl:call-template>

@@ -25,7 +25,7 @@
           </foaf:Agent>
         </dct:publisher>
         <dcat:endpointUrl rdf:resource=""/>
-        <dcat:endpointDescription/>
+        <dcat:endpointDescription rdf:resource=""/>
         <dcat:servesDataset rdf:resource=""/>
         <dcat:landingPage rdf:resource=""/>
         <dcat:contactPoint>
