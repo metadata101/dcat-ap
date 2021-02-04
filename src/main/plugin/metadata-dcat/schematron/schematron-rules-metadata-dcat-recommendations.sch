@@ -290,14 +290,43 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>301. dcat:contactPoint is a recommended property for DataService.</sch:title>
+    <sch:title>302. dcat:endpointDescription is a recommended property for dcat:DataService.</sch:title>
     <sch:rule context="//dcat:DataService">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="noContactPoint" value="not(dcat:contactPoint)"/>
-      <sch:assert test="$noContactPoint = false()">WARNING: The dcat:DataService "<sch:value-of select="$id"/>" does not have a dcat:contactPoint.
+      <sch:let name="noEndpointDescription" value="not(dcat:endpointDescription)"/>
+      <sch:assert test="$noEndpointDescription = false()">WARNING: The dcat:DataService "<sch:value-of select="$id"/>" does not have a dcat:endpointDescription.
       </sch:assert>
-      <sch:report test="$noContactPoint = false()">The dcat:DataService "<sch:value-of select="$id"/>" has a dcat:contactPoint "<sch:value-of select="dcat:contactPoint/*/@rdf:about/string()"/>".
+      <sch:report test="$noEndpointDescription = false()">The dcat:DataService "<sch:value-of select="$id"/>" has a dcat:endpointDescription.
       </sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>303. dcat:servesDataset is a recommended property for dcat:DataService.</sch:title>
+    <sch:rule context="//dcat:DataService">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="noServesDataset" value="not(dcat:servesDataset)"/>
+      <sch:assert test="$noServesDataset = false()">WARNING: The dcat:DataService "<sch:value-of select="$id"/>" does not have a dcat:servesDataset.
+      </sch:assert>
+      <sch:report test="$noServesDataset = false()">The dcat:DataService "<sch:value-of select="$id"/>" has a dcat:servesDataset.
+      </sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>351. dcat:endpointDescription property is a rdf:resource</sch:title>
+    <sch:rule context="//dcat:endpointDescription">
+      <sch:let name="resource" value="(* and not(*/@rdf:about)) or (@rdf:resource and @rdf:resource castable as xs:anyURI) or (*/@rdf:about and */@rdf:about castable as xs:anyURI)"/>
+      <sch:let name="content" value="@rdf:resource/string()"/>
+      <sch:assert test="$resource = true()">A dcat:endpointDescription has a value that is not a resource. Value: "<sch:value-of select="$content"/>"</sch:assert>
+      <sch:report test="$resource = true()">A dcat:endpointDescription has a value that is a resource. Value: "<sch:value-of select="$content"/>"</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>352. dcat:servesDataset property is a rdf:resource</sch:title>
+    <sch:rule context="//dcat:servesDataset">
+      <sch:let name="resource" value="(* and not(*/@rdf:about)) or (@rdf:resource and @rdf:resource castable as xs:anyURI) or (*/@rdf:about and */@rdf:about castable as xs:anyURI)"/>
+      <sch:let name="content" value="@rdf:resource/string()"/>
+      <sch:assert test="$resource = true()">A dcat:servesDataset has a value that is not a resource. Value: "<sch:value-of select="$content"/>"</sch:assert>
+      <sch:report test="$resource = true()">A dcat:servesDataset has a value that is a resource. Value: "<sch:value-of select="$content"/>"</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
