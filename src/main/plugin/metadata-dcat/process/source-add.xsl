@@ -51,8 +51,7 @@ Stylesheet used to update metadata adding a reference to a source record.
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template
-    match="dcat:Dataset" priority="2">
+  <xsl:template match="dcat:Dataset" priority="2">
 
     <xsl:copy>
       <xsl:copy-of select="@*"/>
@@ -93,7 +92,6 @@ Stylesheet used to update metadata adding a reference to a source record.
                                    dcat:qualifiedRelation|
                                    dct:creator|
                                    dct:isReferencedBy|
-                                   dct:license|
                                    dct:rights"/>
     </xsl:copy>
   </xsl:template>

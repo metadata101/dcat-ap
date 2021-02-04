@@ -144,7 +144,6 @@
             <xs:element name="qualifiedRelation" type="dcat:Relationship" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:creator" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="dct:license" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
           <xs:attribute ref="rdf:about"/>

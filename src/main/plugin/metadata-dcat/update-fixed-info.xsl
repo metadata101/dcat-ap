@@ -225,7 +225,6 @@
       <xsl:apply-templates select="dcat:qualifiedRelation"/>
       <xsl:apply-templates select="dct:creator"/>
       <xsl:apply-templates select="dct:isReferencedBy"/>
-      <xsl:apply-templates select="dct:license"/>
       <xsl:apply-templates select="dct:rights"/>
     </dcat:Dataset>
   </xsl:template>
