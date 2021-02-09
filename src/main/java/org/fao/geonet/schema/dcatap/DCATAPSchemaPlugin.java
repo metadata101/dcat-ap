@@ -23,12 +23,10 @@
 
 package org.fao.geonet.schema.dcatap;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.fao.geonet.kernel.schema.SchemaPlugin;
 import org.fao.geonet.kernel.schema.AssociatedResource;
@@ -101,6 +99,12 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
     }
 
     @Override
+    public Set<String> getAssociatedExternalDatasetLinks(Element metadata, String nodeUrl) {
+        ElementFilter elementFilter = new ElementFilter("servesDataset", DCATAPNamespaces.DCAT);
+        return this.getAssociatedExternalRdfLinks(metadata, elementFilter, nodeUrl);
+    }
+
+    @Override
     public Set<String> getAssociatedFeatureCatalogueUUIDs(Element metadata) {
         return null;
     }
@@ -148,5 +152,22 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
             }
         }
         return uuids;
+    }
+
+    private Set<String> getAssociatedExternalRdfLinks(Element metadata, ElementFilter filter, String nodeUrl) {
+        Set<String> rdfAboutAttributes = Xml.filterElementValues(
+            metadata,
+            filter,
+            null,
+            null,
+            "resource",
+            DCATAPNamespaces.RDF);
+
+        return rdfAboutAttributes.stream()
+            .filter(rdfAboutAttribute -> {
+                Matcher matcher = UUID_PATTERN.matcher(rdfAboutAttribute);
+                return matcher.find() && !rdfAboutAttribute.startsWith(nodeUrl);
+            })
+            .collect(Collectors.toSet());
     }
 }
