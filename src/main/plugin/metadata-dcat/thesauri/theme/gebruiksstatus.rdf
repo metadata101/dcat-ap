@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+  <skos:ConceptScheme rdf:about="https://data.vlaanderen.be/id/conceptscheme/gebruiksstatus">
+    <dc:title>Conceptscheme gebruiksstatus</dc:title>
+    <skos:prefLabel xml:lang="nl">Conceptscheme gebruiksstatus</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Schéma de concept des status d'utilisation</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Concept scheme use status</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Concept scheme use status</skos:prefLabel>
+    <skos:definition xml:lang="nl">Codelijst voor de gebruikstoestand van een software service  aan te duiden.</skos:definition>
+    <skos:definition xml:lang="fr">Liste de codes pour indiquer l'état d'utilisation d'un service logiciel.</skos:definition>
+    <skos:definition xml:lang="en">Codelist to indicate the use status of a software service.</skos:definition>
+    <skos:definition xml:lang="de">Codelist to indicate the use status of a software service.</skos:definition>
+  </skos:ConceptScheme>
+
+  <skos:Concept rdf:about="https://data.vlaanderen.be/id/concept/gebruiksstatus/design">
+    <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/gebruiksstatus"/>
+    <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/gebruiksstatus"/>
+    <skos:definition xml:lang="nl">De service is in ontwerp/in ontwikkeling. Veranderingen kunnen dus snel en ontverwacht gebeuren. </skos:definition>
+    <skos:prefLabel xml:lang="nl">in ontwikkeling</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">en développement</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">in development</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">in development</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://data.vlaanderen.be/id/concept/gebruiksstatus/live">
+    <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/gebruiksstatus"/>
+    <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/gebruiksstatus"/>
+    <skos:definition xml:lang="nl">De service is in actief gebruik. Stabiliteit wordt nagestreefd </skos:definition>
+    <skos:prefLabel xml:lang="nl">live</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">live</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">live</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">live</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://data.vlaanderen.be/id/concept/gebruiksstatus/sunset">
+    <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/gebruiksstatus"/>
+    <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/gebruiksstatus"/>
+    <skos:definition xml:lang="nl">De service is zijn laatste levensfase. Geen veranderingen meer verwacht, uitgezonderd van belangrijke (security) patches. </skos:definition>
+    <skos:prefLabel xml:lang="nl">in uitfasering</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">en phase d'élimination</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">in phase out</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">in phase out</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://data.vlaanderen.be/id/concept/gebruiksstatus/deprecated">
+    <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/gebruiksstatus"/>
+    <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/gebruiksstatus"/>
+    <skos:definition xml:lang="nl">De service is nog beschikbaar maar is nog slechts beschikbaar om de overstap te vergemakkelijken naar een levensfase. Geen nieuwe aansluitingen zijn mogelijk. </skos:definition>
+    <skos:prefLabel xml:lang="nl">offline</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">hors ligne</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">offline</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">offline</skos:prefLabel>
+  </skos:Concept>
+</rdf:RDF>

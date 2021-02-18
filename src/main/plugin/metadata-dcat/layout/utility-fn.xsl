@@ -35,7 +35,7 @@
   <xsl:variable name="inSchemeAuthorityBaseUrl" select="'http://publications.europa.eu/resource/authority/'"/>
   <xsl:variable name="inSchemeAuthBaseUrl" select="'http://vocab.belgif.be/auth/'"/>
   <xsl:variable name="inSchemeAdmsBaseUrl" select="'http://purl.org/adms/'"/>
-  <xsl:variable name="inSchemeMvsBaseUrl" select="'http://data.vlaanderen.be/vocabulary/metadata-dcat/'"/>
+  <xsl:variable name="inSchemeMvsBaseUrl" select="'https://data.vlaanderen.be/id/conceptscheme/'"/>
   <xsl:variable name="thesaurusIdentifierBaseKey" select="'geonetwork.thesaurus.external.theme.'"/>
 
   <xsl:function name="gn-fn-metadata-dcat:getInSchemeURIByElementName" as="xs:string">
@@ -73,10 +73,10 @@
         <xsl:value-of select="concat($inSchemeAuthorityBaseUrl, 'access-right')"/>
       </xsl:when>
       <xsl:when test="$elementName = 'mvs:statusVanGebruik'">
-        <xsl:value-of select="concat($inSchemeMvsBaseUrl,'status-van-gebruik')"/>
+        <xsl:value-of select="concat($inSchemeMvsBaseUrl,'gebruiksstatus')"/>
       </xsl:when>
       <xsl:when test="$elementName = 'mvs:statusVanOntwikkeling'">
-        <xsl:value-of select="concat($inSchemeMvsBaseUrl,'status-van-ontwikkeling')"/>
+        <xsl:value-of select="concat($inSchemeMvsBaseUrl,'ontwikkelingsstatus')"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="''"/>
@@ -160,11 +160,11 @@
       <xsl:when test="$resource = concat($inSchemeAdmsBaseUrl,'licencetype/1.0')">
         <xsl:value-of select="'Licence thesaurus'"/>
       </xsl:when>
-      <xsl:when test="$resource = concat($inSchemeMvsBaseUrl,'status-van-gebruik')">
-        <xsl:value-of select="'Gebruikstatussen lijst'"/>
+      <xsl:when test="$resource = concat($inSchemeMvsBaseUrl,'gebruiksstatus')">
+        <xsl:value-of select="'Conceptscheme gebruiksstatus'"/>
       </xsl:when>
-      <xsl:when test="$resource = concat($inSchemeMvsBaseUrl,'status-van-ontwikkeling')">
-        <xsl:value-of select="'Ontwikkelingstatussen lijst'"/>
+      <xsl:when test="$resource = concat($inSchemeMvsBaseUrl,'ontwikkelingsstatus')">
+        <xsl:value-of select="'Conceptscheme ontwikkelingsstatus'"/>
       </xsl:when>
       <xsl:otherwise>
           <xsl:value-of select="'Untitled thesaurus'"/>
@@ -205,11 +205,11 @@
       <xsl:when test="$resource = concat($inSchemeAuthorityBaseUrl,'access-right')">
         <xsl:value-of select="concat($thesaurusIdentifierBaseKey,'access-right')"/>
       </xsl:when>
-      <xsl:when test="$resource = concat($inSchemeMvsBaseUrl,'status-van-gebruik')">
-        <xsl:value-of select="concat($thesaurusIdentifierBaseKey,'status-van-gebruik')"/>
+      <xsl:when test="$resource = concat($inSchemeMvsBaseUrl,'gebruiksstatus')">
+        <xsl:value-of select="concat($thesaurusIdentifierBaseKey,'gebruiksstatus')"/>
       </xsl:when>
-      <xsl:when test="$resource = concat($inSchemeMvsBaseUrl,'status-van-ontwikkeling')">
-        <xsl:value-of select="concat($thesaurusIdentifierBaseKey,'status-van-ontwikkeling')"/>
+      <xsl:when test="$resource = concat($inSchemeMvsBaseUrl,'ontwikkelingsstatus')">
+        <xsl:value-of select="concat($thesaurusIdentifierBaseKey,'ontwikkelingsstatus')"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:message select="concat('No thesaurus identifier found for the inScheme URI ', $resource)"/>

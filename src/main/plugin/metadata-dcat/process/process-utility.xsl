@@ -33,7 +33,7 @@
     <xsl:variable name="inSchemeAuthorityBaseUrl" select="'http://publications.europa.eu/resource/authority/'"/>
     <xsl:variable name="inSchemeAuthBaseUrl" select="'http://vocab.belgif.be/auth/'"/>
     <xsl:variable name="inSchemeAdmsBaseUrl" select="'http://purl.org/adms/'"/>
-    <xsl:variable name="inSchemeMvsBaseUrl" select="'http://data.vlaanderen.be/vocabulary/metadata-dcat/'"/>
+    <xsl:variable name="inSchemeMvsBaseUrl" select="'https://data.vlaanderen.be/id/conceptscheme/'"/>
     <xsl:variable name="keyPrefix" select="'external.theme.'"/>
     <xsl:choose>
       <xsl:when test="$key = concat($keyPrefix,'publisher-type')">
@@ -66,11 +66,11 @@
       <xsl:when test="$key = concat($keyPrefix, 'access-right')">
         <xsl:value-of select="concat($inSchemeAuthorityBaseUrl,'access-right')"/>
       </xsl:when>
-      <xsl:when test="$key = concat($keyPrefix, 'status-van-gebruik')">
-        <xsl:value-of select="concat($inSchemeMvsBaseUrl,'status-van-gebruik')"/>
+      <xsl:when test="$key = concat($keyPrefix, 'gebruiksstatus')">
+        <xsl:value-of select="concat($inSchemeMvsBaseUrl,'gebruiksstatus')"/>
       </xsl:when>
-      <xsl:when test="$key = concat($keyPrefix, 'status-van-ontwikkeling')">
-        <xsl:value-of select="concat($inSchemeMvsBaseUrl,'status-van-ontwikkeling')"/>
+      <xsl:when test="$key = concat($keyPrefix, 'ontwikkelingsstatus')">
+        <xsl:value-of select="concat($inSchemeMvsBaseUrl,'ontwikkelingsstatus')"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:message select="concat('Thesaurus NIET gevonden met key = ',$key, '. Voeg deze toe in process-utility.xsl bestand.')"/>

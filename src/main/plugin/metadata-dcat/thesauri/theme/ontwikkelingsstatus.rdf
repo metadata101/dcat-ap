@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+  <skos:ConceptScheme rdf:about="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus">
+    <dc:title>Conceptscheme ontwikkelingsstatus</dc:title>
+    <skos:prefLabel xml:lang="nl">Conceptscheme ontwikkelingsstatus</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Schéma de concept des status de développement</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Concept scheme development status</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Concept scheme development status</skos:prefLabel>
+    <skos:definition xml:lang="nl">Codelijst voor de ontwikkelingstoestand van een softwareomgeving aan te duiden.</skos:definition>
+    <skos:definition xml:lang="fr">Liste de codes pour indiquer l'état de développement d'un service logiciel.</skos:definition>
+    <skos:definition xml:lang="en">Codelist to indicate the development status of a software service.</skos:definition>
+    <skos:definition xml:lang="de">Codelist to indicate the development status of a software service.</skos:definition>
+  </skos:ConceptScheme>
+
+  <skos:Concept rdf:about="https://data.vlaanderen.be/id/concept/ontwikkelingsstatus/DEV">
+    <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
+    <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
+    <skos:definition xml:lang="nl">Persoonlijke ontwikkellingsomgeving</skos:definition>
+    <skos:prefLabel xml:lang="nl">development</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">développement</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">development</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">development</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://data.vlaanderen.be/id/concept/ontwikkelingsstatus/TEST">
+    <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
+    <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
+    <skos:definition xml:lang="nl">team test omgeving met automatische integratie testen en manuele functionele testen.</skos:definition>
+    <skos:prefLabel xml:lang="nl">test</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">test</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">test</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">test</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://data.vlaanderen.be/id/concept/ontwikkelingsstatus/BETA">
+    <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
+    <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
+    <skos:definition xml:lang="nl">test omgeving voor integratietesten met andere teams/partijen. vb: end-to end testen van componenten die reeds in hun eigen TEST omgeving getest zijn met mock data/interfaces.</skos:definition>
+    <skos:prefLabel xml:lang="nl">beta</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">beta</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">beta</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">beta</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://data.vlaanderen.be/id/concept/ontwikkelingsstatus/TNI">
+    <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
+    <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
+    <skos:definition xml:lang="nl">Stabiele omgeving, waar code gedeployed wordt NA succesvolle integratie testen op BETA. Kan dienst doen als demo omgeving, indien meerdere partijen met elkaar moeten integreren (vb: T&amp;I versies van Magda en ACM/IDM)</skos:definition>
+    <skos:prefLabel xml:lang="nl">tni</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">tni</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">tni</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">tni</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://data.vlaanderen.be/id/concept/ontwikkelingsstatus/STAGING">
+    <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
+    <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
+    <skos:definition xml:lang="nl">Mirror van productie omgeving, uat voor hotfix.</skos:definition>
+    <skos:prefLabel xml:lang="nl">staging</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">staging</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">staging</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">staging</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://data.vlaanderen.be/id/concept/ontwikkelingsstatus/PROD">
+    <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
+    <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
+    <skos:definition xml:lang="nl">Live omgeving</skos:definition>
+    <skos:prefLabel xml:lang="nl">productie</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">production</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">production</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">production</skos:prefLabel>
+  </skos:Concept>
+</rdf:RDF>
