@@ -1639,6 +1639,33 @@
     <description>Tooltip: Beschrijving</description>
     <btnLabel>Beschrijving</btnLabel>
   </element>
+  <element name="dct:creator" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator">
+    <label>Schepper</label>
+    <description>Tooltip: Schepper</description>
+    <btnLabel>Schepper</btnLabel>
+  </element>
+  <element name="foaf:Agent" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator/foaf:Agent">
+    <label>Organisatie</label>
+    <description>Tooltip: Organisatie</description>
+    <btnLabel>Organisatie</btnLabel>
+  </element>
+  <element name="foaf:name" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator/foaf:Agent/foaf:name">
+    <label>Naam</label>
+    <description>Vul aan met de naam van de uitgever voor je dataset in een bepaalde taal (default is Nederlands). De
+      uitgever is een organisatie die verantwoordelijk is voor het beschikbaar maken van de dataset.
+    </description>
+    <btnLabel>Naam</btnLabel>
+  </element>
+  <element name="dct:type" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator/foaf:Agent/dct:type">
+    <label>Type</label>
+    <description>Vul aan met het type van je dataset. Maak een keuze uit de lijst.</description>
+    <btnLabel>Type</btnLabel>
+  </element>
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator/foaf:Agent/dct:type/skos:Concept">
+    <label>Type</label>
+    <description>Vul aan met het type van je dataset. Maak een keuze uit de lijst.</description>
+    <btnLabel>Type</btnLabel>
+  </element>
 
   <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier">
     <label>Identificator</label>

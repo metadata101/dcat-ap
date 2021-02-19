@@ -1531,6 +1531,31 @@
     <description>Tooltip: description</description>
     <btnLabel>description</btnLabel>
   </element>
+  <element name="dct:creator" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator">
+    <label>creator</label>
+    <description>Tooltip: creator</description>
+    <btnLabel>creator</btnLabel>
+  </element>
+  <element name="foaf:Agent" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator/foaf:Agent">
+    <label>organisation</label>
+    <description>Tooltip: organisation</description>
+    <btnLabel>organisation</btnLabel>
+  </element>
+  <element name="foaf:name" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator/foaf:Agent/foaf:name">
+    <label>name</label>
+    <description>Tooltip: name</description>
+    <btnLabel>name</btnLabel>
+  </element>
+  <element name="dct:type" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator/foaf:Agent/dct:type">
+    <label>type</label>
+    <description>Tooltip: type</description>
+    <btnLabel>type</btnLabel>
+  </element>
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator/foaf:Agent/dct:type/skos:Concept">
+    <label>type</label>
+    <description>Tooltip: type</description>
+    <btnLabel>type</btnLabel>
+  </element>
 
   <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier">
     <label>Identificator</label>

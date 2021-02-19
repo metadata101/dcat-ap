@@ -295,6 +295,7 @@
     <name>adms:status</name>
     <name>dcat:qualifiedRelation</name>
     <name>dcat:Relationship</name>
+    <name>dct:creator</name>
     <!--<name isSupportingSlideToggle="true">adms:sample</name>-->
   </fieldsWithFieldset>
   <multilingualFields>
@@ -935,6 +936,27 @@
                     <dct:description xml:lang="nl"/>
                   </dcat:Relationship>
                 </dcat:qualifiedRelation>
+              </snippet>
+            </template>
+          </action>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator" name="FieldId423"/>
+          <action type="add" btnLabel="FieldId423" or="creator" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:creator>
+                  <foaf:Agent>
+                    <foaf:name xml:lang="nl"/>
+                    <dct:type>
+                      <skos:Concept>
+                        <skos:prefLabel xml:lang="nl"/>
+                        <skos:prefLabel xml:lang="en"/>
+                        <skos:prefLabel xml:lang="fr"/>
+                        <skos:prefLabel xml:lang="de"/>
+                        <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
+                      </skos:Concept>
+                    </dct:type>
+                  </foaf:Agent>
+                </dct:creator>
               </snippet>
             </template>
           </action>
