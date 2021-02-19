@@ -293,6 +293,8 @@
     <name isSupportingSlideToggle="true">dct:conformsTo</name>
     <name>dct:Standard</name>
     <name>adms:status</name>
+    <name>dcat:qualifiedRelation</name>
+    <name>dcat:Relationship</name>
     <!--<name isSupportingSlideToggle="true">adms:sample</name>-->
   </fieldsWithFieldset>
   <multilingualFields>
@@ -923,38 +925,19 @@
             </template>
           </action>
           <field name="FieldId216" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:type" or="type" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <!--<field name="FieldId227" notDisplayedIfMissing="true" templateModeOnly="true" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:extension">-->
-            <!--<template>-->
-              <!--<values>-->
-                <!--<key label="FieldId229" xpath="rdf:Statement/@rdf:about"/>-->
-                <!--<key label="FieldId230" xpath="rdf:Statement/rdf:subject/@rdf:resource"/>-->
-                <!--<key label="FieldId231" xpath="rdf:Statement/rdf:predicate/@rdf:resource"/>-->
-                <!--<key label="FieldId232" xpath="rdf:Statement/rdf:object/@rdf:resource"/>-->
-              <!--</values>-->
-              <!--<snippet>-->
-                <!--<dcat:extension>-->
-                  <!--<rdf:Statement rdf:about="{{FieldId229}}">-->
-                    <!--<rdf:subject rdf:resource="{{FieldId230}}"/>-->
-                    <!--<rdf:predicate rdf:resource="{{FieldId231}}"/>-->
-                    <!--<rdf:object rdf:resource="{{FieldId232}}"/>-->
-                  <!--</rdf:Statement>-->
-                <!--</dcat:extension>-->
-              <!--</snippet>-->
-            <!--</template>-->
-          <!--</field>-->
-          <!--<action type="add" btnLabel="FieldId227" or="extension" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
-            <!--<template>-->
-              <!--<snippet>-->
-                <!--<dcat:extension>-->
-                  <!--<rdf:Statement>-->
-                    <!--<rdf:subject rdf:resource=""/>-->
-                    <!--<rdf:predicate rdf:resource=""/>-->
-                    <!--<rdf:object rdf:resource=""/>-->
-                  <!--</rdf:Statement>-->
-                <!--</dcat:extension>-->
-              <!--</snippet>-->
-            <!--</template>-->
-          <!--</action>-->
+          <field name="FieldId422" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:qualifiedRelation"/>
+          <action type="add" name="FieldId422" or="qualifiedRelation" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dcat:qualifiedRelation>
+                  <dcat:Relationship>
+                    <dcat:hadRole/>
+                    <dct:description xml:lang="nl"/>
+                  </dcat:Relationship>
+                </dcat:qualifiedRelation>
+              </snippet>
+            </template>
+          </action>
         </section>
       </tab>
       <tab id="advancedDistribution" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">

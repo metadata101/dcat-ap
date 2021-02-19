@@ -1515,6 +1515,26 @@
     <description>Tooltip: in scheme</description>
     <btnLabel>in scheme</btnLabel>
   </element>
+  <element name="dcat:qualifiedRelation" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:qualifiedRelation">
+    <label>qualified relation</label>
+    <description>Tooltip: qualified relation</description>
+    <btnLabel>qualified relation</btnLabel>
+  </element>
+  <element name="dcat:Relationship" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:qualifiedRelation/dcat:Relationship">
+    <label>relation</label>
+    <description>Tooltip: relation</description>
+    <btnLabel>relation</btnLabel>
+  </element>
+  <element name="dcat:hadRole" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:qualifiedRelation/dcat:Relationship/dcat:hadRole">
+    <label>had role</label>
+    <description>Tooltip: had role</description>
+    <btnLabel>had role</btnLabel>
+  </element>
+  <element name="dct:description" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:qualifiedRelation/dcat:Relationship/dct:description">
+    <label>description</label>
+    <description>Tooltip: description</description>
+    <btnLabel>description</btnLabel>
+  </element>
 
   <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier">
     <label>Identificator</label>
