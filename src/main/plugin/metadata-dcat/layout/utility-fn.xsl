@@ -61,7 +61,7 @@
       <xsl:when test="$elementName = 'dct:format'">
         <xsl:value-of select="concat($inSchemeAuthorityBaseUrl,'file-type')"/>
       </xsl:when>
-      <xsl:when test="$elementName = 'dcat:mediaType'">
+      <xsl:when test="$elementName = ('dcat:mediaType', 'dcat:compressFormat', 'dcat:packageFormat')">
         <xsl:value-of select="concat($inSchemeIanaBaseUrl,'media-types')"/>
       </xsl:when>
       <xsl:when test="$elementName = 'adms:status'">
@@ -107,8 +107,8 @@
       <xsl:when test="$elementName = 'dct:format'">
         <xsl:value-of select="'http://purl.org/dc/terms/MediaTypeOrExtent'"/>
       </xsl:when>
-      <xsl:when test="$elementName = 'dcat:mediaType'">
-        <xsl:value-of select="'http://purl.org/dc/terms/MediaTypeOrExtent'"/>
+      <xsl:when test="$elementName = ('dcat:mediaType', 'dcat:compressFormat', 'dcat:packageFormat')">
+        <xsl:value-of select="'http://purl.org/dc/terms/MediaType'"/>
       </xsl:when>
       <xsl:when test="$elementName = 'adms:status'">
         <xsl:value-of select="''"/>

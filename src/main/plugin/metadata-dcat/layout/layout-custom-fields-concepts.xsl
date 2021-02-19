@@ -23,6 +23,8 @@
                                                                  dcat:Dataset/dct:type|
                                                                  dct:format|
                                                                  dcat:mediaType|
+                                                                 dcat:compressFormat|
+                                                                 dcat:packageFormat|
                                                                  adms:status|
                                                                  dct:LicenseDocument/dct:type|
                                                                  dct:accessRights|
@@ -215,6 +217,7 @@
                  data-current-transformation="{$transformation}"
                  data-max-tags="{$maxTags}"
                  data-lang="{$metadataOtherLanguagesAsJson}"
+                 data-originator="{name(..)}"
                  data-textgroup-only="false">
             </div>
             <xsl:if test="$showValidationErrors">
