@@ -262,6 +262,16 @@
         </snippet>
       </template>
     </for>
+    <for name="dct:isReferencedBy" templateModeOnly="true" forceLabel="true" label="FieldId424">
+      <template>
+        <values>
+          <key label="FieldId424" xpath="@rdf:resource" tooltip="dct:isReferencedBy|dcat:Dataset|/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isReferencedBy"/>
+        </values>
+        <snippet>
+          <dct:isReferencedBy rdf:resource="{{FieldId424}}"/>
+        </snippet>
+      </template>
+    </for>
   </fields>
   <!-- Complex fields. -->
   <fieldsWithFieldset>
@@ -939,7 +949,7 @@
               </snippet>
             </template>
           </action>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator" name="FieldId423"/>
+          <field name="FieldId423" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator"/>
           <action type="add" btnLabel="FieldId423" or="creator" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
             <template>
               <snippet>
@@ -957,6 +967,14 @@
                     </dct:type>
                   </foaf:Agent>
                 </dct:creator>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId424" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isReferencedBy"/>
+          <action type="add" btnLabel="FieldId424" or="isReferencedBy" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:isReferencedBy rdf:resource=""/>
               </snippet>
             </template>
           </action>

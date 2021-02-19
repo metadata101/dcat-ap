@@ -1666,6 +1666,16 @@
     <description>Vul aan met het type van je dataset. Maak een keuze uit de lijst.</description>
     <btnLabel>Type</btnLabel>
   </element>
+  <element name="dct:isReferencedBy" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isReferencedBy">
+    <label>Wordt verwezen door</label>
+    <description>Tooltip: Wordt verwezen door</description>
+    <btnLabel>Wordt verwezen door</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isReferencedBy/@rdf:resource">
+    <label>Wordt verwezen door</label>
+    <description>Tooltip: Wordt verwezen door</description>
+    <btnLabel>Wordt verwezen door</btnLabel>
+  </element>
 
   <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier">
     <label>Identificator</label>

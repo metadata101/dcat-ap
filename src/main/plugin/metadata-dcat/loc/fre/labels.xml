@@ -1560,6 +1560,16 @@
     <description>Tooltip: type</description>
     <btnLabel>type</btnLabel>
   </element>
+  <element name="dct:isReferencedBy" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isReferencedBy">
+    <label>is referenced by</label>
+    <description>Tooltip: is referenced by</description>
+    <btnLabel>is referenced by</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isReferencedBy/@rdf:resource">
+    <label>is referenced by</label>
+    <description>Tooltip: is referenced by</description>
+    <btnLabel>is referenced by</btnLabel>
+  </element>
 
   <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier">
     <label>Identificator</label>
