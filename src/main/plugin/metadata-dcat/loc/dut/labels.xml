@@ -1676,6 +1676,36 @@
     <description>Tooltip: Wordt verwezen door</description>
     <btnLabel>Wordt verwezen door</btnLabel>
   </element>
+  <element name="dct:rights" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights">
+    <label>Rechten</label>
+    <description>Tooltip: Rechten</description>
+    <btnLabel>Rechten</btnLabel>
+  </element>
+  <element name="dct:RightsStatement" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights/dct:RightsStatement">
+    <label>Bepaling</label>
+    <description>Tooltip: Bepaling</description>
+    <btnLabel>Bepaling</btnLabel>
+  </element>
+  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights/dct:RightsStatement/@rdf:about">
+    <label>URI</label>
+    <description>Vul aan met de URI van de bepaling met betrekking tot rechten geassocieerd met de dataset.
+    </description>
+    <btnLabel>URI</btnLabel>
+  </element>
+  <element name="dct:title" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights/dct:RightsStatement/dct:title">
+    <label>Titel</label>
+    <description>Vul aan met de titel van de bepaling met betrekking tot rechten geassocieerd met de dataset in een
+      bepaalde taal (default is Nederlands).
+    </description>
+    <btnLabel>Titel</btnLabel>
+  </element>
+  <element name="dct:description" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights/dct:RightsStatement/dct:description">
+    <label>Beschrijving</label>
+    <description>Vul aan met de beschrijving van de bepaling met betrekking tot rechten geassocieerd met de dataset
+      in een bepaalde taal (default is Nederlands).
+    </description>
+    <btnLabel>Beschrijving</btnLabel>
+  </element>
 
   <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier">
     <label>Identificator</label>

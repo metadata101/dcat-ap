@@ -978,6 +978,19 @@
               </snippet>
             </template>
           </action>
+          <field name="FieldId425" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights"/>
+          <action type="add" btnLabel="FieldId425" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:rights>
+                  <dct:RightsStatement>
+                    <dct:title/>
+                    <dct:description/>
+                  </dct:RightsStatement>
+                </dct:rights>
+              </snippet>
+            </template>
+          </action>
         </section>
       </tab>
       <tab id="advancedDistribution" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">

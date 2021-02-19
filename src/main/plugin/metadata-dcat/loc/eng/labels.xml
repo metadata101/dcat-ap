@@ -1566,6 +1566,31 @@
     <description>Tooltip: is referenced by</description>
     <btnLabel>is referenced by</btnLabel>
   </element>
+  <element name="dct:rights" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights">
+    <label>rights</label>
+    <description>Tooltip: rights</description>
+    <btnLabel>rights</btnLabel>
+  </element>
+  <element name="dct:RightsStatement" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights/dct:RightsStatement">
+    <label>statement</label>
+    <description>Tooltip: statement</description>
+    <btnLabel>statement</btnLabel>
+  </element>
+  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights/dct:RightsStatement/@rdf:about">
+    <label>URI</label>
+    <description>Tooltip: URI</description>
+    <btnLabel>URI</btnLabel>
+  </element>
+  <element name="dct:title" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights/dct:RightsStatement/dct:title">
+    <label>title</label>
+    <description>Tooltip: title</description>
+    <btnLabel>title</btnLabel>
+  </element>
+  <element name="dct:description" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights/dct:RightsStatement/dct:description">
+    <label>description</label>
+    <description>Tooltip: description</description>
+    <btnLabel>description</btnLabel>
+  </element>
 
   <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier">
     <label>Identificator</label>
