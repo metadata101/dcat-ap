@@ -34,6 +34,7 @@
     <xsl:variable name="inSchemeAuthBaseUrl" select="'http://vocab.belgif.be/auth/'"/>
     <xsl:variable name="inSchemeAdmsBaseUrl" select="'http://purl.org/adms/'"/>
     <xsl:variable name="inSchemeMvsBaseUrl" select="'https://data.vlaanderen.be/id/conceptscheme/'"/>
+    <xsl:variable name="inSchemeIanaBaseUrl" select="'https://www.iana.org/assignments/'"/>
     <xsl:variable name="keyPrefix" select="'external.theme.'"/>
     <xsl:choose>
       <xsl:when test="$key = concat($keyPrefix,'publisher-type')">
@@ -54,8 +55,8 @@
       <xsl:when test="$key = concat($keyPrefix,'file-type')">
         <xsl:value-of select="concat($inSchemeAuthorityBaseUrl,'file-type')"/>
       </xsl:when>
-      <xsl:when test="$key = concat($keyPrefix,'media-type')">
-        <xsl:value-of select="concat($inSchemeAuthorityBaseUrl,'media-type')"/>
+      <xsl:when test="$key = concat($keyPrefix,'media-types')">
+        <xsl:value-of select="concat($inSchemeIanaBaseUrl,'media-types')"/>
       </xsl:when>
       <xsl:when test="$key = concat($keyPrefix,'status')">
         <xsl:value-of select="concat($inSchemeAdmsBaseUrl,'status/1.0')"/>

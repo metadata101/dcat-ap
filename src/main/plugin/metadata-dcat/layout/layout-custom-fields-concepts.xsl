@@ -33,7 +33,8 @@
 
     <xsl:variable name="xpath" select="gn-fn-metadata:getXPath(.)"/>
     <xsl:variable name="existingInScheme" select="normalize-space(skos:Concept/skos:inScheme/@rdf:resource)"/>
-    <xsl:variable name="createdInSchemeByParentElementName" select="gn-fn-metadata-dcat:getInSchemeURIByElementName(name(.),name(..))"/>
+    <xsl:variable name="createdInSchemeByParentElementName"
+                  select="gn-fn-metadata-dcat:getInSchemeURIByElementName(name(.),name(..))"/>
 
     <xsl:variable name="inScheme">
       <xsl:choose>
@@ -113,33 +114,36 @@
 
 
   <xsl:template mode="mode-metadata-dcat" match="skos:Concept" priority="2000">
-
-
     <xsl:variable name="existingInScheme" select="normalize-space(skos:inScheme/@rdf:resource)"/>
-    <xsl:variable name="createdInSchemeByParentElementName" select="gn-fn-metadata-dcat:getInSchemeURIByElementName(name(..),name(../..))"/>
+    <xsl:variable name="createdInSchemeByParentElementName"
+                  select="gn-fn-metadata-dcat:getInSchemeURIByElementName(name(..),name(../..))"/>
 
     <xsl:variable name="inScheme">
       <xsl:choose>
-        <xsl:when test="$existingInScheme!=''"><xsl:value-of select="$existingInScheme"/></xsl:when>
-        <xsl:otherwise><xsl:value-of select="$createdInSchemeByParentElementName"/></xsl:otherwise>
+        <xsl:when test="$existingInScheme!=''">
+          <xsl:value-of select="$existingInScheme"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$createdInSchemeByParentElementName"/>
+        </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <xsl:variable name="thesaurusTitle" select="gn-fn-metadata-dcat:getThesaurusTitle($inScheme)" />
+    <xsl:variable name="thesaurusTitle" select="gn-fn-metadata-dcat:getThesaurusTitle($inScheme)"/>
 
-    <xsl:variable name="thesaurusIdentifier" select="gn-fn-metadata-dcat:getThesaurusIdentifier($inScheme)" />
-  <xsl:choose>
+    <xsl:variable name="thesaurusIdentifier" select="gn-fn-metadata-dcat:getThesaurusIdentifier($inScheme)"/>
+    <xsl:choose>
       <xsl:when test="$inScheme!=''">
-      <xsl:variable name="thesaurusConfig"
-                    as="element()?"
-                    select="if ($thesaurusList/thesaurus[@key=substring-after($thesaurusIdentifier, 'geonetwork.thesaurus.')])
+        <xsl:variable name="thesaurusConfig"
+                      as="element()?"
+                      select="if ($thesaurusList/thesaurus[@key=substring-after($thesaurusIdentifier, 'geonetwork.thesaurus.')])
                             then $thesaurusList/thesaurus[@key=substring-after($thesaurusIdentifier, 'geonetwork.thesaurus.')]
                             else $listOfThesaurus/thesaurus[title=$thesaurusTitle]"/>
 
         <!-- The thesaurus key may be contained in the MD_Identifier field or
           get it from the list of thesaurus based on its title.
           -->
-      <xsl:choose>
-      <xsl:when test="$thesaurusConfig">
+        <xsl:choose>
+          <xsl:when test="$thesaurusConfig">
             <xsl:variable name="thesaurusInternalKey"
                           select="if ($thesaurusConfig/@key!='')
                           then $thesaurusConfig/@key
@@ -151,17 +155,18 @@
 
             <!-- if gui lang eng > #EN -->
             <xsl:variable name="guiLangId"
-                      select="
+                          select="
                       if (count(skos:prefLabel[@xml:lang=lower-case(xslutil:twoCharLangCode($lang))]) = 1)
                         then $lang
                         else $metadataLanguage"/>
-                             <!-- if gui lang eng > #EN -->
+            <!-- if gui lang eng > #EN -->
             <xsl:variable name="prefLabelLangId" select="lower-case(xslutil:twoCharLangCode($guiLangId))"/>
             <!--
             get keyword in gui lang
             in default language
             -->
-            <xsl:variable name="keywords" select="string-join(replace(skos:prefLabel[@xml:lang=$prefLabelLangId], ',', ',,'), ',')"/>
+            <xsl:variable name="keywords"
+                          select="string-join(replace(skos:prefLabel[@xml:lang=$prefLabelLangId], ',', ',,'), ',')"/>
 
             <!-- Define the list of transformation mode available. -->
             <xsl:variable name="transformations"
@@ -183,13 +188,13 @@
                   * 'multiplelist' for multiple selection list
             -->
             <xsl:variable name="widgetMode" select="'tagsinput'"/>
-<!--            <xsl:variable name="widgetMode" select="'multiplelist'"/>-->
+            <!--            <xsl:variable name="widgetMode" select="'multiplelist'"/>-->
             <xsl:variable name="maxTags"
                           select="if ($thesaurusConfig/@maxtags)
                                   then $thesaurusConfig/@maxtags
                                   else 1"/>
-<!--          <xsl:variable name="maxTags"
-            select="if ($thesaurusKey = 'external.theme.language') then '1' else ''"/>-->
+            <!--          <xsl:variable name="maxTags"
+                        select="if ($thesaurusKey = 'external.theme.language') then '1' else ''"/>-->
             <!-- Create a div with the directive configuration
                 * elementRef: the element ref to edit
                 * elementName: the element name
@@ -215,11 +220,11 @@
             <xsl:if test="$showValidationErrors">
               <xsl:call-template name="get-errors"/>
             </xsl:if>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:apply-templates mode="mode-metadata-dcat" select="*"/>
-      </xsl:otherwise>
-      </xsl:choose>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates mode="mode-metadata-dcat" select="*"/>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:when>
       <xsl:otherwise>
         <xsl:apply-templates mode="mode-metadata-dcat" select="*"/>

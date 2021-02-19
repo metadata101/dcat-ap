@@ -678,7 +678,7 @@
         <thesaurus key="external.theme.language" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.resource-type" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.file-type" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.media-type" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.media-types" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.licence-type" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.status" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.access-right" maxtags="1" transformations="" fieldset="false"/>
@@ -1201,7 +1201,7 @@
         <thesaurus key="external.theme.language" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.resource-type" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.file-type" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.media-type" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.media-types" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.licence-type" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.status" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.access-right" maxtags="1" transformations="" fieldset="false"/>

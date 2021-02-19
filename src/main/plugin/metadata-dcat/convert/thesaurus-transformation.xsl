@@ -93,7 +93,7 @@
           <xsl:copy-of select="$concept"/>
         </dct:format>
       </xsl:when>
-      <xsl:when test="ends-with($thesaurusKey,'media-type')">
+      <xsl:when test="ends-with($thesaurusKey,'media-types')">
         <dcat:mediaType>
           <xsl:copy-of select="$concept"/>
         </dcat:mediaType>
