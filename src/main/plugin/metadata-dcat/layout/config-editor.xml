@@ -20,6 +20,7 @@
     <for name="dcat:byteSize" use="number"/>
     <for name="adms:versionNotes" use="textarea"/>
     <for name="dct:description" use="textarea"/>
+    <for name="dcat:spatialResolutionInMeters" use="number"/>
     <for name="dct:issued" templateModeOnly="true" forceLabel="true" label="FieldId129" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued">
       <template>
         <values>

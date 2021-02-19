@@ -356,7 +356,11 @@
                           (name(.) = 'spdx:checksum' and name(..)='dcat:Distribution') or
                           (name(.) = 'foaf:page' and name(..)='dcat:Distribution') or
                           (name(.) = 'dct:conformsTo' and name(..)='dcat:Distribution') or
-                          (name(.) = 'adms:status' and name(..)='dcat:Distribution')) and
+                          (name(.) = 'adms:status' and name(..)='dcat:Distribution') or
+                          (name(.) = 'dcat:compressFormat' and name(..)='dcat:Distribution') or
+                          (name(.) = 'dcat:packageFormat' and name(..)='dcat:Distribution') or
+                          (name(.) = 'dcat:spatialResolutionInMeters' and name(..)='dcat:Distribution') or
+                          (name(.) = 'dcat:temporalResolution' and name(..)='dcat:Distribution')) and
                           $isFlatMode]" />
 
   <!-- Ignore the following attributes in flatMode -->
