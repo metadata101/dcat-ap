@@ -1070,6 +1070,47 @@
     <description>Tooltip: in scheme</description>
     <btnLabel>in scheme</btnLabel>
   </element>
+  <element name="dcat:accessService" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:accessService">
+    <label>Wordt aangeboden door</label>
+    <description>De dataservice die deze distributie aanbiedt</description>
+    <btnLabel>Wordt aangeboden door</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:accessService/@rdf:resource">
+    <label>Wordt aangeboden door</label>
+    <description>De dataservice die deze distributie aanbiedt</description>
+    <btnLabel>Wordt aangeboden door</btnLabel>
+  </element>
+  <element name="dcat:compressFormat" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:compressFormat">
+    <label>Compression format</label>
+    <description>Tooltip: Compression format</description>
+    <btnLabel>Compression format</btnLabel>
+  </element>
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:compressFormat/skos:Concept">
+    <label>Compression format</label>
+    <description>Tooltip: Compression format</description>
+    <btnLabel>Compression format</btnLabel>
+  </element>
+  <element name="dcat:packageFormat" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:packageFormat">
+    <label>Package format</label>
+    <description>Tooltip: Package format</description>
+    <btnLabel>Package format</btnLabel>
+  </element>
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:packageFormat/skos:Concept">
+    <label>Package format</label>
+    <description>Tooltip: Package format</description>
+    <btnLabel>Package format</btnLabel>
+  </element>
+  <element name="dcat:spatialResolutionInMeters" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:spatialResolutionInMeters">
+    <label>Spatial resolution in meters</label>
+    <description>Tooltip: Spatial resolution in meters</description>
+    <btnLabel>Spatial resolution in meters</btnLabel>
+  </element>
+  <element name="dcat:temporalResolution" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:temporalResolution">
+    <label>Temporal resolution</label>
+    <description>Tooltip: Temporal resolution</description>
+    <btnLabel>Temporal resolution</btnLabel>
+  </element>
+
   <element name="adms:sample" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample">
     <label>sample</label>
     <description>Tooltip: sample</description>
@@ -1767,15 +1808,5 @@
     <label>Wettelijke beperkingen</label>
     <description>Landingspagina met informatie over de wettelijke beperkingen i.v.m. dataService</description>
     <btnLabel>Wettelijke beperkingen</btnLabel>
-  </element>
-  <element name="dcat:accessService" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:accessService">
-    <label>Wordt aangeboden door</label>
-    <description>De dataservice die deze distributie aanbiedt</description>
-    <btnLabel>Wordt aangeboden door</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:accessService/@rdf:resource">
-    <label>Wordt aangeboden door</label>
-    <description>De dataservice die deze distributie aanbiedt</description>
-    <btnLabel>Wordt aangeboden door</btnLabel>
   </element>
 </labels>
