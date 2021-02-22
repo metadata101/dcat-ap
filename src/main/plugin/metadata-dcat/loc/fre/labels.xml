@@ -2009,11 +2009,6 @@
     <description>Tooltip: Wordt verwezen door</description>
     <btnLabel>Wordt verwezen door</btnLabel>
   </element>
-  <element name="dct:issued" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:issued">
-    <label>Publicatiedatum</label>
-    <description>Vul aan met de datum waarop je dataset gepubliceerd is</description>
-    <btnLabel>Publicatiedatum</btnLabel>
-  </element>
   <element name="dct:license" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license">
     <label>Licentie</label>
     <description/>
@@ -2079,6 +2074,11 @@
       identificatoren toevoegen.
     </description>
     <btnLabel>Identificator</btnLabel>
+  </element>
+  <element name="dct:issued" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:issued">
+    <label>Publicatiedatum</label>
+    <description>Vul aan met de datum waarop je dataset gepubliceerd is</description>
+    <btnLabel>Publicatiedatum</btnLabel>
   </element>
   <element name="dct:modified" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:modified">
     <label>Wijzigingsdatum</label>

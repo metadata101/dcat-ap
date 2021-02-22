@@ -219,8 +219,7 @@
   </xsl:template>
 
   <!-- Field with lang : display only field of current lang or first one if not exist -->
-  <xsl:template mode="render-field"
-                match="dct:title|dct:description|foaf:name|adms:versionNotes">
+  <xsl:template mode="render-field" match="dct:title|dct:description|foaf:name|adms:versionNotes">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <xsl:variable name="name" select="name()"/>
@@ -249,8 +248,10 @@
   </xsl:template>
 
   <!-- Field with no lang : display all -->
-  <xsl:template mode="render-field"
-    match="dct:created|dct:issued|dct:modified|dct:identifier|skos:notation|schema:startDate|schema:endDate|vcard:street-address|vcard:locality|vcard:postal-code|vcard:country-name|vcard:hasTelephone|vcard:fn|vcard:organization-name|skos:prefLabel|owl:versionInfo|adms:versionNotes|dcat:byteSize">
+  <xsl:template mode="render-field" match="dct:created|dct:issued|dct:modified|dct:identifier|skos:notation|schema:startDate|
+                                           schema:endDate|vcard:street-address|vcard:locality|vcard:postal-code|vcard:country-name|
+                                           vcard:hasTelephone|vcard:fn|vcard:organization-name|skos:prefLabel|owl:versionInfo|
+                                           adms:versionNotes|dcat:byteSize|dcat:hadRole">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <xsl:if test="normalize-space($stringValue) != ''">
@@ -319,26 +320,13 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template mode="render-field" match="foaf:Agent/dct:type|
-                                           dcat:theme|
-                                           dct:accrualPeriodicity|
-                                           dct:language|
-                                           dcat:Dataset/dct:type|
-                                           dcat:DataService/dct:type|
-                                           dct:format|
-                                           dcat:mediaType|
-                                           adms:status|
-                                           dct:LicenseDocument/dct:type|
-                                           mvs:statusVanGebruik|
-                                           mvs:statusVanOntwikkeling|
-                                           dct:accessRights">
+  <xsl:template mode="render-field" match="dct:type|dcat:theme|dct:accrualPeriodicity|dct:language|dct:format|dcat:mediaType|
+                                           adms:status|mvs:statusVanGebruik|mvs:statusVanOntwikkeling|dct:accessRights">
     <xsl:param name="xpath"/>
     <xsl:variable name="usedLang">
-      <xsl:value-of select="
-        if (normalize-space(skos:Concept/skos:prefLabel[@xml:lang=$langId-2char]) != '')
-        then $langId-2char
-        else $defaultLang-2char
-      "/>
+      <xsl:value-of select="if (normalize-space(skos:Concept/skos:prefLabel[@xml:lang=$langId-2char]) != '')
+                            then $langId-2char
+                            else $defaultLang-2char"/>
     </xsl:variable>
     <tr>
       <th style="{$thStyle}">
@@ -431,8 +419,9 @@
     </tr>
   </xsl:template>
 
-  <xsl:template mode="render-field"
-    match="dcat:contactPoint|dct:publisher|dct:provenance|foaf:page|dct:temporal|dct:license|dct:rights|dct:conformsTo|dcat:distribution|adms:sample|vcard:hasAddress|adms:identifier">
+  <xsl:template mode="render-field" match="dcat:contactPoint|dct:publisher|dct:provenance|foaf:page|dct:temporal|
+                                           dct:license|dct:rights|dct:conformsTo|dcat:distribution|adms:sample|
+                                           vcard:hasAddress|adms:identifier|dct:creator|dcat:qualifiedRelation">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
 
@@ -525,7 +514,4 @@
       <xsl:value-of select="."/>
     </a>
   </xsl:template>
-
-  <!-- Hide fields from view -->
-  <xsl:template mode="render-field" match="dcat:compressFormat|dcat:packageFormat|dcat:spatialResolutionInMeters|dcat:temporalResolution" priority="10"/>
 </xsl:stylesheet>

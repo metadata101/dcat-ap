@@ -1307,8 +1307,8 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId433" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-          <field name="FieldId432" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:issued" or="issued" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field name="FieldId432" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field name="FieldId433" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:issued" or="issued" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId434" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:modified" or="modified" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId435" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:relation" notDisplayedIfMissing="true" templateModeOnly="true">
             <template>

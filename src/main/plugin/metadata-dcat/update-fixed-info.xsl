@@ -470,8 +470,8 @@
       <xsl:apply-templates select="dct:conformsTo"/>
       <xsl:apply-templates select="dct:creator"/>
       <xsl:apply-templates select="dct:isReferencedBy"/>
-      <xsl:apply-templates select="dct:issued"/>
       <xsl:apply-templates select="dct:license"/>
+      <xsl:apply-templates select="dct:issued"/>
       <xsl:apply-templates select="dct:modified"/>
       <xsl:apply-templates select="dct:relation"/>
       <xsl:apply-templates select="dct:rights"/>
