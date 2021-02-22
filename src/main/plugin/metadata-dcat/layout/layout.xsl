@@ -69,6 +69,9 @@
         <xsl:when test="starts-with(concat(gn-fn-metadata:getXPath(..),'/',$name), '/dcat:Dataset/')">
           <xsl:value-of select="concat('/rdf:RDF/dcat:Catalog/dcat:dataset', gn-fn-metadata:getXPath(..),'/',$name)"/>
         </xsl:when>
+        <xsl:when test="starts-with(concat(gn-fn-metadata:getXPath(..),'/',$name), '/dcat:DataService/')">
+          <xsl:value-of select="concat('/rdf:RDF/dcat:Catalog/dcat:service', gn-fn-metadata:getXPath(..),'/',$name)"/>
+        </xsl:when>
         <xsl:otherwise>
           <xsl:value-of select="concat(gn-fn-metadata:getXPath(..),'/',$name)"/>
         </xsl:otherwise>
@@ -356,23 +359,12 @@
                           (name(.) = 'spdx:checksum' and name(..)='dcat:Distribution') or
                           (name(.) = 'foaf:page' and name(..)='dcat:Distribution') or
                           (name(.) = 'dct:conformsTo' and name(..)='dcat:Distribution') or
-                          (name(.) = 'adms:status' and name(..)='dcat:Distribution')) and
+                          (name(.) = 'adms:status' and name(..)='dcat:Distribution') or
+                          (name(.) = 'dcat:compressFormat' and name(..)='dcat:Distribution') or
+                          (name(.) = 'dcat:packageFormat' and name(..)='dcat:Distribution') or
+                          (name(.) = 'dcat:spatialResolutionInMeters' and name(..)='dcat:Distribution') or
+                          (name(.) = 'dcat:temporalResolution' and name(..)='dcat:Distribution')) and
                           $isFlatMode]" />
-
-  <!-- Always hide from the editor -->
-  <xsl:template mode="mode-metadata-dcat" priority="2002"
-                match="*[(name(.) = 'dcat:compressFormat' and name(..)='dcat:Distribution') or
-                         (name(.) = 'dcat:packageFormat' and name(..)='dcat:Distribution') or
-                         (name(.) = 'dcat:spatialResolutionInMeters' and name(..)='dcat:Distribution') or
-                         (name(.) = 'dcat:temporalResolution' and name(..)='dcat:Distribution')]"/>
-
-  <xsl:template mode="mode-metadata-dcat" priority="2002"
-                match="gn:child[concat(@prefix, ':', @name) = (
-                  'dcat:compressFormat',
-                  'dcat:packageFormat',
-                  'dcat:spatialResolutionInMeters',
-                  'dcat:temporalResolution'
-                )]"/>
 
   <!-- Ignore the following attributes in flatMode -->
   <xsl:template mode="render-for-field-for-attribute-metadata-dcat" match="@*[$isFlatMode and not(name(..)='dct:LicenseDocument')]|@gn:xsderror|@gn:addedObj" priority="101"/>

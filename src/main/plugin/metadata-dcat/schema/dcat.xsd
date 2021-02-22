@@ -220,17 +220,17 @@
 
             <!-- Field added to ensure compatibility with dcat-ap 2.0 -->
             <xs:element name="qualifiedRelation" type="dcat:Relationship" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="theme" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="theme" type="skos:Concept" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:creator" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:license" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:modified" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:relation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="dct:type" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dct:type" minOccurs="0" maxOccurs="1"/>
           </xs:sequence>
           <xs:attribute ref="rdf:about"/>
         </xs:complexType>

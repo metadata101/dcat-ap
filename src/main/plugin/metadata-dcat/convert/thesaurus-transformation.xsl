@@ -60,8 +60,8 @@
         <xsl:with-param name="listOfLanguage" select="$listOfLanguage"/>
       </xsl:call-template>
     </xsl:variable>
-    <xsl:variable name="thesaurusKey"
-                  select="if (thesaurus/key) then thesaurus/key else /root/request/thesaurus"/>
+    <xsl:variable name="thesaurusKey" select="if (thesaurus/key) then thesaurus/key else /root/request/thesaurus"/>
+    <xsl:variable name="originator" select="/root/request/originator"/>
     <xsl:choose>
        <xsl:when test="ends-with($thesaurusKey,'publisher-type')">
         <dct:type>
@@ -93,10 +93,20 @@
           <xsl:copy-of select="$concept"/>
         </dct:format>
       </xsl:when>
-      <xsl:when test="ends-with($thesaurusKey,'media-type')">
-        <dcat:mediaType>
+      <xsl:when test="ends-with($thesaurusKey,'media-types')">
+        <xsl:variable name="elem">
+          <xsl:choose>
+            <xsl:when test="normalize-space($originator) = ('dcat:compressFormat', 'dcat:packageFormat')">
+              <xsl:value-of select="string($originator)"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="'dcat:mediaType'"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+        <xsl:element name="{$elem}">
           <xsl:copy-of select="$concept"/>
-        </dcat:mediaType>
+        </xsl:element>
       </xsl:when>
       <xsl:when test="ends-with($thesaurusKey,'status')">
         <adms:status>

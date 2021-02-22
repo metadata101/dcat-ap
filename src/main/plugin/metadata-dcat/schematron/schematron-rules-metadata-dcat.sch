@@ -735,10 +735,10 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>91. dcat:mediaType should be a dct:MediaTypeOrExtent.</sch:title>
+    <sch:title>91. dcat:mediaType should be a dct:MediaType.</sch:title>
     <sch:rule context="//dcat:Distribution/dcat:mediaType">
       <sch:let name="id" value="parent::node()/dct:title[1]/string()"/>
-      <sch:let name="wrongType" value="not(dct:MediaTypeOrExtent | */rdf:type[@rdf:resource = 'http://purl.org/dc/terms/MediaTypeOrExtent'])"/>
+      <sch:let name="wrongType" value="not(dct:MediaType | */rdf:type[@rdf:resource = 'http://purl.org/dc/terms/MediaType'])"/>
       <sch:assert test="$wrongType = false()">ERROR: The dcat:Distribution "<sch:value-of select="$id"/>" has a dcat:mediaType property "<sch:value-of select="$id"/>" which is not a dct:MediaTypeOrExtent.
       </sch:assert>
       <sch:report test="$wrongType = false()">The dcat:Distribution "<sch:value-of select="$id"/>" has a dcat:mediaType  property "<sch:value-of select="$id"/>" which is a dct:MediaTypeOrExtent.
