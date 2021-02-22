@@ -324,6 +324,7 @@
                                            dct:accrualPeriodicity|
                                            dct:language|
                                            dcat:Dataset/dct:type|
+                                           dcat:DataService/dct:type|
                                            dct:format|
                                            dcat:mediaType|
                                            adms:status|

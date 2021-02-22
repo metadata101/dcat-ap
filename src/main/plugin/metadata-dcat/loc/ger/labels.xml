@@ -1640,7 +1640,7 @@
   </element>
   <element name="vcard:locality" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress/vcard:Address/vcard:locality">
     <label>Gemeente</label>
-    <description>Vul aan met de gemeentenaam uit het adres van het contactpunt </description>
+    <description>Vul aan met de gemeentenaam uit het adres van het contactpunt </description>
     <btnLabel>Gemeente</btnLabel>
   </element>
   <element name="vcard:postal-code" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress/vcard:Address/vcard:postal-code">

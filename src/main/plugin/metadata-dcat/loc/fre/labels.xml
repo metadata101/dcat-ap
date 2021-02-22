@@ -1545,6 +1545,11 @@
     <description>Tooltip: organisation</description>
     <btnLabel>organisation</btnLabel>
   </element>
+  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator/foaf:Agent/@rdf:about">
+    <label>URI</label>
+    <description>Tooltip: URI</description>
+    <btnLabel>URI</btnLabel>
+  </element>
   <element name="foaf:name" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator/foaf:Agent/foaf:name">
     <label>name</label>
     <description>Tooltip: name</description>
@@ -1765,7 +1770,7 @@
   </element>
   <element name="vcard:locality" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress/vcard:Address/vcard:locality">
     <label>Gemeente</label>
-    <description>Vul aan met de gemeentenaam uit het adres van het contactpunt </description>
+    <description>Vul aan met de gemeentenaam uit het adres van het contactpunt </description>
     <btnLabel>Gemeente</btnLabel>
   </element>
   <element name="vcard:postal-code" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress/vcard:Address/vcard:postal-code">
@@ -1892,5 +1897,264 @@
     <label>Wettelijke beperkingen</label>
     <description>Landingspagina met informatie over de wettelijke beperkingen i.v.m. dataService</description>
     <btnLabel>Wettelijke beperkingen</btnLabel>
+  </element>
+  <element name="dcat:qualifiedRelation" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:qualifiedRelation">
+    <label>Kwalificeerde relatie</label>
+    <description>Tooltip: Kwalificeerde relatie</description>
+    <btnLabel>Kwalificeerde relatie</btnLabel>
+  </element>
+  <element name="dcat:Relationship" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:qualifiedRelation/dcat:Relationship">
+    <label>Relatie</label>
+    <description>Tooltip: Relatie</description>
+    <btnLabel>Relatie</btnLabel>
+  </element>
+  <element name="dcat:hadRole" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:qualifiedRelation/dcat:Relationship/dcat:hadRole">
+    <label>Heeft role</label>
+    <description>Tooltip: Heeft role</description>
+    <btnLabel>Heeft role</btnLabel>
+  </element>
+  <element name="dct:description" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:qualifiedRelation/dcat:Relationship/dct:description">
+    <label>Beschrijving</label>
+    <description>Tooltip: Beschrijving</description>
+    <btnLabel>Beschrijving</btnLabel>
+  </element>
+  <element name="dcat:theme" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme">
+    <label>Thema</label>
+    <description>Tooltip: Thema</description>
+    <btnLabel>Thema</btnLabel>
+  </element>
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme/skos:Concept">
+    <label>Thema</label>
+    <description>Tooltip: Concept</description>
+    <btnLabel>Concept</btnLabel>
+  </element>
+  <element name="dct:accessRights" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights">
+    <label>Toegangsrechten</label>
+    <description>Tooltip: Toegangsrechten</description>
+    <btnLabel>Toegangsrechten</btnLabel>
+  </element>
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights/skos:Concept">
+    <label>Toegangsrechten</label>
+    <description>Tooltip: Toegangsrechten</description>
+    <btnLabel>Toegangsrechten</btnLabel>
+  </element>
+  <element name="dct:conformsTo" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo">
+    <label>Conformiteit met standaard</label>
+    <description>Tooltip: Conformiteit met standaard</description>
+    <btnLabel>Conformiteit met standaard</btnLabel>
+  </element>
+  <element name="dct:Standard" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo/dct:Standard">
+    <label>Standaard</label>
+    <description>Tooltip: Standaard</description>
+    <btnLabel>Standaard</btnLabel>
+  </element>
+  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo/dct:Standard/@rdf:about">
+    <label>URI</label>
+    <description>Vul aan met de URI van de standaard of de specificatie waaraan je dataset voldoet.</description>
+    <btnLabel>URI</btnLabel>
+  </element>
+  <element name="dct:title" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo/dct:Standard/dct:title">
+    <label>Titel</label>
+    <description>Vul aan met de titel van de standaard of de specificatie waaraan je dataset voldoet, in een bepaalde
+      taal (default is Nederlands).
+    </description>
+    <btnLabel>Titel</btnLabel>
+  </element>
+  <element name="dct:description" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo/dct:Standard/dct:description">
+    <label>Beschrijving</label>
+    <description>Vul aan met een beschrijving van de standaard of de specificatie waaraan je dataset voldoet, in een
+      bepaalde taal (default is Nederlands).
+    </description>
+    <btnLabel>Beschrijving</btnLabel>
+  </element>
+  <element name="dct:creator" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:creator">
+    <label>Schepper</label>
+    <description>Tooltip: Schepper</description>
+    <btnLabel>Schepper</btnLabel>
+  </element>
+  <element name="foaf:Agent" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:creator/foaf:Agent">
+    <label>Organisatie</label>
+    <description>Tooltip: Organisatie</description>
+    <btnLabel>Organisatie</btnLabel>
+  </element>
+  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:creator/foaf:Agent/@rdf:about">
+    <label>URI</label>
+    <description>Vul aan met de URI van de standaard of de specificatie waaraan je dataset voldoet.</description>
+    <btnLabel>URI</btnLabel>
+  </element>
+  <element name="foaf:name" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:creator/foaf:Agent/foaf:name">
+    <label>Naam</label>
+    <description>Vul aan met de naam van de uitgever voor je dataset in een bepaalde taal (default is Nederlands). De
+      uitgever is een organisatie die verantwoordelijk is voor het beschikbaar maken van de dataset.
+    </description>
+    <btnLabel>Naam</btnLabel>
+  </element>
+  <element name="dct:type" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:creator/foaf:Agent/dct:type">
+    <label>Type</label>
+    <description>Vul aan met het type van je dataset. Maak een keuze uit de lijst.</description>
+    <btnLabel>Type</btnLabel>
+  </element>
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:creator/foaf:Agent/dct:type/skos:Concept">
+    <label>Type</label>
+    <description>Vul aan met het type van je dataset. Maak een keuze uit de lijst.</description>
+    <btnLabel>Type</btnLabel>
+  </element>
+  <element name="dct:isReferencedBy" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:isReferencedBy">
+    <label>Wordt verwezen door</label>
+    <description>Tooltip: Wordt verwezen door</description>
+    <btnLabel>Wordt verwezen door</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:isReferencedBy/@rdf:resource">
+    <label>Wordt verwezen door</label>
+    <description>Tooltip: Wordt verwezen door</description>
+    <btnLabel>Wordt verwezen door</btnLabel>
+  </element>
+  <element name="dct:issued" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:issued">
+    <label>Publicatiedatum</label>
+    <description>Vul aan met de datum waarop je dataset gepubliceerd is</description>
+    <btnLabel>Publicatiedatum</btnLabel>
+  </element>
+  <element name="dct:license" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license">
+    <label>Licentie</label>
+    <description/>
+    <btnLabel>Licentie</btnLabel>
+  </element>
+  <element name="dct:LicenseDocument" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument">
+    <label>Document</label>
+    <description>Tooltip: Document</description>
+    <btnLabel>Document</btnLabel>
+  </element>
+  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/@rdf:about">
+    <label>URI</label>
+    <description>Vul aan met de URI van de licentie van de distributie.</description>
+    <btnLabel>URI</btnLabel>
+  </element>
+  <element name="dct:type" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/dct:type">
+    <label>Type</label>
+    <description>Tooltip: Type</description>
+    <btnLabel>Type</btnLabel>
+  </element>
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/dct:type/skos:Concept">
+    <label>Type</label>
+    <description>Tooltip: Concept</description>
+    <btnLabel>Concept</btnLabel>
+  </element>
+  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/dct:type/skos:Concept/@rdf:about">
+    <label>URI</label>
+    <description>Tooltip: URI</description>
+    <btnLabel>URI</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/dct:type/skos:Concept/rdf:type/@rdf:resource">
+    <label>rdf klasse</label>
+    <description>Tooltip: rdf klasse</description>
+    <btnLabel>rdf klasse</btnLabel>
+  </element>
+  <element name="skos:prefLabel" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/dct:type/skos:Concept/skos:prefLabel">
+    <label>Label</label>
+    <description>Tooltip: Label</description>
+    <btnLabel>Label</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
+    <label>In thesaurus</label>
+    <description>Tooltip: In thesaurus</description>
+    <btnLabel>In thesaurus</btnLabel>
+  </element>
+  <element name="dct:title" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/dct:title">
+    <label>Titel</label>
+    <description>Vul aan met de titel van de licentie van de distributie in een bepaalde taal (default is Nederlands).
+    </description>
+    <btnLabel>Titel</btnLabel>
+  </element>
+  <element name="dct:description" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/dct:description">
+    <label>Beschrijving</label>
+    <description>Vul aan met de beschrijving van de licentie van de distributie in een bepaalde taal (default is
+      Nederlands).
+    </description>
+    <btnLabel>Beschrijving</btnLabel>
+  </element>
+  <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/dct:identifier">
+    <label>Identificator</label>
+    <description>Vul aan met een identificator waarmee een gebruiker naar de licentie van de distributie kan verwijzen
+      (bv. een URI of een andere unieke identificator in de context van de catalogus). Je kan één of meerdere eigen
+      identificatoren toevoegen.
+    </description>
+    <btnLabel>Identificator</btnLabel>
+  </element>
+  <element name="dct:modified" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:modified">
+    <label>Wijzigingsdatum</label>
+    <description>Vul aan met de datum waarop de gegevens van je service het laatst gewijzigd zijn</description>
+    <btnLabel>Wijzigingsdatum</btnLabel>
+  </element>
+  <element name="dct:relation" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:relation">
+    <label>Verwante service</label>
+    <description>Vul aan met een verwijzing (titel, identificator,..) naar een verwante service of verwante bron van je
+      service.
+    </description>
+    <btnLabel>Verwante service</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:relation/@rdf:resource">
+    <label>Verwante service</label>
+    <description>Tooltip: Verwante service</description>
+    <btnLabel>Verwante service</btnLabel>
+  </element>
+  <element name="dct:rights" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:rights">
+    <label>Rechten</label>
+    <description>Tooltip: Rechten</description>
+    <btnLabel>Rechten</btnLabel>
+  </element>
+  <element name="dct:RightsStatement" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:rights/dct:RightsStatement">
+    <label>Bepaling</label>
+    <description>Tooltip: Bepaling</description>
+    <btnLabel>Bepaling</btnLabel>
+  </element>
+  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:rights/dct:RightsStatement/@rdf:about">
+    <label>URI</label>
+    <description>Vul aan met de URI van de bepaling met betrekking tot rechten geassocieerd met de distributie.
+    </description>
+    <btnLabel>URI</btnLabel>
+  </element>
+  <element name="dct:title" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:rights/dct:RightsStatement/dct:title">
+    <label>Titel</label>
+    <description>Vul aan met de titel van de bepaling met betrekking tot rechten geassocieerd met de distributie in een
+      bepaalde taal (default is Nederlands).
+    </description>
+    <btnLabel>Titel</btnLabel>
+  </element>
+  <element name="dct:description" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:rights/dct:RightsStatement/dct:description">
+    <label>Beschrijving</label>
+    <description>Vul aan met de beschrijving van de bepaling met betrekking tot rechten geassocieerd met de distributie
+      in een bepaalde taal (default is Nederlands).
+    </description>
+    <btnLabel>Beschrijving</btnLabel>
+  </element>
+  <element name="dct:type" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:type">
+    <label>Type</label>
+    <description>Vul aan met het type van je service. Maak een keuze uit de lijst.</description>
+    <btnLabel>Type</btnLabel>
+  </element>
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:type/skos:Concept">
+    <label>Type</label>
+    <description>Tooltip: Concept</description>
+    <btnLabel>Concept</btnLabel>
+  </element>
+  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:type/skos:Concept/@rdf:about">
+    <label>URI</label>
+    <description>Tooltip: URI</description>
+    <btnLabel>URI</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:type/skos:Concept/rdf:type/@rdf:resource">
+    <label>rdf klasse</label>
+    <description>Tooltip: rdf klasse</description>
+    <btnLabel>rdf klasse</btnLabel>
+  </element>
+  <element name="skos:prefLabel" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:type/skos:Concept/skos:prefLabel">
+    <label>Label</label>
+    <description>Tooltip: Label</description>
+    <btnLabel>Label</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
+    <label>In thesaurus</label>
+    <description>Tooltip: In thesaurus</description>
+    <btnLabel>In thesaurus</btnLabel>
   </element>
 </labels>

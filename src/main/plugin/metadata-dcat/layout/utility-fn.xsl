@@ -55,7 +55,7 @@
       <xsl:when test="$elementName = 'dct:language'">
         <xsl:value-of select="concat($inSchemeAuthorityBaseUrl,'language')"/>
       </xsl:when>
-      <xsl:when test="$elementName = 'dct:type' and $parentElementName = 'dcat:Dataset'">
+      <xsl:when test="$elementName = 'dct:type' and $parentElementName = ('dcat:Dataset', 'dcat:DataService')">
         <xsl:value-of select="concat($inSchemeAuthorityBaseUrl,'resource-type')"/>
       </xsl:when>
       <xsl:when test="$elementName = 'dct:format'">
@@ -101,7 +101,7 @@
       <xsl:when test="$elementName = 'dct:language'">
         <xsl:value-of select="'http://purl.org/dc/terms/LinguisticSystem'"/>
       </xsl:when>
-      <xsl:when test="$elementName = 'dct:type' and $parentElementName = 'dcat:Dataset'">
+      <xsl:when test="$elementName = 'dct:type' and $parentElementName = ('dcat:Dataset', 'dcat:DataService')">
         <xsl:value-of select="''"/>
       </xsl:when>
       <xsl:when test="$elementName = 'dct:format'">

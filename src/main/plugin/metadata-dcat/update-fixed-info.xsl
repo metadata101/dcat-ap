@@ -253,9 +253,9 @@
 
   <!-- Fill empty element and update existing with resourceType -->
   <xsl:template match="foaf:Agent/dct:type|dcat:theme|dct:accrualPeriodicity|dct:language|dcat:Dataset/dct:type|
-                       dct:format|dcat:mediaType|adms:status|dct:LicenseDocument/dct:type|dct:accessRights|
-                       mvs:statusVanGebruik|mvs:statusVanOntwikkeling|dcat:compressFormat|dcat:packageFormat"
-                priority="10">
+                       dcat:DataService/dct:type|dct:format|dcat:mediaType|adms:status|dct:LicenseDocument/dct:type|
+                       dct:accessRights|mvs:statusVanGebruik|mvs:statusVanOntwikkeling|dcat:compressFormat|
+                       dcat:packageFormat" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
       <xsl:variable name="inScheme" select="gn-fn-metadata-dcat:getInSchemeURIByElementName(name(.),name(..))"/>

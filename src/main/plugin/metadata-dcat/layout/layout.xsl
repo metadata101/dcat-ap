@@ -69,6 +69,9 @@
         <xsl:when test="starts-with(concat(gn-fn-metadata:getXPath(..),'/',$name), '/dcat:Dataset/')">
           <xsl:value-of select="concat('/rdf:RDF/dcat:Catalog/dcat:dataset', gn-fn-metadata:getXPath(..),'/',$name)"/>
         </xsl:when>
+        <xsl:when test="starts-with(concat(gn-fn-metadata:getXPath(..),'/',$name), '/dcat:DataService/')">
+          <xsl:value-of select="concat('/rdf:RDF/dcat:Catalog/dcat:service', gn-fn-metadata:getXPath(..),'/',$name)"/>
+        </xsl:when>
         <xsl:otherwise>
           <xsl:value-of select="concat(gn-fn-metadata:getXPath(..),'/',$name)"/>
         </xsl:otherwise>
