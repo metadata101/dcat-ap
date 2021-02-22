@@ -251,7 +251,7 @@
   <xsl:template mode="render-field" match="dct:created|dct:issued|dct:modified|dct:identifier|skos:notation|schema:startDate|
                                            schema:endDate|vcard:street-address|vcard:locality|vcard:postal-code|vcard:country-name|
                                            vcard:hasTelephone|vcard:fn|vcard:organization-name|skos:prefLabel|owl:versionInfo|
-                                           adms:versionNotes|dcat:byteSize|dcat:hadRole">
+                                           adms:versionNotes|dcat:byteSize|dcat:hadRole|dcat:spatialResolutionInMeters|dcat:temporalResolution">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <xsl:if test="normalize-space($stringValue) != ''">
@@ -321,7 +321,8 @@
   </xsl:template>
 
   <xsl:template mode="render-field" match="dct:type|dcat:theme|dct:accrualPeriodicity|dct:language|dct:format|dcat:mediaType|
-                                           adms:status|mvs:statusVanGebruik|mvs:statusVanOntwikkeling|dct:accessRights">
+                                           adms:status|mvs:statusVanGebruik|mvs:statusVanOntwikkeling|dct:accessRights|dcat:compressFormat|
+                                           dcat:packageFormat">
     <xsl:param name="xpath"/>
     <xsl:variable name="usedLang">
       <xsl:value-of select="if (normalize-space(skos:Concept/skos:prefLabel[@xml:lang=$langId-2char]) != '')
