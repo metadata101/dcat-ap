@@ -5,10 +5,10 @@
                 exclude-result-prefixes="#all"
                 version="2.0">
 
-  <xsl:param name="uuidSrv"/>
+  <xsl:param name="uuidref"/>
   <xsl:param name="siteUrl"/>
 
-  <xsl:variable name="serviceUrl" select="concat($siteUrl, 'catalog.search#/metadata/', $uuidSrv)"/>
+  <xsl:variable name="serviceUrl" select="concat($siteUrl, 'catalog.search#/metadata/', $uuidref)"/>
 
   <xsl:template match="dcat:accessService[@rdf:resource = $serviceUrl]"/>
 
