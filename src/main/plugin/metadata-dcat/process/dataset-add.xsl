@@ -4,6 +4,7 @@
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
                 xmlns:mvs="http://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:geonet="http://www.fao.org/geonetwork"
                 exclude-result-prefixes="#all"
                 version="2.0">
 
@@ -22,11 +23,13 @@
                            dcat:endpointUrl|
                            dcat:endpointDescription"/>
 
-      <xsl:copy-of select="dcat:servesDataset[normalize-space(@rdf:resource) != '']"/>
+      <xsl:variable name="datasetUrl" select="concat($siteUrl, 'catalog.search#/metadata/', $uuidDS)"/>
+
+      <xsl:copy-of select="dcat:servesDataset[normalize-space(@rdf:resource) != '' and normalize-space(@rdf:resource) != $datasetUrl]"/>
 
       <!-- Add link to dataset -->
       <xsl:element name="dcat:servesDataset">
-        <xsl:attribute name="rdf:resource" select="concat($siteUrl, 'catalog.search#/metadata/', $uuidDS)"/>
+        <xsl:attribute name="rdf:resource" select="$datasetUrl"/>
       </xsl:element>
 
       <!-- Copy elements after dcat:servesDataset -->
@@ -57,6 +60,8 @@
                            dct:type"/>
     </xsl:copy>
   </xsl:template>
+
+  <xsl:template match="geonet:*"/>
 
   <xsl:template match="@*|*">
     <xsl:copy>

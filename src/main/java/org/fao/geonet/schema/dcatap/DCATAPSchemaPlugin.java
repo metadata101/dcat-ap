@@ -136,6 +136,12 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
         return null;
     }
 
+    @Override
+    public Set<String> getAssociatedServices(Element metadata) {
+        ElementFilter elementFilter = new ElementFilter("accessService", DCATAPNamespaces.DCAT);
+        return this.getAssociatedRdfUUIDs(metadata, elementFilter);
+    }
+
     private Set<String> getAssociatedRdfUUIDs(Element metadata, ElementFilter filter) {
         Set<String> rdfAboutAttributes = Xml.filterElementValues(
             metadata,
