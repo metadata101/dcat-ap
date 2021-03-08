@@ -14,7 +14,8 @@
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <dct:identifier><xsl:value-of select="/root/env/uuid"/></dct:identifier>
-      <xsl:apply-templates select="*[name(.) != 'dct:identifier']"/>
+      <dct:title xml:lang="nl"/>
+      <xsl:apply-templates select="*[name() != 'dct:identifier' and name() != 'dct:title']"/>
     </xsl:copy>
   </xsl:template>
 
