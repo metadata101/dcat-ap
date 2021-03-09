@@ -170,10 +170,7 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
             DCATAPNamespaces.RDF);
 
         return rdfAboutAttributes.stream()
-            .filter(rdfAboutAttribute -> {
-                Matcher matcher = UUID_PATTERN.matcher(rdfAboutAttribute);
-                return matcher.find() && !rdfAboutAttribute.startsWith(nodeUrl);
-            })
+            .filter(rdfAboutAttribute -> !rdfAboutAttribute.startsWith(nodeUrl))
             .collect(Collectors.toSet());
     }
 }
