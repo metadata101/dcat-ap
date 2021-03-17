@@ -102,6 +102,7 @@
           </dct:type>
         </foaf:Agent>
       </dct:publisher>
+      <!--<xsl:copy-of select="foaf:homepage"/>-->
       <dct:license>
         <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0"
                              xmlns:dct="http://purl.org/dc/terms/"
@@ -149,9 +150,14 @@
           </skos:ConceptScheme>
         </dcat:themeTaxonomy>
       </xsl:for-each>
+      <!--<xsl:copy-of select="dct:hasPart|
+                           dct:isPartOf|
+                           dcat:record|
+                           dct:rights|
+                           dct:spatial"/>-->
       <xsl:apply-templates select="dcat:dataset|dcat:service"/>
 
-      <xsl:copy-of select="dcat:contactPoint|
+      <!--<xsl:copy-of select="dcat:contactPoint|
                            dcat:keyword|
                            dcat:landingPage|
                            dcat:qualifiedRelation|
@@ -162,7 +168,7 @@
                            dct:identifier|
                            dct:isReferencedBy|
                            dct:relation|
-                           dct:type"/>
+                           dct:type"/>-->
     </dcat:Catalog>
   </xsl:template>
   <!-- ================================================================= -->
