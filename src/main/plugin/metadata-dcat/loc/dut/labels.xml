@@ -1711,7 +1711,6 @@
     </description>
     <btnLabel>Beschrijving</btnLabel>
   </element>
-
   <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier">
     <label>Identificator</label>
     <description>Een unieke identificator van de dataservice.</description>
@@ -1896,22 +1895,22 @@
     <description>Vul aan met de naam van het land uit het adres van van het contactpunt</description>
     <btnLabel>Land</btnLabel>
   </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasEmail/@rdf:resource">
-    <label>E-mail</label>
-    <description>Vul aan met het e-mailadres van het contactpunt</description>
-    <btnLabel>E-mail</btnLabel>
-  </element>
   <element name="vcard:hasEmail" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasEmail">
     <label>E-mail</label>
     <description>Vul aan met het e-mailadres van het contactpunt</description>
     <btnLabel>E-mail</btnLabel>
   </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasURL/@rdf:resource">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasEmail/@rdf:resource">
+    <label>E-mail</label>
+    <description>Vul aan met het e-mailadres van het contactpunt</description>
+    <btnLabel>E-mail</btnLabel>
+  </element>
+  <element name="vcard:hasURL" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasURL">
     <label>Website</label>
     <description>Vul aan met de website van het contactpunt</description>
     <btnLabel>Website</btnLabel>
   </element>
-  <element name="vcard:hasURL" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasURL">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasURL/@rdf:resource">
     <label>Website</label>
     <description>Vul aan met de website van het contactpunt</description>
     <btnLabel>Website</btnLabel>
@@ -1943,22 +1942,22 @@
   </element>
   <element name="mvs:authenticatie" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:authenticatie">
     <label>Authenticatie</label>
-    <description>Landingspagina met informatie over authenticatie</description>
+    <description>Landingspagina met informatie over authenticatie.</description>
     <btnLabel>Authenticatie</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:authenticatie/@rdf:resource">
     <label>Authenticatie</label>
-    <description>Landingspagina met informatie over authenticatie</description>
+    <description>Landingspagina met informatie over authenticatie.</description>
     <btnLabel>Authenticatie</btnLabel>
   </element>
   <element name="mvs:dienstverleningsKwaliteit" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:dienstverleningsKwaliteit">
     <label>Dienstverleningskwaliteit</label>
-    <description>Landingspagina met informatie over kwaliteit van de dienstverlening</description>
+    <description>Landingspagina met informatie over kwaliteit van de dienstverlening.</description>
     <btnLabel>Dienstverleningskwaliteit</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:dienstverleningsKwaliteit/@rdf:resource">
     <label>Dienstverleningskwaliteit</label>
-    <description>Landingspagina met informatie over kwaliteit van de dienstverlening</description>
+    <description>Landingspagina met informatie over kwaliteit van de dienstverlening.</description>
     <btnLabel>Dienstverleningskwaliteit</btnLabel>
   </element>
   <element name="mvs:gebruiksbepaling" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling">
@@ -1973,22 +1972,22 @@
   </element>
   <element name="mvs:statusVanGebruik" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanGebruik">
     <label>Gebruiksstatus</label>
-    <description>Huidige toestand van gebruiksmogelijkheden</description>
+    <description>Huidige toestand van gebruiksmogelijkheden.</description>
     <btnLabel>Gebruiksstatus</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanGebruik/skos:Concept">
     <label>Gebruiksstatus</label>
-    <description>Huidige toestand van gebruiksmogelijkheden</description>
+    <description>Huidige toestand van gebruiksmogelijkheden.</description>
     <btnLabel>Gebruiksstatus</btnLabel>
   </element>
   <element name="mvs:statusVanOntwikkeling" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanOntwikkeling">
     <label>Ontwikkelingsstatus</label>
-    <description>Huidige toestand van de ontwikkelingsstatus</description>
+    <description>Huidige toestand van de ontwikkelingsstatus.</description>
     <btnLabel>Ontwikkelingsstatus</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:statusVanOntwikkeling/skos:Concept">
     <label>Ontwikkelingsstatus</label>
-    <description>Huidige toestand van de ontwikkelingsstatus</description>
+    <description>Huidige toestand van de ontwikkelingsstatus.</description>
     <btnLabel>Ontwikkelingsstatus</btnLabel>
   </element>
   <element name="dcat:qualifiedRelation" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:qualifiedRelation">
