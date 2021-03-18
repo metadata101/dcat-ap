@@ -26,5 +26,4 @@
   <xs:element name="gebruiksbepaling" type="rdf:Resource"/>
   <xs:element name="statusVanGebruik" type="skos:Concept"/>
   <xs:element name="statusVanOntwikkeling" type="skos:Concept"/>
-  <xs:element name="wettelijkeBeperkingen" type="rdf:Resource"/>
 </xs:schema>

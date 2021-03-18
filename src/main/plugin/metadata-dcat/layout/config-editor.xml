@@ -233,16 +233,6 @@
         </snippet>
       </template>
     </for>
-    <for name="mvs:wettelijkeBeperkingen" templateModeOnly="true" forceLabel="true" label="FieldId419" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen">
-      <template>
-        <values>
-          <key label="FieldId419" xpath="@rdf:resource" tooltip="mvs:wettelijkeBeperkingen|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen"/>
-        </values>
-        <snippet>
-          <mvs:wettelijkeBeperkingen rdf:resource="{{FieldId419}}"/>
-        </snippet>
-      </template>
-    </for>
     <for name="dcat:accessService" templateModeOnly="true" forceLabel="true" label="FieldId420">
       <template>
         <values>
@@ -626,14 +616,6 @@
                     <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
                   </skos:Concept>
                 </mvs:statusVanOntwikkeling>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId419" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen"/>
-          <action type="add" name="FieldId419" or="wettelijkeBeperkingen" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mvs:wettelijkeBeperkingen rdf:resource="{{FieldId419}}"/>
               </snippet>
             </template>
           </action>
@@ -1196,14 +1178,6 @@
                     <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
                   </skos:Concept>
                 </mvs:statusVanOntwikkeling>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId419" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen"/>
-          <action type="add" name="FieldId419" or="wettelijkeBeperkingen" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mvs:wettelijkeBeperkingen rdf:resource="{{FieldId419}}"/>
               </snippet>
             </template>
           </action>

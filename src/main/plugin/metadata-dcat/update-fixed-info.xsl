@@ -462,7 +462,6 @@
       <xsl:apply-templates select="mvs:gebruiksbepaling"/>
       <xsl:apply-templates select="mvs:statusVanGebruik"/>
       <xsl:apply-templates select="mvs:statusVanOntwikkeling"/>
-      <xsl:apply-templates select="mvs:wettelijkeBeperkingen"/>
 
       <xsl:apply-templates select="dcat:qualifiedRelation"/>
       <xsl:apply-templates select="dcat:theme"/>

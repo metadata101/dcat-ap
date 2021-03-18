@@ -1816,16 +1816,6 @@
     <description>Huidige toestand van de ontwikkelingsstatus</description>
     <btnLabel>Ontwikkelingsstatus</btnLabel>
   </element>
-  <element name="mvs:wettelijkeBeperkingen" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen">
-    <label>Wettelijke beperkingen</label>
-    <description>Landingspagina met informatie over de wettelijke beperkingen i.v.m. dataService</description>
-    <btnLabel>Wettelijke beperkingen</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:wettelijkeBeperkingen/@rdf:resource">
-    <label>Wettelijke beperkingen</label>
-    <description>Landingspagina met informatie over de wettelijke beperkingen i.v.m. dataService</description>
-    <btnLabel>Wettelijke beperkingen</btnLabel>
-  </element>
   <element name="dcat:qualifiedRelation" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:qualifiedRelation">
     <label>Kwalificeerde relatie</label>
     <description>Tooltip: Kwalificeerde relatie</description>

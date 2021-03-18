@@ -215,7 +215,6 @@
             <xs:element ref="mvs:gebruiksbepaling" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="mvs:statusVanGebruik" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="mvs:statusVanOntwikkeling" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="mvs:wettelijkeBeperkingen" minOccurs="0" maxOccurs="1"/>
 
             <!-- Field added to ensure compatibility with dcat-ap 2.0 -->
             <xs:element name="qualifiedRelation" type="dcat:Relationship" minOccurs="0" maxOccurs="unbounded"/>

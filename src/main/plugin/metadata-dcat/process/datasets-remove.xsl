@@ -35,8 +35,7 @@
                            mvs:dienstverleningsKwaliteit|
                            mvs:gebruiksbepaling|
                            mvs:statusVanGebruik|
-                           mvs:statusVanOntwikkeling|
-                           mvs:wettelijkeBeperkingen"/>
+                           mvs:statusVanOntwikkeling"/>
 
       <xsl:copy-of select="dcat:qualifiedRelation|
                            dcat:theme|
