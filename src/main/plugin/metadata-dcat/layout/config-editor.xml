@@ -222,16 +222,7 @@
         </snippet>
       </template>
     </for>
-    <for name="mvs:doelpopulatie" templateModeOnly="true" forceLabel="true" label="FieldId415" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie">
-      <template>
-        <values>
-          <key label="FieldId415" xpath="@rdf:resource" tooltip="mvs:doelpopulatie|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie"/>
-        </values>
-        <snippet>
-          <mvs:doelpopulatie rdf:resource="{{FieldId415}}"/>
-        </snippet>
-      </template>
-    </for>
+
     <for name="mvs:gebruiksbepaling" templateModeOnly="true" forceLabel="true" label="FieldId416" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling">
       <template>
         <values>
@@ -595,14 +586,6 @@
             <template>
               <snippet>
                 <mvs:dienstverleningsKwaliteit rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId415" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie"/>
-          <action type="add" name="FieldId415" or="doelpopulatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mvs:doelpopulatie rdf:resource=""/>
               </snippet>
             </template>
           </action>
@@ -1173,14 +1156,6 @@
             <template>
               <snippet>
                 <mvs:dienstverleningsKwaliteit rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId415" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie"/>
-          <action type="add" name="FieldId415" or="doelpopulatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mvs:doelpopulatie rdf:resource=""/>
               </snippet>
             </template>
           </action>

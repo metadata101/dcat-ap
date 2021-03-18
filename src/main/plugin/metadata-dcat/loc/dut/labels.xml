@@ -1961,16 +1961,6 @@
     <description>Landingspagina met informatie over kwaliteit van de dienstverlening</description>
     <btnLabel>Dienstverleningskwaliteit</btnLabel>
   </element>
-  <element name="mvs:doelpopulatie" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie">
-    <label>Doelpopulatie</label>
-    <description>Landingspagina met informatie over de doelpopulatie</description>
-    <btnLabel>Doelpopulatie</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie/@rdf:resource">
-    <label>Doelpopulatie</label>
-    <description>Landingspagina met informatie over de doelpopulatie</description>
-    <btnLabel>Doelpopulatie</btnLabel>
-  </element>
   <element name="mvs:gebruiksbepaling" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling">
     <label>Gebruiksbepaling</label>
     <description>Landingspagina met informatie over de genomen voorwaarden om de service te mogen gebruiken.</description>

@@ -1486,68 +1486,6 @@
     <description>Descriptie van het item.</description>
     <btnLabel>Beschrijving</btnLabel>
   </element>
-  <root>
-    <element name="dct:publisher" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher">
-      <label>publisher</label>
-      <description>Tooltip: publisher</description>
-      <btnLabel>publisher</btnLabel>
-    </element>
-    <element name="foaf:Agent" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent">
-      <label>organisation</label>
-      <description>Tooltip: organisation</description>
-      <btnLabel>organisation</btnLabel>
-    </element>
-    <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/@rdf:about">
-      <label>URI</label>
-      <description>Tooltip: URI</description>
-      <btnLabel>URI</btnLabel>
-    </element>
-    <element name="foaf:name" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/foaf:name">
-      <label>name</label>
-      <description>Tooltip: name</description>
-      <btnLabel>name</btnLabel>
-    </element>
-    <element name="xml:lang" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/foaf:name/@xml:lang">
-      <label>language</label>
-      <description>Tooltip: language</description>
-      <btnLabel>language</btnLabel>
-    </element>
-    <element name="dct:type" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/dct:type">
-      <label>type</label>
-      <description>Tooltip: type</description>
-      <btnLabel>type</btnLabel>
-    </element>
-    <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/dct:type/skos:Concept">
-      <label>type</label>
-      <description>Tooltip: concept</description>
-      <btnLabel>concept</btnLabel>
-    </element>
-    <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/dct:type/skos:Concept/@rdf:about">
-      <label>URI</label>
-      <description>Tooltip: URI</description>
-      <btnLabel>URI</btnLabel>
-    </element>
-    <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/dct:type/skos:Concept/rdf:type/@rdf:resource">
-      <label>rdf class</label>
-      <description>Tooltip: rdf class</description>
-      <btnLabel>rdf class</btnLabel>
-    </element>
-    <element name="skos:prefLabel" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/dct:type/skos:Concept/skos:prefLabel">
-      <label>preferred label</label>
-      <description>Tooltip: preferred label</description>
-      <btnLabel>preferred label</btnLabel>
-    </element>
-    <element name="xml:lang" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/dct:type/skos:Concept/skos:prefLabel/@xml:lang">
-      <label>language</label>
-      <description>Tooltip: language</description>
-      <btnLabel>language</btnLabel>
-    </element>
-    <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
-      <label>in scheme</label>
-      <description>Tooltip: in scheme</description>
-      <btnLabel>in scheme</btnLabel>
-    </element>
-  </root>
   <element name="dcat:endpointUrl" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl">
     <label>EndpointURL</label>
     <description>De rootlocatie of het primaire eindpunt van de dienst (een web-resolvable URI).</description>
@@ -1717,16 +1655,6 @@
     <label>Dienstverleningskwaliteit</label>
     <description>Landingspagina met informatie over kwaliteit van de dienstverlening</description>
     <btnLabel>Dienstverleningskwaliteit</btnLabel>
-  </element>
-  <element name="mvs:doelpopulatie" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie">
-    <label>Doelpopulatie</label>
-    <description>Landingspagina met informatie over de doelpopulatie</description>
-    <btnLabel>Doelpopulatie</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:doelpopulatie/@rdf:resource">
-    <label>Doelpopulatie</label>
-    <description>Landingspagina met informatie over de doelpopulatie</description>
-    <btnLabel>Doelpopulatie</btnLabel>
   </element>
   <element name="mvs:gebruiksbepaling" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mvs:gebruiksbepaling">
     <label>Gebruiksbepaling</label>

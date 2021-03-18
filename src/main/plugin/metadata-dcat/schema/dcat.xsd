@@ -212,7 +212,6 @@
             <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="mvs:authenticatie" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="mvs:dienstverleningsKwaliteit" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="mvs:doelpopulatie" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="mvs:gebruiksbepaling" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="mvs:statusVanGebruik" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="mvs:statusVanOntwikkeling" minOccurs="0" maxOccurs="1"/>

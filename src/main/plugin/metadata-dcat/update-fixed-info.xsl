@@ -459,7 +459,6 @@
       <xsl:apply-templates select="owl:versionInfo"/>
       <xsl:apply-templates select="mvs:authenticatie"/>
       <xsl:apply-templates select="mvs:dienstverleningsKwaliteit"/>
-      <xsl:apply-templates select="mvs:doelpopulatie"/>
       <xsl:apply-templates select="mvs:gebruiksbepaling"/>
       <xsl:apply-templates select="mvs:statusVanGebruik"/>
       <xsl:apply-templates select="mvs:statusVanOntwikkeling"/>

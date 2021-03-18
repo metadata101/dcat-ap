@@ -23,7 +23,6 @@
 
   <xs:element name="authenticatie" type="rdf:Resource"/>
   <xs:element name="dienstverleningsKwaliteit" type="rdf:Resource"/>
-  <xs:element name="doelpopulatie" type="rdf:Resource"/>
   <xs:element name="gebruiksbepaling" type="rdf:Resource"/>
   <xs:element name="statusVanGebruik" type="skos:Concept"/>
   <xs:element name="statusVanOntwikkeling" type="skos:Concept"/>

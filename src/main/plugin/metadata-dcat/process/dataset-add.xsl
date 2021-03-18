@@ -40,7 +40,6 @@
                            owl:versionInfo|
                            mvs:authenticatie|
                            mvs:dienstverleningsKwaliteit|
-                           mvs:doelpopulatie|
                            mvs:gebruiksbepaling|
                            mvs:statusVanGebruik|
                            mvs:statusVanOntwikkeling|
