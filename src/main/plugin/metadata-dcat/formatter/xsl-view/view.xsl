@@ -37,7 +37,7 @@
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
                 xmlns:spdx="http://spdx.org/rdf/terms#"
                 xmlns:schema="http://schema.org/"
-                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:gn-fn-render="http://geonetwork-opensource.org/xsl/functions/render"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 xmlns:gn-fn-metadata-dcat="http://geonetwork-opensource.org/xsl/functions/profiles/metadata-dcat"
@@ -321,7 +321,7 @@
   </xsl:template>
 
   <xsl:template mode="render-field" match="dct:type|dcat:theme|dct:accrualPeriodicity|dct:language|dct:format|dcat:mediaType|
-                                           adms:status|mvs:statusVanGebruik|mvs:statusVanOntwikkeling|dct:accessRights|dcat:compressFormat|
+                                           adms:status|mdcat:statusVanGebruik|mdcat:statusVanOntwikkeling|dct:accessRights|dcat:compressFormat|
                                            dcat:packageFormat">
     <xsl:param name="xpath"/>
     <xsl:variable name="usedLang">

@@ -7,7 +7,7 @@
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:xslutil="java:org.fao.geonet.util.XslUtil"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
@@ -29,8 +29,8 @@
                                                                  adms:status|
                                                                  dct:LicenseDocument/dct:type|
                                                                  dct:accessRights|
-                                                                 mvs:statusVanGebruik|
-                                                                 mvs:statusVanOntwikkeling">
+                                                                 mdcat:statusVanGebruik|
+                                                                 mdcat:statusVanOntwikkeling">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
 

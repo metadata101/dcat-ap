@@ -9,7 +9,7 @@
            xmlns:skos="http://www.w3.org/2004/02/skos/core#"
            xmlns:spdx="http://spdx.org/rdf/terms#"
            xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
-           xmlns:mvs="http://data.vlaanderen.be/ns/metadata-dcat#"
+           xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
            targetNamespace="http://www.w3.org/ns/dcat#"
            elementFormDefault="qualified"
            attributeFormDefault="qualified">
@@ -35,7 +35,7 @@
   <xs:import namespace="http://spdx.org/rdf/terms#" schemaLocation="spdx.xsd"/>
   <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
   <xs:import namespace="http://www.w3.org/2006/vcard/ns#" schemaLocation="vcard.xsd"/>
-  <xs:import namespace="http://data.vlaanderen.be/ns/metadata-dcat#" schemaLocation="mvs.xsd"/>
+  <xs:import namespace="http://data.vlaanderen.be/ns/metadata-dcat#" schemaLocation="mdcat.xsd"/>
 
   <xs:element name="Catalog" type="dcat:Catalog"/>
 
@@ -210,11 +210,11 @@
             <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="mvs:authenticatie" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="mvs:dienstverleningsKwaliteit" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="mvs:gebruiksbepaling" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="mvs:statusVanGebruik" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="mvs:statusVanOntwikkeling" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="mdcat:authenticatie" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="mdcat:dienstverleningsKwaliteit" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="mdcat:gebruiksbepaling" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="mdcat:statusVanGebruik" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="mdcat:statusVanOntwikkeling" minOccurs="0" maxOccurs="1"/>
 
             <!-- Field added to ensure compatibility with dcat-ap 2.0 -->
             <xs:element name="qualifiedRelation" type="dcat:Relationship" minOccurs="0" maxOccurs="unbounded"/>

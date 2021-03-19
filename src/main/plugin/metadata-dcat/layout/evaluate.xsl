@@ -35,7 +35,7 @@
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
                 xmlns:schema="http://schema.org/"
                 xmlns:locn="http://www.w3.org/ns/locn#"
-                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:saxon="http://saxon.sf.net/"
                 extension-element-prefixes="saxon"

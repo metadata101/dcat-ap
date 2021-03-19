@@ -3,7 +3,7 @@
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
-                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:geonet="http://www.fao.org/geonetwork"
                 exclude-result-prefixes="#all"
                 version="2.0">
@@ -38,11 +38,11 @@
                            dcat:keyword|
                            dct:language|
                            owl:versionInfo|
-                           mvs:authenticatie|
-                           mvs:dienstverleningsKwaliteit|
-                           mvs:gebruiksbepaling|
-                           mvs:statusVanGebruik|
-                           mvs:statusVanOntwikkeling"/>
+                           mdcat:authenticatie|
+                           mdcat:dienstverleningsKwaliteit|
+                           mdcat:gebruiksbepaling|
+                           mdcat:statusVanGebruik|
+                           mdcat:statusVanOntwikkeling"/>
 
       <xsl:copy-of select="dcat:qualifiedRelation|
                            dcat:theme|

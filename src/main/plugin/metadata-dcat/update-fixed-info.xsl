@@ -35,7 +35,7 @@
                 xmlns:schema="http://schema.org/"
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:gml="http://www.opengis.net/gml"
-                xmlns:mvs="http://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 xmlns:gn-fn-metadata-dcat="http://geonetwork-opensource.org/xsl/functions/profiles/metadata-dcat"
@@ -255,7 +255,7 @@
   <!-- Fill empty element and update existing with resourceType -->
   <xsl:template match="foaf:Agent/dct:type|dcat:theme|dct:accrualPeriodicity|dct:language|dcat:Dataset/dct:type|
                        dcat:DataService/dct:type|dct:format|dcat:mediaType|adms:status|dct:LicenseDocument/dct:type|
-                       dct:accessRights|mvs:statusVanGebruik|mvs:statusVanOntwikkeling|dcat:compressFormat|
+                       dct:accessRights|mdcat:statusVanGebruik|mdcat:statusVanOntwikkeling|dcat:compressFormat|
                        dcat:packageFormat" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
@@ -457,11 +457,11 @@
       <xsl:apply-templates select="dcat:keyword"/>
       <xsl:apply-templates select="dct:language"/>
       <xsl:apply-templates select="owl:versionInfo"/>
-      <xsl:apply-templates select="mvs:authenticatie"/>
-      <xsl:apply-templates select="mvs:dienstverleningsKwaliteit"/>
-      <xsl:apply-templates select="mvs:gebruiksbepaling"/>
-      <xsl:apply-templates select="mvs:statusVanGebruik"/>
-      <xsl:apply-templates select="mvs:statusVanOntwikkeling"/>
+      <xsl:apply-templates select="mdcat:authenticatie"/>
+      <xsl:apply-templates select="mdcat:dienstverleningsKwaliteit"/>
+      <xsl:apply-templates select="mdcat:gebruiksbepaling"/>
+      <xsl:apply-templates select="mdcat:statusVanGebruik"/>
+      <xsl:apply-templates select="mdcat:statusVanOntwikkeling"/>
 
       <xsl:apply-templates select="dcat:qualifiedRelation"/>
       <xsl:apply-templates select="dcat:theme"/>
@@ -494,7 +494,7 @@
     <xsl:namespace name="schema" select="'http://schema.org/'"/>
     <xsl:namespace name="dc" select="'http://purl.org/dc/elements/1.1/'"/>
     <xsl:if test="$isService">
-      <xsl:namespace name="mvs" select="'http://data.vlaanderen.be/ns/metadata-dcat#'"/>
+      <xsl:namespace name="mdcat" select="'http://data.vlaanderen.be/ns/metadata-dcat#'"/>
     </xsl:if>
   </xsl:template>
 </xsl:stylesheet>
