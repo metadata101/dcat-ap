@@ -29,8 +29,8 @@
                                                                  adms:status|
                                                                  dct:LicenseDocument/dct:type|
                                                                  dct:accessRights|
-                                                                 mdcat:statusVanGebruik|
-                                                                 mdcat:statusVanOntwikkeling">
+                                                                 mdcat:levensfase|
+                                                                 mdcat:ontwikkelingstoestand">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
 

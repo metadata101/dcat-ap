@@ -73,10 +73,10 @@
       <xsl:when test="$elementName = 'dct:accessRights'">
         <xsl:value-of select="concat($inSchemeAuthorityBaseUrl, 'access-right')"/>
       </xsl:when>
-      <xsl:when test="$elementName = 'mdcat:statusVanGebruik'">
+      <xsl:when test="$elementName = 'mdcat:levensfase'">
         <xsl:value-of select="concat($inSchemeMdcatBaseUrl,'gebruiksstatus')"/>
       </xsl:when>
-      <xsl:when test="$elementName = 'mdcat:statusVanOntwikkeling'">
+      <xsl:when test="$elementName = 'mdcat:ontwikkelingstoestand'">
         <xsl:value-of select="concat($inSchemeMdcatBaseUrl,'ontwikkelingsstatus')"/>
       </xsl:when>
       <xsl:otherwise>
@@ -119,10 +119,10 @@
       <xsl:when test="$elementName = 'dct:accessRights'">
         <xsl:value-of select="'http://purl.org/dc/terms/RightsStatement'"/>
       </xsl:when>
-      <xsl:when test="$elementName = 'mdcat:statusVanGebruik'">
+      <xsl:when test="$elementName = 'mdcat:levensfase'">
         <xsl:value-of select="''"/>
       </xsl:when>
-      <xsl:when test="$elementName = 'mdcat:statusVanOntwikkeling'">
+      <xsl:when test="$elementName = 'mdcat:ontwikkelingstoestand'">
         <xsl:value-of select="''"/>
       </xsl:when>
       <xsl:otherwise>

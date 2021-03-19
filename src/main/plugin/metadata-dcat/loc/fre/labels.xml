@@ -1816,52 +1816,52 @@
     <description>Tooltip: version</description>
     <btnLabel>version</btnLabel>
   </element>
-  <element name="mdcat:authenticatie" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:authenticatie">
+  <element name="mdcat:landingspaginaVoorAuthenticatie" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie">
     <label>Authentication</label>
     <description>Landing page with information about authentication.</description>
     <btnLabel>authentication</btnLabel>
   </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:authenticatie/@rdf:resource">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie/@rdf:resource">
     <label>Authentication</label>
     <description>Landing page with information about authentication.</description>
     <btnLabel>authentication</btnLabel>
   </element>
-  <element name="mdcat:dienstverleningsKwaliteit" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:dienstverleningsKwaliteit">
+  <element name="mdcat:landingspaginaVoorStatusinformatie" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie">
     <label>Service quality</label>
     <description>Landing page with information about the quality of the service.</description>
     <btnLabel>Service quality</btnLabel>
   </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:dienstverleningsKwaliteit/@rdf:resource">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie/@rdf:resource">
     <label>Service quality</label>
     <description>Landing page with information about the quality of the service.</description>
     <btnLabel>Service quality</btnLabel>
   </element>
-  <element name="mdcat:gebruiksbepaling" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:gebruiksbepaling">
+  <element name="mdcat:landingspaginaVoorGebruiksinformatie" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie">
     <label>Terms of use</label>
     <description>Landing page with information about the conditions taken to use the service.</description>
     <btnLabel>Terms of use</btnLabel>
   </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:gebruiksbepaling/@rdf:resource">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie/@rdf:resource">
     <label>Terms of use</label>
     <description>Landing page with information about the conditions taken to use the service.</description>
     <btnLabel>Terms of use</btnLabel>
   </element>
-  <element name="mdcat:statusVanGebruik" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statusVanGebruik">
+  <element name="mdcat:levensfase" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase">
     <label>Usage status</label>
     <description>Current states of use.</description>
     <btnLabel>Usage status</btnLabel>
   </element>
-  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statusVanGebruik/skos:Concept">
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase/skos:Concept">
     <label>Usage status</label>
     <description>Current states of use.</description>
     <btnLabel>Usage status</btnLabel>
   </element>
-  <element name="mdcat:statusVanOntwikkeling" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statusVanOntwikkeling">
+  <element name="mdcat:ontwikkelingstoestand" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand">
     <label>Development status</label>
     <description>Current state of development.</description>
     <btnLabel>Development status</btnLabel>
   </element>
-  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statusVanOntwikkeling/skos:Concept">
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand/skos:Concept">
     <label>Development status</label>
     <description>Current state of development.</description>
     <btnLabel>Development status</btnLabel>

@@ -321,7 +321,7 @@
   </xsl:template>
 
   <xsl:template mode="render-field" match="dct:type|dcat:theme|dct:accrualPeriodicity|dct:language|dct:format|dcat:mediaType|
-                                           adms:status|mdcat:statusVanGebruik|mdcat:statusVanOntwikkeling|dct:accessRights|dcat:compressFormat|
+                                           adms:status|mdcat:levensfase|mdcat:ontwikkelingstoestand|dct:accessRights|dcat:compressFormat|
                                            dcat:packageFormat">
     <xsl:param name="xpath"/>
     <xsl:variable name="usedLang">

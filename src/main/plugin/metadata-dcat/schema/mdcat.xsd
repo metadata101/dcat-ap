@@ -21,9 +21,9 @@
   <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
   <xs:import namespace="http://www.w3.org/2004/02/skos/core#" schemaLocation="skos.xsd"/>
 
-  <xs:element name="authenticatie" type="rdf:Resource"/>
-  <xs:element name="dienstverleningsKwaliteit" type="rdf:Resource"/>
-  <xs:element name="gebruiksbepaling" type="rdf:Resource"/>
-  <xs:element name="statusVanGebruik" type="skos:Concept"/>
-  <xs:element name="statusVanOntwikkeling" type="skos:Concept"/>
+  <xs:element name="landingspaginaVoorAuthenticatie" type="rdf:Resource"/>
+  <xs:element name="landingspaginaVoorStatusinformatie" type="rdf:Resource"/>
+  <xs:element name="landingspaginaVoorGebruiksinformatie" type="rdf:Resource"/>
+  <xs:element name="levensfase" type="skos:Concept"/>
+  <xs:element name="ontwikkelingstoestand" type="skos:Concept"/>
 </xs:schema>

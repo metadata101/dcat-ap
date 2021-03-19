@@ -124,14 +124,14 @@
         </dct:accessRights>
       </xsl:when>
       <xsl:when test="ends-with($thesaurusKey, 'gebruiksstatus')">
-        <mdcat:statusVanGebruik>
+        <mdcat:levensfase>
           <xsl:copy-of select="$concept"/>
-        </mdcat:statusVanGebruik>
+        </mdcat:levensfase>
       </xsl:when>
       <xsl:when test="ends-with($thesaurusKey, 'ontwikkelingsstatus')">
-        <mdcat:statusVanOntwikkeling>
+        <mdcat:ontwikkelingstoestand>
           <xsl:copy-of select="$concept"/>
-        </mdcat:statusVanOntwikkeling>
+        </mdcat:ontwikkelingstoestand>
       </xsl:when>
       <xsl:otherwise>
         <xsl:message select="concat('No concept added for a field value of thesaurus ', $thesaurusKey, '. Verify thesaurus-transformation.xsl.')"/>

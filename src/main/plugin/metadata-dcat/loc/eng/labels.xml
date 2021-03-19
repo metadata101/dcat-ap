@@ -1596,6 +1596,17 @@
     <description>Tooltip: description</description>
     <btnLabel>description</btnLabel>
   </element>
+  <!--DataService-->
+  <element name="dcat:DataService" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+    <label>data service</label>
+    <description>Tooltip: data service</description>
+    <btnLabel>data service</btnLabel>
+  </element>
+  <element name="adms:identifier" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/adms:identifier">
+    <label>other identifier</label>
+    <description>Tooltip: other identifier</description>
+    <btnLabel>other identifier</btnLabel>
+  </element>
   <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier">
     <label>identifier</label>
     <description>Tooltip: identifier</description>
@@ -1650,26 +1661,6 @@
     <label>URI</label>
     <description>Tooltip: URI</description>
     <btnLabel>URI</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/dct:type/skos:Concept/rdf:type/@rdf:resource">
-    <label>rdf class</label>
-    <description>Tooltip: rdf class</description>
-    <btnLabel>rdf class</btnLabel>
-  </element>
-  <element name="skos:prefLabel" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/dct:type/skos:Concept/skos:prefLabel">
-    <label>preferred label</label>
-    <description>Tooltip: preferred label</description>
-    <btnLabel>preferred label</btnLabel>
-  </element>
-  <element name="xml:lang" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/dct:type/skos:Concept/skos:prefLabel/@xml:lang">
-    <label>language</label>
-    <description>Tooltip: language</description>
-    <btnLabel>language</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>in scheme</label>
-    <description>Tooltip: in scheme</description>
-    <btnLabel>in scheme</btnLabel>
   </element>
   <element name="dcat:endpointUrl" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl">
     <label>endpoint url</label>
@@ -1816,52 +1807,52 @@
     <description>Tooltip: version</description>
     <btnLabel>version</btnLabel>
   </element>
-  <element name="mdcat:authenticatie" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:authenticatie">
+  <element name="mdcat:landingspaginaVoorAuthenticatie" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie">
     <label>Authentication</label>
     <description>Landing page with information about authentication.</description>
     <btnLabel>authentication</btnLabel>
   </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:authenticatie/@rdf:resource">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie/@rdf:resource">
     <label>Authentication</label>
     <description>Landing page with information about authentication.</description>
     <btnLabel>authentication</btnLabel>
   </element>
-  <element name="mdcat:dienstverleningsKwaliteit" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:dienstverleningsKwaliteit">
-    <label>Service quality</label>
-    <description>Landing page with information about the quality of the service.</description>
-    <btnLabel>Service quality</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:dienstverleningsKwaliteit/@rdf:resource">
-    <label>Service quality</label>
-    <description>Landing page with information about the quality of the service.</description>
-    <btnLabel>Service quality</btnLabel>
-  </element>
-  <element name="mdcat:gebruiksbepaling" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:gebruiksbepaling">
+  <element name="mdcat:landingspaginaVoorGebruiksinformatie" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie">
     <label>Terms of use</label>
     <description>Landing page with information about the conditions taken to use the service.</description>
     <btnLabel>Terms of use</btnLabel>
   </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:gebruiksbepaling/@rdf:resource">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie/@rdf:resource">
     <label>Terms of use</label>
     <description>Landing page with information about the conditions taken to use the service.</description>
     <btnLabel>Terms of use</btnLabel>
   </element>
-  <element name="mdcat:statusVanGebruik" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statusVanGebruik">
+  <element name="mdcat:landingspaginaVoorStatusinformatie" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie">
+    <label>Service quality</label>
+    <description>Landing page with information about the quality of the service.</description>
+    <btnLabel>Service quality</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie/@rdf:resource">
+    <label>Service quality</label>
+    <description>Landing page with information about the quality of the service.</description>
+    <btnLabel>Service quality</btnLabel>
+  </element>
+  <element name="mdcat:levensfase" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase">
     <label>Usage status</label>
     <description>Current states of use.</description>
     <btnLabel>Usage status</btnLabel>
   </element>
-  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statusVanGebruik/skos:Concept">
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase/skos:Concept">
     <label>Usage status</label>
     <description>Current states of use.</description>
     <btnLabel>Usage status</btnLabel>
   </element>
-  <element name="mdcat:statusVanOntwikkeling" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statusVanOntwikkeling">
+  <element name="mdcat:ontwikkelingstoestand" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand">
     <label>Development status</label>
     <description>Current state of development.</description>
     <btnLabel>Development status</btnLabel>
   </element>
-  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statusVanOntwikkeling/skos:Concept">
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand/skos:Concept">
     <label>Development status</label>
     <description>Current state of development.</description>
     <btnLabel>Development status</btnLabel>
@@ -2001,21 +1992,6 @@
     <description>Tooltip: URI</description>
     <btnLabel>URI</btnLabel>
   </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/dct:type/skos:Concept/rdf:type/@rdf:resource">
-    <label>rdf class</label>
-    <description>Tooltip: rdf class</description>
-    <btnLabel>rdf class</btnLabel>
-  </element>
-  <element name="skos:prefLabel" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/dct:type/skos:Concept/skos:prefLabel">
-    <label>preferred label</label>
-    <description>Tooltip: preferred label</description>
-    <btnLabel>preferred label</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>in scheme</label>
-    <description>Tooltip: in scheme</description>
-    <btnLabel>in scheme</btnLabel>
-  </element>
   <element name="dct:title" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/dct:title">
     <label>title</label>
     <description>Tooltip: title</description>
@@ -2094,20 +2070,5 @@
     <label>URI</label>
     <description>Tooltip: URI</description>
     <btnLabel>URI</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:type/skos:Concept/rdf:type/@rdf:resource">
-    <label>rdf class</label>
-    <description>Tooltip: rdf class</description>
-    <btnLabel>rdf class</btnLabel>
-  </element>
-  <element name="skos:prefLabel" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:type/skos:Concept/skos:prefLabel">
-    <label>preferred label</label>
-    <description>Tooltip: preferred label</description>
-    <btnLabel>preferred label</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>in scheme</label>
-    <description>Tooltip: in scheme</description>
-    <btnLabel>in scheme</btnLabel>
   </element>
 </labels>

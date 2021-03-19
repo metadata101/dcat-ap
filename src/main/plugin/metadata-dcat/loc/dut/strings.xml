@@ -307,40 +307,40 @@
   <FieldId393>Label</FieldId393>
   <FieldId394>Taal</FieldId394>
   <FieldId395>In thesaurus</FieldId395>
-  <FieldId400>Titel</FieldId400>
-  <FieldId401>Beschrijving</FieldId401>
-  <FieldId402>EndpointURL</FieldId402>
-  <FieldId403>Endpointbeschrijving</FieldId403>
-  <FieldId404>Biedt informatie aan over</FieldId404>
-  <FieldId405>Identificator</FieldId405>
-  <FieldId406>Contactinformatie</FieldId406>
-  <FieldId407>Trefwoord</FieldId407>
-  <FieldId408>Taal</FieldId408>
-  <FieldId409>Landingspagina</FieldId409>
-  <FieldId410>Versie</FieldId410>
-  <FieldId411>E-mail</FieldId411>
+  <FieldId400>titel</FieldId400>
+  <FieldId401>beschrijving</FieldId401>
+  <FieldId402>endpointURL</FieldId402>
+  <FieldId403>endpointbeschrijving</FieldId403>
+  <FieldId404>biedt informatie aan over</FieldId404>
+  <FieldId405>identificator</FieldId405>
+  <FieldId406>contactinformatie</FieldId406>
+  <FieldId407>trefwoord</FieldId407>
+  <FieldId408>taal</FieldId408>
+  <FieldId409>landingspagina</FieldId409>
+  <FieldId410>versie</FieldId410>
+  <FieldId411>e-mail</FieldId411>
   <FieldId412>website</FieldId412>
-  <FieldId413>Authenticatie</FieldId413>
-  <FieldId414>Dienstverleningskwaliteit</FieldId414>
-  <FieldId416>Gebruiksbepaling</FieldId416>
-  <FieldId417>Gebruiksstatus</FieldId417>
-  <FieldId418>Ontwikkelingsstatus</FieldId418>
+  <FieldId413>landingspagina voor authenticatie</FieldId413>
+  <FieldId414>landingspagina voor statusinformatie</FieldId414>
+  <FieldId416>landingspagina voor gebruiksinformatie</FieldId416>
+  <FieldId417>levensfase</FieldId417>
+  <FieldId418>ontwikkelingstoestand</FieldId418>
   <FieldId420>Wordt aangeboden door</FieldId420>
-  <FieldId421>Uitgever</FieldId421>
-  <FieldId422>Kwalificeerde relatie</FieldId422>
-  <FieldId423>Schepper</FieldId423>
-  <FieldId424>Wordt verwezen door</FieldId424>
-  <FieldId425>Rechten</FieldId425>
-  <FieldId426>Kwalificeerde relatie</FieldId426>
-  <FieldId427>Thema</FieldId427>
-  <FieldId428>Toegangsrechten</FieldId428>
-  <FieldId429>Conformiteit met standaard</FieldId429>
-  <FieldId430>Schepper</FieldId430>
-  <FieldId431>Wordt verwezen door</FieldId431>
-  <FieldId432>Licentie</FieldId432>
-  <FieldId433>Publicatiedatum</FieldId433>
-  <FieldId434>Wijzigingsdatum</FieldId434>
-  <FieldId435>Verwante service</FieldId435>
-  <FieldId436>Rechten</FieldId436>
-  <FieldId437>Type</FieldId437>
+  <FieldId421>uitgever</FieldId421>
+  <FieldId422>kwalificeerde relatie</FieldId422>
+  <FieldId423>schepper</FieldId423>
+  <FieldId424>wordt verwezen door</FieldId424>
+  <FieldId425>rechten</FieldId425>
+  <FieldId426>kwalificeerde relatie</FieldId426>
+  <FieldId427>thema</FieldId427>
+  <FieldId428>toegankelijkheid</FieldId428>
+  <FieldId429>conform aan protocol</FieldId429>
+  <FieldId430>schepper</FieldId430>
+  <FieldId431>wordt verwezen door</FieldId431>
+  <FieldId432>licentie</FieldId432>
+  <FieldId433>publicatiedatum</FieldId433>
+  <FieldId434>wijzigingsdatum</FieldId434>
+  <FieldId435>verwante service</FieldId435>
+  <FieldId436>rechten</FieldId436>
+  <FieldId437>type</FieldId437>
 </strings>

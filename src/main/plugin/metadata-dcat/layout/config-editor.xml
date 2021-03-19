@@ -202,41 +202,41 @@
         </snippet>
       </template>
     </for>
-    <for name="mdcat:authenticatie" templateModeOnly="true" forceLabel="true" label="FieldId413" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:authenticatie">
+    <for name="mdcat:landingspaginaVoorAuthenticatie" templateModeOnly="true" forceLabel="true" label="FieldId413" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie">
       <template>
         <values>
-          <key label="FieldId413" xpath="@rdf:resource" tooltip="mdcat:authenticatie|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:authenticatie"/>
+          <key label="FieldId413" xpath="@rdf:resource" tooltip="mdcat:landingspaginaVoorAuthenticatie|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie"/>
         </values>
         <snippet>
-          <mdcat:authenticatie rdf:resource="{{FieldId413}}"/>
+          <mdcat:landingspaginaVoorAuthenticatie rdf:resource="{{FieldId413}}"/>
         </snippet>
       </template>
     </for>
-    <for name="mdcat:dienstverleningsKwaliteit" templateModeOnly="true" forceLabel="true" label="FieldId414" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:dienstverleningsKwaliteit">
+    <for name="mdcat:landingspaginaVoorStatusinformatie" templateModeOnly="true" forceLabel="true" label="FieldId414" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie">
       <template>
         <values>
-          <key label="FieldId414" xpath="@rdf:resource" tooltip="mdcat:dienstverleningsKwaliteit|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:dienstverleningsKwaliteit"/>
+          <key label="FieldId414" xpath="@rdf:resource" tooltip="mdcat:landingspaginaVoorStatusinformatie|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie"/>
         </values>
         <snippet>
-          <mdcat:dienstverleningsKwaliteit rdf:resource="{{FieldId414}}"/>
+          <mdcat:landingspaginaVoorStatusinformatie rdf:resource="{{FieldId414}}"/>
         </snippet>
       </template>
     </for>
 
-    <for name="mdcat:gebruiksbepaling" templateModeOnly="true" forceLabel="true" label="FieldId416" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:gebruiksbepaling">
+    <for name="mdcat:landingspaginaVoorGebruiksinformatie" templateModeOnly="true" forceLabel="true" label="FieldId416" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie">
       <template>
         <values>
-          <key label="FieldId416" xpath="@rdf:resource" tooltip="mdcat:gebruiksbepaling|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:gebruiksbepaling"/>
+          <key label="FieldId416" xpath="@rdf:resource" tooltip="mdcat:landingspaginaVoorGebruiksinformatie|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie"/>
         </values>
         <snippet>
-          <mdcat:gebruiksbepaling rdf:resource="{{FieldId416}}"/>
+          <mdcat:landingspaginaVoorGebruiksinformatie rdf:resource="{{FieldId416}}"/>
         </snippet>
       </template>
     </for>
     <for name="dcat:accessService" templateModeOnly="true" forceLabel="true" label="FieldId420">
       <template>
         <values>
-          <key label="FieldId420" xpath="@rdf:resource" tooltip="dcat:accessService|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution"/>
+          <key label="FieldId420" xpath="@rdf:resource" tooltip="dcat:accessService|dcat:Dataset|/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution"/>
         </values>
         <snippet>
           <dcat:accessService rdf:resource="{{FieldId420}}"/>
@@ -298,7 +298,7 @@
     <name>vcard:Address</name>
     <name isSupportingSlideToggle="true">dct:accessRights</name>
     <name isSupportingSlideToggle="true">adms:identifier</name>
-    <name>adms:Identifier</name>
+    <name>adms:identifier</name>
     <name isSupportingSlideToggle="true">dct:provenance</name>
     <name>dct:ProvenanceStatement</name>
     <name isSupportingSlideToggle="true">dct:spatial</name>
@@ -561,37 +561,37 @@
               </snippet>
             </template>
           </field>
+          <field name="FieldId413" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie"/>
+          <action type="add" name="FieldId413" or="landingspaginaVoorAuthenticatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mdcat:landingspaginaVoorAuthenticatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId414" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie"/>
+          <action type="add" name="FieldId414" or="landingspaginaVoorStatusinformatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mdcat:landingspaginaVoorStatusinformatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId416" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie"/>
+          <action type="add" name="FieldId416" or="landingspaginaVoorGebruiksinformatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mdcat:landingspaginaVoorGebruiksinformatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
         </section>
         <section name="serviceInformation">
-          <field name="FieldId413" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:authenticatie"/>
-          <action type="add" name="FieldId413" or="authenticatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase"/>
+          <action type="add" name="FieldId417" or="levensfase" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
-                <mdcat:authenticatie rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId414" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:dienstverleningsKwaliteit"/>
-          <action type="add" name="FieldId414" or="dienstverleningsKwaliteit" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mdcat:dienstverleningsKwaliteit rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId416" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:gebruiksbepaling"/>
-          <action type="add" name="FieldId416" or="gebruiksbepaling" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mdcat:gebruiksbepaling rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statusVanGebruik"/>
-          <action type="add" name="FieldId417" or="statusVanGebruik" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mdcat:statusVanGebruik>
+                <mdcat:levensfase>
                   <skos:Concept>
                     <skos:prefLabel xml:lang="nl"/>
                     <skos:prefLabel xml:lang="en"/>
@@ -599,15 +599,15 @@
                     <skos:prefLabel xml:lang="de"/>
                     <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/gebruiksstatus"/>
                   </skos:Concept>
-                </mdcat:statusVanGebruik>
+                </mdcat:levensfase>
               </snippet>
             </template>
           </action>
-          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statusVanOntwikkeling"/>
-          <action type="add" name="FieldId418" or="statusVanOntwikkeling" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand"/>
+          <action type="add" name="FieldId418" or="ontwikkelingstoestand" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
-                <mdcat:statusVanOntwikkeling>
+                <mdcat:ontwikkelingstoestand>
                   <skos:Concept>
                     <skos:prefLabel xml:lang="nl"/>
                     <skos:prefLabel xml:lang="en"/>
@@ -615,7 +615,7 @@
                     <skos:prefLabel xml:lang="de"/>
                     <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
                   </skos:Concept>
-                </mdcat:statusVanOntwikkeling>
+                </mdcat:ontwikkelingstoestand>
               </snippet>
             </template>
           </action>
@@ -1014,22 +1014,8 @@
       </tab>
       <tab id="advancedService" default="true" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
         <section name="basicInformation">
-          <field name="FieldId400" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title" />
-          <action type="add" name="FieldId400" or="title" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <dct:title/>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId401" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description"/>
-          <action type="add" name="FieldId401" or="description" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <dct:description/>
-              </snippet>
-            </template>
-          </action>
+          <field name="FieldId400" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title" or="title" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field name="FieldId401" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description" or="description" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId421" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher"/>
           <action type="add" name="FieldId421" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
@@ -1066,32 +1052,11 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId407" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword"/>
-          <action type="add" name="FieldId407" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <dcat:keyword/>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId405" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier"/>
-          <action type="add" name="FieldId404" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <dct:identifier/>
-              </snippet>
-            </template>
-          </action>
+          <field name="FieldId407" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field name="FieldId405" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
         </section>
         <section name="versionInformation">
-          <field name="FieldId410" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/owl:versionInfo"/>
-          <action type="add" name="FieldId410" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <owl:versionInfo/>
-              </snippet>
-            </template>
-          </action>
+          <field name="FieldId410" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/owl:versionInfo" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
         </section>
         <section name="usageInformation">
           <field name="FieldId406" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint"/>
@@ -1123,37 +1088,37 @@
               </snippet>
             </template>
           </action>
+          <field name="FieldId413" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie"/>
+          <action type="add" name="FieldId413" or="landingspaginaVoorAuthenticatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mdcat:landingspaginaVoorAuthenticatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId414" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie"/>
+          <action type="add" name="FieldId414" or="landingspaginaVoorStatusinformatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mdcat:landingspaginaVoorStatusinformatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId416" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie"/>
+          <action type="add" name="FieldId416" or="landingspaginaVoorGebruiksinformatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mdcat:landingspaginaVoorGebruiksinformatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
         </section>
         <section name="serviceInformation">
-          <field name="FieldId413" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:authenticatie"/>
-          <action type="add" name="FieldId413" or="authenticatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase"/>
+          <action type="add" name="FieldId417" or="levensfase" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
-                <mdcat:authenticatie rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId414" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:dienstverleningsKwaliteit"/>
-          <action type="add" name="FieldId414" or="dienstverleningsKwaliteit" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mdcat:dienstverleningsKwaliteit rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId416" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:gebruiksbepaling"/>
-          <action type="add" name="FieldId416" or="gebruiksbepaling" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mdcat:gebruiksbepaling rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statusVanGebruik"/>
-          <action type="add" name="FieldId417" or="statusVanGebruik" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mdcat:statusVanGebruik>
+                <mdcat:levensfase>
                   <skos:Concept>
                     <skos:prefLabel xml:lang="nl"/>
                     <skos:prefLabel xml:lang="en"/>
@@ -1161,15 +1126,15 @@
                     <skos:prefLabel xml:lang="de"/>
                     <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/gebruiksstatus"/>
                   </skos:Concept>
-                </mdcat:statusVanGebruik>
+                </mdcat:levensfase>
               </snippet>
             </template>
           </action>
-          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statusVanOntwikkeling"/>
-          <action type="add" name="FieldId418" or="statusVanOntwikkeling" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand"/>
+          <action type="add" name="FieldId418" or="ontwikkelingstoestand" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
-                <mdcat:statusVanOntwikkeling>
+                <mdcat:ontwikkelingstoestand>
                   <skos:Concept>
                     <skos:prefLabel xml:lang="nl"/>
                     <skos:prefLabel xml:lang="en"/>
@@ -1177,7 +1142,7 @@
                     <skos:prefLabel xml:lang="de"/>
                     <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
                   </skos:Concept>
-                </mdcat:statusVanOntwikkeling>
+                </mdcat:ontwikkelingstoestand>
               </snippet>
             </template>
           </action>

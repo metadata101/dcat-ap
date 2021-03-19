@@ -255,7 +255,7 @@
   <!-- Fill empty element and update existing with resourceType -->
   <xsl:template match="foaf:Agent/dct:type|dcat:theme|dct:accrualPeriodicity|dct:language|dcat:Dataset/dct:type|
                        dcat:DataService/dct:type|dct:format|dcat:mediaType|adms:status|dct:LicenseDocument/dct:type|
-                       dct:accessRights|mdcat:statusVanGebruik|mdcat:statusVanOntwikkeling|dcat:compressFormat|
+                       dct:accessRights|mdcat:levensfase|mdcat:ontwikkelingstoestand|dcat:compressFormat|
                        dcat:packageFormat" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
@@ -457,11 +457,12 @@
       <xsl:apply-templates select="dcat:keyword"/>
       <xsl:apply-templates select="dct:language"/>
       <xsl:apply-templates select="owl:versionInfo"/>
-      <xsl:apply-templates select="mdcat:authenticatie"/>
-      <xsl:apply-templates select="mdcat:dienstverleningsKwaliteit"/>
-      <xsl:apply-templates select="mdcat:gebruiksbepaling"/>
-      <xsl:apply-templates select="mdcat:statusVanGebruik"/>
-      <xsl:apply-templates select="mdcat:statusVanOntwikkeling"/>
+      <xsl:apply-templates select="adms:identifier"/>
+      <xsl:apply-templates select="mdcat:landingspaginaVoorAuthenticatie"/>
+      <xsl:apply-templates select="mdcat:landingspaginaVoorStatusinformatie"/>
+      <xsl:apply-templates select="mdcat:landingspaginaVoorGebruiksinformatie"/>
+      <xsl:apply-templates select="mdcat:levensfase"/>
+      <xsl:apply-templates select="mdcat:ontwikkelingstoestand"/>
 
       <xsl:apply-templates select="dcat:qualifiedRelation"/>
       <xsl:apply-templates select="dcat:theme"/>

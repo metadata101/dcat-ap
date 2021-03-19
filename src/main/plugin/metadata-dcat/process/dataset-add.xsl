@@ -1,6 +1,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:adms="http://www.w3.org/ns/adms#"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
                 xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
@@ -38,11 +39,12 @@
                            dcat:keyword|
                            dct:language|
                            owl:versionInfo|
-                           mdcat:authenticatie|
-                           mdcat:dienstverleningsKwaliteit|
-                           mdcat:gebruiksbepaling|
-                           mdcat:statusVanGebruik|
-                           mdcat:statusVanOntwikkeling"/>
+                           adms:identifier|
+                           mdcat:landingspaginaVoorAuthenticatie|
+                           mdcat:landingspaginaVoorStatusinformatie|
+                           mdcat:landingspaginaVoorGebruiksinformatie|
+                           mdcat:levensfase|
+                           mdcat:ontwikkelingstoestand"/>
 
       <xsl:copy-of select="dcat:qualifiedRelation|
                            dcat:theme|

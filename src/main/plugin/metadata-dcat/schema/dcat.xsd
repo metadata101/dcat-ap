@@ -209,14 +209,13 @@
             <xs:element name="contactPoint" type="vcard:Organization" minOccurs="1" maxOccurs="1"/>
             <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="adms:identifier" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="mdcat:authenticatie" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="mdcat:dienstverleningsKwaliteit" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="mdcat:gebruiksbepaling" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="mdcat:statusVanGebruik" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="mdcat:statusVanOntwikkeling" minOccurs="0" maxOccurs="1"/>
-
-            <!-- Field added to ensure compatibility with dcat-ap 2.0 -->
+            <xs:element ref="mdcat:landingspaginaVoorAuthenticatie" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="mdcat:landingspaginaVoorStatusinformatie" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="mdcat:landingspaginaVoorGebruiksinformatie" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="mdcat:levensfase" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="mdcat:ontwikkelingstoestand" minOccurs="0" maxOccurs="1"/>
             <xs:element name="qualifiedRelation" type="dcat:Relationship" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="theme" type="skos:Concept" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/>
