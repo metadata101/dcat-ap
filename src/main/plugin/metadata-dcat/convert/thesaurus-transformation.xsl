@@ -123,12 +123,12 @@
           <xsl:copy-of select="$concept"/>
         </dct:accessRights>
       </xsl:when>
-      <xsl:when test="ends-with($thesaurusKey, 'gebruiksstatus')">
+      <xsl:when test="ends-with($thesaurusKey, 'levensfase')">
         <mdcat:levensfase>
           <xsl:copy-of select="$concept"/>
         </mdcat:levensfase>
       </xsl:when>
-      <xsl:when test="ends-with($thesaurusKey, 'ontwikkelingsstatus')">
+      <xsl:when test="ends-with($thesaurusKey, 'ontwikkelingstoestand')">
         <mdcat:ontwikkelingstoestand>
           <xsl:copy-of select="$concept"/>
         </mdcat:ontwikkelingstoestand>

@@ -67,11 +67,11 @@
       <xsl:when test="$key = concat($keyPrefix, 'access-right')">
         <xsl:value-of select="concat($inSchemeAuthorityBaseUrl,'access-right')"/>
       </xsl:when>
-      <xsl:when test="$key = concat($keyPrefix, 'gebruiksstatus')">
-        <xsl:value-of select="concat($inSchemeMdcatBaseUrl,'gebruiksstatus')"/>
+      <xsl:when test="$key = concat($keyPrefix, 'levensfase')">
+        <xsl:value-of select="concat($inSchemeMdcatBaseUrl,'levensfase')"/>
       </xsl:when>
-      <xsl:when test="$key = concat($keyPrefix, 'ontwikkelingsstatus')">
-        <xsl:value-of select="concat($inSchemeMdcatBaseUrl,'ontwikkelingsstatus')"/>
+      <xsl:when test="$key = concat($keyPrefix, 'ontwikkelingstoestand')">
+        <xsl:value-of select="concat($inSchemeMdcatBaseUrl,'ontwikkelingstoestand')"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:message select="concat('Thesaurus NIET gevonden met key = ',$key, '. Voeg deze toe in process-utility.xsl bestand.')"/>

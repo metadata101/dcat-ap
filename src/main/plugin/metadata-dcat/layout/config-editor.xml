@@ -597,7 +597,7 @@
                     <skos:prefLabel xml:lang="en"/>
                     <skos:prefLabel xml:lang="fr"/>
                     <skos:prefLabel xml:lang="de"/>
-                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/gebruiksstatus"/>
+                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/levensfase"/>
                   </skos:Concept>
                 </mdcat:levensfase>
               </snippet>
@@ -613,7 +613,7 @@
                     <skos:prefLabel xml:lang="en"/>
                     <skos:prefLabel xml:lang="fr"/>
                     <skos:prefLabel xml:lang="de"/>
-                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
+                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand"/>
                   </skos:Concept>
                 </mdcat:ontwikkelingstoestand>
               </snippet>
@@ -695,8 +695,8 @@
         <thesaurus key="external.theme.licence-type" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.status" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.access-right" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.gebruiksstatus" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.ontwikkelingsstatus" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.levensfase" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.ontwikkelingstoestand" maxtags="1" transformations="" fieldset="false"/>
       </thesaurusList>
     </view>
     <view name="advanced" displayTooltips="true" upAndDownControlHidden="true">
@@ -1126,7 +1126,7 @@
                     <skos:prefLabel xml:lang="en"/>
                     <skos:prefLabel xml:lang="fr"/>
                     <skos:prefLabel xml:lang="de"/>
-                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/gebruiksstatus"/>
+                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/levensfase"/>
                   </skos:Concept>
                 </mdcat:levensfase>
               </snippet>
@@ -1142,7 +1142,7 @@
                     <skos:prefLabel xml:lang="en"/>
                     <skos:prefLabel xml:lang="fr"/>
                     <skos:prefLabel xml:lang="de"/>
-                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingsstatus"/>
+                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand"/>
                   </skos:Concept>
                 </mdcat:ontwikkelingstoestand>
               </snippet>
@@ -1281,8 +1281,8 @@
         <thesaurus key="external.theme.licence-type" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.status" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.access-right" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.gebruiksstatus" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.ontwikkelingsstatus" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.levensfase" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.ontwikkelingstoestand" maxtags="1" transformations="" fieldset="false"/>
       </thesaurusList>
     </view>
     <view name="xml">
