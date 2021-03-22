@@ -619,6 +619,7 @@
               </snippet>
             </template>
           </action>
+          <field name="FieldId428" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights" or="accessRights" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
         </section>
         <section name="extraInformation">
           <field name="FieldId408" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
@@ -1147,6 +1148,7 @@
               </snippet>
             </template>
           </action>
+          <field name="FieldId428" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights" or="accessRights" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
         </section>
         <section name="extraInformation">
           <field name="FieldId408" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
@@ -1179,7 +1181,6 @@
             </template>
           </action>
           <field name="FieldId427" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme" or="theme" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-          <field name="FieldId428" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights" or="accessRights" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId429" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo"/>
           <action type="add" name="FieldId429" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>

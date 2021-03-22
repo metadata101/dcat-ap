@@ -183,6 +183,17 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
+    <sch:title>204. dct:accessRights is required</sch:title>
+    <sch:rule context="//dcat:DataService">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="noTitle" value="not(dct:accessRights)"/>
+      <sch:assert test="$noTitle = false()">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" does not have a dct:accessRights property.
+      </sch:assert>
+      <sch:report test="$noTitle = false()">The dcat:DataService "<sch:value-of select="$id"/>" has a dct:accessRights property.
+      </sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
     <sch:title>205. dct:title should have a language tag for dcat:Distribution</sch:title>
     <sch:rule context="//dcat:Distribution/dct:title">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>

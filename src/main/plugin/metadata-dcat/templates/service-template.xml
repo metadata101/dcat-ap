@@ -34,6 +34,15 @@
           </vcard:Organization>
         </dcat:contactPoint>
         <dcat:keyword xml:lang="nl"/>
+        <dct:accessRights>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">
+            <skos:prefLabel xml:lang="nl">publiek</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">public</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">public</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">public</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
+          </skos:Concept>
+        </dct:accessRights>
       </dcat:DataService>
     </dcat:service>
   </dcat:Catalog>
