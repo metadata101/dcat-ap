@@ -636,22 +636,21 @@ Source:
     <sch:title>79. dcat:accessURL must be a non-empty string.</sch:title>
     <sch:rule context="//dcat:Distribution/dcat:accessURL">
       <sch:let name="id" value="parent::node()/dct:title[1]/string()"/>
+      <sch:let name="messageStart" value="concat('The dcat:Distribution with title ', $id, ' has a dcat:accessURL ', @rdf:resource)"/>
       <sch:let name="emptyString" value="normalize-space(@rdf:resource) = ''"/>
-      <sch:assert test="$emptyString = false()">ERROR: The dcat:Distribution with title "<sch:value-of select="$id"/>" has a dcat:accessURL that is an empty string.
-      </sch:assert>
-      <sch:report test="$emptyString = false()">The dcat:Distribution with title '<sch:value-of select="$id"/>' has a dcat:accessURL '<sch:value-of select="./string()"/>' which is a non-empty string.
-      </sch:report>
+      <sch:assert test="$emptyString = false()">ERROR: <sch:value-of select="$messageStart"/> that is an empty string.</sch:assert>
+      <sch:report test="$emptyString = false()"><sch:value-of select="$messageStart"/> which is a non-empty string.</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>80. dcat:accessURL must be a resource.</sch:title>
     <sch:rule context="//dcat:Distribution/dcat:accessURL">
-      <sch:let name="id" value="parent::node()/dct:title[1]/string()"/>
-      <sch:let name="isAResource" value="./@rdf:resource and not(./string() = '')"/>
-      <sch:assert test="$isAResource = false()">ERROR: The dcat:Distribution with title "<sch:value-of select="$id"/>" has a dcat:accessURL that is not a resource (URI).
-      </sch:assert>
-      <sch:report test="$isAResource = false()">The dcat:Distribution with title '<sch:value-of select="$id"/>' has a dcat:accessURL '<sch:value-of select="./string()"/>' that is a resource (URI).
-      </sch:report>
+      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
+      <sch:let name="elementName" value="name()"/>
+      <sch:let name="resource" value="(*[not(name(.)=('geonet:element','geonet:attribute'))] and not(*/@rdf:about)) or ((starts-with(@rdf:resource,'http') or starts-with(@rdf:resource,'ftp') or starts-with(@rdf:resource,'urn')) and @rdf:resource castable as xs:anyURI) or ((starts-with(*/@rdf:about,'http') or starts-with(*/@rdf:about,'ftp') or starts-with(*/@rdf:about,'urn')) and */@rdf:about castable as xs:anyURI)"/>
+      <sch:let name="messageStart" value="concat('The dcat:Distribution with title ', $id, ' has a dcat:accessURL ', @rdf:resource)"/>
+      <sch:assert test="$resource = true()">ERROR: <sch:value-of select="$messageStart"/> that is not a resource (URI).</sch:assert>
+      <sch:report test="$resource = true()"><sch:value-of select="$messageStart"/> that is a resource (URI).</sch:report>
     </sch:rule>
   </sch:pattern>
   <!--82. dct:description should be a literal.-->

@@ -434,7 +434,7 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>411. vcard:hasEmail must be a non-empty string.</sch:title>
+    <sch:title>412. vcard:hasEmail must be a non-empty string.</sch:title>
     <sch:rule context="//vcard:hasEmail">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="emptyString" value="normalize-space(@rdf:resource)='' or not(matches(@rdf:resource, '.+@.+'))"/>
@@ -445,7 +445,7 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>411. vcard:hasEmail has maximum cardinality of 1 for a contactpoint of a Dataset.</sch:title>
+    <sch:title>412. vcard:hasEmail has maximum cardinality of 1 for a contactpoint of a Dataset.</sch:title>
     <sch:rule context="//dcat:Dataset/dcat:contactPoint">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="count" value="count(*/vcard:hasEmail)"/>
