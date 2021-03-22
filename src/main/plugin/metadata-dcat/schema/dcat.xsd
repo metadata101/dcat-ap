@@ -58,8 +58,6 @@
       <xs:element ref="dct:spatial" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="dataset" type="dcat:Dataset" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="service" type="dcat:DataService" minOccurs="0" maxOccurs="unbounded"/>
-
-      <!-- Field added to ensure compatibility with dcat-ap 2.0 -->
       <xs:element name="contactPoint" type="vcard:Organization" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="landingPage" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>

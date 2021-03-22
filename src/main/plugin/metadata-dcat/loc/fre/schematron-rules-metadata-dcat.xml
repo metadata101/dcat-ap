@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <strings>
-  <schematron.title>DCAT-AP Rules v1.1</schematron.title>
-
-
+  <schematron.title>Metadata-dcat rules</schematron.title>
 </strings>

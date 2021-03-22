@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <strings>
-  <schematron.title>Verplichte DCAT-AP eigenschappen</schematron.title>
-
-
+  <schematron.title>Bijkomende vereisten van metadata-dcat</schematron.title>
 </strings>
