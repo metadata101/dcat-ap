@@ -150,26 +150,13 @@
           </skos:ConceptScheme>
         </dcat:themeTaxonomy>
       </xsl:for-each>
-      <!--<xsl:copy-of select="dct:hasPart|
-                           dct:isPartOf|
-                           dcat:record|
-                           dct:rights|
-                           dct:spatial"/>-->
+      <xsl:apply-templates select="dcat:record"/>
       <xsl:apply-templates select="dcat:dataset|dcat:service"/>
-
-      <!--<xsl:copy-of select="dcat:contactPoint|
-                           dcat:keyword|
-                           dcat:landingPage|
-                           dcat:qualifiedRelation|
-                           dcat:theme|
-                           dct:accessRights|
-                           dct:conformsTo|
-                           dct:creator|
-                           dct:identifier|
-                           dct:isReferencedBy|
-                           dct:relation|
-                           dct:type"/>-->
     </dcat:Catalog>
+  </xsl:template>
+  <!-- ================================================================= -->
+  <xsl:template match="dcat:record" priority="10">
+      <xsl:copy-of select="."/>
   </xsl:template>
   <!-- ================================================================= -->
   <xsl:template match="dcat:Dataset" priority="10">

@@ -42,9 +42,9 @@
   <!-- dcat:Catalog-->
   <xs:complexType name="Catalog">
     <xs:sequence>
-      <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="1"/>
+      <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element ref="dct:description" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element ref="dct:publisher" minOccurs="1" maxOccurs="1"/>
       <xs:element ref="foaf:homepage" minOccurs="0" maxOccurs="1"/>
       <xs:element ref="dct:license" minOccurs="0" maxOccurs="1"/>
       <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
@@ -81,6 +81,7 @@
         <xs:complexType>
           <xs:sequence>
             <!-- mandatory properties for dcat:CatalogRecord-->
+            <xs:element ref="dct:identifier" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="foaf:primaryTopic" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="dct:modified" minOccurs="1" maxOccurs="1"/>
             <!-- recommended properties for dcat:CatalogRecord-->
@@ -88,10 +89,10 @@
             <xs:element ref="adms:status" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
             <!-- optional properties for dcat:CatalogRecord-->
-            <xs:element ref="dct:description" minOccurs="0"/>
-            <xs:element ref="dct:language" maxOccurs="unbounded"/>
-            <xs:element ref="dct:source" maxOccurs="1"/>
-            <xs:element ref="dct:title" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dct:source" minOccurs="0" maxOccurs="1"/>
           </xs:sequence>
           <xs:attribute ref="rdf:about"/>
           <xs:attribute ref="rdf:nodeID"/>
@@ -109,8 +110,7 @@
             <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="1" maxOccurs="unbounded"/>
-            <!-- dct:contactPoint mandatory for DCAT-AP-VL otherwise minOccurs="0" -->
-            <xs:element name="contactPoint" type="vcard:Organization" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="contactPoint" type="vcard:Organization" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:modified" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="1"/>
@@ -134,11 +134,8 @@
             <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="adms:versionNotes" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="extension" type="rdf:Statement" minOccurs="0" maxOccurs="unbounded"/>
-            <!-- dct:distribution mandatory for DCAT-AP-VL otherwise minOccurs="0" -->
-            <xs:element name="distribution" type="dcat:Distribution" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="distribution" type="dcat:Distribution" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="adms:sample" minOccurs="0" maxOccurs="unbounded"/>
-
-            <!-- Field added to ensure compatibility with dcat-ap 2.0 -->
             <xs:element name="qualifiedRelation" type="dcat:Relationship" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:creator" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/>
@@ -156,8 +153,7 @@
       <xs:element name="Distribution" minOccurs="1" maxOccurs="1">
         <xs:complexType>
           <xs:sequence>
-            <!-- dct:title mandatory for DCAT-AP-VL otherwise minOccurs="0" -->
-            <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="accessURL" type="rdf:Resource" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element name="downloadURL" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>
@@ -166,8 +162,7 @@
             <xs:element ref="dct:format" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dcat:mediaType" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
-            <!-- dct:license mandatory for DCAT-AP-VL otherwise minOccurs="0" -->
-            <xs:element ref="dct:license" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="dct:license" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:rights" minOccurs="0" maxOccurs="1"/>
             <xs:element name="byteSize" type="rdf:TypedLiteral" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="spdx:checksum" minOccurs="0" maxOccurs="1"/>
@@ -175,8 +170,6 @@
             <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="adms:status" minOccurs="0" maxOccurs="1"/>
             <xs:element name="accessService" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>
-
-            <!-- Field added to ensure compatibility with dcat-ap 2.0 -->
             <xs:element ref="dcat:compressFormat" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dcat:packageFormat" minOccurs="0" maxOccurs="1"/>
             <xs:element name="spatialResolutionInMeters" type="xs:decimal" minOccurs="0" maxOccurs="unbounded"/>
@@ -195,8 +188,7 @@
       <xs:element name="DataService" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:sequence>
-            <!-- dct:identifier mandatory for metadata-dcat otherwise minOccurs="0" -->
-            <xs:element ref="dct:identifier" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="1"/>
@@ -224,7 +216,7 @@
             <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:modified" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:relation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dct:rights" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:type" minOccurs="0" maxOccurs="1"/>
           </xs:sequence>
           <xs:attribute ref="rdf:about"/>

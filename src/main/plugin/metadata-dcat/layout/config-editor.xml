@@ -132,13 +132,13 @@
         </snippet>
       </template>
     </for>
-    <for name="vcard:hasURL" templateModeOnly="true" forceLabel="true" label="FieldId127" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasEmail">
+    <for name="vcard:hasURL" templateModeOnly="true" forceLabel="true" label="FieldId127" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasURL">
       <template>
         <values>
           <key label="FieldId127" xpath="@rdf:resource" tooltip="vcard:hasURL|dcat:Dataset|/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasURL"/>
         </values>
         <snippet>
-          <vcard:hasEmail rdf:resource="{{FieldId127}}"/>
+          <vcard:hasURL rdf:resource="{{FieldId127}}"/>
         </snippet>
       </template>
     </for>
@@ -198,7 +198,7 @@
           <key label="FieldId412" xpath="@rdf:resource" tooltip="vcard:hasURL|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasURL"/>
         </values>
         <snippet>
-          <vcard:hasEmail rdf:resource="{{FieldId412}}"/>
+          <vcard:hasURL rdf:resource="{{FieldId412}}"/>
         </snippet>
       </template>
     </for>

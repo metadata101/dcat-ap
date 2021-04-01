@@ -165,14 +165,14 @@
     <btnLabel>E-mail</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasURL/@rdf:resource">
-    <label>Website</label>
+    <label>Contactpagina</label>
     <description>Vul aan met de website van het contactpunt</description>
-    <btnLabel>Website</btnLabel>
+    <btnLabel>Contactpagina</btnLabel>
   </element>
   <element name="vcard:hasURL" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasURL">
-    <label>Website</label>
+    <label>Contactpagina</label>
     <description>Vul aan met de website van het contactpunt</description>
-    <btnLabel>Website</btnLabel>
+    <btnLabel>Contactpagina</btnLabel>
   </element>
   <element name="vcard:hasTelephone" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasTelephone">
     <label>Telefoonnummer</label>
@@ -1895,14 +1895,14 @@
     <btnLabel>e-mail</btnLabel>
   </element>
   <element name="vcard:hasURL" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasURL">
-    <label>website</label>
-    <description>Tooltip: website</description>
-    <btnLabel>website</btnLabel>
+    <label>contactpagina</label>
+    <description>Tooltip: contactpagina</description>
+    <btnLabel>contactpagina</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasURL/@rdf:resource">
-    <label>website</label>
-    <description>Tooltip: website</description>
-    <btnLabel>website</btnLabel>
+    <label>contactpagina</label>
+    <description>Tooltip: contactpagina</description>
+    <btnLabel>contactpagina</btnLabel>
   </element>
   <element name="vcard:hasTelephone" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasTelephone">
     <label>telefoonnummer</label>

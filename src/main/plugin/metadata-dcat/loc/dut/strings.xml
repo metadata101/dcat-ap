@@ -50,7 +50,7 @@
   <FieldId124>Postcode</FieldId124>
   <FieldId125>Land</FieldId125>
   <FieldId126>E-mail</FieldId126>
-  <FieldId127>Website</FieldId127>
+  <FieldId127>Contactpagina</FieldId127>
   <FieldId128>Telefoonnummer</FieldId128>
   <FieldId129>Publicatiedatum</FieldId129>
   <FieldId131>Wijzigingsdatum</FieldId131>
@@ -319,7 +319,7 @@
   <FieldId409>landingspagina</FieldId409>
   <FieldId410>versie</FieldId410>
   <FieldId411>e-mail</FieldId411>
-  <FieldId412>website</FieldId412>
+  <FieldId412>contactpagina</FieldId412>
   <FieldId413>landingspagina voor authenticatie</FieldId413>
   <FieldId414>landingspagina voor statusinformatie</FieldId414>
   <FieldId416>landingspagina voor gebruiksinformatie</FieldId416>

@@ -139,46 +139,13 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>201. dct:license is a required property for Catalog</sch:title>
-    <sch:rule context="//dcat:Catalog">
-      <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="noTitle" value="not(dct:license)"/>
-      <sch:assert test="$noTitle = false()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" does not have a dct:license property.
-      </sch:assert>
-      <sch:report test="$noTitle = false()">The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:license property.
-      </sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>202. dct:license is CC0</sch:title>
-    <sch:rule context="//dcat:Catalog/dct:license">
-      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="cc0" value="./@rdf:resource = 'https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0' or ./dct:LicenseDocument/@rdf:about = 'https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0'"/>
-      <sch:assert test="$cc0 = true()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" does not have a dct:license property with value 'https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0'.
-      </sch:assert>
-      <sch:report test="$cc0 = true()">The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:license property with value 'https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0'.
-      </sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>203. dct:accessRights must be _:public</sch:title>
-    <sch:rule context="//dcat:Dataset/dct:accessRights">
-      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="public" value="*/@rdf:about = 'http://publications.europa.eu/resource/authority/access-right/PUBLIC' or ./@rdf:resource = 'http://publications.europa.eu/resource/authority/access-right/PUBLIC'"/>
-      <sch:assert test="$public = true()">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dct:accessRights property with value 'http://publications.europa.eu/resource/authority/access-right/PUBLIC'.
-      </sch:assert>
-      <sch:report test="$public = true()">The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:accessRights property with value 'http://publications.europa.eu/resource/authority/access-right/PUBLIC'.
-      </sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:title>204. dct:accessRights is required</sch:title>
     <sch:rule context="//dcat:Dataset">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="noTitle" value="not(dct:accessRights)"/>
-      <sch:assert test="$noTitle = false()">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dct:accessRights property.
+      <sch:let name="hasAccessRights" value="count(dct:accessRights) > 0 and (normalize-space(dct:accessRights/skos:Concept/@rdf:about) != '' or count(dct:accessRights/dct:RightsStatement) > 0)"/>
+      <sch:assert test="$hasAccessRights = true()">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dct:accessRights property.
       </sch:assert>
-      <sch:report test="$noTitle = false()">The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:accessRights property.
+      <sch:report test="$hasAccessRights = true()">The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:accessRights property.
       </sch:report>
     </sch:rule>
   </sch:pattern>
@@ -186,10 +153,10 @@ Source:
     <sch:title>204. dct:accessRights is required</sch:title>
     <sch:rule context="//dcat:DataService">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="noTitle" value="not(dct:accessRights)"/>
-      <sch:assert test="$noTitle = false()">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" does not have a dct:accessRights property.
+      <sch:let name="hasAccessRights" value="count(dct:accessRights) > 0 and (normalize-space(dct:accessRights/skos:Concept/@rdf:about) != '' or count(dct:accessRights/dct:RightsStatement) > 0)"/>
+      <sch:assert test="$hasAccessRights = true()">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" does not have a dct:accessRights property.
       </sch:assert>
-      <sch:report test="$noTitle = false()">The dcat:DataService "<sch:value-of select="$id"/>" has a dct:accessRights property.
+      <sch:report test="$hasAccessRights = true()">The dcat:DataService "<sch:value-of select="$id"/>" has a dct:accessRights property.
       </sch:report>
     </sch:rule>
   </sch:pattern>
@@ -434,13 +401,26 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>411. vcard:hasEmail is a mandatory property for a contactpoint of a Dataset.</sch:title>
+    <sch:title>411. At least one of vcard:hasEmail or vcard:hasURL is a required for a contactpoint of a Dataset</sch:title>
     <sch:rule context="//dcat:Dataset/dcat:contactPoint">
       <sch:let name="id" value="*/@rdf:about/string()"/>
-      <sch:let name="noEmail" value="not(*/vcard:hasEmail)"/>
-      <sch:assert test="$noEmail = false()">ERROR: The vcard:Organization with URI "<sch:value-of select="$id"/>" does not have a vcard:hasEmail property.
+      <sch:let name="hasEmail" value="*/vcard:hasEmail"/>
+      <sch:let name="hasUrl" value="*/vcard:hasURL"/>
+      <sch:assert test="$hasEmail or $hasUrl">ERROR: The vcard:Organization with URI "<sch:value-of select="$id"/>" does not have a vcard:hasEmail or a vcard:hasURL property.
       </sch:assert>
-      <sch:report test="$noEmail = false()">The vcard:Organization with URI "<sch:value-of select="$id"/>" has a vcard:hasEmail property.
+      <sch:report test="$hasEmail or $hasUrl">The vcard:Organization with URI "<sch:value-of select="$id"/>" has a vcard:hasEmail or a vcard:hasURL property.
+      </sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>411. At least one of vcard:hasEmail or vcard:hasURL is a required for a contactpoint of a DataService</sch:title>
+    <sch:rule context="//dcat:DataService/dcat:contactPoint">
+      <sch:let name="id" value="*/@rdf:about/string()"/>
+      <sch:let name="hasEmail" value="*/vcard:hasEmail"/>
+      <sch:let name="hasUrl" value="*/vcard:hasURL"/>
+      <sch:assert test="$hasEmail or $hasUrl">ERROR: The vcard:Organization with URI "<sch:value-of select="$id"/>" does not have a vcard:hasEmail or a vcard:hasURL property.
+      </sch:assert>
+      <sch:report test="$hasEmail or $hasUrl">The vcard:Organization with URI "<sch:value-of select="$id"/>" has a vcard:hasEmail or a vcard:hasURL property.
       </sch:report>
     </sch:rule>
   </sch:pattern>
@@ -451,13 +431,13 @@ Source:
       <sch:let name="emptyString" value="normalize-space(@rdf:resource)='' or not(matches(@rdf:resource, '.+@.+'))"/>
       <sch:assert test="$emptyString = false()">ERROR: The contact point "<sch:value-of select="$id"/>" has a vcard:hasEmail that is an empty string or does not match the e-mail format.
       </sch:assert>
-      <sch:report test="$emptyString = false()">The dcontact point '<sch:value-of select="$id"/>' has a vcard:hasEmail '<sch:value-of select="./string()"/>' which is a non-empty string and matches the e-mail string format.
+      <sch:report test="$emptyString = false()">The contact point '<sch:value-of select="$id"/>' has a vcard:hasEmail '<sch:value-of select="./string()"/>' which is a non-empty string and matches the e-mail string format.
       </sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>412. vcard:hasEmail has maximum cardinality of 1 for a contactpoint of a Dataset.</sch:title>
-    <sch:rule context="//dcat:Dataset/dcat:contactPoint">
+    <sch:title>412. vcard:hasEmail has maximum cardinality of 1 for a contactpoint.</sch:title>
+    <sch:rule context="//dcat:contactPoint">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="count" value="count(*/vcard:hasEmail)"/>
       <sch:assert test="2 > $count">ERROR: The vcard:Organization with URI "<sch:value-of select="$id"/>" has more than one vcard:hasEmail property.
@@ -488,4 +468,52 @@ Source:
       </sch:report>
     </sch:rule>
   </sch:pattern>
+  <sch:pattern>
+    <sch:title>414. vcard:hasURL must be a non-empty string.</sch:title>
+    <sch:rule context="//vcard:hasURL">
+      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
+      <sch:let name="emptyString" value="normalize-space(@rdf:resource) = ''"/>
+      <sch:assert test="$emptyString = false()">ERROR: The contact point "<sch:value-of select="$id"/>" has a vcard:hasURL that is an empty string.
+      </sch:assert>
+      <sch:report test="$emptyString = false()">The contact point '<sch:value-of select="$id"/>' has a vcard:hasURL '<sch:value-of select="./string()"/>' which is a non-empty string.
+      </sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>414. vcard:hasURL has maximum cardinality of 1 for a contactpoint.</sch:title>
+    <sch:rule context="//dcat:contactPoint">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="count" value="count(*/vcard:hasURL)"/>
+      <sch:assert test="2 > $count">ERROR: The vcard:Organization with URI "<sch:value-of select="$id"/>" has more than one vcard:hasURL property.
+      </sch:assert>
+      <sch:report test="2 > $count">The vcard:Organization with URI "<sch:value-of select="$id"/>" has no more than one vcard:hasURL property.
+      </sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>415. vcard:hasURL is a URI.</sch:title>
+    <sch:rule context="//vcard:hasURL">
+      <sch:let name="id" value="@rdf:resource/string()"/>
+      <sch:let name="uri" value="@rdf:resource castable as xs:anyURI"/>
+      <sch:assert test="$uri = true()">ERROR: The vcard:hasURL "<sch:value-of select="$id"/>" property is not a valid URI.
+      </sch:assert>
+      <sch:report test="$uri = true()">The vcard:hasURL "<sch:value-of select="$id"/>" property is a valid URI.
+      </sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>xxx. dct:modified is a required property for dcat:CatalogRecord</sch:title>
+    <sch:rule context="//dcat:record">
+      <sch:let name="id" value="@rdf:resource/string()"/>
+      <sch:let name="hasModifiedDate" value="count(dct:modified) > 0 and normalize-space(dct:modified) != ''"/>
+      <sch:assert test="$hasModifiedDate = true()">ERROR: The dcat:CatalogRecord "<sch:value-of select="$id"/>" does not have a dct:modified property.</sch:assert>
+      <sch:report test="$hasModifiedDate = true()">The dcat:CatalogRecord "<sch:value-of select="$id"/>" has a dct:modified property.</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <!--<sch:pattern>-->
+  <!--  <sch:title>xxx. dct:modified as a maximum cardinality of 1 for CatalogRecord</sch:title>-->
+  <!--  <sch:rule context="//dcat:CatalogRecord">-->
+
+  <!--  </sch:rule>-->
+  <!--</sch:pattern>-->
 </sch:schema>
