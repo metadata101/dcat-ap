@@ -13,11 +13,13 @@
   <metadata-on-metadata>Metadata over metadata</metadata-on-metadata>
   <default>Standaard</default>
   <defaultDataset>Dataset</defaultDataset>
-  <defaultService>Service</defaultService>
   <defaultDistribution>Distributies</defaultDistribution>
+  <defaultService>Service</defaultService>
+  <defaultRecord>Record</defaultRecord>
   <advancedDataset>Dataset</advancedDataset>
   <advancedDistribution>Distributies</advancedDistribution>
   <advancedService>Service</advancedService>
+  <advancedRecord>Record</advancedRecord>
   <providedBy>Provided by</providedBy>
   <shareOnSocialSite>Deel op sociale sites</shareOnSocialSite>
   <associatedResources>Gerelateerde bronnen</associatedResources>
@@ -29,6 +31,8 @@
   <relationInformation>Verwantschappen</relationInformation>
   <serviceInformation>Service informatie</serviceInformation>
   <extraInformation>Extra informatie</extraInformation>
+  <catalogRecordInformation>Catalog record</catalogRecordInformation>
+  <conformToInformation>Conformiteit met standaard</conformToInformation>
   <!-- DCAT-AP view labels and help -->
   <FieldId107>Dataset</FieldId107>
   <FieldId108>URI</FieldId108>
@@ -343,4 +347,13 @@
   <FieldId435>verwante service</FieldId435>
   <FieldId436>rechten</FieldId436>
   <FieldId437>type</FieldId437>
+  <!-- Catalog Record -->
+  <FieldId500>titel</FieldId500>
+  <FieldId501>beschrijving</FieldId501>
+  <FieldId502>identificator</FieldId502>
+  <FieldId503>wijzigingsdatum</FieldId503>
+  <FieldId504>publicatiedatum</FieldId504>
+  <FieldId505>taal</FieldId505>
+  <FieldId505>titel</FieldId505>
+  <FieldId505>beschrijving</FieldId505>
 </strings>

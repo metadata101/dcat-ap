@@ -41,6 +41,47 @@
       <option value="en">Engels</option>
     </helper>
   </element>
+  <element name="dct:title" context="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title">
+    <label>titel</label>
+    <description>Tooltip: titel</description>
+    <btnLabel>titel</btnLabel>
+  </element>
+  <element name="dct:description" context="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:description">
+    <label>beschrijving</label>
+    <description>Tooltip: beschrijving</description>
+    <btnLabel>beschrijving</btnLabel>
+  </element>
+  <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier">
+    <label>identificator</label>
+    <description>Tooltip: identificator</description>
+    <btnLabel>identificator</btnLabel>
+  </element>
+  <element name="dct:modified" context="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:modified">
+    <label>wijzigingsdatum</label>
+    <description>Tooltip: wijzigingsdatum</description>
+    <btnLabel>wijzigingsdatum</btnLabel>
+  </element>
+  <element name="dct:issued" context="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:issued">
+    <label>publicatiedatum</label>
+    <description>Tooltip: publicatiedatum</description>
+    <btnLabel>publicatiedatum</btnLabel>
+  </element>
+  <element name="dct:language" context="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language">
+    <label>taal</label>
+    <description>Tooltip: taal</description>
+    <btnLabel>taal</btnLabel>
+  </element>
+  <element name="dct:title" context="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title">
+    <label>titel</label>
+    <description>Tooltip: titel</description>
+    <btnLabel>titel</btnLabel>
+  </element>
+  <element name="dct:description" context="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description">
+    <label>beschrijving</label>
+    <description>Tooltip: beschrijving</description>
+    <btnLabel>beschrijving</btnLabel>
+  </element>
+
   <element name="dcat:Dataset" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>Dataset</label>
     <description>Tooltip: Dataset</description>

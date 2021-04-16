@@ -502,8 +502,8 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>xxx. dct:modified is a required property for dcat:CatalogRecord</sch:title>
-    <sch:rule context="//dcat:record">
+    <sch:title>420. dct:modified is a required property for dcat:CatalogRecord</sch:title>
+    <sch:rule context="//dcat:record/dcat:CatalogRecord">
       <sch:let name="id" value="@rdf:resource/string()"/>
       <sch:let name="hasModifiedDate" value="count(dct:modified) > 0 and normalize-space(dct:modified) != ''"/>
       <sch:assert test="$hasModifiedDate = true()">ERROR: The dcat:CatalogRecord "<sch:value-of select="$id"/>" does not have a dct:modified property.</sch:assert>

@@ -13,11 +13,13 @@
   <metadata-on-metadata>Metadata on metadata</metadata-on-metadata>
   <default>Simple</default>
   <defaultDataset>Dataset</defaultDataset>
-  <defaultService>Service</defaultService>
   <defaultDistribution>Distributies</defaultDistribution>
+  <defaultService>Service</defaultService>
+  <defaultRecord>Record</defaultRecord>
   <advancedDataset>Dataset</advancedDataset>
   <advancedDistribution>Distributies</advancedDistribution>
   <advancedService>Service</advancedService>
+  <advancedRecord>Record</advancedRecord>
   <providedBy>Provided by</providedBy>
   <shareOnSocialSite>Share on social sites</shareOnSocialSite>
   <associatedResources>Associated resources</associatedResources>
@@ -343,4 +345,13 @@
   <FieldId435>related service</FieldId435>
   <FieldId436>right</FieldId436>
   <FieldId437>type</FieldId437>
+  <!-- Catalog Record -->
+  <FieldId500>title</FieldId500>
+  <FieldId501>description</FieldId501>
+  <FieldId502>identifier</FieldId502>
+  <FieldId503>update/ modification date</FieldId503>
+  <FieldId504>release date</FieldId504>
+  <FieldId505>language</FieldId505>
+  <FieldId505>title</FieldId505>
+  <FieldId505>description</FieldId505>
 </strings>

@@ -26,18 +26,14 @@
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:adms="http://www.w3.org/ns/adms#"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                xmlns:dc="http://purl.org/dc/elements/1.1/"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
-                xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
                 xmlns:schema="http://schema.org/"
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:gml="http://www.opengis.net/gml"
                 xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
-                xmlns:gn="http://www.fao.org/geonetwork"
-                xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 xmlns:gn-fn-metadata-dcat="http://geonetwork-opensource.org/xsl/functions/profiles/metadata-dcat"
                 xmlns:saxon="http://saxon.sf.net/"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
@@ -54,6 +50,8 @@
   <xsl:variable name="env" select="/root/env"/>
   <xsl:variable name="iso2letterLanguageCode" select="lower-case(java:twoCharLangCode(/root/gui/language))"/>
   <xsl:variable name="resourcePrefix" select="$env/metadata/resourceIdentifierPrefix"/>
+
+  <xsl:variable name="uuid" select="/root/env/uuid"/>
 
   <xsl:variable name="isService" select="count(/root//rdf:RDF/dcat:Catalog/dcat:service) > 0"/>
 
@@ -150,39 +148,60 @@
           </skos:ConceptScheme>
         </dcat:themeTaxonomy>
       </xsl:for-each>
-      <xsl:apply-templates select="dcat:record"/>
+      <xsl:choose>
+        <xsl:when test="dcat:record">
+          <xsl:apply-templates select="dcat:record"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <dcat:record>
+            <dcat:CatalogRecord rdf:about="{/root/env/nodeURL}/api/records/{$uuid}">
+              <dct:identifier>
+                <xsl:value-of select="$uuid"/>
+              </dct:identifier>
+              <xsl:variable name="primaryTopic" select="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/@rdf:about|
+                                                /root/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/@rdf:about"/>
+              <foaf:primaryTopic rdf:resource="{$primaryTopic}"/>
+              <dct:modified>
+                <xsl:value-of select="format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]')"/>
+              </dct:modified>
+            </dcat:CatalogRecord>
+          </dcat:record>
+        </xsl:otherwise>
+      </xsl:choose>
       <xsl:apply-templates select="dcat:dataset|dcat:service"/>
     </dcat:Catalog>
   </xsl:template>
   <!-- ================================================================= -->
-  <xsl:template match="dcat:record" priority="10">
-      <xsl:copy-of select="."/>
+  <xsl:template match="dcat:CatalogRecord" priority="10">
+    <xsl:copy>
+      <xsl:apply-templates select="@*[not(name(.) = 'rdf:about')]"/>
+      <xsl:attribute name="rdf:about"
+                     select="replace(@rdf:about, '([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}', $uuid)"/>
+      <dct:identifier>
+        <xsl:value-of select="$uuid"/>
+      </dct:identifier>
+
+      <xsl:variable name="primaryTopic" select="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/@rdf:about|
+                                                /root/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/@rdf:about"/>
+      <foaf:primaryTopic rdf:resource="{$primaryTopic}"/>
+
+      <dct:modified>
+        <xsl:value-of select="format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]')"/>
+      </dct:modified>
+      <xsl:apply-templates select="dct:conformsTo"/>
+      <xsl:apply-templates select="adms:status"/>
+      <xsl:apply-templates select="dct:issued"/>
+      <xsl:apply-templates select="dct:title"/>
+      <xsl:apply-templates select="dct:description"/>
+      <xsl:apply-templates select="dct:language"/>
+      <xsl:apply-templates select="dct:source"/>
+    </xsl:copy>
   </xsl:template>
   <!-- ================================================================= -->
   <xsl:template match="dcat:Dataset" priority="10">
     <dcat:Dataset>
-      <xsl:apply-templates select="@*[not(name(.) = 'rdf:about')]"/>
-      <xsl:variable name="rdfAbout"
-                    select="replace(@rdf:about,'([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}',/root/env/uuid)"/>
-      <xsl:attribute name="rdf:about" select="$rdfAbout"/>
-      <dct:identifier>
-        <xsl:value-of select="/root/env/uuid"/>
-      </dct:identifier>
-      <!--
-            When duplicate, do not copy any dct:identifier otherwise copy all dct:identifier elements except the first.
-            We could use position() to check the position of the next dct:identifier elements,
-            but when schema change and dct:identifier is not the first element in the dcat:Dataset sequence anymore,
-            the next will continue to work.
-          -->
-      <xsl:if test="/root/env/id!=''">
-        <xsl:for-each select="dct:identifier">
-          <xsl:variable name="previousIdentifierSiblingsCount"
-                        select="count(preceding-sibling::*[name(.) = 'dct:identifier'])"/>
-          <xsl:if test="$previousIdentifierSiblingsCount>0">
-            <xsl:apply-templates select="."/>
-          </xsl:if>
-        </xsl:for-each>
-      </xsl:if>
+      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="dct:identifier"/>
       <xsl:apply-templates select="dct:title"/>
       <xsl:apply-templates select="dct:description"/>
       <xsl:apply-templates select="dcat:contactPoint"/>
@@ -218,7 +237,44 @@
       <xsl:apply-templates select="dct:rights"/>
     </dcat:Dataset>
   </xsl:template>
+  <!-- ================================================================= -->
+  <xsl:template match="dcat:DataService" priority="10">
+    <dcat:DataService>
+      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="dct:identifier"/>
+      <xsl:apply-templates select="dct:title"/>
+      <xsl:apply-templates select="dct:description"/>
+      <xsl:apply-templates select="dct:publisher"/>
+      <xsl:apply-templates select="dcat:endpointUrl"/>
+      <xsl:apply-templates select="dcat:endpointDescription"/>
+      <xsl:apply-templates select="dcat:servesDataset"/>
+      <xsl:apply-templates select="dcat:landingPage"/>
+      <xsl:apply-templates select="dcat:contactPoint"/>
+      <xsl:apply-templates select="dcat:keyword"/>
+      <xsl:apply-templates select="dct:language"/>
+      <xsl:apply-templates select="owl:versionInfo"/>
+      <xsl:apply-templates select="adms:identifier"/>
+      <xsl:apply-templates select="mdcat:landingspaginaVoorAuthenticatie"/>
+      <xsl:apply-templates select="mdcat:landingspaginaVoorStatusinformatie"/>
+      <xsl:apply-templates select="mdcat:landingspaginaVoorGebruiksinformatie"/>
+      <xsl:apply-templates select="mdcat:levensfase"/>
+      <xsl:apply-templates select="mdcat:ontwikkelingstoestand"/>
 
+      <xsl:apply-templates select="dcat:qualifiedRelation"/>
+      <xsl:apply-templates select="dcat:theme"/>
+      <xsl:apply-templates select="dct:accessRights"/>
+      <xsl:apply-templates select="dct:conformsTo"/>
+      <xsl:apply-templates select="dct:creator"/>
+      <xsl:apply-templates select="dct:isReferencedBy"/>
+      <xsl:apply-templates select="dct:license"/>
+      <xsl:apply-templates select="dct:issued"/>
+      <xsl:apply-templates select="dct:modified"/>
+      <xsl:apply-templates select="dct:relation"/>
+      <xsl:apply-templates select="dct:rights"/>
+      <xsl:apply-templates select="dct:type"/>
+    </dcat:DataService>
+  </xsl:template>
+  <!-- ================================================================= -->
   <xsl:template match="dcat:Dataset/dct:title|dcat:DataService/dct:title" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
@@ -416,56 +472,6 @@
       <xsl:apply-templates select="@*|*"/>
     </xsl:copy>
   </xsl:template>
-
-  <xsl:template match="dcat:DataService" priority="10">
-    <dcat:DataService>
-      <xsl:apply-templates select="@*[not(name(.) = 'rdf:about')]"/>
-      <xsl:attribute name="rdf:about" select="replace(@rdf:about,'([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}',/root/env/uuid)"/>
-      <dct:identifier>
-        <xsl:value-of select="/root/env/uuid"/>
-      </dct:identifier>
-      <xsl:if test="/root/env/id!=''">
-        <xsl:for-each select="dct:identifier">
-          <xsl:variable name="previousIdentifierSiblingsCount"
-                        select="count(preceding-sibling::*[name(.) = 'dct:identifier'])"/>
-          <xsl:if test="$previousIdentifierSiblingsCount>0">
-            <xsl:apply-templates select="."/>
-          </xsl:if>
-        </xsl:for-each>
-      </xsl:if>
-      <xsl:apply-templates select="dct:title"/>
-      <xsl:apply-templates select="dct:description"/>
-      <xsl:apply-templates select="dct:publisher"/>
-      <xsl:apply-templates select="dcat:endpointUrl"/>
-      <xsl:apply-templates select="dcat:endpointDescription"/>
-      <xsl:apply-templates select="dcat:servesDataset"/>
-      <xsl:apply-templates select="dcat:landingPage"/>
-      <xsl:apply-templates select="dcat:contactPoint"/>
-      <xsl:apply-templates select="dcat:keyword"/>
-      <xsl:apply-templates select="dct:language"/>
-      <xsl:apply-templates select="owl:versionInfo"/>
-      <xsl:apply-templates select="adms:identifier"/>
-      <xsl:apply-templates select="mdcat:landingspaginaVoorAuthenticatie"/>
-      <xsl:apply-templates select="mdcat:landingspaginaVoorStatusinformatie"/>
-      <xsl:apply-templates select="mdcat:landingspaginaVoorGebruiksinformatie"/>
-      <xsl:apply-templates select="mdcat:levensfase"/>
-      <xsl:apply-templates select="mdcat:ontwikkelingstoestand"/>
-
-      <xsl:apply-templates select="dcat:qualifiedRelation"/>
-      <xsl:apply-templates select="dcat:theme"/>
-      <xsl:apply-templates select="dct:accessRights"/>
-      <xsl:apply-templates select="dct:conformsTo"/>
-      <xsl:apply-templates select="dct:creator"/>
-      <xsl:apply-templates select="dct:isReferencedBy"/>
-      <xsl:apply-templates select="dct:license"/>
-      <xsl:apply-templates select="dct:issued"/>
-      <xsl:apply-templates select="dct:modified"/>
-      <xsl:apply-templates select="dct:relation"/>
-      <xsl:apply-templates select="dct:rights"/>
-      <xsl:apply-templates select="dct:type"/>
-    </dcat:DataService>
-  </xsl:template>
-
 
   <xsl:template name="add-namespaces">
     <xsl:namespace name="rdf" select="'http://www.w3.org/1999/02/22-rdf-syntax-ns#'"/>

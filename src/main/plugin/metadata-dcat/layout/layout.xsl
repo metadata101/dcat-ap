@@ -298,6 +298,11 @@
       </xsl:when>
       <xsl:otherwise>
         <xsl:variable name="xpath" select="gn-fn-metadata:getXPath(.)"/>
+        <xsl:variable name="isDisabled" select="
+          (name(.) = 'dct:identifier' and count(preceding-sibling::*[name(.) = 'dct:identifier']) = 0 and name(..) = ('dcat:Dataset', 'dcat:DataService')) or
+          (name(..) = 'dcat:CatalogRecord' and name(.) = ('dct:identifier', 'dct:title', 'dct:description', 'dct:language', 'dct:modified', 'dct:issued')) or
+          (name(../../..) = 'dcat:CatalogRecord' and name(..) = 'dct:Standard')"/>
+
         <xsl:call-template name="render-element">
           <xsl:with-param name="label" select="$labelConfig"/>
           <xsl:with-param name="value" select="."/>
@@ -323,7 +328,7 @@
                           ((gn:element/@down = 'true' and not(gn:element/@up)) or
                           (not(gn:element/@down) and not(gn:element/@up)))"/>
           <xsl:with-param name="isForceLabel" select="true()"/>
-          <xsl:with-param name="isDisabled" select="name(.) = 'dct:identifier' and count(preceding-sibling::*[name(.) = 'dct:identifier']) = 0 and name(..) = ('dcat:Dataset', 'dcat:DataService')"/>
+          <xsl:with-param name="isDisabled" select="$isDisabled"/>
           <!-- Boolean that allow to show the mandatory "*" in black instead of red -->
           <xsl:with-param name="subRequired" select="(name() = 'vcard:street-address' and name(..) = 'vcard:Address') or
                                                      (name() = 'vcard:locality' and name(..) = 'vcard:Address') or

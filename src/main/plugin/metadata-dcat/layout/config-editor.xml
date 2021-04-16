@@ -640,6 +640,20 @@
           </action>
         </section>
       </tab>
+      <tab id="defaultRecord" mode="flat">
+        <section name="catalogRecordInformation">
+          <field name="FieldId500" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title"/>
+          <field name="FieldId501" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:description"/>
+          <field name="FieldId502" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
+          <field name="FieldId503" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:modified"/>
+          <field name="FieldId504" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:issued"/>
+          <field name="FieldId505" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"/>
+        </section>
+        <section name="conformToInformation">
+          <field name="FieldId506" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title"/>
+          <field name="FieldId507" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
+        </section>
+      </tab>
       <flatModeExceptions>
         <!-- Basic information -->
         <for name="dcat:keyword"/>
@@ -1257,6 +1271,20 @@
             </template>
           </action>
           <field name="FieldId437" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:type" or="type" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+        </section>
+      </tab>
+      <tab id="advancedRecord" mode="flat">
+        <section name="catalogRecordInformation">
+          <field name="FieldId500" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title"/>
+          <field name="FieldId501" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:description"/>
+          <field name="FieldId502" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
+          <field name="FieldId503" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:modified"/>
+          <field name="FieldId504" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:issued"/>
+          <field name="FieldId505" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"/>
+        </section>
+        <section name="conformToInformation">
+          <field name="FieldId506" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title"/>
+          <field name="FieldId507" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
         </section>
       </tab>
       <flatModeExceptions>
