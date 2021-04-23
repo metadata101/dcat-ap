@@ -29,8 +29,10 @@
     Create metadata block with root element dcat:Dataset.
   -->
   <xsl:template match="rdf:RDF" mode="to-dcat">
-    <xsl:copy-of select="dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+    <xsl:copy-of select="dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
+    <xsl:copy-of select="dcat:Catalog/dcat:dataset/dcat:Dataset|dcat:Catalog/dcat:service/dcat:DataService"/>
   </xsl:template>
+
   <xsl:template match="rdf:RDF" mode="references"/>
   <xsl:template mode="rdf:RDF" match="gui|request|metadata"/>
 </xsl:stylesheet>

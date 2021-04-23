@@ -10,7 +10,7 @@
     <dcat:record>
       <dcat:CatalogRecord rdf:about="https://metadata.vlaanderen.be/doc/dataset/0e495886-e70e-405b-8c16-7c8c13abd184">
         <dct:identifier>0e495886-e70e-405b-8c16-7c8c13abd184</dct:identifier>
-        <foaf:primaryTopic rdf:resource="https://metadata.vlaanderen.be/doc/dataset/69705bd3-2e59-415a-8118-7c74a1367379"/>
+        <foaf:primaryTopic rdf:resource="https://metadata.vlaanderen.be/doc/record/69705bd3-2e59-415a-8118-7c74a1367379"/>
         <dct:modified>2020-04-16</dct:modified>
         <dct:conformsTo>
           <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/">

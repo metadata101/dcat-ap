@@ -289,7 +289,7 @@ public class Aligner extends BaseAligner<DCATAPParams> {
         // xmlOutputter.output(ri.metadata,System.out);
 
         Element validationReport = validateMetadata(ri, metadata);
-        log.info("VALIDATION REPORT for dataset with UUID: " + ri.uuid + " and with URI: " + ri.uri + transformReportToString(validationReport));
+        log.info("VALIDATION REPORT for record with UUID: " + ri.uuid + " and with URI: " + ri.uri + transformReportToString(validationReport));
         XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
         //log.info(xmlOutputter.outputString(validationReport));
     }
@@ -364,7 +364,7 @@ public class Aligner extends BaseAligner<DCATAPParams> {
                 result.updatedMetadata++;
 
                 Element validationReport = validateMetadata(ri, metadata);
-                log.info("VALIDATION REPORT for dataset with UUID: " + ri.uuid + " and with URI: " + ri.uri + transformReportToString(validationReport));
+                log.info("VALIDATION REPORT for record with UUID: " + ri.uuid + " and with URI: " + ri.uri + transformReportToString(validationReport));
                 //XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
                 //log.info(xmlOutputter.outputString(validationReport));
             }

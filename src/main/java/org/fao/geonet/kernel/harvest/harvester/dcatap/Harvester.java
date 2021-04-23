@@ -25,24 +25,28 @@ package org.fao.geonet.kernel.harvest.harvester.dcatap;
 
 import jeeves.server.context.ServiceContext;
 import org.apache.jena.query.*;
+import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.RDFDataMgr;
+import org.fao.geonet.Constants;
 import org.fao.geonet.Logger;
 import org.fao.geonet.domain.ISODate;
 import org.fao.geonet.exceptions.BadServerResponseEx;
-import org.fao.geonet.kernel.DataManager;
+import org.fao.geonet.kernel.datamanager.IMetadataSchemaUtils;
 import org.fao.geonet.kernel.harvest.harvester.HarvestError;
 import org.fao.geonet.kernel.harvest.harvester.HarvestResult;
 import org.fao.geonet.kernel.harvest.harvester.IHarvester;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
 import org.jdom.JDOMException;
+import org.jdom.output.Format;
+import org.jdom.output.XMLOutputter;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -86,31 +90,35 @@ class Harvester implements IHarvester<HarvestResult> {
 
     private final Path xslFile;
 
+    private final String queryExtractIds;
+    private final String queryBuildRecord;
     private final String fixBlankNodeQueryStr;
-    private final String getIdsQueryStr;
-    private final String buildRecordQueryStr;
 
     public Harvester(AtomicBoolean cancelMonitor, Logger log, ServiceContext context, DCATAPParams params) throws IOException {
-
         this.cancelMonitor = cancelMonitor;
         this.log = log;
         this.context = context;
         this.params = params;
-        this.xslFile = context.getApplicationContext().getBean(DataManager.class).getSchemaDir("metadata-dcat")
-            .resolve("import/rdf-to-xml.xsl");
 
-        this.fixBlankNodeQueryStr = this.getResourceQueryAsString("fix-blank-node.rq");
-        this.getIdsQueryStr = this.getResourceQueryAsString("get-ids.rq");
-        this.buildRecordQueryStr = this.getResourceQueryAsString("build-record.rq");
+        Path schemaDir = context.getApplicationContext()
+            .getBean(IMetadataSchemaUtils.class)
+            .getSchemaDir("metadata-dcat");
+
+        this.xslFile = schemaDir.resolve("import/rdf-to-xml.xsl");
+
+        this.queryExtractIds = new String(Files.readAllBytes(schemaDir.resolve("sparql/extract-records-ids.rq")), Constants.CHARSET);
+        this.queryBuildRecord = new String(Files.readAllBytes(schemaDir.resolve("sparql/build-record.rq")), Constants.CHARSET);
+
+        this.fixBlankNodeQueryStr = new String(Files.readAllBytes(schemaDir.resolve("sparql/fix-blank-node.rq")), Constants.CHARSET);
     }
 
+    @Override
     public HarvestResult harvest(Logger log) throws Exception {
         this.log = log;
 
         try {
-            // Retrieve all DCAT-AP records and normalize them via SPARQL+XSL
-            // transformation
-            Set<DCATAPRecordInfo> recordsInfo = search();
+            // Retrieve all DCAT-AP records and normalize them via SPARQL+XSL transformation
+            Set<DCATAPRecordInfo> recordsInfo = this.search();
             // Create, update, delete all records
             Aligner aligner = new Aligner(cancelMonitor, log, context, params);
             log.info("Total records processed in all searches: " + recordsInfo.size());
@@ -132,7 +140,11 @@ class Harvester implements IHarvester<HarvestResult> {
 
         // return empty harvest result in case of errors
         return new HarvestResult();
+    }
 
+    @Override
+    public List<HarvestError> getErrors() {
+        return errors;
     }
 
     /**
@@ -140,46 +152,34 @@ class Harvester implements IHarvester<HarvestResult> {
      * UUIDs and add them to a Set with RecordInfo
      */
     private Set<DCATAPRecordInfo> search() throws Exception {
+        if (cancelMonitor.get()) {
+            return Collections.emptySet();
+        }
 
-        Set<DCATAPRecordInfo> records = new HashSet<DCATAPRecordInfo>();
+        Set<DCATAPRecordInfo> records = new HashSet<>();
 
         try {
-            int maxResults = params.maxResults;
-
             // Create an empty in-memory model and populate it from the graph
             Model model = ModelFactory.createMemModelMaker().createDefaultModel();
             RDFDataMgr.read(model, params.baseUrl);
 
-            Query queryFixBlankNodes = QueryFactory.create(this.fixBlankNodeQueryStr);
-            QueryExecution qe = QueryExecutionFactory.create(queryFixBlankNodes, model);
-            model = qe.execConstruct();
-            qe.close();
+            model = this.fixMissingRecords(model);
 
-            Query queryIds = QueryFactory.create(this.getIdsQueryStr);
-            qe = QueryExecutionFactory.create(queryIds, model);
+            Query queryRecordIds = QueryFactory.create(this.queryExtractIds);
+            QueryExecution qe = QueryExecutionFactory.create(queryRecordIds, model);
             ResultSet resultIds = qe.execSelect();
 
             while (resultIds.hasNext()) {
-                QuerySolution result = resultIds.nextSolution();
-                String datasetId = result.getResource("datasetid").toString();
+                DCATAPRecordInfo recInfo = this.getRecordInfo(resultIds.nextSolution(), model);
 
-                // System.out.println(datasetId);
-
-                if (log.isDebugEnabled())
-                    log.debug("Dataset in response: " + datasetId);
-
-                if (cancelMonitor.get()) {
-                    return Collections.emptySet();
-                }
-                DCATAPRecordInfo recInfo = getRecordInfo(result, model);
-                if (recInfo != null)
+                if (recInfo != null) {
                     records.add(recInfo);
+                }
 
-                if (records.size() > maxResults) {
+                if (records.size() > params.maxResults) {
                     log.warning("Forcing harvest end since maximum records to be harvested is reached");
                     break;
                 }
-
             }
 
             qe.close();
@@ -187,73 +187,59 @@ class Harvester implements IHarvester<HarvestResult> {
             log.info("Records added to result list : " + records.size());
 
         } catch (Exception e) {
-            HarvestError harvestError = new HarvestError(context, e);
-            harvestError.setDescription(harvestError.getDescription());
-            //BadServerResponseEx et = new BadServerResponseEx(e.getMessage());
-            //errors.add(new HarvestError(context, et));
             throw new Exception("The server returned an answer that could not be processed: " + e.getMessage());
         }
 
         return records;
+    }
 
+    private Model fixMissingRecords(Model model) {
+        // TODO
+        Query queryFixBlankNodes = QueryFactory.create(this.fixBlankNodeQueryStr);
+        QueryExecution qe = QueryExecutionFactory.create(queryFixBlankNodes, model);
+        Model newModel = qe.execConstruct();
+        qe.close();
+        return newModel;
     }
 
     private DCATAPRecordInfo getRecordInfo(QuerySolution solution, Model model) {
         try {
-            String datasetId = solution.getResource("datasetid").toString();
-            String modified = "";
-            Date modDate = null;
-            // convert the pubDate to a known format (ISOdate)
-            if (solution.getResource("modified") != null) {
-                modDate = parseDate(solution.getResource("modified").toString());
+            String recordId = solution.getResource("recordId").toString();
+            String resourceId = solution.getResource("resourceId").toString();
+
+            if (log.isDebugEnabled()) {
+                log.debug("Record in response: " + recordId + " With resource: " + resourceId);
             }
-            if (modDate != null) {
 
-                modified = new ISODate(modDate.getTime(), false).toString();
-            }
-            if (modified != null && modified.length() == 0)
-                modified = null;
+            String localQueryBuildRecord = this.queryBuildRecord
+                .replaceAll("%recordId%", recordId)
+                .replaceAll("%resourceId%", resourceId);
 
-            if (log.isDebugEnabled())
-                log.debug("getRecordInfo: adding " + datasetId + " with modification date " + modified);
-
-
-            String queryStringRecord = this.buildRecordQueryStr.replaceAll("%datasetId%", datasetId);
-            Query queryRecord = QueryFactory.create(queryStringRecord);
+            Query queryRecord = QueryFactory.create(localQueryBuildRecord);
             QueryExecution qe = QueryExecutionFactory.create(queryRecord, model);
             ResultSet results = qe.execSelect();
+
             if (results.hasNext()) {
-                // Output query results
                 ByteArrayOutputStream outxml = new ByteArrayOutputStream();
                 ResultSetFormatter.outputAsXML(outxml, results);
-
-                // Apply XSLT transformation
                 Element sparqlResults = Xml.loadStream(new ByteArrayInputStream(outxml.toByteArray()));
-                /*
-                 * Issue: GeoNetwork works best (only?) with UUIDs as dataset
-                 * identifiers. The following lines of code extract a uuid from the
-                 * dataset URI. If no UUID is found, the dataset URIs are converted
-                 * into a (unique) UUID using generateUUID. Note that URL encoding
-                 * does not work, as the GeoNetwork URLs still clash and don't work
-                 * in all situations.
-                 * //java.net.URLEncoder.encode(datasetId,"utf-8");
-                 */
-                Pattern pattern = Pattern.compile("([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}");
-                Matcher matcher = pattern.matcher(datasetId);
-                String datasetUuid;
-                if (matcher.find()) {
-                    datasetUuid = datasetId.substring(matcher.start(), matcher.end());
-                } else {
-                    datasetUuid = UUID.nameUUIDFromBytes(datasetId.getBytes()).toString();
-                }
-                Map<String, Object> params = new HashMap<>();
-                params.put("identifier", datasetUuid);
-                Element dcatXML = Xml.transform(sparqlResults, xslFile, params);
                 qe.close();
 
-                return new DCATAPRecordInfo(datasetUuid, datasetId, modified, "metadata-dcat", "TODO: source?", dcatXML);
+                String recordUUID = this.getRecordUUID(recordId);
+                Map<String, Object> params = new HashMap<>();
+                params.put("identifier", recordUUID);
+                Element dcatXML = Xml.transform(sparqlResults, xslFile, params);
+
+                String modified = this.normalizeDate(solution.getLiteral("modified"));
+
+                if (log.isDebugEnabled()) {
+                    log.debug("getRecordInfo: adding " + recordId + " with modification date " + modified);
+                }
+
+                return new DCATAPRecordInfo(recordUUID, recordId, modified, "metadata-dcat", "TODO: source?", dcatXML);
             } else {
-                String errorMessage = "No dcat:Dataset found with datasetId " + datasetId + ", rdf:about attribute empty?";
+                qe.close();
+                String errorMessage = "No dcat:Dataset found with datasetId " + recordId + ", rdf:about attribute empty?";
                 HarvestError harvestError = new HarvestError(context, new Exception(errorMessage));
                 harvestError.setDescription(harvestError.getDescription());
                 errors.add(harvestError);
@@ -276,35 +262,62 @@ class Harvester implements IHarvester<HarvestResult> {
     }
 
     /**
+     * @return normalize date to format yyyy-MM-dd
+     */
+    private String normalizeDate(Literal modified) throws ParseException {
+        if (modified == null) {
+            return null;
+        }
+
+        Date modDate = this.parseDate(modified.toString());
+        if (modDate == null) {
+            return null;
+        }
+        // convert the date to a known format "yyyy-MM-dd"
+        return new ISODate(modDate.getTime(), false)
+            .toString()
+            .substring(0, 10);
+    }
+
+    /**
      * Parse the date provided in the pubDate field.
      *
      * @param modifiedDate the date to parse
-     * @return
+     * @return Date object
      */
-    protected Date parseDate(String modifiedDate) throws ParseException {
+    private Date parseDate(String modifiedDate) {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD'T'HH:mm:ss");
         try {
-            return sdf.parse(modifiedDate.toUpperCase());
-        } catch (Exception e) {
-            log.debug("Date '" + modifiedDate + "' is not parsable");
+            SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+            return dateTimeFormat.parse(modifiedDate.toUpperCase());
+        } catch (ParseException e) {
+            try {
+                SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd");
+                return dateTimeFormat.parse(modifiedDate.toUpperCase());
+            } catch (ParseException ex) {
+                log.debug("Date '" + modifiedDate + "' is not parsable");
+            }
         }
         return null;
     }
 
-    @Override
-    public List<HarvestError> getErrors() {
-        return errors;
+    /**
+     * Issue: GeoNetwork works best (only?) with UUIDs as record
+     * identifiers. The following method extract a uuid from the
+     * record URI. If no UUID is found, the record URIs are converted
+     * into a (unique) UUID using generateUUID. Note that URL encoding
+     * does not work, as the GeoNetwork URLs still clash and don't work
+     * in all situations.
+     */
+    private String getRecordUUID(String recordId) {
+        Pattern pattern = Pattern.compile("([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}");
+        Matcher matcher = pattern.matcher(recordId);
+        String recordUUID;
+        if (matcher.find()) {
+            recordUUID = recordId.substring(matcher.start(), matcher.end());
+        } else {
+            recordUUID = UUID.nameUUIDFromBytes(recordId.getBytes()).toString();
+        }
+        return recordUUID;
     }
-
-    private String getResourceQueryAsString(String queryName) throws IOException {
-        ClassLoader classLoader = this.getClass().getClassLoader();
-        InputStream inputStream = Objects.requireNonNull(classLoader.getResourceAsStream("/sparql/" + queryName));
-        return new Scanner(inputStream, "UTF-8")
-            .useDelimiter("\\A")
-            .next();
-    }
-
 }
-
-// =============================================================================
