@@ -1,0 +1,29 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+# Set URIs of blank-node dcat:Dataset instances to a URN composed of the dataset's first title.
+CONSTRUCT {
+  ?newDatasetURI ?p1 ?o1 .
+  ?s2 ?p2 ?newDatasetURI .
+  ?s3 ?p3 ?o3 .
+}
+WHERE {
+  {
+    ?oldDatasetURI a dcat:Dataset .
+    ?oldDatasetURI ?p1 ?o1 .
+    ?s2 ?p2 ?oldDatasetURI .
+    FILTER (isBlank(?oldDatasetURI)) .
+    {
+      SELECT ?oldDatasetURI (UUID() AS ?uuid) (MIN(?t) AS ?title)
+      WHERE {
+        ?oldDatasetURI dct:title ?t .
+      }
+      GROUP BY ?oldDatasetURI
+    }
+    BIND (?uuid AS ?newDatasetURI) .
+  } UNION {
+    ?s3 ?p3 ?o3 .
+    FILTER (NOT EXISTS {?s3 a dcat:Dataset . FILTER (isBlank(?s3)) .}) .
+    FILTER (NOT EXISTS {?o3 a dcat:Dataset . FILTER (isBlank(?o3)) .}) .
+  }
+}

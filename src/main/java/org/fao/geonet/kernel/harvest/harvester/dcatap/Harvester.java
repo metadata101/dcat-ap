@@ -24,55 +24,32 @@
 package org.fao.geonet.kernel.harvest.harvester.dcatap;
 
 import jeeves.server.context.ServiceContext;
-
+import org.apache.jena.query.*;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.riot.RDFDataMgr;
 import org.fao.geonet.Logger;
 import org.fao.geonet.domain.ISODate;
 import org.fao.geonet.exceptions.BadServerResponseEx;
-import org.fao.geonet.exceptions.OperationAbortedEx;
 import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.kernel.harvest.harvester.HarvestError;
 import org.fao.geonet.kernel.harvest.harvester.HarvestResult;
 import org.fao.geonet.kernel.harvest.harvester.IHarvester;
-import org.fao.geonet.kernel.harvest.harvester.dcatap.Aligner;
-import org.fao.geonet.kernel.harvest.harvester.dcatap.DCATAPParams;
-import org.fao.geonet.kernel.setting.SettingManager;
-import org.fao.geonet.services.harvesting.notifier.SendNotification;
-import org.fao.geonet.util.MailUtil;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
 import org.jdom.JDOMException;
-import org.jdom.output.Format;
-import org.jdom.output.XMLOutputter;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.apache.jena.query.Query;
-import org.apache.jena.query.QueryExecution;
-import org.apache.jena.query.QueryExecutionFactory;
-import org.apache.jena.query.QueryFactory;
-import org.apache.jena.query.QuerySolution;
-import org.apache.jena.query.ResultSet;
-import org.apache.jena.query.ResultSetFormatter;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.riot.RDFDataMgr;
 
 //=============================================================================
 
@@ -95,21 +72,25 @@ class Harvester implements IHarvester<HarvestResult> {
     // --- API methods
     // ---
     // ---------------------------------------------------------------------------
-    private DCATAPParams params;
+    private final DCATAPParams params;
 
     // ---------------------------------------------------------------------------
-    private ServiceContext context;
+    private final ServiceContext context;
 
     // ---------------------------------------------------------------------------
     /**
      * Contains a list of accumulated errors during the executing of this
      * harvest.
      */
-    private List<HarvestError> errors = new LinkedList<HarvestError>();
+    private final List<HarvestError> errors = new LinkedList<HarvestError>();
 
-    private Path xslFile;
+    private final Path xslFile;
 
-    public Harvester(AtomicBoolean cancelMonitor, Logger log, ServiceContext context, DCATAPParams params) {
+    private final String fixBlankNodeQueryStr;
+    private final String getIdsQueryStr;
+    private final String buildRecordQueryStr;
+
+    public Harvester(AtomicBoolean cancelMonitor, Logger log, ServiceContext context, DCATAPParams params) throws IOException {
 
         this.cancelMonitor = cancelMonitor;
         this.log = log;
@@ -117,18 +98,19 @@ class Harvester implements IHarvester<HarvestResult> {
         this.params = params;
         this.xslFile = context.getApplicationContext().getBean(DataManager.class).getSchemaDir("metadata-dcat")
             .resolve("import/rdf-to-xml.xsl");
+
+        this.fixBlankNodeQueryStr = this.getResourceQueryAsString("fix-blank-node.rq");
+        this.getIdsQueryStr = this.getResourceQueryAsString("get-ids.rq");
+        this.buildRecordQueryStr = this.getResourceQueryAsString("build-record.rq");
     }
 
     public HarvestResult harvest(Logger log) throws Exception {
-
         this.log = log;
-
-        Set<DCATAPRecordInfo> recordsInfo = new HashSet<DCATAPRecordInfo>();
 
         try {
             // Retrieve all DCAT-AP records and normalize them via SPARQL+XSL
             // transformation
-            recordsInfo.addAll(search());
+            Set<DCATAPRecordInfo> recordsInfo = search();
             // Create, update, delete all records
             Aligner aligner = new Aligner(cancelMonitor, log, context, params);
             log.info("Total records processed in all searches: " + recordsInfo.size());
@@ -168,45 +150,12 @@ class Harvester implements IHarvester<HarvestResult> {
             Model model = ModelFactory.createMemModelMaker().createDefaultModel();
             RDFDataMgr.read(model, params.baseUrl);
 
-            // Set URIs of blank-node dcat:Dataset instances to a URN composed of the dataset's first title.
-            String queryStringFixBlankNodes =
-                "PREFIX dcat: <http://www.w3.org/ns/dcat#>\n" +
-                    "PREFIX dct: <http://purl.org/dc/terms/>\n" +
-                    "CONSTRUCT { ?newDatasetURI ?p1 ?o1.\n" +
-                    "                            ?s2 ?p2 ?newDatasetURI.\n" +
-                    "                            ?s3 ?p3 ?o3.}\n" +
-                    "WHERE {\n" +
-                    "{\n" +
-                    "?oldDatasetURI a dcat:Dataset.\n" +
-                    "?oldDatasetURI ?p1 ?o1.\n" +
-                    "?s2 ?p2 ?oldDatasetURI.\n" +
-                    "FILTER(isBlank(?oldDatasetURI)).\n" +
-                    "     {SELECT ?oldDatasetURI (UUID() AS ?uuid) (MIN(?t) AS ?title)\n" +
-                    "      WHERE {\n" +
-                    "        ?oldDatasetURI dct:title ?t.\n" +
-                    "      } GROUP BY ?oldDatasetURI\n" +
-                    "     }    " +
-                    "BIND (?uuid AS ?newDatasetURI)." +
-                    "}\n" +
-                    "UNION\n" +
-                    "{\n" +
-                    "?s3 ?p3 ?o3.\n" +
-                    "FILTER(NOT EXISTS {?s3 a dcat:Dataset. FILTER(isBlank(?s3)).}).\n" +
-                    "FILTER(NOT EXISTS {?o3 a dcat:Dataset. FILTER(isBlank(?o3)).}).\n" +
-                    "}\n" +
-                    "}";
-
-            Query queryFixBlankNodes = QueryFactory.create(queryStringFixBlankNodes);
+            Query queryFixBlankNodes = QueryFactory.create(this.fixBlankNodeQueryStr);
             QueryExecution qe = QueryExecutionFactory.create(queryFixBlankNodes, model);
             model = qe.execConstruct();
             qe.close();
 
-            // Get all dataset URIs
-            String queryStringIds = "PREFIX dcat: <http://www.w3.org/ns/dcat#> \n"
-                + "PREFIX dct: <http://purl.org/dc/terms/> \n" + "SELECT ?datasetid ?modified \n"
-                + " WHERE {?datasetid a dcat:Dataset. \n" + " OPTIONAL {?datasetid dcat:record ?record. \n"
-                + " ?record dct:modified ?modified}}";
-            Query queryIds = QueryFactory.create(queryStringIds);
+            Query queryIds = QueryFactory.create(this.getIdsQueryStr);
             qe = QueryExecutionFactory.create(queryIds, model);
             ResultSet resultIds = qe.execSelect();
 
@@ -268,88 +217,8 @@ class Harvester implements IHarvester<HarvestResult> {
             if (log.isDebugEnabled())
                 log.debug("getRecordInfo: adding " + datasetId + " with modification date " + modified);
 
-            // Retrieve all triples about a specific dataset URI
-            String queryStringRecord = ""
-                + "PREFIX dcat: <http://www.w3.org/ns/dcat#>\n"
-                + "PREFIX dct: <http://purl.org/dc/terms/>\n"
-                + "PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>\n"
-                + "PREFIX apf: <http://jena.hpl.hp.com/ARQ/property#>\n"
-                + "PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#>\n"
-                + "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n"
-                + "SELECT DISTINCT ?subject ?predicate ?pAsQName ?object\n"
-                + "WHERE {{\n"
 
-                // Triples on a specific dataset
-                + "    ?subject ?predicate ?object.\n"
-                + "    FILTER (\n"
-                + "      ?subject = <" + datasetId + "> || \n"
-                + "      ?object = <" + datasetId + "> \n"
-                + "    )\n"
-
-                // Triples on a specific dataset's "child" resources
-                // (publisher, distribution, ed.)
-                + "  } UNION {\n"
-                + "    ?subject ?predicate ?object.\n"
-                + "    <" + datasetId + "> ?p ?subject.\n"
-
-                // Triple on a specific distribution's child dct:license
-                + "  } UNION {\n"
-                + "    ?subject ?predicate ?object.\n"
-                + "    <" + datasetId + "> dcat:distribution ?distribution.\n"
-                + "    ?distribution ?p ?subject.\n"
-
-                // Triple on a specific contactPoint's child Address
-                + "  } UNION {\n"
-                + "    ?subject ?predicate ?object.\n"
-                + "    <" + datasetId + "> dcat:contactPoint ?address.\n"
-                + "    ?address ?p ?subject.\n"
-
-                // Triples on a dct:Catalog instance
-                + "  } UNION {\n"
-                + "    ?subject ?predicate ?object.\n"
-                + "    ?subject a dcat:Catalog.\n"
-                + "    ?subject dcat:dataset <" + datasetId + ">.\n"
-                + "    FILTER (?predicate != dcat:dataset)\n"
-
-                // Triples on a dct:Catalog instance's "child" resources
-                // (publisher, distribution, ed.)
-                + "  } UNION {\n"
-                + "    ?subject ?predicate ?object.\n"
-                + "    ?s a dcat:Catalog.\n"
-                + "    ?s dcat:dataset <" + datasetId + ">.\n"
-                + "    ?s ?p ?subject.\n"
-                + "    FILTER (?p != dcat:dataset).\n"
-                + "    FILTER (?predicate != dcat:dataset)\n"
-
-                // Triples on a skos:Concept instance
-                + "  } UNION {\n"
-                + "    ?subject ?predicate ?object.\n"
-                + "    ?subject a skos:Concept.\n"
-
-                + "  }\n"
-                + "  BIND (afn:namespace(?predicate) as ?pns)\n"
-                + "  BIND (COALESCE(\n"
-                + "      IF(?pns = 'http://www.w3.org/ns/dcat#', 'dcat:', 1/0),\n"
-                + "      IF(?pns = 'http://purl.org/dc/terms/', 'dct:', 1/0),\n"
-                + "      IF(?pns = 'http://spdx.org/rdf/terms#', 'spdx:', 1/0),\n"
-                + "      IF(?pns = 'http://www.w3.org/2004/02/skos/core#', 'skos:', 1/0),\n"
-                + "      IF(?pns = 'http://www.w3.org/ns/adms#', 'adms:', 1/0),\n"
-                + "      IF(?pns = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#', 'rdf:', 1/0),\n"
-                + "      IF(?pns = 'http://www.w3.org/2006/vcard/ns#', 'vcard:', 1/0),\n"
-                + "      IF(?pns = 'http://xmlns.com/foaf/0.1/', 'foaf:', 1/0),\n"
-                + "      IF(?pns = 'http://www.w3.org/2002/07/owl#', 'owl:', 1/0),\n"
-                + "      IF(?pns = 'http://schema.org/', 'schema:', 1/0),\n"
-                + "      IF(?pns = 'http://www.w3.org/2000/01/rdf-schema#', 'rdfs:', 1/0),\n"
-                + "      IF(?pns = 'http://www.w3.org/ns/locn#', 'locn:', 1/0),\n"
-                + "      IF(?pns = 'http://purl.org/dc/elements/1.1/', 'dc:', 1/0),\n"
-                + "      'unkown:'\n"
-                + "    ) AS ?pprefix )\n"
-                + "  BIND (CONCAT(?pprefix,afn:localname(?predicate)) AS ?pAsQName)\n"
-                + "}";
-
-            // System.out.println(queryStringRecord);
-
-            // Execute the query and obtain results
+            String queryStringRecord = this.buildRecordQueryStr.replaceAll("%datasetId%", datasetId);
             Query queryRecord = QueryFactory.create(queryStringRecord);
             QueryExecution qe = QueryExecutionFactory.create(queryRecord, model);
             ResultSet results = qe.execSelect();
@@ -369,8 +238,7 @@ class Harvester implements IHarvester<HarvestResult> {
                  * in all situations.
                  * //java.net.URLEncoder.encode(datasetId,"utf-8");
                  */
-                Pattern pattern = Pattern
-                    .compile("([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}");
+                Pattern pattern = Pattern.compile("([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}");
                 Matcher matcher = pattern.matcher(datasetId);
                 String datasetUuid;
                 if (matcher.find()) {
@@ -378,18 +246,10 @@ class Harvester implements IHarvester<HarvestResult> {
                 } else {
                     datasetUuid = UUID.nameUUIDFromBytes(datasetId.getBytes()).toString();
                 }
-                Map<String, Object> params = new HashMap<String, Object>();
+                Map<String, Object> params = new HashMap<>();
                 params.put("identifier", datasetUuid);
                 Element dcatXML = Xml.transform(sparqlResults, xslFile, params);
                 qe.close();
-
-
-                //XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
-                //System.out.println("SPARQL result:");
-                //xmlOutputter.output(sparqlResults,System.out);
-                //System.out.println("DCAT result:");
-                //xmlOutputter.output(dcatXML,System.out);
-
 
                 return new DCATAPRecordInfo(datasetUuid, datasetId, modified, "metadata-dcat", "TODO: source?", dcatXML);
             } else {
@@ -399,15 +259,7 @@ class Harvester implements IHarvester<HarvestResult> {
                 errors.add(harvestError);
             }
 
-        } catch (ParseException e) {
-            HarvestError harvestError = new HarvestError(context, e);
-            harvestError.setDescription(harvestError.getDescription());
-            errors.add(harvestError);
-        } catch (JDOMException e) {
-            HarvestError harvestError = new HarvestError(context, e);
-            harvestError.setDescription(harvestError.getDescription());
-            errors.add(harvestError);
-        } catch (IOException e) {
+        } catch (ParseException | JDOMException | IOException e) {
             HarvestError harvestError = new HarvestError(context, e);
             harvestError.setDescription(harvestError.getDescription());
             errors.add(harvestError);
@@ -443,6 +295,14 @@ class Harvester implements IHarvester<HarvestResult> {
     @Override
     public List<HarvestError> getErrors() {
         return errors;
+    }
+
+    private String getResourceQueryAsString(String queryName) throws IOException {
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        InputStream inputStream = Objects.requireNonNull(classLoader.getResourceAsStream("/sparql/" + queryName));
+        return new Scanner(inputStream, "UTF-8")
+            .useDelimiter("\\A")
+            .next();
     }
 
 }

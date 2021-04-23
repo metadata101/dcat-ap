@@ -1,0 +1,12 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+# Get all dataset URIs
+SELECT ?datasetid ?modified
+WHERE {
+  ?datasetid a dcat:Dataset .
+  OPTIONAL {
+    ?datasetid dcat:record ?record .
+    ?record dct:modified ?modified
+  }
+}
