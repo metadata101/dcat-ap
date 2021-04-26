@@ -47,11 +47,12 @@
         <dcat:keyword xml:lang="nl"/>
         <dcat:theme/>
         <dct:accessRights>
-          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">
-            <skos:prefLabel xml:lang="nl">publiek</skos:prefLabel>
-            <skos:prefLabel xml:lang="en">public</skos:prefLabel>
-            <skos:prefLabel xml:lang="fr">public</skos:prefLabel>
-            <skos:prefLabel xml:lang="de">public</skos:prefLabel>
+          <skos:Concept>
+            <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+            <skos:prefLabel xml:lang="nl"/>
+            <skos:prefLabel xml:lang="en"/>
+            <skos:prefLabel xml:lang="fr"/>
+            <skos:prefLabel xml:lang="de"/>
             <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
           </skos:Concept>
         </dct:accessRights>

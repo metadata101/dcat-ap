@@ -62,33 +62,4 @@
     <skos:prefLabel xml:lang="es">not public</skos:prefLabel>
     <skos:prefLabel xml:lang="sv">not public</skos:prefLabel>
   </skos:Concept>
-  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/RESTRICTED">
-    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
-    <dc:identifier>RESTRICTED</dc:identifier>
-    <skos:prefLabel xml:lang="bg">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="cs">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="da">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="de">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="el">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="et">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="fi">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="fr">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="ga">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="hr">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="hu">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="it">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="lv">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="lt">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="mt">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="nl">beperkt</skos:prefLabel>
-    <skos:prefLabel xml:lang="no">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="pl">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="pt">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="ro">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="sk">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="sl">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="es">restricted</skos:prefLabel>
-    <skos:prefLabel xml:lang="sv">restricted</skos:prefLabel>
-  </skos:Concept>
   </rdf:RDF>
