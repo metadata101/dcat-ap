@@ -102,7 +102,7 @@ class Harvester implements IHarvester<HarvestResult> {
 
         Path schemaDir = context.getApplicationContext()
             .getBean(IMetadataSchemaUtils.class)
-            .getSchemaDir("metadata-dcat");
+            .getSchemaDir("dcat2");
 
         this.xslFile = schemaDir.resolve("import/rdf-to-xml.xsl");
 
@@ -236,7 +236,7 @@ class Harvester implements IHarvester<HarvestResult> {
                     log.debug("getRecordInfo: adding " + recordId + " with modification date " + modified);
                 }
 
-                return new DCATAPRecordInfo(recordUUID, recordId, modified, "metadata-dcat", "TODO: source?", dcatXML);
+                return new DCATAPRecordInfo(recordUUID, recordId, modified, "dcat2", "TODO: source?", dcatXML);
             } else {
                 qe.close();
                 String errorMessage = "No dcat:Dataset found with datasetId " + recordId + ", rdf:about attribute empty?";

@@ -45,7 +45,7 @@ import com.google.common.collect.ImmutableSet;
  *
  */
 public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResourcesSchemaPlugin, MultilingualSchemaPlugin {
-    public static final String IDENTIFIER = "metadata-dcat";
+    public static final String IDENTIFIER = "dcat2";
     private static final Pattern UUID_PATTERN = Pattern.compile("([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}");
 
     private static final ImmutableSet<Namespace> allNamespaces;

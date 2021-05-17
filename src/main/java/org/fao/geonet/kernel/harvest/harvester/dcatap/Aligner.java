@@ -122,7 +122,7 @@ public class Aligner extends BaseAligner<DCATAPParams> {
         this.log = log;
         this.context = sc;
         this.params = params;
-        this.xslFile = context.getApplicationContext().getBean(DataManager.class).getSchemaDir("metadata-dcat")
+        this.xslFile = context.getApplicationContext().getBean(DataManager.class).getSchemaDir("dcat2")
             .resolve("import/validation-report-to-text.xsl");
 
         GeonetContext gc = (GeonetContext) context.getHandlerContext(Geonet.CONTEXT_NAME);

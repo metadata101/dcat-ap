@@ -34,9 +34,9 @@ index fd2c6adb1b..c7f111e6bc 100644
                    //  return defaultTab;
                    //}
 +
-+                  //Default tab id for metadata-dcat metadata is "defaultDataset" in order to differentiate it's label
++                  //Default tab id for dcat2 metadata is "defaultDataset" in order to differentiate it's label
 +                  //with "default" view.
-+                  'metadata-dcat': function (md) {
++                  'dcat2': function (md) {
 +                    return md.type.includes('dataset') ? 'defaultDataset' : 'defaultService';
 +                  }
                  };
