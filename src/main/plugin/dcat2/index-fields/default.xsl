@@ -50,8 +50,23 @@
 
   <xsl:template match="/">
     <Document locale="{$isoLangId}">
+      <xsl:apply-templates select="rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
       <xsl:apply-templates select="rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset|rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" />
     </Document>
+  </xsl:template>
+
+  <xsl:template match="dcat:CatalogRecord">
+    <xsl:for-each select="dct:conformsTo/dct:Standard">
+      <xsl:variable name="title">
+        <xsl:call-template name="index-lang-tag-oneval">
+          <xsl:with-param name="tag" select="dct:title"/>
+          <xsl:with-param name="langId" select="$langId"/>
+          <xsl:with-param name="isoLangId" select="$isoLangId"/>
+        </xsl:call-template>
+      </xsl:variable>
+      <Field name="standardName" string="{string($title)}"
+             store="true" index="true"/>
+    </xsl:for-each>
   </xsl:template>
 
   <xsl:template match="dcat:Dataset|dcat:DataService">
@@ -262,18 +277,6 @@
     <xsl:for-each select="dct:relation">
       <Field name="relation" string="{string(.)}" store="false"
              index="true"/>
-    </xsl:for-each>
-
-    <xsl:for-each select="dct:conformsTo/dct:Standard">
-      <xsl:variable name="title">
-        <xsl:call-template name="index-lang-tag-oneval">
-          <xsl:with-param name="tag" select="dct:title"/>
-          <xsl:with-param name="langId" select="$langId"/>
-          <xsl:with-param name="isoLangId" select="$isoLangId"/>
-        </xsl:call-template>
-      </xsl:variable>
-      <Field name="standardName" string="{string($title)}"
-             store="true" index="true"/>
     </xsl:for-each>
 
     <xsl:for-each select="dcat:landingPage/@rdf:resource">
