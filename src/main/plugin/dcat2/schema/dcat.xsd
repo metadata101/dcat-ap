@@ -63,9 +63,9 @@
       <xs:element name="landingPage" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="qualifiedRelation" type="dcat:Relationship" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="theme" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/>
       <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element ref="dct:creator" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="dct:creator" minOccurs="0" maxOccurs="1"/>
       <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:relation" minOccurs="0" maxOccurs="unbounded"/>
@@ -93,6 +93,7 @@
             <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:source" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="adms:identifier" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
           <xs:attribute ref="rdf:about"/>
           <xs:attribute ref="rdf:nodeID"/>
@@ -107,7 +108,7 @@
       <xs:element name="Dataset" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:sequence>
-            <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dct:identifier" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element name="contactPoint" type="vcard:Organization" minOccurs="0" maxOccurs="unbounded"/>
@@ -137,7 +138,7 @@
             <xs:element name="distribution" type="dcat:Distribution" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="adms:sample" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="qualifiedRelation" type="dcat:Relationship" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="dct:creator" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dct:creator" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
@@ -188,14 +189,14 @@
       <xs:element name="DataService" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:sequence>
-            <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dct:identifier" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="1"/>
             <xs:element name="endpointUrl" type="rdf:Resource" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="endpointDescription" type="rdf:Resource" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="endpointDescription" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="servesDataset" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="landingPage" type="rdf:Resource" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="landingPage" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="contactPoint" type="vcard:Organization" minOccurs="1" maxOccurs="1"/>
             <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
@@ -210,7 +211,7 @@
             <xs:element name="theme" type="skos:Concept" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="dct:creator" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dct:creator" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:license" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>

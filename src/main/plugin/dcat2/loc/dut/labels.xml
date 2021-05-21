@@ -1661,9 +1661,9 @@
     <btnLabel>In thesaurus</btnLabel>
   </element>
   <element name="dcat:qualifiedRelation" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:qualifiedRelation">
-    <label>Kwalificeerde relatie</label>
-    <description>Tooltip: Kwalificeerde relatie</description>
-    <btnLabel>Kwalificeerde relatie</btnLabel>
+    <label>Toegekende bevoegdheid</label>
+    <description>Tooltip: Toegekende bevoegdheid</description>
+    <btnLabel>Toegekende bevoegdheid</btnLabel>
   </element>
   <element name="dcat:Relationship" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:qualifiedRelation/dcat:Relationship">
     <label>Relatie</label>
@@ -2021,9 +2021,9 @@
     <btnLabel>ontwikkelingstoestand</btnLabel>
   </element>
   <element name="dcat:qualifiedRelation" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:qualifiedRelation">
-    <label>kwalificeerde relatie</label>
-    <description>Tooltip: kwalificeerde relatie</description>
-    <btnLabel>kwalificeerde relatie</btnLabel>
+    <label>Toegekende bevoegdheid</label>
+    <description>Tooltip: Toegekende bevoegdheid</description>
+    <btnLabel>Toegekende bevoegdheid</btnLabel>
   </element>
   <element name="dcat:Relationship" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:qualifiedRelation/dcat:Relationship">
     <label>relatie</label>
