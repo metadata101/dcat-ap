@@ -40,8 +40,6 @@ import org.fao.geonet.kernel.harvest.harvester.IHarvester;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
 import org.jdom.JDOMException;
-import org.jdom.output.Format;
-import org.jdom.output.XMLOutputter;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -76,7 +74,7 @@ class Harvester implements IHarvester<HarvestResult> {
     // --- API methods
     // ---
     // ---------------------------------------------------------------------------
-    private final DCATAPParams params;
+    private final DCAT2Params params;
 
     // ---------------------------------------------------------------------------
     private final ServiceContext context;
@@ -94,7 +92,7 @@ class Harvester implements IHarvester<HarvestResult> {
     private final String queryBuildRecord;
     private final String fixBlankNodeQueryStr;
 
-    public Harvester(AtomicBoolean cancelMonitor, Logger log, ServiceContext context, DCATAPParams params) throws IOException {
+    public Harvester(AtomicBoolean cancelMonitor, Logger log, ServiceContext context, DCAT2Params params) throws IOException {
         this.cancelMonitor = cancelMonitor;
         this.log = log;
         this.context = context;
@@ -118,7 +116,7 @@ class Harvester implements IHarvester<HarvestResult> {
 
         try {
             // Retrieve all DCAT-AP records and normalize them via SPARQL+XSL transformation
-            Set<DCATAPRecordInfo> recordsInfo = this.search();
+            Set<DCAT2RecordInfo> recordsInfo = this.search();
             // Create, update, delete all records
             Aligner aligner = new Aligner(cancelMonitor, log, context, params);
             log.info("Total records processed in all searches: " + recordsInfo.size());
@@ -151,12 +149,12 @@ class Harvester implements IHarvester<HarvestResult> {
      * Does DCAT-AP search request. Executes a SPARQL query to retrieve all
      * UUIDs and add them to a Set with RecordInfo
      */
-    private Set<DCATAPRecordInfo> search() throws Exception {
+    private Set<DCAT2RecordInfo> search() throws Exception {
         if (cancelMonitor.get()) {
             return Collections.emptySet();
         }
 
-        Set<DCATAPRecordInfo> records = new HashSet<>();
+        Set<DCAT2RecordInfo> records = new HashSet<>();
 
         try {
             // Create an empty in-memory model and populate it from the graph
@@ -170,7 +168,7 @@ class Harvester implements IHarvester<HarvestResult> {
             ResultSet resultIds = qe.execSelect();
 
             while (resultIds.hasNext()) {
-                DCATAPRecordInfo recInfo = this.getRecordInfo(resultIds.nextSolution(), model);
+                DCAT2RecordInfo recInfo = this.getRecordInfo(resultIds.nextSolution(), model);
 
                 if (recInfo != null) {
                     records.add(recInfo);
@@ -202,7 +200,7 @@ class Harvester implements IHarvester<HarvestResult> {
         return newModel;
     }
 
-    private DCATAPRecordInfo getRecordInfo(QuerySolution solution, Model model) {
+    private DCAT2RecordInfo getRecordInfo(QuerySolution solution, Model model) {
         try {
             String recordId = solution.getResource("recordId").toString();
             String resourceId = solution.getResource("resourceId").toString();
@@ -236,7 +234,7 @@ class Harvester implements IHarvester<HarvestResult> {
                     log.debug("getRecordInfo: adding " + recordId + " with modification date " + modified);
                 }
 
-                return new DCATAPRecordInfo(recordUUID, recordId, modified, "dcat2", "TODO: source?", dcatXML);
+                return new DCAT2RecordInfo(recordUUID, recordId, modified, "dcat2", "TODO: source?", dcatXML);
             } else {
                 qe.close();
                 String errorMessage = "No dcat:Dataset found with datasetId " + recordId + ", rdf:about attribute empty?";

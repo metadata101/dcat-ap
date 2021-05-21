@@ -79,7 +79,7 @@ import static org.fao.geonet.api.records.MetadataValidateApi.restructureReportTo
 
 //=============================================================================
 
-public class Aligner extends BaseAligner<DCATAPParams> {
+public class Aligner extends BaseAligner<DCAT2Params> {
     // --------------------------------------------------------------------------
     // ---
     // --- Constructor
@@ -117,7 +117,7 @@ public class Aligner extends BaseAligner<DCATAPParams> {
     private HarvestResult result;
     private Path xslFile;
 
-    public Aligner(AtomicBoolean cancelMonitor, Logger log, ServiceContext sc, DCATAPParams params) throws Exception {
+    public Aligner(AtomicBoolean cancelMonitor, Logger log, ServiceContext sc, DCAT2Params params) throws Exception {
         super(cancelMonitor);
         this.log = log;
         this.context = sc;
@@ -133,7 +133,7 @@ public class Aligner extends BaseAligner<DCATAPParams> {
 
     }
 
-    public HarvestResult align(Set<DCATAPRecordInfo> recordsInfo, List<HarvestError> errors) throws Exception {
+    public HarvestResult align(Set<DCAT2RecordInfo> recordsInfo, List<HarvestError> errors) throws Exception {
         log.info("Start of alignment for : " + params.getName());
 
         // -----------------------------------------------------------------------
@@ -171,7 +171,7 @@ public class Aligner extends BaseAligner<DCATAPParams> {
         // -----------------------------------------------------------------------
         // --- insert/update new metadata
 
-        for (DCATAPRecordInfo ri : recordsInfo) {
+        for (DCAT2RecordInfo ri : recordsInfo) {
             if (cancelMonitor.get()) {
                 return result;
             }
@@ -204,7 +204,7 @@ public class Aligner extends BaseAligner<DCATAPParams> {
         return result;
     }
 
-    private void addMetadata(DCATAPRecordInfo ri) throws Exception {
+    private void addMetadata(DCAT2RecordInfo ri) throws Exception {
         Element md = ri.metadata;
 
         if (md == null)
@@ -294,7 +294,7 @@ public class Aligner extends BaseAligner<DCATAPParams> {
         //log.info(xmlOutputter.outputString(validationReport));
     }
 
-    private void updateMetadata(DCATAPRecordInfo ri, String id) throws Exception {
+    private void updateMetadata(DCAT2RecordInfo ri, String id) throws Exception {
         String date = localUuids.getChangeDate(ri.uuid);
 
         if (date == null) {
@@ -379,7 +379,7 @@ public class Aligner extends BaseAligner<DCATAPParams> {
      * @return
      * @throws Exception
      */
-    private Element validateMetadata(DCATAPRecordInfo ri, AbstractMetadata metadata) throws Exception {
+    private Element validateMetadata(DCAT2RecordInfo ri, AbstractMetadata metadata) throws Exception {
 
         // --- validate metadata
         UserSession session = context.getUserSession();
@@ -492,7 +492,7 @@ public class Aligner extends BaseAligner<DCATAPParams> {
     /**
      * Returns true if the uuid is present in the remote node.
      */
-    private boolean exists(Set<DCATAPRecordInfo> recordsInfo, String uuid) {
+    private boolean exists(Set<DCAT2RecordInfo> recordsInfo, String uuid) {
         for (RecordInfo ri : recordsInfo) {
             if (uuid.equals(ri.uuid))
                 return true;

@@ -44,7 +44,7 @@ import com.google.common.collect.ImmutableSet;
 /**
  *
  */
-public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResourcesSchemaPlugin, MultilingualSchemaPlugin {
+public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourcesSchemaPlugin, MultilingualSchemaPlugin {
     public static final String IDENTIFIER = "dcat2";
     private static final Pattern UUID_PATTERN = Pattern.compile("([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}");
 
@@ -53,20 +53,20 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
 
     static {
         allNamespaces = ImmutableSet.<Namespace>builder()
-            .add(DCATAPNamespaces.DC)
-            .add(DCATAPNamespaces.DCT)
-            .add(DCATAPNamespaces.DCAT)
-            .add(DCATAPNamespaces.VCARD)
-            .add(DCATAPNamespaces.FOAF)
+            .add(DCAT2Namespaces.DC)
+            .add(DCAT2Namespaces.DCT)
+            .add(DCAT2Namespaces.DCAT)
+            .add(DCAT2Namespaces.VCARD)
+            .add(DCAT2Namespaces.FOAF)
             .build();
 
         allTypenames = ImmutableMap.<String, Namespace>builder()
             .put("csw:Record", Namespace.getNamespace("csw", "http://www.opengis.net/cat/csw/2.0.2"))
-            .put("dcat", DCATAPNamespaces.DCAT)
+            .put("dcat", DCAT2Namespaces.DCAT)
             .build();
     }
 
-    public DCATAPSchemaPlugin() {
+    public DCAT2SchemaPlugin() {
         super(IDENTIFIER, allNamespaces);
     }
 
@@ -84,7 +84,7 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
 
     @Override
     public Set<String> getAssociatedParentUUIDs(Element metadata) {
-        ElementFilter elementFilter = new ElementFilter("isPartOf", DCATAPNamespaces.DCT);
+        ElementFilter elementFilter = new ElementFilter("isPartOf", DCAT2Namespaces.DCT);
         return Xml.filterElementValues(
             metadata,
             elementFilter,
@@ -94,13 +94,13 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
 
     @Override
     public Set<String> getAssociatedDatasetUUIDs(Element metadata) {
-        ElementFilter elementFilter = new ElementFilter("servesDataset", DCATAPNamespaces.DCAT);
+        ElementFilter elementFilter = new ElementFilter("servesDataset", DCAT2Namespaces.DCAT);
         return this.getAssociatedRdfUUIDs(metadata, elementFilter);
     }
 
     @Override
     public Set<String> getAssociatedExternalDatasetLinks(Element metadata, String nodeUrl) {
-        ElementFilter elementFilter = new ElementFilter("servesDataset", DCATAPNamespaces.DCAT);
+        ElementFilter elementFilter = new ElementFilter("servesDataset", DCAT2Namespaces.DCAT);
         return this.getAssociatedExternalRdfLinks(metadata, elementFilter, nodeUrl);
     }
 
@@ -111,7 +111,7 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
 
     @Override
     public Set<String> getAssociatedSourceUUIDs(Element metadata) {
-        ElementFilter elementFilter = new ElementFilter("relation", DCATAPNamespaces.DCT);
+        ElementFilter elementFilter = new ElementFilter("relation", DCAT2Namespaces.DCT);
         return this.getAssociatedRdfUUIDs(metadata, elementFilter);
     }
 
@@ -138,7 +138,7 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
 
     @Override
     public Set<String> getAssociatedServices(Element metadata) {
-        ElementFilter elementFilter = new ElementFilter("accessService", DCATAPNamespaces.DCAT);
+        ElementFilter elementFilter = new ElementFilter("accessService", DCAT2Namespaces.DCAT);
         return this.getAssociatedRdfUUIDs(metadata, elementFilter);
     }
 
@@ -149,7 +149,7 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
             null,
             null,
             "resource",
-            DCATAPNamespaces.RDF);
+            DCAT2Namespaces.RDF);
         Set<String> uuids = new HashSet<String>();
         for (String rdfAboutAttribute : rdfAboutAttributes) {
             Matcher matcher = UUID_PATTERN.matcher(rdfAboutAttribute);
@@ -167,7 +167,7 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
             null,
             null,
             "resource",
-            DCATAPNamespaces.RDF);
+            DCAT2Namespaces.RDF);
 
         return rdfAboutAttributes.stream()
             .filter(rdfAboutAttribute -> !rdfAboutAttribute.startsWith(nodeUrl))

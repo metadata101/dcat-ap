@@ -33,8 +33,6 @@ import org.fao.geonet.kernel.harvest.harvester.AbstractHarvester;
 import org.fao.geonet.kernel.harvest.harvester.AbstractParams;
 import org.fao.geonet.kernel.harvest.harvester.HarvestError;
 import org.fao.geonet.kernel.harvest.harvester.HarvestResult;
-import org.fao.geonet.kernel.harvest.harvester.dcatap.DCATAPParams;
-import org.fao.geonet.kernel.harvest.harvester.dcatap.Harvester;
 import org.fao.geonet.repository.SourceRepository;
 import org.fao.geonet.resources.Resources;
 import org.jdom.Element;
@@ -42,11 +40,10 @@ import org.jdom.Element;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.UUID;
 
 //=============================================================================
 
-public class DCATAPHarvester extends AbstractHarvester<HarvestResult> {
+public class DCAT2Harvester extends AbstractHarvester<HarvestResult> {
 
     //--------------------------------------------------------------------------
     //---
@@ -54,7 +51,7 @@ public class DCATAPHarvester extends AbstractHarvester<HarvestResult> {
     //---
     //--------------------------------------------------------------------------
 
-    private DCATAPParams params;
+    private DCAT2Params params;
     private List<HarvestError> errors;
 
     //---------------------------------------------------------------------------
@@ -64,7 +61,7 @@ public class DCATAPHarvester extends AbstractHarvester<HarvestResult> {
     //---------------------------------------------------------------------------
 
     protected void doInit(Element node, ServiceContext context) throws BadInputEx {
-        params = new DCATAPParams(dataMan);
+        params = new DCAT2Params(dataMan);
         super.setParams(params);
         params.create(node);
     }
@@ -76,7 +73,7 @@ public class DCATAPHarvester extends AbstractHarvester<HarvestResult> {
     //---------------------------------------------------------------------------
 
     protected String doAdd(Element node) throws BadInputEx, SQLException {
-        params = new DCATAPParams(dataMan);
+        params = new DCAT2Params(dataMan);
         super.setParams(params);
 
         //--- retrieve/initialize information
@@ -95,7 +92,7 @@ public class DCATAPHarvester extends AbstractHarvester<HarvestResult> {
     //---------------------------------------------------------------------------
 
     protected void doUpdate(String id, Element node) throws BadInputEx, SQLException {
-        DCATAPParams copy = params.copy();
+        DCAT2Params copy = params.copy();
 
         //--- update variables
         copy.update(node);
@@ -130,7 +127,7 @@ public class DCATAPHarvester extends AbstractHarvester<HarvestResult> {
 
     protected void storeNodeExtra(AbstractParams p, String path,
                                   String siteId, String optionsId) throws SQLException {
-        DCATAPParams params = (DCATAPParams) p;
+        DCAT2Params params = (DCAT2Params) p;
 
         harvesterSettingsManager.add("id:" + siteId, "baseUrl", params.baseUrl);
         harvesterSettingsManager.add("id:" + siteId, "icon", params.icon);

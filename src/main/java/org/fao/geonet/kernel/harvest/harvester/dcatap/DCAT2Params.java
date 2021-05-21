@@ -24,22 +24,18 @@
 package org.fao.geonet.kernel.harvest.harvester.dcatap;
 
 import org.apache.jena.riot.RDFLanguages;
-import org.fao.geonet.Constants;
 import org.fao.geonet.Util;
 import org.fao.geonet.exceptions.BadInputEx;
 import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.kernel.harvest.harvester.AbstractParams;
-import org.fao.geonet.kernel.harvest.harvester.dcatap.DCATAPParams;
 import org.jdom.Element;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.List;
 
 //=============================================================================
 
-public class DCATAPParams extends AbstractParams {
+public class DCAT2Params extends AbstractParams {
     //---------------------------------------------------------------------------
     //---
     //--- Create : called when a new entry must be added. Reads values from the
@@ -75,7 +71,7 @@ public class DCATAPParams extends AbstractParams {
 
     //---------------------------------------------------------------------------
 
-    public DCATAPParams(DataManager dm) {
+    public DCAT2Params(DataManager dm) {
         super(dm);
     }
 
@@ -150,8 +146,8 @@ public class DCATAPParams extends AbstractParams {
 //        return alSearches.isEmpty();
 //    }
 
-    public DCATAPParams copy() {
-        DCATAPParams copy = new DCATAPParams(dm);
+    public DCAT2Params copy() {
+        DCAT2Params copy = new DCAT2Params(dm);
         copyTo(copy);
 
         copy.baseUrl = baseUrl;

@@ -26,12 +26,12 @@ package org.fao.geonet.kernel.harvest.harvester.dcatap;
 import org.fao.geonet.kernel.harvest.harvester.RecordInfo;
 import org.jdom.Element;
 
-public class DCATAPRecordInfo extends RecordInfo {
+public class DCAT2RecordInfo extends RecordInfo {
 
     public Element metadata;
     public String uri;
 
-    public DCATAPRecordInfo(String uuid, String uri, String changeDate, String schema, String source, Element metadata) {
+    public DCAT2RecordInfo(String uuid, String uri, String changeDate, String schema, String source, Element metadata) {
         super(uuid, changeDate, schema, source);
         this.metadata = metadata;
         this.uri = uri;

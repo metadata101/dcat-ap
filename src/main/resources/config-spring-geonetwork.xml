@@ -27,8 +27,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="metadata-dcatSchemaPlugin"
-        class="org.fao.geonet.schema.dcatap.DCATAPSchemaPlugin"/>
-  <bean id="dcatap" class="org.fao.geonet.kernel.harvest.harvester.dcatap.DCATAPHarvester"
+  <bean id="dcat2SchemaPlugin"
+        class="org.fao.geonet.schema.dcatap.DCAT2SchemaPlugin"/>
+  <bean id="dcatap" class="org.fao.geonet.kernel.harvest.harvester.dcatap.DCAT2Harvester"
         scope="prototype"/>
 </beans>
