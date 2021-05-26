@@ -37,6 +37,7 @@ import org.fao.geonet.kernel.datamanager.IMetadataSchemaUtils;
 import org.fao.geonet.kernel.harvest.harvester.HarvestError;
 import org.fao.geonet.kernel.harvest.harvester.HarvestResult;
 import org.fao.geonet.kernel.harvest.harvester.IHarvester;
+import org.fao.geonet.kernel.setting.SettingManager;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -79,6 +80,10 @@ class Harvester implements IHarvester<HarvestResult> {
     // ---------------------------------------------------------------------------
     private final ServiceContext context;
 
+    private final SettingManager settingManager;
+
+    private final Path schemaDir;
+
     // ---------------------------------------------------------------------------
     /**
      * Contains a list of accumulated errors during the executing of this
@@ -88,26 +93,19 @@ class Harvester implements IHarvester<HarvestResult> {
 
     private final Path xslFile;
 
-    private final String queryExtractIds;
-    private final String queryBuildRecord;
-    private final String fixBlankNodeQueryStr;
-
-    public Harvester(AtomicBoolean cancelMonitor, Logger log, ServiceContext context, DCAT2Params params) throws IOException {
+    public Harvester(AtomicBoolean cancelMonitor, Logger log, ServiceContext context, DCAT2Params params) {
         this.cancelMonitor = cancelMonitor;
         this.log = log;
-        this.context = context;
         this.params = params;
+        this.context = context;
+        this.settingManager = context.getApplicationContext().getBean(SettingManager.class);
 
-        Path schemaDir = context.getApplicationContext()
+        this.schemaDir = context.getApplicationContext()
             .getBean(IMetadataSchemaUtils.class)
             .getSchemaDir("dcat2");
 
-        this.xslFile = schemaDir.resolve("import/rdf-to-xml.xsl");
 
-        this.queryExtractIds = new String(Files.readAllBytes(schemaDir.resolve("sparql/extract-records-ids.rq")), Constants.CHARSET);
-        this.queryBuildRecord = new String(Files.readAllBytes(schemaDir.resolve("sparql/build-record.rq")), Constants.CHARSET);
-
-        this.fixBlankNodeQueryStr = new String(Files.readAllBytes(schemaDir.resolve("sparql/fix-blank-node.rq")), Constants.CHARSET);
+        this.xslFile = this.schemaDir.resolve("import/rdf-to-xml.xsl");
     }
 
     @Override
@@ -145,6 +143,10 @@ class Harvester implements IHarvester<HarvestResult> {
         return errors;
     }
 
+    private String getQueryString(String queryFile) throws IOException {
+        return new String(Files.readAllBytes(this.schemaDir.resolve("sparql/" + queryFile)), Constants.CHARSET);
+    }
+
     /**
      * Does DCAT-AP search request. Executes a SPARQL query to retrieve all
      * UUIDs and add them to a Set with RecordInfo
@@ -161,9 +163,10 @@ class Harvester implements IHarvester<HarvestResult> {
             Model model = ModelFactory.createMemModelMaker().createDefaultModel();
             RDFDataMgr.read(model, params.baseUrl);
 
+            model = this.fixBlankResourceNode(model);
             model = this.fixMissingRecords(model);
 
-            Query queryRecordIds = QueryFactory.create(this.queryExtractIds);
+            Query queryRecordIds = QueryFactory.create(this.getQueryString("extract-records-ids.rq"));
             QueryExecution qe = QueryExecutionFactory.create(queryRecordIds, model);
             ResultSet resultIds = qe.execSelect();
 
@@ -191,9 +194,52 @@ class Harvester implements IHarvester<HarvestResult> {
         return records;
     }
 
-    private Model fixMissingRecords(Model model) {
-        // TODO
-        Query queryFixBlankNodes = QueryFactory.create(this.fixBlankNodeQueryStr);
+    private Model fixBlankResourceNode(Model model) throws IOException {
+        Query queryFixBlankNodes = QueryFactory.create(this.getQueryString("fix-blank-node.rq"));
+        QueryExecution qe = QueryExecutionFactory.create(queryFixBlankNodes, model);
+        Model newModel = qe.execConstruct();
+        qe.close();
+        return newModel;
+    }
+
+    private Model fixMissingRecords(Model model) throws IOException {
+        String catalogURI = this.getCatalogURI(model);
+
+        Query queryExtractNoRec = QueryFactory.create(this.getQueryString("extract-resources-no-records.rq"));
+        QueryExecution qe = QueryExecutionFactory.create(queryExtractNoRec, model);
+
+        Model newModel = model;
+        ResultSet resultIds = qe.execSelect();
+        while (resultIds.hasNext()) {
+            QuerySolution solution = resultIds.nextSolution();
+            newModel = this.createCatalogRecord(
+                newModel,
+                solution.get("resourceId").toString(),
+                solution.get("baseRecordId").toString(),
+                catalogURI
+            );
+        }
+
+        return newModel;
+    }
+
+    private String getCatalogURI(Model model) throws IOException {
+        Query queryExtractCatalogURI = QueryFactory.create(this.getQueryString("extract_catalog_uri.rq"));
+        QueryExecution qe = QueryExecutionFactory.create(queryExtractCatalogURI, model);
+        ResultSet result = qe.execSelect();
+        return result.nextSolution().get("catalogURI").toString();
+    }
+
+    private Model createCatalogRecord(Model model, String resourceId, String baseRecordId, String catalogURI) throws IOException {
+        String recordUUID = this.transformUUID(baseRecordId);
+        String localQuery = this.getQueryString("add-CatalogRecord.rq")
+            .replaceAll("%recordID%", this.settingManager.getNodeURL() + "api/records/" + recordUUID)
+            .replaceAll("%recordUUID%", recordUUID)
+            .replaceAll("%resourceId%", resourceId)
+            .replaceAll("%modifiedDate%", this.normalizeDate(new Date()))
+            .replaceAll("%catalogURI%", catalogURI);
+
+        Query queryFixBlankNodes = QueryFactory.create(localQuery);
         QueryExecution qe = QueryExecutionFactory.create(queryFixBlankNodes, model);
         Model newModel = qe.execConstruct();
         qe.close();
@@ -202,14 +248,15 @@ class Harvester implements IHarvester<HarvestResult> {
 
     private DCAT2RecordInfo getRecordInfo(QuerySolution solution, Model model) {
         try {
-            String recordId = solution.getResource("recordId").toString();
-            String resourceId = solution.getResource("resourceId").toString();
+            String recordId = solution.get("recordId").toString();
+            String resourceId = solution.get("resourceId").toString();
+            String baseRecordUUID = solution.get("baseRecordUUID").toString();
 
             if (log.isDebugEnabled()) {
                 log.debug("Record in response: " + recordId + " With resource: " + resourceId);
             }
 
-            String localQueryBuildRecord = this.queryBuildRecord
+            String localQueryBuildRecord = this.getQueryString("build-record.rq")
                 .replaceAll("%recordId%", recordId)
                 .replaceAll("%resourceId%", resourceId);
 
@@ -223,7 +270,7 @@ class Harvester implements IHarvester<HarvestResult> {
                 Element sparqlResults = Xml.loadStream(new ByteArrayInputStream(outxml.toByteArray()));
                 qe.close();
 
-                String recordUUID = this.getRecordUUID(recordId);
+                String recordUUID = this.transformUUID(baseRecordUUID);
                 Map<String, Object> params = new HashMap<>();
                 params.put("identifier", recordUUID);
                 Element dcatXML = Xml.transform(sparqlResults, xslFile, params);
@@ -262,17 +309,21 @@ class Harvester implements IHarvester<HarvestResult> {
     /**
      * @return normalize date to format yyyy-MM-dd
      */
-    private String normalizeDate(Literal modified) throws ParseException {
-        if (modified == null) {
+    private String normalizeDate(Literal literal) throws ParseException {
+        if (literal == null) {
             return null;
         }
 
-        Date modDate = this.parseDate(modified.toString());
-        if (modDate == null) {
+        Date date = this.parseDate(literal.toString());
+        return this.normalizeDate(date);
+    }
+
+    private String normalizeDate(Date date) {
+        if (date == null) {
             return null;
         }
         // convert the date to a known format "yyyy-MM-dd"
-        return new ISODate(modDate.getTime(), false)
+        return new ISODate(date.getTime(), false)
             .toString()
             .substring(0, 10);
     }
@@ -302,19 +353,19 @@ class Harvester implements IHarvester<HarvestResult> {
     /**
      * Issue: GeoNetwork works best (only?) with UUIDs as record
      * identifiers. The following method extract a uuid from the
-     * record URI. If no UUID is found, the record URIs are converted
+     * string. If no UUID is found, the string is converted
      * into a (unique) UUID using generateUUID. Note that URL encoding
      * does not work, as the GeoNetwork URLs still clash and don't work
      * in all situations.
      */
-    private String getRecordUUID(String recordId) {
+    private String transformUUID(String str) {
         Pattern pattern = Pattern.compile("([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}");
-        Matcher matcher = pattern.matcher(recordId);
+        Matcher matcher = pattern.matcher(str);
         String recordUUID;
         if (matcher.find()) {
-            recordUUID = recordId.substring(matcher.start(), matcher.end());
+            recordUUID = str.substring(matcher.start(), matcher.end());
         } else {
-            recordUUID = UUID.nameUUIDFromBytes(recordId.getBytes()).toString();
+            recordUUID = UUID.nameUUIDFromBytes(str.getBytes()).toString();
         }
         return recordUUID;
     }

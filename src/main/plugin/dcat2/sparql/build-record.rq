@@ -8,67 +8,66 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 # Retrieve all triples about a specific record URI.
 # Replace the string "%recordId%" with the record ID and
 # the string "%resourceId%" with the resource ID before executing
-# this query
 SELECT DISTINCT ?subject ?predicate ?object ?pAsQName
 WHERE {
   {
     # Triples on a dct:Catalog instance
-    ?subject ?predicate ?object .
-    ?subject a dcat:Catalog .
-    ?subject dcat:dataset|dcat:service <%resourceId%> .
-    FILTER (?predicate != dcat:dataset && ?predicate != dcat:service)
+    ?subject ?predicate ?object.
+    ?subject a dcat:Catalog.
+    ?subject dcat:dataset|dcat:service <%resourceId%>.
+    FILTER (?predicate != dcat:dataset && ?predicate != dcat:service && ?predicate != dcat:record)
 
   } UNION {
     # Triples on a dct:Catalog instance's child resources (publisher, distribution, ed.)
-    ?subject ?predicate ?object .
-    ?s a dcat:Catalog .
-    ?s dcat:dataset|dcat:service <%resourceId%> .
-    ?s ?p ?subject .
-    FILTER (?p != dcat:dataset && ?p != dcat:service) .
-    FILTER (?predicate != dcat:dataset && ?predicate != dcat:service)
+    ?subject ?predicate ?object.
+    ?s a dcat:Catalog.
+    ?s dcat:dataset|dcat:service <%resourceId%>.
+    ?s ?p ?subject.
+    FILTER (?p != dcat:dataset && ?p != dcat:service && ?p != dcat:record).
+    FILTER (?predicate != dcat:dataset && ?predicate != dcat:service && ?predicate != dcat:record).
 
   } UNION {
     # Triples on a specific catalog record
-    ?subject ?predicate ?object .
+    ?subject ?predicate ?object.
     FILTER (?subject = <%recordId%> || ?object = <%recordId%>)
 
   } UNION {
     # Triples on specific catalog record's child resources
-    ?subject ?predicate ?object .
+    ?subject ?predicate ?object.
     <%recordId%> ?p ?subject
 
   } UNION {
     # Triples on specific catalog record's child of child
-    ?subject ?predicate ?object .
-    <%recordId%> ?p1 ?obj .
-    ?obj ?p2 ?subject .
+    ?subject ?predicate ?object.
+    <%recordId%> ?p1 ?obj.
+    ?obj ?p2 ?subject.
 
   } UNION {
     # Triples on a specific resource
-    ?subject ?predicate ?object .
+    ?subject ?predicate ?object.
     FILTER (?subject = <%resourceId%> || ?object = <%resourceId%>)
 
   } UNION {
     #Triples on a specific dataset's child resources (publisher, distribution, ed.)
-    ?subject ?predicate ?object .
-    <%resourceId%> ?p ?subject .
+    ?subject ?predicate ?object.
+    <%resourceId%> ?p ?subject.
 
   } UNION {
     # Triple on a specific distribution's child dct:license
-    ?subject ?predicate ?object .
-    <%resourceId%> dcat:distribution ?distribution .
-    ?distribution ?p ?subject .
+    ?subject ?predicate ?object.
+    <%resourceId%> dcat:distribution ?distribution.
+    ?distribution ?p ?subject.
 
   } UNION {
     # Triple on a specific contactPoint's child Address
-    ?subject ?predicate ?object .
-    <%resourceId%> dcat:contactPoint ?address .
-    ?address ?p ?subject .
+    ?subject ?predicate ?object.
+    <%resourceId%> dcat:contactPoint ?address.
+    ?address ?p ?subject.
 
   } UNION {
     # Triples on a skos:Concept instance
-    ?subject ?predicate ?object .
-    ?subject a skos:Concept .
+    ?subject ?predicate ?object.
+    ?subject a skos:Concept.
   }
 
   BIND (afn:namespace(?predicate) as ?pns)

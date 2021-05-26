@@ -1,0 +1,6 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+SELECT ?catalogURI
+WHERE {
+  ?catalogURI a dcat:Catalog
+}
