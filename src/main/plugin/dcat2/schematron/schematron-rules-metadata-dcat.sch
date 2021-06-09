@@ -51,9 +51,12 @@ Source:
   <sch:ns prefix="dc" uri="http://purl.org/dc/elements/1.1/"/>
   <sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
   <sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
+
+  <sch:let name="isCorrectProfile" value="boolean(/*[starts-with(//dcat:CatalogRecord//dct:Standard/@rdf:about, 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat')])"/>
+
   <sch:pattern>
     <sch:title>41. dcat:contactPoint is a required property for Dataset.</sch:title>
-    <sch:rule context="//dcat:Dataset">
+    <sch:rule context="//dcat:Dataset[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="noContactPoint" value="not(dcat:contactPoint)"/>
       <sch:assert test="$noContactPoint = false()">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dcat:contactPoint.
@@ -64,7 +67,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>44. dcat:distribution is a required property for Dataset.</sch:title>
-    <sch:rule context="//dcat:Dataset">
+    <sch:rule context="//dcat:Dataset[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="missingProperty" value="not(dcat:distribution )"/>
       <sch:assert test="$missingProperty = false()">WARNING: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dcat:distribution.
@@ -75,7 +78,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>49. dct:publisher is a required property for Dataset.</sch:title>
-    <sch:rule context="//dcat:Dataset">
+    <sch:rule context="//dcat:Dataset[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="noPublisher" value="not(dct:publisher)"/>
       <sch:assert test="$noPublisher = false()">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dct:publisher.
@@ -86,7 +89,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>49. dct:publisher has maximum cardinality of 1 for Dataset.</sch:title>
-    <sch:rule context="//dcat:Dataset">
+    <sch:rule context="//dcat:Dataset[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="count" value="count(dct:publisher)"/>
       <sch:assert test="2 > $count">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" has more than one dct:publisher property.
@@ -97,7 +100,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>86. dct:license is a required property for Distribution.</sch:title>
-    <sch:rule context="//dcat:Distribution">
+    <sch:rule context="//dcat:Distribution[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="noLicense" value="not(dct:license)"/>
       <sch:assert test="$noLicense = false()">ERROR: The dcat:Distribution "<sch:value-of select="$id"/>" does not have a dct:license.
@@ -108,7 +111,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>86. dct:license has maximum cardinality of 1 for Distribution.</sch:title>
-    <sch:rule context="//dcat:Distribution">
+    <sch:rule context="//dcat:Distribution[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="countLicense" value="count(dct:license)"/>
       <sch:assert test="2 > $countLicense">ERROR: The dcat:Distribution "<sch:value-of select="$id"/>" has more than one dct:license property.
@@ -119,7 +122,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>166. dct:LicenseDocument does not exist.</sch:title>
-    <sch:rule context="/">
+    <sch:rule context="/*[$isCorrectProfile]">
       <sch:let name="noCatalog" value="not(//dct:LicenseDocument)"/>
       <sch:assert test="$noCatalog = false()">ERROR: The mandatory class dct:LicenseDocument does not exist.
       </sch:assert>
@@ -129,7 +132,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>200. Mandatory dct:title for a dcat:Distribution</sch:title>
-    <sch:rule context="//dcat:Distribution">
+    <sch:rule context="//dcat:Distribution[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="noTitle" value="not(dct:title)"/>
       <sch:assert test="$noTitle = false()">ERROR: The dcat:Distribution "<sch:value-of select="$id"/>" does not have a dct:title property.
@@ -140,7 +143,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>204. dct:accessRights is required</sch:title>
-    <sch:rule context="//dcat:Dataset">
+    <sch:rule context="//dcat:Dataset[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="hasAccessRights" value="count(dct:accessRights) > 0 and (normalize-space(dct:accessRights/skos:Concept/@rdf:about) != '' or count(dct:accessRights/dct:RightsStatement) > 0)"/>
       <sch:assert test="$hasAccessRights = true()">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dct:accessRights property.
@@ -151,7 +154,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>204. dct:accessRights is required</sch:title>
-    <sch:rule context="//dcat:DataService">
+    <sch:rule context="//dcat:DataService[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="hasAccessRights" value="count(dct:accessRights) > 0 and (normalize-space(dct:accessRights/skos:Concept/@rdf:about) != '' or count(dct:accessRights/dct:RightsStatement) > 0)"/>
       <sch:assert test="$hasAccessRights = true()">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" does not have a dct:accessRights property.
@@ -162,7 +165,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>205. dct:title should have a language tag for dcat:Distribution</sch:title>
-    <sch:rule context="//dcat:Distribution/dct:title">
+    <sch:rule context="//dcat:Distribution/dct:title[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="noTag" value="not(./@xml:lang)"/>
       <sch:assert test="$noTag = false()">ERROR: The dcat:Distribution '<sch:value-of select="$id"/>' does not have a language tag for its dct:title '<sch:value-of select="./string()"/>'.
@@ -173,7 +176,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>206. dct:title should have a language tag for dcat:Dataset</sch:title>
-    <sch:rule context="//dcat:Dataset/dct:title">
+    <sch:rule context="//dcat:Dataset/dct:title[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="noTag" value="not(./@xml:lang)"/>
       <sch:assert test="$noTag = false()">ERROR: The dcat:Dataset '<sch:value-of select="$id"/>' does not have a language tag for its dct:title '<sch:value-of select="./string()"/>'.
@@ -184,7 +187,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>207. dct:description should have a language tag for dcat:Dataset</sch:title>
-    <sch:rule context="//dcat:Dataset/dct:description">
+    <sch:rule context="//dcat:Dataset/dct:description[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="noTag" value="not(./@xml:lang)"/>
       <sch:assert test="$noTag = false()">ERROR: The dcat:Dataset '<sch:value-of select="$id"/>' does not have a language tag for its dct:description '<sch:value-of select="./string()"/>'.
@@ -195,7 +198,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>208. dct:description should have a language tag for dcat:Catalog</sch:title>
-    <sch:rule context="//dcat:Catalog/dct:description">
+    <sch:rule context="//dcat:Catalog/dct:description[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="noTag" value="not(./@xml:lang)"/>
       <sch:assert test="$noTag = false()">ERROR: The dcat:Catalog '<sch:value-of select="$id"/>' does not have a language tag for its dct:description '<sch:value-of select="./string()"/>'.
@@ -206,7 +209,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>209. dct:title should have a language tag for dcat:Catalog</sch:title>
-    <sch:rule context="//dcat:Catalog/dct:title">
+    <sch:rule context="//dcat:Catalog/dct:title[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="noTag" value="not(./@xml:lang)"/>
       <sch:assert test="$noTag = false()">ERROR: The dcat:Catalog '<sch:value-of select="$id"/>' does not have a language tag for its dct:title '<sch:value-of select="./string()"/>'.
@@ -217,7 +220,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>210. dct:title should have just one value per language tag for dcat:Catalog</sch:title>
-    <sch:rule context="//dcat:Catalog/dct:title">
+    <sch:rule context="//dcat:Catalog/dct:title[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:title[@xml:lang = $lang])"/>
@@ -229,7 +232,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>211. foaf:name should have a language tag for foaf:Agent</sch:title>
-    <sch:rule context="//foaf:Agent/foaf:name">
+    <sch:rule context="//foaf:Agent/foaf:name[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="noTag" value="not(./@xml:lang)"/>
       <sch:assert test="$noTag = false()">ERROR: The foaf:Agent '<sch:value-of select="$id"/>' does not have a language tag for its foaf:name '<sch:value-of select="./string()"/>'.
@@ -240,7 +243,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>212. foaf:name should have a single value per language tag for foaf:Agent</sch:title>
-    <sch:rule context="//foaf:Agent/foaf:name">
+    <sch:rule context="//foaf:Agent/foaf:name[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/foaf:name[@xml:lang = $lang])"/>
@@ -252,7 +255,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>213. dct:description should have a single value per language tag for dcat:Catalog</sch:title>
-    <sch:rule context="//dcat:Catalog/dct:description">
+    <sch:rule context="//dcat:Catalog/dct:description[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:description[@xml:lang = $lang])"/>
@@ -264,7 +267,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>214. dct:title should have a single value per language tag for dcat:Dataset</sch:title>
-    <sch:rule context="//dcat:Dataset/dct:title">
+    <sch:rule context="//dcat:Dataset/dct:title[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:title[@xml:lang = $lang])"/>
@@ -276,7 +279,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>215. dct:description should have a single value per language tag for dcat:Dataset</sch:title>
-    <sch:rule context="//dcat:Dataset/dct:description">
+    <sch:rule context="//dcat:Dataset/dct:description[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:description[@xml:lang = $lang])"/>
@@ -288,7 +291,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>216. dct:title should have a single value per language tag for dcat:Distribution</sch:title>
-    <sch:rule context="//dcat:Distribution/dct:title">
+    <sch:rule context="//dcat:Distribution/dct:title[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:title[@xml:lang = $lang])"/>
@@ -300,7 +303,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>217. dct:description should have a single value per language tag for dcat:Distribution</sch:title>
-    <sch:rule context="//dcat:Distribution/dct:description">
+    <sch:rule context="//dcat:Distribution/dct:description[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:description[@xml:lang = $lang])"/>
@@ -312,7 +315,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>218. dct:title should have a single value per language tag for dct:LicenseDocument</sch:title>
-    <sch:rule context="//dct:LicenseDocument/dct:title">
+    <sch:rule context="//dct:LicenseDocument/dct:title[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:title[@xml:lang = $lang])"/>
@@ -324,7 +327,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>219. dct:description should have a single value per language tag for dct:LicenseDocument</sch:title>
-    <sch:rule context="//dct:LicenseDocument/dct:description">
+    <sch:rule context="//dct:LicenseDocument/dct:description[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="lang" value="@xml:lang/string()"/>
       <sch:let name="count" value="count(parent::node()/dct:description[@xml:lang = $lang])"/>
@@ -336,7 +339,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>230. dct:title should be a non-empty string for dcat:Dataset.</sch:title>
-    <sch:rule context="//dcat:Dataset/dct:title">
+    <sch:rule context="//dcat:Dataset/dct:title[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="emptyString" value="normalize-space(.)=''"/>
       <sch:assert test="$emptyString = false()">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:title that is an empty string.
@@ -347,7 +350,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>231. dct:title should be a non-empty string for dcat:Catalog.</sch:title>
-    <sch:rule context="//dcat:Catalog/dct:title">
+    <sch:rule context="//dcat:Catalog/dct:title[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="emptyString" value="normalize-space(.)=''"/>
       <sch:assert test="$emptyString = false()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:title that is an empty string.
@@ -358,7 +361,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>232. dct:title should be a non-empty string for dcat:Distribution.</sch:title>
-    <sch:rule context="//dcat:Distribution/dct:title">
+    <sch:rule context="//dcat:Distribution/dct:title[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="emptyString" value="normalize-space(.)=''"/>
       <sch:assert test="$emptyString = false()">ERROR: The dcat:Distribution "<sch:value-of select="$id"/>" has a dct:title that is an empty string.
@@ -369,7 +372,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>220. dcat:accessURL has maximum cardinality of 1 for Distribution.</sch:title>
-    <sch:rule context="//dcat:Distribution">
+    <sch:rule context="//dcat:Distribution[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="count" value="count(dcat:accessURL)"/>
       <sch:assert test="2 > $count">ERROR: The dcat:Distribution "<sch:value-of select="$id"/>" has more than one dcat:accessURL property.
@@ -380,7 +383,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>233. dct:description should be a non-empty string for Catalog.</sch:title>
-    <sch:rule context="//dcat:Catalog/dct:description">
+    <sch:rule context="//dcat:Catalog/dct:description[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="emptyString" value="normalize-space(.)=''"/>
       <sch:assert test="$emptyString = false()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:description that is an empty string.
@@ -391,7 +394,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>234. dct:description should be a non-empty string for Dataset.</sch:title>
-    <sch:rule context="//dcat:Dataset/dct:description">
+    <sch:rule context="//dcat:Dataset/dct:description[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="emptyString" value="normalize-space(.)=''"/>
       <sch:assert test="$emptyString = false()">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:description that is an empty string.
@@ -402,7 +405,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>411. At least one of vcard:hasEmail or vcard:hasURL is a required for a contactpoint of a Dataset</sch:title>
-    <sch:rule context="//dcat:Dataset/dcat:contactPoint">
+    <sch:rule context="//dcat:Dataset/dcat:contactPoint[$isCorrectProfile]">
       <sch:let name="id" value="*/@rdf:about/string()"/>
       <sch:let name="hasEmail" value="*/vcard:hasEmail"/>
       <sch:let name="hasUrl" value="*/vcard:hasURL"/>
@@ -414,7 +417,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>411. At least one of vcard:hasEmail or vcard:hasURL is a required for a contactpoint of a DataService</sch:title>
-    <sch:rule context="//dcat:DataService/dcat:contactPoint">
+    <sch:rule context="//dcat:DataService/dcat:contactPoint[$isCorrectProfile]">
       <sch:let name="id" value="*/@rdf:about/string()"/>
       <sch:let name="hasEmail" value="*/vcard:hasEmail"/>
       <sch:let name="hasUrl" value="*/vcard:hasURL"/>
@@ -426,7 +429,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>412. vcard:hasEmail must be a non-empty string.</sch:title>
-    <sch:rule context="//vcard:hasEmail">
+    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="emptyString" value="normalize-space(@rdf:resource)='' or not(matches(@rdf:resource, '.+@.+'))"/>
       <sch:assert test="$emptyString = false()">ERROR: The contact point "<sch:value-of select="$id"/>" has a vcard:hasEmail that is an empty string or does not match the e-mail format.
@@ -437,7 +440,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>412. vcard:hasEmail has maximum cardinality of 1 for a contactpoint.</sch:title>
-    <sch:rule context="//dcat:contactPoint">
+    <sch:rule context="//dcat:contactPoint[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="count" value="count(*/vcard:hasEmail)"/>
       <sch:assert test="2 > $count">ERROR: The vcard:Organization with URI "<sch:value-of select="$id"/>" has more than one vcard:hasEmail property.
@@ -448,7 +451,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>412. vcard:hasEmail is a URI with the mailto protocol.</sch:title>
-    <sch:rule context="//vcard:hasEmail">
+    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:resource/string()"/>
       <sch:let name="mailto" value="starts-with(@rdf:resource,'mailto:')"/>
       <sch:assert test="$mailto = true()">ERROR: The vcard:hasEmail "<sch:value-of select="$id"/>" property is not a URI with the mailto: protocol.
@@ -459,7 +462,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>413. vcard:hasEmail is a URI.</sch:title>
-    <sch:rule context="//vcard:hasEmail">
+    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:resource/string()"/>
       <sch:let name="uri" value="@rdf:resource castable as xs:anyURI"/>
       <sch:assert test="$uri = true()">ERROR: The vcard:hasEmail "<sch:value-of select="$id"/>" property is not a valid URI.
@@ -470,7 +473,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>414. vcard:hasURL must be a non-empty string.</sch:title>
-    <sch:rule context="//vcard:hasURL">
+    <sch:rule context="//vcard:hasURL[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="emptyString" value="normalize-space(@rdf:resource) = ''"/>
       <sch:assert test="$emptyString = false()">ERROR: The contact point "<sch:value-of select="$id"/>" has a vcard:hasURL that is an empty string.
@@ -481,7 +484,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>414. vcard:hasURL has maximum cardinality of 1 for a contactpoint.</sch:title>
-    <sch:rule context="//dcat:contactPoint">
+    <sch:rule context="//dcat:contactPoint[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="count" value="count(*/vcard:hasURL)"/>
       <sch:assert test="2 > $count">ERROR: The vcard:Organization with URI "<sch:value-of select="$id"/>" has more than one vcard:hasURL property.
@@ -492,7 +495,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>415. vcard:hasURL is a URI.</sch:title>
-    <sch:rule context="//vcard:hasURL">
+    <sch:rule context="//vcard:hasURL[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:resource/string()"/>
       <sch:let name="uri" value="@rdf:resource castable as xs:anyURI"/>
       <sch:assert test="$uri = true()">ERROR: The vcard:hasURL "<sch:value-of select="$id"/>" property is not a valid URI.
@@ -503,17 +506,11 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>420. dct:modified is a required property for dcat:CatalogRecord</sch:title>
-    <sch:rule context="//dcat:record/dcat:CatalogRecord">
+    <sch:rule context="//dcat:record/dcat:CatalogRecord[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:resource/string()"/>
       <sch:let name="hasModifiedDate" value="count(dct:modified) > 0 and normalize-space(dct:modified) != ''"/>
       <sch:assert test="$hasModifiedDate = true()">ERROR: The dcat:CatalogRecord "<sch:value-of select="$id"/>" does not have a dct:modified property.</sch:assert>
       <sch:report test="$hasModifiedDate = true()">The dcat:CatalogRecord "<sch:value-of select="$id"/>" has a dct:modified property.</sch:report>
     </sch:rule>
   </sch:pattern>
-  <!--<sch:pattern>-->
-  <!--  <sch:title>xxx. dct:modified as a maximum cardinality of 1 for CatalogRecord</sch:title>-->
-  <!--  <sch:rule context="//dcat:CatalogRecord">-->
-
-  <!--  </sch:rule>-->
-  <!--</sch:pattern>-->
 </sch:schema>
