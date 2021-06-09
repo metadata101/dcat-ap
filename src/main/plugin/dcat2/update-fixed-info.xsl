@@ -196,6 +196,7 @@
       <xsl:apply-templates select="dct:language"/>
       <xsl:apply-templates select="dct:source"/>
       <xsl:apply-templates select="adms:identifier"/>
+      <xsl:apply-templates select="dct:rights"/>
     </xsl:copy>
   </xsl:template>
   <!-- ================================================================= -->

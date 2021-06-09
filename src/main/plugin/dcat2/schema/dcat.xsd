@@ -54,7 +54,7 @@
       <xs:element ref="dct:hasPart" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:isPartOf" minOccurs="0" maxOccurs="1"/>
       <xs:element name="record" type="dcat:CatalogRecord" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element ref="dct:rights" minOccurs="0" maxOccurs="1"/>
+      <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:spatial" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="dataset" type="dcat:Dataset" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="service" type="dcat:DataService" minOccurs="0" maxOccurs="unbounded"/>
@@ -94,6 +94,7 @@
             <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:source" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="adms:identifier" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
           <xs:attribute ref="rdf:about"/>
           <xs:attribute ref="rdf:nodeID"/>
@@ -111,7 +112,7 @@
             <xs:element ref="dct:identifier" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element name="contactPoint" type="vcard:Organization" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="contactPoint" type="vcard:Organization" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:modified" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="1"/>
@@ -164,7 +165,7 @@
             <xs:element ref="dcat:mediaType" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:license" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="dct:rights" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="byteSize" type="rdf:TypedLiteral" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="spdx:checksum" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="foaf:page" minOccurs="0" maxOccurs="unbounded"/>
@@ -217,7 +218,7 @@
             <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:modified" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:relation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="dct:rights" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:type" minOccurs="0" maxOccurs="1"/>
           </xs:sequence>
           <xs:attribute ref="rdf:about"/>
