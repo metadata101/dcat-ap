@@ -355,20 +355,19 @@
 
   <!-- Hide from the editor in default view -->
   <xsl:template mode="mode-dcat2" priority="2001"
-                match="*[((name(.) = 'dcat:downloadURL' and name(..)='dcat:Distribution') or
-                          (name(.) = 'dct:issued' and name(..)='dcat:Distribution') or
-                          (name(.) = 'dct:modified' and name(..)='dcat:Distribution') or
-                          (name(.) = 'dct:language' and name(..)='dcat:Distribution') or
-                          (name(.) = 'dct:rights' and name(..)='dcat:Distribution') or
-                          (name(.) = 'dcat:byteSize' and name(..)='dcat:Distribution') or
-                          (name(.) = 'spdx:checksum' and name(..)='dcat:Distribution') or
-                          (name(.) = 'foaf:page' and name(..)='dcat:Distribution') or
-                          (name(.) = 'dct:conformsTo' and name(..)='dcat:Distribution') or
-                          (name(.) = 'adms:status' and name(..)='dcat:Distribution') or
-                          (name(.) = 'dcat:compressFormat' and name(..)='dcat:Distribution') or
-                          (name(.) = 'dcat:packageFormat' and name(..)='dcat:Distribution') or
-                          (name(.) = 'dcat:spatialResolutionInMeters' and name(..)='dcat:Distribution') or
-                          (name(.) = 'dcat:temporalResolution' and name(..)='dcat:Distribution')) and
+                match="*[((name(.) = 'dcat:downloadURL' and name(..) = 'dcat:Distribution') or
+                          (name(.) = 'dct:issued' and name(..) = 'dcat:Distribution') or
+                          (name(.) = 'dct:modified' and name(..) = 'dcat:Distribution') or
+                          (name(.) = 'dct:language' and name(..) = 'dcat:Distribution') or
+                          (name(.) = 'dcat:byteSize' and name(..) = 'dcat:Distribution') or
+                          (name(.) = 'spdx:checksum' and name(..) = 'dcat:Distribution') or
+                          (name(.) = 'foaf:page' and name(..) = 'dcat:Distribution') or
+                          (name(.) = 'dct:conformsTo' and name(..) = 'dcat:Distribution') or
+                          (name(.) = 'adms:status' and name(..) = 'dcat:Distribution') or
+                          (name(.) = 'dcat:compressFormat' and name(..) = 'dcat:Distribution') or
+                          (name(.) = 'dcat:packageFormat' and name(..) = 'dcat:Distribution') or
+                          (name(.) = 'dcat:spatialResolutionInMeters' and name(..) = 'dcat:Distribution') or
+                          (name(.) = 'dcat:temporalResolution' and name(..) = 'dcat:Distribution')) and
                           $isFlatMode]" />
 
   <!-- Ignore the following attributes in flatMode -->

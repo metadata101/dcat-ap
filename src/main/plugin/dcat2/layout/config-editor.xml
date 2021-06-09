@@ -321,6 +321,7 @@
     <name>dcat:qualifiedRelation</name>
     <name>dcat:Relationship</name>
     <name>dct:creator</name>
+    <name>dct:rights</name>
     <!--<name isSupportingSlideToggle="true">adms:sample</name>-->
   </fieldsWithFieldset>
   <multilingualFields>
@@ -435,6 +436,19 @@
             <template>
               <snippet>
                 <dcat:landingPage/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId425" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights"/>
+          <action type="add" btnLabel="FieldId425" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:rights>
+                  <dct:RightsStatement>
+                    <dct:title/>
+                    <dct:description/>
+                  </dct:RightsStatement>
+                </dct:rights>
               </snippet>
             </template>
           </action>
@@ -585,6 +599,19 @@
               </snippet>
             </template>
           </action>
+          <field name="FieldId436" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:rights"/>
+          <action type="add" btnLabel="FieldId436" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dct:rights>
+                  <dct:RightsStatement>
+                    <dct:title/>
+                    <dct:description/>
+                  </dct:RightsStatement>
+                </dct:rights>
+              </snippet>
+            </template>
+          </action>
         </section>
         <section name="serviceInformation">
           <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase"/>
@@ -694,6 +721,7 @@
         <for name="dct:LicenseDocument"/>
         <for name="dct:LicenseDocument/dct:type"/>
         <for name="dcat:accessService"/>
+        <for name="dct:rights" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:rights"/>
         <!-- Extra info -->
         <for name="dct:language" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language"/>
         <for name="dct:language" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
@@ -806,6 +834,19 @@
             <template>
               <snippet>
                 <dcat:landingPage rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId425" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights"/>
+          <action type="add" btnLabel="FieldId425" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:rights>
+                  <dct:RightsStatement>
+                    <dct:title/>
+                    <dct:description/>
+                  </dct:RightsStatement>
+                </dct:rights>
               </snippet>
             </template>
           </action>
@@ -991,19 +1032,6 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId425" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights"/>
-          <action type="add" btnLabel="FieldId425" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dct:rights>
-                  <dct:RightsStatement>
-                    <dct:title/>
-                    <dct:description/>
-                  </dct:RightsStatement>
-                </dct:rights>
-              </snippet>
-            </template>
-          </action>
         </section>
       </tab>
       <tab id="advancedDistribution" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
@@ -1125,6 +1153,19 @@
             <template>
               <snippet>
                 <mdcat:landingspaginaVoorGebruiksinformatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field name="FieldId436" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:rights"/>
+          <action type="add" btnLabel="FieldId436" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dct:rights>
+                  <dct:RightsStatement>
+                    <dct:title/>
+                    <dct:description/>
+                  </dct:RightsStatement>
+                </dct:rights>
               </snippet>
             </template>
           </action>
@@ -1254,19 +1295,6 @@
             <template>
               <snippet>
                 <dct:relation rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId436" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:rights"/>
-          <action type="add" btnLabel="FieldId436" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <dct:rights>
-                  <dct:RightsStatement>
-                    <dct:title/>
-                    <dct:description/>
-                  </dct:RightsStatement>
-                </dct:rights>
               </snippet>
             </template>
           </action>
