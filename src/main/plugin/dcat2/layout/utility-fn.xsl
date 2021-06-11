@@ -37,6 +37,7 @@
   <xsl:variable name="inSchemeAdmsBaseUrl" select="'http://purl.org/adms/'"/>
   <xsl:variable name="inSchemeMdcatBaseUrl" select="'https://data.vlaanderen.be/id/conceptscheme/'"/>
   <xsl:variable name="inSchemeIanaBaseUrl" select="'https://www.iana.org/assignments/'"/>
+  <xsl:variable name="inSchemeVLBaseUrl" select="'https://metadata.vlaanderen.be/id/'"/>
   <xsl:variable name="thesaurusIdentifierBaseKey" select="'geonetwork.thesaurus.external.theme.'"/>
 
   <xsl:function name="gn-fn-dcat2:getInSchemeURIByElementName" as="xs:string">
@@ -167,6 +168,9 @@
       <xsl:when test="$resource = concat($inSchemeMdcatBaseUrl,'ontwikkelingstoestand')">
         <xsl:value-of select="'Conceptscheme ontwikkelingstoestand'"/>
       </xsl:when>
+      <xsl:when test="$resource = concat($inSchemeVLBaseUrl,'GDI-Vlaanderen-Trefwoorden')">
+        <xsl:value-of select="'GDI-Vlaanderen Trefwoorden'"/>
+      </xsl:when>
       <xsl:otherwise>
           <xsl:value-of select="'Untitled thesaurus'"/>
       </xsl:otherwise>
@@ -211,6 +215,9 @@
       </xsl:when>
       <xsl:when test="$resource = concat($inSchemeMdcatBaseUrl,'ontwikkelingstoestand')">
         <xsl:value-of select="concat($thesaurusIdentifierBaseKey,'ontwikkelingstoestand')"/>
+      </xsl:when>
+      <xsl:when test="$resource = concat($inSchemeVLBaseUrl,'GDI-Vlaanderen-Trefwoorden')">
+        <xsl:value-of select="concat($thesaurusIdentifierBaseKey,'GDI-Vlaanderen-Trefwoorden')"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:message select="concat('No thesaurus identifier found for the inScheme URI ', $resource)"/>

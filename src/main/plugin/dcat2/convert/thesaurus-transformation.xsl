@@ -133,6 +133,11 @@
           <xsl:copy-of select="$concept"/>
         </mdcat:ontwikkelingstoestand>
       </xsl:when>
+      <xsl:when test="ends-with($thesaurusKey, 'GDI-Vlaanderen-trefwoorden')">
+        <dcat:theme>
+          <xsl:copy-of select="$concept"/>
+        </dcat:theme>
+      </xsl:when>
       <xsl:otherwise>
         <xsl:message select="concat('No concept added for a field value of thesaurus ', $thesaurusKey, '. Verify thesaurus-transformation.xsl.')"/>
       </xsl:otherwise>

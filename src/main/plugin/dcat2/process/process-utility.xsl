@@ -35,6 +35,7 @@
     <xsl:variable name="inSchemeAdmsBaseUrl" select="'http://purl.org/adms/'"/>
     <xsl:variable name="inSchemeMdcatBaseUrl" select="'https://data.vlaanderen.be/id/conceptscheme/'"/>
     <xsl:variable name="inSchemeIanaBaseUrl" select="'https://www.iana.org/assignments/'"/>
+    <xsl:variable name="inSchemeVLBaseUrl" select="'https://metadata.vlaanderen.be/id/'"/>
     <xsl:variable name="keyPrefix" select="'external.theme.'"/>
     <xsl:choose>
       <xsl:when test="$key = concat($keyPrefix,'publisher-type')">
@@ -72,6 +73,9 @@
       </xsl:when>
       <xsl:when test="$key = concat($keyPrefix, 'ontwikkelingstoestand')">
         <xsl:value-of select="concat($inSchemeMdcatBaseUrl,'ontwikkelingstoestand')"/>
+      </xsl:when>
+      <xsl:when test="$key = concat($keyPrefix, 'GDI-Vlaanderen-trefwoorden')">
+        <xsl:value-of select="concat($inSchemeVLBaseUrl,'GDI-Vlaanderen-Trefwoorden')"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:message select="concat('Thesaurus NIET gevonden met key = ',$key, '. Voeg deze toe in process-utility.xsl bestand.')"/>

@@ -55,6 +55,22 @@
 
   <xsl:variable name="isService" select="count(/root//rdf:RDF/dcat:Catalog/dcat:service) > 0"/>
 
+  <xsl:variable name="profile">
+    <xsl:variable name="std"
+                  select="string(/root/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about)"/>
+    <xsl:choose>
+      <xsl:when test="starts-with($std, 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat')">
+        <xsl:value-of select="'metadata-dcat'"/>
+      </xsl:when>
+      <xsl:when test="starts-with($std, 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL')">
+        <xsl:value-of select="'dcat-ap-vl'"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="false()"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
   <xsl:template match="/root">
     <xsl:apply-templates select="//rdf:RDF"/>
   </xsl:template>
@@ -211,7 +227,7 @@
       <xsl:apply-templates select="dct:modified"/>
       <xsl:apply-templates select="dct:publisher"/>
       <xsl:apply-templates select="dcat:keyword"/>
-      <xsl:apply-templates select="dcat:theme"/>
+      <xsl:call-template name="apply-themes"/>
       <xsl:apply-templates select="dct:accessRights"/>
       <xsl:apply-templates select="dct:conformsTo"/>
       <xsl:apply-templates select="foaf:page"/>
@@ -263,7 +279,7 @@
       <xsl:apply-templates select="mdcat:ontwikkelingstoestand"/>
 
       <xsl:apply-templates select="dcat:qualifiedRelation"/>
-      <xsl:apply-templates select="dcat:theme"/>
+      <xsl:call-template name="apply-themes"/>
       <xsl:apply-templates select="dct:accessRights"/>
       <xsl:apply-templates select="dct:conformsTo"/>
       <xsl:apply-templates select="dct:creator"/>
@@ -464,15 +480,28 @@
     <spdx:algorithm rdf:resource="http://spdx.org/rdf/terms#checksumAlgorithm_sha1"/>
   </xsl:template>
 
-  <!-- Reformat 'Vlaamse Open data' -->
-  <xsl:template match="dcat:keyword[translate(text(), 'abcdefghijklmonpqrstuvwxyz', 'ABCDEFGHIJKLMONPQRSTUVWXYZ') = 'VLAAMSE OPEN DATA']" priority="10">
-    <dcat:keyword xml:lang="nl">Vlaamse Open data</dcat:keyword>
-  </xsl:template>
-
   <xsl:template match="dcat:service" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*|*"/>
     </xsl:copy>
+  </xsl:template>
+
+  <xsl:template name="apply-themes">
+    <xsl:choose>
+      <xsl:when test="$profile != 'dcat-ap-vl'">
+        <xsl:apply-templates select="dcat:theme"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <dcat:theme>
+          <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
+            <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
+            <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
+          </skos:Concept>
+        </dcat:theme>
+        <xsl:apply-templates select="dcat:theme[not(skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden')]"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="add-namespaces">
@@ -489,7 +518,7 @@
     <xsl:namespace name="dcat" select="'http://www.w3.org/ns/dcat#'"/>
     <xsl:namespace name="schema" select="'http://schema.org/'"/>
     <xsl:namespace name="dc" select="'http://purl.org/dc/elements/1.1/'"/>
-    <xsl:if test="$isService">
+    <xsl:if test="$isService and $profile = 'metadata-dcat'">
       <xsl:namespace name="mdcat" select="'http://data.vlaanderen.be/ns/metadata-dcat#'"/>
     </xsl:if>
   </xsl:template>
