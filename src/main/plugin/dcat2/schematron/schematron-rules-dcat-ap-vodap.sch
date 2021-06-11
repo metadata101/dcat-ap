@@ -479,4 +479,46 @@ Source:
       </sch:report>
     </sch:rule>
   </sch:pattern>
+
+  <sch:pattern>
+    <sch:title>At least one theme from the data.gov.be vocabulary is required</sch:title>
+    <sch:rule context="//dcat:Dataset|//dcat:DataService">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="dataThemes" value="count(dcat:theme[starts-with(skos:Concept/@rdf:about, 'http://vocab.belgif.be/auth/datatheme')])"/>
+      <sch:assert test="$dataThemes > 0">ERROR: The <sch:value-of select="name()"/> "<sch:value-of select="$id"/>" doesn't have a data.gov.be theme</sch:assert>
+      <sch:report test="$dataThemes > 0">The <sch:value-of select="name()"/> "<sch:value-of select="$id"/>" have a data.gov.be theme</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>dct:license is required for dcat:DataService</sch:title>
+    <sch:rule context="//dcat:DataService">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="license" value="dct:license/dct:LicenseDocument|dct:license/@rdf:resource"/>
+      <sch:assert test="$license">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" doesn't have a dct:license</sch:assert>
+      <sch:report test="$license">The dcat:DataService "<sch:value-of select="$id"/>" have a dct:license</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>At least one of vcard:hasEmail or vcard:hasURL is a required for a contactpoint of a DataService</sch:title>
+    <sch:rule context="//dcat:DataService/dcat:contactPoint[$isCorrectProfile]">
+      <sch:let name="id" value="*/@rdf:about/string()"/>
+      <sch:let name="hasEmail" value="*/vcard:hasEmail"/>
+      <sch:let name="hasUrl" value="*/vcard:hasURL"/>
+      <sch:assert test="$hasEmail or $hasUrl">ERROR: The vcard:Organization with URI "<sch:value-of select="$id"/>" does not have a vcard:hasEmail or a vcard:hasURL property.
+      </sch:assert>
+      <sch:report test="$hasEmail or $hasUrl">The vcard:Organization with URI "<sch:value-of select="$id"/>" has a vcard:hasEmail or a vcard:hasURL property.
+      </sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>vcard:hasEmail must be a non-empty string.</sch:title>
+    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
+      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
+      <sch:let name="emptyString" value="normalize-space(@rdf:resource)='' or not(matches(@rdf:resource, '.+@.+'))"/>
+      <sch:assert test="$emptyString = false()">ERROR: The contact point "<sch:value-of select="$id"/>" has a vcard:hasEmail that is an empty string or does not match the e-mail format.
+      </sch:assert>
+      <sch:report test="$emptyString = false()">The contact point '<sch:value-of select="$id"/>' has a vcard:hasEmail '<sch:value-of select="./string()"/>' which is a non-empty string and matches the e-mail string format.
+      </sch:report>
+    </sch:rule>
+  </sch:pattern>
 </sch:schema>

@@ -404,7 +404,7 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>411. At least one of vcard:hasEmail or vcard:hasURL is a required for a contactpoint of a Dataset</sch:title>
+    <sch:title>At least one of vcard:hasEmail or vcard:hasURL is a required for a contactpoint of a Dataset</sch:title>
     <sch:rule context="//dcat:Dataset/dcat:contactPoint[$isCorrectProfile]">
       <sch:let name="id" value="*/@rdf:about/string()"/>
       <sch:let name="hasEmail" value="*/vcard:hasEmail"/>
@@ -416,7 +416,7 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>411. At least one of vcard:hasEmail or vcard:hasURL is a required for a contactpoint of a DataService</sch:title>
+    <sch:title>At least one of vcard:hasEmail or vcard:hasURL is a required for a contactpoint of a DataService</sch:title>
     <sch:rule context="//dcat:DataService/dcat:contactPoint[$isCorrectProfile]">
       <sch:let name="id" value="*/@rdf:about/string()"/>
       <sch:let name="hasEmail" value="*/vcard:hasEmail"/>
@@ -428,7 +428,7 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>412. vcard:hasEmail must be a non-empty string.</sch:title>
+    <sch:title>vcard:hasEmail must be a non-empty string.</sch:title>
     <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="emptyString" value="normalize-space(@rdf:resource)='' or not(matches(@rdf:resource, '.+@.+'))"/>
@@ -439,7 +439,7 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>412. vcard:hasEmail has maximum cardinality of 1 for a contactpoint.</sch:title>
+    <sch:title>vcard:hasEmail has maximum cardinality of 1 for a contactpoint.</sch:title>
     <sch:rule context="//dcat:contactPoint[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="count" value="count(*/vcard:hasEmail)"/>
@@ -450,7 +450,7 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>412. vcard:hasEmail is a URI with the mailto protocol.</sch:title>
+    <sch:title>vcard:hasEmail is a URI with the mailto protocol.</sch:title>
     <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:resource/string()"/>
       <sch:let name="mailto" value="starts-with(@rdf:resource,'mailto:')"/>
@@ -461,7 +461,7 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>413. vcard:hasEmail is a URI.</sch:title>
+    <sch:title>vcard:hasEmail is a URI.</sch:title>
     <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:resource/string()"/>
       <sch:let name="uri" value="@rdf:resource castable as xs:anyURI"/>
@@ -472,7 +472,7 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>414. vcard:hasURL must be a non-empty string.</sch:title>
+    <sch:title>vcard:hasURL must be a non-empty string.</sch:title>
     <sch:rule context="//vcard:hasURL[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="emptyString" value="normalize-space(@rdf:resource) = ''"/>
@@ -483,7 +483,7 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>414. vcard:hasURL has maximum cardinality of 1 for a contactpoint.</sch:title>
+    <sch:title>vcard:hasURL has maximum cardinality of 1 for a contactpoint.</sch:title>
     <sch:rule context="//dcat:contactPoint[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="count" value="count(*/vcard:hasURL)"/>
@@ -494,7 +494,7 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>415. vcard:hasURL is a URI.</sch:title>
+    <sch:title>vcard:hasURL is a URI.</sch:title>
     <sch:rule context="//vcard:hasURL[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:resource/string()"/>
       <sch:let name="uri" value="@rdf:resource castable as xs:anyURI"/>
@@ -505,7 +505,7 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>420. dct:modified is a required property for dcat:CatalogRecord</sch:title>
+    <sch:title>dct:modified is a required property for dcat:CatalogRecord</sch:title>
     <sch:rule context="//dcat:record/dcat:CatalogRecord[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:resource/string()"/>
       <sch:let name="hasModifiedDate" value="count(dct:modified) > 0 and normalize-space(dct:modified) != ''"/>

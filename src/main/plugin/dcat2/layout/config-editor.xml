@@ -540,6 +540,7 @@
               </snippet>
             </template>
           </action>
+          <field name="FieldId427" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme" or="theme" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId405" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier"/>
         </section>
         <section name="versionInformation">
@@ -647,6 +648,7 @@
             </template>
           </action>
           <field name="FieldId428" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights" or="accessRights" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field name="FieldId432" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
         </section>
         <section name="extraInformation">
           <field name="FieldId408" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
@@ -1097,6 +1099,7 @@
           </action>
           <directive data-gim-add-dataset=""/>
           <field name="FieldId407" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field name="FieldId427" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme" or="theme" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId405" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
         </section>
         <section name="versionInformation">
@@ -1204,6 +1207,7 @@
             </template>
           </action>
           <field name="FieldId428" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights" or="accessRights" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field name="FieldId432" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
         </section>
         <section name="extraInformation">
           <field name="FieldId408" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
@@ -1235,7 +1239,6 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId427" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme" or="theme" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId429" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo"/>
           <action type="add" name="FieldId429" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
@@ -1278,7 +1281,6 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId432" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId433" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:issued" or="issued" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId434" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:modified" or="modified" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId435" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:relation" notDisplayedIfMissing="true" templateModeOnly="true">
