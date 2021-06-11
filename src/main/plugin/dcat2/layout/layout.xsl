@@ -48,6 +48,7 @@
   <xsl:include href="utility-tpl.xsl"/>
   <xsl:include href="layout-custom-fields.xsl"/>
   <xsl:include href="layout-custom-tpl.xsl"/>
+  <xsl:include href="layout-profile.xsl"/>
 
   <!-- Ignore all gn element -->
   <xsl:template mode="mode-dcat2"

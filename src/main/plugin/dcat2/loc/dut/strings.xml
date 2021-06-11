@@ -354,6 +354,6 @@
   <FieldId503>wijzigingsdatum</FieldId503>
   <FieldId504>publicatiedatum</FieldId504>
   <FieldId505>taal</FieldId505>
-  <FieldId505>titel</FieldId505>
-  <FieldId505>beschrijving</FieldId505>
+  <FieldId506>titel</FieldId506>
+  <FieldId507>beschrijving</FieldId507>
 </strings>

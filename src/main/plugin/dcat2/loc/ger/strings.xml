@@ -352,6 +352,6 @@
   <FieldId503>update/ modification date</FieldId503>
   <FieldId504>release date</FieldId504>
   <FieldId505>language</FieldId505>
-  <FieldId505>title</FieldId505>
-  <FieldId505>description</FieldId505>
+  <FieldId506>title</FieldId506>
+  <FieldId507>description</FieldId507>
 </strings>

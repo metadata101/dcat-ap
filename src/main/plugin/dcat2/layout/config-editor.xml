@@ -575,24 +575,24 @@
               </snippet>
             </template>
           </field>
-          <field name="FieldId413" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie"/>
-          <action type="add" name="FieldId413" or="landingspaginaVoorAuthenticatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId413" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie" profile="metadata-dcat"/>
+          <action type="add" name="FieldId413" or="landingspaginaVoorAuthenticatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" profile="metadata-dcat">
             <template>
               <snippet>
                 <mdcat:landingspaginaVoorAuthenticatie rdf:resource=""/>
               </snippet>
             </template>
           </action>
-          <field name="FieldId414" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie"/>
-          <action type="add" name="FieldId414" or="landingspaginaVoorStatusinformatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId414" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie" profile="metadata-dcat"/>
+          <action type="add" name="FieldId414" or="landingspaginaVoorStatusinformatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" profile="metadata-dcat">
             <template>
               <snippet>
                 <mdcat:landingspaginaVoorStatusinformatie rdf:resource=""/>
               </snippet>
             </template>
           </action>
-          <field name="FieldId416" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie"/>
-          <action type="add" name="FieldId416" or="landingspaginaVoorGebruiksinformatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId416" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie" profile="metadata-dcat"/>
+          <action type="add" name="FieldId416" or="landingspaginaVoorGebruiksinformatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" profile="metadata-dcat">
             <template>
               <snippet>
                 <mdcat:landingspaginaVoorGebruiksinformatie rdf:resource=""/>
@@ -614,8 +614,8 @@
           </action>
         </section>
         <section name="serviceInformation">
-          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase"/>
-          <action type="add" name="FieldId417" or="levensfase" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase" profile="metadata-dcat"/>
+          <action type="add" name="FieldId417" or="levensfase" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" profile="metadata-dcat">
             <template>
               <snippet>
                 <mdcat:levensfase>
@@ -630,8 +630,8 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand"/>
-          <action type="add" name="FieldId418" or="ontwikkelingstoestand" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand" profile="metadata-dcat"/>
+          <action type="add" name="FieldId418" or="ontwikkelingstoestand" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" profile="metadata-dcat">
             <template>
               <snippet>
                 <mdcat:ontwikkelingstoestand>
@@ -1132,24 +1132,24 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId413" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie"/>
-          <action type="add" name="FieldId413" or="landingspaginaVoorAuthenticatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId413" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie" profile="metadata-dcat"/>
+          <action type="add" name="FieldId413" or="landingspaginaVoorAuthenticatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" profile="metadata-dcat">
             <template>
               <snippet>
                 <mdcat:landingspaginaVoorAuthenticatie rdf:resource=""/>
               </snippet>
             </template>
           </action>
-          <field name="FieldId414" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie"/>
-          <action type="add" name="FieldId414" or="landingspaginaVoorStatusinformatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId414" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie" profile="metadata-dcat"/>
+          <action type="add" name="FieldId414" or="landingspaginaVoorStatusinformatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" profile="metadata-dcat">
             <template>
               <snippet>
                 <mdcat:landingspaginaVoorStatusinformatie rdf:resource=""/>
               </snippet>
             </template>
           </action>
-          <field name="FieldId416" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie"/>
-          <action type="add" name="FieldId416" or="landingspaginaVoorGebruiksinformatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId416" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie" profile="metadata-dcat"/>
+          <action type="add" name="FieldId416" or="landingspaginaVoorGebruiksinformatie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" profile="metadata-dcat">
             <template>
               <snippet>
                 <mdcat:landingspaginaVoorGebruiksinformatie rdf:resource=""/>
@@ -1171,8 +1171,8 @@
           </action>
         </section>
         <section name="serviceInformation">
-          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase"/>
-          <action type="add" name="FieldId417" or="levensfase" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase" profile="metadata-dcat"/>
+          <action type="add" name="FieldId417" or="levensfase" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" profile="metadata-dcat">
             <template>
               <snippet>
                 <mdcat:levensfase>
@@ -1187,8 +1187,8 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand"/>
-          <action type="add" name="FieldId418" or="ontwikkelingstoestand" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand" profile="metadata-dcat"/>
+          <action type="add" name="FieldId418" or="ontwikkelingstoestand" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" profile="metadata-dcat">
             <template>
               <snippet>
                 <mdcat:ontwikkelingstoestand>
