@@ -332,7 +332,6 @@
       <xsl:variable name="theme" select="skos:Concept/skos:prefLabel[@xml:lang=$langId]"/>
       <xsl:choose>
         <xsl:when test="$scheme = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'">
-          <xsl:message select="'index VL'"/>
           <Field name="flanderskeyword" string="{$theme}" store="true" index="true"/>
         </xsl:when>
         <!-- TODO: Index other themes -->

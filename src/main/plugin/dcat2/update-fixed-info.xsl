@@ -203,9 +203,17 @@
                                                 /root/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/@rdf:about"/>
       <foaf:primaryTopic rdf:resource="{$primaryTopic}"/>
 
-      <dct:modified>
-        <xsl:value-of select="format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]')"/>
-      </dct:modified>
+      <xsl:choose>
+        <xsl:when test="/root/env/changeDate">
+          <dct:modified>
+            <xsl:value-of select="format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]')"/>
+          </dct:modified>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:copy-of select="dct:modified"/>
+        </xsl:otherwise>
+      </xsl:choose>
+
       <xsl:apply-templates select="dct:conformsTo"/>
       <xsl:apply-templates select="adms:status"/>
       <xsl:apply-templates select="dct:issued"/>
