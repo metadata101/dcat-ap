@@ -33,6 +33,7 @@
                 xmlns:schema="http://schema.org/"
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:gml="http://www.opengis.net/gml"
+                xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
                 xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
                 xmlns:saxon="http://saxon.sf.net/"
@@ -71,19 +72,20 @@
     </xsl:choose>
   </xsl:variable>
 
+  <!-- =================================================================  -->
   <xsl:template match="/root">
     <xsl:apply-templates select="//rdf:RDF"/>
+  </xsl:template>
+  <!-- =================================================================  -->
+  <xsl:template match="@*|*[name(.)!= 'root']">
+    <xsl:copy copy-namespaces="no">
+      <xsl:apply-templates select="@*|node()"/>
+    </xsl:copy>
   </xsl:template>
   <!-- =================================================================  -->
   <xsl:template match="rdf:RDF" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:call-template name="add-namespaces"/>
-      <xsl:apply-templates select="@*|node()"/>
-    </xsl:copy>
-  </xsl:template>
-  <!-- =================================================================  -->
-  <xsl:template match="@*|*[name(.)!= 'root']">
-    <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
@@ -248,7 +250,6 @@
       <xsl:apply-templates select="dcat:extension"/>
       <xsl:apply-templates select="dcat:distribution"/>
       <xsl:apply-templates select="adms:sample"/>
-
       <xsl:apply-templates select="dcat:qualifiedRelation"/>
       <xsl:apply-templates select="dct:creator"/>
       <xsl:apply-templates select="dct:isReferencedBy"/>
@@ -277,7 +278,6 @@
       <xsl:apply-templates select="mdcat:landingspaginaVoorGebruiksinformatie"/>
       <xsl:apply-templates select="mdcat:levensfase"/>
       <xsl:apply-templates select="mdcat:ontwikkelingstoestand"/>
-
       <xsl:apply-templates select="dcat:qualifiedRelation"/>
       <xsl:call-template name="apply-themes"/>
       <xsl:apply-templates select="dct:accessRights"/>
@@ -302,7 +302,8 @@
       <xsl:value-of select="."/>
     </xsl:copy>
   </xsl:template>
-
+  <!-- =================================================================  -->
+  <!-- Set default xml:lang value when missing -->
   <xsl:template match="dcat:Dataset/dct:description|dcat:Distribution/dct:title|dcat:Distribution/dct:description|foaf:Agent/foaf:name" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
@@ -336,8 +337,6 @@
           </skos:Concept>
         </xsl:when>
         <xsl:otherwise>
-
-          <!-- remove rdf:about attribute if empty -->
           <xsl:choose>
             <xsl:when test="normalize-space(skos:Concept/@rdf:about) = ''">
               <skos:Concept>
@@ -387,6 +386,7 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- Normalize bbox -->
   <xsl:template match="dct:Location" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
@@ -449,23 +449,6 @@
   <xsl:template match="@rdf:about[normalize-space() = '' and not(name(..)='dct:LicenseDocument')]|@rdf:datatype[normalize-space() = '']"
                 priority="10"/>
 
-  <!-- Remove non numeric byteSize and format scientific notation to decimal -->
-  <!--xsl:template match="dcat:byteSize" priority="10">
-    <xsl:if test="string(number(.)) != 'NaN'">
-      <xsl:copy copy-namespaces="no">
-    <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
-        <xsl:choose>
-          <xsl:when test="matches(string(.), '^\-?[\d\.,]*[Ee][+\-]*\d*$')">
-            <xsl:value-of select="format-number(number(.), '#0.#############')"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="."/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:copy>
-    </xsl:if>
-  </xsl:template-->
-
   <!-- Fix value for attribute -->
   <xsl:template match="spdx:checksumValue" priority="10">
     <xsl:copy copy-namespaces="no">
@@ -480,12 +463,13 @@
     <spdx:algorithm rdf:resource="http://spdx.org/rdf/terms#checksumAlgorithm_sha1"/>
   </xsl:template>
 
-  <xsl:template match="dcat:service" priority="10">
+  <!-- Add "mailto:" prefix on mail adresses -->
+  <xsl:template match="vcard:hasEmail[not(starts-with(@rdf:resource, 'mailto:'))]" priority="10">
     <xsl:copy copy-namespaces="no">
-      <xsl:apply-templates select="@*|*"/>
+      <xsl:attribute name="rdf:resource" select="concat('mailto:', @rdf:resource)"/>
     </xsl:copy>
   </xsl:template>
-
+  <!-- =================================================================  -->
   <xsl:template name="apply-themes">
     <xsl:choose>
       <xsl:when test="$profile != 'dcat-ap-vl'">
