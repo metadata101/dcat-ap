@@ -71,20 +71,7 @@ Source:
       </sch:report>
     </sch:rule>
   </sch:pattern>
-  <!--GeoNetwork adds elements like <geonet:element xmlns:geonet="http://www.fao.org/geonetwork"> to any literal.
-  The new inline validation tool does not (see https://github.com/geonetwork/core-geonetwork/pull/3298) does not correctly process
-  this validation rule.
-  <sch:pattern>
-    <sch:title>1. The foaf:name property should be a literal.</sch:title>
-    <sch:rule context="//foaf:Agent/foaf:name">
-      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="notALiteral" value="exists(./*[node-name(.) != QName('http://www.fao.org/geonetwork','element')])"/>
-      <sch:assert test="$notALiteral = false()">ERROR: The foaf:Agent "<sch:value-of select="$id"/>" has a foaf:name property which value "<sch:value-of select="string-join(.[child::*]//*/name(),'|') "/>" is not a literal.
-      </sch:assert>
-      <sch:report test="$notALiteral = false()">The foaf:Agent "<sch:value-of select="$id"/>" has a foaf:name property which is a literal "<sch:value-of select="./string()"/>".</sch:report>
-    </sch:rule>
-  </sch:pattern>
-   -->
+  <!-- 1. The foaf:name property should be a literal.-->
   <sch:pattern>
     <sch:title>3. dct:type should be a skos:Concept.</sch:title>
     <sch:rule context="//foaf:Agent/dct:type">
@@ -119,264 +106,32 @@ Source:
       </sch:report>
     </sch:rule>
   </sch:pattern>
-  <!-- <sch:pattern> -->
-    <!-- <sch:title>6. dct:description is a required property for Catalog.</sch:title> -->
-    <!-- <sch:rule context="//dcat:Catalog"> -->
-      <!-- <sch:let name="id" value="@rdf:about/string()"/> -->
-      <!-- <sch:let name="noDescription" value="not(dct:description)"/> -->
-      <!-- <sch:assert test="$noDescription = false()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" does not have a dct:description. -->
-      <!-- </sch:assert> -->
-      <!-- <sch:report test="$noDescription = false()">The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:description. -->
-      <!-- </sch:report> -->
-    <!-- </sch:rule> -->
-  <!-- </sch:pattern> -->
-  <!-- <sch:pattern> -->
-    <!-- <sch:title>6. dct:description for Catalog cannot be an empty string.</sch:title> -->
-    <!-- <sch:rule context="//dcat:Catalog/dct:description"> -->
-      <!-- <sch:let name="id" value="parent::node()/@rdf:about/string()"/> -->
-      <!-- <sch:let name="emptyString" value="normalize-space(.)=''"/> -->
-      <!-- <sch:assert test="$emptyString = false()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:description that is an empty string. -->
-      <!-- </sch:assert> -->
-      <!-- <sch:report test="$emptyString = false()">The dcat:Catalog '<sch:value-of select="$id"/>' has a dct:description '<sch:value-of select="./string()"/>' which is a non-empty string. -->
-      <!-- </sch:report> -->
-    <!-- </sch:rule> -->
-  <!-- </sch:pattern> -->
-  <!--GeoNetwork adds elements like <geonet:element xmlns:geonet="http://www.fao.org/geonetwork"> to any literal.
-  The new inline validation tool does not (see https://github.com/geonetwork/core-geonetwork/pull/3298) does not correctly process
-  this validation rule.
-  <sch:pattern>
-    <sch:title>7. dct:description should be a literal for Catalog.</sch:title>
-    <sch:rule context="//dcat:Catalog/dct:description">
-      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="notALiteral" value="exists(./*[node-name(.) != QName('http://www.fao.org/geonetwork','element')])"/>
-      <sch:assert test="$notALiteral = false()">ERROR: In dcat:Catalog "<sch:value-of select="$id"/>" the dct:description property "<sch:value-of select="string-join(//.[child::*]//*/name(),'|') "/>," is not a literal.</sch:assert>
-      <sch:report test="$notALiteral = false()">In dcat:Catalog "<sch:value-of select="$id"/>" the dct:description property "<sch:value-of select="./string()"/>," is a literal.</sch:report>
-    </sch:rule>
-  </sch:pattern>
-  -->
-  <!--
-  <sch:pattern>
-    <sch:title>8. dct:publisher is a required property for Catalog.</sch:title>
-    <sch:rule context="//dcat:Catalog">
-      <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="noDataset" value="not(dct:publisher)"/>
-      <sch:assert test="$noDataset = false()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" should have a dct:publisher property.
-      </sch:assert>
-      <sch:report test="$noDataset = false()">The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:publisherproperty.
-      </sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-  -->
-  <!--
-  <sch:pattern>
-    <sch:title>9. dct:publisher has a maximum cardinality of 1 for Catalog.</sch:title>
-    <sch:rule context="//dcat:Catalog">
-      <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="count" value="count(dct:publisher)"/>
-      <sch:assert test="2 > $count">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has more than one dct:publisher property.
-      </sch:assert>
-      <sch:report test="2 > $count">The dcat:Catalog "<sch:value-of select="$id"/>" has maximally one dct:publisher property.
-      </sch:report>
-    </sch:rule>
-  </sch:pattern> -->
-  <!-- <sch:pattern> -->
-    <!-- <sch:title>11. dct:publisher should be a foaf:Agent for Catalog.</sch:title> -->
-    <!-- <sch:rule context="//dcat:Catalog/dct:publisher"> -->
-      <!-- <sch:let name="Catalogid" value="parent::node()/@rdf:about/string()"/> -->
-      <!-- <sch:let name="id" value="*/@rdf:about/string()"/> -->
-      <!-- <sch:let name="noAgent" value="not(foaf:Agent | */rdf:type[resolve-QName(@rdf:resource, /*) = QName('http://xmlns.com/foaf/0.1/','Agent')])"/> -->
-      <!-- <sch:assert test="$noAgent = false()">ERROR: The dcat:Catalog "<sch:value-of select="$Catalogid"/>" has a dct:publisher  "<sch:value-of select="$id"/>" which is not a foaf:Agent. -->
-      <!-- </sch:assert> -->
-      <!-- <sch:report test="$noAgent = false()">The dcat:Catalog "<sch:value-of select="$Catalogid"/>" has a dct:publisher  "<sch:value-of select="$id"/>" which is a foaf:Agent. -->
-      <!-- </sch:report> -->
-    <!-- </sch:rule> -->
-  <!-- </sch:pattern> -->
-  <!-- <sch:pattern> -->
-    <!-- <sch:title>12. dct:title is a required property for Catalog.</sch:title> -->
-    <!-- <sch:rule context="//dcat:Catalog"> -->
-      <!-- <sch:let name="id" value="@rdf:about/string()"/> -->
-      <!-- <sch:let name="noTitle" value="not(dct:title)"/> -->
-      <!-- <sch:assert test="$noTitle = false()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" does not have a dct:title. -->
-      <!-- </sch:assert> -->
-      <!-- <sch:report test="$noTitle = false()">The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:title "<sch:value-of select="dct:title[0]/string()"/>". -->
-      <!-- </sch:report> -->
-    <!-- </sch:rule> -->
-  <!-- </sch:pattern> -->
-  <!-- <sch:pattern> -->
-    <!-- <sch:title>12. dct:title should be a non-empty string.</sch:title> -->
-    <!-- <sch:rule context="//dcat:Catalog/dct:title"> -->
-      <!-- <sch:let name="id" value="parent::node()/@rdf:about/string()"/> -->
-      <!-- <sch:let name="emptyString" value="normalize-space(.)=''"/> -->
-      <!-- <sch:assert test="$emptyString = false()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:title that is an empty string. -->
-      <!-- </sch:assert> -->
-      <!-- <sch:report test="$emptyString = false()">The dcat:Catalog '<sch:value-of select="$id"/>' has a dct:title '<sch:value-of select="./string()"/>' which is a non-empty string. -->
-      <!-- </sch:report> -->
-    <!-- </sch:rule> -->
-  <!-- </sch:pattern>   -->
-  <!--GeoNetwork adds elements like <geonet:element xmlns:geonet="http://www.fao.org/geonetwork"> to any literal.
-  The new inline validation tool does not (see https://github.com/geonetwork/core-geonetwork/pull/3298) does not correctly process
-  this validation rule.
-  <sch:pattern>
-    <sch:title>13. dct:title should be a literal.</sch:title>
-    <sch:rule context="//dcat:Catalog/dct:title">
-      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="notALiteral" value="exists(./*[node-name(.) != QName('http://www.fao.org/geonetwork','element')])"/>
-      <sch:assert test="$notALiteral = false()">ERROR: In dcat:Catalog "<sch:value-of select="$id"/>" the dct:title property "<sch:value-of select="string-join(//.[child::*]//*/name(),'|') "/>," is not a literal.</sch:assert>
-      <sch:report test="$notALiteral = false()">In dcat:Catalog "<sch:value-of select="$id"/>" the dct:title property "<sch:value-of select="./string()"/>," is a literal.</sch:report>
-    </sch:rule>
-  </sch:pattern>
-  -->
-  <!-- <sch:pattern> -->
-    <!-- <sch:title>15. foaf:homepage has a maximum cardinality of 1 for Catalog.</sch:title> -->
-    <!-- <sch:rule context="//dcat:Catalog"> -->
-      <!-- <sch:let name="id" value="@rdf:about/string()"/> -->
-      <!-- <sch:let name="countHomepage" value="count(foaf:homepage)"/> -->
-      <!-- <sch:assert test="2 > $countHomepage">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has more than one foaf:homepage property. -->
-      <!-- </sch:assert> -->
-      <!-- <sch:report test="2 > $countHomepage">The dcat:Catalog "<sch:value-of select="$id"/>" has maximally one foaf:homepage property. -->
-      <!-- </sch:report> -->
-    <!-- </sch:rule> -->
-  <!-- </sch:pattern> -->
-  <!-- <sch:pattern> -->
-    <!-- <sch:title>17. foaf:homepage should be a foaf:Document.</sch:title> -->
-    <!-- <sch:rule context="//dcat:Catalog/foaf:homepage"> -->
-      <!-- <sch:let name="Catalogid" value="parent::node()/@rdf:about/string()"/> -->
-      <!-- <sch:let name="id" value="*/@rdf:about/string()"/> -->
-      <!-- <sch:let name="noDocument" value="not(foaf:Document | */rdf:type[resolve-QName(@rdf:resource, /*) = QName('http://xmlns.com/foaf/0.1/','Document')])"/> -->
-      <!-- <sch:assert test="$noDocument = false()">ERROR: The dcat:Catalog "<sch:value-of select="$Catalogid"/>" has a foaf:homepage  "<sch:value-of select="$id"/>" which is not a foaf:Document. -->
-      <!-- </sch:assert> -->
-      <!-- <sch:report test="$noDocument = false()">The dcat:Catalog "<sch:value-of select="$Catalogid"/>" has a foaf:homepage  "<sch:value-of select="$id"/>" which is a foaf:Document. -->
-      <!-- </sch:report> -->
-    <!-- </sch:rule> -->
-  <!-- </sch:pattern> -->
-  <!-- <sch:pattern> -->
-    <!-- <sch:title>20. dct:language should be a dct:LinguisticSystem.</sch:title> -->
-    <!-- <sch:rule context="//dcat:Catalog/dct:language"> -->
-      <!-- <sch:let name="Catalogid" value="parent::node()/@rdf:about/string()"/> -->
-      <!-- <sch:let name="id" value="*/@rdf:about/string()"/> -->
-      <!-- <sch:let name="noLinguisticSystem" value="not(dct:LinguisticSystem | */rdf:type[@rdf:resource = 'http://purl.org/dc/terms/LinguisticSystem'])"/> -->
-      <!-- <sch:assert test="$noLinguisticSystem = false()">ERROR: The dcat:Catalog "<sch:value-of select="$Catalogid"/>" has a dct:language  "<sch:value-of select="$id"/>" which is not a dct:LinguisticSystem. -->
-      <!-- </sch:assert> -->
-      <!-- <sch:report test="$noLinguisticSystem = false()">The dcat:Catalog "<sch:value-of select="$Catalogid"/>" has a dct:language  "<sch:value-of select="$id"/>" which is a dct:LinguisticSystem. -->
-      <!-- </sch:report> -->
-    <!-- </sch:rule> -->
-  <!-- </sch:pattern> -->
-  <!-- <sch:pattern> -->
-    <!-- <sch:title>23. dct:license has a maximum cardinality of 1 for Catalog.</sch:title> -->
-    <!-- <sch:rule context="//dcat:Catalog"> -->
-      <!-- <sch:let name="id" value="@rdf:about/string()"/> -->
-      <!-- <sch:let name="countLicense" value="count(dct:license)"/> -->
-      <!-- <sch:assert test="2 > $countLicense">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has more than one dct:license property. -->
-      <!-- </sch:assert> -->
-      <!-- <sch:report test="2 > $countLicense">The dcat:Catalog "<sch:value-of select="$id"/>" has no more than one dct:license property. -->
-      <!-- </sch:report> -->
-    <!-- </sch:rule> -->
-  <!-- </sch:pattern> -->
-  <!-- <sch:pattern> -->
-    <!-- <sch:title>25. dct:issued should be literal typed as date or dateTime.</sch:title> -->
-    <!-- <sch:rule context="//dcat:Catalog/dct:issued"> -->
-      <!-- <sch:let name="id" value="parent::node()/@rdf:about/string()"/> -->
-      <!-- <sch:let name="modifiedDateTime" value=". castable as xs:date or . castable as xs:dateTime"/> -->
-      <!-- <sch:assert test="$modifiedDateTime = true()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:issued property which value "<sch:value-of select="./string()"/>" is not a date or dateTime. -->
-      <!-- </sch:assert> -->
-      <!-- <sch:report test="$modifiedDateTime = true()">The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:issued property which value "<sch:value-of select="./string()"/>" is a date or dateTime. -->
-      <!-- </sch:report> -->
-    <!-- </sch:rule> -->
-  <!-- </sch:pattern> -->
-  <!-- <sch:pattern> -->
-    <!-- <sch:title>26. dct:issued has a maximum cardinality of 1 for Catalog.</sch:title> -->
-    <!-- <sch:rule context="//dcat:Catalog"> -->
-      <!-- <sch:let name="id" value="@rdf:about/string()"/> -->
-      <!-- <sch:let name="countIssued" value="count(dct:issued)"/> -->
-      <!-- <sch:assert test="2 > $countIssued">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has more than one dct:issued property. -->
-      <!-- </sch:assert> -->
-      <!-- <sch:report test="2 > $countIssued">The dcat:Catalog "<sch:value-of select="$id"/>" has no more than one dct:issued property. -->
-      <!-- </sch:report> -->
-    <!-- </sch:rule> -->
-  <!-- </sch:pattern> -->
-  <!-- <sch:pattern> -->
-    <!-- <sch:title>30. dcat:record should be a dcat:CatalogRecord.</sch:title> -->
-    <!-- <sch:rule context="//dcat:Catalog/dcat:record"> -->
-      <!-- <sch:let name="Catalogid" value="parent::node()/@rdf:about/string()"/> -->
-      <!-- <sch:let name="id" value="*/@rdf:about/string()"/> -->
-      <!-- <sch:let name="noCatalogRecord" value="not(dcat:CatalogRecord | */rdf:type[resolve-QName(@rdf:resource, /*) = QName('http://www.w3.org/ns/dcat#','CatalogRecord')])"/> -->
-      <!-- <sch:assert test="$noCatalogRecord = false()">ERROR: The dcat:Catalog "<sch:value-of select="$Catalogid"/>" has a dcat:record  "<sch:value-of select="$id"/>" which is not a dcat:CatalogRecord. -->
-      <!-- </sch:assert> -->
-      <!-- <sch:report test="$noCatalogRecord = false()">The dcat:Catalog "<sch:value-of select="$Catalogid"/>" has a dcat:record  "<sch:value-of select="$id"/>" which is a dcat:CatalogRecord. -->
-      <!-- </sch:report> -->
-    <!-- </sch:rule> -->
-  <!-- </sch:pattern> -->
-  <!-- <sch:pattern> -->
-    <!-- <sch:title>32. dct:modified should be a literal typed as date or dateTime.</sch:title> -->
-    <!-- <sch:rule context="//dcat:Catalog/dct:modified"> -->
-      <!-- <sch:let name="id" value="parent::node()/@rdf:about/string()"/> -->
-      <!-- <sch:let name="modifiedDateTime" value=". castable as xs:date or . castable as xs:dateTime"/> -->
-      <!-- <sch:assert test="$modifiedDateTime = true()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:modified property which value "<sch:value-of select="./string()"/>" is not a date or dateTime. -->
-      <!-- </sch:assert> -->
-      <!-- <sch:report test="$modifiedDateTime = true()">The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:modified property which value "<sch:value-of select="./string()"/>" is a date or dateTime. -->
-      <!-- </sch:report> -->
-    <!-- </sch:rule> -->
-  <!-- </sch:pattern> -->
-  <!-- <sch:pattern> -->
-    <!-- <sch:title>33. dct:modified has a maximum cardinality of 1 for Catalog.</sch:title> -->
-    <!-- <sch:rule context="//dcat:Catalog"> -->
-      <!-- <sch:let name="id" value="@rdf:about/string()"/> -->
-      <!-- <sch:let name="countModified" value="count(dct:modified)"/> -->
-      <!-- <sch:assert test="2 > $countModified">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has more than one dct:modified property. -->
-      <!-- </sch:assert> -->
-      <!-- <sch:report test="2 > $countModified">The dcat:Catalog "<sch:value-of select="$id"/>" has no more than one dct:modified property. -->
-      <!-- </sch:report> -->
-    <!-- </sch:rule> -->
-  <!-- </sch:pattern>   -->
-  <!--
-  <sch:pattern>
-    <sch:title>34. dct:rights should be a dct:RightsStatement.</sch:title>
-    <sch:rule context="//dcat:Catalog/dct:rights">
-      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="wrongType" value="not(dct:RightsStatement | */rdf:type[@rdf:resource = 'http://purl.org/dc/terms/RightsStatement'])"/>
-      <sch:assert test="$wrongType = false()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:rights  property "<sch:value-of select="$id"/>" which is not a dct:RightsStatement.
-      </sch:assert>
-      <sch:report test="$wrongType = false()">The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:rights  property "<sch:value-of select="$id"/>" which is a dct:RightsStatement.
-      </sch:report>
-    </sch:rule>
-  </sch:pattern>
-  -->
-  <!--
-  <sch:pattern>
-    <sch:title>35.  dct:rights has maximum cardinality of 1 for Catalog.</sch:title>
-    <sch:rule context="//dcat:Catalog">
-      <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="count" value="count(dct:rights)"/>
-      <sch:assert test="2 > $count">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has more than one dct:rights property.
-      </sch:assert>
-      <sch:report test="2 > $count">The dcat:Catalog "<sch:value-of select="$id"/>" has no more than one dct:rights property.
-      </sch:report>
-    </sch:rule>
-  </sch:pattern>
-  -->
-  <!--
-  <sch:pattern>
-    <sch:title>36. dct:spatial should be a dct:Location.</sch:title>
-    <sch:rule context="//dcat:Catalog/dct:spatial">
-      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="wrongType" value="not(dct:Location | */rdf:type[@rdf:resource = 'http://purl.org/dc/terms/Location'])"/>
-      <sch:assert test="$wrongType = false()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:spatial  property "<sch:value-of select="$id"/>" which is not a dct:Location.
-      </sch:assert>
-      <sch:report test="$wrongType = false()">The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:spatial  property "<sch:value-of select="$id"/>" which is a dct:Location.
-      </sch:report>
-    </sch:rule>
-  </sch:pattern>
-  -->
+  <!-- 6. dct:description is a required property for Catalog.-->
+  <!-- 7. dct:description should be a literal for Catalog.-->
+  <!-- 8. dct:publisher is a required property for Catalog.-->
+  <!-- 9. dct:publisher has a maximum cardinality of 1 for Catalog.-->
+  <!-- 11. dct:publisher should be a foaf:Agent for Catalog.-->
+  <!-- 12. dct:title is a required property for Catalog.-->
+  <!-- 13. dct:title should be a literal.-->
+  <!-- 15. foaf:homepage has a maximum cardinality of 1 for Catalog.-->
+  <!-- 17. foaf:homepage should be a foaf:Document.-->
+  <!-- 20. dct:language should be a dct:LinguisticSystem.-->
+  <!-- 23. dct:license has a maximum cardinality of 1 for Catalog.-->
+  <!-- 25. dct:issued should be literal typed as date or dateTime.-->
+  <!-- 26. dct:issued has a maximum cardinality of 1 for Catalog.-->
+  <!-- 30. dcat:record should be a dcat:CatalogRecord.-->
+  <!-- 32. dct:modified should be a literal typed as date or dateTime.-->
+  <!-- 33. dct:modified has a maximum cardinality of 1 for Catalog.-->
+  <!-- 34. dct:rights should be a dct:RightsStatement.-->
+  <!-- 35. dct:rights has maximum cardinality of 1 for Catalog.-->
+  <!-- 36. dct:spatial should be a dct:Location.-->
   <sch:pattern>
     <sch:title>37. dct:description is a required property for Dataset.</sch:title>
     <sch:rule context="//dcat:Dataset">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="noDescription" value="not(dct:description)"/>
-      <sch:assert test="$noDescription = false()">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dct:description.
-      </sch:assert>
-      <sch:report test="$noDescription = false()">The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:description.
-      </sch:report>
+      <sch:let name="hasDescription" value="normalize-space(dct:description) != ''"/>
+      <sch:assert test="$hasDescription">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dct:description.</sch:assert>
+      <sch:report test="$hasDescription">The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:description.</sch:report>
     </sch:rule>
   </sch:pattern>
   <!--38. dct:description should be a literal for Dataset.-->
@@ -384,10 +139,10 @@ Source:
     <sch:title>39. dct:title is a required property for Dataset.</sch:title>
     <sch:rule context="//dcat:Dataset">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="noTitle" value="not(dct:title)"/>
-      <sch:assert test="$noTitle = false()">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dct:title.
+      <sch:let name="hasTitle" value="normalize-space(dct:title) != ''"/>
+      <sch:assert test="$hasTitle">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dct:title.
       </sch:assert>
-      <sch:report test="$noTitle = false()">The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:title.
+      <sch:report test="$hasTitle">The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:title.
       </sch:report>
     </sch:rule>
   </sch:pattern>
@@ -971,21 +726,10 @@ Source:
       </sch:report>
     </sch:rule>
   </sch:pattern>
-  <!--sch:pattern>
-    <sch:title>118. dct:type has a maximum cardinality of 1 for dct:LicenseDocument.</sch:title>
-    <sch:rule context="//dct:LicenseDocument">
-      <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="title" value="dct:title[1]"/>
-      <sch:let name="count" value="count(dct:type)"/>
-      <sch:assert test="2 > $count">ERROR: The dct:LicenseDocument "<sch:value-of select="if ($title!='') then $title else $id"/>" has more than one dct:type property.
-      </sch:assert>
-      <sch:report test="2 > $count">The dct:LicenseDocument "<sch:value-of select="if ($title!='') then $title else $id"/>" has no more than one dct:type property.
-      </sch:report>
-    </sch:rule>
-  </sch:pattern-->
-<!-- 119.  foaf:primaryTopic is a required property for Catalog Record-->
-<!-- 120.  dct:modified is a required property for Catalog Record-->
-<!-- 121.  foaf:primaryTopic has a maximum cardinality of 1 for Catalog Record-->
+  <!-- 118. dct:type has a maximum cardinality of 1 for dct:LicenseDocument.-->
+  <!-- 119.  foaf:primaryTopic is a required property for Catalog Record-->
+  <!-- 120.  dct:modified is a required property for Catalog Record-->
+  <!-- 121.  foaf:primaryTopic has a maximum cardinality of 1 for Catalog Record-->
   <sch:pattern>
     <sch:title>122. dct:modified has a maximum cardinality of 1 for dcat:CatalogRecord</sch:title>
     <sch:rule context="//dcat:CatalogRecord">
@@ -997,14 +741,14 @@ Source:
       </sch:report>
     </sch:rule>
   </sch:pattern>
-<!-- 123.  dct:conformsTo has a maximum cardinality of 1 for Catalog Record-->
-<!-- 124.  dct:conformsTo should be a resource-->
-<!-- 125.  adms:status has a maximum cardinality of 1 for Catalog Record-->
-<!-- 126.  adms:status should be a skos:Concept-->
-<!-- 127.  dct:issued has a maximum cardinality of 1 for dcat:Catalog Record-->
-<!-- 128.  dct:source should be a dcat:CatalogRecord-->
-<!-- 129.  dct:source has a maximum cardinality of 1 for Catalog Record-->
-<!-- 131.  dct:language should be a dct:LinguisticSystem-->
+  <!-- 123.  dct:conformsTo has a maximum cardinality of 1 for Catalog Record-->
+  <!-- 124.  dct:conformsTo should be a resource-->
+  <!-- 125.  adms:status has a maximum cardinality of 1 for Catalog Record-->
+  <!-- 126.  adms:status should be a skos:Concept-->
+  <!-- 127.  dct:issued has a maximum cardinality of 1 for dcat:Catalog Record-->
+  <!-- 128.  dct:source should be a dcat:CatalogRecord-->
+  <!-- 129.  dct:source has a maximum cardinality of 1 for Catalog Record-->
+  <!-- 131.  dct:language should be a dct:LinguisticSystem-->
   <sch:pattern>
     <sch:title>132. spdx:algorithm is a required property for Checksum.</sch:title>
     <sch:rule context="//spdx:Checksum">
@@ -1301,29 +1045,7 @@ Source:
       </sch:report>
     </sch:rule>
   </sch:pattern>
-  <!--<sch:pattern>-->
-  <!--  <sch:title>169. skos:prefLabel is a required property for skos:Concept.</sch:title>-->
-  <!--  <sch:rule context="//skos:Concept[not(name(..) = ('dct:type','dcat:theme','dct:format'))]">-->
-  <!--    <sch:let name="id" value="@rdf:about/string()"/>-->
-  <!--    <sch:let name="value" value="skos:prefLabel[@xml:lang='nl']"/>-->
-  <!--    <sch:let name="missingProperty" value="not($value!='')"/>-->
-  <!--    <sch:assert test="$missingProperty = false()">ERROR: The <sch:value-of select="name(../..)"/>/<sch:value-of select="name(..)"/> does not have a skos:prefLabel value.-->
-  <!--    </sch:assert>-->
-  <!--    <sch:report test="$missingProperty = false()">The <sch:value-of select="name(../..)"/>/<sch:value-of select="name(..)"/> does have a skos:prefLabel with value <sch:value-of select="$value"/>.-->
-  <!--    </sch:report>-->
-  <!--  </sch:rule>-->
-  <!--</sch:pattern>-->
-  <!--<sch:pattern>-->
-  <!--  <sch:title>169. skos:prefLabel is a required property for skos:Concept.</sch:title>-->
-  <!--  <sch:rule context="//skos:Concept">-->
-  <!--    <sch:let name="id" value="@rdf:about/string()"/>-->
-  <!--    <sch:let name="missingProperty" value="not(skos:prefLabel)"/>-->
-  <!--    <sch:assert test="$missingProperty = false()">ERROR: The skos:Concept "<sch:value-of select="$id"/>" does not have a skos:prefLabel property.-->
-  <!--    </sch:assert>-->
-  <!--    <sch:report test="$missingProperty = false()">The skos:Concept "<sch:value-of select="$id"/>" has a skos:prefLabel property.-->
-  <!--    </sch:report>-->
-  <!--  </sch:rule>-->
-  <!--</sch:pattern>-->
+  <!-- 169. skos:prefLabel is a required property for skos:Concept.-->
   <sch:pattern>
     <sch:title>169. skos:prefLabel is a required property for dcat:theme/skos:Concept.</sch:title>
     <sch:rule context="//skos:Concept[name(..) = ('dcat:theme')]">
@@ -1412,32 +1134,69 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>300. dcat:endpointUrl is a required property for dcat:DataService</sch:title>
+    <sch:title>300. dct:title is a required property for dcat:DataService</sch:title>
     <sch:rule context="//dcat:DataService">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="missingProperty" value="not(dcat:endpointUrl)"/>
-      <sch:assert test="$missingProperty = false()">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" should have a dcat:endpointUrl property</sch:assert>
-      <sch:report test="$missingProperty = false()">The dcat:DataService "<sch:value-of select="$id"/>" has a dcat:endpointUrl property.</sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>301. dct:title is a required property for dcat:DataService</sch:title>
-    <sch:rule context="//dcat:DataService">
-      <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="missingProperty" value="not(dct:title)"/>
-      <sch:assert test="$missingProperty = false()">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" should have a dct:title property.
+      <sch:let name="hasTitle" value="normalize-space(dct:title) != ''"/>
+      <sch:assert test="$hasTitle">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" should have a dct:title property.
       </sch:assert>
-      <sch:report test="$missingProperty = false()">The dcat:DataService "<sch:value-of select="$id"/>" has a dct:title property.
+      <sch:report test="$hasTitle">The dcat:DataService "<sch:value-of select="$id"/>" has a dct:title property.
       </sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>350. dcat:endpointUrl property is a rdf:resource</sch:title>
-    <sch:rule context="//dcat:endpointUrl">
-      <sch:let name="resource" value="(* and not(*/@rdf:about)) or (@rdf:resource and @rdf:resource castable as xs:anyURI) or (*/@rdf:about and */@rdf:about castable as xs:anyURI)"/>
-      <sch:let name="content" value="@rdf:resource/string()"/>
-      <sch:assert test="$resource = true()">A dcat:endpointUrl has a value that is not a resource. Value: "<sch:value-of select="$content"/>"</sch:assert>
-      <sch:report test="$resource = true()">A dcat:endpointUrl has a value that is a resource. Value: "<sch:value-of select="$content"/>"</sch:report>
+    <sch:title>412. vcard:hasEmail must be a non-empty string.</sch:title>
+    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
+      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
+      <sch:let name="emptyString" value="normalize-space(@rdf:resource)='' or not(matches(@rdf:resource, '.+@.+'))"/>
+      <sch:assert test="$emptyString = false()">ERROR: The contact point "<sch:value-of select="$id"/>" has a vcard:hasEmail that is an empty string or does not match the e-mail format.
+      </sch:assert>
+      <sch:report test="$emptyString = false()">The dcontact point '<sch:value-of select="$id"/>' has a vcard:hasEmail '<sch:value-of select="./string()"/>' which is a non-empty string and matches the e-mail string format.
+      </sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>412. vcard:hasEmail has maximum cardinality of 1 for a contactpoint of a Dataset.</sch:title>
+    <sch:rule context="//dcat:Dataset/dcat:contactPoint[$isCorrectProfile]">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="count" value="count(*/vcard:hasEmail)"/>
+      <sch:assert test="2 > $count">ERROR: The vcard:Organization with URI "<sch:value-of select="$id"/>" has more than one vcard:hasEmail property.
+      </sch:assert>
+      <sch:report test="2 > $count">The vcard:Organization with URI "<sch:value-of select="$id"/>" has no more than one vcard:hasEmail property.
+      </sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>412. vcard:hasEmail is a URI with the mailto protocol.</sch:title>
+    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
+      <sch:let name="id" value="@rdf:resource/string()"/>
+      <sch:let name="mailto" value="starts-with(@rdf:resource,'mailto:')"/>
+      <sch:assert test="$mailto = true()">ERROR: The vcard:hasEmail "<sch:value-of select="$id"/>" property is not a URI with the mailto: protocol.
+      </sch:assert>
+      <sch:report test="$mailto = true()">The vcard:hasEmail "<sch:value-of select="$id"/>" property is a URI with the mailto: protocol.
+      </sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>412. vcard:hasEmail must be a non-empty string.</sch:title>
+    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
+      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
+      <sch:let name="emptyString" value="normalize-space(@rdf:resource) = '' or not(matches(@rdf:resource, '.+@.+'))"/>
+      <sch:assert test="$emptyString = false()">ERROR: The contact point "<sch:value-of select="$id"/>" has a vcard:hasEmail that is an empty string or does not match the e-mail format.
+      </sch:assert>
+      <sch:report test="$emptyString = false()">The contact point '<sch:value-of select="$id"/>' has a vcard:hasEmail '<sch:value-of select="./string()"/>' which is a non-empty string and matches the e-mail string format.
+      </sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>413. vcard:hasEmail is a URI.</sch:title>
+    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
+      <sch:let name="id" value="@rdf:resource/string()"/>
+      <sch:let name="uri" value="@rdf:resource castable as xs:anyURI"/>
+      <sch:assert test="$uri = true()">ERROR: The vcard:hasEmail "<sch:value-of select="$id"/>" property is not a valid URI.
+      </sch:assert>
+      <sch:report test="$uri = true()">The vcard:hasEmail "<sch:value-of select="$id"/>" property is a valid URI.
+      </sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>

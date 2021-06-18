@@ -174,7 +174,7 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>204. dct:accessRights is required</sch:title>
+    <sch:title>204. dct:accessRights is required for dcat:Dataset</sch:title>
     <sch:rule context="//dcat:Dataset[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="noTitle" value="not(dct:accessRights)"/>
@@ -425,64 +425,8 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>411. vcard:hasEmail is a mandatory property for a contactpoint of a Dataset.</sch:title>
-    <sch:rule context="//dcat:Dataset/dcat:contactPoint[$isCorrectProfile]">
-      <sch:let name="id" value="*/@rdf:about/string()"/>
-      <sch:let name="noEmail" value="not(*/vcard:hasEmail)"/>
-      <sch:assert test="$noEmail = false()">ERROR: The vcard:Organization with URI "<sch:value-of select="$id"/>" does not have a vcard:hasEmail property.
-      </sch:assert>
-      <sch:report test="$noEmail = false()">The vcard:Organization with URI "<sch:value-of select="$id"/>" has a vcard:hasEmail property.
-      </sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>412. vcard:hasEmail must be a non-empty string.</sch:title>
-    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
-      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="emptyString" value="normalize-space(@rdf:resource)='' or not(matches(@rdf:resource, '.+@.+'))"/>
-      <sch:assert test="$emptyString = false()">ERROR: The contact point "<sch:value-of select="$id"/>" has a vcard:hasEmail that is an empty string or does not match the e-mail format.
-      </sch:assert>
-      <sch:report test="$emptyString = false()">The dcontact point '<sch:value-of select="$id"/>' has a vcard:hasEmail '<sch:value-of select="./string()"/>' which is a non-empty string and matches the e-mail string format.
-      </sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-  <sch:title>412. vcard:hasEmail has maximum cardinality of 1 for a contactpoint of a Dataset.</sch:title>
-    <sch:rule context="//dcat:Dataset/dcat:contactPoint[$isCorrectProfile]">
-      <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="count" value="count(*/vcard:hasEmail)"/>
-      <sch:assert test="2 > $count">ERROR: The vcard:Organization with URI "<sch:value-of select="$id"/>" has more than one vcard:hasEmail property.
-      </sch:assert>
-      <sch:report test="2 > $count">The vcard:Organization with URI "<sch:value-of select="$id"/>" has no more than one vcard:hasEmail property.
-      </sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>412. vcard:hasEmail is a URI with the mailto protocol.</sch:title>
-    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
-      <sch:let name="id" value="@rdf:resource/string()"/>
-      <sch:let name="mailto" value="starts-with(@rdf:resource,'mailto:')"/>
-      <sch:assert test="$mailto = true()">ERROR: The vcard:hasEmail "<sch:value-of select="$id"/>" property is not a URI with the mailto: protocol.
-      </sch:assert>
-      <sch:report test="$mailto = true()">The vcard:hasEmail "<sch:value-of select="$id"/>" property is a URI with the mailto: protocol.
-      </sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>413. vcard:hasEmail is a URI.</sch:title>
-    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
-      <sch:let name="id" value="@rdf:resource/string()"/>
-      <sch:let name="uri" value="@rdf:resource castable as xs:anyURI"/>
-      <sch:assert test="$uri = true()">ERROR: The vcard:hasEmail "<sch:value-of select="$id"/>" property is not a valid URI.
-      </sch:assert>
-      <sch:report test="$uri = true()">The vcard:hasEmail "<sch:value-of select="$id"/>" property is a valid URI.
-      </sch:report>
-    </sch:rule>
-  </sch:pattern>
-
-  <sch:pattern>
     <sch:title>At least one theme from the data.gov.be vocabulary is required</sch:title>
-    <sch:rule context="//dcat:Dataset|//dcat:DataService">
+    <sch:rule context="//dcat:Dataset[$isCorrectProfile]|//dcat:DataService[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="dataThemes" value="count(dcat:theme[starts-with(skos:Concept/@rdf:about, 'http://vocab.belgif.be/auth/datatheme')])"/>
       <sch:assert test="$dataThemes > 0">ERROR: The <sch:value-of select="name()"/> "<sch:value-of select="$id"/>" doesn't have a data.gov.be theme</sch:assert>
@@ -490,17 +434,17 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>dct:license is required for dcat:DataService</sch:title>
-    <sch:rule context="//dcat:DataService">
+    <sch:title>At least one keyword is required.</sch:title>
+    <sch:rule context="//dcat:Dataset[$isCorrectProfile]|//dcat:DataService[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="license" value="dct:license/dct:LicenseDocument|dct:license/@rdf:resource"/>
-      <sch:assert test="$license">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" doesn't have a dct:license</sch:assert>
-      <sch:report test="$license">The dcat:DataService "<sch:value-of select="$id"/>" have a dct:license</sch:report>
+      <sch:let name="hasKeyword" value="count(dcat:keyword[normalize-space(.) != '']) > 0"/>
+      <sch:assert test="$hasKeyword">ERROR: The <sch:value-of select="name()"/> "<sch:value-of select="$id"/>" doesn't have any keyword.</sch:assert>
+      <sch:report test="$hasKeyword">The <sch:value-of select="name()"/> "<sch:value-of select="$id"/>" have at least one keyword.</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>At least one of vcard:hasEmail or vcard:hasURL is a required for a contactpoint of a DataService</sch:title>
-    <sch:rule context="//dcat:DataService/dcat:contactPoint[$isCorrectProfile]">
+    <sch:title>At least one of vcard:hasEmail or vcard:hasURL is a required for a contactpoint.</sch:title>
+    <sch:rule context="//dcat:contactPoint[$isCorrectProfile]">
       <sch:let name="id" value="*/@rdf:about/string()"/>
       <sch:let name="hasEmail" value="*/vcard:hasEmail"/>
       <sch:let name="hasUrl" value="*/vcard:hasURL"/>
@@ -510,15 +454,60 @@ Source:
       </sch:report>
     </sch:rule>
   </sch:pattern>
+
+  <!-- dcat:DataService -->
   <sch:pattern>
-    <sch:title>vcard:hasEmail must be a non-empty string.</sch:title>
-    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
-      <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="emptyString" value="normalize-space(@rdf:resource)='' or not(matches(@rdf:resource, '.+@.+'))"/>
-      <sch:assert test="$emptyString = false()">ERROR: The contact point "<sch:value-of select="$id"/>" has a vcard:hasEmail that is an empty string or does not match the e-mail format.
-      </sch:assert>
-      <sch:report test="$emptyString = false()">The contact point '<sch:value-of select="$id"/>' has a vcard:hasEmail '<sch:value-of select="./string()"/>' which is a non-empty string and matches the e-mail string format.
-      </sch:report>
+    <sch:title>dcat:endpointUrl is required for dcat:DataService</sch:title>
+    <sch:rule context="//dcat:DataService[$isCorrectProfile]">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="hasEndpointUrl" value="normalize-space(dcat:endpointUrl/@rdf:resource) != ''"/>
+      <sch:assert test="$hasEndpointUrl">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" doesn't have a dcat:endpointUrl.</sch:assert>
+      <sch:report test="$hasEndpointUrl">The dcat:DataService "<sch:value-of select="$id"/>" have a dcat:endpointUrl.</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>dcat:endpointDescription is required for dcat:DataService</sch:title>
+    <sch:rule context="//dcat:DataService[$isCorrectProfile]">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="hasEndpointDescription" value="normalize-space(dcat:endpointDescription/@rdf:resource) != ''"/>
+      <sch:assert test="$hasEndpointDescription">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" doesn't have a dcat:endpointDescription.</sch:assert>
+      <sch:report test="$hasEndpointDescription">The dcat:DataService "<sch:value-of select="$id"/>" have a dcat:endpointDescription.</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>dct:accessRights is required for dcat:DataService</sch:title>
+    <sch:rule context="//dcat:DataService[$isCorrectProfile]">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="hasAccessRights" value="count(dct:accessRights) > 0 and (normalize-space(dct:accessRights/skos:Concept/@rdf:about) != '' or count(dct:accessRights/dct:RightsStatement) > 0)"/>
+      <sch:assert test="$hasAccessRights = true()">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" does not have a dct:accessRights property.</sch:assert>
+      <sch:report test="$hasAccessRights = true()">The dcat:DataService "<sch:value-of select="$id"/>" has a dct:accessRights property.</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>dct:license is required for dcat:DataService</sch:title>
+    <sch:rule context="//dcat:DataService[$isCorrectProfile]">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="license" value="dct:license/dct:LicenseDocument|dct:license/@rdf:resource"/>
+      <sch:assert test="$license">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" doesn't have a dct:license</sch:assert>
+      <sch:report test="$license">The dcat:DataService "<sch:value-of select="$id"/>" have a dct:license</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>dcat:contactPoint is a required property for dcat:DataService.</sch:title>
+    <sch:rule context="//dcat:DataService[$isCorrectProfile]">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="hasContactPoint" value="count(dcat:contactPoint) > 0"/>
+      <sch:assert test="$hasContactPoint">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" does not have a dcat:contactPoint.</sch:assert>
+      <sch:report test="$hasContactPoint">The dcat:DataService "<sch:value-of select="$id"/>" has a dcat:contactPoint "<sch:value-of select="dcat:contactPoint/*/@rdf:about/string()"/>".</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>dct:publisher is a required property for dcat:DataService.</sch:title>
+    <sch:rule context="//dcat:DataService[$isCorrectProfile]">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="hasPublisher" value="count(dct:publisher) > 0"/>
+      <sch:assert test="$hasPublisher">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dct:publisher.</sch:assert>
+      <sch:assert test="$hasPublisher">The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:publisher.</sch:assert>
     </sch:rule>
   </sch:pattern>
 </sch:schema>
