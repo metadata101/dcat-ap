@@ -474,7 +474,7 @@
   </xsl:template>
 
   <!-- Add "mailto:" prefix on mail adresses -->
-  <xsl:template match="vcard:hasEmail[not(starts-with(@rdf:resource, 'mailto:'))]" priority="10">
+  <xsl:template match="vcard:hasEmail[not(starts-with(@rdf:resource, 'mailto:')) and normalize-space(@rdf:resource) != '']" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:attribute name="rdf:resource" select="concat('mailto:', @rdf:resource)"/>
     </xsl:copy>
