@@ -44,9 +44,9 @@
                            mdcat:landingspaginaVoorStatusinformatie|
                            mdcat:landingspaginaVoorGebruiksinformatie|
                            mdcat:levensfase|
-                           mdcat:ontwikkelingstoestand"/>
-
-      <xsl:copy-of select="dcat:qualifiedRelation|
+                           mdcat:ontwikkelingstoestand|
+                           dcat:qualifiedRelation|
+                           dct:subject|
                            dcat:theme|
                            dct:accessRights|
                            dct:conformsTo|

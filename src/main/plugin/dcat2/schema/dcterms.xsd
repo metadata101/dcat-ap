@@ -63,6 +63,13 @@
   <xs:element name="type" type="skos:Concept"/>
   <xs:element name="identifier" type="rdf:PlainLiteral"/>
   <xs:element name="language" type="skos:Concept"/>
+  <xs:element name="subject" type="skos:Concept"/>
+
+  <xs:complexType name="subject">
+    <xs:complexContent>
+      <xs:extension base="skos:Concept"/>
+    </xs:complexContent>
+  </xs:complexType>
   <!-- dct:LicenseDocument -->
   <xs:complexType name="LicenseDocument">
     <xs:sequence>

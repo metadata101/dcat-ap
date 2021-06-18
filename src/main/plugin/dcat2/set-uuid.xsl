@@ -117,6 +117,7 @@
                                    dcat:keyword|
                                    dcat:landingPage|
                                    dcat:qualifiedRelation|
+                                   dct:subject|
                                    dcat:theme|
                                    dct:accessRights|
                                    dct:conformsTo|

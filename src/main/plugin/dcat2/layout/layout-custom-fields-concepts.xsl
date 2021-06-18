@@ -17,20 +17,21 @@
 
   <!--  Template to prepare data-gn-keyword component for xml elements based on a thesaurus -->
   <xsl:template mode="mode-dcat2" priority="2000" match="foaf:Agent/dct:type|
-                                                                 dcat:theme|
-                                                                 dct:accrualPeriodicity|
-                                                                 dct:language|
-                                                                 dcat:Dataset/dct:type|
-                                                                 dcat:DataService/dct:type|
-                                                                 dct:format|
-                                                                 dcat:mediaType|
-                                                                 dcat:compressFormat|
-                                                                 dcat:packageFormat|
-                                                                 adms:status|
-                                                                 dct:LicenseDocument/dct:type|
-                                                                 dct:accessRights|
-                                                                 mdcat:levensfase|
-                                                                 mdcat:ontwikkelingstoestand">
+                                                         dct:subject|
+                                                         dcat:theme|
+                                                         dct:accrualPeriodicity|
+                                                         dct:language|
+                                                         dcat:Dataset/dct:type|
+                                                         dcat:DataService/dct:type|
+                                                         dct:format|
+                                                         dcat:mediaType|
+                                                         dcat:compressFormat|
+                                                         dcat:packageFormat|
+                                                         adms:status|
+                                                         dct:LicenseDocument/dct:type|
+                                                         dct:accessRights|
+                                                         mdcat:levensfase|
+                                                         mdcat:ontwikkelingstoestand">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
 

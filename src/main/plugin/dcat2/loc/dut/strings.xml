@@ -356,4 +356,6 @@
   <FieldId505>taal</FieldId505>
   <FieldId506>titel</FieldId506>
   <FieldId507>beschrijving</FieldId507>
+
+  <FieldId508>subject</FieldId508>
 </strings>

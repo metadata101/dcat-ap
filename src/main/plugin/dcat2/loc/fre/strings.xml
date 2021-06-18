@@ -354,4 +354,6 @@
   <FieldId505>language</FieldId505>
   <FieldId506>title</FieldId506>
   <FieldId507>description</FieldId507>
+
+  <FieldId508>subject</FieldId508>
 </strings>

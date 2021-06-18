@@ -327,7 +327,7 @@
       <Field name="keyword" string="{.}" store="true" index="true"/>
     </xsl:for-each>
 
-    <xsl:for-each select="dcat:theme">
+    <xsl:for-each select="dct:subject">
       <xsl:variable name="scheme" select="skos:Concept/skos:inScheme/@rdf:resource"/>
       <xsl:variable name="theme" select="skos:Concept/skos:prefLabel[@xml:lang=$langId]"/>
       <xsl:choose>

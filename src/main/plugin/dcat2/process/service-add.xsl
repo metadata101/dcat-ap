@@ -25,13 +25,14 @@
                            dct:modified|
                            dct:publisher|
                            dcat:keyword|
+                           dct:subject|
                            dcat:theme|
                            dct:accessRights|
                            dct:conformsTo|
                            foaf:page|
                            dct:accrualPeriodicity|
                            dct:hasVersion|
-                           dct:isVOnlineSrcDirectiveersionOf|
+                           dct:isVersionOf|
                            dcat:landingPage|
                            dct:language|
                            adms:identifier|
@@ -87,9 +88,8 @@
                            foaf:page|
                            dct:conformsTo|
                            adms:status|
-                           dcat:accessService"/>
-
-      <xsl:copy-of select="dcat:compressFormat|
+                           dcat:accessService|
+                           dcat:compressFormat|
                            dcat:packageFormat|
                            dcat:spatialResolutionInMeters|
                            dcat:temporalResolution"/>

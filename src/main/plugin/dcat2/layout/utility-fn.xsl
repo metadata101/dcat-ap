@@ -23,14 +23,14 @@
   -->
 
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
-  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-  xmlns:java="java:org.fao.geonet.util.XslUtil"
-  xmlns:java2="java:org.fao.geonet.schema.dcatap.util.XslUtil"
-  xmlns:saxon="http://saxon.sf.net/"
-  extension-element-prefixes="saxon"
-  exclude-result-prefixes="#all">
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:java="java:org.fao.geonet.util.XslUtil"
+                xmlns:java2="java:org.fao.geonet.schema.dcatap.util.XslUtil"
+                xmlns:saxon="http://saxon.sf.net/"
+                xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
+                extension-element-prefixes="saxon"
+                exclude-result-prefixes="#all">
 
   <xsl:variable name="inSchemeAuthorityBaseUrl" select="'http://publications.europa.eu/resource/authority/'"/>
   <xsl:variable name="inSchemeAuthBaseUrl" select="'http://vocab.belgif.be/auth/'"/>
@@ -80,6 +80,9 @@
       <xsl:when test="$elementName = 'mdcat:ontwikkelingstoestand'">
         <xsl:value-of select="concat($inSchemeMdcatBaseUrl,'ontwikkelingstoestand')"/>
       </xsl:when>
+      <xsl:when test="$elementName = 'dct:subject'">
+        <xsl:value-of select="concat($inSchemeVLBaseUrl,'GDI-Vlaanderen-Trefwoorden')"/>
+      </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="''"/>
       </xsl:otherwise>
@@ -124,6 +127,9 @@
         <xsl:value-of select="''"/>
       </xsl:when>
       <xsl:when test="$elementName = 'mdcat:ontwikkelingstoestand'">
+        <xsl:value-of select="''"/>
+      </xsl:when>
+      <xsl:when test="$elementName = 'dct:subject'">
         <xsl:value-of select="''"/>
       </xsl:when>
       <xsl:otherwise>
@@ -172,7 +178,7 @@
         <xsl:value-of select="'GDI-Vlaanderen Trefwoorden'"/>
       </xsl:when>
       <xsl:otherwise>
-          <xsl:value-of select="'Untitled thesaurus'"/>
+        <xsl:value-of select="'Untitled thesaurus'"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:function>
@@ -221,7 +227,7 @@
       </xsl:when>
       <xsl:otherwise>
         <xsl:message select="concat('No thesaurus identifier found for the inScheme URI ', $resource)"/>
-        <xsl:value-of select="''" />
+        <xsl:value-of select="''"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:function>
@@ -259,7 +265,6 @@
     </xsl:variable>
 
 
-
     <xsl:variable name="excluded"
                   as="xs:boolean"
                   select="
@@ -284,9 +289,9 @@
     <!-- The element containing the value eg. gco:Date -->
     <xsl:param name="childName" as="xs:string?"/>
     <xsl:variable name="childNode"
-                  select="$configuration/editor/fields/for[@name = $childName and @templateModeOnly]" />
+                  select="$configuration/editor/fields/for[@name = $childName and @templateModeOnly]"/>
     <xsl:variable name="node"
-                  select="$configuration/editor/fields/for[@name = $name and @templateModeOnly]" />
+                  select="$configuration/editor/fields/for[@name = $name and @templateModeOnly]"/>
 
     <xsl:choose>
       <xsl:when test="count($childNode/*)>0">
@@ -330,8 +335,8 @@
         <xsl:value-of select="$bbox"/>
       </xsl:when>
       <xsl:otherwise>
-          <!-- Initialize with Flanders bbox when locn:geometry contains invalid geometry -->
-          <xsl:value-of select="'2.53|50.67|5.92|51.51|Vlaams Gewest|https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Vlaamse-Administratieve-Eenheden'" />
+        <!-- Initialize with Flanders bbox when locn:geometry contains invalid geometry -->
+        <xsl:value-of select="'2.53|50.67|5.92|51.51|Vlaams Gewest|https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Vlaamse-Administratieve-Eenheden'"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:function>

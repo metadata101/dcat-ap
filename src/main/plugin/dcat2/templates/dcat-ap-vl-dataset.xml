@@ -49,13 +49,13 @@
             </dct:type>
           </foaf:Agent>
         </dct:publisher>
-        <dcat:theme>
+        <dct:subject>
           <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
             <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
             <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
             <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
           </skos:Concept>
-        </dcat:theme>
+        </dct:subject>
         <dcat:theme/>
         <dct:accessRights>
           <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">

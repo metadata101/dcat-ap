@@ -400,6 +400,7 @@
             </template>
           </action>
           <field name="FieldId145" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:keyword" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:subject" or="subject" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId147" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme" or="theme" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId113" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
@@ -540,6 +541,7 @@
               </snippet>
             </template>
           </action>
+          <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:subject" or="subject" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId427" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme" or="theme" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId405" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier"/>
         </section>
@@ -686,6 +688,7 @@
       <flatModeExceptions>
         <!-- Basic information -->
         <for name="dcat:keyword"/>
+        <for name="dct:subject"/>
         <for name="dcat:theme"/>
         <!-- Version info -->
         <for name="owl:versionInfo"/>
@@ -797,6 +800,7 @@
               </snippet>
             </template>
           </action>
+          <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:subject" or="subject" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId147" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme" or="theme" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId113" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId190" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:identifier" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
@@ -1099,6 +1103,7 @@
           </action>
           <directive data-gim-add-dataset=""/>
           <field name="FieldId407" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:subject" or="subject" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId427" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme" or="theme" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId405" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
         </section>

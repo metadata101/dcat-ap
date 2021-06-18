@@ -320,7 +320,7 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template mode="render-field" match="dct:type|dcat:theme|dct:accrualPeriodicity|dct:language|dct:format|dcat:mediaType|
+  <xsl:template mode="render-field" match="dct:type|dct:subject|dcat:theme|dct:accrualPeriodicity|dct:language|dct:format|dcat:mediaType|
                                            adms:status|mdcat:levensfase|mdcat:ontwikkelingstoestand|dct:accessRights|dcat:compressFormat|
                                            dcat:packageFormat">
     <xsl:param name="xpath"/>

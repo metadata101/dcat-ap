@@ -237,7 +237,8 @@
       <xsl:apply-templates select="dct:modified"/>
       <xsl:apply-templates select="dct:publisher"/>
       <xsl:apply-templates select="dcat:keyword"/>
-      <xsl:call-template name="apply-themes"/>
+      <xsl:call-template name="apply-subjects"/>
+      <xsl:apply-templates select="dcat:theme"/>
       <xsl:apply-templates select="dct:accessRights"/>
       <xsl:apply-templates select="dct:conformsTo"/>
       <xsl:apply-templates select="foaf:page"/>
@@ -287,7 +288,8 @@
       <xsl:apply-templates select="mdcat:levensfase"/>
       <xsl:apply-templates select="mdcat:ontwikkelingstoestand"/>
       <xsl:apply-templates select="dcat:qualifiedRelation"/>
-      <xsl:call-template name="apply-themes"/>
+      <xsl:call-template name="apply-subjects"/>
+      <xsl:apply-templates select="dcat:theme"/>
       <xsl:apply-templates select="dct:accessRights"/>
       <xsl:apply-templates select="dct:conformsTo"/>
       <xsl:apply-templates select="dct:creator"/>
@@ -323,7 +325,7 @@
   </xsl:template>
 
   <!-- Fill empty element and update existing with resourceType -->
-  <xsl:template match="foaf:Agent/dct:type|dcat:theme|dct:accrualPeriodicity|dct:language|dcat:Dataset/dct:type|
+  <xsl:template match="foaf:Agent/dct:type|dct:subject|dcat:theme|dct:accrualPeriodicity|dct:language|dcat:Dataset/dct:type|
                        dcat:DataService/dct:type|dct:format|dcat:mediaType|adms:status|dct:LicenseDocument/dct:type|
                        dct:accessRights|mdcat:levensfase|mdcat:ontwikkelingstoestand|dcat:compressFormat|
                        dcat:packageFormat" priority="10">
@@ -478,20 +480,20 @@
     </xsl:copy>
   </xsl:template>
   <!-- =================================================================  -->
-  <xsl:template name="apply-themes">
+  <xsl:template name="apply-subjects">
     <xsl:choose>
       <xsl:when test="$profile != 'dcat-ap-vl'">
-        <xsl:apply-templates select="dcat:theme"/>
+        <xsl:apply-templates select="dct:subject"/>
       </xsl:when>
       <xsl:otherwise>
-        <dcat:theme>
+        <dct:subject>
           <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
             <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
             <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
             <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
           </skos:Concept>
-        </dcat:theme>
-        <xsl:apply-templates select="dcat:theme[not(skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden')]"/>
+        </dct:subject>
+        <xsl:apply-templates select="dct:subject[skos:Concept/@rdf:about != 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA']"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
