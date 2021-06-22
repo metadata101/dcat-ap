@@ -1146,7 +1146,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>412. vcard:hasEmail must be a non-empty string.</sch:title>
-    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
+    <sch:rule context="//vcard:hasEmail">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="emptyString" value="normalize-space(@rdf:resource)='' or not(matches(@rdf:resource, '.+@.+'))"/>
       <sch:assert test="$emptyString = false()">ERROR: The contact point "<sch:value-of select="$id"/>" has a vcard:hasEmail that is an empty string or does not match the e-mail format.
@@ -1157,7 +1157,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>412. vcard:hasEmail has maximum cardinality of 1 for a contactpoint of a Dataset.</sch:title>
-    <sch:rule context="//dcat:Dataset/dcat:contactPoint[$isCorrectProfile]">
+    <sch:rule context="//dcat:Dataset/dcat:contactPoint">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="count" value="count(*/vcard:hasEmail)"/>
       <sch:assert test="2 > $count">ERROR: The vcard:Organization with URI "<sch:value-of select="$id"/>" has more than one vcard:hasEmail property.
@@ -1168,7 +1168,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>412. vcard:hasEmail is a URI with the mailto protocol.</sch:title>
-    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
+    <sch:rule context="//vcard:hasEmail">
       <sch:let name="id" value="@rdf:resource/string()"/>
       <sch:let name="mailto" value="starts-with(@rdf:resource,'mailto:')"/>
       <sch:assert test="$mailto = true()">ERROR: The vcard:hasEmail "<sch:value-of select="$id"/>" property is not a URI with the mailto: protocol.
@@ -1179,7 +1179,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>412. vcard:hasEmail must be a non-empty string.</sch:title>
-    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
+    <sch:rule context="//vcard:hasEmail">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
       <sch:let name="emptyString" value="normalize-space(@rdf:resource) = '' or not(matches(@rdf:resource, '.+@.+'))"/>
       <sch:assert test="$emptyString = false()">ERROR: The contact point "<sch:value-of select="$id"/>" has a vcard:hasEmail that is an empty string or does not match the e-mail format.
@@ -1190,7 +1190,7 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>413. vcard:hasEmail is a URI.</sch:title>
-    <sch:rule context="//vcard:hasEmail[$isCorrectProfile]">
+    <sch:rule context="//vcard:hasEmail">
       <sch:let name="id" value="@rdf:resource/string()"/>
       <sch:let name="uri" value="@rdf:resource castable as xs:anyURI"/>
       <sch:assert test="$uri = true()">ERROR: The vcard:hasEmail "<sch:value-of select="$id"/>" property is not a valid URI.
