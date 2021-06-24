@@ -357,7 +357,7 @@
       <xsl:if test="count($themes) > 0">
         'theme': [
         <xsl:for-each select="$themes">
-          {'value': <xsl:value-of select="concat('''', replace(skos:prefLabel[@xml:lang=$langId], '''', '\\'''), '''')"/>,
+          {'value': <xsl:value-of select="concat('''', replace(skos:prefLabel[@xml:lang=$langId][1], '''', '\\'''), '''')"/>,
           'link': ''}
           <xsl:if test="position() != last()">,</xsl:if>
         </xsl:for-each>

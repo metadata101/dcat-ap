@@ -64,7 +64,7 @@ Source:
     <sch:title>0. foaf:name for Agent cannot be an empty string.</sch:title>
     <sch:rule context="//foaf:Agent/foaf:name">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="emptyString" value="normalize-space(.)=''"/>
+      <sch:let name="emptyString" value="normalize-space(.) = ''"/>
       <sch:assert test="$emptyString = false()">ERROR: The foaf:Agent "<sch:value-of select="$id"/>" has a foaf:name that is an empty string.
       </sch:assert>
       <sch:report test="$emptyString = false()">The foaf:Agent '<sch:value-of select="$id"/>' has a foaf:name '<sch:value-of select="./string()"/>' which is a non-empty string.
@@ -129,7 +129,7 @@ Source:
     <sch:title>37. dct:description is a required property for Dataset.</sch:title>
     <sch:rule context="//dcat:Dataset">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="hasDescription" value="normalize-space(dct:description) != ''"/>
+      <sch:let name="hasDescription" value="count(dct:description[normalize-space(.) != '']) > 0"/>
       <sch:assert test="$hasDescription">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dct:description.</sch:assert>
       <sch:report test="$hasDescription">The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:description.</sch:report>
     </sch:rule>
@@ -139,7 +139,7 @@ Source:
     <sch:title>39. dct:title is a required property for Dataset.</sch:title>
     <sch:rule context="//dcat:Dataset">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="hasTitle" value="normalize-space(dct:title) != ''"/>
+      <sch:let name="hasTitle" value="count(dct:title[normalize-space(.) != '']) > 0"/>
       <sch:assert test="$hasTitle">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dct:title.
       </sch:assert>
       <sch:report test="$hasTitle">The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:title.
@@ -1137,7 +1137,7 @@ Source:
     <sch:title>300. dct:title is a required property for dcat:DataService</sch:title>
     <sch:rule context="//dcat:DataService">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="hasTitle" value="normalize-space(dct:title) != ''"/>
+      <sch:let name="hasTitle" value="count(dct:title[normalize-space(.) != '']) > 0"/>
       <sch:assert test="$hasTitle">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" should have a dct:title property.
       </sch:assert>
       <sch:report test="$hasTitle">The dcat:DataService "<sch:value-of select="$id"/>" has a dct:title property.
@@ -1148,7 +1148,7 @@ Source:
     <sch:title>412. vcard:hasEmail must be a non-empty string.</sch:title>
     <sch:rule context="//vcard:hasEmail">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="emptyString" value="normalize-space(@rdf:resource)='' or not(matches(@rdf:resource, '.+@.+'))"/>
+      <sch:let name="emptyString" value="normalize-space(@rdf:resource) = '' or not(matches(@rdf:resource, '.+@.+'))"/>
       <sch:assert test="$emptyString = false()">ERROR: The contact point "<sch:value-of select="$id"/>" has a vcard:hasEmail that is an empty string or does not match the e-mail format.
       </sch:assert>
       <sch:report test="$emptyString = false()">The dcontact point '<sch:value-of select="$id"/>' has a vcard:hasEmail '<sch:value-of select="./string()"/>' which is a non-empty string and matches the e-mail string format.

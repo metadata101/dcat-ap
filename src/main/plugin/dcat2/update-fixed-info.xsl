@@ -172,7 +172,7 @@
         </xsl:when>
         <xsl:otherwise>
           <dcat:record>
-            <dcat:CatalogRecord rdf:about="{/root/env/nodeURL}/api/records/{$uuid}">
+            <dcat:CatalogRecord rdf:about="{/root/env/nodeURL}api/records/{$uuid}">
               <dct:identifier>
                 <xsl:value-of select="$uuid"/>
               </dct:identifier>
@@ -193,8 +193,15 @@
   <xsl:template match="dcat:CatalogRecord" priority="10">
     <xsl:copy>
       <xsl:apply-templates select="@*[not(name(.) = 'rdf:about')]"/>
-      <xsl:attribute name="rdf:about"
-                     select="replace(@rdf:about, '([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}', $uuid)"/>
+      <xsl:choose>
+        <xsl:when test="normalize-space(@rdf:about) = ''">
+          <xsl:attribute name="rdf:about" select="concat(/root/env/nodeURL, 'api/records/', $uuid)"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:attribute name="rdf:about"
+                         select="replace(@rdf:about, '([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}', $uuid)"/>
+        </xsl:otherwise>
+      </xsl:choose>
       <dct:identifier>
         <xsl:value-of select="$uuid"/>
       </dct:identifier>

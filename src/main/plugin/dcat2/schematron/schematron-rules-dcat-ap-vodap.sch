@@ -460,7 +460,7 @@ Source:
     <sch:title>dcat:endpointUrl is required for dcat:DataService</sch:title>
     <sch:rule context="//dcat:DataService[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="hasEndpointUrl" value="normalize-space(dcat:endpointUrl/@rdf:resource) != ''"/>
+      <sch:let name="hasEndpointUrl" value="count(dcat:endpointUrl[normalize-space(@rdf:resource) != '']) > 0"/>
       <sch:assert test="$hasEndpointUrl">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" doesn't have a dcat:endpointUrl.</sch:assert>
       <sch:report test="$hasEndpointUrl">The dcat:DataService "<sch:value-of select="$id"/>" have a dcat:endpointUrl.</sch:report>
     </sch:rule>
@@ -469,7 +469,7 @@ Source:
     <sch:title>dcat:endpointDescription is required for dcat:DataService</sch:title>
     <sch:rule context="//dcat:DataService[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="hasEndpointDescription" value="normalize-space(dcat:endpointDescription/@rdf:resource) != ''"/>
+      <sch:let name="hasEndpointDescription" value="count(dcat:endpointDescription[normalize-space(@rdf:resource) != '']) > 0"/>
       <sch:assert test="$hasEndpointDescription">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" doesn't have a dcat:endpointDescription.</sch:assert>
       <sch:report test="$hasEndpointDescription">The dcat:DataService "<sch:value-of select="$id"/>" have a dcat:endpointDescription.</sch:report>
     </sch:rule>
