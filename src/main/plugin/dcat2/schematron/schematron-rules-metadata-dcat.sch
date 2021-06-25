@@ -145,7 +145,7 @@ Source:
     <sch:title>dct:accessRights is required for dcat:Dataset</sch:title>
     <sch:rule context="//dcat:Dataset[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="hasAccessRights" value="count(dct:accessRights) > 0 and (normalize-space(dct:accessRights/skos:Concept/@rdf:about) != '' or count(dct:accessRights/dct:RightsStatement) > 0)"/>
+      <sch:let name="hasAccessRights" value="count(dct:accessRights/skos:Concept[normalize-space(@rdf:about) != '']|dct:accessRights/dct:RightsStatement) > 0"/>
       <sch:assert test="$hasAccessRights = true()">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dct:accessRights property.
       </sch:assert>
       <sch:report test="$hasAccessRights = true()">The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:accessRights property.
@@ -330,7 +330,7 @@ Source:
     <sch:title>dct:title should be a non-empty string for dcat:Dataset.</sch:title>
     <sch:rule context="//dcat:Dataset/dct:title[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="emptyString" value="normalize-space(.)=''"/>
+      <sch:let name="emptyString" value="normalize-space(.) = ''"/>
       <sch:assert test="$emptyString = false()">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:title that is an empty string.
       </sch:assert>
       <sch:report test="$emptyString = false()">The dcat:Dataset '<sch:value-of select="$id"/>' has a dct:title '<sch:value-of select="./string()"/>' which is a non-empty string.
@@ -341,7 +341,7 @@ Source:
     <sch:title>dct:title should be a non-empty string for dcat:Catalog.</sch:title>
     <sch:rule context="//dcat:Catalog/dct:title[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="emptyString" value="normalize-space(.)=''"/>
+      <sch:let name="emptyString" value="normalize-space(.) = ''"/>
       <sch:assert test="$emptyString = false()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:title that is an empty string.
       </sch:assert>
       <sch:report test="$emptyString = false()">The dcat:Catalog '<sch:value-of select="$id"/>' has a dct:title '<sch:value-of select="./string()"/>' which is a non-empty string.
@@ -374,7 +374,7 @@ Source:
     <sch:title>dct:description should be a non-empty string for Catalog.</sch:title>
     <sch:rule context="//dcat:Catalog/dct:description[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="emptyString" value="normalize-space(.)=''"/>
+      <sch:let name="emptyString" value="normalize-space(.) = ''"/>
       <sch:assert test="$emptyString = false()">ERROR: The dcat:Catalog "<sch:value-of select="$id"/>" has a dct:description that is an empty string.
       </sch:assert>
       <sch:report test="$emptyString = false()">The dcat:Catalog '<sch:value-of select="$id"/>' has a dct:description '<sch:value-of select="./string()"/>' which is a non-empty string.
@@ -385,7 +385,7 @@ Source:
     <sch:title>dct:description should be a non-empty string for Dataset.</sch:title>
     <sch:rule context="//dcat:Dataset/dct:description[$isCorrectProfile]">
       <sch:let name="id" value="parent::node()/@rdf:about/string()"/>
-      <sch:let name="emptyString" value="normalize-space(.)=''"/>
+      <sch:let name="emptyString" value="normalize-space(.) = ''"/>
       <sch:assert test="$emptyString = false()">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:description that is an empty string.
       </sch:assert>
       <sch:report test="$emptyString = false()">The dcat:Dataset '<sch:value-of select="$id"/>' has a dct:description '<sch:value-of select="./string()"/>' which is a non-empty string.
@@ -419,7 +419,7 @@ Source:
     <sch:title>dcat:endpointDescription is required for dcat:DataService</sch:title>
     <sch:rule context="//dcat:DataService[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="hasEndpointDescription" value="normalize-space(dcat:endpointDescription) != ''"/>
+      <sch:let name="hasEndpointDescription" value="count(dcat:endpointDescription[normalize-space(@rdf:resource) != '']) > 0"/>
       <sch:assert test="$hasEndpointDescription">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" doesn't have a dcat:endpointDescription.</sch:assert>
       <sch:report test="$hasEndpointDescription">The dcat:DataService "<sch:value-of select="$id"/>" have a dcat:endpointDescription.</sch:report>
     </sch:rule>
@@ -428,7 +428,7 @@ Source:
     <sch:title>dct:accessRights is required for dcat:DataService</sch:title>
     <sch:rule context="//dcat:DataService[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="hasAccessRights" value="count(dct:accessRights) > 0 and (normalize-space(dct:accessRights/skos:Concept/@rdf:about) != '' or count(dct:accessRights/dct:RightsStatement) > 0)"/>
+      <sch:let name="hasAccessRights" value="count(dct:accessRights/skos:Concept[normalize-space(@rdf:about) != '']|dct:accessRights/dct:RightsStatement) > 0"/>
       <sch:assert test="$hasAccessRights = true()">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" does not have a dct:accessRights property.</sch:assert>
       <sch:report test="$hasAccessRights = true()">The dcat:DataService "<sch:value-of select="$id"/>" has a dct:accessRights property.</sch:report>
     </sch:rule>
