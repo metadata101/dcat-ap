@@ -196,7 +196,7 @@
             <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="endpointUrl" type="rdf:Resource" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="endpointUrl" type="rdf:Resource" minOccurs="0" maxOccurs="1"/>
             <xs:element name="endpointDescription" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="servesDataset" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="landingPage" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>

@@ -523,7 +523,21 @@
             </template>
           </action>
           <field name="FieldId402" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
+          <action type="add" btnLabel="FieldId402" or="endpointUrl" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:endpointUrl rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
           <field name="FieldId403" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription"/>
+          <action type="add" btnLabel="FieldId403" or="endpointDescription" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:endpointDescription rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
           <field name="FieldId404" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
           <action type="add" btnLabel="FieldId404" or="servesDataset" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>

@@ -48,7 +48,14 @@ Source:
   <sch:ns prefix="gco" uri="undefined"/>
   <sch:ns prefix="dc" uri="http://purl.org/dc/elements/1.1/"/>
   <sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
+  <sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
   <sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
+
+  <sch:let name="isOnlyDcatAp" value="not(boolean(/*[
+    starts-with(//dcat:CatalogRecord//dct:Standard/@rdf:about, 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat') or
+    starts-with(//dcat:CatalogRecord//dct:Standard/@rdf:about, 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL')
+  ]))"/>
+
   <sch:pattern>
     <sch:title>0. foaf:name is a required property for Agent.</sch:title>
     <sch:rule context="//foaf:Agent">
@@ -1273,6 +1280,15 @@ Source:
       <sch:let name="messageStart" value="concat('The property dct:type of dct:LicenseDocument ',$id)"/>
       <sch:assert test="$resource = true()"><sch:value-of select="$messageStart"/> should not be a literal.</sch:assert>
       <sch:report test="$resource = true()"><sch:value-of select="$messageStart"/> is not a literal.</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>506. dcat:endpointUrl is required for dcat:DataService</sch:title>
+    <sch:rule context="//dcat:DataService[$isOnlyDcatAp]">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="hasEndpointUrl" value="count(dcat:endpointUrl[normalize-space(@rdf:resource) != '']) > 0"/>
+      <sch:assert test="$hasEndpointUrl">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" doesn't have a dcat:endpointUrl.</sch:assert>
+      <sch:report test="$hasEndpointUrl">The dcat:DataService "<sch:value-of select="$id"/>" have a dcat:endpointUrl.</sch:report>
     </sch:rule>
   </sch:pattern>
 </sch:schema>

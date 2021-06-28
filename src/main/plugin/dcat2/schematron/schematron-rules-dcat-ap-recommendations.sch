@@ -51,6 +51,12 @@ Source:
   <sch:ns prefix="dc" uri="http://purl.org/dc/elements/1.1/"/>
   <sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
   <sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
+
+  <sch:let name="isOnlyDcatAp" value="not(boolean(/*[
+    starts-with(//dcat:CatalogRecord//dct:Standard/@rdf:about, 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat') or
+    starts-with(//dcat:CatalogRecord//dct:Standard/@rdf:about, 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL')
+  ]))"/>
+
   <sch:pattern>
     <sch:title>2. dct:type is a recommended property for Agent.</sch:title>
     <sch:rule context="//foaf:Agent[not(name(../..) = ('dcat:Catalog', 'dcat:DataService'))]">
@@ -302,13 +308,22 @@ Source:
   </sch:pattern>
   <sch:pattern>
     <sch:title>303. dcat:servesDataset is a recommended property for dcat:DataService.</sch:title>
-    <sch:rule context="//dcat:DataService">
+    <sch:rule context="//dcat:DataService[$isOnlyDcatAp]">
       <sch:let name="id" value="@rdf:about/string()"/>
       <sch:let name="noServesDataset" value="not(dcat:servesDataset)"/>
       <sch:assert test="$noServesDataset = false()">WARNING: The dcat:DataService "<sch:value-of select="$id"/>" does not have a dcat:servesDataset.
       </sch:assert>
       <sch:report test="$noServesDataset = false()">The dcat:DataService "<sch:value-of select="$id"/>" has a dcat:servesDataset.
       </sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>351. dcat:endpointDescription is recommended for dcat:DataService</sch:title>
+    <sch:rule context="//dcat:DataService[$isOnlyDcatAp]">
+      <sch:let name="id" value="@rdf:about/string()"/>
+      <sch:let name="hasEndpointDescription" value="count(dcat:endpointDescription[normalize-space(@rdf:resource) != '']) > 0"/>
+      <sch:assert test="$hasEndpointDescription">WARNING: The dcat:DataService "<sch:value-of select="$id"/>" doesn't have a dcat:endpointDescription.</sch:assert>
+      <sch:report test="$hasEndpointDescription">The dcat:DataService "<sch:value-of select="$id"/>" have a dcat:endpointDescription.</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
