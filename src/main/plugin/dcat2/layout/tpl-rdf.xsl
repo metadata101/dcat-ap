@@ -23,7 +23,7 @@
 
   <xsl:template mode="to-dcat" match="rdf:RDF">
     <xsl:apply-templates select="dcat:Catalog/dcat:record"/>
-    <xsl:copy-of select="dcat:Catalog/dcat:dataset|dcat:Catalog/dcat:service"/>
+    <xsl:apply-templates select="dcat:Catalog/dcat:dataset|dcat:Catalog/dcat:service"/>
   </xsl:template>
 
   <!-- Remove empty rdf:about from export -->
@@ -38,6 +38,20 @@
         <xsl:attribute name="rdf:about" select="concat($recordPrefix, dct:identifier[1])"/>
         <xsl:apply-templates select="*|@*[name() != 'rdf:about']"/>
       </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="*[@rdf:resource and contains(@rdf:resource, ' ')]">
+    <xsl:copy copy-namespaces="no">
+      <xsl:apply-templates select="@*[name() != 'rdf:resource']"/>
+      <xsl:choose>
+        <xsl:when test="normalize-space(@rdf:resource) = ''">
+          <xsl:attribute name="rdf:resource" select="''"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:attribute name="rdf:resource" select="replace(@rdf:resource, ' ', '%20')"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:copy>
   </xsl:template>
 
   <xsl:template match="@*|*">
