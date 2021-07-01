@@ -4,6 +4,7 @@ PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 PREFIX apf: <http://jena.hpl.hp.com/ARQ/property#>
 PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mdcat: <http://data.vlaanderen.be/ns/metadata-dcat#>
 
 # Retrieve all triples about a specific record URI.
 # Replace the string "%recordId%" with the record ID and
@@ -72,23 +73,23 @@ WHERE {
 
   BIND (afn:namespace(?predicate) as ?pns)
 
-  BIND (
-    COALESCE(
-              IF(?pns = 'http://www.w3.org/ns/dcat#', 'dcat:', 1/0),
-              IF(?pns = 'http://purl.org/dc/terms/', 'dct:', 1/0),
-              IF(?pns = 'http://spdx.org/rdf/terms#', 'spdx:', 1/0),
-              IF(?pns = 'http://www.w3.org/2004/02/skos/core#', 'skos:', 1/0),
-              IF(?pns = 'http://www.w3.org/ns/adms#', 'adms:', 1/0),
-              IF(?pns = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#', 'rdf:', 1/0),
-              IF(?pns = 'http://www.w3.org/2006/vcard/ns#', 'vcard:', 1/0),
-              IF(?pns = 'http://xmlns.com/foaf/0.1/', 'foaf:', 1/0),
-              IF(?pns = 'http://www.w3.org/2002/07/owl#', 'owl:', 1/0),
-              IF(?pns = 'http://schema.org/', 'schema:', 1/0),
-              IF(?pns = 'http://www.w3.org/2000/01/rdf-schema#', 'rdfs:', 1/0),
-              IF(?pns = 'http://www.w3.org/ns/locn#', 'locn:', 1/0),
-              IF(?pns = 'http://purl.org/dc/elements/1.1/', 'dc:', 1/0),
-              'unkown:'
-            ) AS ?pprefix)
+  BIND (COALESCE(
+    IF(?pns = 'http://www.w3.org/ns/dcat#', 'dcat:', 1/0),
+    IF(?pns = 'http://purl.org/dc/terms/', 'dct:', 1/0),
+    IF(?pns = 'http://spdx.org/rdf/terms#', 'spdx:', 1/0),
+    IF(?pns = 'http://www.w3.org/2004/02/skos/core#', 'skos:', 1/0),
+    IF(?pns = 'http://www.w3.org/ns/adms#', 'adms:', 1/0),
+    IF(?pns = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#', 'rdf:', 1/0),
+    IF(?pns = 'http://www.w3.org/2006/vcard/ns#', 'vcard:', 1/0),
+    IF(?pns = 'http://xmlns.com/foaf/0.1/', 'foaf:', 1/0),
+    IF(?pns = 'http://www.w3.org/2002/07/owl#', 'owl:', 1/0),
+    IF(?pns = 'http://schema.org/', 'schema:', 1/0),
+    IF(?pns = 'http://www.w3.org/2000/01/rdf-schema#', 'rdfs:', 1/0),
+    IF(?pns = 'http://www.w3.org/ns/locn#', 'locn:', 1/0),
+    IF(?pns = 'http://purl.org/dc/elements/1.1/', 'dc:', 1/0),
+    IF(?pns = 'http://data.vlaanderen.be/ns/metadata-dcat#', 'mdcat:', 1/0),
+    'unkown:'
+  ) AS ?pprefix)
 
   BIND (CONCAT(?pprefix, afn:localname(?predicate)) AS ?pAsQName)
 }

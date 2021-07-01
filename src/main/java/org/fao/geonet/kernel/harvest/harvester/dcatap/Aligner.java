@@ -284,14 +284,9 @@ public class Aligner extends BaseAligner<DCAT2Params> {
         result.addedMetadata++;
 
         System.out.println("metadata imported: " + ri.id);
-        // XMLOutputter xmlOutputter = new
-        // XMLOutputter(Format.getPrettyFormat());
-        // xmlOutputter.output(ri.metadata,System.out);
 
         Element validationReport = validateMetadata(ri, metadata);
         log.info("VALIDATION REPORT for record with UUID: " + ri.uuid + " and with URI: " + ri.uri + transformReportToString(validationReport));
-        XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
-        //log.info(xmlOutputter.outputString(validationReport));
     }
 
     private void updateMetadata(DCAT2RecordInfo ri, String id) throws Exception {

@@ -58,6 +58,7 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
             .add(DCAT2Namespaces.DCAT)
             .add(DCAT2Namespaces.VCARD)
             .add(DCAT2Namespaces.FOAF)
+            .add(DCAT2Namespaces.MDCAT)
             .build();
 
         allTypenames = ImmutableMap.<String, Namespace>builder()

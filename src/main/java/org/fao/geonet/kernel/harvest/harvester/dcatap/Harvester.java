@@ -273,6 +273,7 @@ class Harvester implements IHarvester<HarvestResult> {
                 String recordUUID = this.transformUUID(baseRecordUUID);
                 Map<String, Object> params = new HashMap<>();
                 params.put("identifier", recordUUID);
+                params.put("harvesterURL", this.params.baseUrl);
                 Element dcatXML = Xml.transform(sparqlResults, xslFile, params);
 
                 String modified = this.normalizeDate(solution.getLiteral("modified"));
