@@ -38,23 +38,34 @@
                 xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
                 xmlns:saxon="http://saxon.sf.net/"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
+                xmlns:uuid="java:java.util.UUID"
                 extension-element-prefixes="saxon"
                 version="2.0"
                 exclude-result-prefixes="#all">
+
   <!-- Tell the XSL processor to output XML. -->
   <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
   <xsl:output name="default-serialize-mode" indent="no"
               omit-xml-declaration="yes"/>
+
   <!-- =================================================================   -->
+
   <xsl:include href="layout/utility-fn.xsl"/>
   <xsl:variable name="serviceUrl" select="/root/env/siteURL"/>
   <xsl:variable name="env" select="/root/env"/>
   <xsl:variable name="iso2letterLanguageCode" select="lower-case(java:twoCharLangCode(/root/gui/language))"/>
   <xsl:variable name="resourcePrefix" select="$env/metadata/resourceIdentifierPrefix"/>
 
-  <xsl:variable name="uuid" select="/root/env/uuid"/>
-
-  <xsl:variable name="isService" select="count(/root//rdf:RDF/dcat:Catalog/dcat:service) > 0"/>
+  <xsl:variable name="resourceType">
+    <xsl:choose>
+      <xsl:when test="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+        <xsl:value-of select="'dataset'"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="'service'"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
 
   <xsl:variable name="profile">
     <xsl:variable name="std"
@@ -72,24 +83,65 @@
     </xsl:choose>
   </xsl:variable>
 
+  <xsl:variable name="uuidRegex" select="'([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}'"/>
+  <xsl:variable name="record" select="/root/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
+  <xsl:variable name="resource" select="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset|
+                                        /root/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+
+  <xsl:variable name="recordUUID" select="/root/env/uuid"/>
+  <xsl:variable name="recordAbout">
+    <xsl:choose>
+      <xsl:when test="matches($record/@rdf:about, $uuidRegex)">
+        <xsl:value-of select="replace($record/@rdf:about, $uuidRegex, $recordUUID)"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="concat(/root/env/nodeURL, 'api/records/', $recordUUID)"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <xsl:variable name="resourceUUID">
+    <xsl:choose>
+      <xsl:when test="count($resource/dct:identifier[matches(., concat('^', $uuidRegex, '$'))]) > 0">
+        <xsl:value-of select="$resource/dct:identifier[matches(., concat('^', $uuidRegex, '$'))][1]"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="uuid:toString(uuid:randomUUID())"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="resourceAbout">
+    <xsl:choose>
+      <xsl:when test="matches($resource/@rdf:about, $uuidRegex)">
+        <xsl:value-of select="replace($resource/@rdf:about, $uuidRegex, $resourceUUID)"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="concat(/root/env/nodeURL, 'doc/', $resourceType, '/', $resourceUUID)"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
   <!-- =================================================================  -->
+
   <xsl:template match="/root">
     <xsl:apply-templates select="//rdf:RDF"/>
   </xsl:template>
-  <!-- =================================================================  -->
+
   <xsl:template match="@*|*[name(.)!= 'root']">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
-  <!-- =================================================================  -->
+
   <xsl:template match="rdf:RDF" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:call-template name="add-namespaces"/>
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
+
   <!-- ================================================================= -->
+
   <xsl:template match="dcat:Catalog" priority="10">
     <dcat:Catalog>
       <xsl:attribute name="rdf:about">
@@ -167,20 +219,15 @@
         </dcat:themeTaxonomy>
       </xsl:for-each>
       <xsl:choose>
-        <xsl:when test="dcat:record">
+        <xsl:when test="dcat:record/dcat:CatalogRecord">
           <xsl:apply-templates select="dcat:record"/>
         </xsl:when>
         <xsl:otherwise>
           <dcat:record>
-            <dcat:CatalogRecord rdf:about="{/root/env/nodeURL}api/records/{$uuid}">
-              <dct:identifier>
-                <xsl:value-of select="$uuid"/>
-              </dct:identifier>
-              <xsl:variable name="primaryTopic" select="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/@rdf:about|
-                                                /root/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/@rdf:about"/>
-              <foaf:primaryTopic rdf:resource="{$primaryTopic}"/>
+            <dcat:CatalogRecord>
+              <xsl:call-template name="handle-record-id"/>
               <dct:modified>
-                <xsl:value-of select="format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]')"/>
+                <xsl:value-of select="format-dateTime(/root/env/changeDate, '[Y0001]-[M01]-[D01]')"/>
               </dct:modified>
             </dcat:CatalogRecord>
           </dcat:record>
@@ -189,26 +236,10 @@
       <xsl:apply-templates select="dcat:dataset|dcat:service"/>
     </dcat:Catalog>
   </xsl:template>
-  <!-- ================================================================= -->
+
   <xsl:template match="dcat:CatalogRecord" priority="10">
     <xsl:copy>
-      <xsl:apply-templates select="@*[not(name(.) = 'rdf:about')]"/>
-      <xsl:choose>
-        <xsl:when test="normalize-space(@rdf:about) = ''">
-          <xsl:attribute name="rdf:about" select="concat(/root/env/nodeURL, 'api/records/', $uuid)"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:attribute name="rdf:about"
-                         select="replace(@rdf:about, '([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}', $uuid)"/>
-        </xsl:otherwise>
-      </xsl:choose>
-      <dct:identifier>
-        <xsl:value-of select="$uuid"/>
-      </dct:identifier>
-
-      <xsl:variable name="primaryTopic" select="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/@rdf:about|
-                                                /root/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/@rdf:about"/>
-      <foaf:primaryTopic rdf:resource="{$primaryTopic}"/>
+      <xsl:call-template name="handle-record-id"/>
 
       <xsl:choose>
         <xsl:when test="/root/env/changeDate">
@@ -232,11 +263,10 @@
       <xsl:apply-templates select="dct:rights"/>
     </xsl:copy>
   </xsl:template>
-  <!-- ================================================================= -->
+
   <xsl:template match="dcat:Dataset" priority="10">
     <dcat:Dataset>
-      <xsl:apply-templates select="@*"/>
-      <xsl:apply-templates select="dct:identifier"/>
+      <xsl:call-template name="handle-resource-id"/>
       <xsl:apply-templates select="dct:title"/>
       <xsl:apply-templates select="dct:description"/>
       <xsl:apply-templates select="dcat:contactPoint"/>
@@ -272,11 +302,10 @@
       <xsl:apply-templates select="dct:rights"/>
     </dcat:Dataset>
   </xsl:template>
-  <!-- ================================================================= -->
+
   <xsl:template match="dcat:DataService" priority="10">
     <dcat:DataService>
-      <xsl:apply-templates select="@*"/>
-      <xsl:apply-templates select="dct:identifier"/>
+      <xsl:call-template name="handle-resource-id"/>
       <xsl:apply-templates select="dct:title"/>
       <xsl:apply-templates select="dct:description"/>
       <xsl:apply-templates select="dct:publisher"/>
@@ -309,19 +338,13 @@
       <xsl:apply-templates select="dct:type"/>
     </dcat:DataService>
   </xsl:template>
-  <!-- ================================================================= -->
-  <xsl:template match="dcat:Dataset/dct:title|dcat:DataService/dct:title" priority="10">
-    <xsl:copy copy-namespaces="no">
-      <xsl:apply-templates select="@*"/>
-      <xsl:if test="not(@xml:lang)">
-        <xsl:attribute name="xml:lang">nl</xsl:attribute>
-      </xsl:if>
-      <xsl:value-of select="."/>
-    </xsl:copy>
-  </xsl:template>
+
   <!-- =================================================================  -->
+
   <!-- Set default xml:lang value when missing -->
-  <xsl:template match="dcat:Dataset/dct:description|dcat:Distribution/dct:title|dcat:Distribution/dct:description|foaf:Agent/foaf:name" priority="10">
+  <xsl:template match="dcat:Dataset/dct:title|dcat:DataService/dct:title|dcat:Dataset/dct:description|
+                       dcat:DataService/dct:description|dcat:Distribution/dct:title|
+                       dcat:Distribution/dct:description|foaf:Agent/foaf:name" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
       <xsl:if test="not(@xml:lang)">
@@ -386,7 +409,7 @@
   <!-- Fix value for attribute -->
   <xsl:template match="rdf:Statement/rdf:object" priority="10">
     <xsl:copy copy-namespaces="no">
-      <xsl:copy-of select="@*[not(name()='rdf:datatype')]"/>
+      <xsl:copy-of select="@*[name() != 'rdf:datatype']"/>
       <xsl:attribute name="rdf:datatype">xs:dateTime</xsl:attribute>
     </xsl:copy>
   </xsl:template>
@@ -394,7 +417,7 @@
   <!-- Fix value for attribute -->
   <xsl:template match="dct:issued|dct:modified|schema:startDate|schema:endDate" priority="10">
     <xsl:copy copy-namespaces="no">
-      <xsl:copy-of select="@*[not(name()='rdf:datatype')]"/>
+      <xsl:copy-of select="@*[name() != 'rdf:datatype']"/>
       <xsl:attribute name="rdf:datatype">
         <xsl:if test="not(contains(lower-case(.),'t'))">http://www.w3.org/2001/XMLSchema#date</xsl:if>
         <xsl:if test="contains(lower-case(.),'t')">http://www.w3.org/2001/XMLSchema#dateTime</xsl:if>
@@ -409,37 +432,33 @@
       <xsl:apply-templates select="@*"/>
       <xsl:variable name="coverage">
         <xsl:choose>
-          <xsl:when test="count(locn:geometry[ends-with(@rdf:datatype,'#wktLiteral')])>0">
-            <xsl:value-of select="locn:geometry[ends-with(@rdf:datatype,'#wktLiteral')][1]"/>
+          <xsl:when test="count(locn:geometry[ends-with(@rdf:datatype, '#wktLiteral')])>0">
+            <xsl:value-of select="locn:geometry[ends-with(@rdf:datatype, '#wktLiteral')][1]"/>
           </xsl:when>
-          <xsl:when test="count(locn:geometry[ends-with(@rdf:datatype,'#gmlLiteral')])>0">
-            <xsl:value-of select="locn:geometry[ends-with(@rdf:datatype,'#gmlLiteral')][1]"/>
+          <xsl:when test="count(locn:geometry[ends-with(@rdf:datatype, '#gmlLiteral')])>0">
+            <xsl:value-of select="locn:geometry[ends-with(@rdf:datatype, '#gmlLiteral')][1]"/>
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="locn:geometry[1]"/>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
-      <xsl:variable name="n" select="substring-after($coverage,'North ')"/>
+      <xsl:variable name="n" select="substring-after($coverage, 'North ')"/>
       <xsl:if test="string-length($n)=0">
         <xsl:copy-of select="node()"/>
       </xsl:if>
       <xsl:if test="string-length($n)>0">
-        <xsl:variable name="north" select="substring-before($n,',')"/>
-        <xsl:variable name="s" select="substring-after($coverage,'South ')"/>
-        <xsl:variable name="south" select="substring-before($s,',')"/>
-        <xsl:variable name="e" select="substring-after($coverage,'East ')"/>
-        <xsl:variable name="east" select="substring-before($e,',')"/>
-        <xsl:variable name="w" select="substring-after($coverage,'West ')"/>
-        <xsl:variable name="west" select="if (contains($w, '. '))
-                                          then substring-before($w,'. ') else $w"/>
-        <xsl:variable name="place" select="substring-after($coverage,'. ')"/>
+        <xsl:variable name="north" select="substring-before($n, ',')"/>
+        <xsl:variable name="s" select="substring-after($coverage, 'South ')"/>
+        <xsl:variable name="south" select="substring-before($s, ',')"/>
+        <xsl:variable name="e" select="substring-after($coverage, 'East ')"/>
+        <xsl:variable name="east" select="substring-before($e, ',')"/>
+        <xsl:variable name="w" select="substring-after($coverage, 'West ')"/>
+        <xsl:variable name="west" select="if (contains($w, '. ')) then substring-before($w, '. ') else $w"/>
         <xsl:variable name="isValid" select="number($west) and number($east) and number($south) and number($north)"/>
         <xsl:if test="$isValid">
-          <xsl:variable name="wktLiteral"
-                        select="concat('POLYGON ((',$west,' ',$south,',',$west,' ',$north,',',$east,' ',$north,',', $east,' ', $south,',', $west,' ',$south,'))')"/>
-          <xsl:variable name="gmlLiteral"
-                        select="concat('&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;',$south,' ',$west,' ',$north,' ', $west, ' ', $north, ' ', $east, ' ', $south, ' ', $east,' ', $south, ' ', $west, '&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;')"/>
+          <xsl:variable name="wktLiteral" select="concat('POLYGON ((',$west,' ',$south,',',$west,' ',$north,',',$east,' ',$north,',', $east,' ', $south,',', $west,' ',$south,'))')"/>
+          <xsl:variable name="gmlLiteral" select="concat('&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;',$south,' ',$west,' ',$north,' ', $west, ' ', $north, ' ', $east, ' ', $south, ' ', $east,' ', $south, ' ', $west, '&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;')"/>
           <xsl:element name="locn:geometry">
             <xsl:attribute name="rdf:datatype">http://www.opengis.net/ont/geosparql#wktLiteral</xsl:attribute>
             <xsl:value-of select="$wktLiteral"/>
@@ -457,19 +476,19 @@
             <xsl:attribute name="rdf:datatype">http://www.opengis.net/ont/geosparql#gmlLiteral</xsl:attribute>
           </xsl:element>
         </xsl:if>
-        <xsl:apply-templates select="node()[not(name(.) = 'locn:geometry')]"/>
+        <xsl:apply-templates select="node()[name(.) != 'locn:geometry']"/>
       </xsl:if>
     </xsl:copy>
   </xsl:template>
 
   <!-- Ignore all empty rdf:about -->
-  <xsl:template match="@rdf:about[normalize-space() = '' and not(name(..)='dct:LicenseDocument')]|@rdf:datatype[normalize-space() = '']"
+  <xsl:template match="@rdf:about[normalize-space() = '' and name(..) != 'dct:LicenseDocument']|@rdf:datatype[normalize-space() = '']"
                 priority="10"/>
 
   <!-- Fix value for attribute -->
   <xsl:template match="spdx:checksumValue" priority="10">
     <xsl:copy copy-namespaces="no">
-      <xsl:copy-of select="@*[not(name()='rdf:datatype')]"/>
+      <xsl:copy-of select="@*[name() != 'rdf:datatype']"/>
       <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#hexBinary</xsl:attribute>
       <xsl:value-of select="."/>
     </xsl:copy>
@@ -486,7 +505,29 @@
       <xsl:attribute name="rdf:resource" select="concat('mailto:', @rdf:resource)"/>
     </xsl:copy>
   </xsl:template>
+
   <!-- =================================================================  -->
+
+  <xsl:template name="handle-record-id">
+    <xsl:apply-templates select="@*[name() != 'rdf:about']"/>
+    <xsl:attribute name="rdf:about" select="$recordAbout"/>
+    <xsl:element name="dct:identifier">
+      <xsl:value-of select="$recordUUID"/>
+    </xsl:element>
+    <xsl:element name="foaf:primaryTopic">
+      <xsl:attribute name="rdf:resource" select="$resourceAbout"/>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template name="handle-resource-id">
+    <xsl:apply-templates select="@*[name() != 'rdf:about']"/>
+    <xsl:attribute name="rdf:about" select="$resourceAbout"/>
+    <xsl:element name="dct:identifier">
+      <xsl:value-of select="$resourceUUID"/>
+    </xsl:element>
+    <xsl:apply-templates select="dct:identifier[string() != $resourceUUID]"/>
+  </xsl:template>
+
   <xsl:template name="apply-subjects">
     <xsl:choose>
       <xsl:when test="$profile != 'dcat-ap-vl'">
@@ -519,7 +560,7 @@
     <xsl:namespace name="dcat" select="'http://www.w3.org/ns/dcat#'"/>
     <xsl:namespace name="schema" select="'http://schema.org/'"/>
     <xsl:namespace name="dc" select="'http://purl.org/dc/elements/1.1/'"/>
-    <xsl:if test="$isService and $profile = 'metadata-dcat'">
+    <xsl:if test="$resourceType = 'service' and $profile = 'metadata-dcat'">
       <xsl:namespace name="mdcat" select="'http://data.vlaanderen.be/ns/metadata-dcat#'"/>
     </xsl:if>
   </xsl:template>

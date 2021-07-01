@@ -9,8 +9,6 @@
   <dcat:Catalog>
     <dcat:record>
       <dcat:CatalogRecord>
-        <dct:identifier>d9e00937-6e81-446a-8590-99968c83a17d</dct:identifier>
-        <foaf:primaryTopic rdf:resource="https://metadata.vlaanderen.be/doc/dataset/69705bd3-2e59-415a-8118-7c74a1367379"/>
         <dct:modified>2020-06-09</dct:modified>
         <dct:conformsTo>
           <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/">
@@ -25,10 +23,8 @@
       </dcat:CatalogRecord>
     </dcat:record>
     <dcat:dataset>
-      <dcat:Dataset rdf:about="https://metadata.vlaanderen.be/doc/dataset/69705bd3-2e59-415a-8118-7c74a1367379">
-        <dct:identifier>69705bd3-2e59-415a-8118-7c74a1367379</dct:identifier>
-        <dct:title xml:lang="nl">Open data: Sjabloon voor Metadata van Generieke Open dataset, conform DCAT-AP VL v2
-        </dct:title>
+      <dcat:Dataset>
+        <dct:title xml:lang="nl">Open data: Sjabloon voor Metadata van Generieke Open dataset, conform DCAT-AP VL v2</dct:title>
         <dct:description xml:lang="nl"/>
         <dcat:contactPoint>
           <vcard:Organization>

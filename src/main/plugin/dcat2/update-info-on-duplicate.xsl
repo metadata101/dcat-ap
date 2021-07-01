@@ -1,11 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
-                xmlns:java="java:org.fao.geonet.util.XslUtil"
-                exclude-result-prefixes="#all"
                 version="2.0">
 
+  <xsl:include href="set-uuid-helper.xsl"/>
 
   <xsl:template match="/">
     <xsl:apply-templates select="root/rdf:RDF"/>
@@ -14,19 +14,19 @@
   <xsl:template match="dcat:Dataset|dcat:DataService">
     <xsl:copy>
       <xsl:apply-templates select="@*[not(name(.) = 'rdf:about')]"/>
-      <xsl:attribute name="rdf:about"
-                     select="replace(@rdf:about,'([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}',/root/env/mduuid)"/>
-      <dct:identifier>
-        <xsl:value-of select="/root/env/mduuid"/>
-      </dct:identifier>
+      <xsl:attribute name="rdf:about" select="$resourceAbout"/>
+      <xsl:element name="dct:identifier">
+        <xsl:value-of select="$resourceUUID"/>
+      </xsl:element>
       <dct:title xml:lang="nl"/>
+      <xsl:apply-templates select="dct:title[position() > 1]"/>
       <xsl:apply-templates select="*[name() != 'dct:identifier' and name() != 'dct:title']"/>
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="@*|*|text()">
+  <xsl:template match="@*|node()">
     <xsl:copy>
-      <xsl:apply-templates select="@*|*|text()"/>
+      <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
 </xsl:stylesheet>
