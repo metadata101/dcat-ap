@@ -2126,9 +2126,9 @@
     <btnLabel>licentie</btnLabel>
   </element>
   <element name="dct:LicenseDocument" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument">
-    <label>cocument</label>
-    <description>Tooltip: cocument</description>
-    <btnLabel>cocument</btnLabel>
+    <label>document</label>
+    <description>Tooltip: document</description>
+    <btnLabel>document</btnLabel>
   </element>
   <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/@rdf:about">
     <label>URI</label>

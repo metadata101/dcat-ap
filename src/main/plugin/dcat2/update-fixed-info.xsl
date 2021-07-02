@@ -506,6 +506,16 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- Automatically set license identifier based on license URL -->
+  <xsl:template match="dct:LicenseDocument" priority="10">
+    <xsl:copy copy-namespaces="no">
+      <xsl:apply-templates select="@*|*[name() != 'dct:identifier']"/>
+      <xsl:element name="dct:identifier">
+        <xsl:value-of select="@rdf:about"/>
+      </xsl:element>
+    </xsl:copy>
+  </xsl:template>
+
   <!-- =================================================================  -->
 
   <xsl:template name="handle-record-id">
