@@ -339,6 +339,35 @@
     </dcat:DataService>
   </xsl:template>
 
+  <xsl:template match="dcat:Distribution" priority="10">
+      <dcat:Distribution>
+        <xsl:apply-templates select="@*"/>
+        <xsl:apply-templates select="dct:identifier"/>
+        <xsl:apply-templates select="dct:title"/>
+        <xsl:apply-templates select="dct:description"/>
+        <xsl:apply-templates select="dcat:accessURL"/>
+        <xsl:apply-templates select="dcat:downloadURL"/>
+        <xsl:apply-templates select="dct:issued"/>
+        <xsl:apply-templates select="dct:modified"/>
+        <xsl:apply-templates select="dct:format"/>
+        <xsl:apply-templates select="dcat:mediaType"/>
+        <xsl:apply-templates select="dct:language"/>
+        <xsl:apply-templates select="dct:license"/>
+        <xsl:apply-templates select="dct:rights"/>
+        <xsl:apply-templates select="dcat:byteSize"/>
+        <xsl:apply-templates select="spdx:checksum"/>
+        <xsl:apply-templates select="foaf:page"/>
+        <xsl:apply-templates select="dct:conformsTo"/>
+        <xsl:apply-templates select="adms:status"/>
+        <xsl:apply-templates select="dcat:accessService"/>
+        <xsl:apply-templates select="dcat:compressFormat"/>
+        <xsl:apply-templates select="dcat:packageFormat"/>
+        <xsl:apply-templates select="dcat:spatialResolutionInMeters"/>
+        <xsl:apply-templates select="dcat:temporalResolution"/>
+        <xsl:apply-templates select="adms:identifier"/>
+      </dcat:Distribution>
+  </xsl:template>
+
   <!-- =================================================================  -->
 
   <!-- Set default xml:lang value when missing -->

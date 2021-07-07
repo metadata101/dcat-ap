@@ -116,11 +116,11 @@
             <xs:element name="contactPoint" type="vcard:Organization" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:modified" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dct:publisher" minOccurs="1" maxOccurs="1"/>
             <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="theme" type="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dct:accessRights" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="foaf:page" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:accrualPeriodicity" minOccurs="0" maxOccurs="1"/>
@@ -159,8 +159,8 @@
           <xs:sequence>
             <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="accessURL" type="rdf:Resource" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element name="downloadURL" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="accessURL" type="rdf:Resource" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="downloadURL" type="rdf:Resource" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:modified" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:format" minOccurs="0" maxOccurs="1"/>
@@ -195,9 +195,9 @@
             <xs:element ref="dct:identifier" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dct:publisher" minOccurs="1" maxOccurs="1"/>
             <xs:element name="endpointUrl" type="rdf:Resource" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="endpointDescription" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="endpointDescription" type="rdf:Resource" minOccurs="0" maxOccurs="1"/>
             <xs:element name="servesDataset" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="landingPage" type="rdf:Resource" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="contactPoint" type="vcard:Organization" minOccurs="1" maxOccurs="1"/>
@@ -213,7 +213,7 @@
             <xs:element name="qualifiedRelation" type="dcat:Relationship" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="theme" type="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dct:accessRights" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:creator" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/>

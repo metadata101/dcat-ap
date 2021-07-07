@@ -72,7 +72,8 @@
 
   <xsl:template match="dcat:Distribution">
     <xsl:copy>
-      <xsl:copy-of select="dct:title|
+      <xsl:copy-of select="dct:identifier|
+                           dct:title|
                            dct:description|
                            dcat:accessURL|
                            dcat:downloadURL|
@@ -88,12 +89,14 @@
                            foaf:page|
                            dct:conformsTo|
                            adms:status|
-                           dcat:accessService|
-                           dcat:compressFormat|
+                           dcat:accessService"/>
+      <dcat:accessService rdf:resource="{$serviceUrl}"/>
+      <xsl:copy-of select="dcat:compressFormat|
                            dcat:packageFormat|
                            dcat:spatialResolutionInMeters|
-                           dcat:temporalResolution"/>
-      <dcat:accessService rdf:resource="{$serviceUrl}"/>
+                           dcat:temporalResolution|
+                           adms:identifier"/>
+
     </xsl:copy>
   </xsl:template>
 
