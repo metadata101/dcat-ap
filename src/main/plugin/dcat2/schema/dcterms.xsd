@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:locn="http://www.w3.org/ns/locn#" xmlns:schema="http://schema.org/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" targetNamespace="http://purl.org/dc/terms/" elementFormDefault="qualified" attributeFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:foaf="http://xmlns.com/foaf/0.1/"
+           xmlns:dct="http://purl.org/dc/terms/"
+           xmlns:locn="http://www.w3.org/ns/locn#"
+           xmlns:schema="http://schema.org/"
+           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+           xmlns:owl="http://www.w3.org/2002/07/owl#"
+           xmlns:skos="http://www.w3.org/2004/02/skos/core#" targetNamespace="http://purl.org/dc/terms/"
+           elementFormDefault="qualified" attributeFormDefault="qualified">
   <xs:annotation>
     <xs:documentation xml:lang="en">
-      DCterms XML Schema  (relevant parts for DCAT-AP)
+      DCterms XML Schema (relevant parts for DCAT-AP)
       XML Schema for http://purl.org/dc/terms/ namespace
     </xs:documentation>
   </xs:annotation>
@@ -11,6 +19,7 @@
   <xs:import namespace="http://www.w3.org/2004/02/skos/core#" schemaLocation="skos.xsd"/>
   <xs:import namespace="http://schema.org/" schemaLocation="schema.org.xsd"/>
   <xs:import namespace="http://www.w3.org/ns/locn#" schemaLocation="locn.xsd"/>
+  <xs:import namespace="http://www.w3.org/2002/07/owl#" schemaLocation="owl.xsd"/>
   <!-- individual elements -->
   <xs:element name="alternative" type="rdf:PlainLiteral"/>
   <xs:element name="title" type="rdf:PlainLiteral"/>
@@ -73,7 +82,7 @@
   <!-- dct:LicenseDocument -->
   <xs:complexType name="LicenseDocument">
     <xs:sequence>
-      <xs:element name="LicenseDocument" minOccurs="1" maxOccurs="1">
+      <xs:element name="LicenseDocument" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:sequence>
             <!-- recommended properties for dct:LicenseDocument-->
@@ -88,6 +97,7 @@
         </xs:complexType>
       </xs:element>
     </xs:sequence>
+    <xs:attribute ref="rdf:resource"/>
   </xs:complexType>
   <!-- dct:RightsStatement -->
   <xs:complexType name="RightsStatement">
@@ -112,6 +122,7 @@
           <xs:sequence>
             <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
           <xs:attribute ref="rdf:about"/>
           <xs:attribute ref="rdf:nodeID"/>

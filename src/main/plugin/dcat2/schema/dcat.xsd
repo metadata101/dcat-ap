@@ -178,6 +178,7 @@
             <xs:element ref="dcat:packageFormat" minOccurs="0" maxOccurs="1"/>
             <xs:element name="spatialResolutionInMeters" type="xs:decimal" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="temporalResolution" type="xs:duration" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/>
           </xs:sequence>
           <xs:attribute ref="rdf:about"/>
           <xs:attribute ref="rdf:nodeID"/>
