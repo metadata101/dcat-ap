@@ -327,17 +327,20 @@
       <Field name="keyword" string="{.}" store="true" index="true"/>
     </xsl:for-each>
 
-    <xsl:for-each select="dct:subject">
+    <xsl:for-each select="dct:subject|dcat:theme">
       <xsl:variable name="scheme" select="skos:Concept/skos:inScheme/@rdf:resource"/>
       <xsl:variable name="theme" select="skos:Concept/skos:prefLabel[@xml:lang=$langId]"/>
-      <xsl:choose>
-        <xsl:when test="$scheme = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'">
-          <Field name="flanderskeyword" string="{$theme}" store="true" index="true"/>
-        </xsl:when>
-        <!-- TODO: Index other themes -->
-      </xsl:choose>
+      <xsl:if test="normalize-space($theme) != ''">
+        <xsl:choose>
+          <xsl:when test="$scheme = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'">
+            <Field name="flanderskeyword" string="{$theme}" store="true" index="true"/>
+          </xsl:when>
+          <xsl:when test="$scheme = 'http://vocab.belgif.be/auth/datatheme'">
+            <Field name="dataGovKeyword" string="{$theme}" store="true" index="true"/>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:if>
     </xsl:for-each>
-
 
     <xsl:variable name="listOfKeywords">{
       <xsl:variable name="keywordWithNoThesaurus"
