@@ -421,7 +421,7 @@
       <xsl:for-each select="dct:license/dct:LicenseDocument">
         <xsl:variable name="tag">
           <xsl:choose>
-            <xsl:when test="dct:title and dct:title!=''">
+            <xsl:when test="dct:title and normalize-space(dct:title) != ''">
               <xsl:value-of select="dct:title"/>
             </xsl:when>
             <xsl:when test="@rdf:about and @rdf:about!=''">
@@ -441,6 +441,9 @@
           </xsl:call-template>
         </xsl:variable>
         <Field name="MD_LegalConstraintsUseLimitation" string="{string($tmp_license)}" store="true" index="true"/>
+        <xsl:if test="dct:title and normalize-space(dct:title) != ''">
+          <Field name="license" string="{dct:title}" store="true" index="true"/>
+        </xsl:if>
       </xsl:for-each>
 
     </xsl:for-each>
@@ -529,6 +532,17 @@
       <Field name="link"
              string="{concat($name, '|',$descr, '|', @rdf:resource, '|WWW:LINK-1.0-http--link|WWW:LINK-1.0-http--link|', position())}"
              store="true" index="false" />
+    </xsl:for-each>
+
+    <xsl:for-each select="dct:license/dct:LicenseDocument/dct:title[normalize-space(.) != '']">
+      <Field name="license" string="{.}" store="true" index="true"/>
+    </xsl:for-each>
+
+    <xsl:for-each select="dct:accessRights">
+      <xsl:variable name="rights" select="skos:Concept/skos:prefLabel[@xml:lang=$langId]"/>
+      <xsl:if test="normalize-space($rights) != ''">
+        <Field name="accessRights" string="{$rights}" store="true" index="true"/>
+      </xsl:if>
     </xsl:for-each>
   </xsl:template>
 
