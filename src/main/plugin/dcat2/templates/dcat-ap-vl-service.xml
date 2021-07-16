@@ -24,7 +24,7 @@
     </dcat:record>
     <dcat:service>
       <dcat:DataService>
-        <dct:title xml:lang="nl">Open data: Sjabloon voor Metadata van Generieke Open service, conform DCAT-AP VL v2</dct:title>
+        <dct:title xml:lang="nl">&lt;strong&gt;Open data&lt;/strong&gt; (niet-geo): Sjabloon voor Metadata van Generieke Open API's, conform DCAT-AP VL v2.0</dct:title>
         <dct:description/>
         <dct:publisher>
           <foaf:Agent>

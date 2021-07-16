@@ -20,7 +20,7 @@
     </dcat:record>
     <dcat:dataset>
       <dcat:Dataset>
-        <dct:title xml:lang="nl">Sjabloon voor metadata-dcat van Dataset</dct:title>
+        <dct:title xml:lang="nl">&lt;strong&gt;Andere gegevens&lt;/strong&gt; (niet-open en niet-geo): Sjabloon voor Metadata van Generieke Gesloten data, conform metadata-DCAT v2.0</dct:title>
         <dct:description xml:lang="nl"/>
         <dcat:contactPoint>
           <vcard:Organization>
