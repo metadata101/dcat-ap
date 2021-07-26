@@ -140,4 +140,4 @@ This plugin would merit further improvements in at least the following areas:
 
 ## Acknowledgement
 
-The work on this schema plugin was funded by and carried out in close collaboration with Informatie Vlaanderen ([AIV](https://overheid.vlaanderen.be/informatie-vlaanderen/flanders-information-agency-en)). 
+The work on this schema plugin was funded by and carried out in close collaboration with Informatie Vlaanderen ([AIV](https://overheid.vlaanderen.be/informatie-vlaanderen/flanders-information-agency-en)).  
