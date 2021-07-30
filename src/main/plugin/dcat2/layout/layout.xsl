@@ -362,6 +362,7 @@
                           (name(.) = 'dct:language' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dcat:byteSize' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'spdx:checksum' and name(..) = 'dcat:Distribution') or
+                          (name(.) = 'dct:accessRights' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'foaf:page' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dct:conformsTo' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'adms:status' and name(..) = 'dcat:Distribution') or

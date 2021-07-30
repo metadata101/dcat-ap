@@ -1244,6 +1244,11 @@
     <description>Tooltip: Temporele resolutie (xs:duration format)</description>
     <btnLabel>Temporele resolutie</btnLabel>
   </element>
+  <element name="dct:accessRights" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:accessRights">
+    <label>Toegangsrechten</label>
+    <description>Tooltip: Toegangsrechten</description>
+    <btnLabel>Toegangsrechten</btnLabel>
+  </element>
 
   <element name="adms:sample" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample">
     <label>Voorbeeld</label>

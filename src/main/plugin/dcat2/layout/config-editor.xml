@@ -728,7 +728,8 @@
         <for name="vcard:hasURL"/>
         <for name="vcard:hasTelephone"/>
         <!-- Usage information -->
-        <for name="dct:accessRights"/>
+        <for name="dct:accessRights" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights"/>
+        <for name="dct:accessRights" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights"/>
         <!-- Distribution -->
         <for name="dcat:Distribution"/>
         <for name="dct:title"/>
