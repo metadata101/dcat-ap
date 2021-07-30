@@ -217,30 +217,8 @@
       <Field name="fileId" string="{string(.)}" store="false" index="true"/>
     </xsl:for-each>
 
-    <xsl:for-each select="dct:issued">
-      <Field name="createDate" string="{string(.)}" store="true"
-             index="true"/>
-      <Field name="createDateYear" string="{substring(string(.), 0, 5)}"
-             store="true" index="true"/>
-    </xsl:for-each>
-
-    <xsl:for-each select="dct:modified">
-      <Field name="changeDate" string="{string(.)}" store="true"
-             index="true"/>
-      <!--<Field name="createDateYear" string="{substring(., 0, 5)}" store="true"
-                index="true"/> -->
-    </xsl:for-each>
-
-    <xsl:variable name="issuedDate">
-      <xsl:for-each select="dct:issued">
-        <xsl:sort select="." order="descending"/>
-        <xsl:if test="position() = 1">
-          <xsl:value-of select="string(.)"/>
-        </xsl:if>
-      </xsl:for-each>
-    </xsl:variable>
-    <xsl:variable name="modifiedDate">
-      <xsl:for-each select="dct:modified">
+    <xsl:variable name="revisionSortDate">
+      <xsl:for-each select="dct:modified[.!='' and not(contains(.,'1900') or contains(.,'1753'))]">
         <xsl:sort select="." order="descending"/>
         <xsl:if test="position() = 1">
           <xsl:value-of select="string(.)"/>
@@ -248,14 +226,69 @@
       </xsl:for-each>
     </xsl:variable>
 
-    <xsl:if test="string-length(normalize-space($modifiedDate)) > 0">
-      <Field name="_sortDate" string="{$modifiedDate}" store="true" index="true"/>
+    <xsl:variable name="creationSortDate">
+      <xsl:for-each select="dct:created[.!='' and not(contains(.,'1900') or contains(.,'1753'))]">
+        <xsl:sort select="." order="descending"/>
+        <xsl:if test="position() = 1">
+          <xsl:value-of select="string(.)"/>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:variable>
+
+    <xsl:variable name="publicationSortDate">
+      <xsl:for-each select="dct:issued[.!='' and not(contains(.,'1900') or contains(.,'1753'))]">
+        <xsl:sort select="." order="descending"/>
+        <xsl:if test="position() = 1">
+          <xsl:value-of select="string(.)"/>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:variable>
+
+    <xsl:if test="string-length(normalize-space($publicationSortDate))>0">
+      <Field name="sortDate" string="{$publicationSortDate}" store="true" index="true"/>
+      <Field name="_sortDate" string="{$publicationSortDate}" store="true" index="true"/>
     </xsl:if>
-    <xsl:if test="string-length(normalize-space($modifiedDate)) = 0">
-      <xsl:if test="string-length(normalize-space($issuedDate)) > 0">
-        <Field name="_sortDate" string="{$issuedDate}" store="true" index="true"/>
+    <xsl:if test="string-length(normalize-space($publicationSortDate))=0">
+      <xsl:if test="string-length(normalize-space($revisionSortDate))>0">
+        <Field name="sortDate" string="{$revisionSortDate}" store="true" index="true"/>
+        <Field name="_sortDate" string="{$revisionSortDate}" store="true" index="true"/>
+      </xsl:if>
+      <xsl:if test="string-length(normalize-space($revisionSortDate))=0">
+        <xsl:if test="string-length(normalize-space($creationSortDate))>0">
+          <Field name="sortDate" string="{$creationSortDate}" store="true" index="true"/>
+          <Field name="_sortDate" string="{$creationSortDate}" store="true" index="true"/>
+        </xsl:if>
       </xsl:if>
     </xsl:if>
+    <xsl:if test="(string-length(normalize-space($publicationSortDate)) + string-length(normalize-space($revisionSortDate)) + string-length(normalize-space($creationSortDate)))=0">
+      <Field name="sortDate" string="-1" store="true" index="true"/>
+      <Field name="_sortDate" string="-1" store="true" index="true"/>
+    </xsl:if>
+
+    <xsl:for-each select="dct:modified[.!='' and not(contains(.,'1900') or contains(.,'1753'))]">
+      <Field name="revisionDate" string="{string(.)}" store="true"
+             index="true"/>
+      <Field name="createDateMonth"
+             string="{substring(., 0, 8)}" store="true"
+             index="true"/>
+      <Field name="createDateYear" string="{substring(., 0, 5)}" store="true"
+             index="true"/>
+    </xsl:for-each>
+
+    <xsl:for-each select="dct:created[.!='' and not(contains(.,'1900') or contains(.,'1753'))]">
+      <Field name="createDate" string="{string(.)}" store="true"
+             index="true"/>
+      <Field name="createDateMonth"
+             string="{substring(., 0, 8)}" store="true"
+             index="true"/>
+      <Field name="createDateYear" string="{substring(., 0, 5)}" store="true"
+             index="true"/>
+    </xsl:for-each>
+
+    <xsl:for-each select="dct:issued[.!='' and not(contains(.,'1900') or contains(.,'1753'))]">
+      <Field name="publicationDate" string="{string(.)}" store="true"
+             index="true"/>
+    </xsl:for-each>
 
     <xsl:for-each select="distinct-values(dct:language/skos:Concept/@rdf:about)">
       <xsl:variable name="datasetLanguage">
