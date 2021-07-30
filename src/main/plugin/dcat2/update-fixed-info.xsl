@@ -178,7 +178,7 @@
                              xmlns:skos="http://www.w3.org/2004/02/skos/core#">
           <dct:type>
             <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
-              <skos:prefLabel xml:lang="nl">Public domain</skos:prefLabel>
+              <skos:prefLabel xml:lang="nl">Werk in het publiek domein</skos:prefLabel>
               <skos:prefLabel xml:lang="en">Public domain</skos:prefLabel>
               <skos:prefLabel xml:lang="fr">Public domain</skos:prefLabel>
               <skos:prefLabel xml:lang="de">Public domain</skos:prefLabel>
