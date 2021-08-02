@@ -1139,6 +1139,18 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="predicate">adms:status</xsl:with-param>
             <xsl:with-param name="rdfType"></xsl:with-param>
           </xsl:call-template>
+          <!-- dcat:accessService -->
+          <xsl:call-template name="urls">
+            <xsl:with-param name="subject" select="./*"/>
+            <xsl:with-param name="predicate">dcat:accessService</xsl:with-param>
+          </xsl:call-template>
+          <!-- dct:accessRights -->
+          <xsl:call-template name="concepts">
+            <xsl:with-param name="conceptURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/accessRights' and
+                      sr:binding[@name='subject']/* = $distributionURI]/sr:binding[@name='object' and (sr:uri or sr:bnode)]"/>
+            <xsl:with-param name="predicate">dct:accessRights</xsl:with-param>
+            <xsl:with-param name="rdfType">dct:RightsStatement</xsl:with-param>
+          </xsl:call-template>
         </dcat:Distribution>
       </xsl:element>
     </xsl:for-each>
