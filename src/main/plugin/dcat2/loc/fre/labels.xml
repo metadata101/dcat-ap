@@ -1136,6 +1136,11 @@
     <description>Tooltip: Temporal resolution</description>
     <btnLabel>Temporal resolution</btnLabel>
   </element>
+  <element name="dct:accessRights" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:accessRights">
+    <label>Access rights</label>
+    <description>Tooltip: Access rights</description>
+    <btnLabel>Access rights</btnLabel>
+  </element>
 
   <element name="adms:sample" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample">
     <label>sample</label>
