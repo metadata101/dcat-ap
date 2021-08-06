@@ -47,6 +47,8 @@
   </xsl:variable>
 
   <xsl:variable name="uuidRegex" select="'^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$'"/>
+  <xsl:variable name="lowercase">abcdefghijklmnopqrstuvwxyz</xsl:variable>
+  <xsl:variable name="uppercase">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xsl:variable>
 
   <xsl:template match="/">
     <Document locale="{$isoLangId}">
@@ -367,6 +369,9 @@
         <xsl:choose>
           <xsl:when test="$scheme = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'">
             <Field name="flanderskeyword" string="{$theme}" store="true" index="true"/>
+            <xsl:if test="translate($theme, $uppercase, $lowercase) = ('vlaamse open data', 'lijst m&amp;r inspire', 'toegevoegd gdi-vl')">
+              <Field name="vlStatus" string="{$theme}" store="true" index="true"/>
+            </xsl:if>
           </xsl:when>
           <xsl:when test="$scheme = 'http://vocab.belgif.be/auth/datatheme'">
             <Field name="dataGovKeyword" string="{$theme}" store="true" index="true"/>
