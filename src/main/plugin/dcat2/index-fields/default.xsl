@@ -21,7 +21,8 @@
                 xmlns:adms="http://www.w3.org/ns/adms#" xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-                xmlns:util="java:org.fao.geonet.util.XslUtil" xmlns:geonet="http://www.fao.org/geonetwork">
+                xmlns:geodcat="http://data.europa.eu/930/" xmlns:util="java:org.fao.geonet.util.XslUtil"
+                xmlns:geonet="http://www.fao.org/geonetwork">
   <xsl:include href="../convert/functions.xsl"/>
   <xsl:include href="../../../../xsl/utils-fn.xsl"/>
   <!-- This file defines what parts of the metadata are indexed by Lucene
@@ -580,6 +581,30 @@
       <xsl:variable name="rights" select="skos:Concept/skos:prefLabel[@xml:lang=$langId]"/>
       <xsl:if test="normalize-space($rights) != ''">
         <Field name="accessRights" string="{$rights}" store="true" index="true"/>
+      </xsl:if>
+    </xsl:for-each>
+
+    <xsl:for-each select="dct:rightsHolder|geodcat:distributor|dcat:contactPoint|dct:publisher">
+      <xsl:variable name="indexKey">
+        <xsl:choose>
+          <xsl:when test="name() = 'dct:rightsHolder'"><xsl:value-of select="'dataOwner'"/></xsl:when>
+          <xsl:when test="name() = 'geodcat:distributor'"><xsl:value-of select="'dataDistributor'"/></xsl:when>
+          <xsl:when test="name() = 'dcat:contactPoint'"><xsl:value-of select="'dataContactPoint'"/></xsl:when>
+          <xsl:when test="name() = 'dct:publisher'"><xsl:value-of select="'dataPublisher'"/></xsl:when>
+        </xsl:choose>
+      </xsl:variable>
+      <xsl:variable name="fieldValue">
+        <xsl:choose>
+          <xsl:when test="./foaf:Agent/foaf:name[normalize-space() != '']">
+            <xsl:value-of select="./foaf:Agent/foaf:name[normalize-space() != ''][1]"/>
+          </xsl:when>
+          <xsl:when test="./vcard:Organization/vcard:fn[normalize-space() != '']">
+            <xsl:value-of select="./vcard:Organization/vcard:fn[normalize-space() != ''][1]"/>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:variable>
+      <xsl:if test="$fieldValue != ''">
+        <Field name="{$indexKey}" string="{$fieldValue}" store="true" index="true"/>
       </xsl:if>
     </xsl:for-each>
   </xsl:template>
