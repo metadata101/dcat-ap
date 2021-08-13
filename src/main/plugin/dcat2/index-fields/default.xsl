@@ -22,6 +22,7 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:geodcat="http://data.europa.eu/930/" xmlns:util="java:org.fao.geonet.util.XslUtil"
+                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:geonet="http://www.fao.org/geonetwork">
   <xsl:include href="../convert/functions.xsl"/>
   <xsl:include href="../../../../xsl/utils-fn.xsl"/>
@@ -621,6 +622,35 @@
         <Field name="dataOrgName" string="{normalize-space($orgName)}" store="true" index="true"/>
       </xsl:if>
     </xsl:for-each>
+
+    <xsl:for-each select="./mdcat:levensfase">
+      <xsl:variable name="lifeCycleLabel">
+        <xsl:choose>
+          <xsl:when test="./skos:Concept/skos:prefLabel[@xml:lang = 'en']">
+            <xsl:value-of select="string(./skos:Concept/skos:prefLabel[@xml:lang = 'en'])"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="string(./skos:Concept/skos:prefLabel[1])"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+      <Field name="lifeCycle" string="{$lifeCycleLabel}" store="true" index="true"/>
+    </xsl:for-each>
+
+    <xsl:for-each select="./mdcat:ontwikkelingstoestand">
+      <xsl:variable name="devStateLabel">
+        <xsl:choose>
+          <xsl:when test="./skos:Concept/skos:prefLabel[@xml:lang = 'en']">
+            <xsl:value-of select="string(./skos:Concept/skos:prefLabel[@xml:lang = 'en'])"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="string(./skos:Concept/skos:prefLabel[1])"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+      <Field name="developmentState" string="{$devStateLabel}" store="true" index="true"/>
+    </xsl:for-each>
+
   </xsl:template>
 
   <xsl:template name="getLicenseDocumentTitle">
