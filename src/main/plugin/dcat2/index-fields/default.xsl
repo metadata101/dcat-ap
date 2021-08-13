@@ -636,6 +636,21 @@
       </xsl:variable>
       <Field name="lifeCycle" string="{$lifeCycleLabel}" store="true" index="true"/>
     </xsl:for-each>
+
+    <xsl:for-each select="./mdcat:ontwikkelingstoestand">
+      <xsl:variable name="devStateLabel">
+        <xsl:choose>
+          <xsl:when test="./skos:Concept/skos:prefLabel[@xml:lang = 'en']">
+            <xsl:value-of select="string(./skos:Concept/skos:prefLabel[@xml:lang = 'en'])"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="string(./skos:Concept/skos:prefLabel[1])"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+      <Field name="developmentState" string="{$devStateLabel}" store="true" index="true"/>
+    </xsl:for-each>
+
   </xsl:template>
 
   <xsl:template name="getLicenseDocumentTitle">
