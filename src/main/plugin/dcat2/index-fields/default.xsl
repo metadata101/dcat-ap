@@ -606,6 +606,20 @@
       <xsl:if test="$fieldValue != ''">
         <Field name="{$indexKey}" string="{$fieldValue}" store="true" index="true"/>
       </xsl:if>
+
+      <xsl:variable name="orgName">
+        <xsl:choose>
+          <xsl:when test="./foaf:Agent/foaf:name[normalize-space() != '']">
+            <xsl:value-of select="./foaf:Agent/foaf:name[normalize-space() != ''][1]"/>
+          </xsl:when>
+          <xsl:when test="./vcard:Organization/vcard:organization-name[normalize-space() != '']">
+            <xsl:value-of select="./vcard:Organization/vcard:organization-name[normalize-space() != ''][1]"/>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:variable>
+      <xsl:if test="normalize-space($orgName) != ''">
+        <Field name="dataOrgName" string="{normalize-space($orgName)}" store="true" index="true"/>
+      </xsl:if>
     </xsl:for-each>
   </xsl:template>
 
