@@ -66,17 +66,6 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>dcat:distribution is a required property for Dataset.</sch:title>
-    <sch:rule context="//dcat:Dataset[$isCorrectProfile]">
-      <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="missingProperty" value="not(dcat:distribution )"/>
-      <sch:assert test="$missingProperty = false()">WARNING: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dcat:distribution.
-      </sch:assert>
-      <sch:report test="$missingProperty = false()">The dcat:Dataset "<sch:value-of select="$id"/>" has a dcat:distribution with id  "<sch:value-of select="dcat:distribution/*/@rdf:about/string()"/>".
-      </sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:title>dct:publisher is a required property for Dataset.</sch:title>
     <sch:rule context="//dcat:Dataset[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
