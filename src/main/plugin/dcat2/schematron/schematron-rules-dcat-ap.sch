@@ -1010,16 +1010,6 @@ Source:
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>163. The recommended class dcat:Distribution does not exist.</sch:title>
-    <sch:rule context="//dcat:dataset">
-      <sch:let name="noDistribution" value="not(//dcat:Distribution)"/>
-      <sch:assert test="$noDistribution = false()">ERROR: The recommended class dcat:Distribution does not exist.
-      </sch:assert>
-      <sch:report test="$noDistribution = false()">The recommended class dcat:Distribution does exist.
-      </sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:title>164. spdx:checksumValue should be literal typed as hexBinary (value).</sch:title>
     <sch:rule context="//spdx:Checksum/spdx:checksumValue">
       <sch:let name="id" value="parent::node()/dct:title[1]/string()"/>
