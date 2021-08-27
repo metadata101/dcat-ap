@@ -31,6 +31,19 @@
   <relationInformation>Relation</relationInformation>
   <serviceInformation>Service information</serviceInformation>
   <extraInformation>Extra information</extraInformation>
+
+  <!-- Thesauri pickers -->
+  <dcat.addThemes>Themes</dcat.addThemes>
+  <dcat.addTags>Tags/Keywords</dcat.addTags>
+  <dcat.addType>Type</dcat.addType>
+  <dcat.addAccessRight>Access rights</dcat.addAccessRight>
+  <dcat.addFormat>Format</dcat.addFormat>
+  <dcat.addPackageFormat>Package format</dcat.addPackageFormat>
+  <dcat.addCompressFormat>Compression format</dcat.addCompressFormat>
+  <dcat.addMediaType>Media type</dcat.addMediaType>
+  <dcat.addAccrualPeriodicity>Update frequency</dcat.addAccrualPeriodicity>
+  <dcat.addSubject>Subject</dcat.addSubject>
+
   <!-- DCAT-AP view labels and help -->
   <FieldId107>dataset</FieldId107>
   <FieldId108>URI</FieldId108>

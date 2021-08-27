@@ -33,6 +33,19 @@
   <extraInformation>Extra informatie</extraInformation>
   <catalogRecordInformation>Catalog record</catalogRecordInformation>
   <conformToInformation>Conformiteit met standaard</conformToInformation>
+
+  <!-- Thesauri pickers -->
+  <dcat.addThemes>Thema</dcat.addThemes>
+  <dcat.addTags>Trefwoorden</dcat.addTags>
+  <dcat.addType>Type</dcat.addType>
+  <dcat.addAccessRight>Toegangsrechten</dcat.addAccessRight>
+  <dcat.addFormat>Formaat</dcat.addFormat>
+  <dcat.addPackageFormat>Package formaat</dcat.addPackageFormat>
+  <dcat.addCompressFormat>Compressie formaat</dcat.addCompressFormat>
+  <dcat.addMediaType>Mediatype</dcat.addMediaType>
+  <dcat.addAccrualPeriodicity>Updatefrequentie</dcat.addAccrualPeriodicity>
+  <dcat.addSubject>Subject</dcat.addSubject>
+
   <!-- DCAT-AP view labels and help -->
   <FieldId107>Dataset</FieldId107>
   <FieldId108>URI</FieldId108>

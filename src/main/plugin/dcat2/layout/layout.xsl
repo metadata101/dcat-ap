@@ -50,6 +50,8 @@
   <xsl:include href="layout-custom-tpl.xsl"/>
   <xsl:include href="layout-profile.xsl"/>
 
+  <xsl:variable name="isDcatService" select="count($metadata/dcat:Catalog/dcat:service/dcat:DataService) > 0"/>
+
   <!-- Ignore all gn element -->
   <xsl:template mode="mode-dcat2"
                 match="gn:*|@gn:*|@*"
