@@ -45,6 +45,9 @@
   <dcat.addMediaType>Mediatype</dcat.addMediaType>
   <dcat.addAccrualPeriodicity>Updatefrequentie</dcat.addAccrualPeriodicity>
   <dcat.addSubject>Subject</dcat.addSubject>
+  <dcat.addLanguage>Taal</dcat.addLanguage>
+  <mdcat.addLevensfase>Levensfase</mdcat.addLevensfase>
+  <mdcat.addOntwikkelingstoestand>Ontwikkelingstoestand</mdcat.addOntwikkelingstoestand>
 
   <!-- DCAT-AP view labels and help -->
   <FieldId107>Dataset</FieldId107>

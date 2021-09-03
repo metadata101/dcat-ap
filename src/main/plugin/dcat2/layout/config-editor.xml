@@ -300,13 +300,6 @@
         max=""
         labelKey="dcat.addThemes"/>
     </for>
-    <!--<for name="dcat:keyword" use="thesaurus-list-picker">-->
-    <!--  <directiveAttributes-->
-    <!--    thesaurus="external.none.allThesaurus"-->
-    <!--    xpath="/dcat:keyword"-->
-    <!--    max=""-->
-    <!--    labelKey="dcat.addTags"/>-->
-    <!--</for>-->
     <for name="dct:format" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.file-type"
@@ -356,6 +349,13 @@
         max="1"
         labelKey="dcat.addType"/>
     </for>
+    <for name="dct:language" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.language"
+        xpath="/dct:language"
+        max=""
+        labelKey="dcat.addLanguage"/>
+    </for>
     <for name="dct:accessRights" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.access-right"
@@ -376,6 +376,20 @@
         xpath="/dct:subject"
         max=""
         labelKey="dcat.addSubject"/>
+    </for>
+    <for name="mdcat:levensfase" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.levensfase"
+        xpath="/mdcat:levensfase"
+        max="1"
+        labelKey="mdcat.addLevensfase"/>
+    </for>
+    <for name="mdcat:ontwikkelingstoestand" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.ontwikkelingstoestand"
+        xpath="/mdcat:ontwikkelingstoestand"
+        max="1"
+        labelKey="mdcat.addOntwikkelingstoestand"/>
     </for>
   </fields>
   <!-- Complex fields. -->
@@ -721,58 +735,13 @@
           </action>
         </section>
         <section name="serviceInformation">
-          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase"/>
-          <action type="add" name="FieldId417" or="levensfase" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mdcat:levensfase>
-                  <skos:Concept>
-                    <skos:prefLabel xml:lang="nl"/>
-                    <skos:prefLabel xml:lang="en"/>
-                    <skos:prefLabel xml:lang="fr"/>
-                    <skos:prefLabel xml:lang="de"/>
-                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/levensfase"/>
-                  </skos:Concept>
-                </mdcat:levensfase>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand"/>
-          <action type="add" name="FieldId418" or="ontwikkelingstoestand" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mdcat:ontwikkelingstoestand>
-                  <skos:Concept>
-                    <skos:prefLabel xml:lang="nl"/>
-                    <skos:prefLabel xml:lang="en"/>
-                    <skos:prefLabel xml:lang="fr"/>
-                    <skos:prefLabel xml:lang="de"/>
-                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand"/>
-                  </skos:Concept>
-                </mdcat:ontwikkelingstoestand>
-              </snippet>
-            </template>
-          </action>
+          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase" or="levensfase" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand" or="ontwikkelingstoestand" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId428" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights" or="accessRights" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId432" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
         </section>
         <section name="extraInformation">
-          <field name="FieldId408" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
-          <action type="add" name="FieldId408" or="language" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" required="true()">
-            <template>
-              <snippet>
-                <dct:language>
-                  <skos:Concept>
-                    <skos:prefLabel xml:lang="nl"/>
-                    <skos:prefLabel xml:lang="en"/>
-                    <skos:prefLabel xml:lang="fr"/>
-                    <skos:prefLabel xml:lang="de"/>
-                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
-                  </skos:Concept>
-                </dct:language>
-              </snippet>
-            </template>
-          </action>
+          <field name="FieldId408" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language" or="language" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
         </section>
       </tab>
       <tab id="defaultRecord" mode="flat">
@@ -1284,58 +1253,13 @@
           </action>
         </section>
         <section name="serviceInformation">
-          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase"/>
-          <action type="add" name="FieldId417" or="levensfase" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mdcat:levensfase>
-                  <skos:Concept>
-                    <skos:prefLabel xml:lang="nl"/>
-                    <skos:prefLabel xml:lang="en"/>
-                    <skos:prefLabel xml:lang="fr"/>
-                    <skos:prefLabel xml:lang="de"/>
-                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/levensfase"/>
-                  </skos:Concept>
-                </mdcat:levensfase>
-              </snippet>
-            </template>
-          </action>
-          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand"/>
-          <action type="add" name="FieldId418" or="ontwikkelingstoestand" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <mdcat:ontwikkelingstoestand>
-                  <skos:Concept>
-                    <skos:prefLabel xml:lang="nl"/>
-                    <skos:prefLabel xml:lang="en"/>
-                    <skos:prefLabel xml:lang="fr"/>
-                    <skos:prefLabel xml:lang="de"/>
-                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand"/>
-                  </skos:Concept>
-                </mdcat:ontwikkelingstoestand>
-              </snippet>
-            </template>
-          </action>
+          <field name="FieldId417" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase" or="levensfase" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field name="FieldId418" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand" or="ontwikkelingstoestand" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId428" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights" or="accessRights" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId432" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
         </section>
         <section name="extraInformation">
-          <field name="FieldId408" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
-          <action type="add" name="FieldId408" or="language" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <dct:language>
-                  <skos:Concept>
-                    <skos:prefLabel xml:lang="nl"/>
-                    <skos:prefLabel xml:lang="en"/>
-                    <skos:prefLabel xml:lang="fr"/>
-                    <skos:prefLabel xml:lang="de"/>
-                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
-                  </skos:Concept>
-                </dct:language>
-              </snippet>
-            </template>
-          </action>
+          <field name="FieldId408" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language" or="language" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId426" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:qualifiedRelation"/>
           <action type="add" name="FieldId426" or="qualifiedRelation" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>

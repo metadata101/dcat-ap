@@ -29,6 +29,7 @@
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
+                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
                 version="2.0"
                 exclude-result-prefixes="#all">
@@ -80,9 +81,9 @@
                 <xsl:when test="count($listOfLanguage) > 0">
                   <xsl:for-each select="$listOfLanguage">
                     <xsl:variable name="lang" select="."/>
-                    <xsl:if test="$lang!=''">
+                    <xsl:if test="$lang != ''">
                       <skos:prefLabel>
-                        <xsl:attribute name="xml:lang" select="$lang"/>
+                        <xsl:attribute name="xml:lang" select="util:twoCharLangCode($lang)"/>
                         <xsl:value-of select="$keyword/values/value[@language = $lang]/text()"/>
                       </skos:prefLabel>
                     </xsl:if>

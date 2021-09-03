@@ -383,6 +383,18 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- Remove empty concepts -->
+  <xsl:template match="foaf:Agent/dct:type|dct:subject|dcat:theme|dct:accrualPeriodicity|dct:language|dcat:Dataset/dct:type|
+                       dcat:DataService/dct:type|dct:format|dcat:mediaType|adms:status|dct:LicenseDocument/dct:type|
+                       dct:accessRights|mdcat:levensfase|mdcat:ontwikkelingstoestand|dcat:compressFormat|
+                       dcat:packageFormat" priority="10">
+    <xsl:if test="count(skos:Concept) = 1">
+      <xsl:copy copy-namespaces="no">
+        <xsl:apply-templates select="skos:Concept"/>
+      </xsl:copy>
+    </xsl:if>
+  </xsl:template>
+
   <!-- Fill concepts with resourceType -->
   <xsl:template match="skos:Concept" priority="10">
     <xsl:copy>
@@ -537,6 +549,8 @@
           <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
             <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
             <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr"/>
+            <skos:prefLabel xml:lang="de"/>
             <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
           </skos:Concept>
         </dct:subject>
