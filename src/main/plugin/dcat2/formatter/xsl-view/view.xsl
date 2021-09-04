@@ -325,7 +325,7 @@
                                            dcat:packageFormat">
     <xsl:param name="xpath"/>
     <xsl:variable name="usedLang">
-      <xsl:value-of select="if (normalize-space(skos:Concept/skos:prefLabel[@xml:lang=$langId-2char]) != '')
+      <xsl:value-of select="if (normalize-space(skos:Concept/skos:prefLabel[@xml:lang=$langId-2char][1]) != '')
                             then $langId-2char
                             else $defaultLang-2char"/>
     </xsl:variable>

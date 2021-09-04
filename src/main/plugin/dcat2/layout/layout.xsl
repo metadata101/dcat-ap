@@ -50,6 +50,8 @@
   <xsl:include href="layout-custom-tpl.xsl"/>
   <xsl:include href="layout-profile.xsl"/>
 
+  <xsl:variable name="isDcatService" select="count($metadata/dcat:Catalog/dcat:service/dcat:DataService) > 0"/>
+
   <!-- Ignore all gn element -->
   <xsl:template mode="mode-dcat2"
                 match="gn:*|@gn:*|@*"
@@ -411,7 +413,7 @@
 
   <xsl:template mode="render-for-field-for-attribute-dcat2"
                 match="gn:attribute[not(@name = ('ref', 'parent', 'id', 'uuid', 'type', 'uuidref',
-    'xlink:show', 'xlink:actuate', 'xlink:arcrole', 'xlink:role', 'xlink:title', 'xlink:href'))]"
+                  'xlink:show', 'xlink:actuate', 'xlink:arcrole', 'xlink:role', 'xlink:title', 'xlink:href'))]"
                 priority="100">
     <xsl:param name="ref"/>
     <xsl:param name="insertRef" select="''"/>
@@ -421,7 +423,7 @@
       <xsl:if test="not(gn-fn-dcat2:isNotMultilingualField(.., $editorConfig))">
         <xsl:variable name="attributeLabel" select="gn-fn-metadata:getLabel($schema, @name, $labels, name(..), '', concat(gn-fn-metadata:getXPath(..),'/@',@name))"/>
         <label class="col-sm-2 control-label"/>
-        <div class="col-sm-9 btn-group nopadding-in-table">
+        <div class="col-sm-9 btn-group nopadding-in-table" style="float: none;">
           <button type="button" class="btn btn-default btn-xs"
                   data-gn-click-and-spin="add('{$ref}', '{@name}', '{$ref}', null, true)"
                   title="{$attributeLabel/description}">
