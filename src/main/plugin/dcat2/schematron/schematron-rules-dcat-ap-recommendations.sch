@@ -100,7 +100,7 @@ Source:
     <sch:title>47. dcat:keyword is a recommended property for Dataset.</sch:title>
     <sch:rule context="//dcat:Dataset">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="missingProperty" value="not(dcat:distribution)"/>
+      <sch:let name="missingProperty" value="count(dcat:keyword[normalize-space(.) != '']) = 0"/>
       <sch:assert test="$missingProperty = false()">WARNING: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dcat:keyword.
       </sch:assert>
       <sch:report test="$missingProperty = false()">The dcat:Dataset "<sch:value-of select="$id"/>" has a dcat:keyword.</sch:report>
