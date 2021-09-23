@@ -372,7 +372,7 @@
           <xsl:when test="$scheme = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'">
             <Field name="flanderskeyword" string="{$theme}" store="true" index="true"/>
             <xsl:if test="translate($theme, $uppercase, $lowercase) = ('vlaamse open data', 'lijst m&amp;r inspire', 'toegevoegd gdi-vl')">
-              <Field name="vlStatus" string="{$theme}" store="true" index="true"/>
+              <Field name="statute" string="{$theme}" store="true" index="true"/>
             </xsl:if>
           </xsl:when>
           <xsl:when test="$scheme = 'http://vocab.belgif.be/auth/datatheme'">
