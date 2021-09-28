@@ -608,19 +608,9 @@
         <Field name="{$indexKey}" string="{$fieldValue}" store="true" index="true"/>
       </xsl:if>
 
-      <xsl:variable name="orgName">
-        <xsl:choose>
-          <xsl:when test="./foaf:Agent/foaf:name[normalize-space() != '']">
-            <xsl:value-of select="./foaf:Agent/foaf:name[normalize-space() != ''][1]"/>
-          </xsl:when>
-          <xsl:when test="./vcard:Organization/vcard:organization-name[normalize-space() != '']">
-            <xsl:value-of select="./vcard:Organization/vcard:organization-name[normalize-space() != ''][1]"/>
-          </xsl:when>
-        </xsl:choose>
-      </xsl:variable>
-      <xsl:if test="normalize-space($orgName) != ''">
-        <Field name="dataOrgName" string="{normalize-space($orgName)}" store="true" index="true"/>
-      </xsl:if>
+      <xsl:for-each select="./vcard:Organization/vcard:organization-name[normalize-space() != '']">
+        <Field name="dataOrgName" string="{normalize-space(.)}" store="true" index="true"/>
+      </xsl:for-each>
     </xsl:for-each>
 
     <xsl:for-each select="./mdcat:levensfase">

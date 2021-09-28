@@ -5,6 +5,9 @@
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
+                xmlns:adms="http://www.w3.org/ns/adms#"
+                xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 extension-element-prefixes="saxon"
                 exclude-result-prefixes="#all">
   <!--
@@ -35,9 +38,29 @@
 
   <xsl:template match="dcat:CatalogRecord[normalize-space(@rdf:about) = '']" priority="10">
       <xsl:copy copy-namespaces="no">
-        <xsl:attribute name="rdf:about" select="concat($recordPrefix, dct:identifier[1])"/>
+        <xsl:variable name="recordURI" select="concat($recordPrefix, dct:identifier[1])"/>
+        <xsl:attribute name="rdf:about" select="$recordURI"/>
+        <xsl:call-template name="alternative-identifier">
+          <xsl:with-param name="identifier" select="$recordURI"/>
+        </xsl:call-template>
         <xsl:apply-templates select="*|@*[name() != 'rdf:about']"/>
       </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="dcat:CatalogRecord[normalize-space(@rdf:about) != '']" priority="10">
+    <xsl:copy copy-namespaces="no">
+      <xsl:apply-templates select="@*"/>
+      <xsl:call-template name="alternative-identifier"/>
+      <xsl:apply-templates select="*"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="dcat:Dataset|dcat:DataService" priority="10">
+    <xsl:copy copy-namespaces="no">
+      <xsl:apply-templates select="@*"/>
+      <xsl:call-template name="alternative-identifier"/>
+      <xsl:apply-templates select="*"/>
+    </xsl:copy>
   </xsl:template>
 
   <xsl:template match="*[@rdf:resource and contains(@rdf:resource, ' ')]">
@@ -58,6 +81,17 @@
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
+  </xsl:template>
+
+  <xsl:template name="alternative-identifier">
+    <xsl:param name="identifier" select="@rdf:about" as="xs:string"/>
+    <adms:identifier>
+      <adms:Identifier>
+        <skos:notation>
+          <xsl:value-of select="$identifier"/>
+        </skos:notation>
+      </adms:Identifier>
+    </adms:identifier>
   </xsl:template>
 
 </xsl:stylesheet>
