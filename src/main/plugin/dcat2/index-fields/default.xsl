@@ -71,6 +71,10 @@
       <Field name="standardName" string="{string($title)}"
              store="true" index="true"/>
     </xsl:for-each>
+
+    <xsl:for-each select="dct:identifier">
+      <Field name="fileId" string="{string(.)}" store="false" index="true"/>
+    </xsl:for-each>
   </xsl:template>
 
   <xsl:template match="dcat:Dataset|dcat:DataService">
@@ -216,9 +220,7 @@
     <Field name="_abstract" string="{string($tmp_abstract)}" store="false" index="true"/>
 
     <xsl:for-each select="dct:identifier">
-      <Field name="identifier" string="{string(.)}" store="true"
-             index="true"/>
-      <Field name="fileId" string="{string(.)}" store="false" index="true"/>
+      <Field name="identifier" string="{string(.)}" store="true" index="true"/>
     </xsl:for-each>
 
     <xsl:variable name="revisionSortDate">
