@@ -303,28 +303,28 @@
     <for name="dct:format" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.file-type"
-        xpath="//dcat:Distribution/dct:format"
+        xpath="/dcat:Distribution/dct:format"
         max="1"
         labelKey="dcat.addFormat"/>
     </for>
     <for name="dcat:packageFormat" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.file-type"
-        xpath="//dcat:Distribution/dcat:packageFormat"
+        xpath="/dcat:Distribution/dcat:packageFormat"
         max="1"
         labelKey="dcat.addPackageFormat"/>
     </for>
     <for name="dcat:compressFormat" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.file-type"
-        xpath="//dcat:Distribution/dcat:compressFormat"
+        xpath="/dcat:Distribution/dcat:compressFormat"
         max="1"
         labelKey="dcat.addCompressFormat"/>
     </for>
     <for name="dcat:mediaType" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.media-types"
-        xpath="//dcat:Distribution/dcat:mediaType"
+        xpath="/dcat:Distribution/dcat:mediaType"
         max="1"
         labelKey="dcat.addMediaType"/>
     </for>
@@ -345,14 +345,28 @@
     <for name="dct:type" xpath="dct:LicenseDocument" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.licence-type"
-        xpath="//dct:LicenseDocument/dct:type"
+        xpath="/dct:LicenseDocument/dct:type"
         max="1"
         labelKey="dcat.addType"/>
     </for>
-    <for name="dct:language" use="thesaurus-list-picker">
+    <for name="dct:language" xpath="dcat:Dataset" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.language"
         xpath="/dct:language"
+        max=""
+        labelKey="dcat.addLanguage"/>
+    </for>
+    <for name="dct:language" xpath="dcat:DataService" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.language"
+        xpath="/dct:language"
+        max=""
+        labelKey="dcat.addLanguage"/>
+    </for>
+    <for name="dct:language" xpath="dcat:Distribution" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.language"
+        xpath="/dcat:Distribution/dct:language"
         max=""
         labelKey="dcat.addLanguage"/>
     </for>
@@ -366,7 +380,7 @@
     <for name="dct:accessRights" xpath="dcat:Distribution" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.access-right"
-        xpath="//dcat:Distribution/dct:accessRights"
+        xpath="/dcat:Distribution/dct:accessRights"
         max="1"
         labelKey="dcat.addAccessRight"/>
     </for>
