@@ -57,9 +57,22 @@
 
   <xsl:template match="dcat:Dataset|dcat:DataService" priority="10">
     <xsl:copy copy-namespaces="no">
-      <xsl:apply-templates select="@*"/>
-      <xsl:call-template name="alternative-identifier"/>
-      <xsl:apply-templates select="*"/>
+      <xsl:choose>
+        <xsl:when test="normalize-space(@rdf:about) != ''">
+          <xsl:apply-templates select="@rdf:about"/>
+          <xsl:call-template name="alternative-identifier"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:variable name="primaryTopic" select="normalize-space(//foaf:primaryTopic[1]/@rdf:resource)"/>
+          <xsl:if test="$primaryTopic != ''">
+            <xsl:attribute name="rdf:about" select="$primaryTopic"/>
+            <xsl:call-template name="alternative-identifier">
+              <xsl:with-param name="identifier" select="$primaryTopic"/>
+            </xsl:call-template>
+          </xsl:if>
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="@*[name() != 'rdf:about']|*"/>
     </xsl:copy>
   </xsl:template>
 

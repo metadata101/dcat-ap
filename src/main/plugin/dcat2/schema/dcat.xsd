@@ -206,6 +206,7 @@
             <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="adms:identifier" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="adms:versionNotes" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="mdcat:landingspaginaVoorAuthenticatie" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="mdcat:landingspaginaVoorStatusinformatie" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="mdcat:landingspaginaVoorGebruiksinformatie" minOccurs="0" maxOccurs="1"/>

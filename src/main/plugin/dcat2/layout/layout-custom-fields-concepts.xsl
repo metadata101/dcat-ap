@@ -44,8 +44,7 @@
   On gn:child, build the keyword picker directive using XPath mode.
   TODO: How to deal with value not in the thesaurus ?
   -->
-  <xsl:template mode="mode-dcat2" priority="4000"
-                match="*[gn-fn-dcat2:getThesaurusConfig(name(), name(..))]">
+  <xsl:template mode="mode-dcat2" priority="4000" match="*[gn-fn-dcat2:getThesaurusConfig(name(), name(..))]">
     <xsl:variable name="name" select="name()"/>
     <xsl:variable name="hasGnChild" select="count(../gn:child[concat(@prefix, ':', @name) = $name]) > 0"/>
     <xsl:if test="not($hasGnChild)">
@@ -85,9 +84,9 @@
             </xsl:for-each>
           </xsl:when>
           <!-- Show preflabel in current metadata language first -->
-          <xsl:when test="$metadataLanguage and ../*[name() = $config/@name]//skos:prefLabel[@xml:lang = java:twoCharLangCode($metadataLanguage)]">
-            <xsl:value-of select="string-join(../*[name() = $config/@name]//skos:prefLabel[@xml:lang = java:twoCharLangCode($metadataLanguage)]/replace(text(), ',', ',,'), ',')"/>
-          </xsl:when>
+          <!--<xsl:when test="$metadataLanguage and ../*[name() = $config/@name]//skos:prefLabel[@xml:lang = java:twoCharLangCode($metadataLanguage)]">-->
+          <!--  <xsl:value-of select="string-join(../*[name() = $config/@name]//skos:prefLabel[@xml:lang = java:twoCharLangCode($metadataLanguage)]/replace(text(), ',', ',,'), ',')"/>-->
+          <!--</xsl:when>-->
           <!-- Fallback on nl language -->
           <xsl:when test="../*[name() = $config/@name]//skos:prefLabel[@xml:lang = 'nl']">
             <xsl:value-of select="string-join(../*[name() = $config/@name]//skos:prefLabel[@xml:lang = 'nl']/replace(text(), ',', ',,'), ',')"/>
@@ -106,11 +105,29 @@
       <xsl:variable name="transformation" select="if ($config/useReference = 'true')
                                                 then 'to-dcat2-concept-reference'
                                                 else 'to-dcat2-concept'"/>
+
+      <xsl:variable name="elemXpath">
+        <xsl:variable name="resourcePath" select="concat('./dcat:Catalog', if ($isDcatService) then '/dcat:service/dcat:DataService' else '/dcat:dataset/dcat:Dataset')"/>
+        <xsl:choose>
+          <xsl:when test="starts-with($config/xpath, '/dcat:Distribution')">
+            <xsl:variable name="index" select="count(../../preceding-sibling::dcat:distribution) + 1"/>
+            <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution', ')', '[', $index, ']', $config/xpath)"/>
+          </xsl:when>
+          <xsl:when test="starts-with($config/xpath, '/dct:LicenseDocument') and not($isDcatService)">
+            <xsl:variable name="index" select="count(../../../../preceding-sibling::dcat:distribution) + 1"/>
+            <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution', ')', '[', $index, ']', '/dcat:Distribution/dct:license', $config/xpath)"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="concat($resourcePath, $config/xpath)"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+
       <div
         data-gn-keyword-selector="tagsinput"
         data-metadata-id=""
         data-element-ref="{concat('_P', $ref, '_', replace($config/@name, ':', 'COLON'))}"
-        data-element-xpath="{concat('./dcat:Catalog', if ($isDcatService) then '/dcat:service/dcat:DataService' else '/dcat:dataset/dcat:Dataset', $config/xpath)}"
+        data-element-xpath="{$elemXpath}"
         data-wrapper="{$config/@name}"
         data-thesaurus-title="{$strings/*[name() = $config/labelKey]}"
         data-thesaurus-key="{$config/thesaurus}"
