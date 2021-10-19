@@ -43,6 +43,8 @@ Rome - Italy. email: geonetwork@osgeo.org
   <!-- Retrieves an identifier (e.g. a URL-encoded URI) as a parameter. uuid:randomUUID()   java.util.UUID.randomUUID() -->
   <xsl:param name="recordUUID" select="recordUUID"/>
   <xsl:param name="harvesterURL" select="harvesterURL"/>
+  <xsl:param name="newResourceUUID" select="newResourceUUID"/>
+  <xsl:param name="oldResourceUUID" select="oldResourceUUID"/>
 
   <!-- dcat:Catalog -->
   <xsl:template match="/">
@@ -275,10 +277,24 @@ Rome - Italy. email: geonetwork@osgeo.org
             </xsl:attribute>
           </xsl:if>
           <!-- dct:identifier -->
-          <xsl:call-template name="identifier">
-            <xsl:with-param name="subject" select="./*"/>
-            <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
-          </xsl:call-template>
+          <xsl:choose>
+            <xsl:when test="normalize-space($newResourceUUID) != ''">
+              <dct:identifier>
+                <xsl:value-of select="$newResourceUUID"/>
+              </dct:identifier>
+              <xsl:call-template name="identifier">
+                <xsl:with-param name="subject" select="./*"/>
+                <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
+                <xsl:with-param name="existingId" select="$oldResourceUUID"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="identifier">
+                <xsl:with-param name="subject" select="./*"/>
+                <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
+              </xsl:call-template>
+            </xsl:otherwise>
+          </xsl:choose>
           <!-- dct:title -->
           <xsl:call-template name="properties">
             <xsl:with-param name="subject" select="./*"/>
@@ -384,6 +400,15 @@ Rome - Italy. email: geonetwork@osgeo.org
                       sr:binding[@name='subject']/* = $datasetURI]/sr:binding[@name='object']"/>
             <xsl:with-param name="predicate">adms:identifier</xsl:with-param>
           </xsl:call-template>
+          <xsl:if test="normalize-space($oldResourceUUID) != ''">
+            <adms:identifier>
+              <adms:Identifier>
+                <skos:notation>
+                  <xsl:value-of select="$oldResourceUUID"/>
+                </skos:notation>
+              </adms:Identifier>
+            </adms:identifier>
+          </xsl:if>
           <!-- dct:provenance-->
           <xsl:call-template name="provenanceStatements">
             <xsl:with-param name="statementURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/provenance' and
@@ -460,10 +485,24 @@ Rome - Italy. email: geonetwork@osgeo.org
             </xsl:attribute>
           </xsl:if>
           <!-- dct:identifier -->
-          <xsl:call-template name="identifier">
-            <xsl:with-param name="subject" select="./*"/>
-            <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
-          </xsl:call-template>
+          <xsl:choose>
+            <xsl:when test="normalize-space($newResourceUUID) != ''">
+              <dct:identifier>
+                <xsl:value-of select="$newResourceUUID"/>
+              </dct:identifier>
+              <xsl:call-template name="identifier">
+                <xsl:with-param name="subject" select="./*"/>
+                <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
+                <xsl:with-param name="existingId" select="$oldResourceUUID"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="identifier">
+                <xsl:with-param name="subject" select="./*"/>
+                <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
+              </xsl:call-template>
+            </xsl:otherwise>
+          </xsl:choose>
           <!-- dct:title -->
           <xsl:call-template name="properties">
             <xsl:with-param name="subject" select="./*"/>

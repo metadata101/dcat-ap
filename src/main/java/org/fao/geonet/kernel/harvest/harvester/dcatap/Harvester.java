@@ -216,7 +216,6 @@ class Harvester implements IHarvester<HarvestResult> {
             newModel = this.createCatalogRecord(
                 newModel,
                 solution.get("resourceId").toString(),
-                solution.get("baseRecordId").toString(),
                 solution.get("catalogId").toString()
             );
         }
@@ -224,8 +223,8 @@ class Harvester implements IHarvester<HarvestResult> {
         return newModel;
     }
 
-    private Model createCatalogRecord(Model model, String resourceId, String baseRecordId, String catalogId) throws IOException {
-        String recordUUID = this.transformUUID(baseRecordId, catalogId);
+    private Model createCatalogRecord(Model model, String resourceId, String catalogId) throws IOException {
+        String recordUUID = UUID.nameUUIDFromBytes(resourceId.getBytes()).toString();
         String localQuery = this.getQueryString("add-CatalogRecord.rq")
             .replaceAll("%recordID%", this.settingManager.getNodeURL() + "api/records/" + recordUUID)
             .replaceAll("%recordUUID%", recordUUID)
@@ -246,6 +245,7 @@ class Harvester implements IHarvester<HarvestResult> {
             String recordId = solution.get("recordId").toString();
             String resourceId = solution.get("resourceId").toString();
             String baseRecordUUID = solution.get("baseRecordUUID").toString();
+            String baseResourceUUID = solution.get("baseResourceUUID").toString();
 
             if (log.isDebugEnabled()) {
                 log.debug("Record in response: " + recordId + " With resource: " + resourceId);
@@ -269,6 +269,12 @@ class Harvester implements IHarvester<HarvestResult> {
                 Map<String, Object> params = new HashMap<>();
                 params.put("recordUUID", recordUUID);
                 params.put("harvesterURL", this.params.baseUrl);
+
+                if (!this.isStrongIdentifier(baseResourceUUID)) {
+                    params.put("newResourceUUID", this.transformUUID(baseResourceUUID, catalogId));
+                    params.put("oldResourceUUID", baseResourceUUID);
+                }
+
                 Element dcatXML = Xml.transform(sparqlResults, xslFile, params);
 
                 String modified = this.normalizeDate(solution.getLiteral("modified"));
@@ -355,8 +361,8 @@ class Harvester implements IHarvester<HarvestResult> {
      * in all situations.
      */
     private String transformUUID(String str, String catalogId) {
-        if (this.isStrongIdentifier(str)) {
-            Matcher matcher = this.identifierPattern.matcher(str);
+        Matcher matcher = this.identifierPattern.matcher(str);
+        if (matcher.find()) {
             return str.substring(matcher.start(), matcher.end());
         } else {
             return UUID.nameUUIDFromBytes((catalogId + "-" + str).getBytes()).toString();

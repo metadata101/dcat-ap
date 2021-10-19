@@ -6,7 +6,7 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 # It first check for the first resource dct:identifier.
 # If none, check on the resource about.
 # If none, ignore the resource.
-SELECT ?catalogId ?resourceId (min(?brId) as ?baseRecordId)
+SELECT ?catalogId ?resourceId
 WHERE {
   {
     ?catalogId a dcat:Catalog.
@@ -15,7 +15,6 @@ WHERE {
     OPTIONAL {
       ?resourceId dct:identifier ?identifier
     }
-    BIND (if (bound(?identifier), ?identifier, ?resourceId) as ?brId)
     FILTER (NOT EXISTS {
       ?recordId a dcat:CatalogRecord.
       ?recordId foaf:primaryTopic ?resourceId.
