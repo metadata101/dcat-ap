@@ -41,6 +41,7 @@
             </dct:type>
           </foaf:Agent>
         </dct:publisher>
+        <dcat:keyword xml:lang="nl"/>
         <dct:subject>
           <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
             <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>

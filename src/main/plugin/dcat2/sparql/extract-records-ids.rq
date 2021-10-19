@@ -3,13 +3,17 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
 # Extract all CatalogRecord ids, modified date and primary topic
-SELECT ?recordId ?modified ?resourceId ?baseRecordUUID
+SELECT ?catalogId ?recordId ?modified ?resourceId ?baseRecordUUID ?baseResourceUUID
 WHERE {
+  ?catalogId a dcat:Catalog.
   ?recordId a dcat:CatalogRecord.
+  ?catalogId dcat:record ?recordId.
   ?recordId foaf:primaryTopic ?resourceId.
   OPTIONAL {
     ?recordId dct:modified ?modified.
-    ?recordId dct:identifier ?identifier.
+    ?recordId dct:identifier ?recordDctIdentifier.
+    ?resourceId dct:identifier ?resourceDctIdentifier.
   }
-  BIND (if (bound(?identifier), ?identifier, ?recordId) as ?baseRecordUUID)
+  BIND (if (bound(?recordDctIdentifier), ?recordDctIdentifier, ?recordId) as ?baseRecordUUID)
+  BIND (if (bound(?resourceDctIdentifier), ?resourceDctIdentifier, ?resourceId) as ?baseResourceUUID)
 }

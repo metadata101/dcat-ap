@@ -373,7 +373,8 @@
   <!-- Set default xml:lang value when missing -->
   <xsl:template match="dcat:Dataset/dct:title|dcat:DataService/dct:title|dcat:Dataset/dct:description|
                        dcat:DataService/dct:description|dcat:Distribution/dct:title|
-                       dcat:Distribution/dct:description|foaf:Agent/foaf:name" priority="10">
+                       dcat:Distribution/dct:description|foaf:Agent/foaf:name|dcat:keyword"
+                priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
       <xsl:if test="not(@xml:lang)">
