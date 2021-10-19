@@ -93,6 +93,8 @@ class Harvester implements IHarvester<HarvestResult> {
 
     private final Path xslFile;
 
+    private final Pattern identifierPattern;
+
     public Harvester(AtomicBoolean cancelMonitor, Logger log, ServiceContext context, DCAT2Params params) {
         this.cancelMonitor = cancelMonitor;
         this.log = log;
@@ -106,6 +108,7 @@ class Harvester implements IHarvester<HarvestResult> {
 
 
         this.xslFile = this.schemaDir.resolve("import/rdf-to-xml.xsl");
+        this.identifierPattern = Pattern.compile("([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}");
     }
 
     @Override
@@ -222,7 +225,7 @@ class Harvester implements IHarvester<HarvestResult> {
     }
 
     private Model createCatalogRecord(Model model, String resourceId, String baseRecordId, String catalogId) throws IOException {
-        String recordUUID = this.transformUUID(baseRecordId);
+        String recordUUID = this.transformUUID(baseRecordId, catalogId);
         String localQuery = this.getQueryString("add-CatalogRecord.rq")
             .replaceAll("%recordID%", this.settingManager.getNodeURL() + "api/records/" + recordUUID)
             .replaceAll("%recordUUID%", recordUUID)
@@ -262,9 +265,9 @@ class Harvester implements IHarvester<HarvestResult> {
                 Element sparqlResults = Xml.loadStream(new ByteArrayInputStream(outxml.toByteArray()));
                 qe.close();
 
-                String recordUUID = this.transformUUID(baseRecordUUID);
+                String recordUUID = this.transformUUID(baseRecordUUID, catalogId);
                 Map<String, Object> params = new HashMap<>();
-                params.put("identifier", recordUUID);
+                params.put("recordUUID", recordUUID);
                 params.put("harvesterURL", this.params.baseUrl);
                 Element dcatXML = Xml.transform(sparqlResults, xslFile, params);
 
@@ -351,15 +354,17 @@ class Harvester implements IHarvester<HarvestResult> {
      * does not work, as the GeoNetwork URLs still clash and don't work
      * in all situations.
      */
-    private String transformUUID(String str) {
-        Pattern pattern = Pattern.compile("([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}");
-        Matcher matcher = pattern.matcher(str);
-        String recordUUID;
-        if (matcher.find()) {
-            recordUUID = str.substring(matcher.start(), matcher.end());
+    private String transformUUID(String str, String catalogId) {
+        if (this.isStrongIdentifier(str)) {
+            Matcher matcher = this.identifierPattern.matcher(str);
+            return str.substring(matcher.start(), matcher.end());
         } else {
-            recordUUID = UUID.nameUUIDFromBytes(str.getBytes()).toString();
+            return UUID.nameUUIDFromBytes((catalogId + "-" + str).getBytes()).toString();
         }
-        return recordUUID;
+    }
+
+    private boolean isStrongIdentifier(String str) {
+        Matcher matcher = this.identifierPattern.matcher(str);
+        return matcher.find();
     }
 }
