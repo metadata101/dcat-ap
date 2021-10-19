@@ -8,7 +8,7 @@ CONSTRUCT {
   ?recordId dct:identifier "%recordUUID%".
   ?recordId foaf:primaryTopic <%resourceId%>.
   ?recordId dct:modified "%modifiedDate%".
-  <%catalogURI%> dcat:record ?recordId.
+  <%catalogId%> dcat:record ?recordId.
   ?s ?p ?o.
 } WHERE {
   {

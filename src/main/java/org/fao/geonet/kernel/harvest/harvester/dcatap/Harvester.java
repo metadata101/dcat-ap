@@ -203,8 +203,6 @@ class Harvester implements IHarvester<HarvestResult> {
     }
 
     private Model fixMissingRecords(Model model) throws IOException {
-        String catalogURI = this.getCatalogURI(model);
-
         Query queryExtractNoRec = QueryFactory.create(this.getQueryString("extract-resources-no-records.rq"));
         QueryExecution qe = QueryExecutionFactory.create(queryExtractNoRec, model);
 
@@ -216,28 +214,21 @@ class Harvester implements IHarvester<HarvestResult> {
                 newModel,
                 solution.get("resourceId").toString(),
                 solution.get("baseRecordId").toString(),
-                catalogURI
+                solution.get("catalogId").toString()
             );
         }
 
         return newModel;
     }
 
-    private String getCatalogURI(Model model) throws IOException {
-        Query queryExtractCatalogURI = QueryFactory.create(this.getQueryString("extract_catalog_uri.rq"));
-        QueryExecution qe = QueryExecutionFactory.create(queryExtractCatalogURI, model);
-        ResultSet result = qe.execSelect();
-        return result.nextSolution().get("catalogURI").toString();
-    }
-
-    private Model createCatalogRecord(Model model, String resourceId, String baseRecordId, String catalogURI) throws IOException {
+    private Model createCatalogRecord(Model model, String resourceId, String baseRecordId, String catalogId) throws IOException {
         String recordUUID = this.transformUUID(baseRecordId);
         String localQuery = this.getQueryString("add-CatalogRecord.rq")
             .replaceAll("%recordID%", this.settingManager.getNodeURL() + "api/records/" + recordUUID)
             .replaceAll("%recordUUID%", recordUUID)
             .replaceAll("%resourceId%", resourceId)
             .replaceAll("%modifiedDate%", this.normalizeDate(new Date()))
-            .replaceAll("%catalogURI%", catalogURI);
+            .replaceAll("%catalogId%", catalogId);
 
         Query queryFixBlankNodes = QueryFactory.create(localQuery);
         QueryExecution qe = QueryExecutionFactory.create(queryFixBlankNodes, model);
@@ -248,6 +239,7 @@ class Harvester implements IHarvester<HarvestResult> {
 
     private DCAT2RecordInfo getRecordInfo(QuerySolution solution, Model model) {
         try {
+            String catalogId = solution.get("catalogId").toString();
             String recordId = solution.get("recordId").toString();
             String resourceId = solution.get("resourceId").toString();
             String baseRecordUUID = solution.get("baseRecordUUID").toString();

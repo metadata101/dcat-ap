@@ -49,7 +49,7 @@ WHERE {
     FILTER (?subject = <%resourceId%> || ?object = <%resourceId%>)
 
   } UNION {
-    #Triples on a specific dataset's child resources (publisher, distribution, ed.)
+    #Triples on a specific resource's child resources (publisher, distribution, ed.)
     ?subject ?predicate ?object.
     <%resourceId%> ?p ?subject.
 

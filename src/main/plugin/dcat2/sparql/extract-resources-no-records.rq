@@ -6,10 +6,12 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 # It first check for the first resource dct:identifier.
 # If none, check on the resource about.
 # If none, ignore the resource.
-SELECT ?resourceId (min(?brId) as ?baseRecordId)
+SELECT ?catalogId ?resourceId (min(?brId) as ?baseRecordId)
 WHERE {
   {
+    ?catalogId a dcat:Catalog.
     ?resourceId a dcat:Dataset.
+    ?catalogId dcat:dataset ?resourceId.
     OPTIONAL {
       ?resourceId dct:identifier ?identifier
     }
@@ -21,7 +23,9 @@ WHERE {
     FILTER (bound(?identifier) || !isBlank(?resourceId))
 
   } UNION {
+    ?catalogId a dcat:Catalog.
     ?resourceId a dcat:DataService.
+    ?catalogId dcat:service ?resourceId.
     OPTIONAL {
       ?resourceId dct:identifier ?identifier.
     }
@@ -33,4 +37,4 @@ WHERE {
     FILTER (bound(?identifier) || !isBlank(?resourceId))
   }
 }
-GROUP BY ?resourceId
+GROUP BY ?resourceId ?catalogId
