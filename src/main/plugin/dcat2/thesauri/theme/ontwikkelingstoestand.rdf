@@ -64,8 +64,8 @@
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand"/>
     <skos:definition xml:lang="nl">Live-omgeving.</skos:definition>
     <skos:prefLabel xml:lang="nl">productie</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">productie</skos:prefLabel>
-    <skos:prefLabel xml:lang="fr">productie</skos:prefLabel>
-    <skos:prefLabel xml:lang="de">productie</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">production</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">production</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">production</skos:prefLabel>
   </skos:Concept>
 </rdf:RDF>
