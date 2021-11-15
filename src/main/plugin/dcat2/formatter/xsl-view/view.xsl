@@ -47,8 +47,7 @@
   <xsl:strip-space elements="*"/>
 
   <!-- Load the editor configuration to be able to render the different views -->
-  <xsl:variable name="configuration"
-    select="document('../../layout/config-editor.xml')" />
+  <xsl:variable name="configuration" select="document('../../layout/config-editor.xml')" />
 
   <!-- Some utility -->
   <xsl:include href="common/functions-metadata.xsl" />
@@ -138,18 +137,39 @@
   </xsl:template>
 
   <xsl:template mode="getMetadataHeader" match="rdf:RDF">
+    <div class="gn-abstract">
+      <xsl:value-of select="(//dcat:Dataset/dct:description|//dcat:DataService/dct:description)[1]"/>
+    </div>
+    <div class="one-line-ellipsis" ng-if="user.isEditorOrMore()">
+      <p>
+        <span data-translate="">owner</span>: {{md.getOwnername()}}
+      </p>
+    </div>
+    <div data-ng-if="user.isEditorOrMore() &amp;&amp; md.mdStatus&lt;50 &amp;&amp; isMdWorkflowEnable">
+      <i
+        class="fa gn-aiv-workflow-status-all gn-aiv-workflow-status-{{{{(md.mdStatus==2 || md.mdStatus==3) ? 'unlocked' : 'locked'}}}} gn-aiv-workflow-status-{{{{(md.mdStatus &amp;&amp; md.mdStatus &lt; 7) ? md.mdStatus : 'x'}}}}">
+        <span>{{'mdStatusRecord' | translate}}: {{('mdStatus-' + md.mdStatus) | translate}}</span>
+      </i>
+    </div>
   </xsl:template>
 
-  <xsl:template mode="getMetadataThumbnail" match="rdf:RDF">
+  <xsl:template mode="getMetadataHierarchyLevel" match="rdf:RDF">
+    <xsl:choose>
+      <xsl:when test="count(//dcat:Dataset) > 0">
+        <xsl:value-of select="'dataset'"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="'service'"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
+  <xsl:template mode="getMetadataThumbnail" match="rdf:RDF"/>
 
-  <xsl:template mode="render-view" match="field[template]"
-    priority="3">
+
+  <xsl:template mode="render-view" match="field[template]" priority="3">
     <xsl:param name="base" select="$metadata" />
-
     <xsl:variable name="fieldXpath" select="@xpath" />
-    <xsl:variable name="fields" select="template/values/key" />
     <!-- Get all elements that are within a dcat2 namespace -->
     <xsl:variable name="elements">
       <xsl:call-template name="evaluate-dcat2">
@@ -471,21 +491,21 @@
 
   <!-- Render values for URL -->
   <xsl:template mode="render-url" match="*|@*">
-      <a href="{.}" target="_blank" style="color=#06c; text-decoration: underline;">
-        <xsl:value-of select="." />
-      </a>
+    <a href="{.}" target="_blank" style="color=#06c; text-decoration: underline;">
+      <xsl:value-of select="." />
+    </a>
   </xsl:template>
 
   <!-- ... Dates -->
   <xsl:template mode="render-value"
-    match="*[matches(., '^[0-9]{4}-[0-1][0-9]-[0-3][0-9](Z|(\+|-)[0-1][0-9]:[0-6][0-9])?$')]">
+                match="*[matches(., '^[0-9]{4}-[0-1][0-9]-[0-3][0-9](Z|(\+|-)[0-1][0-9]:[0-6][0-9])?$')]">
     <span data-gn-humanize-time="{.}" data-format="DD MMM YYYY">
       <xsl:value-of select="." />
     </span>
   </xsl:template>
 
   <xsl:template mode="render-value"
-    match="*[matches(., '^[0-9]{4}-[0-1][0-9]-[0-3][0-9]T[0-2][0-9]:[0-6][0-9]:[0-6][0-9](Z|(\+|-)[0-1][0-9]:[0-6][0-9])?$')]">
+                match="*[matches(., '^[0-9]{4}-[0-1][0-9]-[0-3][0-9]T[0-2][0-9]:[0-6][0-9]:[0-6][0-9](Z|(\+|-)[0-1][0-9]:[0-6][0-9])?$')]">
     <span data-gn-humanize-time="{.}" data-format="DD MMM YYYY HH:mm">
       <xsl:value-of select="." />
     </span>

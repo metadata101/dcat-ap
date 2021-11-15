@@ -619,7 +619,7 @@
       <xsl:variable name="lifeCycleLabel">
         <xsl:choose>
           <xsl:when test="./skos:Concept/skos:prefLabel[@xml:lang = 'en']">
-            <xsl:value-of select="string(./skos:Concept/skos:prefLabel[@xml:lang = 'en'])"/>
+            <xsl:value-of select="string(./skos:Concept/skos:prefLabel[@xml:lang = 'en'][1])"/>
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="string(./skos:Concept/skos:prefLabel[1])"/>
@@ -633,7 +633,7 @@
       <xsl:variable name="devStateLabel">
         <xsl:choose>
           <xsl:when test="./skos:Concept/skos:prefLabel[@xml:lang = 'en']">
-            <xsl:value-of select="string(./skos:Concept/skos:prefLabel[@xml:lang = 'en'])"/>
+            <xsl:value-of select="string(./skos:Concept/skos:prefLabel[@xml:lang = 'en'][1])"/>
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="string(./skos:Concept/skos:prefLabel[1])"/>
@@ -648,7 +648,7 @@
   <xsl:template name="getLicenseDocumentTitle">
     <xsl:param name="rdfAbout"/>
     <xsl:choose>
-      <xsl:when test="contains($rdfAbout,'modellicentie-gratis-hergebruik')">odellicentie voor gratis hergebruik</xsl:when>
+      <xsl:when test="contains($rdfAbout,'modellicentie-gratis-hergebruik')">modellicentie voor gratis hergebruik</xsl:when>
       <xsl:when test="contains($rdfAbout,'creative-commons-zero-verklaring')">Creative Commons Zero verklaring</xsl:when>
       <xsl:when test="contains($rdfAbout,'modellicentie-hergebruik-tegen-vergoeding')">Modellicentie voor hergebruik tegen vergoeding</xsl:when>
       <xsl:when test="contains($rdfAbout,'onvoorwaardelijk-hergebruik')">Onvoorwaardelijk hergebruik</xsl:when>
