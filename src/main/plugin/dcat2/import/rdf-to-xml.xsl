@@ -912,15 +912,20 @@ Rome - Italy. email: geonetwork@osgeo.org
               </xsl:comment>
             </xsl:when>
           </xsl:choose>
-          <!-- rdf:tpe -->
+          <!-- rdf:type -->
           <xsl:if test="$rdfType != ''">
             <rdf:type rdf:resource="{$rdfType}"/>
           </xsl:if>
           <!-- skos:prefLabel -->
-          <xsl:call-template name="properties">
-            <xsl:with-param name="subject" select="./*"/>
-            <xsl:with-param name="predicate">skos:prefLabel</xsl:with-param>
-          </xsl:call-template>
+          <xsl:variable name="labels">
+            <xsl:call-template name="properties">
+              <xsl:with-param name="subject" select="./*"/>
+              <xsl:with-param name="predicate">skos:prefLabel</xsl:with-param>
+            </xsl:call-template>
+          </xsl:variable>
+          <xsl:for-each-group select="$labels/skos:prefLabel" group-by="@xml:lang">
+            <xsl:copy-of select="$labels/skos:prefLabel[@xml:lang = current-grouping-key()][1]"/>
+          </xsl:for-each-group>
           <!-- dct:type -->
           <xsl:call-template name="properties">
             <xsl:with-param name="subject" select="./*"/>
