@@ -28,10 +28,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import org.fao.geonet.ApplicationContextHolder;
 import org.fao.geonet.kernel.schema.SchemaPlugin;
 import org.fao.geonet.kernel.schema.AssociatedResource;
 import org.fao.geonet.kernel.schema.AssociatedResourcesSchemaPlugin;
 import org.fao.geonet.kernel.schema.MultilingualSchemaPlugin;
+import org.fao.geonet.kernel.setting.SettingManager;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -100,9 +102,9 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
     }
 
     @Override
-    public Set<String> getAssociatedExternalDatasetLinks(Element metadata, String nodeUrl) {
+    public Set<String> getAssociatedExternalDatasetLinks(Element metadata) {
         ElementFilter elementFilter = new ElementFilter("servesDataset", DCAT2Namespaces.DCAT);
-        return this.getAssociatedExternalRdfLinks(metadata, elementFilter, nodeUrl);
+        return this.getAssociatedExternalRdfLinks(metadata, elementFilter);
     }
 
     @Override
@@ -143,7 +145,14 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
         return this.getAssociatedRdfUUIDs(metadata, elementFilter);
     }
 
+    @Override
+    public Set<String> getAssociatedExternalServiceLinks(Element metadata) {
+        ElementFilter elementFilter = new ElementFilter("accessService", DCAT2Namespaces.DCAT);
+        return this.getAssociatedExternalRdfLinks(metadata, elementFilter);
+    }
+
     private Set<String> getAssociatedRdfUUIDs(Element metadata, ElementFilter filter) {
+        String nodeUrl = ApplicationContextHolder.get().getBean(SettingManager.class).getNodeURL();
         Set<String> rdfAboutAttributes = Xml.filterElementValues(
             metadata,
             filter,
@@ -154,14 +163,15 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
         Set<String> uuids = new HashSet<String>();
         for (String rdfAboutAttribute : rdfAboutAttributes) {
             Matcher matcher = UUID_PATTERN.matcher(rdfAboutAttribute);
-            if (matcher.find()) {
+            if (matcher.find() && rdfAboutAttribute.startsWith(nodeUrl)) {
                 uuids.add(rdfAboutAttribute.substring(matcher.start(), matcher.end()));
             }
         }
         return uuids;
     }
 
-    private Set<String> getAssociatedExternalRdfLinks(Element metadata, ElementFilter filter, String nodeUrl) {
+    private Set<String> getAssociatedExternalRdfLinks(Element metadata, ElementFilter filter) {
+        String nodeUrl = ApplicationContextHolder.get().getBean(SettingManager.class).getNodeURL();
         Set<String> rdfAboutAttributes = Xml.filterElementValues(
             metadata,
             filter,
