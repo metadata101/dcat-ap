@@ -1339,6 +1339,9 @@ Rome - Italy. email: geonetwork@osgeo.org
                   <xsl:value-of select="./sr:literal/@xml:lang"/>
                 </xsl:attribute>
               </xsl:when>
+              <xsl:when test="$predicate = ('dcat:keyword')">
+                <xsl:attribute name="xml:lang" select="'nl'"/>
+              </xsl:when>
             </xsl:choose>
             <!-- literal value -->
             <xsl:value-of select="./sr:literal"/>
