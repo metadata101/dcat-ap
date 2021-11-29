@@ -27,7 +27,6 @@ Rome - Italy. email: geonetwork@osgeo.org
   <xsl:param name="uuid"/>
   <xsl:variable name="separator">|</xsl:variable>
   <xsl:template match="/">
-    <xsl:value-of select="concat('Identifier', $separator, 'label', $separator, 'Pattern title', $separator, 'Message type', $separator, 'Message', '&#xA;')" />
     <xsl:for-each select="reports/report">
       <xsl:variable name="label">
         <xsl:if test="normalize-space(label/text())!=''">
@@ -36,14 +35,14 @@ Rome - Italy. email: geonetwork@osgeo.org
         <xsl:if test="not(normalize-space(label/text())!='')">DCAT-AP XML Schema Validation</xsl:if>
       </xsl:variable>
       <xsl:for-each select="patterns/pattern[rules/rule/@type='error']">
-        <xsl:variable name="patternTitle" select="title/text()"/>
+        <xsl:variable name="patternTitle" select="replace(title/text(),'\s',' ')"/>
         <xsl:for-each select="rules/rule[@group='xsd' or (@type='error' and not(@group='xsd'))]">
           <xsl:variable name="msg">
             <xsl:if test="@group='xsd'">
-              <xsl:value-of select="details/text()"/>
+              <xsl:value-of select="replace(details/text(),'\s',' ')"/>
             </xsl:if>
             <xsl:if test="@type='error' and not(@group='xsd')">
-              <xsl:value-of select="msg/text()"/>
+              <xsl:value-of select="replace(msg/text(),'\s',' ')"/>
             </xsl:if>
           </xsl:variable>
           <xsl:variable name="firstPartMsg"><xsl:if test="contains($msg,':')"><xsl:value-of select="substring-before($msg,':')"/></xsl:if></xsl:variable>

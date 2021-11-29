@@ -176,6 +176,9 @@ public class Aligner extends BaseAligner<DCAT2Params> {
         try {
             csvOutputFile = new BufferedWriter(
                 new OutputStreamWriter(new FileOutputStream(log.getFileAppender().replaceAll(".log",".csv")), Charset.forName("UTF-8")));
+            String separator = "|";
+            csvOutputFile.write("Identifier" + separator + "Label" + separator + "Pattern title" + separator + "Message type"+ separator + "Message");
+            csvOutputFile.write("\n");
             // -----------------------------------------------------------------------
             // --- insert/update new metadata
 
