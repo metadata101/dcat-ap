@@ -9,14 +9,13 @@
                 exclude-result-prefixes="#all">
 
   <xsl:variable name="profile">
-    <xsl:variable name="std"
-                  select="string(/root/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about)"/>
+    <xsl:variable name="std" select="string(/root/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about)"/>
     <xsl:choose>
       <xsl:when test="starts-with($std, 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat')">
         <xsl:value-of select="'metadata-dcat'"/>
       </xsl:when>
       <xsl:when test="starts-with($std, 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL')">
-        <xsl:value-of select="'dcat-ap-vl'"/>
+        <xsl:value-of select="'DCAT-AP-VL'"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="false()"/>
