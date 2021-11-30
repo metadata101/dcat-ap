@@ -303,7 +303,6 @@ public class Aligner extends BaseAligner<DCAT2Params> {
         Element validationReport = validateMetadata(ri, metadata);
         log.info("VALIDATION REPORT for record with UUID: " + ri.uuid + " and with URI: " + ri.uri + transformReportToString(ri.uuid, validationReport, xslFile));
         csvOutputFile.write(transformReportToString(ri.uuid, validationReport, xslFileForCsvOutput));
-        csvOutputFile.write("\n");
     }
 
     private void updateMetadata(DCAT2RecordInfo ri, String id, BufferedWriter csvOutputFile) throws Exception {
