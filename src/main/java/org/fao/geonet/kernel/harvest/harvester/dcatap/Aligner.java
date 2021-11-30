@@ -23,10 +23,14 @@
 
 package org.fao.geonet.kernel.harvest.harvester.dcatap;
 
+import com.google.common.collect.Lists;
 import jeeves.server.UserSession;
 import jeeves.server.context.ServiceContext;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.DailyRollingFileAppender;
+import org.apache.log4j.PatternLayout;
 import org.fao.geonet.GeonetContext;
 import org.fao.geonet.Logger;
 import org.fao.geonet.constants.Geonet;
@@ -48,23 +52,22 @@ import org.fao.geonet.kernel.schema.MetadataSchema;
 import org.fao.geonet.repository.OperationAllowedRepository;
 import org.fao.geonet.repository.SchematronRepository;
 import org.fao.geonet.utils.IO;
+import org.fao.geonet.utils.Log;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Document;
 import org.jdom.Element;
+import org.jdom.filter.ElementFilter;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 import org.jdom.transform.JDOMSource;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.xml.transform.Source;
@@ -116,14 +119,16 @@ public class Aligner extends BaseAligner<DCAT2Params> {
     private UUIDMapper localUuids;
     private HarvestResult result;
     private Path xslFile;
+    private Path xslFileForCsvOutput;
 
     public Aligner(AtomicBoolean cancelMonitor, Logger log, ServiceContext sc, DCAT2Params params) throws Exception {
         super(cancelMonitor);
         this.log = log;
         this.context = sc;
         this.params = params;
-        this.xslFile = context.getApplicationContext().getBean(DataManager.class).getSchemaDir("dcat2")
-            .resolve("import/validation-report-to-text.xsl");
+        Path schemaDir = context.getApplicationContext().getBean(DataManager.class).getSchemaDir("dcat2");
+        this.xslFile = schemaDir.resolve("import/validation-report-to-text.xsl");
+        this.xslFileForCsvOutput = schemaDir.resolve("import/validation-report-to-csv.xsl");
 
         GeonetContext gc = (GeonetContext) context.getHandlerContext(Geonet.CONTEXT_NAME);
         dataMan = gc.getBean(DataManager.class);
@@ -167,33 +172,43 @@ public class Aligner extends BaseAligner<DCAT2Params> {
                 result.locallyRemoved++;
             }
         }
+        BufferedWriter csvOutputFile = null;
+        try {
+            csvOutputFile = new BufferedWriter(
+                new OutputStreamWriter(new FileOutputStream(log.getFileAppender().replaceAll(".log",".csv")), Charset.forName("UTF-8")));
+            String separator = "|";
+            csvOutputFile.write("Identifier" + separator + "Label" + separator + "Pattern title" + separator + "Message type"+ separator + "Message");
+            csvOutputFile.write("\n");
+            // -----------------------------------------------------------------------
+            // --- insert/update new metadata
 
-        // -----------------------------------------------------------------------
-        // --- insert/update new metadata
-
-        for (DCAT2RecordInfo ri : recordsInfo) {
-            if (cancelMonitor.get()) {
-                return result;
-            }
-
-            try {
-                log.info("Importing record: " + ri.uri);
-                String id = dataMan.getMetadataId(ri.uuid);
-
-                if (id == null) {
-                    addMetadata(ri);
-                } else {
-                    ri.id = id;
-                    updateMetadata(ri, id);
+            for (DCAT2RecordInfo ri : recordsInfo) {
+                if (cancelMonitor.get()) {
+                    return result;
                 }
 
-                result.totalMetadata++;
+                try {
+                    log.info("Importing record: " + ri.uri);
+                    String id = dataMan.getMetadataId(ri.uuid);
 
-            } catch (Throwable t) {
-                errors.add(new HarvestError(context, t));
-                log.error("Unable to process record from (" + this.params.getName() + ")");
-                log.error("   Record failed: " + ri.uuid);
+                    if (id == null) {
+                        addMetadata(ri, csvOutputFile);
+                    } else {
+                        ri.id = id;
+                        updateMetadata(ri, id, csvOutputFile);
+                    }
+
+                    result.totalMetadata++;
+
+                } catch (Throwable t) {
+                    errors.add(new HarvestError(context, t));
+                    log.error("Unable to process record from (" + this.params.getName() + ")");
+                    log.error("   Record failed: " + ri.uuid);
+                }
             }
+        } finally {
+            IOUtils.closeQuietly(csvOutputFile);
+            IOUtils.closeQuietly(csvOutputFile);
         }
 
         dataMan.forceIndexChanges();
@@ -204,7 +219,7 @@ public class Aligner extends BaseAligner<DCAT2Params> {
         return result;
     }
 
-    private void addMetadata(DCAT2RecordInfo ri) throws Exception {
+    private void addMetadata(DCAT2RecordInfo ri, BufferedWriter csvOutputFile) throws Exception {
         Element md = ri.metadata;
 
         if (md == null)
@@ -286,10 +301,11 @@ public class Aligner extends BaseAligner<DCAT2Params> {
         System.out.println("metadata imported: " + ri.id);
 
         Element validationReport = validateMetadata(ri, metadata);
-        log.info("VALIDATION REPORT for record with UUID: " + ri.uuid + " and with URI: " + ri.uri + transformReportToString(validationReport));
+        log.info("VALIDATION REPORT for record with UUID: " + ri.uuid + " and with URI: " + ri.uri + transformReportToString(ri.uuid, validationReport, xslFile));
+        csvOutputFile.write(transformReportToString(ri.uuid, validationReport, xslFileForCsvOutput));
     }
 
-    private void updateMetadata(DCAT2RecordInfo ri, String id) throws Exception {
+    private void updateMetadata(DCAT2RecordInfo ri, String id, BufferedWriter csvOutputFile) throws Exception {
         String date = localUuids.getChangeDate(ri.uuid);
 
         if (date == null) {
@@ -359,7 +375,8 @@ public class Aligner extends BaseAligner<DCAT2Params> {
                 result.updatedMetadata++;
 
                 Element validationReport = validateMetadata(ri, metadata);
-                log.info("VALIDATION REPORT for record with UUID: " + ri.uuid + " and with URI: " + ri.uri + transformReportToString(validationReport));
+                log.info("VALIDATION REPORT for record with UUID: " + ri.uuid + " and with URI: " + ri.uri + transformReportToString(ri.uuid, validationReport, xslFile));
+                csvOutputFile.write(transformReportToString(ri.uuid, validationReport, xslFileForCsvOutput));
                 //XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
                 //log.info(xmlOutputter.outputString(validationReport));
             }
@@ -468,12 +485,13 @@ public class Aligner extends BaseAligner<DCAT2Params> {
      * @param validationReport An XML version of the validation report
      * @return A text-version of the validation report
      */
-    private String transformReportToString(Element validationReport) {
+    private String transformReportToString(String uuid, Element validationReport, Path xslFile) {
         try {
             StreamResult validationReportAsText = new StreamResult(new StringWriter());
             Source validationReportSource = new JDOMSource(new Document((Element) validationReport.detach()));
             Source xslSource = new StreamSource(IO.newInputStream(xslFile), xslFile.toUri().toASCIIString());
             Transformer transformer = TransformerFactory.newInstance().newTransformer(xslSource);
+            transformer.setParameter("uuid", uuid);
             transformer.transform(validationReportSource, validationReportAsText);
             return validationReportAsText.getWriter().toString();
         } catch (TransformerException e) {
@@ -495,7 +513,6 @@ public class Aligner extends BaseAligner<DCAT2Params> {
 
         return false;
     }
-
 }
 
 // =============================================================================
