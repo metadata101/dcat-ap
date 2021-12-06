@@ -122,10 +122,9 @@
   <xsl:template match="dcat:Dataset|dcat:DataService" mode="dataset_service">
 
     <!-- === Free text search === -->
-
     <Field name="any" store="false" index="true">
       <xsl:attribute name="string">
-        <xsl:value-of select="normalize-space(string(.))"/>
+        <xsl:value-of select="normalize-space(concat(string(../../dcat:record/dcat:CatalogRecord), ' ', string(.)))"/>
       </xsl:attribute>
     </Field>
 
@@ -368,7 +367,8 @@
 
     <xsl:for-each select="dct:subject|dcat:theme">
       <xsl:variable name="scheme" select="skos:Concept/skos:inScheme/@rdf:resource"/>
-      <xsl:variable name="theme" select="skos:Concept/skos:prefLabel[@xml:lang=$langId]"/>
+      <xsl:variable name="theme" select="if (skos:Concept/skos:prefLabel[@xml:lang='nl']) then skos:Concept/skos:prefLabel[@xml:lang='nl'] else skos:Concept/skos:prefLabel[@xml:lang=$langId]"/>
+      <Field name="keyword" string="{$theme}" store="true" index="true"/>
       <xsl:if test="normalize-space($theme) != ''">
         <xsl:choose>
           <xsl:when test="$scheme = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'">
