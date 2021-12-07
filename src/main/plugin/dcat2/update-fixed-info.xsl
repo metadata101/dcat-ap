@@ -545,16 +545,34 @@
         <xsl:apply-templates select="dct:subject"/>
       </xsl:when>
       <xsl:otherwise>
-        <dct:subject>
-          <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
-            <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
-            <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
-            <skos:prefLabel xml:lang="fr"/>
-            <skos:prefLabel xml:lang="de"/>
-            <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
-          </skos:Concept>
-        </dct:subject>
-        <xsl:apply-templates select="dct:subject[skos:Concept/@rdf:about != 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA']"/>
+        <xsl:choose>
+          <xsl:when test="name() = 'dcat:Dataset'">
+            <dct:subject>
+              <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
+                <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr"/>
+                <skos:prefLabel xml:lang="de"/>
+                <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
+              </skos:Concept>
+            </dct:subject>
+          </xsl:when>
+          <xsl:otherwise>
+            <dct:subject>
+              <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/SERVICEVLOPENDATA">
+                <skos:prefLabel xml:lang="nl">Vlaamse Open data Service</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Vlaamse Open data Service</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr"/>
+                <skos:prefLabel xml:lang="de"/>
+                <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
+              </skos:Concept>
+            </dct:subject>
+          </xsl:otherwise>
+        </xsl:choose>
+        <xsl:apply-templates select="dct:subject[not(skos:Concept/@rdf:about = (
+          'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA',
+          'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/SERVICEVLOPENDATA'
+        ))]"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>

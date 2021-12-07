@@ -384,6 +384,12 @@
       </xsl:if>
     </xsl:for-each>
 
+    <xsl:variable name="openKeywords" select="dct:subject[
+      skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden' and
+      skos:Concept/@rdf:about = ('https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA', 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/SERVICEVLOPENDATA')
+    ]"/>
+    <Field name="isOpenData" string="{if (count($openKeywords) > 0) then 'y' else 'n'}" store="true" index="true"/>
+
     <xsl:variable name="listOfKeywords">{
       <xsl:variable name="keywordWithNoThesaurus"
                     select="dcat:keyword[@xml:lang=$langId]"/>
