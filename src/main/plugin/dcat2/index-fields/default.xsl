@@ -384,6 +384,12 @@
       </xsl:if>
     </xsl:for-each>
 
+    <xsl:variable name="openKeywords" select="dct:subject[
+      skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden' and
+      skos:Concept/@rdf:about = ('https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA', 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/SERVICEVLOPENDATA')
+    ]"/>
+    <Field name="isOpenData" string="{if (count($openKeywords) > 0) then 'y' else 'n'}" store="true" index="true"/>
+
     <xsl:variable name="listOfKeywords">{
       <xsl:variable name="keywordWithNoThesaurus"
                     select="dcat:keyword[@xml:lang=$langId]"/>
@@ -581,10 +587,14 @@
     </xsl:for-each>
 
     <xsl:for-each select="dct:accessRights">
-      <xsl:variable name="rights" select="skos:Concept/skos:prefLabel[@xml:lang=$langId]"/>
-      <xsl:if test="normalize-space($rights) != ''">
-        <Field name="accessRights" string="{$rights}" store="true" index="true"/>
-      </xsl:if>
+      <xsl:choose>
+        <xsl:when test="contains(skos:Concept/@rdf:about, 'http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC')">
+          <Field name="accessRights" string="NON_PUBLIC" store="true" index="true"/>
+        </xsl:when>
+        <xsl:when test="contains(skos:Concept/@rdf:about, 'http://publications.europa.eu/resource/authority/access-right/PUBLIC')">
+          <Field name="accessRights" string="PUBLIC" store="true" index="true"/>
+        </xsl:when>
+      </xsl:choose>
     </xsl:for-each>
 
     <xsl:for-each select="dct:rightsHolder|geodcat:distributor|dcat:contactPoint|dct:publisher">
