@@ -25,8 +25,23 @@ Rome - Italy. email: geonetwork@osgeo.org
   <!-- Tell the XSL processor to output XML. -->
   <xsl:output method="text" omit-xml-declaration="yes" indent="no" encoding="UTF-8"/>
   <xsl:param name="uuid"/>
+  <xsl:param name="harvester"/>
   <xsl:variable name="separator">|</xsl:variable>
   <xsl:template match="/">
+    <xsl:variable name="reportsList" select="reports/report[id!='xsd']"/>
+    <xsl:variable name="rulesList" select="$reportsList/patterns/pattern/rules/rule"/>
+    <xsl:variable name="successCount" select="count($rulesList[@type='success'])"/>
+    <xsl:variable name="warningCount" select="count($rulesList[@type='error' and starts-with(normalize-space(msg/text()),'WARNING')])"/>
+    <xsl:variable name="errorCount" select="count($rulesList[@type='error' and starts-with(normalize-space(msg/text()),'ERROR')])"/>
+    <xsl:value-of select="concat($uuid, $separator, $harvester, $separator, 'Summary for all rules of all schematrons', $separator, 'All rules', $separator, $successCount, $separator, $warningCount, $separator, $errorCount, $separator, '', $separator, '', '&#xA;')" />
+    <xsl:for-each select="distinct-values($reportsList/patterns/pattern/replace(title/text(),'\s',' '))">
+      <xsl:variable name="patternTitle" select="."/>
+      <xsl:variable name="rulesList" select="$reportsList/patterns/pattern[replace(title/text(),'\s',' ')=$patternTitle]/rules/rule"/>
+      <xsl:variable name="successCount" select="count($rulesList[@type='success'])"/>
+      <xsl:variable name="warningCount" select="count($rulesList[@type='error' and starts-with(normalize-space(msg/text()),'WARNING')])"/>
+      <xsl:variable name="errorCount" select="count($rulesList[@type='error' and starts-with(normalize-space(msg/text()),'ERROR')])"/>
+      <xsl:value-of select="concat($uuid, $separator, $harvester, $separator, 'Summary per rule of all schematrons', $separator, ., $separator, $successCount, $separator, $warningCount, $separator, $errorCount, $separator, '', $separator, '', '&#xA;')" />
+    </xsl:for-each>
     <xsl:for-each select="reports/report">
       <xsl:variable name="label">
         <xsl:if test="normalize-space(label/text())!=''">
@@ -34,6 +49,22 @@ Rome - Italy. email: geonetwork@osgeo.org
         </xsl:if>
         <xsl:if test="not(normalize-space(label/text())!='')">DCAT-AP XML Schema Validation</xsl:if>
       </xsl:variable>
+      <xsl:if test="id!='xsd'">
+        <xsl:variable name="report" select="."/>
+        <xsl:variable name="rulesList" select="$report/patterns/pattern/rules/rule"/>
+        <xsl:variable name="successCount" select="count($rulesList[@type='success'])"/>
+        <xsl:variable name="warningCount" select="count($rulesList[@type='error' and starts-with(normalize-space(msg/text()),'WARNING')])"/>
+        <xsl:variable name="errorCount" select="count($rulesList[@type='error' and starts-with(normalize-space(msg/text()),'ERROR')])"/>
+        <xsl:value-of select="concat($uuid, $separator, $harvester, $separator, $label, $separator, 'All rules', $separator, $successCount, $separator, $warningCount, $separator, $errorCount, $separator, '', $separator, '', '&#xA;')" />
+        <xsl:for-each select="distinct-values(patterns/pattern/replace(title/text(),'\s',' '))">
+          <xsl:variable name="patternTitle" select="."/>
+          <xsl:variable name="rulesList" select="$report/patterns/pattern[replace(title/text(),'\s',' ')=$patternTitle]/rules/rule"/>
+          <xsl:variable name="successCount" select="count($rulesList[@type='success'])"/>
+          <xsl:variable name="warningCount" select="count($rulesList[@type='error' and starts-with(normalize-space(msg/text()),'WARNING')])"/>
+          <xsl:variable name="errorCount" select="count($rulesList[@type='error' and starts-with(normalize-space(msg/text()),'ERROR')])"/>
+          <xsl:value-of select="concat($uuid, $separator, $harvester, $separator, concat('Summary per rule for ',$label), $separator, ., $separator, $successCount, $separator, $warningCount, $separator, $errorCount, $separator, '', $separator, '', '&#xA;')" />
+        </xsl:for-each>
+      </xsl:if>
       <xsl:for-each select="patterns/pattern[rules/rule/@type='error']">
         <xsl:variable name="patternTitle" select="replace(title/text(),'\s',' ')"/>
         <xsl:for-each select="rules/rule[@group='xsd' or (@type='error' and not(@group='xsd'))]">
@@ -47,10 +78,10 @@ Rome - Italy. email: geonetwork@osgeo.org
           </xsl:variable>
           <xsl:variable name="firstPartMsg"><xsl:if test="contains($msg,':')"><xsl:value-of select="substring-before($msg,':')"/></xsl:if></xsl:variable>
           <xsl:variable name="lastPartMsg">
-            <xsl:if test="contains($msg,':')"><xsl:value-of select="substring-after($msg,':')"/></xsl:if>
+            <xsl:if test="contains($msg,':')"><xsl:value-of select="normalize-space(substring-after($msg,':'))"/></xsl:if>
             <xsl:if test="not(contains($msg,':'))"><xsl:value-of select="$msg"/></xsl:if>
           </xsl:variable>
-          <xsl:value-of select="concat($uuid, $separator, $label, $separator, $patternTitle, $separator, $firstPartMsg, $separator, $lastPartMsg, '&#xA;')" />
+          <xsl:value-of select="concat($uuid, $separator, $harvester, $separator, $label, $separator, $patternTitle, $separator, '', $separator, '', $separator, '', $separator, $firstPartMsg, $separator, $lastPartMsg, '&#xA;')" />
         </xsl:for-each>
       </xsl:for-each>
     </xsl:for-each>

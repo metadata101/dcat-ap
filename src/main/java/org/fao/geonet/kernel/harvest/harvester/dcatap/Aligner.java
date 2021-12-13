@@ -175,9 +175,9 @@ public class Aligner extends BaseAligner<DCAT2Params> {
         BufferedWriter csvOutputFile = null;
         try {
             csvOutputFile = new BufferedWriter(
-                new OutputStreamWriter(new FileOutputStream(log.getFileAppender().replaceAll(".log",".csv")), Charset.forName("UTF-8")));
+                new OutputStreamWriter(new FileOutputStream(log.getFileAppender().substring(0,log.getFileAppender().lastIndexOf(".log")) + ".csv"), Charset.forName("UTF-8")));
             String separator = "|";
-            csvOutputFile.write("Identifier" + separator + "Label" + separator + "Pattern title" + separator + "Message type"+ separator + "Message");
+            csvOutputFile.write("Identifier" + separator + "Harvester" + separator + "Label" + separator + "Rule" + separator + "Success count" + separator + "Warning count" + separator + "Error count" + separator + "Message type" + separator + "Message");
             csvOutputFile.write("\n");
             // -----------------------------------------------------------------------
             // --- insert/update new metadata
@@ -492,6 +492,7 @@ public class Aligner extends BaseAligner<DCAT2Params> {
             Source xslSource = new StreamSource(IO.newInputStream(xslFile), xslFile.toUri().toASCIIString());
             Transformer transformer = TransformerFactory.newInstance().newTransformer(xslSource);
             transformer.setParameter("uuid", uuid);
+            transformer.setParameter("harvester", params.getName());
             transformer.transform(validationReportSource, validationReportAsText);
             return validationReportAsText.getWriter().toString();
         } catch (TransformerException e) {
