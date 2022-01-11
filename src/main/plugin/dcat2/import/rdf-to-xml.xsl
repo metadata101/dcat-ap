@@ -73,6 +73,12 @@ Rome - Italy. email: geonetwork@osgeo.org
                                                      sr:binding[@name='subject']/* = $catalogURI]/sr:binding[@name='object']"/>
             <xsl:with-param name="predicate">dct:publisher</xsl:with-param>
           </xsl:call-template>
+          <!-- dct:rightsHolder -->
+          <xsl:call-template name="agents">
+            <xsl:with-param name="agentURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/rightsHolder' and
+                                                     sr:binding[@name='subject']/* = $catalogURI]/sr:binding[@name='object']"/>
+            <xsl:with-param name="predicate">dct:rightsHolder</xsl:with-param>
+          </xsl:call-template>
           <!-- foaf:homepage -->
           <xsl:call-template name="documents">
             <xsl:with-param name="documentURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://xmlns.com/foaf/0.1/homepage' and

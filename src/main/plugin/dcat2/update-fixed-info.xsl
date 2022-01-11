@@ -272,6 +272,7 @@
       <xsl:apply-templates select="dct:issued"/>
       <xsl:apply-templates select="dct:modified"/>
       <xsl:apply-templates select="dct:publisher"/>
+      <xsl:apply-templates select="dct:rightsHolder"/>
       <xsl:apply-templates select="dcat:keyword"/>
       <xsl:call-template name="apply-subjects"/>
       <xsl:apply-templates select="dcat:theme"/>
