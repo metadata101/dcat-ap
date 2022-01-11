@@ -3,6 +3,7 @@
   <!-- Scheme -->
   <skos:ConceptScheme rdf:about="http://publications.europa.eu/resource/authority/resource-type">
     <owl:versionInfo>20171214-0</owl:versionInfo>
+    <dc:title>Resource types</dc:title>
     <rdfs:label xml:lang="en">Resource types</rdfs:label>
     <at:prefLabel xml:lang="en">Resource types</at:prefLabel>
   </skos:ConceptScheme>

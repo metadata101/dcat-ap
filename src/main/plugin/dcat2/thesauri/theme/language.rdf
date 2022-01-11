@@ -2,6 +2,7 @@
 <rdf:RDF xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:atold="http://publications.europa.eu/resource/authority/" xmlns:at="http://publications.europa.eu/ontology/authority/">
   <skos:ConceptScheme rdf:about="http://publications.europa.eu/resource/authority/language" at:table.id="language" at:table.version.number="20180725-0">
     <owl:versionInfo>20180725-0</owl:versionInfo>
+    <dc:title>Language</dc:title>
     <rdfs:label xml:lang="en">Language</rdfs:label>
     <at:prefLabel xml:lang="en">Language</at:prefLabel>
     <skos:prefLabel xml:lang="en">Language</skos:prefLabel>
