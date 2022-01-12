@@ -77,7 +77,7 @@
 
   <xsl:template match="dcat:Catalog[not(dcat:record)]">
     <xsl:copy>
-      <xsl:apply-templates select="@*|dct:title|dct:description|dct:publisher|foaf:homepage|dct:license|dct:language|
+      <xsl:apply-templates select="@*|dct:title|dct:description|dct:publisher|dct:rightsHolder|foaf:homepage|dct:license|dct:language|
                                    dct:issued|dct:modified|dcat:themeTaxonomy|dct:hasPart|dct:isPartOf"/>
 
       <xsl:call-template name="generate-record"/>

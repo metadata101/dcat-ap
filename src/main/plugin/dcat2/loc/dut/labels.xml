@@ -295,9 +295,9 @@
     <btnLabel>In thesaurus</btnLabel>
   </element>
   <element name="dct:rightsHolder" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder">
-    <label>Uitgever</label>
-    <description>Tooltip: Uitgever</description>
-    <btnLabel>Uitgever</btnLabel>
+    <label>Rights holder</label>
+    <description>Tooltip: Rights holder</description>
+    <btnLabel>Rights holder</btnLabel>
   </element>
   <element name="foaf:Agent" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent">
     <label>Organisatie</label>

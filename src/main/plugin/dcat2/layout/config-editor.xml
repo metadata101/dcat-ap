@@ -342,13 +342,6 @@
         max="1"
         labelKey="dcat.addType"/>
     </for>
-    <for name="dct:type" xpath="foaf:Agent" use="thesaurus-list-picker">
-      <directiveAttributes
-        thesaurus="external.theme.publisher-type"
-        xpath="/dct:rightsHolder/foaf:Agent/dct:type"
-        max="1"
-        labelKey="dcat.addType"/>
-    </for>
     <for name="dct:type" xpath="dct:LicenseDocument" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.licence-type"

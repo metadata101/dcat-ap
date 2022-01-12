@@ -21,6 +21,7 @@
                            dct:title|
                            dct:description|
                            dct:publisher|
+                           dct:rightsHolder|
                            dcat:endpointUrl|
                            dcat:endpointDescription"/>
 

@@ -274,9 +274,9 @@
     <btnLabel>in scheme</btnLabel>
   </element>
   <element name="dct:rightsHolder" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder">
-    <label>publisher</label>
-    <description>Tooltip: publisher</description>
-    <btnLabel>publisher</btnLabel>
+    <label>rights holder</label>
+    <description>Tooltip: rights holder</description>
+    <btnLabel>rights holder</btnLabel>
   </element>
   <element name="foaf:Agent" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent">
     <label>organisation</label>
