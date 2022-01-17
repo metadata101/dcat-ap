@@ -72,8 +72,8 @@ Source:
       <sch:let name="noPublisher" value="not(dct:publisher)"/>
       <sch:assert test="$noPublisher = false()">ERROR: The dcat:Dataset "<sch:value-of select="$id"/>" does not have a dct:publisher.
       </sch:assert>
-      <sch:assert test="$noPublisher = false()">The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:publisher.
-      </sch:assert>
+      <sch:report test="$noPublisher = false()">The dcat:Dataset "<sch:value-of select="$id"/>" has a dct:publisher.
+      </sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>

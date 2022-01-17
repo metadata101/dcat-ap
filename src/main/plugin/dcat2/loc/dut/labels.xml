@@ -294,6 +294,70 @@
     <description>Tooltip: In thesaurus</description>
     <btnLabel>In thesaurus</btnLabel>
   </element>
+  <element name="dct:rightsHolder" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder">
+    <label>Rights holder</label>
+    <description>Tooltip: Rights holder</description>
+    <btnLabel>Rights holder</btnLabel>
+  </element>
+  <element name="foaf:Agent" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent">
+    <label>Organisatie</label>
+    <description>Tooltip: Organisatie</description>
+    <btnLabel>Organisatie</btnLabel>
+  </element>
+  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/@rdf:about">
+    <label>URI</label>
+    <description>Vul aan met de URI van de uitgever voor je dataset. De uitgever is een organisatie die verantwoordelijk
+      is voor het beschikbaar maken van de dataset.  
+    </description>
+    <btnLabel>URI</btnLabel>
+  </element>
+  <element name="foaf:name" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/foaf:name">
+    <label>Naam</label>
+    <description>Vul aan met de naam van de uitgever voor je dataset in een bepaalde taal (default is Nederlands). De
+      uitgever is een organisatie die verantwoordelijk is voor het beschikbaar maken van de dataset.
+    </description>
+    <btnLabel>Naam</btnLabel>
+  </element>
+  <element name="xml:lang" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/foaf:name/@xml:lang">
+    <label>Taal</label>
+    <description>Vul aan met de taal waarin de naam van de uitgever gesteld is.</description>
+    <btnLabel>Taal</btnLabel>
+  </element>
+  <element name="dct:type" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type">
+    <label>Type</label>
+    <description>Tooltip: Type</description>
+    <btnLabel>Type</btnLabel>
+  </element>
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept">
+    <label>Type</label>
+    <description>Tooltip: Concept</description>
+    <btnLabel>Concept</btnLabel>
+  </element>
+  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept/@rdf:about">
+    <label>URI</label>
+    <description>Tooltip: URI</description>
+    <btnLabel>URI</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept/rdf:type/@rdf:resource">
+    <label>rdf klasse</label>
+    <description>Tooltip: rdf klasse</description>
+    <btnLabel>rdf klasse</btnLabel>
+  </element>
+  <element name="skos:prefLabel" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept/skos:prefLabel">
+    <label>Label</label>
+    <description>Tooltip: Label</description>
+    <btnLabel>Label</btnLabel>
+  </element>
+  <element name="xml:lang" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept/skos:prefLabel/@xml:lang">
+    <label>Taal</label>
+    <description>Tooltip: Taal</description>
+    <btnLabel>Taal</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
+    <label>In thesaurus</label>
+    <description>Tooltip: In thesaurus</description>
+    <btnLabel>In thesaurus</btnLabel>
+  </element>
   <element name="dcat:keyword" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:keyword">
     <label>Trefwoord</label>
     <description>Vul aan met één of meerdere trefwoorden voor je dataset in een bepaalde taal (default is Nederlands).

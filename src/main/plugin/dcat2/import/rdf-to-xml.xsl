@@ -73,6 +73,12 @@ Rome - Italy. email: geonetwork@osgeo.org
                                                      sr:binding[@name='subject']/* = $catalogURI]/sr:binding[@name='object']"/>
             <xsl:with-param name="predicate">dct:publisher</xsl:with-param>
           </xsl:call-template>
+          <!-- dct:rightsHolder -->
+          <xsl:call-template name="agents">
+            <xsl:with-param name="agentURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/rightsHolder' and
+                                                     sr:binding[@name='subject']/* = $catalogURI]/sr:binding[@name='object']"/>
+            <xsl:with-param name="predicate">dct:rightsHolder</xsl:with-param>
+          </xsl:call-template>
           <!-- foaf:homepage -->
           <xsl:call-template name="documents">
             <xsl:with-param name="documentURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://xmlns.com/foaf/0.1/homepage' and
@@ -336,6 +342,12 @@ Rome - Italy. email: geonetwork@osgeo.org
                       sr:binding[@name='subject']/* = $datasetURI]/sr:binding[@name='object' and (sr:uri or sr:bnode)]"/>
             <xsl:with-param name="predicate">dct:publisher</xsl:with-param>
           </xsl:call-template>
+          <!-- dct:rightsHolder -->
+          <xsl:call-template name="agents">
+            <xsl:with-param name="agentURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/rightsHolder' and
+                      sr:binding[@name='subject']/* = $datasetURI]/sr:binding[@name='object' and (sr:uri or sr:bnode)]"/>
+            <xsl:with-param name="predicate">dct:rightsHolder</xsl:with-param>
+          </xsl:call-template>
           <!-- dcat:keyword -->
           <xsl:call-template name="properties">
             <xsl:with-param name="subject" select="./*"/>
@@ -527,6 +539,12 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="agentURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/publisher' and
                       sr:binding[@name='subject']/* = $serviceURI]/sr:binding[@name='object' and (sr:uri or sr:bnode)]"/>
             <xsl:with-param name="predicate">dct:publisher</xsl:with-param>
+          </xsl:call-template>
+          <!-- dct:rightsHolder -->
+          <xsl:call-template name="agents">
+            <xsl:with-param name="agentURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/rightsHolder' and
+                      sr:binding[@name='subject']/* = $serviceURI]/sr:binding[@name='object' and (sr:uri or sr:bnode)]"/>
+            <xsl:with-param name="predicate">dct:rightsHolder</xsl:with-param>
           </xsl:call-template>
           <!-- dcat:endpointUrl -->
           <xsl:call-template name="urls">

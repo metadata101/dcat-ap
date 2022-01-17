@@ -50,8 +50,8 @@
     <xsl:if test="not($hasGnChild)">
       <xsl:variable name="isFirst" select="count(preceding-sibling::*[name() = $name]) &lt; 1"/>
       <xsl:if test="$isFirst">
-        <xsl:variable name="config" select="gn-fn-dcat2:getThesaurusConfig(name(), name(..))"/>
-
+        <xsl:variable name="xpath" select="concat('/', name(../..), '/', name(..), '/', name())"/>
+        <xsl:variable name="config" select="gn-fn-dcat2:getThesaurusConfig(name(), name(..), $xpath)"/>
         <xsl:call-template name="thesaurus-picker-list">
           <xsl:with-param name="config" select="$config"/>
           <xsl:with-param name="ref" select="../gn:element/@ref"/>
@@ -61,7 +61,8 @@
   </xsl:template>
 
   <xsl:template mode="mode-dcat2" priority="4000" match="gn:child[gn-fn-dcat2:getThesaurusConfig(concat(@prefix, ':', @name), name(..))]">
-    <xsl:variable name="config" select="gn-fn-dcat2:getThesaurusConfig(concat(@prefix, ':', @name), name(..))"/>
+    <xsl:variable name="xpath" select="concat('/', name(../..), '/', name(..), '/', concat(@prefix, ':', @name))"/>
+    <xsl:variable name="config" select="gn-fn-dcat2:getThesaurusConfig(concat(@prefix, ':', @name), name(..), $xpath)"/>
     <xsl:call-template name="thesaurus-picker-list">
       <xsl:with-param name="config" select="$config"/>
       <xsl:with-param name="ref" select="../gn:element/@ref"/>
@@ -145,9 +146,24 @@
   <xsl:function name="gn-fn-dcat2:getThesaurusConfig">
     <xsl:param name="name" as="xs:string"/>
     <xsl:param name="parent" as="xs:string"/>
-    <xsl:copy-of select="if ($dcatKeywordConfig/*[@name = $name and @parent = $parent])
+    <xsl:copy-of select="gn-fn-dcat2:getThesaurusConfig($name, $parent, '')"/>
+  </xsl:function>
+
+  <xsl:function name="gn-fn-dcat2:getThesaurusConfig">
+    <xsl:param name="name" as="xs:string"/>
+    <xsl:param name="parent" as="xs:string"/>
+    <xsl:param name="xpath" as="xs:string"/>
+    <xsl:variable name="config" select="if ($dcatKeywordConfig/*[@name = $name and @parent = $parent])
                          then $dcatKeywordConfig/*[@name = $name and @parent = $parent]
                          else $dcatKeywordConfig/*[@name = $name and not(@parent)]"/>
+    <xsl:choose>
+      <xsl:when test="count($config) = 1">
+        <xsl:copy-of select="$config"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:copy-of select="$config[xpath = $xpath]"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:function>
 
   <xsl:function name="gn-fn-dcat2:shouldShow" as="xs:boolean">

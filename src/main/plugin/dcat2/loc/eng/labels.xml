@@ -273,6 +273,66 @@
     <description>Tooltip: in scheme</description>
     <btnLabel>in scheme</btnLabel>
   </element>
+  <element name="dct:rightsHolder" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder">
+    <label>rights holder</label>
+    <description>Tooltip: rights holder</description>
+    <btnLabel>rights holder</btnLabel>
+  </element>
+  <element name="foaf:Agent" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent">
+    <label>organisation</label>
+    <description>Tooltip: organisation</description>
+    <btnLabel>organisation</btnLabel>
+  </element>
+  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/@rdf:about">
+    <label>URI</label>
+    <description>Tooltip: URI</description>
+    <btnLabel>URI</btnLabel>
+  </element>
+  <element name="foaf:name" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/foaf:name">
+    <label>name</label>
+    <description>Tooltip: name</description>
+    <btnLabel>name</btnLabel>
+  </element>
+  <element name="xml:lang" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/foaf:name/@xml:lang">
+    <label>language</label>
+    <description>Tooltip: language</description>
+    <btnLabel>language</btnLabel>
+  </element>
+  <element name="dct:type" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type">
+    <label>type</label>
+    <description>Tooltip: type</description>
+    <btnLabel>type</btnLabel>
+  </element>
+  <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept">
+    <label>type</label>
+    <description>Tooltip: concept</description>
+    <btnLabel>concept</btnLabel>
+  </element>
+  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept/@rdf:about">
+    <label>URI</label>
+    <description>Tooltip: URI</description>
+    <btnLabel>URI</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept/rdf:type/@rdf:resource">
+    <label>rdf class</label>
+    <description>Tooltip: rdf class</description>
+    <btnLabel>rdf class</btnLabel>
+  </element>
+  <element name="skos:prefLabel" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept/skos:prefLabel">
+    <label>preferred label</label>
+    <description>Tooltip: preferred label</description>
+    <btnLabel>preferred label</btnLabel>
+  </element>
+  <element name="xml:lang" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept/skos:prefLabel/@xml:lang">
+    <label>language</label>
+    <description>Tooltip: language</description>
+    <btnLabel>language</btnLabel>
+  </element>
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
+    <label>in scheme</label>
+    <description>Tooltip: in scheme</description>
+    <btnLabel>in scheme</btnLabel>
+  </element>
   <element name="dcat:keyword" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:keyword">
     <label>keyword/ tag</label>
     <description>Tooltip: keyword/ tag</description>

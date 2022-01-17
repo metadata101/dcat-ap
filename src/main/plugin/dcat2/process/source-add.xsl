@@ -62,6 +62,7 @@ Stylesheet used to update metadata adding a reference to a source record.
                 dct:issued|
                 dct:modified|
                 dct:publisher|
+                dct:rightsHolder|
                 dcat:keyword|
                 dcat:theme|
                 dct:accessRights|

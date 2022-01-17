@@ -24,6 +24,7 @@
                            dct:issued|
                            dct:modified|
                            dct:publisher|
+                           dct:rightsHolder|
                            dcat:keyword|
                            dct:subject|
                            dcat:theme|

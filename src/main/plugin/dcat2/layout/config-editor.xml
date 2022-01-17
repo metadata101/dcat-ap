@@ -410,6 +410,7 @@
   <fieldsWithFieldset>
     <name isSupportingSlideToggle="true">dcat:contactPoint</name>
     <name isSupportingSlideToggle="true">dct:publisher</name>
+    <name isSupportingSlideToggle="true">dct:rightsHolder</name>
     <name>foaf:Agent</name>
     <name>vcard:Organization</name>
     <name>vcard:hasAddress</name>
@@ -877,6 +878,27 @@
                     </dct:type>
                   </foaf:Agent>
                 </dct:publisher>
+              </snippet>
+            </template>
+          </action>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder" name="FieldId438"/>
+          <action type="add" btnLabel="FieldId438" or="rightsHolder" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset" required="true()">
+            <template>
+              <snippet>
+                <dct:rightsHolder>
+                  <foaf:Agent>
+                    <foaf:name xml:lang="nl"/>
+                    <dct:type>
+                      <skos:Concept>
+                        <skos:prefLabel xml:lang="nl"/>
+                        <skos:prefLabel xml:lang="en"/>
+                        <skos:prefLabel xml:lang="fr"/>
+                        <skos:prefLabel xml:lang="de"/>
+                        <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
+                      </skos:Concept>
+                    </dct:type>
+                  </foaf:Agent>
+                </dct:rightsHolder>
               </snippet>
             </template>
           </action>
