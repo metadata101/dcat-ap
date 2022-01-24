@@ -294,7 +294,11 @@
       <xsl:apply-templates select="owl:versionInfo"/>
       <xsl:apply-templates select="adms:versionNotes"/>
       <xsl:apply-templates select="dcat:extension"/>
-      <xsl:apply-templates select="dcat:distribution"/>
+      <xsl:for-each select="dcat:distribution">
+        <xsl:if test="normalize-space(.) != '' or count(dcat:Distribution/spdx:checksum/spdx:Checksum/spdx:algorithm) != 1">
+          <xsl:apply-templates select="."/>
+        </xsl:if>
+      </xsl:for-each>
       <xsl:apply-templates select="adms:sample"/>
       <xsl:apply-templates select="dcat:qualifiedRelation"/>
       <xsl:apply-templates select="dct:creator"/>
@@ -341,32 +345,32 @@
   </xsl:template>
 
   <xsl:template match="dcat:Distribution" priority="10">
-      <dcat:Distribution>
-        <xsl:apply-templates select="@*"/>
-        <xsl:apply-templates select="dct:identifier"/>
-        <xsl:apply-templates select="dct:title"/>
-        <xsl:apply-templates select="dct:description"/>
-        <xsl:apply-templates select="dcat:accessURL"/>
-        <xsl:apply-templates select="dcat:downloadURL"/>
-        <xsl:apply-templates select="dct:issued"/>
-        <xsl:apply-templates select="dct:modified"/>
-        <xsl:apply-templates select="dct:format"/>
-        <xsl:apply-templates select="dcat:mediaType"/>
-        <xsl:apply-templates select="dct:language"/>
-        <xsl:apply-templates select="dct:license"/>
-        <xsl:apply-templates select="dct:rights"/>
-        <xsl:apply-templates select="dcat:byteSize"/>
-        <xsl:apply-templates select="spdx:checksum"/>
-        <xsl:apply-templates select="foaf:page"/>
-        <xsl:apply-templates select="dct:conformsTo"/>
-        <xsl:apply-templates select="adms:status"/>
-        <xsl:apply-templates select="dcat:accessService"/>
-        <xsl:apply-templates select="dcat:compressFormat"/>
-        <xsl:apply-templates select="dcat:packageFormat"/>
-        <xsl:apply-templates select="dcat:spatialResolutionInMeters"/>
-        <xsl:apply-templates select="dcat:temporalResolution"/>
-        <xsl:apply-templates select="adms:identifier"/>
-      </dcat:Distribution>
+    <dcat:Distribution>
+      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="dct:identifier"/>
+      <xsl:apply-templates select="dct:title"/>
+      <xsl:apply-templates select="dct:description"/>
+      <xsl:apply-templates select="dcat:accessURL"/>
+      <xsl:apply-templates select="dcat:downloadURL"/>
+      <xsl:apply-templates select="dct:issued"/>
+      <xsl:apply-templates select="dct:modified"/>
+      <xsl:apply-templates select="dct:format"/>
+      <xsl:apply-templates select="dcat:mediaType"/>
+      <xsl:apply-templates select="dct:language"/>
+      <xsl:apply-templates select="dct:license"/>
+      <xsl:apply-templates select="dct:rights"/>
+      <xsl:apply-templates select="dcat:byteSize"/>
+      <xsl:apply-templates select="spdx:checksum"/>
+      <xsl:apply-templates select="foaf:page"/>
+      <xsl:apply-templates select="dct:conformsTo"/>
+      <xsl:apply-templates select="adms:status"/>
+      <xsl:apply-templates select="dcat:accessService"/>
+      <xsl:apply-templates select="dcat:compressFormat"/>
+      <xsl:apply-templates select="dcat:packageFormat"/>
+      <xsl:apply-templates select="dcat:spatialResolutionInMeters"/>
+      <xsl:apply-templates select="dcat:temporalResolution"/>
+      <xsl:apply-templates select="adms:identifier"/>
+    </dcat:Distribution>
   </xsl:template>
 
   <!-- =================================================================  -->

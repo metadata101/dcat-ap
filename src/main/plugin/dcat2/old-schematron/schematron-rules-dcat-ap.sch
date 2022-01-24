@@ -1272,13 +1272,4 @@ Source:
       <sch:report test="$resource = true()"><sch:value-of select="$messageStart"/> is not a literal.</sch:report>
     </sch:rule>
   </sch:pattern>
-  <sch:pattern>
-    <sch:title>506. dcat:endpointUrl is required for dcat:DataService</sch:title>
-    <sch:rule context="//dcat:DataService[$isOnlyDcatAp]">
-      <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="hasEndpointUrl" value="count(dcat:endpointUrl[normalize-space(@rdf:resource) != '']) > 0"/>
-      <sch:assert test="$hasEndpointUrl">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" doesn't have a dcat:endpointUrl.</sch:assert>
-      <sch:report test="$hasEndpointUrl">The dcat:DataService "<sch:value-of select="$id"/>" have a dcat:endpointUrl.</sch:report>
-    </sch:rule>
-  </sch:pattern>
 </sch:schema>
