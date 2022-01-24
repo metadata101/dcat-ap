@@ -370,12 +370,19 @@
         max=""
         labelKey="dcat.addLanguage"/>
     </for>
-    <for name="dct:accessRights" use="thesaurus-list-picker">
+    <for name="dct:accessRights" xpath="dcat:Dataset" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.access-right"
         xpath="/dct:accessRights"
         max="1"
         labelKey="dcat.addAccessRight"/>
+    </for>
+    <for name="dct:accessRights" xpath="dcat:DataService" use="thesaurus-list-picker">
+      <directiveAttributes
+          thesaurus="external.theme.access-right-service"
+          xpath="/dct:accessRights"
+          max="1"
+          labelKey="dcat.addAccessRight"/>
     </for>
     <for name="dct:accessRights" xpath="dcat:Distribution" use="thesaurus-list-picker">
       <directiveAttributes

@@ -587,14 +587,10 @@
     </xsl:for-each>
 
     <xsl:for-each select="dct:accessRights">
-      <xsl:choose>
-        <xsl:when test="contains(skos:Concept/@rdf:about, 'http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC')">
-          <Field name="accessRights" string="NON_PUBLIC" store="true" index="true"/>
-        </xsl:when>
-        <xsl:when test="contains(skos:Concept/@rdf:about, 'http://publications.europa.eu/resource/authority/access-right/PUBLIC')">
-          <Field name="accessRights" string="PUBLIC" store="true" index="true"/>
-        </xsl:when>
-      </xsl:choose>
+      <xsl:if test="contains(skos:Concept/@rdf:about, 'http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC') or
+                    contains(skos:Concept/@rdf:about, 'http://publications.europa.eu/resource/authority/access-right/PUBLIC')">
+        <Field name="accessRights" string="{skos:Concept/skos:prefLabel[@xml:lang = 'nl']}" store="true" index="true"/>
+      </xsl:if>
     </xsl:for-each>
 
     <xsl:for-each select="dct:rightsHolder|geodcat:distributor|dcat:contactPoint|dct:publisher">
