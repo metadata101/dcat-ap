@@ -445,9 +445,11 @@
                                            vcard:hasAddress|adms:identifier|dct:creator|dcat:qualifiedRelation">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
-
     <!-- Special case for dct:license with an empty dct:LicenseDocument with only @rdf:about or for dcat:contactPoint with only vcard:hasEmail and vcard:hasURL-->
-    <xsl:if test="normalize-space($stringValue) != '' or (name() = 'dct:license' and ./dct:LicenseDocument/@rdf:about) or (name() = 'dcat:contactPoint' and ./vcard:Organization/*/@rdf:resource)">
+    <xsl:if test="normalize-space($stringValue) != '' or
+                  (name() = 'dct:license' and normalize-space(./dct:LicenseDocument/@rdf:about) != '') or
+                  (name() = 'dcat:contactPoint' and normalize-space(./vcard:Organization/*/@rdf:resource) != '') or
+                  (name() = 'dct:publisher' and normalize-space(./foaf:Agent/@rdf:about) != '')">
       <tr>
         <th style="{$thStyle}">
           <xsl:value-of select="gn-fn-metadata:getLabel($schema, name(.), $labels, name(..), '', gn-fn-dcat2:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)))/label" />
