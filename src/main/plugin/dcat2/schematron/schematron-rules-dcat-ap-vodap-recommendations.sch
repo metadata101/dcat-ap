@@ -24,16 +24,16 @@
     <sch:title>Levensfase - De levensfase waarin de dataservice zich bevindt. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Alevensfase)</sch:title>
     <sch:rule context="//dcat:DataService/mdcat:levensfase[$profile]">
       <sch:let name="hasValue" value="starts-with(skos:Concept/@rdf:about, 'https://data.vlaanderen.be/id/conceptscheme/levensfase')"/>
-      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://github.com/Informatievlaanderen/OSLOthema-metadataVoorServices/raw/master/codelijsten/levensfase.ttl&gt; verwacht voor levensfase (mdcat:levensfase)</sch:assert>
-      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://github.com/Informatievlaanderen/OSLOthema-metadataVoorServices/raw/master/codelijsten/levensfase.ttl&gt; verwacht voor levensfase (mdcat:levensfase)</sch:report>
+      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://data.vlaanderen.be/id/conceptscheme/levensfase&gt; verwacht voor levensfase (mdcat:levensfase)</sch:assert>
+      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://data.vlaanderen.be/id/conceptscheme/levensfase&gt; verwacht voor levensfase (mdcat:levensfase)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="ontwikkelingstoestand" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/f9862087b9d1ec8465f46ee21e166c45776cf8bd">
     <sch:title>Ontwikkelingstoestand - De ontwikkelingstoestand waarin de dataservice is gedeployed. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Aontwikkelingstoestand)</sch:title>
     <sch:rule context="//dcat:DataService/mdcat:ontwikkelingstoestand[$profile]">
       <sch:let name="hasValue" value="starts-with(skos:Concept/@rdf:about, 'https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand')"/>
-      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://github.com/Informatievlaanderen/OSLOthema-metadataVoorServices/raw/master/codelijsten/ontwikkelingstoestand.ttl&gt; verwacht voor ontwikkelingstoestand (mdcat:ontwikkelingstoestand)</sch:assert>
-      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://github.com/Informatievlaanderen/OSLOthema-metadataVoorServices/raw/master/codelijsten/ontwikkelingstoestand.ttl&gt; verwacht voor ontwikkelingstoestand (mdcat:ontwikkelingstoestand)</sch:report>
+      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand&gt; verwacht voor ontwikkelingstoestand (mdcat:ontwikkelingstoestand)</sch:assert>
+      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand&gt; verwacht voor ontwikkelingstoestand (mdcat:ontwikkelingstoestand)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="thema" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/48290800138d735a1909018da1426a5d120eedf0">
@@ -64,16 +64,16 @@
     <sch:title>Toegankelijkheid - De toegankelijkheid voor de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Atoegankelijkheid)</sch:title>
     <sch:rule context="//dcat:Dataset/dct:accessRights[$profile]">
       <sch:let name="hasValue" value="starts-with(skos:Concept/@rdf:about, 'http://publications.europa.eu/resource/authority/access-right')"/>
-      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/access-right&gt; verwacht voor toegankelijkheid (dct:accessRights)</sch:assert>
-      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/access-right&gt; verwacht voor toegankelijkheid (dct:accessRights)</sch:report>
+      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;http://publications.europa.eu/resource/authority/access-right&gt; verwacht voor toegankelijkheid (dct:accessRights)</sch:assert>
+      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;http://publications.europa.eu/resource/authority/access-right&gt; verwacht voor toegankelijkheid (dct:accessRights)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="statuut" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#CatalogusResourceShape/67325124afc7d6eac4402056620665f7348ef62a">
     <sch:title>Statuut - Een aanduiding van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusResource%3Astatuut)</sch:title>
     <sch:rule context="//dcat:Dataset/dct:subject[$profile]|//dcat:DataService/dct:subject[$profile]">
       <sch:let name="hasValue" value="starts-with(skos:Concept/@rdf:about, 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden')"/>
-      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/&gt; verwacht voor statuut (dct:subject)</sch:assert>
-      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/&gt; verwacht voor statuut (dct:subject)</sch:report>
+      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden&gt; verwacht voor statuut (dct:subject)</sch:assert>
+      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden&gt; verwacht voor statuut (dct:subject)</sch:report>
     </sch:rule>
   </sch:pattern>
 </sch:schema>
