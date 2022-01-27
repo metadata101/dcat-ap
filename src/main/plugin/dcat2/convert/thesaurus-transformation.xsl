@@ -123,16 +123,6 @@
                        then /root/request/wrapper
                        else 'dcat:keyword'"/>
 
-    <!-- Get thesaurus ID from keyword or from request parameter if no keyword found. -->
-    <xsl:variable name="currentThesaurus"
-                  select="if (thesaurus/key) then thesaurus/key else /root/request/thesaurus"/>
-    <xsl:variable name="keywordThesaurus"
-                  select="if ($currentThesaurus = 'external.none.allThesaurus')
-                          then replace(./uri, 'http://org.fao.geonet.thesaurus.all/([^@]+)@@@.+', '$1')
-                          else $currentThesaurus"/>
-    <xsl:variable name="inSchemeURI"
-                  select="gn-fn-dcat2:getInSchemeURIByThesaurusId($keywordThesaurus)"/>
-
     <!-- Loop on all keyword from the same thesaurus -->
     <xsl:variable name="response">
       <gn_replace_all>

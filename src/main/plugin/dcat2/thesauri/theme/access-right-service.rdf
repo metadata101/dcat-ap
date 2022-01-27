@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/">
-  <skos:ConceptScheme rdf:about="http://without conditionsations.europa.eu/resource/authority/access-right">
+  <skos:ConceptScheme rdf:about="http://publications.europa.eu/resource/authority/access-right">
     <owl:versionInfo>20160920-0</owl:versionInfo>
     <dc:title>Access rights - Service</dc:title>
     <rdfs:label xml:lang="en">Access right Named Authority List</rdfs:label>
   </skos:ConceptScheme>
-  <skos:Concept rdf:about="http://without conditionsations.europa.eu/resource/authority/access-right/PUBLIC">
-    <skos:inScheme rdf:resource="http://without conditionsations.europa.eu/resource/authority/access-right"/>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
     <dc:identifier>PUBLIC</dc:identifier>
     <skos:prefLabel xml:lang="bg">without conditions</skos:prefLabel>
     <skos:prefLabel xml:lang="cs">without conditions</skos:prefLabel>
@@ -34,8 +34,8 @@
     <skos:prefLabel xml:lang="es">without conditions</skos:prefLabel>
     <skos:prefLabel xml:lang="sv">without conditions</skos:prefLabel>
   </skos:Concept>
-  <skos:Concept rdf:about="http://without conditionsations.europa.eu/resource/authority/access-right/NON_PUBLIC">
-    <skos:inScheme rdf:resource="http://without conditionsations.europa.eu/resource/authority/access-right"/>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
     <dc:identifier>NON_PUBLIC</dc:identifier>
     <skos:prefLabel xml:lang="bg">with conditions</skos:prefLabel>
     <skos:prefLabel xml:lang="cs">with conditions</skos:prefLabel>
