@@ -2173,4 +2173,20 @@
     <description>Tooltip: URI</description>
     <btnLabel>URI</btnLabel>
   </element>
+
+  <element name="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden">
+    <label>Statute</label>
+  </element>
+  <element name="https://data.vlaanderen.be/id/conceptscheme/MADGA-categorie">
+    <label>MAGDA-category</label>
+  </element>
+  <element name="http://inspire.ec.europa.eu/theme">
+    <label>INSPIRE Theme</label>
+  </element>
+  <element name="http://www.eionet.europa.eu/gemet">
+    <label>GEMET Concept</label>
+  </element>
+  <element name="http://inspire.ec.europa.eu/metadata-codelist/TopicCategory">
+    <label>ISO category</label>
+  </element>
 </labels>

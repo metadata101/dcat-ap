@@ -77,6 +77,18 @@
       <xsl:when test="$key = concat($keyPrefix, 'GDI-Vlaanderen-trefwoorden')">
         <xsl:value-of select="concat($inSchemeVLBaseUrl,'GDI-Vlaanderen-Trefwoorden')"/>
       </xsl:when>
+      <xsl:when test="$key = concat($keyPrefix, 'magda-domain')">
+        <xsl:value-of select="concat($inSchemeMdcatBaseUrl,'MADGA-categorie')"/>
+      </xsl:when>
+      <xsl:when test="$key = concat($keyPrefix, 'inspire-theme')">
+        <xsl:value-of select="'http://inspire.ec.europa.eu/theme'"/>
+      </xsl:when>
+      <xsl:when test="$key = concat($keyPrefix, 'gemet')">
+        <xsl:value-of select="'http://www.eionet.europa.eu/gemet'"/>
+      </xsl:when>
+      <xsl:when test="$key = concat($keyPrefix, 'topic-category')">
+        <xsl:value-of select="'http://inspire.ec.europa.eu/metadata-codelist/TopicCategory'"/>
+      </xsl:when>
       <xsl:otherwise>
         <xsl:message select="concat('Thesaurus NIET gevonden met key = ',$key, '. Voeg deze toe in process-utility.xsl bestand.')"/>
         <xsl:value-of select="$key"/>

@@ -41,7 +41,6 @@
     -->
   <xsl:template name="to-dcat2-concept">
     <xsl:variable name="listOfLanguage" select="tokenize(/root/request/lang, ',')"/>
-
     <xsl:apply-templates mode="to-dcat2-concept" select=".">
       <xsl:with-param name="listOfLanguage" select="$listOfLanguage"/>
     </xsl:apply-templates>
@@ -62,8 +61,7 @@
                   select="if ($currentThesaurus = 'external.none.allThesaurus')
                           then replace(./uri, 'http://org.fao.geonet.thesaurus.all/([^@]+)@@@.+', '$1')
                           else $currentThesaurus"/>
-    <xsl:variable name="inSchemeURI"
-                  select="gn-fn-dcat2:getInSchemeURIByThesaurusId($keywordThesaurus)"/>
+    <xsl:variable name="inSchemeURI" select="gn-fn-dcat2:getInSchemeURIByThesaurusId($keywordThesaurus)"/>
 
     <!-- Loop on all keyword from the same thesaurus -->
     <xsl:variable name="response">

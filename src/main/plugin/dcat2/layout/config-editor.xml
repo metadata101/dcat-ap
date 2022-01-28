@@ -391,12 +391,10 @@
         max="1"
         labelKey="dcat.addAccessRight"/>
     </for>
-    <for name="dct:subject" use="thesaurus-list-picker">
+    <for name="dct:subject" use="thesaurus-multi-list-picker">
       <directiveAttributes
-        thesaurus="external.theme.GDI-Vlaanderen-trefwoorden"
-        xpath="/dct:subject"
-        max=""
-        labelKey="dcat.addSubject"/>
+          thesauri="external.theme.GDI-Vlaanderen-trefwoorden, external.theme.magda-domain, external.theme.inspire-theme, external.theme.gemet, external.theme.topic-category"
+          xpath="/dct:subject"/>
     </for>
     <for name="mdcat:levensfase" use="thesaurus-list-picker">
       <directiveAttributes
