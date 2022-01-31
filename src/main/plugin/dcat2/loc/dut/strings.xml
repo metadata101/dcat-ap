@@ -44,10 +44,14 @@
   <dcat.addCompressFormat>Compressie formaat</dcat.addCompressFormat>
   <dcat.addMediaType>Mediatype</dcat.addMediaType>
   <dcat.addAccrualPeriodicity>Updatefrequentie</dcat.addAccrualPeriodicity>
-  <dcat.addSubject>Subject</dcat.addSubject>
   <dcat.addLanguage>Taal</dcat.addLanguage>
   <mdcat.addLevensfase>Levensfase</mdcat.addLevensfase>
   <mdcat.addOntwikkelingstoestand>Ontwikkelingstoestand</mdcat.addOntwikkelingstoestand>
+  <dcat.add-GDI-Vlaanderen-trefwoorden>Statuut</dcat.add-GDI-Vlaanderen-trefwoorden>
+  <dcat.add-magda-domain>MAGDA-categorie</dcat.add-magda-domain>
+  <dcat.add-inspire-theme>INSPIRE Thema</dcat.add-inspire-theme>
+  <dcat.add-gemet>GEMET Concept</dcat.add-gemet>
+  <dcat.add-topic-category>ISO Categorie</dcat.add-topic-category>
 
   <!-- DCAT-AP view labels and help -->
   <FieldId107>Dataset</FieldId107>

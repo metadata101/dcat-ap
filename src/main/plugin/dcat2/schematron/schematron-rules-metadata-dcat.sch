@@ -675,15 +675,14 @@
       <sch:report test="$validClass">De range van distributie moet van het type &lt;http://www.w3.org/ns/dcat#Distribution&gt; zijn. (dcat:distribution)</sch:report>
     </sch:rule>
   </sch:pattern>
-  <!--<sch:pattern name="identificator" id="https://data.vlaanderen.be/shacl/metadata_dcat#DatasetShape/05134c4e7c34157d6f7ac1128713a08418e0fe7d">-->
-  <!--  <sch:title>Identificator - De unieke identificator van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Dataset%3Aidentificator)</sch:title>-->
-  <!--  <sch:rule context="//dcat:Dataset/dct:identifier[$profile]">-->
-  <!--    <sch:let name="resource" value="@rdf:resource"/>-->
-  <!--    <sch:let name="validClass" value="count(adms:Identifier) = 1 or count(//adms:Identifier[@rdf:about = $resource]) = 1"/>-->
-  <!--    <sch:assert test="$validClass">De range van identificator moet van het type &lt;http://www.w3.org/ns/adms#Identifier&gt; zijn. (dct:identifier)</sch:assert>-->
-  <!--    <sch:report test="$validClass">De range van identificator moet van het type &lt;http://www.w3.org/ns/adms#Identifier&gt; zijn. (dct:identifier)</sch:report>-->
-  <!--  </sch:rule>-->
-  <!--</sch:pattern>-->
+  <sch:pattern name="identificator" id="https://data.vlaanderen.be/shacl/metadata_dcat#DatasetShape/05134c4e7c34157d6f7ac1128713a08418e0fe7d">
+    <sch:title>Identificator - De unieke identificator van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Dataset%3Aidentificator)</sch:title>
+    <sch:rule context="//dcat:Dataset/dct:identifier[$profile]">
+      <sch:let name="isLiteral" value="normalize-space(.) != ''"/>
+      <sch:assert test="$isLiteral">De range van identificator moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Literal&gt; zijn. (dct:identifier)</sch:assert>
+      <sch:report test="$isLiteral">De range van identificator moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Literal&gt; zijn. (dct:identifier)</sch:report>
+    </sch:rule>
+  </sch:pattern>
   <sch:pattern name="identificator" id="https://data.vlaanderen.be/shacl/metadata_dcat#DatasetShape/972d73e7a13100b66c0c2f44466edac47aa1ab28">
     <sch:title>Identificator - De unieke identificator van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Dataset%3Aidentificator)</sch:title>
     <sch:rule context="//dcat:Dataset[$profile]">

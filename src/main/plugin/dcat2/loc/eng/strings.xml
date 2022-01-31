@@ -46,6 +46,11 @@
   <dcat.addLanguage>Language</dcat.addLanguage>
   <mdcat.addLevensfase>Usage status</mdcat.addLevensfase>
   <mdcat.addOntwikkelingstoestand>Development status</mdcat.addOntwikkelingstoestand>
+  <dcat.add-GDI-Vlaanderen-trefwoorden>Statute</dcat.add-GDI-Vlaanderen-trefwoorden>
+  <dcat.add-magda-domain>MAGDA-category</dcat.add-magda-domain>
+  <dcat.add-inspire-theme>INSPIRE Theme</dcat.add-inspire-theme>
+  <dcat.add-gemet>GEMET Concept</dcat.add-gemet>
+  <dcat.add-topic-category>ISO Categorie</dcat.add-topic-category>
 
   <!-- DCAT-AP view labels and help -->
   <FieldId107>dataset</FieldId107>

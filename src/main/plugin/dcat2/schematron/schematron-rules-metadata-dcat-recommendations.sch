@@ -24,16 +24,16 @@
     <sch:title>Levensfase - De levensfase waarin de dataservice zich bevindt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Alevensfase)</sch:title>
     <sch:rule context="//dcat:DataService/mdcat:levensfase[$profile]">
       <sch:let name="hasValue" value="starts-with(skos:Concept/@rdf:about, 'https://data.vlaanderen.be/id/conceptscheme/levensfase')"/>
-      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://github.com/Informatievlaanderen/OSLOthema-metadataVoorServices/raw/master/codelijsten/levensfase.ttl&gt; verwacht voor levensfase (mdcat:levensfase)</sch:assert>
-      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://github.com/Informatievlaanderen/OSLOthema-metadataVoorServices/raw/master/codelijsten/levensfase.ttl&gt; verwacht voor levensfase (mdcat:levensfase)</sch:report>
+      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://data.vlaanderen.be/id/conceptscheme/levensfase&gt; verwacht voor levensfase (mdcat:levensfase)</sch:assert>
+      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://data.vlaanderen.be/id/conceptscheme/levensfase&gt; verwacht voor levensfase (mdcat:levensfase)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="ontwikkelingstoestand" id="https://data.vlaanderen.be/shacl/metadata_dcat#DataServiceShape/f9862087b9d1ec8465f46ee21e166c45776cf8bd">
     <sch:title>Ontwikkelingstoestand - De ontwikkelingstoestand waarin de dataservice is gedeployed. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Aontwikkelingstoestand)</sch:title>
     <sch:rule context="//dcat:DataService/mdcat:ontwikkelingstoestand[$profile]">
       <sch:let name="hasValue" value="starts-with(skos:Concept/@rdf:about, 'https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand')"/>
-      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://github.com/Informatievlaanderen/OSLOthema-metadataVoorServices/raw/master/codelijsten/ontwikkelingstoestand.ttl&gt; verwacht voor ontwikkelingstoestand (mdcat:ontwikkelingstoestand)</sch:assert>
-      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://github.com/Informatievlaanderen/OSLOthema-metadataVoorServices/raw/master/codelijsten/ontwikkelingstoestand.ttl&gt; verwacht voor ontwikkelingstoestand (mdcat:ontwikkelingstoestand)</sch:report>
+      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand&gt; verwacht voor ontwikkelingstoestand (mdcat:ontwikkelingstoestand)</sch:assert>
+      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand&gt; verwacht voor ontwikkelingstoestand (mdcat:ontwikkelingstoestand)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="thema" id="https://data.vlaanderen.be/shacl/metadata_dcat#DataServiceShape/48290800138d735a1909018da1426a5d120eedf0">
@@ -64,8 +64,8 @@
     <sch:title>Toegankelijkheid - De toegankelijkheid voor de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Dataset%3Atoegankelijkheid)</sch:title>
     <sch:rule context="//dcat:Dataset/dct:accessRights[$profile]">
       <sch:let name="hasValue" value="starts-with(skos:Concept/@rdf:about, 'http://publications.europa.eu/resource/authority/access-right')"/>
-      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/access-right&gt; verwacht voor toegankelijkheid (dct:accessRights)</sch:assert>
-      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/access-right&gt; verwacht voor toegankelijkheid (dct:accessRights)</sch:report>
+      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;http://publications.europa.eu/resource/authority/access-right&gt; verwacht voor toegankelijkheid (dct:accessRights)</sch:assert>
+      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;http://publications.europa.eu/resource/authority/access-right&gt; verwacht voor toegankelijkheid (dct:accessRights)</sch:report>
     </sch:rule>
   </sch:pattern>
 </sch:schema>

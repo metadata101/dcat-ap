@@ -547,7 +547,7 @@
 
   <xsl:template name="apply-subjects">
     <xsl:choose>
-      <xsl:when test="$profile != 'dcat-ap-vl' and $profile != 'DCAT-AP-VL'">
+      <xsl:when test="$profile != 'DCAT-AP-VL'">
         <xsl:apply-templates select="dct:subject"/>
       </xsl:when>
       <xsl:otherwise>

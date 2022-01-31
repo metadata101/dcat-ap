@@ -340,48 +340,54 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template mode="render-field" match="dct:type|dct:subject|dcat:theme|dct:accrualPeriodicity|dct:language|dct:format|dcat:mediaType|
+  <xsl:template mode="render-field" match="dct:type|dct:accrualPeriodicity|dcat:theme|dct:language|dct:format|dcat:mediaType|
                                            adms:status|mdcat:levensfase|mdcat:ontwikkelingstoestand|dct:accessRights|dcat:compressFormat|
                                            dcat:packageFormat">
     <xsl:param name="xpath"/>
-    <xsl:variable name="usedLang">
-      <xsl:value-of select="if (normalize-space(skos:Concept/skos:prefLabel[@xml:lang=$langId-2char][1]) != '')
-                            then $langId-2char
-                            else $defaultLang-2char"/>
-    </xsl:variable>
-    <tr>
-      <th style="{$thStyle}">
-        <xsl:value-of select="gn-fn-metadata:getLabel($schema, name(.), $labels, name(..), '', gn-fn-dcat2:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)))/label" />
-      </th>
-      <td style="{$tdStyle}">
-        <xsl:choose>
-          <xsl:when test="count(skos:Concept/skos:prefLabel[@xml:lang=$usedLang]) > 0">
-            <xsl:for-each select="skos:Concept/skos:prefLabel[@xml:lang=$usedLang]">
-              <a href="{concat($nodeUrl,$langId,'/catalog.search#/search?resultType=details&amp;sortBy=relevance&amp;from=1&amp;to=20&amp;fast=index&amp;_content_type=json&amp;any=',.)}">
-                <xsl:apply-templates mode="render-value" select="." />
-                <xsl:if test="($usedLang = $defaultLang-2char) and ($defaultLang-2char != $langId-2char)">
-                  <xsl:value-of select="concat(' (', $usedLang, ')')"/>
-                </xsl:if>
-              </a>
+    <xsl:variable name="name" select="name()"/>
+    <xsl:if test="not(preceding-sibling::*[name(.) = $name and position()=1])">
+      <tr>
+        <th style="{$thStyle}">
+          <xsl:value-of select="gn-fn-metadata:getLabel($schema, name(.), $labels, name(..), '', gn-fn-dcat2:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)))/label" />
+        </th>
+        <td style="{$tdStyle}">
+          <xsl:for-each select="../*[name() = $name]">
+            <xsl:apply-templates select="skos:Concept" mode="render-concept"/>
+            <xsl:if test="position() != last()">
+              <xsl:value-of select="' | '"/>
+            </xsl:if>
+          </xsl:for-each>
+        </td>
+      </tr>
+    </xsl:if>
+  </xsl:template>
+
+  <!-- Render grouped theme and subject -->
+  <xsl:template mode="render-field" match="dct:subject">
+    <xsl:param name="xpath"/>
+    <xsl:variable name="name" select="name()"/>
+    <xsl:if test="not(preceding-sibling::*[name(.) = $name and position()=1])">
+      <xsl:variable name="defaultLabel" select="gn-fn-metadata:getLabel($schema, name(.), $labels, name(..), '', gn-fn-dcat2:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)))/label"/>
+      <xsl:for-each-group select="../*[name() = $name]" group-by="skos:Concept/skos:inScheme/@rdf:resource">
+        <tr>
+          <th style="{$thStyle}">
+            <xsl:variable name="groupLabel" select="$labels/element[@name = current-grouping-key()]/label"/>
+            <xsl:value-of select="if (normalize-space($groupLabel) != '') then $groupLabel else $defaultLabel"/>
+          </th>
+          <td style="{$tdStyle}">
+            <xsl:for-each select="current-group()">
+              <xsl:apply-templates select="skos:Concept" mode="render-concept"/>
               <xsl:if test="position() != last()">
-                ,
+                <xsl:value-of select="' | '"/>
               </xsl:if>
             </xsl:for-each>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:choose>
-              <xsl:when test="starts-with(skos:Concept/@rdf:about, 'http://') or starts-with(skos:Concept/@rdf:about, 'https://')">
-                <xsl:apply-templates mode="render-url" select="skos:Concept/@rdf:about"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:value-of select="skos:Concept/@rdf:about"/>
-              </xsl:otherwise>
-            </xsl:choose>
-          </xsl:otherwise>
-        </xsl:choose>
-      </td>
-    </tr>
+          </td>
+        </tr>
+
+      </xsl:for-each-group>
+    </xsl:if>
   </xsl:template>
+
 
   <!-- Bbox is displayed with an overview and the geom displayed on it and
     the coordinates displayed around -->
@@ -445,9 +451,11 @@
                                            vcard:hasAddress|adms:identifier|dct:creator|dcat:qualifiedRelation">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
-
     <!-- Special case for dct:license with an empty dct:LicenseDocument with only @rdf:about or for dcat:contactPoint with only vcard:hasEmail and vcard:hasURL-->
-    <xsl:if test="normalize-space($stringValue) != '' or (name() = 'dct:license' and ./dct:LicenseDocument/@rdf:about) or (name() = 'dcat:contactPoint' and ./vcard:Organization/*/@rdf:resource)">
+    <xsl:if test="normalize-space($stringValue) != '' or
+                  (name() = 'dct:license' and normalize-space(./dct:LicenseDocument/@rdf:about) != '') or
+                  (name() = 'dcat:contactPoint' and normalize-space(./vcard:Organization/*/@rdf:resource) != '') or
+                  (name() = 'dct:publisher' and normalize-space(./foaf:Agent/@rdf:about) != '')">
       <tr>
         <th style="{$thStyle}">
           <xsl:value-of select="gn-fn-metadata:getLabel($schema, name(.), $labels, name(..), '', gn-fn-dcat2:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)))/label" />
@@ -534,5 +542,36 @@
       style="color=#06c; text-decoration: underline;">
       <xsl:value-of select="."/>
     </a>
+  </xsl:template>
+
+  <xsl:template mode="render-concept" match="skos:Concept">
+    <xsl:variable name="usedLang" select="if (normalize-space(skos:prefLabel[@xml:lang=$langId-2char][1]) != '')
+                                          then $langId-2char
+                                          else $defaultLang-2char"/>
+    <xsl:choose>
+      <xsl:when test="count(skos:prefLabel[@xml:lang=$usedLang]) > 0">
+        <xsl:for-each select="skos:prefLabel[@xml:lang=$usedLang]">
+          <a href="{concat($nodeUrl,$langId,'/catalog.search#/search?resultType=details&amp;sortBy=relevance&amp;from=1&amp;to=20&amp;fast=index&amp;_content_type=json&amp;any=',.)}">
+            <xsl:apply-templates mode="render-value" select="." />
+            <xsl:if test="($usedLang = $defaultLang-2char) and ($defaultLang-2char != $langId-2char)">
+              <xsl:value-of select="concat(' (', $usedLang, ')')"/>
+            </xsl:if>
+          </a>
+          <xsl:if test="position() != last()">
+            ,
+          </xsl:if>
+        </xsl:for-each>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:choose>
+          <xsl:when test="starts-with(@rdf:about, 'http://') or starts-with(@rdf:about, 'https://')">
+            <xsl:apply-templates mode="render-url" select="@rdf:about"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="@rdf:about"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 </xsl:stylesheet>
