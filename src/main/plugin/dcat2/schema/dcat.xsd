@@ -159,6 +159,7 @@
       <xs:element name="Distribution" minOccurs="1" maxOccurs="1">
         <xs:complexType>
           <xs:sequence>
+            <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="accessURL" type="rdf:Resource" minOccurs="1" maxOccurs="1"/>

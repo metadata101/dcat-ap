@@ -829,6 +829,14 @@
     <description>Vul aan met de URI van een distributie </description>
     <btnLabel>URI</btnLabel>
   </element>
+  <element name="dct:identifier" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:identifier">
+    <label>Identificator</label>
+    <description>Vul aan met een identificator waarmee een gebruiker naar je distribution kan verwijzen (bv. een URI of een
+      andere unieke identificator in de context van de catalogus). De vooraf ingevulde en niet te wijzigen waarde is de
+      UUID voor je distribution in GeoNetwork. Je kan één of meerdere eigen identificatoren toevoegen.
+    </description>
+    <btnLabel>Identificator</btnLabel>
+  </element>
   <element name="dct:title" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:title">
     <label>Titel</label>
     <description>Vul aan met een beknopte en sprekende benaming van de distributie in een bepaalde taal (default is

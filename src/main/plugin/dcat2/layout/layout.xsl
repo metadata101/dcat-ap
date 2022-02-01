@@ -304,6 +304,7 @@
         <xsl:variable name="isDisabled" select="
           (name(.) = 'dct:identifier' and count(preceding-sibling::*[name(.) = 'dct:identifier']) = 0 and name(..) = ('dcat:Dataset', 'dcat:DataService')) or
           (name(..) = 'dcat:CatalogRecord' and name(.) = ('dct:identifier', 'dct:title', 'dct:description', 'dct:language', 'dct:modified', 'dct:issued')) or
+          (name(..) = 'dcat:Distribution' and name(.) = ('dct:identifier')) or
           (name(../../..) = 'dcat:CatalogRecord' and name(..) = 'dct:Standard')"/>
 
         <xsl:call-template name="render-element">
@@ -360,6 +361,7 @@
   <xsl:template mode="mode-dcat2" priority="2001"
                 match="*[((name(.) = 'dcat:downloadURL' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dct:issued' and name(..) = 'dcat:Distribution') or
+                          (name(.) = 'dct:identifier' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dct:modified' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dct:language' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dcat:byteSize' and name(..) = 'dcat:Distribution') or
