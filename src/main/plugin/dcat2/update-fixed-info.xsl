@@ -534,6 +534,13 @@
     </xsl:copy>
   </xsl:template>
 
+  <xsl:template match="dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title" priority="10">
+    <dct:title>
+      <xsl:apply-templates select="@*"/>
+      <xsl:value-of select="concat(upper-case(substring(., 1, 1)), lower-case(substring(., 2)))"/>
+    </dct:title>
+  </xsl:template>
+
   <!-- =================================================================  -->
 
   <xsl:template name="handle-record-id">
