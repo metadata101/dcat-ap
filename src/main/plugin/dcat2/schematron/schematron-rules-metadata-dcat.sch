@@ -836,6 +836,30 @@
       <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor downloadURL (dcat:downloadURL)</sch:report>
     </sch:rule>
   </sch:pattern>
+  <sch:pattern name="identificator" id="https://data.vlaanderen.be/shacl/metadata_dcat#DistributieShape/05134c4e7c34157d6f7ac1128713a08418e0fe7d">
+    <sch:title>Identificator - De unieke identificator van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Distributie%3Aidentificator)</sch:title>
+    <sch:rule context="//dcat:Distribution/dct:identifier[$profile]">
+      <sch:let name="isLiteral" value="normalize-space(.) != ''"/>
+      <sch:assert test="$isLiteral">De range van identificator moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Literal&gt; zijn. (dct:identifier)</sch:assert>
+      <sch:report test="$isLiteral">De range van identificator moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Literal&gt; zijn. (dct:identifier)</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern name="identificator" id="https://data.vlaanderen.be/shacl/metadata_dcat#DistributieShape/972d73e7a13100b66c0c2f44466edac47aa1ab28">
+    <sch:title>Identificator - De unieke identificator van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Distributie%3Aidentificator)</sch:title>
+    <sch:rule context="//dcat:Distribution[$profile]">
+      <sch:let name="validMin" value="count(dct:identifier) &gt;= 1"/>
+      <sch:assert test="$validMin">Minimaal 1 waarden verwacht voor identificator (dct:identifier)</sch:assert>
+      <sch:report test="$validMin">Minimaal 1 waarden verwacht voor identificator (dct:identifier)</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern name="identificator" id="https://data.vlaanderen.be/shacl/metadata_dcat#DistributieShape/bb43a48c77e7d98609af3d3bb1b1648370465308">
+    <sch:title>Identificator - De unieke identificator van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Distributie%3Aidentificator)</sch:title>
+    <sch:rule context="//dcat:Distribution[$profile]">
+      <sch:let name="validMax" value="count(dct:identifier) &lt;= 1"/>
+      <sch:assert test="$validMax">Maximaal 1 waarden toegelaten voor identificator (dct:identifier)</sch:assert>
+      <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor identificator (dct:identifier)</sch:report>
+    </sch:rule>
+  </sch:pattern>
   <sch:pattern name="licentie" id="https://data.vlaanderen.be/shacl/metadata_dcat#DistributieShape/509740cc7b3c86ebee90dc6303c11c40e2b08212">
     <sch:title>Licentie - De licentie van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Distributie%3Alicentie)</sch:title>
     <sch:rule context="//dcat:Distribution/dct:license[$profile]">

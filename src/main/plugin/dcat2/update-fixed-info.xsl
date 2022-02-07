@@ -59,10 +59,10 @@
   <xsl:variable name="resourceType">
     <xsl:choose>
       <xsl:when test="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-        <xsl:value-of select="'dataset'"/>
+        <xsl:value-of select="'datasets'"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="'service'"/>
+        <xsl:value-of select="'services'"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -115,7 +115,7 @@
         <xsl:value-of select="replace($resource/@rdf:about, $uuidRegex, $resourceUUID)"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="concat(/root/env/nodeURL, 'doc/', $resourceType, '/', $resourceUUID)"/>
+        <xsl:value-of select="concat(/root/env/nodeURL, 'resources/', $resourceType, '/', $resourceUUID)"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -347,6 +347,17 @@
   <xsl:template match="dcat:Distribution" priority="10">
     <dcat:Distribution>
       <xsl:apply-templates select="@*"/>
+      <xsl:if test="count(dct:identifier[normalize-space() != '']) = 0 or normalize-space(@rdf:about) = ''">
+        <xsl:variable name="distroUUID" select="uuid:toString(uuid:randomUUID())"/>
+        <xsl:if test="normalize-space(@rdf:about) = ''">
+          <xsl:attribute name="rdf:about" select="concat(/root/env/nodeURL, 'resources/distributions/', $resourceUUID)"/>
+        </xsl:if>
+        <xsl:if test="count(dct:identifier[normalize-space() != '']) = 0">
+          <dct:identifier>
+            <xsl:value-of select="$distroUUID"/>
+          </dct:identifier>
+        </xsl:if>
+      </xsl:if>
       <xsl:apply-templates select="dct:identifier"/>
       <xsl:apply-templates select="dct:title"/>
       <xsl:apply-templates select="dct:description"/>
@@ -523,6 +534,13 @@
     </xsl:copy>
   </xsl:template>
 
+  <xsl:template match="dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title" priority="10">
+    <dct:title>
+      <xsl:apply-templates select="@*"/>
+      <xsl:value-of select="concat(upper-case(substring(., 1, 1)), lower-case(substring(., 2)))"/>
+    </dct:title>
+  </xsl:template>
+
   <!-- =================================================================  -->
 
   <xsl:template name="handle-record-id">
@@ -597,7 +615,7 @@
     <xsl:namespace name="dcat" select="'http://www.w3.org/ns/dcat#'"/>
     <xsl:namespace name="schema" select="'http://schema.org/'"/>
     <xsl:namespace name="dc" select="'http://purl.org/dc/elements/1.1/'"/>
-    <xsl:if test="$resourceType = 'service' and $profile = 'metadata-dcat'">
+    <xsl:if test="$resourceType = 'services' and $profile = 'metadata-dcat'">
       <xsl:namespace name="mdcat" select="'http://data.vlaanderen.be/ns/metadata-dcat#'"/>
     </xsl:if>
   </xsl:template>

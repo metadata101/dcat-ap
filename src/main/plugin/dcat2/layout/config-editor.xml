@@ -393,7 +393,7 @@
     </for>
     <for name="dct:subject" use="thesaurus-multi-list-picker">
       <directiveAttributes
-          thesauri="external.theme.GDI-Vlaanderen-trefwoorden, external.theme.magda-domain, external.theme.inspire-theme, external.theme.gemet, external.theme.topic-category"
+          thesauri="external.theme.GDI-Vlaanderen-trefwoorden, external.theme.magda-domain"
           xpath="/dct:subject"/>
     </for>
     <for name="mdcat:levensfase" use="thesaurus-list-picker">
