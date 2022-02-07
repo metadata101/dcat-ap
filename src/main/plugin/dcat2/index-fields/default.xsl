@@ -22,8 +22,10 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:geodcat="http://data.europa.eu/930/" xmlns:util="java:org.fao.geonet.util.XslUtil"
+                xmlns:gn-fn-index="http://geonetwork-opensource.org/xsl/functions/index"
                 xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:geonet="http://www.fao.org/geonetwork">
+  <xsl:import href="common/index-utils.xsl"/>
   <xsl:include href="../convert/functions.xsl"/>
   <xsl:include href="../../../../xsl/utils-fn.xsl"/>
   <!-- This file defines what parts of the metadata are indexed by Lucene
@@ -222,50 +224,21 @@
       <Field name="identifier" string="{string(.)}" store="true" index="true"/>
     </xsl:for-each>
 
-    <xsl:variable name="revisionSortDate">
-      <xsl:for-each select="dct:modified[.!='' and not(contains(.,'1900') or contains(.,'1753'))]">
-        <xsl:sort select="." order="descending"/>
-        <xsl:if test="position() = 1">
-          <xsl:value-of select="string(.)"/>
+    <xsl:variable name="sortDate">
+      <xsl:for-each select="dct:*[name()=('dct:modified','dct:created','dct:issued') and .!='' and not(contains(.,'1900') or contains(.,'1753'))]">
+        <xsl:sort select="gn-fn-index:formatDateTime(string(.))" order="descending"/>
+        <xsl:if test="position()=1">
+          <xsl:value-of select="gn-fn-index:formatDateTime(string(.))"/>
         </xsl:if>
       </xsl:for-each>
     </xsl:variable>
 
-    <xsl:variable name="creationSortDate">
-      <xsl:for-each select="dct:created[.!='' and not(contains(.,'1900') or contains(.,'1753'))]">
-        <xsl:sort select="." order="descending"/>
-        <xsl:if test="position() = 1">
-          <xsl:value-of select="string(.)"/>
-        </xsl:if>
-      </xsl:for-each>
-    </xsl:variable>
-
-    <xsl:variable name="publicationSortDate">
-      <xsl:for-each select="dct:issued[.!='' and not(contains(.,'1900') or contains(.,'1753'))]">
-        <xsl:sort select="." order="descending"/>
-        <xsl:if test="position() = 1">
-          <xsl:value-of select="string(.)"/>
-        </xsl:if>
-      </xsl:for-each>
-    </xsl:variable>
-
-    <xsl:if test="string-length(normalize-space($publicationSortDate))>0">
-      <Field name="sortDate" string="{$publicationSortDate}" store="true" index="true"/>
-      <Field name="_sortDate" string="{$publicationSortDate}" store="true" index="true"/>
+    <xsl:if test="string-length(normalize-space($sortDate))>0">
+      <Field name="sortDate" string="{$sortDate}" store="true" index="true"/>
+      <Field name="_sortDate" string="{$sortDate}" store="true" index="true"/>
     </xsl:if>
-    <xsl:if test="string-length(normalize-space($publicationSortDate))=0">
-      <xsl:if test="string-length(normalize-space($revisionSortDate))>0">
-        <Field name="sortDate" string="{$revisionSortDate}" store="true" index="true"/>
-        <Field name="_sortDate" string="{$revisionSortDate}" store="true" index="true"/>
-      </xsl:if>
-      <xsl:if test="string-length(normalize-space($revisionSortDate))=0">
-        <xsl:if test="string-length(normalize-space($creationSortDate))>0">
-          <Field name="sortDate" string="{$creationSortDate}" store="true" index="true"/>
-          <Field name="_sortDate" string="{$creationSortDate}" store="true" index="true"/>
-        </xsl:if>
-      </xsl:if>
-    </xsl:if>
-    <xsl:if test="(string-length(normalize-space($publicationSortDate)) + string-length(normalize-space($revisionSortDate)) + string-length(normalize-space($creationSortDate)))=0">
+
+    <xsl:if test="string-length(normalize-space($sortDate))=0">
       <Field name="sortDate" string="-1" store="true" index="true"/>
       <Field name="_sortDate" string="-1" store="true" index="true"/>
     </xsl:if>
