@@ -220,6 +220,11 @@
     <description>Vul aan met het telefoonnummer van het contactpunt</description>
     <btnLabel>Telefoonnummer</btnLabel>
   </element>
+  <element name="dct:created" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created">
+    <label>Creatiedatum</label>
+    <description>Vul aan met de datum waarop je dataset aangemaakt is</description>
+    <btnLabel>Creatiedatum</btnLabel>
+  </element>
   <element name="dct:issued" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued">
     <label>Publicatiedatum</label>
     <description>Vul aan met de datum waarop je dataset gepubliceerd is</description>

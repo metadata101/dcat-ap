@@ -202,6 +202,11 @@
     <description>Tooltip: telephone number</description>
     <btnLabel>telephone number</btnLabel>
   </element>
+  <element name="dct:created" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created">
+    <label>creation date</label>
+    <description>Tooltip: creation date</description>
+    <btnLabel>creation date</btnLabel>
+  </element>
   <element name="dct:issued" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued">
     <label>release date</label>
     <description>Tooltip: release date</description>
