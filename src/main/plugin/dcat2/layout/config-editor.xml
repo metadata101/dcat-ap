@@ -530,6 +530,7 @@
         </section>
         <section name="versionInformation">
           <field name="FieldId223" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created" or="created" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified" or="modified" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued" or="issued" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
@@ -924,6 +925,7 @@
           <field name="FieldId223" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId225" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:versionNotes" or="versionNotes" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId173" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity" or="accrualPeriodicity" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field name="FieldId130" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created" or="created" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId131" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified" or="modified" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId129" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued" or="issued" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
