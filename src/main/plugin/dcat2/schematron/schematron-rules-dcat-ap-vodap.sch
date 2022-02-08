@@ -78,6 +78,15 @@
       <sch:report test="$isLiteral and $hasLang">De range van naam moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (foaf:name)</sch:report>
     </sch:rule>
   </sch:pattern>
+  <sch:pattern name="naam" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#AgentShape/b96a7391d2808d207ce4e3c269dec2c6efad55c3">
+    <sch:title>Naam - De naam van de agent. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Agent%3Anaam)</sch:title>
+    <sch:rule context="//foaf:Agent/foaf:name[$profile]">
+      <sch:let name="current" value="."/>
+      <sch:let name="isUniqueLang" value="count(preceding-sibling::foaf:name[string() = string($current) and @xml:lang = $current/@xml:lang]) = 0"/>
+      <sch:assert test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor naam (foaf:name)</sch:assert>
+      <sch:report test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor naam (foaf:name)</sch:report>
+    </sch:rule>
+  </sch:pattern>
   <sch:pattern name="naam" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#AgentShape/e9d8e42e8041e72c4534134d5a9044b03bed7ec5">
     <sch:title>Naam - De naam van de agent. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Agent%3Anaam)</sch:title>
     <sch:rule context="//foaf:Agent[$profile]">
@@ -203,6 +212,15 @@
       <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor titel (dct:title)</sch:report>
     </sch:rule>
   </sch:pattern>
+  <sch:pattern name="titel" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#CatalogusRecordShape/8041fe094c27b123422bd03a4e13ff0641087607">
+    <sch:title>Titel - De naam van het record in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Atitel)</sch:title>
+    <sch:rule context="//dcat:CatalogRecord/dct:title[$profile]">
+      <sch:let name="current" value="."/>
+      <sch:let name="isUniqueLang" value="count(preceding-sibling::dct:title[string() = string($current) and @xml:lang = $current/@xml:lang]) = 0"/>
+      <sch:assert test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor titel (dct:title)</sch:assert>
+      <sch:report test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor titel (dct:title)</sch:report>
+    </sch:rule>
+  </sch:pattern>
   <sch:pattern name="titel" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#CatalogusRecordShape/f28ce523c4b4fcb15d8c7d4f279da195ba7403ab">
     <sch:title>Titel - De naam van het record in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Atitel)</sch:title>
     <sch:rule context="//dcat:CatalogRecord/dct:title[$profile]">
@@ -261,6 +279,15 @@
       <sch:let name="validMax" value="count(dct:description) &lt;= 1"/>
       <sch:assert test="$validMax">Maximaal 1 waarden toegelaten voor beschrijving (dct:description)</sch:assert>
       <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor beschrijving (dct:description)</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern name="beschrijving" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/da05d674f29a225a7115411e9f7ca442a25f2c88">
+    <sch:title>Beschrijving - Een bondige tekstuele omschrijving van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Abeschrijving)</sch:title>
+    <sch:rule context="//dcat:DataService/dct:description[$profile]">
+      <sch:let name="current" value="."/>
+      <sch:let name="isUniqueLang" value="count(preceding-sibling::dct:description[string() = string($current) and @xml:lang = $current/@xml:lang]) = 0"/>
+      <sch:assert test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor beschrijving (dct:description)</sch:assert>
+      <sch:report test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor beschrijving (dct:description)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="biedt informatie aan over" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/5ed2c890f2c7588313cc9f93b35524bdb2d6328d">
@@ -533,6 +560,15 @@
       <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor titel (dct:title)</sch:report>
     </sch:rule>
   </sch:pattern>
+  <sch:pattern name="titel" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/8041fe094c27b123422bd03a4e13ff0641087607">
+    <sch:title>Titel - De naam van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Atitel)</sch:title>
+    <sch:rule context="//dcat:DataService/dct:title[$profile]">
+      <sch:let name="current" value="."/>
+      <sch:let name="isUniqueLang" value="count(preceding-sibling::dct:title[string() = string($current) and @xml:lang = $current/@xml:lang]) = 0"/>
+      <sch:assert test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor titel (dct:title)</sch:assert>
+      <sch:report test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor titel (dct:title)</sch:report>
+    </sch:rule>
+  </sch:pattern>
   <sch:pattern name="titel" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/f28ce523c4b4fcb15d8c7d4f279da195ba7403ab">
     <sch:title>Titel - De naam van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Atitel)</sch:title>
     <sch:rule context="//dcat:DataService/dct:title[$profile]">
@@ -565,6 +601,15 @@
       <sch:let name="validMax" value="count(dct:accessRights) &lt;= 1"/>
       <sch:assert test="$validMax">Maximaal 1 waarden toegelaten voor toegankelijkheid (dct:accessRights)</sch:assert>
       <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor toegankelijkheid (dct:accessRights)</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern name="trefwoord" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/1b8b3557ea1ccbabc0962c345782ae53740e72e1">
+    <sch:title>Trefwoord - Een trefwoord of tag die de resource beschrijft. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Atrefwoord)</sch:title>
+    <sch:rule context="//dcat:DataService/dcat:keyword[$profile]">
+      <sch:let name="current" value="."/>
+      <sch:let name="isUniqueLang" value="count(preceding-sibling::dcat:keyword[string() = string($current) and @xml:lang = $current/@xml:lang]) = 0"/>
+      <sch:assert test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor trefwoord (dcat:keyword)</sch:assert>
+      <sch:report test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor trefwoord (dcat:keyword)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="trefwoord" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/44f6426e2306c5bc0421823eb4a1a034b615f715">
@@ -624,6 +669,15 @@
       <sch:let name="validMin" value="count(dct:description) &gt;= 1"/>
       <sch:assert test="$validMin">Minimaal 1 waarden verwacht voor beschrijving (dct:description)</sch:assert>
       <sch:report test="$validMin">Minimaal 1 waarden verwacht voor beschrijving (dct:description)</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern name="beschrijving" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape/da05d674f29a225a7115411e9f7ca442a25f2c88">
+    <sch:title>Beschrijving - Een bondige tekstuele omschrijving van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Abeschrijving)</sch:title>
+    <sch:rule context="//dcat:Dataset/dct:description[$profile]">
+      <sch:let name="current" value="."/>
+      <sch:let name="isUniqueLang" value="count(preceding-sibling::dct:description[string() = string($current) and @xml:lang = $current/@xml:lang]) = 0"/>
+      <sch:assert test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor beschrijving (dct:description)</sch:assert>
+      <sch:report test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor beschrijving (dct:description)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="conform" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape/dd5cf5b162b3f92600a391f44660bf2b255693ac">
@@ -727,6 +781,15 @@
       <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor titel (dct:title)</sch:report>
     </sch:rule>
   </sch:pattern>
+  <sch:pattern name="titel" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape/8041fe094c27b123422bd03a4e13ff0641087607">
+    <sch:title>Titel - De naam van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Atitel)</sch:title>
+    <sch:rule context="//dcat:Dataset/dct:title[$profile]">
+      <sch:let name="current" value="."/>
+      <sch:let name="isUniqueLang" value="count(preceding-sibling::dct:title[string() = string($current) and @xml:lang = $current/@xml:lang]) = 0"/>
+      <sch:assert test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor titel (dct:title)</sch:assert>
+      <sch:report test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor titel (dct:title)</sch:report>
+    </sch:rule>
+  </sch:pattern>
   <sch:pattern name="titel" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape/f28ce523c4b4fcb15d8c7d4f279da195ba7403ab">
     <sch:title>Titel - De naam van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Atitel)</sch:title>
     <sch:rule context="//dcat:Dataset/dct:title[$profile]">
@@ -759,6 +822,15 @@
       <sch:let name="validMax" value="count(dct:accessRights) &lt;= 1"/>
       <sch:assert test="$validMax">Maximaal 1 waarden toegelaten voor toegankelijkheid (dct:accessRights)</sch:assert>
       <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor toegankelijkheid (dct:accessRights)</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern name="trefwoord" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape/1b8b3557ea1ccbabc0962c345782ae53740e72e1">
+    <sch:title>Trefwoord - Een trefwoord of tag die de resource beschrijft. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Atrefwoord)</sch:title>
+    <sch:rule context="//dcat:Dataset/dcat:keyword[$profile]">
+      <sch:let name="current" value="."/>
+      <sch:let name="isUniqueLang" value="count(preceding-sibling::dcat:keyword[string() = string($current) and @xml:lang = $current/@xml:lang]) = 0"/>
+      <sch:assert test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor trefwoord (dcat:keyword)</sch:assert>
+      <sch:report test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor trefwoord (dcat:keyword)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="trefwoord" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape/44f6426e2306c5bc0421823eb4a1a034b615f715">
@@ -868,6 +940,15 @@
       <sch:let name="validMax" value="count(dct:title) &lt;= 1"/>
       <sch:assert test="$validMax">Maximaal 1 waarden toegelaten voor titel (dct:title)</sch:assert>
       <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor titel (dct:title)</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern name="titel" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DistributieShape/8041fe094c27b123422bd03a4e13ff0641087607">
+    <sch:title>Titel - De naam van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3Atitel)</sch:title>
+    <sch:rule context="//dcat:Distribution/dct:title[$profile]">
+      <sch:let name="current" value="."/>
+      <sch:let name="isUniqueLang" value="count(preceding-sibling::dct:title[string() = string($current) and @xml:lang = $current/@xml:lang]) = 0"/>
+      <sch:assert test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor titel (dct:title)</sch:assert>
+      <sch:report test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor titel (dct:title)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="titel" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DistributieShape/f28ce523c4b4fcb15d8c7d4f279da195ba7403ab">
