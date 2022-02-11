@@ -152,6 +152,9 @@
       <dct:description xml:lang="nl">
         <xsl:value-of select="concat('Deze catalogus bevat datasets ontsloten door ', $env/system/site/organization)"/>
       </dct:description>
+      <dct:identifier>
+        <xsl:value-of select="$env/system/site/siteId"/>
+      </dct:identifier>
       <dct:publisher>
         <foaf:Agent
           rdf:about="{$resourcePrefix}/organizations/{encode-for-uri($env/system/site/organization)}">
@@ -217,6 +220,15 @@
           </skos:ConceptScheme>
         </dcat:themeTaxonomy>
       </xsl:for-each>
+      <dcat:contactPoint>
+        <vcard:Organization>
+          <vcard:organization-name>
+            <xsl:value-of select="$env/system/site/organization"/>
+          </vcard:organization-name>
+          <vcard:hasEmail rdf:resource="mailto:informatie.vlaanderen@vlaanderen.be" />
+          <vcard:hasURL rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen" />
+        </vcard:Organization>
+      </dcat:contactPoint>
       <xsl:choose>
         <xsl:when test="dcat:record/dcat:CatalogRecord">
           <xsl:apply-templates select="dcat:record"/>

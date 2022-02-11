@@ -67,6 +67,11 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="subject" select="./*"/>
             <xsl:with-param name="predicate">dct:description</xsl:with-param>
           </xsl:call-template>
+          <!-- dct:identifier -->
+          <xsl:call-template name="identifier">
+            <xsl:with-param name="subject" select="./*"/>
+            <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
+          </xsl:call-template>
           <!-- dct:publisher -->
           <xsl:call-template name="agents">
             <xsl:with-param name="agentURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/publisher' and
@@ -118,11 +123,6 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="subject" select="./*"/>
             <xsl:with-param name="predicate">dct:isPartOf</xsl:with-param>
           </xsl:call-template>
-          <!-- dcat:record -->
-          <xsl:call-template name="urls">
-            <xsl:with-param name="subject" select="./*"/>
-            <xsl:with-param name="predicate">dct:isPartOf</xsl:with-param>
-          </xsl:call-template>
           <!-- dct:rights -->
           <xsl:call-template name="rightsStatements">
             <xsl:with-param name="statementURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/rights' and
@@ -134,6 +134,12 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="locationURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/spatial' and
                                                         sr:binding[@name='subject']/* = $catalogURI]/sr:binding[@name='object']"/>
             <xsl:with-param name="predicate">dct:spatial</xsl:with-param>
+          </xsl:call-template>
+          <!-- dcat:contactPoint -->
+          <xsl:call-template name="organizations">
+            <xsl:with-param name="organizationURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://www.w3.org/ns/dcat#contactPoint' and
+                                                            sr:binding[@name='subject']/* = $catalogURI]/sr:binding[@name='object']"/>
+            <xsl:with-param name="predicate">dcat:contactPoint</xsl:with-param>
           </xsl:call-template>
           <!-- dcat:record -->
           <xsl:call-template name="record">
