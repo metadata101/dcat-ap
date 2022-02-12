@@ -76,7 +76,6 @@ Stylesheet used to update metadata adding a reference to a source record.
                 adms:identifier|
                 dct:provenance"/>
       <xsl:variable name="rdfResource" select="replace(@rdf:about,'([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}',$sourceUuid)"/>
-      <xsl:message select="concat('Adding dct:relation with $rdfResource value ',$rdfResource)"/>
       <xsl:copy-of select="dct:relation[@rdf:resource!= $rdfResource]"/>
       <dct:relation rdf:resource="{$rdfResource}"/>
       <xsl:apply-templates select="dct:source|

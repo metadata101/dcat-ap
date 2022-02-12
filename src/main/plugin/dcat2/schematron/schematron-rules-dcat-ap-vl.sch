@@ -286,7 +286,7 @@
     <sch:title>Biedt informatie aan over - De data die via deze dataservice worden aangeboden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Abiedt%20informatie%20aan%20over)</sch:title>
     <sch:rule context="//dcat:DataService/dcat:servesdataset[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(dcat:Dataset) = 1 or count(//dcat:Dataset[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van biedt informatie aan over moet van het type &lt;http://www.w3.org/ns/dcat#Dataset&gt; zijn. (dcat:servesdataset)</sch:assert>
       <sch:report test="$validClass">De range van biedt informatie aan over moet van het type &lt;http://www.w3.org/ns/dcat#Dataset&gt; zijn. (dcat:servesdataset)</sch:report>
     </sch:rule>
@@ -981,7 +981,7 @@
     <sch:title>Wordt aangeboden door - Een dataservice die deze distributie aanbiedt. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3Awordt%20aangeboden%20door)</sch:title>
     <sch:rule context="//dcat:Distribution/dcat:accessService[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(dcat:DataService) = 1 or count(//dcat:DataService[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van wordt aangeboden door moet van het type &lt;http://www.w3.org/ns/dcat#DataService&gt; zijn. (dcat:accessService)</sch:assert>
       <sch:report test="$validClass">De range van wordt aangeboden door moet van het type &lt;http://www.w3.org/ns/dcat#DataService&gt; zijn. (dcat:accessService)</sch:report>
     </sch:rule>

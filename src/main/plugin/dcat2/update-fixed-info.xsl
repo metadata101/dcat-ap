@@ -333,8 +333,8 @@
       <xsl:apply-templates select="dcat:contactPoint"/>
       <xsl:apply-templates select="dcat:keyword"/>
       <xsl:apply-templates select="dct:language"/>
-      <xsl:apply-templates select="owl:versionInfo"/>
       <xsl:apply-templates select="adms:identifier"/>
+      <xsl:apply-templates select="owl:versionInfo"/>
       <xsl:apply-templates select="mdcat:landingspaginaVoorAuthenticatie"/>
       <xsl:apply-templates select="mdcat:landingspaginaVoorStatusinformatie"/>
       <xsl:apply-templates select="mdcat:landingspaginaVoorGebruiksinformatie"/>
