@@ -1,111 +1,74 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
-                xmlns:foaf="http://xmlns.com/foaf/0.1/"
-                xmlns:owl="http://www.w3.org/2002/07/owl#"
                 xmlns:adms="http://www.w3.org/ns/adms#"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                xmlns:spdx="http://spdx.org/rdf/terms#"
+                xmlns:owl="http://www.w3.org/2002/07/owl#"
+                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:geonet="http://www.fao.org/geonetwork"
                 exclude-result-prefixes="#all"
                 version="2.0">
 
-  <xsl:param name="uuidSrv"/>
+  <xsl:param name="uuidDS"/>
   <xsl:param name="siteUrl"/>
 
-  <xsl:variable name="serviceUrl" select="concat($siteUrl, 'catalog.search#/metadata/', $uuidSrv)"/>
 
-  <xsl:template match="dcat:Dataset">
+  <xsl:template match="dcat:DataService">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
-      <xsl:copy-of select="dct:title|
+      <xsl:copy-of select="@*"/>
+
+      <!-- Copy elements before dcat:servesDataset -->
+      <xsl:copy-of select="dct:identifier|
+                           dct:title|
                            dct:description|
-                           dcat:contactPoint|
-                           dct:issued|
-                           dct:modified|
                            dct:publisher|
                            dct:rightsHolder|
+                           dcat:endpointUrl|
+                           dcat:endpointDescription"/>
+
+      <xsl:variable name="datasetUrl" select="concat($siteUrl, 'catalog.search#/metadata/', $uuidDS)"/>
+      <xsl:copy-of select="dcat:servesDataset[normalize-space(@rdf:resource) != '' and normalize-space(@rdf:resource) != $datasetUrl]"/>
+
+      <!-- Add link to dataset -->
+      <xsl:element name="dcat:servesDataset">
+        <xsl:attribute name="rdf:resource" select="$datasetUrl"/>
+      </xsl:element>
+
+      <!-- Copy elements after dcat:servesDataset -->
+      <xsl:copy-of select="dcat:landingPage|
+                           dcat:contactPoint|
                            dcat:keyword|
+                           dct:language|
+                           owl:versionInfo|
+                           adms:identifier|
+                           mdcat:landingspaginaVoorAuthenticatie|
+                           mdcat:landingspaginaVoorStatusinformatie|
+                           mdcat:landingspaginaVoorGebruiksinformatie|
+                           mdcat:levensfase|
+                           mdcat:ontwikkelingstoestand|
+                           dcat:qualifiedRelation|
                            dct:subject|
                            dcat:theme|
                            dct:accessRights|
                            dct:conformsTo|
-                           foaf:page|
-                           dct:accrualPeriodicity|
-                           dct:hasVersion|
-                           dct:isVersionOf|
-                           dcat:landingPage|
-                           dct:language|
-                           adms:identifier|
-                           dct:provenance|
-                           dct:relation|
-                           dct:source|
-                           dct:spatial|
-                           dct:temporal|
-                           dct:type|
-                           owl:versionInfo|
-                           adms:versionNotes|
-                           dcat:extension"/>
-
-      <xsl:choose>
-        <xsl:when test="dcat:distribution/dcat:Distribution/dcat:accessService/@rdf:resource = $serviceUrl">
-          <xsl:copy-of select="dcat:distribution"/>
-        </xsl:when>
-        <xsl:when test="count(dcat:distribution/dcat:Distribution) > 0">
-          <dcat:distribution>
-            <xsl:apply-templates select="dcat:distribution[1]/dcat:Distribution"/>
-          </dcat:distribution>
-          <xsl:copy-of select="dcat:distribution[position() > 1]"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <dcat:distribution>
-            <dcat:Distribution>
-              <dct:title xml:lang="nl">Service distributie</dct:title>
-              <dcat:accessService rdf:resource="{$serviceUrl}"/>
-            </dcat:Distribution>
-          </dcat:distribution>
-        </xsl:otherwise>
-      </xsl:choose>
-
-      <xsl:copy-of select="adms:sample"/>
-    </xsl:copy>
-  </xsl:template>
-
-  <xsl:template match="dcat:Distribution">
-    <xsl:copy>
-      <xsl:copy-of select="dct:identifier|
-                           dct:title|
-                           dct:description|
-                           dcat:accessURL|
-                           dcat:downloadURL|
+                           dct:creator|
+                           dct:isReferencedBy|
                            dct:issued|
-                           dct:modified|
-                           dct:format|
-                           dcat:mediaType|
-                           dct:language|
                            dct:license|
+                           dct:modified|
+                           dct:relation|
                            dct:rights|
-                           dcat:byteSize|
-                           spdx:checksum|
-                           foaf:page|
-                           dct:conformsTo|
-                           adms:status|
-                           dcat:accessService"/>
-      <dcat:accessService rdf:resource="{$serviceUrl}"/>
-      <xsl:copy-of select="dcat:compressFormat|
-                           dcat:packageFormat|
-                           dcat:spatialResolutionInMeters|
-                           dcat:temporalResolution|
-                           adms:identifier"/>
-
+                           dct:type"/>
     </xsl:copy>
   </xsl:template>
 
   <xsl:template match="geonet:*"/>
 
-  <xsl:template match="@*|*|text()">
+  <xsl:template match="@*|*">
     <xsl:copy>
-      <xsl:apply-templates select="@*|*|text()"/>
+      <xsl:apply-templates select="@*|*"/>
     </xsl:copy>
   </xsl:template>
+
+  <xsl:template match="extra" priority="2"/>
 </xsl:stylesheet>

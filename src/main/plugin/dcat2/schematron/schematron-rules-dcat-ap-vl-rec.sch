@@ -20,6 +20,14 @@
   <sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
   <sch:ns prefix="mdcat" uri="http://data.vlaanderen.be/ns/metadata-dcat#"/>
   <sch:let name="profile" value="boolean(/*[starts-with(//dcat:CatalogRecord//dct:Standard/@rdf:about, 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL')])"/>
+  <sch:pattern>
+    <sch:title>At least one theme from the data.gov.be vocabulary is required</sch:title>
+    <sch:rule context="//dcat:Dataset[$profile]|//dcat:DataService[$profile]">
+      <sch:let name="dataThemes" value="count(dcat:theme[starts-with(skos:Concept/@rdf:about, 'http://vocab.belgif.be/auth/datatheme')])"/>
+      <sch:assert test="$dataThemes &gt; 0">The dcat:Resource doesn't have a data.gov.be theme</sch:assert>
+      <sch:report test="$dataThemes &gt; 0">The dcat:Resource have a data.gov.be theme</sch:report>
+    </sch:rule>
+  </sch:pattern>
   <sch:pattern name="levensfase" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/0aea9e8a54457ca50f1b00c07872cb7c7b39e8ba">
     <sch:title>Levensfase - De levensfase waarin de dataservice zich bevindt. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Alevensfase)</sch:title>
     <sch:rule context="//dcat:DataService/mdcat:levensfase[$profile]">

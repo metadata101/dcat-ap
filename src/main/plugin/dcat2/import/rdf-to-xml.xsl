@@ -67,6 +67,11 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="subject" select="./*"/>
             <xsl:with-param name="predicate">dct:description</xsl:with-param>
           </xsl:call-template>
+          <!-- dct:identifier -->
+          <xsl:call-template name="identifier">
+            <xsl:with-param name="subject" select="./*"/>
+            <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
+          </xsl:call-template>
           <!-- dct:publisher -->
           <xsl:call-template name="agents">
             <xsl:with-param name="agentURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/publisher' and
@@ -118,11 +123,6 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="subject" select="./*"/>
             <xsl:with-param name="predicate">dct:isPartOf</xsl:with-param>
           </xsl:call-template>
-          <!-- dcat:record -->
-          <xsl:call-template name="urls">
-            <xsl:with-param name="subject" select="./*"/>
-            <xsl:with-param name="predicate">dct:isPartOf</xsl:with-param>
-          </xsl:call-template>
           <!-- dct:rights -->
           <xsl:call-template name="rightsStatements">
             <xsl:with-param name="statementURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/rights' and
@@ -134,6 +134,12 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="locationURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/spatial' and
                                                         sr:binding[@name='subject']/* = $catalogURI]/sr:binding[@name='object']"/>
             <xsl:with-param name="predicate">dct:spatial</xsl:with-param>
+          </xsl:call-template>
+          <!-- dcat:contactPoint -->
+          <xsl:call-template name="organizations">
+            <xsl:with-param name="organizationURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://www.w3.org/ns/dcat#contactPoint' and
+                                                            sr:binding[@name='subject']/* = $catalogURI]/sr:binding[@name='object']"/>
+            <xsl:with-param name="predicate">dcat:contactPoint</xsl:with-param>
           </xsl:call-template>
           <!-- dcat:record -->
           <xsl:call-template name="record">
@@ -220,6 +226,15 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="subject" select="./*"/>
             <xsl:with-param name="predicate">foaf:primaryTopic</xsl:with-param>
           </xsl:call-template>
+          <!-- adms:identifier -->
+          <adms:identifier>
+            <adms:Identifier>
+              <skos:notation>
+                <xsl:value-of select="$recordURI"/>
+              </skos:notation>
+              <dct:creator rdf:resoure="https://metadata.vlaanderen.be"/>
+            </adms:Identifier>
+          </adms:identifier>
           <!-- dct:modified -->
           <xsl:call-template name="dates">
             <xsl:with-param name="subject" select="./*"/>
@@ -590,6 +605,15 @@ Rome - Italy. email: geonetwork@osgeo.org
                       sr:binding[@name='subject']/* = $serviceURI]/sr:binding[@name='object']"/>
             <xsl:with-param name="predicate">adms:identifier</xsl:with-param>
           </xsl:call-template>
+          <xsl:if test="normalize-space($oldResourceUUID) != ''">
+            <adms:identifier>
+              <adms:Identifier>
+                <skos:notation>
+                  <xsl:value-of select="$oldResourceUUID"/>
+                </skos:notation>
+              </adms:Identifier>
+            </adms:identifier>
+          </xsl:if>
           <!-- owl:versionInfo -->
           <xsl:call-template name="properties">
             <xsl:with-param name="subject" select="./*"/>

@@ -44,6 +44,7 @@
     <xs:sequence>
       <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/>
       <xs:element ref="dct:description" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:publisher" minOccurs="1" maxOccurs="1"/>
       <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="foaf:homepage" minOccurs="0" maxOccurs="1"/>
@@ -54,12 +55,12 @@
       <xs:element name="themeTaxonomy" type="skos:ConceptScheme" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:hasPart" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:isPartOf" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="record" type="dcat:CatalogRecord" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="contactPoint" type="vcard:Organization" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:spatial" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="record" type="dcat:CatalogRecord" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="dataset" type="dcat:Dataset" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="service" type="dcat:DataService" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="contactPoint" type="vcard:Organization" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="landingPage" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="qualifiedRelation" type="dcat:Relationship" minOccurs="0" maxOccurs="unbounded"/>
@@ -68,7 +69,6 @@
       <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/>
       <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:creator" minOccurs="0" maxOccurs="1"/>
-      <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:relation" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:type" minOccurs="0" maxOccurs="unbounded"/>
@@ -159,7 +159,7 @@
       <xs:element name="Distribution" minOccurs="1" maxOccurs="1">
         <xs:complexType>
           <xs:sequence>
-            <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dct:identifier" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="accessURL" type="rdf:Resource" minOccurs="1" maxOccurs="1"/>

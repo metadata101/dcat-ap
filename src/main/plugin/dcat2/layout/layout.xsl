@@ -373,6 +373,7 @@
                           (name(.) = 'dcat:compressFormat' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dcat:packageFormat' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dcat:spatialResolutionInMeters' and name(..) = 'dcat:Distribution') or
+                          (name(.) = 'dcat:accessService' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dct:identifier' and name(..) = 'dct:LicenseDocument') or
                           (name(.) = 'dcat:temporalResolution' and name(..) = 'dcat:Distribution')) and
                           $isFlatMode]" />

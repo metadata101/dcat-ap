@@ -173,6 +173,7 @@
            data-max-tags="{$config/max}"
            data-lang="{$metadataOtherLanguagesAsJson}"
            data-textgroup-only="false"
+           data-alt-save="true"
            class=""/>
     </xsl:if>
   </xsl:template>
@@ -236,6 +237,7 @@
              data-max-tags="{$config/max}"
              data-lang="{$metadataOtherLanguagesAsJson}"
              data-textgroup-only="false"
+             data-alt-save="true"
              class=""/>
       </xsl:if>
     </xsl:for-each>
