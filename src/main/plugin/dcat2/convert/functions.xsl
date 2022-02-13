@@ -122,25 +122,21 @@
   </xsl:template>
 
   <xsl:template name="langId-dcat2">
+    <xsl:value-of select="$defaultLang"/>
+  </xsl:template>
+
+  <xsl:template name="catalog-langId-dcat2">
     <!--xsl:variable name="titleLanguages" select="/*[name(.)='rdf:RDF']/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title/@xml:lang"/-->
     <!--xsl:variable name="allLanguages" select="distinct-values(/*[name(.)='rdf:RDF']/dcat:Catalog/dcat:dataset/dcat:Dataset//@xml:lang)"/-->
     <xsl:variable name="allCatalogLanguages" select="distinct-values(/*[name(.)='rdf:RDF']/dcat:Catalog/dct:language/skos:Concept/@rdf:about)"/>
-    <xsl:variable name="foundDefaultLanguage">
-      <xsl:choose>
-        <xsl:when test="$allCatalogLanguages[1]">
-          <xsl:call-template name="interpretLanguage">
-            <xsl:with-param name="input" select="$allCatalogLanguages[1]" />
-          </xsl:call-template>
-        </xsl:when>
-        <xsl:otherwise></xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:if test="$foundDefaultLanguage=''">
-      <xsl:value-of select="$defaultLang"/>
-    </xsl:if>
-    <xsl:if test="not($foundDefaultLanguage='')">
-      <xsl:value-of select="$foundDefaultLanguage"/>
-    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="$allCatalogLanguages[1]">
+        <xsl:call-template name="interpretLanguage">
+          <xsl:with-param name="input" select="$allCatalogLanguages[1]" />
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise></xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!-- TODO: refactor language code conversions by using the functions in XslUtil.java
