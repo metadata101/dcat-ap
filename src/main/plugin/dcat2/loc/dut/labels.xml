@@ -2312,7 +2312,7 @@
   <element name="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden">
     <label>Statuut</label>
   </element>
-  <element name="https://data.vlaanderen.be/id/conceptscheme/MADGA-categorie">
+  <element name="https://data.vlaanderen.be/id/conceptscheme/MAGDA-categorie">
     <label>MAGDA-categorie</label>
   </element>
   <element name="http://inspire.ec.europa.eu/theme">

@@ -78,7 +78,7 @@
         <xsl:value-of select="concat($inSchemeVLBaseUrl,'GDI-Vlaanderen-Trefwoorden')"/>
       </xsl:when>
       <xsl:when test="$key = concat($keyPrefix, 'magda-domain')">
-        <xsl:value-of select="concat($inSchemeMdcatBaseUrl,'MADGA-categorie')"/>
+        <xsl:value-of select="concat($inSchemeMdcatBaseUrl,'MAGDA-categorie')"/>
       </xsl:when>
       <xsl:when test="$key = concat($keyPrefix, 'inspire-theme')">
         <xsl:value-of select="'http://inspire.ec.europa.eu/theme'"/>

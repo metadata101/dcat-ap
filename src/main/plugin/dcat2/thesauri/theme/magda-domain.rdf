@@ -3,7 +3,7 @@
          xmlns:dct="http://purl.org/dc/elements/1.1/"
          xmlns:skos="http://www.w3.org/2004/02/skos/core#">
 
-  <skos:ConceptScheme rdf:about="https://data.vlaanderen.be/id/conceptscheme/MADGA-categorie">
+  <skos:ConceptScheme rdf:about="https://data.vlaanderen.be/id/conceptscheme/MAGDA-categorie">
     <skos:prefLabel xml:lang="nl">conceptscheme MAGDA categorie</skos:prefLabel>
     <dct:title>conceptscheme MAGDA categorie</dct:title>
     <skos:definition>Codelijst voor het categoriseren van MAGDA-dataservices.</skos:definition>
