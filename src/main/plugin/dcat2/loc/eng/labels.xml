@@ -2182,7 +2182,7 @@
   <element name="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden">
     <label>Statute</label>
   </element>
-  <element name="https://data.vlaanderen.be/id/conceptscheme/MADGA-categorie">
+  <element name="https://data.vlaanderen.be/id/conceptscheme/MAGDA-categorie">
     <label>MAGDA-category</label>
   </element>
   <element name="http://inspire.ec.europa.eu/theme">
