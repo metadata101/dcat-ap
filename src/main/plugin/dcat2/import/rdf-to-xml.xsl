@@ -226,15 +226,6 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="subject" select="./*"/>
             <xsl:with-param name="predicate">foaf:primaryTopic</xsl:with-param>
           </xsl:call-template>
-          <!-- adms:identifier -->
-          <adms:identifier>
-            <adms:Identifier>
-              <skos:notation>
-                <xsl:value-of select="$recordURI"/>
-              </skos:notation>
-              <dct:creator rdf:resoure="https://metadata.vlaanderen.be"/>
-            </adms:Identifier>
-          </adms:identifier>
           <!-- dct:modified -->
           <xsl:call-template name="dates">
             <xsl:with-param name="subject" select="./*"/>
@@ -287,7 +278,14 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="subject" select="./*"/>
             <xsl:with-param name="predicate">dct:source</xsl:with-param>
           </xsl:call-template>
-
+          <!-- adms:identifier -->
+          <adms:identifier>
+            <adms:Identifier>
+              <skos:notation>
+                <xsl:value-of select="$recordURI"/>
+              </skos:notation>
+            </adms:Identifier>
+          </adms:identifier>
         </dcat:CatalogRecord>
       </xsl:element>
     </xsl:for-each>
