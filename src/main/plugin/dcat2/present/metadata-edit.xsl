@@ -234,7 +234,7 @@
 
   </xsl:template>
 
-  <xsl:template mode="dcat2" match="dct:date|dct:created|dct:dateSubmitted|
+  <xsl:template mode="dcat2" match="dct:modified|dct:date|dct:created|dct:dateSubmitted|
     dct:dateAccepted|dct:dateCopyrighted|dct:issued|dct:available|dct:valid">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>

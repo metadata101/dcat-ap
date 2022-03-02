@@ -2137,6 +2137,11 @@
     <description>Tooltip: identifier</description>
     <btnLabel>identifier</btnLabel>
   </element>
+  <element name="dct:created" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:created">
+    <label>creation date</label>
+    <description>Tooltip: creation date</description>
+    <btnLabel>creation date</btnLabel>
+  </element>
   <element name="dct:issued" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:issued">
     <label>release date</label>
     <description>Tooltip: release date</description>

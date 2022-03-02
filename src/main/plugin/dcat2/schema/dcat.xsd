@@ -115,6 +115,7 @@
             <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element name="contactPoint" type="vcard:Organization" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="dct:created" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:modified" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:publisher" minOccurs="1" maxOccurs="1"/>
@@ -224,6 +225,7 @@
             <xs:element ref="dct:creator" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:license" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dct:created" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:modified" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:relation" minOccurs="0" maxOccurs="unbounded"/>

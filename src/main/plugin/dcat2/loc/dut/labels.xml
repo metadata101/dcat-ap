@@ -2247,6 +2247,11 @@
     <description>Tooltip: identificator</description>
     <btnLabel>identificator</btnLabel>
   </element>
+  <element name="dct:created" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:created">
+    <label>Creatiedatum</label>
+    <description>Vul aan met de datum waarop je dataset aangemaakt is</description>
+    <btnLabel>Creatiedatum</btnLabel>
+  </element>
   <element name="dct:issued" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:issued">
     <label>publicatiedatum</label>
     <description>Tooltip: publicatiedatum</description>

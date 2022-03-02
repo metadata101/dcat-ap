@@ -339,6 +339,11 @@ Rome - Italy. email: geonetwork@osgeo.org
                       sr:binding[@name='subject']/* = $datasetURI]/sr:binding[@name='object']"/>
             <xsl:with-param name="predicate">dcat:contactPoint</xsl:with-param>
           </xsl:call-template>
+          <!-- dct:created-->
+          <xsl:call-template name="dates">
+            <xsl:with-param name="subject" select="./*"/>
+            <xsl:with-param name="predicate">dct:created</xsl:with-param>
+          </xsl:call-template>
           <!-- dct:issued-->
           <xsl:call-template name="dates">
             <xsl:with-param name="subject" select="./*"/>
@@ -695,6 +700,11 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="licenseURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/license' and
                       sr:binding[@name='subject']/* = $serviceURI]/sr:binding[@name='object']"/>
             <xsl:with-param name="predicate">dct:license</xsl:with-param>
+          </xsl:call-template>
+          <!-- dct:created -->
+          <xsl:call-template name="dates">
+            <xsl:with-param name="subject" select="./*"/>
+            <xsl:with-param name="predicate">dct:created</xsl:with-param>
           </xsl:call-template>
           <!-- dct:issued -->
           <xsl:call-template name="dates">
