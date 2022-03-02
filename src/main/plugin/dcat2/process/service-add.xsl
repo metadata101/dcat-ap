@@ -53,6 +53,7 @@
                            dct:conformsTo|
                            dct:creator|
                            dct:isReferencedBy|
+                           dct:created|
                            dct:issued|
                            dct:license|
                            dct:modified|

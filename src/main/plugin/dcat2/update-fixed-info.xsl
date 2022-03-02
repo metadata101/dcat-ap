@@ -281,6 +281,7 @@
       <xsl:apply-templates select="dct:title"/>
       <xsl:apply-templates select="dct:description"/>
       <xsl:apply-templates select="dcat:contactPoint"/>
+      <xsl:apply-templates select="dct:created"/>
       <xsl:apply-templates select="dct:issued"/>
       <xsl:apply-templates select="dct:modified"/>
       <xsl:apply-templates select="dct:publisher"/>
@@ -348,6 +349,7 @@
       <xsl:apply-templates select="dct:creator"/>
       <xsl:apply-templates select="dct:isReferencedBy"/>
       <xsl:apply-templates select="dct:license"/>
+      <xsl:apply-templates select="dct:created"/>
       <xsl:apply-templates select="dct:issued"/>
       <xsl:apply-templates select="dct:modified"/>
       <xsl:apply-templates select="dct:relation"/>
@@ -445,7 +447,7 @@
   </xsl:template>
 
   <!-- Fix value for attribute -->
-  <xsl:template match="dct:issued|dct:modified|schema:startDate|schema:endDate" priority="10">
+  <xsl:template match="dct:created|dct:issued|dct:modified|schema:startDate|schema:endDate" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:copy-of select="@*[name() != 'rdf:datatype']"/>
       <xsl:attribute name="rdf:datatype">

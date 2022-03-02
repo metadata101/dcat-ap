@@ -21,6 +21,18 @@
     <for name="adms:versionNotes" use="textarea"/>
     <for name="dct:description" use="textarea"/>
     <for name="dcat:spatialResolutionInMeters" use="number"/>
+    <for name="dct:created" templateModeOnly="true" forceLabel="true" label="FieldId130" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created">
+      <template>
+        <values>
+          <key label="FieldId130" xpath="." use="gn-date-picker">
+            <directiveAttributes data-tag-name="dct:created"/>
+          </key>
+        </values>
+        <snippet>
+          <dct:created>{{FieldId130}}</dct:created>
+        </snippet>
+      </template>
+    </for>
     <for name="dct:issued" templateModeOnly="true" forceLabel="true" label="FieldId129" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued">
       <template>
         <values>
@@ -260,6 +272,18 @@
         </values>
         <snippet>
           <dct:isReferencedBy rdf:resource="{{FieldId431}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="dct:created" templateModeOnly="true" forceLabel="true" label="FieldId132" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:created">
+      <template>
+        <values>
+          <key label="FieldId132" xpath="." use="gn-date-picker">
+            <directiveAttributes data-tag-name="dct:created"/>
+          </key>
+        </values>
+        <snippet>
+          <dct:issued>{{FieldId132}}</dct:issued>
         </snippet>
       </template>
     </for>
@@ -786,6 +810,7 @@
         <for name="dcat:theme"/>
         <!-- Version info -->
         <for name="owl:versionInfo"/>
+        <for name="dct:created" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created"/>
         <for name="dct:modified" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified"/>
         <for name="dct:issued" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued"/>
         <for name="xml:lang" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher/foaf:Agent/foaf:name"/>
@@ -1357,6 +1382,7 @@
               </snippet>
             </template>
           </action>
+          <field name="FieldId132" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:created" or="created" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId433" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:issued" or="issued" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId434" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:modified" or="modified" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId435" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:relation" notDisplayedIfMissing="true" templateModeOnly="true">
