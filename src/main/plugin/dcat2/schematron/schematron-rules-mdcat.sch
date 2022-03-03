@@ -31,8 +31,8 @@
   <sch:pattern>
     <sch:title>At least one of vcard:hasEmail or vcard:hasURL is a required for a contactpoint.</sch:title>
     <sch:rule context="//dcat:contactPoint[$profile]">
-      <sch:let name="hasEmail" value="*/vcard:hasEmail"/>
-      <sch:let name="hasUrl" value="*/vcard:hasURL"/>
+      <sch:let name="hasEmail" value="normalize-space(vcard:Organization/vcard:hasEmail/@rdf:resource) != ''"/>
+      <sch:let name="hasUrl" value="normalize-space(vcard:Organization/vcard:hasURL/@rdf:resource) != ''"/>
       <sch:assert test="$hasEmail or $hasUrl">A vcard:Organization does not have a vcard:hasEmail or a vcard:hasURL property.</sch:assert>
       <sch:report test="$hasEmail or $hasUrl">A vcard:Organization has a vcard:hasEmail or a vcard:hasURL property.</sch:report>
     </sch:rule>
