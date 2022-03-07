@@ -38,7 +38,7 @@
   </sch:pattern>
   <sch:pattern>
     <sch:title>dct:accessRights must be public</sch:title>
-    <sch:rule context="//dcat:Dataset/dct:accessRights[$profile]">
+    <sch:rule context="//dcat:Dataset/dct:accessRights[$profile]|//dcat:DataService/dct:accessRights[$profile]">
       <sch:let name="public" value="*/@rdf:about = 'http://publications.europa.eu/resource/authority/access-right/PUBLIC' or ./@rdf:resource = 'http://publications.europa.eu/resource/authority/access-right/PUBLIC'"/>
       <sch:assert test="$public = true()">The dcat:Dataset does not have a dct:accessRights property with value 'http://publications.europa.eu/resource/authority/access-right/PUBLIC'.</sch:assert>
       <sch:report test="$public = true()">The dcat:Dataset has a dct:accessRights property with value 'http://publications.europa.eu/resource/authority/access-right/PUBLIC'.</sch:report>
