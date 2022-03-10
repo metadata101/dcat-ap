@@ -45,6 +45,7 @@ import org.jdom.JDOMException;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.ParseException;
@@ -372,5 +373,16 @@ class Harvester implements IHarvester<HarvestResult> {
     private boolean isStrongIdentifier(String str) {
         Matcher matcher = this.identifierPattern.matcher(str);
         return matcher.find();
+    }
+
+    /**
+     * Convert a model back to RDF XML
+     * Only used for debugging
+     */
+    private String toRdfString(Model model) {
+        StringWriter out = new StringWriter();
+        model.write(out, "RDFXML");
+        String result = out.toString();
+        return result;
     }
 }
