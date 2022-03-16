@@ -38,12 +38,11 @@
         </dcat:contactPoint>
         <dcat:keyword xml:lang="nl"/>
         <dct:accessRights>
-          <skos:Concept>
-            <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
-            <skos:prefLabel xml:lang="nl"/>
-            <skos:prefLabel xml:lang="en"/>
-            <skos:prefLabel xml:lang="fr"/>
-            <skos:prefLabel xml:lang="de"/>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC">
+            <skos:prefLabel xml:lang="nl">Toegang met voorwaarden</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">with conditions</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">with conditions</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">with conditions</skos:prefLabel>
             <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
           </skos:Concept>
         </dct:accessRights>
