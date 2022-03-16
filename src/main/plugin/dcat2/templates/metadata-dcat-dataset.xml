@@ -44,12 +44,11 @@
         <dcat:keyword xml:lang="nl"/>
         <dcat:theme/>
         <dct:accessRights>
-          <skos:Concept>
-            <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
-            <skos:prefLabel xml:lang="nl"/>
-            <skos:prefLabel xml:lang="en"/>
-            <skos:prefLabel xml:lang="fr"/>
-            <skos:prefLabel xml:lang="de"/>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC">
+            <skos:prefLabel xml:lang="nl">niet publiek</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">non public</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">non public</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">non public</skos:prefLabel>
             <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
           </skos:Concept>
         </dct:accessRights>
