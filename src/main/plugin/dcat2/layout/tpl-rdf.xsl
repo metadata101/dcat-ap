@@ -13,11 +13,19 @@
   <!--
     Create reference block to metadata record and dataset to be added in dcat:Catalog usually.
   -->
-  <xsl:variable name="recordPrefix" select="concat(/root/gui/systemConfig/metadata/resourceIdentifierPrefix, '/records/')"/>
+  <xsl:variable name="recordPrefix"
+                select="concat(/root/gui/systemConfig/metadata/resourceIdentifierPrefix, '/records/')"/>
 
   <xsl:template mode="record-reference" match="rdf:RDF">
-    <xsl:copy-of select="dcat:Catalog/dcat:record"/>
-    <dcat:dataset rdf:resource="{dcat:Catalog/dcat:record/dcat:CatalogRecord/foaf:primaryTopic/@rdf:about}"/>
+    <xsl:if test="dcat:Catalog/dcat:record/dcat:CatalogRecord/@rdf:about">
+      <dcat:record rdf:resource="{dcat:Catalog/dcat:record/dcat:CatalogRecord/@rdf:about}"/>
+    </xsl:if>
+    <xsl:if test="dcat:Catalog/dcat:dataset/dcat:Dataset/@rdf:about">
+      <dcat:dataset rdf:resource="{dcat:Catalog/dcat:dataset/dcat:Dataset/@rdf:about}"/>
+    </xsl:if>
+    <xsl:if test="dcat:Catalog/dcat:service/dcat:DataService/@rdf:about">
+      <dcat:service rdf:resource="{dcat:Catalog/dcat:service/dcat:DataService/@rdf:about}"/>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template mode="references" match="rdf:RDF"/>
@@ -25,8 +33,8 @@
 
 
   <xsl:template mode="to-dcat" match="rdf:RDF">
-    <xsl:apply-templates select="dcat:Catalog/dcat:record"/>
-    <xsl:apply-templates select="dcat:Catalog/dcat:dataset|dcat:Catalog/dcat:service"/>
+    <xsl:apply-templates select="dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
+    <xsl:apply-templates select="dcat:Catalog/dcat:dataset/dcat:Dataset|dcat:Catalog/dcat:service/dcat:DataService"/>
   </xsl:template>
 
   <!-- Remove empty rdf:about from export -->
@@ -37,14 +45,14 @@
   </xsl:template>
 
   <xsl:template match="dcat:CatalogRecord[normalize-space(@rdf:about) = '']" priority="10">
-      <xsl:copy copy-namespaces="no">
-        <xsl:variable name="recordURI" select="concat($recordPrefix, dct:identifier[1])"/>
-        <xsl:attribute name="rdf:about" select="$recordURI"/>
-        <xsl:call-template name="alternative-identifier">
-          <xsl:with-param name="identifier" select="$recordURI"/>
-        </xsl:call-template>
-        <xsl:apply-templates select="*|@*[name() != 'rdf:about']"/>
-      </xsl:copy>
+    <xsl:copy copy-namespaces="no">
+      <xsl:variable name="recordURI" select="concat($recordPrefix, dct:identifier[1])"/>
+      <xsl:attribute name="rdf:about" select="$recordURI"/>
+      <xsl:call-template name="alternative-identifier">
+        <xsl:with-param name="identifier" select="$recordURI"/>
+      </xsl:call-template>
+      <xsl:apply-templates select="*|@*[name() != 'rdf:about']"/>
+    </xsl:copy>
   </xsl:template>
 
   <xsl:template match="dcat:CatalogRecord[normalize-space(@rdf:about) != '']" priority="10">
