@@ -5,7 +5,6 @@
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:gn="http://www.fao.org/geonetwork"
-                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
                 version="2.0"
@@ -148,11 +147,16 @@
         <xsl:choose>
           <xsl:when test="starts-with($config/xpath, '/dcat:Distribution')">
             <xsl:variable name="index" select="count(../../preceding-sibling::dcat:distribution) + 1"/>
-            <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution', ')', '[', $index, ']', $config/xpath)"/>
+            <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution)[', $index, ']', $config/xpath)"/>
           </xsl:when>
           <xsl:when test="starts-with($config/xpath, '/dct:LicenseDocument') and not($isDcatService)">
             <xsl:variable name="index" select="count(../../../../preceding-sibling::dcat:distribution) + 1"/>
-            <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution', ')', '[', $index, ']', '/dcat:Distribution/dct:license', $config/xpath)"/>
+            <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution)[', $index, ']', '/dcat:Distribution/dct:license', $config/xpath)"/>
+          </xsl:when>
+          <xsl:when test="starts-with($config/xpath, '/foaf:Agent')">
+            <xsl:variable name="wrapper" select="name(../..)"/>
+            <xsl:variable name="index" select="count(../../preceding-sibling::*[name() = $wrapper]) + 1"/>
+            <xsl:value-of select="concat('(', $resourcePath, '/', name(../..), ')[', $index, ']', $config/xpath)"/>
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="concat($resourcePath, $config/xpath)"/>
