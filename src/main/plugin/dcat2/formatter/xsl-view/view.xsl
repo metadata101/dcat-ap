@@ -250,9 +250,9 @@
       else if no labels in default language, show first one only
     -->
     <xsl:if test="normalize-space($stringValue) != '' and
-                    (@xml:lang = $langId-2char or
-                    (not(../node()[name() = $name]/@xml:lang = $langId-2char) and @xml:lang = $defaultLang-2char) or
-                    (not(../node()[name() = $name]/@xml:lang = $defaultLang-2char) and count(preceding-sibling::node()[name() = $name]) &lt; 1))">
+                  (@xml:lang = $langId-2char or
+                  (not(../node()[name() = $name]/@xml:lang = $langId-2char) and @xml:lang = $defaultLang-2char) or
+                  (not(../node()[name() = $name]/@xml:lang = $defaultLang-2char) and count(preceding-sibling::node()[name() = $name and normalize-space(string())!='']) &lt; 1))">
       <tr>
         <th style="{$thStyle}">
           <xsl:value-of select="gn-fn-metadata:getLabel($schema, name(.), $labels, name(..), '', gn-fn-dcat2:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)))/label" />
