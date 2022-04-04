@@ -106,13 +106,15 @@
 
   <xsl:template name="alternative-identifier">
     <xsl:param name="identifier" select="@rdf:about" as="xs:string"/>
-    <adms:identifier>
-      <adms:Identifier>
-        <skos:notation>
-          <xsl:value-of select="$identifier"/>
-        </skos:notation>
-      </adms:Identifier>
-    </adms:identifier>
+    <xsl:if test="not(adms:identifier)">
+      <adms:identifier>
+        <adms:Identifier>
+          <skos:notation>
+            <xsl:value-of select="$identifier"/>
+          </skos:notation>
+        </adms:Identifier>
+      </adms:identifier>
+    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>
