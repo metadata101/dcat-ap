@@ -362,7 +362,7 @@
     <for name="dct:type" xpath="foaf:Agent" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.publisher-type"
-        xpath="/dct:publisher/foaf:Agent/dct:type"
+        xpath="/foaf:Agent/dct:type"
         max="1"
         labelKey="dcat.addType"/>
     </for>
