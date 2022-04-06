@@ -307,11 +307,7 @@
       <xsl:apply-templates select="owl:versionInfo"/>
       <xsl:apply-templates select="adms:versionNotes"/>
       <xsl:apply-templates select="dcat:extension"/>
-      <xsl:for-each select="dcat:distribution">
-        <xsl:if test="normalize-space(.) != '' or count(dcat:Distribution/spdx:checksum/spdx:Checksum/spdx:algorithm) != 1">
-          <xsl:apply-templates select="."/>
-        </xsl:if>
-      </xsl:for-each>
+      <xsl:apply-templates select="dcat:distribution"/>
       <xsl:apply-templates select="adms:sample"/>
       <xsl:apply-templates select="dcat:qualifiedRelation"/>
       <xsl:apply-templates select="dct:creator"/>
