@@ -32,7 +32,7 @@
     <skos:notation>JurisdictionWithinTheEU</skos:notation>
     <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
     <skos:prefLabel xml:lang="en">Jurisdiction within the EU</skos:prefLabel>
-    <skos:prefLabel xml:lang="nl">Rechtsbevoegheid binnen de EU</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Rechtsbevoegdheid binnen de EU</skos:prefLabel>
     <skos:prefLabel xml:lang="fr">Jurisdiction within the EU</skos:prefLabel>
     <skos:prefLabel xml:lang="de">Jurisdiction within the EU</skos:prefLabel>
   </skos:Concept>
