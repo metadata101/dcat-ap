@@ -360,7 +360,7 @@
       <xsl:if test="count(dct:identifier[normalize-space() != '']) = 0 or normalize-space(@rdf:about) = ''">
         <xsl:variable name="distroUUID" select="uuid:toString(uuid:randomUUID())"/>
         <xsl:if test="normalize-space(@rdf:about) = ''">
-          <xsl:attribute name="rdf:about" select="concat(/root/env/nodeURL, 'resources/distributions/', $resourceUUID)"/>
+          <xsl:attribute name="rdf:about" select="concat(/root/env/nodeURL, 'resources/distributions/', $distroUUID)"/>
         </xsl:if>
         <xsl:if test="count(dct:identifier[normalize-space() != '']) = 0">
           <dct:identifier>
