@@ -172,12 +172,16 @@
           </dct:type>
         </foaf:Agent>
       </dct:publisher>
-      <!--<xsl:copy-of select="foaf:homepage"/>-->
+      <foaf:homepage>
+        <foaf:Document>
+          <xsl:if test="normalize-space($serviceUrl) != ''">
+            <xsl:attribute name="rdf:about" select="$serviceUrl"/>
+          </xsl:if>
+          <foaf:name xml:lang="nl"><xsl:value-of select="$env/system/site/name"/></foaf:name>
+        </foaf:Document>
+      </foaf:homepage>
       <dct:license>
-        <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0"
-                             xmlns:dct="http://purl.org/dc/terms/"
-                             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                             xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+        <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0">
           <dct:type>
             <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
               <skos:prefLabel xml:lang="nl">Werk in het publiek domein</skos:prefLabel>
@@ -249,7 +253,7 @@
   </xsl:template>
 
   <xsl:template match="dcat:CatalogRecord" priority="10">
-    <xsl:copy>
+    <xsl:copy copy-namespaces="no">
       <xsl:call-template name="handle-record-id"/>
 
       <xsl:choose>
@@ -424,7 +428,7 @@
 
   <!-- Fill concepts with resourceType -->
   <xsl:template match="skos:Concept" priority="10">
-    <xsl:copy>
+    <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
       <xsl:variable name="rdfType" select="gn-fn-dcat2:getRdfTypeByElementName(name(..), name(../..))"/>
       <xsl:if test="normalize-space($rdfType) != ''">
