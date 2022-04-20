@@ -143,25 +143,9 @@
                                                 then 'to-dcat2-concept-reference'
                                                 else 'to-dcat2-concept'"/>
       <xsl:variable name="elemXpath">
-        <xsl:variable name="resourcePath" select="concat('./dcat:Catalog', if ($isDcatService) then '/dcat:service/dcat:DataService' else '/dcat:dataset/dcat:Dataset')"/>
-        <xsl:choose>
-          <xsl:when test="starts-with($config/xpath, '/dcat:Distribution')">
-            <xsl:variable name="index" select="count(../../preceding-sibling::dcat:distribution) + 1"/>
-            <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution)[', $index, ']', $config/xpath)"/>
-          </xsl:when>
-          <xsl:when test="starts-with($config/xpath, '/dct:LicenseDocument') and not($isDcatService)">
-            <xsl:variable name="index" select="count(../../../../preceding-sibling::dcat:distribution) + 1"/>
-            <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution)[', $index, ']', '/dcat:Distribution/dct:license', $config/xpath)"/>
-          </xsl:when>
-          <xsl:when test="starts-with($config/xpath, '/foaf:Agent')">
-            <xsl:variable name="wrapper" select="name(../..)"/>
-            <xsl:variable name="index" select="count(../../preceding-sibling::*[name() = $wrapper]) + 1"/>
-            <xsl:value-of select="concat('(', $resourcePath, '/', name(../..), ')[', $index, ']', $config/xpath)"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="concat($resourcePath, $config/xpath)"/>
-          </xsl:otherwise>
-        </xsl:choose>
+        <xsl:call-template name="GetThesaurusElementXpath">
+          <xsl:with-param name="config" select="$config"/>
+        </xsl:call-template>
       </xsl:variable>
 
       <div data-gn-keyword-selector="tagsinput"
@@ -189,21 +173,11 @@
     <xsl:variable name="transformation" select="'to-dcat2-concept'"/>
     <xsl:variable name="allConcepts" select="../*[name() = $config/@name]"/>
     <xsl:variable name="elemXpath">
-      <xsl:variable name="resourcePath" select="concat('./dcat:Catalog', if ($isDcatService) then '/dcat:service/dcat:DataService' else '/dcat:dataset/dcat:Dataset')"/>
-      <xsl:choose>
-        <xsl:when test="starts-with($config/xpath, '/dcat:Distribution')">
-          <xsl:variable name="index" select="count(../../preceding-sibling::dcat:distribution) + 1"/>
-          <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution', ')', '[', $index, ']', $config/xpath)"/>
-        </xsl:when>
-        <xsl:when test="starts-with($config/xpath, '/dct:LicenseDocument') and not($isDcatService)">
-          <xsl:variable name="index" select="count(../../../../preceding-sibling::dcat:distribution) + 1"/>
-          <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution', ')', '[', $index, ']', '/dcat:Distribution/dct:license', $config/xpath)"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="concat($resourcePath, $config/xpath)"/>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:call-template name="GetThesaurusElementXpath">
+        <xsl:with-param name="config" select="$config"/>
+      </xsl:call-template>
     </xsl:variable>
+
     <xsl:for-each select="$config/thesauri/thesaurus">
       <xsl:if test="not($profile = 'metadata-dcat' and string(.) = 'external.theme.GDI-Vlaanderen-trefwoorden' or $profile = 'DCAT-AP-VL' and string(.) = 'external.theme.magda-domain')">
         <xsl:variable name="thesaurusURI" select="gn-fn-dcat2:getInSchemeURIByThesaurusId(.)"/>
@@ -245,6 +219,29 @@
              class=""/>
       </xsl:if>
     </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template name="GetThesaurusElementXpath">
+    <xsl:param name="config" as="node()"/>
+    <xsl:variable name="resourcePath" select="concat('./dcat:Catalog', if ($isDcatService) then '/dcat:service/dcat:DataService' else '/dcat:dataset/dcat:Dataset')"/>
+    <xsl:choose>
+      <xsl:when test="starts-with($config/xpath, '/dcat:Distribution')">
+        <xsl:variable name="index" select="count(../../preceding-sibling::dcat:distribution) + 1"/>
+        <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution)[', $index, ']', $config/xpath)"/>
+      </xsl:when>
+      <xsl:when test="starts-with($config/xpath, '/dct:license') and not($isDcatService)">
+        <xsl:variable name="index" select="count(../../../../preceding-sibling::dcat:distribution) + 1"/>
+        <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution)[', $index, ']', '/dcat:Distribution', $config/xpath)"/>
+      </xsl:when>
+      <xsl:when test="starts-with($config/xpath, '/foaf:Agent')">
+        <xsl:variable name="wrapper" select="name(../..)"/>
+        <xsl:variable name="index" select="count(../../preceding-sibling::*[name() = $wrapper]) + 1"/>
+        <xsl:value-of select="concat('(', $resourcePath, '/', name(../..), ')[', $index, ']', $config/xpath)"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="concat($resourcePath, $config/xpath)"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:function name="gn-fn-dcat2:getThesaurusConfig">
