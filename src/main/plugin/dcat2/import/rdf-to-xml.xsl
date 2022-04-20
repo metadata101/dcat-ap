@@ -35,7 +35,8 @@ Rome - Italy. email: geonetwork@osgeo.org
                 xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:schema="http://schema.org/"
                 xmlns:locn="http://www.w3.org/ns/locn#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#" xmlns:fn="http://www.w3.org/2005/xpath-functions"
-                version="2.0">
+                version="2.0"
+                exclude-result-prefixes="#all">
   <!-- Tell the XSL processor to output XML. -->
   <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
   <!-- Default language for plain literals. -->
