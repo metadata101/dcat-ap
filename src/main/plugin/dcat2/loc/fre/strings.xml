@@ -31,6 +31,9 @@
   <relationInformation>Relation</relationInformation>
   <serviceInformation>Service information</serviceInformation>
   <extraInformation>Extra information</extraInformation>
+  <catalogRecordInformation>Catalog record</catalogRecordInformation>
+  <conformToInformation>Conformiteit met standaard</conformToInformation>
+  <overviews>Aperçus</overviews>
 
   <!-- Thesauri pickers -->
   <dcat.addThemes>Thèmes</dcat.addThemes>

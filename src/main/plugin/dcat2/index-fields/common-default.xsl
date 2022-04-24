@@ -447,6 +447,18 @@
 
     </xsl:for-each>
 
+    <xsl:for-each
+      select="adms:sample[normalize-space(dcat:Distribution/dcat:downloadURL/@rdf:resource) != '']">
+      <xsl:variable name="fileName" select="dcat:Distribution/dcat:downloadURL/@rdf:resource"/>
+      <xsl:variable name="fileDescr" select="dct:title"/>
+      <xsl:variable name="thumbnailType"
+                    select="if (position() = 1) then 'thumbnail' else 'overview'"/>
+      <!-- First thumbnail is flagged as thumbnail and could be considered the main one -->
+      <Field name="image"
+             string="{concat($thumbnailType, '|', $fileName, '|', $fileDescr)}"
+             store="true" index="false"/>
+    </xsl:for-each>
+
     <xsl:for-each select="dcat:contactPoint">
       <xsl:apply-templates mode="index-contact" select="vcard:Organization">
         <xsl:with-param name="type" select="'resource'"/>
