@@ -156,10 +156,10 @@
         <xsl:value-of select="$env/system/site/siteId"/>
       </dct:identifier>
       <dct:publisher>
-        <foaf:Agent
-          rdf:about="{$resourcePrefix}/organizations/{encode-for-uri($env/system/site/organization)}">
+        <!-- Organization in charge of the catalogue defined in the administration > system configuration -->
+        <foaf:Agent rdf:about="{$resourcePrefix}/organizations/{encode-for-uri($env/system/site/organization)}">
           <foaf:name xml:lang="nl">
-            <xsl:value-of select="$env/system/site/organization"></xsl:value-of>
+            <xsl:value-of select="$env/system/site/organization"/>
           </foaf:name>
           <dct:type>
             <skos:Concept rdf:about="http://purl.org/adms/publishertype/LocalAuthority">
@@ -229,8 +229,12 @@
           <vcard:organization-name>
             <xsl:value-of select="$env/system/site/organization"/>
           </vcard:organization-name>
-          <vcard:hasEmail rdf:resource="mailto:informatie.vlaanderen@vlaanderen.be" />
-          <vcard:hasURL rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen" />
+          <xsl:if test="normalize-space($env/system/site/organizationMail) != ''">
+            <vcard:hasEmail rdf:resource="mailto:{normalize-space($env/system/site/organizationMail)}" />
+          </xsl:if>
+          <xsl:if test="normalize-space($env/system/site/organizationUrl) != ''">
+            <vcard:hasURL rdf:resource="{normalize-space($env/system/site/organizationUrl)}" />
+          </xsl:if>
         </vcard:Organization>
       </dcat:contactPoint>
       <xsl:choose>
@@ -358,7 +362,7 @@
     </dcat:DataService>
   </xsl:template>
 
-  <xsl:template match="dcat:Distribution" priority="10">
+  <xsl:template match="dcat:Distribution[name(..)='dcat:distribution']" priority="10">
     <dcat:Distribution>
       <xsl:apply-templates select="@*"/>
       <xsl:if test="count(dct:identifier[normalize-space() != '']) = 0 or normalize-space(@rdf:about) = ''">

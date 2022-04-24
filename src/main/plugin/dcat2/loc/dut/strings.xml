@@ -33,6 +33,7 @@
   <extraInformation>Extra informatie</extraInformation>
   <catalogRecordInformation>Catalog record</catalogRecordInformation>
   <conformToInformation>Conformiteit met standaard</conformToInformation>
+  <overviews>Overviews</overviews>
 
   <!-- Thesauri pickers -->
   <dcat.addThemes>Thema</dcat.addThemes>

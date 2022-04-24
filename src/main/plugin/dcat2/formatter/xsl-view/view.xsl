@@ -164,8 +164,28 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template mode="getMetadataThumbnail" match="rdf:RDF"/>
+  <xsl:template mode="getMetadataThumbnail" match="rdf:RDF">
+    <xsl:value-of select="//adms:sample/dcat:Distribution/dcat:downloadURL[1]/@rdf:resource"/>
+  </xsl:template>
 
+  <xsl:template mode="getOverviews" match="rdf:RDF">
+    <section class="gn-md-side-overview">
+      <h4>
+        <i class="fa fa-fw fa-image"><xsl:comment select="'image'"/></i>
+        <span><xsl:comment select="name()"/>
+          <xsl:value-of select="$schemaStrings/overviews"/>
+        </span>
+      </h4>
+
+      <xsl:for-each select="//adms:sample[normalize-space(dcat:Distribution/dcat:downloadURL/@rdf:resource)!='']">
+        <img data-gn-img-modal="md"
+             class="gn-img-thumbnail center-block"
+             alt="{$schemaStrings/overview}"
+             src="{normalize-space(dcat:Distribution/dcat:downloadURL/@rdf:resource)}"/>
+          <div class="gn-img-thumbnail-caption"><xsl:value-of select="dct:title" /></div>
+      </xsl:for-each>
+    </section>
+  </xsl:template>
 
   <xsl:template mode="render-view" match="field[template]" priority="3">
     <xsl:param name="base" select="$metadata" />

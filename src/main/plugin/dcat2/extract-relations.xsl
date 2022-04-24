@@ -24,9 +24,34 @@
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:adms="http://www.w3.org/ns/adms#"
                 exclude-result-prefixes="#all">
 
-  <xsl:template mode="relation" match="metadata[dataset]" priority="99">
+  <xsl:template mode="relation" match="metadata" priority="99">
+    <xsl:if test="count(*/descendant::*[name(.) = 'adms:sample']/*) > 0">
+      <thumbnails>
+        <xsl:for-each select="*/descendant::*[name(.) = 'adms:sample']">
+          <item>
+            <id>
+              <xsl:value-of select="dcat:Distribution/dcat:downloadURL/@rdf:resource"/>
+            </id>
+            <url>
+              <value lang="dut"><xsl:value-of select="dcat:Distribution/dcat:downloadURL/@rdf:resource"/></value>
+            </url>
+            <title>
+              <value lang="dut"><xsl:value-of select="dct:title[1]"/></value>
+            </title>
+            <type>thumbnail</type>
+          </item>
+        </xsl:for-each>
+      </thumbnails>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template mode="relation" match="metadata[dataset]" priority="100">
     <xsl:for-each select="*/descendant::*
                         [name(.) = 'dct:references' or name(.) = 'dc:relation']
                         [starts-with(., 'http') or contains(. , 'resources.get') or contains(., 'file.disclaimer')]">
