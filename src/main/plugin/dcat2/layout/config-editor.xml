@@ -177,7 +177,7 @@
     <for name="dcat:endpointDescription" templateModeOnly="true" forceLabel="true" label="FieldId403">
       <template>
         <values>
-          <key label="FieldId403" xpath="@rdf:resource" tooltip="dcat:endpointDescription|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription"/>
+          <key label="FieldId403" xpath="@rdf:resource" tooltip="dcat:endpointDescription|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription" required="true"/>
         </values>
         <snippet>
           <dcat:endpointDescription rdf:resource="{{FieldId403}}"/>
