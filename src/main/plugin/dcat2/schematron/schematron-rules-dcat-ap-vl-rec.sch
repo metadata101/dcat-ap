@@ -52,6 +52,14 @@
       <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://vocab.belgif.be/auth/datatheme&gt; verwacht voor thema (dcat:theme)</sch:report>
     </sch:rule>
   </sch:pattern>
+  <sch:pattern name="toegankelijkheid" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/c5f6c428a4ae32239d9662d58fa65ae4f0cf49e6">
+    <sch:title>1362. Toegankelijkheid - De toegankelijkheid voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Atoegankelijkheid)</sch:title>
+    <sch:rule context="//dcat:DataService/dct:accessRights[$profile]">
+      <sch:let name="hasValue" value="skos:Concept/skos:inScheme/@rdf:resource = 'http://publications.europa.eu/resource/authority/access-right'"/>
+      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;http://publications.europa.eu/resource/authority/access-right&gt; verwacht voor toegankelijkheid (dct:accessRights)</sch:assert>
+      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;http://publications.europa.eu/resource/authority/access-right&gt; verwacht voor toegankelijkheid (dct:accessRights)</sch:report>
+    </sch:rule>
+  </sch:pattern>
   <sch:pattern name="thema" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape/48290800138d735a1909018da1426a5d120eedf0">
     <sch:title>1713. Thema - De hoofdcategorie waartoe de dataset behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Athema)</sch:title>
     <sch:rule context="//dcat:Dataset/dcat:theme[$profile]">

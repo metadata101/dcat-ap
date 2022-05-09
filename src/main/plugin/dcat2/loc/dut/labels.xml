@@ -1246,6 +1246,13 @@
     </description>
     <btnLabel>Taal</btnLabel>
   </element>
+  <element name="owl:versionInfo" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:conformsTo/dct:Standard/owl:versionInfo">
+    <label>Versie</label>
+    <description>Vul aan met een verwijzing naar de versie (bvb een versienummer, een versie-benaming,...) van je
+      dataset
+    </description>
+    <btnLabel>Versie</btnLabel>
+  </element>
   <element name="adms:status" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/adms:status">
     <label>Status</label>
     <description>Tooltip: Status</description>
