@@ -659,7 +659,21 @@
       <tab id="defaultService" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
         <section name="basicInformation">
           <field name="FieldId400" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title"/>
+          <action type="add" btnLabel="FieldId400" or="title" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title) = 0" required="true()">
+            <template>
+              <snippet>
+                <dct:title xml:lang="nl"/>
+              </snippet>
+            </template>
+          </action>
           <field name="FieldId401" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description"/>
+          <action type="add" btnLabel="FieldId401" or="description" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description) = 0" required="true()">
+            <template>
+              <snippet>
+                <dct:description xml:lang="nl"/>
+              </snippet>
+            </template>
+          </action>
           <field name="FieldId421" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher"/>
           <action type="add" name="FieldId421" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" required="true()">
             <template>
