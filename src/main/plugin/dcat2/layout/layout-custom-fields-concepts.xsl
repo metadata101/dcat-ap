@@ -227,11 +227,11 @@
     <xsl:choose>
       <xsl:when test="starts-with($config/xpath, '/dcat:Distribution')">
         <xsl:variable name="index" select="count(../../preceding-sibling::dcat:distribution) + 1"/>
-        <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution)[', $index, ']', $config/xpath)"/>
+        <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution)[dcat:Distribution/@rdf:about=''', ../@rdf:about ,''']', $config/xpath)"/>
       </xsl:when>
       <xsl:when test="starts-with($config/xpath, '/dct:license') and not($isDcatService)">
         <xsl:variable name="index" select="count(../../../../preceding-sibling::dcat:distribution) + 1"/>
-        <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution)[', $index, ']', '/dcat:Distribution', $config/xpath)"/>
+        <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution)[dcat:Distribution/@rdf:about=''', ../../../@rdf:about ,''']', '/dcat:Distribution', $config/xpath)"/>
       </xsl:when>
       <xsl:when test="starts-with($config/xpath, '/foaf:Agent')">
         <xsl:variable name="wrapper" select="name(../..)"/>
