@@ -122,7 +122,9 @@
           <xs:sequence>
             <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
+            <!-- <xs:element ref="dct:type" minOccurs="0" maxOccurs="1"/> -->
           </xs:sequence>
           <xs:attribute ref="rdf:about"/>
           <xs:attribute ref="rdf:nodeID"/>

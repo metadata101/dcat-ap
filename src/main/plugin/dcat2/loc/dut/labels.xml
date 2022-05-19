@@ -1214,9 +1214,9 @@
     <btnLabel>Standaard</btnLabel>
   </element>
   <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:conformsTo/dct:Standard/@rdf:about">
-    <label>URI</label>
-    <description>Vul aan met de URI van een standaardschema waaraan de distribitie voldoet.</description>
-    <btnLabel>URI</btnLabel>
+    <label>specificatieURL</label>
+    <description>Een URL waarop men de specificatie kan vinden</description>
+    <btnLabel>specificatieURL</btnLabel>
   </element>
   <element name="dct:title" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:conformsTo/dct:Standard/dct:title">
     <label>Titel</label>
@@ -1252,6 +1252,11 @@
       dataset
     </description>
     <btnLabel>Versie</btnLabel>
+  </element>
+  <element name="dct:issued" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:conformsTo/dct:Standard/dct:issued">
+    <label>Publicatiedatum</label>
+    <description>Vul aan met de datum waarop de distributie gepubliceerd is</description>
+    <btnLabel>Publicatiedatum</btnLabel>
   </element>
   <element name="adms:status" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/adms:status">
     <label>Status</label>
