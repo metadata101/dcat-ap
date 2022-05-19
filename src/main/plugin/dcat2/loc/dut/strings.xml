@@ -381,5 +381,7 @@
   <FieldId506>titel</FieldId506>
   <FieldId507>beschrijving</FieldId507>
 
+  <!-- Additional -->
   <FieldId508>subject</FieldId508>
+  <FieldId509>publicatiedatum</FieldId509>
 </strings>

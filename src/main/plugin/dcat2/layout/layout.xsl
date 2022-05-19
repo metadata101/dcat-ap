@@ -22,27 +22,27 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:spdx="http://spdx.org/rdf/terms#"
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-    xmlns:adms="http://www.w3.org/ns/adms#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:dcat="http://www.w3.org/ns/dcat#"
-    xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
-    xmlns:foaf="http://xmlns.com/foaf/0.1/"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:schema="http://schema.org/"
-    xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
-    xmlns:locn="http://www.w3.org/ns/locn#"
-    xmlns:java="java:org.fao.geonet.util.XslUtil"
-    xmlns:gn="http://www.fao.org/geonetwork"
-    xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
-    xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
-    xmlns:saxon="http://saxon.sf.net/"
-    extension-element-prefixes="saxon"
-    exclude-result-prefixes="#all">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:spdx="http://spdx.org/rdf/terms#"
+                xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                xmlns:adms="http://www.w3.org/ns/adms#"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:dc="http://purl.org/dc/elements/1.1/"
+                xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+                xmlns:foaf="http://xmlns.com/foaf/0.1/"
+                xmlns:owl="http://www.w3.org/2002/07/owl#"
+                xmlns:schema="http://schema.org/"
+                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:java="java:org.fao.geonet.util.XslUtil"
+                xmlns:gn="http://www.fao.org/geonetwork"
+                xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
+                xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
+                xmlns:saxon="http://saxon.sf.net/"
+                version="2.0"
+                extension-element-prefixes="saxon"
+                exclude-result-prefixes="#all">
 
   <xsl:include href="utility-fn.xsl"/>
   <xsl:include href="utility-tpl.xsl"/>
@@ -53,10 +53,7 @@
   <xsl:variable name="isDcatService" select="count($metadata/dcat:Catalog/dcat:service/dcat:DataService) > 0"/>
 
   <!-- Ignore all gn element -->
-  <xsl:template mode="mode-dcat2"
-                match="gn:*|@gn:*|@*"
-                priority="1000">
-  </xsl:template>
+  <xsl:template mode="mode-dcat2" match="gn:*|@gn:*|@*" priority="1000"/>
 
   <!-- Template to display non existing element ie. geonet:child element
   of the metadocument. Display in editing mode only and if
@@ -86,11 +83,9 @@
     <!-- TODO: this should be common to all schemas -->
     <xsl:if test="$isEditing and (not($isFlatMode) or $flatModeException)">
 
-      <xsl:variable name="directive"
-                    select="gn-fn-metadata:getFieldAddDirective($editorConfig, $name)"/>
+      <xsl:variable name="directive" select="gn-fn-metadata:getFieldAddDirective($editorConfig, $name)"/>
 
-      <xsl:variable name="labelConfig"
-                        select="gn-fn-metadata:getLabel($schema, $name, $labels, name(..), '', $xpath)"/>
+      <xsl:variable name="labelConfig" select="gn-fn-metadata:getLabel($schema, $name, $labels, name(..), '', $xpath)"/>
 
       <xsl:call-template name="render-element-to-add">
         <!-- TODO: add xpath and isoType to get label ? -->
@@ -105,8 +100,7 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template mode="mode-dcat2" priority="200"
-                match="*[name() = $editorConfig/editor/fieldsWithFieldset/name]">
+  <xsl:template mode="mode-dcat2" match="*[name() = $editorConfig/editor/fieldsWithFieldset/name]" priority="200">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
     <xsl:param name="refToDelete" required="no"/>
@@ -164,8 +158,7 @@
     Template to display non existing element ie. geonet:child element
     of the metadocument. Display in editing mode only and if
   the editor mode is not flat mode. -->
-  <xsl:template mode="mode-dcat2" match="gn:child[contains(@name, 'CHOICE_ELEMENT')]"
-    priority="3000">
+  <xsl:template mode="mode-dcat2" match="gn:child[contains(@name, 'CHOICE_ELEMENT')]"  priority="3000">
     <xsl:if test="$isEditing and
       not($isFlatMode)">
 
@@ -173,8 +166,7 @@
             a add action for non existing node. The add action for
             the existing one is below the last element. -->
       <xsl:variable name="newElementConfig">
-        <xsl:variable name="dcConfig"
-          select="ancestor::node()/gn:child[contains(@name, 'CHOICE_ELEMENT')]"/>
+        <xsl:variable name="dcConfig" select="ancestor::node()/gn:child[contains(@name, 'CHOICE_ELEMENT')]"/>
         <xsl:variable name="existingElementNames" select="string-join(../descendant::*/name(), ',')"/>
 
         <gn:child>
@@ -368,7 +360,6 @@
                           (name(.) = 'spdx:checksum' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dct:accessRights' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'foaf:page' and name(..) = 'dcat:Distribution') or
-                          (name(.) = 'dct:conformsTo' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'adms:status' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dcat:compressFormat' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dcat:packageFormat' and name(..) = 'dcat:Distribution') or
@@ -379,7 +370,7 @@
                           $isFlatMode]" />
 
   <!-- Ignore the following attributes in flatMode -->
-  <xsl:template mode="render-for-field-for-attribute-dcat2" match="@*[$isFlatMode and not(name(..)='dct:LicenseDocument')]|@gn:xsderror|@gn:addedObj" priority="101"/>
+  <xsl:template mode="render-for-field-for-attribute-dcat2" match="@*[$isFlatMode and not(name(..) = ('dct:LicenseDocument', 'dct:Standard'))]|@gn:xsderror|@gn:addedObj" priority="101"/>
 
   <xsl:template mode="render-for-field-for-attribute-dcat2" match="@*" priority="100">
     <xsl:variable name="attributeName" select="name(.)"/>
@@ -387,16 +378,13 @@
     <xsl:variable name="attribute" as="node()">
       <gn:attribute>
         <xsl:attribute name="ref" select="$ref"/>
-        <!--xsl:attribute name="del" select="true()"/>
-        <xsl:attribute name="parent" select="../gn:element/@ref"/-->
         <xsl:copy-of select="../gn:attribute[@name = local-name()]/@*"/>
       </gn:attribute>
     </xsl:variable>
     <xsl:variable name="labelConfig" select="gn-fn-metadata:getLabel($schema, $attributeName, $labels, name(..), '', if (name(.)='xml:lang') then '' else gn-fn-metadata:getXPath(.))"/>
     <xsl:variable name="helper" select="gn-fn-metadata:getHelper($labelConfig/helper, .)"/>
-    <xsl:variable name="added" select="parent::node()/parent::node()/@gn:addedObj"/>
-
     <xsl:variable name="xpath" select="gn-fn-metadata:getXPath(.)"/>
+
     <xsl:call-template name="render-element">
       <xsl:with-param name="label" select="$labelConfig"/>
       <xsl:with-param name="value" select="."/>
@@ -419,7 +407,6 @@
                   'xlink:show', 'xlink:actuate', 'xlink:arcrole', 'xlink:role', 'xlink:title', 'xlink:href'))]"
                 priority="100">
     <xsl:param name="ref"/>
-    <xsl:param name="insertRef" select="''"/>
     <xsl:variable name="xpath" select="gn-fn-metadata:getXPath(..)"/>
     <xsl:variable name="name" select="concat(@prefix, @name)"/>
     <xsl:if test="not($isFlatMode) or gn-fn-metadata:isFieldFlatModeException($viewConfig, $name, $xpath)">
