@@ -24,11 +24,15 @@
 package org.fao.geonet.kernel.harvest.harvester.dcatap;
 
 import jeeves.server.context.ServiceContext;
+import org.apache.commons.io.IOUtils;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.riot.RDFFormat;
 import org.fao.geonet.Constants;
 import org.fao.geonet.Logger;
 import org.fao.geonet.domain.ISODate;
@@ -38,14 +42,13 @@ import org.fao.geonet.kernel.harvest.harvester.HarvestError;
 import org.fao.geonet.kernel.harvest.harvester.HarvestResult;
 import org.fao.geonet.kernel.harvest.harvester.IHarvester;
 import org.fao.geonet.kernel.setting.SettingManager;
+import org.fao.geonet.util.XslUtil;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.ParseException;
@@ -93,6 +96,7 @@ class Harvester implements IHarvester<HarvestResult> {
     private final List<HarvestError> errors = new LinkedList<HarvestError>();
 
     private final Path xslFile;
+    private final Path xslBlankNodeFile;
 
     private final Pattern identifierPattern;
 
@@ -109,6 +113,7 @@ class Harvester implements IHarvester<HarvestResult> {
 
 
         this.xslFile = this.schemaDir.resolve("import/rdf-to-xml.xsl");
+        this.xslBlankNodeFile = this.schemaDir.resolve("import/rdf-fix-blank-nodes.xsl");
         this.identifierPattern = Pattern.compile("([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}");
     }
 
@@ -198,11 +203,11 @@ class Harvester implements IHarvester<HarvestResult> {
         return records;
     }
 
-    private Model fixBlankResourceNode(Model model) throws IOException {
-        Query queryFixBlankNodes = QueryFactory.create(this.getQueryString("fix-blank-node.rq"));
-        QueryExecution qe = QueryExecutionFactory.create(queryFixBlankNodes, model);
-        Model newModel = qe.execConstruct();
-        qe.close();
+    private Model fixBlankResourceNode(Model model) throws Exception {
+        Element rdfModel = Xml.loadStream(IOUtils.toInputStream(this.toRdfString(model), StandardCharsets.UTF_8.displayName()));
+        Element fixedRdfModel = Xml.transform(rdfModel, xslBlankNodeFile, new HashMap<>());
+        Model newModel = ModelFactory.createMemModelMaker().createDefaultModel();
+        RDFDataMgr.read(newModel, IOUtils.toInputStream(Xml.getString(fixedRdfModel), StandardCharsets.UTF_8.displayName()), Lang.RDFXML);
         return newModel;
     }
 
@@ -325,10 +330,9 @@ class Harvester implements IHarvester<HarvestResult> {
         if (date == null) {
             return null;
         }
-        // convert the date to a known format "yyyy-MM-dd"
-        return new ISODate(date.getTime(), false)
-            .toString()
-            .substring(0, 10);
+        // convert the date to a known format "yyyy-MM-ddThh:mm:ss"
+        return new ISODate(date.getTime(), false).toString();
+            // .substring(0, 10);
     }
 
     /**
@@ -381,8 +385,7 @@ class Harvester implements IHarvester<HarvestResult> {
      */
     private String toRdfString(Model model) {
         StringWriter out = new StringWriter();
-        model.write(out, "RDFXML");
-        String result = out.toString();
-        return result;
+        RDFDataMgr.write(out, model, Lang.RDFXML);
+        return out.toString();
     }
 }
