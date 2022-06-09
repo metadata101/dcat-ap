@@ -458,7 +458,7 @@
     <name>vcard:Address</name>
     <name isSupportingSlideToggle="true">dct:accessRights</name>
     <name isSupportingSlideToggle="true">adms:identifier</name>
-    <name>adms:identifier</name>
+    <name>adms:Identifier</name>
     <name isSupportingSlideToggle="true">dct:provenance</name>
     <name>dct:ProvenanceStatement</name>
     <name isSupportingSlideToggle="true">dct:spatial</name>
@@ -976,7 +976,18 @@
           <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:subject" or="subject" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId147" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme" or="theme" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId113" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field name="FieldId190" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:identifier" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field name="FieldId190" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:identifier"/>
+          <action type="add" name="FieldId1190" prefix="adms" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <adms:identifier>
+                  <adms:Identifier>
+                    <skos:notation />
+                  </adms:Identifier>
+                </adms:identifier>
+              </snippet>
+            </template>
+          </action>
         </section>
         <section name="versionInformation">
           <field name="FieldId223" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
