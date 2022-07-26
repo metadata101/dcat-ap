@@ -648,7 +648,20 @@
           </action>
         </section>
         <section name="extraInformation">
-            <field name="FieldId183" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language" or="language" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field name="FieldId183" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language" or="language" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field name="FieldId161" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo"/>
+          <action type="add" name="FieldId161" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:conformsTo>
+                  <dct:Standard>
+                    <dct:title xml:lang="nl"/>
+                    <dct:description xml:lang="nl"/>
+                  </dct:Standard>
+                </dct:conformsTo>
+              </snippet>
+            </template>
+          </action>
         </section>
       </tab>
       <tab id="defaultDistribution" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
@@ -816,6 +829,19 @@
         </section>
         <section name="extraInformation">
           <field name="FieldId408" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language" or="language" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field name="FieldId439" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo"/>
+          <action type="add" name="FieldId439" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dct:conformsTo>
+                  <dct:Standard>
+                    <dct:title xml:lang="nl"/>
+                    <dct:description xml:lang="nl"/>
+                  </dct:Standard>
+                </dct:conformsTo>
+              </snippet>
+            </template>
+          </action>
         </section>
       </tab>
       <tab id="defaultRecord" mode="flat">

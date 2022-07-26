@@ -448,6 +448,13 @@
     </description>
     <btnLabel>Taal</btnLabel>
   </element>
+  <element name="owl:versionInfo" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo/dct:Standard/owl:versionInfo">
+    <label>Versie</label>
+    <description>Vul aan met een verwijzing naar de versie (bvb een versienummer, een versie-benaming,...) van je
+      dataset
+    </description>
+    <btnLabel>Versie</btnLabel>
+  </element>
   <element name="foaf:page" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/foaf:page">
     <label>Documentatie</label>
     <description>Tooltip: Documentatie</description>
@@ -2173,6 +2180,13 @@
     <label>beschrijving</label>
     <description>Tooltip: beschrijving</description>
     <btnLabel>beschrijving</btnLabel>
+  </element>
+  <element name="owl:versionInfo" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo/dct:Standard/owl:versionInfo">
+    <label>versie</label>
+    <description>Vul aan met een verwijzing naar de versie (bvb een versienummer, een versie-benaming,...) van je
+      dataset
+    </description>
+    <btnLabel>versie</btnLabel>
   </element>
   <element name="dct:creator" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:creator">
     <label>schepper</label>
