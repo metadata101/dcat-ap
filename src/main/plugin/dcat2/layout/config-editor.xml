@@ -323,6 +323,15 @@
         </snippet>
       </template>
     </for>
+    <for name="dct:conformsTo" addDirective="data-gn-directory-entry-selector" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo" >
+      <directiveAttributes
+          data-template-add-action="false"
+          data-search-action="true"
+          data-popup-action="false"
+          data-template-type="protocol"
+          data-filter='{"_root": "dct:Standard"}'
+          data-insert-modes="text"/>
+    </for>
 
     <!-- Thesaurus list picker configuration. Handled in layout-custom-fields-keywords.xsl.
 
@@ -829,19 +838,7 @@
         </section>
         <section name="extraInformation">
           <field name="FieldId408" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language" or="language" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-          <field name="FieldId439" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo"/>
-          <action type="add" name="FieldId439" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <dct:conformsTo>
-                  <dct:Standard>
-                    <dct:title xml:lang="nl"/>
-                    <dct:description xml:lang="nl"/>
-                  </dct:Standard>
-                </dct:conformsTo>
-              </snippet>
-            </template>
-          </action>
+          <field name="FieldId439" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
         </section>
       </tab>
       <tab id="defaultRecord" mode="flat">
@@ -907,6 +904,7 @@
         <!-- Extra info -->
         <for name="dct:language" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language"/>
         <for name="dct:language" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
+        <for name="dct:conformsTo" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo"/>
       </flatModeExceptions>
       <thesaurusList>
         <thesaurus key="external.theme.publisher-type" maxtags="1" transformations="" fieldset="false"/>

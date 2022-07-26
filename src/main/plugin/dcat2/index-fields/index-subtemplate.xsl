@@ -80,8 +80,8 @@
         </Documents>
     </xsl:template>
 
-    <!--Licenses-->
-    <xsl:template mode="index" match="dct:LicenseDocument">
+    <!-- Licenses and Standard -->
+    <xsl:template mode="index" match="dct:LicenseDocument|dct:Standard">
         <xsl:param name="isoLangId"/>
         <xsl:param name="langId"/>
         <xsl:param name="locale"/>
