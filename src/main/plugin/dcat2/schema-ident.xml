@@ -44,6 +44,7 @@
       <rdf:RDF/>
       <dcat:contactPoint/>
       <dct:LicenseDocument/>
+      <dct:Standard/>
     </gns:elements>
   </gns:autodetect>
 </gns:schema>
