@@ -6,7 +6,7 @@
          xmlns:owl="http://www.w3.org/2002/07/owl#">
 
   <skos:ConceptScheme rdf:about="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol">
-    <skos:prefLabel>conceptscheme protocollen voor dataservices</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">conceptscheme protocollen voor dataservices</skos:prefLabel>
     <skos:definition>Codelijst voor de protocollen waarmee een dataservice is gedeployed.</skos:definition>
   </skos:ConceptScheme>
 
@@ -52,7 +52,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WMS</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WMS</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Map Services genereren op dynamische wijze beelden uit verschillende datasets.</skos:definition>
     <dc:title xml:lang="nl">Web Map Service</dc:title>
     <dc:description xml:lang="nl">Web Map Services genereren op dynamische wijze beelden uit verschillende datasets.</dc:description>
@@ -66,7 +66,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WMS-1.1.1-http-get-map</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WMS-1.1.1-http-get-map</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.</skos:definition>
     <dc:title xml:lang="nl">Web Map Service Get Map Operatie</dc:title>
     <dc:description xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.</dc:description>
@@ -80,7 +80,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WMS-1.1.1-http-get-capabilities</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WMS-1.1.1-http-get-capabilities</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de verzoekparameterwaarden.</skos:definition>
     <dc:title xml:lang="nl">Web Map Service Get Capabilities Operatie</dc:title>
     <dc:description xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de verzoekparameterwaarden.</dc:description>
@@ -94,7 +94,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WMS-1.1.1-http-get-featureinfo</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WMS-1.1.1-http-get-featureinfo</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.</skos:definition>
     <dc:title xml:lang="nl">Web Map Service Get Featureinfo</dc:title>
     <dc:description xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.</dc:description>
@@ -108,7 +108,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WMS-1.3.0-http-get-map</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WMS-1.3.0-http-get-map</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.</skos:definition>
     <dc:title xml:lang="nl">Web Map Service Get Map</dc:title>
     <dc:description xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.</dc:description>
@@ -122,7 +122,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WMS-1.3.0-http-get-capabilities</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WMS-1.3.0-http-get-capabilities</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de verzoekparameterwaarden.</skos:definition>
     <dc:title xml:lang="nl">Web Map Service Get Capabilities</dc:title>
     <dc:description xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de verzoekparameterwaarden.</dc:description>
@@ -136,7 +136,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WMS-1.3.0-http-get-featureinfo</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WMS-1.3.0-http-get-featureinfo</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.</skos:definition>
     <dc:title xml:lang="nl">Web Map Service Get Featureinfo</dc:title>
     <dc:description xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.</dc:description>
@@ -150,7 +150,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WFS</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WFS</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Feature Service biedt directe gedetailleerde toegang tot geografische informatie op feature- en feature-propertyniveau.</skos:definition>
     <dc:title xml:lang="nl">Web Feature Service</dc:title>
     <dc:description xml:lang="nl">Web Feature Service biedt directe ged etailleerde toegang tot geografische informatie op feature- en feature-propertyniveau.</dc:description>
@@ -164,7 +164,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WFS</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WFS</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</skos:definition>
     <dc:title xml:lang="nl">Web Feature Service Get Capabilities</dc:title>
     <dc:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</dc:description>
@@ -178,7 +178,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WFS-1.0.0-http-get-feature</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WFS-1.0.0-http-get-feature</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.</skos:definition>
     <dc:title xml:lang="nl">Web Feature Service Get Feature</dc:title>
     <dc:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.</dc:description>
@@ -192,7 +192,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WFS-1.0.0-http-describefeaturetype</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WFS-1.0.0-http-describefeaturetype</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties verwacht te coderen op output.</skos:definition>
     <dc:title xml:lang="nl">Web Feature Service Describe FeatureType</dc:title>
     <dc:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties verwacht te coderen op output.</dc:description>
@@ -206,7 +206,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WFS-1.1.0-http-get-capabilities</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WFS-1.1.0-http-get-capabilities</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</skos:definition>
     <dc:title xml:lang="nl">Web Feature Service Get Capabilities</dc:title>
     <dc:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</dc:description>
@@ -220,7 +220,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WFS-1.1.0-http-get-feature</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WFS-1.1.0-http-get-feature</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.</skos:definition>
     <dc:title xml:lang="nl">Web Feature Service Get Feature</dc:title>
     <dc:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.</dc:description>
@@ -234,7 +234,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WFS-1.1.0-http-describefeaturetype</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WFS-1.1.0-http-describefeaturetype</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties verwacht te coderen op output.</skos:definition>
     <dc:title xml:lang="nl">Web Feature Service Describe FeatureType</dc:title>
     <dc:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties verwacht te coderen op output.</dc:description>
@@ -248,7 +248,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WFS-1.1.0-http-getgmlobject</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WFS-1.1.0-http-getgmlobject</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Feature Service biedt directe gedetailleerde toegang tot geografische informatie op feature- en feature-propertyniveau.</skos:definition>
     <dc:title xml:lang="nl">Web Feature Service Get GML Object</dc:title>
     <dc:description xml:lang="nl">Web Feature Service biedt directe ged etailleerde toegang tot geografische informatie op feature- en feature-propertyniveau.</dc:description>
@@ -262,7 +262,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WFS-2.0.0-http-get-capabilities</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WFS-2.0.0-http-get-capabilities</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</skos:definition>
     <dc:title xml:lang="nl">Web Feature Service Get Capabilities</dc:title>
     <dc:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</dc:description>
@@ -276,7 +276,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WFS-2.0.0-http-get-feature</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WFS-2.0.0-http-get-feature</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.</skos:definition>
     <dc:title xml:lang="nl">Web Feature Service Get Feature</dc:title>
     <dc:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.</dc:description>
@@ -290,7 +290,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WFS-2.0.0-http-describefeaturetype</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WFS-2.0.0-http-describefeaturetype</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties verwacht te coderen op output.</skos:definition>
     <dc:title xml:lang="nl">Web Feature Service Get Featureinfo</dc:title>
     <dc:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties verwacht te coderen op output.</dc:description>
@@ -304,7 +304,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WCS</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WCS</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</skos:definition>
     <dc:title xml:lang="nl">Web Coverage Service</dc:title>
     <dc:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dc:description>
@@ -318,7 +318,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WCS-1.0.0-http-get-capabilities</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WCS-1.0.0-http-get-capabilities</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</skos:definition>
     <dc:title xml:lang="nl">Web Coverage Service Get Capabilities</dc:title>
     <dc:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dc:description>
@@ -332,7 +332,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WCS-1.0.0-http-get-coverage</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WCS-1.0.0-http-get-coverage</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</skos:definition>
     <dc:title xml:lang="nl">Web Coverage Service Get Coverage</dc:title>
     <dc:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dc:description>
@@ -346,7 +346,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WCS-1.1.0-http-get-capabilities</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WCS-1.1.0-http-get-capabilities</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</skos:definition>
     <dc:title xml:lang="nl">Web Coverage Service Get Capabilities</dc:title>
     <dc:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dc:description>
@@ -360,7 +360,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WCS-1.1.0-http-get-coverage</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WCS-1.1.0-http-get-coverage</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</skos:definition>
     <dc:title xml:lang="nl">Web Coverage Service Get Coverage</dc:title>
     <dc:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dc:description>
@@ -374,7 +374,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WCS-1.1.1-http-get-capabilities</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WCS-1.1.1-http-get-capabilities</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</skos:definition>
     <dc:title xml:lang="nl">Web Coverage Service Get Capabilities</dc:title>
     <dc:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dc:description>
@@ -388,7 +388,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WCS-1.1.1-http-get-coverage</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WCS-1.1.1-http-get-coverage</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</skos:definition>
     <dc:title xml:lang="nl">Web Coverage Service Get Coverage</dc:title>
     <dc:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dc:description>
@@ -402,7 +402,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WCS-2.0.0-http-get-capabilities</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WCS-2.0.0-http-get-capabilities</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</skos:definition>
     <dc:title xml:lang="nl">Web Coverage Service Get Capabilities</dc:title>
     <dc:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dc:description>
@@ -416,7 +416,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WCS-2.0.0-http-get-coverage</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WCS-2.0.0-http-get-coverage</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</skos:definition>
     <dc:title xml:lang="nl">Web Coverage Service Get Coverage</dc:title>
     <dc:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dc:description>
@@ -430,7 +430,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WCS-2.0.1-http-get-capabilities</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WCS-2.0.1-http-get-capabilities</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</skos:definition>
     <dc:title xml:lang="nl">Web Coverage Service Get Capabilities</dc:title>
     <dc:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dc:description>
@@ -444,7 +444,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WCS-2.0.1-http-get-coverage</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WCS-2.0.1-http-get-coverage</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</skos:definition>
     <dc:title xml:lang="nl">Web Coverage Service Get Coverage</dc:title>
     <dc:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dc:description>
@@ -458,7 +458,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WMTS</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WMTS</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.</skos:definition>
     <dc:title xml:lang="nl">Web Map Tile Service</dc:title>
     <dc:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.</dc:description>
@@ -472,7 +472,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WMTS-1.0.0-http-get-capabilities</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WMTS-1.0.0-http-get-capabilities</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.</skos:definition>
     <dc:title xml:lang="nl">Web Map Tile Service Get Capabilities</dc:title>
     <dc:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.</dc:description>
@@ -486,7 +486,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>WMTS-1.0.0-http-get-tile</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">WMTS-1.0.0-http-get-tile</skos:prefLabel>
     <skos:definition xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.</skos:definition>
     <dc:title xml:lang="nl">Web Map Tile Service Get Tile</dc:title>
     <dc:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.</dc:description>
@@ -500,7 +500,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>KML</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">KML</skos:prefLabel>
     <skos:definition xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie, inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan en waar te kijken.</skos:definition>
     <dc:title xml:lang="nl">Keyhole Markup Language</dc:title>
     <dc:description xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie, inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan en waar te kijken.</dc:description>
@@ -514,7 +514,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>KML-2.0-http-get-map</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">KML-2.0-http-get-map</skos:prefLabel>
     <skos:definition xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie, inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan en waar te kijken.</skos:definition>
     <dc:title xml:lang="nl">Keyhole Markup Language Get Map</dc:title>
     <dc:description xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie, inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan en waar te kijken.</dc:description>
@@ -528,7 +528,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>DOWNLOAD-1.0-ftp--download</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">DOWNLOAD-1.0-ftp--download</skos:prefLabel>
     <skos:definition xml:lang="nl">Het Download FTP protocol levert een bestand ter directe download over FTP.</skos:definition>
     <dc:title xml:lang="nl">Download FTP</dc:title>
     <dc:description xml:lang="nl">Het Download FTP protocol levert een bestand ter directe download over FTP.</dc:description>
@@ -542,7 +542,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>DOWNLOAD-1.0-http--download</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">DOWNLOAD-1.0-http--download</skos:prefLabel>
     <skos:definition xml:lang="nl">Het Download HTTP protocol levert een bestand ter directe download over HTTP.</skos:definition>
     <dc:title xml:lang="nl">Download HTTP</dc:title>
     <dc:description xml:lang="nl">Het Download HTTP protocol levert een bestand ter directe download over HTTP.</dc:description>
@@ -556,7 +556,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>LINK-download-store</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">LINK-download-store</skos:prefLabel>
     <skos:definition xml:lang="nl">Het Link Download store protocol levert een link op naar de download-store, dit is een folder, winkel... voor directe download.</skos:definition>
     <dc:title xml:lang="nl">Download FTP</dc:title>
     <dc:description xml:lang="nl">Het Link Download store protocol levert een link op naar de download-store, dit is een folder, winkel... voor directe download.</dc:description>
@@ -570,7 +570,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>LINK-1.0-http--atom</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">LINK-1.0-http--atom</skos:prefLabel>
     <skos:definition xml:lang="nl">Het Link Atom Feed protocol levert toegang tot een ATOM feed via een URL.</skos:definition>
     <dc:title xml:lang="nl">Link Atom Feed</dc:title>
     <dc:description xml:lang="nl">Het Link Atom Feed protocol levert toegang tot een ATOM feed via een URL.</dc:description>
@@ -584,7 +584,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>LINK-1.0-http--link</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">LINK-1.0-http--link</skos:prefLabel>
     <skos:definition xml:lang="nl">Het Link protocol levert toegang tot een webadres via een URL.</skos:definition>
     <dc:title xml:lang="nl">Link</dc:title>
     <dc:description xml:lang="nl">Het Link protocol levert toegang tot een webadres via een URL.</dc:description>
@@ -598,7 +598,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>LINK-1.0-http--related</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">LINK-1.0-http--related</skos:prefLabel>
     <skos:definition xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een URL.</skos:definition>
     <dc:title xml:lang="nl">Link Related</dc:title>
     <dc:description xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een URL.</dc:description>
@@ -612,7 +612,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>ESRI:AIMS-http-configuration</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">ESRI:AIMS-http-configuration</skos:prefLabel>
     <skos:definition xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een URL.</skos:definition>
     <dc:title xml:lang="nl">Link Related</dc:title>
     <dc:description xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een URL.</dc:description>
@@ -626,7 +626,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>CSW</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">CSW</skos:prefLabel>
     <skos:definition xml:lang="nl">Het Catalogue Service Web protocol levert toegang tot een endpoint.</skos:definition>
     <dc:title xml:lang="nl">Catalogue Service Web</dc:title>
     <dc:description xml:lang="nl">Het Catalogue Service Web protocol levert toegang tot een endpoint.</dc:description>
@@ -640,7 +640,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>GML</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">GML</skos:prefLabel>
     <skos:definition xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van geografische kenmerken.</skos:definition>
     <dc:title xml:lang="nl">Geography Markup Language</dc:title>
     <dc:description xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van geografische kenmerken.</dc:description>
@@ -654,7 +654,7 @@
     <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
     <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
-    <skos:prefLabel>ODS</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">ODS</skos:prefLabel>
     <skos:definition xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van geografische kenmerken.</skos:definition>
     <dc:title xml:lang="nl">Geography Markup Language</dc:title>
     <dc:description xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van geografische kenmerken.</dc:description>
