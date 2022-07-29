@@ -166,6 +166,20 @@
       </xsl:when>
       <xsl:when test="name() = 'dcat:DataService'">
         <Field name="type" string="service" store="true" index="true" />
+
+        <xsl:for-each select="dct:conformsTo/dct:Standard">
+          <xsl:choose>
+            <xsl:when test="dct:title[@xml:lang = $langId]">
+              <Field name="serviceProtocol" string="{dct:title[@xml:lang = $langId][1]}" store="true" index="true"/>
+            </xsl:when>
+            <xsl:when test="dct:title[not(@xml:lang)]">
+              <Field name="serviceProtocol" string="{dct:title[not(@xml:lang)][1]}" store="true" index="true"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <Field name="serviceProtocol" string="{dct:title[1]}" store="true" index="true"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each>
       </xsl:when>
     </xsl:choose>
 
