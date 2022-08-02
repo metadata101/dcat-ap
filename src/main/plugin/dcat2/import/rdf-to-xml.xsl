@@ -243,12 +243,14 @@ Rome - Italy. email: geonetwork@osgeo.org
           <xsl:call-template name="standards">
             <xsl:with-param name="standardURIs" select="$standardURIs"/>
             <xsl:with-param name="predicate">dct:conformsTo</xsl:with-param>
+            <xsl:with-param name="defaultVersionValue">2.0</xsl:with-param>
           </xsl:call-template>
           <xsl:if test="count($standardURIs) = 0">
             <dct:conformsTo>
               <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
                 <dct:title>Dcat-ap-vl</dct:title>
                 <dct:description>Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
+                <owl:versionInfo>2.0</owl:versionInfo>
               </dct:Standard>
             </dct:conformsTo>
           </xsl:if>
@@ -902,6 +904,7 @@ Rome - Italy. email: geonetwork@osgeo.org
   <xsl:template name="standards">
     <xsl:param name="standardURIs"/>
     <xsl:param name="predicate"/>
+    <xsl:param name="defaultVersionValue" select="''"/>
     <xsl:for-each select="$standardURIs">
       <xsl:element name="{$predicate}">
         <dct:Standard>
@@ -920,6 +923,23 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="subject" select="./*"/>
             <xsl:with-param name="predicate">dct:description</xsl:with-param>
           </xsl:call-template>
+          <!-- owl:versionInfo -->
+          <xsl:variable name="version">
+            <xsl:call-template name="properties">
+              <xsl:with-param name="subject" select="./*"/>
+              <xsl:with-param name="predicate">owl:versionInfo</xsl:with-param>
+            </xsl:call-template>
+          </xsl:variable>
+          <xsl:choose>
+            <xsl:when test="normalize-space($version) != ''">
+              <xsl:copy-of copy-namespaces="no" select="$version"/>
+            </xsl:when>
+            <xsl:when test="normalize-space($defaultVersionValue)">
+              <owl:versionInfo>
+                <xsl:value-of select="$defaultVersionValue"/>
+              </owl:versionInfo>
+            </xsl:when>
+          </xsl:choose>
         </dct:Standard>
       </xsl:element>
     </xsl:for-each>

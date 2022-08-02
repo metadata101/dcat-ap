@@ -385,4 +385,5 @@
   <!-- Additional -->
   <FieldId508>subject</FieldId508>
   <FieldId509>publicatiedatum</FieldId509>
+  <FieldId510>versie</FieldId510>
 </strings>

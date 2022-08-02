@@ -5,6 +5,7 @@
          xmlns:dct="http://purl.org/dc/terms/"
          xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
          xmlns:dcat="http://www.w3.org/ns/dcat#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
          xsi:schemaLocation="http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.openarchives.org/OAI/2.0/rdf.xsd">
   <dcat:Catalog>
     <dcat:record>
@@ -14,6 +15,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22">
             <dct:title>Metadata-dcat</dct:title>
             <dct:description xml:lang="nl">Het applicatieprofiel “metadata dcat”. Dit is een applicatieprofiel gebaseerd op DCAT en richt zich op het verzamelen van informatie over generieke datasets, distributies en services die door een overheid beschikbaar gesteld worden. De datasets en services omvatten zowel publiek toegankelijke als afgeschermde data en diensten (ontwikkeld in en voor eender welk technisch perspectief). Het samenbrengen van al deze informatie in een catalogus laat toe om de vindbaarheid van deze datasets en services te verhogen. Dit applicatieprofiel is het generieke basisprofiel. Afgeleide profielen kunnen zeker aangemaakt worden voor specifieke domeinen of communities. Bijvoorbeeld is DCAT-AP-VL zo’n afgeleid applicatieprofiel, specifiek voor het Open data domein en bijhorende community.</dct:description>
+            <owl:versionInfo>2.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
       </dcat:CatalogRecord>
