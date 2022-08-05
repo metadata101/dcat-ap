@@ -853,6 +853,7 @@
         <section name="conformToInformation">
           <field name="FieldId506" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title"/>
           <field name="FieldId507" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
+          <field name="FieldId510" xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/owl:versionInfo"/>
         </section>
       </tab>
       <flatModeExceptions>

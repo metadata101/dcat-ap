@@ -81,6 +81,11 @@
     <description>Tooltip: description</description>
     <btnLabel>description</btnLabel>
   </element>
+  <element name="owl:versionInfo" context="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/owl:versionInfo">
+    <label>version</label>
+    <description>Tooltip: version</description>
+    <btnLabel>version</btnLabel>
+  </element>
 
   <element name="dcat:Dataset" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>dataset</label>

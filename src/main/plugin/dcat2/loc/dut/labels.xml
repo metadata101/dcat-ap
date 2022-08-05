@@ -81,6 +81,13 @@
     <description>Tooltip: beschrijving</description>
     <btnLabel>beschrijving</btnLabel>
   </element>
+  <element name="owl:versionInfo" context="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/owl:versionInfo">
+    <label>versie</label>
+    <description>vul aan met een verwijzing naar de versie (bvb een versienummer, een versie-benaming,...) van je
+      dataset
+    </description>
+    <btnLabel>versie</btnLabel>
+  </element>
 
   <element name="dcat:Dataset" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>Dataset</label>
