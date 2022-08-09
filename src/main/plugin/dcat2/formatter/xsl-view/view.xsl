@@ -474,7 +474,7 @@
     <!-- Special case for dct:license with an empty dct:LicenseDocument with only @rdf:about or for dcat:contactPoint with only vcard:hasEmail and vcard:hasURL-->
     <xsl:if test="normalize-space($stringValue) != '' or
                   (name() = 'dct:license' and normalize-space(./dct:LicenseDocument/@rdf:about) != '') or
-                  (name() = 'dcat:contactPoint' and ./vcard:Organization/*/normalize-space(@rdf:resource) != '') or
+                  (name() = 'dcat:contactPoint' and count(./vcard:Organization/*[normalize-space(@rdf:resource) != ''])>0) or
                   (name() = 'dct:publisher' and normalize-space(./foaf:Agent/@rdf:about) != '')">
       <tr>
         <th style="{$thStyle}">
