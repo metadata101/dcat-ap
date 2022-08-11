@@ -21,6 +21,7 @@
   <sch:ns prefix="mdcat" uri="http://data.vlaanderen.be/ns/metadata-dcat#"/>
   <sch:ns prefix="geodcat" uri="http://data.europa.eu/930/"/>
   <sch:ns prefix="generiek" uri="http://data.vlaanderen.be/ns/generiek#"/>
+  <sch:ns prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
   <sch:let name="profile" value="boolean(/*[starts-with(//dcat:CatalogRecord//dct:Standard/@rdf:about, 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL')])"/>
   <sch:pattern>
     <sch:title>vcard:hasEmail is a URI with the mailto protocol.</sch:title>

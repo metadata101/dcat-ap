@@ -21,6 +21,7 @@
   <sch:ns prefix="mdcat" uri="http://data.vlaanderen.be/ns/metadata-dcat#"/>
   <sch:ns prefix="geodcat" uri="http://data.europa.eu/930/"/>
   <sch:ns prefix="generiek" uri="http://data.vlaanderen.be/ns/generiek#"/>
+  <sch:ns prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
   <sch:let name="profile" value="boolean(/*[starts-with(//dcat:CatalogRecord//dct:Standard/@rdf:about, 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat')])"/>
   <sch:pattern name="conform aan protocol" id="https://data.vlaanderen.be/shacl/metadata_dcat#DataServiceShape/c394e1e5ae80a00d2aa307d647168d0c6733df26">
     <sch:title>Conform aan protocol - Een protocol waaraan de dataservice voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Aconform%20aan%20protocol)</sch:title>

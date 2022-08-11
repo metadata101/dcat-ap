@@ -21,6 +21,7 @@
   <sch:ns prefix="mdcat" uri="http://data.vlaanderen.be/ns/metadata-dcat#"/>
   <sch:ns prefix="geodcat" uri="http://data.europa.eu/930/"/>
   <sch:ns prefix="generiek" uri="http://data.vlaanderen.be/ns/generiek#"/>
+  <sch:ns prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
   <sch:let name="profile" value="boolean(/*[starts-with(//dcat:CatalogRecord//dct:Standard/@rdf:about, 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat')])"/>
   <sch:pattern>
     <sch:title>vcard:hasEmail is a URI with the mailto protocol.</sch:title>
@@ -151,7 +152,7 @@ gepubliceerd (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erk
 vinden (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Standaard%3Aspecificatie%20URL)</sch:title>
     <sch:rule context="//dct:Standard/rdfs:seeAlso[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(rdfs:Resource) = 1 or count(//rdfs:Resource[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van specificatie URL moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (rdfs:seeAlso)</sch:assert>
       <sch:report test="$validClass">De range van specificatie URL moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (rdfs:seeAlso)</sch:report>
     </sch:rule>
@@ -172,15 +173,6 @@ vinden (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendest
       <sch:let name="isUniqueLang" value="count(preceding-sibling::dct:title[string() = string($current) and @xml:lang = $current/@xml:lang]) = 0"/>
       <sch:assert test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor titel (dct:title)</sch:assert>
       <sch:report test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor titel (dct:title)</sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern name="titel" id="https://data.vlaanderen.be/shacl/metadata_dcat#StandaardShape/f28ce523c4b4fcb15d8c7d4f279da195ba7403ab">
-    <sch:title>Titel - naam van de standaard (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Standaard%3Atitel)</sch:title>
-    <sch:rule context="//dct:Standard/dct:title[$profile]">
-      <sch:let name="isLiteral" value="normalize-space(.) != ''"/>
-      <sch:let name="hasLang" value="normalize-space(@xml:lang) != ''"/>
-      <sch:assert test="$isLiteral and $hasLang">De range van titel moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:title)</sch:assert>
-      <sch:report test="$isLiteral and $hasLang">De range van titel moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:title)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="type" id="https://data.vlaanderen.be/shacl/metadata_dcat#StandaardShape/322371a77364a50f049d46180f6192532eea26dc">
@@ -230,7 +222,7 @@ standaard bekend is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-
     <sch:title>1001. Contactpagina - Een webpagina die ofwel toelaat om contact op te nemen (via b.v. een webformulier) of die informatie bevat hoe men contact kan opnemen. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Contactinfo%3Acontactpagina)</sch:title>
     <sch:rule context="//vcard:Organization/foaf:page[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(rdfs:Resource) = 1 or count(//rdfs:Resource[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van contactpagina moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (foaf:page)</sch:assert>
       <sch:report test="$validClass">De range van contactpagina moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (foaf:page)</sch:report>
     </sch:rule>
@@ -247,7 +239,7 @@ standaard bekend is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-
     <sch:title>413. E-mail - Het e-mailadres waarmee een gebruiker contact kan opnemen voor informatie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Contactinfo%3Ae-mail)</sch:title>
     <sch:rule context="//vcard:Organization/vcard:hasEmail[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(rdfs:Resource) = 1 or count(//rdfs:Resource[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van e-mail moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (vcard:hasEmail)</sch:assert>
       <sch:report test="$validClass">De range van e-mail moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (vcard:hasEmail)</sch:report>
     </sch:rule>
@@ -369,36 +361,20 @@ standaard bekend is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-
       <sch:report test="$validClass">De range van alternatieve identificator moet van het type &lt;http://www.w3.org/ns/adms#Identifier&gt; zijn. (adms:identifier)</sch:report>
     </sch:rule>
   </sch:pattern>
-  <sch:pattern name="bron metadata record landingspagina" id="https://data.vlaanderen.be/shacl/metadata_dcat#CatalogusRecordShape/0311d40d6c8081dc49766336ad753baee5d276f2">
-    <sch:title>Bron metadata record landingspagina - Een webpagina in een menselijk leesbare vorm van de bron metadata record. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#CatalogusRecord%3Abron%20metadata%20record%20landingspagina)</sch:title>
-    <sch:rule context="//dcat:CatalogRecord[$profile]">
-      <sch:let name="validMax" value="count(mdcat:bron metadata record landingspagina) &lt;= 1"/>
-      <sch:assert test="$validMax">Maximaal 1 waarden toegelaten voor bron metadata record landingspagina (mdcat:bron metadata record landingspagina)</sch:assert>
-      <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor bron metadata record landingspagina (mdcat:bron metadata record landingspagina)</sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern name="bron metadata record landingspagina" id="https://data.vlaanderen.be/shacl/metadata_dcat#CatalogusRecordShape/48c46070935428444a8dfe37e3b3172aa804f5e0">
-    <sch:title>Bron metadata record landingspagina - Een webpagina in een menselijk leesbare vorm van de bron metadata record. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#CatalogusRecord%3Abron%20metadata%20record%20landingspagina)</sch:title>
-    <sch:rule context="//dcat:CatalogRecord[$profile]">
-      <sch:let name="validMin" value="count(mdcat:bron metadata record landingspagina) &gt;= 1"/>
-      <sch:assert test="$validMin">Minimaal 1 waarden verwacht voor bron metadata record landingspagina (mdcat:bron metadata record landingspagina)</sch:assert>
-      <sch:report test="$validMin">Minimaal 1 waarden verwacht voor bron metadata record landingspagina (mdcat:bron metadata record landingspagina)</sch:report>
-    </sch:rule>
-  </sch:pattern>
   <sch:pattern name="bron metadata record landingspagina" id="https://data.vlaanderen.be/shacl/metadata_dcat#CatalogusRecordShape/e7e0fa856a7a9fd5e0507143109ff56bbed15bc5">
     <sch:title>Bron metadata record landingspagina - Een webpagina in een menselijk leesbare vorm van de bron metadata record. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#CatalogusRecord%3Abron%20metadata%20record%20landingspagina)</sch:title>
-    <sch:rule context="//dcat:CatalogRecord/mdcat:bron metadata record landingspagina[$profile]">
+    <sch:rule context="//dcat:CatalogRecord/mdcat:landingpageVoorBronMetadata[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(rdfs:Resource) = 1 or count(//rdfs:Resource[@rdf:about = $resource]) = 1"/>
-      <sch:assert test="$validClass">De range van bron metadata record landingspagina moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (mdcat:bron metadata record landingspagina)</sch:assert>
-      <sch:report test="$validClass">De range van bron metadata record landingspagina moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (mdcat:bron metadata record landingspagina)</sch:report>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
+      <sch:assert test="$validClass">De range van bron metadata record landingspagina moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (mdcat:landingpageVoorBronMetadata)</sch:assert>
+      <sch:report test="$validClass">De range van bron metadata record landingspagina moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (mdcat:landingpageVoorBronMetadata)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="bron metadatarecord" id="https://data.vlaanderen.be/shacl/metadata_dcat#CatalogusRecordShape/ac72a26a136d49612ab47e1ead54cb3ac0f9dcb3">
     <sch:title>Bron metadatarecord - De record in een andere catalogus waarvan deze record en de beschrijvingen van het bijhorende hoofdonderwerp van afgeleid zijn. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#CatalogusRecord%3Abron%20metadatarecord)</sch:title>
     <sch:rule context="//dcat:CatalogRecord/dct:source[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(rdfs:Resource) = 1 or count(//rdfs:Resource[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van bron metadatarecord moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (dct:source)</sch:assert>
       <sch:report test="$validClass">De range van bron metadatarecord moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (dct:source)</sch:report>
     </sch:rule>
@@ -606,7 +582,7 @@ wordt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendest
     <sch:title>1315. Endpointurl - De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI). (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3AendpointURL)</sch:title>
     <sch:rule context="//dcat:DataService/dcat:endpointUrl[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(rdfs:Resource) = 1 or count(//rdfs:Resource[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van endpointURL moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (dcat:endpointUrl)</sch:assert>
       <sch:report test="$validClass">De range van endpointURL moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (dcat:endpointUrl)</sch:report>
     </sch:rule>
@@ -639,7 +615,7 @@ wordt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendest
     <sch:title>1321. Endpointbeschrijving - Een beschrijving van de diensten die beschikbaar zijn via de end-points, met inbegrip van hun operaties, parameters, enz. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Aendpointbeschrijving)</sch:title>
     <sch:rule context="//dcat:DataService/dcat:endpointDescription[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(rdfs:Resource) = 1 or count(//rdfs:Resource[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van endpointbeschrijving moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:endpointDescription)</sch:assert>
       <sch:report test="$validClass">De range van endpointbeschrijving moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:endpointDescription)</sch:report>
     </sch:rule>
@@ -672,7 +648,7 @@ wordt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendest
     <sch:title>1327. Landingspagina - Een algemene webpagina waarnaar kan worden genavigeerd in een webbrowser, met algemene aanvullende informatie over de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Alandingspagina)</sch:title>
     <sch:rule context="//dcat:DataService/dcat:landingPage[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(rdfs:Resource) = 1 or count(//rdfs:Resource[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van landingspagina moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:landingPage)</sch:assert>
       <sch:report test="$validClass">De range van landingspagina moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:landingPage)</sch:report>
     </sch:rule>
@@ -681,7 +657,7 @@ wordt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendest
     <sch:title>1328. Landingspagina voor authenticatie - Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Alandingspagina%20voor%20authenticatie)</sch:title>
     <sch:rule context="//dcat:DataService/mdcat:landingspaginaVoorAuthenticatie[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(rdfs:Resource) = 1 or count(//rdfs:Resource[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van landingspagina voor authenticatie moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (mdcat:landingspaginaVoorAuthenticatie)</sch:assert>
       <sch:report test="$validClass">De range van landingspagina voor authenticatie moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (mdcat:landingspaginaVoorAuthenticatie)</sch:report>
     </sch:rule>
@@ -706,7 +682,7 @@ wordt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendest
     <sch:title>1333. Landingspagina voor gebruiksinformatie - Een verwijzing naar de landingspagina met de specifieke informatie over het gebruik van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Alandingspagina%20voor%20gebruiksinformatie)</sch:title>
     <sch:rule context="//dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(rdfs:Resource) = 1 or count(//rdfs:Resource[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van landingspagina voor gebruiksinformatie moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (mdcat:landingspaginaVoorGebruiksinformatie)</sch:assert>
       <sch:report test="$validClass">De range van landingspagina voor gebruiksinformatie moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (mdcat:landingspaginaVoorGebruiksinformatie)</sch:report>
     </sch:rule>
@@ -715,7 +691,7 @@ wordt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendest
     <sch:title>1334. Landingspagina voor statusinformatie - Een verwijzing naar de statuspagina van de dataservice (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Alandingspagina%20voor%20statusinformatie)</sch:title>
     <sch:rule context="//dcat:DataService/mdcat:landingspaginaVoorStatusinformatie[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(rdfs:Resource) = 1 or count(//rdfs:Resource[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van landingspagina voor statusinformatie moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (mdcat:landingspaginaVoorStatusinformatie)</sch:assert>
       <sch:report test="$validClass">De range van landingspagina voor statusinformatie moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (mdcat:landingspaginaVoorStatusinformatie)</sch:report>
     </sch:rule>
@@ -1075,7 +1051,7 @@ wordt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendest
     <sch:title>1712. Landingspagina - Een algemene webpagina waarnaar kan worden genavigeerd in een webbrowser, met algemene informatie over de dataset, zijn distributies en/of aanvullende informatie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Dataset%3Alandingspagina)</sch:title>
     <sch:rule context="//dcat:Dataset/dcat:landingPage[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(rdfs:Resource) = 1 or count(//rdfs:Resource[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van landingspagina moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (dcat:landingPage)</sch:assert>
       <sch:report test="$validClass">De range van landingspagina moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (dcat:landingPage)</sch:report>
     </sch:rule>
@@ -1250,7 +1226,7 @@ waaraan de distributie voldoet. (https://data.vlaanderen.be/doc/applicatieprofie
     <sch:title>1803. Downloadurl - De URL waar de data gedownload kan worden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Distributie%3AdownloadURL)</sch:title>
     <sch:rule context="//dcat:Distribution/dcat:downloadURL[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(rdfs:Resource) = 1 or count(//rdfs:Resource[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van downloadURL moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (dcat:downloadURL)</sch:assert>
       <sch:report test="$validClass">De range van downloadURL moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (dcat:downloadURL)</sch:report>
     </sch:rule>
@@ -1360,7 +1336,7 @@ waaraan de distributie voldoet. (https://data.vlaanderen.be/doc/applicatieprofie
     <sch:title>1910. Toegangsurl - Een URL waar de data kan gevonden worden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Distributie%3AtoegangsURL)</sch:title>
     <sch:rule context="//dcat:Distribution/dcat:accessURL[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(rdfs:Resource) = 1 or count(//rdfs:Resource[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van toegangsURL moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (dcat:accessURL)</sch:assert>
       <sch:report test="$validClass">De range van toegangsURL moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (dcat:accessURL)</sch:report>
     </sch:rule>
@@ -1421,7 +1397,7 @@ waaraan de distributie voldoet. (https://data.vlaanderen.be/doc/applicatieprofie
     <sch:title>Downloadurl - De URL waar de afbeelding gedownload kan worden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#VoorbeeldWeergave%3AdownloadURL)</sch:title>
     <sch:rule context="//dcat:Distribution/dcat:downloadURL[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(rdfs:Resource) = 1 or count(//rdfs:Resource[@rdf:about = $resource]) = 1"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:assert test="$validClass">De range van downloadURL moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (dcat:downloadURL)</sch:assert>
       <sch:report test="$validClass">De range van downloadURL moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Resource&gt; zijn. (dcat:downloadURL)</sch:report>
     </sch:rule>
@@ -1432,14 +1408,6 @@ waaraan de distributie voldoet. (https://data.vlaanderen.be/doc/applicatieprofie
       <sch:let name="validMax" value="count(dcat:downloadURL) &lt;= 1"/>
       <sch:assert test="$validMax">Maximaal 1 waarden toegelaten voor downloadURL (dcat:downloadURL)</sch:assert>
       <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor downloadURL (dcat:downloadURL)</sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern name="downloadURL" id="https://data.vlaanderen.be/shacl/metadata_dcat#VoorbeeldWeergaveShape/ad42d11500885f18c10b5ee1a87b5ceca761f903">
-    <sch:title>Downloadurl - De URL waar de afbeelding gedownload kan worden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#VoorbeeldWeergave%3AdownloadURL)</sch:title>
-    <sch:rule context="//dcat:Distribution[$profile]">
-      <sch:let name="validMin" value="count(dcat:downloadURL) &gt;= 1"/>
-      <sch:assert test="$validMin">Minimaal 1 waarden verwacht voor downloadURL (dcat:downloadURL)</sch:assert>
-      <sch:report test="$validMin">Minimaal 1 waarden verwacht voor downloadURL (dcat:downloadURL)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="mediatype" id="https://data.vlaanderen.be/shacl/metadata_dcat#VoorbeeldWeergaveShape/06b127df99a6de2b3aef269b0d4b8746a5b78dcc">
