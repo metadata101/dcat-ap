@@ -19,6 +19,9 @@
   <sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
   <sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
   <sch:ns prefix="mdcat" uri="http://data.vlaanderen.be/ns/metadata-dcat#"/>
+  <sch:ns prefix="geodcat" uri="http://data.europa.eu/930/"/>
+  <sch:ns prefix="generiek" uri="http://data.vlaanderen.be/ns/generiek#"/>
+  <sch:ns prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
   <sch:let name="profile" value="boolean(/*[starts-with(//dcat:CatalogRecord//dct:Standard/@rdf:about, 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL')])"/>
   <sch:pattern>
     <sch:title>At least one theme from the data.gov.be vocabulary is required</sch:title>
@@ -26,6 +29,23 @@
       <sch:let name="dataThemes" value="count(dcat:theme[starts-with(skos:Concept/@rdf:about, 'http://vocab.belgif.be/auth/datatheme')])"/>
       <sch:assert test="$dataThemes &gt; 0">The dcat:Resource doesn't have a data.gov.be theme</sch:assert>
       <sch:report test="$dataThemes &gt; 0">The dcat:Resource have a data.gov.be theme</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>Beschrijving - De beschrijving van de distributie</sch:title>
+    <sch:rule context="//dcat:Distribution[$profile]">
+      <sch:let name="validMin" value="count(dct:description) &gt;= 1"/>
+      <sch:assert test="$validMin">Minimaal 1 waarden verwacht voor beschrijving (dct:description)</sch:assert>
+      <sch:report test="$validMin">Minimaal 1 waarden verwacht voor beschrijving (dct:description)</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>Beschrijving - De beschrijving van de distributie</sch:title>
+    <sch:rule context="//dcat:Distribution/dct:description[$profile]">
+      <sch:let name="isLiteral" value="normalize-space(.) != ''"/>
+      <sch:let name="hasLang" value="normalize-space(@xml:lang) != ''"/>
+      <sch:assert test="$isLiteral and $hasLang">De range van beschrijving moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:description)</sch:assert>
+      <sch:report test="$isLiteral and $hasLang">De range van beschrijving moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:description)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="levensfase" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/0aea9e8a54457ca50f1b00c07872cb7c7b39e8ba">
