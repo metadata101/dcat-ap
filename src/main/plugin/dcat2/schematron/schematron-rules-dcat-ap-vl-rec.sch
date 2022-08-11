@@ -30,6 +30,23 @@
       <sch:report test="$dataThemes &gt; 0">The dcat:Resource have a data.gov.be theme</sch:report>
     </sch:rule>
   </sch:pattern>
+  <sch:pattern>
+    <sch:title>Beschrijving - De beschrijving van de distributie</sch:title>
+    <sch:rule context="//dcat:Distribution[$profile]">
+      <sch:let name="validMin" value="count(dct:description) &gt;= 1"/>
+      <sch:assert test="$validMin">Minimaal 1 waarden verwacht voor beschrijving (dct:description)</sch:assert>
+      <sch:report test="$validMin">Minimaal 1 waarden verwacht voor beschrijving (dct:description)</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>Beschrijving - De beschrijving van de distributie</sch:title>
+    <sch:rule context="//dcat:Distribution/dct:description[$profile]">
+      <sch:let name="isLiteral" value="normalize-space(.) != ''"/>
+      <sch:let name="hasLang" value="normalize-space(@xml:lang) != ''"/>
+      <sch:assert test="$isLiteral and $hasLang">De range van beschrijving moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:description)</sch:assert>
+      <sch:report test="$isLiteral and $hasLang">De range van beschrijving moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:description)</sch:report>
+    </sch:rule>
+  </sch:pattern>
   <sch:pattern name="levensfase" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/0aea9e8a54457ca50f1b00c07872cb7c7b39e8ba">
     <sch:title>1337. Levensfase - De levensfase waarin de dataservice zich bevindt. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Alevensfase)</sch:title>
     <sch:rule context="//dcat:DataService/mdcat:levensfase[$profile]">
