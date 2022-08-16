@@ -1031,4 +1031,22 @@
       <sch:report test="$validMin">Minimaal 1 waarden verwacht voor uitgever (dct:publisher)</sch:report>
     </sch:rule>
   </sch:pattern>
+  <sch:pattern name="beschrijving" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#UsageNoteDistributieShape/1">
+    <sch:title>Beschrijving - Een bondige tekstuele omschrijving van de distributie.</sch:title>
+    <sch:rule context="//dcat:Distribution/dct:description[$profile]">
+      <sch:let name="isLiteral" value="normalize-space(.) != ''"/>
+      <sch:let name="hasLang" value="normalize-space(@xml:lang) != ''"/>
+      <sch:assert test="$isLiteral and $hasLang">De range van beschrijving moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:description)</sch:assert>
+      <sch:report test="$isLiteral and $hasLang">De range van beschrijving moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:description)</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern name="beschrijving" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#UsageNoteDistributieShape/4">
+    <sch:title>Beschrijving - Een bondige tekstuele omschrijving van de distributie.</sch:title>
+    <sch:rule context="//dcat:Distribution/dct:description[$profile]">
+      <sch:let name="current" value="."/>
+      <sch:let name="isUniqueLang" value="count(preceding-sibling::dct:description[string() = string($current) and @xml:lang = $current/@xml:lang]) = 0"/>
+      <sch:assert test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor beschrijving (dct:description)</sch:assert>
+      <sch:report test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor beschrijving (dct:description)</sch:report>
+    </sch:rule>
+  </sch:pattern>
 </sch:schema>
