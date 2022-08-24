@@ -1171,6 +1171,11 @@ Rome - Italy. email: geonetwork@osgeo.org
               <xsl:value-of select="./sr:uri"/>
             </xsl:attribute>
           </xsl:if>
+          <!-- dct:identifier -->
+          <xsl:call-template name="identifier">
+            <xsl:with-param name="subject" select="./*"/>
+            <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
+          </xsl:call-template>
           <!-- dct:title -->
           <xsl:call-template name="properties">
             <xsl:with-param name="subject" select="./*"/>
