@@ -23,14 +23,11 @@
 
 package org.fao.geonet.kernel.harvest.harvester.dcatap;
 
-import com.google.common.collect.Lists;
 import jeeves.server.UserSession;
 import jeeves.server.context.ServiceContext;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.DailyRollingFileAppender;
-import org.apache.log4j.PatternLayout;
 import org.fao.geonet.GeonetContext;
 import org.fao.geonet.Logger;
 import org.fao.geonet.constants.Geonet;
@@ -52,21 +49,17 @@ import org.fao.geonet.kernel.schema.MetadataSchema;
 import org.fao.geonet.repository.OperationAllowedRepository;
 import org.fao.geonet.repository.SchematronRepository;
 import org.fao.geonet.utils.IO;
-import org.fao.geonet.utils.Log;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Document;
 import org.jdom.Element;
-import org.jdom.filter.ElementFilter;
 import org.jdom.input.SAXBuilder;
-import org.jdom.output.Format;
-import org.jdom.output.XMLOutputter;
 import org.jdom.transform.JDOMSource;
 
 import java.io.*;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.text.SimpleDateFormat;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -121,7 +114,7 @@ public class Aligner extends BaseAligner<DCAT2Params> {
     private Path xslFile;
     private Path xslFileForCsvOutput;
 
-    public Aligner(AtomicBoolean cancelMonitor, Logger log, ServiceContext sc, DCAT2Params params) throws Exception {
+    public Aligner(AtomicBoolean cancelMonitor, Logger log, ServiceContext sc, DCAT2Params params) {
         super(cancelMonitor);
         this.log = log;
         this.context = sc;
@@ -163,8 +156,7 @@ public class Aligner extends BaseAligner<DCAT2Params> {
             if (!exists(recordsInfo, uuid)) {
                 String id = localUuids.getID(uuid);
 
-                if (log.isDebugEnabled())
-                    log.debug("  - Removing old metadata with local id:" + id);
+                log.debug("  - Removing old metadata with local id:" + id);
                 metadataManager.deleteMetadata(context, id);
 
                 dataMan.flush();
@@ -175,7 +167,11 @@ public class Aligner extends BaseAligner<DCAT2Params> {
         BufferedWriter csvOutputFile = null;
         try {
             csvOutputFile = new BufferedWriter(
-                new OutputStreamWriter(new FileOutputStream(log.getFileAppender().substring(0,log.getFileAppender().lastIndexOf(".log")) + ".csv"), Charset.forName("UTF-8")));
+                new OutputStreamWriter(
+                    Files.newOutputStream(Paths.get(log.getFileAppender().substring(0, log.getFileAppender().lastIndexOf(".log")) + ".csv")),
+                    StandardCharsets.UTF_8
+                )
+            );
             String separator = "|";
             csvOutputFile.write("Identifier" + separator + "Harvester" + separator + "Label" + separator + "Rule" + separator + "Success count" + separator + "Warning count" + separator + "Error count" + separator + "Message type" + separator + "Message");
             csvOutputFile.write("\n");
@@ -188,7 +184,7 @@ public class Aligner extends BaseAligner<DCAT2Params> {
                 }
 
                 try {
-                    log.info("Importing record: " + ri.uri);
+                    log.debug("Importing record: " + ri.uri);
                     String id = dataMan.getMetadataId(ri.uuid);
 
                     if (id == null) {
@@ -228,15 +224,12 @@ public class Aligner extends BaseAligner<DCAT2Params> {
         String schema = dataMan.autodetectSchema(md, null);
 
         if (schema == null) {
-            if (log.isDebugEnabled()) {
-                log.debug("  - Metadata skipped due to unknown schema. uuid:" + ri.uuid);
-            }
+            log.debug("  - Metadata skipped due to unknown schema. uuid:" + ri.uuid);
             result.unknownSchema++;
             return;
         }
 
-        if (log.isDebugEnabled())
-            log.debug("  - Adding metadata with remote uuid:" + ri.uuid + " schema:" + schema);
+        log.debug("  - Adding metadata with remote uuid:" + ri.uuid + " schema:" + schema);
 
         try {
             params.getValidate().validate(dataMan, context, md);
@@ -262,7 +255,7 @@ public class Aligner extends BaseAligner<DCAT2Params> {
         // insert metadata
         //
         int ownerId = Integer.parseInt((StringUtils.isNotEmpty(params.getOwnerIdUser()) && StringUtils.isNumeric(params.getOwnerIdUser())) ? params.getOwnerIdUser() : params.getOwnerId());
-        //int ownerId = getOwner(); //FIXME
+        // int ownerId = getOwner(); //FIXME
 
         AbstractMetadata metadata = new Metadata();
         metadata.setUuid(ri.uuid);
@@ -283,7 +276,7 @@ public class Aligner extends BaseAligner<DCAT2Params> {
 
         try {
             metadata.getSourceInfo().setGroupOwner(Integer.valueOf(params.getOwnerIdGroup()));
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException ignored) {
         }
 
         addCategories(metadata, params.getCategories(), localCateg, context, null, false);
@@ -298,10 +291,8 @@ public class Aligner extends BaseAligner<DCAT2Params> {
         dataMan.indexMetadata(id, Math.random() < 0.01, null);
         result.addedMetadata++;
 
-        System.out.println("metadata imported: " + ri.id);
-
         Element validationReport = validateMetadata(ri, metadata);
-        log.info("VALIDATION REPORT for record with UUID: " + ri.uuid + " and with URI: " + ri.uri + transformReportToString(ri.uuid, validationReport, xslFile));
+        log.debug("VALIDATION REPORT for record with UUID: " + ri.uuid + " and with URI: " + ri.uri + transformReportToString(ri.uuid, validationReport, xslFile));
         csvOutputFile.write(transformReportToString(ri.uuid, validationReport, xslFileForCsvOutput));
     }
 
@@ -309,24 +300,14 @@ public class Aligner extends BaseAligner<DCAT2Params> {
         String date = localUuids.getChangeDate(ri.uuid);
 
         if (date == null) {
-            if (log.isDebugEnabled()) {
-                log.debug("  - Skipped metadata managed by another harvesting node. uuid:" + ri.uuid + ", name:"
-                    + params.getName());
-            }
+            log.debug("  - Skipped metadata managed by another harvesting node. uuid:" + ri.uuid + ", name:" + params.getName());
         } else {
-            if (log.isDebugEnabled()) {
-                log.debug("  - Comparing date " + date + " with harvested date " + ri.changeDate + " Comparison: "
-                    + ri.isMoreRecentThan(date));
-            }
+            log.debug("  - Comparing date " + date + " with harvested date " + ri.changeDate + " Comparison: " + ri.isMoreRecentThan(date));
             if (!ri.isMoreRecentThan(date)) {
-                if (log.isDebugEnabled()) {
-                    log.debug("  - Metadata XML not changed for uuid:" + ri.uuid);
-                }
+                log.debug("  - Metadata XML not changed for uuid:" + ri.uuid);
                 result.unchangedMetadata++;
             } else {
-                if (log.isDebugEnabled()) {
-                    log.debug("  - Updating local metadata for uuid:" + ri.uuid);
-                }
+                log.debug("  - Updating local metadata for uuid:" + ri.uuid);
                 // Here, the acutal metadata is retrieved.
                 Element md = ri.metadata;
 
@@ -336,7 +317,7 @@ public class Aligner extends BaseAligner<DCAT2Params> {
                 try {
                     params.getValidate().validate(dataMan, context, md);
                 } catch (Exception e) {
-                    log.info("Ignoring invalid metadata uuid: " + ri.uuid);
+                    log.debug("Ignoring invalid metadata uuid: " + ri.uuid);
                     result.doesNotValidate++;
                     return;
                 }
@@ -375,10 +356,10 @@ public class Aligner extends BaseAligner<DCAT2Params> {
                 result.updatedMetadata++;
 
                 Element validationReport = validateMetadata(ri, metadata);
-                log.info("VALIDATION REPORT for record with UUID: " + ri.uuid + " and with URI: " + ri.uri + transformReportToString(ri.uuid, validationReport, xslFile));
+                log.debug("VALIDATION REPORT for record with UUID: " + ri.uuid + " and with URI: " + ri.uri + transformReportToString(ri.uuid, validationReport, xslFile));
                 csvOutputFile.write(transformReportToString(ri.uuid, validationReport, xslFileForCsvOutput));
-                //XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
-                //log.info(xmlOutputter.outputString(validationReport));
+                // XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
+                // log.info(xmlOutputter.outputString(validationReport));
             }
         }
     }
@@ -448,7 +429,7 @@ public class Aligner extends BaseAligner<DCAT2Params> {
 
         final Element validationReport = Xml.transform(elResp, validateXsl, params);
 
-        //calculate the total number of validation errors in the report against DCAT-AP v1.1
+        // calculate the total number of validation errors in the report against DCAT-AP v1.1
 
         int errors = 0;
         for (Object report : validationReport.getChildren("report")) {
@@ -460,7 +441,7 @@ public class Aligner extends BaseAligner<DCAT2Params> {
         }
         if (errors > 0) result.doesNotValidate++;
 
-        //Make the records publicly visible when valid.
+        // Make the records publicly visible when valid.
         /*
         int iId = Integer.parseInt(ri.id);
         if (errors > 0 ){
