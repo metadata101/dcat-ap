@@ -348,13 +348,17 @@
       skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden' and
       skos:Concept/@rdf:about = ('https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA', 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/SERVICEVLOPENDATA')
     ]"/>
-    <Field name="isOpenData" string="{if (count($openKeywords) > 0) then 'y' else 'n'}" store="true" index="true"/>
+    <xsl:variable name="isOpenData" select="if (count($openKeywords) > 0) then 'y' else 'n'"/>
+    <Field name="isOpenData" string="{$isOpenData}" store="true" index="true"/>
 
     <xsl:variable name="geoKeywords" select="dct:subject[
       skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden' and
       skos:Concept/@rdf:about = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/GEODATA'
     ]"/>
-    <Field name="isGeoData" string="{if (count($geoKeywords) > 0) then 'y' else 'n'}" store="true" index="true"/>
+    <xsl:variable name="isGeoData" select="if (count($geoKeywords) > 0) then 'y' else 'n'"/>
+    <Field name="isGeoData" string="{$isGeoData}" store="true" index="true"/>
+
+    <Field name="domain" string="{concat('geo: ', $isGeoData, ', open: ', $isOpenData)}" store="true" index="true" />
 
     <xsl:variable name="listOfKeywords">{
       <xsl:variable name="keywordWithNoThesaurus"
