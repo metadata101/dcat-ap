@@ -53,7 +53,7 @@
         <xsl:with-param name="isoLangId" select="$isoLangId"/>
       </xsl:apply-templates>
       <xsl:for-each select="$datasetOrDataservice">
-        <xsl:apply-templates select="." mode="dataset_service">
+        <xsl:apply-templates select=".">
           <xsl:with-param name="langId" select="$langId"/>
           <xsl:with-param name="isoLangId" select="$isoLangId"/>
         </xsl:apply-templates>
@@ -92,9 +92,10 @@
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template match="dcat:Dataset|dcat:DataService" mode="dataset_service">
+  <xsl:template match="dcat:Dataset|dcat:DataService">
     <xsl:param name="isoLangId"/>
     <xsl:param name="langId"/>
+
     <!-- === Free text search === -->
     <Field name="any" store="false" index="true">
       <xsl:attribute name="string">
@@ -182,6 +183,20 @@
         </xsl:for-each>
       </xsl:when>
     </xsl:choose>
+
+    <xsl:variable name="_defaultTitle">
+      <xsl:call-template name="defaultTitle">
+        <xsl:with-param name="isoDocLangId" select="$isoLangId"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <Field name="_defaultTitle" string="{string($_defaultTitle)}" store="true" index="true"/>
+
+    <xsl:variable name="_defaultAbstract">
+      <xsl:call-template name="defaultAbstract">
+        <xsl:with-param name="isoDocLangId" select="$isoLangId"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <Field name="_defaultAbstract" string="{string($_defaultAbstract)}" store="true" index="true"/>
 
     <!-- This is needed by the CITE test script to look for strings like 'a
             b*' strings that contain spaces -->
