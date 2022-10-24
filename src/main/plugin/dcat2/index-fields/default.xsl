@@ -48,44 +48,4 @@
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template match="dcat:Dataset|dcat:DataService">
-    <xsl:param name="isoLangId"/>
-    <xsl:param name="langId"/>
-
-    <xsl:variable name="_defaultTitle">
-      <xsl:call-template name="defaultTitle">
-        <xsl:with-param name="isoDocLangId" select="$isoLangId"/>
-      </xsl:call-template>
-    </xsl:variable>
-
-    <Field name="_defaultTitle" string="{string($_defaultTitle)}"
-           store="true" index="true"/>
-
-    <!-- not tokenized title for sorting, needed for multilingual sorting -->
-    <xsl:if test="geonet:info/isTemplate != 's'">
-      <Field name="_title" string="{string($_defaultTitle)}" store="true"
-             index="true"/>
-    </xsl:if>
-
-
-    <xsl:variable name="_defaultAbstract">
-      <xsl:call-template name="defaultAbstract">
-        <xsl:with-param name="isoDocLangId" select="$isoLangId"/>
-      </xsl:call-template>
-    </xsl:variable>
-
-    <Field name="_defaultAbstract" string="{string($_defaultAbstract)}"
-           store="true" index="true"/>
-
-    <xsl:apply-templates select="." mode="dataset_service">
-      <xsl:with-param name="langId" select="$langId"/>
-      <xsl:with-param name="isoLangId" select="$isoLangId"/>
-    </xsl:apply-templates>
-
-    <xsl:apply-templates select="*" mode="index">
-      <xsl:with-param name="langId" select="$langId"/>
-      <xsl:with-param name="isoLangId" select="$isoLangId"/>
-    </xsl:apply-templates>
-  </xsl:template>
-
 </xsl:stylesheet>
