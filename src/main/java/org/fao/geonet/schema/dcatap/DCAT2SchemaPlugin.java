@@ -101,11 +101,11 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
         return this.getAssociatedRdfUUIDs(metadata, elementFilter);
     }
 
-    @Override
-    public Set<String> getAssociatedExternalDatasetLinks(Element metadata) {
-        ElementFilter elementFilter = new ElementFilter("servesDataset", DCAT2Namespaces.DCAT);
-        return this.getAssociatedExternalRdfLinks(metadata, elementFilter);
-    }
+    // @Override
+    // public Set<String> getAssociatedExternalDatasetLinks(Element metadata) {
+    //     ElementFilter elementFilter = new ElementFilter("servesDataset", DCAT2Namespaces.DCAT);
+    //     return this.getAssociatedExternalRdfLinks(metadata, elementFilter);
+    // }
 
     @Override
     public Set<String> getAssociatedFeatureCatalogueUUIDs(Element metadata) {
@@ -116,6 +116,26 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
     public Set<String> getAssociatedSourceUUIDs(Element metadata) {
         ElementFilter elementFilter = new ElementFilter("relation", DCAT2Namespaces.DCT);
         return this.getAssociatedRdfUUIDs(metadata, elementFilter);
+    }
+
+    @Override
+    public Set<AssociatedResource> getAssociatedParents(Element metadata) {
+        return null;
+    }
+
+    @Override
+    public Set<AssociatedResource> getAssociatedDatasets(Element metadata) {
+        return null;
+    }
+
+    @Override
+    public Set<AssociatedResource> getAssociatedFeatureCatalogues(Element metadata) {
+        return null;
+    }
+
+    @Override
+    public Set<AssociatedResource> getAssociatedSources(Element metadata) {
+        return null;
     }
 
     @Override
@@ -139,17 +159,17 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
         return null;
     }
 
-    @Override
-    public Set<String> getAssociatedServices(Element metadata) {
-        ElementFilter elementFilter = new ElementFilter("accessService", DCAT2Namespaces.DCAT);
-        return this.getAssociatedRdfUUIDs(metadata, elementFilter);
-    }
-
-    @Override
-    public Set<String> getAssociatedExternalServiceLinks(Element metadata) {
-        ElementFilter elementFilter = new ElementFilter("accessService", DCAT2Namespaces.DCAT);
-        return this.getAssociatedExternalRdfLinks(metadata, elementFilter);
-    }
+    // @Override
+    // public Set<String> getAssociatedServices(Element metadata) {
+    //     ElementFilter elementFilter = new ElementFilter("accessService", DCAT2Namespaces.DCAT);
+    //     return this.getAssociatedRdfUUIDs(metadata, elementFilter);
+    // }
+    //
+    // @Override
+    // public Set<String> getAssociatedExternalServiceLinks(Element metadata) {
+    //     ElementFilter elementFilter = new ElementFilter("accessService", DCAT2Namespaces.DCAT);
+    //     return this.getAssociatedExternalRdfLinks(metadata, elementFilter);
+    // }
 
     private Set<String> getAssociatedRdfUUIDs(Element metadata, ElementFilter filter) {
         String nodeUrl = ApplicationContextHolder.get().getBean(SettingManager.class).getNodeURL();
