@@ -29,6 +29,6 @@
 
   <bean id="dcat2SchemaPlugin"
         class="org.fao.geonet.schema.dcatap.DCAT2SchemaPlugin"/>
-  <bean id="dcatap" class="org.fao.geonet.kernel.harvest.harvester.dcatap.DCAT2Harvester"
-        scope="prototype"/>
+  <!-- <bean id="dcatap" class="org.fao.geonet.kernel.harvest.harvester.dcatap.DCAT2Harvester" -->
+  <!--       scope="prototype"/> -->
 </beans>
