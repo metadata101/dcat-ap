@@ -95,7 +95,7 @@
         <xsl:with-param name="childEditInfo" select="."/>
         <xsl:with-param name="parentEditInfo" select="../gn:element"/>
         <xsl:with-param name="isFirst" select="count(preceding-sibling::*[name() = $name]) = 0"/>
-        <xsl:with-param name="isForceLabel" select="true()"/>
+        <!-- <xsl:with-param name="isForceLabel" select="true()"/> -->
       </xsl:call-template>
     </xsl:if>
   </xsl:template>
@@ -121,7 +121,7 @@
       <xsl:with-param name="errors" select="$errors"/>
       <xsl:with-param name="cls" select="local-name()"/>
       <xsl:with-param name="xpath" select="$xpath"/>
-      <xsl:with-param name="isSlideToggle" select="if ($isSupportingSlideToggle and $isDisplayingSections = false()) then 'true' else 'false'"/>
+      <!-- <xsl:with-param name="isSlideToggle" select="if ($isSupportingSlideToggle and $isDisplayingSections = false()) then 'true' else 'false'"/> -->
       <xsl:with-param name="subTreeSnippet">
 
         <xsl:if test="$isEditing">
@@ -229,7 +229,7 @@
         <xsl:variable name="label" select="$fieldNode/@label"/>
         <xsl:variable name="del" select="'.'"/>
         <xsl:variable name="template" select="$fieldNode/template"/>
-        <xsl:variable name="isForceLabel" select="$fieldNode/@forceLabel"/>
+        <!-- <xsl:variable name="isForceLabel" select="$fieldNode/@forceLabel"/> -->
         <xsl:variable name="currentNode" select="." />
         <!-- Check if template field values should be in
         readonly mode in the editor.-->
@@ -288,7 +288,7 @@
           <xsl:with-param name="template" select="$templateCombinedWithNode"/>
           <xsl:with-param name="keyValues" select="$keyValues"/>
           <xsl:with-param name="refToDelete" select="$refToDelete/gn:element"/>
-          <xsl:with-param name="isFirst" select="$isForceLabel and count(preceding-sibling::*[name() = $name]) = 0"/>
+          <!-- <xsl:with-param name="isFirst" select="$isForceLabel and count(preceding-sibling::*[name() = $name]) = 0"/> -->
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
@@ -323,18 +323,18 @@
                           else
                           ((gn:element/@down = 'true' and not(gn:element/@up)) or
                           (not(gn:element/@down) and not(gn:element/@up)))"/>
-          <xsl:with-param name="isForceLabel" select="true()"/>
+          <!-- <xsl:with-param name="isForceLabel" select="true()"/> -->
           <xsl:with-param name="isDisabled" select="$isDisabled"/>
           <!-- Boolean that allow to show the mandatory "*" in black instead of red -->
-          <xsl:with-param name="subRequired" select="(name() = 'vcard:street-address' and name(..) = 'vcard:Address') or
-                                                     (name() = 'vcard:locality' and name(..) = 'vcard:Address') or
-                                                     (name() = 'vcard:postal-code' and name(..) = 'vcard:Address') or
-                                                     (name() = 'vcard:country-name' and name(..) = 'vcard:Address') or
-                                                     (name() = 'foaf:name' and ../../name() = 'dct:publisher') or
-                                                     (name() = 'foaf:name' and name(..) = 'foaf:Document') or
-                                                     (name() = 'skos:notation' and name(..) = 'adms:Identifier') or
-                                                     (name() = 'spdx:algorithm' and name(..) = 'spdx:Checksum') or
-                                                     (name() = 'spdx:checksumValue' and name(..) = 'spdx:Checksum')"/>
+          <!-- <xsl:with-param name="subRequired" select="(name() = 'vcard:street-address' and name(..) = 'vcard:Address') or -->
+          <!--                                            (name() = 'vcard:locality' and name(..) = 'vcard:Address') or -->
+          <!--                                            (name() = 'vcard:postal-code' and name(..) = 'vcard:Address') or -->
+          <!--                                            (name() = 'vcard:country-name' and name(..) = 'vcard:Address') or -->
+          <!--                                            (name() = 'foaf:name' and ../../name() = 'dct:publisher') or -->
+          <!--                                            (name() = 'foaf:name' and name(..) = 'foaf:Document') or -->
+          <!--                                            (name() = 'skos:notation' and name(..) = 'adms:Identifier') or -->
+          <!--                                            (name() = 'spdx:algorithm' and name(..) = 'spdx:Checksum') or -->
+          <!--                                            (name() = 'spdx:checksumValue' and name(..) = 'spdx:Checksum')"/> -->
         </xsl:call-template>
 
         <xsl:if test="$isEditing">
@@ -394,7 +394,7 @@
       <xsl:with-param name="name" select="$ref"/>
       <xsl:with-param name="editInfo" select="$attribute"/>
       <xsl:with-param name="listOfValues" select="$helper"/>
-      <xsl:with-param name="subRequired" select="(name() = 'rdf:about' and name(..) = 'dct:LicenseDocument')"/>
+      <!-- <xsl:with-param name="subRequired" select="(name() = 'rdf:about' and name(..) = 'dct:LicenseDocument')"/> -->
     </xsl:call-template>
   </xsl:template>
 
