@@ -26,7 +26,10 @@
                 xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:geonet="http://www.fao.org/geonetwork">
 
+  <xsl:param name="thesauriDir"/>
+
   <xsl:variable name="uuidRegex" select="'^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$'"/>
+  <xsl:variable name="protocolConcepts" select="document('../thesauri/theme/protocol.rdf')/rdf:RDF"/>
 
   <!-- The main metadata language -->
   <xsl:variable name="isoDocLangId">
@@ -180,6 +183,7 @@
               <Field name="serviceProtocol" string="{dct:title[1]}" store="true" index="true"/>
             </xsl:otherwise>
           </xsl:choose>
+          <xsl:apply-templates mode="index-protocol" select="."/>
         </xsl:for-each>
       </xsl:when>
     </xsl:choose>
@@ -487,6 +491,7 @@
           <Field name="license" string="{$title}" store="true" index="true"/>
         </xsl:if>
       </xsl:for-each>
+      <xsl:apply-templates mode="index-protocol" select="dct:conformsTo/dct:Standard"/>
 
     </xsl:for-each>
 
@@ -707,6 +712,50 @@
       <!-- <Field name="{$fieldPrefix}RoleAndEmail" string="{$role}|{string(.)}"
                 store="true" index="true"/> -->
     </xsl:for-each>
+  </xsl:template>
+
+
+  <xsl:template mode="index-protocol" match="dct:conformsTo/dct:Standard">
+    <xsl:variable name="conceptURI" select="string(@rdf:about)"/>
+    <xsl:variable name="concept" select="$protocolConcepts/skos:Concept[@rdf:about = $conceptURI]"/>
+    <xsl:variable name="isoDocLangId">
+      <xsl:call-template name="langId-dcat2"/>
+    </xsl:variable>
+
+    <xsl:variable name="topLevelProtocol">
+      <xsl:choose>
+        <xsl:when test="starts-with($concept/skos:notation, 'WWW:DOWNLOAD-1.0') or $concept/skos:notation = 'LINK download-store'">
+          <xsl:value-of select="'download'"/>
+        </xsl:when>
+        <xsl:when test="starts-with($concept/skos:notation, 'WWW:LINK-1.0') or $concept/skos:notation = 'ESRI:AIMS-http-configuration'">
+          <xsl:value-of select="'link'"/>
+        </xsl:when>
+        <xsl:when test="$concept/skos:hasTopConcept">
+          <xsl:variable name="topProtocol" select="$protocolConcepts/skos:Concept[@rdf:about = $concept/skos:hasTopConcept]"/>
+          <xsl:choose>
+            <xsl:when test="$topProtocol/skos:prefLabel[@xml:lang = $isoDocLangId]">
+              <xsl:value-of select="$topProtocol/skos:prefLabel[@xml:lang = $isoDocLangId]"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="$topProtocol/skos:prefLabel[1]"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:choose>
+            <xsl:when test="$concept/skos:prefLabel[@xml:lang = $isoDocLangId]">
+              <xsl:value-of select="$concept/skos:prefLabel[@xml:lang = $isoDocLangId]"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="$concept/skos:prefLabel[1]"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="normalize-space($topLevelProtocol) != ''">
+      <Field name="protocol" string="{normalize-space($topLevelProtocol)}" store="true" index="true"/>
+    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>
