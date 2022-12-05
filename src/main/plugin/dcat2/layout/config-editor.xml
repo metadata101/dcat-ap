@@ -866,8 +866,6 @@
         <for name="dct:created" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created"/>
         <for name="dct:modified" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified"/>
         <for name="dct:issued" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued"/>
-        <for name="xml:lang" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher/foaf:Agent/foaf:name"/>
-        <for name="xml:lang" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/foaf:name"/>
         <!-- Publisher -->
         <for name="foaf:Agent"/>
         <for name="foaf:Agent/dct:type"/>
