@@ -442,7 +442,7 @@
           <xsl:if test="locn:geometry">
             <tr>
               <td colspan="2">
-                <xsl:if test="count($bboxCoordinates)=4">
+                <xsl:if test="count($bboxCoordinates) >= 4">
                   <xsl:copy-of
                     select="gn-fn-render:bbox(
                       xs:double($bboxCoordinates[1]),
@@ -473,7 +473,7 @@
     <xsl:variable name="stringValue" select="string()"/>
     <!-- Special case for dct:license with an empty dct:LicenseDocument with only @rdf:about or for dcat:contactPoint with only vcard:hasEmail and vcard:hasURL-->
     <xsl:if test="normalize-space($stringValue) != '' or
-                  (name() = 'dct:license' and normalize-space(./dct:LicenseDocument/@rdf:about) != '') or
+                  (normalize-space(./*/@rdf:about) != '') or
                   (name() = 'dcat:contactPoint' and count(./vcard:Organization/*[normalize-space(@rdf:resource) != ''])>0) or
                   (name() = 'dct:publisher' and normalize-space(./foaf:Agent/@rdf:about) != '')">
       <tr>
