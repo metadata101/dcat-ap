@@ -163,7 +163,7 @@
           </foaf:name>
           <dct:type>
             <skos:Concept rdf:about="http://purl.org/adms/publishertype/LocalAuthority">
-              <skos:prefLabel xml:lang="nl">Local Authority</skos:prefLabel>
+              <skos:prefLabel xml:lang="nl">Lokaal bestuur</skos:prefLabel>
               <skos:prefLabel xml:lang="en">Local Authority</skos:prefLabel>
               <skos:prefLabel xml:lang="fr">Local Authority</skos:prefLabel>
               <skos:prefLabel xml:lang="de">Local Authority</skos:prefLabel>
