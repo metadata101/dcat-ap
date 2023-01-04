@@ -163,7 +163,7 @@
           </foaf:name>
           <dct:type>
             <skos:Concept rdf:about="http://purl.org/adms/publishertype/LocalAuthority">
-              <skos:prefLabel xml:lang="nl">Local Authority</skos:prefLabel>
+              <skos:prefLabel xml:lang="nl">Lokaal bestuur</skos:prefLabel>
               <skos:prefLabel xml:lang="en">Local Authority</skos:prefLabel>
               <skos:prefLabel xml:lang="fr">Local Authority</skos:prefLabel>
               <skos:prefLabel xml:lang="de">Local Authority</skos:prefLabel>
@@ -626,19 +626,19 @@
               <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
                 <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
                 <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
-                <skos:prefLabel xml:lang="fr"/>
-                <skos:prefLabel xml:lang="de"/>
+                <skos:prefLabel xml:lang="fr">Vlaamse Open data</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Vlaamse Open data</skos:prefLabel>
                 <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
               </skos:Concept>
             </dct:subject>
           </xsl:when>
           <xsl:otherwise>
             <dct:subject>
-              <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/SERVICEVLOPENDATA">
+              <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE">
                 <skos:prefLabel xml:lang="nl">Vlaamse Open data Service</skos:prefLabel>
                 <skos:prefLabel xml:lang="en">Vlaamse Open data Service</skos:prefLabel>
-                <skos:prefLabel xml:lang="fr"/>
-                <skos:prefLabel xml:lang="de"/>
+                <skos:prefLabel xml:lang="fr">Vlaamse Open data Service</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Vlaamse Open data Service</skos:prefLabel>
                 <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
               </skos:Concept>
             </dct:subject>
@@ -646,7 +646,7 @@
         </xsl:choose>
         <xsl:apply-templates select="dct:subject[not(skos:Concept/@rdf:about = (
           'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA',
-          'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/SERVICEVLOPENDATA'
+          'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE'
         ))]"/>
       </xsl:otherwise>
     </xsl:choose>
