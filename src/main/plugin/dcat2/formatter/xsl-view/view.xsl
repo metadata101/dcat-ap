@@ -383,7 +383,7 @@
   </xsl:template>
 
   <!-- Render grouped theme and subject -->
-  <xsl:template mode="render-field" match="dct:subject">
+  <xsl:template mode="render-field" match="dct:subject|mdcat:MAGDA-categorie|mdcat:statuut">
     <xsl:param name="xpath"/>
     <xsl:variable name="name" select="name()"/>
     <xsl:if test="not(preceding-sibling::*[name(.) = $name and position()=1])">
