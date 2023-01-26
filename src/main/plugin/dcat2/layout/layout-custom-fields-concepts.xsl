@@ -38,27 +38,6 @@
     </xsl:for-each>
   </xsl:variable>
 
-  <xsl:variable name="dcatMultiKeywordConfig">
-    <xsl:for-each select="$editorConfig/editor/fields/for[@use='thesaurus-multi-list-picker']">
-      <element>
-        <xsl:attribute name="name" select="./@name"/>
-        <xsl:if test="./@xpath">
-          <xsl:attribute name="parent" select="./@xpath"/>
-        </xsl:if>
-        <thesauri>
-          <xsl:for-each select="tokenize(replace(./directiveAttributes/@thesauri, ' ', ''), ',')">
-            <thesaurus>
-              <xsl:value-of select="."/>
-            </thesaurus>
-          </xsl:for-each>
-        </thesauri>
-        <xpath>
-          <xsl:value-of select="./directiveAttributes/@xpath"/>
-        </xpath>
-      </element>
-    </xsl:for-each>
-  </xsl:variable>
-
   <xsl:template mode="mode-dcat2" priority="4000" match="*[gn-fn-dcat2:getThesaurusConfig(name(), name(..))]">
     <xsl:variable name="name" select="name()"/>
     <xsl:variable name="hasGnChild" select="count(../gn:child[concat(@prefix, ':', @name) = $name]) > 0"/>
@@ -79,31 +58,6 @@
     <xsl:variable name="xpath" select="concat('/', name(../..), '/', name(..), '/', concat(@prefix, ':', @name))"/>
     <xsl:variable name="config" select="gn-fn-dcat2:getThesaurusConfig(concat(@prefix, ':', @name), name(..), $xpath)"/>
     <xsl:call-template name="thesaurus-picker-list">
-      <xsl:with-param name="config" select="$config"/>
-      <xsl:with-param name="ref" select="../gn:element/@ref"/>
-    </xsl:call-template>
-  </xsl:template>
-
-  <xsl:template mode="mode-dcat2" priority="4000" match="*[gn-fn-dcat2:getMultiThesauriConfig(name(), name(..))]">
-    <xsl:variable name="name" select="name()"/>
-    <xsl:variable name="hasGnChild" select="count(../gn:child[concat(@prefix, ':', @name) = $name]) > 0"/>
-    <xsl:if test="not($hasGnChild)">
-      <xsl:variable name="isFirst" select="count(preceding-sibling::*[name() = $name]) &lt; 1"/>
-      <xsl:if test="$isFirst">
-        <xsl:variable name="xpath" select="concat('/', name(../..), '/', name(..), '/', name())"/>
-        <xsl:variable name="config" select="gn-fn-dcat2:getMultiThesauriConfig(name(), name(..), $xpath)"/>
-        <xsl:call-template name="thesauri-multi-picker-list">
-          <xsl:with-param name="config" select="$config"/>
-          <xsl:with-param name="ref" select="../gn:element/@ref"/>
-        </xsl:call-template>
-      </xsl:if>
-    </xsl:if>
-  </xsl:template>
-
-  <xsl:template mode="mode-dcat2" priority="4000" match="gn:child[gn-fn-dcat2:getMultiThesauriConfig(concat(@prefix, ':', @name), name(..))]">
-    <xsl:variable name="xpath" select="concat('/', name(../..), '/', name(..), '/', concat(@prefix, ':', @name))"/>
-    <xsl:variable name="config" select="gn-fn-dcat2:getMultiThesauriConfig(concat(@prefix, ':', @name), name(..), $xpath)"/>
-    <xsl:call-template name="thesauri-multi-picker-list">
       <xsl:with-param name="config" select="$config"/>
       <xsl:with-param name="ref" select="../gn:element/@ref"/>
     </xsl:call-template>
@@ -166,60 +120,6 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template name="thesauri-multi-picker-list">
-    <xsl:param name="config" as="node()"/>
-    <xsl:param name="ref" as="xs:string"/>
-
-    <xsl:variable name="transformation" select="'to-dcat2-concept'"/>
-    <xsl:variable name="allConcepts" select="../*[name() = $config/@name]"/>
-    <xsl:variable name="elemXpath">
-      <xsl:call-template name="GetThesaurusElementXpath">
-        <xsl:with-param name="config" select="$config"/>
-      </xsl:call-template>
-    </xsl:variable>
-
-    <xsl:for-each select="$config/thesauri/thesaurus">
-      <xsl:if test="not($profile = 'metadata-dcat' and string(.) = 'external.theme.GDI-Vlaanderen-trefwoorden' or $profile = 'DCAT-AP-VL' and string(.) = 'external.theme.magda-domain')">
-        <xsl:variable name="thesaurusURI" select="gn-fn-dcat2:getInSchemeURIByThesaurusId(.)"/>
-        <xsl:variable name="labelKey" select="concat('dcat.add-', substring-after(string(), 'external.theme.'))"/>
-        <xsl:variable name="localConcepts">
-          <xsl:for-each select="$allConcepts">
-            <xsl:if test="skos:Concept/skos:inScheme/@rdf:resource = $thesaurusURI">
-              <xsl:copy-of select="."/>
-            </xsl:if>
-          </xsl:for-each>
-        </xsl:variable>
-        <xsl:variable name="values">
-          <xsl:choose>
-            <xsl:when test="$localConcepts//skos:prefLabel[@xml:lang = 'nl']">
-              <xsl:value-of select="string-join($localConcepts//skos:prefLabel[@xml:lang = 'nl']/replace(text(), ',', ',,'), ',')"/>
-            </xsl:when>
-            <xsl:when test="$localConcepts//skos:prefLabel[not(@xml:lang)]">
-              <xsl:value-of select="string-join($localConcepts//skos:prefLabel[not(@xml:lang)]/replace(text(), ',', ',,'), ',')"/>
-            </xsl:when>
-            <xsl:when test="$localConcepts//skos:prefLabel[not(@xml:lang)]">
-              <xsl:value-of select="string-join($localConcepts//skos:prefLabel[not(@xml:lang)]/replace(text(), ',', ',,'), ',')"/>
-            </xsl:when>
-          </xsl:choose>
-        </xsl:variable>
-        <div data-gn-keyword-selector="tagsinput"
-             data-metadata-id=""
-             data-element-ref="{concat('_P', $ref, '_', replace($config/@name, ':', 'COLON'), '_PART_', position())}"
-             data-element-xpath="{$elemXpath}"
-             data-wrapper="{$config/@name}"
-             data-thesaurus-title="{if ($strings/*[name() = $labelKey]) then $strings/*[name() = $labelKey] else $labelKey}"
-             data-thesaurus-key="{string()}"
-             data-keywords="{$values}"
-             data-transformations="{$transformation}"
-             data-current-transformation="{$transformation}"
-             data-max-tags="{$config/max}"
-             data-lang="{$metadataOtherLanguagesAsJson}"
-             data-textgroup-only="false"
-             data-alt-save="true"
-             class=""/>
-      </xsl:if>
-    </xsl:for-each>
-  </xsl:template>
 
   <xsl:template name="GetThesaurusElementXpath">
     <xsl:param name="config" as="node()"/>
@@ -257,29 +157,6 @@
     <xsl:variable name="config" select="if ($dcatKeywordConfig/*[@name = $name and @parent = $parent])
                          then $dcatKeywordConfig/*[@name = $name and @parent = $parent]
                          else $dcatKeywordConfig/*[@name = $name and not(@parent)]"/>
-    <xsl:choose>
-      <xsl:when test="count($config) = 1">
-        <xsl:copy-of select="$config"/>
-      </xsl:when>
-      <xsl:when test="$config[xpath = $xpath]">
-        <xsl:copy-of select="$config[xpath = $xpath]"/>
-      </xsl:when>
-    </xsl:choose>
-  </xsl:function>
-
-  <xsl:function name="gn-fn-dcat2:getMultiThesauriConfig">
-    <xsl:param name="name" as="xs:string"/>
-    <xsl:param name="parent" as="xs:string"/>
-    <xsl:copy-of select="gn-fn-dcat2:getMultiThesauriConfig($name, $parent, '')"/>
-  </xsl:function>
-
-  <xsl:function name="gn-fn-dcat2:getMultiThesauriConfig">
-    <xsl:param name="name" as="xs:string"/>
-    <xsl:param name="parent" as="xs:string"/>
-    <xsl:param name="xpath" as="xs:string"/>
-    <xsl:variable name="config" select="if ($dcatMultiKeywordConfig/*[@name = $name and @parent = $parent])
-                         then $dcatMultiKeywordConfig/*[@name = $name and @parent = $parent]
-                         else $dcatMultiKeywordConfig/*[@name = $name and not(@parent)]"/>
     <xsl:choose>
       <xsl:when test="count($config) = 1">
         <xsl:copy-of select="$config"/>

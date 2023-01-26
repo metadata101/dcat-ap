@@ -65,6 +65,8 @@
       <xs:element name="landingPage" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="qualifiedRelation" type="dcat:Relationship" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="theme" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/>
       <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
@@ -122,6 +124,8 @@
             <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="theme" type="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:accessRights" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
@@ -219,6 +223,8 @@
             <xs:element ref="mdcat:ontwikkelingstoestand" minOccurs="0" maxOccurs="1"/>
             <xs:element name="qualifiedRelation" type="dcat:Relationship" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="theme" type="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:accessRights" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>

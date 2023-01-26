@@ -36,20 +36,11 @@
     <xsl:param name="elementName"/>
     <xsl:param name="parentElementName"/>
     <xsl:choose>
-      <xsl:when test="$elementName = 'dct:type' and $parentElementName = 'foaf:Agent'">
-        <xsl:value-of select="''"/>
-      </xsl:when>
-      <xsl:when test="$elementName = 'dcat:theme'">
-        <xsl:value-of select="''"/>
-      </xsl:when>
       <xsl:when test="$elementName = 'dct:accrualPeriodicity'">
         <xsl:value-of select="'http://purl.org/dc/terms/Frequency'"/>
       </xsl:when>
       <xsl:when test="$elementName = 'dct:language'">
         <xsl:value-of select="'http://purl.org/dc/terms/LinguisticSystem'"/>
-      </xsl:when>
-      <xsl:when test="$elementName = 'dct:type' and $parentElementName = ('dcat:Dataset', 'dcat:DataService')">
-        <xsl:value-of select="''"/>
       </xsl:when>
       <xsl:when test="$elementName = 'dct:format'">
         <xsl:value-of select="'http://purl.org/dc/terms/MediaTypeOrExtent'"/>
@@ -57,23 +48,8 @@
       <xsl:when test="$elementName = ('dcat:mediaType', 'dcat:compressFormat', 'dcat:packageFormat')">
         <xsl:value-of select="'http://purl.org/dc/terms/MediaType'"/>
       </xsl:when>
-      <xsl:when test="$elementName = 'adms:status'">
-        <xsl:value-of select="''"/>
-      </xsl:when>
-      <xsl:when test="$elementName = 'dct:type' and $parentElementName = 'dct:LicenseDocument'">
-        <xsl:value-of select="''"/>
-      </xsl:when>
       <xsl:when test="$elementName = 'dct:accessRights'">
         <xsl:value-of select="'http://purl.org/dc/terms/RightsStatement'"/>
-      </xsl:when>
-      <xsl:when test="$elementName = 'mdcat:levensfase'">
-        <xsl:value-of select="''"/>
-      </xsl:when>
-      <xsl:when test="$elementName = 'mdcat:ontwikkelingstoestand'">
-        <xsl:value-of select="''"/>
-      </xsl:when>
-      <xsl:when test="$elementName = 'dct:subject'">
-        <xsl:value-of select="''"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="''"/>

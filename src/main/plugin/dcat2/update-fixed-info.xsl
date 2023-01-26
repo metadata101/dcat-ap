@@ -295,7 +295,8 @@
       <xsl:apply-templates select="dct:publisher"/>
       <xsl:apply-templates select="dct:rightsHolder"/>
       <xsl:apply-templates select="dcat:keyword"/>
-      <xsl:call-template name="apply-subjects"/>
+      <xsl:apply-templates select="mdcat:MAGDA-categorie"/>
+      <xsl:call-template name="apply-statuut"/>
       <xsl:apply-templates select="dcat:theme"/>
       <xsl:apply-templates select="dct:accessRights"/>
       <xsl:apply-templates select="dct:conformsTo"/>
@@ -346,7 +347,8 @@
       <xsl:apply-templates select="mdcat:levensfase"/>
       <xsl:apply-templates select="mdcat:ontwikkelingstoestand"/>
       <xsl:apply-templates select="dcat:qualifiedRelation"/>
-      <xsl:call-template name="apply-subjects"/>
+      <xsl:apply-templates select="mdcat:MAGDA-categorie"/>
+      <xsl:call-template name="apply-statuut"/>
       <xsl:apply-templates select="dcat:theme"/>
       <xsl:apply-templates select="dct:accessRights"/>
       <xsl:apply-templates select="dct:conformsTo"/>
@@ -419,10 +421,10 @@
   </xsl:template>
 
   <!-- Remove empty concepts -->
-  <xsl:template match="foaf:Agent/dct:type|dct:subject|dcat:theme|dct:accrualPeriodicity|dct:language|dcat:Dataset/dct:type|
-                       dcat:DataService/dct:type|dct:format|dcat:mediaType|adms:status|dct:LicenseDocument/dct:type|
-                       dct:accessRights|mdcat:levensfase|mdcat:ontwikkelingstoestand|dcat:compressFormat|
-                       dcat:packageFormat" priority="10">
+  <xsl:template match="foaf:Agent/dct:type|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut|dcat:theme|dct:accrualPeriodicity|
+                       dct:language|dcat:Dataset/dct:type|dcat:DataService/dct:type|dct:format|dcat:mediaType|adms:status|
+                       dct:LicenseDocument/dct:type|dct:accessRights|mdcat:levensfase|mdcat:ontwikkelingstoestand|
+                       dcat:compressFormat|dcat:packageFormat" priority="10">
     <xsl:if test="count(skos:Concept) = 1">
       <xsl:copy copy-namespaces="no">
         <xsl:apply-templates select="skos:Concept"/>
@@ -614,15 +616,15 @@
     <xsl:apply-templates select="dct:identifier[string() != $resourceUUID]"/>
   </xsl:template>
 
-  <xsl:template name="apply-subjects">
+  <xsl:template name="apply-statuut">
     <xsl:choose>
       <xsl:when test="$profile != 'DCAT-AP-VL'">
-        <xsl:apply-templates select="dct:subject"/>
+        <xsl:apply-templates select="mdcat:statuut"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:choose>
           <xsl:when test="name() = 'dcat:Dataset'">
-            <dct:subject>
+            <mdcat:statuut>
               <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
                 <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
                 <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
@@ -630,10 +632,10 @@
                 <skos:prefLabel xml:lang="de">Vlaamse Open data</skos:prefLabel>
                 <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
               </skos:Concept>
-            </dct:subject>
+            </mdcat:statuut>
           </xsl:when>
           <xsl:otherwise>
-            <dct:subject>
+            <mdcat:statuut>
               <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE">
                 <skos:prefLabel xml:lang="nl">Vlaamse Open data Service</skos:prefLabel>
                 <skos:prefLabel xml:lang="en">Vlaamse Open data Service</skos:prefLabel>
@@ -641,10 +643,10 @@
                 <skos:prefLabel xml:lang="de">Vlaamse Open data Service</skos:prefLabel>
                 <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
               </skos:Concept>
-            </dct:subject>
+            </mdcat:statuut>
           </xsl:otherwise>
         </xsl:choose>
-        <xsl:apply-templates select="dct:subject[not(skos:Concept/@rdf:about = (
+        <xsl:apply-templates select="mdcat:statuut[not(skos:Concept/@rdf:about = (
           'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA',
           'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE'
         ))]"/>
@@ -666,8 +668,6 @@
     <xsl:namespace name="dcat" select="'http://www.w3.org/ns/dcat#'"/>
     <xsl:namespace name="schema" select="'http://schema.org/'"/>
     <xsl:namespace name="dc" select="'http://purl.org/dc/elements/1.1/'"/>
-    <xsl:if test="$resourceType = 'services' and $profile = 'metadata-dcat'">
-      <xsl:namespace name="mdcat" select="'http://data.vlaanderen.be/ns/metadata-dcat#'"/>
-    </xsl:if>
+    <xsl:namespace name="mdcat" select="'http://data.vlaanderen.be/ns/metadata-dcat#'"/>
   </xsl:template>
 </xsl:stylesheet>

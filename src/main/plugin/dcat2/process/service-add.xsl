@@ -48,6 +48,8 @@
                            mdcat:ontwikkelingstoestand|
                            dcat:qualifiedRelation|
                            dct:subject|
+                           mdcat:MAGDA-categorie|
+                           mdcat:statuut|
                            dcat:theme|
                            dct:accessRights|
                            dct:conformsTo|
