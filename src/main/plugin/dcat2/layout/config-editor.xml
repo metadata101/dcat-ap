@@ -436,7 +436,7 @@
         max="1"
         labelKey="dcat.addAccessRight"/>
     </for>
-    <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker">
+    <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker" profile="metadata-dcat">
       <directiveAttributes
         thesaurus="external.theme.magda-domain"
         xpath="/mdcat:MAGDA-categorie"

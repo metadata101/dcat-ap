@@ -34,6 +34,9 @@
         <useReference>
           <xsl:value-of select="./directiveAttributes/@useReference"/>
         </useReference>
+        <profile>
+          <xsl:value-of select="string(@profile)"/>
+        </profile>
       </element>
     </xsl:for-each>
   </xsl:variable>
@@ -67,7 +70,7 @@
   <xsl:template name="thesaurus-picker-list">
     <xsl:param name="config" as="node()"/>
     <xsl:param name="ref" as="xs:string"/>
-    <xsl:if test="gn-fn-dcat2:shouldShow($config/@name, $config/@parent)">
+    <xsl:if test="gn-fn-dcat2:shouldShow($config)">
       <xsl:variable name="values">
         <xsl:choose>
           <xsl:when test="$config/useReference = 'true' and ../*[name() = $config/@name]/@rdf:resource">
@@ -168,12 +171,12 @@
   </xsl:function>
 
   <xsl:function name="gn-fn-dcat2:shouldShow" as="xs:boolean">
-    <xsl:param name="name"/>
-    <xsl:param name="parent"/>
+    <xsl:param name="config"/>
     <xsl:value-of select="not($isFlatMode) or not(
-      ($name = 'dct:accessRights' and $parent = 'dcat:Distribution') or
-      ($name = 'dcat:compressFormat') or
-      ($name = 'dcat:packageFormat')
+      ($config/@name = 'dct:accessRights' and $config/@parent = 'dcat:Distribution') or
+      ($config/@name = 'dcat:compressFormat') or
+      ($config/@name = 'dcat:packageFormat') or
+      (normalize-space($config/profile) != '' and $config/profile != $profile)
     )"/>
   </xsl:function>
 
