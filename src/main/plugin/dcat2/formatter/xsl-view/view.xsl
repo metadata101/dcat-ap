@@ -360,39 +360,26 @@
     </xsl:if>
   </xsl:template>
 
+
+  <!-- Render grouped concepts by element name -->
   <xsl:template mode="render-field" match="dct:type|dct:accrualPeriodicity|dcat:theme|dct:language|dct:format|dcat:mediaType|
                                            adms:status|mdcat:levensfase|mdcat:ontwikkelingstoestand|dct:accessRights|dcat:compressFormat|
-                                           dcat:packageFormat">
+                                           dcat:packageFormat|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut">
     <xsl:param name="xpath"/>
     <xsl:variable name="name" select="name()"/>
     <xsl:if test="not(preceding-sibling::*[name(.) = $name and position()=1])">
-      <tr>
-        <th style="{$thStyle}">
-          <xsl:value-of select="gn-fn-metadata:getLabel($schema, name(.), $labels, name(..), '', gn-fn-dcat2:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)))/label" />
-        </th>
-        <td style="{$tdStyle}">
-          <xsl:for-each select="../*[name() = $name]">
-            <xsl:apply-templates select="skos:Concept" mode="render-concept"/>
-            <xsl:if test="position() != last()">
-              <xsl:value-of select="' | '"/>
-            </xsl:if>
-          </xsl:for-each>
-        </td>
-      </tr>
-    </xsl:if>
-  </xsl:template>
-
-  <!-- Render grouped theme and subject -->
-  <xsl:template mode="render-field" match="dct:subject">
-    <xsl:param name="xpath"/>
-    <xsl:variable name="name" select="name()"/>
-    <xsl:if test="not(preceding-sibling::*[name(.) = $name and position()=1])">
-      <xsl:variable name="defaultLabel" select="gn-fn-metadata:getLabel($schema, name(.), $labels, name(..), '', gn-fn-dcat2:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)))/label"/>
-      <xsl:for-each-group select="../*[name() = $name]" group-by="skos:Concept/skos:inScheme/@rdf:resource">
+      <xsl:for-each-group select="../*[name() = $name]" group-by="concat(name(), ' | ', skos:Concept/skos:inScheme/@rdf:resource)">
         <tr>
           <th style="{$thStyle}">
-            <xsl:variable name="groupLabel" select="$labels/element[@name = current-grouping-key()]/label"/>
-            <xsl:value-of select="if (normalize-space($groupLabel) != '') then $groupLabel else $defaultLabel"/>
+            <xsl:variable name="conceptScheme" select="skos:Concept/skos:inScheme/@rdf:resource"/>
+            <xsl:choose>
+              <xsl:when test="$labels/element[@name = $conceptScheme]/label">
+                <xsl:value-of select="$labels/element[@name = $conceptScheme]/label"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="gn-fn-metadata:getLabel($schema, name(.), $labels, name(..), '', gn-fn-dcat2:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)))/label"/>
+              </xsl:otherwise>
+            </xsl:choose>
           </th>
           <td style="{$tdStyle}">
             <xsl:for-each select="current-group()">
@@ -403,7 +390,6 @@
             </xsl:for-each>
           </td>
         </tr>
-
       </xsl:for-each-group>
     </xsl:if>
   </xsl:template>

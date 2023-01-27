@@ -783,11 +783,11 @@ wordt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendest
   </sch:pattern>
   <sch:pattern name="statuut" id="https://data.vlaanderen.be/shacl/metadata_dcat#DataServiceShape/f96c5f798f9e9c00220a293bd11f37e83616d33b">
     <sch:title>Statuut - Een aanduiding van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Astatuut)</sch:title>
-    <sch:rule context="//dcat:DataService/dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'][$profile]">
+    <sch:rule context="//dcat:DataService/mdcat:statuut[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
       <sch:let name="validClass" value="count(skos:Concept) = 1 or count(//skos:Concept[@rdf:about = $resource]) = 1"/>
-      <sch:assert test="$validClass">De range van statuut moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'])</sch:assert>
-      <sch:report test="$validClass">De range van statuut moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'])</sch:report>
+      <sch:assert test="$validClass">De range van statuut moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (mdcat:statuut)</sch:assert>
+      <sch:report test="$validClass">De range van statuut moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (mdcat:statuut)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="thema" id="https://data.vlaanderen.be/shacl/metadata_dcat#DataServiceShape/1712ef1b325d7d2807bc601d6409b70a42eaff10">
@@ -1075,11 +1075,11 @@ wordt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendest
   </sch:pattern>
   <sch:pattern name="statuut" id="https://data.vlaanderen.be/shacl/metadata_dcat#DatasetShape/f96c5f798f9e9c00220a293bd11f37e83616d33b">
     <sch:title>Statuut - Een aanduiding van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Dataset%3Astatuut)</sch:title>
-    <sch:rule context="//dcat:Dataset/dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'][$profile]">
+    <sch:rule context="//dcat:Dataset/mdcat:statuut[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
       <sch:let name="validClass" value="count(skos:Concept) = 1 or count(//skos:Concept[@rdf:about = $resource]) = 1"/>
-      <sch:assert test="$validClass">De range van statuut moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'])</sch:assert>
-      <sch:report test="$validClass">De range van statuut moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'])</sch:report>
+      <sch:assert test="$validClass">De range van statuut moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (mdcat:statuut)</sch:assert>
+      <sch:report test="$validClass">De range van statuut moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (mdcat:statuut)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="thema" id="https://data.vlaanderen.be/shacl/metadata_dcat#DatasetShape/1712ef1b325d7d2807bc601d6409b70a42eaff10">

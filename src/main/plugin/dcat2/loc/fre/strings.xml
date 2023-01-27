@@ -46,6 +46,8 @@
   <dcat.addMediaType>Type de média</dcat.addMediaType>
   <dcat.addAccrualPeriodicity>Fréquence de mise à jour</dcat.addAccrualPeriodicity>
   <dcat.addSubject>Sujet</dcat.addSubject>
+  <mdcat.addMagdaCategorie>Catégorie MAGDA</mdcat.addMagdaCategorie>
+  <mdcat.addStatuut>Statut</mdcat.addStatuut>
   <dcat.addLanguage>Language</dcat.addLanguage>
   <mdcat.addLevensfase>Status d'utilisation</mdcat.addLevensfase>
   <mdcat.addOntwikkelingstoestand>Status de développement</mdcat.addOntwikkelingstoestand>
