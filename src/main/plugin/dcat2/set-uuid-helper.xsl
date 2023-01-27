@@ -5,6 +5,7 @@
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:uuid="java:java.util.UUID">
 
   <xsl:variable name="record" select="/root/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
@@ -83,8 +84,9 @@
       <xsl:call-template name="generate-record"/>
 
       <xsl:apply-templates select="dct:rights|dct:spatial|dcat:dataset|dcat:service|dcat:contactPoint|dcat:keyword|
-                                   dcat:landingPage|dcat:qualifiedRelation|dct:subject|dcat:theme|dct:accessRights|
-                                   dct:conformsTo|dct:creator|dct:identifier|dct:isReferencedBy|dct:relation|dct:type"/>
+                                   dcat:landingPage|dcat:qualifiedRelation|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut|
+                                   dcat:theme|dct:accessRights|dct:conformsTo|dct:creator|dct:identifier|dct:isReferencedBy|
+                                   dct:relation|dct:type"/>
     </xsl:copy>
   </xsl:template>
 
