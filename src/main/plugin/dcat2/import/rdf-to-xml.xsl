@@ -381,6 +381,20 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="predicate">dct:subject</xsl:with-param>
             <xsl:with-param name="rdfType"/>
           </xsl:call-template>
+          <!-- mdcat:MAGDA-categorie -->
+          <xsl:call-template name="concepts">
+            <xsl:with-param name="conceptURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://data.vlaanderen.be/ns/metadata-dcat#MAGDA-categorie' and
+                      sr:binding[@name='subject']/* = $datasetURI]/sr:binding[@name='object' and (sr:uri or sr:bnode)]"/>
+            <xsl:with-param name="predicate">mdcat:MAGDA-categorie</xsl:with-param>
+            <xsl:with-param name="rdfType"/>
+          </xsl:call-template>
+          <!-- mdcat:statuut -->
+          <xsl:call-template name="concepts">
+            <xsl:with-param name="conceptURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://data.vlaanderen.be/ns/metadata-dcat#statuut' and
+                      sr:binding[@name='subject']/* = $datasetURI]/sr:binding[@name='object' and (sr:uri or sr:bnode)]"/>
+            <xsl:with-param name="predicate">mdcat:statuut</xsl:with-param>
+            <xsl:with-param name="rdfType"/>
+          </xsl:call-template>
           <!-- dcat:theme -->
           <xsl:call-template name="concepts">
             <xsl:with-param name="conceptURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://www.w3.org/ns/dcat#theme' and
@@ -670,6 +684,20 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="conceptURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/subject' and
                       sr:binding[@name='subject']/* = $serviceURI]/sr:binding[@name='object' and (sr:uri or sr:bnode)]"/>
             <xsl:with-param name="predicate">dct:subject</xsl:with-param>
+            <xsl:with-param name="rdfType"/>
+          </xsl:call-template>
+          <!-- mdcat:MAGDA-categorie -->
+          <xsl:call-template name="concepts">
+            <xsl:with-param name="conceptURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://data.vlaanderen.be/ns/metadata-dcat#MAGDA-categorie' and
+                      sr:binding[@name='subject']/* = $serviceURI]/sr:binding[@name='object' and (sr:uri or sr:bnode)]"/>
+            <xsl:with-param name="predicate">mdcat:MAGDA-categorie</xsl:with-param>
+            <xsl:with-param name="rdfType"/>
+          </xsl:call-template>
+          <!-- mdcat:statuut -->
+          <xsl:call-template name="concepts">
+            <xsl:with-param name="conceptURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://data.vlaanderen.be/ns/metadata-dcat#statuut' and
+                      sr:binding[@name='subject']/* = $serviceURI]/sr:binding[@name='object' and (sr:uri or sr:bnode)]"/>
+            <xsl:with-param name="predicate">mdcat:statuut</xsl:with-param>
             <xsl:with-param name="rdfType"/>
           </xsl:call-template>
           <!-- dcat:theme -->
