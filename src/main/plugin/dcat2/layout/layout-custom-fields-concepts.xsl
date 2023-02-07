@@ -4,6 +4,8 @@
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
@@ -70,7 +72,7 @@
   <xsl:template name="thesaurus-picker-list">
     <xsl:param name="config" as="node()"/>
     <xsl:param name="ref" as="xs:string"/>
-    <xsl:if test="gn-fn-dcat2:shouldShow($config)">
+    <xsl:if test="gn-fn-dcat2:shouldShow($config, ..)">
       <xsl:variable name="values">
         <xsl:choose>
           <xsl:when test="$config/useReference = 'true' and ../*[name() = $config/@name]/@rdf:resource">
@@ -172,12 +174,18 @@
 
   <xsl:function name="gn-fn-dcat2:shouldShow" as="xs:boolean">
     <xsl:param name="config"/>
-    <xsl:value-of select="not($isFlatMode) or not(
+    <xsl:param name="context"/>
+    <xsl:variable name="isFilteredName" select="not($isFlatMode) or not(
       ($config/@name = 'dct:accessRights' and $config/@parent = 'dcat:Distribution') or
       ($config/@name = 'dcat:compressFormat') or
       ($config/@name = 'dcat:packageFormat') or
       (normalize-space($config/profile) != '' and $config/profile != $profile)
     )"/>
+    <xsl:variable name="hasSubjectToggle" select="
+      ($config/@name = 'dct:subject' and count($context/mdcat:statuut) = 0) or
+      ($config/@name = 'mdcat:statuut' and count($context/dct:subject) = 0)
+    "/>
+    <xsl:value-of select="$isFilteredName and $hasSubjectToggle"/>
   </xsl:function>
 
 </xsl:stylesheet>

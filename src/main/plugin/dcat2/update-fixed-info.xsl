@@ -421,7 +421,7 @@
   </xsl:template>
 
   <!-- Remove empty concepts -->
-  <xsl:template match="foaf:Agent/dct:type|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut|dcat:theme|dct:accrualPeriodicity|
+  <xsl:template match="foaf:Agent/dct:type|mdcat:MAGDA-categorie|mdcat:statuut|dcat:theme|dct:accrualPeriodicity|
                        dct:language|dcat:Dataset/dct:type|dcat:DataService/dct:type|dct:format|dcat:mediaType|adms:status|
                        dct:LicenseDocument/dct:type|dct:accessRights|mdcat:levensfase|mdcat:ontwikkelingstoestand|
                        dcat:compressFormat|dcat:packageFormat" priority="10">
@@ -429,6 +429,15 @@
       <xsl:copy copy-namespaces="no">
         <xsl:apply-templates select="skos:Concept"/>
       </xsl:copy>
+    </xsl:if>
+  </xsl:template>
+
+  <!-- Rename dct:subject -->
+  <xsl:template match="dct:subject" priority="10">
+    <xsl:if test="count(skos:Concept) = 1">
+      <mdcat:statuut>
+        <xsl:apply-templates select="skos:Concept"/>
+      </mdcat:statuut>
     </xsl:if>
   </xsl:template>
 
@@ -619,7 +628,7 @@
   <xsl:template name="apply-statuut">
     <xsl:choose>
       <xsl:when test="$profile != 'DCAT-AP-VL'">
-        <xsl:apply-templates select="mdcat:statuut"/>
+        <xsl:apply-templates select="mdcat:statuut|dct:subject"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:choose>
@@ -646,7 +655,7 @@
             </mdcat:statuut>
           </xsl:otherwise>
         </xsl:choose>
-        <xsl:apply-templates select="mdcat:statuut[not(skos:Concept/@rdf:about = (
+        <xsl:apply-templates select="*[name() = ('mdcat:statuut', 'dct:subject') and not(skos:Concept/@rdf:about = (
           'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA',
           'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE'
         ))]"/>
