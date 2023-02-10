@@ -240,7 +240,6 @@
         </xsl:if>
         <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
                class="table table-striped" >
-          <!--<xsl:apply-templates mode="render-view" select="section|field"/>-->
           <xsl:copy-of select="$sectionContent"/>&#160;
         </table>
       </div>

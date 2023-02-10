@@ -3,6 +3,8 @@
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 version="2.0">
 
   <xsl:include href="set-uuid-helper.xsl"/>
@@ -22,6 +24,12 @@
       <xsl:apply-templates select="dct:title[position() > 1]"/>
       <xsl:apply-templates select="*[name() != 'dct:identifier' and name() != 'dct:title']"/>
     </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="dct:subject" priority="10">
+    <mdcat:statuut>
+      <xsl:apply-templates select="@*|*"/>
+    </mdcat:statuut>
   </xsl:template>
 
   <xsl:template match="@*|node()">
