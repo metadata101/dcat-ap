@@ -35,7 +35,7 @@
                 xmlns:index="java:org.fao.geonet.kernel.search.EsSearchManager"
                 xmlns:date-util="java:org.fao.geonet.utils.DateUtil"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
-                xmlns:saxon="http://saxon.sf.net/"
+                xmlns:saxon="http://saxon.sf.net/" xmlns:xls="http://www.w3.org/1999/XSL/Transform"
                 extension-element-prefixes="saxon"
                 exclude-result-prefixes="#all"
                 version="2.0">
@@ -69,10 +69,12 @@
     </xsl:for-each>
   </xsl:variable>
 
-  <xsl:template match="/">
-    <xsl:variable name="test">
+  <xsl:variable name="editorConfig"
+                select="document('../layout/config-editor.xml')"/>
 
-    <xsl:variable name="dateStamp" select=".//dcat:CatalogRecord/dct:modified" />
+  <xsl:template match="/">
+
+    <xsl:variable name="dateStamp" select=".//dcat:CatalogRecord/dct:modified"/>
     <xsl:for-each select=".//(dcat:Dataset|dcat:DataService)">
       <doc>
         <xsl:copy-of select="gn-fn-index:add-field('docType', 'metadata')"/>
@@ -81,14 +83,16 @@
         <xsl:variable name="dateStamp"
                       select="date-util:convertToISOZuluDateTime(normalize-space($dateStamp))"/>
         <xsl:if test="$dateStamp != ''">
-          <dateStamp><xsl:value-of select="$dateStamp"/></dateStamp>
+          <dateStamp>
+            <xsl:value-of select="$dateStamp"/>
+          </dateStamp>
         </xsl:if>
 
         <metadataIdentifier>
           <xsl:value-of select="@rdf:about"/>
         </metadataIdentifier>
 
-        <xsl:variable name="isService" as="xs:boolean" select="name() = 'dcat:DataService'" />
+        <xsl:variable name="isService" as="xs:boolean" select="name() = 'dcat:DataService'"/>
 
         <!-- # Resource type -->
         <xsl:choose>
@@ -124,8 +128,8 @@
           </otherLanguage>
         </xsl:for-each>
 
-        <xsl:apply-templates mode="index-date" select="dct:issued" />
-        <xsl:apply-templates mode="index-date" select="dct:modified" />
+        <xsl:apply-templates mode="index-date" select="dct:issued"/>
+        <xsl:apply-templates mode="index-date" select="dct:modified"/>
 
         <xsl:for-each select="dct:temporal/dct:PeriodOfTime">
           <xsl:variable name="start"
@@ -144,104 +148,48 @@
               <xsl:if test="$start &lt; $end">
                 ,"lte": "<xsl:value-of select="$zuluEndDate"/>"
               </xsl:if>
-              }</resourceTemporalDateRange>
+              }
+            </resourceTemporalDateRange>
             <resourceTemporalExtentDateRange type="object">{
               "gte": "<xsl:value-of select="$zuluStartDate"/>"
               <xsl:if test="$start &lt; $end">
                 ,"lte": "<xsl:value-of select="$zuluEndDate"/>"
               </xsl:if>
-              }</resourceTemporalExtentDateRange>
+              }
+            </resourceTemporalExtentDateRange>
           </xsl:if>
           <xsl:if test="$start &gt; $end">
             <indexingErrorMsg>Warning / Field resourceTemporalDateRange /
               Lower range bound '<xsl:value-of select="."/>' can not be
               greater than upper bound '<xsl:value-of select="$end"/>'.
-              Date range not indexed.</indexingErrorMsg>
+              Date range not indexed.
+            </indexingErrorMsg>
           </xsl:if>
         </xsl:for-each>
 
         <xsl:if test="dct:accrualPeriodicity">
           <xsl:element name="cl_maintenanceAndUpdateFrequency">
             <xsl:attribute name="type" select="'object'"/>
-            <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('accrualPeriodicity', dct:accrualPeriodicity/skos:Concept, $allLanguages, true())"/>
+            <xsl:value-of
+              select="gn-fn-index:add-multilingual-field-dcat2('accrualPeriodicity', dct:accrualPeriodicity/skos:Concept, $allLanguages, true())"/>
           </xsl:element>
         </xsl:if>
 
         <xsl:apply-templates mode="index-contact" select="dct:creator">
-          <xsl:with-param name="fieldSuffix" select="''" />
+          <xsl:with-param name="fieldSuffix" select="''"/>
         </xsl:apply-templates>
 
         <xsl:apply-templates mode="index-contact" select="dct:publisher">
-          <xsl:with-param name="fieldSuffix" select="''" />
+          <xsl:with-param name="fieldSuffix" select="''"/>
         </xsl:apply-templates>
 
         <xsl:for-each select="dcat:contactPoint">
           <xsl:apply-templates mode="index-contact" select=".">
-            <xsl:with-param name="fieldSuffix" select="''" />
+            <xsl:with-param name="fieldSuffix" select="''"/>
           </xsl:apply-templates>
         </xsl:for-each>
 
-        <xsl:variable name="editorConfig"
-                      select="document('../layout/config-editor.xml')"/>
-
-        <xsl:variable name="thesaurusId" select="$editorConfig/editor/fields/for[@name='dcat:theme']/directiveAttributes/@thesaurus" />
-
-        <xsl:variable name="key">
-          <xsl:if test="$thesaurusId != ''">
-            <xsl:value-of select="tokenize($thesaurusId, '\.')[last()]"/>
-          </xsl:if>
-        </xsl:variable>
-
-        <!-- Index keyword characterString including multilingual ones
-         and element like gmx:Anchor including the href attribute
-         which may contains keyword identifier. -->
-        <xsl:variable name="thesaurusField"
-                      select="concat('th_', replace($key, '[^a-zA-Z0-9-_]', ''))"/>
-
-        <xsl:element name="{$thesaurusField}Number">
-          <xsl:value-of select="count(dcat:theme[skos:Concept])"/>
-        </xsl:element>
-
-        <xsl:for-each select="dcat:theme[skos:Concept]">
-          <xsl:if test="normalize-space($key) != ''">
-            <!-- TODO: Fix language -->
-            <xsl:variable name="mainLanguage"
-                          select="'eng'"/>
-
-            <!-- TODO: Fix language -->
-            <xsl:variable name="keywords"
-                          select="skos:Concept"/>
-
-
-            <xsl:call-template name="build-thesaurus-fields-dcat">
-              <xsl:with-param name="thesaurus" select="$key"/>
-              <xsl:with-param name="thesaurusId" select="$thesaurusId"/>
-              <xsl:with-param name="keywords" select="$keywords"/>
-              <xsl:with-param name="mainLanguage" select="$mainLanguage"/>
-              <xsl:with-param name="allLanguages" select="$allLanguages"/>
-            </xsl:call-template>
-          </xsl:if>
-        </xsl:for-each>
-
-        <xsl:if test="dcat:theme[skos:Concept]">
-          <allKeywords type="object">{
-            <xsl:if test="normalize-space($key) != ''">
-              <xsl:variable name="thesaurusField"
-                            select="replace($key, '[^a-zA-Z0-9]', '')"/>
-
-              "<xsl:value-of select="$thesaurusField"/>": {
-              "id": "<xsl:value-of select="gn-fn-index:json-escape($thesaurusId)"/>",
-              "link": "<xsl:value-of select="gn-fn-index:json-escape(@xlink:href)"/>",
-              "keywords": [
-              <xsl:for-each select="dcat:theme/skos:Concept">
-                <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('keyword', ., $allLanguages)/text()"/>
-                <xsl:if test="position() != last()">,</xsl:if>
-              </xsl:for-each>
-              ]}
-              <xsl:if test="position() != last()">,</xsl:if>
-            </xsl:if>
-            }</allKeywords>
-        </xsl:if>
+        <xsl:apply-templates mode="index-concept" select="."/>
 
         <xsl:for-each select="dcat:spatialResolutionInMeters[. castable as xs:decimal]">
           <resolutionScaleDenominator>
@@ -249,12 +197,10 @@
           </resolutionScaleDenominator>
         </xsl:for-each>
 
-
-
-
         <xsl:variable name="overviews"
                       select="dcat:distribution/*[dct:format/*/skos:prefLabel = 'WWW:OVERVIEW' and dcat:accessURL != '']"/>
-        <xsl:copy-of select="gn-fn-index:add-field('hasOverview', if (count($overviews) > 0) then 'true' else 'false')"/>
+        <xsl:copy-of
+          select="gn-fn-index:add-field('hasOverview', if (count($overviews) > 0) then 'true' else 'false')"/>
 
 
         <xsl:variable name="isStoringOverviewInIndex"
@@ -270,20 +216,113 @@
               </xsl:if>
             </xsl:if>
             <xsl:if test="normalize-space(dct:title) != ''">,
-              "text": <xsl:value-of select="gn-fn-index:add-multilingual-field('name', dct:title, $allLanguages, true())"/>
+              "text":
+              <xsl:value-of select="gn-fn-index:add-multilingual-field('name', dct:title, $allLanguages, true())"/>
             </xsl:if>
-            }</overview>
+            }
+          </overview>
         </xsl:for-each>
       </doc>
     </xsl:for-each>
-  </xsl:variable>
-    <xsl:message select="$test"></xsl:message>
-    <xsl:copy-of select="$test"></xsl:copy-of>
   </xsl:template>
 
+  <xsl:template mode="index-concept" match="dcat:Dataset|dcat:DataService">
+    <xsl:variable name="test">
+      <allKeywords type="object">{
+
+        <xsl:if test="count(dct:subject)>0">
+          <xsl:variable name="thesaurusId"
+                        select="$editorConfig/editor/fields/for[@name='dct:subject']/directiveAttributes/@thesaurus"/>
+          <xsl:variable name="key">
+            <xsl:if test="$thesaurusId != ''">
+              <xsl:value-of select="tokenize($thesaurusId, '\.')[last()]"/>
+            </xsl:if>
+          </xsl:variable>
+          <xsl:message select="$thesaurusId"/>
+          <xsl:message select="$key"/>
+          <xsl:if test="normalize-space($key) != ''">
+            <xsl:variable name="thesaurusField"
+                          select="concat('th_',$key)"/>
+
+            "<xsl:value-of select="$thesaurusField"/>": {
+            "id": "<xsl:value-of select="gn-fn-index:json-escape($thesaurusId)"/>",
+            "link": "<xsl:value-of
+            select="gn-fn-index:json-escape((dct:subject/skos:Concept/skos:inScheme/@rdf:resource)[1])"/>",
+            "keywords": [
+            <xsl:for-each select="dct:subject/skos:Concept">
+              <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('keyword', ., $allLanguages)/text()"/>
+              <xsl:if test="position() != last()">,</xsl:if>
+            </xsl:for-each>
+            ]}
+            <xsl:if test="count(dcat:theme)>0">,</xsl:if>
+          </xsl:if>
+        </xsl:if>
+
+        <xsl:if test="count(dcat:theme)>0">
+          <xsl:variable name="thesaurusId"
+                        select="$editorConfig/editor/fields/for[@name='dcat:theme']/directiveAttributes/@thesaurus"/>
+          <xsl:variable name="key">
+            <xsl:if test="$thesaurusId != ''">
+              <xsl:value-of select="tokenize($thesaurusId, '\.')[last()]"/>
+            </xsl:if>
+          </xsl:variable>
+          <xsl:message select="$thesaurusId"/>
+          <xsl:message select="$key"/>
+
+          <xsl:if test="normalize-space($key) != ''">
+            <xsl:variable name="thesaurusField"
+                          select="concat('th_',$key)"/>
+
+            "<xsl:value-of select="$thesaurusField"/>": {
+            "id": "<xsl:value-of select="gn-fn-index:json-escape($thesaurusId)"/>",
+            "link": "<xsl:value-of
+            select="gn-fn-index:json-escape((dcat:theme/skos:Concept/skos:inScheme/@rdf:resource)[1])"/>",
+            "keywords": [
+            <xsl:for-each select="dcat:theme/skos:Concept">
+              <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('keyword', ., $allLanguages)/text()"/>
+              <xsl:if test="position() != last()">,</xsl:if>
+            </xsl:for-each>
+            ]}
+            <xsl:if test="position() != last()">,</xsl:if>
+          </xsl:if>
+        </xsl:if>
+        }
+      </allKeywords>
+    </xsl:variable>
+
+<!--    <xsl:message select="$test"/>-->
+
+    <xsl:copy-of select="$test"/>
+
+    <!--    TODO : Fix-->
+    <!--    <xsl:element name="{$thesaurusField}Number">-->
+    <!--      <xsl:value-of select="count(dcat:theme[skos:Concept])"/>-->
+    <!--    </xsl:element>-->
+
+    <!--    <xsl:if test="normalize-space($key) != ''">-->
+    <!--      &lt;!&ndash; TODO: Fix language &ndash;&gt;-->
+    <!--      <xsl:variable name="mainLanguage"-->
+    <!--                    select="'eng'"/>-->
+
+    <!--      &lt;!&ndash; TODO: Fix language &ndash;&gt;-->
+    <!--      <xsl:variable name="keywords"-->
+    <!--                    select="skos:Concept"/>-->
+
+
+    <!--      <xsl:call-template name="build-thesaurus-fields-dcat">-->
+    <!--        <xsl:with-param name="thesaurus" select="$key"/>-->
+    <!--        <xsl:with-param name="thesaurusId" select="$thesaurusId"/>-->
+    <!--        <xsl:with-param name="keywords" select="$keywords"/>-->
+    <!--        <xsl:with-param name="mainLanguage" select="$mainLanguage"/>-->
+    <!--        <xsl:with-param name="allLanguages" select="$allLanguages"/>-->
+    <!--      </xsl:call-template>-->
+    <!--    </xsl:if>-->
+
+
+  </xsl:template>
 
   <xsl:template mode="index-date" match="dct:modified|dct:issued">
-    <xsl:variable name="dateType" select="if (name() = 'dct:issued') then 'publication' else 'revision'" />
+    <xsl:variable name="dateType" select="if (name() = 'dct:issued') then 'publication' else 'revision'"/>
 
     <xsl:variable name="date"
                   select="string(.)"/>
@@ -312,7 +351,9 @@
         </xsl:element>
       </xsl:when>
       <xsl:otherwise>
-        <indexingErrorMsg>Warning / Date <xsl:value-of select="$dateType"/> with value '<xsl:value-of select="$date"/>' was not a valid date format.</indexingErrorMsg>
+        <indexingErrorMsg>Warning / Date
+          <xsl:value-of select="$dateType"/> with value '<xsl:value-of select="$date"/>' was not a valid date format.
+        </indexingErrorMsg>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -430,10 +471,12 @@
     <xsl:if test="count($keywords) > 0">
       <xsl:element name="{$thesaurusField}">
         <xsl:attribute name="type" select="'object'"/>
-        [<xsl:for-each select="$keywords">
-        <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('keyword', ., $allLanguages)/text()"/>
-        <xsl:if test="position() != last()">,</xsl:if>
-      </xsl:for-each>]
+        [
+        <xsl:for-each select="$keywords">
+          <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('keyword', ., $allLanguages)/text()"/>
+          <xsl:if test="position() != last()">,</xsl:if>
+        </xsl:for-each>
+        ]
       </xsl:element>
 
       <xsl:variable name="thesaurusTree" as="node()">
@@ -489,18 +532,22 @@
           <xsl:if test="count($defaults) > 0">"default": [
             <xsl:for-each select="$defaults">
               <xsl:sort select="."/>
-              <xsl:value-of select="."/><xsl:if test="position() != last()">,</xsl:if>
+              <xsl:value-of select="."/>
+              <xsl:if test="position() != last()">,</xsl:if>
             </xsl:for-each>
-            ]<xsl:if test="count($keys) > 0">,</xsl:if>
+            ]
+            <xsl:if test="count($keys) > 0">,</xsl:if>
           </xsl:if>
           <xsl:if test="count($keys) > 0">"key": [
             <xsl:for-each select="$keys">
               <xsl:sort select="."/>
-              <xsl:value-of select="."/><xsl:if test="position() != last()">,</xsl:if>
+              <xsl:value-of select="."/>
+              <xsl:if test="position() != last()">,</xsl:if>
             </xsl:for-each>
             ]
           </xsl:if>
-          }</xsl:element>
+          }
+        </xsl:element>
       </xsl:if>
     </xsl:if>
   </xsl:template>
@@ -522,7 +569,9 @@
         <xsl:for-each select="$path">
           <xsl:variable name="position"
                         select="position()"/>
-          <value><xsl:value-of select="string-join($path[position() &lt;= $position], '^')"/></value>
+          <value>
+            <xsl:value-of select="string-join($path[position() &lt;= $position], '^')"/>
+          </value>
         </xsl:for-each>
       </xsl:for-each>
     </xsl:variable>
@@ -554,11 +603,15 @@
       <xsl:variable name="element" select="."/>
       <xsl:variable name="textObject" as="node()*">
         <xsl:if test="position() = 1">
-          <value><xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':',
-                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/></value>
+          <value>
+            <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':',
+                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+          </value>
           <xsl:for-each select="$elements/skos:prefLabel">
-            <value><xsl:value-of select="concat($doubleQuote, 'lang', @xml:lang, $doubleQuote, ':',
-                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/></value>
+            <value>
+              <xsl:value-of select="concat($doubleQuote, 'lang', @xml:lang, $doubleQuote, ':',
+                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+            </value>
           </xsl:for-each>
         </xsl:if>
       </xsl:variable>
