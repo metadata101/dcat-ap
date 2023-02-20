@@ -450,7 +450,7 @@
         max=""
         labelKey="mdcat.addStatuut"/>
     </for>
-    <for name="dct:subject" use="thesaurus-list-picker">
+    <for name="dct:subject" use="thesaurus-list-picker" profile="none">
       <directiveAttributes
         thesaurus="external.theme.GDI-Vlaanderen-trefwoorden"
         xpath="/dct:subject"
