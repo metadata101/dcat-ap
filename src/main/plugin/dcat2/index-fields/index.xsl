@@ -282,7 +282,6 @@
         ]
       </xsl:element>
     </xsl:for-each-group>
-
     <allKeywords type="object">{
       <xsl:for-each-group select="dct:subject|dcat:theme|mdcat:statuut"
                           group-by="skos:Concept/skos:inScheme/@rdf:resource">
@@ -296,9 +295,14 @@
         <xsl:if test="normalize-space($key) != ''">
           <xsl:variable name="thesaurusField"
                         select="concat('th_',$key)"/>
-
+          <xsl:variable name="thesaurusTitle" select="util:getThesaurusTitleByName($thesaurusId)"/>
           "<xsl:value-of select="$thesaurusField"/>": {
           "id": "<xsl:value-of select="gn-fn-index:json-escape($thesaurusId)"/>",
+          <xsl:if test="$thesaurusTitle != ''">
+            "title":
+            "<xsl:value-of select="gn-fn-index:json-escape($thesaurusTitle)"/>",
+          </xsl:if>
+          "theme": "theme",
           "link": "<xsl:value-of
           select="gn-fn-index:json-escape((current-group()/skos:Concept/skos:inScheme/@rdf:resource)[1])"/>",
           "keywords": [
