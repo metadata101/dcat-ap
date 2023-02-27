@@ -177,7 +177,7 @@
         <skos:inscheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
         <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol"/>
         <skos:hasTopConcept rdf:resource="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS"/>
-        <skos:prefLabel xml:lang="nl">WFS</skos:prefLabel>
+        <skos:prefLabel xml:lang="nl">WFS-1.0.0-http-get-capabilities</skos:prefLabel>
         <skos:definition xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</skos:definition>
         <dc:title xml:lang="nl">Web Feature Service Get Capabilities</dc:title>
         <dc:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</dc:description>
