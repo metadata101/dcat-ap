@@ -174,9 +174,9 @@ public class DCAT2Params extends AbstractParams {
 //    }
 
     private String safeDecode(String url) throws UnsupportedEncodingException {
-        url = url.replaceAll("%(?![0-9a-fA-F]{2})", "%25");
-        url = url.replaceAll("\\+", "%2B");
-        return URLDecoder.decode(url);
+        return url.replaceAll("%(?![0-9a-fA-F]{2})", "%25")
+            .replaceAll("\\+", "%2B")
+            .replaceAll(" ", "%20");
     }
 }
 
