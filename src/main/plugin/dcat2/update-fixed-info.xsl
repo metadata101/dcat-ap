@@ -34,7 +34,7 @@
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:gml="http://www.opengis.net/gml"
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
-                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
                 xmlns:saxon="http://saxon.sf.net/"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
@@ -677,6 +677,6 @@
     <xsl:namespace name="dcat" select="'http://www.w3.org/ns/dcat#'"/>
     <xsl:namespace name="schema" select="'http://schema.org/'"/>
     <xsl:namespace name="dc" select="'http://purl.org/dc/elements/1.1/'"/>
-    <xsl:namespace name="mdcat" select="'http://data.vlaanderen.be/ns/metadata-dcat#'"/>
+    <xsl:namespace name="mdcat" select="'https://data.vlaanderen.be/ns/metadata-dcat#'"/>
   </xsl:template>
 </xsl:stylesheet>

@@ -38,7 +38,7 @@ Stylesheet used to update metadata adding a reference to a source record.
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
+  xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
   xmlns:geonet="http://www.fao.org/geonetwork"
   version="2.0" exclude-result-prefixes="#all">
 
