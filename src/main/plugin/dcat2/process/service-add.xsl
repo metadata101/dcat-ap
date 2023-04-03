@@ -4,7 +4,7 @@
                 xmlns:adms="http://www.w3.org/ns/adms#"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
-                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:geonet="http://www.fao.org/geonetwork"
                 exclude-result-prefixes="#all"
                 version="2.0">

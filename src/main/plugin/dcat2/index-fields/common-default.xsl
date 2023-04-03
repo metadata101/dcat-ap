@@ -23,7 +23,7 @@
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:geodcat="http://data.europa.eu/930/" xmlns:util="java:org.fao.geonet.util.XslUtil"
                 xmlns:gn-fn-index="http://geonetwork-opensource.org/xsl/functions/index"
-                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:geonet="http://www.fao.org/geonetwork">
 
   <xsl:param name="thesauriDir"/>

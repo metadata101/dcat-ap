@@ -35,5 +35,5 @@ public class DCAT2Namespaces {
     public static final Namespace VCARD = Namespace.getNamespace("vcard", "http://www.w3.org/2006/vcard/ns#");
     public static final Namespace FOAF = Namespace.getNamespace("foaf", "http://xmlns.com/foaf/0.1/");
     public static final Namespace RDF = Namespace.getNamespace("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
-    public static final Namespace MDCAT = Namespace.getNamespace("mdcat", "http://data.vlaanderen.be/ns/metadata-dcat#");
+    public static final Namespace MDCAT = Namespace.getNamespace("mdcat", "https://data.vlaanderen.be/ns/metadata-dcat#");
 }
