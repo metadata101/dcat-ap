@@ -79,8 +79,6 @@
     <xsl:for-each select=".//(dcat:Dataset|dcat:DataService)">
       <doc>
         <xsl:copy-of select="gn-fn-index:add-field('docType', 'metadata')"/>
-        <xsl:copy-of select="gn-fn-index:add-field('documentStandard', 'dcat2')"/>
-
         <xsl:variable name="dateStamp"
                       select="date-util:convertToISOZuluDateTime(normalize-space($dateStamp))"/>
         <xsl:if test="$dateStamp != ''">
@@ -112,23 +110,7 @@
           <xsl:value-of select="format-dateTime(current-dateTime(), $dateFormat)"/>
         </indexingDate>
 
-        <xsl:for-each select="dct:language">
-          <xsl:if test="position() = 1">
-            <mainLanguage>
-              <xsl:value-of select="replace(@rdf:resource, 'http://id.loc.gov/vocabulary/iso639-2/', '')"/>
-            </mainLanguage>
-
-            <!-- TODO: Review -->
-            <!--<resourceLanguage>
-              <xsl:value-of select="replace(@rdf:resource, 'http://id.loc.gov/vocabulary/iso639-2/', '')"/>
-            </resourceLanguage>-->
-          </xsl:if>
-
-          <otherLanguage>
-            <xsl:value-of select="replace(@rdf:resource, 'http://id.loc.gov/vocabulary/iso639-2/', '')"/>
-          </otherLanguage>
-        </xsl:for-each>
-
+        <xsl:apply-templates mode="index-date" select="dct:created"/>
         <xsl:apply-templates mode="index-date" select="dct:issued"/>
         <xsl:apply-templates mode="index-date" select="dct:modified"/>
 
@@ -168,7 +150,7 @@
           </xsl:if>
         </xsl:for-each>
 
-        <xsl:if test="dct:accrualPeriodicity">
+        <xsl:if test="dct:accrualPeriodicity/skos:Concept/skos:prefLabel">
           <xsl:element name="cl_maintenanceAndUpdateFrequency">
             <xsl:attribute name="type" select="'object'"/>
             <xsl:value-of
@@ -178,21 +160,109 @@
 
         <xsl:apply-templates mode="index-contact" select="dct:creator">
           <xsl:with-param name="fieldSuffix" select="''"/>
+          <xsl:with-param name="role" select="'author'"/>
         </xsl:apply-templates>
 
         <xsl:apply-templates mode="index-contact" select="dct:publisher">
           <xsl:with-param name="fieldSuffix" select="''"/>
+          <xsl:with-param name="role" select="'publisher'"/>
         </xsl:apply-templates>
 
         <xsl:for-each select="dcat:contactPoint">
           <xsl:apply-templates mode="index-contact" select=".">
             <xsl:with-param name="fieldSuffix" select="''"/>
+            <xsl:with-param name="role" select="'pointOfContact'"/>
           </xsl:apply-templates>
         </xsl:for-each>
+
+        <resourceIdentifier type="object">
+          {
+          "code": "<xsl:value-of select="@rdf:about"/>",
+          "codeSpace": "",
+          "link": ""
+          }
+        </resourceIdentifier>
+
+        <xsl:copy-of
+          select="gn-fn-index:add-field('mainLanguage', gn-fn-index:langUriTo3Char((dct:language/skos:Concept/@rdf:about|../../dct:language/skos:Concept/@rdf:about)[1]))"/>
+
+        <resourceLanguage type="object">
+          <xsl:for-each-group select="dct:language/skos:Concept/@rdf:about|../../dct:language/skos:Concept/@rdf:about"
+                              group-by=".">
+            "<xsl:value-of select="gn-fn-index:langUriTo3Char(current-grouping-key())"/>"
+          </xsl:for-each-group>
+          <xsl:if test="position() != last()">,</xsl:if>
+        </resourceLanguage>
 
         <xsl:apply-templates mode="index-keyword" select="."/>
 
         <xsl:apply-templates mode="index-concept" select="."/>
+
+        <xsl:for-each-group select="dcat:distribution/dcat:Distribution/dct:format" group-by="skos:Concept/@rdf:about">
+          <xsl:copy-of select="gn-fn-index:add-field('format', tokenize(current-grouping-key(), '/')[last()])"/>
+        </xsl:for-each-group>
+
+        <xsl:for-each select="//dcat:distribution/dcat:Distribution/dcat:accessURL">
+          <linkUrl >
+            <xsl:value-of select="string(@rdf:resource)"/></linkUrl>
+        </xsl:for-each>
+        <xsl:for-each select="//dcat:distribution/dcat:Distribution/dct:conformsTo/dct:Standard">
+          <linkProtocol>
+            <xsl:value-of select="normalize-space(tokenize(@rdf:about, '/')[last()])"/>
+          </linkProtocol>
+        </xsl:for-each>
+
+
+
+        <xsl:variable name="link">
+          <xsl:for-each select="dcat:distribution/dcat:Distribution">
+            <link type="object">
+              {
+              "protocol":
+              <xsl:choose>
+                <xsl:when test="dct:conformsTo/dct:Standard/@rdf:about">
+                  "<xsl:value-of
+                  select="normalize-space(tokenize(dct:conformsTo/dct:Standard/@rdf:about, '/')[last()])"/>"
+                </xsl:when>
+                <xsl:otherwise>
+                  ""
+                </xsl:otherwise>
+              </xsl:choose>
+              ,
+              "mimeType":
+              "<xsl:value-of
+              select="normalize-space(substring-after(dcat:mediaType/skos:Concept/@rdf:about, '/media-types/'))"/>" ,
+              "url":"<xsl:value-of select="normalize-space(dcat:accessURL/@rdf:resource)"/>",
+              "name":
+              <xsl:choose>
+                <xsl:when test="count(dct:title)= 1">
+                  "<xsl:value-of select="normalize-space(dct:title)"/>"
+                </xsl:when>
+                <xsl:when test="count(dct:title)>1">
+                  <xsl:for-each select="dct:title">
+                    {
+                    <xsl:value-of select="normalize-space(.)"/>
+                    }
+                    <xsl:if test="position() != last()">,</xsl:if>
+                  </xsl:for-each>
+                </xsl:when>
+                <xsl:otherwise>
+                  ""
+                </xsl:otherwise>
+              </xsl:choose>
+              ,
+              "description":
+              "<xsl:value-of select="normalize-space(dct:description)"/>",
+              "function":"",
+              "applicationProfile":"",
+              "group":0
+              }
+            </link>
+          </xsl:for-each>
+        </xsl:variable>
+
+
+        <xsl:copy-of select="$link"/>
 
         <xsl:for-each select="dcat:spatialResolutionInMeters[. castable as xs:decimal]">
           <resolutionScaleDenominator>
@@ -200,31 +270,21 @@
           </resolutionScaleDenominator>
         </xsl:for-each>
 
-        <xsl:variable name="overviews"
-                      select="dcat:distribution/*[dct:format/*/skos:prefLabel = 'WWW:OVERVIEW' and dcat:accessURL != '']"/>
-        <xsl:copy-of
-          select="gn-fn-index:add-field('hasOverview', if (count($overviews) > 0) then 'true' else 'false')"/>
+        <!--        TODO check how to implement overviews in dcat-->
+        <xsl:copy-of select="gn-fn-index:add-field('hasOverview', 'false')"/>
 
+        <xsl:variable name="openKeywords" select="*[name() = ('dct:subject', 'mdcat:statuut') and
+          skos:Concept/@rdf:about = ('https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA', 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE')
+        ]"/>
+        <xsl:variable name="isOpenData" select="if (count($openKeywords) > 0) then 'y' else 'n'"/>
+        <xsl:copy-of select="gn-fn-index:add-field('isOpenData', $isOpenData)"/>
 
-        <xsl:variable name="isStoringOverviewInIndex"
-                      select="true()"/>
-        <xsl:for-each select="$overviews">
-          <overview type="object">{
-            "url": "<xsl:value-of select="normalize-space(dcat:accessURL)"/>"
-            <xsl:if test="$isStoringOverviewInIndex">
-              <xsl:variable name="data"
-                            select="util:buildDataUrl(dcat:accessURL, 140)"/>
-              <xsl:if test="$data != ''">,
-                "data": "<xsl:value-of select="$data"/>"
-              </xsl:if>
-            </xsl:if>
-            <xsl:if test="normalize-space(dct:title) != ''">,
-              "text":
-              <xsl:value-of select="gn-fn-index:add-multilingual-field('name', dct:title, $allLanguages, true())"/>
-            </xsl:if>
-            }
-          </overview>
-        </xsl:for-each>
+        <xsl:variable name="geoKeywords" select="*[name() = ('dct:subject', 'mdcat:statuut') and
+          skos:Concept/@rdf:about = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/GEODATA'
+        ]"/>
+        <xsl:variable name="isGeoData" select="if (count($geoKeywords) > 0) then 'y' else 'n'"/>
+        <xsl:copy-of select="gn-fn-index:add-field('isGeoData', $isGeoData)"/>
+
       </doc>
     </xsl:for-each>
   </xsl:template>
@@ -255,6 +315,7 @@
       </xsl:for-each>
       ]
     </tag>
+
   </xsl:template>
 
   <xsl:template mode="index-concept" match="dcat:Dataset|dcat:DataService">
@@ -282,7 +343,47 @@
         ]
       </xsl:element>
     </xsl:for-each-group>
+    <xsl:if test="count(dcat:keyword) !=0">
+      <th_otherKeywords-Number type="object">
+        <xsl:value-of select="count(dcat:keyword)"/>
+      </th_otherKeywords-Number>
+      <th_otherKeywords- type="object">
+        [
+        <xsl:for-each select="dcat:keyword">
+          {
+          <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':',
+                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>,
+          <xsl:value-of select="concat($doubleQuote, 'lang', @xml:lang, $doubleQuote, ':',
+                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+          }
+          <xsl:if test="position() != last()">,</xsl:if>
+        </xsl:for-each>
+
+        ]
+      </th_otherKeywords->
+    </xsl:if>
     <allKeywords type="object">{
+      <xsl:if test="count(dcat:keyword) !=0">
+        "th_otherKeywords-":
+        <xsl:value-of>
+          {
+          "title": "otherKeywords-",
+          "theme": "",
+          "keywords": [
+          <xsl:for-each select="dcat:keyword">
+            {
+            <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':',
+                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>,
+            <xsl:value-of select="concat($doubleQuote, 'lang', @xml:lang, $doubleQuote, ':',
+                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+            }
+            <xsl:if test="position() != last()">,</xsl:if>
+          </xsl:for-each>
+          ]
+          }
+        </xsl:value-of>,
+      </xsl:if>
+
       <xsl:for-each-group select="dct:subject|dcat:theme|mdcat:statuut"
                           group-by="skos:Concept/skos:inScheme/@rdf:resource">
         <xsl:variable name="thesaurusId"
@@ -320,8 +421,22 @@
 
   </xsl:template>
 
-  <xsl:template mode="index-date" match="dct:modified|dct:issued">
-    <xsl:variable name="dateType" select="if (name() = 'dct:issued') then 'publication' else 'revision'"/>
+
+  <xsl:template mode="index-date" match="dct:modified|dct:issued|dct:created">
+    <xsl:variable name="dateType">
+      <xsl:choose>
+        <xsl:when test="name() = 'dct:issued'">
+          <xsl:value-of select="'publication'"/>
+        </xsl:when>
+        <xsl:when test="name() = 'dct:created'">
+          <xsl:value-of select="'creation'"/>
+        </xsl:when>
+        <xsl:when test="name() = 'dct:modified'">
+          <xsl:value-of select="'revision'"/>
+        </xsl:when>
+      </xsl:choose>
+
+    </xsl:variable>
 
     <xsl:variable name="date"
                   select="string(.)"/>
@@ -359,26 +474,16 @@
 
   <xsl:template mode="index-contact" match="*[foaf:Agent]">
     <xsl:param name="fieldSuffix" select="''" as="xs:string"/>
+    <xsl:param name="role" select="''" as="xs:string"/>
 
     <xsl:variable name="organisationName"
                   select="foaf:Agent/foaf:name"
                   as="xs:string*"/>
 
-    <!-- TODO: Use language -->
-    <xsl:variable name="role"
-                  select="foaf:Agent/dct:type/skos:Concept/skos:prefLabel[1]"
-                  as="xs:string?"/>
-    <xsl:variable name="logo" select="''"/>
-    <xsl:variable name="website" select="''"/>
     <xsl:variable name="email"
                   select="foaf:Agent/foaf:mbox/@rdf:resource"/>
     <xsl:variable name="phone"
                   select="foaf:Agent/foaf:phone/@rdf:resource"/>
-    <xsl:variable name="individualName"
-                  select="''"/>
-    <xsl:variable name="positionName"
-                  select="''"/>
-    <xsl:variable name="address" select="''"/>
 
     <xsl:if test="normalize-space($organisationName) != ''">
       <xsl:element name="Org{$fieldSuffix}">
@@ -389,34 +494,25 @@
       </xsl:element>
     </xsl:if>
     <xsl:element name="contact{$fieldSuffix}">
-      <!-- TODO: Can be multilingual -->
       <xsl:attribute name="type" select="'object'"/>{
       "organisation":"<xsl:value-of
       select="gn-fn-index:json-escape($organisationName)"/>",
       "role":"<xsl:value-of select="$role"/>",
       "email":"<xsl:value-of select="gn-fn-index:json-escape($email[1])"/>",
-      "website":"<xsl:value-of select="$website"/>",
-      "logo":"<xsl:value-of select="$logo"/>",
-      "individual":"<xsl:value-of select="gn-fn-index:json-escape($individualName)"/>",
-      "position":"<xsl:value-of select="gn-fn-index:json-escape($positionName)"/>",
-      "phone":"<xsl:value-of select="gn-fn-index:json-escape($phone[1])"/>",
-      "address":"<xsl:value-of select="gn-fn-index:json-escape($address)"/>"
+      "phone":"<xsl:value-of select="gn-fn-index:json-escape($phone[1])"/>"
       }
     </xsl:element>
   </xsl:template>
 
   <xsl:template mode="index-contact" match="*[vcard:Organization]">
     <xsl:param name="fieldSuffix" select="''" as="xs:string"/>
+    <xsl:param name="role" select="''" as="xs:string"/>
+
 
     <xsl:variable name="organisationName"
                   select="vcard:Organization/vcard:organization-name"
                   as="xs:string*"/>
 
-    <!-- TODO -->
-    <xsl:variable name="role"
-                  select="''"
-                  as="xs:string?"/>
-    <xsl:variable name="logo" select="''"/>
     <xsl:variable name="website" select="vcard:Organization/vcard:hasURL/@rdf:resource"/>
     <xsl:variable name="email"
                   select="vcard:Organization/vcard:hasEmail/@rdf:resource"/>
@@ -424,9 +520,19 @@
                   select="vcard:Organization/vcard:hasTelephone"/>
     <xsl:variable name="individualName"
                   select="vcard:Organization/vcard:fn"/>
-    <xsl:variable name="positionName"
-                  select="''"/>
-    <xsl:variable name="address" select="''"/>
+    <xsl:variable name="address">
+      <xsl:choose>
+        <xsl:when test="vcard:Organization/vcard:hasAddress/vcard:Address">
+          <xsl:for-each select="vcard:Organization/vcard:hasAddress/vcard:Address">
+            <xsl:value-of
+              select="concat(vcard:street-address, ', ', vcard:locality, ', ', vcard:postal-code, ', ', vcard:country-name)"/>
+          </xsl:for-each>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="''"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
 
     <xsl:if test="normalize-space($organisationName) != ''">
       <xsl:element name="Org{$fieldSuffix}">
@@ -437,16 +543,13 @@
       </xsl:element>
     </xsl:if>
     <xsl:element name="contact{$fieldSuffix}">
-      <!-- TODO: Can be multilingual -->
       <xsl:attribute name="type" select="'object'"/>{
       "organisation":"<xsl:value-of
       select="gn-fn-index:json-escape($organisationName)"/>",
       "role":"<xsl:value-of select="$role"/>",
       "email":"<xsl:value-of select="gn-fn-index:json-escape($email[1])"/>",
       "website":"<xsl:value-of select="$website"/>",
-      "logo":"<xsl:value-of select="$logo"/>",
       "individual":"<xsl:value-of select="gn-fn-index:json-escape($individualName)"/>",
-      "position":"<xsl:value-of select="gn-fn-index:json-escape($positionName)"/>",
       "phone":"<xsl:value-of select="gn-fn-index:json-escape($phone[1])"/>",
       "address":"<xsl:value-of select="gn-fn-index:json-escape($address)"/>"
       }
@@ -537,5 +640,27 @@
         </xsl:choose>
       </xsl:if>
     </xsl:for-each>
+  </xsl:function>
+
+  <xsl:function name="gn-fn-index:langUriTo3Char">
+    <xsl:param name="langUri" as="xs:string"/>
+    <xsl:choose>
+      <xsl:when test="$langUri = 'http://publications.europa.eu/resource/authority/language/NLD'">
+        <xsl:value-of select="'dut'"/>
+      </xsl:when>
+      <xsl:when test="$langUri = 'http://publications.europa.eu/resource/authority/language/FRA'">
+        <xsl:value-of select="'fra'"/>
+      </xsl:when>
+      <xsl:when test="$langUri = 'http://publications.europa.eu/resource/authority/language/ENG'">
+        <xsl:value-of select="'end'"/>
+      </xsl:when>
+      <xsl:when test="$langUri = 'http://publications.europa.eu/resource/authority/language/DEU'">
+        <xsl:value-of select="'ger'"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:message select="concat('Unsupported langUri ', $langUri)"/>
+        <xsl:value-of select="''"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:function>
 </xsl:stylesheet>
