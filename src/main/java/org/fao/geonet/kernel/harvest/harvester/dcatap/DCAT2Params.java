@@ -134,17 +134,17 @@
 //         //--- if some search queries are given, we drop the previous ones and
 //         //--- set these new ones
 //
-// //        if (searches != null)
-// //            addSearches(searches);
+//        if (searches != null)
+//            addSearches(searches);
 //     }
 //
-// //    public Iterable<Search> getSearches() {
-// //        return alSearches;
-// //    }
-// //
-// //    public boolean isSearchEmpty() {
-// //        return alSearches.isEmpty();
-// //    }
+//    public Iterable<Search> getSearches() {
+//        return alSearches;
+//    }
+//
+//    public boolean isSearchEmpty() {
+//        return alSearches.isEmpty();
+//    }
 //
 //     public DCAT2Params copy() {
 //         DCAT2Params copy = new DCAT2Params(dm);
@@ -154,24 +154,24 @@
 //         copy.rdfSyntax = rdfSyntax;
 //         copy.icon = icon;
 //
-// //        for (Search s : alSearches)
-// //            copy.alSearches.add(s.copy());
+//        for (Search s : alSearches)
+//            copy.alSearches.add(s.copy());
 //
 //         return copy;
 //     }
-// //
-// //    private void addSearches(Element searches) {
-// //        alSearches.clear();
-// //
-// //        if (searches == null)
-// //            return;
-// //
-// //        for (Object o : searches.getChildren("search")) {
-// //            Element search = (Element) o;
-// //
-// //            alSearches.add(new Search(search));
-// //        }
-// //    }
+//
+//    private void addSearches(Element searches) {
+//        alSearches.clear();
+//
+//        if (searches == null)
+//            return;
+//
+//        for (Object o : searches.getChildren("search")) {
+//            Element search = (Element) o;
+//
+//            alSearches.add(new Search(search));
+//        }
+//    }
 //
 //     private String safeDecode(String url) throws UnsupportedEncodingException {
 //         url = url.replaceAll("%(?![0-9a-fA-F]{2})", "%25");

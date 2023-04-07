@@ -35,7 +35,7 @@
   <xsl:import href="metadata-view.xsl"/>
 
   <!-- main template - the way into processing dcat2 -->
-  <xsl:template name="metadata-dcat2">
+  <xsl:template name="dcat2">
     <xsl:param name="schema"/>
     <xsl:param name="edit" select="false()"/>
     <xsl:param name="embedded"/>
@@ -48,7 +48,7 @@
   </xsl:template>
 
   <!-- simple -->
-  <xsl:template name="metadata-metadata-dcatview-simple" match="metadata-metadata-dcatview-simple">
+  <xsl:template name="metadata-dcat2view-simple" match="metadata-dcat2view-simple">
 
     <xsl:call-template name="md-content">
       <xsl:with-param name="title" select="//dct:title"/>
@@ -124,7 +124,7 @@
 
   <!-- CompleteTab template - dc just calls completeTab from
        metadata-utils.xsl -->
-  <xsl:template name="metadata-dcatCompleteTab">
+  <xsl:template name="dcat2CompleteTab">
     <xsl:param name="tabLink"/>
 
     <xsl:call-template name="mainTab">
@@ -320,7 +320,7 @@
       </xsl:if>
     </xsl:template>
 
-  <xsl:template name="metadata-dcatBrief">
+  <xsl:template name="dcat2Brief">
     <metadata>
       <xsl:if test="dct:title">
         <title><xsl:value-of select="dct:title"/></title>

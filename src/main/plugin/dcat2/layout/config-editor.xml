@@ -11,7 +11,7 @@
         xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
         xmlns:foaf="http://xmlns.com/foaf/0.1/"
         xmlns:owl="http://www.w3.org/2002/07/owl#"
-        xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
+        xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
         xmlns:schema="http://schema.org/"
         xmlns:locn="http://www.w3.org/ns/locn#"
         xsi:noNamespaceSchemaLocation="../../../../../../config-editor.xsd">
@@ -436,10 +436,26 @@
         max="1"
         labelKey="dcat.addAccessRight"/>
     </for>
-    <for name="dct:subject" use="thesaurus-multi-list-picker">
+    <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker" profile="metadata-dcat">
       <directiveAttributes
-          thesauri="external.theme.GDI-Vlaanderen-trefwoorden, external.theme.magda-domain"
-          xpath="/dct:subject"/>
+        thesaurus="external.theme.magda-domain"
+        xpath="/mdcat:MAGDA-categorie"
+        max=""
+        labelKey="mdcat.addMagdaCategorie"/>
+    </for>
+    <for name="mdcat:statuut" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.GDI-Vlaanderen-trefwoorden"
+        xpath="/mdcat:statuut"
+        max=""
+        labelKey="mdcat.addStatuut"/>
+    </for>
+    <for name="dct:subject" use="thesaurus-list-picker" profile="none">
+      <directiveAttributes
+        thesaurus="external.theme.GDI-Vlaanderen-trefwoorden"
+        xpath="/dct:subject"
+        max=""
+        labelKey="mdcat.addStatuut"/>
     </for>
     <for name="mdcat:levensfase" use="thesaurus-list-picker">
       <directiveAttributes
@@ -572,6 +588,8 @@
             </template>
           </action>
           <field name="FieldId145" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:keyword" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:MAGDA-categorie" or="MAGDA-categorie" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:statuut" or="statuut" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:subject" or="subject" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId147" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme" or="theme" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId113" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
@@ -755,6 +773,8 @@
               </snippet>
             </template>
           </action>
+          <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:MAGDA-categorie" or="MAGDA-categorie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statuut" or="statuut" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:subject" or="subject" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId427" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme" or="theme" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId405" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier"/>
@@ -859,6 +879,8 @@
       <flatModeExceptions>
         <!-- Basic information -->
         <for name="dcat:keyword"/>
+        <for name="mdcat:MAGDA-categorie"/>
+        <for name="mdcat:statuut"/>
         <for name="dct:subject"/>
         <for name="dcat:theme"/>
         <!-- Version info -->
@@ -866,8 +888,6 @@
         <for name="dct:created" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created"/>
         <for name="dct:modified" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified"/>
         <for name="dct:issued" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued"/>
-        <for name="xml:lang" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher/foaf:Agent/foaf:name"/>
-        <for name="xml:lang" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/foaf:name"/>
         <!-- Publisher -->
         <for name="foaf:Agent"/>
         <for name="foaf:Agent/dct:type"/>
@@ -998,6 +1018,8 @@
               </snippet>
             </template>
           </action>
+          <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:MAGDA-categorie" or="MAGDA-categorie" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:statuut" or="statuut" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:subject" or="subject" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId147" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme" or="theme" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field name="FieldId113" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
@@ -1313,6 +1335,8 @@
           </action>
           <directive data-gim-add-dataset=""/>
           <field name="FieldId407" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:MAGDA-categorie" or="MAGDA-categorie" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statuut" or="statuut" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId508" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:subject" or="subject" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId427" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme" or="theme" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field name="FieldId405" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>

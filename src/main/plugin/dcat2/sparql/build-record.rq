@@ -4,7 +4,7 @@ PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 PREFIX apf: <http://jena.hpl.hp.com/ARQ/property#>
 PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX mdcat: <http://data.vlaanderen.be/ns/metadata-dcat#>
+PREFIX mdcat: <https://data.vlaanderen.be/ns/metadata-dcat#>
 
 # Retrieve all triples about a specific record URI.
 # Replace the string "%recordId%" with the record ID and
@@ -87,7 +87,7 @@ WHERE {
     IF(?pns = 'http://www.w3.org/2000/01/rdf-schema#', 'rdfs:', 1/0),
     IF(?pns = 'http://www.w3.org/ns/locn#', 'locn:', 1/0),
     IF(?pns = 'http://purl.org/dc/elements/1.1/', 'dc:', 1/0),
-    IF(?pns = 'http://data.vlaanderen.be/ns/metadata-dcat#', 'mdcat:', 1/0),
+    IF(?pns = 'https://data.vlaanderen.be/ns/metadata-dcat#', 'mdcat:', 1/0),
     'unkown:'
   ) AS ?pprefix)
 

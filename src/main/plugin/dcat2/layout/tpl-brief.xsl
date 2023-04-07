@@ -51,7 +51,7 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template name="metadata-dcatBrief">
+  <xsl:template name="dcat2Brief">
     <metadata>
       <xsl:if test="dct:title">
         <title>

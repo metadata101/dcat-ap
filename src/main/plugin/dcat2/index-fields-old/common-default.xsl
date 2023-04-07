@@ -23,7 +23,7 @@
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:geodcat="http://data.europa.eu/930/" xmlns:util="java:org.fao.geonet.util.XslUtil"
                 xmlns:gn-fn-index="http://geonetwork-opensource.org/xsl/functions/index"
-                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:geonet="http://www.fao.org/geonetwork">
 
   <xsl:param name="thesauriDir"/>
@@ -344,15 +344,15 @@
       <Field name="keyword" string="{.}" store="true" index="true"/>
     </xsl:for-each>
 
-    <xsl:for-each select="dct:subject|dcat:theme">
+    <xsl:for-each select="dct:subject|mdcat:MAGDA-categorie|mdcat:statuut|dcat:theme">
       <xsl:variable name="scheme" select="skos:Concept/skos:inScheme/@rdf:resource"/>
       <xsl:variable name="theme" select="if (skos:Concept/skos:prefLabel[@xml:lang='nl']) then skos:Concept/skos:prefLabel[@xml:lang='nl'] else skos:Concept/skos:prefLabel[@xml:lang=$langId]"/>
       <Field name="keyword" string="{$theme}" store="true" index="true"/>
       <xsl:if test="normalize-space($theme) != ''">
         <xsl:choose>
-          <xsl:when test="$scheme = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'">
+          <xsl:when test="$scheme = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden' or name() = 'mdcat:statuut'">
             <Field name="flanderskeyword" string="{$theme}" store="true" index="true"/>
-            <xsl:if test="lower-case($theme) = ('vlaamse open data', 'lijst m&amp;r inspire', 'toegevoegd gdi-vl')">
+            <xsl:if test="lower-case($theme) = ('vlaamse open data', 'vlaamse open data service', 'lijst m&amp;r inspire', 'toegevoegd gdi-vl')">
               <Field name="statute" string="{$theme}" store="true" index="true"/>
             </xsl:if>
           </xsl:when>
@@ -363,9 +363,8 @@
       </xsl:if>
     </xsl:for-each>
 
-    <xsl:variable name="openKeywords" select="dct:subject[
-      skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden' and
-      skos:Concept/@rdf:about = ('https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA', 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/SERVICEVLOPENDATA')
+    <xsl:variable name="openKeywords" select="*[name() = ('dct:subject', 'mdcat:statuut') and
+      skos:Concept/@rdf:about = ('https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA', 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE')
     ]"/>
     <xsl:variable name="isOpenData" select="if (count($openKeywords) > 0) then 'y' else 'n'"/>
     <Field name="isOpenData" string="{$isOpenData}" store="true" index="true"/>
@@ -373,8 +372,7 @@
       <Field name="domain" string="Open data" store="true" index="true" />
     </xsl:if>
 
-    <xsl:variable name="geoKeywords" select="dct:subject[
-      skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden' and
+    <xsl:variable name="geoKeywords" select="*[name() = ('dct:subject', 'mdcat:statuut') and
       skos:Concept/@rdf:about = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/GEODATA'
     ]"/>
     <xsl:variable name="isGeoData" select="if (count($geoKeywords) > 0) then 'y' else 'n'"/>

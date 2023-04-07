@@ -18,9 +18,9 @@
   <sch:ns prefix="dc" uri="http://purl.org/dc/elements/1.1/"/>
   <sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
   <sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
-  <sch:ns prefix="mdcat" uri="http://data.vlaanderen.be/ns/metadata-dcat#"/>
+  <sch:ns prefix="mdcat" uri="https://data.vlaanderen.be/ns/metadata-dcat#"/>
   <sch:ns prefix="geodcat" uri="http://data.europa.eu/930/"/>
-  <sch:ns prefix="generiek" uri="http://data.vlaanderen.be/ns/generiek#"/>
+  <sch:ns prefix="generiek" uri="https://data.vlaanderen.be/ns/generiek#"/>
   <sch:ns prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
   <sch:let name="profile" value="boolean(/*[starts-with(//dcat:CatalogRecord//dct:Standard/@rdf:about, 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL')])"/>
   <sch:pattern>
@@ -598,15 +598,6 @@
       <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor toegankelijkheid (dct:accessRights)</sch:report>
     </sch:rule>
   </sch:pattern>
-  <sch:pattern name="trefwoord" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/1b8b3557ea1ccbabc0962c345782ae53740e72e1">
-    <sch:title>1364. Trefwoord - Een trefwoord of tag die de resource beschrijft. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Atrefwoord)</sch:title>
-    <sch:rule context="//dcat:DataService/dcat:keyword[$profile]">
-      <sch:let name="current" value="."/>
-      <sch:let name="isUniqueLang" value="count(preceding-sibling::dcat:keyword[string() = string($current) and @xml:lang = $current/@xml:lang]) = 0"/>
-      <sch:assert test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor trefwoord (dcat:keyword)</sch:assert>
-      <sch:report test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor trefwoord (dcat:keyword)</sch:report>
-    </sch:rule>
-  </sch:pattern>
   <sch:pattern name="trefwoord" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/44f6426e2306c5bc0421823eb4a1a034b615f715">
     <sch:title>1365. Trefwoord - Een trefwoord of tag die de resource beschrijft. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Atrefwoord)</sch:title>
     <sch:rule context="//dcat:DataService/dcat:keyword[$profile]">
@@ -768,14 +759,6 @@
       <sch:report test="$validMin">Minimaal 1 waarden verwacht voor titel (dct:title)</sch:report>
     </sch:rule>
   </sch:pattern>
-  <sch:pattern name="titel" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape/5c245f65e6c2294cd7079eb566de6fd4e4adb829">
-    <sch:title>Titel - De naam van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Atitel)</sch:title>
-    <sch:rule context="//dcat:Dataset[$profile]">
-      <sch:let name="validMax" value="count(dct:title) &lt;= 1"/>
-      <sch:assert test="$validMax">Maximaal 1 waarden toegelaten voor titel (dct:title)</sch:assert>
-      <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor titel (dct:title)</sch:report>
-    </sch:rule>
-  </sch:pattern>
   <sch:pattern name="titel" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape/8041fe094c27b123422bd03a4e13ff0641087607">
     <sch:title>v214. Titel - De naam van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Atitel)</sch:title>
     <sch:rule context="//dcat:Dataset/dct:title[$profile]">
@@ -817,15 +800,6 @@
       <sch:let name="validMax" value="count(dct:accessRights) &lt;= 1"/>
       <sch:assert test="$validMax">Maximaal 1 waarden toegelaten voor toegankelijkheid (dct:accessRights)</sch:assert>
       <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor toegankelijkheid (dct:accessRights)</sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern name="trefwoord" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape/1b8b3557ea1ccbabc0962c345782ae53740e72e1">
-    <sch:title>1719. Trefwoord - Een trefwoord of tag die de resource beschrijft. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Atrefwoord)</sch:title>
-    <sch:rule context="//dcat:Dataset/dcat:keyword[$profile]">
-      <sch:let name="current" value="."/>
-      <sch:let name="isUniqueLang" value="count(preceding-sibling::dcat:keyword[string() = string($current) and @xml:lang = $current/@xml:lang]) = 0"/>
-      <sch:assert test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor trefwoord (dcat:keyword)</sch:assert>
-      <sch:report test="$isUniqueLang">Slechts 1 waarde voor elke taal toegelaten voor trefwoord (dcat:keyword)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="trefwoord" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape/44f6426e2306c5bc0421823eb4a1a034b615f715">
@@ -992,18 +966,18 @@
   <sch:pattern name="statuut" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#CatalogusResourceShape/2ea1d293b25f05ec202dd2dcf8924e8518262c91">
     <sch:title>2005. Statuut - Een aanduiding van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusResource%3Astatuut)</sch:title>
     <sch:rule context="//dcat:Dataset[$profile]|//dcat:DataService[$profile]">
-      <sch:let name="validMin" value="count(dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden']) &gt;= 1"/>
-      <sch:assert test="$validMin">Minimaal 1 waarden verwacht voor statuut (dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'])</sch:assert>
-      <sch:report test="$validMin">Minimaal 1 waarden verwacht voor statuut (dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'])</sch:report>
+      <sch:let name="validMin" value="count(mdcat:statuut) &gt;= 1"/>
+      <sch:assert test="$validMin">Minimaal 1 waarden verwacht voor statuut (mdcat:statuut)</sch:assert>
+      <sch:report test="$validMin">Minimaal 1 waarden verwacht voor statuut (mdcat:statuut)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="statuut" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#CatalogusResourceShape/f96c5f798f9e9c00220a293bd11f37e83616d33b">
     <sch:title>2009. Statuut - Een aanduiding van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusResource%3Astatuut)</sch:title>
-    <sch:rule context="//dcat:Dataset/dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'][$profile]|//dcat:DataService/dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'][$profile]">
+    <sch:rule context="//dcat:Dataset/mdcat:statuut[$profile]|//dcat:DataService/mdcat:statuut[$profile]">
       <sch:let name="resource" value="@rdf:resource"/>
       <sch:let name="validClass" value="count(skos:Concept) = 1 or count(//skos:Concept[@rdf:about = $resource]) = 1"/>
-      <sch:assert test="$validClass">De range van statuut moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'])</sch:assert>
-      <sch:report test="$validClass">De range van statuut moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'])</sch:report>
+      <sch:assert test="$validClass">De range van statuut moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (mdcat:statuut)</sch:assert>
+      <sch:report test="$validClass">De range van statuut moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (mdcat:statuut)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="uitgever" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#CatalogusResourceShape/5334cf8edf5cc07e349524728fe4c9b076e4c45e">

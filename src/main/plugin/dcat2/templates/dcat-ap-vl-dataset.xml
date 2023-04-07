@@ -6,6 +6,7 @@
          xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
          xmlns:dcat="http://www.w3.org/ns/dcat#"
          xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
          xsi:schemaLocation="http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.openarchives.org/OAI/2.0/rdf.xsd">
   <dcat:Catalog>
     <dcat:record>
@@ -44,13 +45,13 @@
           </foaf:Agent>
         </dct:publisher>
         <dcat:keyword xml:lang="nl"/>
-        <dct:subject>
+        <mdcat:statuut>
           <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
             <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
             <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
             <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
           </skos:Concept>
-        </dct:subject>
+        </mdcat:statuut>
         <dcat:theme/>
         <dct:accessRights>
           <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">

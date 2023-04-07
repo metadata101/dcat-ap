@@ -34,7 +34,7 @@
   <xsl:include href="metadata-fop.xsl"/>
 
   <!-- main template - the way into processing dcat2 -->
-  <xsl:template name="metadata-dcat2">
+  <xsl:template name="dcat2">
     <xsl:param name="schema"/>
     <xsl:param name="edit" select="false()"/>
     <xsl:param name="embedded"/>
@@ -48,7 +48,7 @@
 
   <!-- CompleteTab template - dc just calls completeTab from
        metadata-utils.xsl -->
-  <xsl:template name="metadata-dcatCompleteTab">
+  <xsl:template name="dcat2CompleteTab">
     <xsl:param name="tabLink"/>
 
     <xsl:call-template name="completeTab">
@@ -236,7 +236,7 @@
   <!-- dcat2 brief formatting -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-  <xsl:template name="metadata-dcatBrief">
+  <xsl:template name="dcat2Brief">
     <metadata>
       <xsl:if test="dct:title">
         <title><xsl:value-of select="dct:title"/></title>

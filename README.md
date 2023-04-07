@@ -127,11 +127,11 @@ This plugin would merit further improvements in at least the following areas:
 
 ## Contributors
 
-* Dirk Debaere (Informatie Vlaanderen)
-* Mathias De Schrijver (Informatie Vlaanderen)
-* Geraldine Nolf (Informatie Vlaanderen) 
-* Bart Cosyn (Informatie Vlaanderen)
-* Stijn Van Speybroeck (Informatie Vlaanderen)
+* Dirk Debaere (Digitaal Vlaanderen)
+* Mathias De Schrijver (Digitaal Vlaanderen)
+* Geraldine Nolf (Digitaal Vlaanderen) 
+* Bart Cosyn (Digitaal Vlaanderen)
+* Stijn Van Speybroeck (Digitaal Vlaanderen)
 * Gustaaf Vandeboel (GIM)
 * Mathieu Chaussier (GIM)
 * Stijn Goedertier (GIM)
@@ -140,4 +140,4 @@ This plugin would merit further improvements in at least the following areas:
 
 ## Acknowledgement
 
-The work on this schema plugin was funded by and carried out in close collaboration with Informatie Vlaanderen ([AIV](https://overheid.vlaanderen.be/informatie-vlaanderen/flanders-information-agency-en)).  
+The work on this schema plugin was funded by and carried out in close collaboration with Digitaal Vlaanderen ([AIV](https://overheid.vlaanderen.be/informatie-vlaanderen/flanders-information-agency-en)).  

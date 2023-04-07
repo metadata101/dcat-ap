@@ -18,9 +18,9 @@
   <sch:ns prefix="dc" uri="http://purl.org/dc/elements/1.1/"/>
   <sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
   <sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
-  <sch:ns prefix="mdcat" uri="http://data.vlaanderen.be/ns/metadata-dcat#"/>
+  <sch:ns prefix="mdcat" uri="https://data.vlaanderen.be/ns/metadata-dcat#"/>
   <sch:ns prefix="geodcat" uri="http://data.europa.eu/930/"/>
-  <sch:ns prefix="generiek" uri="http://data.vlaanderen.be/ns/generiek#"/>
+  <sch:ns prefix="generiek" uri="https://data.vlaanderen.be/ns/generiek#"/>
   <sch:ns prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
   <sch:let name="profile" value="boolean(/*[starts-with(//dcat:CatalogRecord//dct:Standard/@rdf:about, 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL')])"/>
   <sch:pattern>
@@ -81,10 +81,10 @@
   </sch:pattern>
   <sch:pattern name="statuut" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#CatalogusResourceShape/67325124afc7d6eac4402056620665f7348ef62a">
     <sch:title>2006. Statuut - Een aanduiding van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusResource%3Astatuut)</sch:title>
-    <sch:rule context="//dcat:Dataset/dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'][$profile]|//dcat:DataService/dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'][$profile]">
+    <sch:rule context="//dcat:Dataset/mdcat:statuut[$profile]|//dcat:DataService/mdcat:statuut[$profile]">
       <sch:let name="hasValue" value="skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'"/>
-      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/&gt; verwacht voor statuut (dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'])</sch:assert>
-      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/&gt; verwacht voor statuut (dct:subject[skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'])</sch:report>
+      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/&gt; verwacht voor statuut (mdcat:statuut)</sch:assert>
+      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/&gt; verwacht voor statuut (mdcat:statuut)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="beschrijving" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#UsageNoteDistributieShape/3">
