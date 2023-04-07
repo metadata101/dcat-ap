@@ -290,7 +290,7 @@
   </xsl:template>
 
   <xsl:template mode="index-keyword" match="dcat:Dataset|dcat:DataService">
-    <xsl:variable name="keywords" select="dcat:keyword|dct:subject|dcat:theme|mdcat:statuut"/>
+    <xsl:variable name="keywords" select="dcat:keyword|dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie"/>
     <tagNumber>
       <xsl:value-of select="count($keywords)"/>
     </tagNumber>
@@ -320,7 +320,7 @@
 
   <xsl:template mode="index-concept" match="dcat:Dataset|dcat:DataService">
 
-    <xsl:for-each-group select="dct:subject|dcat:theme|mdcat:statuut"
+    <xsl:for-each-group select="dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie"
                         group-by="skos:Concept/skos:inScheme/@rdf:resource">
       <xsl:variable name="thesaurusId"
                     select="$editorConfig/editor/fields/for[@name=name(current-group()[1])]/directiveAttributes/@thesaurus"/>
@@ -384,7 +384,7 @@
         </xsl:value-of>,
       </xsl:if>
 
-      <xsl:for-each-group select="dct:subject|dcat:theme|mdcat:statuut"
+      <xsl:for-each-group select="dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie"
                           group-by="skos:Concept/skos:inScheme/@rdf:resource">
         <xsl:variable name="thesaurusId"
                       select="$editorConfig/editor/fields/for[@name=name(current-group()[1])]/directiveAttributes/@thesaurus"/>
