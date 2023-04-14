@@ -32,6 +32,7 @@
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
                 xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:gn-fn-index="http://geonetwork-opensource.org/xsl/functions/index"
                 xmlns:index="java:org.fao.geonet.kernel.search.EsSearchManager"
                 xmlns:date-util="java:org.fao.geonet.utils.DateUtil"
@@ -70,6 +71,8 @@
     </xsl:for-each>
   </xsl:variable>
 
+  <xsl:variable name="defaultMainLanguage3Char" select="'dut'"/>
+  <xsl:variable name="defaultMainLanguage2Char" select="'nl'"/>
   <xsl:variable name="editorConfig"
                 select="document('../layout/config-editor.xml')"/>
 
@@ -103,6 +106,9 @@
           </xsl:otherwise>
         </xsl:choose>
 
+
+        <xsl:copy-of
+          select="gn-fn-index:add-multilingual-field('standardName', ../../dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title, $allLanguages)"/>
         <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceTitle', dct:title, $allLanguages)"/>
         <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceAbstract', dct:description, $allLanguages)"/>
 
@@ -159,18 +165,18 @@
         </xsl:if>
 
         <xsl:apply-templates mode="index-contact" select="dct:creator">
-          <xsl:with-param name="fieldSuffix" select="''"/>
+          <xsl:with-param name="fieldSuffix" select="'ForResource'"/>
           <xsl:with-param name="role" select="'author'"/>
         </xsl:apply-templates>
 
         <xsl:apply-templates mode="index-contact" select="dct:publisher">
-          <xsl:with-param name="fieldSuffix" select="''"/>
+          <xsl:with-param name="fieldSuffix" select="'ForResource'"/>
           <xsl:with-param name="role" select="'publisher'"/>
         </xsl:apply-templates>
 
         <xsl:for-each select="dcat:contactPoint">
           <xsl:apply-templates mode="index-contact" select=".">
-            <xsl:with-param name="fieldSuffix" select="''"/>
+            <xsl:with-param name="fieldSuffix" select="'ForResource'"/>
             <xsl:with-param name="role" select="'pointOfContact'"/>
           </xsl:apply-templates>
         </xsl:for-each>
@@ -183,8 +189,16 @@
           }
         </resourceIdentifier>
 
-        <xsl:copy-of
-          select="gn-fn-index:add-field('mainLanguage', gn-fn-index:langUriTo3Char((dct:language/skos:Concept/@rdf:about|../../dct:language/skos:Concept/@rdf:about)[1]))"/>
+        <xsl:choose>
+          <xsl:when test="(dct:language/skos:Concept/@rdf:about|../../dct:language/skos:Concept/@rdf:about)[1]">
+            <xsl:copy-of
+              select="gn-fn-index:add-field('mainLanguage', gn-fn-index:langUriTo3Char((dct:language/skos:Concept/@rdf:about|../../dct:language/skos:Concept/@rdf:about)[1]))"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:copy-of
+              select="gn-fn-index:add-field('mainLanguage', $defaultMainLanguage3Char)"/>
+          </xsl:otherwise>
+        </xsl:choose>
 
         <resourceLanguage type="object">
           <xsl:for-each-group select="dct:language/skos:Concept/@rdf:about|../../dct:language/skos:Concept/@rdf:about"
@@ -197,21 +211,26 @@
         <xsl:apply-templates mode="index-keyword" select="."/>
 
         <xsl:apply-templates mode="index-concept" select="."/>
+        <xsl:apply-templates mode="index-spatial" select="."/>
+        <xsl:for-each-group select="dct:license|dcat:distribution/dcat:Distribution/dct:license" group-by="dct:LicenseDocument/@rdf:about">
+          <xsl:apply-templates mode="index-license" select="current-group()[1]"/>
+        </xsl:for-each-group>
+
 
         <xsl:for-each-group select="dcat:distribution/dcat:Distribution/dct:format" group-by="skos:Concept/@rdf:about">
           <xsl:copy-of select="gn-fn-index:add-field('format', tokenize(current-grouping-key(), '/')[last()])"/>
         </xsl:for-each-group>
 
         <xsl:for-each select="//dcat:distribution/dcat:Distribution/dcat:accessURL">
-          <linkUrl >
-            <xsl:value-of select="string(@rdf:resource)"/></linkUrl>
+          <linkUrl>
+            <xsl:value-of select="string(@rdf:resource)"/>
+          </linkUrl>
         </xsl:for-each>
         <xsl:for-each select="//dcat:distribution/dcat:Distribution/dct:conformsTo/dct:Standard">
           <linkProtocol>
             <xsl:value-of select="normalize-space(tokenize(@rdf:about, '/')[last()])"/>
           </linkProtocol>
         </xsl:for-each>
-
 
 
         <xsl:variable name="link">
@@ -289,6 +308,12 @@
     </xsl:for-each>
   </xsl:template>
 
+  <xsl:template mode="index-license" match="dct:license">
+    <xsl:copy-of
+      select="gn-fn-index:add-multilingual-field-dcat2('license', dct:LicenseDocument, $allLanguages, false(), false(), 'dct:title')"/>
+  </xsl:template>
+
+
   <xsl:template mode="index-keyword" match="dcat:Dataset|dcat:DataService">
     <xsl:variable name="keywords" select="dcat:keyword|dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie"/>
     <tagNumber>
@@ -326,7 +351,7 @@
                     select="$editorConfig/editor/fields/for[@name=name(current-group()[1])]/directiveAttributes/@thesaurus"/>
       <xsl:variable name="key">
         <xsl:if test="$thesaurusId != ''">
-          <xsl:value-of select="tokenize($thesaurusId, '\.')[last()]"/>
+          <xsl:value-of select="tokenize($thesaurusId[1], '\.')[last()]"/>
         </xsl:if>
       </xsl:variable>
       <xsl:element name="th_{$key}Number">
@@ -347,7 +372,7 @@
       <th_otherKeywords-Number type="object">
         <xsl:value-of select="count(dcat:keyword)"/>
       </th_otherKeywords-Number>
-      <th_otherKeywords- type="object">
+      <th_otherKeywords type="object">
         [
         <xsl:for-each select="dcat:keyword">
           {
@@ -360,11 +385,11 @@
         </xsl:for-each>
 
         ]
-      </th_otherKeywords->
+      </th_otherKeywords>
     </xsl:if>
     <allKeywords type="object">{
       <xsl:if test="count(dcat:keyword) !=0">
-        "th_otherKeywords-":
+        "th_otherKeywords":
         <xsl:value-of>
           {
           "title": "otherKeywords-",
@@ -381,7 +406,10 @@
           </xsl:for-each>
           ]
           }
-        </xsl:value-of>,
+        </xsl:value-of>
+        <xsl:if test="count((dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie)/*)>0">
+          ,
+        </xsl:if>
       </xsl:if>
 
       <xsl:for-each-group select="dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie"
@@ -421,6 +449,23 @@
 
   </xsl:template>
 
+  <xsl:template mode="index-spatial" match="dct:spatial">
+    <xsl:variable name="wkt"
+                  select="dct:Location/locn:geometry[@rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral']/string()"/>
+    <xsl:if test="normalize-space($wkt) != ''">
+      <geom type="object">
+        <xsl:text>{"type": "Polygon",</xsl:text>
+        <xsl:text>"coordinates": [[</xsl:text>
+        <xsl:for-each select="tokenize(substring-before(substring-after($wkt, '(('),'))'), ',')">
+          <xsl:text>[</xsl:text>
+          <xsl:value-of select="replace(., ' ', ',')"/>
+          <xsl:text>]</xsl:text>
+          <xsl:if test="position() != last()">,</xsl:if>
+        </xsl:for-each>
+        <xsl:text>]]}</xsl:text>
+      </geom>
+    </xsl:if>
+  </xsl:template>
 
   <xsl:template mode="index-date" match="dct:modified|dct:issued|dct:created">
     <xsl:variable name="dateType">
@@ -471,6 +516,7 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+
 
   <xsl:template mode="index-contact" match="*[foaf:Agent]">
     <xsl:param name="fieldSuffix" select="''" as="xs:string"/>
@@ -578,7 +624,17 @@
     <xsl:param name="languages" as="node()?"/>
     <xsl:param name="asJson" as="xs:boolean?"/>
     <xsl:param name="withKey" as="xs:boolean?"/>
+    <xsl:copy-of
+      select="gn-fn-index:add-multilingual-field-dcat2($fieldName, $elements, $languages, $asJson, $withKey, 'skos:prefLabel')"/>
+  </xsl:function>
 
+  <xsl:function name="gn-fn-index:add-multilingual-field-dcat2" as="node()*">
+    <xsl:param name="fieldName" as="xs:string"/>
+    <xsl:param name="elements" as="node()*"/>
+    <xsl:param name="languages" as="node()?"/>
+    <xsl:param name="asJson" as="xs:boolean?"/>
+    <xsl:param name="withKey" as="xs:boolean?"/>
+    <xsl:param name="lookupElement" as="xs:string?"/>
 
     <xsl:variable name="mainLanguage"
                   select="$languages/lang[@id='default']/@value"/>
@@ -589,7 +645,7 @@
     <xsl:variable name="url"
                   select="distinct-values($elements/@rdf:about)"/>
 
-    <xsl:for-each select="$elements/skos:prefLabel">
+    <xsl:for-each select="$elements/*[name() = $lookupElement]">
       <xsl:variable name="element" select="."/>
       <xsl:variable name="textObject" as="node()*">
         <xsl:if test="position() = 1">
@@ -597,7 +653,7 @@
             <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':',
                                              $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
           </value>
-          <xsl:for-each select="$elements/skos:prefLabel">
+          <xsl:for-each select="$elements/*[name() = $lookupElement]">
             <xsl:if test="gn-fn-index:json-escape(.) != ''">
               <value>
                 <xsl:value-of select="concat($doubleQuote, 'lang', @xml:lang, $doubleQuote, ':',
@@ -658,7 +714,7 @@
         <xsl:value-of select="'ger'"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:message select="concat('Unsupported langUri ', $langUri)"/>
+        <!--        <xsl:message select="concat('Unsupported langUri ', $langUri)"/>-->
         <xsl:value-of select="''"/>
       </xsl:otherwise>
     </xsl:choose>

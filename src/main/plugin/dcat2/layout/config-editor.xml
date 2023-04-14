@@ -457,13 +457,6 @@
         max=""
         labelKey="mdcat.addStatuut"/>
     </for>
-    <for name="mdcat:statuut" use="thesaurus-list-picker">
-      <directiveAttributes
-        thesaurus="external.theme.GDI-Vlaanderen-trefwoorden"
-        xpath="/mdcat:statuut"
-        max=""
-        labelKey="mdcat.addStatuut"/>
-    </for>
     <for name="mdcat:levensfase" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.levensfase"
