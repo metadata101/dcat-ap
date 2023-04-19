@@ -18,6 +18,34 @@
   <!-- Define form field types per metadata element. -->
   <fields>
     <for name="dct:description" use="textarea"/>
+    <for name="dct:type" xpath="foaf:Agent" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.publisher-type"
+        xpath="/foaf:Agent/dct:type"
+        max="1"
+        labelKey="dcat.addType"/>
+    </for>
+    <for name="dcat:theme" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.datatheme"
+        xpath="/dcat:theme"
+        max=""
+        labelKey="dcat.addThemes"/>
+    </for>
+    <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker" profile="metadata-dcat">
+      <directiveAttributes
+        thesaurus="external.theme.magda-domain"
+        xpath="/mdcat:MAGDA-categorie"
+        max=""
+        labelKey="mdcat.addMagdaCategorie"/>
+    </for>
+    <for name="mdcat:statuut" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.GDI-Vlaanderen-trefwoorden"
+        xpath="/mdcat:statuut"
+        max=""
+        labelKey="mdcat.addStatuut"/>
+    </for>
   </fields>
   <!-- Complex fields. -->
   <fieldsWithFieldset/>
@@ -39,11 +67,79 @@
         <directive data-gn-validation-report=""/>
       </sidePanel>
 
-      <thesaurusList/>
+      <thesaurusList>
+        <thesaurus key="external.theme.publisher-type" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.datatheme" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.frequency" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.language" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.resource-type" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.file-type" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.media-types" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.licence-type" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.status" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.access-right" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.levensfase" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.ontwikkelingstoestand" maxtags="1" transformations="" fieldset="false"/>
+      </thesaurusList>
 
       <tab id="default" default="true" mode="flat">
-        <section>
-          <text><h3>defaultDataset tab - TODO</h3></text>
+        <section name="basicInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title"/>
+          <action type="add" btnLabel="Todo" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title)=0">
+            <template>
+              <snippet>
+                <dct:title xml:lang="nl"/>
+              </snippet>
+            </template>
+          </action>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description"/>
+          <action type="add" btnLabel="Todo" or="description" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description)=0">
+            <template>
+              <snippet>
+                <dct:description xml:lang="nl"/>
+              </snippet>
+            </template>
+          </action>
+          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher"/>-->
+          <!--          <action type="add" name="TODO" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
+          <!--            <template>-->
+          <!--              <snippet>-->
+          <!--                <dct:publisher>-->
+          <!--                  <foaf:Agent>-->
+          <!--                    <foaf:name xml:lang="nl"/>-->
+          <!--                    <dct:type>-->
+          <!--                      <skos:Concept>-->
+          <!--                        <skos:prefLabel xml:lang="nl"/>-->
+          <!--                        <skos:prefLabel xml:lang="en"/>-->
+          <!--                        <skos:prefLabel xml:lang="fr"/>-->
+          <!--                        <skos:prefLabel xml:lang="de"/>-->
+          <!--                        <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>-->
+          <!--                      </skos:Concept>-->
+          <!--                    </dct:type>-->
+          <!--                  </foaf:Agent>-->
+          <!--                </dct:publisher>-->
+          <!--              </snippet>-->
+          <!--            </template>-->
+          <!--          </action>-->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:keyword"
+                 or="keyword"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:MAGDA-categorie"
+                 or="MAGDA-categorie"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:statuut"
+                 or="statuut"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"
+                 or="theme"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier"
+                 or="identifier"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+        </section>
+        <section name="extraInformation">
         </section>
       </tab>
 
@@ -58,11 +154,16 @@
         </section>
         <section name="conformToInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/owl:versionInfo"/>
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/owl:versionInfo"/>
         </section>
       </tab>
-      <flatModeExceptions/>
+      <flatModeExceptions>
+        <for name="dcat:keyword"/>
+        <for name="dcat:theme"/>
+      </flatModeExceptions>
     </view>
 
     <view name="xml">
