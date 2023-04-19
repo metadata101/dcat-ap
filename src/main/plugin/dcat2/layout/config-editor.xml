@@ -16,7 +16,9 @@
         xmlns:locn="http://www.w3.org/ns/locn#"
         xsi:noNamespaceSchemaLocation="../../../../../../config-editor.xsd">
   <!-- Define form field types per metadata element. -->
-  <fields/>
+  <fields>
+    <for name="dct:description" use="textarea"/>
+  </fields>
   <!-- Complex fields. -->
   <fieldsWithFieldset/>
 
@@ -27,41 +29,40 @@
   </multilingualFields>
 
   <views>
-    <view name="default" displayTooltips="true" upAndDownControlHidden="true">
+    <view name="default"
+          default="true"
+          class="gn-label-above-input gn-indent-bluescale"
+          displayTooltips="true"
+          displayTooltipsMode="onhover">
       <sidePanel>
-        <directive data-gn-overview-manager=""/>
         <directive data-gn-onlinesrc-list="" data-types="service|dataset"/>
         <directive data-gn-validation-report=""/>
       </sidePanel>
 
-      <tab id="defaultDataset" default="true" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
-        <text><h3>defaultDataset tab - TODO</h3></text>
+      <thesaurusList/>
+
+      <tab id="default" default="true" mode="flat">
+        <section>
+          <text><h3>defaultDataset tab - TODO</h3></text>
+        </section>
       </tab>
-      <tab id="defaultDistribution" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
-        <text><h3>defaultDistribution tab - TODO</h3></text>
-      </tab>
-      <tab id="defaultService" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
-        <text><h3>defaultService tab - TODO</h3></text>
-      </tab>
-      <tab id="defaultRecord" mode="flat">
-        <text><h3>defaultRecord tab - TODO</h3></text>
+
+      <tab id="record" mode="flat">
+        <section name="catalogRecordInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:description"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:modified"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:issued"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"/>
+        </section>
+        <section name="conformToInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/owl:versionInfo"/>
+        </section>
       </tab>
       <flatModeExceptions/>
-      <thesaurusList/>
-    </view>
-
-    <view name="advanced" displayTooltips="true" upAndDownControlHidden="true">
-      <sidePanel>
-        <directive data-gn-overview-manager=""/>
-        <directive data-gn-onlinesrc-list="" data-types="service|dataset"/>
-        <directive data-gn-validation-report=""/>
-      </sidePanel>
-      <tab id="advancedDataset" default="true" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true"></tab>
-      <tab id="advancedDistribution" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true"></tab>
-      <tab id="advancedService" default="true" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true"></tab>
-      <tab id="advancedRecord" mode="flat"></tab>
-      <flatModeExceptions></flatModeExceptions>
-      <thesaurusList></thesaurusList>
     </view>
 
     <view name="xml">

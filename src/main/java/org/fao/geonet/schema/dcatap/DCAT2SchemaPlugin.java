@@ -82,7 +82,7 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
      */
     @Override
     public Set<AssociatedResource> getAssociatedResourcesUUIDs(Element metadata) {
-        return null;
+        return Collections.emptySet();
     }
 
     @Override
