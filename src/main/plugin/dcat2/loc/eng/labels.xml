@@ -732,36 +732,6 @@
     <description>Tooltip: language</description>
     <btnLabel>language</btnLabel>
   </element>
-  <element name="dcat:extension" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:extension">
-    <label>extended fields</label>
-    <description>Tooltip: extended fields</description>
-    <btnLabel>extended fields</btnLabel>
-  </element>
-  <element name="rdf:Statement" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:extension/rdf:Statement">
-    <label>statement</label>
-    <description>Tooltip: statement</description>
-    <btnLabel>statement</btnLabel>
-  </element>
-  <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:extension/rdf:Statement/@rdf:about">
-    <label>URI</label>
-    <description>Tooltip: URI</description>
-    <btnLabel>URI</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:extension/rdf:Statement/rdf:subject/@rdf:resource">
-    <label>subject</label>
-    <description>Tooltip: subject</description>
-    <btnLabel>subject</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:extension/rdf:Statement/rdf:predicate/@rdf:resource">
-    <label>predicate</label>
-    <description>Tooltip: predicate</description>
-    <btnLabel>predicate</btnLabel>
-  </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:extension/rdf:Statement/rdf:object/@rdf:resource">
-    <label>object</label>
-    <description>Tooltip: object</description>
-    <btnLabel>object</btnLabel>
-  </element>
   <element name="dcat:distribution" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution">
     <label>dataset distribution</label>
     <description>Tooltip: dataset distribution</description>
