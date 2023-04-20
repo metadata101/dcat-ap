@@ -46,9 +46,73 @@
         max=""
         labelKey="mdcat.addStatuut"/>
     </for>
+    <for name="dct:accessRights" xpath="dcat:Dataset" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.access-right"
+        xpath="/dct:accessRights"
+        max="1"
+        labelKey="dcat.addAccessRight"/>
+    </for>
+    <for name="dct:accessRights" xpath="dcat:DataService" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.access-right-service"
+        xpath="/dct:accessRights"
+        max="1"
+        labelKey="dcat.addAccessRight"/>
+    </for>
+    <for name="dct:accessRights" xpath="dcat:Distribution" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.access-right"
+        xpath="/dcat:Distribution/dct:accessRights"
+        max="1"
+        labelKey="dcat.addAccessRight"/>
+    </for>
+    <for name="dct:language" xpath="dcat:Dataset" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.language"
+        xpath="/dct:language"
+        max=""
+        labelKey="dcat.addLanguage"/>
+    </for>
+    <for name="dct:language" xpath="dcat:DataService" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.language"
+        xpath="/dct:language"
+        max=""
+        labelKey="dcat.addLanguage"/>
+    </for>
+    <for name="dct:language" xpath="dcat:Distribution" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.language"
+        xpath="/dcat:Distribution/dct:language"
+        max=""
+        labelKey="dcat.addLanguage"/>
+    </for>
+    <for name="dct:conformsTo"
+         addDirective="data-gn-directory-entry-selector"
+         xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo">
+      <directiveAttributes
+        data-template-add-action="false"
+        data-search-action="true"
+        data-popup-action="false"
+        data-template-type="protocol"
+        data-filter='{"_root": "dct:Standard"}'
+        data-insert-modes="text"/>
+    </for>
   </fields>
   <!-- Complex fields. -->
-  <fieldsWithFieldset/>
+  <fieldsWithFieldset>
+    <name isSupportingSlideToggle="true">dcat:contactPoint</name>
+    <name isSupportingSlideToggle="true">dct:publisher</name>
+    <name isSupportingSlideToggle="true">dct:accessRights</name>
+    <name isSupportingSlideToggle="true">dct:spatial</name>
+    <name isSupportingSlideToggle="true">dct:rights</name>
+    <name isSupportingSlideToggle="true">dct:temporal</name>
+    <name isSupportingSlideToggle="true">dct:conformsTo</name>
+    <name isSupportingSlideToggle="true">dct:conformsTo</name>
+    <name>dct:rights</name>
+    <name>dct:conformsTo</name>
+  </fieldsWithFieldset>
 
   <multilingualFields>
     <exclude>
@@ -102,7 +166,7 @@
               </snippet>
             </template>
           </action>
-          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher"/>-->
+          <!--                    <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher"/>-->
           <!--          <action type="add" name="TODO" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
           <!--            <template>-->
           <!--              <snippet>-->
@@ -139,7 +203,119 @@
                  or="identifier"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
+        <section name="versionInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo"
+                 or="versionInfo"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created"
+                 or="created"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified"
+                 or="modified"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued"
+                 or="issued"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+        </section>
+        <section name="usageInformation">
+          <!--                    <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint"/>-->
+          <!--                    <action type="add" name="TODO" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
+          <!--                      <template>-->
+          <!--                        <snippet>-->
+          <!--                          <dcat:contactPoint>-->
+          <!--                            <vcard:Organization>-->
+          <!--                              <vcard:hasEmail rdf:resource=""/>-->
+          <!--                            </vcard:Organization>-->
+          <!--                          </dcat:contactPoint>-->
+          <!--                        </snippet>-->
+          <!--                      </template>-->
+          <!--                    </action>-->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights"
+                 or="accessRights"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field notDisplayedIfMissing="true" templateModeOnly="true"
+                 xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage">
+            <template>
+              <values>
+                <key label="TODO" xpath="@rdf:resource"
+                     tooltip="dcat:landingPage|/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage"/>
+              </values>
+              <snippet>
+                <!--                          <dcat:landingPage rdf:resource="{{FieldId182}}"/>-->
+              </snippet>
+            </template>
+          </field>
+          <action type="add" btnLabel="TODO" or="landingPage" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dcat:landingPage/>
+              </snippet>
+            </template>
+          </action>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights"/>
+          <action type="add" btnLabel="TODO" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:rights>
+                  <dct:RightsStatement>
+                    <dct:title/>
+                    <dct:description/>
+                  </dct:RightsStatement>
+                </dct:rights>
+              </snippet>
+            </template>
+          </action>
+        </section>
+        <section name="geographicalInformation">
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial"/>
+          <action type="add" name="TODO" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:spatial xmlns:dc="http://purl.org/dc/elements/1.1/">
+                  <dct:Location rdf:about="http://mir.geopunt.be/cl/Geopunt/VlaamseAdminRegios/Vlaanderen">
+                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((5.92
+                      50.67,5.92 51.51,2.53 51.51,2.53 50.67,5.92 50.67))
+                    </locn:geometry>
+                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#gmlLiteral">&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;50.67
+                      5.92 51.51 5.92 51.51 2.53 50.67 2.53 50.67 5.92&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;
+                    </locn:geometry>
+                    <skos:prefLabel xml:lang="nl">Vlaams Gewest</skos:prefLabel>
+                  </dct:Location>
+                </dct:spatial>
+              </snippet>
+            </template>
+          </action>
+          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal"/>-->
+          <!--          <action type="add" name="TODO" or="temporal" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
+          <!--            <template>-->
+          <!--              <snippet>-->
+          <!--                <dct:temporal>-->
+          <!--                  <dct:PeriodOfTime>-->
+          <!--                    <schema:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>-->
+          <!--                    <schema:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>-->
+          <!--                  </dct:PeriodOfTime>-->
+          <!--                </dct:temporal>-->
+          <!--              </snippet>-->
+          <!--            </template> -->
+          <!--          </action>-->
+        </section>
         <section name="extraInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language"
+                 or="language"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+<!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo"/>-->
+<!--          <action type="add" name="TODO" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
+<!--            <template>-->
+<!--              <snippet>-->
+<!--                <dct:conformsTo>-->
+<!--                  <dct:Standard>-->
+<!--                    <dct:title xml:lang="nl"/>-->
+<!--                    <dct:description xml:lang="nl"/>-->
+<!--                  </dct:Standard>-->
+<!--                </dct:conformsTo>-->
+<!--              </snippet>-->
+<!--            </template>-->
+<!--          </action>-->
         </section>
       </tab>
 
@@ -161,8 +337,24 @@
         </section>
       </tab>
       <flatModeExceptions>
+        <!-- Basic information -->
         <for name="dcat:keyword"/>
+        <for name="mdcat:MAGDA-categorie"/>
+        <for name="mdcat:statuut"/>
+        <for name="dct:subject"/>
         <for name="dcat:theme"/>
+        <!-- Version info -->
+        <for name="owl:versionInfo"/>
+        <for name="dct:created" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created"/>
+        <for name="dct:modified" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified"/>
+        <for name="dct:issued" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued"/>
+        <!-- Usage information -->
+        <for name="dct:accessRights" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights"/>
+        <for name="dct:accessRights" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights"/>
+        <!-- Extra info -->
+        <for name="dct:language" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language"/>
+        <for name="dct:language" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
+        <for name="dct:conformsTo" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo"/>
       </flatModeExceptions>
     </view>
 
