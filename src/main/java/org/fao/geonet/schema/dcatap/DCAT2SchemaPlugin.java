@@ -82,7 +82,7 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
      */
     @Override
     public Set<AssociatedResource> getAssociatedResourcesUUIDs(Element metadata) {
-        return null;
+        return Collections.emptySet();
     }
 
     @Override
@@ -120,22 +120,22 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
 
     @Override
     public Set<AssociatedResource> getAssociatedParents(Element metadata) {
-        return null;
+        return Collections.emptySet();
     }
 
     @Override
     public Set<AssociatedResource> getAssociatedDatasets(Element metadata) {
-        return null;
+        return Collections.emptySet();
     }
 
     @Override
     public Set<AssociatedResource> getAssociatedFeatureCatalogues(Element metadata) {
-        return null;
+        return Collections.emptySet();
     }
 
     @Override
     public Set<AssociatedResource> getAssociatedSources(Element metadata) {
-        return null;
+        return Collections.emptySet();
     }
 
     @Override
@@ -145,7 +145,7 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
 
     @Override
     public List<Element> getTranslationForElement(Element element, String languageIdentifier) {
-        return null;
+        return Collections.emptyList();
     }
 
 
