@@ -99,6 +99,68 @@
         data-filter='{"_root": "dct:Standard"}'
         data-insert-modes="text"/>
     </for>
+
+    <for name="dct:created" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="." use="gn-date-picker">
+            <directiveAttributes data-tag-name="dct:created"/>
+          </key>
+        </values>
+        <snippet>
+          <dct:created>{{key}}</dct:created>
+        </snippet>
+      </template>
+    </for>
+    <for name="dct:issued" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="." use="gn-date-picker">
+            <directiveAttributes data-tag-name="dct:issued"/>
+          </key>
+        </values>
+        <snippet>
+          <dct:issued>{{key}}</dct:issued>
+        </snippet>
+      </template>
+    </for>
+    <for name="dct:modified" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="." use="gn-date-picker">
+            <directiveAttributes data-tag-name="dct:modified"/>
+          </key>
+        </values>
+        <snippet>
+          <dct:modified>{{key}}</dct:modified>
+        </snippet>
+      </template>
+    </for>
+    <for name="mdcat:levensfase" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.levensfase"
+        xpath="/mdcat:levensfase"
+        max="1"
+        labelKey="mdcat.addLevensfase"/>
+    </for>
+    <for name="mdcat:ontwikkelingstoestand" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.ontwikkelingstoestand"
+        xpath="/mdcat:ontwikkelingstoestand"
+        max="1"
+        labelKey="mdcat.addOntwikkelingstoestand"/>
+    </for>
+    <for name="dct:conformsTo" addDirective="data-gn-directory-entry-selector"
+         xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo">
+      <directiveAttributes
+        data-template-add-action="false"
+        data-search-action="true"
+        data-popup-action="false"
+        data-template-type="protocol"
+        data-filter='{"_root": "dct:Standard"}'
+        data-insert-modes="text"/>
+    </for>
+
   </fields>
   <!-- Complex fields. -->
   <fieldsWithFieldset>
@@ -109,8 +171,9 @@
     <name isSupportingSlideToggle="true">dct:rights</name>
     <name isSupportingSlideToggle="true">dct:temporal</name>
     <name isSupportingSlideToggle="true">dct:conformsTo</name>
-    <name isSupportingSlideToggle="true">dct:conformsTo</name>
+    <name>dcat:qualifiedRelation</name>
     <name>dct:rights</name>
+    <name>dct:creator</name>
     <name>dct:conformsTo</name>
   </fieldsWithFieldset>
 
@@ -146,10 +209,11 @@
         <thesaurus key="external.theme.ontwikkelingstoestand" maxtags="1" transformations="" fieldset="false"/>
       </thesaurusList>
 
-      <tab id="default" default="true" mode="flat">
+      <tab id="tabDataset" default="true" mode="flat" displayIfRecord="count(//dcat:dataset) > 0"
+           hideIfNotDisplayed="true">
         <section name="basicInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title"/>
-          <action type="add" btnLabel="Todo" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+          <action type="add" btnLabel="fieldTitle" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title)=0">
             <template>
               <snippet>
@@ -158,7 +222,7 @@
             </template>
           </action>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description"/>
-          <action type="add" btnLabel="Todo" or="description" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+          <action type="add" btnLabel="fieldDescription" or="description" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description)=0">
             <template>
               <snippet>
@@ -167,7 +231,7 @@
             </template>
           </action>
           <!--                    <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher"/>-->
-          <!--          <action type="add" name="TODO" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
+          <!--          <action type="add" name="fieldPublisher" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
           <!--            <template>-->
           <!--              <snippet>-->
           <!--                <dct:publisher>-->
@@ -219,7 +283,7 @@
         </section>
         <section name="usageInformation">
           <!--                    <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint"/>-->
-          <!--                    <action type="add" name="TODO" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
+          <!--                    <action type="add" name="fieldContactPoint" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
           <!--                      <template>-->
           <!--                        <snippet>-->
           <!--                          <dcat:contactPoint>-->
@@ -233,27 +297,27 @@
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights"
                  or="accessRights"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field notDisplayedIfMissing="true" templateModeOnly="true"
-                 xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage">
-            <template>
-              <values>
-                <key label="TODO" xpath="@rdf:resource"
-                     tooltip="dcat:landingPage|/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage"/>
-              </values>
-              <snippet>
-                <!--                          <dcat:landingPage rdf:resource="{{FieldId182}}"/>-->
-              </snippet>
-            </template>
-          </field>
-          <action type="add" btnLabel="TODO" or="landingPage" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dcat:landingPage/>
-              </snippet>
-            </template>
-          </action>
+<!--          <field notDisplayedIfMissing="true" templateModeOnly="true"-->
+<!--                 xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage">-->
+<!--            <template>-->
+<!--              <values>-->
+<!--                <key label="key" xpath="@rdf:resource"-->
+<!--                     tooltip="dcat:landingPage|/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage"/>-->
+<!--              </values>-->
+<!--              <snippet>-->
+<!--                &lt;!&ndash;                          <dcat:landingPage rdf:resource="{{FieldId182}}"/>&ndash;&gt;-->
+<!--              </snippet>-->
+<!--            </template>-->
+<!--          </field>-->
+<!--          <action type="add" btnLabel="fieldLandingPage" or="landingPage" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
+<!--            <template>-->
+<!--              <snippet>-->
+<!--                <dcat:landingPage/>-->
+<!--              </snippet>-->
+<!--            </template>-->
+<!--          </action>-->
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights"/>
-          <action type="add" btnLabel="TODO" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+          <action type="add" btnLabel="fieldRights" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
             <template>
               <snippet>
                 <dct:rights>
@@ -268,7 +332,7 @@
         </section>
         <section name="geographicalInformation">
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial"/>
-          <action type="add" name="TODO" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+          <action type="add" name="fieldSpatial" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
             <template>
               <snippet>
                 <dct:spatial xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -286,7 +350,7 @@
             </template>
           </action>
           <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal"/>-->
-          <!--          <action type="add" name="TODO" or="temporal" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
+          <!--          <action type="add" name="fieldTemporal" or="temporal" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
           <!--            <template>-->
           <!--              <snippet>-->
           <!--                <dct:temporal>-->
@@ -303,19 +367,308 @@
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language"
                  or="language"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-<!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo"/>-->
-<!--          <action type="add" name="TODO" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
-<!--            <template>-->
-<!--              <snippet>-->
-<!--                <dct:conformsTo>-->
-<!--                  <dct:Standard>-->
-<!--                    <dct:title xml:lang="nl"/>-->
-<!--                    <dct:description xml:lang="nl"/>-->
-<!--                  </dct:Standard>-->
-<!--                </dct:conformsTo>-->
-<!--              </snippet>-->
-<!--            </template>-->
-<!--          </action>-->
+          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo"/>-->
+          <!--          <action type="add" name="fieldConformsTo" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
+          <!--            <template>-->
+          <!--              <snippet>-->
+          <!--                <dct:conformsTo>-->
+          <!--                  <dct:Standard>-->
+          <!--                    <dct:title xml:lang="nl"/>-->
+          <!--                    <dct:description xml:lang="nl"/>-->
+          <!--                  </dct:Standard>-->
+          <!--                </dct:conformsTo>-->
+          <!--              </snippet>-->
+          <!--            </template>-->
+          <!--          </action>-->
+        </section>
+      </tab>
+
+      <tab id="tabDistribution" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
+        <section>
+
+          <text>
+            <h3>TO DO</h3>
+          </text>
+          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution" name="distribution"/>-->
+          <!--          <action type="add" name="distribution" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
+          <!--            <template>-->
+          <!--              <snippet>-->
+          <!--                <dcat:distribution>-->
+          <!--                  <dcat:Distribution>-->
+          <!--                    <dct:title xml:lang="nl"/>-->
+          <!--                    <dct:description xml:lang="nl"/>-->
+          <!--                    <dcat:accessURL rdf:resource=""/>-->
+          <!--                    <dct:format/>-->
+          <!--                  </dcat:Distribution>-->
+          <!--                </dcat:distribution>-->
+          <!--              </snippet>-->
+          <!--            </template>-->
+          <!--          </action>-->
+        </section>
+      </tab>
+
+      <tab id="tabService" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0"
+           hideIfNotDisplayed="true">
+        <section name="basicInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title"/>
+          <action type="add" btnLabel="fieldTitle" or="title" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title) = 0">
+            <template>
+              <snippet>
+                <dct:title xml:lang="nl"/>
+              </snippet>
+            </template>
+          </action>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description"/>
+          <action type="add" btnLabel="fieldDescription" or="description"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description) = 0">
+            <template>
+              <snippet>
+                <dct:description xml:lang="nl"/>
+              </snippet>
+            </template>
+          </action>
+          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher"/>-->
+          <!--          <action type="add" name="fieldPublisher" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">-->
+          <!--            <template>-->
+          <!--              <snippet>-->
+          <!--                <dct:publisher>-->
+          <!--                  <foaf:Agent>-->
+          <!--                    <foaf:name xml:lang="nl"/>-->
+          <!--                  </foaf:Agent>-->
+          <!--                </dct:publisher>-->
+          <!--              </snippet>-->
+          <!--            </template>-->
+          <!--          </action>-->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
+          <action type="add" btnLabel="fieldEndpointUrl" or="endpointUrl" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:endpointUrl rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription"/>
+          <action type="add" btnLabel="fieldEndpointDescription" or="endpointDescription"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:endpointDescription rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
+          <action type="add" btnLabel="fieldServesDataset" or="servesDataset"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:servesDataset rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <directive data-gim-add-dataset=""/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword"/>
+          <action type="add" name="fieldKeyword" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:keyword/>
+              </snippet>
+            </template>
+          </action>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:MAGDA-categorie"
+                 or="MAGDA-categorie"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statuut"
+                 or="statuut"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:subject"
+                 or="subject"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme"
+                 or="theme"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:identifier"/>
+        </section>
+
+        <section name="versionInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/owl:versionInfo"/>
+          <action type="add" name="fieldVersionInfo" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <owl:versionInfo/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
+        <section name="usageInformation">
+          <!--          <section xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint"/>-->
+          <!--          <action type="add" name= "fieldContactPoint" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">-->
+          <!--            <template>-->
+          <!--              <snippet>-->
+          <!--                <dcat:contactPoint>-->
+          <!--                  <vcard:Organization>-->
+          <!--                    <vcard:hasEmail rdf:resource=""/>-->
+          <!--                  </vcard:Organization>-->
+          <!--                </dcat:contactPoint>-->
+          <!--              </snippet>-->
+          <!--            </template>-->
+          <!--          </action>-->
+          <!--          <field notDisplayedIfMissing="true" templateModeOnly="true" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage">-->
+          <!--            <template>-->
+          <!--              <values>-->
+          <!--                <key label="FieldId409" xpath="@rdf:resource" tooltip="dcat:landingPage|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage"/>-->
+          <!--              </values>-->
+          <!--              <snippet>-->
+          <!--                <dcat:landingPage rdf:resource="{{FieldId409}}"/>-->
+          <!--              </snippet>-->
+          <!--            </template>-->
+          <!--          </field>-->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie"/>
+          <action type="add" name="fieldLandingspaginaVoorAuthenticatie" or="landingspaginaVoorAuthenticatie"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mdcat:landingspaginaVoorAuthenticatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie"/>
+          <action type="add" name="fieldLandingspaginaVoorStatusinformatie" or="landingspaginaVoorStatusinformatie"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mdcat:landingspaginaVoorStatusinformatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie"/>
+          <action type="add" name="fieldLandingspaginaVoorGebruiksinformatie" or="landingspaginaVoorGebruiksinformatie"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <mdcat:landingspaginaVoorGebruiksinformatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:rights"/>
+          <action type="add" btnLabel="fieldRights" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dct:rights>
+                  <dct:RightsStatement>
+                    <dct:title/>
+                    <dct:description/>
+                  </dct:RightsStatement>
+                </dct:rights>
+              </snippet>
+            </template>
+          </action>
+        </section>
+        <section name="serviceInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase"
+                 or="levensfase"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand"
+                 or="ontwikkelingstoestand"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights"
+                 or="accessRights"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+<!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license"-->
+<!--                 or="license"-->
+<!--                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>-->
+        </section>
+
+        <section name="extraInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"
+                 or="language"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:qualifiedRelation"/>-->
+          <!--          <action type="add" name="fieldQualifiedRelation" or="qualifiedRelation"-->
+          <!--                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">-->
+          <!--            <template>-->
+          <!--              <snippet>-->
+          <!--                <dcat:qualifiedRelation>-->
+          <!--                  <dcat:Relationship>-->
+          <!--                    <dcat:hadRole/>-->
+          <!--                    <dct:description xml:lang="nl"/>-->
+          <!--                  </dcat:Relationship>-->
+          <!--                </dcat:qualifiedRelation>-->
+          <!--              </snippet>-->
+          <!--            </template>-->
+          <!--          </action>-->
+          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo"/>-->
+          <!--          <action type="add" name="fieldConformsTo" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">-->
+          <!--            <template>-->
+          <!--              <snippet>-->
+          <!--                <dct:conformsTo>-->
+          <!--                  <dct:Standard>-->
+          <!--                    <dct:title xml:lang="nl"/>-->
+          <!--                    <dct:description xml:lang="nl"/>-->
+          <!--                  </dct:Standard>-->
+          <!--                </dct:conformsTo>-->
+          <!--              </snippet>-->
+          <!--            </template>-->
+          <!--          </action>-->
+          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:creator"/>-->
+          <!--          <action type="add" btnLabel="fieldCreator" or="creator"-->
+          <!--                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">-->
+          <!--            <template>-->
+          <!--              <snippet>-->
+          <!--                <dct:creator>-->
+          <!--                  <foaf:Agent>-->
+          <!--                    <foaf:name xml:lang="nl"/>-->
+          <!--                    <dct:type>-->
+          <!--                      <skos:Concept>-->
+          <!--                        <skos:prefLabel xml:lang="nl"/>-->
+          <!--                        <skos:prefLabel xml:lang="en"/>-->
+          <!--                        <skos:prefLabel xml:lang="fr"/>-->
+          <!--                        <skos:prefLabel xml:lang="de"/>-->
+          <!--                        <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>-->
+          <!--                      </skos:Concept>-->
+          <!--                    </dct:type>-->
+          <!--                  </foaf:Agent>-->
+          <!--                </dct:creator>-->
+          <!--              </snippet>-->
+          <!--            </template>-->
+          <!--          </action>-->
+          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:isReferencedBy"/>-->
+          <!--          <action type="add" btnLabel="fieldIsReferencedBy" or="isReferencedBy"-->
+          <!--                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">-->
+          <!--            <template>-->
+          <!--              <snippet>-->
+          <!--                <dct:isReferencedBy rdf:resource=""/>-->
+          <!--              </snippet>-->
+          <!--            </template>-->
+          <!--          </action>-->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:created" or="created"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:issued" or="issued"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:modified" or="modified"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <!--                    <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:relation" notDisplayedIfMissing="true" templateModeOnly="true">-->
+          <!--            <template>-->
+          <!--              <values>-->
+          <!--                <key label="FieldId435" xpath="@rdf:resource" tooltip="dct:relation|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:relation"/>-->
+          <!--              </values>-->
+          <!--              <snippet>-->
+          <!--                <dct:relation rdf:resource="{{FieldId435}}"/>-->
+          <!--              </snippet>-->
+          <!--            </template>-->
+          <!--          </field>-->
+          <!--          <action type="add" btnLabel="FieldId435" or="relation" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">-->
+          <!--            <template>-->
+          <!--              <snippet>-->
+          <!--                <dct:relation rdf:resource=""/>-->
+          <!--              </snippet>-->
+          <!--            </template>-->
+          <!--          </action>-->
+          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:type" or="type"-->
+          <!--                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>-->
         </section>
       </tab>
 
@@ -355,6 +708,25 @@
         <for name="dct:language" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language"/>
         <for name="dct:language" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
         <for name="dct:conformsTo" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo"/>
+        <!-- Distribution -->
+        <for name="dcat:Distribution"/>
+        <for name="dct:title"/>
+        <for name="dct:description"/>
+        <for name="dcat:accessURL"/>
+        <for name="dct:format"/>
+        <for name="dcat:mediaType"/>
+        <for name="dct:license"/>
+        <for name="dct:LicenseDocument"/>
+        <for name="dct:LicenseDocument/dct:type"/>
+        <for name="dct:rights"
+             xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:rights"/>
+        <for name="dct:conformsTo"
+             xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:conformsTo"/>
+        <for name="rdf:about"
+             xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:conformsTo/dct:Standard"/>
+        <for name="dct:issued"
+             xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:conformsTo/dct:Standard/dct:issued"/>
+
       </flatModeExceptions>
     </view>
 
