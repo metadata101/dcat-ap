@@ -39,4 +39,26 @@
   <mdcat.addOntwikkelingstoestand>Development status</mdcat.addOntwikkelingstoestand>
   <mdcat.addMagdaCategorie>Magda category</mdcat.addMagdaCategorie>
   <mdcat.addStatuut>Status</mdcat.addStatuut>
+
+  <!-- Button label-->
+  <fieldTitle>Title</fieldTitle>
+  <fieldDescription>Description</fieldDescription>
+  <fieldPublisher>Publisher</fieldPublisher>
+  <fieldContactPoint>Contact point</fieldContactPoint>
+  <fieldLandingPage>Landing page</fieldLandingPage>
+  <fieldRights>Rights</fieldRights>
+  <fieldSpatial>Spatial / geographic extent</fieldSpatial>
+  <fieldTemporal>Temporal Coverage</fieldTemporal>
+  <fieldConformsTo>Conforms to standard</fieldConformsTo>
+  <fieldEndpointUrl>Endpoint url</fieldEndpointUrl>
+  <fieldEndpointDescription>Endpoint description</fieldEndpointDescription>
+  <fieldServesDataset>Services dataset</fieldServesDataset>
+  <fieldKeyword>Keyword</fieldKeyword>
+  <fieldVersionInfo>Version</fieldVersionInfo>
+  <fieldLandingspaginaVoorAuthenticatie>Authentication</fieldLandingspaginaVoorAuthenticatie>
+  <fieldLandingspaginaVoorStatusinformatie>Service quality</fieldLandingspaginaVoorStatusinformatie>
+  <fieldLandingspaginaVoorGebruiksinformatie>Terms of use</fieldLandingspaginaVoorGebruiksinformatie>
+  <fieldQualifiedRelation>Qualified relation</fieldQualifiedRelation>
+  <fieldCreator>Creatir</fieldCreator>
+  <fieldIsReferencedBy>Is referenced by</fieldIsReferencedBy>
 </strings>
