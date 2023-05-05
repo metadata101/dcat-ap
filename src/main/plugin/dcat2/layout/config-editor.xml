@@ -164,17 +164,19 @@
   </fields>
   <!-- Complex fields. -->
   <fieldsWithFieldset>
-    <name isSupportingSlideToggle="true">dcat:contactPoint</name>
-    <name isSupportingSlideToggle="true">dct:publisher</name>
-    <name isSupportingSlideToggle="true">dct:accessRights</name>
-    <name isSupportingSlideToggle="true">dct:spatial</name>
-    <name isSupportingSlideToggle="true">dct:rights</name>
-    <name isSupportingSlideToggle="true">dct:temporal</name>
-    <name isSupportingSlideToggle="true">dct:conformsTo</name>
-    <name>dcat:qualifiedRelation</name>
+    <name>dcat:contactPoint</name>
+    <name>vcard:Organization</name>
+    <name>vcard:hasAddress</name>
+    <name>vcard:Address</name>
+    <name>dct:publisher</name>
+    <name>foaf:Agent</name>
+    <name>dct:accessRights</name>
+    <name>dct:spatial</name>
     <name>dct:rights</name>
-    <name>dct:creator</name>
+    <name>dct:temporal</name>
     <name>dct:conformsTo</name>
+    <name>dcat:qualifiedRelation</name>
+    <name>dct:creator</name>
   </fieldsWithFieldset>
 
   <multilingualFields>
@@ -230,27 +232,27 @@
               </snippet>
             </template>
           </action>
-          <!--                    <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher"/>-->
-          <!--          <action type="add" name="fieldPublisher" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
-          <!--            <template>-->
-          <!--              <snippet>-->
-          <!--                <dct:publisher>-->
-          <!--                  <foaf:Agent>-->
-          <!--                    <foaf:name xml:lang="nl"/>-->
-          <!--                    <dct:type>-->
-          <!--                      <skos:Concept>-->
-          <!--                        <skos:prefLabel xml:lang="nl"/>-->
-          <!--                        <skos:prefLabel xml:lang="en"/>-->
-          <!--                        <skos:prefLabel xml:lang="fr"/>-->
-          <!--                        <skos:prefLabel xml:lang="de"/>-->
-          <!--                        <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>-->
-          <!--                      </skos:Concept>-->
-          <!--                    </dct:type>-->
-          <!--                  </foaf:Agent>-->
-          <!--                </dct:publisher>-->
-          <!--              </snippet>-->
-          <!--            </template>-->
-          <!--          </action>-->
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher"/>
+          <action type="add" btnLabel="fieldPublisher" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:publisher>
+                  <foaf:Agent>
+                    <foaf:name xml:lang="nl"/>
+                    <dct:type>
+                      <skos:Concept>
+                        <skos:prefLabel xml:lang="nl"/>
+                        <skos:prefLabel xml:lang="en"/>
+                        <skos:prefLabel xml:lang="fr"/>
+                        <skos:prefLabel xml:lang="de"/>
+                        <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
+                      </skos:Concept>
+                    </dct:type>
+                  </foaf:Agent>
+                </dct:publisher>
+              </snippet>
+            </template>
+          </action>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:keyword"
                  or="keyword"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
@@ -282,7 +284,7 @@
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
         <section name="usageInformation">
-          <!--                    <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint"/>-->
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint"/>
           <!--                    <action type="add" name="fieldContactPoint" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
           <!--                      <template>-->
           <!--                        <snippet>-->
@@ -407,8 +409,7 @@
         </section>
       </tab>
 
-      <tab id="tabService" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0"
-           hideIfNotDisplayed="true">
+      <tab id="tabService" mode="flat" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
         <section name="basicInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title"/>
           <action type="add" btnLabel="fieldTitle" or="title" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
@@ -691,6 +692,8 @@
       </tab>
       <flatModeExceptions>
         <!-- Basic information -->
+        <for name="dct:title"/>
+        <for name="dct:description"/>
         <for name="dcat:keyword"/>
         <for name="mdcat:MAGDA-categorie"/>
         <for name="mdcat:statuut"/>
@@ -698,35 +701,36 @@
         <for name="dcat:theme"/>
         <!-- Version info -->
         <for name="owl:versionInfo"/>
-        <for name="dct:created" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created"/>
-        <for name="dct:modified" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified"/>
-        <for name="dct:issued" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued"/>
+        <for name="dct:created"/>
+        <for name="dct:modified"/>
+        <for name="dct:issued"/>
         <!-- Usage information -->
-        <for name="dct:accessRights" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights"/>
-        <for name="dct:accessRights" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights"/>
+        <for name="dct:accessRights"/>
+        <for name="vcard:fn"/>
+        <for name="vcard:organization-name"/>
+        <for name="vcard:hasEmail"/>
+        <for name="vcard:hasURL"/>
+        <for name="vcard:hasTelephone"/>
+        <for name="vcard:hasAddress"/>
+        <for name="vcard:street-address"/>
+        <for name="vcard:locality"/>
+        <for name="vcard:postal-code"/>
+        <for name="vcard:country-name"/>
         <!-- Extra info -->
-        <for name="dct:language" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language"/>
-        <for name="dct:language" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
-        <for name="dct:conformsTo" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo"/>
+        <for name="dct:language"/>
+        <for name="dct:conformsTo"/>
         <!-- Distribution -->
         <for name="dcat:Distribution"/>
-        <for name="dct:title"/>
-        <for name="dct:description"/>
         <for name="dcat:accessURL"/>
         <for name="dct:format"/>
         <for name="dcat:mediaType"/>
         <for name="dct:license"/>
         <for name="dct:LicenseDocument"/>
         <for name="dct:LicenseDocument/dct:type"/>
-        <for name="dct:rights"
-             xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:rights"/>
-        <for name="dct:conformsTo"
-             xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:conformsTo"/>
-        <for name="rdf:about"
-             xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:conformsTo/dct:Standard"/>
-        <for name="dct:issued"
-             xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:conformsTo/dct:Standard/dct:issued"/>
-
+        <for name="dct:rights"/>
+        <for name="dct:conformsTo"/>
+        <!-- <for name="rdf:about" -->
+        <!--      xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:conformsTo/dct:Standard"/> -->
       </flatModeExceptions>
     </view>
 
