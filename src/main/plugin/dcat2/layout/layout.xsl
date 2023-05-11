@@ -198,16 +198,7 @@
     <xsl:param name="refToDelete" required="no"/>
     <xsl:variable name="name" select="name(.)"/>
     <xsl:variable name="ref" select="gn:element/@ref"/>
-    <xsl:variable name="labelConfig" as="node()">
-      <xsl:choose>
-        <xsl:when test="name()='dcat:accessURL' or name()='dcat:downloadURL'">
-          <xsl:copy-of select="gn-fn-metadata:getLabel($schema, 'rdf:resource', $labels, name(..), '', concat(gn-fn-metadata:getXPath(.),'/@rdf:resource'))"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:copy-of select="gn-fn-metadata:getLabel($schema, $name, $labels, name(..), '', gn-fn-metadata:getXPath(.))"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
+    <xsl:variable name="labelConfig" as="node()" select="gn-fn-metadata:getLabel($schema, $name, $labels, name(..), '', gn-fn-metadata:getXPath(.))"/>
     <xsl:variable name="helper" select="gn-fn-metadata:getHelper($labelConfig/helper, .)"/>
     <xsl:variable name="added" select="parent::node()/parent::node()/@gn:addedObj"/>
     <xsl:variable name="container" select="parent::node()/parent::node()"/>
@@ -225,8 +216,6 @@
     <xsl:variable name="fieldNode" select="$editorConfig/editor/fields/for[@name = $name and @templateModeOnly and (not(@xpath) or @xpath = $contextXpath)]"/>
     <xsl:choose>
       <xsl:when test="count($fieldNode/*)>0 and $fieldNode/@templateModeOnly">
-        <xsl:variable name="name" select="$fieldNode/@name"/>
-        <xsl:variable name="label" select="$fieldNode/@label"/>
         <xsl:variable name="del" select="'.'"/>
         <xsl:variable name="template" select="$fieldNode/template"/>
         <!-- <xsl:variable name="isForceLabel" select="$fieldNode/@forceLabel"/> -->

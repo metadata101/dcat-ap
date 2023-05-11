@@ -88,6 +88,20 @@
         max=""
         labelKey="dcat.addLanguage"/>
     </for>
+    <for name="dct:format" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.file-type"
+        xpath="/dcat:Distribution/dct:format"
+        max="1"
+        labelKey="dcat.addFormat"/>
+    </for>
+    <for name="dcat:mediaType" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.media-types"
+        xpath="/dcat:Distribution/dcat:mediaType"
+        max="1"
+        labelKey="dcat.addMediaType"/>
+    </for>
     <for name="dct:conformsTo"
          addDirective="data-gn-directory-entry-selector"
          xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo">
@@ -104,7 +118,7 @@
       <template>
         <values>
           <key label="key" xpath="." use="gn-date-picker">
-            <directiveAttributes data-tag-name="dct:created"/>
+            <directiveAttributes data-tag-name="dct:created" data-hide-time="true" data-hide-date-mode="true"/>
           </key>
         </values>
         <snippet>
@@ -116,7 +130,7 @@
       <template>
         <values>
           <key label="key" xpath="." use="gn-date-picker">
-            <directiveAttributes data-tag-name="dct:issued"/>
+            <directiveAttributes data-tag-name="dct:issued" data-hide-time="true" data-hide-date-mode="true"/>
           </key>
         </values>
         <snippet>
@@ -128,7 +142,7 @@
       <template>
         <values>
           <key label="key" xpath="." use="gn-date-picker">
-            <directiveAttributes data-tag-name="dct:modified"/>
+            <directiveAttributes data-tag-name="dct:modified" data-hide-time="true" data-hide-date-mode="true"/>
           </key>
         </values>
         <snippet>
@@ -136,6 +150,62 @@
         </snippet>
       </template>
     </for>
+    <for name="schema:startDate" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="." use="gn-date-picker">
+            <directiveAttributes data-tag-name="schema:startDate" data-hide-time="true" data-hide-date-mode="true"/>
+          </key>
+        </values>
+        <snippet>
+          <schema:startDate>{{key}}</schema:startDate>
+        </snippet>
+      </template>
+    </for>
+    <for name="schema:endDate" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="." use="gn-date-picker">
+            <directiveAttributes data-tag-name="schema:endDate" data-hide-time="true" data-hide-date-mode="true"/>
+          </key>
+        </values>
+        <snippet>
+          <schema:endDate>{{key}}</schema:endDate>
+        </snippet>
+      </template>
+    </for>
+
+    <for name="dcat:landingPage" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="dcat:landingPage"/>
+        </values>
+        <snippet>
+          <dcat:landingPage rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="vcard:hasEmail" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="vcard:hasEmail"/>
+        </values>
+        <snippet>
+          <vcard:hasEmail rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="dcat:accessURL" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="dcat:accessURL" required="true"/>
+        </values>
+        <snippet>
+          <dcat:accessURL rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+
     <for name="mdcat:levensfase" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.levensfase"
@@ -162,6 +232,7 @@
     </for>
 
   </fields>
+
   <!-- Complex fields. -->
   <fieldsWithFieldset>
     <name>dcat:contactPoint</name>
@@ -173,10 +244,17 @@
     <name>dct:accessRights</name>
     <name>dct:spatial</name>
     <name>dct:rights</name>
+    <name>dct:RightsStatement</name>
     <name>dct:temporal</name>
+    <name>dct:PeriodOfTime</name>
     <name>dct:conformsTo</name>
+    <name>dct:Standard</name>
     <name>dcat:qualifiedRelation</name>
     <name>dct:creator</name>
+    <name>dcat:distribution</name>
+    <name>dcat:Distribution</name>
+    <name>dct:license</name>
+    <name>dct:LicenseDocument</name>
   </fieldsWithFieldset>
 
   <multilingualFields>
@@ -285,39 +363,31 @@
         </section>
         <section name="usageInformation">
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint"/>
-          <!--                    <action type="add" name="fieldContactPoint" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
-          <!--                      <template>-->
-          <!--                        <snippet>-->
-          <!--                          <dcat:contactPoint>-->
-          <!--                            <vcard:Organization>-->
-          <!--                              <vcard:hasEmail rdf:resource=""/>-->
-          <!--                            </vcard:Organization>-->
-          <!--                          </dcat:contactPoint>-->
-          <!--                        </snippet>-->
-          <!--                      </template>-->
-          <!--                    </action>-->
+          <action type="add" name="fieldContactPoint" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dcat:contactPoint>
+                  <vcard:Organization>
+                    <vcard:hasEmail rdf:resource=""/>
+                  </vcard:Organization>
+                </dcat:contactPoint>
+              </snippet>
+            </template>
+          </action>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights"
                  or="accessRights"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-<!--          <field notDisplayedIfMissing="true" templateModeOnly="true"-->
-<!--                 xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage">-->
-<!--            <template>-->
-<!--              <values>-->
-<!--                <key label="key" xpath="@rdf:resource"-->
-<!--                     tooltip="dcat:landingPage|/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage"/>-->
-<!--              </values>-->
-<!--              <snippet>-->
-<!--                &lt;!&ndash;                          <dcat:landingPage rdf:resource="{{FieldId182}}"/>&ndash;&gt;-->
-<!--              </snippet>-->
-<!--            </template>-->
-<!--          </field>-->
-<!--          <action type="add" btnLabel="fieldLandingPage" or="landingPage" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
-<!--            <template>-->
-<!--              <snippet>-->
-<!--                <dcat:landingPage/>-->
-<!--              </snippet>-->
-<!--            </template>-->
-<!--          </action>-->
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage"/>
+          <action type="add" btnLabel="fieldLandingPage" or="landingPage"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dcat:landingPage rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights"/>
           <action type="add" btnLabel="fieldRights" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
             <template>
@@ -351,65 +421,167 @@
               </snippet>
             </template>
           </action>
-          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal"/>-->
-          <!--          <action type="add" name="fieldTemporal" or="temporal" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
-          <!--            <template>-->
-          <!--              <snippet>-->
-          <!--                <dct:temporal>-->
-          <!--                  <dct:PeriodOfTime>-->
-          <!--                    <schema:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>-->
-          <!--                    <schema:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>-->
-          <!--                  </dct:PeriodOfTime>-->
-          <!--                </dct:temporal>-->
-          <!--              </snippet>-->
-          <!--            </template> -->
-          <!--          </action>-->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal"/>
+          <action type="add" name="fieldTemporal" or="temporal" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:temporal>
+                  <dct:PeriodOfTime>
+                    <schema:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    <schema:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                  </dct:PeriodOfTime>
+                </dct:temporal>
+              </snippet>
+            </template>
+          </action>
         </section>
         <section name="extraInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language"
                  or="language"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo"/>-->
-          <!--          <action type="add" name="fieldConformsTo" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
-          <!--            <template>-->
-          <!--              <snippet>-->
-          <!--                <dct:conformsTo>-->
-          <!--                  <dct:Standard>-->
-          <!--                    <dct:title xml:lang="nl"/>-->
-          <!--                    <dct:description xml:lang="nl"/>-->
-          <!--                  </dct:Standard>-->
-          <!--                </dct:conformsTo>-->
-          <!--              </snippet>-->
-          <!--            </template>-->
-          <!--          </action>-->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo"/>
+          <action type="add" name="fieldConformsTo" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:conformsTo>
+                  <dct:Standard>
+                    <dct:title xml:lang="nl"/>
+                    <dct:description xml:lang="nl"/>
+                  </dct:Standard>
+                </dct:conformsTo>
+              </snippet>
+            </template>
+          </action>
         </section>
       </tab>
 
       <tab id="tabDistribution" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
         <section>
-
-          <text>
-            <h3>TO DO</h3>
-          </text>
-          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution" name="distribution"/>-->
-          <!--          <action type="add" name="distribution" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">-->
-          <!--            <template>-->
-          <!--              <snippet>-->
-          <!--                <dcat:distribution>-->
-          <!--                  <dcat:Distribution>-->
-          <!--                    <dct:title xml:lang="nl"/>-->
-          <!--                    <dct:description xml:lang="nl"/>-->
-          <!--                    <dcat:accessURL rdf:resource=""/>-->
-          <!--                    <dct:format/>-->
-          <!--                  </dcat:Distribution>-->
-          <!--                </dcat:distribution>-->
-          <!--              </snippet>-->
-          <!--            </template>-->
-          <!--          </action>-->
+          <section name="distribution"
+                   forEach="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution"
+                   del=".">
+            <field xpath="dcat:Distribution/dct:title" or="title" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:description" or="description" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dcat:accessURL" or="accessURL" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:format" or="format" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dcat:mediaType" or="mediaType" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:language" or="language" in="dcat:Distribution"/>
+            <section name="license" forEach="dcat:Distribution/dct:license" del=".">
+              <field xpath="dct:LicenseDocument/dct:title" or="title" in="dct:LicenseDocument"/>
+              <field xpath="dct:LicenseDocument/dct:description" or="description" in="dct:LicenseDocument"/>
+            </section>
+            <action type="add" btnLabel="add-license" or="license" in="dcat:Distribution">
+              <template>
+                <snippet label="license-modellicentie-gratis">
+                  <dct:license>
+                    <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0">
+                      <dct:type>
+                        <skos:Concept rdf:about="http://purl.org/adms/licencetype/Attribution">
+                          <skos:prefLabel xml:lang="nl">Verplichte bronvermelding</skos:prefLabel>
+                          <skos:prefLabel xml:lang="en">Attribution</skos:prefLabel>
+                          <skos:prefLabel xml:lang="fr">Attribution</skos:prefLabel>
+                          <skos:prefLabel xml:lang="de">Attribution</skos:prefLabel>
+                          <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
+                        </skos:Concept>
+                      </dct:type>
+                      <dct:title xml:lang="nl">Modellicentie voor gratis hergebruik</dct:title>
+                      <dct:description xml:lang="nl">Onder deze licentie doet de instantie geen afstand van haar intellectuele rechten, maar mag de data voor eender welk doel hergebruikt worden, gratis en onder minimale restricties.</dct:description>
+                      <dct:identifier>https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0</dct:identifier>
+                    </dct:LicenseDocument>
+                  </dct:license>
+                </snippet>
+                <snippet label="license-cc0">
+                  <dct:license>
+                    <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0">
+                      <dct:type>
+                        <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
+                          <skos:prefLabel xml:lang="nl">Werk in het publiek domein</skos:prefLabel>
+                          <skos:prefLabel xml:lang="en">Public domain</skos:prefLabel>
+                          <skos:prefLabel xml:lang="fr">Public domain</skos:prefLabel>
+                          <skos:prefLabel xml:lang="de">Public domain</skos:prefLabel>
+                          <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
+                        </skos:Concept>
+                      </dct:type>
+                      <dct:title xml:lang="nl">Creative Commons Zero verklaring</dct:title>
+                      <dct:description xml:lang="nl">De instantie doet afstand van haar intellectuele eigendomsrechten voor zover dit wettelijk mogelijk is. Hierdoor kan de gebruiker de data hergebruiken voor eender welk doel, zonder een verplichting op naamsvermelding. Deze is de welbekende CC0 licentie.</dct:description>
+                      <dct:identifier>https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0</dct:identifier>
+                    </dct:LicenseDocument>
+                  </dct:license>
+                </snippet>
+                <snippet label="license-modellicentie-hergebruik">
+                  <dct:license>
+                    <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-hergebruik-tegen-vergoeding/v1.0">
+                      <dct:type>
+                        <skos:Concept rdf:about="http://purl.org/adms/licencetype/Attribution">
+                          <skos:prefLabel xml:lang="nl">Verplichte bronvermelding</skos:prefLabel>
+                          <skos:prefLabel xml:lang="en">Attribution</skos:prefLabel>
+                          <skos:prefLabel xml:lang="fr">Attribution</skos:prefLabel>
+                          <skos:prefLabel xml:lang="de">Attribution</skos:prefLabel>
+                          <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0" />
+                        </skos:Concept>
+                      </dct:type>
+                      <dct:title xml:lang="nl">Modellicentie voor hergebruik tegen vergoeding</dct:title>
+                      <dct:description xml:lang="nl">Onder deze licentie stelt de instantie nog steeds haar data ter beschikking voor eender welk hergebruik, maar wil zij hiervoor een vergoeding ontvangen. In regel is deze vergoeding beperkt tot de marginale kosten voor vermenigvuldiging, verstrekking en verspreiding.</dct:description>
+                      <dct:identifier>https://data.vlaanderen.be/id/licentie/modellicentie-hergebruik-tegen-vergoeding/v1.0</dct:identifier>
+                    </dct:LicenseDocument>
+                  </dct:license>
+                </snippet>
+                <snippet label="license-onvoorwaardelijk">
+                  <dct:license>
+                    <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/onvoorwaardelijk-hergebruik/v1.0">
+                      <dct:type>
+                        <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
+                          <skos:prefLabel xml:lang="nl">Werk in het publiek domein</skos:prefLabel>
+                          <skos:prefLabel xml:lang="en">Public domain</skos:prefLabel>
+                          <skos:prefLabel xml:lang="fr">Public domain</skos:prefLabel>
+                          <skos:prefLabel xml:lang="de">Public domain</skos:prefLabel>
+                          <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0" />
+                        </skos:Concept>
+                      </dct:type>
+                      <dct:title xml:lang="nl">Onvoorwaardelijk hergebruik</dct:title>
+                      <dct:description xml:lang="nl">Onvoorwaardelijk hergebruik</dct:description>
+                      <dct:identifier>https://data.vlaanderen.be/id/licentie/onvoorwaardelijk-hergebruik/v1.0</dct:identifier>
+                    </dct:LicenseDocument>
+                  </dct:license>
+                </snippet>
+                <snippet label="license-empty">
+                  <dct:license>
+                    <dct:LicenseDocument rdf:about="">
+                      <dct:type>
+                        <skos:Concept>
+                          <skos:prefLabel xml:lang="nl"/>
+                          <skos:prefLabel xml:lang="en"/>
+                          <skos:prefLabel xml:lang="fr"/>
+                          <skos:prefLabel xml:lang="de"/>
+                          <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
+                        </skos:Concept>
+                      </dct:type>
+                      <dct:title xml:lang="nl">Vul uw eigen licentie in...</dct:title>
+                      <dct:description xml:lang="nl"/>
+                      <!--dct:identifier/-->
+                    </dct:LicenseDocument>
+                  </dct:license>
+                </snippet>
+              </template>
+            </action>
+          </section>
+          <action type="add" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dcat:distribution>
+                  <dcat:Distribution>
+                    <dct:title xml:lang="nl"/>
+                    <dct:description xml:lang="nl"/>
+                    <dcat:accessURL rdf:resource=""/>
+                  </dcat:Distribution>
+                </dcat:distribution>
+              </snippet>
+            </template>
+          </action>
         </section>
       </tab>
 
-      <tab id="tabService" mode="flat" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
+      <tab id="tabService" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
         <section name="basicInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title"/>
           <action type="add" btnLabel="fieldTitle" or="title" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"

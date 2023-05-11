@@ -23,6 +23,7 @@
   <catalogRecordInformation>Catalog record</catalogRecordInformation>
   <conformToInformation>Conformiteit met standaard</conformToInformation>
   <overviews>Overviews</overviews>
+  <distribution>Distribution</distribution>
 
   <!-- Thesauri pickers -->
   <dcat.addThemes>Themes</dcat.addThemes>
@@ -61,4 +62,12 @@
   <fieldQualifiedRelation>Qualified relation</fieldQualifiedRelation>
   <fieldCreator>Creatir</fieldCreator>
   <fieldIsReferencedBy>Is referenced by</fieldIsReferencedBy>
+
+  <!-- Snippet label -->
+  <add-license>License</add-license>
+  <license-modellicentie-gratis>Modellicentie voor gratis hergebruik</license-modellicentie-gratis>
+  <license-cc0>Creative Commons Zero verklaring</license-cc0>
+  <license-modellicentie-hergebruik>Modellicentie voor hergebruik tegen vergoeding</license-modellicentie-hergebruik>
+  <license-onvoorwaardelijk>Onvoorwaardelijk hergebruik</license-onvoorwaardelijk>
+  <license-empty>Vul uw eigen licentie in...</license-empty>
 </strings>
