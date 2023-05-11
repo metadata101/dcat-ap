@@ -60,14 +60,14 @@
   <fieldLandingspaginaVoorStatusinformatie>Service quality</fieldLandingspaginaVoorStatusinformatie>
   <fieldLandingspaginaVoorGebruiksinformatie>Terms of use</fieldLandingspaginaVoorGebruiksinformatie>
   <fieldQualifiedRelation>Qualified relation</fieldQualifiedRelation>
-  <fieldCreator>Creatir</fieldCreator>
+  <fieldCreator>Creator</fieldCreator>
   <fieldIsReferencedBy>Is referenced by</fieldIsReferencedBy>
 
   <!-- Snippet label -->
   <add-license>License</add-license>
-  <license-modellicentie-gratis>Modellicentie voor gratis hergebruik</license-modellicentie-gratis>
-  <license-cc0>Creative Commons Zero verklaring</license-cc0>
-  <license-modellicentie-hergebruik>Modellicentie voor hergebruik tegen vergoeding</license-modellicentie-hergebruik>
-  <license-onvoorwaardelijk>Onvoorwaardelijk hergebruik</license-onvoorwaardelijk>
-  <license-empty>Vul uw eigen licentie in...</license-empty>
+  <license-modellicentie-gratis>Model license for free reuse</license-modellicentie-gratis>
+  <license-cc0>Creative Commons Zero declaration</license-cc0>
+  <license-modellicentie-hergebruik>Model license for paid reuse</license-modellicentie-hergebruik>
+  <license-onvoorwaardelijk>Unconditional reuse</license-onvoorwaardelijk>
+  <license-empty>Specify your own license...</license-empty>
 </strings>

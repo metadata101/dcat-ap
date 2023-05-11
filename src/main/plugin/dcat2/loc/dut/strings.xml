@@ -2,8 +2,8 @@
 <!-- -->
 
 <strings>
-  <xml_dublin-core>Save this metadata as a Dublin Core XML file</xml_dublin-core>
-  <xml_metadata-dcat>Save this metadata as a DCAT-AP XML file</xml_metadata-dcat>
+  <xml_dublin-core>Sla deze metadata op als een Dublin Core XML bestand</xml_dublin-core>
+  <xml_metadata-dcat>Sla deze metadata op als een DCAT-AP XML bestand</xml_metadata-dcat>
   <default>Standaard</default>
   <advanced>Volledige</advanced>
   <xml>XML</xml>
@@ -44,7 +44,7 @@
   <!-- Button label-->
   <fieldTitle>Titel</fieldTitle>
   <fieldDescription>Beschrijving</fieldDescription>
-  <fieldPublisher> Uitgever</fieldPublisher>
+  <fieldPublisher>Uitgever</fieldPublisher>
   <fieldContactPoint>Contactinformatie</fieldContactPoint>
   <fieldLandingPage>Bijsluiter</fieldLandingPage>
   <fieldRights>Rechten</fieldRights>
@@ -60,14 +60,14 @@
   <fieldLandingspaginaVoorStatusinformatie>Landingspagina voor statusinformatie</fieldLandingspaginaVoorStatusinformatie>
   <fieldLandingspaginaVoorGebruiksinformatie>Landingspagina voor gebruiksinformatie</fieldLandingspaginaVoorGebruiksinformatie>
   <fieldQualifiedRelation>Toegekende bevoegdheid</fieldQualifiedRelation>
-  <fieldCreator>Schepper</fieldCreator>
+  <fieldCreator>Maker</fieldCreator>
   <fieldIsReferencedBy>Wordt verwezen door</fieldIsReferencedBy>
 
   <!-- Snippet label -->
-  <add-license>Licencie</add-license>
+  <add-license>Licentie</add-license>
   <license-modellicentie-gratis>Modellicentie voor gratis hergebruik</license-modellicentie-gratis>
   <license-cc0>Creative Commons Zero verklaring</license-cc0>
-  <license-modellicentie-hergebruik>Modellicentie voor hergebruik tegen vergoeding</license-modellicentie-hergebruik>
+  <license-modellicentie-hergebruik>Modellicentie voor betaald hergebruik</license-modellicentie-hergebruik>
   <license-onvoorwaardelijk>Onvoorwaardelijk hergebruik</license-onvoorwaardelijk>
   <license-empty>Vul uw eigen licentie in...</license-empty>
 </strings>
