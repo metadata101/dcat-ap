@@ -203,14 +203,6 @@
     <xsl:variable name="added" select="parent::node()/parent::node()/@gn:addedObj"/>
     <xsl:variable name="container" select="parent::node()/parent::node()"/>
 
-    <!-- Render rdf:about attribute as field for dcat:Dataset -->
-    <xsl:if test="not($isFlatMode) and $isEditing and name(..)='dcat:Dataset' and ../@rdf:about and name() = 'dct:title' and count(preceding-sibling::*[name() = 'dct:title']) = 0">
-      <xsl:apply-templates mode="render-for-field-for-attribute-dcat2"
-                           select="../@rdf:about">
-        <xsl:with-param name="ref" select="../gn:element/@ref"/>
-      </xsl:apply-templates>
-    </xsl:if>
-
     <!-- Add view and edit template-->
     <xsl:variable name="contextXpath" select="gn-fn-metadata:getXPath(.)"/>
     <xsl:variable name="fieldNode" select="$editorConfig/editor/fields/for[@name = $name and @templateModeOnly and (not(@xpath) or @xpath = $contextXpath)]"/>
@@ -359,7 +351,7 @@
                           $isFlatMode]" />
 
   <!-- Ignore the following attributes in flatMode -->
-  <xsl:template mode="render-for-field-for-attribute-dcat2" match="@*[$isFlatMode and not(name(..) = ('dct:LicenseDocument', 'dct:Standard'))]|@gn:xsderror|@gn:addedObj" priority="101"/>
+  <xsl:template mode="render-for-field-for-attribute-dcat2" match="@*[$isFlatMode and name() != 'rdf:about']|@gn:xsderror|@gn:addedObj" priority="101"/>
 
   <xsl:template mode="render-for-field-for-attribute-dcat2" match="@*" priority="100">
     <xsl:variable name="attributeName" select="name(.)"/>
@@ -383,7 +375,6 @@
       <xsl:with-param name="name" select="$ref"/>
       <xsl:with-param name="editInfo" select="$attribute"/>
       <xsl:with-param name="listOfValues" select="$helper"/>
-      <!-- <xsl:with-param name="subRequired" select="(name() = 'rdf:about' and name(..) = 'dct:LicenseDocument')"/> -->
     </xsl:call-template>
   </xsl:template>
 

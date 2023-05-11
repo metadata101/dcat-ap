@@ -102,6 +102,13 @@
         max="1"
         labelKey="dcat.addMediaType"/>
     </for>
+    <for name="dct:type" xpath="dct:LicenseDocument" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.licence-type"
+        xpath="/dct:license/dct:LicenseDocument/dct:type"
+        max="1"
+        labelKey="dcat.addType"/>
+    </for>
     <for name="dct:conformsTo"
          addDirective="data-gn-directory-entry-selector"
          xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo">
@@ -467,6 +474,9 @@
             <field xpath="dcat:Distribution/dcat:mediaType" or="mediaType" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dct:language" or="language" in="dcat:Distribution"/>
             <section name="license" forEach="dcat:Distribution/dct:license" del=".">
+              <!-- TODO: Not shown in editor -->
+              <field xpath="dct:LicenseDocument/@rdf:about"/>
+              <field xpath="dct:LicenseDocument/dct:type" or="type" in="dct:LicenseDocument"/>
               <field xpath="dct:LicenseDocument/dct:title" or="title" in="dct:LicenseDocument"/>
               <field xpath="dct:LicenseDocument/dct:description" or="description" in="dct:LicenseDocument"/>
             </section>
@@ -561,6 +571,19 @@
                       <!--dct:identifier/-->
                     </dct:LicenseDocument>
                   </dct:license>
+                </snippet>
+              </template>
+            </action>
+            <field xpath="dcat:Distribution/dct:rights"/>
+            <action type="add" btnLabel="fieldRights" or="rights" in="dcat:Distribution">
+              <template>
+                <snippet>
+                  <dct:rights>
+                    <dct:RightsStatement>
+                      <dct:title xml:lang="nl"/>
+                      <dct:description xml:lang="nl"/>
+                    </dct:RightsStatement>
+                  </dct:rights>
                 </snippet>
               </template>
             </action>
@@ -901,6 +924,7 @@
         <for name="dct:LicenseDocument/dct:type"/>
         <for name="dct:rights"/>
         <for name="dct:conformsTo"/>
+        <for name="rdf:about"/>
         <!-- <for name="rdf:about" -->
         <!--      xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:conformsTo/dct:Standard"/> -->
       </flatModeExceptions>
