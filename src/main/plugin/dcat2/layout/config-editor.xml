@@ -901,7 +901,7 @@
                 <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
               </skos:Concept>
             </dct:type>
-            <dct:title xml:lang="nl">Vul uw eigen licentie in...</dct:title>
+            <dct:title xml:lang="nl"/>
             <dct:description xml:lang="nl"/>
             <!--dct:identifier/-->
           </dct:LicenseDocument>
@@ -1312,7 +1312,7 @@
       <snippet label="protocol-51">
         <dct:conformsTo>
           <dct:Standard xmlns:dct="http://purl.org/dc/terms/">
-            <dct:title xml:lang="nl">Vul uw eigen protocol in...</dct:title>
+            <dct:title xml:lang="nl"/>
             <dct:description xml:lang="nl" />
           </dct:Standard>
         </dct:conformsTo>
