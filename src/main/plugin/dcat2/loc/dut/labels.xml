@@ -207,6 +207,11 @@
     <description>Tooltip: Statuut</description>
     <btnLabel>Statuut</btnLabel>
   </element>
+  <element name="mdcat:MAGDA-categorie">
+    <label>MAGDA-categorie</label>
+    <description>Tooltip: MAGDA-categorie</description>
+    <btnLabel>MAGDA-categorie</btnLabel>
+  </element>
   <element name="dcat:theme">
     <label>Thema</label>
     <description>De hoofdcategorie waartoe de dataservice behoort.</description>

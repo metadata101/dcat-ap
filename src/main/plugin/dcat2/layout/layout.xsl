@@ -53,7 +53,7 @@
   <xsl:variable name="isDcatService" select="count($metadata/dcat:Catalog/dcat:service/dcat:DataService) > 0"/>
 
   <!-- Ignore all gn element -->
-  <xsl:template mode="mode-dcat2" match="gn:*|@gn:*|@*" priority="1000"/>
+  <xsl:template mode="mode-dcat2" match="gn:*|@gn:*" priority="1000"/>
 
   <!-- Template to display non existing element ie. geonet:child element
   of the metadocument. Display in editing mode only and if

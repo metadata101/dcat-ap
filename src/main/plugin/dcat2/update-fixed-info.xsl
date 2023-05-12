@@ -283,6 +283,7 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- Ensure Dataset element ordering -->
   <xsl:template match="dcat:Dataset" priority="10">
     <dcat:Dataset>
       <xsl:call-template name="handle-resource-id"/>
@@ -325,6 +326,7 @@
     </dcat:Dataset>
   </xsl:template>
 
+  <!-- Ensure DataService element ordering -->
   <xsl:template match="dcat:DataService" priority="10">
     <dcat:DataService>
       <xsl:call-template name="handle-resource-id"/>
@@ -364,6 +366,7 @@
     </dcat:DataService>
   </xsl:template>
 
+  <!-- Ensure Distribution element ordering -->
   <xsl:template match="dcat:Distribution[name(..)='dcat:distribution']" priority="10">
     <dcat:Distribution>
       <xsl:apply-templates select="@*"/>
@@ -528,8 +531,8 @@
     </xsl:copy>
   </xsl:template>
 
-  <!-- Ignore all empty rdf:about -->
-  <xsl:template match="@rdf:about[normalize-space() = '' and name(..) != 'dct:LicenseDocument']|@rdf:datatype[normalize-space() = '']"
+  <!-- Remove all empty rdf:about to avoid invalid RDF syntax -->
+  <xsl:template match="@rdf:about[normalize-space() = '']|@rdf:datatype[normalize-space() = '']"
                 priority="10"/>
 
   <!-- Fix value for attribute -->
