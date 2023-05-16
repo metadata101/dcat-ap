@@ -584,15 +584,10 @@ Rome - Italy. email: geonetwork@osgeo.org
                       sr:binding[@name='subject']/* = $serviceURI]/sr:binding[@name='object' and (sr:uri or sr:bnode)]"/>
             <xsl:with-param name="predicate">dct:rightsHolder</xsl:with-param>
           </xsl:call-template>
-          <!-- dcat:endpointUrl -->
-          <xsl:call-template name="urls">
-            <xsl:with-param name="subject" select="./*"/>
-            <xsl:with-param name="predicate">dcat:endpointUrl</xsl:with-param>
-          </xsl:call-template>
+          <!-- dcat:endpointURL -->
           <xsl:call-template name="urls">
             <xsl:with-param name="subject" select="./*"/>
             <xsl:with-param name="predicate">dcat:endpointURL</xsl:with-param>
-            <xsl:with-param name="xmlNameOverwrite">dcat:endpointUrl</xsl:with-param>
           </xsl:call-template>
           <!-- dcat:endpointDescription -->
           <xsl:call-template name="urls">
@@ -1486,7 +1481,6 @@ Rome - Italy. email: geonetwork@osgeo.org
   <xsl:template name="urls">
     <xsl:param name="subject"/>
     <xsl:param name="predicate"/>
-    <xsl:param name="xmlNameOverwrite" select="''"/>
     <!-- Select all objects matching the subject and predicate pattern -->
     <xsl:for-each select="//sr:result[sr:binding[@name='subject']/* = $subject and
                       sr:binding[@name='pAsQName']/sr:literal = $predicate]/sr:binding[@name='object']">
@@ -1503,7 +1497,7 @@ Rome - Italy. email: geonetwork@osgeo.org
         </xsl:when>
         <!-- URIs -->
         <xsl:when test="./sr:uri">
-          <xsl:element name="{if ($xmlNameOverwrite != '') then $xmlNameOverwrite else $predicate}">
+          <xsl:element name="{$predicate}">
             <xsl:choose>
               <xsl:when test="./sr:uri != $harvesterURL">
                 <xsl:attribute name="rdf:resource" select="./sr:uri"/>
@@ -1516,7 +1510,7 @@ Rome - Italy. email: geonetwork@osgeo.org
         </xsl:when>
         <!-- anyURI literal -->
         <xsl:when test="gn-fn-dcat2:resolve-datatype(./sr:literal/@datatype) = 'http://www.w3.org/2001/XMLSchema#anyURI'">
-          <xsl:element name="{if ($xmlNameOverwrite != '') then $xmlNameOverwrite else $predicate}">
+          <xsl:element name="{$predicate}">
             <xsl:attribute name="rdf:resource">
               <xsl:value-of select="./sr:literal"/>
             </xsl:attribute>

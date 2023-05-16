@@ -164,13 +164,13 @@
         </snippet>
       </template>
     </for>
-    <for name="dcat:endpointUrl" templateModeOnly="true" forceLabel="true" label="FieldId402">
+    <for name="dcat:endpointURL" templateModeOnly="true" forceLabel="true" label="FieldId402">
       <template>
         <values>
-          <key label="FieldId402" xpath="@rdf:resource" tooltip="dcat:endpointUrl|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
+          <key label="FieldId402" xpath="@rdf:resource" tooltip="dcat:endpointURL|dcat:DataService|/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL"/>
         </values>
         <snippet>
-          <dcat:endpointUrl rdf:resource="{{FieldId402}}"/>
+          <dcat:endpointURL rdf:resource="{{FieldId402}}"/>
         </snippet>
       </template>
     </for>
@@ -740,11 +740,11 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId402" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
-          <action type="add" btnLabel="FieldId402" or="endpointUrl" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId402" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL"/>
+          <action type="add" btnLabel="FieldId402" or="endpointURL" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
-                <dcat:endpointUrl rdf:resource=""/>
+                <dcat:endpointURL rdf:resource=""/>
               </snippet>
             </template>
           </action>
@@ -1309,11 +1309,11 @@
               </snippet>
             </template>
           </action>
-          <field name="FieldId402" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
-          <action type="add" btnLabel="FieldId402" or="endpointUrl" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field name="FieldId402" xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL"/>
+          <action type="add" btnLabel="FieldId402" or="endpointURL" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
-                <dcat:endpointUrl rdf:resource=""/>
+                <dcat:endpointURL rdf:resource=""/>
               </snippet>
             </template>
           </action>

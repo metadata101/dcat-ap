@@ -457,12 +457,12 @@ Source:
 
   <!-- dcat:DataService -->
   <sch:pattern>
-    <sch:title>dcat:endpointUrl is required for dcat:DataService</sch:title>
+    <sch:title>dcat:endpointURL is required for dcat:DataService</sch:title>
     <sch:rule context="//dcat:DataService[$isCorrectProfile]">
       <sch:let name="id" value="@rdf:about/string()"/>
-      <sch:let name="hasEndpointUrl" value="count(dcat:endpointUrl[normalize-space(@rdf:resource) != '']) > 0"/>
-      <sch:assert test="$hasEndpointUrl">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" doesn't have a dcat:endpointUrl.</sch:assert>
-      <sch:report test="$hasEndpointUrl">The dcat:DataService "<sch:value-of select="$id"/>" have a dcat:endpointUrl.</sch:report>
+      <sch:let name="hasEndpointUrl" value="count(dcat:endpointURL[normalize-space(@rdf:resource) != '']) > 0"/>
+      <sch:assert test="$hasEndpointUrl">ERROR: The dcat:DataService "<sch:value-of select="$id"/>" doesn't have a dcat:endpointURL.</sch:assert>
+      <sch:report test="$hasEndpointUrl">The dcat:DataService "<sch:value-of select="$id"/>" have a dcat:endpointURL.</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>

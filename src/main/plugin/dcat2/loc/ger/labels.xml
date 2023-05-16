@@ -1772,12 +1772,12 @@
     <description>Tooltip: in scheme</description>
     <btnLabel>in scheme</btnLabel>
   </element>
-  <element name="dcat:endpointUrl" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl">
+  <element name="dcat:endpointURL" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL">
     <label>endpoint url</label>
     <description>Tooltip: endpoint url</description>
     <btnLabel>endpoint url</btnLabel>
   </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl/@rdf:resource">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL/@rdf:resource">
     <label>endpoint url</label>
     <description>Tooltip: endpoint url</description>
     <btnLabel>endpoint url</btnLabel>
