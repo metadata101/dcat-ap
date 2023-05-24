@@ -206,14 +206,18 @@
     <!-- Add view and edit template-->
     <xsl:variable name="contextXpath" select="gn-fn-metadata:getXPath(.)"/>
     <xsl:variable name="fieldNode" select="$editorConfig/editor/fields/for[@name = $name and @templateModeOnly and (not(@xpath) or @xpath = $contextXpath)]"/>
+
+    <xsl:variable name="isDisabled" select="
+          (name(.) = 'dct:identifier' and count(preceding-sibling::*[name(.) = 'dct:identifier']) = 0 and name(..) = ('dcat:Dataset', 'dcat:DataService')) or
+          (name(..) = 'dcat:Distribution' and name(.) = ('dct:identifier')) or
+          (name(..) = 'dcat:CatalogRecord') or
+          (name(../../..) = 'dcat:CatalogRecord' and name(..) = 'dct:Standard')"/>
+
     <xsl:choose>
-      <xsl:when test="count($fieldNode/*)>0 and $fieldNode/@templateModeOnly">
+      <xsl:when test="count($fieldNode/*)>0 and $fieldNode/@templateModeOnly and not($isDisabled)">
         <xsl:variable name="del" select="'.'"/>
         <xsl:variable name="template" select="$fieldNode/template"/>
-        <!-- <xsl:variable name="isForceLabel" select="$fieldNode/@forceLabel"/> -->
         <xsl:variable name="currentNode" select="." />
-        <!-- Check if template field values should be in
-        readonly mode in the editor.-->
         <xsl:variable name="readonly">
           <xsl:choose>
             <xsl:when test="$template/values/@readonlyIf">
@@ -269,31 +273,19 @@
           <xsl:with-param name="template" select="$templateCombinedWithNode"/>
           <xsl:with-param name="keyValues" select="$keyValues"/>
           <xsl:with-param name="refToDelete" select="$refToDelete/gn:element"/>
-          <!-- <xsl:with-param name="isFirst" select="$isForceLabel and count(preceding-sibling::*[name() = $name]) = 0"/> -->
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
         <xsl:variable name="xpath" select="gn-fn-metadata:getXPath(.)"/>
-        <xsl:variable name="isDisabled" select="
-          (name(.) = 'dct:identifier' and count(preceding-sibling::*[name(.) = 'dct:identifier']) = 0 and name(..) = ('dcat:Dataset', 'dcat:DataService')) or
-          (name(..) = 'dcat:CatalogRecord' and name(.) = ('dct:identifier', 'dct:title', 'dct:description', 'dct:language', 'dct:modified', 'dct:issued')) or
-          (name(..) = 'dcat:Distribution' and name(.) = ('dct:identifier')) or
-          (name(../../..) = 'dcat:CatalogRecord' and name(..) = 'dct:Standard')"/>
-
         <xsl:call-template name="render-element">
           <xsl:with-param name="label" select="$labelConfig"/>
           <xsl:with-param name="value" select="."/>
           <xsl:with-param name="cls" select="local-name()"/>
-          <!--<xsl:with-param name="widget"/>
-                <xsl:with-param name="widgetParams"/>-->
           <xsl:with-param name="xpath" select="$xpath"/>
-          <!--xsl:with-param name="forceDisplayAttributes" select="gn-fn-dcat2:isForceDisplayAttributes(.)"/-->
-          <!--xsl:with-param name="attributesSnippet" select="$attributes"/-->
           <xsl:with-param name="type" select="gn-fn-metadata:getFieldType($editorConfig, name(), '', $xpath)"/>
           <xsl:with-param name="name" select="if ($isEditing) then $ref else ''"/>
           <xsl:with-param name="editInfo" select="if ($refToDelete) then $refToDelete else gn:element"/>
-          <xsl:with-param name="parentEditInfo"
-                          select="if ($added) then $container/gn:element else element()"/>
+          <xsl:with-param name="parentEditInfo" select="if ($added) then $container/gn:element else element()"/>
           <xsl:with-param name="listOfValues" select="$helper"/>
           <!-- When adding an element, the element container contains
           information about cardinality. -->
@@ -304,18 +296,7 @@
                           else
                           ((gn:element/@down = 'true' and not(gn:element/@up)) or
                           (not(gn:element/@down) and not(gn:element/@up)))"/>
-          <!-- <xsl:with-param name="isForceLabel" select="true()"/> -->
           <xsl:with-param name="isDisabled" select="$isDisabled"/>
-          <!-- Boolean that allow to show the mandatory "*" in black instead of red -->
-          <!-- <xsl:with-param name="subRequired" select="(name() = 'vcard:street-address' and name(..) = 'vcard:Address') or -->
-          <!--                                            (name() = 'vcard:locality' and name(..) = 'vcard:Address') or -->
-          <!--                                            (name() = 'vcard:postal-code' and name(..) = 'vcard:Address') or -->
-          <!--                                            (name() = 'vcard:country-name' and name(..) = 'vcard:Address') or -->
-          <!--                                            (name() = 'foaf:name' and ../../name() = 'dct:publisher') or -->
-          <!--                                            (name() = 'foaf:name' and name(..) = 'foaf:Document') or -->
-          <!--                                            (name() = 'skos:notation' and name(..) = 'adms:Identifier') or -->
-          <!--                                            (name() = 'spdx:algorithm' and name(..) = 'spdx:Checksum') or -->
-          <!--                                            (name() = 'spdx:checksumValue' and name(..) = 'spdx:Checksum')"/> -->
         </xsl:call-template>
 
         <xsl:if test="$isEditing">
