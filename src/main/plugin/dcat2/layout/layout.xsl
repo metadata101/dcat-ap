@@ -291,11 +291,11 @@
           information about cardinality. -->
           <xsl:with-param name="isFirst"
                           select="if ($added) then
-                          (($container/gn:element/@down = 'true' and not($container/gn:element/@up)) or
-                          (not($container/gn:element/@down) and not($container/gn:element/@up)))
+                            ($container/gn:element/@down = 'true' and not($container/gn:element/@up)) or
+                            (not($container/gn:element/@down) and not($container/gn:element/@up))
                           else
-                          ((gn:element/@down = 'true' and not(gn:element/@up)) or
-                          (not(gn:element/@down) and not(gn:element/@up)))"/>
+                            (gn:element/@down = 'true' and not(gn:element/@up)) or
+                            (not(gn:element/@down) and not(gn:element/@up))"/>
           <xsl:with-param name="isDisabled" select="$isDisabled"/>
         </xsl:call-template>
 

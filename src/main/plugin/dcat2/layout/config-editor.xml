@@ -634,8 +634,11 @@
               </snippet>
             </template>
           </action>
-          <!-- TODO -->
-          <!-- <directive data-gim-add-dataset=""/> -->
+
+          <action type="associatedResource"
+                  name="linkToDataset"
+                  process="dataset"/>
+
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword"/>
           <action type="add" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
