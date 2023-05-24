@@ -285,9 +285,7 @@
       </xsl:if>
     </xsl:for-each>
 
-    <xsl:for-each select="dct:type">
-      <Field name="type" string="{string(.)}" store="true" index="true"/>
-    </xsl:for-each>
+
     <xsl:for-each select="dct:source">
       <Field name="lineage" string="{string(.)}" store="true" index="true"/>
     </xsl:for-each>
