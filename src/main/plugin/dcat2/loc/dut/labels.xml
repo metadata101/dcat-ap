@@ -544,4 +544,34 @@
     <description>Tooltip: schepper</description>
     <btnLabel>Schepper</btnLabel>
   </element>
+  <element name="rdf:type">
+    <label>RDF type</label>
+    <description>Tooltip: RDF type</description>
+    <btnLabel>RDF type</btnLabel>
+  </element>
+  <element name="rdf:datatype">
+    <label>RDF datatype</label>
+    <description>Tooltip: RDF datatype</description>
+    <btnLabel>RDF datatype</btnLabel>
+  </element>
+  <element name="skos:Concept">
+    <label>Concept</label>
+    <description>Tooltip: Concept</description>
+    <btnLabel>Concept</btnLabel>
+  </element>
+  <element name="skos:prefLabel">
+    <label>Label</label>
+    <description>Tooltip: Label</description>
+    <btnLabel>Label</btnLabel>
+  </element>
+  <element name="skos:inScheme">
+    <label>In scheme</label>
+    <description>Tooltip: In scheme</description>
+    <btnLabel>In scheme</btnLabel>
+  </element>
+  <element name="rdf:resource">
+    <label>Resource URI</label>
+    <description>Tooltip: Resource URI</description>
+    <btnLabel>Resource URI</btnLabel>
+  </element>
 </labels>

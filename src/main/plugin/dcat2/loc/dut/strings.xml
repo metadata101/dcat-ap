@@ -11,6 +11,10 @@
   <tabDistribution>Distributies</tabDistribution>
   <tabService>Service</tabService>
   <tabRecord>Record</tabRecord>
+  <tabAdvancedDataset>Dataset</tabAdvancedDataset>
+  <tabAdvancedDistribution>Distributies</tabAdvancedDistribution>
+  <tabAdvancedService>Service</tabAdvancedService>
+  <tabAdvancedRecord>Record</tabAdvancedRecord>
 
   <!-- Section labels -->
   <basicInformation>Basisinformatie</basicInformation>
