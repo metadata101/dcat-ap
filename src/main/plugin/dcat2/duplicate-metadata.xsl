@@ -12,7 +12,6 @@
   <xsl:variable name="resource" select="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset|/root/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
   <xsl:variable name="resourceUUID" select="uuid:toString(uuid:randomUUID())"/>
   <xsl:variable name="resourceType">
-    <xsl:message select="name($resource)"/>
     <xsl:choose>
       <xsl:when test="name($resource) = 'dcat:Dataset'">
         <xsl:value-of select="'datasets'"/>
@@ -35,7 +34,6 @@
   <!-- </xsl:variable> -->
 
   <xsl:template match="/">
-    <xsl:message select="/root/env"/>
     <xsl:apply-templates select="root/rdf:RDF"/>
   </xsl:template>
 
