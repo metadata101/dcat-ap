@@ -88,16 +88,7 @@
                                         /root/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
 
   <xsl:variable name="recordUUID" select="/root/env/uuid"/>
-  <xsl:variable name="recordAbout">
-    <xsl:choose>
-      <xsl:when test="matches($record/@rdf:about, $uuidRegex)">
-        <xsl:value-of select="replace($record/@rdf:about, $uuidRegex, $recordUUID)"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="concat(/root/env/nodeURL, 'api/records/', $recordUUID)"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
+  <xsl:variable name="recordAbout" select="concat(/root/env/nodeURL, 'api/records/', $recordUUID)"/>
 
   <xsl:variable name="resourceUUID">
     <xsl:choose>
@@ -109,16 +100,7 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-  <xsl:variable name="resourceAbout">
-    <xsl:choose>
-      <xsl:when test="matches($resource/@rdf:about, $uuidRegex)">
-        <xsl:value-of select="replace($resource/@rdf:about, $uuidRegex, $resourceUUID)"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="concat(/root/env/nodeURL, 'resources/', $resourceType, '/', $resourceUUID)"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
+  <xsl:variable name="resourceAbout" select="concat(/root/env/nodeURL, 'resources/', $resourceType, '/', $resourceUUID)"/>
 
   <!-- =================================================================  -->
 
