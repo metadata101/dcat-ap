@@ -88,16 +88,7 @@
                                         /root/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
 
   <xsl:variable name="recordUUID" select="/root/env/uuid"/>
-  <xsl:variable name="recordAbout">
-    <xsl:choose>
-      <xsl:when test="matches($record/@rdf:about, $uuidRegex)">
-        <xsl:value-of select="replace($record/@rdf:about, $uuidRegex, $recordUUID)"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="concat(/root/env/nodeURL, 'api/records/', $recordUUID)"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
+  <xsl:variable name="recordAbout" select="concat(/root/env/nodeURL, 'api/records/', $recordUUID)"/>
 
   <xsl:variable name="resourceUUID">
     <xsl:choose>
@@ -109,16 +100,7 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-  <xsl:variable name="resourceAbout">
-    <xsl:choose>
-      <xsl:when test="matches($resource/@rdf:about, $uuidRegex)">
-        <xsl:value-of select="replace($resource/@rdf:about, $uuidRegex, $resourceUUID)"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="concat(/root/env/nodeURL, 'resources/', $resourceType, '/', $resourceUUID)"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
+  <xsl:variable name="resourceAbout" select="concat(/root/env/nodeURL, 'resources/', $resourceType, '/', $resourceUUID)"/>
 
   <!-- =================================================================  -->
 
@@ -283,6 +265,7 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- Ensure Dataset element ordering -->
   <xsl:template match="dcat:Dataset" priority="10">
     <dcat:Dataset>
       <xsl:call-template name="handle-resource-id"/>
@@ -325,6 +308,7 @@
     </dcat:Dataset>
   </xsl:template>
 
+  <!-- Ensure DataService element ordering -->
   <xsl:template match="dcat:DataService" priority="10">
     <dcat:DataService>
       <xsl:call-template name="handle-resource-id"/>
@@ -364,6 +348,7 @@
     </dcat:DataService>
   </xsl:template>
 
+  <!-- Ensure Distribution element ordering -->
   <xsl:template match="dcat:Distribution[name(..)='dcat:distribution']" priority="10">
     <dcat:Distribution>
       <xsl:apply-templates select="@*"/>
@@ -528,8 +513,8 @@
     </xsl:copy>
   </xsl:template>
 
-  <!-- Ignore all empty rdf:about -->
-  <xsl:template match="@rdf:about[normalize-space() = '' and name(..) != 'dct:LicenseDocument']|@rdf:datatype[normalize-space() = '']"
+  <!-- Remove all empty rdf:about to avoid invalid RDF syntax -->
+  <xsl:template match="@rdf:about[normalize-space() = '']|@rdf:datatype[normalize-space() = '']"
                 priority="10"/>
 
   <!-- Fix value for attribute -->

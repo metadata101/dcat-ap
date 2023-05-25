@@ -7,6 +7,7 @@
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
+                xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 version="2.0"
                 exclude-result-prefixes="#all">
 
@@ -129,12 +130,17 @@
     <xsl:variable name="resourcePath" select="concat('./dcat:Catalog', if ($isDcatService) then '/dcat:service/dcat:DataService' else '/dcat:dataset/dcat:Dataset')"/>
     <xsl:choose>
       <xsl:when test="starts-with($config/xpath, '/dcat:Distribution')">
-        <xsl:variable name="index" select="count(../../preceding-sibling::dcat:distribution) + 1"/>
         <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution)[dcat:Distribution/@rdf:about=''', ../@rdf:about ,''']', $config/xpath)"/>
       </xsl:when>
       <xsl:when test="starts-with($config/xpath, '/dct:license') and not($isDcatService)">
-        <xsl:variable name="index" select="count(../../../../preceding-sibling::dcat:distribution) + 1"/>
-        <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution)[dcat:Distribution/@rdf:about=''', ../../../@rdf:about ,''']', '/dcat:Distribution', $config/xpath)"/>
+        <xsl:value-of select="concat(
+          '(',
+          $resourcePath,
+          '/dcat:distribution)[dcat:Distribution/@rdf:about=''',
+          gn-fn-metadata:getOriginalNode($metadata, ..)/ancestor::dcat:Distribution/@rdf:about ,''']',
+          '/dcat:Distribution',
+          $config/xpath
+        )"/>
       </xsl:when>
       <xsl:when test="starts-with($config/xpath, '/foaf:Agent')">
         <xsl:variable name="wrapper" select="name(../..)"/>

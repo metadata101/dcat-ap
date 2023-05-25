@@ -79,6 +79,7 @@
   <xsl:template match="/">
 
     <xsl:variable name="dateStamp" select=".//dcat:CatalogRecord/dct:modified"/>
+    <xsl:variable name="identifier" as="xs:string" select=".//dcat:CatalogRecord/dct:identifier"/>
     <xsl:for-each select=".//(dcat:Dataset|dcat:DataService)">
       <doc>
         <xsl:copy-of select="gn-fn-index:add-field('docType', 'metadata')"/>
@@ -90,9 +91,7 @@
           </dateStamp>
         </xsl:if>
 
-        <metadataIdentifier>
-          <xsl:value-of select="@rdf:about"/>
-        </metadataIdentifier>
+        <xsl:copy-of select="gn-fn-index:add-field('metadataIdentifier', $identifier)"/>
 
         <xsl:variable name="isService" as="xs:boolean" select="name() = 'dcat:DataService'"/>
 
