@@ -1041,7 +1041,7 @@
         </section>
       </tab>
 
-      <tab id="advancedService" default="true" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
+      <tab id="tabAdvancedService" default="true" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
         <section name="basicInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title" or="title" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description" or="description" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
