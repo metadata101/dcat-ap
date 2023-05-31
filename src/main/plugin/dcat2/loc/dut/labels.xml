@@ -1923,12 +1923,12 @@
     <description>Tooltip: URI</description>
     <btnLabel>URI</btnLabel>
   </element>
-  <element name="dcat:endpointUrl" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl">
+  <element name="dcat:endpointURL" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL">
     <label>endpointURL</label>
     <description>De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI).</description>
     <btnLabel>endpointURL</btnLabel>
   </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl/@rdf:resource">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL/@rdf:resource">
     <label>endpointURL</label>
     <description>De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI).</description>
     <btnLabel>endpointURL</btnLabel>

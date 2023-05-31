@@ -330,27 +330,27 @@
   </sch:pattern>
   <sch:pattern name="endpointURL" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/67c89165b0f38567bf099862ffdef88f25e68714">
     <sch:title>1315. Endpointurl - De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI). (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3AendpointURL)</sch:title>
-    <sch:rule context="//dcat:DataService/dcat:endpointUrl[$profile]">
+    <sch:rule context="//dcat:DataService/dcat:endpointURL[$profile]">
       <sch:let name="isNotEmpty" value="normalize-space(@rdf:resource) != ''"/>
       <sch:let name="isURI" value="matches(@rdf:resource, '^\w+:(/?/?)[^\s]+$')"/>
-      <sch:assert test="$isNotEmpty and $isURI">De range van endpointURL moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:endpointUrl)</sch:assert>
-      <sch:report test="$isNotEmpty and $isURI">De range van endpointURL moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:endpointUrl)</sch:report>
+      <sch:assert test="$isNotEmpty and $isURI">De range van endpointURL moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:endpointURL)</sch:assert>
+      <sch:report test="$isNotEmpty and $isURI">De range van endpointURL moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:endpointURL)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="endpointURL" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/9978564bd5823785ddace8934e848c68e6e813e3">
     <sch:title>1317. Endpointurl - De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI). (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3AendpointURL)</sch:title>
     <sch:rule context="//dcat:DataService[$profile]">
-      <sch:let name="validMax" value="count(dcat:endpointUrl) &lt;= 1"/>
-      <sch:assert test="$validMax">Maximaal 1 waarden toegelaten voor endpointURL (dcat:endpointUrl)</sch:assert>
-      <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor endpointURL (dcat:endpointUrl)</sch:report>
+      <sch:let name="validMax" value="count(dcat:endpointURL) &lt;= 1"/>
+      <sch:assert test="$validMax">Maximaal 1 waarden toegelaten voor endpointURL (dcat:endpointURL)</sch:assert>
+      <sch:report test="$validMax">Maximaal 1 waarden toegelaten voor endpointURL (dcat:endpointURL)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="endpointURL" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/bc15a30c5a91fb01a98d4b0969c268df7f6ff717">
     <sch:title>1318. Endpointurl - De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI). (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3AendpointURL)</sch:title>
     <sch:rule context="//dcat:DataService[$profile]">
-      <sch:let name="validMin" value="count(dcat:endpointUrl) &gt;= 1"/>
-      <sch:assert test="$validMin">Minimaal 1 waarden verwacht voor endpointURL (dcat:endpointUrl)</sch:assert>
-      <sch:report test="$validMin">Minimaal 1 waarden verwacht voor endpointURL (dcat:endpointUrl)</sch:report>
+      <sch:let name="validMin" value="count(dcat:endpointURL) &gt;= 1"/>
+      <sch:assert test="$validMin">Minimaal 1 waarden verwacht voor endpointURL (dcat:endpointURL)</sch:assert>
+      <sch:report test="$validMin">Minimaal 1 waarden verwacht voor endpointURL (dcat:endpointURL)</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="endpointbeschrijving" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/66883b2795f003760d4bb617bd1f472da1e1524f">
