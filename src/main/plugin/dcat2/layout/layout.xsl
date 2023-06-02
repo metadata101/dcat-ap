@@ -360,7 +360,7 @@
   </xsl:template>
 
   <xsl:template mode="render-for-field-for-attribute-dcat2"
-                match="gn:attribute[@name = ('rdf:nodeID')]"
+                match="gn:attribute[@name = ('rdf:nodeID', 'rdf:resource')]"
                 priority="101"/>
 
   <xsl:template mode="render-for-field-for-attribute-dcat2"
