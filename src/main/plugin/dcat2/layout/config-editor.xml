@@ -212,13 +212,13 @@
         </snippet>
       </template>
     </for>
-    <for name="dcat:endpointUrl" templateModeOnly="true" forceLabel="true" label="key">
+    <for name="dcat:endpointURL" templateModeOnly="true" forceLabel="true" label="key">
       <template>
         <values>
-          <key label="key" xpath="@rdf:resource" tooltip="dcat:endpointUrl" required="true"/>
+          <key label="key" xpath="@rdf:resource" tooltip="dcat:endpointURL" required="true"/>
         </values>
         <snippet>
-          <dcat:endpointUrl rdf:resource="{{key}}"/>
+          <dcat:endpointURL rdf:resource="{{key}}"/>
         </snippet>
       </template>
     </for>
@@ -608,11 +608,11 @@
               </snippet>
             </template>
           </action>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointUrl"/>
-          <action type="add" or="endpointUrl" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL"/>
+          <action type="add" or="endpointURL" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippet>
-                <dcat:endpointUrl rdf:resource=""/>
+                <dcat:endpointURL rdf:resource=""/>
               </snippet>
             </template>
           </action>

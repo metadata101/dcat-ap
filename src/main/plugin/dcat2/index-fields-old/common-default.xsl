@@ -553,7 +553,7 @@
     </xsl:for-each>
 
 
-    <xsl:for-each select="dcat:endpointUrl">
+    <xsl:for-each select="dcat:endpointURL">
       <xsl:variable name="descr">
         <xsl:choose>
           <xsl:when test="../dcat:endpointDescription[position()]/@rdf:resource">

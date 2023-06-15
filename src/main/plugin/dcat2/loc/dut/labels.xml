@@ -493,7 +493,7 @@
     </description>
     <btnLabel>Dataservice</btnLabel>
   </element>
-  <element name="dcat:endpointUrl">
+  <element name="dcat:endpointURL">
     <label>EndpointURL</label>
     <description>De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI).</description>
     <btnLabel>EndpointURL</btnLabel>

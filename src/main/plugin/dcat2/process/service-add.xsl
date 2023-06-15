@@ -23,7 +23,7 @@
                            dct:description|
                            dct:publisher|
                            dct:rightsHolder|
-                           dcat:endpointUrl|
+                           dcat:endpointURL|
                            dcat:endpointDescription"/>
 
       <xsl:variable name="datasetUrl" select="concat($siteUrl, 'catalog.search#/metadata/', $uuidDS)"/>
