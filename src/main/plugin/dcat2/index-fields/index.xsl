@@ -449,7 +449,7 @@
     <xsl:param name="fieldSuffix" select="''" as="xs:string"/>
     <xsl:param name="role" select="''" as="xs:string"/>
 
-    <xsl:variable name="organisationName" select="foaf:Agent/foaf:name"/>
+    <xsl:variable name="organisationName" select="if (foaf:Agent/foaf:name[$defaultMainLanguage2Char]) then foaf:Agent/foaf:name[$defaultMainLanguage2Char][1] else foaf:Agent/foaf:name[1]"/>
     <xsl:variable name="email" select="foaf:Agent/foaf:mbox/@rdf:resource"/>
     <xsl:variable name="phone" select="foaf:Agent/foaf:phone/@rdf:resource"/>
 
