@@ -569,8 +569,8 @@
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template mode="index-distribution" match="*[dcat:endpointUrl|dcat:endpointDescription]">
-    <xsl:for-each select="dcat:endpointUrl|dcat:endpointDescription">
+  <xsl:template mode="index-distribution" match="*[dcat:endpointURL|dcat:endpointDescription]">
+    <xsl:for-each select="dcat:endpointURL|dcat:endpointDescription">
       <linkUrl>
         <xsl:value-of select="string(@rdf:resource)"/>
       </linkUrl>
@@ -596,7 +596,7 @@
       </xsl:choose>
       ,
       "mimeType": "" ,
-      "url":"<xsl:value-of select="normalize-space((dcat:endpointUrl|dcat:endpointDescription)[1]/@rdf:resource)"/>",
+      "url":"<xsl:value-of select="normalize-space((dcat:endpointURL|dcat:endpointDescription)[1]/@rdf:resource)"/>",
       "name": "",
       "description": "",
       "function":"",

@@ -316,7 +316,7 @@
       <xsl:apply-templates select="dct:description"/>
       <xsl:apply-templates select="dct:publisher"/>
       <xsl:apply-templates select="dct:rightsHolder"/>
-      <xsl:apply-templates select="dcat:endpointUrl"/>
+      <xsl:apply-templates select="dcat:endpointURL"/>
       <xsl:apply-templates select="dcat:endpointDescription"/>
       <xsl:apply-templates select="dcat:servesDataset"/>
       <xsl:apply-templates select="dcat:landingPage"/>

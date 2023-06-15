@@ -29,7 +29,7 @@
             <foaf:name xml:lang="nl"/>
           </foaf:Agent>
         </dct:publisher>
-        <dcat:endpointUrl rdf:resource=""/>
+        <dcat:endpointURL rdf:resource=""/>
         <dcat:endpointDescription rdf:resource=""/>
         <dcat:servesDataset rdf:resource=""/>
         <dcat:landingPage rdf:resource=""/>
