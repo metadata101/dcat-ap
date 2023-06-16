@@ -86,11 +86,10 @@
       <xsl:variable name="directive" select="gn-fn-metadata:getFieldAddDirective($editorConfig, $name)"/>
 
       <xsl:variable name="labelConfig" select="gn-fn-metadata:getLabel($schema, $name, $labels, name(..), '', $xpath)"/>
-
       <xsl:call-template name="render-element-to-add">
         <!-- TODO: add xpath and isoType to get label ? -->
         <xsl:with-param name="label" select="$labelConfig/label"/>
-        <xsl:with-param name="btnLabel" select="if (not($name = ('dct:license', 'dct:conformsTo'))) then $labelConfig/btnLabel else ''"/>
+        <xsl:with-param name="btnLabel" select="$labelConfig/btnLabel"/>
         <xsl:with-param name="directive" select="$directive"/>
         <xsl:with-param name="childEditInfo" select="."/>
         <xsl:with-param name="parentEditInfo" select="../gn:element"/>
@@ -277,36 +276,46 @@
       </xsl:when>
       <xsl:otherwise>
         <xsl:variable name="xpath" select="gn-fn-metadata:getXPath(.)"/>
-        <xsl:call-template name="render-element">
-          <xsl:with-param name="label" select="$labelConfig"/>
-          <xsl:with-param name="value" select="."/>
-          <xsl:with-param name="cls" select="local-name()"/>
-          <xsl:with-param name="xpath" select="$xpath"/>
-          <xsl:with-param name="type" select="gn-fn-metadata:getFieldType($editorConfig, name(), '', $xpath)"/>
-          <xsl:with-param name="name" select="if ($isEditing) then $ref else ''"/>
-          <xsl:with-param name="editInfo" select="if ($refToDelete) then $refToDelete else gn:element"/>
-          <xsl:with-param name="parentEditInfo" select="if ($added) then $container/gn:element else element()"/>
-          <xsl:with-param name="listOfValues" select="$helper"/>
-          <!-- When adding an element, the element container contains
-          information about cardinality. -->
-          <xsl:with-param name="isFirst"
-                          select="if ($added) then
+        <xsl:variable name="renderedElement">
+          <xsl:call-template name="render-element">
+            <xsl:with-param name="label" select="$labelConfig"/>
+            <xsl:with-param name="value" select="."/>
+            <xsl:with-param name="cls" select="local-name()"/>
+            <xsl:with-param name="xpath" select="$xpath"/>
+            <xsl:with-param name="type" select="gn-fn-metadata:getFieldType($editorConfig, name(), '', $xpath)"/>
+            <xsl:with-param name="name" select="if ($isEditing) then $ref else ''"/>
+            <xsl:with-param name="editInfo" select="if ($refToDelete) then $refToDelete else gn:element"/>
+            <xsl:with-param name="parentEditInfo" select="if ($added) then $container/gn:element else element()"/>
+            <xsl:with-param name="listOfValues" select="$helper"/>
+            <!-- When adding an element, the element container contains
+            information about cardinality. -->
+            <xsl:with-param name="isFirst"
+                            select="if ($added) then
                             ($container/gn:element/@down = 'true' and not($container/gn:element/@up)) or
                             (not($container/gn:element/@down) and not($container/gn:element/@up))
                           else
                             (gn:element/@down = 'true' and not(gn:element/@up)) or
                             (not(gn:element/@down) and not(gn:element/@up))"/>
-          <xsl:with-param name="isDisabled" select="$isDisabled"/>
-        </xsl:call-template>
+            <xsl:with-param name="isDisabled" select="$isDisabled"/>
+          </xsl:call-template>
+        </xsl:variable>
 
-        <xsl:if test="$isEditing">
+        <xsl:variable name="renderedAttribute">
+          <xsl:if test="$isEditing">
+            <!-- Render attributes as fields and overwrite the normal behavior -->
+            <xsl:apply-templates mode="render-for-field-for-attribute-dcat2" select="@*|gn:attribute[not(@name = parent::node()/@*/name())]">
+              <xsl:with-param name="ref" select="gn:element/@ref"/>
+            </xsl:apply-templates>
+          </xsl:if>
+        </xsl:variable>
 
-          <!-- Render attributes as fields and overwrite the normal behavior -->
-          <xsl:apply-templates mode="render-for-field-for-attribute-dcat2"
-                               select="@*|gn:attribute[not(@name = parent::node()/@*/name())]">
-            <xsl:with-param name="ref" select="gn:element/@ref"/>
-          </xsl:apply-templates>
-        </xsl:if>
+        <xsl:for-each select="$renderedElement/*">
+          <xsl:copy copy-namespaces="no">
+            <xsl:copy-of select="@*"/>
+            <xsl:copy-of select="*"/>
+            <xsl:copy-of select="$renderedAttribute"/>
+          </xsl:copy>
+        </xsl:for-each>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -360,12 +369,11 @@
   </xsl:template>
 
   <xsl:template mode="render-for-field-for-attribute-dcat2"
-                match="gn:attribute[@name = ('rdf:nodeID')]"
+                match="gn:attribute[@name = ('rdf:nodeID', 'rdf:resource')]"
                 priority="101"/>
 
   <xsl:template mode="render-for-field-for-attribute-dcat2"
-                match="gn:attribute[not(@name = ('ref', 'parent', 'id', 'uuid', 'type', 'uuidref',
-                  'xlink:show', 'xlink:actuate', 'xlink:arcrole', 'xlink:role', 'xlink:title', 'xlink:href'))]"
+                match="gn:attribute[not(@name = ('ref', 'parent', 'id', 'uuid', 'type', 'uuidref', 'xlink:show', 'xlink:actuate', 'xlink:arcrole', 'xlink:role', 'xlink:title', 'xlink:href')) and @add = 'true']"
                 priority="100">
     <xsl:param name="ref"/>
     <xsl:variable name="xpath" select="gn-fn-metadata:getXPath(..)"/>
@@ -373,14 +381,16 @@
     <xsl:if test="not($isFlatMode) or gn-fn-metadata:isFieldFlatModeException($viewConfig, $name, $xpath)">
       <xsl:if test="not(gn-fn-dcat2:isNotMultilingualField(.., $editorConfig))">
         <xsl:variable name="attributeLabel" select="gn-fn-metadata:getLabel($schema, @name, $labels, name(..), '', concat(gn-fn-metadata:getXPath(..),'/@',@name))"/>
-        <label class="col-sm-2 control-label"/>
-        <div class="col-sm-9 btn-group nopadding-in-table" style="float: none;">
-          <button type="button" class="btn btn-default btn-xs"
-                  data-gn-click-and-spin="add('{$ref}', '{@name}', '{$ref}', null, true)"
-                  title="{$attributeLabel/description}">
-            <i class="fa fa-plus fa-fw"/>
-            <xsl:value-of select="$attributeLabel/label"/>
-          </button>
+        <div class="form-group gn-field gn-lang" id="gn-el-{$ref}_{replace(@name, ':', 'COLON')}">
+          <label class="col-sm-2 control-label"/>
+          <div class="col-sm-9 btn-group nopadding-in-table" style="float: none;">
+            <button type="button" class="btn btn-default btn-xs"
+                    data-gn-click-and-spin="add('{$ref}', '{@name}', '{$ref}', null, true)"
+                    title="{$attributeLabel/description}">
+              <i class="fa fa-plus fa-fw"/>
+              <xsl:value-of select="$attributeLabel/label"/>
+            </button>
+          </div>
         </div>
       </xsl:if>
     </xsl:if>

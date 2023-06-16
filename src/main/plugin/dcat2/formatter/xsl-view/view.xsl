@@ -41,6 +41,7 @@
                 xmlns:gn-fn-render="http://geonetwork-opensource.org/xsl/functions/render"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
+                xmlns:util="java:org.fao.geonet.util.XslUtil"
                 exclude-result-prefixes="#all"
                 version="2.0">
 
@@ -144,12 +145,6 @@
       <p>
         <span data-translate="">owner</span>: {{md.getOwnername()}}
       </p>
-    </div>
-    <div data-ng-if="user.isEditorOrMore() &amp;&amp; md.mdStatus&lt;50 &amp;&amp; isMdWorkflowEnable">
-      <i
-        class="fa gn-aiv-workflow-status-all gn-aiv-workflow-status-{{{{(md.mdStatus==2 || md.mdStatus==3) ? 'unlocked' : 'locked'}}}} gn-aiv-workflow-status-{{{{(md.mdStatus &amp;&amp; md.mdStatus &lt; 7) ? md.mdStatus : 'x'}}}}">
-        <span>{{'mdStatusRecord' | translate}}: {{('mdStatus-' + md.mdStatus) | translate}}</span>
-      </i>
     </div>
   </xsl:template>
 
@@ -578,5 +573,66 @@
         </xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+
+  <!-- Replace http link by clickable hyperlink (only http) -->
+  <xsl:template name="linkify">
+    <xsl:param name="txt" select="string()"/>
+    <xsl:choose>
+      <xsl:when test="util:getSettingValue('system/clickablehyperlinks/enable') = 'true'">
+        <xsl:variable name="http">
+          <xsl:choose>
+            <xsl:when test="contains($txt, 'http://')">
+              <xsl:text>http://</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains($txt, 'https://')">
+              <xsl:text>https://</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>false</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+
+        <xsl:choose>
+          <xsl:when test="$http = 'false'">
+            <!-- No URL, output string -->
+            <xsl:value-of select="$txt"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <!-- Links detected, replace them -->
+            <xsl:variable name="before" select="substring-before($txt, $http)"/>
+            <xsl:variable name="after" select="substring-after($txt, $http)"/>
+            <xsl:variable name="url" select="concat($http, substring-before($after,' '))"/>
+            <xsl:variable name="rest" select="substring-after($txt, $url)"/>
+
+            <xsl:value-of select="$before"/>
+            <xsl:choose>
+              <!-- If the url is at then end, $rest doesn't work -->
+              <xsl:when test="substring-after($url,$http) != ''">
+                <a href="{$url}" rel="nofollow" target="_blank">
+                  <xsl:value-of select="$url"/>
+                </a>
+
+                <xsl:call-template name="linkify">
+                  <xsl:with-param name="txt" select="$rest"/>
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:otherwise>
+                <a href="{$url}{$after}" rel="nofollow" target="_blank">
+                  <xsl:value-of select="$after"/>
+                </a>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:otherwise>
+        </xsl:choose>
+
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$txt"/>
+      </xsl:otherwise>
+    </xsl:choose>
+
   </xsl:template>
 </xsl:stylesheet>
