@@ -256,7 +256,7 @@
       [
       <xsl:for-each select="$keywords">
         <xsl:choose>
-          <xsl:when test="skos:Concept">
+          <xsl:when test="skos:Concept[skos:prefLabel]">
             <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('keyword', skos:Concept, $allLanguages, false(), true())/text()"/>
           </xsl:when>
           <xsl:otherwise>
