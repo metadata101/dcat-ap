@@ -581,15 +581,15 @@ Rome - Italy. email: geonetwork@osgeo.org
                       sr:binding[@name='subject']/* = $serviceURI]/sr:binding[@name='object' and (sr:uri or sr:bnode)]"/>
             <xsl:with-param name="predicate">dct:rightsHolder</xsl:with-param>
           </xsl:call-template>
-          <!-- dcat:endpointUrl -->
+          <!-- dcat:endpointURL -->
           <xsl:call-template name="urls">
             <xsl:with-param name="subject" select="./*"/>
-            <xsl:with-param name="predicate">dcat:endpointUrl</xsl:with-param>
+            <xsl:with-param name="predicate">dcat:endpointURL</xsl:with-param>
           </xsl:call-template>
           <xsl:call-template name="urls">
             <xsl:with-param name="subject" select="./*"/>
             <xsl:with-param name="predicate">dcat:endpointURL</xsl:with-param>
-            <xsl:with-param name="xmlNameOverwrite">dcat:endpointUrl</xsl:with-param>
+            <xsl:with-param name="xmlNameOverwrite">dcat:endpointURL</xsl:with-param>
           </xsl:call-template>
           <!-- dcat:endpointDescription -->
           <xsl:call-template name="urls">
