@@ -135,67 +135,13 @@
         labelKey="dcat.addAccrualPeriodicity"/>
     </for>
 
+    <!-- Check layout-custom-fields-date.xsl for logic -->
+    <for name="dct:created" use="gn-date-picker"/>
+    <for name="dct:issued" use="gn-date-picker"/>
+    <for name="dct:modified" use="gn-date-picker"/>
+    <for name="schema:startDate" use="gn-date-picker"/>
+    <for name="schema:endDate" use="gn-date-picker"/>
 
-    <for name="dct:created" templateModeOnly="true" forceLabel="true" label="key">
-      <template>
-        <values>
-          <key label="key" xpath="." use="gn-date-picker">
-            <directiveAttributes data-tag-name="dct:created" data-hide-time="true" data-hide-date-mode="true"/>
-          </key>
-        </values>
-        <snippet>
-          <dct:created>{{key}}</dct:created>
-        </snippet>
-      </template>
-    </for>
-    <for name="dct:issued" templateModeOnly="true" forceLabel="true" label="key">
-      <template>
-        <values>
-          <key label="key" xpath="." use="gn-date-picker">
-            <directiveAttributes data-tag-name="dct:issued" data-hide-time="true" data-hide-date-mode="true"/>
-          </key>
-        </values>
-        <snippet>
-          <dct:issued>{{key}}</dct:issued>
-        </snippet>
-      </template>
-    </for>
-    <for name="dct:modified" templateModeOnly="true" forceLabel="true" label="key">
-      <template>
-        <values>
-          <key label="key" xpath="." use="gn-date-picker">
-            <directiveAttributes data-tag-name="dct:modified" data-hide-time="true" data-hide-date-mode="true"/>
-          </key>
-        </values>
-        <snippet>
-          <dct:modified>{{key}}</dct:modified>
-        </snippet>
-      </template>
-    </for>
-    <for name="schema:startDate" templateModeOnly="true" forceLabel="true" label="key">
-      <template>
-        <values>
-          <key label="key" xpath="." use="gn-date-picker">
-            <directiveAttributes data-tag-name="schema:startDate" data-hide-time="true" data-hide-date-mode="true"/>
-          </key>
-        </values>
-        <snippet>
-          <schema:startDate>{{key}}</schema:startDate>
-        </snippet>
-      </template>
-    </for>
-    <for name="schema:endDate" templateModeOnly="true" forceLabel="true" label="key">
-      <template>
-        <values>
-          <key label="key" xpath="." use="gn-date-picker">
-            <directiveAttributes data-tag-name="schema:endDate" data-hide-time="true" data-hide-date-mode="true"/>
-          </key>
-        </values>
-        <snippet>
-          <schema:endDate>{{key}}</schema:endDate>
-        </snippet>
-      </template>
-    </for>
 
     <for name="dcat:landingPage" templateModeOnly="true" forceLabel="true" label="key">
       <template>
@@ -463,7 +409,8 @@
           default="true"
           class="gn-label-above-input gn-indent-bluescale vl-editor-view"
           displayTooltips="true"
-          displayTooltipsMode="onhover">
+          displayTooltipsMode="onhover"
+          hideTimeInCalendar="true">
       <sidePanel>
         <directive data-gn-onlinesrc-list="" data-types="service|dataset"/>
         <directive data-gn-validation-report=""/>
@@ -932,7 +879,8 @@
     <view name="advanced"
           class="gn-label-above-input gn-indent-bluescale vl-editor-view"
           displayTooltips="true"
-          displayTooltipsMode="onhover">
+          displayTooltipsMode="onhover"
+          hideTimeInCalendar="true">
       <sidePanel>
         <directive data-gn-onlinesrc-list="" data-types="service|dataset"/>
         <directive data-gn-validation-report=""/>
