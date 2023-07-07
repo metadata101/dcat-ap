@@ -46,6 +46,7 @@
 
   <xsl:include href="layout-custom-fields-concepts.xsl"/>
   <xsl:include href="layout-custom-fields-sds.xsl"/>
+  <xsl:include href="layout-custom-fields-date.xsl"/>
 
   <xsl:template mode="mode-dcat2" match="dct:spatial" priority="2000">
     <xsl:param name="schema" select="$schema" required="no"/>
