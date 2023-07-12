@@ -22,16 +22,6 @@
     </xsl:choose>
   </xsl:variable>
   <xsl:variable name="resourceAbout" select="concat(/root/env/nodeURL, 'resources/', $resourceType, '/', $resourceUUID)"/>
-  <!-- <xsl:variable name="resourceAbout"> -->
-  <!--   <xsl:choose> -->
-  <!--     <xsl:when test="matches($resource/@rdf:about, $uuidRegex)"> -->
-  <!--       <xsl:value-of select="replace($resource/@rdf:about, $uuidRegex, $resourceUUID)"/> -->
-  <!--     </xsl:when> -->
-  <!--     <xsl:otherwise> -->
-  <!--       <xsl:value-of select="concat(/root/env/nodeURL, 'resources/', $resourceType, '/', $resourceUUID)"/> -->
-  <!--     </xsl:otherwise> -->
-  <!--   </xsl:choose> -->
-  <!-- </xsl:variable> -->
 
   <xsl:template match="/">
     <xsl:apply-templates select="root/rdf:RDF"/>
@@ -59,7 +49,7 @@
     </xsl:copy>
   </xsl:template>
 
-  <!-- Migate old dct:subject to mdcat:statuut subclass -->
+  <!-- Migrate old dct:subject to mdcat:statuut subclass -->
   <xsl:template match="dct:subject" priority="10">
     <mdcat:statuut>
       <xsl:apply-templates select="@*|*"/>
