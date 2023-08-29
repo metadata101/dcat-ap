@@ -37,6 +37,7 @@
                 xmlns:index="java:org.fao.geonet.kernel.search.EsSearchManager"
                 xmlns:date-util="java:org.fao.geonet.utils.DateUtil"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
+                xmlns:geodcat="http://data.europa.eu/930/"
                 xmlns:saxon="http://saxon.sf.net/" xmlns:xls="http://www.w3.org/1999/XSL/Transform"
                 extension-element-prefixes="saxon"
                 exclude-result-prefixes="#all"
@@ -176,6 +177,20 @@
           <xsl:apply-templates mode="index-contact" select=".">
             <xsl:with-param name="fieldSuffix" select="'ForResource'"/>
             <xsl:with-param name="role" select="'pointOfContact'"/>
+          </xsl:apply-templates>
+        </xsl:for-each>
+
+        <xsl:for-each select="dct:rightsHolder">
+          <xsl:apply-templates mode="index-contact" select=".">
+            <xsl:with-param name="fieldSuffix" select="'ForResource'"/>
+            <xsl:with-param name="role" select="'owner'"/>
+          </xsl:apply-templates>
+        </xsl:for-each>
+
+        <xsl:for-each select="geodcat:distributor">
+          <xsl:apply-templates mode="index-contact" select=".">
+            <xsl:with-param name="fieldSuffix" select="'ForResource'"/>
+            <xsl:with-param name="role" select="'distributor'"/>
           </xsl:apply-templates>
         </xsl:for-each>
 
