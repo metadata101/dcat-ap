@@ -54,6 +54,7 @@
   <xsl:include href="common/functions-metadata.xsl" />
   <xsl:include href="../../convert/functions.xsl" />
   <xsl:include href="../../layout/evaluate.xsl" />
+  <xsl:include href="../../layout/utility-tpl.xsl" />
 
   <!-- The core formatter XSL layout based on the editor configuration -->
   <xsl:include href="sharedFormatterDir/xslt/render-layout.xsl" />
