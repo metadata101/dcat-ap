@@ -30,7 +30,7 @@
                 xmlns:adms="http://www.w3.org/ns/adms#"
                 exclude-result-prefixes="#all">
 
-  <xsl:template mode="relation" match="metadata" priority="99">
+  <xsl:template mode="relation" match="metadata[rdf:RDF/dcat:Catalog]" priority="100">
     <xsl:if test="count(*/descendant::*[name(.) = 'adms:sample']/*) > 0">
       <thumbnails>
         <xsl:for-each select="*/descendant::*[name(.) = 'adms:sample']">
@@ -49,38 +49,8 @@
         </xsl:for-each>
       </thumbnails>
     </xsl:if>
+
   </xsl:template>
 
-  <xsl:template mode="relation" match="metadata[dataset]" priority="100">
-    <xsl:for-each select="*/descendant::*
-                        [name(.) = 'dct:references' or name(.) = 'dc:relation']
-                        [starts-with(., 'http') or contains(. , 'resources.get') or contains(., 'file.disclaimer')]">
-      <xsl:variable name="name" select="tokenize(., '/')[last()]"/>
-      <relation type="onlinesrc">
-        <id><xsl:value-of select="."/></id>
-        <title>
-          <xsl:value-of select="$name"/>
-        </title>
-        <url>
-          <xsl:value-of select="."/>
-        </url>
-        <name>
-          <xsl:value-of select="$name"/>
-        </name>
-        <abstract><xsl:value-of select="."/></abstract>
-        <description>
-          <xsl:value-of select="$name"/>
-        </description>
-        <xsl:choose>
-          <xsl:when test="contains(. , 'resources.get') or contains(., 'file.disclaimer')">
-            <protocol><xsl:value-of select="'WWW:DOWNLOAD-1.0-http--download'"/></protocol>
-          </xsl:when>
-          <xsl:otherwise>
-            <protocol><xsl:value-of select="'WWW:LINK'"/></protocol>
-          </xsl:otherwise>
-        </xsl:choose>
-      </relation>
-    </xsl:for-each>
-  </xsl:template>
 
 </xsl:stylesheet>
