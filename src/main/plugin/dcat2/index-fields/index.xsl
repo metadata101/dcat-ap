@@ -198,7 +198,7 @@
           {
           "code": "<xsl:value-of select="@rdf:about"/>",
           "codeSpace": "",
-          "link": ""
+          "link": "<xsl:value-of select="@rdf:about"/>"
           }
         </resourceIdentifier>
 
@@ -253,6 +253,12 @@
         ]"/>
         <xsl:variable name="isGeoData" select="if (count($geoKeywords) > 0) then 'y' else 'n'"/>
         <xsl:copy-of select="gn-fn-index:add-field('isGeoData', $isGeoData)"/>
+
+        <xsl:if test="name() = 'dcat:DataService'">
+          <xsl:for-each select="(dcat:servesDataset/@rdf:resource|dcat:servesDataset/dcat:Dataset/@rdf:about)[normalize-space() != '']">
+            <recordOperateOn><xsl:value-of select="string()"/></recordOperateOn>
+          </xsl:for-each>
+        </xsl:if>
 
       </doc>
     </xsl:for-each>

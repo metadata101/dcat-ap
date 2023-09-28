@@ -28,13 +28,22 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.client.RequestOptions;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.fao.geonet.ApplicationContextHolder;
+import org.fao.geonet.constants.Geonet;
+import org.fao.geonet.index.es.EsRestClient;
 import org.fao.geonet.kernel.schema.SchemaPlugin;
 import org.fao.geonet.kernel.schema.AssociatedResource;
 import org.fao.geonet.kernel.schema.AssociatedResourcesSchemaPlugin;
 import org.fao.geonet.kernel.schema.MultilingualSchemaPlugin;
+import org.fao.geonet.kernel.search.EsSearchManager;
 import org.fao.geonet.kernel.setting.SettingManager;
+import org.fao.geonet.utils.Log;
 import org.fao.geonet.utils.Xml;
+import org.jdom.Attribute;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
@@ -87,18 +96,18 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
 
     @Override
     public Set<String> getAssociatedParentUUIDs(Element metadata) {
-        ElementFilter elementFilter = new ElementFilter("isPartOf", DCAT2Namespaces.DCT);
-        return Xml.filterElementValues(
-            metadata,
-            elementFilter,
-            null, null,
-            null);
+        return getAssociatedParents(metadata)
+            .stream()
+            .map(AssociatedResource::getUuid)
+            .collect(Collectors.toSet());
     }
 
     @Override
     public Set<String> getAssociatedDatasetUUIDs(Element metadata) {
-        ElementFilter elementFilter = new ElementFilter("servesDataset", DCAT2Namespaces.DCAT);
-        return this.getAssociatedRdfUUIDs(metadata, elementFilter);
+        return getAssociatedDatasets(metadata)
+            .stream()
+            .map(AssociatedResource::getUuid)
+            .collect(Collectors.toSet());
     }
 
     // @Override
@@ -109,13 +118,18 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
 
     @Override
     public Set<String> getAssociatedFeatureCatalogueUUIDs(Element metadata) {
-        return null;
+        return getAssociatedFeatureCatalogues(metadata)
+            .stream()
+            .map(AssociatedResource::getUuid)
+            .collect(Collectors.toSet());
     }
 
     @Override
     public Set<String> getAssociatedSourceUUIDs(Element metadata) {
-        ElementFilter elementFilter = new ElementFilter("relation", DCAT2Namespaces.DCT);
-        return this.getAssociatedRdfUUIDs(metadata, elementFilter);
+        return getAssociatedSources(metadata)
+            .stream()
+            .map(AssociatedResource::getUuid)
+            .collect(Collectors.toSet());
     }
 
     @Override
@@ -125,6 +139,17 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
 
     @Override
     public Set<AssociatedResource> getAssociatedDatasets(Element metadata) {
+        try {
+            return Xml.selectNodes(metadata, "*//dcat:DataService/dcat:servesDataset/@rdf:resource|*//dcat:DataService/dcat:servesDataset/dcat:Dataset/@rdf:about", allNamespaces.asList())
+                .stream()
+                .filter(node -> node instanceof Attribute)
+                .map(node -> ((Attribute)node).getValue())
+                .map(this::getAssociatedResourceByURI)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toSet());
+        } catch (JDOMException e) {
+            e.printStackTrace();
+        }
         return Collections.emptySet();
     }
 
@@ -159,49 +184,35 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
         return null;
     }
 
-    // @Override
-    // public Set<String> getAssociatedServices(Element metadata) {
-    //     ElementFilter elementFilter = new ElementFilter("accessService", DCAT2Namespaces.DCAT);
-    //     return this.getAssociatedRdfUUIDs(metadata, elementFilter);
-    // }
-    //
-    // @Override
-    // public Set<String> getAssociatedExternalServiceLinks(Element metadata) {
-    //     ElementFilter elementFilter = new ElementFilter("accessService", DCAT2Namespaces.DCAT);
-    //     return this.getAssociatedExternalRdfLinks(metadata, elementFilter);
-    // }
+    private AssociatedResource getAssociatedResourceByURI(String uri) {
+        var client = ApplicationContextHolder.get().getBean(EsRestClient.class);
+        var searchManager = ApplicationContextHolder.get().getBean(EsSearchManager.class);
+        try {
+            var request = new SearchRequest(searchManager.getDefaultIndex());
+            var ssb = new SearchSourceBuilder();
+            ssb.fetchSource(new String[]{
+                "uuid",
+                "resourceTitleObject.default"
+            }, null);
+            ssb.query(QueryBuilders.matchQuery("resourceIdentifier.link", uri));
+            request.source(ssb);
 
-    private Set<String> getAssociatedRdfUUIDs(Element metadata, ElementFilter filter) {
-        String nodeUrl = ApplicationContextHolder.get().getBean(SettingManager.class).getNodeURL();
-        Set<String> rdfAboutAttributes = Xml.filterElementValues(
-            metadata,
-            filter,
-            null,
-            null,
-            "resource",
-            DCAT2Namespaces.RDF);
-        Set<String> uuids = new HashSet<String>();
-        for (String rdfAboutAttribute : rdfAboutAttributes) {
-            Matcher matcher = UUID_PATTERN.matcher(rdfAboutAttribute);
-            if (matcher.find() && rdfAboutAttribute.startsWith(nodeUrl)) {
-                uuids.add(rdfAboutAttribute.substring(matcher.start(), matcher.end()));
+            var response = client.getClient().search(request, RequestOptions.DEFAULT);
+            if (response.getHits().getTotalHits().value == 0) {
+                return null;
             }
+            var associatedRecord = response.getHits().getHits()[0].getSourceAsMap();;
+            return new AssociatedResource(
+                (String)associatedRecord.get("uuid"),
+                "",
+                "",
+                uri,
+                ((Map<String, String>)associatedRecord.get("resourceTitleObject")).get("default")
+            );
+        } catch (Exception e) {
+            Log.error(Geonet.GEONETWORK,
+                "GET associated resource '" + uri + "' error: " + e.getMessage(), e);
         }
-        return uuids;
-    }
-
-    private Set<String> getAssociatedExternalRdfLinks(Element metadata, ElementFilter filter) {
-        String nodeUrl = ApplicationContextHolder.get().getBean(SettingManager.class).getNodeURL();
-        Set<String> rdfAboutAttributes = Xml.filterElementValues(
-            metadata,
-            filter,
-            null,
-            null,
-            "resource",
-            DCAT2Namespaces.RDF);
-
-        return rdfAboutAttributes.stream()
-            .filter(rdfAboutAttribute -> !rdfAboutAttribute.startsWith(nodeUrl))
-            .collect(Collectors.toSet());
+        return null;
     }
 }
