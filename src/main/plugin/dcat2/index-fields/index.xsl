@@ -30,7 +30,7 @@
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
-                xmlns:mdcat="http://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:gn-fn-index="http://geonetwork-opensource.org/xsl/functions/index"
