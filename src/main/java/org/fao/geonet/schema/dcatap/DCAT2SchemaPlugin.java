@@ -194,7 +194,7 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
                 "uuid",
                 "resourceTitleObject.default"
             }, null);
-            ssb.query(QueryBuilders.matchQuery("resourceIdentifier.link", uri));
+            ssb.query(QueryBuilders.matchQuery("rdfResourceIdentifier.link", uri));
             request.source(ssb);
 
             var response = client.getClient().search(request, RequestOptions.DEFAULT);
