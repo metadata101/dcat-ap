@@ -194,12 +194,8 @@
           </xsl:apply-templates>
         </xsl:for-each>
 
-        <rdfResourceIdentifier type="object">
-          {
-          "code": "<xsl:value-of select="dct:identifier[0]/string()"/>",
-          "codeSpace": "",
-          "link": "<xsl:value-of select="@rdf:about"/>"
-          }
+        <rdfResourceIdentifier>
+          <xsl:value-of select="@rdf:about"/>
         </rdfResourceIdentifier>
 
         <resourceIdentifier type="object">
