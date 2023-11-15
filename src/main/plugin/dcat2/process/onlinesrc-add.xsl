@@ -26,9 +26,14 @@
 Stylesheet used to update metadata adding a reference to a parent record.
 -->
 <xsl:stylesheet version="2.0"
-                xmlns:dc="http://purl.org/dc/elements/1.1/"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:adms="http://www.w3.org/ns/adms#"
+                xmlns:foaf="http://xmlns.com/foaf/0.1/"
+                xmlns:owl="http://www.w3.org/2002/07/owl#"
+                xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:geonet="http://www.fao.org/geonetwork"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:param name="url"/>
@@ -37,14 +42,47 @@ Stylesheet used to update metadata adding a reference to a parent record.
   <xsl:template match="dcat:Dataset">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
-      <xsl:copy-of
-          select="dc:*|dct:*|dcat:*"/>
+      <!-- Copy elements after dcat:servesDataset -->
+      <xsl:copy-of select="dct:title|
+                           dct:description|
+                           dcat:contactPoint|
+                           dct:created|
+                           dct:issued|
+                           dct:modified|
+                           dct:publisher|
+                           dct:rightsHolder|
+                           dcat:keyword|
+                           mdcat:MAGDA-categorie|
+                           mdcat:statuut|
+                           dct:subject|
+                           dcat:theme|
+                           dct:accessRights|
+                           dct:conformsTo|
+                           foaf:page|
+                           dct:accrualPeriodicity|
+                           dct:hasVersion|
+                           dct:isVersionOf|
+                           dcat:landingPage|
+                           dct:language|
+                           adms:identifier|
+                           dct:provenance"/>
 
-      <xsl:if test="not(dct:references[text() = $url])">
-        <dct:references>
-            <xsl:value-of select="$url"/>
-        </dct:references>
-      </xsl:if>
+      <xsl:copy-of select="dct:relation[@rdf:resource != $url]"/>
+      <dct:relation rdf:resource="{$url}"/>
+
+      <xsl:copy-of select="dct:source|
+                           dct:spatial|
+                           dct:temporal|
+                           dct:type|
+                           owl:versionInfo|
+                           adms:versionNotes|
+                           dcat:extension|
+                           dcat:distribution|
+                           adms:sample|
+                           dcat:qualifiedRelation|
+                           dct:creator|
+                           dct:isReferencedBy|
+                           dct:rights"/>
     </xsl:copy>
   </xsl:template>
 
@@ -54,4 +92,5 @@ Stylesheet used to update metadata adding a reference to a parent record.
     </xsl:copy>
   </xsl:template>
 
+  <xsl:template match="geonet:*" priority="2"/>
 </xsl:stylesheet>
