@@ -27,11 +27,13 @@ Stylesheet used to remove a reference to a parent record.
 -->
 <xsl:stylesheet version="2.0"
                 xmlns:dct="http://purl.org/dc/terms/"
-                xmlns:dc = "http://purl.org/dc/elements/1.1/"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:geonet="http://www.fao.org/geonetwork">
 
   <xsl:param name="url"/>
+
+  <xsl:template match="dct:relation[@rdf:resouce = $url]" priority="2"/>
 
   <!-- Do a copy of every nodes and attributes -->
   <xsl:template match="@*|node()">
@@ -40,7 +42,8 @@ Stylesheet used to remove a reference to a parent record.
     </xsl:copy>
   </xsl:template>
 
+
+
   <!-- Remove geonet:* elements. -->
-  <xsl:template match="geonet:*|dct:references[text() = $url]|dc:relation[text() = $url]"
-                priority="2"/>
+  <xsl:template match="geonet:*" priority="2"/>
 </xsl:stylesheet>
