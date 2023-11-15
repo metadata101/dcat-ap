@@ -201,6 +201,9 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
             if (response.getHits().getTotalHits().value == 0) {
                 return null;
             }
+            if (response.getHits().getTotalHits().value > 1) {
+                Log.error(Log.JEEVES, "Multiple resources was found for URI " + uri + ". Returning first result");
+            }
             var associatedRecord = response.getHits().getHits()[0].getSourceAsMap();;
             return new AssociatedResource(
                 (String)associatedRecord.get("uuid"),
@@ -210,8 +213,7 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
                 ((Map<String, String>)associatedRecord.get("resourceTitleObject")).get("default")
             );
         } catch (Exception e) {
-            Log.error(Geonet.GEONETWORK,
-                "GET associated resource '" + uri + "' error: " + e.getMessage(), e);
+            Log.error(Log.JEEVES, "GET associated resource '" + uri + "' error: " + e.getMessage(), e);
         }
         return null;
     }
