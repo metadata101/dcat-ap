@@ -77,6 +77,8 @@
   <xsl:variable name="editorConfig"
                 select="document('../layout/config-editor.xml')"/>
 
+  <xsl:variable name="protocolConcepts" select="document('../thesauri/theme/protocol.rdf')/rdf:RDF"/>
+
   <xsl:template match="/">
 
     <xsl:variable name="dateStamp" select=".//dcat:CatalogRecord/dct:modified"/>
@@ -531,6 +533,54 @@
     </xsl:element>
   </xsl:template>
 
+  <xsl:template mode="index-protocol" match="dct:conformsTo/dct:Standard">
+    <xsl:variable name="conceptURI" select="string(@rdf:about)"/>
+    <xsl:variable name="concept" select="$protocolConcepts/skos:Concept[@rdf:about = $conceptURI]"/>
+
+    <linkProtocol>
+      <xsl:value-of select="normalize-space(tokenize(@rdf:about, '/')[last()])"/>
+    </linkProtocol>
+
+    <xsl:variable name="topLevelProtocol">
+      <xsl:choose>
+        <xsl:when test="starts-with($concept/skos:notation, 'WWW:DOWNLOAD-1.0') or $concept/skos:notation = 'LINK download-store'">
+          <xsl:value-of select="'download'"/>
+        </xsl:when>
+        <xsl:when test="starts-with($concept/skos:notation, 'WWW:LINK-1.0') or $concept/skos:notation = 'ESRI:AIMS-http-configuration'">
+          <xsl:value-of select="'link'"/>
+        </xsl:when>
+        <xsl:when test="$concept/skos:hasTopConcept">
+          <xsl:variable name="topProtocol" select="$protocolConcepts/skos:Concept[@rdf:about = $concept/skos:hasTopConcept]"/>
+          <xsl:choose>
+            <xsl:when test="$topProtocol/skos:prefLabel[@xml:lang = 'nl']">
+              <xsl:value-of select="$topProtocol/skos:prefLabel[@xml:lang = 'nl']"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="$topProtocol/skos:prefLabel[1]"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:choose>
+            <xsl:when test="$concept/skos:prefLabel[@xml:lang = 'nl']">
+              <xsl:value-of select="$concept/skos:prefLabel[@xml:lang = 'nl']"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="$concept/skos:prefLabel[1]"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:if test="normalize-space($topLevelProtocol) != ''">
+      <topLevelProtocol>
+        <xsl:value-of select="gn-fn-index:json-escape($topLevelProtocol)"/>
+      </topLevelProtocol>
+    </xsl:if>
+  </xsl:template>
+
+
   <xsl:template mode="index-distribution" match="*[dcat:distribution]">
     <xsl:for-each-group select="dcat:distribution/dcat:Distribution/dct:format" group-by="skos:Concept/@rdf:about">
       <xsl:copy-of select="gn-fn-index:add-field('format', tokenize(current-grouping-key(), '/')[last()])"/>
@@ -542,11 +592,7 @@
       </linkUrl>
     </xsl:for-each>
 
-    <xsl:for-each select="dcat:distribution/dcat:Distribution/dct:conformsTo/dct:Standard">
-      <linkProtocol>
-        <xsl:value-of select="normalize-space(tokenize(@rdf:about, '/')[last()])"/>
-      </linkProtocol>
-    </xsl:for-each>
+    <xsl:apply-templates mode="index-protocol" select="dcat:distribution/dcat:Distribution/dct:conformsTo/dct:Standard"/>
 
     <xsl:for-each select="dcat:distribution/dcat:Distribution">
       <link type="object">
@@ -601,11 +647,8 @@
       </linkUrl>
     </xsl:for-each>
 
-    <xsl:for-each select="dct:conformsTo/dct:Standard">
-      <linkProtocol>
-        <xsl:value-of select="normalize-space(tokenize(@rdf:about, '/')[last()])"/>
-      </linkProtocol>
-    </xsl:for-each>
+
+    <xsl:apply-templates mode="index-protocol" select="dct:conformsTo/dct:Standard"/>
 
     <link type="object">
       {
