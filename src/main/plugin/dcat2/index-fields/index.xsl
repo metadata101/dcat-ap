@@ -150,10 +150,15 @@
             </resourceTemporalExtentDateRange>
           </xsl:if>
           <xsl:if test="$start &gt; $end">
-            <indexingErrorMsg>Warning / Field resourceTemporalDateRange /
-              Lower range bound '<xsl:value-of select="."/>' can not be
-              greater than upper bound '<xsl:value-of select="$end"/>'.
-              Date range not indexed.
+            <indexingErrorMsg type="object">
+              {
+                "string": "indexingErrorMsg-temporalDateRangeLowerGreaterThanUpper",
+                "type": "warning",
+                "values": {
+                  "lowerBound": "<xsl:value-of select="."/>",
+                  "upperBound": "<xsl:value-of select="$end"/>"
+                }
+              }
             </indexingErrorMsg>
           </xsl:if>
         </xsl:for-each>
@@ -465,8 +470,15 @@
         </xsl:element>
       </xsl:when>
       <xsl:otherwise>
-        <indexingErrorMsg>Warning / Date
-          <xsl:value-of select="$dateType"/> with value '<xsl:value-of select="$date"/>' was not a valid date format.
+        <indexingErrorMsg type="object">
+          {
+            "string": "indexingErrorMsg-invalidDateFormat",
+            "type": "warning",
+            "values": {
+              "dateType": "<xsl:value-of select="$dateType"/>",
+              "date": "<xsl:value-of select="$date"/>"
+            }
+          }
         </indexingErrorMsg>
       </xsl:otherwise>
     </xsl:choose>
