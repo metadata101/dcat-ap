@@ -269,6 +269,19 @@
           <xsl:for-each select="(dcat:servesDataset/@rdf:resource|dcat:servesDataset/dcat:Dataset/@rdf:about)[normalize-space() != '']">
             <recordOperateOn><xsl:value-of select="string()"/></recordOperateOn>
           </xsl:for-each>
+
+          <xsl:for-each select="./mdcat:levensfase">
+            <lifeCycle type="object">
+              <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('lifeCycle', skos:Concept, $allLanguages, false(), true())/text()"/>
+            </lifeCycle>
+          </xsl:for-each>
+
+          <xsl:for-each select="./mdcat:ontwikkelingstoestand">
+            <developmentState type="object">
+              <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('developmentState', skos:Concept, $allLanguages, false(), true())/text()"/>
+            </developmentState>
+          </xsl:for-each>
+
         </xsl:if>
 
       </doc>
