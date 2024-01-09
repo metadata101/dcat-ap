@@ -1502,7 +1502,7 @@ Rome - Italy. email: geonetwork@osgeo.org
         <xsl:when test="./sr:uri">
           <xsl:element name="{if ($xmlNameOverwrite != '') then $xmlNameOverwrite else $predicate}">
             <xsl:choose>
-              <xsl:when test="./sr:uri != $harvesterURL">
+              <xsl:when test="string(./sr:uri) != string($harvesterURL)">
                 <xsl:attribute name="rdf:resource" select="./sr:uri"/>
               </xsl:when>
               <xsl:otherwise>
