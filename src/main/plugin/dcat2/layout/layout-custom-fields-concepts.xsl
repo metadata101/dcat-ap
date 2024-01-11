@@ -120,6 +120,7 @@
            data-lang="{$metadataOtherLanguagesAsJson}"
            data-textgroup-only="false"
            data-alt-save="true"
+           data-max-searched="{if ($config/@name = 'dct:language') then 400 else 200}"
            class=""/>
     </xsl:if>
   </xsl:template>
