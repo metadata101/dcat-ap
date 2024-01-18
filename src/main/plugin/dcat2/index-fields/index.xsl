@@ -155,8 +155,8 @@
                 "string": "indexingErrorMsg-temporalDateRangeLowerGreaterThanUpper",
                 "type": "warning",
                 "values": {
-                  "lowerBound": "<xsl:value-of select="."/>",
-                  "upperBound": "<xsl:value-of select="$end"/>"
+                  "lowerBound": "<xsl:value-of select="util:escapeForJson(.)"/>",
+                  "upperBound": "<xsl:value-of select="util:escapeForJson($end)"/>"
                 }
               }
             </indexingErrorMsg>
@@ -488,8 +488,8 @@
             "string": "indexingErrorMsg-invalidDateFormat",
             "type": "warning",
             "values": {
-              "dateType": "<xsl:value-of select="$dateType"/>",
-              "date": "<xsl:value-of select="$date"/>"
+              "dateType": "<xsl:value-of select="util:escapeForJson($dateType)"/>",
+              "date": "<xsl:value-of select="util:escapeForJson($date)"/>"
             }
           }
         </indexingErrorMsg>
