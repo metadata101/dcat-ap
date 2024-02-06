@@ -269,6 +269,14 @@
     </description>
     <btnLabel>Bijsluiter</btnLabel>
   </element>
+  <element name="rdf:resource" context="dcat:landingPage">
+    <label>Bijsluiter</label>
+    <description>Vul aan met een webpagina die als 'bijsluiter' voor je resource dient. Deze webpagina bevat bijkomende
+      informatie over je resource (bv. oorsprong van de dataset, kenmerken, specificaties, richtlijnen bij de
+      interpretatie van de gegevens, toegangs- en gebruiksinformatie, ...)
+    </description>
+    <btnLabel>Bijsluiter</btnLabel>
+  </element>
   <element name="adms:identifier">
     <label>Andere Identificator</label>
     <description>Tooltip: Andere Identificator</description>
@@ -505,12 +513,31 @@
     </description>
     <btnLabel>Endpointbeschrijving</btnLabel>
   </element>
+  <element name="rdf:resource" context="dcat:endpointDescription">
+    <label>Endpointbeschrijving</label>
+    <description>Een beschrijving van de diensten die beschikbaar zijn via de end-points, met inbegrip van hun
+      operaties, parameters, enz.
+    </description>
+    <btnLabel>Endpointbeschrijving</btnLabel>
+  </element>
   <element name="dcat:servesDataset">
     <label>Biedt informatie aan over</label>
     <description>De data die via deze dataservice worden aangeboden.</description>
     <btnLabel>Biedt informatie aan over</btnLabel>
   </element>
+  <element name="rdf:resource" context="dcat:servesDataset">
+    <label>Biedt informatie aan over</label>
+    <description>De data die via deze dataservice worden aangeboden.</description>
+    <btnLabel>Biedt informatie aan over</btnLabel>
+  </element>
   <element name="mdcat:landingspaginaVoorAuthenticatie">
+    <label>Landingspagina voor authenticatie</label>
+    <description>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de
+      dataservice.
+    </description>
+    <btnLabel>Landingspagina voor authenticatie</btnLabel>
+  </element>
+  <element name="rdf:resource" context="mdcat:landingspaginaVoorAuthenticatie">
     <label>Landingspagina voor authenticatie</label>
     <description>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de
       dataservice.
@@ -524,7 +551,19 @@
     </description>
     <btnLabel>Landingspagina voor gebruiksinformatie</btnLabel>
   </element>
+  <element name="rdf:resource" context="mdcat:landingspaginaVoorGebruiksinformatie">
+    <label>Landingspagina voor gebruiksinformatie</label>
+    <description>Een verwijzing naar de landingspagina met de specifieke informatie over het gebruik van de
+      dataservice.
+    </description>
+    <btnLabel>Landingspagina voor gebruiksinformatie</btnLabel>
+  </element>
   <element name="mdcat:landingspaginaVoorStatusinformatie">
+    <label>Landingspagina voor statusinformatie</label>
+    <description>Een verwijzing naar de statuspagina van de dataservice.</description>
+    <btnLabel>Landingspagina voor statusinformatie</btnLabel>
+  </element>
+  <element name="rdf:resource" context="mdcat:landingspaginaVoorStatusinformatie">
     <label>Landingspagina voor statusinformatie</label>
     <description>Een verwijzing naar de statuspagina van de dataservice.</description>
     <btnLabel>Landingspagina voor statusinformatie</btnLabel>

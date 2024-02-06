@@ -346,7 +346,7 @@
     <xsl:if test="normalize-space($stringValue) != ''">
       <tr>
         <th style="{$thStyle}">
-          <xsl:value-of select="gn-fn-metadata:getLabel($schema, 'rdf:resource', $labels, name(..), '', concat(gn-fn-dcat2:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)), '/@rdf:resource'))/label" />
+          <xsl:value-of select="gn-fn-metadata:getLabel($schema, 'rdf:resource', $labels, name(.), '', concat(gn-fn-dcat2:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)), '/@rdf:resource'))/label" />
         </th>
         <td style="{$tdStyle}">
           <xsl:apply-templates mode="render-url" select="@rdf:resource" />
