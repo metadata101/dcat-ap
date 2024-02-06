@@ -284,6 +284,7 @@
 
         </xsl:if>
 
+        <xsl:apply-templates mode="index-reference-date" select="."/>
       </doc>
     </xsl:for-each>
   </xsl:template>
@@ -605,7 +606,6 @@
     </xsl:if>
   </xsl:template>
 
-
   <xsl:template mode="index-distribution" match="*[dcat:distribution]">
     <xsl:for-each-group select="dcat:distribution/dcat:Distribution/dct:format" group-by="skos:Concept/@rdf:about">
       <xsl:copy-of select="gn-fn-index:add-field('format', tokenize(current-grouping-key(), '/')[last()])"/>
@@ -697,6 +697,28 @@
       "group":0
       }
     </link>
+  </xsl:template>
+
+  <xsl:template mode="index-reference-date" match="dcat:Dataset|dcat:DataService">
+    <xsl:variable name="refDate">
+      <xsl:for-each select="dct:*[name()=('dct:modified','dct:created','dct:issued') and .!='' and not(contains(.,'1900') or contains(.,'1753'))]">
+        <xsl:sort select="date-util:convertToISOZuluDateTime(normalize-space(.))" order="descending"/>
+        <xsl:if test="position() = 1">
+          <xsl:value-of select="date-util:convertToISOZuluDateTime(normalize-space(.))"/>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:variable>
+
+    <referenceDate>
+      <xsl:choose>
+        <xsl:when test="string-length(normalize-space($refDate)) > 0">
+          <xsl:value-of select="$refDate"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="'0000-01-01T00:00:00.000Z'"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </referenceDate>
   </xsl:template>
 
   <xsl:function name="gn-fn-index:add-multilingual-field-dcat2" as="node()*">
