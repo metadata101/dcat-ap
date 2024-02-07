@@ -378,7 +378,20 @@
     </description>
     <btnLabel>URL</btnLabel>
   </element>
+  <element name="rdf:resource" context="dcat:accessURL">
+    <label>URL</label>
+    <description>Vul aan met een URL van een webpagina die toegang geeft tot de distributie van de resource. Deze pagina
+      kan ook aangeven hoe gebruikers de dataset kunnen ter beschikking krijgen.
+    </description>
+    <btnLabel>URL</btnLabel>
+  </element>
   <element name="dcat:downloadURL">
+    <label>Download URL</label>
+    <description>Vul aan met een URL waarop de resource kan gedownload worden als bestand in een bepaald formaat.
+    </description>
+    <btnLabel>Download URL</btnLabel>
+  </element>
+  <element name="rdf:resource" context="dcat:downloadURL">
     <label>Download URL</label>
     <description>Vul aan met een URL waarop de resource kan gedownload worden als bestand in een bepaald formaat.
     </description>
