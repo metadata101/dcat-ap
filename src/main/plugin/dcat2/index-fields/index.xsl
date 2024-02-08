@@ -397,12 +397,8 @@
             }
             <xsl:if test="position() != last()">,</xsl:if>
           </xsl:for-each>
-          ]
-          }
+          ]}
         </xsl:value-of>
-        <xsl:if test="count((dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie)/*)>0">
-          ,
-        </xsl:if>
       </xsl:if>
 
       <xsl:for-each-group select="dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie"
@@ -418,24 +414,22 @@
           <xsl:variable name="thesaurusField"
                         select="concat('th_',$key)"/>
           <xsl:variable name="thesaurusTitle" select="util:getThesaurusTitleByName($thesaurusId)"/>
-          "<xsl:value-of select="$thesaurusField"/>": {
+          ,"<xsl:value-of select="$thesaurusField"/>": {
           "id": "<xsl:value-of select="gn-fn-index:json-escape($thesaurusId)"/>",
           <xsl:if test="$thesaurusTitle != ''">
-            "title":
-            "<xsl:value-of select="gn-fn-index:json-escape($thesaurusTitle)"/>",
+            "title": "<xsl:value-of select="gn-fn-index:json-escape($thesaurusTitle)"/>",
           </xsl:if>
           "theme": "theme",
-          "link": "<xsl:value-of
-          select="gn-fn-index:json-escape((current-group()/skos:Concept/skos:inScheme/@rdf:resource)[1])"/>",
+          "link": "<xsl:value-of select="gn-fn-index:json-escape((current-group()/skos:Concept/skos:inScheme/@rdf:resource)[1])"/>",
           "keywords": [
           <xsl:for-each select="current-group()/skos:Concept">
             <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('keyword', ., $allLanguages)/text()"/>
             <xsl:if test="position() != last()">,</xsl:if>
           </xsl:for-each>
           ]}
-          <xsl:if test="position() != last()">,</xsl:if>
         </xsl:if>
       </xsl:for-each-group>
+
       }
     </allKeywords>
 
