@@ -294,7 +294,7 @@
   </xsl:template>
 
   <xsl:template mode="index-keyword" match="dcat:Dataset|dcat:DataService">
-    <xsl:variable name="keywords" select="dcat:keyword|dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie"/>
+    <xsl:variable name="keywords" select="dcat:keyword[normalize-space() != '']|(dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie)[skos:Concept/skos:prefLabel[normalize-space() != '']]"/>
     <tagNumber>
       <xsl:value-of select="count($keywords)"/>
     </tagNumber>
@@ -308,7 +308,7 @@
           <xsl:otherwise>
             {
             <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':', $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>,
-            <xsl:value-of select="concat($doubleQuote, 'lang', @xml:lang, $doubleQuote, ':', $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+            <xsl:value-of select="concat($doubleQuote, 'lang', gn-fn-index:lang-2char-to-3char(@xml:lang), $doubleQuote, ':', $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
             }
           </xsl:otherwise>
         </xsl:choose>
@@ -342,6 +342,22 @@
         </xsl:for-each>
         ]
       </xsl:element>
+      <xsl:element name="th_{$key}_tree">
+        <xsl:attribute name="type" select="'object'"/>
+        [
+        <xsl:for-each select="current-group()/skos:Concept">
+          {
+          "key": [
+          "<xsl:value-of select="gn-fn-index:json-escape(./@rdf:about)"/>"
+          ],
+          "default": [
+          "<xsl:value-of select="./skos:prefLabel[@xml:lang='nl']"/>"
+          ]
+          }
+          <xsl:if test="position() != last()">,</xsl:if>
+        </xsl:for-each>
+        ]
+      </xsl:element>
     </xsl:for-each-group>
     <xsl:if test="count(dcat:keyword) !=0">
       <th_otherKeywords-Number type="object">
@@ -353,7 +369,7 @@
           {
           <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':',
                                              $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>,
-          <xsl:value-of select="concat($doubleQuote, 'lang', @xml:lang, $doubleQuote, ':',
+          <xsl:value-of select="concat($doubleQuote, 'lang', gn-fn-index:lang-2char-to-3char(@xml:lang), $doubleQuote, ':',
                                              $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
           }
           <xsl:if test="position() != last()">,</xsl:if>
@@ -363,29 +379,27 @@
       </th_otherKeywords>
     </xsl:if>
     <allKeywords type="object">{
-      <xsl:if test="count(dcat:keyword) !=0">
+      <xsl:if test="count(dcat:keyword[normalize-space() != '']) !=0">
         "th_otherKeywords":
         <xsl:value-of>
           {
           "title": "otherKeywords-",
           "theme": "",
           "keywords": [
-          <xsl:for-each select="dcat:keyword">
+          <xsl:for-each select="dcat:keyword[normalize-space() != '']">
             {
             <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':',
                                              $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>,
-            <xsl:value-of select="concat($doubleQuote, 'lang', @xml:lang, $doubleQuote, ':',
+            <xsl:value-of select="concat($doubleQuote, 'lang', gn-fn-index:lang-2char-to-3char(@xml:lang), $doubleQuote, ':',
                                              $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
             }
             <xsl:if test="position() != last()">,</xsl:if>
           </xsl:for-each>
-          ]
-          }
+          ]}
         </xsl:value-of>
-        <xsl:if test="count((dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie)/*)>0">
-          ,
-        </xsl:if>
       </xsl:if>
+
+      <xsl:variable name="hasKeywords" select="count(dcat:keyword[normalize-space() != '']) > 0"/>
 
       <xsl:for-each-group select="dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie"
                           group-by="skos:Concept/skos:inScheme/@rdf:resource">
@@ -400,24 +414,23 @@
           <xsl:variable name="thesaurusField"
                         select="concat('th_',$key)"/>
           <xsl:variable name="thesaurusTitle" select="util:getThesaurusTitleByName($thesaurusId)"/>
+          <xsl:if test="$hasKeywords">,</xsl:if>
           "<xsl:value-of select="$thesaurusField"/>": {
           "id": "<xsl:value-of select="gn-fn-index:json-escape($thesaurusId)"/>",
           <xsl:if test="$thesaurusTitle != ''">
-            "title":
-            "<xsl:value-of select="gn-fn-index:json-escape($thesaurusTitle)"/>",
+            "title": "<xsl:value-of select="gn-fn-index:json-escape($thesaurusTitle)"/>",
           </xsl:if>
           "theme": "theme",
-          "link": "<xsl:value-of
-          select="gn-fn-index:json-escape((current-group()/skos:Concept/skos:inScheme/@rdf:resource)[1])"/>",
+          "link": "<xsl:value-of select="gn-fn-index:json-escape((current-group()/skos:Concept/skos:inScheme/@rdf:resource)[1])"/>",
           "keywords": [
           <xsl:for-each select="current-group()/skos:Concept">
             <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('keyword', ., $allLanguages)/text()"/>
             <xsl:if test="position() != last()">,</xsl:if>
           </xsl:for-each>
           ]}
-          <xsl:if test="position() != last()">,</xsl:if>
         </xsl:if>
       </xsl:for-each-group>
+
       }
     </allKeywords>
 
@@ -747,6 +760,17 @@
       select="gn-fn-index:add-multilingual-field-dcat2($fieldName, $elements, $languages, $asJson, $withKey, 'skos:prefLabel')"/>
   </xsl:function>
 
+  <xsl:function name="gn-fn-index:lang-2char-to-3char" as="xs:string">
+    <xsl:param name="lang2Char" as="xs:string?"/>
+    <xsl:choose>
+      <xsl:when test="$lang2Char = 'nl'">dut</xsl:when>
+      <xsl:when test="$lang2Char = 'fr'">fre</xsl:when>
+      <xsl:when test="$lang2Char = 'de'">ger</xsl:when>
+      <xsl:when test="$lang2Char = 'en'">eng</xsl:when>
+      <xsl:otherwise>dut</xsl:otherwise>
+    </xsl:choose>
+  </xsl:function>
+
   <xsl:function name="gn-fn-index:add-multilingual-field-dcat2" as="node()*">
     <xsl:param name="fieldName" as="xs:string"/>
     <xsl:param name="elements" as="node()*"/>
@@ -774,7 +798,7 @@
           <xsl:for-each select="$elements/*[name() = $lookupElement]">
             <xsl:if test="gn-fn-index:json-escape(.) != ''">
               <value>
-                <xsl:value-of select="concat($doubleQuote, 'lang', @xml:lang, $doubleQuote, ':',
+                <xsl:value-of select="concat($doubleQuote, 'lang', gn-fn-index:lang-2char-to-3char(@xml:lang), $doubleQuote, ':',
                                              $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
               </value>
             </xsl:if>
