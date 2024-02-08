@@ -342,6 +342,24 @@
         </xsl:for-each>
         ]
       </xsl:element>
+      <xsl:if test="$key = 'datatheme'">
+        <xsl:element name="th_{$key}_tree">
+          <xsl:attribute name="type" select="'object'"/>
+          [
+          <xsl:for-each select="current-group()/skos:Concept">
+            {
+            "key": [
+            "<xsl:value-of select="gn-fn-index:json-escape(./@rdf:about)"/>"
+            ],
+            "default": [
+            "<xsl:value-of select="./skos:prefLabel[@xml:lang='nl']"/>"
+            ]
+            }
+            <xsl:if test="position() != last()">,</xsl:if>
+          </xsl:for-each>
+          ]
+        </xsl:element>
+      </xsl:if>
     </xsl:for-each-group>
     <xsl:if test="count(dcat:keyword) !=0">
       <th_otherKeywords-Number type="object">
