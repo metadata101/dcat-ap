@@ -236,13 +236,10 @@
 
         <xsl:apply-templates mode="index-concept" select="."/>
         <xsl:apply-templates mode="index-spatial" select="."/>
-        <xsl:for-each-group select="dct:license|dcat:distribution/dcat:Distribution/dct:license" group-by="dct:LicenseDocument/@rdf:about">
-          <xsl:apply-templates mode="index-license" select="current-group()[1]"/>
-        </xsl:for-each-group>
 
+        <xsl:apply-templates mode="index-constraints" select="."/>
 
         <xsl:apply-templates mode="index-distribution" select="."/>
-
 
         <xsl:for-each select="dcat:spatialResolutionInMeters[. castable as xs:decimal]">
           <resolutionScaleDenominator>
@@ -286,6 +283,16 @@
 
         <xsl:apply-templates mode="index-reference-date" select="."/>
       </doc>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template mode="index-constraints" match="dcat:Dataset|dcat:DataService">
+    <xsl:for-each-group select="dct:license|dcat:distribution/dcat:Distribution/dct:license" group-by="dct:LicenseDocument/@rdf:about">
+      <xsl:apply-templates mode="index-license" select="current-group()[1]"/>
+    </xsl:for-each-group>
+
+    <xsl:for-each select="dct:accessRights">
+      <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat2('MD_LegalConstraintsOtherConstraints', skos:Concept, $allLanguages, false())"/>
     </xsl:for-each>
   </xsl:template>
 
@@ -793,28 +800,26 @@
         <xsl:if test="position() = 1">
           <value>
             <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':',
-                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+                                    $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
           </value>
           <xsl:for-each select="$elements/*[name() = $lookupElement]">
             <xsl:if test="gn-fn-index:json-escape(.) != ''">
               <value>
                 <xsl:value-of select="concat($doubleQuote, 'lang', gn-fn-index:lang-2char-to-3char(@xml:lang), $doubleQuote, ':',
-                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+                                        $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
               </value>
             </xsl:if>
           </xsl:for-each>
           <xsl:if test="$url != ''">
             <value>
-              <xsl:value-of
-                select="concat($doubleQuote, 'link', $doubleQuote, ':', $doubleQuote,
-                gn-fn-index:json-escape($url), $doubleQuote)"/>
+              <xsl:value-of select="concat($doubleQuote, 'link', $doubleQuote, ':', $doubleQuote,
+                                      gn-fn-index:json-escape($url), $doubleQuote)"/>
             </value>
           </xsl:if>
           <xsl:if test="$withKey and $url != ''">
             <value>
-              <xsl:value-of
-                select="concat($doubleQuote, 'key', $doubleQuote, ':', $doubleQuote,
-                gn-fn-index:json-escape($url), $doubleQuote)"/>
+              <xsl:value-of select="concat($doubleQuote, 'key', $doubleQuote, ':', $doubleQuote,
+                                      gn-fn-index:json-escape($url), $doubleQuote)"/>
             </value>
           </xsl:if>
         </xsl:if>
