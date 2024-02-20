@@ -695,19 +695,23 @@
 
     <xsl:apply-templates mode="index-protocol" select="dct:conformsTo/dct:Standard"/>
 
-    <link type="object">
-      {
-      "protocol":
+    <xsl:variable name="linkProtocol">
       <xsl:choose>
-        <xsl:when test="dct:conformsTo/dct:Standard/@rdf:about">
-          "<xsl:value-of
-          select="normalize-space(tokenize(dct:conformsTo/dct:Standard/@rdf:about, '/')[last()])"/>"
+        <xsl:when test="dct:conformsTo/dct:Standard/@rdf:about[starts-with(., 'https://data.vlaanderen.be/id/concept/dataserviceprotocol/')]">
+          <xsl:value-of select="normalize-space(tokenize((dct:conformsTo/dct:Standard/@rdf:about[starts-with(., 'https://data.vlaanderen.be/id/concept/dataserviceprotocol/')])[1], '/')[last()])"/>
+        </xsl:when>
+        <xsl:when test="dct:conformsTo/dct:Standard/@rdf:about[normalize-space() != '']">
+          <xsl:value-of select="normalize-space((dct:conformsTo/dct:Standard/@rdf:about[normalize-space() != ''])[1])"/>
         </xsl:when>
         <xsl:otherwise>
-          ""
+          <xsl:value-of select="''"/>
         </xsl:otherwise>
       </xsl:choose>
-      ,
+    </xsl:variable>
+
+    <link type="object">
+      {
+      "protocol": "<xsl:value-of select="$linkProtocol"/>",
       "mimeType": "" ,
       "url":"<xsl:value-of select="normalize-space((dcat:endpointURL|dcat:endpointDescription)[1]/@rdf:resource)"/>",
       "name": "",
