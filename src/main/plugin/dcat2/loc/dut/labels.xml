@@ -519,6 +519,11 @@
     <description>De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI).</description>
     <btnLabel>EndpointURL</btnLabel>
   </element>
+  <element name="rdf:resource" context="dcat:endpointURL">
+    <label>EndpointURL</label>
+    <description>De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI).</description>
+    <btnLabel>EndpointURL</btnLabel>
+  </element>
   <element name="dcat:endpointDescription">
     <label>Endpointbeschrijving</label>
     <description>Een beschrijving van de diensten die beschikbaar zijn via de end-points, met inbegrip van hun
