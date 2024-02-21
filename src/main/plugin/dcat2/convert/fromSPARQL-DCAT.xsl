@@ -44,11 +44,7 @@ Rome - Italy. email: geonetwork@osgeo.org
   <!-- Default language for plain literals. -->
   <xsl:variable name="defaultLang">nl</xsl:variable>
   <xsl:variable name="xsdNs" select="'http://www.w3.org/2001/XMLSchema#'"/>
-  <!-- Retrieves an identifier (e.g. a URL-encoded URI) as a parameter. uuid:randomUUID()   java.util.UUID.randomUUID() -->
-  <xsl:param name="recordUUID" select="recordUUID"/>
-  <xsl:param name="harvesterURL" select="harvesterURL"/>
-  <xsl:param name="newResourceUUID" select="newResourceUUID"/>
-  <xsl:param name="oldResourceUUID" select="oldResourceUUID"/>
+  <xsl:param name="uuid"/>
 
   <!-- dcat:Catalog -->
   <xsl:template match="/">
@@ -217,11 +213,9 @@ Rome - Italy. email: geonetwork@osgeo.org
             </xsl:attribute>
           </xsl:if>
           <!-- dct:identifier -->
-          <xsl:call-template name="identifier">
-            <xsl:with-param name="subject" select="./*"/>
-            <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
-            <xsl:with-param name="existingId" select="$recordUUID"/>
-          </xsl:call-template>
+          <dct:identifier>
+            <xsl:value-of select="$uuid"/>
+          </dct:identifier>
           <!-- foaf:primaryTopic -->
           <xsl:call-template name="urls">
             <xsl:with-param name="subject" select="./*"/>
@@ -308,24 +302,10 @@ Rome - Italy. email: geonetwork@osgeo.org
             </xsl:attribute>
           </xsl:if>
           <!-- dct:identifier -->
-          <xsl:choose>
-            <xsl:when test="normalize-space($newResourceUUID) != ''">
-              <dct:identifier>
-                <xsl:value-of select="$newResourceUUID"/>
-              </dct:identifier>
-              <xsl:call-template name="identifier">
-                <xsl:with-param name="subject" select="./*"/>
-                <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
-                <xsl:with-param name="existingId" select="$oldResourceUUID"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:call-template name="identifier">
-                <xsl:with-param name="subject" select="./*"/>
-                <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
-              </xsl:call-template>
-            </xsl:otherwise>
-          </xsl:choose>
+          <xsl:call-template name="identifier">
+            <xsl:with-param name="subject" select="./*"/>
+            <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
+          </xsl:call-template>
           <!-- dct:title -->
           <xsl:call-template name="properties">
             <xsl:with-param name="subject" select="./*"/>
@@ -456,15 +436,6 @@ Rome - Italy. email: geonetwork@osgeo.org
                       sr:binding[@name='subject']/* = $datasetURI]/sr:binding[@name='object']"/>
             <xsl:with-param name="predicate">adms:identifier</xsl:with-param>
           </xsl:call-template>
-          <xsl:if test="normalize-space($oldResourceUUID) != ''">
-            <adms:identifier>
-              <adms:Identifier>
-                <skos:notation>
-                  <xsl:value-of select="$oldResourceUUID"/>
-                </skos:notation>
-              </adms:Identifier>
-            </adms:identifier>
-          </xsl:if>
           <!-- dct:provenance-->
           <xsl:call-template name="provenanceStatements">
             <xsl:with-param name="statementURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/provenance' and
@@ -541,24 +512,10 @@ Rome - Italy. email: geonetwork@osgeo.org
             </xsl:attribute>
           </xsl:if>
           <!-- dct:identifier -->
-          <xsl:choose>
-            <xsl:when test="normalize-space($newResourceUUID) != ''">
-              <dct:identifier>
-                <xsl:value-of select="$newResourceUUID"/>
-              </dct:identifier>
-              <xsl:call-template name="identifier">
-                <xsl:with-param name="subject" select="./*"/>
-                <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
-                <xsl:with-param name="existingId" select="$oldResourceUUID"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:call-template name="identifier">
-                <xsl:with-param name="subject" select="./*"/>
-                <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
-              </xsl:call-template>
-            </xsl:otherwise>
-          </xsl:choose>
+          <xsl:call-template name="identifier">
+            <xsl:with-param name="subject" select="./*"/>
+            <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
+          </xsl:call-template>
           <!-- dct:title -->
           <xsl:call-template name="properties">
             <xsl:with-param name="subject" select="./*"/>
@@ -630,15 +587,6 @@ Rome - Italy. email: geonetwork@osgeo.org
                       sr:binding[@name='subject']/* = $serviceURI]/sr:binding[@name='object']"/>
             <xsl:with-param name="predicate">adms:identifier</xsl:with-param>
           </xsl:call-template>
-          <xsl:if test="normalize-space($oldResourceUUID) != ''">
-            <adms:identifier>
-              <adms:Identifier>
-                <skos:notation>
-                  <xsl:value-of select="$oldResourceUUID"/>
-                </skos:notation>
-              </adms:Identifier>
-            </adms:identifier>
-          </xsl:if>
           <!-- owl:versionInfo -->
           <xsl:call-template name="properties">
             <xsl:with-param name="subject" select="./*"/>
@@ -1501,14 +1449,7 @@ Rome - Italy. email: geonetwork@osgeo.org
         <!-- URIs -->
         <xsl:when test="./sr:uri">
           <xsl:element name="{if ($xmlNameOverwrite != '') then $xmlNameOverwrite else $predicate}">
-            <xsl:choose>
-              <xsl:when test="string(./sr:uri) != string($harvesterURL)">
-                <xsl:attribute name="rdf:resource" select="./sr:uri"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:attribute name="rdf:resource" select="''"/>
-              </xsl:otherwise>
-            </xsl:choose>
+            <xsl:attribute name="rdf:resource" select="./sr:uri"/>
           </xsl:element>
         </xsl:when>
         <!-- anyURI literal -->
