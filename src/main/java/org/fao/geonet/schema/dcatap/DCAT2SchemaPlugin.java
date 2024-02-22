@@ -144,6 +144,7 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
                 .stream()
                 .filter(node -> node instanceof Attribute)
                 .map(node -> ((Attribute)node).getValue())
+                .filter(s -> s != null && !s.isBlank())
                 .map(this::getAssociatedResourceByURI)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toSet());
