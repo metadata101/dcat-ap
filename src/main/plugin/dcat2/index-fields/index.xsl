@@ -298,7 +298,7 @@
 
   <xsl:template mode="index-license" match="dct:license">
     <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat2('license', dct:LicenseDocument, $allLanguages, false(), false(), 'dct:title')"/>
-    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat2('modelLicencie', dct:LicenseDocument, $allLanguages, false(), false(), 'dct:title')"/>
+    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat2('modelLicentie', dct:LicenseDocument, $allLanguages, false(), false(), 'dct:title')"/>
   </xsl:template>
 
   <xsl:template mode="index-keyword" match="dcat:Dataset|dcat:DataService">
