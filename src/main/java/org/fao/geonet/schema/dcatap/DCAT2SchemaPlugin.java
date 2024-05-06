@@ -28,10 +28,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import org.elasticsearch.action.search.SearchRequest;
-import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.builder.SearchSourceBuilder;
+import co.elastic.clients.elasticsearch.core.SearchResponse;
+import co.elastic.clients.elasticsearch.core.search.Hit;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.Sets;
 import org.fao.geonet.ApplicationContextHolder;
 import org.fao.geonet.constants.Geonet;
 import org.fao.geonet.index.es.EsRestClient;
@@ -186,26 +186,22 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
     }
 
     private AssociatedResource getAssociatedResourceByURI(String uri) {
-        var client = ApplicationContextHolder.get().getBean(EsRestClient.class);
         var searchManager = ApplicationContextHolder.get().getBean(EsSearchManager.class);
         try {
-            var request = new SearchRequest(searchManager.getDefaultIndex());
-            var ssb = new SearchSourceBuilder();
-            ssb.fetchSource(new String[]{
-                "uuid",
-                "resourceTitleObject.default"
-            }, null);
-            ssb.query(QueryBuilders.termQuery("rdfResourceIdentifier.keyword", uri));
-            request.source(ssb);
+            var response = searchManager.query(String.format("+rdfResourceIdentifier.keyword:\"%s\"", uri), null,
+                    Sets.newHashSet("uuid", "resourceTitleObject.default"),
+                    0, 1);
 
-            var response = client.getClient().search(request, RequestOptions.DEFAULT);
-            if (response.getHits().getTotalHits().value == 0) {
+            if (response.hits().hits().isEmpty()) {
                 return null;
             }
-            if (response.getHits().getTotalHits().value > 1) {
+            if (response.hits().hits().size() > 1) {
                 Log.error(Log.JEEVES, "Multiple resources was found for URI " + uri + ". Returning first result");
             }
-            var associatedRecord = response.getHits().getHits()[0].getSourceAsMap();;
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            Hit h = (Hit) response.hits().hits().get(0);
+            Map associatedRecord = objectMapper.convertValue(h.source(), Map.class);
             return new AssociatedResource(
                 (String)associatedRecord.get("uuid"),
                 "",
