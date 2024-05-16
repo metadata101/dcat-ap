@@ -120,6 +120,7 @@
       <xs:element name="Standard" minOccurs="1" maxOccurs="1">
         <xs:complexType>
           <xs:sequence>
+            <xs:element ref="dct:identifier" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="1"/>
