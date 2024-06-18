@@ -83,11 +83,11 @@
 
     <xsl:variable name="dateStamp" select=".//dcat:CatalogRecord/dct:modified"/>
     <xsl:variable name="identifier" as="xs:string" select=".//dcat:CatalogRecord/dct:identifier"/>
+
     <xsl:for-each select=".//(dcat:Dataset|dcat:DataService)">
       <doc>
         <xsl:copy-of select="gn-fn-index:add-field('docType', 'metadata')"/>
-        <xsl:variable name="dateStamp"
-                      select="date-util:convertToISOZuluDateTime(normalize-space($dateStamp))"/>
+        <xsl:variable name="dateStamp" select="date-util:convertToISOZuluDateTime(normalize-space($dateStamp))"/>
         <xsl:if test="$dateStamp != ''">
           <dateStamp>
             <xsl:value-of select="$dateStamp"/>
@@ -95,6 +95,8 @@
         </xsl:if>
 
         <xsl:copy-of select="gn-fn-index:add-field('metadataIdentifier', $identifier)"/>
+
+        <xsl:apply-templates mode="index-catalog-contacts" select="../../../dcat:Catalog"/>
 
         <xsl:variable name="isService" as="xs:boolean" select="name() = 'dcat:DataService'"/>
 
@@ -152,12 +154,12 @@
           <xsl:if test="$start &gt; $end">
             <indexingErrorMsg type="object">
               {
-                "string": "indexingErrorMsg-temporalDateRangeLowerGreaterThanUpper",
-                "type": "warning",
-                "values": {
-                  "lowerBound": "<xsl:value-of select="util:escapeForJson(.)"/>",
-                  "upperBound": "<xsl:value-of select="util:escapeForJson($end)"/>"
-                }
+              "string": "indexingErrorMsg-temporalDateRangeLowerGreaterThanUpper",
+              "type": "warning",
+              "values": {
+              "lowerBound": "<xsl:value-of select="util:escapeForJson(.)"/>",
+              "upperBound": "<xsl:value-of select="util:escapeForJson($end)"/>"
+              }
               }
             </indexingErrorMsg>
           </xsl:if>
@@ -264,7 +266,9 @@
 
         <xsl:if test="name() = 'dcat:DataService'">
           <xsl:for-each select="(dcat:servesDataset/@rdf:resource|dcat:servesDataset/dcat:Dataset/@rdf:about)[normalize-space() != '']">
-            <recordOperateOn><xsl:value-of select="string()"/></recordOperateOn>
+            <recordOperateOn>
+              <xsl:value-of select="string()"/>
+            </recordOperateOn>
           </xsl:for-each>
 
           <xsl:for-each select="./mdcat:levensfase">
@@ -287,13 +291,27 @@
   </xsl:template>
 
   <xsl:template mode="index-constraints" match="dcat:Dataset|dcat:DataService">
-    <xsl:for-each-group select="dct:license|dcat:distribution/dcat:Distribution/dct:license" group-by="dct:LicenseDocument/@rdf:about">
-      <xsl:apply-templates mode="index-license" select="current-group()[1]"/>
-    </xsl:for-each-group>
-
-    <xsl:for-each select="dct:accessRights">
-      <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat2('MD_LegalConstraintsOtherConstraints', skos:Concept, $allLanguages, false())"/>
-    </xsl:for-each>
+    <xsl:variable name="constraints">
+      <xsl:for-each-group select="dct:license|dcat:distribution/dcat:Distribution/dct:license"
+                          group-by="dct:LicenseDocument/@rdf:about">
+        <xsl:apply-templates mode="index-license" select="current-group()[1]"/>
+      </xsl:for-each-group>
+      <xsl:for-each select="dct:accessRights">
+        <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat2('MD_LegalConstraintsOtherConstraints', skos:Concept, $allLanguages, false())"/>
+      </xsl:for-each>
+    </xsl:variable>
+    <xsl:copy-of select="$constraints"/>
+    <vlResourceConstraintsObject type="object">
+      [{
+      "type": "MD_LegalConstraints",
+      "otherConstraintsObject": [
+      <xsl:for-each select="$constraints/*[name() = ('licenseObject', 'MD_LegalConstraintsOtherConstraintsObject')]">
+        <xsl:copy-of select="string()"/>
+        <xsl:if test="position() != last()">,</xsl:if>
+      </xsl:for-each>
+      ]
+      }]
+    </vlResourceConstraintsObject>
   </xsl:template>
 
   <xsl:template mode="index-license" match="dct:license">
@@ -331,8 +349,7 @@
 
     <xsl:for-each-group select="dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie"
                         group-by="skos:Concept/skos:inScheme/@rdf:resource">
-      <xsl:variable name="thesaurusId"
-                    select="$editorConfig/editor/fields/for[@name=name(current-group()[1])]/directiveAttributes/@thesaurus"/>
+      <xsl:variable name="thesaurusId" select="$editorConfig/editor/fields/for[@name=name(current-group()[1])]/directiveAttributes/@thesaurus"/>
       <xsl:variable name="key">
         <xsl:if test="$thesaurusId != ''">
           <xsl:value-of select="tokenize($thesaurusId[1], '\.')[last()]"/>
@@ -512,16 +529,54 @@
       <xsl:otherwise>
         <indexingErrorMsg type="object">
           {
-            "string": "indexingErrorMsg-invalidDateFormat",
-            "type": "warning",
-            "values": {
-              "dateType": "<xsl:value-of select="util:escapeForJson($dateType)"/>",
-              "date": "<xsl:value-of select="util:escapeForJson($date)"/>"
-            }
+          "string": "indexingErrorMsg-invalidDateFormat",
+          "type": "warning",
+          "values": {
+          "dateType": "<xsl:value-of select="util:escapeForJson($dateType)"/>",
+          "date": "<xsl:value-of select="util:escapeForJson($date)"/>"
+          }
           }
         </indexingErrorMsg>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template mode="index-catalog-contacts" match="dcat:Catalog">
+    <xsl:for-each select="dct:creator">
+      <xsl:apply-templates mode="index-contact" select=".">
+        <xsl:with-param name="fieldSuffix" select="''"/>
+        <xsl:with-param name="role" select="'author'"/>
+      </xsl:apply-templates>
+    </xsl:for-each>
+
+    <xsl:for-each select="dct:publisher">
+      <xsl:message select="'indexing publisher'"/>
+      <xsl:apply-templates mode="index-contact" select=".">
+        <xsl:with-param name="fieldSuffix" select="''"/>
+        <xsl:with-param name="role" select="'publisher'"/>
+      </xsl:apply-templates>
+    </xsl:for-each>
+
+    <xsl:for-each select="dcat:contactPoint">
+      <xsl:apply-templates mode="index-contact" select=".">
+        <xsl:with-param name="fieldSuffix" select="''"/>
+        <xsl:with-param name="role" select="'pointOfContact'"/>
+      </xsl:apply-templates>
+    </xsl:for-each>
+
+    <xsl:for-each select="dct:rightsHolder">
+      <xsl:apply-templates mode="index-contact" select=".">
+        <xsl:with-param name="fieldSuffix" select="''"/>
+        <xsl:with-param name="role" select="'owner'"/>
+      </xsl:apply-templates>
+    </xsl:for-each>
+
+    <xsl:for-each select="geodcat:distributor">
+      <xsl:apply-templates mode="index-contact" select=".">
+        <xsl:with-param name="fieldSuffix" select="''"/>
+        <xsl:with-param name="role" select="'distributor'"/>
+      </xsl:apply-templates>
+    </xsl:for-each>
   </xsl:template>
 
   <xsl:template mode="index-contact" match="*[foaf:Agent]">
@@ -651,8 +706,7 @@
         "protocol":
         <xsl:choose>
           <xsl:when test="dct:conformsTo/dct:Standard/@rdf:about">
-            "<xsl:value-of
-            select="normalize-space(tokenize(dct:conformsTo/dct:Standard/@rdf:about, '/')[last()])"/>"
+            "<xsl:value-of select="normalize-space(tokenize(dct:conformsTo/dct:Standard/@rdf:about, '/')[last()])"/>"
           </xsl:when>
           <xsl:otherwise>
             ""
@@ -691,7 +745,7 @@
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template mode="index-distribution" match="*[dcat:endpointURL|dcat:endpointDescription]">
+  <xsl:template mode="index-distribution" match="*[dcat:endpointURL|dcat:endpointDescription|dcat:landingPage|mdcat:landingspaginaVoorStatusinformatie|mdcat:landingspaginaVoorGebruiksinformatie]">
     <xsl:for-each select="dcat:endpointURL|dcat:endpointDescription">
       <linkUrl>
         <xsl:value-of select="string(@rdf:resource)"/>
@@ -701,32 +755,49 @@
 
     <xsl:apply-templates mode="index-protocol" select="dct:conformsTo/dct:Standard"/>
 
-    <xsl:variable name="linkProtocol">
-      <xsl:choose>
-        <xsl:when test="dct:conformsTo/dct:Standard/@rdf:about[starts-with(., 'https://data.vlaanderen.be/id/concept/dataserviceprotocol/')]">
-          <xsl:value-of select="normalize-space(tokenize((dct:conformsTo/dct:Standard/@rdf:about[starts-with(., 'https://data.vlaanderen.be/id/concept/dataserviceprotocol/')])[1], '/')[last()])"/>
-        </xsl:when>
-        <xsl:when test="dct:conformsTo/dct:Standard/@rdf:about[normalize-space() != '']">
-          <xsl:value-of select="normalize-space((dct:conformsTo/dct:Standard/@rdf:about[normalize-space() != ''])[1])"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="''"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
+    <xsl:if test="normalize-space((dcat:endpointURL|dcat:endpointDescription)[1]/@rdf:resource) != ''">
+      <xsl:variable name="linkProtocol">
+        <xsl:choose>
+          <xsl:when test="dct:conformsTo/dct:Standard/@rdf:about[starts-with(., 'https://data.vlaanderen.be/id/concept/dataserviceprotocol/')]">
+            <xsl:value-of select="normalize-space(tokenize((dct:conformsTo/dct:Standard/@rdf:about[starts-with(., 'https://data.vlaanderen.be/id/concept/dataserviceprotocol/')])[1], '/')[last()])"/>
+          </xsl:when>
+          <xsl:when test="dct:conformsTo/dct:Standard/@rdf:about[normalize-space() != '']">
+            <xsl:value-of select="normalize-space((dct:conformsTo/dct:Standard/@rdf:about[normalize-space() != ''])[1])"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="''"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
 
-    <link type="object">
-      {
-      "protocol": "<xsl:value-of select="$linkProtocol"/>",
-      "mimeType": "" ,
-      "url":"<xsl:value-of select="normalize-space((dcat:endpointURL|dcat:endpointDescription)[1]/@rdf:resource)"/>",
-      "name": "",
-      "description": "",
-      "function":"",
-      "applicationProfile":"",
-      "group":0
-      }
-    </link>
+      <link type="object">
+        {
+        "protocol": "<xsl:value-of select="$linkProtocol"/>",
+        "mimeType": "" ,
+        "url":"<xsl:value-of select="normalize-space((dcat:endpointURL|dcat:endpointDescription)[1]/@rdf:resource)"/>",
+        "name": "",
+        "description": "",
+        "function":"",
+        "applicationProfile":"",
+        "group":0
+        }
+      </link>
+    </xsl:if>
+
+    <xsl:for-each select="(dcat:landingPage|mdcat:landingspaginaVoorStatusinformatie|mdcat:landingspaginaVoorGebruiksinformatie)[normalize-space(@rdf:resource) != '']">
+      <link type="object">
+        {
+        "protocol": "",
+        "mimeType": "" ,
+        "url":"<xsl:value-of select="normalize-space(@rdf:resource)"/>",
+        "name": "",
+        "description": "",
+        "function":"",
+        "applicationProfile":"",
+        "group":0
+        }
+      </link>
+    </xsl:for-each>
   </xsl:template>
 
   <xsl:template mode="index-reference-date" match="dcat:Dataset|dcat:DataService">
