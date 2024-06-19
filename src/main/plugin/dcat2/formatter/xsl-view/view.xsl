@@ -90,6 +90,23 @@
   <xsl:variable name="thStyle" select="'border-style: solid; border-color: #ddd; border-width: 1px 0 1px 1px; width: 20%; padding: 8px; line-height: 1.428571429; vertical-align: top; box-sizing: border-box; text-align: left; min-width: 100px'"/>
   <xsl:variable name="tdStyle" select="'border-style: solid; border-color: #ddd; border-width: 1px 1px 1px 0; padding-left: 0; width: 80%; word-break: break-word; padding: 8px; line-height: 1.428571429; vertical-align: top; box-sizing: border-box;'"/>
 
+  <!-- Overwrite the default 'render-toc' template -->
+  <xsl:template mode="render-toc" match="view" priority="10">
+    <xsl:message select="$root"/>
+    <xsl:if test="$root = 'div' and count(tab) > 1">
+      <ul class="view-outline nav nav-tabs nav-tabs-advanced">
+        <xsl:for-each select="tab">
+          <li>
+            <a href="#gn-tab-{@id}">
+              <xsl:value-of select="gn-fn-render:get-schema-strings($schemaStrings, @id)"/>
+            </a>
+          </li>
+        </xsl:for-each>
+      </ul>
+    </xsl:if>
+  </xsl:template>
+
+
   <!-- Specific schema rendering -->
   <xsl:template mode="getMetadataTitle" match="rdf:RDF">
     <!--
@@ -142,11 +159,13 @@
     <div class="gn-abstract">
       <xsl:value-of select="(//dcat:Dataset/dct:description|//dcat:DataService/dct:description)[1]"/>
     </div>
-    <div class="one-line-ellipsis" ng-if="user.isEditorOrMore()">
-      <p>
-        <span data-translate="">owner</span>: {{md.getOwnername()}}
-      </p>
-    </div>
+    <xsl:if test="$root = 'div'">
+      <div class="one-line-ellipsis" ng-if="user.isEditorOrMore()">
+        <p>
+          <span data-translate="">owner</span>: {{md.getOwnername()}}
+        </p>
+      </div>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template mode="getMetadataHierarchyLevel" match="rdf:RDF">
