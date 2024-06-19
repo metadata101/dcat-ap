@@ -1,7 +1,7 @@
-From df59d1ef0cff427e80c66eff0bf0d66b21209618 Mon Sep 17 00:00:00 2001
+From 5ed44cb38b180e9134585d28b045ae63a7a76e6a Mon Sep 17 00:00:00 2001
 From: Mathieu Chaussier <mathieu.chaussier@gim.be>
-Date: Wed, 19 Jun 2024 13:46:50 +0200
-Subject: [PATCH] install dcat2 plugin
+Date: Thu, 20 Jun 2024 09:48:09 +0200
+Subject: [PATCH] Patch core for DCAT2 plugin
 
 ---
  .gitignore                                    |   1 +
@@ -13,7 +13,6 @@ Subject: [PATCH] install dcat2 plugin
  .../harvester/geonet/GeonetHarvester.java     |   3 +
  .../harvester/geonet/GeonetParams.java        |  12 ++
  .../plugin/iso19139/index-fields/index.xsl    |  71 ++++++++
- schemas/pom.xml                               |   1 +
  .../fao/geonet/api/records/MetadataUtils.java |  24 ++-
  .../resources/catalog/locales/en-admin.json   |   7 +-
  .../resources/catalog/locales/fr-admin.json   |   9 +-
@@ -22,10 +21,9 @@ Subject: [PATCH] install dcat2 plugin
  .../templates/admin/harvest/type/csw.js       |   4 +-
  .../admin/harvest/type/geonetwork.html        |  16 ++
  .../admin/harvest/type/geonetwork.js          |   4 +-
- web/pom.xml                                   |  12 ++
  .../main/webapp/xsl/xml/harvesting/csw.xsl    |   3 +
  .../webapp/xsl/xml/harvesting/geonetwork.xsl  |   3 +
- 21 files changed, 325 insertions(+), 55 deletions(-)
+ 19 files changed, 312 insertions(+), 55 deletions(-)
 
 diff --git a/.gitignore b/.gitignore
 index cbd4fe33ea..62970213f3 100644
@@ -614,18 +612,6 @@ index 37b3dc0311..187740c5c4 100644
 +    </xsl:if>
 +  </xsl:function>
  </xsl:stylesheet>
-diff --git a/schemas/pom.xml b/schemas/pom.xml
-index 34c8c2ad3f..b17c7df8f9 100644
---- a/schemas/pom.xml
-+++ b/schemas/pom.xml
-@@ -44,6 +44,7 @@
-     <module>iso19110</module>
-     <module>iso19139</module>
-     <module>iso19115-3.2018</module>
-+    <module>dcat2</module>
-   </modules>
- 
-   <properties>
 diff --git a/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java b/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java
 index 76bb7f594f..b0f5e6d53d 100644
 --- a/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java
@@ -831,36 +817,6 @@ index 8ca175afcd..a3c9441323 100644
        + '  </site>'
        + '  <searches>'
        + '    <search>'
-diff --git a/web/pom.xml b/web/pom.xml
-index 11a53de752..55b9e63b86 100644
---- a/web/pom.xml
-+++ b/web/pom.xml
-@@ -623,6 +623,11 @@
-       <artifactId>gn-schema-iso19115-3.2018</artifactId>
-       <version>${project.version}</version>
-     </dependency>
-+    <dependency>
-+      <groupId>org.geonetwork-opensource.schemas</groupId>
-+      <artifactId>gn-schema-dcat2</artifactId>
-+      <version>${project.version}</version>
-+    </dependency>
-     <dependency>
-       <groupId>org.xmlunit</groupId>
-       <artifactId>xmlunit-matchers</artifactId>
-@@ -1143,6 +1148,13 @@
-                       <overWrite>false</overWrite>
-                       <outputDirectory>${schema-plugins.dir}</outputDirectory>
-                     </artifactItem>
-+                    <artifactItem>
-+                      <groupId>org.geonetwork-opensource.schemas</groupId>
-+                      <artifactId>gn-schema-dcat2</artifactId>
-+                      <type>zip</type>
-+                      <overWrite>false</overWrite>
-+                      <outputDirectory>${schema-plugins.dir}</outputDirectory>
-+                    </artifactItem>
-                   </artifactItems>
-                 </configuration>
-               </execution>
 diff --git a/web/src/main/webapp/xsl/xml/harvesting/csw.xsl b/web/src/main/webapp/xsl/xml/harvesting/csw.xsl
 index afbd470d75..33b6e31d5b 100644
 --- a/web/src/main/webapp/xsl/xml/harvesting/csw.xsl
