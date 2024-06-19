@@ -1,6 +1,6 @@
 # DCAT-AP Schema Plugin for GeoNetwork
 
-This repository contains a [DCAT-AP VL v2.0](https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic/solution/dcat-application-profile-data-portals-europe/release/200) schema plugin for [GeoNetwork](http://geonetwork-opensource.org/) 3.8.3.
+This repository contains a [DCAT-AP VL v2.0](https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic/solution/dcat-application-profile-data-portals-europe/release/200) schema plugin for [GeoNetwork](http://geonetwork-opensource.org/).
 
 ## Reference documents
 * [W3C Data Catalog Vocabulary (DCAT)](https://www.w3.org/TR/vocab-dcat/), Fadi Maali, John Erickson, 2014.
@@ -23,31 +23,22 @@ This plugin has the following features:
 
 ## Installing the plugin
 
-### GeoNetwork version to use with this plugin
-
-Use GeoNetwork version 3.8.3. See the instructions on [software development](https://github.com/geonetwork/core-geonetwork/tree/master/software_development) in the core-geonetwork project.
-
-```
-git clone --recursive https://github.com/geonetwork/core-geonetwork.git
-git checkout 3.8.x
-```
-
 ### Adding the plugin to the source code
 
 To include this schema plugin in a build, copy the dcat2 schema folder in the schemas folder, add it to the schemas/pom.xml and add it to the copy-schemas execution in web/pom.xml.
 
 The best approach is to add the plugin as a submodule into GeoNetwork schema module.
 
-```
+```shell
 cd schemas
-git submodule add <dcat2 remote URL>
+git submodule add <dcat2 remote URL> dcat2
 git submodule init
 git submodule update
 ```
 
 Add the new module to the schemas/pom.xml:
 
-```
+```xml
   <module>iso19139</module>
   <module>dcat2</module>
 </modules>
@@ -55,7 +46,7 @@ Add the new module to the schemas/pom.xml:
 
 Add the dependency in the web module in web/pom.xml:
 
-```
+```xml
 <dependency>
   <groupId>${project.groupId}</groupId>
   <artifactId>schema-dcat2</artifactId>
@@ -65,21 +56,32 @@ Add the dependency in the web module in web/pom.xml:
 
 Add the module to the webapp in web/pom.xml:
 
-```
+```xml
 <execution>
-  <id>copy-schemas</id>
+  <id>unpack-schemas</id>
   <phase>process-resources</phase>
-  ...
-  <resource>
-    <directory>${project.basedir}/../schemas/dcat2/src/main/plugin</directory>
-    <targetPath>${basedir}/src/main/webapp/WEB-INF/data/config/schema_plugins</targetPath>
-  </resource>
+  <goals><goal>unpack</goal></goals>
+  <configuration>
+    <encoding>UTF-8</encoding>
+    <artifactItems>
+      <!-- unpack built-in schema plugins into schema-plugins directory -->
+      <!-- ... -->
+      <artifactItem>
+        <groupId>org.geonetwork-opensource.schemas</groupId>
+        <artifactId>gn-schema-dcat2</artifactId>
+        <type>zip</type>
+        <overWrite>false</overWrite>
+        <outputDirectory>${schema-plugins.dir}</outputDirectory>
+      </artifactItem>
+    </artifactItems>
+  </configuration>
+</execution>
 ```
 
 Commit these changes.
 
 Apply the [patches](/core-geonetwork-patches) to the geonetwork core. You may need to manually apply specific hunks of a patch.
-```
+```shell
 cd ..   (core-geonetwork)
 git am --ignore-space-change --ignore-whitespace --reject --whitespace=fix schemas/dcat2/core-geonetwork-patches/*.patch
 ```
@@ -87,21 +89,21 @@ git am --ignore-space-change --ignore-whitespace --reject --whitespace=fix schem
 Build and run the application following the
 [Software Development Documentation](https://github.com/geonetwork/core-geonetwork/tree/master/software_development). You'll need to have Java JDK 1.8 and [Maven](https://maven.apache.org/install.html) installed.
 
-```
+```shell
 mvn clean install -DskipTests
 ```
 
 After build, you will find a WAR file in `/web/target/geonetwork.war` that you can deploy in your Tomcat 8.x servket container. Alternatively, you can run GeoNetwork with the Maven Jetty plugin by executing the following command:
 
 
-```
+```shell
 cd web
 mvn jetty:run -Penv-dev
 ```
 
 Samples and templates can be imported via the 'Admin Console' > 'Metadata and Templates' > 'DCAT-AP' menu.
 
-Make sure to import the thesauri located in `schemas/dcat-ap/src/main/plugin/dcat-ap/thesauri` as they are required for editing dcat-ap records.
+Make sure to import the thesauri located in `schemas/dcat2/resources/thesauri` as they are required for editing dcat-ap records.
 
 Subtemplates for the `dct:license` field are available at `schemas/dcat-ap/src/main/plugin/dcat-ap/subtemplates`.
 
@@ -110,7 +112,7 @@ Subtemplates for the `dct:license` field are available at `schemas/dcat-ap/src/m
 The plugin uses dct:identifier to store a uuid that is used as (internal) metadata identifier. The metadata identifier is stored in the element dcat:Dataset/dct:identifier. When saving a record, this uuid is appended to the dataet URI, provided that the metadata (template) contains a dataset URI that ends with a uuid and the record is not harvested. Admittedly, it would be more correct to use a dcat:CatalogRecord/dct:identifier as metadata identifier, leaving dcat:Dataset/dct:identifier as a pure dataset identifier.
 
 
-```
+```xml
 <dcat:Dataset rdf:about="https://opendata.vlaanderen.be/dataset/9fde14b3-4654-44f5-970e-be0a986cf4eb">
     <dct:identifier>9fde14b3-4654-44f5-970e-be0a986cf4eb</dct:identifier>
 ```
@@ -132,6 +134,7 @@ This plugin would merit further improvements in at least the following areas:
 * Geraldine Nolf (Digitaal Vlaanderen) 
 * Bart Cosyn (Digitaal Vlaanderen)
 * Stijn Van Speybroeck (Digitaal Vlaanderen)
+* Joachim Nielandt (Digitaal Vlaanderen)
 * Gustaaf Vandeboel (GIM)
 * Mathieu Chaussier (GIM)
 * Stijn Goedertier (GIM)

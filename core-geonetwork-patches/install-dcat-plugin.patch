@@ -1,0 +1,894 @@
+From df59d1ef0cff427e80c66eff0bf0d66b21209618 Mon Sep 17 00:00:00 2001
+From: Mathieu Chaussier <mathieu.chaussier@gim.be>
+Date: Wed, 19 Jun 2024 13:46:50 +0200
+Subject: [PATCH] install dcat2 plugin
+
+---
+ .gitignore                                    |   1 +
+ .../geonet/kernel/search/EsSearchManager.java |   1 +
+ .../java/org/fao/geonet/util/XslUtil.java     | 160 +++++++++++++-----
+ .../HarvesterSettingRepository.java           |  11 ++
+ .../harvest/harvester/csw/CswHarvester.java   |   2 +
+ .../harvest/harvester/csw/CswParams.java      |  11 ++
+ .../harvester/geonet/GeonetHarvester.java     |   3 +
+ .../harvester/geonet/GeonetParams.java        |  12 ++
+ .../plugin/iso19139/index-fields/index.xsl    |  71 ++++++++
+ schemas/pom.xml                               |   1 +
+ .../fao/geonet/api/records/MetadataUtils.java |  24 ++-
+ .../resources/catalog/locales/en-admin.json   |   7 +-
+ .../resources/catalog/locales/fr-admin.json   |   9 +-
+ .../resources/catalog/locales/nl-admin.json   |   8 +-
+ .../templates/admin/harvest/type/csw.html     |  17 ++
+ .../templates/admin/harvest/type/csw.js       |   4 +-
+ .../admin/harvest/type/geonetwork.html        |  16 ++
+ .../admin/harvest/type/geonetwork.js          |   4 +-
+ web/pom.xml                                   |  12 ++
+ .../main/webapp/xsl/xml/harvesting/csw.xsl    |   3 +
+ .../webapp/xsl/xml/harvesting/geonetwork.xsl  |   3 +
+ 21 files changed, 325 insertions(+), 55 deletions(-)
+
+diff --git a/.gitignore b/.gitignore
+index cbd4fe33ea..62970213f3 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -69,6 +69,7 @@ web/src/main/webapp/WEB-INF/data/config/schema_plugins/csw-record
+ web/src/main/webapp/WEB-INF/data/config/schema_plugins/dublin-core
+ web/src/main/webapp/WEB-INF/data/config/schema_plugins/iso19*
+ web/src/main/webapp/WEB-INF/data/config/schema_plugins/schemaplugin-uri-catalog.xml
++web/src/main/webapp/WEB-INF/data/config/schema_plugins/dcat2
+ web/src/main/webapp/WEB-INF/data/config/schemaplugin-uri-catalog.xml
+ web/src/main/webapp/WEB-INF/data/data/backup
+ web/src/main/webapp/WEB-INF/data/data/metadata_data
+diff --git a/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java b/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java
+index bfd783bc5f..ae5dae722b 100644
+--- a/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java
++++ b/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java
+@@ -138,6 +138,7 @@ public class EsSearchManager implements ISearchManager {
+             .add(Geonet.IndexFieldNames.RESOURCEABSTRACT)
+             .add(Geonet.IndexFieldNames.RESOURCEABSTRACT + "Object")
+             .add("operatesOn")
++            .add("rdfResourceIdentifier")
+             .build();
+ 
+         FIELDLIST_RELATED_SCRIPTED = ImmutableMap.<String, String>builder()
+diff --git a/core/src/main/java/org/fao/geonet/util/XslUtil.java b/core/src/main/java/org/fao/geonet/util/XslUtil.java
+index 50bd7d1da8..96fa0cfb0c 100644
+--- a/core/src/main/java/org/fao/geonet/util/XslUtil.java
++++ b/core/src/main/java/org/fao/geonet/util/XslUtil.java
+@@ -23,6 +23,7 @@
+ 
+ package org.fao.geonet.util;
+ 
++import co.elastic.clients.elasticsearch.core.SearchResponse;
+ import co.elastic.clients.elasticsearch.core.search.Hit;
+ import com.fasterxml.jackson.core.JsonProcessingException;
+ import com.fasterxml.jackson.databind.ObjectMapper;
+@@ -54,6 +55,7 @@ import org.fao.geonet.api.records.attachments.Store;
+ import org.fao.geonet.constants.Geonet;
+ import org.fao.geonet.domain.*;
+ import org.fao.geonet.kernel.*;
++import org.fao.geonet.kernel.datamanager.IMetadataUtils;
+ import org.fao.geonet.kernel.datamanager.base.BaseMetadataUtils;
+ import org.fao.geonet.kernel.search.CodeListTranslator;
+ import org.fao.geonet.kernel.search.EsSearchManager;
+@@ -61,13 +63,11 @@ import org.fao.geonet.kernel.search.Translator;
+ import org.fao.geonet.kernel.security.SecurityProviderConfiguration;
+ import org.fao.geonet.kernel.setting.SettingInfo;
+ import org.fao.geonet.kernel.setting.SettingManager;
++import org.fao.geonet.kernel.setting.Settings;
+ import org.fao.geonet.kernel.url.UrlChecker;
+ import org.fao.geonet.languages.IsoLanguagesMapper;
+ import org.fao.geonet.lib.Lib;
+-import org.fao.geonet.repository.IsoLanguageRepository;
+-import org.fao.geonet.repository.SourceRepository;
+-import org.fao.geonet.repository.UiSettingsRepository;
+-import org.fao.geonet.repository.UserRepository;
++import org.fao.geonet.repository.*;
+ import org.fao.geonet.schema.iso19139.ISO19139Namespaces;
+ import org.fao.geonet.utils.Log;
+ import org.fao.geonet.utils.Xml;
+@@ -228,9 +228,9 @@ public final class XslUtil {
+                             new PrecisionModel(Math.pow(10, numberOfDecimalsForSmallGeom - 1));
+                         reducedGeom = GeometryPrecisionReducer.reduce(geom, precisionModel);
+                         return new GeometryJSON(numberOfDecimalsForSmallGeom).toString(reducedGeom);
+-//                    return String.format(
+-//                        "Warning: Empty geometry after applying precision reducer with %d decimals.",
+-//                        numberOfDecimals);
++                        //                    return String.format(
++                        //                        "Warning: Empty geometry after applying precision reducer with %d decimals.",
++                        //                        numberOfDecimals);
+                     }
+                 }
+                 return new GeometryJSON(numberOfDecimals).toString(reducedGeom);
+@@ -352,7 +352,7 @@ public final class XslUtil {
+             nodeId = nodeInfo.getId();
+         } catch (BeanCreationException e) {
+         }
+-        SourceRepository sourceRepository= ApplicationContextHolder.get().getBean(SourceRepository.class);
++        SourceRepository sourceRepository = ApplicationContextHolder.get().getBean(SourceRepository.class);
+         UiSettingsRepository uiSettingsRepository = ApplicationContextHolder.get().getBean(UiSettingsRepository.class);
+ 
+         Optional<org.fao.geonet.domain.Source> portalOpt = sourceRepository.findById(nodeId);
+@@ -439,7 +439,7 @@ public final class XslUtil {
+      * If the main one, then get the name on the source table with the site id.
+      * If a sub portal, use the sub portal key.
+      *
+-     * @param key   Sub portal key or UUID
++     * @param key Sub portal key or UUID
+      * @return
+      */
+     public static String getNodeName(String key, String lang, boolean withOrganization) {
+@@ -481,7 +481,7 @@ public final class XslUtil {
+     private static Optional<Source> getSource(String idOrUuid) {
+         SettingManager settingsMan = ApplicationContextHolder.get().getBean(SettingManager.class);
+         if (StringUtils.isEmpty(idOrUuid)) {
+-            idOrUuid =  ApplicationContextHolder.get().getBean(org.fao.geonet.NodeInfo.class).getId();
++            idOrUuid = ApplicationContextHolder.get().getBean(org.fao.geonet.NodeInfo.class).getId();
+         }
+         if (org.fao.geonet.NodeInfo.DEFAULT_NODE.equals(idOrUuid)) {
+             idOrUuid = settingsMan.getSiteId();
+@@ -521,7 +521,7 @@ public final class XslUtil {
+                 }
+             }
+         } catch (Exception e) {
+-            Log.error(Geonet.GEONETWORK,"XslUtil getJsonSettingValue '" + key + "' error: " + e.getMessage(), e);
++            Log.error(Geonet.GEONETWORK, "XslUtil getJsonSettingValue '" + key + "' error: " + e.getMessage(), e);
+         }
+         return "";
+     }
+@@ -557,9 +557,9 @@ public final class XslUtil {
+ 
+ 
+     /**
+-	 * Check if security provider require login form
+-	 */
+-	public static boolean isDisableLoginForm() {
++     * Check if security provider require login form
++     */
++    public static boolean isDisableLoginForm() {
+         SecurityProviderConfiguration securityProviderConfiguration = SecurityProviderConfiguration.get();
+ 
+         if (securityProviderConfiguration != null) {
+@@ -569,7 +569,7 @@ public final class XslUtil {
+         }
+         // If we cannot find SecurityProviderConfiguration then default to false.
+         return false;
+-	}
++    }
+ 
+     /**
+      * Check if security provider require login link
+@@ -625,7 +625,7 @@ public final class XslUtil {
+      * get external manager url for resource.
+      *
+      * @param metadataUuid uuid of the record
+-     * @param approved is metadata approved
++     * @param approved     is metadata approved
+      * @return url to access the resource. Or null if not supported
+      */
+     public static MetadataResourceContainer getResourceContainerDescription(String metadataUuid, Boolean approved) throws Exception {
+@@ -633,13 +633,13 @@ public final class XslUtil {
+ 
+         if (store != null) {
+             try {
+-                if (store.getResourceManagementExternalProperties() != null && store.getResourceManagementExternalProperties().isFolderEnabled()) {
+-                    ServiceContext context = ServiceContext.get();
+-                    return store.getResourceContainerDescription(ServiceContext.get(), metadataUuid, approved);
+-                } else {
+-                    // Return an empty object which should not be used because the folder is not enabled.
+-                    return new FilesystemStoreResourceContainer(metadataUuid, -1, null, null, null, approved);
+-                }
++            if (store.getResourceManagementExternalProperties() != null && store.getResourceManagementExternalProperties().isFolderEnabled()) {
++                ServiceContext context = ServiceContext.get();
++                return store.getResourceContainerDescription(ServiceContext.get(), metadataUuid, approved);
++            } else {
++                // Return an empty object which should not be used because the folder is not enabled.
++                return new FilesystemStoreResourceContainer(metadataUuid, -1, null, null, null, approved);
++            }
+             } catch (RuntimeException e) {
+                 Log.error(Geonet.RESOURCES, "Could not locate resource in getResourceContainerDescription due to runtime exception", e);
+                 return null;
+@@ -660,7 +660,7 @@ public final class XslUtil {
+         if (store != null) {
+             return store.getResourceManagementExternalProperties();
+         }
+-        Log.error(Geonet.RESOURCES,"Could not locate a Store bean in getResourceManagementExternalProperties");
++        Log.error(Geonet.RESOURCES, "Could not locate a Store bean in getResourceManagementExternalProperties");
+         return null;
+     }
+ 
+@@ -862,13 +862,13 @@ public final class XslUtil {
+         String fieldname = field.toString();
+         String language = (lang.toString().equals("") ? null : lang.toString());
+         throw new NotImplementedException("getIndexFieldById not implemented in ES");
+-//        try {
+-//            String fieldValue = LuceneSearcher.getMetadataFromIndexById(language, id.toString(), fieldname);
+-//            return fieldValue == null ? "" : fieldValue;
+-//        } catch (Exception e) {
+-//            Log.error(Geonet.GEONETWORK, "Failed to get index field value caused by " + e.getMessage());
+-//            return "";
+-//        }
++        //        try {
++        //            String fieldValue = LuceneSearcher.getMetadataFromIndexById(language, id.toString(), fieldname);
++        //            return fieldValue == null ? "" : fieldValue;
++        //        } catch (Exception e) {
++        //            Log.error(Geonet.GEONETWORK, "Failed to get index field value caused by " + e.getMessage());
++        //            return "";
++        //        }
+     }
+ 
+     /**
+@@ -986,7 +986,7 @@ public final class XslUtil {
+         UrlChecker urlChecker = ApplicationContextHolder.get().getBean(UrlChecker.class);
+         LinkStatus urlStatus = urlChecker.getUrlStatus(url);
+         if (urlStatus.getStatusValue().equalsIgnoreCase("4XX") || urlStatus.getStatusValue().equalsIgnoreCase("310")) {
+-           return urlStatus.getStatusInfo();
++            return urlStatus.getStatusInfo();
+         }
+         return urlStatus.getStatusValue();
+     }
+@@ -1143,10 +1143,10 @@ public final class XslUtil {
+                     && !metadataSchema.equals(schema)) {
+                     final Path styleSheet = dataManager
+                         .getSchemaDir(metadataSchema)
+-                        .resolve(String.format( "formatter/%s/view.xsl", schema));
++                        .resolve(String.format("formatter/%s/view.xsl", schema));
+                     final boolean exists = java.nio.file.Files.exists(styleSheet);
+                     if (!exists) {
+-                        Log.warning(Geonet.GEONETWORK,String.format(
++                        Log.warning(Geonet.GEONETWORK, String.format(
+                             "XslUtil getRecord warning: Can't retrieve record %s (schema %s) in schema %s. A formatter is required for this conversion.",
+                             uuid, metadataSchema, schema));
+ 
+@@ -1157,7 +1157,7 @@ public final class XslUtil {
+                 return outputter.output(new Document(metadata));
+             }
+         } catch (Exception e) {
+-            Log.error(Geonet.GEONETWORK,"XslUtil getRecord '" + uuid + "' error: " + e.getMessage(), e);
++            Log.error(Geonet.GEONETWORK, "XslUtil getRecord '" + uuid + "' error: " + e.getMessage(), e);
+         }
+         return null;
+     }
+@@ -1186,7 +1186,7 @@ public final class XslUtil {
+ 
+             return e.evaluate();
+         } catch (Exception e) {
+-            Log.error(Geonet.GEONETWORK,"XslUtil evaluate '" + formula + "' error: " + e.getMessage(), e);
++            Log.error(Geonet.GEONETWORK, "XslUtil evaluate '" + formula + "' error: " + e.getMessage(), e);
+             return null;
+         }
+     }
+@@ -1309,7 +1309,7 @@ public final class XslUtil {
+         try {
+             return DefaultEncoder.getInstance().encodeForURL(str);
+         } catch (EncodingException ex) {
+-            Log.error(Geonet.GEONETWORK,"XslUtil encode for URL '" + str + "' error: " + ex.getMessage(), ex);
++            Log.error(Geonet.GEONETWORK, "XslUtil encode for URL '" + str + "' error: " + ex.getMessage(), ex);
+             return str;
+         }
+     }
+@@ -1353,7 +1353,7 @@ public final class XslUtil {
+         try {
+             return java.net.URLDecoder.decode(str, "UTF-8");
+         } catch (Exception ex) {
+-            Log.error(Geonet.GEONETWORK,"XslUtil decodeURLParameter '" + str + "' error: " + ex.getMessage(), ex);
++            Log.error(Geonet.GEONETWORK, "XslUtil decodeURLParameter '" + str + "' error: " + ex.getMessage(), ex);
+             return str;
+         }
+     }
+@@ -1393,7 +1393,7 @@ public final class XslUtil {
+                 try {
+                     return Integer.parseInt(getUrlStatus(urlString));
+                 } catch (Exception e) {
+-                    Log.info(Geonet.GEONETWORK,"validateURL: exception - ",e);
++                    Log.info(Geonet.GEONETWORK, "validateURL: exception - ", e);
+                     return -1;
+                 }
+             }
+@@ -1454,8 +1454,8 @@ public final class XslUtil {
+      * <p>
+      * <xsl:variable name="thesauriDir" select="java:getIsoLanguageLabel('dut', 'eng')"/>
+      *
+-     * @param code      Code of the IsoLanguage to retrieve the name.
+-     * @param language  Language to retrieve the IsoLanguage name.
++     * @param code     Code of the IsoLanguage to retrieve the name.
++     * @param language Language to retrieve the IsoLanguage name.
+      * @return
+      */
+     public static String getIsoLanguageLabel(String code, String language) {
+@@ -1581,7 +1581,7 @@ public final class XslUtil {
+     public static String escapeForJson(String value) {
+         return StringEscapeUtils.escapeJson(value);
+     }
+-  
++
+     public static String getWebAnalyticsService() {
+         ApplicationContext applicationContext = ApplicationContextHolder.get();
+         WebAnalyticsConfiguration webAnalyticsConfiguration = applicationContext.getBean(WebAnalyticsConfiguration.class);
+@@ -1595,4 +1595,80 @@ public final class XslUtil {
+ 
+         return webAnalyticsConfiguration.getJavascriptCode();
+     }
++
++    // DCAT Custom
++    public static String getThesaurusTitleByName(String id) {
++        ApplicationContext applicationContext = ApplicationContextHolder.get();
++        ThesaurusManager thesaurusManager = applicationContext.getBean(ThesaurusManager.class);
++        Thesaurus thesaurus = thesaurusManager.getThesaurusByName(id);
++        return thesaurus == null ? "" : thesaurus.getTitle();
++    }
++
++    /**
++     * DCAT custom
++     * Generate a UUID based off a string for consistent results
++     *
++     * @param str
++     * @return UUID string
++     */
++    public static String uuidFromString(String str) {
++        return UUID.nameUUIDFromBytes(str.getBytes()).toString();
++    }
++
++    // DCAT Custom
++    public static String getRecordResourceURI(String uuid) {
++        var searchManager = ApplicationContextHolder.get().getBean(EsSearchManager.class);
++
++        try {
++            Set<String> source = new HashSet<>();
++            source.add("rdfResourceIdentifier");
++            SearchResponse response = searchManager.query(String.format("+uuid:%s", uuid), null, source, 0, 1);
++
++            if (response.hits().hits().isEmpty()) {
++                return null;
++            }
++            ObjectMapper objectMapper = new ObjectMapper();
++
++            Hit h = (Hit) response.hits().hits().get(0);
++            Object rdfResourceIdentifier = objectMapper.convertValue(h.source(), Map.class).get("rdfResourceIdentifier");
++            if (rdfResourceIdentifier instanceof String) {
++                return (String) rdfResourceIdentifier;
++            } else if (rdfResourceIdentifier instanceof ArrayList) {
++                return ((ArrayList<String>) rdfResourceIdentifier).get(0);
++            } else {
++                throw new Exception("Cannot obtain resource URI from " + rdfResourceIdentifier.toString());
++            }
++
++        } catch (Exception e) {
++            Log.error(Log.JEEVES, "GET Record resource identifier '" + uuid + "' error: " + e.getMessage(), e);
++        }
++        return null;
++    }
++
++    /**
++     * DCAT Custom
++     * Get the metadata URI build pattern based on the source catalog
++     *
++     * @param uuid
++     */
++    public static String getUriPattern(String uuid) {
++        ApplicationContext context = ApplicationContextHolder.get();
++        IMetadataUtils metadataUtils = context.getBean(IMetadataUtils.class);
++
++        AbstractMetadata metadata = metadataUtils.findOneByUuid(uuid);
++
++        if (metadata != null && metadata.getHarvestInfo().isHarvested()) {
++            HarvesterSettingRepository harvesterSetting = context.getBean(HarvesterSettingRepository.class);
++            HarvesterSetting uuidSetting = harvesterSetting.findOneByNameAndStoredValueLike("uuid", metadata.getHarvestInfo().getUuid());
++            if (uuidSetting != null && uuidSetting.getParent() != null) {
++                List<HarvesterSetting> resourceUriPatternSetting = harvesterSetting.findChildrenByName(uuidSetting.getParent().getId(), "resourceUriPattern");
++                if (resourceUriPatternSetting.size() > 0 && StringUtils.isNotEmpty(resourceUriPatternSetting.get(0).getValue())) {
++                    return resourceUriPatternSetting.get(0).getValue();
++                }
++            }
++        }
++
++        SettingManager sm = context.getBean(SettingManager.class);
++        return sm.getValue(Settings.SYSTEM_RESOURCE_PREFIX) + "/{resourceType}/{resourceUuid}";
++    }
+ }
+diff --git a/domain/src/main/java/org/fao/geonet/repository/HarvesterSettingRepository.java b/domain/src/main/java/org/fao/geonet/repository/HarvesterSettingRepository.java
+index c28295c8b6..88bfc88c97 100644
+--- a/domain/src/main/java/org/fao/geonet/repository/HarvesterSettingRepository.java
++++ b/domain/src/main/java/org/fao/geonet/repository/HarvesterSettingRepository.java
+@@ -74,4 +74,15 @@ public interface HarvesterSettingRepository extends GeonetRepository<HarvesterSe
+      */
+     @Nullable
+     HarvesterSetting findOneByNameAndStoredValue(@Nonnull String name, @Nonnull String value);
++
++    /**
++     * DCAT custom
++     * Find the settings with the given name and value. Null is returned if not found.
++     *
++     * @param name  the setting name.
++     * @param value the setting value.
++     * @return The setting with the given name and value.
++     */
++    @Nullable
++    HarvesterSetting findOneByNameAndStoredValueLike(@Nonnull String name, @Nonnull String value);
+ }
+diff --git a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswHarvester.java b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswHarvester.java
+index 97a5b2fae7..a6db09fee5 100644
+--- a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswHarvester.java
++++ b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswHarvester.java
+@@ -60,6 +60,8 @@ public class CswHarvester extends AbstractHarvester<HarvestResult, CswParams> {
+         harvesterSettingsManager.add("id:" + siteId, "xslfilter", params.xslfilter);
+         harvesterSettingsManager.add("id:" + siteId, "outputSchema", params.outputSchema);
+         harvesterSettingsManager.add("id:" + siteId, "sortBy", params.sortBy);
++        // DCAT custom
++        harvesterSettingsManager.add("id:" + siteId, "resourceUriPattern", params.resourceUriPattern);
+ 
+         //--- store dynamic filter nodes
+         String filtersID = harvesterSettingsManager.add(path, "filters", "");
+diff --git a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswParams.java b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswParams.java
+index 624a62e0f8..e5f677c8b6 100644
+--- a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswParams.java
++++ b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswParams.java
+@@ -53,6 +53,9 @@ public class CswParams extends AbstractParams {
+ 
+     public Integer hopCount;
+ 
++    // DCAT custom
++    public String resourceUriPattern;
++
+     /**
+      * The filter is a process (see schema/process folder) which depends on the schema. It could be
+      * composed of parameter which will be sent to XSL transformation using the following syntax :
+@@ -105,6 +108,8 @@ public class CswParams extends AbstractParams {
+ 
+         bboxFilter = node.getChild("bboxFilter");
+ 
++        // DCAT custom
++        resourceUriPattern = Util.getParam(site, "resourceUriPattern", "");
+     }
+ 
+     /**
+@@ -136,6 +141,9 @@ public class CswParams extends AbstractParams {
+         }
+ 
+         bboxFilter = node.getChild("bboxFilter");
++
++        // DCAT custom
++        resourceUriPattern = Util.getParam(site, "resourceUriPattern", "");
+     }
+ 
+     /**
+@@ -159,6 +167,9 @@ public class CswParams extends AbstractParams {
+         copy.eltFilters = eltFilters;
+         copy.bboxFilter = bboxFilter;
+ 
++        // DCAT custom
++        copy.resourceUriPattern = resourceUriPattern;
++
+         return copy;
+     }
+ 
+diff --git a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetHarvester.java b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetHarvester.java
+index b7c42e7d36..85b5560470 100644
+--- a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetHarvester.java
++++ b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetHarvester.java
+@@ -75,6 +75,9 @@ public class GeonetHarvester extends AbstractHarvester<HarvestResult, GeonetPara
+             harvesterSettingsManager.add("id:" + groupID, "name", g.name);
+             harvesterSettingsManager.add("id:" + groupID, "policy", g.policy);
+         }
++
++        // DCAT custom
++        harvesterSettingsManager.add("id:" + siteId, "resourceUriPattern", params.resourceUriPattern);
+     }
+ 
+     public void addHarvestInfo(Element info, String id, String uuid) {
+diff --git a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetParams.java b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetParams.java
+index 4a8efadb75..ef034be719 100644
+--- a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetParams.java
++++ b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetParams.java
+@@ -60,6 +60,9 @@ public class GeonetParams extends AbstractParams {
+ 
+     private ArrayList<Group> alCopyPolicy = new ArrayList<Group>();
+ 
++    // VL
++    public String resourceUriPattern;
++
+     public GeonetParams(DataManager dm) {
+         super(dm);
+     }
+@@ -80,6 +83,9 @@ public class GeonetParams extends AbstractParams {
+         mefFormatFull = Util.getParam(site, "mefFormatFull", false);
+         xslfilter = Util.getParam(site, "xslfilter", "");
+ 
++        // VL
++        resourceUriPattern = Util.getParam(site, "resourceUriPattern", "");
++
+         //checkPort(port);
+         addSearches(searches);
+         addCopyPolicy(policy);
+@@ -109,6 +115,9 @@ public class GeonetParams extends AbstractParams {
+ 
+         if (policy != null)
+             addCopyPolicy(policy);
++
++        // DCAT custom
++        resourceUriPattern = Util.getParam(site, "resourceUriPattern", "");
+     }
+ 
+     public Iterable<Search> getSearches() {
+@@ -152,6 +161,9 @@ public class GeonetParams extends AbstractParams {
+         for (Group g : alCopyPolicy)
+             copy.alCopyPolicy.add(g.copy());
+ 
++        // VL
++        copy.resourceUriPattern = resourceUriPattern;
++
+         return copy;
+     }
+ 
+diff --git a/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl b/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl
+index 37b3dc0311..187740c5c4 100644
+--- a/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl
++++ b/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl
+@@ -31,6 +31,7 @@
+                 xmlns:gml="http://www.opengis.net/gml/3.2"
+                 xmlns:gml320="http://www.opengis.net/gml"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
++                xmlns:geonet="http://www.fao.org/geonetwork"
+                 xmlns:gn-fn-index="http://geonetwork-opensource.org/xsl/functions/index"
+                 xmlns:index="java:org.fao.geonet.kernel.search.EsSearchManager"
+                 xmlns:digestUtils="java:org.apache.commons.codec.digest.DigestUtils"
+@@ -73,6 +74,8 @@
+   <xsl:variable name="parentAssociatedResourceType" select="'partOfSeamlessDatabase'"/>
+   <xsl:variable name="childrenAssociatedResourceType" select="'isComposedOf'"/>
+ 
++  <xsl:variable name="uuidRegex" select="'([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}'"/>
++
+   <xsl:template match="/">
+     <xsl:apply-templates mode="index"/>
+   </xsl:template>
+@@ -1418,4 +1421,72 @@
+       </xsl:for-each>
+     </xsl:for-each>
+   </xsl:template>
++
++
++  <!-- RDF URI functions -->
++  <xsl:template mode="index-extra-fields" match="gmd:MD_Metadata">
++    <rdfResourceIdentifier>
++      <xsl:value-of select="geonet:getRDFResourceURI(.)"/>
++    </rdfResourceIdentifier>
++  </xsl:template>
++
++  <xsl:function name="geonet:getRDFResourceURI">
++    <xsl:param name="md" as="node()"/>
++
++    <xsl:variable name="isoScopeCode">
++      <xsl:value-of select="normalize-space($md/gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue)"/>
++    </xsl:variable>
++    <xsl:variable name="resourceType">
++      <xsl:choose>
++        <xsl:when test="$isoScopeCode = 'dataset' or $isoScopeCode = 'nonGeographicDataset'">
++          <xsl:text>dataset</xsl:text>
++        </xsl:when>
++        <xsl:otherwise>
++          <xsl:value-of select="$isoScopeCode"/>
++        </xsl:otherwise>
++      </xsl:choose>
++    </xsl:variable>
++
++    <xsl:variable name="uriPattern" select="util:getUriPattern($md/gmd:fileIdentifier/gco:CharacterString)"/>
++    <xsl:variable name="resourceUUID" select="geonet:getResourceBaseURIOrUUID($md)"/>
++    <xsl:choose>
++      <xsl:when test="starts-with($resourceUUID, 'http://') or starts-with($resourceUUID, 'https://')">
++        <xsl:value-of select="geonet:escapeURI($resourceUUID)"/>
++      </xsl:when>
++      <xsl:otherwise>
++        <xsl:value-of select="geonet:escapeURI(replace(replace($uriPattern, '\{resourceType\}', concat($resourceType, 's')), '\{resourceUuid\}', $resourceUUID))"/>
++      </xsl:otherwise>
++    </xsl:choose>
++  </xsl:function>
++
++  <xsl:function name="geonet:getResourceBaseURIOrUUID">
++    <xsl:param name="md" as="node()"/>
++    <xsl:variable name="resourceIdentifiers">
++      <xsl:for-each select="$md/gmd:identificationInfo[1]/*/gmd:citation/*/gmd:identifier/*">
++        <xsl:choose>
++          <xsl:when test="gmd:codeSpace/gco:CharacterString/text() != ''">
++            <xsl:value-of select="concat(gmd:codeSpace/gco:CharacterString/text(), gmd:code/gco:CharacterString/text())"/>
++          </xsl:when>
++          <xsl:otherwise>
++            <xsl:value-of select="gmd:code/gco:CharacterString/text()"/>
++          </xsl:otherwise>
++        </xsl:choose>
++      </xsl:for-each>
++    </xsl:variable>
++    <xsl:choose>
++      <xsl:when test="$resourceIdentifiers[matches(., $uuidRegex)][1]">
++        <xsl:value-of select="$resourceIdentifiers[matches(., $uuidRegex)][1]"/>
++      </xsl:when>
++      <xsl:otherwise>
++        <xsl:value-of select="util:uuidFromString($md/gmd:fileIdentifier/gco:CharacterString)"/>
++      </xsl:otherwise>
++    </xsl:choose>
++  </xsl:function>
++
++  <xsl:function name="geonet:escapeURI">
++    <xsl:param name="uri"/>
++    <xsl:if test="$uri">
++      <xsl:value-of select="replace(replace(replace(replace(normalize-space($uri), ' ', '%20'), '&lt;', '%3C'), '&gt;', '%3E'), '\\', '%5C')"/>
++    </xsl:if>
++  </xsl:function>
+ </xsl:stylesheet>
+diff --git a/schemas/pom.xml b/schemas/pom.xml
+index 34c8c2ad3f..b17c7df8f9 100644
+--- a/schemas/pom.xml
++++ b/schemas/pom.xml
+@@ -44,6 +44,7 @@
+     <module>iso19110</module>
+     <module>iso19139</module>
+     <module>iso19115-3.2018</module>
++    <module>dcat2</module>
+   </modules>
+ 
+   <properties>
+diff --git a/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java b/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java
+index 76bb7f594f..b0f5e6d53d 100644
+--- a/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java
++++ b/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java
+@@ -59,6 +59,7 @@ import org.fao.geonet.repository.MetadataValidationRepository;
+ import org.fao.geonet.repository.SourceRepository;
+ import org.fao.geonet.repository.specification.MetadataValidationSpecs;
+ import org.fao.geonet.services.relations.Get;
++import org.fao.geonet.util.XslUtil;
+ import org.fao.geonet.utils.Log;
+ import org.jdom.Content;
+ import org.jdom.Element;
+@@ -173,16 +174,27 @@ public class MetadataUtils {
+         // brothers&sisters
+         //
+         // * All of them could be remote records
++        String mdURI = XslUtil.getRecordResourceURI(md.getUuid());
+         Arrays.stream(types).forEach(type -> {
+             if (type == RelatedItemType.associated
+                 || type == RelatedItemType.hasfeaturecats
+                 || type == RelatedItemType.services
+                 || type == RelatedItemType.hassources) {
+-                queries.put(type,
+-                    new RelatedTypeDetails(
+-                        String.format("+%s:\"%s\"",
+-                            RELATED_INDEX_FIELDS.get(type.value()), md.getUuid())
+-                    ));
++                // VL Custom
++                String luceneQuery;
++                if (mdURI != null) {
++                    luceneQuery = String.format(
++                        "%s:\"%s\" OR %s:\"%s\"",
++                        RELATED_INDEX_FIELDS.get(type.value()),
++                        md.getUuid(),
++                        RELATED_INDEX_FIELDS.get(type.value()),
++                        mdURI
++                    );
++                } else {
++                    luceneQuery = String.format("+%s:\"%s\"", RELATED_INDEX_FIELDS.get(type.value()), md.getUuid());
++                }
++
++                queries.put(type, new RelatedTypeDetails(luceneQuery));
+             } else if (schemaPlugin != null
+                 && (type == RelatedItemType.siblings
+                 || type == RelatedItemType.parent
+@@ -306,7 +318,7 @@ public class MetadataUtils {
+                     if (!e.fields().isEmpty()) {
+                         FIELDLIST_RELATED_SCRIPTED.keySet().forEach(f -> {
+                             JsonData dc = (JsonData) e.fields().get(f);
+-                            
++
+                             if (dc != null) {
+                                 if (associatedRecord.getProperties() == null) {
+                                     associatedRecord.setProperties(new HashMap<>());
+diff --git a/web-ui/src/main/resources/catalog/locales/en-admin.json b/web-ui/src/main/resources/catalog/locales/en-admin.json
+index 3d7bc36cea..86152364e1 100644
+--- a/web-ui/src/main/resources/catalog/locales/en-admin.json
++++ b/web-ui/src/main/resources/catalog/locales/en-admin.json
+@@ -1507,6 +1507,11 @@
+     "fieldEmailNotValid": "A valid email address is required",
+     "formConfirmExit": "The form has changes, if you exit the changes will be lost. Do you want to exit on the page?",
+     "NoTranslationProvider": "No translation provider",
+-    "LibreTranslate": "Libretranslate"
++    "LibreTranslate": "Libretranslate",
++
++
++    "==== DCAT custom ====": "",
++    "resourceUriPattern": "Resource URI pattern",
++    "resourceUriPatternHelp": "Pattern used to generate URI of the resources during the RDF export. Example of value: https://metadata.vlaanderen.be/srv/resources/{resourceType}/{resourceUuid}"
+ }
+ 
+diff --git a/web-ui/src/main/resources/catalog/locales/fr-admin.json b/web-ui/src/main/resources/catalog/locales/fr-admin.json
+index a6d8d318c5..abcf30b00e 100644
+--- a/web-ui/src/main/resources/catalog/locales/fr-admin.json
++++ b/web-ui/src/main/resources/catalog/locales/fr-admin.json
+@@ -1507,5 +1507,10 @@
+     "fieldEmailNotValid": "Un email valide est requis",
+     "formConfirmExit": "Le formulaire comporte des modifications, si vous quittez, les modifications seront perdues. Voulez-vous quitter la page ?",
+     "NoTranslationProvider": "No translation provider",
+-    "LibreTranslate": "Libretranslate"
+-}
+\ No newline at end of file
++    "LibreTranslate": "Libretranslate",
++
++    "==== DCAT custom ====": "",
++    "resourceUriPattern": "Patterne de l'URI des resources",
++    "resourceUriPatternHelp": "Patterne utilisé pour générer les URI des resources lors de l'export RDF. Exemple de valeur: https://metadata.vlaanderen.be/srv/resources/{resourceType}/{resourceUuid}"
++
++}
+diff --git a/web-ui/src/main/resources/catalog/locales/nl-admin.json b/web-ui/src/main/resources/catalog/locales/nl-admin.json
+index 11871c726b..90d711a2e6 100644
+--- a/web-ui/src/main/resources/catalog/locales/nl-admin.json
++++ b/web-ui/src/main/resources/catalog/locales/nl-admin.json
+@@ -1507,5 +1507,9 @@
+     "fieldEmailNotValid": "Een geldig email adres is vereist",
+     "formConfirmExit": "The form has changes, if you exit the changes will be lost. Do you want to exit on the page?",
+     "NoTranslationProvider": "No translation provider",
+-    "LibreTranslate": "Libretranslate"
+-}
+\ No newline at end of file
++    "LibreTranslate": "Libretranslate",
++
++    "==== DCAT custom ====": "",
++    "resourceUriPattern": "Resource URI pattern",
++    "resourceUriPatternHelp": "Pattern gebruikt om URI van de bronnen te genereren tijdens de RDF export. Bv: https://metadata.vlaanderen.be/srv/resources/{resourceType}/{resourceUuid}"
++}
+diff --git a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.html b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.html
+index 03bee12552..827103ef87 100644
+--- a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.html
++++ b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.html
+@@ -337,6 +337,23 @@
+       data-lang="{{lang}}"
+       data-label="csw-category"
+     ></div>
++
++    <div>
++      <label
++        id="gn-harvest-settings-gn-advanced-resource-uri-pattern-label"
++        class="control-label"
++        data-translate=""
++        >resourceUriPattern</label
++      >
++      <input
++        id="gn-harvest-settings-gn-advanced-resource-uri-pattern-input"
++        type="text"
++        class="form-control gn-csw-criteria"
++        data-ng-model="harvesterSelected.site.resourceUriPattern"
++      />
++
++      <p class="help-block" data-translate="">resourceUriPatternHelp</p>
++    </div>
+   </fieldset>
+ 
+   <div
+diff --git a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.js b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.js
+index bc6eb3e163..e126119172 100644
+--- a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.js
++++ b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.js
+@@ -24,7 +24,8 @@ var gnHarvestercsw = {
+         "outputSchema": "http://www.isotc211.org/2005/gmd",
+         "sortBy": "identifier:A",
+         "queryScope": "local",
+-        "hopCount": 2
++        "hopCount": 2,
++        "resourceUriPattern": ""
+       },
+       "content" : {
+         "validate" : "NOVALIDATION",
+@@ -113,6 +114,7 @@ var gnHarvestercsw = {
+       + '    <sortBy>' + h.site.sortBy + '</sortBy>'
+       + '    <queryScope>' + h.site.queryScope + '</queryScope>'
+       + '    <hopCount>' + h.site.hopCount + '</hopCount>'
++      + '    <resourceUriPattern>' + h.site.resourceUriPattern + '</resourceUriPattern>'
+       + '  </site>'
+       + gnHarvestercsw.buildResponseCSWBBOXFilter($scope)
+       + gnHarvestercsw.buildResponseCSWFilter($scope)
+diff --git a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.html b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.html
+index d7a36ee29a..c47ddc3f57 100644
+--- a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.html
++++ b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.html
+@@ -266,6 +266,22 @@
+       ></div>
+       <p class="help-block" data-translate="">harvesterValidateHelp</p>
+     </div>
++    <div>
++      <label
++        id="gn-harvest-settings-gn-advanced-resource-uri-pattern-label"
++        class="control-label"
++        data-translate=""
++        >resourceUriPattern</label
++      >
++      <input
++        id="gn-harvest-settings-gn-advanced-resource-uri-pattern-input"
++        type="text"
++        class="form-control gn-csw-criteria"
++        data-ng-model="harvesterSelected.site.resourceUriPattern"
++      />
++
++      <p class="help-block" data-translate="">resourceUriPatternHelp</p>
++    </div>
+   </fieldset>
+ 
+   <div data-gn-harvester-translate-content-configurator="harvesterSelected.content"></div>
+diff --git a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.js b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.js
+index 8ca175afcd..a3c9441323 100644
+--- a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.js
++++ b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.js
+@@ -21,7 +21,8 @@ var gnHarvestergeonetwork = {
+         "useChangeDateForUpdate": false,
+         "createRemoteCategory": false,
+         "mefFormatFull": false,
+-        "xslfilter": []
++        "xslfilter": [],
++        "resourceUriPattern": ""
+       },
+       "content":   {
+         "validate": "NOVALIDATION",
+@@ -87,6 +88,7 @@ var gnHarvestergeonetwork = {
+       + '      <username>' + h.site.account.username + '</username>'
+       + '      <password>' + h.site.account.password + '</password>'
+       + '    </account>'
++      + '    <resourceUriPattern>' + h.site.resourceUriPattern + '</resourceUriPattern>'
+       + '  </site>'
+       + '  <searches>'
+       + '    <search>'
+diff --git a/web/pom.xml b/web/pom.xml
+index 11a53de752..55b9e63b86 100644
+--- a/web/pom.xml
++++ b/web/pom.xml
+@@ -623,6 +623,11 @@
+       <artifactId>gn-schema-iso19115-3.2018</artifactId>
+       <version>${project.version}</version>
+     </dependency>
++    <dependency>
++      <groupId>org.geonetwork-opensource.schemas</groupId>
++      <artifactId>gn-schema-dcat2</artifactId>
++      <version>${project.version}</version>
++    </dependency>
+     <dependency>
+       <groupId>org.xmlunit</groupId>
+       <artifactId>xmlunit-matchers</artifactId>
+@@ -1143,6 +1148,13 @@
+                       <overWrite>false</overWrite>
+                       <outputDirectory>${schema-plugins.dir}</outputDirectory>
+                     </artifactItem>
++                    <artifactItem>
++                      <groupId>org.geonetwork-opensource.schemas</groupId>
++                      <artifactId>gn-schema-dcat2</artifactId>
++                      <type>zip</type>
++                      <overWrite>false</overWrite>
++                      <outputDirectory>${schema-plugins.dir}</outputDirectory>
++                    </artifactItem>
+                   </artifactItems>
+                 </configuration>
+               </execution>
+diff --git a/web/src/main/webapp/xsl/xml/harvesting/csw.xsl b/web/src/main/webapp/xsl/xml/harvesting/csw.xsl
+index afbd470d75..33b6e31d5b 100644
+--- a/web/src/main/webapp/xsl/xml/harvesting/csw.xsl
++++ b/web/src/main/webapp/xsl/xml/harvesting/csw.xsl
+@@ -31,6 +31,9 @@
+     <sortBy>
+       <xsl:value-of select="sortBy/value"/>
+     </sortBy>
++    <resourceUriPattern>
++      <xsl:value-of select="resourceUriPattern/value"/>
++    </resourceUriPattern>
+   </xsl:template>
+ 
+ 
+diff --git a/web/src/main/webapp/xsl/xml/harvesting/geonetwork.xsl b/web/src/main/webapp/xsl/xml/harvesting/geonetwork.xsl
+index ecfc880f24..db96a7ca0d 100644
+--- a/web/src/main/webapp/xsl/xml/harvesting/geonetwork.xsl
++++ b/web/src/main/webapp/xsl/xml/harvesting/geonetwork.xsl
+@@ -22,6 +22,9 @@
+     <xslfilter>
+       <xsl:value-of select="xslfilter"/>
+     </xslfilter>
++    <resourceUriPattern>
++      <xsl:value-of select="resourceUriPattern/value"/>
++    </resourceUriPattern>
+   </xsl:template>
+ 
+   <xsl:template match="*" mode="searches">
+-- 
+2.45.1.windows.1
+
