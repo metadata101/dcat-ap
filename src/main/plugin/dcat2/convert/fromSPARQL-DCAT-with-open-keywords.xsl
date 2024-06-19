@@ -44,11 +44,7 @@ Rome - Italy. email: geonetwork@osgeo.org
   <!-- Default language for plain literals. -->
   <xsl:variable name="defaultLang">nl</xsl:variable>
   <xsl:variable name="xsdNs" select="'http://www.w3.org/2001/XMLSchema#'"/>
-  <!-- Retrieves an identifier (e.g. a URL-encoded URI) as a parameter. uuid:randomUUID()   java.util.UUID.randomUUID() -->
-  <xsl:param name="recordUUID" select="recordUUID"/>
-  <xsl:param name="harvesterURL" select="harvesterURL"/>
-  <xsl:param name="newResourceUUID" select="newResourceUUID"/>
-  <xsl:param name="oldResourceUUID" select="oldResourceUUID"/>
+  <xsl:param name="uuid"/>
 
   <!-- dcat:Catalog -->
   <xsl:template match="/">
@@ -218,13 +214,8 @@ Rome - Italy. email: geonetwork@osgeo.org
           </xsl:if>
           <!-- dct:identifier -->
           <dct:identifier>
-            <xsl:value-of select="$recordUUID"/>
+            <xsl:value-of select="$uuid"/>
           </dct:identifier>
-          <xsl:call-template name="identifier">
-            <xsl:with-param name="subject" select="./*"/>
-            <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
-            <xsl:with-param name="existingId" select="$recordUUID"/>
-          </xsl:call-template>
           <!-- foaf:primaryTopic -->
           <xsl:call-template name="urls">
             <xsl:with-param name="subject" select="./*"/>
@@ -311,24 +302,10 @@ Rome - Italy. email: geonetwork@osgeo.org
             </xsl:attribute>
           </xsl:if>
           <!-- dct:identifier -->
-          <xsl:choose>
-            <xsl:when test="normalize-space($newResourceUUID) != ''">
-              <dct:identifier>
-                <xsl:value-of select="$newResourceUUID"/>
-              </dct:identifier>
-              <xsl:call-template name="identifier">
-                <xsl:with-param name="subject" select="./*"/>
-                <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
-                <xsl:with-param name="existingId" select="$oldResourceUUID"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:call-template name="identifier">
-                <xsl:with-param name="subject" select="./*"/>
-                <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
-              </xsl:call-template>
-            </xsl:otherwise>
-          </xsl:choose>
+          <xsl:call-template name="identifier">
+            <xsl:with-param name="subject" select="./*"/>
+            <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
+          </xsl:call-template>
           <!-- dct:title -->
           <xsl:call-template name="properties">
             <xsl:with-param name="subject" select="./*"/>
@@ -392,12 +369,26 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="rdfType"/>
           </xsl:call-template>
           <!-- mdcat:statuut -->
-          <xsl:call-template name="concepts">
-            <xsl:with-param name="conceptURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'https://data.vlaanderen.be/ns/metadata-dcat#statuut' and
+          <xsl:variable name="statuuts">
+            <xsl:call-template name="concepts">
+              <xsl:with-param name="conceptURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'https://data.vlaanderen.be/ns/metadata-dcat#statuut' and
                       sr:binding[@name='subject']/* = $datasetURI]/sr:binding[@name='object' and (sr:uri or sr:bnode)]"/>
-            <xsl:with-param name="predicate">mdcat:statuut</xsl:with-param>
-            <xsl:with-param name="rdfType"/>
-          </xsl:call-template>
+              <xsl:with-param name="predicate">mdcat:statuut</xsl:with-param>
+              <xsl:with-param name="rdfType"/>
+            </xsl:call-template>
+          </xsl:variable>
+          <mdcat:statuut>
+            <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
+              <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
+              <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
+              <skos:prefLabel xml:lang="fr">Vlaamse Open data</skos:prefLabel>
+              <skos:prefLabel xml:lang="de">Vlaamse Open data</skos:prefLabel>
+              <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
+            </skos:Concept>
+          </mdcat:statuut>
+          <xsl:for-each select="$statuuts[*/skos:Concept/@rdf:about != 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA']">
+            <xsl:copy-of select="."/>
+          </xsl:for-each>
           <!-- dcat:theme -->
           <xsl:call-template name="concepts">
             <xsl:with-param name="conceptURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://www.w3.org/ns/dcat#theme' and
@@ -459,15 +450,6 @@ Rome - Italy. email: geonetwork@osgeo.org
                       sr:binding[@name='subject']/* = $datasetURI]/sr:binding[@name='object']"/>
             <xsl:with-param name="predicate">adms:identifier</xsl:with-param>
           </xsl:call-template>
-          <xsl:if test="normalize-space($oldResourceUUID) != ''">
-            <adms:identifier>
-              <adms:Identifier>
-                <skos:notation>
-                  <xsl:value-of select="$oldResourceUUID"/>
-                </skos:notation>
-              </adms:Identifier>
-            </adms:identifier>
-          </xsl:if>
           <!-- dct:provenance-->
           <xsl:call-template name="provenanceStatements">
             <xsl:with-param name="statementURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://purl.org/dc/terms/provenance' and
@@ -544,24 +526,10 @@ Rome - Italy. email: geonetwork@osgeo.org
             </xsl:attribute>
           </xsl:if>
           <!-- dct:identifier -->
-          <xsl:choose>
-            <xsl:when test="normalize-space($newResourceUUID) != ''">
-              <dct:identifier>
-                <xsl:value-of select="$newResourceUUID"/>
-              </dct:identifier>
-              <xsl:call-template name="identifier">
-                <xsl:with-param name="subject" select="./*"/>
-                <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
-                <xsl:with-param name="existingId" select="$oldResourceUUID"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:call-template name="identifier">
-                <xsl:with-param name="subject" select="./*"/>
-                <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
-              </xsl:call-template>
-            </xsl:otherwise>
-          </xsl:choose>
+          <xsl:call-template name="identifier">
+            <xsl:with-param name="subject" select="./*"/>
+            <xsl:with-param name="predicate">dct:identifier</xsl:with-param>
+          </xsl:call-template>
           <!-- dct:title -->
           <xsl:call-template name="properties">
             <xsl:with-param name="subject" select="./*"/>
@@ -588,6 +556,11 @@ Rome - Italy. email: geonetwork@osgeo.org
           <xsl:call-template name="urls">
             <xsl:with-param name="subject" select="./*"/>
             <xsl:with-param name="predicate">dcat:endpointURL</xsl:with-param>
+          </xsl:call-template>
+          <xsl:call-template name="urls">
+            <xsl:with-param name="subject" select="./*"/>
+            <xsl:with-param name="predicate">dcat:endpointURL</xsl:with-param>
+            <xsl:with-param name="xmlNameOverwrite">dcat:endpointURL</xsl:with-param>
           </xsl:call-template>
           <!-- dcat:endpointDescription -->
           <xsl:call-template name="urls">
@@ -628,15 +601,6 @@ Rome - Italy. email: geonetwork@osgeo.org
                       sr:binding[@name='subject']/* = $serviceURI]/sr:binding[@name='object']"/>
             <xsl:with-param name="predicate">adms:identifier</xsl:with-param>
           </xsl:call-template>
-          <xsl:if test="normalize-space($oldResourceUUID) != ''">
-            <adms:identifier>
-              <adms:Identifier>
-                <skos:notation>
-                  <xsl:value-of select="$oldResourceUUID"/>
-                </skos:notation>
-              </adms:Identifier>
-            </adms:identifier>
-          </xsl:if>
           <!-- owl:versionInfo -->
           <xsl:call-template name="properties">
             <xsl:with-param name="subject" select="./*"/>
@@ -692,12 +656,26 @@ Rome - Italy. email: geonetwork@osgeo.org
             <xsl:with-param name="rdfType"/>
           </xsl:call-template>
           <!-- mdcat:statuut -->
-          <xsl:call-template name="concepts">
-            <xsl:with-param name="conceptURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'https://data.vlaanderen.be/ns/metadata-dcat#statuut' and
+          <xsl:variable name="statuuts">
+            <xsl:call-template name="concepts">
+              <xsl:with-param name="conceptURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'https://data.vlaanderen.be/ns/metadata-dcat#statuut' and
                       sr:binding[@name='subject']/* = $serviceURI]/sr:binding[@name='object' and (sr:uri or sr:bnode)]"/>
-            <xsl:with-param name="predicate">mdcat:statuut</xsl:with-param>
-            <xsl:with-param name="rdfType"/>
-          </xsl:call-template>
+              <xsl:with-param name="predicate">mdcat:statuut</xsl:with-param>
+              <xsl:with-param name="rdfType"/>
+            </xsl:call-template>
+          </xsl:variable>
+          <mdcat:statuut>
+            <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE">
+              <skos:prefLabel xml:lang="nl">Vlaamse Open data Service</skos:prefLabel>
+              <skos:prefLabel xml:lang="en">Vlaamse Open data Service</skos:prefLabel>
+              <skos:prefLabel xml:lang="fr">Vlaamse Open data Service</skos:prefLabel>
+              <skos:prefLabel xml:lang="de">Vlaamse Open data Service</skos:prefLabel>
+              <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
+            </skos:Concept>
+          </mdcat:statuut>
+          <xsl:for-each select="$statuuts[*/skos:Concept/@rdf:about != 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE']">
+            <xsl:copy-of select="."/>
+          </xsl:for-each>
           <!-- dcat:theme -->
           <xsl:call-template name="concepts">
             <xsl:with-param name="conceptURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://www.w3.org/ns/dcat#theme' and
@@ -1481,6 +1459,7 @@ Rome - Italy. email: geonetwork@osgeo.org
   <xsl:template name="urls">
     <xsl:param name="subject"/>
     <xsl:param name="predicate"/>
+    <xsl:param name="xmlNameOverwrite" select="''"/>
     <!-- Select all objects matching the subject and predicate pattern -->
     <xsl:for-each select="//sr:result[sr:binding[@name='subject']/* = $subject and
                       sr:binding[@name='pAsQName']/sr:literal = $predicate]/sr:binding[@name='object']">
@@ -1497,20 +1476,13 @@ Rome - Italy. email: geonetwork@osgeo.org
         </xsl:when>
         <!-- URIs -->
         <xsl:when test="./sr:uri">
-          <xsl:element name="{$predicate}">
-            <xsl:choose>
-              <xsl:when test="./sr:uri != $harvesterURL">
-                <xsl:attribute name="rdf:resource" select="./sr:uri"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:attribute name="rdf:resource" select="''"/>
-              </xsl:otherwise>
-            </xsl:choose>
+          <xsl:element name="{if ($xmlNameOverwrite != '') then $xmlNameOverwrite else $predicate}">
+            <xsl:attribute name="rdf:resource" select="./sr:uri"/>
           </xsl:element>
         </xsl:when>
         <!-- anyURI literal -->
         <xsl:when test="gn-fn-dcat2:resolve-datatype(./sr:literal/@datatype) = 'http://www.w3.org/2001/XMLSchema#anyURI'">
-          <xsl:element name="{$predicate}">
+          <xsl:element name="{if ($xmlNameOverwrite != '') then $xmlNameOverwrite else $predicate}">
             <xsl:attribute name="rdf:resource">
               <xsl:value-of select="./sr:literal"/>
             </xsl:attribute>

@@ -33,7 +33,7 @@
 
   <!-- Get the main metadata languages -->
   <xsl:template name="get-dcat2-language">
-    <xsl:variable name="authorityLanguage" select="$metadata/descendant::node()/dcat:Dataset/dct:language[1]/skos:Concept/@rdf:about" />
+    <xsl:variable name="authorityLanguage" select="$metadata/descendant::node()/*[name()=('dcat:Dataset', 'dcat:DataService')]/dct:language[1]/skos:Concept/@rdf:about" />
     <xsl:choose>
       <xsl:when test="ends-with($authorityLanguage,'NLD')">dut</xsl:when>
       <xsl:when test="ends-with($authorityLanguage,'FRA')">fre</xsl:when>

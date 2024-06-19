@@ -17,7 +17,6 @@
             <xs:element name="name" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
           <xs:attribute ref="rdf:about"/>
-          <xs:attribute ref="rdf:resource"/>
           <xs:attribute ref="rdf:nodeID"/>
         </xs:complexType>
       </xs:element>

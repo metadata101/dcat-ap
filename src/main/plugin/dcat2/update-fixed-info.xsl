@@ -88,16 +88,7 @@
                                         /root/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
 
   <xsl:variable name="recordUUID" select="/root/env/uuid"/>
-  <xsl:variable name="recordAbout">
-    <xsl:choose>
-      <xsl:when test="matches($record/@rdf:about, $uuidRegex)">
-        <xsl:value-of select="replace($record/@rdf:about, $uuidRegex, $recordUUID)"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="concat(/root/env/nodeURL, 'api/records/', $recordUUID)"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
+  <xsl:variable name="recordAbout" select="concat(/root/env/nodeURL, 'api/records/', $recordUUID)"/>
 
   <xsl:variable name="resourceUUID">
     <xsl:choose>
@@ -109,16 +100,7 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-  <xsl:variable name="resourceAbout">
-    <xsl:choose>
-      <xsl:when test="matches($resource/@rdf:about, $uuidRegex)">
-        <xsl:value-of select="replace($resource/@rdf:about, $uuidRegex, $resourceUUID)"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="concat(/root/env/nodeURL, 'resources/', $resourceType, '/', $resourceUUID)"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
+  <xsl:variable name="resourceAbout" select="concat(/root/env/nodeURL, 'resources/', $resourceType, '/', $resourceUUID)"/>
 
   <!-- =================================================================  -->
 
@@ -283,6 +265,7 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- Ensure Dataset element ordering -->
   <xsl:template match="dcat:Dataset" priority="10">
     <dcat:Dataset>
       <xsl:call-template name="handle-resource-id"/>
@@ -325,6 +308,7 @@
     </dcat:Dataset>
   </xsl:template>
 
+  <!-- Ensure DataService element ordering -->
   <xsl:template match="dcat:DataService" priority="10">
     <dcat:DataService>
       <xsl:call-template name="handle-resource-id"/>
@@ -364,6 +348,7 @@
     </dcat:DataService>
   </xsl:template>
 
+  <!-- Ensure Distribution element ordering -->
   <xsl:template match="dcat:Distribution[name(..)='dcat:distribution']" priority="10">
     <dcat:Distribution>
       <xsl:apply-templates select="@*"/>
@@ -528,8 +513,8 @@
     </xsl:copy>
   </xsl:template>
 
-  <!-- Ignore all empty rdf:about -->
-  <xsl:template match="@rdf:about[normalize-space() = '' and name(..) != 'dct:LicenseDocument']|@rdf:datatype[normalize-space() = '']"
+  <!-- Remove all empty rdf:about to avoid invalid RDF syntax -->
+  <xsl:template match="@rdf:about[normalize-space() = '']|@rdf:datatype[normalize-space() = '']"
                 priority="10"/>
 
   <!-- Fix value for attribute -->
@@ -572,6 +557,7 @@
         'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03'
       )">
         <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
+          <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03</dct:identifier>
           <dct:title>Dcat-ap-vl</dct:title>
           <dct:description xml:lang="nl">Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
           <owl:versionInfo>2.0</owl:versionInfo>
@@ -583,6 +569,7 @@
         'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'
       )">
         <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22">
+          <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22</dct:identifier>
           <dct:title>Metadata-dcat</dct:title>
           <dct:description xml:lang="nl">Het applicatieprofiel “metadata dcat”. Dit is een applicatieprofiel gebaseerd op DCAT en richt zich op het verzamelen van informatie over generieke datasets, distributies en services die door een overheid beschikbaar gesteld worden. De datasets en services omvatten zowel publiek toegankelijke als afgeschermde data en diensten (ontwikkeld in en voor eender welk technisch perspectief). Het samenbrengen van al deze informatie in een catalogus laat toe om de vindbaarheid van deze datasets en services te verhogen. Dit applicatieprofiel is het generieke basisprofiel. Afgeleide profielen kunnen zeker aangemaakt worden voor specifieke domeinen of communities. Bijvoorbeeld is DCAT-AP-VL zo’n afgeleid applicatieprofiel, specifiek voor het Open data domein en bijhorende community.</dct:description>
           <owl:versionInfo>2.0</owl:versionInfo>
@@ -590,11 +577,29 @@
       </xsl:when>
       <xsl:otherwise>
         <xsl:copy copy-namespaces="no">
-          <xsl:apply-templates select="@*|node()"/>
+          <xsl:apply-templates select="@*"/>
+          <xsl:if test="not(dct:identifier)">
+            <dct:identifier>
+              <xsl:value-of select="@rdf:about"/>
+            </dct:identifier>
+          </xsl:if>
+          <xsl:apply-templates select="node()"/>
         </xsl:copy>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+
+
+  <xsl:template match="dct:Standard[not(dct:identifier)]" priority="9">
+    <xsl:copy copy-namespaces="no">
+      <xsl:apply-templates select="@*"/>
+      <dct:identifier>
+        <xsl:value-of select="@rdf:about"/>
+      </dct:identifier>
+      <xsl:apply-templates select="node()"/>
+    </xsl:copy>
+  </xsl:template>
+
 
   <xsl:template match="dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title" priority="10">
     <dct:title>

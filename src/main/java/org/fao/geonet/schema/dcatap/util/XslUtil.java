@@ -37,6 +37,7 @@ import com.vividsolutions.jts.io.WKTReader;
  * @author Gustaaf Vandeboel
  */
 public final class XslUtil {
+    // TODO : use core/src/main/java/org/fao/geonet/util/XslUtil.java:wktGeomToBbox instead
     public static String wktGeomToBbox(Object geometryAsXmlString) throws Exception {
         String ret = "";
         try {
