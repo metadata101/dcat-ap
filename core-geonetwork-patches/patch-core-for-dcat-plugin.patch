@@ -1,29 +1,29 @@
-From 5ed44cb38b180e9134585d28b045ae63a7a76e6a Mon Sep 17 00:00:00 2001
+From a346b929ff440e7d8fe84129c579af4901644bbb Mon Sep 17 00:00:00 2001
 From: Mathieu Chaussier <mathieu.chaussier@gim.be>
 Date: Thu, 20 Jun 2024 09:48:09 +0200
 Subject: [PATCH] Patch core for DCAT2 plugin
 
 ---
- .gitignore                                    |   1 +
- .../geonet/kernel/search/EsSearchManager.java |   1 +
- .../java/org/fao/geonet/util/XslUtil.java     | 160 +++++++++++++-----
- .../HarvesterSettingRepository.java           |  11 ++
- .../harvest/harvester/csw/CswHarvester.java   |   2 +
- .../harvest/harvester/csw/CswParams.java      |  11 ++
- .../harvester/geonet/GeonetHarvester.java     |   3 +
- .../harvester/geonet/GeonetParams.java        |  12 ++
- .../plugin/iso19139/index-fields/index.xsl    |  71 ++++++++
- .../fao/geonet/api/records/MetadataUtils.java |  24 ++-
- .../resources/catalog/locales/en-admin.json   |   7 +-
- .../resources/catalog/locales/fr-admin.json   |   9 +-
- .../resources/catalog/locales/nl-admin.json   |   8 +-
- .../templates/admin/harvest/type/csw.html     |  17 ++
- .../templates/admin/harvest/type/csw.js       |   4 +-
- .../admin/harvest/type/geonetwork.html        |  16 ++
- .../admin/harvest/type/geonetwork.js          |   4 +-
- .../main/webapp/xsl/xml/harvesting/csw.xsl    |   3 +
- .../webapp/xsl/xml/harvesting/geonetwork.xsl  |   3 +
- 19 files changed, 312 insertions(+), 55 deletions(-)
+ .gitignore                                    |  1 +
+ .../geonet/kernel/search/EsSearchManager.java |  1 +
+ .../java/org/fao/geonet/util/XslUtil.java     | 84 ++++++++++++++++++-
+ .../HarvesterSettingRepository.java           | 11 +++
+ .../harvest/harvester/csw/CswHarvester.java   |  2 +
+ .../harvest/harvester/csw/CswParams.java      | 11 +++
+ .../harvester/geonet/GeonetHarvester.java     |  3 +
+ .../harvester/geonet/GeonetParams.java        | 12 +++
+ .../plugin/iso19139/index-fields/index.xsl    | 71 ++++++++++++++++
+ .../fao/geonet/api/records/MetadataUtils.java | 22 +++--
+ .../resources/catalog/locales/en-admin.json   |  7 +-
+ .../resources/catalog/locales/fr-admin.json   |  9 +-
+ .../resources/catalog/locales/nl-admin.json   |  8 +-
+ .../templates/admin/harvest/type/csw.html     | 17 ++++
+ .../templates/admin/harvest/type/csw.js       |  4 +-
+ .../admin/harvest/type/geonetwork.html        | 16 ++++
+ .../admin/harvest/type/geonetwork.js          |  4 +-
+ .../main/webapp/xsl/xml/harvesting/csw.xsl    |  3 +
+ .../webapp/xsl/xml/harvesting/geonetwork.xsl  |  3 +
+ 19 files changed, 273 insertions(+), 16 deletions(-)
 
 diff --git a/.gitignore b/.gitignore
 index cbd4fe33ea..62970213f3 100644
@@ -50,7 +50,7 @@ index bfd783bc5f..ae5dae722b 100644
  
          FIELDLIST_RELATED_SCRIPTED = ImmutableMap.<String, String>builder()
 diff --git a/core/src/main/java/org/fao/geonet/util/XslUtil.java b/core/src/main/java/org/fao/geonet/util/XslUtil.java
-index 50bd7d1da8..96fa0cfb0c 100644
+index 50bd7d1da8..f80728cdbd 100644
 --- a/core/src/main/java/org/fao/geonet/util/XslUtil.java
 +++ b/core/src/main/java/org/fao/geonet/util/XslUtil.java
 @@ -23,6 +23,7 @@
@@ -85,224 +85,6 @@ index 50bd7d1da8..96fa0cfb0c 100644
  import org.fao.geonet.schema.iso19139.ISO19139Namespaces;
  import org.fao.geonet.utils.Log;
  import org.fao.geonet.utils.Xml;
-@@ -228,9 +228,9 @@ public final class XslUtil {
-                             new PrecisionModel(Math.pow(10, numberOfDecimalsForSmallGeom - 1));
-                         reducedGeom = GeometryPrecisionReducer.reduce(geom, precisionModel);
-                         return new GeometryJSON(numberOfDecimalsForSmallGeom).toString(reducedGeom);
--//                    return String.format(
--//                        "Warning: Empty geometry after applying precision reducer with %d decimals.",
--//                        numberOfDecimals);
-+                        //                    return String.format(
-+                        //                        "Warning: Empty geometry after applying precision reducer with %d decimals.",
-+                        //                        numberOfDecimals);
-                     }
-                 }
-                 return new GeometryJSON(numberOfDecimals).toString(reducedGeom);
-@@ -352,7 +352,7 @@ public final class XslUtil {
-             nodeId = nodeInfo.getId();
-         } catch (BeanCreationException e) {
-         }
--        SourceRepository sourceRepository= ApplicationContextHolder.get().getBean(SourceRepository.class);
-+        SourceRepository sourceRepository = ApplicationContextHolder.get().getBean(SourceRepository.class);
-         UiSettingsRepository uiSettingsRepository = ApplicationContextHolder.get().getBean(UiSettingsRepository.class);
- 
-         Optional<org.fao.geonet.domain.Source> portalOpt = sourceRepository.findById(nodeId);
-@@ -439,7 +439,7 @@ public final class XslUtil {
-      * If the main one, then get the name on the source table with the site id.
-      * If a sub portal, use the sub portal key.
-      *
--     * @param key   Sub portal key or UUID
-+     * @param key Sub portal key or UUID
-      * @return
-      */
-     public static String getNodeName(String key, String lang, boolean withOrganization) {
-@@ -481,7 +481,7 @@ public final class XslUtil {
-     private static Optional<Source> getSource(String idOrUuid) {
-         SettingManager settingsMan = ApplicationContextHolder.get().getBean(SettingManager.class);
-         if (StringUtils.isEmpty(idOrUuid)) {
--            idOrUuid =  ApplicationContextHolder.get().getBean(org.fao.geonet.NodeInfo.class).getId();
-+            idOrUuid = ApplicationContextHolder.get().getBean(org.fao.geonet.NodeInfo.class).getId();
-         }
-         if (org.fao.geonet.NodeInfo.DEFAULT_NODE.equals(idOrUuid)) {
-             idOrUuid = settingsMan.getSiteId();
-@@ -521,7 +521,7 @@ public final class XslUtil {
-                 }
-             }
-         } catch (Exception e) {
--            Log.error(Geonet.GEONETWORK,"XslUtil getJsonSettingValue '" + key + "' error: " + e.getMessage(), e);
-+            Log.error(Geonet.GEONETWORK, "XslUtil getJsonSettingValue '" + key + "' error: " + e.getMessage(), e);
-         }
-         return "";
-     }
-@@ -557,9 +557,9 @@ public final class XslUtil {
- 
- 
-     /**
--	 * Check if security provider require login form
--	 */
--	public static boolean isDisableLoginForm() {
-+     * Check if security provider require login form
-+     */
-+    public static boolean isDisableLoginForm() {
-         SecurityProviderConfiguration securityProviderConfiguration = SecurityProviderConfiguration.get();
- 
-         if (securityProviderConfiguration != null) {
-@@ -569,7 +569,7 @@ public final class XslUtil {
-         }
-         // If we cannot find SecurityProviderConfiguration then default to false.
-         return false;
--	}
-+    }
- 
-     /**
-      * Check if security provider require login link
-@@ -625,7 +625,7 @@ public final class XslUtil {
-      * get external manager url for resource.
-      *
-      * @param metadataUuid uuid of the record
--     * @param approved is metadata approved
-+     * @param approved     is metadata approved
-      * @return url to access the resource. Or null if not supported
-      */
-     public static MetadataResourceContainer getResourceContainerDescription(String metadataUuid, Boolean approved) throws Exception {
-@@ -633,13 +633,13 @@ public final class XslUtil {
- 
-         if (store != null) {
-             try {
--                if (store.getResourceManagementExternalProperties() != null && store.getResourceManagementExternalProperties().isFolderEnabled()) {
--                    ServiceContext context = ServiceContext.get();
--                    return store.getResourceContainerDescription(ServiceContext.get(), metadataUuid, approved);
--                } else {
--                    // Return an empty object which should not be used because the folder is not enabled.
--                    return new FilesystemStoreResourceContainer(metadataUuid, -1, null, null, null, approved);
--                }
-+            if (store.getResourceManagementExternalProperties() != null && store.getResourceManagementExternalProperties().isFolderEnabled()) {
-+                ServiceContext context = ServiceContext.get();
-+                return store.getResourceContainerDescription(ServiceContext.get(), metadataUuid, approved);
-+            } else {
-+                // Return an empty object which should not be used because the folder is not enabled.
-+                return new FilesystemStoreResourceContainer(metadataUuid, -1, null, null, null, approved);
-+            }
-             } catch (RuntimeException e) {
-                 Log.error(Geonet.RESOURCES, "Could not locate resource in getResourceContainerDescription due to runtime exception", e);
-                 return null;
-@@ -660,7 +660,7 @@ public final class XslUtil {
-         if (store != null) {
-             return store.getResourceManagementExternalProperties();
-         }
--        Log.error(Geonet.RESOURCES,"Could not locate a Store bean in getResourceManagementExternalProperties");
-+        Log.error(Geonet.RESOURCES, "Could not locate a Store bean in getResourceManagementExternalProperties");
-         return null;
-     }
- 
-@@ -862,13 +862,13 @@ public final class XslUtil {
-         String fieldname = field.toString();
-         String language = (lang.toString().equals("") ? null : lang.toString());
-         throw new NotImplementedException("getIndexFieldById not implemented in ES");
--//        try {
--//            String fieldValue = LuceneSearcher.getMetadataFromIndexById(language, id.toString(), fieldname);
--//            return fieldValue == null ? "" : fieldValue;
--//        } catch (Exception e) {
--//            Log.error(Geonet.GEONETWORK, "Failed to get index field value caused by " + e.getMessage());
--//            return "";
--//        }
-+        //        try {
-+        //            String fieldValue = LuceneSearcher.getMetadataFromIndexById(language, id.toString(), fieldname);
-+        //            return fieldValue == null ? "" : fieldValue;
-+        //        } catch (Exception e) {
-+        //            Log.error(Geonet.GEONETWORK, "Failed to get index field value caused by " + e.getMessage());
-+        //            return "";
-+        //        }
-     }
- 
-     /**
-@@ -986,7 +986,7 @@ public final class XslUtil {
-         UrlChecker urlChecker = ApplicationContextHolder.get().getBean(UrlChecker.class);
-         LinkStatus urlStatus = urlChecker.getUrlStatus(url);
-         if (urlStatus.getStatusValue().equalsIgnoreCase("4XX") || urlStatus.getStatusValue().equalsIgnoreCase("310")) {
--           return urlStatus.getStatusInfo();
-+            return urlStatus.getStatusInfo();
-         }
-         return urlStatus.getStatusValue();
-     }
-@@ -1143,10 +1143,10 @@ public final class XslUtil {
-                     && !metadataSchema.equals(schema)) {
-                     final Path styleSheet = dataManager
-                         .getSchemaDir(metadataSchema)
--                        .resolve(String.format( "formatter/%s/view.xsl", schema));
-+                        .resolve(String.format("formatter/%s/view.xsl", schema));
-                     final boolean exists = java.nio.file.Files.exists(styleSheet);
-                     if (!exists) {
--                        Log.warning(Geonet.GEONETWORK,String.format(
-+                        Log.warning(Geonet.GEONETWORK, String.format(
-                             "XslUtil getRecord warning: Can't retrieve record %s (schema %s) in schema %s. A formatter is required for this conversion.",
-                             uuid, metadataSchema, schema));
- 
-@@ -1157,7 +1157,7 @@ public final class XslUtil {
-                 return outputter.output(new Document(metadata));
-             }
-         } catch (Exception e) {
--            Log.error(Geonet.GEONETWORK,"XslUtil getRecord '" + uuid + "' error: " + e.getMessage(), e);
-+            Log.error(Geonet.GEONETWORK, "XslUtil getRecord '" + uuid + "' error: " + e.getMessage(), e);
-         }
-         return null;
-     }
-@@ -1186,7 +1186,7 @@ public final class XslUtil {
- 
-             return e.evaluate();
-         } catch (Exception e) {
--            Log.error(Geonet.GEONETWORK,"XslUtil evaluate '" + formula + "' error: " + e.getMessage(), e);
-+            Log.error(Geonet.GEONETWORK, "XslUtil evaluate '" + formula + "' error: " + e.getMessage(), e);
-             return null;
-         }
-     }
-@@ -1309,7 +1309,7 @@ public final class XslUtil {
-         try {
-             return DefaultEncoder.getInstance().encodeForURL(str);
-         } catch (EncodingException ex) {
--            Log.error(Geonet.GEONETWORK,"XslUtil encode for URL '" + str + "' error: " + ex.getMessage(), ex);
-+            Log.error(Geonet.GEONETWORK, "XslUtil encode for URL '" + str + "' error: " + ex.getMessage(), ex);
-             return str;
-         }
-     }
-@@ -1353,7 +1353,7 @@ public final class XslUtil {
-         try {
-             return java.net.URLDecoder.decode(str, "UTF-8");
-         } catch (Exception ex) {
--            Log.error(Geonet.GEONETWORK,"XslUtil decodeURLParameter '" + str + "' error: " + ex.getMessage(), ex);
-+            Log.error(Geonet.GEONETWORK, "XslUtil decodeURLParameter '" + str + "' error: " + ex.getMessage(), ex);
-             return str;
-         }
-     }
-@@ -1393,7 +1393,7 @@ public final class XslUtil {
-                 try {
-                     return Integer.parseInt(getUrlStatus(urlString));
-                 } catch (Exception e) {
--                    Log.info(Geonet.GEONETWORK,"validateURL: exception - ",e);
-+                    Log.info(Geonet.GEONETWORK, "validateURL: exception - ", e);
-                     return -1;
-                 }
-             }
-@@ -1454,8 +1454,8 @@ public final class XslUtil {
-      * <p>
-      * <xsl:variable name="thesauriDir" select="java:getIsoLanguageLabel('dut', 'eng')"/>
-      *
--     * @param code      Code of the IsoLanguage to retrieve the name.
--     * @param language  Language to retrieve the IsoLanguage name.
-+     * @param code     Code of the IsoLanguage to retrieve the name.
-+     * @param language Language to retrieve the IsoLanguage name.
-      * @return
-      */
-     public static String getIsoLanguageLabel(String code, String language) {
-@@ -1581,7 +1581,7 @@ public final class XslUtil {
-     public static String escapeForJson(String value) {
-         return StringEscapeUtils.escapeJson(value);
-     }
--  
-+
-     public static String getWebAnalyticsService() {
-         ApplicationContext applicationContext = ApplicationContextHolder.get();
-         WebAnalyticsConfiguration webAnalyticsConfiguration = applicationContext.getBean(WebAnalyticsConfiguration.class);
 @@ -1595,4 +1595,80 @@ public final class XslUtil {
  
          return webAnalyticsConfiguration.getJavascriptCode();
@@ -613,7 +395,7 @@ index 37b3dc0311..187740c5c4 100644
 +  </xsl:function>
  </xsl:stylesheet>
 diff --git a/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java b/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java
-index 76bb7f594f..b0f5e6d53d 100644
+index 76bb7f594f..8100604bc5 100644
 --- a/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java
 +++ b/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java
 @@ -59,6 +59,7 @@ import org.fao.geonet.repository.MetadataValidationRepository;
@@ -657,15 +439,6 @@ index 76bb7f594f..b0f5e6d53d 100644
              } else if (schemaPlugin != null
                  && (type == RelatedItemType.siblings
                  || type == RelatedItemType.parent
-@@ -306,7 +318,7 @@ public class MetadataUtils {
-                     if (!e.fields().isEmpty()) {
-                         FIELDLIST_RELATED_SCRIPTED.keySet().forEach(f -> {
-                             JsonData dc = (JsonData) e.fields().get(f);
--                            
-+
-                             if (dc != null) {
-                                 if (associatedRecord.getProperties() == null) {
-                                     associatedRecord.setProperties(new HashMap<>());
 diff --git a/web-ui/src/main/resources/catalog/locales/en-admin.json b/web-ui/src/main/resources/catalog/locales/en-admin.json
 index 3d7bc36cea..86152364e1 100644
 --- a/web-ui/src/main/resources/catalog/locales/en-admin.json
