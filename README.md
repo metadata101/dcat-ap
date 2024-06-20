@@ -91,12 +91,6 @@ Samples and templates can be imported via the 'Admin Console' > 'Metadata and Te
 
 Make sure to import the thesauri located in `schemas/dcat2/resources/thesauri` as they are required for editing dcat2 records.
 
-## Compatibility matrix
-
-| DCAT plugin version | Tested GeoNetwork version |
-|:--------------------|:--------------------------|
-| 1.0.x               | 4.4.5                     |
-
 ## Metadata rules: metadata identifier
 
 The plugin uses dct:identifier to store a uuid that is used as (internal) metadata identifier. 
