@@ -92,7 +92,6 @@
 
   <!-- Overwrite the default 'render-toc' template -->
   <xsl:template mode="render-toc" match="view" priority="10">
-    <xsl:message select="$root"/>
     <xsl:if test="$root = 'div' and count(tab) > 1">
       <ul class="view-outline nav nav-tabs nav-tabs-advanced">
         <xsl:for-each select="tab">
