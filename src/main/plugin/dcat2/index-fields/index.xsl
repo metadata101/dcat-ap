@@ -550,7 +550,6 @@
     </xsl:for-each>
 
     <xsl:for-each select="dct:publisher">
-      <xsl:message select="'indexing publisher'"/>
       <xsl:apply-templates mode="index-contact" select=".">
         <xsl:with-param name="fieldSuffix" select="''"/>
         <xsl:with-param name="role" select="'publisher'"/>

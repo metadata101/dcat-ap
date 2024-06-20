@@ -42,6 +42,8 @@
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
+                xmlns:saxon="http://saxon.sf.net/"
+                extension-element-prefixes="saxon"
                 exclude-result-prefixes="#all"
                 version="2.0">
 
@@ -237,7 +239,50 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template mode="render-view" match="section[not(@xpath)]">
+  <xsl:template mode="render-view" match="section[@forEach]" priority="10">
+    <xsl:param name="base" select="$metadata"/>
+    <xsl:variable name="localBase">
+      <saxon:call-template name="{concat('evaluate-', $schema)}">
+        <xsl:with-param name="base" select="$base"/>
+        <xsl:with-param name="in" select="concat('/../', @forEach)"/>
+      </saxon:call-template>
+    </xsl:variable>
+
+    <xsl:variable name="toMatch" select="section|field"/>
+    <xsl:variable name="sectionContent">
+      <xsl:for-each select="$localBase/*">
+        <xsl:variable name="rendered">
+          <xsl:apply-templates mode="render-view" select="$toMatch">
+            <xsl:with-param name="base" select="./*"/>
+          </xsl:apply-templates>
+        </xsl:variable>
+        <xsl:if test="normalize-space($rendered) != ''">
+          <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
+                 class="table table-striped" >
+            <xsl:copy-of select="$rendered"/>&#160;
+          </table>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:variable>
+
+    <xsl:if test="normalize-space($sectionContent)">
+      <div id="gn-section-{generate-id()}" class="gn-tab-content">
+        <xsl:if test="@name">
+          <xsl:variable name="title" select="gn-fn-render:get-schema-strings($schemaStrings, @name)"/>
+          <xsl:element name="h{2 + count(ancestor-or-self::*[name(.) = 'section'])}">
+            <xsl:attribute name="class" select="'view-header'"/>
+            <xsl:attribute name="style" select="'border-bottom: 2px solid rgb(229, 229, 229); margin-top: 30px;font-size: 16px;color: rgb(40, 96, 144); position: relative;'"/>
+            <xsl:value-of select="$title"/>
+          </xsl:element>
+        </xsl:if>
+
+        <xsl:copy-of select="$sectionContent"/>
+      </div>
+    </xsl:if>
+
+  </xsl:template>
+
+  <xsl:template mode="render-view" match="section[not(@xpath) and not(@forEach)]">
     <xsl:variable name="sectionContent">
       <xsl:apply-templates mode="render-view" select="section|field"/>
     </xsl:variable>
@@ -259,7 +304,6 @@
       </div>
     </xsl:if>
   </xsl:template>
-
 
   <!-- ########################## -->
   <!-- Render fields... -->
