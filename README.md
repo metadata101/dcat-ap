@@ -22,7 +22,7 @@ This plugin has the following features:
 
 ### Adding the plugin to the source code
 
-To include this schema plugin in a build, copy the dcat2 schema folder in the schemas folder, add it to the schemas/pom.xml and add it to the copy-schemas execution in web/pom.xml.
+To include this schema plugin in a build, copy the dcat2 schema folder in the schemas folder, add it to the schemas/pom.xml and add it to the copy-schemas execution in `web/pom.xml`.
 
 The best approach is to add the plugin as a submodule into GeoNetwork schema module.
 
@@ -33,27 +33,36 @@ git submodule init
 git submodule update
 ```
 
-Add the new module to the schemas/pom.xml:
+Add the new module to the `schemas/pom.xml`:
 
 ```xml
 <modules>
   <!-- ... -->
-  <module>iso19139</module>
   <module>dcat2</module>
 </modules>
 ```
 
-Add the dependency in the web module in web/pom.xml:
+Add the dependency in the web module in `web/pom.xml`:
 
 ```xml
 <dependency>
   <groupId>org.geonetwork-opensource.schemas</groupId>
   <artifactId>gn-schema-dcat2</artifactId>
-  <version>[DCAT PLUGIN VERSION]</version>
+  <version>${project.version}</version>
 </dependency>
 ```
 
-Add the module to the webapp in web/pom.xml:
+*Note* that versions need to be updated to correspond to GeoNetwork version updates. This is applicable in `dcat2/pom.xml` and can be automated by running `mvn versions:update-child-modules` after merges of GeoNetwork:
+
+```xml
+<parent>
+  <artifactId>gn-schemas</artifactId>
+  <groupId>org.geonetwork-opensource.schemas</groupId>
+  <version>x.y.z</version>
+</parent>
+```
+
+Add the module to the webapp in `web/pom.xml`:
 
 ```xml
 <execution>
@@ -80,7 +89,8 @@ Commit these changes.
 
 Apply the [patches](/core-geonetwork-patches) to the geonetwork core. You may need to manually apply specific hunks of a patch.
 ```
-cd ..   (core-geonetwork)
+# go to top-level core-geonetwork
+cd ..
 git am --ignore-space-change --ignore-whitespace --reject --whitespace=fix schemas/dcat2/core-geonetwork-patches/*.patch
 ```
 
@@ -130,4 +140,4 @@ This plugin would merit further improvements in at least the following areas:
 
 ## Acknowledgement
 
-The work on this schema plugin was funded by and carried out in close collaboration with Digitaal Vlaanderen ([DV](https://www.vlaanderen.be/digitaal-vlaanderen)).  
+The work on this schema plugin was funded by and carried out in close collaboration with [Digitaal Vlaanderen](https://www.vlaanderen.be/digitaal-vlaanderen).
