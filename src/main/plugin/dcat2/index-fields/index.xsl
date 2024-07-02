@@ -504,13 +504,13 @@
                   select="string(.)"/>
 
     <xsl:variable name="zuluDateTime" as="xs:string?">
-      <xsl:if test="gn-fn-index:is-isoDate(.)">
+      <xsl:if test="normalize-space($date) != '' and gn-fn-index:is-isoDate($date)">
         <xsl:value-of select="date-util:convertToISOZuluDateTime(normalize-space($date))"/>
       </xsl:if>
     </xsl:variable>
 
     <xsl:choose>
-      <xsl:when test="$zuluDateTime != ''">
+      <xsl:when test="normalize-space($zuluDateTime) != ''">
         <xsl:element name="{$dateType}DateForResource">
           <xsl:value-of select="$zuluDateTime"/>
         </xsl:element>
