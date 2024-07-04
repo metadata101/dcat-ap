@@ -69,7 +69,17 @@
         </xsl:choose>
       </label>
       <div class="col-sm-9 col-xs-11 gn-value nopadding-in-table">
-        <div data-gn-date-picker="{text()}"
+        <xsl:variable name="value">
+          <xsl:choose>
+            <xsl:when test="$viewConfig/@hideTimeInCalendar = 'true' and contains(lower-case(text()), 't')">
+              <xsl:value-of select="substring-before(lower-case(text()), 't')"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="text()"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+        <div data-gn-date-picker="{$value}"
              data-gn-field-tooltip="{$tooltip}"
              data-label=""
              data-tag-name="{name()}"

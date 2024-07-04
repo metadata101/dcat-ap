@@ -42,6 +42,8 @@
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
+                xmlns:saxon="http://saxon.sf.net/"
+                extension-element-prefixes="saxon"
                 exclude-result-prefixes="#all"
                 version="2.0">
 
@@ -89,6 +91,22 @@
   <!-- Styling -->
   <xsl:variable name="thStyle" select="'border-style: solid; border-color: #ddd; border-width: 1px 0 1px 1px; width: 20%; padding: 8px; line-height: 1.428571429; vertical-align: top; box-sizing: border-box; text-align: left; min-width: 100px'"/>
   <xsl:variable name="tdStyle" select="'border-style: solid; border-color: #ddd; border-width: 1px 1px 1px 0; padding-left: 0; width: 80%; word-break: break-word; padding: 8px; line-height: 1.428571429; vertical-align: top; box-sizing: border-box;'"/>
+
+  <!-- Overwrite the default 'render-toc' template -->
+  <xsl:template mode="render-toc" match="view" priority="10">
+    <xsl:if test="$root = 'div' and count(tab) > 1">
+      <ul class="view-outline nav nav-tabs nav-tabs-advanced">
+        <xsl:for-each select="tab">
+          <li>
+            <a href="#gn-tab-{@id}">
+              <xsl:value-of select="gn-fn-render:get-schema-strings($schemaStrings, @id)"/>
+            </a>
+          </li>
+        </xsl:for-each>
+      </ul>
+    </xsl:if>
+  </xsl:template>
+
 
   <!-- Specific schema rendering -->
   <xsl:template mode="getMetadataTitle" match="rdf:RDF">
@@ -142,11 +160,13 @@
     <div class="gn-abstract">
       <xsl:value-of select="(//dcat:Dataset/dct:description|//dcat:DataService/dct:description)[1]"/>
     </div>
-    <div class="one-line-ellipsis" ng-if="user.isEditorOrMore()">
-      <p>
-        <span data-translate="">owner</span>: {{md.getOwnername()}}
-      </p>
-    </div>
+    <xsl:if test="$root = 'div'">
+      <div class="one-line-ellipsis" ng-if="user.isEditorOrMore()">
+        <p>
+          <span data-translate="">owner</span>: {{md.getOwnername()}}
+        </p>
+      </div>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template mode="getMetadataHierarchyLevel" match="rdf:RDF">
@@ -219,7 +239,50 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template mode="render-view" match="section[not(@xpath)]">
+  <xsl:template mode="render-view" match="section[@forEach]" priority="10">
+    <xsl:param name="base" select="$metadata"/>
+    <xsl:variable name="localBase">
+      <saxon:call-template name="{concat('evaluate-', $schema)}">
+        <xsl:with-param name="base" select="$base"/>
+        <xsl:with-param name="in" select="concat('/../', @forEach)"/>
+      </saxon:call-template>
+    </xsl:variable>
+
+    <xsl:variable name="toMatch" select="section|field"/>
+    <xsl:variable name="sectionContent">
+      <xsl:for-each select="$localBase/*">
+        <xsl:variable name="rendered">
+          <xsl:apply-templates mode="render-view" select="$toMatch">
+            <xsl:with-param name="base" select="./*"/>
+          </xsl:apply-templates>
+        </xsl:variable>
+        <xsl:if test="normalize-space($rendered) != ''">
+          <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
+                 class="table table-striped" >
+            <xsl:copy-of select="$rendered"/>&#160;
+          </table>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:variable>
+
+    <xsl:if test="normalize-space($sectionContent)">
+      <div id="gn-section-{generate-id()}" class="gn-tab-content">
+        <xsl:if test="@name">
+          <xsl:variable name="title" select="gn-fn-render:get-schema-strings($schemaStrings, @name)"/>
+          <xsl:element name="h{2 + count(ancestor-or-self::*[name(.) = 'section'])}">
+            <xsl:attribute name="class" select="'view-header'"/>
+            <xsl:attribute name="style" select="'border-bottom: 2px solid rgb(229, 229, 229); margin-top: 30px;font-size: 16px;color: rgb(40, 96, 144); position: relative;'"/>
+            <xsl:value-of select="$title"/>
+          </xsl:element>
+        </xsl:if>
+
+        <xsl:copy-of select="$sectionContent"/>
+      </div>
+    </xsl:if>
+
+  </xsl:template>
+
+  <xsl:template mode="render-view" match="section[not(@xpath) and not(@forEach)]">
     <xsl:variable name="sectionContent">
       <xsl:apply-templates mode="render-view" select="section|field"/>
     </xsl:variable>
@@ -241,7 +304,6 @@
       </div>
     </xsl:if>
   </xsl:template>
-
 
   <!-- ########################## -->
   <!-- Render fields... -->

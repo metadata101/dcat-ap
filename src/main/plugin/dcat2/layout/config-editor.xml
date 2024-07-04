@@ -412,7 +412,7 @@
           displayTooltipsMode="onhover"
           hideTimeInCalendar="true">
       <sidePanel>
-        <directive data-gn-onlinesrc-list="" data-types="service|dataset"/>
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata" />
         <directive data-gn-validation-report=""/>
       </sidePanel>
 
@@ -884,7 +884,7 @@
           displayTooltipsMode="onhover"
           hideTimeInCalendar="true">
       <sidePanel>
-        <directive data-gn-onlinesrc-list="" data-types="service|dataset"/>
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata" />
         <directive data-gn-validation-report=""/>
       </sidePanel>
 

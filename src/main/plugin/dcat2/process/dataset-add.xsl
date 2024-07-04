@@ -7,6 +7,8 @@
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:spdx="http://spdx.org/rdf/terms#"
+                xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
                 xmlns:adms="http://www.w3.org/ns/adms#"
                 exclude-result-prefixes="#all"
@@ -68,6 +70,50 @@
                            dct:rights|
                            dct:type"/>
     </xsl:copy>
+  </xsl:template>
+
+
+  <xsl:template match="dcat:Dataset/dcat:distribution[dcat:Distribution][1]/dcat:Distribution">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+
+      <!-- Copy elements before dcat:servesDataset -->
+      <xsl:copy-of select="dct:identifier|
+                           dct:title|
+                           dct:description|
+                           dcat:accessURL|
+                           dcat:downloadURL|
+                           dct:issued|
+                           dct:modified|
+                           dct:format|
+                           dcat:mediaType|
+                           dct:language|
+                           dct:license|
+                           dct:rights|
+                           dcat:byteSize|
+                           spdx:checksum|
+                           foaf:page|
+                           dct:conformsTo|
+                           adms:status"/>
+
+      <!-- Copy previous dcat:accessService -->
+      <xsl:variable name="serviceURI" select="util:getRecordResourceURI($uuidref)"/>
+      <xsl:copy-of select="dcat:accessService[normalize-space(@rdf:resource) != '' and normalize-space(@rdf:resource) != $serviceURI]"/>
+
+      <!-- Add new link to dataset -->
+      <xsl:if test="normalize-space($serviceURI) != ''">
+        <xsl:element name="dcat:accessService">
+          <xsl:attribute name="rdf:resource" select="$serviceURI"/>
+        </xsl:element>
+      </xsl:if>
+
+      <xsl:copy-of select="dcat:compressFormat|
+                           dcat:packageFormat|
+                           dcat:spatialResolutionInMeters|
+                           dcat:temporalResolution|
+                           dct:accessRights"/>
+    </xsl:copy>
+
   </xsl:template>
 
 
