@@ -51,10 +51,29 @@
   <!-- =================================================================   -->
 
   <xsl:include href="layout/utility-fn.xsl"/>
+  <xsl:include href="layout/utility-tpl-multilingual.xsl"/>
+
   <xsl:variable name="serviceUrl" select="/root/env/siteURL"/>
   <xsl:variable name="env" select="/root/env"/>
   <xsl:variable name="iso2letterLanguageCode" select="lower-case(java:twoCharLangCode(/root/gui/language))"/>
   <xsl:variable name="resourcePrefix" select="$env/metadata/resourceIdentifierPrefix"/>
+
+  <xsl:variable name="metadata"
+                select="/root/rdf:RDF"/>
+
+  <xsl:variable name="mainLanguage">
+    <xsl:call-template name="get-dcat-ap-language"/>
+  </xsl:variable>
+
+  <xsl:variable name="locales">
+    <xsl:call-template name="get-dcat-ap-other-languages"/>
+  </xsl:variable>
+
+  <xsl:variable name="isMultilingual"
+                select="count($locales/*) > 1"/>
+
+  <xsl:variable name="editorConfig"
+                select="document('layout/config-editor.xml')"/>
 
   <xsl:variable name="resourceType">
     <xsl:choose>
@@ -102,7 +121,92 @@
   </xsl:variable>
   <xsl:variable name="resourceAbout" select="concat(/root/env/nodeURL, 'resources/', $resourceType, '/', $resourceUUID)"/>
 
-  <!-- =================================================================  -->
+  <!-- Multilingual support -->
+  <xsl:variable name="multilingualElements"
+                select="('dct:title', 'dct:description')"/>
+
+  <!-- Ignore element not in main language (they are handled in dcat2-translations-builder. -->
+  <xsl:template match="*[name() = $multilingualElements
+                         and $isMultilingual
+                         and @xml:lang != $mainLanguage]"
+                        priority="100"/>
+
+  <!-- Expand element which may not contain xml:lang attribute
+  eg. when clicking + -->
+  <xsl:template match="*[name() = $multilingualElements
+                         and $isMultilingual
+                         and not(@xml:lang)]"
+                        priority="100">
+    <xsl:variable name="name"
+                  select="name()"/>
+    <xsl:variable name="value"
+                  select="."/>
+    <xsl:for-each select="$locales/lang/@code">
+      <xsl:element name="{$name}">
+        <xsl:attribute name="xml:lang"
+                       select="current()"/>
+        <xsl:value-of select="if (current() = $mainLanguage)
+                              then $value else ''"/>
+      </xsl:element>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="*[name() = $multilingualElements
+                         and $isMultilingual
+                         and @xml:lang = $mainLanguage]"
+                priority="100">
+    <!-- Then we copy translations of following siblings
+    or create empty elements. -->
+    <xsl:variable name="name"
+                  select="name(.)"/>
+
+    <xsl:variable name="excluded"
+                  select="gn-fn-dcat-ap:isNotMultilingualField(., $editorConfig)"/>
+    <xsl:variable name="isMultilingualElement"
+                  select="$isMultilingual and $excluded = false()"/>
+
+    <xsl:choose>
+      <xsl:when test="$isMultilingualElement">
+        <xsl:call-template name="rdf-translations-builder"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:copy>
+          <xsl:apply-templates select="@*|node()"/>
+        </xsl:copy>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+
+  <!-- Copy existing translation
+  and add empty elements for other languages -->
+  <xsl:template name="rdf-translations-builder">
+    <xsl:variable name="name"
+                  select="name(.)"/>
+    <xsl:variable name="value"
+                  select="text()"/>
+
+    <xsl:variable name="followingSiblings"
+                  select="following-sibling::*[name() = $name]"/>
+
+    <!-- Select element with same name and different xml:lang attribute
+    until the next one with the main language. -->
+    <xsl:variable name="currentGroup"
+                  select="$followingSiblings[
+                    count($followingSiblings/*[@xml:lang = $mainLanguage]) = 0
+                    or position() &lt; $followingSiblings/*[@xml:lang = $mainLanguage]/position()]"/>
+
+    <xsl:for-each select="$locales/lang/@code">
+      <xsl:element name="{$name}">
+        <xsl:attribute name="xml:lang"
+                       select="current()"/>
+        <xsl:value-of select="if (current() = $mainLanguage)
+                              then $value else $currentGroup[@xml:lang = current()]"/>
+      </xsl:element>
+    </xsl:for-each>
+  </xsl:template>
+
+
 
   <xsl:template match="/root">
     <xsl:apply-templates select="//rdf:RDF"/>
@@ -391,7 +495,7 @@
 
   <!-- =================================================================  -->
 
-  <!-- Set default xml:lang value when missing -->
+  <!-- Set default xml:lang value when missing
   <xsl:template match="dcat:Dataset/dct:title|dcat:DataService/dct:title|dcat:Dataset/dct:description|
                        dcat:DataService/dct:description|dcat:Distribution/dct:title|
                        dcat:Distribution/dct:description|foaf:Agent/foaf:name|dcat:keyword"
@@ -403,7 +507,7 @@
       </xsl:if>
       <xsl:value-of select="."/>
     </xsl:copy>
-  </xsl:template>
+  </xsl:template> -->
 
   <!-- Remove empty concepts -->
   <xsl:template match="foaf:Agent/dct:type|mdcat:MAGDA-categorie|mdcat:statuut|dcat:theme|dct:accrualPeriodicity|

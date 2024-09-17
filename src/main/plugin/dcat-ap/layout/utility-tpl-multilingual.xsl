@@ -33,54 +33,79 @@
 
   <!-- Get the main metadata languages -->
   <xsl:template name="get-dcat-ap-language">
-    <xsl:variable name="authorityLanguage" select="$metadata/descendant::node()/*[name()=('dcat:Dataset', 'dcat:DataService')]/dct:language[1]/skos:Concept/@rdf:about" />
+    <xsl:param name="languageIri"
+               select="$metadata//dcat:CatalogRecord/dct:language[1]/(@rdf:resource, skos:Concept/@rdf:about)"
+               required="no"/>
+
+    <xsl:variable name="languageCode"
+                  select="lower-case(replace(
+                            replace(
+                              replace($languageIri, 'http://id.loc.gov/vocabulary/iso639-1/', ''),
+                            'http://id.loc.gov/vocabulary/iso639-2/', ''),
+                          'http://publications.europa.eu/resource/authority/language/', ''))"/>
+
     <xsl:choose>
-      <xsl:when test="ends-with($authorityLanguage,'NLD')">dut</xsl:when>
-      <xsl:when test="ends-with($authorityLanguage,'FRA')">fre</xsl:when>
-      <xsl:when test="ends-with($authorityLanguage,'ENG')">eng</xsl:when>
-      <xsl:when test="ends-with($authorityLanguage,'DEU')">ger</xsl:when>
-      <xsl:otherwise>dut</xsl:otherwise>
+      <xsl:when test="string-length($languageCode) = 3">
+        <xsl:value-of select="xslutil:twoCharLangCode($languageCode)"/>
+      </xsl:when>
+      <xsl:when test="string-length($languageCode) = 2">
+        <xsl:value-of select="$languageCode"/>
+      </xsl:when>
+      <xsl:otherwise></xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
   <!-- Get the list of other languages in JSON -->
   <xsl:template name="get-dcat-ap-other-languages-as-json">
     <xsl:variable name="langs">
-    <xsl:variable name="mainLanguage">
-      <xsl:call-template name="get-dcat-ap-language"/>
-    </xsl:variable>
-    <lang>
-      <xsl:value-of select="concat('&quot;', $mainLanguage, '&quot;:&quot;#', upper-case($mainLanguage), '&quot;')"/>
-    </lang>
-        <xsl:if test="count($metadata/descendant::node()/*[@xml:lang!=''])>0">
-          <xsl:for-each select="distinct-values($metadata/descendant::node()/*/@xml:lang)">
-            <xsl:variable name="langId" select="normalize-space(xslutil:threeCharLangCode(string(.)))"/>
-            <xsl:if test="string-length($langId)>0 and $langId!=$mainLanguage">
-              <lang>
-                <xsl:value-of select="concat('&quot;', $langId, '&quot;:&quot;#', upper-case($langId), '&quot;')"/>
-              </lang>
-          </xsl:if>
-          </xsl:for-each>
+      <xsl:for-each select="$metadata//dcat:CatalogRecord/dct:language">
+
+        <xsl:variable name="languageCode">
+          <xsl:call-template name="get-dcat-ap-language">
+            <xsl:with-param name="languageIri"
+                            select="(@rdf:resource, skos:Concept/@rdf:about)[1]"/>
+          </xsl:call-template>
+        </xsl:variable>
+
+        <xsl:if test="$languageCode != ''">
+          <lang>
+            <xsl:value-of
+              select="concat('&quot;', $languageCode, '&quot;:&quot;#', upper-case($languageCode), '&quot;')"/>
+          </lang>
         </xsl:if>
+      </xsl:for-each>
     </xsl:variable>
     <xsl:text>{</xsl:text><xsl:value-of select="string-join($langs/lang, ',')"/><xsl:text>}</xsl:text>
   </xsl:template>
 
   <!-- Get the list of other languages -->
   <xsl:template name="get-dcat-ap-other-languages">
-  <xsl:choose>
-    <xsl:when test="count($metadata/descendant::node()/*[@xml:lang!=''])>1">
-          <xsl:for-each select="distinct-values($metadata/descendant::node()/*/@xml:lang)">
-          <xsl:variable name="langId" select="xslutil:threeCharLangCode(string(.))"/>
-          <lang id="{upper-case($langId)}" code="{$langId}"/>
+    <xsl:choose>
+      <xsl:when test="count($metadata/descendant::node()/*[@xml:lang != '']) > 1
+                      or count($metadata//dcat:CatalogRecord/dct:language) > 1">
+        <xsl:for-each select="$metadata//dcat:CatalogRecord/dct:language">
+          <xsl:variable name="languageCode">
+            <xsl:call-template name="get-dcat-ap-language">
+              <xsl:with-param name="languageIri"
+                              select="(@rdf:resource, skos:Concept/@rdf:about)[1]"/>
+            </xsl:call-template>
+          </xsl:variable>
+
+          <xsl:if test="$languageCode != ''">
+            <lang id="{upper-case($languageCode)}" code="{xslutil:twoCharLangCode($languageCode)}">
+              <xsl:if test="position() = 1">
+                <xsl:attribute name="default" select="''"/>
+              </xsl:if>
+            </lang>
+          </xsl:if>
         </xsl:for-each>
-    </xsl:when>
-    <xsl:otherwise>
-    <xsl:variable name="mainLanguage">
-      <xsl:call-template name="get-dcat-ap-language"/>
-    </xsl:variable>
-    <lang id="{upper-case($mainLanguage)}" code="{$mainLanguage}"/>
-    </xsl:otherwise>
-  </xsl:choose>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:variable name="mainLanguage">
+          <xsl:call-template name="get-dcat-ap-language"/>
+        </xsl:variable>
+        <lang id="{upper-case($mainLanguage)}" code="{xslutil:twoCharLangCode($mainLanguage)}" default=""/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 </xsl:stylesheet>
