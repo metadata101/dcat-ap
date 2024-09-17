@@ -28,6 +28,11 @@
     xmlns:util="http://www.springframework.org/schema/util"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+  <!-- copies the DCAT-AP thesaurus files -->
+  <bean id="dcat-ap.startup"
+        class="org.fao.geonet.schema.dcatap.init.SchemaInitializerThesauri">
+  </bean>
+
   <bean id="dcat-apSchemaPlugin"
         class="org.fao.geonet.schema.dcatap.DCATAPSchemaPlugin">
     <property name="xpathTitle">
