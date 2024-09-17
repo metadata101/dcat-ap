@@ -247,10 +247,9 @@
           </foaf:name>
           <dct:type>
             <skos:Concept rdf:about="http://purl.org/adms/publishertype/LocalAuthority">
-              <skos:prefLabel xml:lang="{$mainLanguage}">Lokaal bestuur</skos:prefLabel>
-              <skos:prefLabel xml:lang="en">Local Authority</skos:prefLabel>
-              <skos:prefLabel xml:lang="fr">Local Authority</skos:prefLabel>
-              <skos:prefLabel xml:lang="de">Local Authority</skos:prefLabel>
+              <xsl:for-each select="$locales/lang/@code">
+                <skos:prefLabel xml:lang="{.}">Lokaal bestuur</skos:prefLabel>
+              </xsl:for-each>
               <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
             </skos:Concept>
           </dct:type>
@@ -268,10 +267,9 @@
         <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0">
           <dct:type>
             <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
-              <skos:prefLabel xml:lang="{$mainLanguage}">Werk in het publiek domein</skos:prefLabel>
-              <skos:prefLabel xml:lang="en">Public domain</skos:prefLabel>
-              <skos:prefLabel xml:lang="fr">Public domain</skos:prefLabel>
-              <skos:prefLabel xml:lang="de">Public domain</skos:prefLabel>
+              <xsl:for-each select="$locales/lang/@code">
+                <skos:prefLabel xml:lang="{.}">Werk in het publiek domein</skos:prefLabel>
+              </xsl:for-each>
               <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
             </skos:Concept>
           </dct:type>
@@ -283,10 +281,9 @@
       <dct:language>
         <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
           <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
-          <skos:prefLabel xml:lang="{$mainLanguage}">Nederlands</skos:prefLabel>
-          <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
-          <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
-          <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
+          <xsl:for-each select="$locales/lang/@code">
+            <skos:prefLabel xml:lang="{.}">Nederlands</skos:prefLabel>
+          </xsl:for-each>
           <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
         </skos:Concept>
       </dct:language>
@@ -490,22 +487,6 @@
       <xsl:apply-templates select="adms:identifier"/>
     </dcat:Distribution>
   </xsl:template>
-
-  <!-- =================================================================  -->
-
-  <!-- Set default xml:lang value when missing
-  <xsl:template match="dcat:Dataset/dct:title|dcat:DataService/dct:title|dcat:Dataset/dct:description|
-                       dcat:DataService/dct:description|dcat:Distribution/dct:title|
-                       dcat:Distribution/dct:description|foaf:Agent/foaf:name|dcat:keyword"
-                priority="10">
-    <xsl:copy copy-namespaces="no">
-      <xsl:apply-templates select="@*"/>
-      <xsl:if test="not(@xml:lang)">
-        <xsl:attribute name="xml:lang">nl</xsl:attribute>
-      </xsl:if>
-      <xsl:value-of select="."/>
-    </xsl:copy>
-  </xsl:template> -->
 
   <!-- Remove empty concepts -->
   <xsl:template match="foaf:Agent/dct:type|mdcat:MAGDA-categorie|mdcat:statuut|dcat:theme|dct:accrualPeriodicity|
@@ -751,10 +732,9 @@
           <xsl:when test="name() = 'dcat:Dataset'">
             <mdcat:statuut>
               <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
-                <skos:prefLabel xml:lang="{$mainLanguage}">Vlaamse Open data</skos:prefLabel>
-                <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
-                <skos:prefLabel xml:lang="fr">Vlaamse Open data</skos:prefLabel>
-                <skos:prefLabel xml:lang="de">Vlaamse Open data</skos:prefLabel>
+                <xsl:for-each select="$locales/lang/@code">
+                  <skos:prefLabel xml:lang="{.}">Vlaamse Open data</skos:prefLabel>
+                </xsl:for-each>
                 <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
               </skos:Concept>
             </mdcat:statuut>
@@ -762,10 +742,9 @@
           <xsl:otherwise>
             <mdcat:statuut>
               <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE">
-                <skos:prefLabel xml:lang="{$mainLanguage}">Vlaamse Open data Service</skos:prefLabel>
-                <skos:prefLabel xml:lang="en">Vlaamse Open data Service</skos:prefLabel>
-                <skos:prefLabel xml:lang="fr">Vlaamse Open data Service</skos:prefLabel>
-                <skos:prefLabel xml:lang="de">Vlaamse Open data Service</skos:prefLabel>
+                <xsl:for-each select="$locales/lang/@code">
+                  <skos:prefLabel xml:lang="{.}">Vlaamse Open data Service</skos:prefLabel>
+                </xsl:for-each>
                 <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
               </skos:Concept>
             </mdcat:statuut>
