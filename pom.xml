@@ -62,6 +62,16 @@
 
   <build>
     <resources>
+      <!-- thesaurus files packaged into jar -->
+      <resource>
+        <directory>resources/thesauri/theme</directory>
+        <targetPath>thesaurus/theme</targetPath>
+      </resource>
+      <resource>
+        <directory>resources/thesauri/place</directory>
+        <targetPath>thesaurus/place</targetPath>
+      </resource>
+
       <resource>
         <directory>src/main/config/translations</directory>
         <targetPath>META-INF/catalog/locales</targetPath>
