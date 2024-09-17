@@ -90,6 +90,7 @@
         <!-- TODO: add xpath and isoType to get label ? -->
         <xsl:with-param name="label" select="$labelConfig/label"/>
         <xsl:with-param name="btnLabel" select="$labelConfig/btnLabel"/>
+        <xsl:with-param name="btnClass" select="if ($labelConfig/btnClass) then $labelConfig/btnClass else ''"/>
         <xsl:with-param name="directive" select="$directive"/>
         <xsl:with-param name="childEditInfo" select="."/>
         <xsl:with-param name="parentEditInfo" select="../gn:element"/>
@@ -306,9 +307,6 @@
         </xsl:if>
       </xsl:variable>
 
-      <xsl:message><xsl:value-of select="name()"/> (<xsl:value-of select="$isMultilingualElement"/>)
-        values: <xsl:copy-of select="$values"/></xsl:message>
-
       <!-- Add view and edit template-->
       <xsl:variable name="contextXpath" select="gn-fn-metadata:getXPath(.)"/>
       <xsl:variable name="fieldNode" select="$editorConfig/editor/fields/for[@name = $name and @templateModeOnly and (not(@xpath) or @xpath = $contextXpath)]"/>
@@ -374,11 +372,13 @@
             <xsl:with-param name="name" select="$labelConfig/label"/>
             <!--xsl:with-param name="name" select="$strings/*[name() = $name]" /-->
             <xsl:with-param name="btnLabel" select="$labelConfig/btnLabel"/>
+            <xsl:with-param name="btnClass" select="if ($labelConfig/btnClass) then $labelConfig/btnClass else ''"/>
             <xsl:with-param name="id" select="$id"/>
             <xsl:with-param name="isExisting" select="true()"/>
             <xsl:with-param name="template" select="$templateCombinedWithNode"/>
             <xsl:with-param name="keyValues" select="$keyValues"/>
             <xsl:with-param name="refToDelete" select="$refToDelete/gn:element"/>
+            <xsl:with-param name="isFirst" select="count(preceding-sibling::*[name() = $name]) = 0"/>
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>

@@ -363,6 +363,14 @@
 
   <!-- Complex fields. -->
   <fieldsWithFieldset>
+    <name>rdf:RDF</name>
+    <name>dcat:Catalog</name>
+    <name>dcat:Dataset</name>
+    <name>dcat:CatalogRecord</name>
+    <name>dcat:record</name>
+    <name>dcat:dataset</name>
+    <name>dcat:service</name>
+    <name>dct:language</name>
     <name>dcat:contactPoint</name>
     <name>vcard:Organization</name>
     <name>vcard:hasAddress</name>
@@ -399,8 +407,22 @@
   </fieldsWithFieldset>
 
   <multilingualFields>
+    <expanded>
+      <name>dct:title</name>
+      <name>dct:description</name>
+    </expanded>
     <exclude>
       <name>dct:identifier</name>
+      <name>dct:language</name>
+      <name>dct:modified</name>
+      <name>dct:issued</name>
+      <name>prov:atTime</name>
+      <name>dcat:startDate</name>
+      <name>dcat:endDate</name>
+      <name>vcard:hasEmail</name>
+      <name>foaf:Document</name>
+      <name>dcat:spatialResolutionInMeters</name>
+      <name>dcat:temporalResolution</name>
     </exclude>
   </multilingualFields>
 
@@ -1054,6 +1076,16 @@
         </section>
       </tab>
 
+    </view>
+
+    <view name="fromroot">
+      <sidePanel>
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata" />
+        <directive data-gn-validation-report=""/>
+      </sidePanel>
+      <tab id="dcat.catalog-record">
+        <section xpath="/rdf:RDF"/>
+      </tab>
     </view>
 
     <view name="xml">
