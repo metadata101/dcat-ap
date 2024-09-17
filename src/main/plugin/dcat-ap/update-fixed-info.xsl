@@ -225,17 +225,15 @@
     </xsl:copy>
   </xsl:template>
 
-  <!-- ================================================================= -->
-
   <xsl:template match="dcat:Catalog" priority="10">
     <dcat:Catalog>
       <xsl:attribute name="rdf:about">
-        <xsl:value-of select="concat($resourcePrefix,'/catalogs/',$env/system/site/siteId)"/>
+        <xsl:value-of select="concat($resourcePrefix, '/catalogs/', $env/system/site/siteId)"/>
       </xsl:attribute>
-      <dct:title xml:lang="nl">
+      <dct:title xml:lang="{$mainLanguage}">
         <xsl:value-of select="concat('Open Data Catalogus van ', $env/system/site/organization)"/>
       </dct:title>
-      <dct:description xml:lang="nl">
+      <dct:description xml:lang="{$mainLanguage}">
         <xsl:value-of select="concat('Deze catalogus bevat datasets ontsloten door ', $env/system/site/organization)"/>
       </dct:description>
       <dct:identifier>
@@ -244,12 +242,12 @@
       <dct:publisher>
         <!-- Organization in charge of the catalogue defined in the administration > system configuration -->
         <foaf:Agent rdf:about="{$resourcePrefix}/organizations/{encode-for-uri($env/system/site/organization)}">
-          <foaf:name xml:lang="nl">
+          <foaf:name xml:lang="{$mainLanguage}">
             <xsl:value-of select="$env/system/site/organization"/>
           </foaf:name>
           <dct:type>
             <skos:Concept rdf:about="http://purl.org/adms/publishertype/LocalAuthority">
-              <skos:prefLabel xml:lang="nl">Lokaal bestuur</skos:prefLabel>
+              <skos:prefLabel xml:lang="{$mainLanguage}">Lokaal bestuur</skos:prefLabel>
               <skos:prefLabel xml:lang="en">Local Authority</skos:prefLabel>
               <skos:prefLabel xml:lang="fr">Local Authority</skos:prefLabel>
               <skos:prefLabel xml:lang="de">Local Authority</skos:prefLabel>
@@ -263,29 +261,29 @@
           <xsl:if test="normalize-space($serviceUrl) != ''">
             <xsl:attribute name="rdf:about" select="$serviceUrl"/>
           </xsl:if>
-          <foaf:name xml:lang="nl"><xsl:value-of select="$env/system/site/name"/></foaf:name>
+          <foaf:name xml:lang="{$mainLanguage}"><xsl:value-of select="$env/system/site/name"/></foaf:name>
         </foaf:Document>
       </foaf:homepage>
       <dct:license>
         <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0">
           <dct:type>
             <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
-              <skos:prefLabel xml:lang="nl">Werk in het publiek domein</skos:prefLabel>
+              <skos:prefLabel xml:lang="{$mainLanguage}">Werk in het publiek domein</skos:prefLabel>
               <skos:prefLabel xml:lang="en">Public domain</skos:prefLabel>
               <skos:prefLabel xml:lang="fr">Public domain</skos:prefLabel>
               <skos:prefLabel xml:lang="de">Public domain</skos:prefLabel>
               <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
             </skos:Concept>
           </dct:type>
-          <dct:title xml:lang="nl">Creative Commons Zero verklaring</dct:title>
-          <dct:description xml:lang="nl">De instantie doet afstand van haar intellectuele eigendomsrechten voor zover dit wettelijk mogelijk is. Hierdoor kan de gebruiker de data hergebruiken voor eender welk doel, zonder een verplichting op naamsvermelding. Deze is de welbekende CC0 licentie.</dct:description>
+          <dct:title xml:lang="{$mainLanguage}">Creative Commons Zero verklaring</dct:title>
+          <dct:description xml:lang="{$mainLanguage}">De instantie doet afstand van haar intellectuele eigendomsrechten voor zover dit wettelijk mogelijk is. Hierdoor kan de gebruiker de data hergebruiken voor eender welk doel, zonder een verplichting op naamsvermelding. Deze is de welbekende CC0 licentie.</dct:description>
           <dct:identifier>https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0</dct:identifier>
         </dct:LicenseDocument>
       </dct:license>
       <dct:language>
         <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
           <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
-          <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+          <skos:prefLabel xml:lang="{$mainLanguage}">Nederlands</skos:prefLabel>
           <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
           <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
           <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
@@ -514,11 +512,20 @@
                        dct:language|dcat:Dataset/dct:type|dcat:DataService/dct:type|dct:format|dcat:mediaType|adms:status|
                        dct:LicenseDocument/dct:type|dct:accessRights|mdcat:levensfase|mdcat:ontwikkelingstoestand|
                        dcat:compressFormat|dcat:packageFormat" priority="10">
-    <xsl:if test="count(skos:Concept) = 1">
-      <xsl:copy copy-namespaces="no">
-        <xsl:apply-templates select="skos:Concept"/>
-      </xsl:copy>
-    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="count(skos:Concept) = 1">
+        <xsl:copy copy-namespaces="no">
+          <xsl:apply-templates select="skos:Concept"/>
+        </xsl:copy>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:copy>
+          <xsl:copy-of select="@*"/>
+          <xsl:apply-templates select="*"/>
+        </xsl:copy>
+      </xsl:otherwise>
+    </xsl:choose>
+
   </xsl:template>
 
   <!-- Rename dct:subject -->
@@ -663,7 +670,7 @@
         <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
           <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03</dct:identifier>
           <dct:title>Dcat-ap-vl</dct:title>
-          <dct:description xml:lang="nl">Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
+          <dct:description xml:lang="{$mainLanguage}">Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
           <owl:versionInfo>2.0</owl:versionInfo>
         </dct:Standard>
       </xsl:when>
@@ -675,7 +682,7 @@
         <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22">
           <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22</dct:identifier>
           <dct:title>Metadata-dcat</dct:title>
-          <dct:description xml:lang="nl">Het applicatieprofiel “metadata dcat”. Dit is een applicatieprofiel gebaseerd op DCAT en richt zich op het verzamelen van informatie over generieke datasets, distributies en services die door een overheid beschikbaar gesteld worden. De datasets en services omvatten zowel publiek toegankelijke als afgeschermde data en diensten (ontwikkeld in en voor eender welk technisch perspectief). Het samenbrengen van al deze informatie in een catalogus laat toe om de vindbaarheid van deze datasets en services te verhogen. Dit applicatieprofiel is het generieke basisprofiel. Afgeleide profielen kunnen zeker aangemaakt worden voor specifieke domeinen of communities. Bijvoorbeeld is DCAT-AP-VL zo’n afgeleid applicatieprofiel, specifiek voor het Open data domein en bijhorende community.</dct:description>
+          <dct:description xml:lang="{$mainLanguage}">Het applicatieprofiel “metadata dcat”. Dit is een applicatieprofiel gebaseerd op DCAT en richt zich op het verzamelen van informatie over generieke datasets, distributies en services die door een overheid beschikbaar gesteld worden. De datasets en services omvatten zowel publiek toegankelijke als afgeschermde data en diensten (ontwikkeld in en voor eender welk technisch perspectief). Het samenbrengen van al deze informatie in een catalogus laat toe om de vindbaarheid van deze datasets en services te verhogen. Dit applicatieprofiel is het generieke basisprofiel. Afgeleide profielen kunnen zeker aangemaakt worden voor specifieke domeinen of communities. Bijvoorbeeld is DCAT-AP-VL zo’n afgeleid applicatieprofiel, specifiek voor het Open data domein en bijhorende community.</dct:description>
           <owl:versionInfo>2.0</owl:versionInfo>
         </dct:Standard>
       </xsl:when>
@@ -744,7 +751,7 @@
           <xsl:when test="name() = 'dcat:Dataset'">
             <mdcat:statuut>
               <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
-                <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
+                <skos:prefLabel xml:lang="{$mainLanguage}">Vlaamse Open data</skos:prefLabel>
                 <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
                 <skos:prefLabel xml:lang="fr">Vlaamse Open data</skos:prefLabel>
                 <skos:prefLabel xml:lang="de">Vlaamse Open data</skos:prefLabel>
@@ -755,7 +762,7 @@
           <xsl:otherwise>
             <mdcat:statuut>
               <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE">
-                <skos:prefLabel xml:lang="nl">Vlaamse Open data Service</skos:prefLabel>
+                <skos:prefLabel xml:lang="{$mainLanguage}">Vlaamse Open data Service</skos:prefLabel>
                 <skos:prefLabel xml:lang="en">Vlaamse Open data Service</skos:prefLabel>
                 <skos:prefLabel xml:lang="fr">Vlaamse Open data Service</skos:prefLabel>
                 <skos:prefLabel xml:lang="de">Vlaamse Open data Service</skos:prefLabel>
