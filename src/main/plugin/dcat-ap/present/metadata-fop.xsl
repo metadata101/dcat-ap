@@ -22,28 +22,22 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 
-<beans
-    xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:util="http://www.springframework.org/schema/util"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  exclude-result-prefixes="xs"
+  version="2.0">
 
-  <bean id="dcat-apSchemaPlugin"
-        class="org.fao.geonet.schema.dcatap.DCATAPSchemaPlugin">
-    <property name="xpathTitle">
-      <util:list value-type="java.lang.String">
-        <value>dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title</value>
-        <value>dcat:Catalog/dcat:service/dcat:DataService/dct:title</value>
-      </util:list>
-    </property>
-    <property name="savedQueries">
-      <list>
-        <bean class="org.fao.geonet.kernel.schema.SavedQuery">
-          <property name="id" value="resourceid-get"/>
-          <property name="xpath"
-                    value="dcat:Catalog/dcat:dataset/dcat:Dataset/@rdf:about|dcat:Catalog/dcat:service/dcat:DataService/@rdf:about"/>
-        </bean>
-      </list>
-    </property>
-  </bean>
-</beans>
+  <xsl:template name="metadata-fop-dcat-ap">
+    <xsl:param name="schema"/>
+
+    <xsl:for-each select="*">
+      <xsl:call-template name="blockElementFop">
+        <xsl:with-param name="block">
+          <xsl:apply-templates mode="elementFop" select=".">
+            <xsl:with-param name="schema" select="$schema"/>
+          </xsl:apply-templates>
+        </xsl:with-param>
+      </xsl:call-template>
+    </xsl:for-each>
+  </xsl:template>
+</xsl:stylesheet>

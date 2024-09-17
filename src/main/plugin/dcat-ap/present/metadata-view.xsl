@@ -22,28 +22,10 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 
-<beans
-    xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:util="http://www.springframework.org/schema/util"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <bean id="dcat-apSchemaPlugin"
-        class="org.fao.geonet.schema.dcatap.DCATAPSchemaPlugin">
-    <property name="xpathTitle">
-      <util:list value-type="java.lang.String">
-        <value>dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title</value>
-        <value>dcat:Catalog/dcat:service/dcat:DataService/dct:title</value>
-      </util:list>
-    </property>
-    <property name="savedQueries">
-      <list>
-        <bean class="org.fao.geonet.kernel.schema.SavedQuery">
-          <property name="id" value="resourceid-get"/>
-          <property name="xpath"
-                    value="dcat:Catalog/dcat:dataset/dcat:Dataset/@rdf:about|dcat:Catalog/dcat:service/dcat:DataService/@rdf:about"/>
-        </bean>
-      </list>
-    </property>
-  </bean>
-</beans>
+    <xsl:template name="view-with-header-dcat-ap">
+        <xsl:call-template name="metadata-metadata-dcatview-simple"></xsl:call-template>
+  </xsl:template>
+
+</xsl:stylesheet>
