@@ -34,13 +34,13 @@
 
   <xsl:import href="metadata-view.xsl"/>
 
-  <!-- main template - the way into processing dcat2 -->
-  <xsl:template name="dcat2">
+  <!-- main template - the way into processing dcat-ap -->
+  <xsl:template name="dcat-ap">
     <xsl:param name="schema"/>
     <xsl:param name="edit" select="false()"/>
     <xsl:param name="embedded"/>
 
-    <xsl:apply-templates mode="dcat2" select="." >
+    <xsl:apply-templates mode="dcat-ap" select="." >
       <xsl:with-param name="schema" select="$schema"/>
       <xsl:with-param name="edit"   select="$edit"/>
       <xsl:with-param name="embedded" select="$embedded" />
@@ -48,7 +48,7 @@
   </xsl:template>
 
   <!-- simple -->
-  <xsl:template name="metadata-dcat2view-simple" match="metadata-dcat2view-simple">
+  <xsl:template name="metadata-dcat-apview-simple" match="metadata-dcat-apview-simple">
 
     <xsl:call-template name="md-content">
       <xsl:with-param name="title" select="//dct:title"/>
@@ -64,15 +64,15 @@
         <img src="../../images/logos/{//geonet:info/source}.gif" alt="logo"/>
       </xsl:with-param>
       <xsl:with-param name="relatedResources">
-        <xsl:call-template name="dcat2-relatedResources"/>
+        <xsl:call-template name="dcat-ap-relatedResources"/>
       </xsl:with-param>
       <xsl:with-param name="tabs">
         <xsl:call-template name="complexElementSimpleGui">
           <xsl:with-param name="title"
             select="/root/gui/schemas/iso19139/strings/understandResource"/>
           <xsl:with-param name="content">
-            <xsl:apply-templates mode="dcat2" select=".">
-              <xsl:with-param name="schema" select="'dcat2'"/>
+            <xsl:apply-templates mode="dcat-ap" select=".">
+              <xsl:with-param name="schema" select="'dcat-ap'"/>
               <xsl:with-param name="edit" select="false()"/>
             </xsl:apply-templates>
           </xsl:with-param>
@@ -88,7 +88,7 @@
 
   <!-- List of related resources defined in the online resource section of the metadata record.
   -->
-  <xsl:template name="dcat2-relatedResources">
+  <xsl:template name="dcat-ap-relatedResources">
     <table class="related">
       <tbody>
         <tr style="display:none;"><!-- FIXME needed by JS to append other type of relation from xml.relation service -->
@@ -124,7 +124,7 @@
 
   <!-- CompleteTab template - dc just calls completeTab from
        metadata-utils.xsl -->
-  <xsl:template name="dcat2CompleteTab">
+  <xsl:template name="dcat-apCompleteTab">
     <xsl:param name="tabLink"/>
 
     <xsl:call-template name="mainTab">
@@ -139,7 +139,7 @@
   <!--
   default: in simple mode just a flat list
   -->
-  <xsl:template mode="dcat2" match="*|@*">
+  <xsl:template mode="dcat-ap" match="*|@*">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
     <xsl:message select="concat('SURPRISE: here we render element ',name(.))"/>
@@ -153,7 +153,7 @@
   <!--
   these elements should be boxed
   -->
-  <xsl:template mode="dcat2" match="dcat:Dataset|csw:Record">
+  <xsl:template mode="dcat-ap" match="dcat:Dataset|csw:Record">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
 
@@ -163,7 +163,7 @@
     </xsl:apply-templates>
   </xsl:template>
 
-  <xsl:template mode="dcat2" match="dct:anyCHOICE_ELEMENT0">
+  <xsl:template mode="dcat-ap" match="dct:anyCHOICE_ELEMENT0">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
 
@@ -179,7 +179,7 @@
   <!--
   identifier
   -->
-  <xsl:template mode="dcat2" match="dct:identifier">
+  <xsl:template mode="dcat-ap" match="dct:identifier">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
 
@@ -191,7 +191,7 @@
   </xsl:template>
 
 
-  <xsl:template mode="dcat2" match="dct:description|dct:rights|dct:title">
+  <xsl:template mode="dcat-ap" match="dct:description|dct:rights|dct:title">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
     <xsl:variable name="class">
@@ -234,7 +234,7 @@
 
   </xsl:template>
 
-  <xsl:template mode="dcat2" match="dct:modified|dct:date|dct:created|dct:dateSubmitted|
+  <xsl:template mode="dcat-ap" match="dct:modified|dct:date|dct:created|dct:dateSubmitted|
     dct:dateAccepted|dct:dateCopyrighted|dct:issued|dct:available|dct:valid">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
@@ -254,7 +254,7 @@
     </xsl:apply-templates>
   </xsl:template>
 
-  <xsl:template mode="dcat2" match="dct:spatial">
+  <xsl:template mode="dcat-ap" match="dct:spatial">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
 
@@ -307,7 +307,7 @@
 
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!-- dcat2 brief and superBrief formatting -->
+  <!-- dcat-ap brief and superBrief formatting -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <xsl:template mode="superBrief" match="dcat:Dataset">
       <id><xsl:value-of select="geonet:info/id"/></id>
@@ -320,7 +320,7 @@
       </xsl:if>
     </xsl:template>
 
-  <xsl:template name="dcat2Brief">
+  <xsl:template name="dcat-apBrief">
     <metadata>
       <xsl:if test="dct:title">
         <title><xsl:value-of select="dct:title"/></title>

@@ -9,7 +9,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>gn-schema-dcat2</artifactId>
+  <artifactId>gn-schema-dcat-ap</artifactId>
   <name>GeoNetwork schema plugin for DCAT-AP standard</name>
   <packaging>jar</packaging>
 

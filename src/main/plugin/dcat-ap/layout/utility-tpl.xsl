@@ -30,17 +30,17 @@
 
   <xsl:include href="utility-tpl-multilingual.xsl"/>
 
-  <xsl:template name="get-dcat2-is-service">
+  <xsl:template name="get-dcat-ap-is-service">
     <xsl:value-of
       select="count($metadata/dcat:Catalog/dcat:service) > 0"/>
   </xsl:template>
 
-  <xsl:template name="get-dcat2-title">
+  <xsl:template name="get-dcat-ap-title">
     <xsl:value-of select="$metadata/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title[1]|$metadata/dcat:Catalog/dcat:service/dcat:DataService/dct:title[1]"/>
   </xsl:template>
 
-  <xsl:template name="get-dcat2-extents-as-json">[]</xsl:template>
+  <xsl:template name="get-dcat-ap-extents-as-json">[]</xsl:template>
 
-  <xsl:template name="get-dcat2-online-source-config"/>
+  <xsl:template name="get-dcat-ap-online-source-config"/>
 
 </xsl:stylesheet>

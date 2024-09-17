@@ -31,7 +31,7 @@
         xmlns:joda="java:org.fao.geonet.domain.ISODate"
         xmlns:mime="java:org.fao.geonet.util.MimeTypeFinder"
         xmlns:xs="http://www.w3.org/2001/XMLSchema"
-        xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
+        xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
         version="2.0"
         exclude-result-prefixes="#all">
   <!-- ========================================================================================= -->
@@ -57,7 +57,7 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <xsl:variable name="bbox" select="gn-fn-dcat2:getBboxCoordinates($geometry)"/>
+    <xsl:variable name="bbox" select="gn-fn-dcat-ap:getBboxCoordinates($geometry)"/>
     <xsl:variable name="bboxCoordinates" select="tokenize(replace($bbox,',','.'), '\|')"/>
     <xsl:if test="count($bboxCoordinates)=4">
       <Field name="westBL" string="{format-number(xs:double($bboxCoordinates[1]) , $format)}"
@@ -121,11 +121,11 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template name="langId-dcat2">
+  <xsl:template name="langId-dcat-ap">
     <xsl:value-of select="$defaultLang"/>
   </xsl:template>
 
-  <xsl:template name="catalog-langId-dcat2">
+  <xsl:template name="catalog-langId-dcat-ap">
     <!--xsl:variable name="titleLanguages" select="/*[name(.)='rdf:RDF']/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title/@xml:lang"/-->
     <!--xsl:variable name="allLanguages" select="distinct-values(/*[name(.)='rdf:RDF']/dcat:Catalog/dcat:dataset/dcat:Dataset//@xml:lang)"/-->
     <xsl:variable name="allCatalogLanguages" select="distinct-values(/*[name(.)='rdf:RDF']/dcat:Catalog/dct:language/skos:Concept/@rdf:about)"/>

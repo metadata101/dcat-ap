@@ -38,7 +38,7 @@
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
-                xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
+                xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 xmlns:saxon="http://saxon.sf.net/"
                 version="2.0"
                 extension-element-prefixes="saxon"
@@ -53,12 +53,12 @@
   <xsl:variable name="isDcatService" select="count($metadata/dcat:Catalog/dcat:service/dcat:DataService) > 0"/>
 
   <!-- Ignore all gn element -->
-  <xsl:template mode="mode-dcat2" match="gn:*|@gn:*" priority="1000"/>
+  <xsl:template mode="mode-dcat-ap" match="gn:*|@gn:*" priority="1000"/>
 
   <!-- Template to display non existing element ie. geonet:child element
   of the metadocument. Display in editing mode only and if
   the editor mode is not flat mode. -->
-  <xsl:template mode="mode-dcat2" match="gn:child" priority="2000">
+  <xsl:template mode="mode-dcat-ap" match="gn:child" priority="2000">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
 
@@ -99,7 +99,7 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template mode="mode-dcat2" match="*[name() = $editorConfig/editor/fieldsWithFieldset/name]" priority="200">
+  <xsl:template mode="mode-dcat-ap" match="*[name() = $editorConfig/editor/fieldsWithFieldset/name]" priority="200">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
     <xsl:param name="refToDelete" required="no"/>
@@ -125,12 +125,12 @@
 
         <xsl:if test="$isEditing">
           <!-- Render attributes as fields and overwrite the normal behavior -->
-          <xsl:apply-templates mode="render-for-field-for-attribute-dcat2"
+          <xsl:apply-templates mode="render-for-field-for-attribute-dcat-ap"
                                select="@*|gn:attribute[not(@name = parent::node()/@*/name())]">
             <xsl:with-param name="ref" select="gn:element/@ref"/>
           </xsl:apply-templates>
         </xsl:if>
-        <xsl:apply-templates mode="mode-dcat2" select="*">
+        <xsl:apply-templates mode="mode-dcat-ap" select="*">
           <xsl:with-param name="schema" select="$schema"/>
           <xsl:with-param name="labels" select="$labels"/>
         </xsl:apply-templates>
@@ -157,7 +157,7 @@
     Template to display non existing element ie. geonet:child element
     of the metadocument. Display in editing mode only and if
   the editor mode is not flat mode. -->
-  <xsl:template mode="mode-dcat2" match="gn:child[contains(@name, 'CHOICE_ELEMENT')]"  priority="3000">
+  <xsl:template mode="mode-dcat-ap" match="gn:child[contains(@name, 'CHOICE_ELEMENT')]"  priority="3000">
     <xsl:if test="$isEditing and
       not($isFlatMode)">
 
@@ -182,7 +182,7 @@
   </xsl:template>
 
   <!-- Hide from the editor the dct:references pointing to uploaded files -->
-  <xsl:template mode="mode-dcat2" priority="101"
+  <xsl:template mode="mode-dcat-ap" priority="101"
                 match="*[(name(.) = 'dct:references' or
                           name(.) = 'dc:relation') and
                          (starts-with(., 'http') or
@@ -190,7 +190,7 @@
                           contains(., 'file.disclaimer'))]" />
 
   <!-- the other elements in DC. -->
-  <xsl:template mode="mode-dcat2" priority="100" match="dc:*|dct:*|dcat:*|vcard:*|foaf:*|spdx:*|adms:*|owl:*|schema:*|skos:*|mdcat:*">
+  <xsl:template mode="mode-dcat-ap" priority="100" match="dc:*|dct:*|dcat:*|vcard:*|foaf:*|spdx:*|adms:*|owl:*|schema:*|skos:*|mdcat:*">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
     <xsl:param name="overrideLabel" select="''" required="no"/>
@@ -303,7 +303,7 @@
         <xsl:variable name="renderedAttribute">
           <xsl:if test="$isEditing">
             <!-- Render attributes as fields and overwrite the normal behavior -->
-            <xsl:apply-templates mode="render-for-field-for-attribute-dcat2" select="@*|gn:attribute[not(@name = parent::node()/@*/name())]">
+            <xsl:apply-templates mode="render-for-field-for-attribute-dcat-ap" select="@*|gn:attribute[not(@name = parent::node()/@*/name())]">
               <xsl:with-param name="ref" select="gn:element/@ref"/>
             </xsl:apply-templates>
           </xsl:if>
@@ -321,7 +321,7 @@
   </xsl:template>
 
   <!-- Hide from the editor in default view -->
-  <xsl:template mode="mode-dcat2" priority="2001"
+  <xsl:template mode="mode-dcat-ap" priority="2001"
                 match="*[((name(.) = 'dcat:downloadURL' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dct:issued' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dct:identifier' and name(..) = 'dcat:Distribution') or
@@ -341,9 +341,9 @@
                           $isFlatMode]" />
 
   <!-- Ignore the following attributes in flatMode -->
-  <xsl:template mode="render-for-field-for-attribute-dcat2" match="@*[$isFlatMode and name() != 'rdf:about']|@gn:xsderror|@gn:addedObj" priority="101"/>
+  <xsl:template mode="render-for-field-for-attribute-dcat-ap" match="@*[$isFlatMode and name() != 'rdf:about']|@gn:xsderror|@gn:addedObj" priority="101"/>
 
-  <xsl:template mode="render-for-field-for-attribute-dcat2" match="@*" priority="100">
+  <xsl:template mode="render-for-field-for-attribute-dcat-ap" match="@*" priority="100">
     <xsl:variable name="attributeName" select="name(.)"/>
     <xsl:variable name="ref" select="concat(../gn:element/@ref, '_', replace($attributeName, ':', 'COLON'))"/>
     <xsl:variable name="attribute" as="node()">
@@ -368,18 +368,18 @@
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template mode="render-for-field-for-attribute-dcat2"
+  <xsl:template mode="render-for-field-for-attribute-dcat-ap"
                 match="gn:attribute[@name = ('rdf:nodeID', 'rdf:resource')]"
                 priority="101"/>
 
-  <xsl:template mode="render-for-field-for-attribute-dcat2"
+  <xsl:template mode="render-for-field-for-attribute-dcat-ap"
                 match="gn:attribute[not(@name = ('ref', 'parent', 'id', 'uuid', 'type', 'uuidref', 'xlink:show', 'xlink:actuate', 'xlink:arcrole', 'xlink:role', 'xlink:title', 'xlink:href')) and @add = 'true']"
                 priority="100">
     <xsl:param name="ref"/>
     <xsl:variable name="xpath" select="gn-fn-metadata:getXPath(..)"/>
     <xsl:variable name="name" select="concat(@prefix, @name)"/>
     <xsl:if test="not($isFlatMode) or gn-fn-metadata:isFieldFlatModeException($viewConfig, $name, $xpath)">
-      <xsl:if test="not(gn-fn-dcat2:isNotMultilingualField(.., $editorConfig))">
+      <xsl:if test="not(gn-fn-dcat-ap:isNotMultilingualField(.., $editorConfig))">
         <xsl:variable name="attributeLabel" select="gn-fn-metadata:getLabel($schema, @name, $labels, name(..), '', concat(gn-fn-metadata:getXPath(..),'/@',@name))"/>
         <div class="form-group gn-field gn-lang" id="gn-el-{$ref}_{replace(@name, ':', 'COLON')}">
           <label class="col-sm-2 control-label"/>

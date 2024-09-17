@@ -33,41 +33,41 @@
 
 
   <xsl:template mode="to-dcat" match="rdf:RDF">
-    <xsl:apply-templates mode="dcat2-rdf-export" select="dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
-    <xsl:apply-templates mode="dcat2-rdf-export" select="dcat:Catalog/dcat:dataset/dcat:Dataset|dcat:Catalog/dcat:service/dcat:DataService"/>
+    <xsl:apply-templates mode="dcat-ap-rdf-export" select="dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
+    <xsl:apply-templates mode="dcat-ap-rdf-export" select="dcat:Catalog/dcat:dataset/dcat:Dataset|dcat:Catalog/dcat:service/dcat:DataService"/>
   </xsl:template>
 
   <!-- Remove empty rdf:about from export -->
-  <xsl:template mode="dcat2-rdf-export" match="*[@rdf:about and normalize-space(@rdf:about) = '']">
+  <xsl:template mode="dcat-ap-rdf-export" match="*[@rdf:about and normalize-space(@rdf:about) = '']">
     <xsl:copy copy-namespaces="no">
-      <xsl:apply-templates mode="dcat2-rdf-export" select="*|@*[name() != 'rdf:about']"/>
+      <xsl:apply-templates mode="dcat-ap-rdf-export" select="*|@*[name() != 'rdf:about']"/>
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template mode="dcat2-rdf-export" match="dcat:CatalogRecord[normalize-space(@rdf:about) = '']" priority="10">
+  <xsl:template mode="dcat-ap-rdf-export" match="dcat:CatalogRecord[normalize-space(@rdf:about) = '']" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:variable name="recordURI" select="concat($recordPrefix, dct:identifier[1])"/>
       <xsl:attribute name="rdf:about" select="$recordURI"/>
       <xsl:call-template name="alternative-identifier">
         <xsl:with-param name="identifier" select="$recordURI"/>
       </xsl:call-template>
-      <xsl:apply-templates mode="dcat2-rdf-export" select="*|@*[name() != 'rdf:about']"/>
+      <xsl:apply-templates mode="dcat-ap-rdf-export" select="*|@*[name() != 'rdf:about']"/>
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template mode="dcat2-rdf-export" match="dcat:CatalogRecord[normalize-space(@rdf:about) != '']" priority="10">
+  <xsl:template mode="dcat-ap-rdf-export" match="dcat:CatalogRecord[normalize-space(@rdf:about) != '']" priority="10">
     <xsl:copy copy-namespaces="no">
-      <xsl:apply-templates mode="dcat2-rdf-export" select="@*"/>
+      <xsl:apply-templates mode="dcat-ap-rdf-export" select="@*"/>
       <xsl:call-template name="alternative-identifier"/>
-      <xsl:apply-templates mode="dcat2-rdf-export" select="*"/>
+      <xsl:apply-templates mode="dcat-ap-rdf-export" select="*"/>
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template mode="dcat2-rdf-export" match="dcat:Dataset|dcat:DataService" priority="10">
+  <xsl:template mode="dcat-ap-rdf-export" match="dcat:Dataset|dcat:DataService" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:choose>
         <xsl:when test="normalize-space(@rdf:about) != ''">
-          <xsl:apply-templates mode="dcat2-rdf-export" select="@rdf:about"/>
+          <xsl:apply-templates mode="dcat-ap-rdf-export" select="@rdf:about"/>
           <xsl:call-template name="alternative-identifier"/>
         </xsl:when>
         <xsl:otherwise>
@@ -80,13 +80,13 @@
           </xsl:if>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates mode="dcat2-rdf-export" select="@*[name() != 'rdf:about']|*"/>
+      <xsl:apply-templates mode="dcat-ap-rdf-export" select="@*[name() != 'rdf:about']|*"/>
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template mode="dcat2-rdf-export" match="*[@rdf:resource and contains(@rdf:resource, ' ')]">
+  <xsl:template mode="dcat-ap-rdf-export" match="*[@rdf:resource and contains(@rdf:resource, ' ')]">
     <xsl:copy copy-namespaces="no">
-      <xsl:apply-templates mode="dcat2-rdf-export" select="@*[name() != 'rdf:resource']"/>
+      <xsl:apply-templates mode="dcat-ap-rdf-export" select="@*[name() != 'rdf:resource']"/>
       <xsl:choose>
         <xsl:when test="normalize-space(@rdf:resource) = ''">
           <xsl:attribute name="rdf:resource" select="''"/>
@@ -98,9 +98,9 @@
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template mode="dcat2-rdf-export" match="@*|*">
+  <xsl:template mode="dcat-ap-rdf-export" match="@*|*">
     <xsl:copy copy-namespaces="no">
-      <xsl:apply-templates mode="dcat2-rdf-export" select="@*|node()"/>
+      <xsl:apply-templates mode="dcat-ap-rdf-export" select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
 

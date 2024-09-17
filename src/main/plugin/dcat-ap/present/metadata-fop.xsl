@@ -27,7 +27,7 @@
   exclude-result-prefixes="xs"
   version="2.0">
 
-  <xsl:template name="metadata-fop-dcat2">
+  <xsl:template name="metadata-fop-dcat-ap">
     <xsl:param name="schema"/>
 
     <xsl:for-each select="*">

@@ -38,13 +38,13 @@
     xmlns:gml="http://www.opengis.net/gml"
     xmlns:gn="http://www.fao.org/geonetwork"
     xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
-    xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
+    xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
     xmlns:saxon="http://saxon.sf.net/"
     extension-element-prefixes="saxon"
     version="2.0"
     exclude-result-prefixes="#all">
 
-  <xsl:template mode="mode-dcat2" match="*[name() = $editorConfig/editor/fields/for[@use = 'gn-date-picker']/@name]" priority="4000">
+  <xsl:template mode="mode-dcat-ap" match="*[name() = $editorConfig/editor/fields/for[@use = 'gn-date-picker']/@name]" priority="4000">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
     <xsl:param name="overrideLabel" select="''" required="no"/>

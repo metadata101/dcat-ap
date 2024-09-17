@@ -48,7 +48,7 @@
     types, and functions from the calling stylesheet or query"
     http://saxonica.com/documentation9.4-demo/html/extensions/functions/evaluate.html
     -->
-  <xsl:template name="evaluate-dcat2">
+  <xsl:template name="evaluate-dcat-ap">
     <xsl:param name="base" as="node()"/>
     <xsl:param name="in"/>
     <xsl:variable name="nodeOrAttribute" select="saxon:evaluate(concat('$p1', if (ends-with($in,'.')) then concat($in,'/text()') else $in), $base)"/>
@@ -70,7 +70,7 @@
   </xsl:template>
 
   <!-- Evaluate XPath returning a boolean value. -->
-  <xsl:template name="evaluate-dcat2-boolean">
+  <xsl:template name="evaluate-dcat-ap-boolean">
     <xsl:param name="base" as="node()"/>
     <xsl:param name="in"/>
 

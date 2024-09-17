@@ -30,7 +30,7 @@
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
-                xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
+                xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 version="2.0"
                 exclude-result-prefixes="#all">
 
@@ -39,15 +39,15 @@
   <!-- Surround the concept with parent based on  related parent xml element
     If no keyword is provided, only thesaurus section is adaded.
     -->
-  <xsl:template name="to-dcat2-concept">
+  <xsl:template name="to-dcat-ap-concept">
     <xsl:variable name="listOfLanguage" select="tokenize(/root/request/lang, ',')"/>
-    <xsl:apply-templates mode="to-dcat2-concept" select=".">
+    <xsl:apply-templates mode="to-dcat-ap-concept" select=".">
       <xsl:with-param name="listOfLanguage" select="$listOfLanguage"/>
     </xsl:apply-templates>
   </xsl:template>
 
   <!-- Surround the skos:Concept xml element with a parent xml element on the thesaurus key -->
-  <xsl:template mode="to-dcat2-concept" match="*[not(/root/request/skipdescriptivekeywords)]">
+  <xsl:template mode="to-dcat-ap-concept" match="*[not(/root/request/skipdescriptivekeywords)]">
     <xsl:param name="listOfLanguage"/>
     <xsl:param name="wrapper"
                select="if (/root/request/wrapper)
@@ -61,7 +61,7 @@
                   select="if ($currentThesaurus = 'external.none.allThesaurus')
                           then replace(./uri, 'http://org.fao.geonet.thesaurus.all/([^@]+)@@@.+', '$1')
                           else $currentThesaurus"/>
-    <xsl:variable name="inSchemeURI" select="gn-fn-dcat2:getInSchemeURIByThesaurusId($keywordThesaurus)"/>
+    <xsl:variable name="inSchemeURI" select="gn-fn-dcat-ap:getInSchemeURIByThesaurusId($keywordThesaurus)"/>
 
     <!-- Loop on all keyword from the same thesaurus -->
     <xsl:variable name="response">
@@ -103,17 +103,17 @@
   </xsl:template>
 
 
-  <xsl:template name="to-dcat2-concept-reference">
+  <xsl:template name="to-dcat-ap-concept-reference">
     <xsl:variable name="listOfLanguage"
                   select="tokenize(/root/request/lang, ',')"/>
 
-    <xsl:apply-templates mode="to-dcat2-concept-reference" select=".">
+    <xsl:apply-templates mode="to-dcat-ap-concept-reference" select=".">
       <xsl:with-param name="listOfLanguage" select="$listOfLanguage"/>
     </xsl:apply-templates>
   </xsl:template>
 
   <!-- Surround the skos:Concept xml element with a parent xml element on the thesaurus key -->
-  <xsl:template mode="to-dcat2-concept-reference"
+  <xsl:template mode="to-dcat-ap-concept-reference"
                 match="*[not(/root/request/skipdescriptivekeywords)]">
     <xsl:param name="listOfLanguage"/>
     <xsl:param name="wrapper"

@@ -25,7 +25,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:geonet="http://www.fao.org/geonetwork"
-                xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
+                xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 exclude-result-prefixes="#all"
                 version="2.0">
   <xsl:import href="../../iso19139/process/process-utility.xsl"/>
@@ -51,6 +51,6 @@
   </xsl:template>
 
   <xsl:template match="/">
-        <xsl:copy-of select="gn-fn-dcat2:vacuum(.)"/>
+        <xsl:copy-of select="gn-fn-dcat-ap:vacuum(.)"/>
     </xsl:template>
 </xsl:stylesheet>

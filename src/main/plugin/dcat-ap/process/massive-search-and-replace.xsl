@@ -60,7 +60,7 @@
     For example, gmd:abstract is identified by identification.abstract.
     -->
     <xsl:variable name="elementKey"
-                  select="concat('dcat2.',
+                  select="concat('dcat-ap.',
                             string-join(
                               ./ancestor-or-self::*/local-name(), '.')
                             )"/>

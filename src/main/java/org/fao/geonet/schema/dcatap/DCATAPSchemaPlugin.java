@@ -55,8 +55,8 @@ import com.google.common.collect.ImmutableSet;
 /**
  *
  */
-public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourcesSchemaPlugin, MultilingualSchemaPlugin {
-    public static final String IDENTIFIER = "dcat2";
+public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResourcesSchemaPlugin, MultilingualSchemaPlugin {
+    public static final String IDENTIFIER = "dcat-ap";
     private static final Pattern UUID_PATTERN = Pattern.compile("([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}");
 
     private static final ImmutableSet<Namespace> allNamespaces;
@@ -64,21 +64,21 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
 
     static {
         allNamespaces = ImmutableSet.<Namespace>builder()
-            .add(DCAT2Namespaces.DC)
-            .add(DCAT2Namespaces.DCT)
-            .add(DCAT2Namespaces.DCAT)
-            .add(DCAT2Namespaces.VCARD)
-            .add(DCAT2Namespaces.FOAF)
-            .add(DCAT2Namespaces.MDCAT)
+            .add(DCATAPNamespaces.DC)
+            .add(DCATAPNamespaces.DCT)
+            .add(DCATAPNamespaces.DCAT)
+            .add(DCATAPNamespaces.VCARD)
+            .add(DCATAPNamespaces.FOAF)
+            .add(DCATAPNamespaces.MDCAT)
             .build();
 
         allTypenames = ImmutableMap.<String, Namespace>builder()
             .put("csw:Record", Namespace.getNamespace("csw", "http://www.opengis.net/cat/csw/2.0.2"))
-            .put("dcat", DCAT2Namespaces.DCAT)
+            .put("dcat", DCATAPNamespaces.DCAT)
             .build();
     }
 
-    public DCAT2SchemaPlugin() {
+    public DCATAPSchemaPlugin() {
         super(IDENTIFIER, allNamespaces);
     }
 
@@ -112,7 +112,7 @@ public class DCAT2SchemaPlugin extends SchemaPlugin implements AssociatedResourc
 
     // @Override
     // public Set<String> getAssociatedExternalDatasetLinks(Element metadata) {
-    //     ElementFilter elementFilter = new ElementFilter("servesDataset", DCAT2Namespaces.DCAT);
+    //     ElementFilter elementFilter = new ElementFilter("servesDataset", DCATAPNamespaces.DCAT);
     //     return this.getAssociatedExternalRdfLinks(metadata, elementFilter);
     // }
 

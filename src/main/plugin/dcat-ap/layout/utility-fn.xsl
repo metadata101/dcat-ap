@@ -28,11 +28,11 @@
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
                 xmlns:java2="java:org.fao.geonet.schema.dcatap.util.XslUtil"
                 xmlns:saxon="http://saxon.sf.net/"
-                xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
+                xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 extension-element-prefixes="saxon"
                 exclude-result-prefixes="#all">
 
-  <xsl:function name="gn-fn-dcat2:getRdfTypeByElementName" as="xs:string">
+  <xsl:function name="gn-fn-dcat-ap:getRdfTypeByElementName" as="xs:string">
     <xsl:param name="elementName"/>
     <xsl:param name="parentElementName"/>
     <xsl:choose>
@@ -57,7 +57,7 @@
     </xsl:choose>
   </xsl:function>
 
-  <xsl:function name="gn-fn-dcat2:isNotMultilingualField" as="xs:boolean">
+  <xsl:function name="gn-fn-dcat-ap:isNotMultilingualField" as="xs:boolean">
     <xsl:param name="element" as="node()"/>
     <xsl:param name="editorConfig" as="node()"/>
 
@@ -107,7 +107,7 @@
 
   The child element take priority if defined.
   -->
-  <xsl:function name="gn-fn-dcat2:getField" as="node()">
+  <xsl:function name="gn-fn-dcat-ap:getField" as="node()">
     <xsl:param name="configuration" as="node()"/>
     <!-- The container element -->
     <xsl:param name="name" as="xs:string"/>
@@ -131,7 +131,7 @@
     </xsl:choose>
   </xsl:function>
 
-  <xsl:function name="gn-fn-dcat2:isForceDisplayAttributes" as="xs:boolean">
+  <xsl:function name="gn-fn-dcat-ap:isForceDisplayAttributes" as="xs:boolean">
     <xsl:param name="element" as="node()"/>
     <xsl:choose>
       <xsl:when test="$element[@xml:lang or @rdf:about or @rdf:resource]">
@@ -143,7 +143,7 @@
     </xsl:choose>
   </xsl:function>
 
-  <xsl:function name="gn-fn-dcat2:getBboxCoordinates" as="xs:string">
+  <xsl:function name="gn-fn-dcat-ap:getBboxCoordinates" as="xs:string">
     <xsl:param name="geometryElement" as="node()"/>
     <xsl:variable name="bbox">
       <xsl:choose>
@@ -166,7 +166,7 @@
     </xsl:choose>
   </xsl:function>
 
-  <xsl:function name="gn-fn-dcat2:concatXPaths" as="xs:string">
+  <xsl:function name="gn-fn-dcat-ap:concatXPaths" as="xs:string">
     <xsl:param name="parentXPath" as="xs:string"/>
     <xsl:param name="childXPath" as="xs:string"/>
     <xsl:param name="childNodeName" as="xs:string"/>

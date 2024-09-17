@@ -59,7 +59,7 @@
 
   <xsl:variable name="allLanguages">
     <xsl:variable name="listOfLanguages">
-      <xsl:call-template name="get-dcat2-other-languages"/>
+      <xsl:call-template name="get-dcat-ap-other-languages"/>
     </xsl:variable>
 
     <xsl:for-each select="$listOfLanguages/*">
@@ -168,7 +168,7 @@
         <xsl:if test="dct:accrualPeriodicity/skos:Concept/skos:prefLabel">
           <xsl:element name="cl_maintenanceAndUpdateFrequency">
             <xsl:attribute name="type" select="'object'"/>
-            <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('accrualPeriodicity', dct:accrualPeriodicity/skos:Concept, $allLanguages, true())"/>
+            <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat-ap('accrualPeriodicity', dct:accrualPeriodicity/skos:Concept, $allLanguages, true())"/>
           </xsl:element>
         </xsl:if>
 
@@ -273,13 +273,13 @@
 
           <xsl:for-each select="./mdcat:levensfase">
             <lifeCycle type="object">
-              <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('lifeCycle', skos:Concept, $allLanguages, false(), true())/text()"/>
+              <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat-ap('lifeCycle', skos:Concept, $allLanguages, false(), true())/text()"/>
             </lifeCycle>
           </xsl:for-each>
 
           <xsl:for-each select="./mdcat:ontwikkelingstoestand">
             <developmentState type="object">
-              <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('developmentState', skos:Concept, $allLanguages, false(), true())/text()"/>
+              <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat-ap('developmentState', skos:Concept, $allLanguages, false(), true())/text()"/>
             </developmentState>
           </xsl:for-each>
 
@@ -297,7 +297,7 @@
         <xsl:apply-templates mode="index-license" select="current-group()[1]"/>
       </xsl:for-each-group>
       <xsl:for-each select="dct:accessRights">
-        <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat2('MD_LegalConstraintsOtherConstraints', skos:Concept, $allLanguages, false())"/>
+        <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap('MD_LegalConstraintsOtherConstraints', skos:Concept, $allLanguages, false())"/>
       </xsl:for-each>
     </xsl:variable>
     <xsl:copy-of select="$constraints"/>
@@ -315,8 +315,8 @@
   </xsl:template>
 
   <xsl:template mode="index-license" match="dct:license">
-    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat2('license', dct:LicenseDocument, $allLanguages, false(), false(), 'dct:title')"/>
-    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat2('modelLicentie', dct:LicenseDocument, $allLanguages, false(), false(), 'dct:title')"/>
+    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap('license', dct:LicenseDocument, $allLanguages, false(), false(), 'dct:title')"/>
+    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap('modelLicentie', dct:LicenseDocument, $allLanguages, false(), false(), 'dct:title')"/>
   </xsl:template>
 
   <xsl:template mode="index-keyword" match="dcat:Dataset|dcat:DataService">
@@ -329,7 +329,7 @@
       <xsl:for-each select="$keywords">
         <xsl:choose>
           <xsl:when test="skos:Concept[skos:prefLabel]">
-            <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('keyword', skos:Concept, $allLanguages, false(), true())/text()"/>
+            <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat-ap('keyword', skos:Concept, $allLanguages, false(), true())/text()"/>
           </xsl:when>
           <xsl:otherwise>
             {
@@ -362,7 +362,7 @@
         <xsl:attribute name="type" select="'object'"/>
         [
         <xsl:for-each select="current-group()/skos:Concept">
-          <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('keyword', ., $allLanguages)/text()"/>
+          <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat-ap('keyword', ., $allLanguages)/text()"/>
           <xsl:if test="position() != last()">,</xsl:if>
         </xsl:for-each>
         ]
@@ -446,7 +446,7 @@
               "link": "<xsl:value-of select="gn-fn-index:json-escape((current-group()/skos:Concept/skos:inScheme/@rdf:resource)[1])"/>",
               "keywords": [
               <xsl:for-each select="current-group()/skos:Concept">
-                <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat2('keyword', ., $allLanguages)/text()"/>
+                <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat-ap('keyword', ., $allLanguages)/text()"/>
                 <xsl:if test="position() != last()">,</xsl:if>
               </xsl:for-each>
               ]}
@@ -586,8 +586,8 @@
     <xsl:variable name="email" select="foaf:Agent/foaf:mbox/@rdf:resource"/>
     <xsl:variable name="phone" select="foaf:Agent/foaf:phone/@rdf:resource"/>
 
-    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat2(concat('Org', $fieldSuffix), foaf:Agent, $allLanguages, false(), false(), 'foaf:name')"/>
-    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat2(concat(replace($role, '[^a-zA-Z0-9-]', ''), 'Org', $fieldSuffix), foaf:Agent, $allLanguages, false(), false(), 'foaf:name')"/>
+    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap(concat('Org', $fieldSuffix), foaf:Agent, $allLanguages, false(), false(), 'foaf:name')"/>
+    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap(concat(replace($role, '[^a-zA-Z0-9-]', ''), 'Org', $fieldSuffix), foaf:Agent, $allLanguages, false(), false(), 'foaf:name')"/>
 
     <xsl:element name="contact{$fieldSuffix}">
       <xsl:attribute name="type" select="'object'"/>{
@@ -623,8 +623,8 @@
       </xsl:choose>
     </xsl:variable>
 
-    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat2(concat('Org', $fieldSuffix), vcard:Organization, $allLanguages, false(), false(), 'vcard:organization-name')"/>
-    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat2(concat(replace($role, '[^a-zA-Z0-9-]', ''), 'Org', $fieldSuffix), vcard:Organization, $allLanguages, false(), false(), 'vcard:organization-name')"/>
+    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap(concat('Org', $fieldSuffix), vcard:Organization, $allLanguages, false(), false(), 'vcard:organization-name')"/>
+    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap(concat(replace($role, '[^a-zA-Z0-9-]', ''), 'Org', $fieldSuffix), vcard:Organization, $allLanguages, false(), false(), 'vcard:organization-name')"/>
 
     <xsl:element name="contact{$fieldSuffix}">
       <xsl:attribute name="type" select="'object'"/>{
@@ -821,30 +821,30 @@
     </referenceDate>
   </xsl:template>
 
-  <xsl:function name="gn-fn-index:add-multilingual-field-dcat2" as="node()*">
+  <xsl:function name="gn-fn-index:add-multilingual-field-dcat-ap" as="node()*">
     <xsl:param name="fieldName" as="xs:string"/>
     <xsl:param name="elements" as="node()*"/>
     <xsl:param name="languages" as="node()?"/>
-    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat2($fieldName, $elements, $languages, false())"/>
+    <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap($fieldName, $elements, $languages, false())"/>
   </xsl:function>
 
-  <xsl:function name="gn-fn-index:add-multilingual-field-dcat2" as="node()*">
+  <xsl:function name="gn-fn-index:add-multilingual-field-dcat-ap" as="node()*">
     <xsl:param name="fieldName" as="xs:string"/>
     <xsl:param name="elements" as="node()*"/>
     <xsl:param name="languages" as="node()?"/>
     <xsl:param name="asJson" as="xs:boolean?"/>
     <xsl:copy-of
-      select="gn-fn-index:add-multilingual-field-dcat2($fieldName, $elements, $languages, $asJson, false())"/>
+      select="gn-fn-index:add-multilingual-field-dcat-ap($fieldName, $elements, $languages, $asJson, false())"/>
   </xsl:function>
 
-  <xsl:function name="gn-fn-index:add-multilingual-field-dcat2" as="node()*">
+  <xsl:function name="gn-fn-index:add-multilingual-field-dcat-ap" as="node()*">
     <xsl:param name="fieldName" as="xs:string"/>
     <xsl:param name="elements" as="node()*"/>
     <xsl:param name="languages" as="node()?"/>
     <xsl:param name="asJson" as="xs:boolean?"/>
     <xsl:param name="withKey" as="xs:boolean?"/>
     <xsl:copy-of
-      select="gn-fn-index:add-multilingual-field-dcat2($fieldName, $elements, $languages, $asJson, $withKey, 'skos:prefLabel')"/>
+      select="gn-fn-index:add-multilingual-field-dcat-ap($fieldName, $elements, $languages, $asJson, $withKey, 'skos:prefLabel')"/>
   </xsl:function>
 
   <xsl:function name="gn-fn-index:lang-2char-to-3char" as="xs:string">
@@ -858,7 +858,7 @@
     </xsl:choose>
   </xsl:function>
 
-  <xsl:function name="gn-fn-index:add-multilingual-field-dcat2" as="node()*">
+  <xsl:function name="gn-fn-index:add-multilingual-field-dcat-ap" as="node()*">
     <xsl:param name="fieldName" as="xs:string"/>
     <xsl:param name="elements" as="node()*"/>
     <xsl:param name="languages" as="node()?"/>

@@ -30,7 +30,7 @@
   exclude-result-prefixes="xs" version="2.0">
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!-- dcat2 brief and superBrief formatting -->
+  <!-- dcat-ap brief and superBrief formatting -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <xsl:template mode="superBrief" match="dataset">
     <id>
@@ -51,7 +51,7 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template name="dcat2Brief">
+  <xsl:template name="dcat-apBrief">
     <metadata>
       <xsl:if test="dct:title">
         <title>

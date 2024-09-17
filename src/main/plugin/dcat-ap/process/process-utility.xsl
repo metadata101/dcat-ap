@@ -24,11 +24,11 @@
 
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
+                xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 exclude-result-prefixes="#all">
 
   <!-- Function to get the inScheme URI based on the thesaurus key -->
-  <xsl:function name="gn-fn-dcat2:getInSchemeURIByThesaurusId" as="xs:string">
+  <xsl:function name="gn-fn-dcat-ap:getInSchemeURIByThesaurusId" as="xs:string">
     <xsl:param name="key"/>
     <xsl:variable name="inSchemeAuthorityBaseUrl" select="'http://publications.europa.eu/resource/authority/'"/>
     <xsl:variable name="inSchemeAuthBaseUrl" select="'http://vocab.belgif.be/auth/'"/>

@@ -35,7 +35,7 @@ Rome - Italy. email: geonetwork@osgeo.org
                 xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:schema="http://schema.org/"
                 xmlns:locn="http://www.w3.org/ns/locn#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#" xmlns:fn="http://www.w3.org/2005/xpath-functions"
-                xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
+                xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 version="2.0"
                 exclude-result-prefixes="#all">
@@ -811,7 +811,7 @@ Rome - Italy. email: geonetwork@osgeo.org
     <xsl:for-each select="$licenseURIs">
       <xsl:variable name="licenseURI" select="./*"/>
       <!-- plain literals, should be resources -->
-      <xsl:if test="./sr:literal and not(gn-fn-dcat2:resolve-datatype(./sr:literal/@datatype) = 'http://www.w3.org/2001/XMLSchema#anyURI')">
+      <xsl:if test="./sr:literal and not(gn-fn-dcat-ap:resolve-datatype(./sr:literal/@datatype) = 'http://www.w3.org/2001/XMLSchema#anyURI')">
         <xsl:comment>Range violation in input for <xsl:value-of select="$predicate"/>: found a literal and was expecting
           a resource, like:
           &lt;<xsl:value-of select="$predicate"/> rdf:resource="<xsl:value-of
@@ -828,7 +828,7 @@ Rome - Italy. email: geonetwork@osgeo.org
                 <xsl:value-of select="./sr:uri"/>
               </xsl:attribute>
             </xsl:when>
-            <xsl:when test="gn-fn-dcat2:resolve-datatype(./sr:literal/@datatype) = 'http://www.w3.org/2001/XMLSchema#anyURI'">
+            <xsl:when test="gn-fn-dcat-ap:resolve-datatype(./sr:literal/@datatype) = 'http://www.w3.org/2001/XMLSchema#anyURI'">
               <xsl:attribute name="rdf:about">
                 <xsl:value-of select="./sr:literal"/>
               </xsl:attribute>
@@ -1393,8 +1393,8 @@ Rome - Italy. email: geonetwork@osgeo.org
         <xsl:when test="./sr:literal">
           <xsl:element name="{$predicate}">
             <!-- rdf:datatype attribute -->
-            <xsl:if test="gn-fn-dcat2:resolve-datatype(./sr:literal/@datatype)">
-              <xsl:attribute name="rdf:datatype" select="gn-fn-dcat2:resolve-datatype(./sr:literal/@datatype)"/>
+            <xsl:if test="gn-fn-dcat-ap:resolve-datatype(./sr:literal/@datatype)">
+              <xsl:attribute name="rdf:datatype" select="gn-fn-dcat-ap:resolve-datatype(./sr:literal/@datatype)"/>
             </xsl:if>
             <!-- language tag attribute -->
             <xsl:choose>
@@ -1437,7 +1437,7 @@ Rome - Italy. email: geonetwork@osgeo.org
                       sr:binding[@name='pAsQName']/sr:literal = $predicate]/sr:binding[@name='object']">
       <xsl:choose>
         <!-- plain literals, should be resources -->
-        <xsl:when test="./sr:literal and not(gn-fn-dcat2:resolve-datatype(./sr:literal/@datatype) = 'http://www.w3.org/2001/XMLSchema#anyURI')">
+        <xsl:when test="./sr:literal and not(gn-fn-dcat-ap:resolve-datatype(./sr:literal/@datatype) = 'http://www.w3.org/2001/XMLSchema#anyURI')">
           <xsl:comment>Range violation for <xsl:value-of select="$predicate"/>: found a literal and was expecting a
             resource, like:
             &lt;<xsl:value-of select="$predicate"/> rdf:resource="<xsl:value-of
@@ -1453,7 +1453,7 @@ Rome - Italy. email: geonetwork@osgeo.org
           </xsl:element>
         </xsl:when>
         <!-- anyURI literal -->
-        <xsl:when test="gn-fn-dcat2:resolve-datatype(./sr:literal/@datatype) = 'http://www.w3.org/2001/XMLSchema#anyURI'">
+        <xsl:when test="gn-fn-dcat-ap:resolve-datatype(./sr:literal/@datatype) = 'http://www.w3.org/2001/XMLSchema#anyURI'">
           <xsl:element name="{if ($xmlNameOverwrite != '') then $xmlNameOverwrite else $predicate}">
             <xsl:attribute name="rdf:resource">
               <xsl:value-of select="./sr:literal"/>
@@ -1473,9 +1473,9 @@ Rome - Italy. email: geonetwork@osgeo.org
                       sr:binding[@name='pAsQName']/sr:literal = $predicate]/sr:binding[@name='object']">
       <xsl:if test="./sr:literal">
         <xsl:element name="{$predicate}">
-          <xsl:if test="gn-fn-dcat2:resolve-datatype(./sr:literal/@datatype)">
+          <xsl:if test="gn-fn-dcat-ap:resolve-datatype(./sr:literal/@datatype)">
             <xsl:attribute name="rdf:datatype">
-              <xsl:value-of select="gn-fn-dcat2:resolve-datatype(./sr:literal/@datatype)"/>
+              <xsl:value-of select="gn-fn-dcat-ap:resolve-datatype(./sr:literal/@datatype)"/>
             </xsl:attribute>
           </xsl:if>
           <xsl:value-of select="./sr:literal/text()"/>
@@ -1496,7 +1496,7 @@ Rome - Italy. email: geonetwork@osgeo.org
           <xsl:when test="./sr:uri">
             <xsl:value-of select="fn:tokenize(./sr:uri, '/')[fn:last()]"/>
           </xsl:when>
-          <xsl:when test="gn-fn-dcat2:resolve-datatype(./sr:literal/@datatype) = 'http://www.w3.org/2001/XMLSchema#anyURI'">
+          <xsl:when test="gn-fn-dcat-ap:resolve-datatype(./sr:literal/@datatype) = 'http://www.w3.org/2001/XMLSchema#anyURI'">
             <xsl:value-of select="fn:tokenize(./sr:literal, '/')[fn:last()]"/>
           </xsl:when>
         </xsl:choose>
@@ -1510,7 +1510,7 @@ Rome - Italy. email: geonetwork@osgeo.org
   </xsl:template>
 
 
-  <xsl:function name="gn-fn-dcat2:resolve-datatype">
+  <xsl:function name="gn-fn-dcat-ap:resolve-datatype">
     <xsl:param name="datatype" as="xs:string?"/>
     <xsl:choose>
       <xsl:when test="starts-with($datatype, $xsdNs)">

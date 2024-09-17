@@ -28,7 +28,7 @@ import org.jdom.Namespace;
 /**
  * Created by francois on 3/26/14.
  */
-public class DCAT2Namespaces {
+public class DCATAPNamespaces {
     public static final Namespace DC = Namespace.getNamespace("dc", "http://purl.org/dc/elements/1.1/");
     public static final Namespace DCT = Namespace.getNamespace("dct", "http://purl.org/dc/terms/");
     public static final Namespace DCAT = Namespace.getNamespace("dcat", "http://www.w3.org/ns/dcat#");

@@ -79,17 +79,17 @@
     Display contact as table when mode is flat (eg. simple view) or if using xsl mode
     Match first node (or added one)
   -->
-  <xsl:template mode="mode-dcat2"
+  <xsl:template mode="mode-dcat-ap"
                 match="*[
                         *[1]/name() = $editorConfig/editor/tableFields/table/@for and
                         (1 or @gn:addedObj = 'true') and
                         $isFlatMode]"
                 priority="2000">
-    <xsl:call-template name="dcat2-table"/>
+    <xsl:call-template name="dcat-ap-table"/>
   </xsl:template>
 
   <!-- Ignore the following -->
-  <xsl:template mode="mode-dcat2"
+  <xsl:template mode="mode-dcat-ap"
                 match="*[
                         *[1]/name() = $editorConfig/editor/tableFields/table/@for and
                         preceding-sibling::*[1]/name() = name() and
@@ -98,7 +98,7 @@
                 priority="2000"/>
 
   <!-- Define table layout -->
-  <xsl:template name="dcat2-table">
+  <xsl:template name="dcat-ap-table">
     <xsl:variable name="name" select="name()"/>
     <xsl:variable name="xpath" select="gn-fn-metadata:getXPath(.)"/>
     <xsl:variable name="isoType" select="''"/>

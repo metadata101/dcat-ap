@@ -35,7 +35,7 @@
                 xmlns:gml="http://www.opengis.net/gml"
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
-                xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
+                xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 xmlns:saxon="http://saxon.sf.net/"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
                 xmlns:uuid="java:java.util.UUID"
@@ -430,7 +430,7 @@
   <xsl:template match="skos:Concept" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
-      <xsl:variable name="rdfType" select="gn-fn-dcat2:getRdfTypeByElementName(name(..), name(../..))"/>
+      <xsl:variable name="rdfType" select="gn-fn-dcat-ap:getRdfTypeByElementName(name(..), name(../..))"/>
       <xsl:if test="normalize-space($rdfType) != ''">
         <rdf:type rdf:resource="{$rdfType}"/>
       </xsl:if>

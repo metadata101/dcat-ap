@@ -5,7 +5,7 @@
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:gn="http://www.fao.org/geonetwork"
-                xmlns:gn-fn-dcat2="http://geonetwork-opensource.org/xsl/functions/profiles/dcat2"
+                xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 version="2.0"
@@ -42,14 +42,14 @@
     </xsl:for-each>
   </xsl:variable>
 
-  <xsl:template mode="mode-dcat2" priority="4000" match="*[gn-fn-dcat2:getThesaurusConfig(name(), name(..))]">
+  <xsl:template mode="mode-dcat-ap" priority="4000" match="*[gn-fn-dcat-ap:getThesaurusConfig(name(), name(..))]">
     <xsl:variable name="name" select="name()"/>
     <xsl:variable name="hasGnChild" select="count(../gn:child[concat(@prefix, ':', @name) = $name]) > 0"/>
     <xsl:if test="not($hasGnChild)">
       <xsl:variable name="isFirst" select="count(preceding-sibling::*[name() = $name]) &lt; 1"/>
       <xsl:if test="$isFirst">
         <xsl:variable name="xpath" select="concat('/', name(../..), '/', name(..), '/', name())"/>
-        <xsl:variable name="config" select="gn-fn-dcat2:getThesaurusConfig(name(), name(..), $xpath)"/>
+        <xsl:variable name="config" select="gn-fn-dcat-ap:getThesaurusConfig(name(), name(..), $xpath)"/>
         <xsl:call-template name="thesaurus-picker-list">
           <xsl:with-param name="config" select="$config"/>
           <xsl:with-param name="ref" select="../gn:element/@ref"/>
@@ -58,9 +58,9 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template mode="mode-dcat2" priority="4000" match="gn:child[gn-fn-dcat2:getThesaurusConfig(concat(@prefix, ':', @name), name(..))]">
+  <xsl:template mode="mode-dcat-ap" priority="4000" match="gn:child[gn-fn-dcat-ap:getThesaurusConfig(concat(@prefix, ':', @name), name(..))]">
     <xsl:variable name="xpath" select="concat('/', name(../..), '/', name(..), '/', concat(@prefix, ':', @name))"/>
-    <xsl:variable name="config" select="gn-fn-dcat2:getThesaurusConfig(concat(@prefix, ':', @name), name(..), $xpath)"/>
+    <xsl:variable name="config" select="gn-fn-dcat-ap:getThesaurusConfig(concat(@prefix, ':', @name), name(..), $xpath)"/>
     <xsl:call-template name="thesaurus-picker-list">
       <xsl:with-param name="config" select="$config"/>
       <xsl:with-param name="ref" select="../gn:element/@ref"/>
@@ -71,7 +71,7 @@
   <xsl:template name="thesaurus-picker-list">
     <xsl:param name="config" as="node()"/>
     <xsl:param name="ref" as="xs:string"/>
-    <xsl:if test="gn-fn-dcat2:shouldShow($config)">
+    <xsl:if test="gn-fn-dcat-ap:shouldShow($config)">
       <xsl:variable name="values">
         <xsl:choose>
           <xsl:when test="$config/useReference = 'true' and ../*[name() = $config/@name]/@rdf:resource">
@@ -98,8 +98,8 @@
         </xsl:choose>
       </xsl:variable>
       <xsl:variable name="transformation" select="if ($config/useReference = 'true')
-                                                then 'to-dcat2-concept-reference'
-                                                else 'to-dcat2-concept'"/>
+                                                then 'to-dcat-ap-concept-reference'
+                                                else 'to-dcat-ap-concept'"/>
       <xsl:variable name="elemXpath">
         <xsl:call-template name="GetThesaurusElementXpath">
           <xsl:with-param name="config" select="$config"/>
@@ -154,13 +154,13 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:function name="gn-fn-dcat2:getThesaurusConfig">
+  <xsl:function name="gn-fn-dcat-ap:getThesaurusConfig">
     <xsl:param name="name" as="xs:string"/>
     <xsl:param name="parent" as="xs:string"/>
-    <xsl:copy-of select="gn-fn-dcat2:getThesaurusConfig($name, $parent, '')"/>
+    <xsl:copy-of select="gn-fn-dcat-ap:getThesaurusConfig($name, $parent, '')"/>
   </xsl:function>
 
-  <xsl:function name="gn-fn-dcat2:getThesaurusConfig">
+  <xsl:function name="gn-fn-dcat-ap:getThesaurusConfig">
     <xsl:param name="name" as="xs:string"/>
     <xsl:param name="parent" as="xs:string"/>
     <xsl:param name="xpath" as="xs:string"/>
@@ -177,7 +177,7 @@
     </xsl:choose>
   </xsl:function>
 
-  <xsl:function name="gn-fn-dcat2:shouldShow" as="xs:boolean">
+  <xsl:function name="gn-fn-dcat-ap:shouldShow" as="xs:boolean">
     <xsl:param name="config"/>
     <xsl:value-of select="not($isFlatMode) or not(
       ($config/@name = 'dct:accessRights' and $config/@parent = 'dcat:Distribution') or

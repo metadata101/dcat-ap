@@ -33,13 +33,13 @@
 
   <xsl:include href="metadata-fop.xsl"/>
 
-  <!-- main template - the way into processing dcat2 -->
-  <xsl:template name="dcat2">
+  <!-- main template - the way into processing dcat-ap -->
+  <xsl:template name="dcat-ap">
     <xsl:param name="schema"/>
     <xsl:param name="edit" select="false()"/>
     <xsl:param name="embedded"/>
 
-    <xsl:apply-templates mode="dcat2" select="." >
+    <xsl:apply-templates mode="dcat-ap" select="." >
       <xsl:with-param name="schema" select="$schema"/>
        <xsl:with-param name="edit"   select="$edit"/>
        <xsl:with-param name="embedded" select="$embedded" />
@@ -48,7 +48,7 @@
 
   <!-- CompleteTab template - dc just calls completeTab from
        metadata-utils.xsl -->
-  <xsl:template name="dcat2CompleteTab">
+  <xsl:template name="dcat-apCompleteTab">
     <xsl:param name="tabLink"/>
 
     <xsl:call-template name="completeTab">
@@ -59,7 +59,7 @@
   <!--
   default: in simple mode just a flat list
   -->
-  <xsl:template mode="dcat2" match="*|@*">
+  <xsl:template mode="dcat-ap" match="*|@*">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
 
@@ -73,7 +73,7 @@
   <!--
   these elements should be boxed
   -->
-  <xsl:template mode="dcat2" match="dcat:Dataset|csw:Record">
+  <xsl:template mode="dcat-ap" match="dcat:Dataset|csw:Record">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
 
@@ -83,7 +83,7 @@
     </xsl:apply-templates>
   </xsl:template>
 
-  <xsl:template mode="dcat2" match="dct:anyCHOICE_ELEMENT0">
+  <xsl:template mode="dcat-ap" match="dct:anyCHOICE_ELEMENT0">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
 
@@ -107,7 +107,7 @@
   <!--
   identifier
   -->
-  <xsl:template mode="dcat2" match="dct:identifier">
+  <xsl:template mode="dcat-ap" match="dct:identifier">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
 
@@ -122,7 +122,7 @@
     references
     Add file upload support
     -->
-  <xsl:template mode="dcat2"  match="dct:references">
+  <xsl:template mode="dcat-ap"  match="dct:references">
     <xsl:param name="schema"/>
     <xsl:param name="edit"/>
 
@@ -233,10 +233,10 @@
   </xsl:template>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!-- dcat2 brief formatting -->
+  <!-- dcat-ap brief formatting -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-  <xsl:template name="dcat2Brief">
+  <xsl:template name="dcat-apBrief">
     <metadata>
       <xsl:if test="dct:title">
         <title><xsl:value-of select="dct:title"/></title>
@@ -310,5 +310,5 @@
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template name="dcat2-javascript"/>
+  <xsl:template name="dcat-ap-javascript"/>
 </xsl:stylesheet>
