@@ -28,7 +28,7 @@
     xmlns:util="http://www.springframework.org/schema/util"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="dcatapSchemaPlugin"
+  <bean id="dcat-apSchemaPlugin"
         class="org.fao.geonet.schema.dcatap.DCATAPSchemaPlugin">
     <property name="xpathTitle">
       <util:list value-type="java.lang.String">
