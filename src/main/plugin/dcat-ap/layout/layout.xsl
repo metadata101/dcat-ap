@@ -212,7 +212,9 @@
 
     <!-- Skip translations. update-fixed-info takes care of having
     at least one element define in the main language. -->
-    <xsl:if test="not(@xml:lang) or $elementLang = ('', $metadataLanguage)">
+    <xsl:if test="$metadataLanguage = ''
+                         or not(@xml:lang)
+                         or $elementLang = ('', $metadataLanguage)">
 
       <xsl:variable name="name" select="name(.)"/>
       <xsl:variable name="ref" select="gn:element/@ref"/>
