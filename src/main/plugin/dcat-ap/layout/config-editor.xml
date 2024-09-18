@@ -630,8 +630,8 @@
                 <dct:conformsTo>
                   <dct:Standard>
                     <dct:identifier/>
-                    <dct:title xml:lang="nl"/>
-                    <dct:description xml:lang="nl"/>
+                    <dct:title xml:lang=""/>
+                    <dct:description xml:lang=""/>
                   </dct:Standard>
                 </dct:conformsTo>
               </snippet>
@@ -663,8 +663,8 @@
                 <snippet>
                   <dct:rights>
                     <dct:RightsStatement>
-                      <dct:title xml:lang="nl"/>
-                      <dct:description xml:lang="nl"/>
+                      <dct:title xml:lang=""/>
+                      <dct:description xml:lang=""/>
                     </dct:RightsStatement>
                   </dct:rights>
                 </snippet>
@@ -682,8 +682,8 @@
               <snippet>
                 <dcat:distribution>
                   <dcat:Distribution>
-                    <dct:title xml:lang="nl"/>
-                    <dct:description xml:lang="nl"/>
+                    <dct:title xml:lang=""/>
+                    <dct:description xml:lang=""/>
                     <dcat:accessURL rdf:resource=""/>
                   </dcat:Distribution>
                 </dcat:distribution>
@@ -700,7 +700,7 @@
                   if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title) = 0">
             <template>
               <snippet>
-                <dct:title xml:lang="nl"/>
+                <dct:title xml:lang=""/>
               </snippet>
             </template>
           </action>
@@ -710,7 +710,7 @@
                   if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description) = 0">
             <template>
               <snippet>
-                <dct:description xml:lang="nl"/>
+                <dct:description xml:lang=""/>
               </snippet>
             </template>
           </action>
@@ -720,7 +720,7 @@
               <snippet>
                 <dct:publisher>
                   <foaf:Agent>
-                    <foaf:name xml:lang="nl"/>
+                    <foaf:name xml:lang=""/>
                   </foaf:Agent>
                 </dct:publisher>
               </snippet>
@@ -831,8 +831,8 @@
               <snippet>
                 <dct:rights>
                   <dct:RightsStatement>
-                    <dct:title xml:lang="nl"/>
-                    <dct:description xml:lang="nl"/>
+                    <dct:title xml:lang=""/>
+                    <dct:description xml:lang=""/>
                   </dct:RightsStatement>
                 </dct:rights>
               </snippet>
@@ -1021,8 +1021,8 @@
               <snippet>
                 <dcat:distribution>
                   <dcat:Distribution>
-                    <dct:title xml:lang="nl"/>
-                    <dct:description xml:lang="nl"/>
+                    <dct:title xml:lang=""/>
+                    <dct:description xml:lang=""/>
                     <dcat:accessURL rdf:resource=""/>
                     <dcat:downloadURL rdf:resource=""/>
                     <dct:format/>
@@ -1189,8 +1189,6 @@
               <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
                 <skos:prefLabel xml:lang="nl">Werk in het publiek domein</skos:prefLabel>
                 <skos:prefLabel xml:lang="en">Public domain</skos:prefLabel>
-                <skos:prefLabel xml:lang="fr">Public domain</skos:prefLabel>
-                <skos:prefLabel xml:lang="de">Public domain</skos:prefLabel>
                 <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0" />
               </skos:Concept>
             </dct:type>
@@ -1205,15 +1203,12 @@
           <dct:LicenseDocument rdf:about="">
             <dct:type>
               <skos:Concept>
-                <skos:prefLabel xml:lang="nl"/>
-                <skos:prefLabel xml:lang="en"/>
-                <skos:prefLabel xml:lang="fr"/>
-                <skos:prefLabel xml:lang="de"/>
+                <skos:prefLabel xml:lang=""/>
                 <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
               </skos:Concept>
             </dct:type>
-            <dct:title xml:lang="nl"/>
-            <dct:description xml:lang="nl"/>
+            <dct:title xml:lang=""/>
+            <dct:description xml:lang=""/>
             <!--dct:identifier/-->
           </dct:LicenseDocument>
         </dct:license>
@@ -1674,8 +1669,8 @@
         <dct:conformsTo>
           <dct:Standard xmlns:dct="http://purl.org/dc/terms/">
             <dct:identifier/>
-            <dct:title xml:lang="nl"/>
-            <dct:description xml:lang="nl" />
+            <dct:title xml:lang=""/>
+            <dct:description xml:lang="" />
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
