@@ -468,6 +468,7 @@
            hideIfNotDisplayed="true">
         <section name="basicInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title"/>
+
           <action type="add" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title)=0">
             <template>
@@ -476,28 +477,32 @@
               </snippet>
             </template>
           </action>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description"/>
+
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description"
+                 or="description"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+
           <action type="add" or="description" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description)=0">
             <template>
               <snippet>
-                <dct:description xml:lang="fr">aa</dct:description>
+                <dct:description xml:lang=""></dct:description>
               </snippet>
             </template>
           </action>
+
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher"/>
+
           <action type="add" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
             <template>
               <snippet>
                 <dct:publisher>
                   <foaf:Agent>
-                    <foaf:name xml:lang="nl"/>
+                    <foaf:name xml:lang=""/>
                     <dct:type>
                       <skos:Concept>
-                        <skos:prefLabel xml:lang="nl"/>
-                        <skos:prefLabel xml:lang="en"/>
-                        <skos:prefLabel xml:lang="fr"/>
-                        <skos:prefLabel xml:lang="de"/>
+                        <skos:prefLabel xml:lang=""/>
                         <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
                       </skos:Concept>
                     </dct:type>

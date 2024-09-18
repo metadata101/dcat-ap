@@ -62,7 +62,6 @@
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
 
-
     <xsl:variable name="name" select="concat(@prefix, ':', @name)"/>
     <xsl:variable name="xpath">
       <xsl:choose>
@@ -190,6 +189,7 @@
                           contains(. , 'resources.get') or
                           contains(., 'file.disclaimer'))]" />
 
+
   <!-- the other elements in DC. -->
   <xsl:template mode="mode-dcat-ap" priority="100" match="dc:*|dct:*|dcat:*|vcard:*|foaf:*|spdx:*|adms:*|owl:*|schema:*|skos:*|mdcat:*">
     <xsl:param name="schema" select="$schema" required="no"/>
@@ -212,7 +212,7 @@
 
     <!-- Skip translations. update-fixed-info takes care of having
     at least one element define in the main language. -->
-    <xsl:if test="not(@xml:lang) or $elementLang = $metadataLanguage">
+    <xsl:if test="not(@xml:lang) or $elementLang = ('', $metadataLanguage)">
 
       <xsl:variable name="name" select="name(.)"/>
       <xsl:variable name="ref" select="gn:element/@ref"/>
