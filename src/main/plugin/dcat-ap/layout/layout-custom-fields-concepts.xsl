@@ -83,17 +83,8 @@
               </xsl:if>
             </xsl:for-each>
           </xsl:when>
-          <!-- Show prefLabel in nl language -->
-          <xsl:when test="../*[name() = $config/@name]//skos:prefLabel[@xml:lang = 'nl']">
-            <xsl:value-of select="string-join(../*[name() = $config/@name]//skos:prefLabel[@xml:lang = 'nl']/replace(text(), ',', ',,'), ',')"/>
-          </xsl:when>
-          <!-- Fallback on preflabel without any language -->
-          <xsl:when test="../*[name() = $config/@name]//skos:prefLabel[not(@xml:lang)]">
-            <xsl:value-of select="string-join(../*[name() = $config/@name]//skos:prefLabel[not(@xml:lang)]/replace(text(), ',', ',,'), ',')"/>
-          </xsl:when>
-          <!-- Fallback on first preflabel -->
-          <xsl:when test="../*[name() = $config/@name]//skos:prefLabel[not(@xml:lang)]">
-            <xsl:value-of select="string-join(../*[name() = $config/@name]//skos:prefLabel[not(@xml:lang)]/replace(text(), ',', ',,'), ',')"/>
+          <xsl:when test="../*[name() = $config/@name]//skos:prefLabel[1]">
+            <xsl:value-of select="string-join(../*[name() = $config/@name]//skos:prefLabel[1]/replace(text(), ',', ',,'), ',')"/>
           </xsl:when>
         </xsl:choose>
       </xsl:variable>
@@ -128,7 +119,12 @@
 
   <xsl:template name="GetThesaurusElementXpath">
     <xsl:param name="config" as="node()"/>
-    <xsl:variable name="resourcePath" select="concat('./dcat:Catalog', if ($isDcatService) then '/dcat:service/dcat:DataService' else '/dcat:dataset/dcat:Dataset')"/>
+    <xsl:variable name="resourcePath"
+                  select="concat('./dcat:Catalog',
+                                  if ($isDcatService) then '/dcat:service/dcat:DataService'
+                                  else if (ancestor::*[1]/name() = 'dcat:CatalogRecord') then '/dcat:record/dcat:CatalogRecord'
+                                  else '/dcat:dataset/dcat:Dataset')"/>
+
     <xsl:choose>
       <xsl:when test="starts-with($config/xpath, '/dcat:Distribution')">
         <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution)[dcat:Distribution/@rdf:about=''', ../@rdf:about ,''']', $config/xpath)"/>

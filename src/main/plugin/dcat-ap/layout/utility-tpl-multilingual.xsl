@@ -35,7 +35,7 @@
   <!-- Get the main metadata languages -->
   <xsl:template name="get-dcat-ap-language">
     <xsl:param name="languageIri"
-               select="$metadata//dcat:CatalogRecord/dct:language[1]/(@rdf:resource, skos:Concept/@rdf:about)"
+               select="$metadata//dcat:CatalogRecord/dct:language[1]/(@rdf:resource|skos:Concept/@rdf:about|dct:LinguisticSystem/@rdf:about)"
                required="no"/>
 
     <xsl:variable name="languageCode"
@@ -64,7 +64,7 @@
         <xsl:variable name="languageCode">
           <xsl:call-template name="get-dcat-ap-language">
             <xsl:with-param name="languageIri"
-                            select="(@rdf:resource, skos:Concept/@rdf:about)[1]"/>
+                            select="(@rdf:resource, skos:Concept/@rdf:about, dct:LinguisticSystem/@rdf:about)[1]"/>
           </xsl:call-template>
         </xsl:variable>
 

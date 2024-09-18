@@ -189,6 +189,8 @@
     <xsl:variable name="followingSiblings"
                   select="following-sibling::*[name() = $name]"/>
 
+    <xsl:message>building <xsl:value-of select="name()"/> </xsl:message>
+    <xsl:message>building <xsl:copy-of select="$locales"/> </xsl:message>
     <!-- Select element with same name and different xml:lang attribute
     until the next one with the main language. -->
     <xsl:variable name="currentGroup"
