@@ -58,22 +58,22 @@
                 select="//rdf:RDF"/>
 
   <xsl:variable name="allLanguages">
-    <xsl:variable name="listOfLanguages">
+    <xsl:variable name="listOfLanguage">
       <xsl:call-template name="get-dcat-ap-other-languages"/>
     </xsl:variable>
-
-    <xsl:for-each select="$listOfLanguages/*">
-      <lang value="{@code}">
-        <xsl:if test="position() = 1">
-          <xsl:attribute name="id"
-                         select="'default'"/>
+    <xsl:for-each select="$listOfLanguage/lang">
+      <lang value="{@code}" code="{@id}">
+        <xsl:if test="@default">
+          <xsl:attribute name="id" select="'default'"/>
         </xsl:if>
       </lang>
     </xsl:for-each>
   </xsl:variable>
 
-  <xsl:variable name="defaultMainLanguage3Char" select="'dut'"/>
-  <xsl:variable name="defaultMainLanguage2Char" select="'nl'"/>
+  <xsl:variable name="defaultMainLanguage3Char" select="$allLanguages/lang[@id]/@value"/>
+
+  <xsl:variable name="defaultMainLanguage2Char" select="$allLanguages/lang[@id]/@code"/>
+
   <xsl:variable name="editorConfig"
                 select="document('../layout/config-editor.xml')"/>
 
@@ -721,21 +721,21 @@
           <xsl:when test="count(dct:title)= 1">
             "<xsl:value-of select="normalize-space(dct:title)"/>"
           </xsl:when>
-          <xsl:when test="count(dct:title)>1">
+          <!--<xsl:when test="count(dct:title)>1">
             <xsl:for-each select="dct:title">
               {
               <xsl:value-of select="normalize-space(.)"/>
               }
               <xsl:if test="position() != last()">,</xsl:if>
             </xsl:for-each>
-          </xsl:when>
+          </xsl:when>-->
           <xsl:otherwise>
             ""
           </xsl:otherwise>
         </xsl:choose>
         ,
         "description":
-        "<xsl:value-of select="normalize-space(dct:description)"/>",
+        "<xsl:value-of select="util:escapeForJson(normalize-space(dct:description[1]))"/>",
         "function":"",
         "applicationProfile":"",
         "group":0

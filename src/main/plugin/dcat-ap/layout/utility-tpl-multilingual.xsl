@@ -23,10 +23,11 @@
   -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-        xmlns:dct="http://purl.org/dc/terms/"
-        xmlns:dcat="http://www.w3.org/ns/dcat#"
-        xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xslutil="java:org.fao.geonet.util.XslUtil"
                 version="2.0"
                 exclude-result-prefixes="#all">
@@ -70,7 +71,7 @@
         <xsl:if test="$languageCode != ''">
           <lang>
             <xsl:value-of
-              select="concat('&quot;', $languageCode, '&quot;:&quot;#', upper-case($languageCode), '&quot;')"/>
+              select="concat('&quot;', xslutil:threeCharLangCode($languageCode), '&quot;:&quot;#', upper-case($languageCode), '&quot;')"/>
           </lang>
         </xsl:if>
       </xsl:for-each>
@@ -92,7 +93,7 @@
           </xsl:variable>
 
           <xsl:if test="$languageCode != ''">
-            <lang id="{upper-case($languageCode)}" code="{xslutil:twoCharLangCode($languageCode)}">
+            <lang id="{xslutil:threeCharLangCode($languageCode)}" code="{xslutil:twoCharLangCode($languageCode)}">
               <xsl:if test="position() = 1">
                 <xsl:attribute name="default" select="''"/>
               </xsl:if>
@@ -104,7 +105,7 @@
         <xsl:variable name="mainLanguage">
           <xsl:call-template name="get-dcat-ap-language"/>
         </xsl:variable>
-        <lang id="{upper-case($mainLanguage)}" code="{xslutil:twoCharLangCode($mainLanguage)}" default=""/>
+        <lang id="{xslutil:threeCharLangCode($mainLanguage)}" code="{xslutil:twoCharLangCode($mainLanguage)}" default=""/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
