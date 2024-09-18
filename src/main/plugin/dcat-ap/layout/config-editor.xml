@@ -358,7 +358,6 @@
         max="1"
         labelKey="mdcat.addOntwikkelingstoestand"/>
     </for>
-
   </fields>
 
   <!-- Complex fields. -->
@@ -370,6 +369,11 @@
     <name>dcat:record</name>
     <name>dcat:dataset</name>
     <name>dcat:service</name>
+    <name>foaf:isPrimaryTopicOf</name>
+    <name>foaf:Organization</name>
+    <name>vcard:org</name>
+    <name>dcat:hadRole</name>
+    <name>dcat:Role</name>
     <name>dct:language</name>
     <name>dcat:contactPoint</name>
     <name>vcard:Organization</name>
