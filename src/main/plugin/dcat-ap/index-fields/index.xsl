@@ -320,7 +320,7 @@
   </xsl:template>
 
   <xsl:template mode="index-keyword" match="dcat:Dataset|dcat:DataService">
-    <xsl:variable name="keywords" select="dcat:keyword[normalize-space() != '']|(dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie)[skos:Concept/skos:prefLabel[normalize-space() != '']]"/>
+    <xsl:variable name="keywords" select="dcat:keyword[normalize-space() != '']|(dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie)[skos:Concept/skos:prefLabel[normalize-space() != '']]/skos:Concept/skos:prefLabel"/>
     <tagNumber>
       <xsl:value-of select="count($keywords)"/>
     </tagNumber>
@@ -333,8 +333,8 @@
           </xsl:when>
           <xsl:otherwise>
             {
-            <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':', $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>,
-            <xsl:value-of select="concat($doubleQuote, 'lang', gn-fn-index:lang-2char-to-3char(@xml:lang), $doubleQuote, ':', $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+            <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':', $doubleQuote, util:escapeForJson(.), $doubleQuote)"/>,
+            <xsl:value-of select="concat($doubleQuote, 'lang', gn-fn-index:lang-2char-to-3char(@xml:lang), $doubleQuote, ':', $doubleQuote,  util:escapeForJson(.), $doubleQuote)"/>
             }
           </xsl:otherwise>
         </xsl:choose>
@@ -953,7 +953,7 @@
         <xsl:value-of select="'fra'"/>
       </xsl:when>
       <xsl:when test="$langUri = 'http://publications.europa.eu/resource/authority/language/ENG'">
-        <xsl:value-of select="'end'"/>
+        <xsl:value-of select="'eng'"/>
       </xsl:when>
       <xsl:when test="$langUri = 'http://publications.europa.eu/resource/authority/language/DEU'">
         <xsl:value-of select="'ger'"/>
