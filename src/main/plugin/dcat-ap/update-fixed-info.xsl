@@ -135,8 +135,8 @@
   eg. when clicking + -->
   <xsl:template match="*[name() = $multilingualElements
                          and $isMultilingual
-                         and not(@xml:lang)]"
-                        priority="100">
+                         and (not(@xml:lang) or not(string(@xml:lang)))]"
+                        priority="105">
     <xsl:variable name="name"
                   select="name()"/>
     <xsl:variable name="value"
