@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:output encoding="UTF-8" />
     <xsl:template match="/">
         <labels xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:spdx="http://spdx.org/rdf/terms#"

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="xml_dublin-core">Save this metadata as a Dublin Core XML file</string>
+    <string name="xml_metadata-dcat">Save this metadata as a DCAT-AP XML file</string>
+    <string name="default">Standard</string>
+    <string name="advanced">Advanced</string>
+    <string name="xml">XML</string>
+    <string name="tabDataset">Dataset</string>
+    <string name="tabDistribution">Distributions</string>
+    <string name="tabService">Service</string>
+    <string name="tabRecord">Record</string>
+
+    <!-- Section labels -->
+    <string name="basicInformation">Basic information</string>
+    <string name="versionInformation">Version information</string>
+    <string name="usageInformation">Usage information</string>
+    <string name="geographicalInformation">Spatial and temporal extent</string>
+    <string name="relationInformation">Relation</string>
+    <string name="serviceInformation">Service information</string>
+    <string name="extraInformation">Extra information</string>
+    <string name="catalogRecordInformation">Catalog record</string>
+    <string name="conformToInformation">Conformiteit met standaard</string>
+    <string name="overviews">Overviews</string>
+    <string name="distribution">Distribution</string>
+
+    <!-- Thesauri pickers -->
+    <string name="dcat.addThemes">Themes</string>
+    <string name="dcat.addTags">Tags/Keywords</string>
+    <string name="dcat.addType">Type</string>
+    <string name="dcat.addAccessRight">Access rights</string>
+    <string name="dcat.addFormat">Format</string>
+    <string name="dcat.addPackageFormat">Package format</string>
+    <string name="dcat.addCompressFormat">Compression format</string>
+    <string name="dcat.addMediaType">Media type</string>
+    <string name="dcat.addAccrualPeriodicity">Update frequency</string>
+    <string name="dcat.addLanguage">Language</string>
+
+    <!-- Snippet label -->
+    <string name="add-license">License</string>
+    <string name="license-modellicentie-gratis">Model license for free reuse</string>
+    <string name="license-cc0">Creative Commons Zero declaration</string>
+    <string name="license-modellicentie-hergebruik">Model license for paid reuse</string>
+    <string name="license-onvoorwaardelijk">Unconditional reuse</string>
+    <string name="license-empty">Specify your own license...</string>
+
+    <string name="protocol-01">ESRI:AIMS-http-configuration</string>
+    <string name="protocol-02">KML-2.0-http-get-map</string>
+    <string name="protocol-03">LDES</string>
+    <string name="protocol-04">LINK-download-store</string>
+    <string name="protocol-05">CSW</string>
+    <string name="protocol-06">GML</string>
+    <string name="protocol-07">KML</string>
+    <string name="protocol-08">ODS</string>
+    <string name="protocol-09">OGC API Features items</string>
+    <string name="protocol-10">OGC API Feature landing page</string>
+    <string name="protocol-11">OGC API Features</string>
+    <string name="protocol-12">WCS-1.0.0-http-get-capabilities</string>
+    <string name="protocol-13">WCS-1.0.0-http-get-coverage</string>
+    <string name="protocol-14">WCS-1.1.0-http-get-capabilities</string>
+    <string name="protocol-15">WCS-1.1.0-http-get-coverage</string>
+    <string name="protocol-16">WCS-1.1.1-http-get-capabilities</string>
+    <string name="protocol-17">WCS-1.1.1-http-get-coverage</string>
+    <string name="protocol-18">WCS-2.0.0-http-get-capabilities</string>
+    <string name="protocol-19">WCS-2.0.0-http-get-coverage</string>
+    <string name="protocol-20">WCS-2.0.1-http-get-capabilities</string>
+    <string name="protocol-21">WCS-2.0.1-http-get-coverage</string>
+    <string name="protocol-22">WCS</string>
+    <string name="protocol-23">WFS-1.0.0-http-describefeaturetype</string>
+    <string name="protocol-24">WFS-1.0.0-http-get-capabilities</string>
+    <string name="protocol-25">WFS-1.0.0-http-get-feature</string>
+    <string name="protocol-26">WFS-1.1.0-http-describefeaturetype</string>
+    <string name="protocol-27">WFS-1.1.0-http-get-capabilities</string>
+    <string name="protocol-28">WFS-1.1.0-http-get-feature</string>
+    <string name="protocol-29">WFS-1.1.0-http-getgmlobject</string>
+    <string name="protocol-30">WFS-2.0.0-http-describefeaturetype</string>
+    <string name="protocol-31">WFS-2.0.0-http-get-capabilities</string>
+    <string name="protocol-32">WFS-2.0.0-http-get-feature</string>
+    <string name="protocol-33">WFS</string>
+    <string name="protocol-34">WMS-1.1.1-http-get-capabilities</string>
+    <string name="protocol-35">WMS-1.1.1-http-get-featureinfo</string>
+    <string name="protocol-36">WMS-1.1.1-http-get-map</string>
+    <string name="protocol-37">WMS-1.3.0-http-get-capabilities</string>
+    <string name="protocol-38">WMS-1.3.0-http-get-featureinfo</string>
+    <string name="protocol-39">WMS-1.3.0-http-get-map</string>
+    <string name="protocol-40">WMS</string>
+    <string name="protocol-41">WMTS-1.0.0-http-get-capabilities</string>
+    <string name="protocol-42">WMTS-1.0.0-http-get-tile</string>
+    <string name="protocol-43">WMTS</string>
+    <string name="protocol-45">REST</string>
+    <string name="protocol-46">DOWNLOAD-1.0-ftp--download</string>
+    <string name="protocol-47">DOWNLOAD-1.0-http--download</string>
+    <string name="protocol-48">LINK-1.0-http--atom</string>
+    <string name="protocol-49">LINK-1.0-http--link</string>
+    <string name="protocol-50">LINK-1.0-http--related</string>
+    <string name="protocol-51">Enter your own protocol...</string>
+</resources>

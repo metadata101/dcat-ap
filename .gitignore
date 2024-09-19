@@ -12,4 +12,4 @@ eclipse/
 doc
 transifex/.tx
 transifex/translations
-!transifex/*/en_US.xml
+!transifex/translations/*/en_US.xml
