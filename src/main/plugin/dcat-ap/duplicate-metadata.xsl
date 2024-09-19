@@ -41,11 +41,8 @@
       <dct:identifier>
         <xsl:value-of select="$resourceUUID"/>
       </dct:identifier>
-      <dct:title xml:lang="nl"/>
 
-      <xsl:apply-templates select="dct:title[position() > 1]"/>
-
-      <xsl:apply-templates select="*[name() != 'dct:identifier' and name() != 'dct:title']"/>
+      <xsl:apply-templates select="*[name() != 'dct:identifier']"/>
     </xsl:copy>
   </xsl:template>
 
