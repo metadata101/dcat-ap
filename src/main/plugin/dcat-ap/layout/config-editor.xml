@@ -423,21 +423,40 @@
       <name>dct:description</name>
     </expanded>
     <exclude>
+      <name>adms:identifier</name>
       <name>dcat:spatialResolutionInMeters</name>
       <name>dcat:temporalResolution</name>
       <name>dcat:startDate</name>
       <name>dcat:endDate</name>
+      <name>dcat:accessURL</name>
+      <name>dcat:downloadURL</name>
+      <name>dcat:byteSize</name>
+      <name>dcat:compressFormat</name>
+      <name>dcat:packageFormat</name>
       <name>dct:identifier</name>
       <name>dct:language</name>
+      <name>dct:format</name>
       <name>dct:modified</name>
       <name>dct:issued</name>
+      <name>dct:hasPart</name>
+      <name>dct:isPartOf</name>
+      <name>dct:relation</name>
+      <name>dct:isReferencedBy</name>
+      <name>dct:hasVersion</name>
+      <name>dct:isVersionOf</name>
+      <name>dct:source</name>
+      <name>dct:spatial</name>
+      <name>dct:accrualPeriodicity</name>
       <name>foaf:Document</name>
+      <name>foaf:primaryTopic</name>
       <name>owl:versionInfo</name>
       <name>prov:atTime</name>
+      <name>spdx:checksum</name>
       <name>vcard:hasEmail</name>
       <name>vcard:hasTelephone</name>
       <name>vcard:postal-code</name>
       <name>vcard:fn</name>
+      <name>skos:inScheme</name>
     </exclude>
   </multilingualFields>
 
@@ -483,9 +502,7 @@
           </action>
 
 
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description"
-                 or="description"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description"/>
 
           <action type="add" or="description" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description)=0">

@@ -122,19 +122,24 @@
   <xsl:variable name="resourceAbout" select="concat(/root/env/nodeURL, 'resources/', $resourceType, '/', $resourceUUID)"/>
 
   <!-- Multilingual support -->
-  <xsl:variable name="multilingualElements"
-                select="('dct:title', 'dct:description')"/>
+  <xsl:variable name="nonMultilingualElements"
+                select="$editorConfig/editor/multilingualFields/exclude/name"/>
+
 
   <!-- Ignore element not in main language (they are handled in dcat2-translations-builder. -->
-  <xsl:template match="*[name() = $multilingualElements
-                         and $isMultilingual
-                         and @xml:lang != $mainLanguage]"
+  <xsl:template match="*[
+                          count(*) = 0
+                          and name() != $nonMultilingualElements
+                          and $isMultilingual
+                          and @xml:lang != $mainLanguage]"
                         priority="100"/>
 
   <!-- Expand element which may not contain xml:lang attribute
   eg. when clicking + -->
-  <xsl:template match="*[name() = $multilingualElements
-                         and $isMultilingual
+  <xsl:template match="*[
+                          count(*) = 0
+                          and name() != $nonMultilingualElements
+                          and $isMultilingual
                          and (not(@xml:lang) or not(string(@xml:lang)))]"
                         priority="105">
     <xsl:variable name="name"
@@ -151,8 +156,10 @@
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template match="*[name() = $multilingualElements
-                         and $isMultilingual
+  <xsl:template match="*[
+                          count(*) = 0
+                          and name() != $nonMultilingualElements
+                          and $isMultilingual
                          and @xml:lang = $mainLanguage]"
                 priority="100">
     <!-- Then we copy translations of following siblings
@@ -189,8 +196,6 @@
     <xsl:variable name="followingSiblings"
                   select="following-sibling::*[name() = $name]"/>
 
-    <xsl:message>building <xsl:value-of select="name()"/> </xsl:message>
-    <xsl:message>building <xsl:copy-of select="$locales"/> </xsl:message>
     <!-- Select element with same name and different xml:lang attribute
     until the next one with the main language. -->
     <xsl:variable name="currentGroup"
