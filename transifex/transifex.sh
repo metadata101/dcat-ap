@@ -12,6 +12,11 @@ host = https://app.transifex.com
 file_filter = translations/dcat-ap_loc_labels/<lang>.xml
 source_file = translations/dcat-ap_loc_labels/en_US.xml
 type = ANDROID
+
+[o:geonetwork:p:metadata101:r:dcat-ap_loc_strings]
+file_filter = translations/dcat-ap_loc_strings/<lang>.xml
+source_file = translations/dcat-ap_loc_strings/en_US.xml
+type = ANDROID
 EOF
 }
 
@@ -22,7 +27,7 @@ download() {
 
 upload() {
   echo "Uploading source files..."
-  tx push
+  tx push -s
 }
 
 apply() {
@@ -45,7 +50,18 @@ apply() {
     echo " > Language ($VALUE) Source ($source) Target ($target)"
     xsltproc transform/loc.labels.xslt "$source" | xmllint --format - > "$target"
   done
+  for index in "${l[@]}" ; do
+      KEY="${index%%::*}"
+      VALUE="${index##*::}"
+    source=$TRANSLATION_DIR/dcat-ap_loc_strings/$KEY.xml
+    target=$SRC_DIR/loc/$VALUE/strings.xml
+    echo " > Language ($VALUE) Source ($source) Target ($target)"
+    xsltproc transform/loc.strings.xslt "$source" | xmllint --format - > "$target"
+  done
 }
+
+# execute the setup function, configuring transifex as defined above
+setup
 
 # get user input
 usage="$(basename "$0") [-h] [-b bump]
