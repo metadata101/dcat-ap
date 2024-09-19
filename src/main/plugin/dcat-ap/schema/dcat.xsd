@@ -73,20 +73,20 @@
 
 
           <!-- DCAT-AP.vl & METADATA-DCAT elements -->
-          <!-- <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/> -->
-          <!-- <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/> -->
-          <!-- <xs:element name="contactPoint" type="vcard:Organization" minOccurs="0" maxOccurs="unbounded"/> -->
-          <!-- <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/> -->
-          <!-- <xs:element name="landingPage" type="xs:string" minOccurs="0" maxOccurs="unbounded"/> -->
-          <!-- <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/> -->
-          <!-- <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/> -->
-          <!-- <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/> -->
-          <!-- <xs:element name="theme" type="xs:string" minOccurs="0" maxOccurs="unbounded"/> -->
-          <!-- <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/> -->
-          <!-- <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/> -->
-          <!-- <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/> -->
-          <!-- <xs:element ref="dct:relation" minOccurs="0" maxOccurs="unbounded"/> -->
-          <!-- <xs:element ref="dct:type" minOccurs="0" maxOccurs="unbounded"/> -->
+          <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="contactPoint" type="vcard:Organization" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="landingPage" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="theme" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/>
+          <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:relation" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:type" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -120,8 +120,8 @@
                 <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/> <!-- Required by GeoNetwork for MD identifications -->
 
                 <!-- DCAT-AP.vl & METADATA-DCAT elements -->
-                <!-- <xs:element ref="adms:identifier" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/> -->
+                <xs:element ref="adms:identifier" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
               </xs:sequence>
             </xs:extension>
           </xs:complexContent>
@@ -184,13 +184,13 @@
 
 
                 <!-- DCAT-AP.vl & METADATA-DCAT elements -->
-                <!-- <xs:element ref="dct:created" minOccurs="0" maxOccurs="1"/> -->
-                <!-- <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element name="extension" type="rdf:Statement" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/> -->
+                <xs:element ref="dct:created" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="extension" type="rdf:Statement" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
               </xs:sequence>
             </xs:extension>
           </xs:complexContent>
@@ -239,8 +239,8 @@
 
 
                 <!-- DCAT-AP.vl & METADATA-DCAT elements -->
-                <!-- <xs:element ref="dct:identifier" minOccurs="1" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/> -->
+                <xs:element ref="dct:identifier" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/>
               </xs:sequence>
             </xs:extension>
           </xs:complexContent>
@@ -266,7 +266,6 @@
                 <xs:element name="servesDataset" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="endpointDescription" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/> <!-- VL as it min to 1 and max to 1 -->
 
-
                 <!-- Optional -->
                 <!-- <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/> --> <!-- Not included in the text but included in the UML -->
                 <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
@@ -275,34 +274,34 @@
 
 
                 <!-- VL added elements -->
-                <!-- <xs:element ref="dct:identifier" minOccurs="1" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="dct:publisher" minOccurs="1" maxOccurs="1"/> -->
-                <!-- <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element name="landingPage" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element name="contactPoint" type="vcard:Organization" minOccurs="1" maxOccurs="1"/> -->
-                <!-- <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="adms:identifier" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="1"/> -->
-                <!-- <xs:element ref="adms:versionNotes" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="mdcat:landingspaginaVoorAuthenticatie" minOccurs="0" maxOccurs="1"/> -->
-                <!-- <xs:element ref="mdcat:landingspaginaVoorStatusinformatie" minOccurs="0" maxOccurs="1"/> -->
-                <!-- <xs:element ref="mdcat:landingspaginaVoorGebruiksinformatie" minOccurs="0" maxOccurs="1"/> -->
-                <!-- <xs:element ref="mdcat:levensfase" minOccurs="0" maxOccurs="1"/> -->
-                <!-- <xs:element ref="mdcat:ontwikkelingstoestand" minOccurs="0" maxOccurs="1"/> -->
-                <!-- <xs:element name="qualifiedRelation" type="dcat:Relationship_type" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element name="theme" type="dct:subject" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="dct:creator" minOccurs="0" maxOccurs="1"/> -->
-                <!-- <xs:element ref="dct:created" minOccurs="0" maxOccurs="1"/> -->
-                <!-- <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/> -->
-                <!-- <xs:element ref="dct:modified" minOccurs="0" maxOccurs="1"/> -->
-                <!-- <xs:element ref="dct:relation" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/> -->
-                <!-- <xs:element ref="dct:type" minOccurs="0" maxOccurs="1"/> -->
+                <xs:element ref="dct:identifier" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dct:publisher" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="landingPage" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="contactPoint" type="vcard:Organization" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="adms:identifier" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="adms:versionNotes" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="mdcat:landingspaginaVoorAuthenticatie" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="mdcat:landingspaginaVoorStatusinformatie" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="mdcat:landingspaginaVoorGebruiksinformatie" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="mdcat:levensfase" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="mdcat:ontwikkelingstoestand" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="qualifiedRelation" type="dcat:Relationship_type" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="theme" type="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:creator" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dct:created" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dct:modified" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dct:relation" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:type" minOccurs="0" maxOccurs="1"/>
               </xs:sequence>
             </xs:extension>
           </xs:complexContent>

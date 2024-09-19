@@ -36,10 +36,181 @@
     </sch:rule>
   </sch:pattern>
 
-  <sch:pattern is-a="CardinalityCheck" id="DataService_license">
+  <sch:pattern is-a="CardinalityCheck" id="Catalog_accessRights">
     <sch:param name="context" value="//dcat:Catalog"/>
     <sch:param name="element" value="dct:accessRights"/>
     <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Dataset_created">
+    <sch:param name="context" value="//dcat:Dataset"/>
+    <sch:param name="element" value="dct:created"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Distribution_identifier">
+    <sch:param name="context" value="//dcat:Distribution"/>
+    <sch:param name="element" value="dct:identifier"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="n"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Distribution_accessRights">
+    <sch:param name="context" value="//dcat:Distribution"/>
+    <sch:param name="element" value="dct:accessRights"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_identifier">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="dct:identifier"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="n"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_publisher">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="dct:publisher"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_contactPoint">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="dcat:contactPoint"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_versionInfo">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="owl:versionInfo"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_landingspaginaVoorAuthenticatie">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="mdcat:landingspaginaVoorAuthenticatie"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_landingspaginaVoorStatusinformatie">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="mdcat:landingspaginaVoorStatusinformatie"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_landingspaginaVoorGebruiksinformatie">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="mdcat:landingspaginaVoorGebruiksinformatie"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_levensfase">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="mdcat:levensfase"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_ontwikkelingstoestand">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="mdcat:ontwikkelingstoestand"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_creator">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="dct:creator"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_created">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="dct:created"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_issued">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="dct:issued"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_modified">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="dct:modified"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_type">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="dct:type"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+
+
+  <!-- Overwrite DCAT-AP generic cardinalities -->
+  <sch:pattern is-a="CardinalityCheck" id="Dataset_contactPoint">
+    <sch:param name="context" value="//dcat:Dataset"/>
+    <sch:param name="element" value="dcat:contactPoint"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Dataset_publisher">
+    <sch:param name="context" value="//dcat:Dataset"/>
+    <sch:param name="element" value="dct:publisher"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="n"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Dataset_identifier">
+    <sch:param name="context" value="//dcat:Dataset"/>
+    <sch:param name="element" value="dct:identifier"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="n"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Dataset_accessRights">
+    <sch:param name="context" value="//dcat:Dataset"/>
+    <sch:param name="element" value="dct:accessRights"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="n"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Distribution_accessURL">
+    <sch:param name="context" value="//dcat:Distribution"/>
+    <sch:param name="element" value="dcat:accessURL"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Distribution_rights">
+    <sch:param name="context" value="//dcat:Distribution"/>
+    <sch:param name="element" value="dct:rights"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="n"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Distribution_downloadURL">
+    <sch:param name="context" value="//dcat:Distribution"/>
+    <sch:param name="element" value="dcat:downloadURL"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Distribution_compressFormat">
+    <sch:param name="context" value="//dcat:Distribution"/>
+    <sch:param name="element" value="dcat:compressFormat"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_endpointURL">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="dcat:endpointURL"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_endpointDescription">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="dcat:endpointDescription"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="DataService_accessRights">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="dct:accessRights"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="n"/>
   </sch:pattern>
 </sch:schema>
