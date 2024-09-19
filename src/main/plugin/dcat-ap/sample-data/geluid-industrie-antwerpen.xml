@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.openarchives.org/OAI/2.0/rdf.xsd">
+  <dcat:Catalog xmlns:dcat="http://www.w3.org/ns/dcat#" rdf:about="https://portaal-stadAntwerpen.opendata.arcgis.com">
+    <dct:title xmlns:dct="http://purl.org/dc/terms/">Stad Antwerpen</dct:title>
+    <dct:description xmlns:dct="http://purl.org/dc/terms/">"De stad Antwerpen beschikt over een schat aan geografische data over de stad. 
+    Via dit portaal wordt u de mogelijkheid geboden om deze geografische data te verkennen, visualiseren en te downloaden. 
+    Deze data is open data en mag u vrij en kosteloos gebruiken. 
+    Met de datasets kunt u bijvoorbeeld nieuwe mobiele toepassingen ontwikkelen die de dienstverlening voor bewoners kunnen verbeteren. 
+    Ontdek de data door hieronder te zoeken op de verschillende thema’s of door een trefwoord in te vullen.
+    Meer info op: https://portaal-stadantwerpen.opendata.arcgis.com
+    En op https://www.antwerpen.be/open-data</dct:description>
+    <dct:publisher xmlns:dct="http://purl.org/dc/terms/">
+      <foaf:Agent xmlns:foaf="http://xmlns.com/foaf/0.1/">
+        <foaf:name>Stad Antwerpen</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <foaf:homepage xmlns:foaf="http://xmlns.com/foaf/0.1/">
+      <foaf:Document />
+    </foaf:homepage>
+    <dct:language xmlns:dct="http://purl.org/dc/terms/">
+      <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+        <rdf:type rdf:resource="dct:LinguisticSystem" />
+      </skos:Concept>
+    </dct:language>
+    <dcat:record>
+      <dcat:CatalogRecord rdf:about="https://portaal-stadantwerpen.opendata.arcgis.com/maps/stadAntwerpen::geluid-industrie-eve-2016-record">
+        <dct:identifier xmlns:dct="http://purl.org/dc/terms/">32daf7c5-cf18-32d1-999a-4760c2b05c65</dct:identifier>
+        <foaf:primaryTopic xmlns:foaf="http://xmlns.com/foaf/0.1/" rdf:resource="https://portaal-stadantwerpen.opendata.arcgis.com/maps/stadAntwerpen::geluid-industrie-eve-2016" />
+        <dct:modified xmlns:dct="http://purl.org/dc/terms/">2024-02-25T02:00:06.342Z</dct:modified>
+        <dct:conformsTo xmlns:dct="http://purl.org/dc/terms/">
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
+            <dct:title>Dcat-ap-vl</dct:title>
+            <dct:description>Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
+            <owl:versionInfo xmlns:owl="http://www.w3.org/2002/07/owl#">2.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+        <adms:identifier xmlns:adms="http://www.w3.org/ns/adms#">
+          <adms:Identifier>
+            <skos:notation xmlns:skos="http://www.w3.org/2004/02/skos/core#">https://portaal-stadantwerpen.opendata.arcgis.com/maps/stadAntwerpen::geluid-industrie-eve-2016-record</skos:notation>
+          </adms:Identifier>
+        </adms:identifier>
+      </dcat:CatalogRecord>
+    </dcat:record>
+    <dcat:dataset>
+      <dcat:Dataset rdf:about="https://portaal-stadantwerpen.opendata.arcgis.com/maps/stadAntwerpen::geluid-industrie-eve-2016">
+        <dct:identifier xmlns:dct="http://purl.org/dc/terms/">https://www.arcgis.com/home/item.html?id=851d5057323c4f848808af5e94dd596f&amp;sublayer=752</dct:identifier>
+        <dct:title xmlns:dct="http://purl.org/dc/terms/">Geluid industrie eve 2016</dct:title>
+        <dct:description xmlns:dct="http://purl.org/dc/terms/">Strategische geluidsbelastingskaart voor de stad Antwerpen betreffende industrie volgens RL 2002/49/EG. Het referentiejaar van deze data is 201 6 . Op de geluidskaart wordt aangegeven aan hoeveel geluid de omgeving wordt blootgesteld. De geluidsbelasting wordt daarbij uitgedrukt in de parameter L eve . Het L eve -niveau is het jaargemiddelde geluidsniveau tijdens de  avond (19u-23u ). Deze geluidsbelastingskaarten worden geactualiseerd om de 5 jaar.</dct:description>
+        <dcat:contactPoint>
+          <vcard:Organization xmlns:vcard="http://www.w3.org/2006/vcard/ns#" rdf:about="https://www.antwerpen.be/info/open-data-stad-antwerpen">
+            <vcard:fn>opendatabeheer</vcard:fn>
+          </vcard:Organization>
+        </dcat:contactPoint>
+        <dct:issued xmlns:dct="http://purl.org/dc/terms/">2023-11-09T11:06:49.000Z</dct:issued>
+        <dct:modified xmlns:dct="http://purl.org/dc/terms/">2024-01-15T11:44:19.000Z</dct:modified>
+        <dct:publisher xmlns:dct="http://purl.org/dc/terms/">
+          <foaf:Agent xmlns:foaf="http://xmlns.com/foaf/0.1/">
+            <foaf:name>Stad Antwerpen</foaf:name>
+          </foaf:Agent>
+        </dct:publisher>
+        <dcat:keyword xml:lang="nl">GELUIDSHINDER</dcat:keyword>
+        <dcat:keyword xml:lang="nl">Menselijke gezondheid en veiligheid</dcat:keyword>
+        <dcat:keyword xml:lang="nl">GELUIDSKAART</dcat:keyword>
+        <dcat:keyword xml:lang="nl">toegevoegd GDI-Vl</dcat:keyword>
+        <dcat:keyword xml:lang="nl">milieu</dcat:keyword>
+        <dcat:keyword xml:lang="nl">HINDER</dcat:keyword>
+        <dcat:keyword xml:lang="nl">Geluidshinder</dcat:keyword>
+        <dcat:keyword xml:lang="nl">Antwerpen</dcat:keyword>
+        <dcat:keyword xml:lang="nl">metadata GDI-VL-Conform</dcat:keyword>
+        <dcat:keyword xml:lang="nl">Lijst M&amp;R INSPIRE</dcat:keyword>
+        <dcat:keyword xml:lang="nl">metadata INSPIRE-conform</dcat:keyword>
+        <dcat:keyword xml:lang="nl">Vlaamse Open Data</dcat:keyword>
+        <mdcat:statuut xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#">
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
+            <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">Vlaamse Open data</skos:prefLabel>
+            <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden" />
+          </skos:Concept>
+        </mdcat:statuut>
+        <dcat:theme>
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" />
+        </dcat:theme>
+        <dct:accessRights xmlns:dct="http://purl.org/dc/terms/">
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+            <rdf:type rdf:resource="dct:RightsStatement" />
+          </skos:Concept>
+        </dct:accessRights>
+        <dct:language xmlns:dct="http://purl.org/dc/terms/">
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+            <rdf:type rdf:resource="dct:LinguisticSystem" />
+          </skos:Concept>
+        </dct:language>
+        <dct:provenance xmlns:dct="http://purl.org/dc/terms/">
+          <dct:ProvenanceStatement />
+        </dct:provenance>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">hh:hh_indus_Lday_2011</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">WMS-capabilities industrie Lday 2011</dct:description>
+            <dcat:accessURL rdf:resource="https://www.mercator.vlaanderen.be/raadpleegdienstenmercatorpubliek/hh/hh_indus_Lday_2011/wms?request=GetCapabilities&amp;service=wms&amp;version=1.3.0" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/OGC:WMS-1.3.0-HTTP-GET-CAPABILITIES">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">hh:hh_indus_Lday_2011</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">WMS industrie Lday 2011</dct:description>
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/OGC:WMS-1.3.0-HTTP-GET-MAP">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">ArcGIS GeoService</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">Esri REST</dct:description>
+            <dcat:accessURL rdf:resource="https://geodata.antwerpen.be/arcgissql/rest/services/P_Portal/portal_publiek6/MapServer/752" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/JSON">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">CSV</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">CSV</dct:description>
+            <dcat:accessURL rdf:resource="https://portaal-stadantwerpen.opendata.arcgis.com/api/download/v1/items/851d5057323c4f848808af5e94dd596f/csv?layers=752" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">ArcGIS Hub Dataset</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">Web Page</dct:description>
+            <dcat:accessURL rdf:resource="https://portaal-stadantwerpen.opendata.arcgis.com/maps/stadAntwerpen::geluid-industrie-eve-2016" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/HTML">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">GeoJSON</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">GeoJSON</dct:description>
+            <dcat:accessURL rdf:resource="https://portaal-stadantwerpen.opendata.arcgis.com/api/download/v1/items/851d5057323c4f848808af5e94dd596f/geojson?layers=752" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/GEOJSON">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">hh:hh_indus_Lday_2011</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">KML industrie Lday 2011</dct:description>
+            <dcat:accessURL rdf:resource="https://www.mercator.vlaanderen.be/raadpleegdienstenmercatorpubliek/hh/wms/kml?layers=hh:hh_indus_Lday_2011" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/GLG:KML-2.0-HTTP-GET-MAP">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">hh:hh_indus_Lday_2011</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">WMS industrie Lday 2011</dct:description>
+            <dcat:accessURL rdf:resource="https://www.mercator.vlaanderen.be/raadpleegdienstenmercatorpubliek/hh/hh:hh_indus_Lday_2011/wms?" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/OGC:WMS">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">hh:hh_indus_Lday_2011</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">WFS-capabilities industrie Lday 2011</dct:description>
+            <dcat:accessURL rdf:resource="https://www.mercator.vlaanderen.be/raadpleegdienstenmercatorpubliek/hh/hh_indus_Lday_2011/wfs?request=GetCapabilities&amp;service=wfs&amp;version=1.0.0" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/OGC:WFS-1.0.0-HTTP-GET-CAPABILITIES">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">ZIP</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">Shapefile</dct:description>
+            <dcat:accessURL rdf:resource="https://portaal-stadantwerpen.opendata.arcgis.com/api/download/v1/items/851d5057323c4f848808af5e94dd596f/shapefile?layers=752" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/ZIP">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">KML</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">KML</dct:description>
+            <dcat:accessURL rdf:resource="https://portaal-stadantwerpen.opendata.arcgis.com/api/download/v1/items/851d5057323c4f848808af5e94dd596f/kml?layers=752" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/KML">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+      </dcat:Dataset>
+    </dcat:dataset>
+  </dcat:Catalog>
+</rdf:RDF>
+
