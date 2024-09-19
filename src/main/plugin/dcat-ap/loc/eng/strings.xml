@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- -->
-
 <strings>
   <xml_dublin-core>Save this metadata as a Dublin Core XML file</xml_dublin-core>
   <xml_metadata-dcat>Save this metadata as a DCAT-AP XML file</xml_metadata-dcat>
@@ -8,11 +6,9 @@
   <advanced>Advanced</advanced>
   <xml>XML</xml>
   <tabDataset>Dataset</tabDataset>
-  <tabDistribution>Distributies</tabDistribution>
+  <tabDistribution>Distributions</tabDistribution>
   <tabService>Service</tabService>
   <tabRecord>Record</tabRecord>
-
-  <!-- Section labels -->
   <basicInformation>Basic information</basicInformation>
   <versionInformation>Version information</versionInformation>
   <usageInformation>Usage information</usageInformation>
@@ -24,8 +20,6 @@
   <conformToInformation>Conformiteit met standaard</conformToInformation>
   <overviews>Overviews</overviews>
   <distribution>Distribution</distribution>
-
-  <!-- Thesauri pickers -->
   <dcat.addThemes>Themes</dcat.addThemes>
   <dcat.addTags>Tags/Keywords</dcat.addTags>
   <dcat.addType>Type</dcat.addType>
@@ -36,19 +30,12 @@
   <dcat.addMediaType>Media type</dcat.addMediaType>
   <dcat.addAccrualPeriodicity>Update frequency</dcat.addAccrualPeriodicity>
   <dcat.addLanguage>Language</dcat.addLanguage>
-  <mdcat.addLevensfase>Usage status</mdcat.addLevensfase>
-  <mdcat.addOntwikkelingstoestand>Development status</mdcat.addOntwikkelingstoestand>
-  <mdcat.addMagdaCategorie>Magda category</mdcat.addMagdaCategorie>
-  <mdcat.addStatuut>Status</mdcat.addStatuut>
-
-  <!-- Snippet label -->
   <add-license>License</add-license>
   <license-modellicentie-gratis>Model license for free reuse</license-modellicentie-gratis>
   <license-cc0>Creative Commons Zero declaration</license-cc0>
   <license-modellicentie-hergebruik>Model license for paid reuse</license-modellicentie-hergebruik>
   <license-onvoorwaardelijk>Unconditional reuse</license-onvoorwaardelijk>
   <license-empty>Specify your own license...</license-empty>
-
   <protocol-01>ESRI:AIMS-http-configuration</protocol-01>
   <protocol-02>KML-2.0-http-get-map</protocol-02>
   <protocol-03>LDES</protocol-03>
@@ -92,12 +79,11 @@
   <protocol-41>WMTS-1.0.0-http-get-capabilities</protocol-41>
   <protocol-42>WMTS-1.0.0-http-get-tile</protocol-42>
   <protocol-43>WMTS</protocol-43>
-  <protocol-44>REST richtlijnen Digitaal Vlaanderen</protocol-44>
   <protocol-45>REST</protocol-45>
   <protocol-46>DOWNLOAD-1.0-ftp--download</protocol-46>
   <protocol-47>DOWNLOAD-1.0-http--download</protocol-47>
   <protocol-48>LINK-1.0-http--atom</protocol-48>
   <protocol-49>LINK-1.0-http--link</protocol-49>
   <protocol-50>LINK-1.0-http--related</protocol-50>
-  <protocol-51>Vul uw eigen protocol in...</protocol-51>
+  <protocol-51>Enter your own protocol...</protocol-51>
 </strings>

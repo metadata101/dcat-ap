@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- -->
-
 <strings>
   <xml_dublin-core>Sla deze metadata op als een Dublin Core XML bestand</xml_dublin-core>
   <xml_metadata-dcat>Sla deze metadata op als een DCAT-AP XML bestand</xml_metadata-dcat>
@@ -11,12 +9,6 @@
   <tabDistribution>Distributies</tabDistribution>
   <tabService>Service</tabService>
   <tabRecord>Record</tabRecord>
-  <tabAdvancedDataset>Dataset</tabAdvancedDataset>
-  <tabAdvancedDistribution>Distributies</tabAdvancedDistribution>
-  <tabAdvancedService>Service</tabAdvancedService>
-  <tabAdvancedRecord>Record</tabAdvancedRecord>
-
-  <!-- Section labels -->
   <basicInformation>Basisinformatie</basicInformation>
   <versionInformation>Versie informatie</versionInformation>
   <usageInformation>Gebruiksinformatie</usageInformation>
@@ -28,8 +20,6 @@
   <conformToInformation>Conformiteit met standaard</conformToInformation>
   <overviews>Overviews</overviews>
   <distribution>Distributie</distribution>
-
-  <!-- Thesauri pickers -->
   <dcat.addThemes>Thema</dcat.addThemes>
   <dcat.addTags>Trefwoorden</dcat.addTags>
   <dcat.addType>Type</dcat.addType>
@@ -40,18 +30,12 @@
   <dcat.addMediaType>Mediatype</dcat.addMediaType>
   <dcat.addAccrualPeriodicity>Updatefrequentie</dcat.addAccrualPeriodicity>
   <dcat.addLanguage>Taal</dcat.addLanguage>
-  <mdcat.addLevensfase>Levensfase</mdcat.addLevensfase>
-  <mdcat.addOntwikkelingstoestand>Ontwikkelingstoestand</mdcat.addOntwikkelingstoestand>
-  <mdcat.addMagdaCategorie>MAGDA-categorie</mdcat.addMagdaCategorie>
-  <mdcat.addStatuut>Statuut</mdcat.addStatuut>
-
-  <!-- Snippet label -->
+  <add-license>Licentie</add-license>
   <license-modellicentie-gratis>Modellicentie voor gratis hergebruik</license-modellicentie-gratis>
   <license-cc0>Creative Commons Zero verklaring</license-cc0>
   <license-modellicentie-hergebruik>Modellicentie voor betaald hergebruik</license-modellicentie-hergebruik>
   <license-onvoorwaardelijk>Onvoorwaardelijk hergebruik</license-onvoorwaardelijk>
   <license-empty>Vul uw eigen licentie in...</license-empty>
-
   <protocol-01>ESRI:AIMS-http-configuration</protocol-01>
   <protocol-02>KML-2.0-http-get-map</protocol-02>
   <protocol-03>LDES</protocol-03>
@@ -95,7 +79,6 @@
   <protocol-41>WMTS-1.0.0-http-get-capabilities</protocol-41>
   <protocol-42>WMTS-1.0.0-http-get-tile</protocol-42>
   <protocol-43>WMTS</protocol-43>
-  <protocol-44>REST richtlijnen Digitaal Vlaanderen</protocol-44>
   <protocol-45>REST</protocol-45>
   <protocol-46>DOWNLOAD-1.0-ftp--download</protocol-46>
   <protocol-47>DOWNLOAD-1.0-http--download</protocol-47>
