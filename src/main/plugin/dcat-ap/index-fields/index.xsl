@@ -373,7 +373,7 @@
         <xsl:for-each select="current-group()/skos:Concept">
           {
           "key": [
-          "<xsl:value-of select="gn-fn-index:json-escape(./@rdf:about)"/>"
+          "<xsl:value-of select="util:escapeForJson(./@rdf:about)"/>"
           ],
           "default": [
           "<xsl:value-of select="./skos:prefLabel[@xml:lang='nl']"/>"
@@ -393,9 +393,9 @@
         <xsl:for-each select="dcat:keyword">
           {
           <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':',
-                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>,
+                                             $doubleQuote, util:escapeForJson(.), $doubleQuote)"/>,
           <xsl:value-of select="concat($doubleQuote, 'lang', gn-fn-index:lang-2char-to-3char(@xml:lang), $doubleQuote, ':',
-                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+                                             $doubleQuote, util:escapeForJson(.), $doubleQuote)"/>
           }
           <xsl:if test="position() != last()">,</xsl:if>
         </xsl:for-each>
@@ -414,9 +414,9 @@
           <xsl:for-each select="dcat:keyword[normalize-space() != '']">
             {
             <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':',
-                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>,
+                                             $doubleQuote, util:escapeForJson(.), $doubleQuote)"/>,
             <xsl:value-of select="concat($doubleQuote, 'lang', gn-fn-index:lang-2char-to-3char(@xml:lang), $doubleQuote, ':',
-                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+                                             $doubleQuote, util:escapeForJson(.), $doubleQuote)"/>
             }
             <xsl:if test="position() != last()">,</xsl:if>
           </xsl:for-each>
@@ -438,12 +438,12 @@
               <xsl:variable name="thesaurusField" select="concat('th_',$key)"/>
               <xsl:variable name="thesaurusTitle" select="util:getThesaurusTitleByName($thesaurusId)"/>
               "<xsl:value-of select="$thesaurusField"/>": {
-              "id": "<xsl:value-of select="gn-fn-index:json-escape($thesaurusId)"/>",
+              "id": "<xsl:value-of select="util:escapeForJson($thesaurusId)"/>",
               <xsl:if test="$thesaurusTitle != ''">
-                "title": "<xsl:value-of select="gn-fn-index:json-escape($thesaurusTitle)"/>",
+                "title": "<xsl:value-of select="util:escapeForJson($thesaurusTitle)"/>",
               </xsl:if>
               "theme": "theme",
-              "link": "<xsl:value-of select="gn-fn-index:json-escape((current-group()/skos:Concept/skos:inScheme/@rdf:resource)[1])"/>",
+              "link": "<xsl:value-of select="util:escapeForJson((current-group()/skos:Concept/skos:inScheme/@rdf:resource)[1])"/>",
               "keywords": [
               <xsl:for-each select="current-group()/skos:Concept">
                 <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat-ap('keyword', ., $allLanguages)/text()"/>
@@ -597,8 +597,8 @@
         "organisationObject": <xsl:value-of select="$organisationObject" />,
       </xsl:if>
       "role":"<xsl:value-of select="$role"/>",
-      "email":"<xsl:value-of select="gn-fn-index:json-escape($email[1])"/>",
-      "phone":"<xsl:value-of select="gn-fn-index:json-escape($phone[1])"/>"
+      "email":"<xsl:value-of select="util:escapeForJson($email[1])"/>",
+      "phone":"<xsl:value-of select="util:escapeForJson($phone[1])"/>"
       }
     </xsl:element>
 
@@ -638,11 +638,11 @@
         "organisationObject": <xsl:value-of select="$organisationObject" />,
       </xsl:if>
       "role":"<xsl:value-of select="$role"/>",
-      "email":"<xsl:value-of select="gn-fn-index:json-escape($email[1])"/>",
+      "email":"<xsl:value-of select="util:escapeForJson($email[1])"/>",
       "website":"<xsl:value-of select="$website"/>",
-      "individual":"<xsl:value-of select="gn-fn-index:json-escape($individualName)"/>",
-      "phone":"<xsl:value-of select="gn-fn-index:json-escape($phone[1])"/>",
-      "address":"<xsl:value-of select="gn-fn-index:json-escape($address)"/>"
+      "individual":"<xsl:value-of select="util:escapeForJson($individualName)"/>",
+      "phone":"<xsl:value-of select="util:escapeForJson($phone[1])"/>",
+      "address":"<xsl:value-of select="util:escapeForJson($address)"/>"
       }
     </xsl:element>
   </xsl:template>
@@ -689,7 +689,7 @@
 
     <xsl:if test="normalize-space($topLevelProtocol) != ''">
       <topLevelProtocol>
-        <xsl:value-of select="gn-fn-index:json-escape($topLevelProtocol)"/>
+        <xsl:value-of select="util:escapeForJson($topLevelProtocol)"/>
       </topLevelProtocol>
     </xsl:if>
   </xsl:template>
@@ -885,26 +885,26 @@
         <xsl:if test="position() = 1">
           <value>
             <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':',
-                                    $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+                                    $doubleQuote, util:escapeForJson(.), $doubleQuote)"/>
           </value>
           <xsl:for-each select="$elements/*[name() = $lookupElement]">
-            <xsl:if test="gn-fn-index:json-escape(.) != ''">
+            <xsl:if test="util:escapeForJson(.) != ''">
               <value>
                 <xsl:value-of select="concat($doubleQuote, 'lang', gn-fn-index:lang-2char-to-3char(@xml:lang), $doubleQuote, ':',
-                                        $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+                                        $doubleQuote, util:escapeForJson(.), $doubleQuote)"/>
               </value>
             </xsl:if>
           </xsl:for-each>
           <xsl:if test="$url != ''">
             <value>
               <xsl:value-of select="concat($doubleQuote, 'link', $doubleQuote, ':', $doubleQuote,
-                                      gn-fn-index:json-escape($url), $doubleQuote)"/>
+                                      util:escapeForJson($url), $doubleQuote)"/>
             </value>
           </xsl:if>
           <xsl:if test="$withKey and $url != ''">
             <value>
               <xsl:value-of select="concat($doubleQuote, 'key', $doubleQuote, ':', $doubleQuote,
-                                      gn-fn-index:json-escape($url), $doubleQuote)"/>
+                                      util:escapeForJson($url), $doubleQuote)"/>
             </value>
           </xsl:if>
         </xsl:if>
@@ -933,7 +933,7 @@
       <xsl:variable name="textObject">
         <value>
           <xsl:value-of select="concat($doubleQuote, 'link', $doubleQuote, ':', $doubleQuote,
-                                      gn-fn-index:json-escape($url), $doubleQuote)"/>
+                                      util:escapeForJson($url), $doubleQuote)"/>
         </value>
       </xsl:variable>
 
