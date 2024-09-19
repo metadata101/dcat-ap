@@ -58,22 +58,22 @@
                 select="//rdf:RDF"/>
 
   <xsl:variable name="allLanguages">
-    <xsl:variable name="listOfLanguages">
+    <xsl:variable name="listOfLanguage">
       <xsl:call-template name="get-dcat-ap-other-languages"/>
     </xsl:variable>
-
-    <xsl:for-each select="$listOfLanguages/*">
-      <lang value="{@code}">
-        <xsl:if test="position() = 1">
-          <xsl:attribute name="id"
-                         select="'default'"/>
+    <xsl:for-each select="$listOfLanguage/lang">
+      <lang value="{@code}" code="{@id}">
+        <xsl:if test="@default">
+          <xsl:attribute name="id" select="'default'"/>
         </xsl:if>
       </lang>
     </xsl:for-each>
   </xsl:variable>
 
-  <xsl:variable name="defaultMainLanguage3Char" select="'dut'"/>
-  <xsl:variable name="defaultMainLanguage2Char" select="'nl'"/>
+  <xsl:variable name="defaultMainLanguage3Char" select="$allLanguages/lang[@id]/@value"/>
+
+  <xsl:variable name="defaultMainLanguage2Char" select="$allLanguages/lang[@id]/@code"/>
+
   <xsl:variable name="editorConfig"
                 select="document('../layout/config-editor.xml')"/>
 
@@ -320,7 +320,7 @@
   </xsl:template>
 
   <xsl:template mode="index-keyword" match="dcat:Dataset|dcat:DataService">
-    <xsl:variable name="keywords" select="dcat:keyword[normalize-space() != '']|(dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie)[skos:Concept/skos:prefLabel[normalize-space() != '']]"/>
+    <xsl:variable name="keywords" select="dcat:keyword[normalize-space() != '']|(dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie)[skos:Concept/skos:prefLabel[normalize-space() != '']]/skos:Concept/skos:prefLabel"/>
     <tagNumber>
       <xsl:value-of select="count($keywords)"/>
     </tagNumber>
@@ -333,8 +333,8 @@
           </xsl:when>
           <xsl:otherwise>
             {
-            <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':', $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>,
-            <xsl:value-of select="concat($doubleQuote, 'lang', gn-fn-index:lang-2char-to-3char(@xml:lang), $doubleQuote, ':', $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+            <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':', $doubleQuote, util:escapeForJson(.), $doubleQuote)"/>,
+            <xsl:value-of select="concat($doubleQuote, 'lang', gn-fn-index:lang-2char-to-3char(@xml:lang), $doubleQuote, ':', $doubleQuote,  util:escapeForJson(.), $doubleQuote)"/>
             }
           </xsl:otherwise>
         </xsl:choose>
@@ -373,7 +373,7 @@
         <xsl:for-each select="current-group()/skos:Concept">
           {
           "key": [
-          "<xsl:value-of select="gn-fn-index:json-escape(./@rdf:about)"/>"
+          "<xsl:value-of select="util:escapeForJson(./@rdf:about)"/>"
           ],
           "default": [
           "<xsl:value-of select="./skos:prefLabel[@xml:lang='nl']"/>"
@@ -393,9 +393,9 @@
         <xsl:for-each select="dcat:keyword">
           {
           <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':',
-                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>,
+                                             $doubleQuote, util:escapeForJson(.), $doubleQuote)"/>,
           <xsl:value-of select="concat($doubleQuote, 'lang', gn-fn-index:lang-2char-to-3char(@xml:lang), $doubleQuote, ':',
-                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+                                             $doubleQuote, util:escapeForJson(.), $doubleQuote)"/>
           }
           <xsl:if test="position() != last()">,</xsl:if>
         </xsl:for-each>
@@ -414,9 +414,9 @@
           <xsl:for-each select="dcat:keyword[normalize-space() != '']">
             {
             <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':',
-                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>,
+                                             $doubleQuote, util:escapeForJson(.), $doubleQuote)"/>,
             <xsl:value-of select="concat($doubleQuote, 'lang', gn-fn-index:lang-2char-to-3char(@xml:lang), $doubleQuote, ':',
-                                             $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+                                             $doubleQuote, util:escapeForJson(.), $doubleQuote)"/>
             }
             <xsl:if test="position() != last()">,</xsl:if>
           </xsl:for-each>
@@ -436,14 +436,14 @@
           <xsl:if test="normalize-space($key) != ''">
             <value>
               <xsl:variable name="thesaurusField" select="concat('th_',$key)"/>
-              <xsl:variable name="thesaurusTitle" select="util:getThesaurusTitleByName($thesaurusId)"/>
+              <xsl:variable name="thesaurusTitle" select="util:getThesaurusTitleByKey($thesaurusId)"/>
               "<xsl:value-of select="$thesaurusField"/>": {
-              "id": "<xsl:value-of select="gn-fn-index:json-escape($thesaurusId)"/>",
+              "id": "<xsl:value-of select="util:escapeForJson($thesaurusId)"/>",
               <xsl:if test="$thesaurusTitle != ''">
-                "title": "<xsl:value-of select="gn-fn-index:json-escape($thesaurusTitle)"/>",
+                "title": "<xsl:value-of select="util:escapeForJson($thesaurusTitle)"/>",
               </xsl:if>
               "theme": "theme",
-              "link": "<xsl:value-of select="gn-fn-index:json-escape((current-group()/skos:Concept/skos:inScheme/@rdf:resource)[1])"/>",
+              "link": "<xsl:value-of select="util:escapeForJson((current-group()/skos:Concept/skos:inScheme/@rdf:resource)[1])"/>",
               "keywords": [
               <xsl:for-each select="current-group()/skos:Concept">
                 <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat-ap('keyword', ., $allLanguages)/text()"/>
@@ -589,12 +589,16 @@
     <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap(concat('Org', $fieldSuffix), foaf:Agent, $allLanguages, false(), false(), 'foaf:name')"/>
     <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap(concat(replace($role, '[^a-zA-Z0-9-]', ''), 'Org', $fieldSuffix), foaf:Agent, $allLanguages, false(), false(), 'foaf:name')"/>
 
+    <xsl:variable name="organisationObject" select="gn-fn-index:add-multilingual-field-dcat-ap('organisationObject', foaf:Agent, $allLanguages, false(), false(), 'foaf:name')" />
+
     <xsl:element name="contact{$fieldSuffix}">
       <xsl:attribute name="type" select="'object'"/>{
-      "organisation":"<xsl:value-of select="gn-fn-index:json-escape($organisationName)"/>",
+      <xsl:if test="$organisationObject">
+        "organisationObject": <xsl:value-of select="$organisationObject" />,
+      </xsl:if>
       "role":"<xsl:value-of select="$role"/>",
-      "email":"<xsl:value-of select="gn-fn-index:json-escape($email[1])"/>",
-      "phone":"<xsl:value-of select="gn-fn-index:json-escape($phone[1])"/>"
+      "email":"<xsl:value-of select="util:escapeForJson($email[1])"/>",
+      "phone":"<xsl:value-of select="util:escapeForJson($phone[1])"/>"
       }
     </xsl:element>
 
@@ -626,15 +630,19 @@
     <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap(concat('Org', $fieldSuffix), vcard:Organization, $allLanguages, false(), false(), 'vcard:organization-name')"/>
     <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap(concat(replace($role, '[^a-zA-Z0-9-]', ''), 'Org', $fieldSuffix), vcard:Organization, $allLanguages, false(), false(), 'vcard:organization-name')"/>
 
+    <xsl:variable name="organisationObject" select="gn-fn-index:add-multilingual-field-dcat-ap('organisationObject', vcard:Organization, $allLanguages, false(), false(), 'vcard:organization-name')" />
+
     <xsl:element name="contact{$fieldSuffix}">
       <xsl:attribute name="type" select="'object'"/>{
-      "organisation":"<xsl:value-of select="gn-fn-index:json-escape($organisationName)"/>",
+      <xsl:if test="$organisationObject">
+        "organisationObject": <xsl:value-of select="$organisationObject" />,
+      </xsl:if>
       "role":"<xsl:value-of select="$role"/>",
-      "email":"<xsl:value-of select="gn-fn-index:json-escape($email[1])"/>",
+      "email":"<xsl:value-of select="util:escapeForJson($email[1])"/>",
       "website":"<xsl:value-of select="$website"/>",
-      "individual":"<xsl:value-of select="gn-fn-index:json-escape($individualName)"/>",
-      "phone":"<xsl:value-of select="gn-fn-index:json-escape($phone[1])"/>",
-      "address":"<xsl:value-of select="gn-fn-index:json-escape($address)"/>"
+      "individual":"<xsl:value-of select="util:escapeForJson($individualName)"/>",
+      "phone":"<xsl:value-of select="util:escapeForJson($phone[1])"/>",
+      "address":"<xsl:value-of select="util:escapeForJson($address)"/>"
       }
     </xsl:element>
   </xsl:template>
@@ -681,7 +689,7 @@
 
     <xsl:if test="normalize-space($topLevelProtocol) != ''">
       <topLevelProtocol>
-        <xsl:value-of select="gn-fn-index:json-escape($topLevelProtocol)"/>
+        <xsl:value-of select="util:escapeForJson($topLevelProtocol)"/>
       </topLevelProtocol>
     </xsl:if>
   </xsl:template>
@@ -721,21 +729,21 @@
           <xsl:when test="count(dct:title)= 1">
             "<xsl:value-of select="normalize-space(dct:title)"/>"
           </xsl:when>
-          <xsl:when test="count(dct:title)>1">
+          <!--<xsl:when test="count(dct:title)>1">
             <xsl:for-each select="dct:title">
               {
               <xsl:value-of select="normalize-space(.)"/>
               }
               <xsl:if test="position() != last()">,</xsl:if>
             </xsl:for-each>
-          </xsl:when>
+          </xsl:when>-->
           <xsl:otherwise>
             ""
           </xsl:otherwise>
         </xsl:choose>
         ,
         "description":
-        "<xsl:value-of select="normalize-space(dct:description)"/>",
+        "<xsl:value-of select="util:escapeForJson(normalize-space(dct:description[1]))"/>",
         "function":"",
         "applicationProfile":"",
         "group":0
@@ -877,26 +885,26 @@
         <xsl:if test="position() = 1">
           <value>
             <xsl:value-of select="concat($doubleQuote, 'default', $doubleQuote, ':',
-                                    $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+                                    $doubleQuote, util:escapeForJson(.), $doubleQuote)"/>
           </value>
           <xsl:for-each select="$elements/*[name() = $lookupElement]">
-            <xsl:if test="gn-fn-index:json-escape(.) != ''">
+            <xsl:if test="util:escapeForJson(.) != ''">
               <value>
                 <xsl:value-of select="concat($doubleQuote, 'lang', gn-fn-index:lang-2char-to-3char(@xml:lang), $doubleQuote, ':',
-                                        $doubleQuote, gn-fn-index:json-escape(.), $doubleQuote)"/>
+                                        $doubleQuote, util:escapeForJson(.), $doubleQuote)"/>
               </value>
             </xsl:if>
           </xsl:for-each>
           <xsl:if test="$url != ''">
             <value>
               <xsl:value-of select="concat($doubleQuote, 'link', $doubleQuote, ':', $doubleQuote,
-                                      gn-fn-index:json-escape($url), $doubleQuote)"/>
+                                      util:escapeForJson($url), $doubleQuote)"/>
             </value>
           </xsl:if>
           <xsl:if test="$withKey and $url != ''">
             <value>
               <xsl:value-of select="concat($doubleQuote, 'key', $doubleQuote, ':', $doubleQuote,
-                                      gn-fn-index:json-escape($url), $doubleQuote)"/>
+                                      util:escapeForJson($url), $doubleQuote)"/>
             </value>
           </xsl:if>
         </xsl:if>
@@ -925,7 +933,7 @@
       <xsl:variable name="textObject">
         <value>
           <xsl:value-of select="concat($doubleQuote, 'link', $doubleQuote, ':', $doubleQuote,
-                                      gn-fn-index:json-escape($url), $doubleQuote)"/>
+                                      util:escapeForJson($url), $doubleQuote)"/>
         </value>
       </xsl:variable>
 
@@ -953,7 +961,7 @@
         <xsl:value-of select="'fra'"/>
       </xsl:when>
       <xsl:when test="$langUri = 'http://publications.europa.eu/resource/authority/language/ENG'">
-        <xsl:value-of select="'end'"/>
+        <xsl:value-of select="'eng'"/>
       </xsl:when>
       <xsl:when test="$langUri = 'http://publications.europa.eu/resource/authority/language/DEU'">
         <xsl:value-of select="'ger'"/>

@@ -49,6 +49,13 @@
         max="1"
         labelKey="dcat.addAccessRight"/>
     </for>
+    <for name="dct:language" xpath="dcat:CatalogRecord" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.language"
+        xpath="/dct:language"
+        max=""
+        labelKey="dcat.addLanguage"/>
+    </for>
     <for name="dct:language" xpath="dcat:Dataset" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.language"
@@ -295,6 +302,19 @@
 
   <!-- Complex fields. -->
   <fieldsWithFieldset>
+    <name>rdf:RDF</name>
+    <name>dcat:Catalog</name>
+    <name>dcat:Dataset</name>
+    <name>dcat:CatalogRecord</name>
+    <name>dcat:record</name>
+    <name>dcat:dataset</name>
+    <name>dcat:service</name>
+    <name>foaf:isPrimaryTopicOf</name>
+    <name>foaf:Organization</name>
+    <name>vcard:org</name>
+    <name>dcat:hadRole</name>
+    <name>dcat:Role</name>
+    <name>dct:language</name>
     <name>dcat:contactPoint</name>
     <name>vcard:Organization</name>
     <name>vcard:hasAddress</name>
@@ -331,8 +351,47 @@
   </fieldsWithFieldset>
 
   <multilingualFields>
+    <expanded>
+      <name>dct:title</name>
+      <name>dct:description</name>
+    </expanded>
     <exclude>
+      <name>adms:identifier</name>
+      <name>dcat:spatialResolutionInMeters</name>
+      <name>dcat:temporalResolution</name>
+      <name>dcat:startDate</name>
+      <name>dcat:endDate</name>
+      <name>dcat:servesDataset</name>
+      <name>dcat:accessURL</name>
+      <name>dcat:downloadURL</name>
+      <name>dcat:endpointURL</name>
+      <name>dcat:byteSize</name>
+      <name>dcat:compressFormat</name>
+      <name>dcat:packageFormat</name>
       <name>dct:identifier</name>
+      <name>dct:language</name>
+      <name>dct:format</name>
+      <name>dct:modified</name>
+      <name>dct:issued</name>
+      <name>dct:hasPart</name>
+      <name>dct:isPartOf</name>
+      <name>dct:relation</name>
+      <name>dct:isReferencedBy</name>
+      <name>dct:hasVersion</name>
+      <name>dct:isVersionOf</name>
+      <name>dct:source</name>
+      <name>dct:spatial</name>
+      <name>dct:accrualPeriodicity</name>
+      <name>foaf:Document</name>
+      <name>foaf:primaryTopic</name>
+      <name>owl:versionInfo</name>
+      <name>prov:atTime</name>
+      <name>spdx:checksum</name>
+      <name>vcard:hasEmail</name>
+      <name>vcard:hasTelephone</name>
+      <name>vcard:postal-code</name>
+      <name>vcard:fn</name>
+      <name>skos:inScheme</name>
     </exclude>
   </multilingualFields>
 
@@ -367,36 +426,39 @@
            hideIfNotDisplayed="true">
         <section name="basicInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title"/>
+
           <action type="add" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title)=0">
             <template>
               <snippet>
-                <dct:title xml:lang="nl"/>
+                <dct:title xml:lang=""/>
               </snippet>
             </template>
           </action>
+
+
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description"/>
+
           <action type="add" or="description" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description)=0">
             <template>
               <snippet>
-                <dct:description xml:lang="nl"/>
+                <dct:description xml:lang=""></dct:description>
               </snippet>
             </template>
           </action>
+
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher"/>
+
           <action type="add" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
             <template>
               <snippet>
                 <dct:publisher>
                   <foaf:Agent>
-                    <foaf:name xml:lang="nl"/>
+                    <foaf:name xml:lang=""/>
                     <dct:type>
                       <skos:Concept>
-                        <skos:prefLabel xml:lang="nl"/>
-                        <skos:prefLabel xml:lang="en"/>
-                        <skos:prefLabel xml:lang="fr"/>
-                        <skos:prefLabel xml:lang="de"/>
+                        <skos:prefLabel xml:lang=""/>
                         <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
                       </skos:Concept>
                     </dct:type>
@@ -497,8 +559,8 @@
                 <dct:conformsTo>
                   <dct:Standard>
                     <dct:identifier/>
-                    <dct:title xml:lang="nl"/>
-                    <dct:description xml:lang="nl"/>
+                    <dct:title xml:lang=""/>
+                    <dct:description xml:lang=""/>
                   </dct:Standard>
                 </dct:conformsTo>
               </snippet>
@@ -530,8 +592,8 @@
                 <snippet>
                   <dct:rights>
                     <dct:RightsStatement>
-                      <dct:title xml:lang="nl"/>
-                      <dct:description xml:lang="nl"/>
+                      <dct:title xml:lang=""/>
+                      <dct:description xml:lang=""/>
                     </dct:RightsStatement>
                   </dct:rights>
                 </snippet>
@@ -549,8 +611,8 @@
               <snippet>
                 <dcat:distribution>
                   <dcat:Distribution>
-                    <dct:title xml:lang="nl"/>
-                    <dct:description xml:lang="nl"/>
+                    <dct:title xml:lang=""/>
+                    <dct:description xml:lang=""/>
                     <dcat:accessURL rdf:resource=""/>
                   </dcat:Distribution>
                 </dcat:distribution>
@@ -567,7 +629,7 @@
                   if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title) = 0">
             <template>
               <snippet>
-                <dct:title xml:lang="nl"/>
+                <dct:title xml:lang=""/>
               </snippet>
             </template>
           </action>
@@ -577,7 +639,7 @@
                   if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description) = 0">
             <template>
               <snippet>
-                <dct:description xml:lang="nl"/>
+                <dct:description xml:lang=""/>
               </snippet>
             </template>
           </action>
@@ -628,7 +690,9 @@
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:modified"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:issued"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"
+                 or="language"
+                 in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
         </section>
         <section name="conformToInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:identifier"/>
@@ -772,8 +836,8 @@
               <snippet>
                 <dcat:distribution>
                   <dcat:Distribution>
-                    <dct:title xml:lang="nl"/>
-                    <dct:description xml:lang="nl"/>
+                    <dct:title xml:lang=""/>
+                    <dct:description xml:lang=""/>
                     <dcat:accessURL rdf:resource=""/>
                     <dcat:downloadURL rdf:resource=""/>
                     <dct:format/>
@@ -810,7 +874,9 @@
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:modified"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:issued"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"
+                 or="language"
+                 in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
         </section>
         <section name="conformToInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:identifier"/>
@@ -819,6 +885,16 @@
         </section>
       </tab>
 
+    </view>
+
+    <view name="fromroot">
+      <sidePanel>
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata" />
+        <directive data-gn-validation-report=""/>
+      </sidePanel>
+      <tab id="dcat.catalog-record">
+        <section xpath="/rdf:RDF"/>
+      </tab>
     </view>
 
     <view name="xml">
@@ -860,15 +936,12 @@
           <dct:LicenseDocument rdf:about="">
             <dct:type>
               <skos:Concept>
-                <skos:prefLabel xml:lang="nl"/>
-                <skos:prefLabel xml:lang="en"/>
-                <skos:prefLabel xml:lang="fr"/>
-                <skos:prefLabel xml:lang="de"/>
+                <skos:prefLabel xml:lang=""/>
                 <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
               </skos:Concept>
             </dct:type>
-            <dct:title xml:lang="nl"/>
-            <dct:description xml:lang="nl"/>
+            <dct:title xml:lang=""/>
+            <dct:description xml:lang=""/>
             <!--dct:identifier/-->
           </dct:LicenseDocument>
         </dct:license>
@@ -1329,8 +1402,8 @@
         <dct:conformsTo>
           <dct:Standard xmlns:dct="http://purl.org/dc/terms/">
             <dct:identifier/>
-            <dct:title xml:lang="nl"/>
-            <dct:description xml:lang="nl" />
+            <dct:title xml:lang=""/>
+            <dct:description xml:lang="" />
           </dct:Standard>
         </dct:conformsTo>
       </snippet>

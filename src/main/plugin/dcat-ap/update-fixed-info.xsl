@@ -51,10 +51,32 @@
   <!-- =================================================================   -->
   <xsl:include href="reorder-util.xsl"/>
   <xsl:include href="layout/utility-fn.xsl"/>
+  <xsl:include href="layout/utility-tpl-multilingual.xsl"/>
+
   <xsl:variable name="serviceUrl" select="/root/env/siteURL"/>
   <xsl:variable name="env" select="/root/env"/>
   <xsl:variable name="iso2letterLanguageCode" select="lower-case(java:twoCharLangCode(/root/gui/language))"/>
   <xsl:variable name="resourcePrefix" select="$env/metadata/resourceIdentifierPrefix"/>
+
+  <xsl:variable name="metadata"
+                select="/root/rdf:RDF"/>
+
+  <xsl:variable name="mainLanguage">
+    <xsl:call-template name="get-dcat-ap-language"/>
+  </xsl:variable>
+
+  <xsl:variable name="locales">
+    <xsl:call-template name="get-dcat-ap-other-languages"/>
+  </xsl:variable>
+
+  <xsl:variable name="isMultilingual"
+                select="count($locales/*) > 1"/>
+
+  <xsl:variable name="isLanguageSet"
+                select="count($locales/*) >= 1"/>
+
+  <xsl:variable name="editorConfig"
+                select="document('layout/config-editor.xml')"/>
 
   <xsl:variable name="resourceType">
     <xsl:choose>
@@ -102,7 +124,99 @@
   </xsl:variable>
   <xsl:variable name="resourceAbout" select="concat(/root/env/nodeURL, 'resources/', $resourceType, '/', $resourceUUID)"/>
 
-  <!-- =================================================================  -->
+  <!-- Multilingual support -->
+  <xsl:variable name="nonMultilingualElements"
+                select="$editorConfig/editor/multilingualFields/exclude/name"/>
+
+
+  <!-- Ignore element not in main language (they are handled in dcat2-translations-builder. -->
+  <xsl:template match="*[
+                          count(*) = 0
+                          and not(name() = $nonMultilingualElements)
+                          and $isLanguageSet
+                          and @xml:lang != $mainLanguage]"
+                        priority="100">
+  </xsl:template>
+
+  <!-- Expand element which may not contain xml:lang attribute
+  eg. when clicking + -->
+  <xsl:template match="*[
+                          count(*) = 0
+                          and not(name() = $nonMultilingualElements)
+                          and $isLanguageSet
+                         and (not(@xml:lang) or not(string(@xml:lang)))]"
+                        priority="105">
+    <xsl:variable name="name"
+                  select="name()"/>
+    <xsl:variable name="value"
+                  select="."/>
+    <xsl:for-each select="$locales/lang/@code">
+      <xsl:element name="{$name}">
+        <xsl:attribute name="xml:lang"
+                       select="current()"/>
+        <xsl:value-of select="if (current() = $mainLanguage)
+                              then $value else ''"/>
+      </xsl:element>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="*[
+                          count(*) = 0
+                          and not(name() = $nonMultilingualElements)
+                          and $isLanguageSet
+                         and @xml:lang = $mainLanguage]"
+                priority="100">
+    <!-- Then we copy translations of following siblings
+    or create empty elements. -->
+    <xsl:variable name="name"
+                  select="name(.)"/>
+    <xsl:variable name="excluded"
+                  select="gn-fn-dcat-ap:isNotMultilingualField(., $editorConfig)"/>
+    <xsl:variable name="isMultilingualElement"
+                  select="$isMultilingual and $excluded = false()"/>
+
+    <xsl:choose>
+      <xsl:when test="$isMultilingualElement">
+        <xsl:call-template name="rdf-translations-builder"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:copy>
+          <xsl:apply-templates select="@*|node()"/>
+        </xsl:copy>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+
+  <!-- Copy existing translation
+  and add empty elements for other languages -->
+  <xsl:template name="rdf-translations-builder">
+    <xsl:variable name="name"
+                  select="name(.)"/>
+    <xsl:variable name="value"
+                  select="text()"/>
+
+    <xsl:variable name="followingSiblings"
+                  select="following-sibling::*[name() = $name]"/>
+
+    <!-- Select element with same name and different xml:lang attribute
+    until the next one with the main language. -->
+    <xsl:variable name="currentGroup"
+                  select="$followingSiblings[
+                    count($followingSiblings/*[@xml:lang = $mainLanguage]) = 0
+                    or position() &lt; $followingSiblings/*[@xml:lang = $mainLanguage]/position()]"/>
+
+    <xsl:for-each select="$locales/lang/@code">
+      <xsl:element name="{$name}">
+        <xsl:attribute name="xml:lang"
+                       select="current()"/>
+        <xsl:value-of select="if (current() = $mainLanguage)
+                              then $value else $currentGroup[@xml:lang = current()]"/>
+      </xsl:element>
+    </xsl:for-each>
+  </xsl:template>
+
+
 
   <xsl:template match="/root">
     <xsl:variable name="updated">
@@ -126,17 +240,15 @@
     </xsl:copy>
   </xsl:template>
 
-  <!-- ================================================================= -->
-
   <xsl:template match="dcat:Catalog" priority="10">
     <dcat:Catalog>
       <xsl:attribute name="rdf:about">
-        <xsl:value-of select="concat($resourcePrefix,'/catalogs/',$env/system/site/siteId)"/>
+        <xsl:value-of select="concat($resourcePrefix, '/catalogs/', $env/system/site/siteId)"/>
       </xsl:attribute>
-      <dct:title xml:lang="nl">
+      <dct:title xml:lang="{$mainLanguage}">
         <xsl:value-of select="concat('Open Data Catalogus van ', $env/system/site/organization)"/>
       </dct:title>
-      <dct:description xml:lang="nl">
+      <dct:description xml:lang="{$mainLanguage}">
         <xsl:value-of select="concat('Deze catalogus bevat datasets ontsloten door ', $env/system/site/organization)"/>
       </dct:description>
       <dct:identifier>
@@ -145,15 +257,14 @@
       <dct:publisher>
         <!-- Organization in charge of the catalogue defined in the administration > system configuration -->
         <foaf:Agent rdf:about="{$resourcePrefix}/organizations/{encode-for-uri($env/system/site/organization)}">
-          <foaf:name xml:lang="nl">
+          <foaf:name xml:lang="{$mainLanguage}">
             <xsl:value-of select="$env/system/site/organization"/>
           </foaf:name>
           <dct:type>
             <skos:Concept rdf:about="http://purl.org/adms/publishertype/LocalAuthority">
-              <skos:prefLabel xml:lang="nl">Lokaal bestuur</skos:prefLabel>
-              <skos:prefLabel xml:lang="en">Local Authority</skos:prefLabel>
-              <skos:prefLabel xml:lang="fr">Local Authority</skos:prefLabel>
-              <skos:prefLabel xml:lang="de">Local Authority</skos:prefLabel>
+              <xsl:for-each select="$locales/lang/@code">
+                <skos:prefLabel xml:lang="{.}">Lokaal bestuur</skos:prefLabel>
+              </xsl:for-each>
               <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
             </skos:Concept>
           </dct:type>
@@ -164,32 +275,30 @@
           <xsl:if test="normalize-space($serviceUrl) != ''">
             <xsl:attribute name="rdf:about" select="$serviceUrl"/>
           </xsl:if>
-          <foaf:name xml:lang="nl"><xsl:value-of select="$env/system/site/name"/></foaf:name>
+          <foaf:name xml:lang="{$mainLanguage}"><xsl:value-of select="$env/system/site/name"/></foaf:name>
         </foaf:Document>
       </foaf:homepage>
       <dct:license>
         <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0">
           <dct:type>
             <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
-              <skos:prefLabel xml:lang="nl">Werk in het publiek domein</skos:prefLabel>
-              <skos:prefLabel xml:lang="en">Public domain</skos:prefLabel>
-              <skos:prefLabel xml:lang="fr">Public domain</skos:prefLabel>
-              <skos:prefLabel xml:lang="de">Public domain</skos:prefLabel>
+              <xsl:for-each select="$locales/lang/@code">
+                <skos:prefLabel xml:lang="{.}">Werk in het publiek domein</skos:prefLabel>
+              </xsl:for-each>
               <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
             </skos:Concept>
           </dct:type>
-          <dct:title xml:lang="nl">Creative Commons Zero verklaring</dct:title>
-          <dct:description xml:lang="nl">De instantie doet afstand van haar intellectuele eigendomsrechten voor zover dit wettelijk mogelijk is. Hierdoor kan de gebruiker de data hergebruiken voor eender welk doel, zonder een verplichting op naamsvermelding. Deze is de welbekende CC0 licentie.</dct:description>
+          <dct:title xml:lang="{$mainLanguage}">Creative Commons Zero verklaring</dct:title>
+          <dct:description xml:lang="{$mainLanguage}">De instantie doet afstand van haar intellectuele eigendomsrechten voor zover dit wettelijk mogelijk is. Hierdoor kan de gebruiker de data hergebruiken voor eender welk doel, zonder een verplichting op naamsvermelding. Deze is de welbekende CC0 licentie.</dct:description>
           <dct:identifier>https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0</dct:identifier>
         </dct:LicenseDocument>
       </dct:license>
       <dct:language>
         <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
           <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
-          <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
-          <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
-          <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
-          <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
+          <xsl:for-each select="$locales/lang/@code">
+            <skos:prefLabel xml:lang="{.}">Nederlands</skos:prefLabel>
+          </xsl:for-each>
           <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
         </skos:Concept>
       </dct:language>
@@ -394,32 +503,25 @@
     </dcat:Distribution>
   </xsl:template>
 
-  <!-- =================================================================  -->
-
-  <!-- Set default xml:lang value when missing -->
-  <xsl:template match="dcat:Dataset/dct:title|dcat:DataService/dct:title|dcat:Dataset/dct:description|
-                       dcat:DataService/dct:description|dcat:Distribution/dct:title|
-                       dcat:Distribution/dct:description|foaf:Agent/foaf:name|dcat:keyword"
-                priority="10">
-    <xsl:copy copy-namespaces="no">
-      <xsl:apply-templates select="@*"/>
-      <xsl:if test="not(@xml:lang)">
-        <xsl:attribute name="xml:lang">nl</xsl:attribute>
-      </xsl:if>
-      <xsl:value-of select="."/>
-    </xsl:copy>
-  </xsl:template>
-
   <!-- Remove empty concepts -->
   <xsl:template match="foaf:Agent/dct:type|mdcat:MAGDA-categorie|mdcat:statuut|dcat:theme|dct:accrualPeriodicity|
                        dct:language|dcat:Dataset/dct:type|dcat:DataService/dct:type|dct:format|dcat:mediaType|adms:status|
                        dct:LicenseDocument/dct:type|dct:accessRights|mdcat:levensfase|mdcat:ontwikkelingstoestand|
                        dcat:compressFormat|dcat:packageFormat" priority="10">
-    <xsl:if test="count(skos:Concept) = 1">
-      <xsl:copy copy-namespaces="no">
-        <xsl:apply-templates select="skos:Concept"/>
-      </xsl:copy>
-    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="count(skos:Concept) = 1">
+        <xsl:copy copy-namespaces="no">
+          <xsl:apply-templates select="skos:Concept"/>
+        </xsl:copy>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:copy>
+          <xsl:copy-of select="@*"/>
+          <xsl:apply-templates select="*"/>
+        </xsl:copy>
+      </xsl:otherwise>
+    </xsl:choose>
+
   </xsl:template>
 
   <!-- Rename dct:subject -->
@@ -564,7 +666,7 @@
         <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
           <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03</dct:identifier>
           <dct:title>Dcat-ap-vl</dct:title>
-          <dct:description xml:lang="nl">Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
+          <dct:description xml:lang="{$mainLanguage}">Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
           <owl:versionInfo>2.0</owl:versionInfo>
         </dct:Standard>
       </xsl:when>
@@ -576,7 +678,7 @@
         <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22">
           <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22</dct:identifier>
           <dct:title>Metadata-dcat</dct:title>
-          <dct:description xml:lang="nl">Het applicatieprofiel “metadata dcat”. Dit is een applicatieprofiel gebaseerd op DCAT en richt zich op het verzamelen van informatie over generieke datasets, distributies en services die door een overheid beschikbaar gesteld worden. De datasets en services omvatten zowel publiek toegankelijke als afgeschermde data en diensten (ontwikkeld in en voor eender welk technisch perspectief). Het samenbrengen van al deze informatie in een catalogus laat toe om de vindbaarheid van deze datasets en services te verhogen. Dit applicatieprofiel is het generieke basisprofiel. Afgeleide profielen kunnen zeker aangemaakt worden voor specifieke domeinen of communities. Bijvoorbeeld is DCAT-AP-VL zo’n afgeleid applicatieprofiel, specifiek voor het Open data domein en bijhorende community.</dct:description>
+          <dct:description xml:lang="{$mainLanguage}">Het applicatieprofiel “metadata dcat”. Dit is een applicatieprofiel gebaseerd op DCAT en richt zich op het verzamelen van informatie over generieke datasets, distributies en services die door een overheid beschikbaar gesteld worden. De datasets en services omvatten zowel publiek toegankelijke als afgeschermde data en diensten (ontwikkeld in en voor eender welk technisch perspectief). Het samenbrengen van al deze informatie in een catalogus laat toe om de vindbaarheid van deze datasets en services te verhogen. Dit applicatieprofiel is het generieke basisprofiel. Afgeleide profielen kunnen zeker aangemaakt worden voor specifieke domeinen of communities. Bijvoorbeeld is DCAT-AP-VL zo’n afgeleid applicatieprofiel, specifiek voor het Open data domein en bijhorende community.</dct:description>
           <owl:versionInfo>2.0</owl:versionInfo>
         </dct:Standard>
       </xsl:when>
@@ -645,10 +747,9 @@
           <xsl:when test="name() = 'dcat:Dataset'">
             <mdcat:statuut>
               <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
-                <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
-                <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
-                <skos:prefLabel xml:lang="fr">Vlaamse Open data</skos:prefLabel>
-                <skos:prefLabel xml:lang="de">Vlaamse Open data</skos:prefLabel>
+                <xsl:for-each select="$locales/lang/@code">
+                  <skos:prefLabel xml:lang="{.}">Vlaamse Open data</skos:prefLabel>
+                </xsl:for-each>
                 <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
               </skos:Concept>
             </mdcat:statuut>
@@ -656,10 +757,9 @@
           <xsl:otherwise>
             <mdcat:statuut>
               <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE">
-                <skos:prefLabel xml:lang="nl">Vlaamse Open data Service</skos:prefLabel>
-                <skos:prefLabel xml:lang="en">Vlaamse Open data Service</skos:prefLabel>
-                <skos:prefLabel xml:lang="fr">Vlaamse Open data Service</skos:prefLabel>
-                <skos:prefLabel xml:lang="de">Vlaamse Open data Service</skos:prefLabel>
+                <xsl:for-each select="$locales/lang/@code">
+                  <skos:prefLabel xml:lang="{.}">Vlaamse Open data Service</skos:prefLabel>
+                </xsl:for-each>
                 <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
               </skos:Concept>
             </mdcat:statuut>
