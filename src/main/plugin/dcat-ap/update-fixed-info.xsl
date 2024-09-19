@@ -72,6 +72,9 @@
   <xsl:variable name="isMultilingual"
                 select="count($locales/*) > 1"/>
 
+  <xsl:variable name="isLanguageSet"
+                select="count($locales/*) >= 1"/>
+
   <xsl:variable name="editorConfig"
                 select="document('layout/config-editor.xml')"/>
 
@@ -129,17 +132,18 @@
   <!-- Ignore element not in main language (they are handled in dcat2-translations-builder. -->
   <xsl:template match="*[
                           count(*) = 0
-                          and name() != $nonMultilingualElements
-                          and $isMultilingual
+                          and not(name() = $nonMultilingualElements)
+                          and $isLanguageSet
                           and @xml:lang != $mainLanguage]"
-                        priority="100"/>
+                        priority="100">
+  </xsl:template>
 
   <!-- Expand element which may not contain xml:lang attribute
   eg. when clicking + -->
   <xsl:template match="*[
                           count(*) = 0
-                          and name() != $nonMultilingualElements
-                          and $isMultilingual
+                          and not(name() = $nonMultilingualElements)
+                          and $isLanguageSet
                          and (not(@xml:lang) or not(string(@xml:lang)))]"
                         priority="105">
     <xsl:variable name="name"
@@ -158,15 +162,14 @@
 
   <xsl:template match="*[
                           count(*) = 0
-                          and name() != $nonMultilingualElements
-                          and $isMultilingual
+                          and not(name() = $nonMultilingualElements)
+                          and $isLanguageSet
                          and @xml:lang = $mainLanguage]"
                 priority="100">
     <!-- Then we copy translations of following siblings
     or create empty elements. -->
     <xsl:variable name="name"
                   select="name(.)"/>
-
     <xsl:variable name="excluded"
                   select="gn-fn-dcat-ap:isNotMultilingualField(., $editorConfig)"/>
     <xsl:variable name="isMultilingualElement"

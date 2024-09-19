@@ -428,8 +428,10 @@
       <name>dcat:temporalResolution</name>
       <name>dcat:startDate</name>
       <name>dcat:endDate</name>
+      <name>dcat:servesDataset</name>
       <name>dcat:accessURL</name>
       <name>dcat:downloadURL</name>
+      <name>dcat:endpointURL</name>
       <name>dcat:byteSize</name>
       <name>dcat:compressFormat</name>
       <name>dcat:packageFormat</name>
