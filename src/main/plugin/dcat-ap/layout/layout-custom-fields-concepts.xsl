@@ -121,8 +121,8 @@
     <xsl:param name="config" as="node()"/>
     <xsl:variable name="resourcePath"
                   select="concat('./dcat:Catalog',
-                                  if ($isDcatService) then '/dcat:service/dcat:DataService'
-                                  else if (ancestor::*[1]/name() = 'dcat:CatalogRecord') then '/dcat:record/dcat:CatalogRecord'
+                                  if (ancestor::*[1]/name() = 'dcat:CatalogRecord') then '/dcat:record/dcat:CatalogRecord'
+                                  else if ($isDcatService) then '/dcat:service/dcat:DataService'
                                   else '/dcat:dataset/dcat:Dataset')"/>
 
     <xsl:choose>
