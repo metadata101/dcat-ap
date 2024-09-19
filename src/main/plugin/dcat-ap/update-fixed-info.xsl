@@ -49,7 +49,7 @@
               omit-xml-declaration="yes"/>
 
   <!-- =================================================================   -->
-
+  <xsl:include href="reorder-util.xsl"/>
   <xsl:include href="layout/utility-fn.xsl"/>
   <xsl:variable name="serviceUrl" select="/root/env/siteURL"/>
   <xsl:variable name="env" select="/root/env"/>
@@ -105,7 +105,12 @@
   <!-- =================================================================  -->
 
   <xsl:template match="/root">
-    <xsl:apply-templates select="//rdf:RDF"/>
+    <xsl:variable name="updated">
+      <xsl:apply-templates select="//rdf:RDF"/>
+    </xsl:variable>
+    <xsl:call-template name="dcat-reorder-elements">
+      <xsl:with-param name="rdfRoot" select="$updated"/>
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="@*|*[name(.)!= 'root']">
