@@ -18,6 +18,12 @@
             <owl:versionInfo>2.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
+        <dct:language>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+            <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+            <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+          </skos:Concept>
+        </dct:language>
       </dcat:CatalogRecord>
     </dcat:record>
     <dcat:service>
