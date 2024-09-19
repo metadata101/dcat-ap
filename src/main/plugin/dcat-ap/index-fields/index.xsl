@@ -589,9 +589,13 @@
     <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap(concat('Org', $fieldSuffix), foaf:Agent, $allLanguages, false(), false(), 'foaf:name')"/>
     <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap(concat(replace($role, '[^a-zA-Z0-9-]', ''), 'Org', $fieldSuffix), foaf:Agent, $allLanguages, false(), false(), 'foaf:name')"/>
 
+    <xsl:variable name="organisationObject" select="gn-fn-index:add-multilingual-field-dcat-ap('organisationObject', foaf:Agent, $allLanguages, false(), false(), 'foaf:name')" />
+
     <xsl:element name="contact{$fieldSuffix}">
       <xsl:attribute name="type" select="'object'"/>{
-      "organisation":"<xsl:value-of select="gn-fn-index:json-escape($organisationName)"/>",
+      <xsl:if test="$organisationObject">
+        "organisationObject": <xsl:value-of select="$organisationObject" />,
+      </xsl:if>
       "role":"<xsl:value-of select="$role"/>",
       "email":"<xsl:value-of select="gn-fn-index:json-escape($email[1])"/>",
       "phone":"<xsl:value-of select="gn-fn-index:json-escape($phone[1])"/>"
@@ -626,9 +630,13 @@
     <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap(concat('Org', $fieldSuffix), vcard:Organization, $allLanguages, false(), false(), 'vcard:organization-name')"/>
     <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap(concat(replace($role, '[^a-zA-Z0-9-]', ''), 'Org', $fieldSuffix), vcard:Organization, $allLanguages, false(), false(), 'vcard:organization-name')"/>
 
+    <xsl:variable name="organisationObject" select="gn-fn-index:add-multilingual-field-dcat-ap('organisationObject', vcard:Organization, $allLanguages, false(), false(), 'vcard:organization-name')" />
+
     <xsl:element name="contact{$fieldSuffix}">
       <xsl:attribute name="type" select="'object'"/>{
-      "organisation":"<xsl:value-of select="gn-fn-index:json-escape($organisationName)"/>",
+      <xsl:if test="$organisationObject">
+        "organisationObject": <xsl:value-of select="$organisationObject" />,
+      </xsl:if>
       "role":"<xsl:value-of select="$role"/>",
       "email":"<xsl:value-of select="gn-fn-index:json-escape($email[1])"/>",
       "website":"<xsl:value-of select="$website"/>",
