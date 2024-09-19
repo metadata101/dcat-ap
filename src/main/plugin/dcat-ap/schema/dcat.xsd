@@ -45,32 +45,32 @@
       <xs:extension base="rdf:Resource">
         <xs:sequence>
           <!-- Mandatory -->
-          <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/>
-          <xs:element ref="dct:description" minOccurs="1" maxOccurs="unbounded"/>
-          <xs:element ref="dct:publisher" minOccurs="1" maxOccurs="1"/>
-          <xs:element name="record" type="dcat:CatalogRecord_type" minOccurs="1" maxOccurs="1"/>
-          <xs:element name="dataset" type="dcat:Dataset_type" minOccurs="0" maxOccurs="1"/>
-          <xs:element name="service" type="dcat:DataService_type" minOccurs="0" maxOccurs="1"/> <!-- Not in VL -->
+          <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="record" type="dcat:CatalogRecord_type" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="dataset" type="dcat:Dataset_type" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="service" type="dcat:DataService_type" minOccurs="0" maxOccurs="unbounded"/> <!-- Not in VL -->
 
           <!-- Recommended -->
-          <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
-          <xs:element ref="dct:modified" minOccurs="0" maxOccurs="1"/>
+          <xs:element ref="dct:issued" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:modified" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="themeTaxonomy" type="skos:ConceptScheme" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="foaf:homepage" minOccurs="0" maxOccurs="1"/>
+          <xs:element ref="foaf:homepage" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:spatial" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="dct:license" minOccurs="0" maxOccurs="1"/>
+          <xs:element ref="dct:license" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
 
           <!-- Optional -->
           <xs:element name="catalog" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/> <!-- Not in VL -->
-          <xs:element ref="dct:creator" minOccurs="0" maxOccurs="1"/>
+          <xs:element ref="dct:creator" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:hasPart" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="dct:isPartOf" minOccurs="0" maxOccurs="1"/> <!--UML is different from text description -->
-          <xs:element ref="dct:rights" minOccurs="0" maxOccurs="1"/> <!-- VL is unbounded max -->
+          <xs:element ref="dct:isPartOf" minOccurs="0" maxOccurs="unbounded"/> <!--UML is different from text description -->
+          <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/> <!-- VL is unbounded max -->
           <!--<xs:element name="qualifiedRelation" type="dcat:Relationship_type" minOccurs="0" maxOccurs="unbounded"/>--> <!-- TODO: Check if needed and change the namespace to PROV -->
 
 
-          <!-- VL added elements -->
+          <!-- DCAT-AP.vl & METADATA-DCAT elements -->
           <!-- <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/> -->
           <!-- <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/> -->
           <!-- <xs:element name="contactPoint" type="vcard:Organization" minOccurs="0" maxOccurs="unbounded"/> -->
@@ -100,24 +100,24 @@
             <xs:extension base="rdf:Resource">
               <xs:sequence>
                 <!-- Mandatory -->
-                <xs:element ref="foaf:primaryTopic" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dct:modified" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="foaf:primaryTopic" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:modified" minOccurs="0" maxOccurs="unbounded"/>
 
                 <!-- Recommended -->
-                <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="adms:status" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="adms:status" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:issued" minOccurs="0" maxOccurs="unbounded"/>
 
                 <!-- Optional -->
                 <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/> <!-- Missmatch between UML & Text: probably to be validated one description per languages -->
-                <xs:element ref="dct:source" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dct:source" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
 
 
-                <xs:element ref="dct:identifier" minOccurs="1" maxOccurs="1"/> <!-- Required by GeoNetwork for MD identifications -->
+                <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/> <!-- Required by GeoNetwork for MD identifications -->
 
-                <!-- VL added elements -->
+                <!-- DCAT-AP.vl & METADATA-DCAT elements -->
                 <!-- <xs:element ref="adms:identifier" minOccurs="0" maxOccurs="unbounded"/> -->
                 <!-- <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/> -->
               </xs:sequence>
@@ -138,8 +138,8 @@
             <xs:extension base="rdf:Resource">
               <xs:sequence>
                 <!-- Mandatory -->
-                <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dct:description" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
 
 
                 <!-- Recommended -->
@@ -149,39 +149,39 @@
                 <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="distribution" type="dcat:Distribution_type" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="theme" type="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="1"/> <!-- VL has it set to min 1 -->
+                <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="unbounded"/> <!-- VL has it set to min 1 -->
 
 
                 <!-- Optional -->
                 <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/> <!-- VL has it set to min 1 -->
                 <xs:element name="landingPage" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="foaf:page" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:accrualPeriodicity" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dct:accrualPeriodicity" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="adms:identifier" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:provenance" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/> <!-- VL has it set to min 1 -->
+                <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="unbounded"/> <!-- VL has it set to min 1 -->
                 <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:source" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:relation" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="qualifiedRelation" type="dcat:Relationship_type" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="adms:sample" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:type" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dct:creator" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dct:type" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:creator" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:isVersionOf" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:hasVersion" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="adms:versionNotes" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="spatialResolutionInMeters" type="xs:decimal" minOccurs="0" maxOccurs="unbounded"/> <!--Not available in VL -->
                 <xs:element name="temporalResolution" type="xs:duration" minOccurs="0" maxOccurs="unbounded"/> <!--Not available in VL -->
-                <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dct:modified" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dct:issued" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:modified" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/>
                 <!-- TODO: prov:qualitifiedAttribution 0..n -->
                 <!-- TODO: prov:wasGeneratedBy 0..n -->
 
 
-                <!-- VL added elements -->
+                <!-- DCAT-AP.vl & METADATA-DCAT elements -->
                 <!-- <xs:element ref="dct:created" minOccurs="0" maxOccurs="1"/> -->
                 <!-- <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/> -->
                 <!-- <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/> -->
@@ -207,36 +207,36 @@
             <xs:extension base="rdf:Resource">
               <xs:sequence>
                 <!-- Mandatory -->
-                <xs:element name="accessURL" type="rdf:ResourceRef" minOccurs="1" maxOccurs="unbounded"/> <!-- VL is 1.. 1-->
+                <xs:element name="accessURL" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/> <!-- VL is 1.. 1-->
 
                 <!-- Recommended -->
-                <xs:element ref="dct:license" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dct:format" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dct:license" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:format" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
                 <!-- TODO: dcatap:availability 0..1 -->
 
                 <!-- Optional -->
-                <xs:element ref="adms:status" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dcat:packageFormat" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dcat:mediaType" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="spdx:checksum" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="adms:status" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcat:packageFormat" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcat:mediaType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="spdx:checksum" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="foaf:page" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:rights" minOccurs="0" maxOccurs="1"/> <!-- VL has it max to unbounded -->
+                <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/> <!-- VL has it max to unbounded -->
                 <xs:element name="downloadURL" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/> <!-- VL is 0..1 -->
                 <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="accessService" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element name="byteSize" type="rdf:TypedLiteral" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="byteSize" type="rdf:TypedLiteral" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcat:compressFormat" minOccurs="0" maxOccurs="unbounded"/> <!--  VL has it max to 1-->
                 <xs:element name="spatialResolutionInMeters" type="xs:decimal" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="temporalResolution" type="xs:duration" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dct:modified" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dct:issued" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:modified" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/> <!-- TODO: verify -->
                 <!-- TODO: odrl:hasPolicy 0..1 -->
 
 
-                <!-- VL added elements -->
+                <!-- DCAT-AP.vl & METADATA-DCAT elements -->
                 <!-- <xs:element ref="dct:identifier" minOccurs="1" maxOccurs="unbounded"/> -->
                 <!-- <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/> -->
               </xs:sequence>
@@ -257,8 +257,8 @@
             <xs:extension base="rdf:Resource">
               <xs:sequence>
                 <!-- Mandatory -->
-                <xs:element name="endpointURL" type="rdf:ResourceRef" minOccurs="1" maxOccurs="unbounded"/> <!-- VL as it min to 0 and max to 1 -->
-                <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/> <!-- probably to be validated one title per languages -->
+                <xs:element name="endpointURL" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/> <!-- VL as it min to 0 and max to 1 -->
+                <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/> <!-- probably to be validated one title per languages -->
 
                 <!-- Recommended -->
                 <xs:element name="servesDataset" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
@@ -268,8 +268,8 @@
                 <!-- Optional -->
                 <!-- <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/> --> <!-- Not included in the text but included in the UML -->
                 <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="1"/> <!-- VL has it min to 1 -->
-                <xs:element ref="dct:license" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="unbounded"/> <!-- VL has it min to 1 -->
+                <xs:element ref="dct:license" minOccurs="0" maxOccurs="unbounded"/>
 
 
                 <!-- VL added elements -->
