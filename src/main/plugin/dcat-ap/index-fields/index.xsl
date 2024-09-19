@@ -436,7 +436,7 @@
           <xsl:if test="normalize-space($key) != ''">
             <value>
               <xsl:variable name="thesaurusField" select="concat('th_',$key)"/>
-              <xsl:variable name="thesaurusTitle" select="util:getThesaurusTitleByName($thesaurusId)"/>
+              <xsl:variable name="thesaurusTitle" select="util:getThesaurusTitleByKey($thesaurusId)"/>
               "<xsl:value-of select="$thesaurusField"/>": {
               "id": "<xsl:value-of select="util:escapeForJson($thesaurusId)"/>",
               <xsl:if test="$thesaurusTitle != ''">
