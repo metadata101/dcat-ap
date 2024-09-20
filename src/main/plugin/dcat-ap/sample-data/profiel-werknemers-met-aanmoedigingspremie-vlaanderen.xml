@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.openarchives.org/OAI/2.0/rdf.xsd">
+  <dcat:Catalog xmlns:dcat="http://www.w3.org/ns/dcat#" rdf:about="https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/">
+    <dct:title xmlns:dct="http://purl.org/dc/terms/" xml:lang="nl">Open Data catalogus van DWSE</dct:title>
+    <dct:description xmlns:dct="http://purl.org/dc/terms/" xml:lang="nl">Deze catalogus bevat de Open Datasets ontsloten door het Departement Werk en Sociale Economie</dct:description>
+    <dct:identifier xmlns:dct="http://purl.org/dc/terms/">dwse</dct:identifier>
+    <dct:publisher xmlns:dct="http://purl.org/dc/terms/">
+      <foaf:Agent xmlns:foaf="http://xmlns.com/foaf/0.1/">
+        <foaf:name xml:lang="nl">Departement Werk en Sociale Economie https://data.vlaanderen.be/doc/organisatie/OVO000076</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <foaf:homepage xmlns:foaf="http://xmlns.com/foaf/0.1/">
+      <foaf:Document rdf:about="https://opendata.wse.vlaanderen.be" />
+    </foaf:homepage>
+    <dct:license xmlns:dct="http://purl.org/dc/terms/">
+      <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0" />
+    </dct:license>
+    <dct:language xmlns:dct="http://purl.org/dc/terms/">
+      <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+        <rdf:type rdf:resource="dct:LinguisticSystem" />
+      </skos:Concept>
+    </dct:language>
+    <dcat:contactPoint>
+      <vcard:Organization xmlns:vcard="http://www.w3.org/2006/vcard/ns#">
+        <vcard:hasEmail rdf:resource="mailto:data.wse@vlaanderen.be" />
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dcat:record>
+      <dcat:CatalogRecord rdf:about="https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1-record">
+        <dct:identifier xmlns:dct="http://purl.org/dc/terms/">49438559-605d-3164-b21d-8b1687cb84fd</dct:identifier>
+        <foaf:primaryTopic xmlns:foaf="http://xmlns.com/foaf/0.1/" rdf:resource="https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1" />
+        <dct:modified xmlns:dct="http://purl.org/dc/terms/">2024-09-19T00:45:05.568Z</dct:modified>
+        <dct:conformsTo xmlns:dct="http://purl.org/dc/terms/">
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
+            <dct:title>Dcat-ap-vl</dct:title>
+            <dct:description>Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
+            <owl:versionInfo xmlns:owl="http://www.w3.org/2002/07/owl#">2.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+        <adms:identifier xmlns:adms="http://www.w3.org/ns/adms#">
+          <adms:Identifier>
+            <skos:notation xmlns:skos="http://www.w3.org/2004/02/skos/core#">https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1-record</skos:notation>
+          </adms:Identifier>
+        </adms:identifier>
+      </dcat:CatalogRecord>
+    </dcat:record>
+    <dcat:dataset>
+      <dcat:Dataset rdf:about="https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1">
+        <dct:identifier xmlns:dct="http://purl.org/dc/terms/">https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1</dct:identifier>
+        <dct:title xmlns:dct="http://purl.org/dc/terms/" xml:lang="nl">AP03 - Profiel werknemers met aanmoedigingspremie per jaar</dct:title>
+        <dct:description xmlns:dct="http://purl.org/dc/terms/" xml:lang="nl">Lijst geanonimiseerde AP (Aanmoedigingspremie) werknemers met uitbetaalde bedrag geaggregeerd per jaar en uitgesplitst naar volgende werknemerskenmerken: werknemer_case_id, motief, onderbrekingstype, gemeente, provincie, leeftijdsklasse, geslacht, werknemer statuut en werknemer categorie.Alle persoonsgegevens zijn geanonimiseerd, de werknemer_case_id is specifiek gemaakt per maatregel en is niet koppelbaar over de verschillende maatregelen heen om de persoon niet identificeerbaar te maken door verrijking a.h.v. andere datasets.Unieke werknemers: Werknemers kunnen meerdere dossiers AP (aanmoedigingspremie)  in een jaar aanvragen, als je het aantal unieke werknemers wil kennen voor AP kan je een extractie naar MS Excel maken van AP03 en dan een draaitabel toepassen die de "unieke aantallen" berekent voor de gevraagde kenmerken en jaar.</dct:description>
+        <dcat:contactPoint>
+          <vcard:Organization xmlns:vcard="http://www.w3.org/2006/vcard/ns#">
+            <vcard:hasEmail rdf:resource="mailto:aanmoedigingspremie@vlaanderen.be" />
+          </vcard:Organization>
+        </dcat:contactPoint>
+        <dct:issued xmlns:dct="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-01T00:00:00</dct:issued>
+        <dct:modified xmlns:dct="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-18T05:12:48.495000+00:00</dct:modified>
+        <dct:publisher xmlns:dct="http://purl.org/dc/terms/">
+          <foaf:Agent xmlns:foaf="http://xmlns.com/foaf/0.1/" rdf:about="https://data.vlaanderen.be/id/organisatie/OVO000076">
+            <foaf:name>Departement Werk en Sociale Economie</foaf:name>
+          </foaf:Agent>
+        </dct:publisher>
+        <dcat:keyword xml:lang="nl">Aanmoedigingspremie</dcat:keyword>
+        <dcat:keyword xml:lang="nl">Vlaamse Open data</dcat:keyword>
+        <mdcat:statuut xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#">
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
+            <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">Vlaamse Open data</skos:prefLabel>
+            <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden" />
+          </skos:Concept>
+        </mdcat:statuut>
+        <dcat:theme>
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://opendata.wse.vlaanderen.be/explore/?refine.theme=Loopbanen+en+competenties" />
+        </dcat:theme>
+        <dct:accessRights xmlns:dct="http://purl.org/dc/terms/">
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">
+            <rdf:type rdf:resource="dct:RightsStatement" />
+          </skos:Concept>
+        </dct:accessRights>
+        <dcat:landingPage rdf:resource="https://opendata.wse.vlaanderen.be/explore/dataset/amp03_profiel_werknemers_v1/" />
+        <dct:language xmlns:dct="http://purl.org/dc/terms/">
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+            <rdf:type rdf:resource="dct:LinguisticSystem" />
+          </skos:Concept>
+        </dct:language>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1/exports/json">
+            <dct:identifier xmlns:dct="http://purl.org/dc/terms/">https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1/exports/json</dct:identifier>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/" xml:lang="nl">json</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/" xml:lang="nl">AP03 - Profiel werknemers met aanmoedigingspremie per jaar (json)</dct:description>
+            <dcat:accessURL rdf:resource="https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1/exports/json" />
+            <dcat:downloadURL rdf:resource="https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1/exports/json" />
+            <dct:issued xmlns:dct="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-01T00:00:00</dct:issued>
+            <dct:modified xmlns:dct="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-18T05:12:48.495000+00:00</dct:modified>
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/JSON">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+            <dct:language xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+                <rdf:type rdf:resource="dct:LinguisticSystem" />
+              </skos:Concept>
+            </dct:language>
+            <dct:license xmlns:dct="http://purl.org/dc/terms/">
+              <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0" />
+            </dct:license>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1/exports/xls?use_labels=true">
+            <dct:identifier xmlns:dct="http://purl.org/dc/terms/">https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1/exports/xls?use_labels=true</dct:identifier>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/" xml:lang="nl">xls</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/" xml:lang="nl">AP03 - Profiel werknemers met aanmoedigingspremie per jaar (xls)</dct:description>
+            <dcat:accessURL rdf:resource="https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1/exports/xls?use_labels=true" />
+            <dcat:downloadURL rdf:resource="https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1/exports/xls?use_labels=true" />
+            <dct:issued xmlns:dct="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-01T00:00:00</dct:issued>
+            <dct:modified xmlns:dct="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-18T05:12:48.495000+00:00</dct:modified>
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/XLS">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+            <dct:language xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+                <rdf:type rdf:resource="dct:LinguisticSystem" />
+              </skos:Concept>
+            </dct:language>
+            <dct:license xmlns:dct="http://purl.org/dc/terms/">
+              <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0" />
+            </dct:license>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1/exports/csv?use_labels=true">
+            <dct:identifier xmlns:dct="http://purl.org/dc/terms/">https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1/exports/csv?use_labels=true</dct:identifier>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/" xml:lang="nl">csv</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/" xml:lang="nl">AP03 - Profiel werknemers met aanmoedigingspremie per jaar (csv)</dct:description>
+            <dcat:accessURL rdf:resource="https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1/exports/csv?use_labels=true" />
+            <dcat:downloadURL rdf:resource="https://opendata.wse.vlaanderen.be/api/v2/catalog/datasets/amp03_profiel_werknemers_v1/exports/csv?use_labels=true" />
+            <dct:issued xmlns:dct="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-01T00:00:00</dct:issued>
+            <dct:modified xmlns:dct="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-18T05:12:48.495000+00:00</dct:modified>
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+            <dct:language xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+                <rdf:type rdf:resource="dct:LinguisticSystem" />
+              </skos:Concept>
+            </dct:language>
+            <dct:license xmlns:dct="http://purl.org/dc/terms/">
+              <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0" />
+            </dct:license>
+          </dcat:Distribution>
+        </dcat:distribution>
+      </dcat:Dataset>
+    </dcat:dataset>
+  </dcat:Catalog>
+</rdf:RDF>
+

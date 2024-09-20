@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.openarchives.org/OAI/2.0/rdf.xsd">
+  <dcat:Catalog xmlns:dcat="http://www.w3.org/ns/dcat#" rdf:about="https://portaal-stadAntwerpen.opendata.arcgis.com">
+    <dct:title xmlns:dct="http://purl.org/dc/terms/">Stad Antwerpen</dct:title>
+    <dct:description xmlns:dct="http://purl.org/dc/terms/">"De stad Antwerpen beschikt over een schat aan geografische data over de stad. 
+    Via dit portaal wordt u de mogelijkheid geboden om deze geografische data te verkennen, visualiseren en te downloaden. 
+    Deze data is open data en mag u vrij en kosteloos gebruiken. 
+    Met de datasets kunt u bijvoorbeeld nieuwe mobiele toepassingen ontwikkelen die de dienstverlening voor bewoners kunnen verbeteren. 
+    Ontdek de data door hieronder te zoeken op de verschillende thema’s of door een trefwoord in te vullen.
+    Meer info op: https://portaal-stadantwerpen.opendata.arcgis.com
+    En op https://www.antwerpen.be/open-data</dct:description>
+    <dct:publisher xmlns:dct="http://purl.org/dc/terms/">
+      <foaf:Agent xmlns:foaf="http://xmlns.com/foaf/0.1/">
+        <foaf:name>Stad Antwerpen</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <foaf:homepage xmlns:foaf="http://xmlns.com/foaf/0.1/">
+      <foaf:Document />
+    </foaf:homepage>
+    <dct:language xmlns:dct="http://purl.org/dc/terms/">
+      <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+        <rdf:type rdf:resource="dct:LinguisticSystem" />
+      </skos:Concept>
+    </dct:language>
+    <dcat:record>
+      <dcat:CatalogRecord rdf:about="https://portaal-stadantwerpen.opendata.arcgis.com/maps/stadAntwerpen::agrarisch-groen-ontoegankelijk-record">
+        <dct:identifier xmlns:dct="http://purl.org/dc/terms/">6803e58d-cb97-3468-974a-9ecf692e4988</dct:identifier>
+        <foaf:primaryTopic xmlns:foaf="http://xmlns.com/foaf/0.1/" rdf:resource="https://portaal-stadantwerpen.opendata.arcgis.com/maps/stadAntwerpen::agrarisch-groen-ontoegankelijk" />
+        <dct:modified xmlns:dct="http://purl.org/dc/terms/">2024-02-25T02:00:36.739Z</dct:modified>
+        <dct:conformsTo xmlns:dct="http://purl.org/dc/terms/">
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
+            <dct:title>Dcat-ap-vl</dct:title>
+            <dct:description>Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
+            <owl:versionInfo xmlns:owl="http://www.w3.org/2002/07/owl#">2.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+        <adms:identifier xmlns:adms="http://www.w3.org/ns/adms#">
+          <adms:Identifier>
+            <skos:notation xmlns:skos="http://www.w3.org/2004/02/skos/core#">https://portaal-stadantwerpen.opendata.arcgis.com/maps/stadAntwerpen::agrarisch-groen-ontoegankelijk-record</skos:notation>
+          </adms:Identifier>
+        </adms:identifier>
+      </dcat:CatalogRecord>
+    </dcat:record>
+    <dcat:dataset>
+      <dcat:Dataset rdf:about="https://portaal-stadantwerpen.opendata.arcgis.com/maps/stadAntwerpen::agrarisch-groen-ontoegankelijk">
+        <dct:identifier xmlns:dct="http://purl.org/dc/terms/">https://www.arcgis.com/home/item.html?id=e70af90454204d4390d0a6045bf280fb&amp;sublayer=910</dct:identifier>
+        <dct:title xmlns:dct="http://purl.org/dc/terms/">agrarisch groen ontoegankelijk</dct:title>
+        <dct:description xmlns:dct="http://purl.org/dc/terms/">Laag met publiek groen en water (zonder pleinen, gebouwen en privégroen), ingedeeld volgens  toegankelijkheid (toegankelijk, onder voorwaarden toegankelijk en ontoegankelijk) en  hoofdindeling (agrarisch groen, natuurlijk groen, gebruiksgroen, structuurgroen, wachtgroen en water).  (zie ook  geodata-portaal - https://geoportaal.antwerpen.be/portal/home/search.html?q=groen ,  open geodata-portaal - http://portaal-stadantwerpen.opendata.arcgis.com/datasets?q=groen , becijferd in  stad in cijfers - https://stadincijfers.antwerpen.be/Databank/Jive/?workspace_guid=61cc2cf1-c40f-4366-871f-dc36ddb98288 ). Deze datalaag wordt jaarlijks in januari geactualiseerd, op voorwaarde dat de voorziening door de bevoegde sector/dienst jaarlijks wordt beheerd en geüpdate. Agrarisch of landbouwgroen:groene ruimten met agrarische functie. Dit kan landbouw, weiland en landbouwwegen zijn. - onder voorwaarden toegankelijk: recreatief medegebruik (=belevingsgroen). Recreatief medegebruik wil zeggen dat deze ruimte beleefd, ervaren kan worden, via toegankelijke paden in of langsheen het gebied. Op deze toegankelijke paden zijn enkel passieve vormen van recreatie toegestaan (wandelen, rusten, zitten). - ontoegankelijk: kan niet betreden worden (bijv. omheind, verbodsbord). Natuurlijk groen: groene ruimten met een natuurfunctie zoals speciale beschermingszones (Vlaams Ecologisch Netwerk-VEN, Habitatrichtlijn, Vogelrichtlijn) en natuurgebieden die in beheer zijn van Natuurpunt of ANB. - onder voorwaarden toegankelijk: recreatief medegebruik. bijvoorbeeld Hobokense Polder, Wolvenberg (=belevingsgroen). Recreatief medegebruik wil zeggen dat deze ruimte beleefd, ervaren kan worden, via toegankelijke paden in of langsheen het gebied. Op deze toegankelijke paden zijn enkel passieve vormen van recreatie toegestaan. (wandelen, rusten, zitten). - ontoegankelijk: kan niet betreden worden (bijv. omheind, verbodsbord), bijvoorbeeld Fort 7 in Wilrijk en Kuifeend in de haven. Gebruiksgroen: groen ingericht voor gebruik: oa parken, gebouwgroen, hanggroen, fortgroen, begraafplaatsen (zonder pleinen) en tot slot specifieke terreinen zoals bijv. sportterreinen, speelterreinen, volkstuinen en hondenloopzones. - toegankelijk: alle publiek toegankelijk gebruiksgroen zonder oppervlaktebeperking: parken, pocketparkjes, hanggroen, fortgroen, hondenloopzone, stadsbos, speelbos, begraafplaats, groene speelterreinen, publiek toegankelijk gebouwgroen. - onder voorwaarden toegankelijk: dit is een inperking van publiek gebruik: enkel toegankelijk op bepaalde tijdstippen of voor bepaalde groepen (o.a. leden zoals bij sportclubs,…), bijvoorbeeld de Zoo, woonwagenterrein, sportterreinen. Structuurgroen: groene ruimten met bufferfunctie (visuele buffer, geluidsbuffer of buffer naar luchtkwaliteit) langs grote infrastructuren, van autosnelwegen tot spoorwegen, of bedrijfsgebouwen. Wachtgroen: gronden wachtend op invulling (projectontwikkeling, bedrijventerrein, grote privédomeinen,… ). Ook de gronden gelegen in de haven die gereserveerd zijn voor havenontwikkeling behoren tot deze indeling. Water: waterpartijen die niet deel uitmaken van andere categorieën, m.n. dokken, bevaarbare rivier, water dat meer dan 30% uitmaakt van gebruiksgroen, rwzi-bekken. - onder voorwaarden toegankelijk: recreatief medegebruik. bijvoorbeeld Galgenweel, Burchtse Weel, Dokken, Schelde (=belevingsgroen). - ontoegankelijk: dokken in de haven, Albertkanaal, Lobroekdok.</dct:description>
+        <dcat:contactPoint>
+          <vcard:Organization xmlns:vcard="http://www.w3.org/2006/vcard/ns#" rdf:about="https://www.antwerpen.be/info/open-data-stad-antwerpen">
+            <vcard:fn>opendatabeheer</vcard:fn>
+          </vcard:Organization>
+        </dcat:contactPoint>
+        <dct:issued xmlns:dct="http://purl.org/dc/terms/">2019-01-01T00:00:00</dct:issued>
+        <dct:modified xmlns:dct="http://purl.org/dc/terms/">2024-01-01T00:00:00.000Z</dct:modified>
+        <dct:publisher xmlns:dct="http://purl.org/dc/terms/">
+          <foaf:Agent xmlns:foaf="http://xmlns.com/foaf/0.1/">
+            <foaf:name>Stad Antwerpen</foaf:name>
+          </foaf:Agent>
+        </dct:publisher>
+        <dcat:keyword xml:lang="nl">natuurlijke ruimte</dcat:keyword>
+        <dcat:keyword xml:lang="nl">gebruiksgroen</dcat:keyword>
+        <dcat:keyword xml:lang="nl">agrarische ruimte</dcat:keyword>
+        <dcat:keyword xml:lang="nl">structuurgroen</dcat:keyword>
+        <dcat:keyword xml:lang="nl">natuurlijk groen</dcat:keyword>
+        <dcat:keyword xml:lang="nl">bovenlokale locaties</dcat:keyword>
+        <dcat:keyword xml:lang="nl">agrarisch groen</dcat:keyword>
+        <dcat:keyword xml:lang="nl">groen</dcat:keyword>
+        <dcat:keyword xml:lang="nl">gebruiksruimte</dcat:keyword>
+        <dcat:keyword xml:lang="nl">categorie</dcat:keyword>
+        <dcat:keyword xml:lang="nl">structuurruimte</dcat:keyword>
+        <dcat:keyword xml:lang="nl">water</dcat:keyword>
+        <dcat:keyword xml:lang="nl">wachtgroen</dcat:keyword>
+        <dcat:keyword xml:lang="nl">hoofdcategorie</dcat:keyword>
+        <dcat:keyword xml:lang="nl">havenontwikkeling</dcat:keyword>
+        <dcat:keyword xml:lang="nl">wachtruimte</dcat:keyword>
+        <dcat:keyword xml:lang="nl">open ruimte</dcat:keyword>
+        <mdcat:statuut xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#">
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
+            <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">Vlaamse Open data</skos:prefLabel>
+            <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden" />
+          </skos:Concept>
+        </mdcat:statuut>
+        <dcat:theme>
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" />
+        </dcat:theme>
+        <dct:accessRights xmlns:dct="http://purl.org/dc/terms/">
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+            <rdf:type rdf:resource="dct:RightsStatement" />
+          </skos:Concept>
+        </dct:accessRights>
+        <dct:language xmlns:dct="http://purl.org/dc/terms/">
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+            <rdf:type rdf:resource="dct:LinguisticSystem" />
+          </skos:Concept>
+        </dct:language>
+        <dct:provenance xmlns:dct="http://purl.org/dc/terms/">
+          <dct:ProvenanceStatement />
+        </dct:provenance>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">CSV</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">CSV</dct:description>
+            <dcat:accessURL rdf:resource="https://portaal-stadantwerpen.opendata.arcgis.com/api/download/v1/items/e70af90454204d4390d0a6045bf280fb/csv?layers=910" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">KML</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">KML</dct:description>
+            <dcat:accessURL rdf:resource="https://portaal-stadantwerpen.opendata.arcgis.com/api/download/v1/items/e70af90454204d4390d0a6045bf280fb/kml?layers=910" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/KML">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">GeoJSON</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">GeoJSON</dct:description>
+            <dcat:accessURL rdf:resource="https://portaal-stadantwerpen.opendata.arcgis.com/api/download/v1/items/e70af90454204d4390d0a6045bf280fb/geojson?layers=910" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/GEOJSON">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">ArcGIS GeoService</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">Esri REST</dct:description>
+            <dcat:accessURL rdf:resource="https://geodata.antwerpen.be/arcgissql/rest/services/P_Portal/portal_publiek9/MapServer/910" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/JSON">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">ZIP</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">Shapefile</dct:description>
+            <dcat:accessURL rdf:resource="https://portaal-stadantwerpen.opendata.arcgis.com/api/download/v1/items/e70af90454204d4390d0a6045bf280fb/shapefile?layers=910" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/ZIP">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xmlns:dct="http://purl.org/dc/terms/">ArcGIS Hub Dataset</dct:title>
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">Web Page</dct:description>
+            <dcat:accessURL rdf:resource="https://portaal-stadantwerpen.opendata.arcgis.com/maps/stadAntwerpen::agrarisch-groen-ontoegankelijk" />
+            <dct:format xmlns:dct="http://purl.org/dc/terms/">
+              <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/file-type/HTML">
+                <rdf:type rdf:resource="dct:MediaTypeOrExtent" />
+              </skos:Concept>
+            </dct:format>
+          </dcat:Distribution>
+        </dcat:distribution>
+      </dcat:Dataset>
+    </dcat:dataset>
+  </dcat:Catalog>
+</rdf:RDF>
+
