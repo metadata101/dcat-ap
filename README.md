@@ -115,6 +115,157 @@ When saving a record, this uuid is appended to the dataset URI, provided that th
 </dcat:CatalogRecord>
 ```
 
+## How to create profile? 
+
+### Profile identification
+
+Using the `conformsTo` element in the  `CatalogRecord` element, the profile is identified. 
+
+```xml
+      <dcat:record>
+         <dcat:CatalogRecord rdf:about="http://localhost:8080/geonetwork/srv/api/records/f356eaa6-506f-4510-93f8-0e449c28805a">
+            <foaf:primaryTopic rdf:resource="http://localhost:8080/geonetwork/srv/resources/services/b273f602-0e29-4094-b02c-d72dbdd4e3ed"/>
+            <dct:modified>2024-10-21</dct:modified>
+            <dct:conformsTo>
+               <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
+```
+
+When the profile is adding couple of elements to potentially one or more existing profiles (eg. HVD adds `hvdCategory` element), 
+then the profile extension should declare those new elements and each target profiles needs to embed it into their editor views.
+
+
+### Schema
+
+New profile elements need to be added to the [schema XSD](src/main/plugin/dcat-ap/schema/dcat.xsd) using cardinality `0..unbounded`.
+Cardinality is checked using schematron, XSD define the elements and types (see validation).
+
+
+```xml
+   <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
+```
+
+If elements are defined in a new schema, add the schema in [XSD profile folder](src/main/plugin/dcat-ap/schema/profiles) or the top folder if they are generic (eg. `foaf`).
+
+
+
+### Vocabularies
+
+If some profile elements rely on vocabularies, add them to the [thesauri folder](resources/thesauri) using SKOS format.
+Those vocabularies are imported when the application starts.
+
+
+### Editor configuration
+
+If the profile require a complete new editor, create a new view in the [editor configuration](src/main/plugin/dcat-ap/layout/config-editor.xml). 
+
+See [customizing editor](https://docs.geonetwork-opensource.org/4.4/customizing-application/editor-ui/creating-custom-editor/) for more information.
+
+First, add a view:
+
+ ```xml
+    <view name="profile-vl-mdcat"
+              displayIfRecord="count(//dcat:CatalogRecord/dct:conformsTo/dct:Standard[@rdf:about = 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22']) > 0"
+ ```
+
+TODO: check default view using `default='true'`. What happens if more than one default?
+
+Add one or more tab to the view:
+
+```xml
+ <tab id="profile-vl-mdcat-tabDataset" 
+ ```
+
+When creating tabs, make tab id attribute unique in the config-editor
+
+
+
+TODO: Describe cases:
+* new elements in new namespace
+* element 
+
+
+
+#### Translations
+
+Add translations for editor fields in [translation files](src/main/plugin/dcat-ap/loc/eng/strings.xml) and other languages.
+
+
+#### Using a vocabulary for a field
+
+To use a vocabulary for a particular field, configure it in the editor configuration top section (TODO: check if can be only configured in the editor view?)
+
+```xml
+<for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker" profile="metadata-dcat">
+      <directiveAttributes
+        thesaurus="external.theme.magda-domain"
+        xpath="/mdcat:MAGDA-categorie"
+        max=""
+        labelKey="mdcat.addMagdaCategorie"/>
+    </for>
+```
+
+#### Field with URI
+
+
+```xml
+    <for name="mdcat:landingspaginaVoorStatusinformatie" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="mdcat:landingspaginaVoorStatusinformatie" required="true"/>
+        </values>
+        <snippet>
+          <mdcat:landingspaginaVoorStatusinformatie rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+  ```
+
+#### TODO: Other type of fields?
+
+
+### Validation
+
+Validation results are displayed in the side panel of the editor form (see [more information](https://docs.geonetwork-opensource.org/4.4/user-guide/workflow/validation/))
+
+Validation is relying on 2 levels of validation:
+* XSD validation
+* Schematron validation
+
+
+XSD is checking elements and types. Cardinatlities and profile's rules are checked using schematron rules.
+
+
+Schematron rules can be enabled/disabled depending on the profile. See [configuring validation levels](https://docs.geonetwork-opensource.org/4.4/administrator-guide/managing-metadata-standards/configure-validation/).
+
+TODO: Check how to enable/disable schematron rules for a profile with an example.
+
+
+### Combination of profiles
+
+TODO: 
+* one view per profile (HVD = 1 field)
+* or import profile into a tab or a section in an existing editor form
+eg. HVD
+
+```xml
+
+          <import id="hvd-form"/>
+          <import id="mobilty-form"/>
+          <action
+             type="button"
+             name="HVD dataset"/>
+
+          <section name="HVD" displayIfRecord="">
+
+          </section>
+             
+```
+
+
+TODO : Check
+*     <for name="mdcat:landingspaginaVoorStatusinformatie" templateModeOnly="true" forceLabel="true" label="key"> add XSD for schema editor
+
+
 ## Community
 
 Comments and questions to the issue tracker.

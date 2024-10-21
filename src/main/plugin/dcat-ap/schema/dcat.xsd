@@ -37,7 +37,7 @@
   <xs:import namespace="http://spdx.org/rdf/terms#" schemaLocation="spdx.xsd"/>
   <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
   <xs:import namespace="http://www.w3.org/2006/vcard/ns#" schemaLocation="vcard.xsd"/>
-  <xs:import namespace="https://data.vlaanderen.be/ns/metadata-dcat#" schemaLocation="mdcat.xsd"/>
+  <xs:import namespace="https://data.vlaanderen.be/ns/metadata-dcat#" schemaLocation="profiles/mdcat.xsd"/>
 
   <xs:element name="Catalog" type="dcat:Catalog_type"/>
 
@@ -87,6 +87,8 @@
           <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:relation" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:type" minOccurs="0" maxOccurs="unbounded"/>
+
+
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
