@@ -296,7 +296,7 @@
                 <xs:element ref="mobilitydcatap:dataFormatNotes" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="mobilitydcatap:grammar" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="adms:sample" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="mobilitydcat:mobilityDataStandard" minOccurs="0" maxOccurs="unbounded"/>
+<!--                <xs:element ref="mobilitydcat:mobilityDataStandard" minOccurs="0" maxOccurs="unbounded"/>-->
                 <xs:element ref="dct:temporal" minOccurs="0" maxOccurs="unbounded"/>
 
               </xs:sequence>
