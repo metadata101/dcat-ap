@@ -137,6 +137,9 @@ then the profile extension should declare those new elements and each target pro
 ### Schema
 
 New profile elements need to be added to the [schema XSD](src/main/plugin/dcat-ap/schema/dcat.xsd) using cardinality `0..unbounded`.
+
+TODO Q: Can we set cardinality `0..1` when we know that it is the case for a profile?
+
 Cardinality is checked using schematron, XSD define the elements and types (see validation).
 
 * New elements from available ontologies
