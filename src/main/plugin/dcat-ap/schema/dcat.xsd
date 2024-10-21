@@ -3,6 +3,7 @@
            xmlns:adms="http://www.w3.org/ns/adms#"
            xmlns:dct="http://purl.org/dc/terms/"
            xmlns:dcat="http://www.w3.org/ns/dcat#"
+           xmlns:dcatap="http://data.europa.eu/r5r/"
            xmlns:foaf="http://xmlns.com/foaf/0.1/"
            xmlns:owl="http://www.w3.org/2002/07/owl#"
            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -41,6 +42,7 @@
   <xs:import namespace="http://www.w3.org/2006/vcard/ns#" schemaLocation="vcard.xsd"/>
   <xs:import namespace="http://www.w3.org/2011/content#" schemaLocation="cnt.xsd"/>
   <xs:import namespace="https://data.vlaanderen.be/ns/metadata-dcat#" schemaLocation="profiles/mdcat.xsd"/>
+  <xs:import namespace="http://data.europa.eu/r5r/" schemaLocation="profiles/eu-dcat-ap-hvd.xsd"/>
   <xs:import namespace="https://w3id.org/mobilitydcat-ap" schemaLocation="profiles/eu-dcat-ap-mobility.xsd"/>
 
 
@@ -227,6 +229,8 @@
                 hasQualityAnnotation
                 -->
 
+
+                <xs:element ref="dcatap:hvdCategory" minOccurs="0" maxOccurs="unbounded"/>
               </xs:sequence>
             </xs:extension>
           </xs:complexContent>

@@ -32,6 +32,7 @@ public class DCATAPNamespaces {
     public static final Namespace DC = Namespace.getNamespace("dc", "http://purl.org/dc/elements/1.1/");
     public static final Namespace DCT = Namespace.getNamespace("dct", "http://purl.org/dc/terms/");
     public static final Namespace DCAT = Namespace.getNamespace("dcat", "http://www.w3.org/ns/dcat#");
+    public static final Namespace DCATAP = Namespace.getNamespace("dcatap", "http://data.europa.eu/r5r/");
     public static final Namespace VCARD = Namespace.getNamespace("vcard", "http://www.w3.org/2006/vcard/ns#");
     public static final Namespace FOAF = Namespace.getNamespace("foaf", "http://xmlns.com/foaf/0.1/");
     public static final Namespace RDF = Namespace.getNamespace("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");

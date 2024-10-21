@@ -28,6 +28,7 @@
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:dcatap="http://data.europa.eu/r5r/"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
                 xmlns:schema="http://schema.org/"
@@ -419,6 +420,7 @@
       <xsl:apply-templates select="dct:creator"/>
       <xsl:apply-templates select="dct:isReferencedBy"/>
       <xsl:apply-templates select="dct:rights"/>
+      <xsl:apply-templates select="dcatap:hvdCategory"/>
     </dcat:Dataset>
   </xsl:template>
 

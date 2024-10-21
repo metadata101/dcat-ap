@@ -30,6 +30,7 @@
                 xmlns:dc="http://purl.org/dc/elements/1.1/"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:dcatap="http://data.europa.eu/r5r/"
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
