@@ -139,12 +139,27 @@ then the profile extension should declare those new elements and each target pro
 New profile elements need to be added to the [schema XSD](src/main/plugin/dcat-ap/schema/dcat.xsd) using cardinality `0..unbounded`.
 Cardinality is checked using schematron, XSD define the elements and types (see validation).
 
+* New elements from available ontologies
 
 ```xml
    <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
 ```
 
-If elements are defined in a new schema, add the schema in [XSD profile folder](src/main/plugin/dcat-ap/schema/profiles) or the top folder if they are generic (eg. `foaf`).
+* New elements from a known ontologies. Check the top folder for existing described ontologies (eg. `foaf`).
+
+* New elements specific to the profile:
+ 
+  * add the schema in [XSD profile folder](src/main/plugin/dcat-ap/schema/profiles)
+  * Import the new schema in the base XSD
+
+```
+<xs:schema
+      xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+      ...
+      <xs:import namespace="https://w3id.org/mobilitydcat-ap" schemaLocation="profiles/eu-dcat-ap-mobility.xsd"/>
+```
+
+ * Update classes which requires the new elements.  
 
 
 
@@ -272,6 +287,16 @@ eg. HVD
 
 TODO : Check
 *     <for name="mdcat:landingspaginaVoorStatusinformatie" templateModeOnly="true" forceLabel="true" label="key"> add XSD for schema editor
+
+
+### Advanced configuration
+
+#### Thumbnails
+
+By default, thumbnails are encoded using `foaf:page/foaf:Document`.
+
+If the profile requires a different encoding, modify :
+* set-thumbnails.xsl
 
 
 ## Community
