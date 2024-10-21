@@ -240,6 +240,14 @@ Schematron rules can be enabled/disabled depending on the profile. See [configur
 TODO: Check how to enable/disable schematron rules for a profile with an example.
 
 
+### Indexing
+
+TODO
+
+### Templates
+
+TODO
+
 ### Combination of profiles
 
 TODO: 
