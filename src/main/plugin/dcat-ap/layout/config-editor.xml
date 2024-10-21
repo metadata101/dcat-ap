@@ -311,6 +311,7 @@
     <name>dcat:service</name>
     <name>foaf:isPrimaryTopicOf</name>
     <name>foaf:Organization</name>
+    <name>foaf:homepage</name>
     <name>vcard:org</name>
     <name>dcat:hadRole</name>
     <name>dcat:Role</name>
