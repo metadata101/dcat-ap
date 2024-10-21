@@ -249,8 +249,21 @@
           </resolutionScaleDenominator>
         </xsl:for-each>
 
-        <!--        TODO check how to implement overviews in dcat-->
-        <xsl:copy-of select="gn-fn-index:add-field('hasOverview', 'false')"/>
+
+        <!-- Overviews -->
+        <xsl:variable name="overviews"
+                      select="foaf:page/foaf:Document[@rdf:about != '']"/>
+        <xsl:copy-of select="gn-fn-index:add-field('hasOverview', if (count($overviews) > 0) then 'true' else 'false')"/>
+
+        <xsl:for-each select="$overviews">
+          <overview type="object">{
+            "url": "<xsl:value-of select="util:escapeForJson(normalize-space(@rdf:about))"/>"
+            <xsl:if test="normalize-space(dct:description) != ''">,
+              "nameObject": <xsl:value-of select="gn-fn-index:add-multilingual-field('name', dct:description, $allLanguages, true())"/>
+            </xsl:if>
+            }</overview>
+        </xsl:for-each>
+
 
         <xsl:variable name="openKeywords" select="*[name() = ('dct:subject', 'mdcat:statuut') and
           skos:Concept/@rdf:about = ('https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA', 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE')

@@ -23,26 +23,65 @@
   -->
 
 <xsl:stylesheet version="2.0"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
-                xmlns:adms="http://www.w3.org/ns/adms#"
+                xmlns:foaf="http://xmlns.com/foaf/0.1/"
+                xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                xmlns:gn-fn-rel="http://geonetwork-opensource.org/xsl/functions/relations"
                 exclude-result-prefixes="#all">
 
+  <xsl:import href="layout/utility-tpl-multilingual.xsl" />
+
+  <!-- Checks if an URL refers to an image, checking the file extension.
+       Formats supported: png, gif, jpeg, jpg
+  -->
+  <xsl:function name="gn-fn-rel:is-image" as="xs:boolean">
+    <xsl:param name="url"/>
+
+    <xsl:variable name="normalizedUrl" select="lower-case($url)" />
+
+    <xsl:value-of select="ends-with(lower-case($normalizedUrl), '.png') or
+                          ends-with($normalizedUrl, '.gif') or
+                          ends-with($normalizedUrl, '.jpeg') or
+                          ends-with($normalizedUrl, '.jpg')" />
+  </xsl:function>
+
+
   <xsl:template mode="relation" match="metadata[rdf:RDF/dcat:Catalog]" priority="100">
-    <xsl:if test="count(*/descendant::*[name(.) = 'adms:sample']/*) > 0">
+    <xsl:if test="count(*/descendant::*[name(.) = 'foaf:page']/*) > 0">
+
+      <xsl:variable name="mainLanguage">
+        <xsl:call-template name="get-dcat-ap-language">
+          <xsl:with-param name="languageIri"
+                          select=".//dcat:CatalogRecord/dct:language[1]/(@rdf:resource|skos:Concept/@rdf:about|dct:LinguisticSystem/@rdf:about)" />
+        </xsl:call-template>
+      </xsl:variable>
+
       <thumbnails>
-        <xsl:for-each select="*/descendant::*[name(.) = 'adms:sample']">
+        <xsl:for-each select="*/descendant::*[name(.) = 'foaf:page' and gn-fn-rel:is-image(foaf:Document/@rdf:about)]">
           <item>
             <id>
-              <xsl:value-of select="dcat:Distribution/dcat:downloadURL/@rdf:resource"/>
+              <xsl:value-of select="foaf:Document/@rdf:about"/>
             </id>
             <url>
-              <value lang="dut"><xsl:value-of select="dcat:Distribution/dcat:downloadURL/@rdf:resource"/></value>
+              <xsl:variable name="url" select="foaf:Document/@rdf:about" />
+
+              <value lang="{$mainLanguage}">
+                <xsl:value-of select="$url"/>
+              </value>
             </url>
             <title>
-              <value lang="dut"><xsl:value-of select="dct:title[1]"/></value>
+                <xsl:for-each select="dct:description">
+                  <xsl:variable name="localeId"
+                                select="@xml:lang"/>
+
+                  <value lang="{$localeId}">
+                    <xsl:value-of select="."/>
+                  </value>
+                </xsl:for-each>
             </title>
             <type>thumbnail</type>
           </item>
