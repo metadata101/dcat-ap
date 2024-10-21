@@ -162,6 +162,7 @@ Cardinality is checked using schematron, XSD define the elements and types (see 
  * Update classes which requires the new elements.  
 
 
+TODO Q: Order of element? important of not? 
 
 ### Vocabularies
 
