@@ -86,4 +86,13 @@
   <protocol-49>LINK-1.0-http--link</protocol-49>
   <protocol-50>LINK-1.0-http--related</protocol-50>
   <protocol-51>Enter your own protocol...</protocol-51>
+
+  <hvd-view>High Value Dataset</hvd-view>
+  <hvd-tab>High Value Dataset</hvd-tab>
+  <hvd-section>High Value Dataset (HVD)</hvd-section>
+
+  <mobility-view>Mobility</mobility-view>
+  <mobility-tab>Mobility</mobility-tab>
+  <mobility-section>Mobility</mobility-section>
+
 </strings>

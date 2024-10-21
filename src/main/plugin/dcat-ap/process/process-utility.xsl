@@ -86,11 +86,14 @@
       <xsl:when test="$key = concat($keyPrefix, 'gemet')">
         <xsl:value-of select="'http://www.eionet.europa.eu/gemet'"/>
       </xsl:when>
-      <xsl:when test="$key = concat($keyPrefix, 'topic-category')">
-        <xsl:value-of select="'http://inspire.ec.europa.eu/metadata-codelist/TopicCategory'"/>
+      <xsl:when test="$key = concat($keyPrefix, 'high-value-dataset-category')">
+        <xsl:value-of select="'http://data.europa.eu/bna/asd487ae75'"/>
+      </xsl:when>
+      <xsl:when test="$key = concat($keyPrefix, 'mobility-theme')">
+        <xsl:value-of select="'https://w3id.org/mobilitydcat-ap/mobility-theme'"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:message select="concat('Thesaurus NIET gevonden met key = ',$key, '. Voeg deze toe in process-utility.xsl bestand.')"/>
+        <xsl:message select="concat('WARNING: Thesaurus NIET gevonden met key = ',$key, '. Voeg deze toe in process-utility.xsl bestand.')"/>
         <xsl:value-of select="$key"/>
       </xsl:otherwise>
     </xsl:choose>

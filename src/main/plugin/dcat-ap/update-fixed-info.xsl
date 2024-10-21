@@ -36,6 +36,7 @@
                 xmlns:gml="http://www.opengis.net/gml"
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 xmlns:saxon="http://saxon.sf.net/"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
@@ -49,7 +50,6 @@
   <xsl:output name="default-serialize-mode" indent="no"
               omit-xml-declaration="yes"/>
 
-  <!-- =================================================================   -->
   <xsl:include href="reorder-util.xsl"/>
   <xsl:include href="layout/utility-fn.xsl"/>
   <xsl:include href="layout/utility-tpl-multilingual.xsl"/>
@@ -223,6 +223,7 @@
     <xsl:variable name="updated">
       <xsl:apply-templates select="//rdf:RDF"/>
     </xsl:variable>
+
     <xsl:call-template name="dcat-reorder-elements">
       <xsl:with-param name="rdfRoot" select="$updated"/>
     </xsl:call-template>
@@ -420,7 +421,9 @@
       <xsl:apply-templates select="dct:creator"/>
       <xsl:apply-templates select="dct:isReferencedBy"/>
       <xsl:apply-templates select="dct:rights"/>
+
       <xsl:apply-templates select="dcatap:hvdCategory"/>
+      <xsl:apply-templates select="mobilitydcatap:*"/>
     </dcat:Dataset>
   </xsl:template>
 
@@ -790,5 +793,6 @@
     <xsl:namespace name="schema" select="'http://schema.org/'"/>
     <xsl:namespace name="dc" select="'http://purl.org/dc/elements/1.1/'"/>
     <xsl:namespace name="mdcat" select="'https://data.vlaanderen.be/ns/metadata-dcat#'"/>
+    <xsl:namespace name="mobilitydcatap" select="'https://w3id.org/mobilitydcat-ap'"/>
   </xsl:template>
 </xsl:stylesheet>

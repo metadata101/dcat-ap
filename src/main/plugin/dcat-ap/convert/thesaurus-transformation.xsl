@@ -26,10 +26,12 @@
                 xmlns:adms="http://www.w3.org/ns/adms#"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:dcatap="http://data.europa.eu/r5r/"
+                xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
-                xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 version="2.0"
                 exclude-result-prefixes="#all">

@@ -925,4 +925,21 @@
     <description>Language</description>
     <btnLabel>Language</btnLabel>
   </element>
+
+
+  <!-- PROFILE / DCAT-AP-HVD -->
+  <element name="dcatap:hvdCategory">
+    <label>HVD category</label>
+    <description>The HVD category to which this Dataset belongs.
+      The HVD IR defines six thematic data categories: geospatial, earth observation and environment, meteorological, statistics, companies and company ownership, and mobility.
+      A new property HVD category is introduced to indicate the HVD category to which an resource, i.e. a dataset, belongs.
+      The controlled vocabulary with all possible values is maintained by the Publications Office.
+      A resource may belong to more than one data category.</description>
+  </element>
+
+  <element name="mobilitydcatap:mobilityTheme">
+    <label>Mobility theme</label>
+    <description>This property refers to the mobility-related theme (i.e., a specific subject, category, or type) of the delivered content.
+      A dataset may be associated with multiple themes. A theme is important for data seekers who are interested in a particular type of data content.</description>
+  </element>
 </labels>

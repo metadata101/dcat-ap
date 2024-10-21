@@ -14,6 +14,8 @@
         xmlns:owl="http://www.w3.org/2002/07/owl#"
         xmlns:schema="http://schema.org/"
         xmlns:locn="http://www.w3.org/ns/locn#"
+        xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
+        xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
         xsi:noNamespaceSchemaLocation="../../../../../../config-editor.xsd">
   <!-- Define form field types per metadata element. -->
   <fields>
@@ -126,6 +128,13 @@
         thesaurus="external.theme.high-value-dataset-category"
         xpath="/dcatap:hvdCategory"
         labelKey="dcatap.hvdCategory"/>
+    </for>
+
+    <for name="mobilitydcatap:mobilityTheme" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.mobility-theme"
+        xpath="/mobilitydcatap:mobilityTheme"
+        labelKey="mobilitydcatap:mobilityTheme"/>
     </for>
 
     <!-- Check layout-custom-fields-date.xsl for logic -->
@@ -405,26 +414,60 @@
   </multilingualFields>
 
   <views>
-    <view name="view-profile-hvd"
+    <view name="hvd-view"
           class="gn-label-above-input gn-indent-bluescale vl-editor-view"
           displayTooltips="true"
           displayTooltipsMode="onhover"
           hideTimeInCalendar="true">
-      <tab id="tab-profile-hvd">
-        <section name="HVD">
+      <tab id="hvd-tab"  default="true">
+        <section name="hvd-section">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory"/>
-          <action type="add" or="hvdCategory" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-          >
+
+          <action type="add"
+                       or="hvdCategory"
+                       in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                       if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory) = 0">
             <template>
               <snippet>
                 <dcatap:hvdCategory>
-                  <skos:Concept rdf:about="http://data.europa.eu/bna/c_dd313021">
-                    <prefLabel xml:lang="fr">Observation de la terre et environnement</prefLabel>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel xml:lang=""></skos:prefLabel>
                   </skos:Concept>
                 </dcatap:hvdCategory>
               </snippet>
             </template>
           </action>
+        </section>
+      </tab>
+    </view>
+
+    <view name="mobility-view"
+          class="gn-label-above-input gn-indent-bluescale vl-editor-view"
+          displayTooltips="true"
+          displayTooltipsMode="onhover"
+          hideTimeInCalendar="true">
+      <tab id="mobility-tab"  default="true">
+        <section name="mobility-section">
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:mobilityTheme"/>
+
+          <action type="add"
+                       btnLabel="Add theme"
+                       or="mobilityTheme"
+                       in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                       if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:mobilityTheme) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:mobilityTheme>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:mobilityTheme>
+              </snippet>
+            </template>
+          </action>
+
         </section>
       </tab>
     </view>
@@ -459,6 +502,7 @@
            hideIfNotDisplayed="true">
         <section name="basicInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title"/>
+
 
           <action type="add" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title)=0">
@@ -942,7 +986,6 @@
         </section>
 
       </tab>
-
       <tab id="tabAdvancedRecord" mode="flat">
         <section name="catalogRecordInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title"/>
@@ -962,7 +1005,6 @@
             xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
         </section>
       </tab>
-
     </view>
 
     <view name="fromroot">

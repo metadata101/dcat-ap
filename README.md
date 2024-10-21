@@ -162,8 +162,13 @@ Cardinality is checked using schematron, XSD define the elements and types (see 
       <xs:import namespace="https://w3id.org/mobilitydcat-ap" schemaLocation="profiles/eu-dcat-ap-mobility.xsd"/>
 ```
 
- * Update classes which requires the new elements.  
+ * Update classes which requires the new elements.
 
+
+If the profile define or use new namespaces, they need to be declared in:
+* [`src/main/plugin/dcat-ap/layout/evaluate.xsl`](src/main/plugin/dcat-ap/layout/evaluate.xsl) to have correct XPath evaluation.
+* [`src/main/plugin/dcat-ap/update-fixed-info.xsl`](src/main/plugin/dcat-ap/update-fixed-info.xsl) in template `<xsl:template name="add-namespaces">`
+  
 
 TODO Q: Order of element? important of not? 
 
@@ -171,6 +176,10 @@ TODO Q: Order of element? important of not?
 
 If some profile elements rely on vocabularies, add them to the [thesauri folder](resources/thesauri) using SKOS format.
 Those vocabularies are imported when the application starts.
+
+Register the vocabulary in [src/main/plugin/dcat-ap/process/process-utility.xsl](src/main/plugin/dcat-ap/process/process-utility.xsl).
+
+Q: Maybe can be generic?
 
 
 ### Editor configuration
@@ -197,16 +206,31 @@ Add one or more tab to the view:
 When creating tabs, make tab id attribute unique in the config-editor
 
 
+If the new element depends on a vocabulary, register the vocabulary:
 
-TODO: Describe cases:
-* new elements in new namespace
-* element 
+```xml
 
+    <for name="mobilitydcatap:mobilityTheme" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.mobility-theme"
+        xpath="/mobilitydcatap:mobilityTheme"
+        max=""
+        labelKey="mobilitydcatap:mobilityTheme"/>
+    </for>
+```
 
 
 #### Translations
 
-Add translations for editor fields in [translation files](src/main/plugin/dcat-ap/loc/eng/strings.xml) and other languages.
+2 types of translations have to be added:
+
+* Translation for new XSD elements. Use [label translation files](src/main/plugin/dcat-ap/loc/eng/labels.xml)
+
+```xml
+
+```
+
+* Add translations for editor view, tabs or custom labels in [translation files](src/main/plugin/dcat-ap/loc/eng/strings.xml)
 
 
 #### Using a vocabulary for a field
@@ -222,6 +246,10 @@ To use a vocabulary for a particular field, configure it in the editor configura
         labelKey="mdcat.addMagdaCategorie"/>
     </for>
 ```
+
+If the new element use a custom namespace, the namespace needs to be registered in [src/main/plugin/dcat-ap/convert/thesaurus-transformation.xsl](src/main/plugin/dcat-ap/convert/thesaurus-transformation.xsl).
+
+Q: Record in a language not available in vocabulary? to test.
 
 #### Field with URI
 

@@ -225,12 +225,15 @@
                 <!-- <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>-->
                 <xs:element ref="mobilitydcatap:intendedInformationService" minOccurs="0" maxOccurs="unbounded"/>
                 <!--
+                TODO:
                 assessmentResult
                 hasQualityAnnotation
                 -->
 
 
+                <!-- Profile / DCAT-AP-HVD -->
                 <xs:element ref="dcatap:hvdCategory" minOccurs="0" maxOccurs="unbounded"/>
+                <!-- TODO: Applicable legislation -->
               </xs:sequence>
             </xs:extension>
           </xs:complexContent>
