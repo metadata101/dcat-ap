@@ -346,6 +346,16 @@ For element using a vocabulary and configured in the editor configuration, index
     ],
 ```
 
+For additional elements, create an additional indexing XSLT, import it into the main one and defined custom indexing using the `index-extra-fields` mode:
+
+```xslt
+  <xsl:template mode="index-extra-fields"
+                match="rdf:RDF[dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about='https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03']">
+
+    <xsl:call-template name="index-dcat-ap-vl-license"/>
+    <xsl:apply-templates mode="index-dcat-ap-vl" select="descendant::dcat:DataService"/>
+  </xsl:template>
+  ```
 
 ### Templates
 
@@ -384,7 +394,9 @@ TODO : Check
 By default, thumbnails are encoded using `foaf:page/foaf:Document`.
 
 If the profile requires a different encoding, modify :
-* set-thumbnails.xsl
+* [set-thumbnail.xsl](src/main/plugin/dcat-ap/set-thumbnail.xsl)to add the new encoding
+* [extract-relations.xsl](src/main/plugin/dcat-ap/extract-relations.xsl) to extract the new encoding
+* adapt [indexing](src/main/plugin/dcat-ap/index-fields/index.xsl) if necessary
 
 
 ## Community
