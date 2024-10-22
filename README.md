@@ -361,30 +361,15 @@ For additional elements, create an additional indexing XSLT, import it into the 
 
 TODO
 
-### Combination of profiles
+### Interactions between profiles
 
-TODO: 
-* one view per profile (HVD = 1 field)
-* or import profile into a tab or a section in an existing editor form
-eg. HVD
+Some limitations or improvements on the existing mechanism:
 
-```xml
-
-          <import id="hvd-form"/>
-          <import id="mobilty-form"/>
-          <action
-             type="button"
-             name="HVD dataset"/>
-
-          <section name="HVD" displayIfRecord="">
-
-          </section>
-             
-```
-
-
-TODO : Check
-*     <for name="mdcat:landingspaginaVoorStatusinformatie" templateModeOnly="true" forceLabel="true" label="key"> add XSD for schema editor
+1. Some profiles can be used in others (eg. HVD can be combined with DCAT-AP, GeoDCAT-AP, ...). How to reuse the editor configuration of a profile in another profile?
+    * One view per profile may be limited, as we may have an "HVD" section in a DCAT-AP-VL form
+1. Combining all profiles will generate a large `config-editor.xml`
+1. Vocabularies are shared between profiles. How to manage them? Should we provide vocabularies in all EU languages when possible?
+1. Versioning. Is validation the step which validates the version of a profile?  
 
 
 ### Advanced configuration
