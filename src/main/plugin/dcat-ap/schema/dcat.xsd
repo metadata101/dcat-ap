@@ -46,6 +46,9 @@
     <xs:complexContent>
       <xs:extension base="rdf:Resource">
         <xs:sequence>
+          <!-- Notes -->
+          <!-- prov:qualifiedRelation was not in use so far - not included until support is required -->
+
           <!-- Mandatory -->
           <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
@@ -69,24 +72,24 @@
           <xs:element ref="dct:hasPart" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:isPartOf" minOccurs="0" maxOccurs="unbounded"/> <!--UML is different from text description -->
           <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/> <!-- VL is unbounded max -->
-          <!--<xs:element name="qualifiedRelation" type="dcat:Relationship_type" minOccurs="0" maxOccurs="unbounded"/>--> <!-- TODO: Check if needed and change the namespace to PROV -->
 
-
-          <!-- DCAT-AP.vl & METADATA-DCAT elements -->
-          <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
+          <!-- Inherited from dcat:Resource -->
           <xs:element name="contactPoint" type="vcard:Organization" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="landingPage" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="theme" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:relation" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:type" minOccurs="0" maxOccurs="unbounded"/>
+
+          <!-- dcat-ap-vl  & metadata-dcat -->
+          <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
