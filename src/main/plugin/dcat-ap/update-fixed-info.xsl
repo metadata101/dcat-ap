@@ -355,118 +355,29 @@
     </dcat:Catalog>
   </xsl:template>
 
-  <xsl:template match="dcat:CatalogRecord" priority="10">
+
+  <xsl:template match="dcat:CatalogRecord" priority="2">
     <xsl:copy copy-namespaces="no">
       <xsl:call-template name="handle-record-id"/>
 
-      <xsl:choose>
-        <xsl:when test="/root/env/changeDate">
-          <dct:modified>
-            <xsl:value-of select="format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]')"/>
-          </dct:modified>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:copy-of select="dct:modified"/>
-        </xsl:otherwise>
-      </xsl:choose>
+      <dct:modified>
+        <xsl:value-of select="if (/root/env/changeDate) then format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]') else dct:modified"/>
+      </dct:modified>
 
-      <xsl:apply-templates select="dct:conformsTo"/>
-      <xsl:apply-templates select="adms:status"/>
-      <xsl:apply-templates select="dct:issued"/>
-      <xsl:apply-templates select="dct:title"/>
-      <xsl:apply-templates select="dct:description"/>
-      <xsl:apply-templates select="dct:language"/>
-      <xsl:apply-templates select="dct:source"/>
-      <xsl:apply-templates select="adms:identifier"/>
-      <xsl:apply-templates select="dct:rights"/>
+      <xsl:apply-templates select="*[not(name() = ('dct:identifier', 'dct:modified', 'foaf:primaryTopic'))]"/>
     </xsl:copy>
   </xsl:template>
 
-  <!-- Ensure Dataset element ordering -->
-  <xsl:template match="dcat:Dataset" priority="10">
-    <dcat:Dataset>
-      <xsl:call-template name="handle-resource-id"/>
-      <xsl:apply-templates select="dct:title"/>
-      <xsl:apply-templates select="dct:description"/>
-      <xsl:apply-templates select="dcat:contactPoint"/>
-      <xsl:apply-templates select="dct:created"/>
-      <xsl:apply-templates select="dct:issued"/>
-      <xsl:apply-templates select="dct:modified"/>
-      <xsl:apply-templates select="dct:publisher"/>
-      <xsl:apply-templates select="dct:rightsHolder"/>
-      <xsl:apply-templates select="dcat:keyword"/>
-      <xsl:apply-templates select="mdcat:MAGDA-categorie"/>
-      <xsl:call-template name="apply-statuut"/>
-      <xsl:apply-templates select="dcat:theme"/>
-      <xsl:apply-templates select="dct:accessRights"/>
-      <xsl:apply-templates select="dct:conformsTo"/>
-      <xsl:apply-templates select="foaf:page"/>
-      <xsl:apply-templates select="dct:accrualPeriodicity"/>
-      <xsl:apply-templates select="dct:hasVersion"/>
-      <xsl:apply-templates select="dct:isVersionOf"/>
-      <xsl:apply-templates select="dcat:landingPage"/>
-      <xsl:apply-templates select="dct:language"/>
-      <xsl:apply-templates select="adms:identifier"/>
-      <xsl:apply-templates select="dct:provenance"/>
-      <xsl:apply-templates select="dct:relation"/>
-      <xsl:apply-templates select="dct:source"/>
-      <xsl:apply-templates select="dct:spatial"/>
-      <xsl:apply-templates select="dct:temporal"/>
-      <xsl:apply-templates select="dct:type"/>
-      <xsl:apply-templates select="owl:versionInfo"/>
-      <xsl:apply-templates select="adms:versionNotes"/>
-      <xsl:apply-templates select="dcat:extension"/>
-      <xsl:apply-templates select="dcat:distribution"/>
-      <xsl:apply-templates select="adms:sample"/>
-      <xsl:apply-templates select="dcat:qualifiedRelation"/>
-      <xsl:apply-templates select="dct:creator"/>
-      <xsl:apply-templates select="dct:isReferencedBy"/>
-      <xsl:apply-templates select="dct:rights"/>
+  <xsl:template match="dcat:Dataset|dcat:DataService" priority="10">
+     <dcat:Dataset>
+       <xsl:call-template name="handle-resource-id"/>
 
-      <xsl:apply-templates select="dcatap:hvdCategory"/>
-      <xsl:apply-templates select="dcatap:applicableLegislation"/>
-      <xsl:apply-templates select="mobilitydcatap:*"/>
-    </dcat:Dataset>
-  </xsl:template>
-
-  <!-- Ensure DataService element ordering -->
-  <xsl:template match="dcat:DataService" priority="10">
-    <dcat:DataService>
-      <xsl:call-template name="handle-resource-id"/>
-      <xsl:apply-templates select="dct:title"/>
-      <xsl:apply-templates select="dct:description"/>
-      <xsl:apply-templates select="dct:publisher"/>
-      <xsl:apply-templates select="dct:rightsHolder"/>
-      <xsl:apply-templates select="dcat:endpointURL"/>
-      <xsl:apply-templates select="dcat:endpointDescription"/>
-      <xsl:apply-templates select="dcat:servesDataset"/>
-      <xsl:apply-templates select="dcat:landingPage"/>
-      <xsl:apply-templates select="dcat:contactPoint"/>
-      <xsl:apply-templates select="dcat:keyword"/>
-      <xsl:apply-templates select="dct:language"/>
-      <xsl:apply-templates select="adms:identifier"/>
-      <xsl:apply-templates select="owl:versionInfo"/>
-      <xsl:apply-templates select="mdcat:landingspaginaVoorAuthenticatie"/>
-      <xsl:apply-templates select="mdcat:landingspaginaVoorStatusinformatie"/>
-      <xsl:apply-templates select="mdcat:landingspaginaVoorGebruiksinformatie"/>
-      <xsl:apply-templates select="mdcat:levensfase"/>
-      <xsl:apply-templates select="mdcat:ontwikkelingstoestand"/>
-      <xsl:apply-templates select="dcat:qualifiedRelation"/>
-      <xsl:apply-templates select="mdcat:MAGDA-categorie"/>
-      <xsl:call-template name="apply-statuut"/>
-      <xsl:apply-templates select="dcat:theme"/>
-      <xsl:apply-templates select="dct:accessRights"/>
-      <xsl:apply-templates select="dct:conformsTo"/>
-      <xsl:apply-templates select="dct:creator"/>
-      <xsl:apply-templates select="dct:isReferencedBy"/>
-      <xsl:apply-templates select="dct:license"/>
-      <xsl:apply-templates select="dct:created"/>
-      <xsl:apply-templates select="dct:issued"/>
-      <xsl:apply-templates select="dct:modified"/>
-      <xsl:apply-templates select="dct:relation"/>
-      <xsl:apply-templates select="dct:rights"/>
-      <xsl:apply-templates select="dct:type"/>
-    </dcat:DataService>
+       <xsl:apply-templates select="*[not(name() = ('dct:identifier'))]"/>
+       <!--
+       TODO: From VL missing
+       <xsl:call-template name="apply-statuut"/>
+       -->
+     </dcat:Dataset>
   </xsl:template>
 
   <!-- Ensure Distribution element ordering -->
@@ -484,29 +395,8 @@
           </dct:identifier>
         </xsl:if>
       </xsl:if>
-      <xsl:apply-templates select="dct:identifier"/>
-      <xsl:apply-templates select="dct:title"/>
-      <xsl:apply-templates select="dct:description"/>
-      <xsl:apply-templates select="dcat:accessURL"/>
-      <xsl:apply-templates select="dcat:downloadURL"/>
-      <xsl:apply-templates select="dct:issued"/>
-      <xsl:apply-templates select="dct:modified"/>
-      <xsl:apply-templates select="dct:format"/>
-      <xsl:apply-templates select="dcat:mediaType"/>
-      <xsl:apply-templates select="dct:language"/>
-      <xsl:apply-templates select="dct:license"/>
-      <xsl:apply-templates select="dct:rights"/>
-      <xsl:apply-templates select="dcat:byteSize"/>
-      <xsl:apply-templates select="spdx:checksum"/>
-      <xsl:apply-templates select="foaf:page"/>
-      <xsl:apply-templates select="dct:conformsTo"/>
-      <xsl:apply-templates select="adms:status"/>
-      <xsl:apply-templates select="dcat:accessService"/>
-      <xsl:apply-templates select="dcat:compressFormat"/>
-      <xsl:apply-templates select="dcat:packageFormat"/>
-      <xsl:apply-templates select="dcat:spatialResolutionInMeters"/>
-      <xsl:apply-templates select="dcat:temporalResolution"/>
-      <xsl:apply-templates select="adms:identifier"/>
+
+      <xsl:apply-templates select="*[not(name() = ('dct:identifier'))]"/>
     </dcat:Distribution>
   </xsl:template>
 
@@ -528,7 +418,6 @@
         </xsl:copy>
       </xsl:otherwise>
     </xsl:choose>
-
   </xsl:template>
 
   <!-- Rename dct:subject -->
@@ -722,7 +611,6 @@
     </dct:title>
   </xsl:template>
 
-  <!-- =================================================================  -->
 
   <xsl:template name="handle-record-id">
     <xsl:apply-templates select="@*[name() != 'rdf:about']"/>

@@ -171,12 +171,6 @@ Define new elements in the XSD:
 If the profile define or use new namespaces, they need to be declared in:
 * [`src/main/plugin/dcat-ap/layout/evaluate.xsl`](src/main/plugin/dcat-ap/layout/evaluate.xsl) to have correct XPath evaluation.
 * [`src/main/plugin/dcat-ap/update-fixed-info.xsl`](src/main/plugin/dcat-ap/update-fixed-info.xsl) in template `<xsl:template name="add-namespaces">`
-  
-
-TODO Q: 
-* Order of element? important of not? 
-* Need to add the element to the reorder update-fixed-info
-* 
 
 
 ### Vocabularies
@@ -345,7 +339,7 @@ For element using a vocabulary and configured in the editor configuration, index
 
 For additional elements, create an additional indexing XSLT, import it into the main one and defined custom indexing using the `index-extra-fields` mode:
 
-```xslt
+```xml
   <xsl:template mode="index-extra-fields"
                 match="rdf:RDF[dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about='https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03']">
 
