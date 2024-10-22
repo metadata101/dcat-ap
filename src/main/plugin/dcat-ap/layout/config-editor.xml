@@ -128,6 +128,12 @@
         thesaurus="external.theme.high-value-dataset-category"
         xpath="/dcatap:hvdCategory"/>
     </for>
+    <for name="dcatap:applicableLegislation" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.eu-applicable-legislation"
+        xpath="/dcatap:applicableLegislation"
+        useReference="true"/>
+    </for>
 
     <for name="mobilitydcatap:mobilityTheme" use="thesaurus-list-picker">
       <directiveAttributes
@@ -456,6 +462,18 @@
                     <skos:prefLabel xml:lang=""></skos:prefLabel>
                   </skos:Concept>
                 </dcatap:hvdCategory>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:applicableLegislation"/>
+          <action type="add"
+                  or="applicableLegislation"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:applicableLegislation) = 0">
+            <template>
+              <snippet>
+                <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
               </snippet>
             </template>
           </action>

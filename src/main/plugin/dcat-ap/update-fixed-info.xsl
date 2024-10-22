@@ -424,6 +424,7 @@
       <xsl:apply-templates select="dct:rights"/>
 
       <xsl:apply-templates select="dcatap:hvdCategory"/>
+      <xsl:apply-templates select="dcatap:applicableLegislation"/>
       <xsl:apply-templates select="mobilitydcatap:*"/>
     </dcat:Dataset>
   </xsl:template>

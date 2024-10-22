@@ -233,7 +233,7 @@
 
                 <!-- Profile / DCAT-AP-HVD -->
                 <xs:element ref="dcatap:hvdCategory" minOccurs="0" maxOccurs="unbounded"/>
-                <!-- TODO: Applicable legislation -->
+                <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>
               </xs:sequence>
             </xs:extension>
           </xs:complexContent>
