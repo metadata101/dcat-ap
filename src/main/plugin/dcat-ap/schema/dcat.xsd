@@ -218,9 +218,9 @@
                 <!-- Mandatory -->
                 <xs:element ref="mobilitydcatap:mobilityTheme" minOccurs="0" maxOccurs="unbounded"/>
                 <!-- Recommended -->
-                <xs:element ref="mobilitydcatap:georeferencingMethod" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="mobilitydcatap:networkCoverage" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="mobilitydcatap:transportMode" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="mobilitydcatap:networkCoverage" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="mobilitydcatap:georeferencingMethod" minOccurs="0" maxOccurs="unbounded"/>
                 <!-- Optional -->
                 <!-- <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>-->
                 <xs:element ref="mobilitydcatap:intendedInformationService" minOccurs="0" maxOccurs="unbounded"/>
