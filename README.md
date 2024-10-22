@@ -329,10 +329,23 @@ Schematron rules can be enabled/disabled depending on the profile. See [configur
 
 Q: Check how to enable/disable schematron rules for a profile with an example.
 
+Validation is also taking care of checking version of a profile as profile do not always declare a new namespace for a new version.
+
 
 ### Indexing
 
-TODO
+For element using a vocabulary and configured in the editor configuration, indexing will automatically be done and can be used for search and aggregations.
+
+```json
+    "th_high-value-dataset-category": [
+      {
+        "default": "Companies and company ownership",
+        "langeng": "Companies and company ownership",
+        "link": "http://data.europa.eu/bna/c_a9135398"
+      }
+    ],
+```
+
 
 ### Templates
 

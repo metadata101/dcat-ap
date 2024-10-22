@@ -49,10 +49,12 @@
                         match="*[skos:Concept and gn-fn-dcat-ap:getThesaurusConfig(name(), name(..))]">
     <xsl:if test="preceding-sibling::*[1]/name() != current()/name()">
       <xsl:variable name="xpath" select="concat('/', name(../..), '/', name(..), '/', name())"/>
+
       <xsl:variable name="config" select="gn-fn-dcat-ap:getThesaurusConfig(name(), name(..), $xpath)"/>
       <xsl:call-template name="thesaurus-picker-list">
         <xsl:with-param name="config" select="$config"/>
         <xsl:with-param name="ref" select="../gn:element/@ref"/>
+        <xsl:with-param name="keywords" select="../*[name() = $config/@name]"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:template>
@@ -68,6 +70,7 @@
     <xsl:call-template name="thesaurus-picker-list">
       <xsl:with-param name="config" select="$config"/>
       <xsl:with-param name="ref" select="../gn:element/@ref"/>
+      <xsl:with-param name="keywords" select="null"/>
     </xsl:call-template>
   </xsl:template>
 
@@ -87,11 +90,13 @@
   <xsl:template name="thesaurus-picker-list">
     <xsl:param name="config" as="node()"/>
     <xsl:param name="ref" as="xs:string"/>
+    <xsl:param name="keywords" as="node()*"/>
+
     <xsl:if test="gn-fn-dcat-ap:shouldShow($config)">
       <xsl:variable name="values">
         <xsl:choose>
-          <xsl:when test="$config/useReference = 'true' and ../*[name() = $config/@name]/@rdf:resource">
-            <xsl:for-each select="../*[name() = $config/@name]">
+          <xsl:when test="$config/useReference = 'true' and $keywords/@rdf:resource">
+            <xsl:for-each select="$keywords">
               <xsl:variable name="v" select="replace(java:getKeywordValueByUri(@rdf:resource, $config/thesaurus, $lang), ',', ',,')"/>
               <xsl:if test="string($v)">
                 <xsl:value-of select="$v"/>
@@ -99,11 +104,12 @@
               </xsl:if>
             </xsl:for-each>
           </xsl:when>
-          <xsl:when test="../*[name() = $config/@name]//skos:prefLabel[1]">
-            <xsl:value-of select="string-join(../*[name() = $config/@name]//skos:prefLabel[1]/replace(text(), ',', ',,'), ',')"/>
+          <xsl:when test="$keywords//(skos:prefLabel[text() != ''])[1]">
+            <xsl:value-of select="string-join($keywords//(skos:prefLabel[text() != ''])[1]/replace(text(), ',', ',,'), ',')"/>
           </xsl:when>
         </xsl:choose>
       </xsl:variable>
+
       <xsl:variable name="transformation" select="if ($config/useReference = 'true')
                                                 then 'to-dcat-ap-concept-reference'
                                                 else 'to-dcat-ap-concept'"/>

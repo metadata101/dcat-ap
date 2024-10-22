@@ -45,6 +45,7 @@
 
   <xsl:import href="common/index-utils.xsl"/>
   <xsl:import href="../layout/utility-tpl-multilingual.xsl"/>
+  <xsl:import href="index-dcat-ap-vl.xsl"/>
 
   <xsl:output method="xml" indent="yes"/>
 
@@ -286,9 +287,15 @@
         </xsl:if>
 
         <xsl:apply-templates mode="index-reference-date" select="."/>
+
+        <!-- Index more fields in this element -->
+        <xsl:apply-templates mode="index-extra-fields" select="."/>
       </doc>
     </xsl:for-each>
   </xsl:template>
+
+  <!-- Specialized this mode to index more field for specific profiles -->
+  <xsl:template mode="index-extra-fields" match="*"/>
 
   <xsl:template mode="index-constraints" match="dcat:Dataset|dcat:DataService">
     <xsl:variable name="constraints">
@@ -347,9 +354,9 @@
 
   <xsl:template mode="index-concept" match="dcat:Dataset|dcat:DataService">
 
-    <xsl:for-each-group select="dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie"
+    <xsl:for-each-group select="*[skos:Concept and name() = $editorConfig/editor/fields/for[@use='thesaurus-list-picker']/@name]"
                         group-by="skos:Concept/skos:inScheme/@rdf:resource">
-      <xsl:variable name="thesaurusId" select="$editorConfig/editor/fields/for[@name=name(current-group()[1])]/directiveAttributes/@thesaurus"/>
+      <xsl:variable name="thesaurusId" select="$editorConfig/editor/fields/for[@name = name(current-group()[1])]/directiveAttributes/@thesaurus"/>
       <xsl:variable name="key">
         <xsl:if test="$thesaurusId != ''">
           <xsl:value-of select="tokenize($thesaurusId[1], '\.')[last()]"/>
@@ -778,7 +785,7 @@
       </xsl:variable>
 
       <link type="object">
-        {
+        {!
         "protocol": "<xsl:value-of select="$linkProtocol"/>",
         "mimeType": "" ,
         "url":"<xsl:value-of select="normalize-space((dcat:endpointURL|dcat:endpointDescription)[1]/@rdf:resource)"/>",
