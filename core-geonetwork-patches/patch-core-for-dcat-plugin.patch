@@ -1,10 +1,9 @@
-From a346b929ff440e7d8fe84129c579af4901644bbb Mon Sep 17 00:00:00 2001
+From 961428a6ad2825385f0c84a6171dc54bcce2b5b3 Mon Sep 17 00:00:00 2001
 From: Mathieu Chaussier <mathieu.chaussier@gim.be>
 Date: Thu, 20 Jun 2024 09:48:09 +0200
 Subject: [PATCH] Patch core for DCAT2 plugin
 
 ---
- .gitignore                                    |  1 +
  .../geonet/kernel/search/EsSearchManager.java |  1 +
  .../java/org/fao/geonet/util/XslUtil.java     | 84 ++++++++++++++++++-
  .../HarvesterSettingRepository.java           | 11 +++
@@ -14,7 +13,7 @@ Subject: [PATCH] Patch core for DCAT2 plugin
  .../harvester/geonet/GeonetParams.java        | 12 +++
  .../plugin/iso19139/index-fields/index.xsl    | 71 ++++++++++++++++
  .../fao/geonet/api/records/MetadataUtils.java | 22 +++--
- .../resources/catalog/locales/en-admin.json   |  7 +-
+ .../resources/catalog/locales/en-admin.json   |  6 +-
  .../resources/catalog/locales/fr-admin.json   |  9 +-
  .../resources/catalog/locales/nl-admin.json   |  8 +-
  .../templates/admin/harvest/type/csw.html     | 17 ++++
@@ -23,40 +22,28 @@ Subject: [PATCH] Patch core for DCAT2 plugin
  .../admin/harvest/type/geonetwork.js          |  4 +-
  .../main/webapp/xsl/xml/harvesting/csw.xsl    |  3 +
  .../webapp/xsl/xml/harvesting/geonetwork.xsl  |  3 +
- 19 files changed, 273 insertions(+), 16 deletions(-)
+ 18 files changed, 271 insertions(+), 16 deletions(-)
 
-diff --git a/.gitignore b/.gitignore
-index cbd4fe33ea..62970213f3 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -69,6 +69,7 @@ web/src/main/webapp/WEB-INF/data/config/schema_plugins/csw-record
- web/src/main/webapp/WEB-INF/data/config/schema_plugins/dublin-core
- web/src/main/webapp/WEB-INF/data/config/schema_plugins/iso19*
- web/src/main/webapp/WEB-INF/data/config/schema_plugins/schemaplugin-uri-catalog.xml
-+web/src/main/webapp/WEB-INF/data/config/schema_plugins/dcat-ap
- web/src/main/webapp/WEB-INF/data/config/schemaplugin-uri-catalog.xml
- web/src/main/webapp/WEB-INF/data/data/backup
- web/src/main/webapp/WEB-INF/data/data/metadata_data
 diff --git a/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java b/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java
-index bfd783bc5f..ae5dae722b 100644
+index 978ab63a75..13d7cfd9e5 100644
 --- a/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java
 +++ b/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java
-@@ -138,6 +138,7 @@ public class EsSearchManager implements ISearchManager {
+@@ -137,6 +137,7 @@ public class EsSearchManager implements ISearchManager {
              .add(Geonet.IndexFieldNames.RESOURCEABSTRACT)
              .add(Geonet.IndexFieldNames.RESOURCEABSTRACT + "Object")
              .add("operatesOn")
 +            .add("rdfResourceIdentifier")
              .build();
-
+ 
          FIELDLIST_RELATED_SCRIPTED = ImmutableMap.<String, String>builder()
 diff --git a/core/src/main/java/org/fao/geonet/util/XslUtil.java b/core/src/main/java/org/fao/geonet/util/XslUtil.java
-index 50bd7d1da8..f80728cdbd 100644
+index 34b9ae272e..438ea0d8ef 100644
 --- a/core/src/main/java/org/fao/geonet/util/XslUtil.java
 +++ b/core/src/main/java/org/fao/geonet/util/XslUtil.java
 @@ -23,6 +23,7 @@
-
+ 
  package org.fao.geonet.util;
-
+ 
 +import co.elastic.clients.elasticsearch.core.SearchResponse;
  import co.elastic.clients.elasticsearch.core.search.Hit;
  import com.fasterxml.jackson.core.JsonProcessingException;
@@ -85,8 +72,8 @@ index 50bd7d1da8..f80728cdbd 100644
  import org.fao.geonet.schema.iso19139.ISO19139Namespaces;
  import org.fao.geonet.utils.Log;
  import org.fao.geonet.utils.Xml;
-@@ -1595,4 +1595,80 @@ public final class XslUtil {
-
+@@ -1608,4 +1608,80 @@ public final class XslUtil {
+ 
          return webAnalyticsConfiguration.getJavascriptCode();
      }
 +
@@ -196,7 +183,7 @@ index 97a5b2fae7..a6db09fee5 100644
          harvesterSettingsManager.add("id:" + siteId, "sortBy", params.sortBy);
 +        // DCAT custom
 +        harvesterSettingsManager.add("id:" + siteId, "resourceUriPattern", params.resourceUriPattern);
-
+ 
          //--- store dynamic filter nodes
          String filtersID = harvesterSettingsManager.add(path, "filters", "");
 diff --git a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswParams.java b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswParams.java
@@ -204,9 +191,9 @@ index 624a62e0f8..e5f677c8b6 100644
 --- a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswParams.java
 +++ b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswParams.java
 @@ -53,6 +53,9 @@ public class CswParams extends AbstractParams {
-
+ 
      public Integer hopCount;
-
+ 
 +    // DCAT custom
 +    public String resourceUriPattern;
 +
@@ -214,34 +201,34 @@ index 624a62e0f8..e5f677c8b6 100644
       * The filter is a process (see schema/process folder) which depends on the schema. It could be
       * composed of parameter which will be sent to XSL transformation using the following syntax :
 @@ -105,6 +108,8 @@ public class CswParams extends AbstractParams {
-
+ 
          bboxFilter = node.getChild("bboxFilter");
-
+ 
 +        // DCAT custom
 +        resourceUriPattern = Util.getParam(site, "resourceUriPattern", "");
      }
-
+ 
      /**
 @@ -136,6 +141,9 @@ public class CswParams extends AbstractParams {
          }
-
+ 
          bboxFilter = node.getChild("bboxFilter");
 +
 +        // DCAT custom
 +        resourceUriPattern = Util.getParam(site, "resourceUriPattern", "");
      }
-
+ 
      /**
 @@ -159,6 +167,9 @@ public class CswParams extends AbstractParams {
          copy.eltFilters = eltFilters;
          copy.bboxFilter = bboxFilter;
-
+ 
 +        // DCAT custom
 +        copy.resourceUriPattern = resourceUriPattern;
 +
          return copy;
      }
-
+ 
 diff --git a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetHarvester.java b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetHarvester.java
 index b7c42e7d36..85b5560470 100644
 --- a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetHarvester.java
@@ -254,16 +241,16 @@ index b7c42e7d36..85b5560470 100644
 +        // DCAT custom
 +        harvesterSettingsManager.add("id:" + siteId, "resourceUriPattern", params.resourceUriPattern);
      }
-
+ 
      public void addHarvestInfo(Element info, String id, String uuid) {
 diff --git a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetParams.java b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetParams.java
 index 4a8efadb75..ef034be719 100644
 --- a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetParams.java
 +++ b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetParams.java
 @@ -60,6 +60,9 @@ public class GeonetParams extends AbstractParams {
-
+ 
      private ArrayList<Group> alCopyPolicy = new ArrayList<Group>();
-
+ 
 +    // VL
 +    public String resourceUriPattern;
 +
@@ -273,7 +260,7 @@ index 4a8efadb75..ef034be719 100644
 @@ -80,6 +83,9 @@ public class GeonetParams extends AbstractParams {
          mefFormatFull = Util.getParam(site, "mefFormatFull", false);
          xslfilter = Util.getParam(site, "xslfilter", "");
-
+ 
 +        // VL
 +        resourceUriPattern = Util.getParam(site, "resourceUriPattern", "");
 +
@@ -281,27 +268,27 @@ index 4a8efadb75..ef034be719 100644
          addSearches(searches);
          addCopyPolicy(policy);
 @@ -109,6 +115,9 @@ public class GeonetParams extends AbstractParams {
-
+ 
          if (policy != null)
              addCopyPolicy(policy);
 +
 +        // DCAT custom
 +        resourceUriPattern = Util.getParam(site, "resourceUriPattern", "");
      }
-
+ 
      public Iterable<Search> getSearches() {
 @@ -152,6 +161,9 @@ public class GeonetParams extends AbstractParams {
          for (Group g : alCopyPolicy)
              copy.alCopyPolicy.add(g.copy());
-
+ 
 +        // VL
 +        copy.resourceUriPattern = resourceUriPattern;
 +
          return copy;
      }
-
+ 
 diff --git a/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl b/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl
-index 37b3dc0311..187740c5c4 100644
+index 6f711e9680..ebe93b0ce8 100644
 --- a/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl
 +++ b/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl
 @@ -31,6 +31,7 @@
@@ -312,16 +299,16 @@ index 37b3dc0311..187740c5c4 100644
                  xmlns:gn-fn-index="http://geonetwork-opensource.org/xsl/functions/index"
                  xmlns:index="java:org.fao.geonet.kernel.search.EsSearchManager"
                  xmlns:digestUtils="java:org.apache.commons.codec.digest.DigestUtils"
-@@ -73,6 +74,8 @@
+@@ -72,6 +73,8 @@
    <xsl:variable name="parentAssociatedResourceType" select="'partOfSeamlessDatabase'"/>
    <xsl:variable name="childrenAssociatedResourceType" select="'isComposedOf'"/>
-
+ 
 +  <xsl:variable name="uuidRegex" select="'([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}'"/>
 +
    <xsl:template match="/">
      <xsl:apply-templates mode="index"/>
    </xsl:template>
-@@ -1418,4 +1421,72 @@
+@@ -1436,4 +1439,72 @@
        </xsl:for-each>
      </xsl:for-each>
    </xsl:template>
@@ -440,22 +427,21 @@ index 76bb7f594f..8100604bc5 100644
                  && (type == RelatedItemType.siblings
                  || type == RelatedItemType.parent
 diff --git a/web-ui/src/main/resources/catalog/locales/en-admin.json b/web-ui/src/main/resources/catalog/locales/en-admin.json
-index 3d7bc36cea..86152364e1 100644
+index 7f3cd11fd3..11f1d4a215 100644
 --- a/web-ui/src/main/resources/catalog/locales/en-admin.json
 +++ b/web-ui/src/main/resources/catalog/locales/en-admin.json
-@@ -1507,6 +1507,11 @@
-     "fieldEmailNotValid": "A valid email address is required",
-     "formConfirmExit": "The form has changes, if you exit the changes will be lost. Do you want to exit on the page?",
+@@ -1525,6 +1525,10 @@
+     "doiserver-euApiText": "Publication Office of the European Union",
+     "confirmDoiServerDelete": "Are you sure you want to delete this DOI server?",
      "NoTranslationProvider": "No translation provider",
 -    "LibreTranslate": "Libretranslate"
 +    "LibreTranslate": "Libretranslate",
 +
-+
-+    "==== DCAT custom ====": "",
-+    "resourceUriPattern": "Resource URI pattern",
-+    "resourceUriPatternHelp": "Pattern used to generate URI of the resources during the RDF export. Example of value: https://metadata.vlaanderen.be/srv/resources/{resourceType}/{resourceUuid}"
++  "==== DCAT custom ====": "",
++  "resourceUriPattern": "Resource URI pattern",
++  "resourceUriPatternHelp": "Pattern used to generate URI of the resources during the RDF export. Example of value: https://metadata.vlaanderen.be/srv/resources/{resourceType}/{resourceUuid}"
  }
-
+ 
 diff --git a/web-ui/src/main/resources/catalog/locales/fr-admin.json b/web-ui/src/main/resources/catalog/locales/fr-admin.json
 index a6d8d318c5..abcf30b00e 100644
 --- a/web-ui/src/main/resources/catalog/locales/fr-admin.json
@@ -517,7 +503,7 @@ index 03bee12552..827103ef87 100644
 +      <p class="help-block" data-translate="">resourceUriPatternHelp</p>
 +    </div>
    </fieldset>
-
+ 
    <div
 diff --git a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.js b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.js
 index bc6eb3e163..e126119172 100644
@@ -566,7 +552,7 @@ index d7a36ee29a..c47ddc3f57 100644
 +      <p class="help-block" data-translate="">resourceUriPatternHelp</p>
 +    </div>
    </fieldset>
-
+ 
    <div data-gn-harvester-translate-content-configurator="harvesterSelected.content"></div>
 diff --git a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.js b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.js
 index 8ca175afcd..a3c9441323 100644
@@ -602,8 +588,8 @@ index afbd470d75..33b6e31d5b 100644
 +      <xsl:value-of select="resourceUriPattern/value"/>
 +    </resourceUriPattern>
    </xsl:template>
-
-
+ 
+ 
 diff --git a/web/src/main/webapp/xsl/xml/harvesting/geonetwork.xsl b/web/src/main/webapp/xsl/xml/harvesting/geonetwork.xsl
 index ecfc880f24..db96a7ca0d 100644
 --- a/web/src/main/webapp/xsl/xml/harvesting/geonetwork.xsl
@@ -616,8 +602,8 @@ index ecfc880f24..db96a7ca0d 100644
 +      <xsl:value-of select="resourceUriPattern/value"/>
 +    </resourceUriPattern>
    </xsl:template>
-
+ 
    <xsl:template match="*" mode="searches">
---
-2.45.1.windows.1
+-- 
+2.45.2.windows.1
 
