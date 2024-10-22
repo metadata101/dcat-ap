@@ -145,7 +145,8 @@
                           count(*) = 0
                           and not(name() = $nonMultilingualElements)
                           and $isLanguageSet
-                         and (not(@xml:lang) or not(string(@xml:lang)))]"
+                          and not(@rdf:resource)
+                          and (not(@xml:lang) or not(string(@xml:lang)))]"
                         priority="105">
     <xsl:variable name="name"
                   select="name()"/>
