@@ -46,7 +46,7 @@
   <!-- Element using a thesaurus .-->
   <xsl:template mode="mode-dcat-ap"
                          priority="4000"
-                        match="*[skos:Concept and gn-fn-dcat-ap:getThesaurusConfig(name(), name(..))]">
+                        match="*[(skos:Concept or @rdf:resource) and gn-fn-dcat-ap:getThesaurusConfig(name(), name(..))]">
     <xsl:if test="preceding-sibling::*[1]/name() != current()/name()">
       <xsl:variable name="xpath" select="concat('/', name(../..), '/', name(..), '/', name())"/>
 
