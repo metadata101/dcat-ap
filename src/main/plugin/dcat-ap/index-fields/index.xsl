@@ -265,26 +265,6 @@
         <xsl:variable name="isGeoData" select="if (count($geoKeywords) > 0) then 'y' else 'n'"/>
         <xsl:copy-of select="gn-fn-index:add-field('isGeoData', $isGeoData)"/>
 
-        <xsl:if test="name() = 'dcat:DataService'">
-          <xsl:for-each select="(dcat:servesDataset/@rdf:resource|dcat:servesDataset/dcat:Dataset/@rdf:about)[normalize-space() != '']">
-            <recordOperateOn>
-              <xsl:value-of select="string()"/>
-            </recordOperateOn>
-          </xsl:for-each>
-
-          <xsl:for-each select="./mdcat:levensfase">
-            <lifeCycle type="object">
-              <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat-ap('lifeCycle', skos:Concept, $allLanguages, false(), true())/text()"/>
-            </lifeCycle>
-          </xsl:for-each>
-
-          <xsl:for-each select="./mdcat:ontwikkelingstoestand">
-            <developmentState type="object">
-              <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat-ap('developmentState', skos:Concept, $allLanguages, false(), true())/text()"/>
-            </developmentState>
-          </xsl:for-each>
-
-        </xsl:if>
 
         <xsl:apply-templates mode="index-reference-date" select="."/>
 
@@ -307,18 +287,8 @@
         <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap('MD_LegalConstraintsOtherConstraints', skos:Concept, $allLanguages, false())"/>
       </xsl:for-each>
     </xsl:variable>
+
     <xsl:copy-of select="$constraints"/>
-    <vlResourceConstraintsObject type="object">
-      [{
-      "type": "MD_LegalConstraints",
-      "otherConstraintsObject": [
-      <xsl:for-each select="$constraints/*[name() = ('licenseObject', 'MD_LegalConstraintsOtherConstraintsObject')]">
-        <xsl:copy-of select="string()"/>
-        <xsl:if test="position() != last()">,</xsl:if>
-      </xsl:for-each>
-      ]
-      }]
-    </vlResourceConstraintsObject>
   </xsl:template>
 
   <xsl:template mode="index-license" match="dct:license">
@@ -785,7 +755,7 @@
       </xsl:variable>
 
       <link type="object">
-        {!
+        {
         "protocol": "<xsl:value-of select="$linkProtocol"/>",
         "mimeType": "" ,
         "url":"<xsl:value-of select="normalize-space((dcat:endpointURL|dcat:endpointDescription)[1]/@rdf:resource)"/>",

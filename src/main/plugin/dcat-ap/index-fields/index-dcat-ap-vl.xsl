@@ -44,6 +44,60 @@
                 version="2.0">
 
 
+  <xsl:template mode="index-extra-fields"
+                match="rdf:RDF[dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about='https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03']">
+
+    <xsl:call-template name="index-dcat-ap-vl-license"/>
+
+    <xsl:apply-templates mode="index-dcat-ap-vl" select="descendant::dcat:DataService"/>
+  </xsl:template>
+
+
+  <xsl:template name="index-dcat-ap-vl-license">
+    <xsl:for-each select="descendant::dcat:Dataset|descendant::dcat:DataService">
+      <xsl:variable name="constraints">
+        <xsl:for-each-group select="dct:license|dcat:distribution/dcat:Distribution/dct:license"
+                            group-by="dct:LicenseDocument/@rdf:about">
+          <xsl:apply-templates mode="index-license" select="current-group()[1]"/>
+        </xsl:for-each-group>
+        <xsl:for-each select="dct:accessRights">
+          <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap('MD_LegalConstraintsOtherConstraints', skos:Concept, $allLanguages, false())"/>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:copy-of select="$constraints"/>
+      <vlResourceConstraintsObject type="object">
+        [{
+        "type": "MD_LegalConstraints",
+        "otherConstraintsObject": [
+        <xsl:for-each select="$constraints/*[name() = ('licenseObject', 'MD_LegalConstraintsOtherConstraintsObject')]">
+          <xsl:copy-of select="string()"/>
+          <xsl:if test="position() != last()">,</xsl:if>
+        </xsl:for-each>
+        ]
+        }]
+      </vlResourceConstraintsObject>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template mode="index-dcat-ap-vl" match="dcat:DataService">
+    <xsl:for-each select="(dcat:servesDataset/@rdf:resource|dcat:servesDataset/dcat:Dataset/@rdf:about)[normalize-space() != '']">
+      <recordOperateOn>
+        <xsl:value-of select="string()"/>
+      </recordOperateOn>
+    </xsl:for-each>
+
+    <xsl:for-each select="./mdcat:levensfase">
+      <lifeCycle type="object">
+        <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat-ap('lifeCycle', skos:Concept, $allLanguages, false(), true())/text()"/>
+      </lifeCycle>
+    </xsl:for-each>
+
+    <xsl:for-each select="./mdcat:ontwikkelingstoestand">
+      <developmentState type="object">
+        <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat-ap('developmentState', skos:Concept, $allLanguages, false(), true())/text()"/>
+      </developmentState>
+    </xsl:for-each>
+  </xsl:template>
 
 
 </xsl:stylesheet>
