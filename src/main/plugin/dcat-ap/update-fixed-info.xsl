@@ -364,7 +364,7 @@
         <xsl:value-of select="if (/root/env/changeDate) then format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]') else dct:modified"/>
       </dct:modified>
 
-      <xsl:apply-templates select="*[not(name() = ('dct:identifier', 'dct:modified', 'foaf:primaryTopic'))]"/>
+      <xsl:apply-templates select="* except (dct:identifier|dct:modified|foaf:primaryTopic)"/>
     </xsl:copy>
   </xsl:template>
 
@@ -372,7 +372,7 @@
      <dcat:Dataset>
        <xsl:call-template name="handle-resource-id"/>
 
-       <xsl:apply-templates select="*[not(name() = ('dct:identifier'))]"/>
+       <xsl:apply-templates select="* except dct:identifier"/>
        <!--
        TODO: From VL missing
        <xsl:call-template name="apply-statuut"/>
