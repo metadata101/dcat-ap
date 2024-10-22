@@ -402,20 +402,24 @@
       </xsl:if>
 
       <xsl:variable name="conceptKeywords">
-        <xsl:for-each-group select="dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie"
+        <xsl:for-each-group select="*[skos:Concept and name() = $editorConfig/editor/fields/for[@use='thesaurus-list-picker']/@name]"
                             group-by="skos:Concept/skos:inScheme/@rdf:resource">
           <xsl:variable name="thesaurusId" select="$editorConfig/editor/fields/for[@name=name(current-group()[1])]/directiveAttributes/@thesaurus"/>
+
           <xsl:variable name="key">
             <xsl:if test="$thesaurusId != ''">
-              <xsl:value-of select="tokenize($thesaurusId, '\.')[last()]"/>
+              <xsl:value-of select="tokenize($thesaurusId[1], '\.')[last()]"/>
+              <xsl:if test="count($thesaurusId) > 1">
+                <xsl:message>WARNING: Concept scheme is used in more than one thesaurus <xsl:value-of select="string-join($thesaurusId, ', ')"/>. Only first one is used.</xsl:message>
+              </xsl:if>
             </xsl:if>
           </xsl:variable>
           <xsl:if test="normalize-space($key) != ''">
             <value>
               <xsl:variable name="thesaurusField" select="concat('th_',$key)"/>
-              <xsl:variable name="thesaurusTitle" select="util:getThesaurusTitleByKey($thesaurusId)"/>
+              <xsl:variable name="thesaurusTitle" select="util:getThesaurusTitleByKey($thesaurusId[1])"/>
               "<xsl:value-of select="$thesaurusField"/>": {
-              "id": "<xsl:value-of select="util:escapeForJson($thesaurusId)"/>",
+              "id": "<xsl:value-of select="util:escapeForJson($thesaurusId[1])"/>",
               <xsl:if test="$thesaurusTitle != ''">
                 "title": "<xsl:value-of select="util:escapeForJson($thesaurusTitle)"/>",
               </xsl:if>

@@ -401,10 +401,7 @@
   </xsl:template>
 
   <!-- Remove empty concepts -->
-  <xsl:template match="foaf:Agent/dct:type|mdcat:MAGDA-categorie|mdcat:statuut|dcat:theme|dct:accrualPeriodicity|
-                       dct:language|dcat:Dataset/dct:type|dcat:DataService/dct:type|dct:format|dcat:mediaType|adms:status|
-                       dct:LicenseDocument/dct:type|dct:accessRights|mdcat:levensfase|mdcat:ontwikkelingstoestand|
-                       dcat:compressFormat|dcat:packageFormat" priority="10">
+  <xsl:template match="*[skos:Concept and name() = $editorConfig/editor/fields/for[@use='thesaurus-list-picker']/@name]" priority="10">
     <xsl:choose>
       <xsl:when test="count(skos:Concept) = 1">
         <xsl:copy copy-namespaces="no">
