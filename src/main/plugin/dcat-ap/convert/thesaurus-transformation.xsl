@@ -36,8 +36,6 @@
                 version="2.0"
                 exclude-result-prefixes="#all">
 
-  <xsl:include href="../process/process-utility.xsl"/>
-
   <!-- Surround the concept with parent based on  related parent xml element
     If no keyword is provided, only thesaurus section is adaded.
     -->
@@ -63,7 +61,7 @@
                   select="if ($currentThesaurus = 'external.none.allThesaurus')
                           then replace(./uri, 'http://org.fao.geonet.thesaurus.all/([^@]+)@@@.+', '$1')
                           else $currentThesaurus"/>
-    <xsl:variable name="inSchemeURI" select="gn-fn-dcat-ap:getInSchemeURIByThesaurusId($keywordThesaurus)"/>
+    <xsl:variable name="inSchemeURI" select="util:getThesaurusUriByKey($keywordThesaurus)"/>
 
     <!-- Loop on all keyword from the same thesaurus -->
     <xsl:variable name="response">
