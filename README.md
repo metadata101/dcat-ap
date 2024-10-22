@@ -119,20 +119,17 @@ When saving a record, this uuid is appended to the dataset URI, provided that th
 
 ### Profile identification
 
-Using the `conformsTo` element in the  `CatalogRecord` element, the profile is identified. 
+Using the `conformsTo` element in the  `CatalogRecord` element, the profile is identified: 
 
 ```xml
       <dcat:record>
-         <dcat:CatalogRecord rdf:about="http://localhost:8080/geonetwork/srv/api/records/f356eaa6-506f-4510-93f8-0e449c28805a">
-            <foaf:primaryTopic rdf:resource="http://localhost:8080/geonetwork/srv/resources/services/b273f602-0e29-4094-b02c-d72dbdd4e3ed"/>
-            <dct:modified>2024-10-21</dct:modified>
+         <dcat:CatalogRecord ...
             <dct:conformsTo>
                <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
 ```
 
-When the profile is adding couple of elements to potentially one or more existing profiles (eg. HVD adds `hvdCategory` element), 
+When the profile is only adding a couple of elements to potentially one or more existing profiles (eg. HVD adds `hvdCategory` element), 
 then the profile extension should declare those new elements and each target profiles needs to embed it into their editor views.
-
 
 ### Schema
 
@@ -141,6 +138,8 @@ New profile elements need to be added to the [schema XSD](src/main/plugin/dcat-a
 TODO Q: Can we set cardinality `0..1` when we know that it is the case for a profile?
 
 Cardinality is checked using schematron, XSD define the elements and types (see validation).
+
+Define new elements in the XSD:
 
 * New elements from available ontologies
 
@@ -152,17 +151,21 @@ Cardinality is checked using schematron, XSD define the elements and types (see 
 
 * New elements specific to the profile:
  
-  * add the schema in [XSD profile folder](src/main/plugin/dcat-ap/schema/profiles)
+  * Add the schema in [XSD profile folder](src/main/plugin/dcat-ap/schema/profiles)
   * Import the new schema in the base XSD
+  * Add the element 
 
 ```
-<xs:schema
-      xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+<xs:schema xmlns:dcatap="http://data.europa.eu/r5r/"
       ...
-      <xs:import namespace="https://w3id.org/mobilitydcat-ap" schemaLocation="profiles/eu-dcat-ap-mobility.xsd"/>
+      <xs:import namespace="http://data.europa.eu/r5r/" schemaLocation="profiles/eu-dcat-ap-hvd.xsd"/>
+                
+                
+      <xs:complexType name="Dataset_type">
+      ...
+                <!-- Profile / DCAT-AP-HVD -->
+                <xs:element ref="dcatap:hvdCategory" minOccurs="0" maxOccurs="unbounded"/>
 ```
-
- * Update classes which requires the new elements.
 
 
 If the profile define or use new namespaces, they need to be declared in:
@@ -170,7 +173,11 @@ If the profile define or use new namespaces, they need to be declared in:
 * [`src/main/plugin/dcat-ap/update-fixed-info.xsl`](src/main/plugin/dcat-ap/update-fixed-info.xsl) in template `<xsl:template name="add-namespaces">`
   
 
-TODO Q: Order of element? important of not? 
+TODO Q: 
+* Order of element? important of not? 
+* Need to add the element to the reorder update-fixed-info
+* 
+
 
 ### Vocabularies
 
@@ -179,7 +186,7 @@ Those vocabularies are imported when the application starts.
 
 Register the vocabulary in [src/main/plugin/dcat-ap/process/process-utility.xsl](src/main/plugin/dcat-ap/process/process-utility.xsl).
 
-Q: Maybe can be generic?
+Q: Maybe this can be generic?
 
 
 ### Editor configuration
@@ -188,57 +195,85 @@ If the profile require a complete new editor, create a new view in the [editor c
 
 See [customizing editor](https://docs.geonetwork-opensource.org/4.4/customizing-application/editor-ui/creating-custom-editor/) for more information.
 
-First, add a view:
+First, add a view (and use a condition to display it only if the profile is used):
 
  ```xml
-    <view name="profile-vl-mdcat"
-              displayIfRecord="count(//dcat:CatalogRecord/dct:conformsTo/dct:Standard[@rdf:about = 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22']) > 0"
+ <views
+  displayIfRecord="count(//dcat:CatalogRecord/dct:conformsTo/dct:Standard[@rdf:about = 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22']) > 0"
+>
+  <view name="hvd-view">
+    <tab id="hvd-tab"  default="true">
+        ...
  ```
 
-TODO: check default view using `default='true'`. What happens if more than one default?
+Q:
+* check default view using `default='true'`. What happens if more than one default?
+* check which view to load by default? Maybe see EditorController.js
 
 Add one or more tab to the view:
 
 ```xml
- <tab id="profile-vl-mdcat-tabDataset" 
+    <tab id="hvd-tab"  default="true">
  ```
 
-When creating tabs, make tab id attribute unique in the config-editor
-
+When creating tabs, make tab id attribute unique in the config-editor. A good practice is to use the same prefix for view id, tab id and section and field labels.
 
 If the new element depends on a vocabulary, register the vocabulary:
 
 ```xml
-
-    <for name="mobilitydcatap:mobilityTheme" use="thesaurus-list-picker">
+<editor...
+  <fields...
+    <for name="dcatap:hvdCategory" use="thesaurus-list-picker">
       <directiveAttributes
-        thesaurus="external.theme.mobility-theme"
-        xpath="/mobilitydcatap:mobilityTheme"
-        max=""
-        labelKey="mobilitydcatap:mobilityTheme"/>
+        thesaurus="external.theme.high-value-dataset-category"
+        xpath="/dcatap:hvdCategory"
+        labelKey="dcatap.hvdCategory"/>
     </for>
 ```
 
+Then create the form:
+* A section with a title
+* A field for each existing element
+* A button to add one if no element exists
+
+```xml
+        <section name="hvd-section">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory"/>
+
+          <action type="add"
+                       or="hvdCategory"
+                       in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                       if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory) = 0">
+            <template>
+              <snippet>
+                <dcatap:hvdCategory>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel xml:lang=""></skos:prefLabel>
+                  </skos:Concept>
+                </dcatap:hvdCategory>
+              </snippet>
+            </template>
+          </action>
+        </section>
+      </tab>
+    </view>
+```
 
 #### Translations
 
 2 types of translations have to be added:
 
 * Translation for new XSD elements. Use [label translation files](src/main/plugin/dcat-ap/loc/eng/labels.xml)
-
-```xml
-
-```
-
 * Add translations for editor view, tabs or custom labels in [translation files](src/main/plugin/dcat-ap/loc/eng/strings.xml)
 
 
 #### Using a vocabulary for a field
 
-To use a vocabulary for a particular field, configure it in the editor configuration top section (TODO: check if can be only configured in the editor view?)
+To use a vocabulary for a particular field, configure it in the editor configuration top section 
+Q: check if can be only configured in the editor view?
 
 ```xml
-<for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker" profile="metadata-dcat">
+    <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker" profile="metadata-dcat">
       <directiveAttributes
         thesaurus="external.theme.magda-domain"
         xpath="/mdcat:MAGDA-categorie"
@@ -247,27 +282,37 @@ To use a vocabulary for a particular field, configure it in the editor configura
     </for>
 ```
 
-If the new element use a custom namespace, the namespace needs to be registered in [src/main/plugin/dcat-ap/convert/thesaurus-transformation.xsl](src/main/plugin/dcat-ap/convert/thesaurus-transformation.xsl).
+If the new element use a custom namespace, the namespace needs to be registered in [src/main/plugin/dcat-ap/convert/thesaurus-transformation.xsl](src/main/plugin/dcat-ap/convert/thesaurus-transformation.xsl) 
+which converts SKOS thesaurus to the profile schema.
 
-Q: Record in a language not available in vocabulary? to test.
+Q: Record in a language not available in vocabulary? to test with https://github.com/geonetwork/core-geonetwork/pull/8268 which may help
 
 #### Field with URI
 
+If the element is a rdf resource URI:
 
 ```xml
-    <for name="mdcat:landingspaginaVoorStatusinformatie" templateModeOnly="true" forceLabel="true" label="key">
-      <template>
-        <values>
-          <key label="key" xpath="@rdf:resource" tooltip="mdcat:landingspaginaVoorStatusinformatie" required="true"/>
-        </values>
-        <snippet>
-          <mdcat:landingspaginaVoorStatusinformatie rdf:resource="{{key}}"/>
-        </snippet>
-      </template>
-    </for>
+<dcat:endpointURL rdf:resource="https://www.marineregions.org/webservices.php"/>
+```
+
+then register the field using:
+
+```xml
+
+<for name="dcat:endpointURL" templateModeOnly="true" forceLabel="true" label="key">
+  <template>
+    <values>
+      <key label="key" xpath="@rdf:resource" tooltip="dcat:endpointURL" required="true"/>
+    </values>
+    <snippet>
+      <dcat:endpointURL rdf:resource="{{key}}"/>
+    </snippet>
+  </template>
+</for>
   ```
 
-#### TODO: Other type of fields?
+
+#### Q: Other type of fields?
 
 
 ### Validation
@@ -278,13 +323,11 @@ Validation is relying on 2 levels of validation:
 * XSD validation
 * Schematron validation
 
-
-XSD is checking elements and types. Cardinatlities and profile's rules are checked using schematron rules.
-
+XSD is checking elements and types. Cardinalities and profile's rules are checked using schematron rules.
 
 Schematron rules can be enabled/disabled depending on the profile. See [configuring validation levels](https://docs.geonetwork-opensource.org/4.4/administrator-guide/managing-metadata-standards/configure-validation/).
 
-TODO: Check how to enable/disable schematron rules for a profile with an example.
+Q: Check how to enable/disable schematron rules for a profile with an example.
 
 
 ### Indexing
