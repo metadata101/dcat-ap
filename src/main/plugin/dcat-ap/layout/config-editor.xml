@@ -126,15 +126,13 @@
     <for name="dcatap:hvdCategory" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.high-value-dataset-category"
-        xpath="/dcatap:hvdCategory"
-        labelKey="dcatap.hvdCategory"/>
+        xpath="/dcatap:hvdCategory"/>
     </for>
 
     <for name="mobilitydcatap:mobilityTheme" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.mobility-theme"
-        xpath="/mobilitydcatap:mobilityTheme"
-        labelKey="mobilitydcatap:mobilityTheme"/>
+        xpath="/mobilitydcatap:mobilityTheme"/>
     </for>
 
     <!-- Check layout-custom-fields-date.xsl for logic -->

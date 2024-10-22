@@ -124,7 +124,7 @@
            data-element-ref="{concat('_P', $ref, '_', replace($config/@name, ':', 'COLON'))}"
            data-element-xpath="{$elemXpath}"
            data-wrapper="{$config/@name}"
-           data-thesaurus-title="{$strings/*[name() = $config/labelKey]}"
+           data-thesaurus-title="{($strings/*[name() = $config/labelKey], $labels/element[@name = $config/@name]/label)[1]}"
            data-thesaurus-key="{$config/thesaurus}"
            data-keywords="{$values}"
            data-transformations="{$transformation}"

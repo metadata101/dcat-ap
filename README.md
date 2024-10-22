@@ -226,8 +226,7 @@ If the new element depends on a vocabulary, register the vocabulary:
     <for name="dcatap:hvdCategory" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.high-value-dataset-category"
-        xpath="/dcatap:hvdCategory"
-        labelKey="dcatap.hvdCategory"/>
+        xpath="/dcatap:hvdCategory"/>
     </for>
 ```
 
@@ -276,9 +275,7 @@ Q: check if can be only configured in the editor view?
     <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker" profile="metadata-dcat">
       <directiveAttributes
         thesaurus="external.theme.magda-domain"
-        xpath="/mdcat:MAGDA-categorie"
-        max=""
-        labelKey="mdcat.addMagdaCategorie"/>
+        xpath="/mdcat:MAGDA-categorie"/>
     </for>
 ```
 
