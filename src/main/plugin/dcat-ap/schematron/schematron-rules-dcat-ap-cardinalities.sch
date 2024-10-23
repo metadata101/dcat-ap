@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
-  <sch:title xmlns="http://www.w3.org/2001/XMLSchema">{$loc/strings/schematron.title}</sch:title>
   <sch:ns prefix="spdx" uri="http://spdx.org/rdf/terms#"/>
   <sch:ns prefix="owl" uri="http://www.w3.org/2002/07/owl#"/>
   <sch:ns prefix="adms" uri="http://www.w3.org/ns/adms#"/>
@@ -24,7 +23,7 @@
   <sch:ns prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
   <sch:ns prefix="prov" uri="http://www.w3.org/ns/prov#"/>
 
-  <sch:title xmlns="http://www.w3.org/2001/XMLSchema">DCAT-AP Cardinality check</sch:title>
+  <sch:title xmlns="http://www.w3.org/2001/XMLSchema">{$loc/strings/schematron.title}</sch:title>
 
   <sch:pattern abstract="true" id="CardinalityCheck">
     <sch:title>Cardinality of $element in $context</sch:title>
