@@ -35,21 +35,6 @@
 
   <xsl:import href="layout/utility-tpl-multilingual.xsl" />
 
-  <!-- Checks if an URL refers to an image, checking the file extension.
-       Formats supported: png, gif, jpeg, jpg
-  -->
-  <xsl:function name="gn-fn-rel:is-image" as="xs:boolean">
-    <xsl:param name="url"/>
-
-    <xsl:variable name="normalizedUrl" select="lower-case($url)" />
-
-    <xsl:value-of select="ends-with(lower-case($normalizedUrl), '.png') or
-                          ends-with($normalizedUrl, '.gif') or
-                          ends-with($normalizedUrl, '.jpeg') or
-                          ends-with($normalizedUrl, '.jpg')" />
-  </xsl:function>
-
-
   <xsl:template mode="relation" match="metadata[rdf:RDF/dcat:Catalog]" priority="100">
     <xsl:if test="count(*/descendant::*[name(.) = 'foaf:page']/*) > 0">
 
@@ -61,7 +46,7 @@
       </xsl:variable>
 
       <thumbnails>
-        <xsl:for-each select="*/descendant::*[name(.) = 'foaf:page' and gn-fn-rel:is-image(foaf:Document/@rdf:about)]">
+        <xsl:for-each select="*/descendant::*[name(.) = 'foaf:page' and foaf:Document[matches(@rdf:about, '.*(.gif|.png|.jpeg|.jpg)$', 'i')]]">
           <item>
             <id>
               <xsl:value-of select="foaf:Document/@rdf:about"/>

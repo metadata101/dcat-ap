@@ -252,7 +252,7 @@
 
         <!-- Overviews -->
         <xsl:variable name="overviews"
-                      select="foaf:page/foaf:Document[@rdf:about != '']"/>
+                      select="foaf:page/foaf:Document[matches(@rdf:about, '.*(.gif|.png|.jpeg|.jpg)$', 'i')]"/>
         <xsl:copy-of select="gn-fn-index:add-field('hasOverview', if (count($overviews) > 0) then 'true' else 'false')"/>
 
         <xsl:for-each select="$overviews">
@@ -621,7 +621,6 @@
     <xsl:param name="fieldSuffix" select="''" as="xs:string"/>
     <xsl:param name="role" select="''" as="xs:string"/>
 
-    <xsl:variable name="organisationName" select="vcard:Organization/vcard:organization-name"/>
     <xsl:variable name="website" select="vcard:Organization/vcard:hasURL/@rdf:resource"/>
     <xsl:variable name="email" select="vcard:Organization/vcard:hasEmail/@rdf:resource"/>
     <xsl:variable name="phone" select="vcard:Organization/vcard:hasTelephone"/>
@@ -631,7 +630,7 @@
         <xsl:when test="vcard:Organization/vcard:hasAddress/vcard:Address">
           <xsl:for-each select="vcard:Organization/vcard:hasAddress/vcard:Address">
             <xsl:value-of
-              select="concat(vcard:street-address, ', ', vcard:locality, ', ', vcard:postal-code, ', ', vcard:country-name)"/>
+              select="concat(vcard:street-address[1], ', ', vcard:locality[1], ', ', vcard:postal-code[1], ', ', vcard:country-name[1])"/>
           </xsl:for-each>
         </xsl:when>
         <xsl:otherwise>
@@ -655,7 +654,7 @@
       "website":"<xsl:value-of select="$website"/>",
       "individual":"<xsl:value-of select="util:escapeForJson($individualName)"/>",
       "phone":"<xsl:value-of select="util:escapeForJson($phone[1])"/>",
-      "address":"<xsl:value-of select="util:escapeForJson($address)"/>"
+      "address":"<xsl:value-of select="util:escapeForJson($address[1])"/>"
       }
     </xsl:element>
   </xsl:template>

@@ -193,11 +193,11 @@
         </span>
       </h4>
 
-      <xsl:for-each select="//adms:sample[normalize-space(dcat:Distribution/dcat:downloadURL/@rdf:resource)!='']">
+      <xsl:for-each select="//foaf:page/foaf:Document[matches(@rdf:about, '.*(.gif|.png|.jpeg|.jpg)$', 'i')]">
         <img data-gn-img-modal="md"
              class="gn-img-thumbnail center-block"
              alt="{$schemaStrings/overview}"
-             src="{normalize-space(dcat:Distribution/dcat:downloadURL/@rdf:resource)}"/>
+             src="{normalize-space(@rdf:about)}"/>
           <div class="gn-img-thumbnail-caption"><xsl:value-of select="dct:title" /></div>
       </xsl:for-each>
     </section>
