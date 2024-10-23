@@ -590,6 +590,9 @@
           displayTooltipsMode="onhover"
           hideTimeInCalendar="true">
       <sidePanel>
+        <directive data-gn-overview-manager=""
+                   data-file-types=".png,.gif,.jpeg,.jpg"/>
+
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
         <directive data-gn-validation-report=""/>
       </sidePanel>
@@ -939,6 +942,9 @@
           displayTooltipsMode="onhover"
           hideTimeInCalendar="true">
       <sidePanel>
+        <directive data-gn-overview-manager=""
+                   data-file-types=".png,.gif,.jpeg,.jpg"/>
+
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
         <directive data-gn-validation-report=""/>
       </sidePanel>
@@ -1120,6 +1126,9 @@
 
     <view name="fromroot">
       <sidePanel>
+        <directive data-gn-overview-manager=""
+                   data-file-types=".png,.gif,.jpeg,.jpg"/>
+
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
         <directive data-gn-validation-report=""/>
       </sidePanel>

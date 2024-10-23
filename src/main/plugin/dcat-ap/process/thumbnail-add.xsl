@@ -26,14 +26,22 @@
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
-                xmlns:adms="http://www.w3.org/ns/adms#"
+                xmlns:foaf="http://xmlns.com/foaf/0.1/"
+                xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:geonet="http://www.fao.org/geonetwork"
                 exclude-result-prefixes="#all"
                 version="2.0">
 
+  <xsl:import href="../layout/utility-tpl-multilingual.xsl" />
   <!-- Thumbnail base url (mandatory) -->
   <xsl:param name="thumbnail_url"/>
   <xsl:param name="thumbnail_desc" select="''"/>
+
+  <xsl:variable name="metadata" select="//rdf:RDF" />
+
+  <xsl:variable name="mainLanguage">
+    <xsl:call-template name="get-dcat-ap-language" />
+  </xsl:variable>
 
   <xsl:template match="/root">
     <xsl:apply-templates select="rdf:RDF"/>
@@ -55,14 +63,13 @@
 
   <xsl:template name="fill">
     <xsl:if test="$thumbnail_url != ''">
-      <adms:sample>
-        <dcat:Distribution>
-          <dcat:downloadURL rdf:resource="{$thumbnail_url}"/>
+      <foaf:page>
+        <foaf:Document rdf:about="{$thumbnail_url}">
           <xsl:if test="$thumbnail_desc!=''">
-            <dct:title xml:lang="nl"><xsl:value-of select="$thumbnail_desc"/></dct:title>
+            <dct:description xml:lang="{$mainLanguage}"><xsl:value-of select="$thumbnail_desc"/></dct:description>
           </xsl:if>
-        </dcat:Distribution>
-      </adms:sample>
+        </foaf:Document>
+      </foaf:page>
     </xsl:if>
   </xsl:template>
 

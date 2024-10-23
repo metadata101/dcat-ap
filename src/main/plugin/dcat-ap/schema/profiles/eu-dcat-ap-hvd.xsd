@@ -13,4 +13,5 @@
 
   <xs:element name="hvdCategory" type="skos:Concept"/>
   <xs:element name="applicableLegislation" type="rdf:ResourceRef"/>
+  <xs:element name="availability" type="skos:Concept"/>
 </xs:schema>

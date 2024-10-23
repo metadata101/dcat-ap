@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
-  <sch:title xmlns="http://www.w3.org/2001/XMLSchema">{$loc/strings/schematron.title}</sch:title>
   <sch:ns prefix="spdx" uri="http://spdx.org/rdf/terms#"/>
   <sch:ns prefix="owl" uri="http://www.w3.org/2002/07/owl#"/>
   <sch:ns prefix="adms" uri="http://www.w3.org/ns/adms#"/>
@@ -22,6 +21,9 @@
   <sch:ns prefix="geodcat" uri="http://data.europa.eu/930/"/>
   <sch:ns prefix="generiek" uri="https://data.vlaanderen.be/ns/generiek#"/>
   <sch:ns prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
+
+  <sch:title xmlns="http://www.w3.org/2001/XMLSchema">{$loc/strings/schematron.title}</sch:title>
+
   <sch:let name="profile" value="boolean(/*[starts-with(//dcat:CatalogRecord//dct:Standard/@rdf:about, 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat')])"/>
   <sch:pattern name="conform aan protocol" id="https://data.vlaanderen.be/shacl/metadata_dcat#DataServiceShape/c394e1e5ae80a00d2aa307d647168d0c6733df26">
     <sch:title>Conform aan protocol - Een protocol waaraan de dataservice voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Aconform%20aan%20protocol)</sch:title>

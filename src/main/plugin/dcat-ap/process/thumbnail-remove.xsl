@@ -26,6 +26,7 @@
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:adms="http://www.w3.org/ns/adms#"
+                xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:geonet="http://www.fao.org/geonetwork" exclude-result-prefixes="#all"
                 version="2.0">
 
@@ -39,7 +40,11 @@
   <!-- Remove the thumbnail define in thumbnail_url parameter -->
   <xsl:template
     priority="2"
-    match="adms:sample[normalize-space(dcat:Distribution/dcat:downloadURL/@rdf:resource) = normalize-space($thumbnail_url)]"/>
+    match="foaf:page[normalize-space(foaf:Document/@rdf:about) = normalize-space($thumbnail_url)]"/>
+
+  <!--<xsl:template
+    priority="2"
+    match="adms:sample[normalize-space(dcat:Distribution/dcat:downloadURL/@rdf:resource) = normalize-space($thumbnail_url)]"/>-->
 
   <!-- Do a copy of every nodes and attributes -->
   <xsl:template match="@*|node()">
