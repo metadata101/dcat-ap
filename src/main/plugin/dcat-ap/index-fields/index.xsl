@@ -30,7 +30,6 @@
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
-                xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:gn-fn-index="http://geonetwork-opensource.org/xsl/functions/index"
@@ -44,6 +43,7 @@
                 version="2.0">
 
   <xsl:import href="common/index-utils.xsl"/>
+  <xsl:import href="index-variables.xsl"/>
   <xsl:import href="../layout/utility-tpl-multilingual.xsl"/>
   <xsl:import href="index-dcat-ap-vl.xsl"/>
 
@@ -54,31 +54,6 @@
               omit-xml-declaration="yes"
               encoding="utf-8"
               escape-uri-attributes="yes"/>
-
-  <xsl:variable name="metadata"
-                select="//rdf:RDF"/>
-
-  <xsl:variable name="allLanguages">
-    <xsl:variable name="listOfLanguage">
-      <xsl:call-template name="get-dcat-ap-other-languages"/>
-    </xsl:variable>
-    <xsl:for-each select="$listOfLanguage/lang">
-      <lang value="{@code}" code="{@id}">
-        <xsl:if test="@default">
-          <xsl:attribute name="id" select="'default'"/>
-        </xsl:if>
-      </lang>
-    </xsl:for-each>
-  </xsl:variable>
-
-  <xsl:variable name="defaultMainLanguage3Char" select="$allLanguages/lang[@id]/@value"/>
-
-  <xsl:variable name="defaultMainLanguage2Char" select="$allLanguages/lang[@id]/@code"/>
-
-  <xsl:variable name="editorConfig"
-                select="document('../layout/config-editor.xml')"/>
-
-  <xsl:variable name="protocolConcepts" select="document('../thesauri/theme/protocol.rdf')/rdf:RDF"/>
 
   <xsl:template match="/">
 
@@ -266,19 +241,6 @@
         </xsl:for-each>
 
 
-        <xsl:variable name="openKeywords" select="*[name() = ('dct:subject', 'mdcat:statuut') and
-          skos:Concept/@rdf:about = ('https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA', 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE')
-        ]"/>
-        <xsl:variable name="isOpenData" select="if (count($openKeywords) > 0) then 'y' else 'n'"/>
-        <xsl:copy-of select="gn-fn-index:add-field('isOpenData', $isOpenData)"/>
-
-        <xsl:variable name="geoKeywords" select="*[name() = ('dct:subject', 'mdcat:statuut') and
-          skos:Concept/@rdf:about = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/GEODATA'
-        ]"/>
-        <xsl:variable name="isGeoData" select="if (count($geoKeywords) > 0) then 'y' else 'n'"/>
-        <xsl:copy-of select="gn-fn-index:add-field('isGeoData', $isGeoData)"/>
-
-
         <xsl:apply-templates mode="index-reference-date" select="."/>
 
         <!-- Index more fields in this element -->
@@ -286,9 +248,6 @@
       </doc>
     </xsl:for-each>
   </xsl:template>
-
-  <!-- Specialized this mode to index more field for specific profiles -->
-  <xsl:template mode="index-extra-fields" match="*"/>
 
   <xsl:template mode="index-constraints" match="dcat:Dataset|dcat:DataService">
     <xsl:variable name="constraints">
@@ -310,16 +269,20 @@
   </xsl:template>
 
   <xsl:template mode="index-keyword" match="dcat:Dataset|dcat:DataService">
-    <xsl:variable name="keywords" select="dcat:keyword[normalize-space() != '']|(dct:subject|dcat:theme|mdcat:statuut|mdcat:MAGDA-categorie)[skos:Concept/skos:prefLabel[normalize-space() != '']]/skos:Concept/skos:prefLabel"/>
+    <xsl:variable name="keywords">
+      <xsl:copy-of select="dcat:keyword[normalize-space() != '']"/>/>
+      <xsl:copy-of select="(dct:subject|dcat:theme)[skos:Concept/skos:prefLabel[normalize-space() != '']]/skos:Concept"/>
+      <xsl:apply-templates mode="index-extra-keywords" select="."/>
+    </xsl:variable>
     <tagNumber>
-      <xsl:value-of select="count($keywords)"/>
+      <xsl:value-of select="count($keywords/*)"/>
     </tagNumber>
     <tag type="object">
       [
-      <xsl:for-each select="$keywords">
+      <xsl:for-each select="$keywords/*">
         <xsl:choose>
-          <xsl:when test="skos:Concept[skos:prefLabel]">
-            <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat-ap('keyword', skos:Concept, $allLanguages, false(), true())/text()"/>
+          <xsl:when test="name(.) = 'skos:Concept'">
+            <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat-ap('keyword', ., $allLanguages, false(), true())/text()"/>
           </xsl:when>
           <xsl:otherwise>
             {
@@ -332,7 +295,6 @@
       </xsl:for-each>
       ]
     </tag>
-
   </xsl:template>
 
   <xsl:template mode="index-concept" match="dcat:Dataset|dcat:DataService">
@@ -745,7 +707,7 @@
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template mode="index-distribution" match="*[dcat:endpointURL|dcat:endpointDescription|dcat:landingPage|mdcat:landingspaginaVoorStatusinformatie|mdcat:landingspaginaVoorGebruiksinformatie]">
+  <xsl:template mode="index-distribution" match="*[dcat:endpointURL|dcat:endpointDescription|dcat:landingPage]">
     <xsl:for-each select="dcat:endpointURL|dcat:endpointDescription">
       <linkUrl>
         <xsl:value-of select="string(@rdf:resource)"/>
@@ -784,7 +746,7 @@
       </link>
     </xsl:if>
 
-    <xsl:for-each select="(dcat:landingPage|mdcat:landingspaginaVoorStatusinformatie|mdcat:landingspaginaVoorGebruiksinformatie)[normalize-space(@rdf:resource) != '']">
+    <xsl:for-each select="dcat:landingPage[normalize-space(@rdf:resource) != '']">
       <link type="object">
         {
         "protocol": "",
