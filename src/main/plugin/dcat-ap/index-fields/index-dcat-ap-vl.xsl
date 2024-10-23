@@ -43,13 +43,21 @@
                 exclude-result-prefixes="#all"
                 version="2.0">
 
+  <xsl:import href="index-variables.xsl"/>
 
-  <xsl:template mode="index-extra-fields"
-                match="rdf:RDF[dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about='https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03']">
+  <xsl:variable name="vlProfiles" select="(
+    'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03',
+    'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'
+  )"/>
 
+  <xsl:template mode="index-extra-fields" match="*[name() = ('dcat:Dataset', 'dcat:DataService') and $profile = $vlProfiles]" priority="10">
     <xsl:call-template name="index-dcat-ap-vl-license"/>
+    <xsl:call-template name="index-dcat-ap-vl-category"/>
+    <xsl:apply-templates mode="index-dcat-ap-vl" select=".|descendant::dcat:DataService|descendant::dcat:Dataset"/>
+  </xsl:template>
 
-    <xsl:apply-templates mode="index-dcat-ap-vl" select="descendant::dcat:DataService"/>
+  <xsl:template mode="index-extra-keywords" match="*[name() = ('dcat:Dataset', 'dcat:DataService') and $profile = $vlProfiles]" priority="10">
+    <xsl:copy-of select="(mdcat:statuut|mdcat:MAGDA-categorie)[skos:Concept/skos:prefLabel[normalize-space() != '']]/skos:Concept"/>
   </xsl:template>
 
 
@@ -79,6 +87,19 @@
     </xsl:for-each>
   </xsl:template>
 
+
+  <xsl:template name="index-dcat-ap-vl-category">
+    <xsl:variable name="openKeywords" select="*[name() = ('dct:subject', 'mdcat:statuut') and skos:Concept/@rdf:about = (
+        'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA',
+        'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE'
+    )]"/>
+    <xsl:variable name="isOpenData" select="if (count($openKeywords) > 0) then 'y' else 'n'"/>
+    <xsl:copy-of select="gn-fn-index:add-field('isOpenData', $isOpenData)"/>
+    <xsl:variable name="geoKeywords" select="*[name() = ('dct:subject', 'mdcat:statuut') and skos:Concept/@rdf:about = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/GEODATA']"/>
+    <xsl:variable name="isGeoData" select="if (count($geoKeywords) > 0) then 'y' else 'n'"/>
+    <xsl:copy-of select="gn-fn-index:add-field('isGeoData', $isGeoData)"/>
+  </xsl:template>
+
   <xsl:template mode="index-dcat-ap-vl" match="dcat:DataService">
     <xsl:for-each select="(dcat:servesDataset/@rdf:resource|dcat:servesDataset/dcat:Dataset/@rdf:about)[normalize-space() != '']">
       <recordOperateOn>
@@ -96,6 +117,21 @@
       <developmentState type="object">
         <xsl:value-of select="gn-fn-index:add-multilingual-field-dcat-ap('developmentState', skos:Concept, $allLanguages, false(), true())/text()"/>
       </developmentState>
+    </xsl:for-each>
+
+    <xsl:for-each select="(mdcat:landingspaginaVoorStatusinformatie|mdcat:landingspaginaVoorGebruiksinformatie)[normalize-space(@rdf:resource) != '']">
+      <link type="object">
+        {
+        "protocol": "",
+        "mimeType": "" ,
+        "url":"<xsl:value-of select="normalize-space(@rdf:resource)"/>",
+        "name": "",
+        "description": "",
+        "function":"",
+        "applicationProfile":"",
+        "group":0
+        }
+      </link>
     </xsl:for-each>
   </xsl:template>
 

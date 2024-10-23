@@ -39,7 +39,6 @@
                 xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 xmlns:saxon="http://saxon.sf.net/"
-                xmlns:java="java:org.fao.geonet.util.XslUtil"
                 xmlns:uuid="java:java.util.UUID"
                 extension-element-prefixes="saxon"
                 version="2.0"
@@ -52,82 +51,8 @@
 
   <xsl:include href="reorder-util.xsl"/>
   <xsl:include href="layout/utility-fn.xsl"/>
-  <xsl:include href="layout/utility-tpl-multilingual.xsl"/>
-
-  <xsl:variable name="serviceUrl" select="/root/env/siteURL"/>
-  <xsl:variable name="env" select="/root/env"/>
-  <xsl:variable name="iso2letterLanguageCode" select="lower-case(java:twoCharLangCode(/root/gui/language))"/>
-  <xsl:variable name="resourcePrefix" select="$env/metadata/resourceIdentifierPrefix"/>
-
-  <xsl:variable name="metadata"
-                select="/root/rdf:RDF"/>
-
-  <xsl:variable name="mainLanguage">
-    <xsl:call-template name="get-dcat-ap-language"/>
-  </xsl:variable>
-
-  <xsl:variable name="locales">
-    <xsl:call-template name="get-dcat-ap-other-languages"/>
-  </xsl:variable>
-
-  <xsl:variable name="isMultilingual"
-                select="count($locales/*) > 1"/>
-
-  <xsl:variable name="isLanguageSet"
-                select="count($locales/*) >= 1"/>
-
-  <xsl:variable name="editorConfig"
-                select="document('layout/config-editor.xml')"/>
-
-  <xsl:variable name="resourceType">
-    <xsl:choose>
-      <xsl:when test="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-        <xsl:value-of select="'datasets'"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="'services'"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-
-  <xsl:variable name="profile">
-    <xsl:variable name="std" select="string(/root/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about)"/>
-    <xsl:choose>
-      <xsl:when test="starts-with($std, 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat')">
-        <xsl:value-of select="'metadata-dcat'"/>
-      </xsl:when>
-      <xsl:when test="starts-with($std, 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL')">
-        <xsl:value-of select="'DCAT-AP-VL'"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="false()"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-
-  <xsl:variable name="uuidRegex" select="'([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}'"/>
-  <xsl:variable name="record" select="/root/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
-  <xsl:variable name="resource" select="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset|
-                                        /root/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-
-  <xsl:variable name="recordUUID" select="/root/env/uuid"/>
-  <xsl:variable name="recordAbout" select="concat(/root/env/nodeURL, 'api/records/', $recordUUID)"/>
-
-  <xsl:variable name="resourceUUID">
-    <xsl:choose>
-      <xsl:when test="count($resource/dct:identifier[matches(., concat('^', $uuidRegex, '$'))]) > 0">
-        <xsl:value-of select="$resource/dct:identifier[matches(., concat('^', $uuidRegex, '$'))][1]"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="uuid:toString(uuid:randomUUID())"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-  <xsl:variable name="resourceAbout" select="concat(/root/env/nodeURL, 'resources/', $resourceType, '/', $resourceUUID)"/>
-
-  <!-- Multilingual support -->
-  <xsl:variable name="nonMultilingualElements"
-                select="$editorConfig/editor/multilingualFields/exclude/name"/>
+  <xsl:include href="update-fixed-info-variables.xsl"/>
+  <xsl:include href="update-fixed-info-dcat-ap-vl.xsl"/>
 
 
   <!-- Ignore element not in main language (they are handled in dcat2-translations-builder. -->
@@ -218,19 +143,27 @@
     </xsl:for-each>
   </xsl:template>
 
-
-
   <xsl:template match="/root">
     <xsl:variable name="updated">
       <xsl:apply-templates select="//rdf:RDF"/>
     </xsl:variable>
 
+    <xsl:variable name="profileUpdated">
+      <xsl:apply-templates mode="update-fixed-info-profile" select="$updated"/>
+    </xsl:variable>
+
     <xsl:call-template name="dcat-reorder-elements">
-      <xsl:with-param name="rdfRoot" select="$updated"/>
+      <xsl:with-param name="rdfRoot" select="$profileUpdated"/>
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template match="@*|*[name(.)!= 'root']">
+  <xsl:template mode="update-fixed-info-profile" match="@*|*" priority="-1">
+    <xsl:copy copy-namespaces="yes">
+      <xsl:apply-templates mode="update-fixed-info-profile" select="@*|node()"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="@*|*[name(.) != 'root']">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
@@ -359,25 +292,18 @@
   <xsl:template match="dcat:CatalogRecord" priority="2">
     <xsl:copy copy-namespaces="no">
       <xsl:call-template name="handle-record-id"/>
-
       <dct:modified>
         <xsl:value-of select="if (/root/env/changeDate) then format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]') else dct:modified"/>
       </dct:modified>
-
       <xsl:apply-templates select="* except (dct:identifier|dct:modified|foaf:primaryTopic)"/>
     </xsl:copy>
   </xsl:template>
 
   <xsl:template match="dcat:Dataset|dcat:DataService" priority="10">
-     <dcat:Dataset>
+     <xsl:copy copy-namespaces="no">
        <xsl:call-template name="handle-resource-id"/>
-
        <xsl:apply-templates select="* except dct:identifier"/>
-       <!--
-       TODO: From VL missing
-       <xsl:call-template name="apply-statuut"/>
-       -->
-     </dcat:Dataset>
+     </xsl:copy>
   </xsl:template>
 
   <!-- Ensure Distribution element ordering -->
@@ -396,7 +322,7 @@
         </xsl:if>
       </xsl:if>
 
-      <xsl:apply-templates select="*[not(name() = ('dct:identifier'))]"/>
+      <xsl:apply-templates select="* except dct:identifier"/>
     </dcat:Distribution>
   </xsl:template>
 
@@ -415,15 +341,6 @@
         </xsl:copy>
       </xsl:otherwise>
     </xsl:choose>
-  </xsl:template>
-
-  <!-- Rename dct:subject -->
-  <xsl:template match="dct:subject" priority="10">
-    <xsl:if test="count(skos:Concept) = 1">
-      <mdcat:statuut>
-        <xsl:apply-templates select="skos:Concept"/>
-      </mdcat:statuut>
-    </xsl:if>
   </xsl:template>
 
   <!-- Fill concepts with resourceType -->
@@ -548,48 +465,7 @@
     </xsl:copy>
   </xsl:template>
 
-
-  <xsl:template match="dcat:CatalogRecord/dct:conformsTo/dct:Standard" priority="10">
-    <xsl:choose>
-      <xsl:when test="@rdf:about = (
-        'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL',
-        'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/',
-        'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03'
-      )">
-        <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
-          <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03</dct:identifier>
-          <dct:title>Dcat-ap-vl</dct:title>
-          <dct:description xml:lang="{$mainLanguage}">Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
-          <owl:versionInfo>2.0</owl:versionInfo>
-        </dct:Standard>
-      </xsl:when>
-      <xsl:when test="@rdf:about = (
-        'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat',
-        'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/',
-        'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'
-      )">
-        <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22">
-          <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22</dct:identifier>
-          <dct:title>Metadata-dcat</dct:title>
-          <dct:description xml:lang="{$mainLanguage}">Het applicatieprofiel “metadata dcat”. Dit is een applicatieprofiel gebaseerd op DCAT en richt zich op het verzamelen van informatie over generieke datasets, distributies en services die door een overheid beschikbaar gesteld worden. De datasets en services omvatten zowel publiek toegankelijke als afgeschermde data en diensten (ontwikkeld in en voor eender welk technisch perspectief). Het samenbrengen van al deze informatie in een catalogus laat toe om de vindbaarheid van deze datasets en services te verhogen. Dit applicatieprofiel is het generieke basisprofiel. Afgeleide profielen kunnen zeker aangemaakt worden voor specifieke domeinen of communities. Bijvoorbeeld is DCAT-AP-VL zo’n afgeleid applicatieprofiel, specifiek voor het Open data domein en bijhorende community.</dct:description>
-          <owl:versionInfo>2.0</owl:versionInfo>
-        </dct:Standard>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:copy copy-namespaces="no">
-          <xsl:apply-templates select="@*"/>
-          <xsl:if test="not(dct:identifier)">
-            <dct:identifier>
-              <xsl:value-of select="@rdf:about"/>
-            </dct:identifier>
-          </xsl:if>
-          <xsl:apply-templates select="node()"/>
-        </xsl:copy>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
-
-
+  <!-- Force dct:Standard dct:identifier value -->
   <xsl:template match="dct:Standard[not(dct:identifier)]" priority="9">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
@@ -600,14 +476,12 @@
     </xsl:copy>
   </xsl:template>
 
-
   <xsl:template match="dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title" priority="10">
     <dct:title>
       <xsl:apply-templates select="@*"/>
       <xsl:value-of select="concat(upper-case(substring(., 1, 1)), lower-case(substring(., 2)))"/>
     </dct:title>
   </xsl:template>
-
 
   <xsl:template name="handle-record-id">
     <xsl:apply-templates select="@*[name() != 'rdf:about']"/>
@@ -629,41 +503,6 @@
     <xsl:apply-templates select="dct:identifier[string() != $resourceUUID]"/>
   </xsl:template>
 
-  <xsl:template name="apply-statuut">
-    <xsl:choose>
-      <xsl:when test="$profile != 'DCAT-AP-VL'">
-        <xsl:apply-templates select="mdcat:statuut|dct:subject"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:choose>
-          <xsl:when test="name() = 'dcat:Dataset'">
-            <mdcat:statuut>
-              <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
-                <xsl:for-each select="$locales/lang/@code">
-                  <skos:prefLabel xml:lang="{.}">Vlaamse Open data</skos:prefLabel>
-                </xsl:for-each>
-                <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
-              </skos:Concept>
-            </mdcat:statuut>
-          </xsl:when>
-          <xsl:otherwise>
-            <mdcat:statuut>
-              <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE">
-                <xsl:for-each select="$locales/lang/@code">
-                  <skos:prefLabel xml:lang="{.}">Vlaamse Open data Service</skos:prefLabel>
-                </xsl:for-each>
-                <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
-              </skos:Concept>
-            </mdcat:statuut>
-          </xsl:otherwise>
-        </xsl:choose>
-        <xsl:apply-templates select="*[name() = ('mdcat:statuut', 'dct:subject') and not(skos:Concept/@rdf:about = (
-          'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA',
-          'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE'
-        ))]"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
 
   <xsl:template name="add-namespaces">
     <xsl:namespace name="rdf" select="'http://www.w3.org/1999/02/22-rdf-syntax-ns#'"/>
