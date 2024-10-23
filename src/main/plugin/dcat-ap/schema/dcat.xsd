@@ -10,7 +10,9 @@
            xmlns:skos="http://www.w3.org/2004/02/skos/core#"
            xmlns:spdx="http://spdx.org/rdf/terms#"
            xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+           xmlns:cnt="http://www.w3.org/2011/content#"
            xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
+           xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
            targetNamespace="http://www.w3.org/ns/dcat#"
            elementFormDefault="qualified"
            attributeFormDefault="qualified">
@@ -37,8 +39,11 @@
   <xs:import namespace="http://spdx.org/rdf/terms#" schemaLocation="spdx.xsd"/>
   <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
   <xs:import namespace="http://www.w3.org/2006/vcard/ns#" schemaLocation="vcard.xsd"/>
-  <xs:import namespace="https://data.vlaanderen.be/ns/metadata-dcat#" schemaLocation="mdcat.xsd"/>
+  <xs:import namespace="http://www.w3.org/2011/content#" schemaLocation="cnt.xsd"/>
+  <xs:import namespace="https://data.vlaanderen.be/ns/metadata-dcat#" schemaLocation="profiles/mdcat.xsd"/>
   <xs:import namespace="http://data.europa.eu/r5r/" schemaLocation="profiles/eu-dcat-ap-hvd.xsd"/>
+  <xs:import namespace="https://w3id.org/mobilitydcat-ap" schemaLocation="profiles/eu-dcat-ap-mobility.xsd"/>
+
 
   <xs:element name="Catalog" type="dcat:Catalog_type"/>
 
@@ -80,7 +85,7 @@
           <xs:element ref="dct:type" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="foaf:homepage" minOccurs="0" maxOccurs="unbounded"/>
 
-          <!-- dcat-ap-vl  & metadata-dcat -->
+          <!-- Profile / dcat-ap-vl  & metadata-dcat -->
           <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
@@ -112,8 +117,14 @@
                 <!-- additionally, required by GeoNetwork for identification -->
                 <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/> <!-- Required by GeoNetwork for MD identifications -->
 
-                <!-- dcat-ap-vl & metadata-dcat -->
+                <!-- Profile / dcat-ap-vl & metadata-dcat -->
                 <xs:element ref="adms:identifier" minOccurs="0" maxOccurs="unbounded"/>
+
+                <!-- Profile / mobilityDCAT-AP -->
+                <!-- Mandatory -->
+                <xs:element ref="dct:created" minOccurs="0" maxOccurs="unbounded"/>
+                <!-- Optional -->
+                <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="unbounded"/>
               </xs:sequence>
             </xs:extension>
           </xs:complexContent>
@@ -169,13 +180,33 @@
                 <xs:element ref="foaf:page" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="unbounded"/>
 
-                <!-- dcat-ap-vl & metadata-dcat -->
+                <!-- Profile / dcat-ap-vl & metadata-dcat -->
                 <xs:element ref="dct:created" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="extension" type="rdf:Statement" minOccurs="0" maxOccurs="unbounded"/>
+
+                <!-- Profile / mobilityDCAT-AP -->
+                <!-- Mandatory -->
+                <xs:element ref="mobilitydcatap:mobilityTheme" minOccurs="0" maxOccurs="unbounded"/>
+                <!-- Recommended -->
+                <xs:element ref="mobilitydcatap:transportMode" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="mobilitydcatap:networkCoverage" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="mobilitydcatap:georeferencingMethod" minOccurs="0" maxOccurs="unbounded"/>
+                <!-- Optional -->
+                <!-- <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>-->
+                <xs:element ref="mobilitydcatap:intendedInformationService" minOccurs="0" maxOccurs="unbounded"/>
+                <!--
+                TODO:
+                assessmentResult
+                hasQualityAnnotation
+                -->
+
+                <!-- Profile / DCAT-AP-HVD -->
+                <xs:element ref="dcatap:hvdCategory" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>
               </xs:sequence>
             </xs:extension>
           </xs:complexContent>
@@ -220,8 +251,20 @@
                 <xs:element ref="foaf:page" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="spdx:checksum" minOccurs="0" maxOccurs="unbounded"/>
 
-                <!-- dcat-ap-vl & metadata-dcat -->
+                <!-- Profile / dcat-ap-vl & metadata-dcat -->
                 <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
+
+                <!-- Profile / DCAT-AP-Mobility -->
+                <!-- Recommended -->
+                <xs:element ref="mobilitydcatap:applicationLayerProtocol" minOccurs="0" maxOccurs="unbounded"/>
+                <!-- Optional -->
+                <xs:element ref="cnt:characterEncoding" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="mobilitydcatap:communicationMethod" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="mobilitydcatap:dataFormatNotes" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="mobilitydcatap:grammar" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="adms:sample" minOccurs="0" maxOccurs="unbounded"/>
+                <!--                <xs:element ref="mobilitydcat:mobilityDataStandard" minOccurs="0" maxOccurs="unbounded"/>-->
+                <xs:element ref="dct:temporal" minOccurs="0" maxOccurs="unbounded"/>
               </xs:sequence>
             </xs:extension>
           </xs:complexContent>

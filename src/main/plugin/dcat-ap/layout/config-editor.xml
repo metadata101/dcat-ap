@@ -8,11 +8,14 @@
         xmlns:dc="http://purl.org/dc/elements/1.1/"
         xmlns:dct="http://purl.org/dc/terms/"
         xmlns:dcat="http://www.w3.org/ns/dcat#"
+        xmlns:dcatap="http://data.europa.eu/r5r/"
         xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
         xmlns:foaf="http://xmlns.com/foaf/0.1/"
         xmlns:owl="http://www.w3.org/2002/07/owl#"
         xmlns:schema="http://schema.org/"
         xmlns:locn="http://www.w3.org/ns/locn#"
+        xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
+        xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
         xsi:noNamespaceSchemaLocation="../../../../../../config-editor.xsd">
   <!-- Define form field types per metadata element. -->
   <fields>
@@ -118,6 +121,48 @@
         xpath="/dct:accrualPeriodicity"
         max="1"
         labelKey="dcat.addAccrualPeriodicity"/>
+    </for>
+
+    <for name="dcatap:hvdCategory" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.high-value-dataset-category"
+        xpath="/dcatap:hvdCategory"/>
+    </for>
+    <for name="dcatap:applicableLegislation" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.eu-applicable-legislation"
+        xpath="/dcatap:applicableLegislation"
+        useReference="true"/>
+    </for>
+
+    <for name="mobilitydcatap:mobilityTheme" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.mobility-theme"
+        xpath="/mobilitydcatap:mobilityTheme"/>
+    </for>
+
+    <for name="mobilitydcatap:transportMode" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.mobility-transport-mode"
+        xpath="/mobilitydcatap:transportMode"/>
+    </for>
+
+    <for name="mobilitydcatap:networkCoverage" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.mobility-network-coverage"
+        xpath="/mobilitydcatap:networkCoverage"/>
+    </for>
+
+    <for name="mobilitydcatap:georeferencingMethod" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.mobility-georeferencing-method"
+        xpath="/mobilitydcatap:georeferencingMethod"/>
+    </for>
+
+    <for name="mobilitydcatap:intendedInformationService" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.mobility-intended-information-service"
+        xpath="/mobilitydcatap:intendedInformationService"/>
     </for>
 
     <!-- Check layout-custom-fields-date.xsl for logic -->
@@ -311,6 +356,7 @@
     <name>dcat:service</name>
     <name>foaf:isPrimaryTopicOf</name>
     <name>foaf:Organization</name>
+    <name>foaf:homepage</name>
     <name>vcard:org</name>
     <name>dcat:hadRole</name>
     <name>dcat:Role</name>
@@ -396,6 +442,147 @@
   </multilingualFields>
 
   <views>
+    <view name="hvd-view"
+          class="gn-label-above-input gn-indent-bluescale vl-editor-view"
+          displayTooltips="true"
+          displayTooltipsMode="onhover"
+          hideTimeInCalendar="true">
+      <tab id="hvd-tab"  default="true">
+        <section name="hvd-section">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory"/>
+
+          <action type="add"
+                       or="hvdCategory"
+                       in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                       if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory) = 0">
+            <template>
+              <snippet>
+                <dcatap:hvdCategory>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel xml:lang=""></skos:prefLabel>
+                  </skos:Concept>
+                </dcatap:hvdCategory>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:applicableLegislation"/>
+          <action type="add"
+                  or="applicableLegislation"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:applicableLegislation) = 0">
+            <template>
+              <snippet>
+                <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+      </tab>
+    </view>
+
+    <view name="mobility-view"
+          class="gn-label-above-input gn-indent-bluescale vl-editor-view"
+          displayTooltips="true"
+          displayTooltipsMode="onhover"
+          hideTimeInCalendar="true">
+      <tab id="mobility-tab"  default="true">
+        <section name="mobility-section">
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:mobilityTheme"/>
+
+          <action type="add"
+                       or="mobilityTheme"
+                       in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                       if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:mobilityTheme) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:mobilityTheme>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:mobilityTheme>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:transportMode"/>
+
+          <action type="add"
+                  or="transportMode"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:transportMode) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:transportMode>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:transportMode>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:networkCoverage"/>
+
+          <action type="add"
+                  or="networkCoverage"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:networkCoverage) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:networkCoverage>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:networkCoverage>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:georeferencingMethod"/>
+
+          <action type="add"
+                  or="georeferencingMethod"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:georeferencingMethod) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:georeferencingMethod>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:georeferencingMethod>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:intendedInformationService"/>
+
+          <action type="add"
+                  or="intendedInformationService"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:intendedInformationService) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:intendedInformationService>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:intendedInformationService>
+              </snippet>
+            </template>
+          </action>
+
+        </section>
+      </tab>
+    </view>
+
     <view name="default"
           default="true"
           class="gn-label-above-input gn-indent-bluescale vl-editor-view"
@@ -406,7 +593,7 @@
         <directive data-gn-overview-manager=""
                    data-file-types=".png,.gif,.jpeg,.jpg"/>
 
-        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata" />
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
         <directive data-gn-validation-report=""/>
       </sidePanel>
 
@@ -429,6 +616,7 @@
            hideIfNotDisplayed="true">
         <section name="basicInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title"/>
+
 
           <action type="add" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title)=0">
@@ -625,7 +813,8 @@
         </section>
       </tab>
 
-      <tab id="tabService" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
+      <tab id="tabService" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0"
+           hideIfNotDisplayed="true">
         <section name="basicInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title"/>
           <action type="add" or="title" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
@@ -676,7 +865,8 @@
         </section>
 
         <section name="serviceInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights" or="accessRights" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights" or="accessRights"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license"/>
           <action type="add" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
@@ -698,10 +888,13 @@
                  in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
         </section>
         <section name="conformToInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:identifier"/>
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:identifier"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/owl:versionInfo"/>
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/owl:versionInfo"/>
         </section>
       </tab>
       <flatModeExceptions>
@@ -752,7 +945,7 @@
         <directive data-gn-overview-manager=""
                    data-file-types=".png,.gif,.jpeg,.jpg"/>
 
-        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata" />
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
         <directive data-gn-validation-report=""/>
       </sidePanel>
 
@@ -773,64 +966,95 @@
 
       <tab id="tabAdvancedDataset" default="true" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
         <section name="basicInformation">
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description" or="description" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:keyword" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title" or="title"
+                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description" or="description"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher" or="publisher"
+                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:keyword" or="keyword"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier" or="identifier" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier" or="identifier"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:identifier"/>
         </section>
 
         <section name="versionInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:versionNotes" or="versionNotes" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity" or="accrualPeriodicity" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created" or="created" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified" or="modified" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued" or="issued" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo" or="versionInfo"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:versionNotes" or="versionNotes"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity" or="accrualPeriodicity"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created" or="created"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified" or="modified"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued" or="issued"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
 
         <section name="usageInformation">
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights" or="accessRights" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage" or="landingPage" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint" or="contactPoint"
+                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights" or="accessRights"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage" or="landingPage"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
 
         <section name="geographicalInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial" />
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial"/>
           <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
             <template>
               <snippet>
                 <dct:spatial>
                   <dct:Location rdf:about="http://mir.geopunt.be/cl/Geopunt/VlaamseAdminRegios/Vlaanderen">
-                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((5.92 50.67,5.92 51.51,2.53 51.51,2.53 50.67,5.92 50.67))</locn:geometry>
-                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#gmlLiteral">&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;50.67 5.92 51.51 5.92 51.51 2.53 50.67 2.53 50.67 5.92&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;</locn:geometry>
+                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((5.92
+                      50.67,5.92 51.51,2.53 51.51,2.53 50.67,5.92 50.67))
+                    </locn:geometry>
+                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#gmlLiteral">&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;50.67
+                      5.92 51.51 5.92 51.51 2.53 50.67 2.53 50.67 5.92&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;
+                    </locn:geometry>
                     <skos:prefLabel xml:lang="nl">Vlaams Gewest</skos:prefLabel>
                   </dct:Location>
                 </dct:spatial>
               </snippet>
             </template>
           </action>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal" or="temporal" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal" or="temporal"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
 
         <section name="relationInformation">
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:provenance"  or="provenance" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:relation" or="relation" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:source" or="source" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isVersionOf" or="isVersionOf" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:hasVersion" or="hasVersion" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:provenance" or="provenance"
+                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:relation" or="relation"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:source" or="source"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isVersionOf" or="isVersionOf"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:hasVersion" or="hasVersion"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
 
         <section name="extraInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language" or="language" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/foaf:page" or="page" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:type" or="type" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:qualifiedRelation" or="qualifiedRelation" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator" or="creator" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isReferencedBy" or="isReferencedBy" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language" or="language"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/foaf:page" or="page"
+                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo" or="conformsTo"
+                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:type" or="type"
+                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:qualifiedRelation" or="qualifiedRelation"
+                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator" or="creator"
+                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isReferencedBy" or="isReferencedBy"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
       </tab>
 
@@ -858,21 +1082,27 @@
 
       <tab id="tabAdvancedService" default="true" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
         <section name="basicInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title" or="title" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description" or="description" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL" or="endpointUrl" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription" or="endpointDescription" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService" />
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset" or="servesDataset" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title" or="title"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description" or="description"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL" or="endpointUrl"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription"
+                 or="endpointDescription" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset" or="servesDataset"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <action type="associatedResource" name="linkToDataset" process="dataset"/>
         </section>
 
         <section name="serviceInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights" or="accessRights" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights" or="accessRights"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license" or="license"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
         </section>
 
       </tab>
-
       <tab id="tabAdvancedRecord" mode="flat">
         <section name="catalogRecordInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title"/>
@@ -885,12 +1115,13 @@
                  in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
         </section>
         <section name="conformToInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:identifier"/>
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:identifier"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
         </section>
       </tab>
-
     </view>
 
     <view name="fromroot">
@@ -898,7 +1129,7 @@
         <directive data-gn-overview-manager=""
                    data-file-types=".png,.gif,.jpeg,.jpg"/>
 
-        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata" />
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
         <directive data-gn-validation-report=""/>
       </sidePanel>
       <tab id="dcat.catalog-record">
@@ -936,7 +1167,8 @@
             </dct:type>
             <dct:title xml:lang="nl">Creative Commons Zero verklaring</dct:title>
             <dct:description xml:lang="nl">https://creativecommons.org/publicdomain/zero/1.0/</dct:description>
-            <dct:identifier>https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0</dct:identifier>
+            <dct:identifier>https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0
+            </dct:identifier>
           </dct:LicenseDocument>
         </dct:license>
       </snippet>
@@ -959,19 +1191,28 @@
     <list name="protocols-vl">
       <snippet label="protocol-01">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/ESRI:AIMS-http-configuration">
-            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/ESRI:AIMS-http-configuration</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/ESRI:AIMS-http-configuration">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/ESRI:AIMS-http-configuration
+            </dct:identifier>
             <dct:title xml:lang="nl">ESRI:AIMS-http-configuration</dct:title>
-            <dct:description xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een URL.</dct:description>
+            <dct:description xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een
+              URL.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-02">
         <dct:conformsTo>
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/GLG:KML-2.0-http-get-map">
-            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/GLG:KML-2.0-http-get-map</dct:identifier>
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/GLG:KML-2.0-http-get-map
+            </dct:identifier>
             <dct:title xml:lang="nl">KML-2.0-http-get-map</dct:title>
-            <dct:description xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie, inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan en waar te kijken.</dct:description>
+            <dct:description xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie,
+              inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische
+              gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan
+              en waar te kijken.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -980,16 +1221,25 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/LDES">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/LDES</dct:identifier>
             <dct:title xml:lang="nl">LDES</dct:title>
-            <dct:description xml:lang="nl">Linked Data Event Stream of kortweg LDES is een collectie van onveranderlijke elementen, waarbij zowel de collectie als de elementen beschreven zijn door het Resource Description Framework (RDF). De LDES specificatie bouwt voort op de TREE hypermedia specificatie. Een Event Stream is een uitbreiding is van de TREE hypermedia Collection die beschrijft hoe te navigeren over grote collectie data-elementen. Dit laat toe om grote hoeveelheden data efficiënt te publiceren door gebruik te maken van HTTP caching.</dct:description>
+            <dct:description xml:lang="nl">Linked Data Event Stream of kortweg LDES is een collectie van onveranderlijke
+              elementen, waarbij zowel de collectie als de elementen beschreven zijn door het Resource Description
+              Framework (RDF). De LDES specificatie bouwt voort op de TREE hypermedia specificatie. Een Event Stream is
+              een uitbreiding is van de TREE hypermedia Collection die beschrijft hoe te navigeren over grote collectie
+              data-elementen. Dit laat toe om grote hoeveelheden data efficiënt te publiceren door gebruik te maken van
+              HTTP caching.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-04">
         <dct:conformsTo>
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/LINK-download-store">
-            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/LINK-download-store</dct:identifier>
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/LINK-download-store
+            </dct:identifier>
             <dct:title xml:lang="nl">LINK-download-store</dct:title>
-            <dct:description xml:lang="nl">Het Link Download store protocol levert een link op naar de download-store, dit is een folder, winkel... voor directe download.</dct:description>
+            <dct:description xml:lang="nl">Het Link Download store protocol levert een link op naar de download-store,
+              dit is een folder, winkel... voor directe download.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -998,7 +1248,8 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:CSW">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:CSW</dct:identifier>
             <dct:title xml:lang="nl">CSW</dct:title>
-            <dct:description xml:lang="nl">Het Catalogue Service Web protocol levert toegang tot een endpoint.</dct:description>
+            <dct:description xml:lang="nl">Het Catalogue Service Web protocol levert toegang tot een endpoint.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1007,7 +1258,9 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:GML">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:GML</dct:identifier>
             <dct:title xml:lang="nl">GML</dct:title>
-            <dct:description xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van geografische kenmerken.</dct:description>
+            <dct:description xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van
+              geografische kenmerken.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1016,7 +1269,11 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:KML">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:KML</dct:identifier>
             <dct:title xml:lang="nl">KML</dct:title>
-            <dct:description xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie, inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan en waar te kijken.</dct:description>
+            <dct:description xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie,
+              inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische
+              gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan
+              en waar te kijken.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1025,329 +1282,508 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:ODS">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:ODS</dct:identifier>
             <dct:title xml:lang="nl">ODS</dct:title>
-            <dct:description xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van geografische kenmerken.</dct:description>
+            <dct:description xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van
+              geografische kenmerken.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-09">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features-items">
-            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features-items</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features-items">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features-items
+            </dct:identifier>
             <dct:title xml:lang="nl">OGC API Features items</dct:title>
-            <dct:description xml:lang="nl">Deze OGC standaard definieert de API bouwblok items voor een OGC Feature API</dct:description>
+            <dct:description xml:lang="nl">Deze OGC standaard definieert de API bouwblok items voor een OGC Feature
+              API
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-10">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features-landingpage">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features-landingpage</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features-landingpage">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features-landingpage
+            </dct:identifier>
             <dct:title xml:lang="nl">OGC API Feature landing page</dct:title>
-            <dct:description xml:lang="nl">Deze OGC standaard definieert de API bouwblok landingspagina voor een OGC Feature API</dct:description>
+            <dct:description xml:lang="nl">Deze OGC standaard definieert de API bouwblok landingspagina voor een OGC
+              Feature API
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-11">
         <dct:conformsTo>
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features</dct:identifier>
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features
+            </dct:identifier>
             <dct:title xml:lang="nl">OGC API Features</dct:title>
-            <dct:description xml:lang="nl">Deze OGC standaard definieert API bouwblokken voor het aanmaken, wijzigen en ondervragen van (geografische) features</dct:description>
+            <dct:description xml:lang="nl">Deze OGC standaard definieert API bouwblokken voor het aanmaken, wijzigen en
+              ondervragen van (geografische) features
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-12">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.0.0-http-get-capabilities">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.0.0-http-get-capabilities</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.0.0-http-get-capabilities">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.0.0-http-get-capabilities
+            </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.0.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
+              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
+              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
+              algemene meshes.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-13">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.0.0-http-get-coverage">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.0.0-http-get-coverage</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.0.0-http-get-coverage">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.0.0-http-get-coverage
+            </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.0.0-http-get-coverage</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
+              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
+              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
+              algemene meshes.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-14">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.0-http-get-capabilities">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.0-http-get-capabilities</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.0-http-get-capabilities">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.0-http-get-capabilities
+            </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.1.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
+              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
+              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
+              algemene meshes.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-15">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.0-http-get-coverage">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.0-http-get-coverage</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.0-http-get-coverage">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.0-http-get-coverage
+            </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.1.0-http-get-coverage</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
+              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
+              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
+              algemene meshes.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-16">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.1-http-get-capabilities">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.1-http-get-capabilities</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.1-http-get-capabilities">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.1-http-get-capabilities
+            </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.1.1-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
+              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
+              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
+              algemene meshes.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-17">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.1-http-get-coverage">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.1-http-get-coverage</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.1-http-get-coverage">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.1-http-get-coverage
+            </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.1.1-http-get-coverage</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
+              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
+              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
+              algemene meshes.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-18">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.0-http-get-capabilities">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.0-http-get-capabilities</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.0-http-get-capabilities">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.0-http-get-capabilities
+            </dct:identifier>
             <dct:title xml:lang="nl">WCS-2.0.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
+              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
+              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
+              algemene meshes.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-19">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.0-http-get-coverage">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.0-http-get-coverage</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.0-http-get-coverage">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.0-http-get-coverage
+            </dct:identifier>
             <dct:title xml:lang="nl">WCS-2.0.0-http-get-coverage</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
+              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
+              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
+              algemene meshes.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-20">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.1-http-get-capabilities">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.1-http-get-capabilities</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.1-http-get-capabilities">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.1-http-get-capabilities
+            </dct:identifier>
             <dct:title xml:lang="nl">WCS-2.0.1-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
+              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
+              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
+              algemene meshes.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-21">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.1-http-get-coverage">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.1-http-get-coverage</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.1-http-get-coverage">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.1-http-get-coverage
+            </dct:identifier>
             <dct:title xml:lang="nl">WCS-2.0.1-http-get-coverage</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
+              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
+              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
+              algemene meshes.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-22">
         <dct:conformsTo>
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS</dct:identifier>
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS</dct:identifier>
             <dct:title xml:lang="nl">WCS</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
+              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
+              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
+              algemene meshes.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-23">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-describefeaturetype">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-describefeaturetype</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-describefeaturetype">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-describefeaturetype
+            </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.0.0-http-describefeaturetype</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties verwacht te coderen op output.</dct:description>
+            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving
+              van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties
+              verwacht te coderen op output.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-24">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-get-capabilities">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-get-capabilities</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-get-capabilities">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-get-capabilities
+            </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.0.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</dct:description>
+            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument
+              dat een WFS beschrijft service geleverd door een server.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-25">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-get-feature">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-get-feature</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-get-feature">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-get-feature
+            </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.0.0-http-get-feature</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.</dct:description>
+            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit
+              een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-26">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-describefeaturetype">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-describefeaturetype</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-describefeaturetype">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-describefeaturetype
+            </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.1.0-http-describefeaturetype</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties verwacht te coderen op output.</dct:description>
+            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving
+              van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties
+              verwacht te coderen op output.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-27">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-get-capabilities">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-get-capabilities</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-get-capabilities">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-get-capabilities
+            </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.1.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</dct:description>
+            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument
+              dat een WFS beschrijft service geleverd door een server.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-28">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-get-feature">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-get-feature</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-get-feature">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-get-feature
+            </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.1.0-http-get-feature</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.</dct:description>
+            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit
+              een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-29">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-getgmlobject">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-getgmlobject</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-getgmlobject">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-getgmlobject
+            </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.1.0-http-getgmlobject</dct:title>
-            <dct:description xml:lang="nl">Web Feature Service biedt directe ged etailleerde toegang tot geografische informatie op feature- en feature-propertyniveau.</dct:description>
+            <dct:description xml:lang="nl">Web Feature Service biedt directe ged etailleerde toegang tot geografische
+              informatie op feature- en feature-propertyniveau.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-30">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-describefeaturetype">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-describefeaturetype</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-describefeaturetype">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-describefeaturetype
+            </dct:identifier>
             <dct:title xml:lang="nl">WFS-2.0.0-http-describefeaturetype</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties verwacht te coderen op output.</dct:description>
+            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving
+              van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties
+              verwacht te coderen op output.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-31">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-get-capabilities">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-get-capabilities</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-get-capabilities">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-get-capabilities
+            </dct:identifier>
             <dct:title xml:lang="nl">WFS-2.0.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</dct:description>
+            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument
+              dat een WFS beschrijft service geleverd door een server.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-32">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-get-feature">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-get-feature</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-get-feature">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-get-feature
+            </dct:identifier>
             <dct:title xml:lang="nl">WFS-2.0.0-http-get-feature</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.</dct:description>
+            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit
+              een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-33">
         <dct:conformsTo>
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS</dct:identifier>
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS</dct:identifier>
             <dct:title xml:lang="nl">WFS</dct:title>
-            <dct:description xml:lang="nl">Web Feature Service biedt directe ged etailleerde toegang tot geografische informatie op feature- en feature-propertyniveau.</dct:description>
+            <dct:description xml:lang="nl">Web Feature Service biedt directe ged etailleerde toegang tot geografische
+              informatie op feature- en feature-propertyniveau.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-34">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-capabilities">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-capabilities</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-capabilities">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-capabilities
+            </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.1.1-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de verzoekparameterwaarden.</dct:description>
+            <dct:description xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in
+              een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de
+              verzoekparameterwaarden.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-35">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-featureinfo">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-featureinfo</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-featureinfo">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-featureinfo
+            </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.1.1-http-get-featureinfo</dct:title>
-            <dct:description xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.</dct:description>
+            <dct:description xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over
+              functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-36">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-map">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-map</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-map">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-map
+            </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.1.1-http-get-map</dct:title>
-            <dct:description xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.</dct:description>
+            <dct:description xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een
+              GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-37">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-capabilities">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-capabilities</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-capabilities">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-capabilities
+            </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.3.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de verzoekparameterwaarden.</dct:description>
+            <dct:description xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in
+              een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de
+              verzoekparameterwaarden.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-38">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-featureinfo">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-featureinfo</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-featureinfo">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-featureinfo
+            </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.3.0-http-get-featureinfo</dct:title>
-            <dct:description xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.</dct:description>
+            <dct:description xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over
+              functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-39">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-map">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-map</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-map">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-map
+            </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.3.0-http-get-map</dct:title>
-            <dct:description xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.</dct:description>
+            <dct:description xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een
+              GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-40">
         <dct:conformsTo>
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS</dct:identifier>
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS</dct:identifier>
             <dct:title xml:lang="nl">WMS</dct:title>
-            <dct:description xml:lang="nl">Web Map Services genereren op dynamische wijze beelden uit verschillende datasets.</dct:description>
+            <dct:description xml:lang="nl">Web Map Services genereren op dynamische wijze beelden uit verschillende
+              datasets.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-41">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS-1.0.0-http-get-capabilities">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS-1.0.0-http-get-capabilities</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS-1.0.0-http-get-capabilities">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS-1.0.0-http-get-capabilities
+            </dct:identifier>
             <dct:title xml:lang="nl">WMTS-1.0.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.</dct:description>
+            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde
+              gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-42">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS-1.0.0-http-get-tile">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS-1.0.0-http-get-tile</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS-1.0.0-http-get-tile">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS-1.0.0-http-get-tile
+            </dct:identifier>
             <dct:title xml:lang="nl">WMTS-1.0.0-http-get-tile</dct:title>
-            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.</dct:description>
+            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde
+              gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-43">
         <dct:conformsTo>
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS</dct:identifier>
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS</dct:identifier>
             <dct:title xml:lang="nl">WMTS</dct:title>
-            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.</dct:description>
+            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde
+              gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-44">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/REST-richtlijnen-digitaal-vlaanderen">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/REST-richtlijnen-digitaal-vlaanderen</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/REST-richtlijnen-digitaal-vlaanderen">
+            <dct:identifier>
+              https://data.vlaanderen.be/id/concept/dataserviceprotocol/REST-richtlijnen-digitaal-vlaanderen
+            </dct:identifier>
             <dct:title xml:lang="nl">REST richtlijnen Digitaal Vlaanderen</dct:title>
             <dct:description xml:lang="nl">De REST richtlijnen van Digitaal Vlaanderen</dct:description>
           </dct:Standard>
@@ -1356,54 +1792,74 @@
       <snippet label="protocol-45">
         <dct:conformsTo>
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/REST">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/REST</dct:identifier>
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/REST</dct:identifier>
             <dct:title xml:lang="nl">REST</dct:title>
-            <dct:description xml:lang="nl">Representational State Transfer of kortweg REST is een architecturale stijl voor gedistribueerde hypermedia-systemen zoals ingevoerd en gedefinieerd in 2000 door Roy Fielding, waarbij de toegang tot en bewerking van objecten in een bepaald domein worden beschreven als standaard web operaties op web resources. REST stoelt sterk op de concepten en principes van het HTTP-protocol waarvan Roy Fielding mede-auteur is.</dct:description>
+            <dct:description xml:lang="nl">Representational State Transfer of kortweg REST is een architecturale stijl
+              voor gedistribueerde hypermedia-systemen zoals ingevoerd en gedefinieerd in 2000 door Roy Fielding,
+              waarbij de toegang tot en bewerking van objecten in een bepaald domein worden beschreven als standaard web
+              operaties op web resources. REST stoelt sterk op de concepten en principes van het HTTP-protocol waarvan
+              Roy Fielding mede-auteur is.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-46">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:DOWNLOAD-1.0-ftp--download">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:DOWNLOAD-1.0-ftp--download</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:DOWNLOAD-1.0-ftp--download">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:DOWNLOAD-1.0-ftp--download
+            </dct:identifier>
             <dct:title xml:lang="nl">DOWNLOAD-1.0-ftp--download</dct:title>
-            <dct:description xml:lang="nl">Het Download FTP protocol levert een bestand ter directe download over FTP.</dct:description>
+            <dct:description xml:lang="nl">Het Download FTP protocol levert een bestand ter directe download over FTP.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-47">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:DOWNLOAD-1.0-http--download">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:DOWNLOAD-1.0-http--download</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:DOWNLOAD-1.0-http--download">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:DOWNLOAD-1.0-http--download
+            </dct:identifier>
             <dct:title xml:lang="nl">DOWNLOAD-1.0-http--download</dct:title>
-            <dct:description xml:lang="nl">Het Download HTTP protocol levert een bestand ter directe download over HTTP.</dct:description>
+            <dct:description xml:lang="nl">Het Download HTTP protocol levert een bestand ter directe download over
+              HTTP.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-48">
         <dct:conformsTo>
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--atom">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--atom</dct:identifier>
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--atom
+            </dct:identifier>
             <dct:title xml:lang="nl">LINK-1.0-http--atom</dct:title>
-            <dct:description xml:lang="nl">Het Link Atom Feed protocol levert toegang tot een ATOM feed via een URL.</dct:description>
+            <dct:description xml:lang="nl">Het Link Atom Feed protocol levert toegang tot een ATOM feed via een URL.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-49">
         <dct:conformsTo>
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--link">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--link</dct:identifier>
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--link
+            </dct:identifier>
             <dct:title xml:lang="nl">LINK-1.0-http--link</dct:title>
-            <dct:description xml:lang="nl">Het Link protocol levert toegang tot een webadres via een URL.</dct:description>
+            <dct:description xml:lang="nl">Het Link protocol levert toegang tot een webadres via een URL.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-50">
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--related">
-          <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--related</dct:identifier>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--related">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--related
+            </dct:identifier>
             <dct:title xml:lang="nl">LINK-1.0-http--related</dct:title>
-            <dct:description xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een URL.</dct:description>
+            <dct:description xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een
+              URL.
+            </dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1412,7 +1868,7 @@
           <dct:Standard xmlns:dct="http://purl.org/dc/terms/">
             <dct:identifier/>
             <dct:title xml:lang=""/>
-            <dct:description xml:lang="" />
+            <dct:description xml:lang=""/>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>

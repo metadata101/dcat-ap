@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+           xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+           xmlns:dct="http://purl.org/dc/terms/"
+           xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+           targetNamespace="https://w3id.org/mobilitydcat-ap"
+           elementFormDefault="qualified"
+           attributeFormDefault="qualified">
+  <xs:annotation>
+    <xs:documentation xml:lang="en">
+      https://mobilitydcat-ap.github.io/mobilityDCAT-AP/releases/index.html
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="../rdf.xsd"/>
+  <xs:import namespace="http://www.w3.org/2004/02/skos/core#" schemaLocation="../skos.xsd"/>
+  <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="../dcterms.xsd"/>
+
+  <xs:element name="MobilityDataStandard" type="skos:Concept"/>
+  <xs:element name="mobilityTheme" type="skos:Concept"/>
+  <xs:element name="transportMode" type="skos:Concept"/>
+  <xs:element name="networkCoverage" type="skos:Concept"/>
+  <xs:element name="georeferencingMethod" type="skos:Concept"/>
+  <xs:element name="intendedInformationService" type="skos:Concept"/>
+  <xs:element name="applicationLayerProtocol" type="skos:Concept"/>
+  <xs:element name="communicationMethod" type="skos:Concept"/>
+  <xs:element name="grammar" type="skos:Concept"/>
+
+  <xs:element name="dataFormatNotes" type="rdf:PlainLiteral"/>
+
+  <xs:element name="mobilityDataStandard" type="dct:Standard"/>
+
+  <!-- TODO
+  https://mobilitydcat-ap.github.io/mobilityDCAT-AP/releases/index.html#recommended-properties-for-agent
+  https://mobilitydcat-ap.github.io/mobilityDCAT-AP/releases/index.html#quality-annotation
+  https://mobilitydcat-ap.github.io/mobilityDCAT-AP/releases/index.html#address-agent
+  <xs:element name="Assessment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dct:issued"/>
+        <xs:element ref="oa:hasBody"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  -->
+</xs:schema>

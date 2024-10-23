@@ -67,6 +67,7 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
             .add(DCATAPNamespaces.DC)
             .add(DCATAPNamespaces.DCT)
             .add(DCATAPNamespaces.DCAT)
+            .add(DCATAPNamespaces.DCATAP)
             .add(DCATAPNamespaces.VCARD)
             .add(DCATAPNamespaces.FOAF)
             .add(DCATAPNamespaces.MDCAT)
