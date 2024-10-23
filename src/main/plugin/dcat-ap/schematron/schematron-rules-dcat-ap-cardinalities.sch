@@ -36,18 +36,35 @@
     </sch:rule>
   </sch:pattern>
 
+  <sch:pattern abstract="true" id="MultilingualCardinalityCheck">
+    <sch:title>Cardinality of $element in $context per language</sch:title>
+    <sch:rule context="$context">
+      <sch:assert test="(count($element[@xml:lang]) = 0 or count($element[not(@xml:lang)]) = 0) and
+      ((count(distinct-values($element/@xml:lang)) = count($element[@xml:lang])) or '$max' = 'n') and
+      ((count($element[not(@xml:lang)]) &lt;= 1) or '$max' = 'n') and
+      (count(distinct-values($element/@xml:lang)) &gt;= $min or (count($element[not(@xml:lang)]) &gt;= $min))">
+        These elements should be unique per language. The minimum cardinality is <sch:value-of select="$min"/>. You cannot mix occurrences without a language specified and occurrences with a language specified.
+      </sch:assert>
+      <sch:report test="(count($element[@xml:lang]) = 0 or count($element[not(@xml:lang)]) = 0) and
+      ((count(distinct-values($element/@xml:lang)) = count($element[@xml:lang])) or '$max' = 'n') and
+      ((count($element[not(@xml:lang)]) &lt;= 1) or '$max' = 'n') and
+      (count(distinct-values($element/@xml:lang)) &gt;= $min or (count($element[not(@xml:lang)]) &gt;= $min))">
+        These elements should be unique per language. The minimum cardinality is <sch:value-of select="$min"/>. You cannot mix occurrences without a language specified and occurrences with a language specified.
+      </sch:report>
+    </sch:rule>
+  </sch:pattern>
 
-  <sch:pattern is-a="CardinalityCheck" id="Catalog_title">
+  <sch:pattern is-a="MultilingualCardinalityCheck" id="Catalog_title">
     <sch:param name="context" value="//dcat:Catalog"/>
     <sch:param name="element" value="dct:title"/>
     <sch:param name="min" value="1"/>
-    <sch:param name="max" value="n"/>
+    <sch:param name="max" value="1"/>
   </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Catalog_description">
+  <sch:pattern is-a="MultilingualCardinalityCheck" id="Catalog_description">
     <sch:param name="context" value="//dcat:Catalog"/>
     <sch:param name="element" value="dct:description"/>
     <sch:param name="min" value="1"/>
-    <sch:param name="max" value="n"/>
+    <sch:param name="max" value="1"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Catalog_publisher">
     <sch:param name="context" value="//dcat:Catalog"/>
@@ -152,13 +169,26 @@
     <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Dataset_title">
-    <sch:param name="context" value="//dcat:Dataset"/>
+  <sch:pattern is-a="MultilingualCardinalityCheck" id="CatalogRecord_title">
+    <sch:param name="context" value="dcat:CatalogRecord"/>
     <sch:param name="element" value="dct:title"/>
-    <sch:param name="min" value="1"/>
+    <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Dataset_description">
+  <sch:pattern is-a="MultilingualCardinalityCheck" id="CatalogRecord_description">
+    <sch:param name="context" value="dcat:CatalogRecord"/>
+    <sch:param name="element" value="dct:description"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+
+  <sch:pattern is-a="MultilingualCardinalityCheck" id="Dataset_title">
+    <sch:param name="context" value="//dcat:Dataset"/>
+    <sch:param name="element" value="dct:title"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="n"/>
+  </sch:pattern>
+  <sch:pattern is-a="MultilingualCardinalityCheck" id="Dataset_description">
     <sch:param name="context" value="//dcat:Dataset"/>
     <sch:param name="element" value="dct:description"/>
     <sch:param name="min" value="1"/>
@@ -212,6 +242,7 @@
     <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
+
   <sch:pattern is-a="CardinalityCheck" id="Distribution_accessURL">
     <sch:param name="context" value="dcat:Distribution"/>
     <sch:param name="element" value="dcat:accessURL"/>
@@ -278,17 +309,36 @@
     <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
+  <sch:pattern is-a="MultilingualCardinalityCheck" id="Distribution_title">
+    <sch:param name="context" value="dcat:Distribution"/>
+    <sch:param name="element" value="dct:title"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="MultilingualCardinalityCheck" id="Distribution_description">
+    <sch:param name="context" value="dcat:Distribution"/>
+    <sch:param name="element" value="dct:description"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+
   <sch:pattern is-a="CardinalityCheck" id="DataService_endpointURL">
     <sch:param name="context" value="//dcat:DataService"/>
     <sch:param name="element" value="dcat:endpointURL"/>
     <sch:param name="min" value="1"/>
     <sch:param name="max" value="n"/>
   </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="DataService_title">
+  <sch:pattern is-a="MultilingualCardinalityCheck" id="DataService_title">
     <sch:param name="context" value="//dcat:DataService"/>
     <sch:param name="element" value="dct:title"/>
     <sch:param name="min" value="1"/>
-    <sch:param name="max" value="n"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="MultilingualCardinalityCheck" id="DataService_description">
+    <sch:param name="context" value="//dcat:DataService"/>
+    <sch:param name="element" value="dct:description"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="DataService_accessRights">
     <sch:param name="context" value="//dcat:DataService"/>
