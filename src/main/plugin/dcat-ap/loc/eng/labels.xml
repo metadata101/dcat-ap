@@ -926,26 +926,6 @@
     <btnLabel>Language</btnLabel>
   </element>
 
-
-  <!-- PROFILE / DCAT-AP-HVD -->
-  <element name="dcatap:hvdCategory">
-    <label>HVD category</label>
-    <description>The HVD category to which this Dataset belongs.
-      The HVD IR defines six thematic data categories: geospatial, earth observation and environment, meteorological, statistics, companies and company ownership, and mobility.
-      A new property HVD category is introduced to indicate the HVD category to which an resource, i.e. a dataset, belongs.
-      The controlled vocabulary with all possible values is maintained by the Publications Office.
-      A resource may belong to more than one data category.</description>
-  </element>
-  <element name="dcatap:applicableLegislation">
-    <label>Applicable legislation</label>
-    <description>The legislation that mandates the creation or management of the Data Service. For HVD the value MUST include the ELI http://data.europa.eu/eli/reg_impl/2023/138/oj.
-      As multiple legislations may apply to the resource the maximum cardinality is not limited. </description>
-  </element>
-
-
-
-
-
   <element name="mobilitydcatap:mobilityTheme">
     <label>Mobility theme</label>
     <description>This property refers to the mobility-related theme (i.e., a specific subject, category, or type) of the delivered content.
@@ -972,4 +952,24 @@
       Examples of such services include “location search”, which is based on a datasets with address identifiers, or “trip plan computation”, which is based on datasets about a road network.</description>
   </element>
 
+  <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+    <label>HVD Category</label>
+    <description>The HVD category to which this Dataset belongs.</description>
+    <btnLabel>HVD Category</btnLabel>
+  </element>
+  <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+    <label>HVD Category</label>
+    <description>The HVD category to which this Data Service belongs.</description>
+    <btnLabel>HVD Category</btnLabel>
+  </element>
+  <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+    <label>Applicable legislation</label>
+    <description>The legislation that mandates the creation or management of the Dataset.</description>
+    <btnLabel>applicable legislation</btnLabel>
+  </element>
+  <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+    <label>Applicable legislation</label>
+    <description>The legislation that mandates the creation or management of the Data Service.</description>
+    <btnLabel>applicable legislation</btnLabel>
+  </element>
 </labels>

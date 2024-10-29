@@ -87,11 +87,19 @@
   <protocol-50>LINK-1.0-http--related</protocol-50>
   <protocol-51>Enter your own protocol...</protocol-51>
 
+  <hvd-dataservice-section>High Value Dataset (HVD)</hvd-dataservice-section>
+  <hvd-dataservice-tab>Data Service</hvd-dataservice-tab>
+  <hvd-dataset-section>High Value Dataset (HVD)</hvd-dataset-section>
+  <hvd-dataset-tab>Dataset</hvd-dataset-tab>
   <hvd-view>High Value Dataset</hvd-view>
-  <hvd-tab>High Value Dataset</hvd-tab>
-  <hvd-section>High Value Dataset (HVD)</hvd-section>
 
-  <mobility-view>Mobility</mobility-view>
-  <mobility-tab>Mobility</mobility-tab>
   <mobility-section>Mobility</mobility-section>
+  <mobility-tab>Mobility</mobility-tab>
+  <mobility-view>Mobility</mobility-view>
+
+  <metadatadcat-dataservice-section>Data Service</metadatadcat-dataservice-section>
+  <metadatadcat-dataservice-tab>Metadata DCAT</metadatadcat-dataservice-tab>
+  <metadatadcat-dataset-section>Dataset</metadatadcat-dataset-section>
+  <metadatadcat-dataset-tab>Metadata DCAT</metadatadcat-dataset-tab>
+  <metadatadcat-view>Metadata DCAT</metadatadcat-view>
 </strings>
