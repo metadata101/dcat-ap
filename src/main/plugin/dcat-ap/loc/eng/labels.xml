@@ -215,7 +215,7 @@
     <description>The file format, physical medium, or dimensions of the resource.</description>
     <btnLabel>Format</btnLabel>
   </element>
-  <element name="dct:hasVersion">
+  <element name="dcat:hasVersion">
     <label>Has version</label>
     <description>A related resource that is a version, edition, or adaptation of the described resource.</description>
     <btnLabel>Has version</btnLabel>
@@ -230,7 +230,7 @@
     <description>A related resource, such as a publication, that references, cites, or otherwise points to the cataloged resource.</description>
     <btnLabel>Is referenced by</btnLabel>
   </element>
-  <element name="dct:isVersionOf">
+  <element name="dcat:isVersionOf">
     <label>Is a version of</label>
     <description>A related resource of which the described resource is a version, edition, or adaptation.</description>
     <btnLabel>Is a version of</btnLabel>
@@ -345,7 +345,7 @@
     <description>Geometry</description>
     <btnLabel>Geometry</btnLabel>
   </element>
-  <element name="owl:versionInfo">
+  <element name="dcat:version">
     <label>Version</label>
     <description>Version</description>
     <btnLabel>Version</btnLabel>
@@ -972,4 +972,20 @@
       Examples of such services include “location search”, which is based on a datasets with address identifiers, or “trip plan computation”, which is based on datasets about a road network.</description>
   </element>
 
+  <!-- DCAT-AP v2 compatibility -->
+  <element name="dct:hasVersion">
+    <label>Has version</label>
+    <description>A related resource that is a version, edition, or adaptation of the described resource.</description>
+    <btnLabel>Has version</btnLabel>
+  </element>
+  <element name="dct:isVersionOf">
+    <label>Is a version of</label>
+    <description>A related resource of which the described resource is a version, edition, or adaptation.</description>
+    <btnLabel>Is a version of</btnLabel>
+  </element>
+  <element name="owl:versionInfo">
+    <label>Version</label>
+    <description>Version</description>
+    <btnLabel>Version</btnLabel>
+  </element>
 </labels>

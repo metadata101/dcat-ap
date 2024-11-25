@@ -347,8 +347,9 @@
   <!-- Field with no lang : display all -->
   <xsl:template mode="render-field" match="dct:created|dct:issued|dct:modified|dct:identifier|skos:notation|schema:startDate|
                                            schema:endDate|vcard:street-address|vcard:locality|vcard:postal-code|vcard:country-name|
-                                           vcard:hasTelephone|vcard:fn|vcard:organization-name|skos:prefLabel|owl:versionInfo|
-                                           adms:versionNotes|dcat:byteSize|dcat:hadRole|dcat:spatialResolutionInMeters|dcat:temporalResolution">
+                                           vcard:hasTelephone|vcard:fn|vcard:organization-name|skos:prefLabel|dcat:version|
+                                           adms:versionNotes|dcat:byteSize|dcat:hadRole|dcat:spatialResolutionInMeters|dcat:temporalResolution|
+                                           owl:versionInfo"> <!-- DCAT-AP v2 compatibility -->
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <xsl:if test="normalize-space($stringValue) != ''">
@@ -549,7 +550,8 @@
 
   <!-- ########################## -->
   <!-- Render values for text with clickable URL ... -->
-  <xsl:template mode="render-value" match="dct:title|dct:description|owl:versionInfo|adms:versionNotes|dct:LicenseDocument/dct:identifier">
+  <xsl:template mode="render-value" match="dct:title|dct:description|dcat:version|adms:versionNotes|dct:LicenseDocument/dct:identifier|
+                                           owl:versionInfo"> <!-- DCAT-AP v2 compatibility -->
     <xsl:call-template name="linkify">
       <xsl:with-param name="txt" select="."/>
     </xsl:call-template>
@@ -598,8 +600,9 @@
   </xsl:template>
 
   <xsl:template mode="render-url"
-                match="*[name(..) = 'dct:relation' or name(..) = 'dct:source' or name(..) = 'dct:isVersionOf' or name(..) = 'dct:hasVersion']|
-                       @*[name(..) = 'dct:relation' or name(..) = 'dct:source' or name(..) = 'dct:isVersionOf' or name(..) = 'dct:hasVersion']">
+                match="*[name(..) = 'dct:relation' or name(..) = 'dct:source' or name(..) = 'dcat:isVersionOf' or name(..) = 'dcat:hasVersion']|
+                       @*[name(..) = 'dct:relation' or name(..) = 'dct:source' or name(..) = 'dcat:isVersionOf' or name(..) = 'dcat:hasVersion']|
+                       *[name(..) = 'dct:isVersionOf' or name(..) = 'dct:hasVersion']|@*[name(..) = 'dct:isVersionOf' or name(..) = 'dct:hasVersion']"> <!-- DCAT-AP v2 compatibility -->
     <a
       href="{concat($nodeUrl,$langId,'/catalog.search#/search?resultType=details&amp;sortBy=relevance&amp;from=1&amp;to=20&amp;fast=index&amp;_content_type=json&amp;any=',.)}"
       style="color=#06c; text-decoration: underline;">
