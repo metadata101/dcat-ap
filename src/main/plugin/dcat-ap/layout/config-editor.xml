@@ -442,6 +442,10 @@
   </multilingualFields>
 
   <views>
+    <view name="dcat-ap-vl">
+      <TODO></TODO>
+    </view>
+
     <view name="hvd-view"
           class="gn-label-above-input gn-indent-bluescale vl-editor-view"
           displayTooltips="true"

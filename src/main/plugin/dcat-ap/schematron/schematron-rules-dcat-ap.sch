@@ -24,4 +24,14 @@
   <sch:ns prefix="prov" uri="http://www.w3.org/ns/prov#"/>
 
   <sch:title xmlns="http://www.w3.org/2001/XMLSchema">{$loc/strings/schematron.title}</sch:title>
+
+  <sch:pattern>
+    <sch:title>dct:language is required</sch:title>
+    <sch:rule context="//dcat:Catalog/dcat:record/dcat:CatalogRecord">
+      <sch:let name="languages" value="count(dct:language/skos:Concept)"/>
+      <sch:assert test="$languages > 0">The dcat:CatalogRecord need at least one dct:language to be defined.</sch:assert>
+      <sch:report test="$languages > 0">The dcat:CatalogRecord need at least one dct:language to be defined.</sch:report>
+    </sch:rule>
+  </sch:pattern>
+
 </sch:schema>
