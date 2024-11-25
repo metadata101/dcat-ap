@@ -273,23 +273,23 @@
         </snippet>
       </template>
     </for>
-    <for name="dct:isVersionOf" templateModeOnly="true" forceLabel="true" label="key">
+    <for name="dcat:isVersionOf" templateModeOnly="true" forceLabel="true" label="key">
       <template>
         <values>
-          <key label="key" xpath="@rdf:resource" tooltip="dct:isVersionOf" required="true"/>
+          <key label="key" xpath="@rdf:resource" tooltip="dcat:isVersionOf" required="true"/>
         </values>
         <snippet>
-          <dct:isVersionOf rdf:resource="{{key}}"/>
+          <dcat:isVersionOf rdf:resource="{{key}}"/>
         </snippet>
       </template>
     </for>
-    <for name="dct:hasVersion" templateModeOnly="true" forceLabel="true" label="key">
+    <for name="dcat:hasVersion" templateModeOnly="true" forceLabel="true" label="key">
       <template>
         <values>
-          <key label="key" xpath="@rdf:resource" tooltip="dct:hasVersion" required="true"/>
+          <key label="key" xpath="@rdf:resource" tooltip="dcat:hasVersion" required="true"/>
         </values>
         <snippet>
-          <dct:hasVersion rdf:resource="{{key}}"/>
+          <dcat:hasVersion rdf:resource="{{key}}"/>
         </snippet>
       </template>
     </for>
@@ -340,6 +340,28 @@
         </values>
         <snippet>
           <spdx:algorithm rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+
+    <!-- DCAT-AP v2 compatibility -->
+    <for name="dct:isVersionOf" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="dct:isVersionOf" required="true"/>
+        </values>
+        <snippet>
+          <dct:isVersionOf rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="dct:hasVersion" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="dct:hasVersion" required="true"/>
+        </values>
+        <snippet>
+          <dct:hasVersion rdf:resource="{{key}}"/>
         </snippet>
       </template>
     </for>
@@ -423,14 +445,11 @@
       <name>dct:isPartOf</name>
       <name>dct:relation</name>
       <name>dct:isReferencedBy</name>
-      <name>dct:hasVersion</name>
-      <name>dct:isVersionOf</name>
       <name>dct:source</name>
       <name>dct:spatial</name>
       <name>dct:accrualPeriodicity</name>
       <name>foaf:Document</name>
       <name>foaf:primaryTopic</name>
-      <name>owl:versionInfo</name>
       <name>prov:atTime</name>
       <name>spdx:checksum</name>
       <name>vcard:hasEmail</name>
@@ -438,6 +457,14 @@
       <name>vcard:postal-code</name>
       <name>vcard:fn</name>
       <name>skos:inScheme</name>
+      <name>dcat:version</name>
+      <name>dcat:hasVersion</name>
+      <name>dcat:isVersionOf</name>
+
+      <!-- DCAT-AP v2 compatibility -->
+      <name>owl:versionInfo</name>
+      <name>dct:hasVersion</name>
+      <name>dct:isVersionOf</name>
     </exclude>
   </multilingualFields>
 
@@ -669,14 +696,19 @@
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
         <section name="versionInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo"
-                 or="versionInfo"
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:version"
+                 or="version"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified"
                  or="modified"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued"
                  or="issued"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+
+          <!-- DCAT-AP v2 compatibility -->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo"
+                 or="versionInfo"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
         <section name="usageInformation">
@@ -894,6 +926,10 @@
           <field
             xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
           <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dcat:version"/>
+
+          <!-- DCAT-AP v2 compatibility -->
+          <field
             xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/owl:versionInfo"/>
         </section>
       </tab>
@@ -905,6 +941,7 @@
         <for name="dcat:keyword"/>
         <for name="dcat:theme"/>
         <!-- Version info -->
+        <for name="dcat:version"/>
         <for name="owl:versionInfo"/>
         <for name="dct:created"/>
         <for name="dct:modified"/>
@@ -981,7 +1018,7 @@
         </section>
 
         <section name="versionInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo" or="versionInfo"
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:version" or="version"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:versionNotes" or="versionNotes"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
@@ -992,6 +1029,10 @@
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified" or="modified"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued" or="issued"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+
+          <!-- DCAT-AP v2 compatibility -->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo" or="versionInfo"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
 
@@ -1034,6 +1075,12 @@
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:source" or="source"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:isVersionOf" or="isVersionOf"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:hasVersion" or="hasVersion"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+
+          <!-- DCAT-AP v2 compatibility -->
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isVersionOf" or="isVersionOf"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:hasVersion" or="hasVersion"

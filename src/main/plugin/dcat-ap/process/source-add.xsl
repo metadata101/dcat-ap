@@ -79,7 +79,9 @@ Stylesheet used to update metadata adding a reference to a source record.
                 dcat:landingPage|
                 dct:language|
                 adms:identifier|
-                dct:provenance"/>
+                dct:provenance|
+                dct:hasVersion|
+                dct:isVersionOf"/> <!-- DCAT-AP v2 compatibility -->
       <xsl:variable name="rdfResource" select="replace(@rdf:about,'([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}',$sourceUuid)"/>
       <xsl:copy-of select="dct:relation[@rdf:resource!= $rdfResource]"/>
       <dct:relation rdf:resource="{$rdfResource}"/>
@@ -87,11 +89,12 @@ Stylesheet used to update metadata adding a reference to a source record.
                 dct:spatial|
                 dct:temporal|
                 dct:type|
-                owl:versionInfo|
+                dcat:version|
                 adms:versionNotes|
                 dcat:extension|
                 dcat:distribution|
-                adms:sample"/>
+                adms:sample|
+                owl:versionInfo"/> <!-- DCAT-AP v2 compatibility -->
 
       <xsl:apply-templates select="dcat:landingPage|
                                    dcat:qualifiedRelation|

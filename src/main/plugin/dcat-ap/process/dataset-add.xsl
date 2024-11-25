@@ -46,7 +46,7 @@
                            dcat:contactPoint|
                            dcat:keyword|
                            dct:language|
-                           owl:versionInfo|
+                           dcat:version|
                            adms:identifier|
                            mdcat:landingspaginaVoorAuthenticatie|
                            mdcat:landingspaginaVoorStatusinformatie|
@@ -68,7 +68,8 @@
                            dct:modified|
                            dct:relation|
                            dct:rights|
-                           dct:type"/>
+                           dct:type|
+                           owl:versionInfo"/> <!-- DCAT-AP v2 compatibility -->
     </xsl:copy>
   </xsl:template>
 
