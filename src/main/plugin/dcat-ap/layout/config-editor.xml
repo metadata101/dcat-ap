@@ -884,7 +884,7 @@
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description)=0">
             <template>
               <snippet>
-                <dct:description xml:lang=""></dct:description>
+                <dct:description xml:lang=""/>
               </snippet>
             </template>
           </action>
@@ -918,15 +918,45 @@
         </section>
 
         <section name="versionInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo"
-                 or="versionInfo"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified"
-                 or="modified"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued"
-                 or="issued"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo" />
+          <action type="add" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo)=0">
+            <template>
+              <snippet>
+                <owl:versionInfo/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created" />
+          <action type="add" or="created" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created)=0">
+            <template>
+              <snippet>
+                <dct:created/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified" />
+          <action type="add" or="modified" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified)=0">
+            <template>
+              <snippet>
+                <dct:modified/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued" />
+          <action type="add" or="issued" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued)=0">
+            <template>
+              <snippet>
+                <dct:issued/>
+              </snippet>
+            </template>
+          </action>
         </section>
         <section name="usageInformation">
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint"/>
@@ -942,9 +972,24 @@
             </template>
           </action>
 
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights"
-                 or="accessRights"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights"/>
+          <action type="add"
+                  or="accessRights"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights) = 0"
+          >
+            <template>
+              <snippet>
+                <dct:accessRights>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
+                  </skos:Concept>
+                </dct:accessRights>
+              </snippet>
+            </template>
+          </action>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage"/>
           <action type="add" or="landingPage" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
@@ -954,7 +999,22 @@
               </snippet>
             </template>
           </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights"/>
+          <action type="add" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:rights>
+                  <dct:RightsStatement>
+                    <dct:title/>
+                    <dct:description/>
+                  </dct:RightsStatement>
+                </dct:rights>
+              </snippet>
+            </template>
+          </action>
         </section>
+
         <section name="geographicalInformation">
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial"/>
           <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
