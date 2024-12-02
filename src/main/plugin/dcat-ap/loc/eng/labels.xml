@@ -972,4 +972,62 @@
       Examples of such services include “location search”, which is based on a datasets with address identifiers, or “trip plan computation”, which is based on datasets about a road network.</description>
   </element>
 
+  <element name="mdcat:statuut">
+    <label>Statute</label>
+    <description>Tooltip: Statute</description>
+    <btnLabel>Statute</btnLabel>
+  </element>
+  <element name="mdcat:MAGDA-categorie">
+    <label>MAGDA-category</label>
+    <description>Tooltip: MAGDA-category</description>
+    <btnLabel>MAGDA-category</btnLabel>
+  </element>
+  <element name="mdcat:landingspaginaVoorAuthenticatie">
+    <label>Landingpage for authentication</label>
+    <description>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de
+      dataservice.
+    </description>
+    <btnLabel>Landingpage for authentication</btnLabel>
+  </element>
+  <element name="rdf:resource" context="mdcat:landingspaginaVoorAuthenticatie">
+    <label>Landingpage for authentication</label>
+    <description>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de
+      dataservice.
+    </description>
+    <btnLabel>Landingpage for authentication</btnLabel>
+  </element>
+  <element name="mdcat:landingspaginaVoorGebruiksinformatie">
+    <label>Landingpage for usage information</label>
+    <description>Een verwijzing naar de landingspagina met de specifieke informatie over het gebruik van de
+      dataservice.
+    </description>
+    <btnLabel>Landingpage for usage information</btnLabel>
+  </element>
+  <element name="rdf:resource" context="mdcat:landingspaginaVoorGebruiksinformatie">
+    <label>Landingpage for usage information</label>
+    <description>Een verwijzing naar de landingspagina met de specifieke informatie over het gebruik van de
+      dataservice.
+    </description>
+    <btnLabel>Landingpage for usage information</btnLabel>
+  </element>
+  <element name="mdcat:landingspaginaVoorStatusinformatie">
+    <label>Landingpage for status information</label>
+    <description>Een verwijzing naar de statuspagina van de dataservice.</description>
+    <btnLabel>Landingpage for status information</btnLabel>
+  </element>
+  <element name="rdf:resource" context="mdcat:landingspaginaVoorStatusinformatie">
+    <label>Landingpage for status information</label>
+    <description>Een verwijzing naar de statuspagina van de dataservice.</description>
+    <btnLabel>Landingpage for status information</btnLabel>
+  </element>
+  <element name="mdcat:levensfase">
+    <label>Lifecycle phase</label>
+    <description>The phase of the lifecycle of the dataservice.</description>
+    <btnLabel>Lifecycle phase</btnLabel>
+  </element>
+  <element name="mdcat:ontwikkelingstoestand">
+    <label>Development status</label>
+    <description>The development status of the deployed dataservice.</description>
+    <btnLabel>Development status</btnLabel>
+  </element>
 </labels>

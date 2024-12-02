@@ -94,4 +94,10 @@
   <mobility-view>Mobility</mobility-view>
   <mobility-tab>Mobility</mobility-tab>
   <mobility-section>Mobility</mobility-section>
+
+  <vl-view>Flanders</vl-view>
+  <vl-tab-service>Service</vl-tab-service>
+  <vl-tab-dataset>Dataset</vl-tab-dataset>
+  <vl-section-metadatadcat>Metadata DCAT</vl-section-metadatadcat>
+  <vl-section-dcatapvl>DCAT-AP Vlaanderen</vl-section-dcatapvl>
 </strings>
