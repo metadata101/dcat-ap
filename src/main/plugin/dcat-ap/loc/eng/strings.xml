@@ -98,6 +98,7 @@
   <vl-view>Flanders</vl-view>
   <vl-tab-service>Service</vl-tab-service>
   <vl-tab-dataset>Dataset</vl-tab-dataset>
+  <vl-tab-distribution>Distributions</vl-tab-distribution>
   <vl-section-metadatadcat>Metadata DCAT</vl-section-metadatadcat>
   <vl-section-dcatapvl>DCAT-AP Vlaanderen</vl-section-dcatapvl>
 </strings>
