@@ -135,6 +135,27 @@
         useReference="true"/>
     </for>
 
+    <for name="mdcat:statuut" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.GDI-Vlaanderen-trefwoorden"
+        xpath="/mdcat:statuut"/>
+    </for>
+    <for name="mdcat:ontwikkelingstoestand" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.ontwikkelingstoestand"
+        xpath="/mdcat:ontwikkelingstoestand"/>
+    </for>
+    <for name="mdcat:levensfase" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.levensfase"
+        xpath="/mdcat:levensfase"/>
+    </for>
+    <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.magda-domain"
+        xpath="/mdcat:MAGDA-categorie"/>
+    </for>
+
     <for name="mobilitydcatap:mobilityTheme" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.mobility-theme"
@@ -683,6 +704,7 @@
               </snippet>
             </template>
           </action>
+
           <!-- landingspaginaVoorAuthenticatie -->
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie"/>
           <action type="add" or="landingspaginaVoorAuthenticatie"
@@ -787,14 +809,14 @@
           displayTooltips="true"
           displayTooltipsMode="onhover"
           hideTimeInCalendar="true">
-      <tab id="hvd-tab"  default="true">
-        <section name="hvd-section">
+      <tab id="hvd-dataset-tab"  default="true" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
+        <section name="hvd-dataset-section">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory"/>
 
           <action type="add"
-                       or="hvdCategory"
-                       in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                       if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory) = 0">
+                  or="hvdCategory"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory) = 0">
             <template>
               <snippet>
                 <dcatap:hvdCategory>
@@ -811,6 +833,38 @@
                   or="applicableLegislation"
                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:applicableLegislation) = 0">
+            <template>
+              <snippet>
+                <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+      </tab>
+      <tab id="hvd-dataservice-tab"  default="true" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
+        <section name="hvd-dataservice-section">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcatap:hvdCategory"/>
+
+          <action type="add"
+                       or="hvdCategory"
+                       in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                       if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcatap:hvdCategory) = 0">
+            <template>
+              <snippet>
+                <dcatap:hvdCategory>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel xml:lang=""></skos:prefLabel>
+                  </skos:Concept>
+                </dcatap:hvdCategory>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcatap:applicableLegislation"/>
+          <action type="add"
+                  or="applicableLegislation"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcatap:applicableLegislation) = 0">
             <template>
               <snippet>
                 <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>

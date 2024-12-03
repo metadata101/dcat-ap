@@ -319,6 +319,10 @@
                 <xs:element ref="mdcat:ontwikkelingstoestand" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="unbounded"/>
+
+                <!-- Profile / DCAT-AP-HVD -->
+                <xs:element ref="dcatap:hvdCategory" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>
               </xs:sequence>
             </xs:extension>
           </xs:complexContent>
