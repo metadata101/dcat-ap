@@ -502,7 +502,7 @@
 
   <views>
     <view name="vl-view"
-          class="gn-label-above-input gn-indent-bluescale vl-editor-view"
+          class="gn-label-above-input gn-indent-bluescale"
           displayTooltips="true"
           displayTooltipsMode="onhover"
           displayIfRecord="count(//dcat:CatalogRecord/dct:conformsTo) > 0"
@@ -589,6 +589,19 @@
                     <skos:prefLabel xml:lang="nl">Vlaams Gewest</skos:prefLabel>
                   </dct:Location>
                 </dct:spatial>
+              </snippet>
+            </template>
+          </action>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal"/>
+          <action type="add" or="temporal" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:temporal>
+                  <dct:PeriodOfTime>
+                    <schema:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    <schema:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                  </dct:PeriodOfTime>
+                </dct:temporal>
               </snippet>
             </template>
           </action>
@@ -770,7 +783,7 @@
     </view>
 
     <view name="hvd-view"
-          class="gn-label-above-input gn-indent-bluescale vl-editor-view"
+          class="gn-label-above-input gn-indent-bluescale"
           displayTooltips="true"
           displayTooltipsMode="onhover"
           hideTimeInCalendar="true">
@@ -809,7 +822,7 @@
     </view>
 
     <view name="mobility-view"
-          class="gn-label-above-input gn-indent-bluescale vl-editor-view"
+          class="gn-label-above-input gn-indent-bluescale"
           displayTooltips="true"
           displayTooltipsMode="onhover"
           hideTimeInCalendar="true">
@@ -912,7 +925,7 @@
 
     <view name="default"
           default="true"
-          class="gn-label-above-input gn-indent-bluescale vl-editor-view"
+          class="gn-label-above-input gn-indent-bluescale"
           displayTooltips="true"
           displayTooltipsMode="onhover"
           hideTimeInCalendar="true">
@@ -1032,6 +1045,7 @@
             </template>
           </action>
         </section>
+
         <section name="usageInformation">
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint"/>
           <action type="add" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
@@ -1220,13 +1234,19 @@
             </template>
           </action>
 
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword"
-                 or="keyword"
-                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-
-<!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme"-->
-<!--                 or="theme"-->
-<!--                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>-->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher"/>
+          <action type="add" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher) = 0">
+            <template>
+              <snippet>
+                <dct:publisher>
+                  <foaf:Agent>
+                    <foaf:name xml:lang="nl"/>
+                  </foaf:Agent>
+                </dct:publisher>
+              </snippet>
+            </template>
+          </action>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL"/>
           <action type="add" or="endpointURL" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
@@ -1255,15 +1275,96 @@
             </template>
           </action>
           <action type="associatedResource" name="linkToDataset" process="dataset"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword"/>
+          <action type="add" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:keyword/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
+        <section name="usageInformation">
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint"/>
+          <action type="add" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:contactPoint>
+                  <vcard:Organization>
+                    <vcard:hasEmail rdf:resource=""/>
+                  </vcard:Organization>
+                </dcat:contactPoint>
+              </snippet>
+            </template>
+          </action>
+
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights"/>
+          <action type="add"
+                  or="accessRights"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights) = 0"
+          >
+            <template>
+              <snippet>
+                <dct:accessRights>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
+                  </skos:Concept>
+                </dct:accessRights>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage"/>
+          <action type="add" or="landingPage" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:landingPage rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:rights"/>
+          <action type="add" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dct:rights>
+                  <dct:RightsStatement>
+                    <dct:title/>
+                    <dct:description/>
+                  </dct:RightsStatement>
+                </dct:rights>
+              </snippet>
+            </template>
+          </action>
         </section>
 
         <section name="serviceInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights" or="accessRights"
-                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license"/>
           <action type="add" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
             <template>
               <snippets name="licenses"/>
+            </template>
+          </action>
+        </section>
+
+        <section name="extraInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo"/>
+          <action type="add" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dct:conformsTo>
+                  <dct:Standard>
+                    <dct:identifier/>
+                    <dct:title xml:lang=""/>
+                    <dct:description xml:lang=""/>
+                  </dct:Standard>
+                </dct:conformsTo>
+              </snippet>
             </template>
           </action>
         </section>
@@ -1280,6 +1381,7 @@
                  or="language"
                  in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
         </section>
+
         <section name="conformToInformation">
           <field
             xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:identifier"/>
@@ -1290,6 +1392,7 @@
             xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/owl:versionInfo"/>
         </section>
       </tab>
+
       <flatModeExceptions>
         <!-- Basic information -->
         <for name="rdf:about"/>
@@ -1330,7 +1433,7 @@
     </view>
 
     <view name="advanced"
-          class="gn-label-above-input gn-indent-bluescale vl-editor-view"
+          class="gn-label-above-input gn-indent-bluescale"
           displayTooltips="true"
           displayTooltipsMode="onhover"
           hideTimeInCalendar="true">

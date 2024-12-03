@@ -191,9 +191,9 @@
     <btnLabel>Frequency</btnLabel>
   </element>
   <element name="dct:conformsTo">
-    <label>conforms to standard</label>
+    <label>Conforms to standard</label>
     <description>An established standard to which the described resource conforms.</description>
-    <btnLabel>conforms to standard</btnLabel>
+    <btnLabel>Conforms to standard</btnLabel>
   </element>
   <element name="dct:created">
     <label>Creation date</label>
