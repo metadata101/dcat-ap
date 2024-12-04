@@ -9,6 +9,7 @@
   <sch:ns prefix="dct" uri="http://purl.org/dc/terms/"/>
   <sch:ns prefix="vcard" uri="http://www.w3.org/2006/vcard/ns#"/>
   <sch:ns prefix="dcat" uri="http://www.w3.org/ns/dcat#"/>
+  <sch:ns prefix="dcatap" uri="http://data.europa.eu/r5r/"/>
   <sch:ns prefix="schema" uri="http://schema.org/"/>
   <sch:ns prefix="rdf" uri="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
   <sch:ns prefix="skos" uri="http://www.w3.org/2004/02/skos/core#"/>
@@ -21,17 +22,18 @@
   <sch:ns prefix="geodcat" uri="http://data.europa.eu/930/"/>
   <sch:ns prefix="generiek" uri="https://data.vlaanderen.be/ns/generiek#"/>
   <sch:ns prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
-  <sch:ns prefix="prov" uri="http://www.w3.org/ns/prov#"/>
 
   <sch:title xmlns="http://www.w3.org/2001/XMLSchema">{$loc/strings/schematron.title}</sch:title>
 
-  <sch:pattern>
-    <sch:title>dct:language is required</sch:title>
-    <sch:rule context="//dcat:Catalog/dcat:record/dcat:CatalogRecord">
-      <sch:let name="languages" value="count(dct:language/skos:Concept)"/>
-      <sch:assert test="$languages > 0">The dcat:CatalogRecord need at least one dct:language to be defined.</sch:assert>
-      <sch:report test="$languages > 0">The dcat:CatalogRecord need at least one dct:language to be defined.</sch:report>
+  <sch:pattern id="required_applicableLegislation">
+    <sch:title>Required applicable legislation value.</sch:title>
+    <sch:rule context="/">
+      <sch:assert test="//dcatap:applicableLegislation[@rdf:resource='http://data.europa.eu/eli/reg_impl/2023/138/oj']">
+        For HVD the value must include the ELI http://data.europa.eu/eli/reg_impl/2023/138/oj.
+      </sch:assert>
+      <sch:report test="//dcatap:applicableLegislation[@rdf:resource='http://data.europa.eu/eli/reg_impl/2023/138/oj']">
+        For HVD the value must include the ELI http://data.europa.eu/eli/reg_impl/2023/138/oj.
+      </sch:report>
     </sch:rule>
   </sch:pattern>
-
 </sch:schema>

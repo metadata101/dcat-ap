@@ -87,11 +87,20 @@
   <protocol-50>LINK-1.0-http--related</protocol-50>
   <protocol-51>Enter your own protocol...</protocol-51>
 
+  <hvd-dataservice-section>High Value Dataset (HVD)</hvd-dataservice-section>
+  <hvd-dataservice-tab>Data Service</hvd-dataservice-tab>
+  <hvd-dataset-section>High Value Dataset (HVD)</hvd-dataset-section>
+  <hvd-dataset-tab>Dataset</hvd-dataset-tab>
   <hvd-view>High Value Dataset</hvd-view>
-  <hvd-tab>High Value Dataset</hvd-tab>
-  <hvd-section>High Value Dataset (HVD)</hvd-section>
 
-  <mobility-view>Mobility</mobility-view>
-  <mobility-tab>Mobility</mobility-tab>
   <mobility-section>Mobility</mobility-section>
+  <mobility-tab>Mobility</mobility-tab>
+  <mobility-view>Mobility</mobility-view>
+
+  <vl-view>Flanders</vl-view>
+  <vl-tab-service>Service</vl-tab-service>
+  <vl-tab-dataset>Dataset</vl-tab-dataset>
+  <vl-tab-distribution>Distributions</vl-tab-distribution>
+  <vl-section-metadatadcat>Metadata DCAT</vl-section-metadatadcat>
+  <vl-section-dcatapvl>DCAT-AP Vlaanderen</vl-section-dcatapvl>
 </strings>
