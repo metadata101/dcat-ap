@@ -22,6 +22,7 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:spdx="http://spdx.org/rdf/terms#"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:adms="http://www.w3.org/ns/adms#"
@@ -124,14 +125,28 @@
                   select="text()"/>
 
     <xsl:variable name="followingSiblings"
-                  select="following-sibling::*[name() = $name]"/>
+                         select="following-sibling::*[name() = $name and position() &lt;= count($locales/lang)]"/>
+
+    <xsl:variable name="nextSiblingInMainLanguage"
+                        select="($followingSiblings[@xml:lang = $mainLanguage])[1]"/>
+
+    <xsl:variable name="nextSiblingId"
+                        select="generate-id($nextSiblingInMainLanguage)"/>
+
+    <xsl:variable name="nextSiblingPosition">
+      <xsl:for-each select="$followingSiblings">
+        <xsl:if test="generate-id() = $nextSiblingId">
+          <xsl:value-of select="position()"/>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:variable>
 
     <!-- Select element with same name and different xml:lang attribute
     until the next one with the main language. -->
-    <xsl:variable name="currentGroup"
-                  select="$followingSiblings[
-                    count($followingSiblings/*[@xml:lang = $mainLanguage]) = 0
-                    or position() &lt; $followingSiblings/*[@xml:lang = $mainLanguage]/position()]"/>
+    <xsl:variable name="currentGroup" as="node()*"
+                  select="if ($nextSiblingPosition castable as xs:integer)
+                               then $followingSiblings[position() &lt; $nextSiblingPosition]
+                               else $followingSiblings"/>
 
     <xsl:for-each select="$locales/lang/@code">
       <xsl:element name="{$name}">
