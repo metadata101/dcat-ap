@@ -20,7 +20,7 @@ This plugin has the following features:
 * **editing**:  A custom form was created following the guidance in the GeoNetwork [form customization guide](https://docs.geonetwork-opensource.org/4.4/customizing-application/editor-ui/creating-custom-editor/). The form uses the controlled vocabularies required by DCAT-AP. These are located in the folder[thesauri](resources/thesauri) and can be imported in to GeoNetwork as SKOS [classification systems](https://docs.geonetwork-opensource.org/4.4/administrator-guide/managing-classification-systems/managing-thesaurus/) using standard GeoNetwork functionality.
 * **viewing**: A custom 'full view' to visualise DCAT-AP records. 
 * **multilingual metadata support**: The editor, view, and search benefit from the already existing multilingual capabilities of GeoNetwork.
-* **validation (XSD and Schematron)**: Validation steps are first XSD validation made on the schema, then the schematron validation defined in folder  [dcat-ap/schematron](src/main/plugin/dcat-ap/schematron). Two rule sets are available: schematron-rules-dcat-ap, and schematron-rules-metadata-dcat-recommendations.
+* **validation (XSD and Schematron)**: Validation steps are first XSD validation made on the schema, then the schematron validation defined in folder  [dcat-ap/schematron](src/main/plugin/dcat-ap/schematron). Multiple rulesets are available as `.sch` files with a specific naming convention: `schematron-rules-dcat-ap(-x).sch`. The `-rec` suffix denotes the recommended ruleset, whereas `-cardinalities` denotes all cardinality related validation. The base file (no suffix) is meant for *required* rules.
 
 ## Installing the plugin
 
@@ -99,9 +99,9 @@ git am --ignore-space-change --ignore-whitespace --reject --whitespace=fix core-
 Build and run the application following the
 [Software Development Documentation](https://github.com/geonetwork/core-geonetwork/tree/main/software_development). You'll need to have Java JDK 11 and [Maven](https://maven.apache.org/install.html) installed.
 
-Samples and templates can be imported via the 'Admin Console' > 'Metadata and Templates' > 'dcat-ap' menu.
+Samples and templates can be imported via the `Admin Console` > `Metadata and Templates` > `dcat-ap` menu.
 
-On startup, the application load the thesauri located in `resources/thesauri` as they are required for editing dcat-ap records.
+On startup, the application loads the thesauri located in `resources/thesauri` as they are required for editing dcat-ap records.
 
 ## Metadata rules: metadata identifier
 
@@ -148,10 +148,8 @@ Defining new elements in the XSD can be done in the following ways:
 <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
 ```
 
-* New elements from known ontologies. Check the top folder for existing described ontologies, e.g. `foaf`.
-
+* New elements from known ontologies. Check the top folder for existing described ontologies, e.g. `foaf`
 * New elements that are specific to the profile:
- 
   * Add the schema in [XSD profile folder](src/main/plugin/dcat-ap/schema/profiles)
   * Import the new schema in the base XSD
   * Add the element 
@@ -173,7 +171,7 @@ If the profile defines or uses new namespaces they need to be declared in:
 
 ### Vocabularies
 
-If some profile elements rely on vocabularies, add them to the [thesauri folder](resources/thesauri) using the SKOS format. Those vocabularies are imported when the application starts.
+If some profile elements rely on vocabularies, add them to the [thesauri folder](resources/thesauri) using the SKOS format. Those vocabularies are imported when GeoNetwork starts.
 
 ### Editor configuration
 
@@ -217,9 +215,9 @@ If the new element depends on a vocabulary, register the vocabulary:
 ```
 
 Then create the form:
-* A section with a title
-* A field for each existing element
-* A button to add an element if it does not yet exist
+* A `section` with a title
+* A `field` for each existing element
+* An `action` (which generates a button in the UI) to add an element if it does not yet exist
 
 ```xml
     <section name="hvd-section">
@@ -358,7 +356,7 @@ If the profile requires a different encoding, modify:
 
 ## Community
 
-Comments and questions to [the issue tracker](https://github.com/metadata101/dcat-ap/issues).
+Comments and questions are welcomed on [the issue tracker](https://github.com/metadata101/dcat-ap/issues).
 
 ## More work required
 
