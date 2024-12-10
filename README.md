@@ -300,7 +300,10 @@ XSD is checking elements and types. Cardinalities and profiles' rules are checke
 
 Schematron rules can be enabled/disabled depending on the profile. See [configuring validation levels](https://docs.geonetwork-opensource.org/4.4/administrator-guide/managing-metadata-standards/configure-validation/).
 
-Q: Check how to enable/disable schematron rules for a profile with an example.
+For example: enabling the DCAT-AP-VL validation based on the defined standard within the record can be configured as follows:
+- `admin console` > `metadata and templates` > `validation`
+- select one of the validation rulesets, e.g., `DCAT-AP-Vlaanderen - Recommended`
+- add a rule of type `XPATH` with the following XPath: `//dcat:CatalogRecord//dct:Standard[@rdf:about = 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03']`
 
 Validation is also taking care of checking the version of a profile as it does not always declare a new namespace for a new version.
 
