@@ -93,7 +93,7 @@ Apply the [patches](core-geonetwork-patches) to the GeoNetwork core. You may nee
 
 ```
 # execute the following in the core-geonetwork root directory 
-git am --ignore-space-change --ignore-whitespace --reject --whitespace=fix core-geonetwork-patches/*.patch
+git am --ignore-space-change --ignore-whitespace --reject --whitespace=fix schemas/dcat-ap/core-geonetwork-patches/*.patch
 ```
 
 Build and run the application following the
