@@ -1674,7 +1674,7 @@
       </tab>
     </view>
 
-    <view name="fromroot">
+    <!--<view name="fromroot">
       <sidePanel>
         <directive data-gn-overview-manager=""
                    data-file-types=".png,.gif,.jpeg,.jpg"/>
@@ -1685,7 +1685,7 @@
       <tab id="dcat.catalog-record">
         <section xpath="/rdf:RDF"/>
       </tab>
-    </view>
+    </view>-->
 
     <view name="xml">
       <sidePanel>
