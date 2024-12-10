@@ -190,10 +190,6 @@ First, add a view (and use a condition to display it only if the profile is used
         ...
  ```
 
-Q:
-* check default view using `default='true'`. What happens if more than one default?
-* check which view to load by default? Maybe see EditorController.js
-
 Add one or more tabs to the view:
 
 ```xml
