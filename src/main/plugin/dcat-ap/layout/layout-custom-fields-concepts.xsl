@@ -98,10 +98,17 @@
           <xsl:when test="$config/useReference = 'true' and $keywords/@rdf:resource">
             <xsl:for-each select="$keywords">
               <xsl:variable name="v" select="replace(java:getKeywordValueByUri(@rdf:resource, $config/thesaurus, $lang), ',', ',,')"/>
-              <xsl:if test="string($v)">
-                <xsl:value-of select="$v"/>
-                <xsl:if test="position() != last()">,</xsl:if>
-              </xsl:if>
+              <xsl:variable name="vfallback" select="replace(java:getKeywordValueByUri(@rdf:resource, $config/thesaurus, 'eng'), ',', ',,')"/>
+              <xsl:choose>
+                <xsl:when test="$v">
+                  <xsl:value-of select="$v"/>
+                  <xsl:if test="position() != last()">,</xsl:if>
+                </xsl:when>
+                <xsl:when test="$vfallback">
+                  <xsl:value-of select="$vfallback"/>
+                  <xsl:if test="position() != last()">,</xsl:if>
+                </xsl:when>
+              </xsl:choose>
             </xsl:for-each>
           </xsl:when>
           <xsl:when test="$keywords//(skos:prefLabel[text() != ''])[1]">
