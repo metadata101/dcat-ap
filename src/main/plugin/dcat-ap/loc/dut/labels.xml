@@ -659,23 +659,23 @@
   </element>
 
   <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-    <label>HVD Category</label>
-    <description>The HVD category to which this Dataset belongs.</description>
-    <btnLabel>HVD Category</btnLabel>
+    <label>HVD Categorie</label>
+    <description>De HVD categorie waar deze Dataset toe behoort.</description>
   </element>
   <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-    <label>HVD Category</label>
-    <description>The HVD category to which this Data Service belongs.</description>
-    <btnLabel>HVD Category</btnLabel>
+    <label>HVD Categorie</label>
+    <btnLabel>HVD Categorie</btnLabel>
   </element>
   <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>Applicable legislation</label>
     <description>The legislation that mandates the creation or management of the Dataset.</description>
-    <btnLabel>applicable legislation</btnLabel>
   </element>
   <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
     <label>Applicable legislation</label>
     <description>The legislation that mandates the creation or management of the Data Service.</description>
-    <btnLabel>applicable legislation</btnLabel>
+  </element>
+  <element name="dcatap:applicableLegislation">
+    <label>Applicable legislation</label>
+    <description>The legislation that mandates the creation or management of the Data Service.</description>
   </element>
 </labels>

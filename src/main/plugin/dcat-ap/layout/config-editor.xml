@@ -982,6 +982,8 @@
         <thesaurus key="external.theme.access-right" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.levensfase" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.ontwikkelingstoestand" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.high-value-data-set-category" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.eu-applicable-legislation" maxtags="1" transformations="" fieldset="false"/>
       </thesaurusList>
 
       <tab id="tabDataset" default="true" mode="flat" displayIfRecord="count(//dcat:dataset) > 0"
@@ -1017,7 +1019,10 @@
                     <foaf:name xml:lang=""/>
                     <dct:type>
                       <skos:Concept>
-                        <skos:prefLabel xml:lang=""/>
+                        <skos:prefLabel xml:lang="nl"/>
+                        <skos:prefLabel xml:lang="en"/>
+                        <skos:prefLabel xml:lang="fr"/>
+                        <skos:prefLabel xml:lang="de"/>
                         <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
                       </skos:Concept>
                     </dct:type>
