@@ -8,7 +8,7 @@
   <advanced>Advanced</advanced>
   <xml>XML</xml>
   <tabDataset>Dataset</tabDataset>
-  <tabDistribution>Distributies</tabDistribution>
+  <tabDistribution>Distribution</tabDistribution>
   <tabService>Service</tabService>
   <tabRecord>Record</tabRecord>
 
@@ -99,7 +99,7 @@
   <protocol-48>LINK-1.0-http--atom</protocol-48>
   <protocol-49>LINK-1.0-http--link</protocol-49>
   <protocol-50>LINK-1.0-http--related</protocol-50>
-  <protocol-51>Vul uw eigen protocol in...</protocol-51>
+  <protocol-51>Remplissez votre propre protocole...</protocol-51>
 
   <hvd-dataservice-section>High Value Dataset (HVD)</hvd-dataservice-section>
   <hvd-dataservice-tab>Data Service</hvd-dataservice-tab>
@@ -116,4 +116,9 @@
   <metadatadcat-dataset-section>Dataset</metadatadcat-dataset-section>
   <metadatadcat-dataset-tab>Metadata DCAT</metadatadcat-dataset-tab>
   <metadatadcat-view>Metadata DCAT</metadatadcat-view>
+
+  <tabAdvancedService>Service</tabAdvancedService>
+  <tabAdvancedRecord>Record</tabAdvancedRecord>
+  <tabAdvancedDataset>Dataset</tabAdvancedDataset>
+  <tabAdvancedDistribution>Distribution</tabAdvancedDistribution>
 </strings>

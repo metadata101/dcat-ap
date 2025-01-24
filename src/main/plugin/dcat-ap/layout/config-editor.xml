@@ -790,7 +790,6 @@
       <tab id="hvd-dataset-tab"  default="true" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
         <section name="hvd-dataset-section">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory"/>
-
           <action type="add"
                   or="hvdCategory"
                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
@@ -822,7 +821,6 @@
       <tab id="hvd-dataservice-tab"  default="true" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
         <section name="hvd-dataservice-section">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcatap:hvdCategory"/>
-
           <action type="add"
                        or="hvdCategory"
                        in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"

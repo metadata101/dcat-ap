@@ -7,8 +7,8 @@
   <default>Standard</default>
   <advanced>Advanced</advanced>
   <xml>XML</xml>
-  <tabDataset>Dataset</tabDataset>
-  <tabDistribution>Distributies</tabDistribution>
+  <tabDataset>Datensatz</tabDataset>
+  <tabDistribution>Verteilung</tabDistribution>
   <tabService>Service</tabService>
   <tabRecord>Record</tabRecord>
 
@@ -23,7 +23,7 @@
   <catalogRecordInformation>Catalog record</catalogRecordInformation>
   <conformToInformation>Conformiteit met standaard</conformToInformation>
   <overviews>Overviews</overviews>
-  <distribution>Distribution</distribution>
+  <distribution>Verteilung</distribution>
 
   <!-- Thesauri pickers -->
   <dcat.addThemes>Themes</dcat.addThemes>
@@ -101,11 +101,11 @@
   <protocol-50>LINK-1.0-http--related</protocol-50>
   <protocol-51>Vul uw eigen protocol in...</protocol-51>
 
-  <hvd-dataservice-section>High Value Dataset (HVD)</hvd-dataservice-section>
+  <hvd-dataservice-section>Hochwertiger Datensatz (HVD)</hvd-dataservice-section>
   <hvd-dataservice-tab>Data Service</hvd-dataservice-tab>
-  <hvd-dataset-section>High Value Dataset (HVD)</hvd-dataset-section>
-  <hvd-dataset-tab>Dataset</hvd-dataset-tab>
-  <hvd-view>High Value Dataset</hvd-view>
+  <hvd-dataset-section>Hochwertiger Datensatz (HVD)</hvd-dataset-section>
+  <hvd-dataset-tab>Datensatz</hvd-dataset-tab>
+  <hvd-view>Hochwertiger Datensatz</hvd-view>
 
   <mobility-section>Mobility</mobility-section>
   <mobility-tab>Mobility</mobility-tab>
@@ -113,7 +113,12 @@
 
   <metadatadcat-dataservice-section>Data Service</metadatadcat-dataservice-section>
   <metadatadcat-dataservice-tab>Metadata DCAT</metadatadcat-dataservice-tab>
-  <metadatadcat-dataset-section>Dataset</metadatadcat-dataset-section>
+  <metadatadcat-dataset-section>Datensatz</metadatadcat-dataset-section>
   <metadatadcat-dataset-tab>Metadata DCAT</metadatadcat-dataset-tab>
   <metadatadcat-view>Metadata DCAT</metadatadcat-view>
+
+  <tabAdvancedService>Service</tabAdvancedService>
+  <tabAdvancedRecord>Record</tabAdvancedRecord>
+  <tabAdvancedDataset>Datensatz</tabAdvancedDataset>
+  <tabAdvancedDistribution>Verteilung</tabAdvancedDistribution>
 </strings>

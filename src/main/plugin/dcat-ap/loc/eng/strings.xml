@@ -105,4 +105,9 @@
   <vl-tab-distribution>Distributions</vl-tab-distribution>
   <vl-section-metadatadcat>Metadata DCAT</vl-section-metadatadcat>
   <vl-section-dcatapvl>DCAT-AP Vlaanderen</vl-section-dcatapvl>
+
+  <tabAdvancedService>Service</tabAdvancedService>
+  <tabAdvancedRecord>Record</tabAdvancedRecord>
+  <tabAdvancedDataset>Dataset</tabAdvancedDataset>
+  <tabAdvancedDistribution>Distribution</tabAdvancedDistribution>
 </strings>

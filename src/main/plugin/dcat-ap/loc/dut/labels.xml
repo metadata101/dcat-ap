@@ -666,16 +666,19 @@
     <label>HVD Categorie</label>
     <btnLabel>HVD Categorie</btnLabel>
   </element>
+  <element name="dcatap:hvdCategory">
+    <label>HVD Categorie</label>
+  </element>
   <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-    <label>Applicable legislation</label>
-    <description>The legislation that mandates the creation or management of the Dataset.</description>
+    <label>Toepasselijke wetgeving</label>
+    <description>De wetgeving die het aanmaken of beheren van de Dataset voorschrijft.</description>
   </element>
   <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-    <label>Applicable legislation</label>
-    <description>The legislation that mandates the creation or management of the Data Service.</description>
+    <label>Toepasselijke wetgeving</label>
+    <description>De wetgeving die het aanmaken of beheren van de Dataset voorschrijft.</description>
   </element>
   <element name="dcatap:applicableLegislation">
-    <label>Applicable legislation</label>
-    <description>The legislation that mandates the creation or management of the Data Service.</description>
+    <label>Toepasselijke wetgeving</label>
+    <description>De wetgeving die het aanmaken of beheren van de Dataset voorschrijft.</description>
   </element>
 </labels>

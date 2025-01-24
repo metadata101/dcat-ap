@@ -986,6 +986,9 @@
     <description>The HVD category to which this Data Service belongs.</description>
     <btnLabel>HVD Category</btnLabel>
   </element>
+  <element name="dcatap:hvdCategory">
+    <label>HVD Category</label>
+  </element>
   <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>Applicable legislation</label>
     <description>The legislation that mandates the creation or management of the Dataset.</description>
