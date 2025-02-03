@@ -501,460 +501,6 @@
   </multilingualFields>
 
   <views>
-    <view name="vl-view"
-          class="gn-label-above-input gn-indent-bluescale"
-          displayTooltips="true"
-          displayTooltipsMode="onhover"
-          displayIfRecord="count(//dcat:CatalogRecord/dct:conformsTo) > 0"
-          hideTimeInCalendar="true">
-      <tab id="vl-tab-dataset" default="true" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
-        <section name="vl-section-metadatadcat">
-          <!-- MAGDA-categorie-->
-          <field
-            xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:MAGDA-categorie"/>
-          <action type="add"
-                  or="MAGDA-categorie"
-                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:MAGDA-categorie) = 0"
-          >
-            <template>
-              <snippet>
-                <mdcat:MAGDA-categorie>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
-                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/MAGDA-categorie"/>
-                  </skos:Concept>
-                </mdcat:MAGDA-categorie>
-              </snippet>
-            </template>
-          </action>
-
-          <!-- statuut-->
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:statuut"/>
-          <action type="add"
-                  or="statuut"
-                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:statuut) = 0"
-          >
-            <template>
-              <snippet>
-                <mdcat:statuut>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
-                    <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
-                  </skos:Concept>
-                </mdcat:statuut>
-              </snippet>
-            </template>
-          </action>
-
-          <!-- Theme: vocab.belgif.be/auth/datatheme -->
-          <!-- TODO: custom label to indicate this is about themes from the specific thesaurus? -->
-<!--          <dcat:theme>-->
-<!--            <skos:Concept rdf:about="http://vocab.belgif.be/auth/datatheme/CULT">-->
-<!--              <skos:prefLabel xml:lang="nl">Cultuur en sport</skos:prefLabel>-->
-<!--              <skos:prefLabel xml:lang="en">Culture and sport</skos:prefLabel>-->
-<!--              <skos:inScheme rdf:resource="http://vocab.belgif.be/auth/datatheme"/>-->
-<!--            </skos:Concept>-->
-<!--          </dcat:theme>-->
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme[skos:Concept/skos:inScheme/@rdf:resource = 'http://vocab.belgif.be/auth/datatheme']"
-                 or="theme"
-                 use="data-gn-keyword-picker"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <directiveAttributes
-              thesaurus="external.theme.datatheme"
-              xpath="/dcat:theme"
-              max=""
-              labelKey="dcat-addThemes"/>
-          </field>
-<!--            <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"-->
-<!--                   or="theme"-->
-<!--                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>-->
-
-        </section>
-
-        <section name="geographicalInformation">
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial"/>
-          <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dct:spatial xmlns:dc="http://purl.org/dc/elements/1.1/">
-                  <dct:Location rdf:about="http://mir.geopunt.be/cl/Geopunt/VlaamseAdminRegios/Vlaanderen">
-                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((5.92
-                      50.67,5.92 51.51,2.53 51.51,2.53 50.67,5.92 50.67))
-                    </locn:geometry>
-                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#gmlLiteral">&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;50.67
-                      5.92 51.51 5.92 51.51 2.53 50.67 2.53 50.67 5.92&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;
-                    </locn:geometry>
-                    <skos:prefLabel xml:lang="nl">Vlaams Gewest</skos:prefLabel>
-                  </dct:Location>
-                </dct:spatial>
-              </snippet>
-            </template>
-          </action>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal"/>
-          <action type="add" or="temporal" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dct:temporal>
-                  <dct:PeriodOfTime>
-                    <schema:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
-                    <schema:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
-                  </dct:PeriodOfTime>
-                </dct:temporal>
-              </snippet>
-            </template>
-          </action>
-        </section>
-      </tab>
-
-      <tab id="vl-tab-service" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
-        <!-- TODO the standard is referred to as https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22, and sometimes as https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat. How to deal with these variants? -->
-        <section name="vl-section-metadatadcat" displayIfRecord="count(//dct:conformsTo/dct:Standard[starts-with(@rdf:about,'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat')]) > 0">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:MAGDA-categorie"/>
-          <action type="add"
-                  or="MAGDA-categorie"
-                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:MAGDA-categorie) = 0">
-            <template>
-              <snippet>
-                <mdcat:MAGDA-categorie>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
-                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/MAGDA-categorie"/>
-                  </skos:Concept>
-                </mdcat:MAGDA-categorie>
-              </snippet>
-            </template>
-          </action>
-
-          <!-- statuut-->
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statuut"/>
-          <action type="add"
-                  or="statuut"
-                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statuut) = 0"
-          >
-            <template>
-              <snippet>
-                <mdcat:statuut>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
-                    <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
-                  </skos:Concept>
-                </mdcat:statuut>
-              </snippet>
-            </template>
-          </action>
-
-          <!-- levensfase -->
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase"/>
-          <action type="add"
-                  or="levensfase"
-                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase) = 0"
-          >
-            <template>
-              <snippet>
-                <mdcat:levensfase>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
-                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/levensfase"/>
-                  </skos:Concept>
-                </mdcat:levensfase>
-              </snippet>
-            </template>
-          </action>
-
-          <!-- ontwikkelingstoestand -->
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand"/>
-          <action type="add"
-                  or="ontwikkelingstoestand"
-                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand) = 0">
-            <template>
-              <snippet>
-                <mdcat:ontwikkelingstoestand>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
-                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand"/>
-                  </skos:Concept>
-                </mdcat:ontwikkelingstoestand>
-              </snippet>
-            </template>
-          </action>
-
-          <!-- landingspaginaVoorAuthenticatie -->
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie"/>
-          <action type="add" or="landingspaginaVoorAuthenticatie"
-                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie) = 0">
-            <template>
-              <snippet>
-                <mdcat:landingspaginaVoorAuthenticatie rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-
-          <!-- landingspaginaVoorStatusinformatie -->
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie"/>
-          <action type="add" or="landingspaginaVoorStatusinformatie"
-                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie) = 0">
-            <template>
-              <snippet>
-                <mdcat:landingspaginaVoorStatusinformatie rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-
-          <!-- landingspaginaVoorGebruiksinformatie -->
-          <field
-            xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie"/>
-          <action type="add" or="landingspaginaVoorGebruiksinformatie"
-                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie) = 0">
-            <template>
-              <snippet>
-                <mdcat:landingspaginaVoorGebruiksinformatie rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-
-          <!-- Theme: vocab.belgif.be/auth/datatheme -->
-          <!-- TODO: custom label to indicate this is about themes from the specific thesaurus? -->
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme"
-                 or="theme"
-                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-        </section>
-      </tab>
-
-      <tab id="vl-tab-distribution" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
-        <section>
-          <section name="distribution"
-                   forEach="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution"
-                   del=".">
-            <field xpath="dcat:Distribution/dct:title" or="title" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dct:description" or="description" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dcat:accessURL" or="accessURL" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dct:format" or="format" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dcat:mediaType" or="mediaType" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dct:language" or="language" in="dcat:Distribution"/>
-            <section xpath="dcat:Distribution/dct:license"/>
-            <action type="add" or="license" in="dcat:Distribution">
-              <template>
-                <snippets name="licenses-vl"/>
-              </template>
-            </action>
-            <section xpath="dcat:Distribution/dct:rights"/>
-            <action type="add" or="rights" in="dcat:Distribution">
-              <template>
-                <snippet>
-                  <dct:rights>
-                    <dct:RightsStatement>
-                      <dct:title xml:lang="nl"/>
-                      <dct:description xml:lang="nl"/>
-                    </dct:RightsStatement>
-                  </dct:rights>
-                </snippet>
-              </template>
-            </action>
-            <section xpath="dcat:Distribution/dct:conformsTo"/>
-            <action type="add" or="conformsTo" in="dcat:Distribution">
-              <template>
-                <snippets name="protocols"/>
-              </template>
-            </action>
-          </section>
-          <action type="add" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dcat:distribution>
-                  <dcat:Distribution>
-                    <dct:title xml:lang="nl"/>
-                    <dct:description xml:lang="nl"/>
-                    <dcat:accessURL rdf:resource=""/>
-                  </dcat:Distribution>
-                </dcat:distribution>
-              </snippet>
-            </template>
-          </action>
-        </section>
-      </tab>
-    </view>
-
-    <view name="hvd-view"
-          class="gn-label-above-input gn-indent-bluescale"
-          displayTooltips="true"
-          displayTooltipsMode="onhover"
-          hideTimeInCalendar="true">
-      <tab id="hvd-dataset-tab"  default="true" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
-        <section name="hvd-dataset-section">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory"/>
-
-          <action type="add"
-                  or="hvdCategory"
-                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory) = 0">
-            <template>
-              <snippet>
-                <dcatap:hvdCategory>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel xml:lang=""></skos:prefLabel>
-                  </skos:Concept>
-                </dcatap:hvdCategory>
-              </snippet>
-            </template>
-          </action>
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:applicableLegislation"/>
-          <action type="add"
-                  or="applicableLegislation"
-                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:applicableLegislation) = 0">
-            <template>
-              <snippet>
-                <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
-              </snippet>
-            </template>
-          </action>
-        </section>
-      </tab>
-      <tab id="hvd-dataservice-tab"  default="true" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
-        <section name="hvd-dataservice-section">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcatap:hvdCategory"/>
-
-          <action type="add"
-                       or="hvdCategory"
-                       in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
-                       if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcatap:hvdCategory) = 0">
-            <template>
-              <snippet>
-                <dcatap:hvdCategory>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel xml:lang=""></skos:prefLabel>
-                  </skos:Concept>
-                </dcatap:hvdCategory>
-              </snippet>
-            </template>
-          </action>
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcatap:applicableLegislation"/>
-          <action type="add"
-                  or="applicableLegislation"
-                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcatap:applicableLegislation) = 0">
-            <template>
-              <snippet>
-                <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
-              </snippet>
-            </template>
-          </action>
-        </section>
-      </tab>
-    </view>
-
-    <view name="mobility-view"
-          class="gn-label-above-input gn-indent-bluescale"
-          displayTooltips="true"
-          displayTooltipsMode="onhover"
-          hideTimeInCalendar="true">
-      <tab id="mobility-tab"  default="true">
-        <section name="mobility-section">
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:mobilityTheme"/>
-
-          <action type="add"
-                       or="mobilityTheme"
-                       in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                       if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:mobilityTheme) = 0"
-          >
-            <template>
-              <snippet>
-                <mobilitydcatap:mobilityTheme>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel></skos:prefLabel>
-                  </skos:Concept>
-                </mobilitydcatap:mobilityTheme>
-              </snippet>
-            </template>
-          </action>
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:transportMode"/>
-
-          <action type="add"
-                  or="transportMode"
-                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:transportMode) = 0"
-          >
-            <template>
-              <snippet>
-                <mobilitydcatap:transportMode>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel></skos:prefLabel>
-                  </skos:Concept>
-                </mobilitydcatap:transportMode>
-              </snippet>
-            </template>
-          </action>
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:networkCoverage"/>
-
-          <action type="add"
-                  or="networkCoverage"
-                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:networkCoverage) = 0"
-          >
-            <template>
-              <snippet>
-                <mobilitydcatap:networkCoverage>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel></skos:prefLabel>
-                  </skos:Concept>
-                </mobilitydcatap:networkCoverage>
-              </snippet>
-            </template>
-          </action>
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:georeferencingMethod"/>
-
-          <action type="add"
-                  or="georeferencingMethod"
-                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:georeferencingMethod) = 0"
-          >
-            <template>
-              <snippet>
-                <mobilitydcatap:georeferencingMethod>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel></skos:prefLabel>
-                  </skos:Concept>
-                </mobilitydcatap:georeferencingMethod>
-              </snippet>
-            </template>
-          </action>
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:intendedInformationService"/>
-
-          <action type="add"
-                  or="intendedInformationService"
-                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:intendedInformationService) = 0"
-          >
-            <template>
-              <snippet>
-                <mobilitydcatap:intendedInformationService>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel></skos:prefLabel>
-                  </skos:Concept>
-                </mobilitydcatap:intendedInformationService>
-              </snippet>
-            </template>
-          </action>
-
-        </section>
-      </tab>
-    </view>
 
     <view name="default"
           default="true"
@@ -1465,6 +1011,461 @@
       </flatModeExceptions>
     </view>
 
+    <view name="vl-view"
+          class="gn-label-above-input gn-indent-bluescale"
+          displayTooltips="true"
+          displayTooltipsMode="onhover"
+          displayIfRecord="count(//dcat:CatalogRecord/dct:conformsTo) > 0"
+          hideTimeInCalendar="true">
+      <tab id="vl-tab-dataset" default="true" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
+        <section name="vl-section-metadatadcat">
+          <!-- MAGDA-categorie-->
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:MAGDA-categorie"/>
+          <action type="add"
+                  or="MAGDA-categorie"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:MAGDA-categorie) = 0"
+          >
+            <template>
+              <snippet>
+                <mdcat:MAGDA-categorie>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/MAGDA-categorie"/>
+                  </skos:Concept>
+                </mdcat:MAGDA-categorie>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- statuut-->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:statuut"/>
+          <action type="add"
+                  or="statuut"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:statuut) = 0"
+          >
+            <template>
+              <snippet>
+                <mdcat:statuut>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
+                  </skos:Concept>
+                </mdcat:statuut>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- Theme: vocab.belgif.be/auth/datatheme -->
+          <!-- TODO: custom label to indicate this is about themes from the specific thesaurus? -->
+<!--          <dcat:theme>-->
+<!--            <skos:Concept rdf:about="http://vocab.belgif.be/auth/datatheme/CULT">-->
+<!--              <skos:prefLabel xml:lang="nl">Cultuur en sport</skos:prefLabel>-->
+<!--              <skos:prefLabel xml:lang="en">Culture and sport</skos:prefLabel>-->
+<!--              <skos:inScheme rdf:resource="http://vocab.belgif.be/auth/datatheme"/>-->
+<!--            </skos:Concept>-->
+<!--          </dcat:theme>-->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme[skos:Concept/skos:inScheme/@rdf:resource = 'http://vocab.belgif.be/auth/datatheme']"
+                 or="theme"
+                 use="data-gn-keyword-picker"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <directiveAttributes
+              thesaurus="external.theme.datatheme"
+              xpath="/dcat:theme"
+              max=""
+              labelKey="dcat-addThemes"/>
+          </field>
+<!--            <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"-->
+<!--                   or="theme"-->
+<!--                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>-->
+
+        </section>
+
+        <section name="geographicalInformation">
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial"/>
+          <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:spatial xmlns:dc="http://purl.org/dc/elements/1.1/">
+                  <dct:Location rdf:about="http://mir.geopunt.be/cl/Geopunt/VlaamseAdminRegios/Vlaanderen">
+                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((5.92
+                      50.67,5.92 51.51,2.53 51.51,2.53 50.67,5.92 50.67))
+                    </locn:geometry>
+                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#gmlLiteral">&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;50.67
+                      5.92 51.51 5.92 51.51 2.53 50.67 2.53 50.67 5.92&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;
+                    </locn:geometry>
+                    <skos:prefLabel xml:lang="nl">Vlaams Gewest</skos:prefLabel>
+                  </dct:Location>
+                </dct:spatial>
+              </snippet>
+            </template>
+          </action>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal"/>
+          <action type="add" or="temporal" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:temporal>
+                  <dct:PeriodOfTime>
+                    <schema:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    <schema:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                  </dct:PeriodOfTime>
+                </dct:temporal>
+              </snippet>
+            </template>
+          </action>
+        </section>
+      </tab>
+
+      <tab id="vl-tab-service" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
+        <!-- TODO the standard is referred to as https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22, and sometimes as https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat. How to deal with these variants? -->
+        <section name="vl-section-metadatadcat" displayIfRecord="count(//dct:conformsTo/dct:Standard[starts-with(@rdf:about,'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat')]) > 0">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:MAGDA-categorie"/>
+          <action type="add"
+                  or="MAGDA-categorie"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:MAGDA-categorie) = 0">
+            <template>
+              <snippet>
+                <mdcat:MAGDA-categorie>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/MAGDA-categorie"/>
+                  </skos:Concept>
+                </mdcat:MAGDA-categorie>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- statuut-->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statuut"/>
+          <action type="add"
+                  or="statuut"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statuut) = 0"
+          >
+            <template>
+              <snippet>
+                <mdcat:statuut>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
+                  </skos:Concept>
+                </mdcat:statuut>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- levensfase -->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase"/>
+          <action type="add"
+                  or="levensfase"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase) = 0"
+          >
+            <template>
+              <snippet>
+                <mdcat:levensfase>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/levensfase"/>
+                  </skos:Concept>
+                </mdcat:levensfase>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- ontwikkelingstoestand -->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand"/>
+          <action type="add"
+                  or="ontwikkelingstoestand"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand) = 0">
+            <template>
+              <snippet>
+                <mdcat:ontwikkelingstoestand>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand"/>
+                  </skos:Concept>
+                </mdcat:ontwikkelingstoestand>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- landingspaginaVoorAuthenticatie -->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie"/>
+          <action type="add" or="landingspaginaVoorAuthenticatie"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie) = 0">
+            <template>
+              <snippet>
+                <mdcat:landingspaginaVoorAuthenticatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- landingspaginaVoorStatusinformatie -->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie"/>
+          <action type="add" or="landingspaginaVoorStatusinformatie"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie) = 0">
+            <template>
+              <snippet>
+                <mdcat:landingspaginaVoorStatusinformatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- landingspaginaVoorGebruiksinformatie -->
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie"/>
+          <action type="add" or="landingspaginaVoorGebruiksinformatie"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie) = 0">
+            <template>
+              <snippet>
+                <mdcat:landingspaginaVoorGebruiksinformatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- Theme: vocab.belgif.be/auth/datatheme -->
+          <!-- TODO: custom label to indicate this is about themes from the specific thesaurus? -->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme"
+                 or="theme"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+        </section>
+      </tab>
+
+      <tab id="vl-tab-distribution" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
+        <section>
+          <section name="distribution"
+                   forEach="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution"
+                   del=".">
+            <field xpath="dcat:Distribution/dct:title" or="title" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:description" or="description" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dcat:accessURL" or="accessURL" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:format" or="format" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dcat:mediaType" or="mediaType" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:language" or="language" in="dcat:Distribution"/>
+            <section xpath="dcat:Distribution/dct:license"/>
+            <action type="add" or="license" in="dcat:Distribution">
+              <template>
+                <snippets name="licenses-vl"/>
+              </template>
+            </action>
+            <section xpath="dcat:Distribution/dct:rights"/>
+            <action type="add" or="rights" in="dcat:Distribution">
+              <template>
+                <snippet>
+                  <dct:rights>
+                    <dct:RightsStatement>
+                      <dct:title xml:lang="nl"/>
+                      <dct:description xml:lang="nl"/>
+                    </dct:RightsStatement>
+                  </dct:rights>
+                </snippet>
+              </template>
+            </action>
+            <section xpath="dcat:Distribution/dct:conformsTo"/>
+            <action type="add" or="conformsTo" in="dcat:Distribution">
+              <template>
+                <snippets name="protocols"/>
+              </template>
+            </action>
+          </section>
+          <action type="add" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dcat:distribution>
+                  <dcat:Distribution>
+                    <dct:title xml:lang="nl"/>
+                    <dct:description xml:lang="nl"/>
+                    <dcat:accessURL rdf:resource=""/>
+                  </dcat:Distribution>
+                </dcat:distribution>
+              </snippet>
+            </template>
+          </action>
+        </section>
+      </tab>
+    </view>
+
+    <view name="hvd-view"
+          class="gn-label-above-input gn-indent-bluescale"
+          displayTooltips="true"
+          displayTooltipsMode="onhover"
+          hideTimeInCalendar="true">
+      <tab id="hvd-dataset-tab"  default="true" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
+        <section name="hvd-dataset-section">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory"/>
+
+          <action type="add"
+                  or="hvdCategory"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory) = 0">
+            <template>
+              <snippet>
+                <dcatap:hvdCategory>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel xml:lang=""></skos:prefLabel>
+                  </skos:Concept>
+                </dcatap:hvdCategory>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:applicableLegislation"/>
+          <action type="add"
+                  or="applicableLegislation"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:applicableLegislation) = 0">
+            <template>
+              <snippet>
+                <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+      </tab>
+      <tab id="hvd-dataservice-tab"  default="true" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
+        <section name="hvd-dataservice-section">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcatap:hvdCategory"/>
+
+          <action type="add"
+                       or="hvdCategory"
+                       in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                       if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcatap:hvdCategory) = 0">
+            <template>
+              <snippet>
+                <dcatap:hvdCategory>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel xml:lang=""></skos:prefLabel>
+                  </skos:Concept>
+                </dcatap:hvdCategory>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcatap:applicableLegislation"/>
+          <action type="add"
+                  or="applicableLegislation"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcatap:applicableLegislation) = 0">
+            <template>
+              <snippet>
+                <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+      </tab>
+    </view>
+
+<!--  VL specific /  Disabled <view name="mobility-view"
+          class="gn-label-above-input gn-indent-bluescale"
+          displayTooltips="true"
+          displayTooltipsMode="onhover"
+          hideTimeInCalendar="true">
+      <tab id="mobility-tab"  default="true">
+        <section name="mobility-section">
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:mobilityTheme"/>
+
+          <action type="add"
+                       or="mobilityTheme"
+                       in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                       if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:mobilityTheme) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:mobilityTheme>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:mobilityTheme>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:transportMode"/>
+
+          <action type="add"
+                  or="transportMode"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:transportMode) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:transportMode>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:transportMode>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:networkCoverage"/>
+
+          <action type="add"
+                  or="networkCoverage"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:networkCoverage) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:networkCoverage>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:networkCoverage>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:georeferencingMethod"/>
+
+          <action type="add"
+                  or="georeferencingMethod"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:georeferencingMethod) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:georeferencingMethod>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:georeferencingMethod>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:intendedInformationService"/>
+
+          <action type="add"
+                  or="intendedInformationService"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:intendedInformationService) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:intendedInformationService>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:intendedInformationService>
+              </snippet>
+            </template>
+          </action>
+
+        </section>
+      </tab>
+    </view>-->
+
     <view name="advanced"
           class="gn-label-above-input gn-indent-bluescale"
           displayTooltips="true"
@@ -1650,19 +1651,6 @@
           <field
             xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
         </section>
-      </tab>
-    </view>
-
-    <view name="fromroot">
-      <sidePanel>
-        <directive data-gn-overview-manager=""
-                   data-file-types=".png,.gif,.jpeg,.jpg"/>
-
-        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
-        <directive data-gn-validation-report=""/>
-      </sidePanel>
-      <tab id="dcat.catalog-record">
-        <section xpath="/rdf:RDF"/>
       </tab>
     </view>
 
