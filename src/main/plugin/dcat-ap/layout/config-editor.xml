@@ -134,28 +134,6 @@
         xpath="/dcatap:applicableLegislation"
         useReference="true"/>
     </for>
-
-    <for name="mdcat:statuut" use="thesaurus-list-picker">
-      <directiveAttributes
-        thesaurus="external.theme.GDI-Vlaanderen-trefwoorden"
-        xpath="/mdcat:statuut"/>
-    </for>
-    <for name="mdcat:ontwikkelingstoestand" use="thesaurus-list-picker">
-      <directiveAttributes
-        thesaurus="external.theme.ontwikkelingstoestand"
-        xpath="/mdcat:ontwikkelingstoestand"/>
-    </for>
-    <for name="mdcat:levensfase" use="thesaurus-list-picker">
-      <directiveAttributes
-        thesaurus="external.theme.levensfase"
-        xpath="/mdcat:levensfase"/>
-    </for>
-    <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker">
-      <directiveAttributes
-        thesaurus="external.theme.magda-domain"
-        xpath="/mdcat:MAGDA-categorie"/>
-    </for>
-
     <for name="mobilitydcatap:mobilityTheme" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.mobility-theme"
@@ -185,6 +163,7 @@
         thesaurus="external.theme.mobility-intended-information-service"
         xpath="/mobilitydcatap:intendedInformationService"/>
     </for>
+
 
     <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker">
       <directiveAttributes
