@@ -164,6 +164,7 @@
         xpath="/mobilitydcatap:intendedInformationService"/>
     </for>
 
+
     <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.magda-domain"

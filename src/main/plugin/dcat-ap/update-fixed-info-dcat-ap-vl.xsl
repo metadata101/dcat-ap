@@ -80,6 +80,7 @@
   <!-- Enforce open data keyword on DCAT-ap-VL -->
   <xsl:template mode="update-fixed-info-profile" match="dcat:Dataset[$profile = $dcatapvlURI]|dcat:DataService[$profile = $dcatapvlURI]">
     <xsl:copy copy-namespaces="no">
+      <xsl:copy-of select="@*"/>
       <xsl:choose>
         <xsl:when test="name() = 'dcat:Dataset'">
           <mdcat:statuut>
