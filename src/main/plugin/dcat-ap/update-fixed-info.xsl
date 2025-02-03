@@ -306,20 +306,19 @@
      </xsl:copy>
   </xsl:template>
 
-  <!-- Ensure Distribution element ordering -->
-  <xsl:template match="dcat:Distribution[name(..)='dcat:distribution']" priority="10">
+  <!-- Ensure Distribution has rdf:about and dct:identifier -->
+  <xsl:template match="dcat:Distribution[name(..)='dcat:distribution'][count(dct:identifier[normalize-space() != '']) = 0 or normalize-space(@rdf:about) = '']" priority="10">
     <dcat:Distribution>
       <xsl:apply-templates select="@*"/>
-      <xsl:if test="count(dct:identifier[normalize-space() != '']) = 0 or normalize-space(@rdf:about) = ''">
-        <xsl:variable name="distroUUID" select="uuid:toString(uuid:randomUUID())"/>
-        <xsl:if test="normalize-space(@rdf:about) = ''">
-          <xsl:attribute name="rdf:about" select="concat(/root/env/nodeURL, 'resources/distributions/', $distroUUID)"/>
-        </xsl:if>
-        <xsl:if test="count(dct:identifier[normalize-space() != '']) = 0">
-          <dct:identifier>
-            <xsl:value-of select="$distroUUID"/>
-          </dct:identifier>
-        </xsl:if>
+
+      <xsl:variable name="distroUUID" select="uuid:randomUUID()"/>
+      <xsl:if test="normalize-space(@rdf:about) = ''">
+        <xsl:attribute name="rdf:about" select="concat(/root/env/nodeURL, 'resources/distributions/', $distroUUID)"/>
+      </xsl:if>
+      <xsl:if test="count(dct:identifier[normalize-space() != '']) = 0">
+        <dct:identifier>
+          <xsl:value-of select="$distroUUID"/>
+        </dct:identifier>
       </xsl:if>
 
       <xsl:apply-templates select="* except dct:identifier"/>
