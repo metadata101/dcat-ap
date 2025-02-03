@@ -62,7 +62,7 @@
 
 
   <xsl:template name="index-dcat-ap-vl-license">
-    <xsl:for-each select="descendant::dcat:Dataset|descendant::dcat:DataService">
+    <xsl:for-each select="descendant-or-self::dcat:Dataset|descendant-or-self::dcat:DataService">
       <xsl:variable name="constraints">
         <xsl:for-each-group select="dct:license|dcat:distribution/dcat:Distribution/dct:license"
                             group-by="dct:LicenseDocument/@rdf:about">
@@ -73,6 +73,7 @@
         </xsl:for-each>
       </xsl:variable>
       <xsl:copy-of select="$constraints"/>
+
       <vlResourceConstraintsObject type="object">
         [{
         "type": "MD_LegalConstraints",
