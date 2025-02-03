@@ -87,6 +87,15 @@
     </xsl:message>
   </xsl:template>
 
+  <xsl:template mode="mode-dcat-ap"
+                priority="4000"
+                match="gn:child[preceding-sibling::*[1]/name() = concat(@prefix, ':', @name)
+                                        and gn-fn-dcat-ap:getThesaurusConfig(concat(@prefix, ':', @name), name(..))]">
+    <!-- Do not create a default add button for all fields using a thesaurus
+    and which are already defined in the current record.
+    The thesaurus picker takes care of adding one or more keywords for that field. -->
+  </xsl:template>
+
   <xsl:template name="thesaurus-picker-list">
     <xsl:param name="config" as="node()"/>
     <xsl:param name="ref" as="xs:string"/>
