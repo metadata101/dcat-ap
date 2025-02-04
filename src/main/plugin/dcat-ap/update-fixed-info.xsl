@@ -448,6 +448,9 @@
   <xsl:template match="@rdf:about[normalize-space() = '']|@rdf:datatype[normalize-space() = '']"
                 priority="10"/>
 
+  <xsl:template match="dct:format[count(@*|*) = 0]"
+                priority="10"/>
+
   <!-- Fix value for attribute -->
   <xsl:template match="spdx:checksumValue" priority="10">
     <xsl:copy copy-namespaces="no">
@@ -473,6 +476,7 @@
   <xsl:template match="dct:LicenseDocument" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*|*[name() != 'dct:identifier']"/>
+
       <xsl:element name="dct:identifier">
         <xsl:value-of select="@rdf:about"/>
       </xsl:element>
