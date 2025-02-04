@@ -989,12 +989,17 @@
   <string-array name="dcatap:applicableLegislation" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <item>Applicable legislation</item>
     <item>The legislation that mandates the creation or management of the Dataset.</item>
-    <item>applicable legislation</item>
+    <item>Applicable legislation</item>
   </string-array>
   <string-array name="dcatap:applicableLegislation" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
     <item>Applicable legislation</item>
     <item>The legislation that mandates the creation or management of the Data Service.</item>
-    <item>applicable legislation</item>
+    <item>Applicable legislation</item>
+  </string-array>
+  <string-array name="dcatap:applicableLegislation">
+    <item>Applicable legislation</item>
+    <item>The legislation that mandates the creation or management of the resource.</item>
+    <item>Applicable legislation</item>
   </string-array>
 
   <string-array name="mdcat:statuut">

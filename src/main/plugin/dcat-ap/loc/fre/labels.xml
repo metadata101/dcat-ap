@@ -973,12 +973,17 @@
   <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>Applicable legislation</label>
     <description>The legislation that mandates the creation or management of the Dataset.</description>
-    <btnLabel>applicable legislation</btnLabel>
+    <btnLabel>Applicable legislation</btnLabel>
   </element>
   <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
     <label>Applicable legislation</label>
     <description>The legislation that mandates the creation or management of the Data Service.</description>
-    <btnLabel>applicable legislation</btnLabel>
+    <btnLabel>Applicable legislation</btnLabel>
+  </element>
+  <element name="dcatap:applicableLegislation">
+    <label>Applicable legislation</label>
+    <description>The legislation that mandates the creation or management of the resource.</description>
+    <btnLabel>Applicable legislation</btnLabel>
   </element>
   <element name="mdcat:statuut">
     <label>Statute</label>

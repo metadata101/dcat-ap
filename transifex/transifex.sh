@@ -22,7 +22,7 @@ EOF
 
 download() {
   echo "Downloading translations..."
-  tx pull -l nl,fr --force --mode sourceastranslation
+  tx pull -l nl_BE,fr --force --mode sourceastranslation
 }
 
 upload() {
@@ -33,7 +33,7 @@ upload() {
 apply() {
   # general setup
   l=(
-      'nl::dut'
+      'nl_BE::dut'
       'fr::fre'
       'en_US::eng'
   )
