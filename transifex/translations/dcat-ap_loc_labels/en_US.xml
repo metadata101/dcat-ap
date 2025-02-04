@@ -191,9 +191,9 @@
     <item>Frequency</item>
   </string-array>
   <string-array name="dct:conformsTo">
-    <item>conforms to standard</item>
+    <item>Conforms to standard</item>
     <item>An established standard to which the described resource conforms.</item>
-    <item>conforms to standard</item>
+    <item>Conforms to standard</item>
   </string-array>
   <string-array name="dct:created">
     <item>Creation date</item>
@@ -940,5 +940,119 @@
     <item>Language</item>
     <item>Language</item>
     <item>Language</item>
+  </string-array>
+
+  <string-array name="mobilitydcatap:mobilityTheme">
+    <item>Mobility theme</item>
+    <item>This property refers to the mobility-related theme (i.e., a specific subject, category, or type) of the delivered content.
+      A dataset may be associated with multiple themes. A theme is important for data seekers who are interested in a particular type of data content.</item>
+    <item>Mobility theme</item>
+  </string-array>
+  <string-array name="mobilitydcatap:transportMode">
+    <item>Transport mode</item>
+    <item>This property describes the transport mode that is covered by the delivered content. Data can be valid for more than one mode, so a multiple choice should be applied.</item>
+    <item>Transport mode</item>
+  </string-array>
+  <string-array name="mobilitydcatap:networkCoverage">
+    <item>Network coverage</item>
+    <item>This property describes the part of the transport network that is covered by the delivered content. For road traffic, the property SHOULD refer to the network classification for which the data is provided. As a minimum, an international or higher-level classification, e.g., via functional road classes, is recommended to allow data search across different countries. In addition, national classifications are allowed.
+      For other transport modes, the property is meant to refer to the physical infrastructure which is used by the services covered by the data.
+      For all modes, the property SHOULD also indicate if the data content relates to the EU’s trans-European transport network [EU-TEN-T].</item>
+    <item>Network coverage</item>
+  </string-array>
+  <string-array name="mobilitydcatap:georeferencingMethod">
+    <item>Georeferencing method</item>
+    <item>This property SHOULD be used to specify the georeferencing method used in the dataset.</item>
+    <item>Georeferencing method</item>
+  </string-array>
+  <string-array name="mobilitydcatap:intendedInformationService">
+    <item>Intended information service</item>
+    <item>This property MAY describe predefined information services, which the data content is intended to support.
+      Such services MAY be, e.g., information services for multimodal mobility, as specified by EC Delegated Regulation 2017/1926 [EC-MMTIS-DR].
+      Examples of such services include “location search”, which is based on a datasets with address identifiers, or “trip plan computation”, which is based on datasets about a road network.</item>
+    <item>Intended information service</item>
+  </string-array>
+
+  <string-array name="dcatap:hvdCategory" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+    <item>HVD Category</item>
+    <item>The HVD category to which this Dataset belongs.</item>
+    <item>HVD Category</item>
+  </string-array>
+  <string-array name="dcatap:hvdCategory" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+    <item>HVD Category</item>
+    <item>The HVD category to which this Data Service belongs.</item>
+    <item>HVD Category</item>
+  </string-array>
+  <string-array name="dcatap:hvdCategory">
+    <item>HVD Category</item>
+  </string-array>
+  <string-array name="dcatap:applicableLegislation" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+    <item>Applicable legislation</item>
+    <item>The legislation that mandates the creation or management of the Dataset.</item>
+    <item>applicable legislation</item>
+  </string-array>
+  <string-array name="dcatap:applicableLegislation" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+    <item>Applicable legislation</item>
+    <item>The legislation that mandates the creation or management of the Data Service.</item>
+    <item>applicable legislation</item>
+  </string-array>
+
+  <string-array name="mdcat:statuut">
+    <item>Statute</item>
+    <item>Tooltip: Statute</item>
+    <item>Statute</item>
+  </string-array>
+  <string-array name="mdcat:MAGDA-categorie">
+    <item>MAGDA-category</item>
+    <item>Tooltip: MAGDA-category</item>
+    <item>MAGDA-category</item>
+  </string-array>
+  <string-array name="mdcat:landingspaginaVoorAuthenticatie">
+    <item>Landingpage for authentication</item>
+    <item>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de
+      dataservice.
+    </item>
+    <item>Landingpage for authentication</item>
+  </string-array>
+  <string-array name="rdf:resource" product="mdcat:landingspaginaVoorAuthenticatie">
+    <item>Landingpage for authentication</item>
+    <item>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de
+      dataservice.
+    </item>
+    <item>Landingpage for authentication</item>
+  </string-array>
+  <string-array name="mdcat:landingspaginaVoorGebruiksinformatie">
+    <item>Landingpage for usage information</item>
+    <item>Een verwijzing naar de landingspagina met de specifieke informatie over het gebruik van de
+      dataservice.
+    </item>
+    <item>Landingpage for usage information</item>
+  </string-array>
+  <string-array name="rdf:resource" product="mdcat:landingspaginaVoorGebruiksinformatie">
+    <item>Landingpage for usage information</item>
+    <item>Een verwijzing naar de landingspagina met de specifieke informatie over het gebruik van de
+      dataservice.
+    </item>
+    <item>Landingpage for usage information</item>
+  </string-array>
+  <string-array name="mdcat:landingspaginaVoorStatusinformatie">
+    <item>Landingpage for status information</item>
+    <item>Een verwijzing naar de statuspagina van de dataservice.</item>
+    <item>Landingpage for status information</item>
+  </string-array>
+  <string-array name="rdf:resource" product="mdcat:landingspaginaVoorStatusinformatie">
+    <item>Landingpage for status information</item>
+    <item>Een verwijzing naar de statuspagina van de dataservice.</item>
+    <item>Landingpage for status information</item>
+  </string-array>
+  <string-array name="mdcat:levensfase">
+    <item>Lifecycle phase</item>
+    <item>The phase of the lifecycle of the dataservice.</item>
+    <item>Lifecycle phase</item>
+  </string-array>
+  <string-array name="mdcat:ontwikkelingstoestand">
+    <item>Development status</item>
+    <item>The development status of the deployed dataservice.</item>
+    <item>Development status</item>
   </string-array>
 </resources>

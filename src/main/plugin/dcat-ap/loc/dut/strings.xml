@@ -3,7 +3,7 @@
   <xml_dublin-core>Sla deze metadata op als een Dublin Core XML bestand</xml_dublin-core>
   <xml_metadata-dcat>Sla deze metadata op als een DCAT-AP XML bestand</xml_metadata-dcat>
   <default>Standaard</default>
-  <advanced>Volledige</advanced>
+  <advanced>Volledig</advanced>
   <xml>XML</xml>
   <tabDataset>Dataset</tabDataset>
   <tabDistribution>Distributies</tabDistribution>
@@ -86,28 +86,24 @@
   <protocol-49>LINK-1.0-http--link</protocol-49>
   <protocol-50>LINK-1.0-http--related</protocol-50>
   <protocol-51>Vul uw eigen protocol in...</protocol-51>
-
-  <hvd-dataservice-section>Hoogwaardige Dataset (HVD)</hvd-dataservice-section>
+  <hvd-dataservice-section>High Value Dataset (HVD)</hvd-dataservice-section>
   <hvd-dataservice-tab>Data Service</hvd-dataservice-tab>
-  <hvd-dataset-section>Dataset</hvd-dataset-section>
+  <hvd-dataset-section>High Value Dataset (HVD)</hvd-dataset-section>
   <hvd-dataset-tab>Dataset</hvd-dataset-tab>
-  <hvd-section>Hoogwaardige Dataset (HVD)</hvd-section>
-  <hvd-tab>Hoogwaardige Dataset</hvd-tab>
-  <hvd-view>Hoogwaardige Datasets</hvd-view>
-
-  <mobility-view>Mobility</mobility-view>
-  <mobility-tab>Mobility</mobility-tab>
+  <hvd-section>High Value Dataset (HVD)</hvd-section>
+  <hvd-tab>High Value Dataset</hvd-tab>
+  <hvd-view>High Value Dataset</hvd-view>
   <mobility-section>Mobility</mobility-section>
-
-  <vl-view>Vlaanderen</vl-view>
+  <mobility-tab>Mobility</mobility-tab>
+  <mobility-view>Mobility</mobility-view>
+  <vl-view>Flanders</vl-view>
   <vl-tab-service>Service</vl-tab-service>
   <vl-tab-dataset>Dataset</vl-tab-dataset>
-  <vl-tab-distribution>Distributies</vl-tab-distribution>
+  <vl-tab-distribution>Distributions</vl-tab-distribution>
   <vl-section-metadatadcat>Metadata DCAT</vl-section-metadatadcat>
   <vl-section-dcatapvl>DCAT-AP Vlaanderen</vl-section-dcatapvl>
-
   <tabAdvancedService>Service</tabAdvancedService>
   <tabAdvancedRecord>Record</tabAdvancedRecord>
   <tabAdvancedDataset>Dataset</tabAdvancedDataset>
-  <tabAdvancedDistribution>Distributie</tabAdvancedDistribution>
+  <tabAdvancedDistribution>Distribution</tabAdvancedDistribution>
 </strings>
