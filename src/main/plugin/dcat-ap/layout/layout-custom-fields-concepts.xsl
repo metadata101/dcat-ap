@@ -47,7 +47,7 @@
   <xsl:template mode="mode-dcat-ap"
                          priority="4000"
                         match="*[(skos:Concept or @rdf:resource) and gn-fn-dcat-ap:getThesaurusConfig(name(), name(..))]">
-    <xsl:if test="preceding-sibling::*[1]/name() != current()/name()">
+    <xsl:if test="not(preceding-sibling::*[1]) or preceding-sibling::*[1]/name() != current()/name()">
       <xsl:variable name="xpath" select="concat('/', name(../..), '/', name(..), '/', name())"/>
 
       <xsl:variable name="config" select="gn-fn-dcat-ap:getThesaurusConfig(name(), name(..), $xpath)"/>
@@ -62,7 +62,7 @@
   <!-- Element not present in current document and using a thesaurus. -->
   <xsl:template mode="mode-dcat-ap"
                         priority="4000"
-                        match="gn:child[preceding-sibling::*[1]/name() != concat(@prefix, ':', @name)
+                        match="gn:child[not(preceding-sibling::*[1]) or preceding-sibling::*[1]/name() != concat(@prefix, ':', @name)
                                         and gn-fn-dcat-ap:getThesaurusConfig(concat(@prefix, ':', @name), name(..))]">
     <xsl:variable name="xpath" select="concat('/', name(../..), '/', name(..), '/', concat(@prefix, ':', @name))"/>
     <xsl:variable name="config" select="gn-fn-dcat-ap:getThesaurusConfig(concat(@prefix, ':', @name), name(..), $xpath)"/>
