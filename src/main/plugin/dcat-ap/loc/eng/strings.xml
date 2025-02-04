@@ -93,7 +93,7 @@
   <hvd-dataset-tab>Dataset</hvd-dataset-tab>
   <hvd-section>High Value Dataset (HVD)</hvd-section>
   <hvd-tab>High Value Dataset</hvd-tab>
-  <hvd-view> > High Value Dataset</hvd-view>
+  <hvd-view>High Value Dataset</hvd-view>
 
   <mobility-section>Mobility</mobility-section>
   <mobility-tab>Mobility</mobility-tab>

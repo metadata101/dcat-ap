@@ -105,7 +105,7 @@
   <hvd-dataservice-tab>Data Service</hvd-dataservice-tab>
   <hvd-dataset-section>High Value Dataset (HVD)</hvd-dataset-section>
   <hvd-dataset-tab>Dataset</hvd-dataset-tab>
-  <hvd-view> > High Value Dataset</hvd-view>
+  <hvd-view>High Value Dataset</hvd-view>
 
   <mobility-section>Mobility</mobility-section>
   <mobility-tab>Mobility</mobility-tab>
