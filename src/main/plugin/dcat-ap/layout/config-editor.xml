@@ -764,12 +764,14 @@
             <field xpath="dcat:Distribution/dct:format" or="format" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dcat:mediaType" or="mediaType" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dct:language" or="language" in="dcat:Distribution"/>
+
             <section xpath="dcat:Distribution/dct:license"/>
             <action type="add" or="license" in="dcat:Distribution">
               <template>
                 <snippets name="licenses"/>
               </template>
             </action>
+
             <section xpath="dcat:Distribution/dct:rights"/>
             <action type="add" or="rights" in="dcat:Distribution">
               <template>
@@ -783,6 +785,7 @@
                 </snippet>
               </template>
             </action>
+
             <section xpath="dcat:Distribution/dct:conformsTo"/>
             <action type="add" or="conformsTo" in="dcat:Distribution">
               <template>
@@ -845,22 +848,27 @@
           </action>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL"/>
-          <action type="add" or="endpointURL" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <action type="add" or="endpointURL"
+                       in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                       if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL) = 0">
             <template>
               <snippet>
                 <dcat:endpointURL rdf:resource=""/>
               </snippet>
             </template>
           </action>
+
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription"/>
           <action type="add" or="endpointDescription"
-                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription) = 0">
             <template>
               <snippet>
                 <dcat:endpointDescription rdf:resource=""/>
               </snippet>
             </template>
           </action>
+
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
           <action type="add" or="servesDataset"
                   in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
