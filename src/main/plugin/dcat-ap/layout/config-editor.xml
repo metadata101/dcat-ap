@@ -1174,6 +1174,18 @@
                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
         </section>
 
+        <section name="versionInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/owl:versionInfo" />
+          <action type="add" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/*/*/owl:versionInfo)=0">
+            <template>
+              <snippet>
+                <owl:versionInfo/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
         <section name="usageInformation">
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint"/>
           <action type="add" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
