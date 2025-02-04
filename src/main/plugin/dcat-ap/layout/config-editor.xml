@@ -689,7 +689,29 @@
 
         <section name="geographicalInformation">
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial"/>
-          <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+
+          <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                       if="count(rdf:RDF//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
+                                not(starts-with(@rdf:about,'https://data.vlaanderen.be/'))]) > 0">
+            <template>
+              <snippet>
+                  <dct:spatial>
+                    <dct:Location rdf:about="http://www.naturalearthdata.com/ne_admin#Continent/Europe">
+                      <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">
+                        POLYGON ((43.2 35.3,43.2 81.4,-11.5 81.4,-11.5 35.3,43.2 35.3))
+                      </locn:geometry>
+                      <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#gmlLiteral">
+                        &lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;35.3 43.2 81.4 43.2 81.4 -11.5 35.3 -11.5 35.3 43.2&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;
+                      </locn:geometry>
+                    </dct:Location>
+                  </dct:spatial>
+                </snippet>
+            </template>
+          </action>
+
+          <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                       if="count(rdf:RDF//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
+                                starts-with(@rdf:about,'https://data.vlaanderen.be/')]) > 0">
             <template>
               <snippet>
                 <dct:spatial>
@@ -706,6 +728,8 @@
               </snippet>
             </template>
           </action>
+
+
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal"/>
           <action type="add" or="temporal" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
             <template>
@@ -771,11 +795,21 @@
             <field xpath="dcat:Distribution/dct:language" or="language" in="dcat:Distribution"/>
 
             <section xpath="dcat:Distribution/dct:license"/>
-            <action type="add" or="license" in="dcat:Distribution">
+
+            <!-- VL Specific.
+           We should add conditional support to forEach section. Currently it is not supported
+           because XPath evaluation is made on the distribution detached node and
+            count(ancestor::rdf:RDF//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
+                                      starts-with(@rdf:about,'https://data.vlaanderen.be/')]) = 0
+            is always false().
+            -->
+            <action type="add" or="license" in="dcat:Distribution"
+                    if="count(dcat:Distribution/dct:license) = 0">
               <template>
-                <snippets name="licenses"/>
+                <snippets name="licenses-vl"/>
               </template>
             </action>
+
 
             <section xpath="dcat:Distribution/dct:rights"/>
             <action type="add" or="rights" in="dcat:Distribution">
@@ -954,9 +988,20 @@
 
         <section name="serviceInformation">
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license"/>
-          <action type="add" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <action type="add" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                       if="(count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license) = 0
+                            and count(rdf:RDF//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
+                                      starts-with(@rdf:about,'https://data.vlaanderen.be/')]) = 0)">
             <template>
               <snippets name="licenses"/>
+            </template>
+          </action>
+          <action type="add" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                       if="(count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license) = 0
+                            and count(rdf:RDF//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
+                                starts-with(@rdf:about,'https://data.vlaanderen.be/')]) > 0)">
+            <template>
+              <snippets name="licenses-vl"/>
             </template>
           </action>
         </section>
@@ -1045,9 +1090,11 @@
           class="gn-label-above-input gn-indent-bluescale"
           displayTooltips="true"
           displayTooltipsMode="onhover"
-          displayIfRecord="count(//dcat:CatalogRecord/dct:conformsTo) > 0"
+          displayIfRecord="count(//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
+                                                              starts-with(@rdf:about,'https://data.vlaanderen.be/')]) > 0"
           hideTimeInCalendar="true">
-      <tab id="vl-tab-dataset" default="true" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
+      <tab id="vl-tab-dataset" default="true" mode="flat"
+              displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
         <section name="vl-section-metadatadcat">
           <!-- MAGDA-categorie-->
           <field
@@ -1148,9 +1195,9 @@
         </section>
       </tab>
 
-      <tab id="vl-tab-service" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
-        <!-- TODO the standard is referred to as https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22, and sometimes as https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat. How to deal with these variants? -->
-        <section name="vl-section-metadatadcat" displayIfRecord="count(//dct:conformsTo/dct:Standard[starts-with(@rdf:about,'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat')]) > 0">
+      <tab id="vl-tab-service" default="true" mode="flat"
+              displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
+        <section name="vl-section-metadatadcat">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:MAGDA-categorie"/>
           <action type="add"
                   or="MAGDA-categorie"
