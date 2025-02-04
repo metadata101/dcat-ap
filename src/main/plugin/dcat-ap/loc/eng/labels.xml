@@ -676,7 +676,7 @@
   </element>
   <element name="schema:startDate">
     <label>Start date/time</label>
-    <description>The start of the operiod</description>
+    <description>The start of the period</description>
     <btnLabel>Start date/time</btnLabel>
   </element>
   <element name="skos:Concept">

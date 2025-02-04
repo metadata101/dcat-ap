@@ -668,7 +668,7 @@
   </string-array>
   <string-array name="schema:startDate">
     <item>Start date/time</item>
-    <item>The start of the operiod</item>
+    <item>The start of the period</item>
     <item>Start date/time</item>
   </string-array>
   <string-array name="skos:Concept">
