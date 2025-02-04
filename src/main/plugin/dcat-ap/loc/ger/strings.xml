@@ -109,16 +109,23 @@
 
   <mobility-section>Mobility</mobility-section>
   <mobility-tab>Mobility</mobility-tab>
-  <mobility-view>Mobility</mobility-view>
+  <mobility-view> > Mobility</mobility-view>
 
   <metadatadcat-dataservice-section>Data Service</metadatadcat-dataservice-section>
   <metadatadcat-dataservice-tab>Metadata DCAT</metadatadcat-dataservice-tab>
   <metadatadcat-dataset-section>Datensatz</metadatadcat-dataset-section>
   <metadatadcat-dataset-tab>Metadata DCAT</metadatadcat-dataset-tab>
-  <metadatadcat-view>Metadata DCAT</metadatadcat-view>
+  <metadatadcat-view> > Metadata DCAT</metadatadcat-view>
 
   <tabAdvancedService>Service</tabAdvancedService>
   <tabAdvancedRecord>Record</tabAdvancedRecord>
   <tabAdvancedDataset>Datensatz</tabAdvancedDataset>
   <tabAdvancedDistribution>Verteilung</tabAdvancedDistribution>
+
+  <vl-view> > Vlaanderen</vl-view>
+  <vl-tab-service>Service</vl-tab-service>
+  <vl-tab-dataset>Dataset</vl-tab-dataset>
+  <vl-tab-distribution>Distributies</vl-tab-distribution>
+  <vl-section-metadatadcat>Metadata DCAT</vl-section-metadatadcat>
+  <vl-section-dcatapvl>DCAT-AP Vlaanderen</vl-section-dcatapvl>
 </strings>
