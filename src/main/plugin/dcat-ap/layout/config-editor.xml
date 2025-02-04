@@ -782,7 +782,11 @@
         </section>
       </tab>
 
-      <tab id="tabDistribution" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
+      <tab id="tabDistribution" mode="flat"
+           displayIfRecord="(count(//dcat:dataset) > 0
+                                        and count(//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
+                                                              starts-with(@rdf:about,'https://data.vlaanderen.be/')]) = 0)"
+           hideIfNotDisplayed="true">
         <section>
           <section name="distribution"
                    forEach="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution"
@@ -796,13 +800,69 @@
 
             <section xpath="dcat:Distribution/dct:license"/>
 
-            <!-- VL Specific.
-           We should add conditional support to forEach section. Currently it is not supported
-           because XPath evaluation is made on the distribution detached node and
-            count(ancestor::rdf:RDF//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
-                                      starts-with(@rdf:about,'https://data.vlaanderen.be/')]) = 0
-            is always false().
-            -->
+            <action type="add" or="license" in="dcat:Distribution"
+                    if="count(dcat:Distribution/dct:license) = 0">
+              <template>
+                <snippets name="licenses"/>
+              </template>
+            </action>
+
+
+            <section xpath="dcat:Distribution/dct:rights"/>
+            <action type="add" or="rights" in="dcat:Distribution">
+              <template>
+                <snippet>
+                  <dct:rights>
+                    <dct:RightsStatement>
+                      <dct:title xml:lang=""/>
+                      <dct:description xml:lang=""/>
+                    </dct:RightsStatement>
+                  </dct:rights>
+                </snippet>
+              </template>
+            </action>
+
+            <section xpath="dcat:Distribution/dct:conformsTo"/>
+            <action type="add" or="conformsTo" in="dcat:Distribution">
+              <template>
+                <snippets name="protocols"/>
+              </template>
+            </action>
+          </section>
+          <action type="add" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dcat:distribution>
+                  <dcat:Distribution>
+                    <dct:title xml:lang=""/>
+                    <dct:description xml:lang=""/>
+                    <dcat:accessURL rdf:resource=""/>
+                  </dcat:Distribution>
+                </dcat:distribution>
+              </snippet>
+            </template>
+          </action>
+        </section>
+      </tab>
+
+      <tab id="vl-tab-distribution" mode="flat"
+           displayIfRecord="(count(//dcat:dataset) > 0
+                                        and count(//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
+                                                              starts-with(@rdf:about,'https://data.vlaanderen.be/')]) > 0)"
+           hideIfNotDisplayed="true">
+        <section>
+          <section name="distribution"
+                   forEach="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution"
+                   del=".">
+            <field xpath="dcat:Distribution/dct:title" or="title" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:description" or="description" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dcat:accessURL" or="accessURL" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:format" or="format" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dcat:mediaType" or="mediaType" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:language" or="language" in="dcat:Distribution"/>
+
+            <section xpath="dcat:Distribution/dct:license"/>
+
             <action type="add" or="license" in="dcat:Distribution"
                     if="count(dcat:Distribution/dct:license) = 0">
               <template>
@@ -1314,59 +1374,6 @@
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme"
                  or="theme"
                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-        </section>
-      </tab>
-
-      <tab id="vl-tab-distribution" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
-        <section>
-          <section name="distribution"
-                   forEach="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution"
-                   del=".">
-            <field xpath="dcat:Distribution/dct:title" or="title" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dct:description" or="description" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dcat:accessURL" or="accessURL" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dct:format" or="format" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dcat:mediaType" or="mediaType" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dct:language" or="language" in="dcat:Distribution"/>
-            <section xpath="dcat:Distribution/dct:license"/>
-            <action type="add" or="license" in="dcat:Distribution">
-              <template>
-                <snippets name="licenses-vl"/>
-              </template>
-            </action>
-            <section xpath="dcat:Distribution/dct:rights"/>
-            <action type="add" or="rights" in="dcat:Distribution">
-              <template>
-                <snippet>
-                  <dct:rights>
-                    <dct:RightsStatement>
-                      <dct:title xml:lang="nl"/>
-                      <dct:description xml:lang="nl"/>
-                    </dct:RightsStatement>
-                  </dct:rights>
-                </snippet>
-              </template>
-            </action>
-            <section xpath="dcat:Distribution/dct:conformsTo"/>
-            <action type="add" or="conformsTo" in="dcat:Distribution">
-              <template>
-                <snippets name="protocols"/>
-              </template>
-            </action>
-          </section>
-          <action type="add" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dcat:distribution>
-                  <dcat:Distribution>
-                    <dct:title xml:lang="nl"/>
-                    <dct:description xml:lang="nl"/>
-                    <dcat:accessURL rdf:resource=""/>
-                  </dcat:Distribution>
-                </dcat:distribution>
-              </snippet>
-            </template>
-          </action>
         </section>
       </tab>
     </view>
