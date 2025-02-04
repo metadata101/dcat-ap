@@ -1071,6 +1071,7 @@
         <for name="vcard:locality"/>
         <for name="vcard:postal-code"/>
         <for name="vcard:country-name"/>
+        <for name="foaf:Agent/dct:type"/>
         <!-- Extra info -->
         <for name="dct:language"/>
         <for name="dct:conformsTo"/>
