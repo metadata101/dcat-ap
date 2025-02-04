@@ -185,22 +185,28 @@
   </xsl:template>
 
   <xsl:template mode="getOverviews" match="rdf:RDF">
-    <section class="gn-md-side-overview">
-      <h4>
-        <i class="fa fa-fw fa-image"><xsl:comment select="'image'"/></i>
-        <span><xsl:comment select="name()"/>
-          <xsl:value-of select="$schemaStrings/overviews"/>
-        </span>
-      </h4>
+    <xsl:variable name="overviews"
+                  select="//foaf:page/foaf:Document[matches(@rdf:about, '.*(.gif|.png|.jpeg|.jpg)$', 'i')]"
+                  as="node()*"/>
 
-      <xsl:for-each select="//foaf:page/foaf:Document[matches(@rdf:about, '.*(.gif|.png|.jpeg|.jpg)$', 'i')]">
-        <img data-gn-img-modal="md"
-             class="gn-img-thumbnail center-block"
-             alt="{$schemaStrings/overview}"
-             src="{normalize-space(@rdf:about)}"/>
-          <div class="gn-img-thumbnail-caption"><xsl:value-of select="dct:title" /></div>
-      </xsl:for-each>
-    </section>
+    <xsl:if test="$overviews">
+      <section class="gn-md-side-overview">
+        <h4>
+          <i class="fa fa-fw fa-image"><xsl:comment select="'image'"/></i>
+          <span><xsl:comment select="name()"/>
+            <xsl:value-of select="$schemaStrings/overviews"/>
+          </span>
+        </h4>
+
+        <xsl:for-each select="$overviews">
+          <img data-gn-img-modal="md"
+               class="gn-img-thumbnail center-block"
+               alt="{$schemaStrings/overview}"
+               src="{normalize-space(@rdf:about)}"/>
+            <div class="gn-img-thumbnail-caption"><xsl:value-of select="dct:title" /></div>
+        </xsl:for-each>
+      </section>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template mode="render-view" match="field[template]" priority="3">
