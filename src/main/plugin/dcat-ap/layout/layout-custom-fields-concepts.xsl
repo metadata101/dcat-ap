@@ -62,7 +62,7 @@
   <!-- Element not present in current document and using a thesaurus. -->
   <xsl:template mode="mode-dcat-ap"
                         priority="4000"
-                        match="gn:child[not(preceding-sibling::*[1]) or preceding-sibling::*[1]/name() != concat(@prefix, ':', @name)
+                        match="gn:child[(not(preceding-sibling::*[1]) or preceding-sibling::*[1]/name() != concat(@prefix, ':', @name))
                                         and gn-fn-dcat-ap:getThesaurusConfig(concat(@prefix, ':', @name), name(..))]">
     <xsl:variable name="xpath" select="concat('/', name(../..), '/', name(..), '/', concat(@prefix, ':', @name))"/>
     <xsl:variable name="config" select="gn-fn-dcat-ap:getThesaurusConfig(concat(@prefix, ':', @name), name(..), $xpath)"/>
@@ -201,6 +201,7 @@
     <xsl:variable name="config" select="if ($dcatKeywordConfig/*[@name = $name and @parent = $parent])
                          then $dcatKeywordConfig/*[@name = $name and @parent = $parent]
                          else $dcatKeywordConfig/*[@name = $name and not(@parent)]"/>
+
     <xsl:choose>
       <xsl:when test="count($config) = 1">
         <xsl:copy-of select="$config"/>
