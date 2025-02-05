@@ -106,4 +106,8 @@
   <tabAdvancedRecord>Record</tabAdvancedRecord>
   <tabAdvancedDataset>Dataset</tabAdvancedDataset>
   <tabAdvancedDistribution>Distribution</tabAdvancedDistribution>
+  <associatedResources>Associated resources</associatedResources>
+  <providedBy>Provided by</providedBy>
+  <linkToPortal>Access to the catalogue</linkToPortal>
+  <linkToPortal-help>Read here the full details and access to the data.</linkToPortal-help>
 </strings>

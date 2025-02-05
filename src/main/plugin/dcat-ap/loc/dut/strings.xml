@@ -106,4 +106,8 @@
   <tabAdvancedRecord>Record</tabAdvancedRecord>
   <tabAdvancedDataset>Dataset</tabAdvancedDataset>
   <tabAdvancedDistribution>Distributie</tabAdvancedDistribution>
+  <associatedResources>Gerelateerde bronnen</associatedResources>
+  <providedBy>Verzorgd door</providedBy>
+  <linkToPortal>Toegang tot het portaal</linkToPortal>
+  <linkToPortal-help>Lees hier de volle details en krijg toegang tot de data.</linkToPortal-help>
 </strings>

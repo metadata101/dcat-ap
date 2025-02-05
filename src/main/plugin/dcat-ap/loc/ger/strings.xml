@@ -128,4 +128,8 @@
   <vl-tab-distribution>Distributies</vl-tab-distribution>
   <vl-section-metadatadcat>Metadata DCAT</vl-section-metadatadcat>
   <vl-section-dcatapvl>DCAT-AP Vlaanderen</vl-section-dcatapvl>
+  <associatedResources>Associated resources</associatedResources>
+  <providedBy>Provided by</providedBy>
+  <linkToPortal>Access to the catalogue</linkToPortal>
+  <linkToPortal-help>Read here the full details and access to the data.</linkToPortal-help>
 </strings>
