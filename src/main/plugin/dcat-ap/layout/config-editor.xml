@@ -466,6 +466,8 @@
       <name>dcat:temporalResolution</name>
       <name>dcat:startDate</name>
       <name>dcat:endDate</name>
+      <name>schema:startDate</name>
+      <name>schema:endDate</name>
       <name>dcat:servesDataset</name>
       <name>dcat:accessURL</name>
       <name>dcat:downloadURL</name>

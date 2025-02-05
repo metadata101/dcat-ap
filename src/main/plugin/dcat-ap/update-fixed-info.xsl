@@ -159,6 +159,7 @@
   </xsl:template>
 
   <xsl:template match="/root">
+
     <xsl:variable name="updated">
       <xsl:apply-templates select="//rdf:RDF"/>
     </xsl:variable>
@@ -448,8 +449,8 @@
   <xsl:template match="@rdf:about[normalize-space() = '']|@rdf:datatype[normalize-space() = '']"
                 priority="10"/>
 
-  <xsl:template match="dct:format[count(@*|*) = 0]"
-                priority="10"/>
+  <xsl:template match="dct:format[count(@*|*) = 0]|dcat:theme[count(@rdf:*|*) = 0]"
+                priority="100"/>
 
   <!-- Fix value for attribute -->
   <xsl:template match="spdx:checksumValue" priority="10">
