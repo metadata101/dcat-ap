@@ -386,6 +386,11 @@
     <item>Resource URI</item>
     <item>Resource URI</item>
   </string-array>
+  <string-array name="rdf:resource" product="dcatap:applicableLegislation">
+    <item>Applicable legislation</item>
+    <item>Applicable legislation</item>
+    <item>Applicable legislation</item>
+  </string-array>
   <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:accessURL/@rdf:resource">
     <item>Access URL</item>
     <item>Access URL</item>

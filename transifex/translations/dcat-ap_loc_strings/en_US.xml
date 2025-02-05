@@ -117,4 +117,9 @@
     <string name="tabAdvancedRecord">Record</string>
     <string name="tabAdvancedDataset">Dataset</string>
     <string name="tabAdvancedDistribution">Distribution</string>
+
+    <string name="associatedResources">Associated resources</string>
+    <string name="providedBy">Provided by</string>
+    <string name="linkToPortal">Access to the catalogue</string>
+    <string name="linkToPortal-help">Read here the full details and access to the data.</string>
 </resources>
