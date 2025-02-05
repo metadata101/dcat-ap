@@ -235,8 +235,12 @@
   <!-- Render Section... -->
 
   <xsl:template mode="render-view" match="section[@xpath]">
+    <xsl:param name="base" select="$metadata"/>
+
     <xsl:variable name="sectionContent">
-      <xsl:apply-templates mode="render-view" select="@xpath"/>
+      <xsl:apply-templates mode="render-view" select="@xpath">
+        <xsl:with-param name="base" select="$base"/>
+      </xsl:apply-templates>
     </xsl:variable>
     <!-- Hide sections if empty -->
     <xsl:if test="normalize-space($sectionContent)">
@@ -294,7 +298,7 @@
       <xsl:apply-templates mode="render-view" select="section|field"/>
     </xsl:variable>
     <!-- Hide sections if empty -->
-    <xsl:if test="normalize-space($sectionContent) != ''">
+    <xsl:if test="normalize-space($sectionContent)">
       <div id="gn-section-{generate-id()}" class="gn-tab-content">
         <xsl:if test="@name">
           <xsl:variable name="title" select="gn-fn-render:get-schema-strings($schemaStrings, @name)"/>
