@@ -375,6 +375,9 @@
     <description>Access URL</description>
     <btnLabel>Access URL</btnLabel>
   </element>
+  <element name="rdf:resource" context="dcatap:applicableLegislation">
+    <label>Toepasselijke wetgeving</label>
+  </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:downloadURL/@rdf:resource">
     <label>Download URL</label>
     <description>Download URL</description>

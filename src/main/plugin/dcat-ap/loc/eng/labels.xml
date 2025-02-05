@@ -370,6 +370,9 @@
     <description>Resource URI</description>
     <btnLabel>Resource URI</btnLabel>
   </element>
+  <element name="rdf:resource" context="dcatap:applicableLegislation">
+    <label>Applicable legislation</label>
+  </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:accessURL/@rdf:resource">
     <label>Access URL</label>
     <description>Access URL</description>

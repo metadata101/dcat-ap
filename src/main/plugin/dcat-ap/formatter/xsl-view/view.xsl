@@ -35,6 +35,7 @@
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
+                xmlns:dcatap="http://data.europa.eu/r5r/"
                 xmlns:spdx="http://spdx.org/rdf/terms#"
                 xmlns:schema="http://schema.org/"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
@@ -417,7 +418,7 @@
   </xsl:template>
 
   <xsl:template mode="render-field"
-                match="dcat:accessURL|dcat:downloadURL|dcat:landingPage">
+                match="dcat:accessURL|dcat:downloadURL|dcat:landingPage|dcatap:applicableLegislation">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string(@rdf:resource)"/>
     <xsl:if test="normalize-space($stringValue) != ''">
@@ -436,7 +437,8 @@
   <!-- Render grouped concepts by element name -->
   <xsl:template mode="render-field" match="dct:type|dct:accrualPeriodicity|dcat:theme|dct:language|dct:format|dcat:mediaType|
                                            adms:status|mdcat:levensfase|mdcat:ontwikkelingstoestand|dct:accessRights|dcat:compressFormat|
-                                           dcat:packageFormat|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut">
+                                           dcat:packageFormat|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut|
+                                           dcatap:hvdCategory">
     <xsl:param name="xpath"/>
     <xsl:variable name="name" select="name()"/>
     <xsl:if test="not(preceding-sibling::*[name(.) = $name and position()=1])">

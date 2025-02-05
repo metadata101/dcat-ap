@@ -457,6 +457,9 @@
     <description>Tooltip: URI</description>
     <btnLabel>URI</btnLabel>
   </element>
+  <element name="rdf:resource" context="dcatap:applicableLegislation">
+    <label>Applicable legislation</label>
+  </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity/skos:Concept/rdf:type/@rdf:resource">
     <label>rdf class</label>
     <description>Tooltip: rdf class</description>
