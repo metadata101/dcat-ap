@@ -537,6 +537,7 @@
     <xsl:namespace name="dcat" select="'http://www.w3.org/ns/dcat#'"/>
     <xsl:namespace name="schema" select="'http://schema.org/'"/>
     <xsl:namespace name="dc" select="'http://purl.org/dc/elements/1.1/'"/>
+    <xsl:namespace name="dcatap" select="'http://data.europa.eu/r5r/'"/>
     <xsl:namespace name="mdcat" select="'https://data.vlaanderen.be/ns/metadata-dcat#'"/>
     <xsl:namespace name="mobilitydcatap" select="'https://w3id.org/mobilitydcat-ap'"/>
   </xsl:template>
