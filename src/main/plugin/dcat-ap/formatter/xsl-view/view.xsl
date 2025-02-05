@@ -192,8 +192,8 @@
     <xsl:if test="$overviews">
       <section class="gn-md-side-overview">
         <h4>
-          <i class="fa fa-fw fa-image"><xsl:comment select="'image'"/></i>
-          <span><xsl:comment select="name()"/>
+          <i class="fa fa-fw fa-image"></i>
+          <span>
             <xsl:value-of select="$schemaStrings/overviews"/>
           </span>
         </h4>
@@ -265,7 +265,7 @@
         <xsl:if test="normalize-space($rendered) != ''">
           <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
                  class="table table-striped" >
-            <xsl:copy-of select="$rendered"/>&#160;
+            <xsl:copy-of select="$rendered"/>
           </table>
         </xsl:if>
       </xsl:for-each>
@@ -293,7 +293,7 @@
       <xsl:apply-templates mode="render-view" select="section|field"/>
     </xsl:variable>
     <!-- Hide sections if empty -->
-    <xsl:if test="normalize-space($sectionContent)">
+    <xsl:if test="normalize-space($sectionContent) != ''">
       <div id="gn-section-{generate-id()}" class="gn-tab-content">
         <xsl:if test="@name">
           <xsl:variable name="title" select="gn-fn-render:get-schema-strings($schemaStrings, @name)"/>
@@ -303,10 +303,19 @@
             <xsl:value-of select="$title"/>
           </xsl:element>
         </xsl:if>
-        <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
-               class="table table-striped" >
-          <xsl:copy-of select="$sectionContent"/>&#160;
-        </table>
+
+        <xsl:choose>
+          <xsl:when test="$sectionContent/tr">
+            <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
+                   class="table table-striped" >
+              <xsl:copy-of select="$sectionContent"/>
+            </table>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:copy-of select="$sectionContent"/>
+          </xsl:otherwise>
+        </xsl:choose>
+
       </div>
     </xsl:if>
   </xsl:template>
