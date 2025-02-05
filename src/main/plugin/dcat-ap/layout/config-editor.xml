@@ -811,6 +811,36 @@
             </template>
           </action>
         </section>
+        <section name="hvd-view">
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dcatap:hvdCategory"/>
+
+          <action type="add"
+                  or="hvdCategory"
+                  in="/rdf:RDF/dcat:Catalog/(dcat:dataset/dcat:Dataset|dcat:service/dcat:DataService)"
+                  if="count(rdf:RDF/dcat:Catalog/*/*/dcatap:hvdCategory) = 0">
+            <template>
+              <snippet>
+                <dcatap:hvdCategory>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel xml:lang=""></skos:prefLabel>
+                  </skos:Concept>
+                </dcatap:hvdCategory>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dcatap:applicableLegislation"/>
+          <action type="add"
+                  or="applicableLegislation"
+                  in="/rdf:RDF/dcat:Catalog/(dcat:dataset/dcat:Dataset|dcat:service/dcat:DataService)"
+                  if="count(rdf:RDF/dcat:Catalog/*/*/dcatap:applicableLegislation) = 0">
+            <template>
+              <snippet>
+                <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+              </snippet>
+            </template>
+          </action>
+        </section>
 
         <section name="extraInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language"/>
@@ -1265,26 +1295,6 @@
           </action>
         </section>
 
-        <section name="extraInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo"/>
-          <action type="add" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <dct:conformsTo>
-                  <dct:Standard>
-                    <dct:identifier/>
-                    <dct:title xml:lang=""/>
-                    <dct:description xml:lang=""/>
-                  </dct:Standard>
-                </dct:conformsTo>
-              </snippet>
-            </template>
-          </action>
-        </section>
-      </tab>
-
-      <tab id="hvd-view"
-              hideIfNotDisplayed="true">
         <section name="hvd-view">
           <field xpath="/rdf:RDF/dcat:Catalog/*/*/dcatap:hvdCategory"/>
 
@@ -1311,6 +1321,23 @@
             <template>
               <snippet>
                 <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
+        <section name="extraInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo"/>
+          <action type="add" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dct:conformsTo>
+                  <dct:Standard>
+                    <dct:identifier/>
+                    <dct:title xml:lang=""/>
+                    <dct:description xml:lang=""/>
+                  </dct:Standard>
+                </dct:conformsTo>
               </snippet>
             </template>
           </action>
