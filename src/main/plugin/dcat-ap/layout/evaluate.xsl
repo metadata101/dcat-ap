@@ -54,7 +54,10 @@
   <xsl:template name="evaluate-dcat-ap">
     <xsl:param name="base" as="node()"/>
     <xsl:param name="in"/>
-    <xsl:variable name="nodeOrAttribute" select="saxon:evaluate(concat('$p1', if (ends-with($in,'.')) then concat($in,'/text()') else $in), $base)"/>
+
+    <!-- $p2 is the dcat-ap profile -->
+    <xsl:variable name="p2" select="string($metadata//dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about)"/>
+    <xsl:variable name="nodeOrAttribute" select="saxon:evaluate(concat('$p1', if (ends-with($in,'.')) then concat($in,'/text()') else $in), $base, $p2)"/>
 
     <xsl:choose>
       <xsl:when test="$nodeOrAttribute instance of text()+">
