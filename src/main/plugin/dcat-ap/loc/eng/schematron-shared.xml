@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <cardinality.title>Cardinality of #element in #context</cardinality.title>
+  <cardinality.assert>#context/#element should have cardinality #min..#max but there were #nodecount node(s) present.</cardinality.assert>
+  <cardinality.report>#context/#element has cardinality #min..#max. Found node(s): #nodecount.</cardinality.report>
+  <multilingual.cardinality.title>Cardinality of #element in #context per language</multilingual.cardinality.title>
+  <multilingual.cardinality.assert>These elements should be unique per language. The minimum cardinality is #min. You cannot mix occurrences that do not specify a language and occurrences that do.</multilingual.cardinality.assert>
+  <multilingual.cardinality.report>Elements match the expected minimum cardinality of #min.</multilingual.cardinality.report>
+</strings>
