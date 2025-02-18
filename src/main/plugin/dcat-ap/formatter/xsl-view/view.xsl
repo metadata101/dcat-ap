@@ -309,21 +309,19 @@
           </xsl:element>
         </xsl:if>
 
-        <xsl:choose>
-          <xsl:when test="$sectionContent/tr">
-            <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
-                   class="table table-striped" >
-              <xsl:copy-of select="$sectionContent"/>
-            </table>
-          </xsl:when>
-          <xsl:otherwise>
-            <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
-                   class="table table-striped" >
-              <xsl:copy-of select="$sectionContent"/>
-            </table>
-          </xsl:otherwise>
-        </xsl:choose>
-
+        <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
+               class="table table-striped" >
+          <xsl:for-each select="$sectionContent/*">
+            <xsl:choose>
+              <xsl:when test="name() = 'div'">
+                <xsl:copy-of select="tr"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:copy-of select="."/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:for-each>
+        </table>
       </div>
     </xsl:if>
   </xsl:template>
