@@ -77,6 +77,8 @@
     <xsl:param name="base" as="node()"/>
     <xsl:param name="in"/>
 
-    <xsl:value-of select="saxon:evaluate(concat('$p1', $in), $base)"/>
+    <!-- $p2 is the dcat-ap profile -->
+    <xsl:variable name="p2" select="string($metadata//dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about)"/>
+    <xsl:value-of select="saxon:evaluate(concat('$p1', $in), $base, $p2)"/>
   </xsl:template>
 </xsl:stylesheet>

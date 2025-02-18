@@ -592,8 +592,7 @@
         </section>
 
         <section name="vl-section-metadatadcat"
-                       displayIfRecord="count(//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
-                                                                    starts-with(@rdf:about,'https://data.vlaanderen.be/')]) > 0">
+                       displayIfRecord="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
           <!-- MAGDA-categorie-->
           <field
             xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:MAGDA-categorie"/>
@@ -758,8 +757,7 @@
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial"/>
 
           <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                       if="count(rdf:RDF//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
-                                not(starts-with(@rdf:about,'https://data.vlaanderen.be/'))]) > 0">
+                       if="not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
             <template>
               <snippet>
                   <dct:spatial>
@@ -777,8 +775,7 @@
           </action>
 
           <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                       if="count(rdf:RDF//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
-                                starts-with(@rdf:about,'https://data.vlaanderen.be/')]) > 0">
+                       if="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
             <template>
               <snippet>
                 <dct:spatial>
@@ -880,9 +877,7 @@
       </tab>
 
       <tab id="tabDistribution" mode="flat"
-           displayIfRecord="(count(//dcat:dataset) > 0
-                                        and count(//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
-                                                              starts-with(@rdf:about,'https://data.vlaanderen.be/')]) = 0)"
+           displayIfRecord="count(//dcat:dataset) > 0"
            hideIfNotDisplayed="true">
         <section>
           <section name="distribution"
@@ -898,70 +893,15 @@
             <section xpath="dcat:Distribution/dct:license"/>
 
             <action type="add" or="license" in="dcat:Distribution"
-                    if="count(dcat:Distribution/dct:license) = 0">
+                    if="count(dcat:Distribution/dct:license) = 0 and
+                        not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
               <template>
                 <snippets name="licenses"/>
               </template>
             </action>
-
-
-            <section xpath="dcat:Distribution/dct:rights"/>
-            <action type="add" or="rights" in="dcat:Distribution">
-              <template>
-                <snippet>
-                  <dct:rights>
-                    <dct:RightsStatement>
-                      <dct:title xml:lang=""/>
-                      <dct:description xml:lang=""/>
-                    </dct:RightsStatement>
-                  </dct:rights>
-                </snippet>
-              </template>
-            </action>
-
-            <section xpath="dcat:Distribution/dct:conformsTo"/>
-            <action type="add" or="conformsTo" in="dcat:Distribution">
-              <template>
-                <snippets name="protocols"/>
-              </template>
-            </action>
-          </section>
-          <action type="add" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dcat:distribution>
-                  <dcat:Distribution>
-                    <dct:title xml:lang=""/>
-                    <dct:description xml:lang=""/>
-                    <dcat:accessURL rdf:resource=""/>
-                  </dcat:Distribution>
-                </dcat:distribution>
-              </snippet>
-            </template>
-          </action>
-        </section>
-      </tab>
-
-      <tab id="vl-tab-distribution" mode="flat"
-           displayIfRecord="(count(//dcat:dataset) > 0
-                                        and count(//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
-                                                              starts-with(@rdf:about,'https://data.vlaanderen.be/')]) > 0)"
-           hideIfNotDisplayed="true">
-        <section>
-          <section name="distribution"
-                   forEach="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution"
-                   del=".">
-            <field xpath="dcat:Distribution/dct:title" or="title" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dct:description" or="description" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dcat:accessURL" or="accessURL" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dct:format" or="format" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dcat:mediaType" or="mediaType" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dct:language" or="language" in="dcat:Distribution"/>
-
-            <section xpath="dcat:Distribution/dct:license"/>
-
             <action type="add" or="license" in="dcat:Distribution"
-                    if="count(dcat:Distribution/dct:license) = 0">
+                    if="count(dcat:Distribution/dct:license) = 0 and
+                        $p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
               <template>
                 <snippets name="licenses-vl"/>
               </template>
@@ -983,7 +923,22 @@
             </action>
 
             <section xpath="dcat:Distribution/dct:conformsTo"/>
-            <action type="add" or="conformsTo" in="dcat:Distribution">
+            <action type="add" or="conformsTo" in="dcat:Distribution"
+                    if="not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
+              <template>
+                <snippet>
+                  <dct:conformsTo>
+                    <dct:Standard rdf:about="">
+                      <dct:identifier/>
+                      <dct:title xml:lang=""/>
+                      <dct:description xml:lang=""/>
+                    </dct:Standard>
+                  </dct:conformsTo>
+                </snippet>
+              </template>
+            </action>
+            <action type="add" or="conformsTo" in="dcat:Distribution"
+                    if="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
               <template>
                 <snippets name="protocols-vl"/>
               </template>
@@ -1087,8 +1042,7 @@
         </section>
 
         <section name="vl-section-metadatadcat"
-                       displayIfRecord="count(//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
-                                                                    starts-with(@rdf:about,'https://data.vlaanderen.be/')]) > 0">
+                       displayIfRecord="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:MAGDA-categorie"/>
           <action type="add"
                   or="MAGDA-categorie"
@@ -1278,17 +1232,15 @@
         <section name="serviceInformation">
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license"/>
           <action type="add" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
-                       if="(count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license) = 0
-                            and count(rdf:RDF//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
-                                      starts-with(@rdf:about,'https://data.vlaanderen.be/')]) = 0)">
+                       if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license) = 0
+                            and not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
             <template>
               <snippets name="licenses"/>
             </template>
           </action>
           <action type="add" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
-                       if="(count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license) = 0
-                            and count(rdf:RDF//dcat:CatalogRecord/dct:conformsTo/dct:Standard[
-                                starts-with(@rdf:about,'https://data.vlaanderen.be/')]) > 0)">
+                       if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license) = 0 and
+                           $p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
             <template>
               <snippets name="licenses-vl"/>
             </template>
