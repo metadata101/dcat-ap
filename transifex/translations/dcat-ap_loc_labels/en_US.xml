@@ -990,6 +990,8 @@
   </string-array>
   <string-array name="dcatap:hvdCategory">
     <item>HVD Category</item>
+    <item>The HVD category to which this resource belongs.</item>
+    <item>HVD Category</item>
   </string-array>
   <string-array name="dcatap:applicableLegislation" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <item>Applicable legislation</item>

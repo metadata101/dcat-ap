@@ -56,7 +56,7 @@
       Another approach could be XslUtil.getDefaultLangCode but return "eng"
       Or add another method based on bean DefaultLanguage.
       -->
-      <xsl:otherwise>nl</xsl:otherwise>
+      <xsl:otherwise>en</xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
