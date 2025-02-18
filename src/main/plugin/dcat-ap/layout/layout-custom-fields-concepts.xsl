@@ -47,7 +47,7 @@
   <xsl:template mode="mode-dcat-ap"
                          priority="4000"
                         match="*[(skos:Concept or @rdf:resource) and gn-fn-dcat-ap:getThesaurusConfig(name(), name(..))]">
-    <xsl:if test="preceding-sibling::*[1]/name() != current()/name()">
+    <xsl:if test="not(preceding-sibling::*[1]) or preceding-sibling::*[1]/name() != current()/name()">
       <xsl:variable name="xpath" select="concat('/', name(../..), '/', name(..), '/', name())"/>
 
       <xsl:variable name="config" select="gn-fn-dcat-ap:getThesaurusConfig(name(), name(..), $xpath)"/>
@@ -62,7 +62,7 @@
   <!-- Element not present in current document and using a thesaurus. -->
   <xsl:template mode="mode-dcat-ap"
                         priority="4000"
-                        match="gn:child[preceding-sibling::*[1]/name() != concat(@prefix, ':', @name)
+                        match="gn:child[(not(preceding-sibling::*[1]) or preceding-sibling::*[1]/name() != concat(@prefix, ':', @name))
                                         and gn-fn-dcat-ap:getThesaurusConfig(concat(@prefix, ':', @name), name(..))]">
     <xsl:variable name="xpath" select="concat('/', name(../..), '/', name(..), '/', concat(@prefix, ':', @name))"/>
     <xsl:variable name="config" select="gn-fn-dcat-ap:getThesaurusConfig(concat(@prefix, ':', @name), name(..), $xpath)"/>
@@ -87,6 +87,15 @@
     </xsl:message>
   </xsl:template>
 
+  <xsl:template mode="mode-dcat-ap"
+                priority="4000"
+                match="gn:child[preceding-sibling::*[1]/name() = concat(@prefix, ':', @name)
+                                        and gn-fn-dcat-ap:getThesaurusConfig(concat(@prefix, ':', @name), name(..))]">
+    <!-- Do not create a default add button for all fields using a thesaurus
+    and which are already defined in the current record.
+    The thesaurus picker takes care of adding one or more keywords for that field. -->
+  </xsl:template>
+
   <xsl:template name="thesaurus-picker-list">
     <xsl:param name="config" as="node()"/>
     <xsl:param name="ref" as="xs:string"/>
@@ -98,10 +107,17 @@
           <xsl:when test="$config/useReference = 'true' and $keywords/@rdf:resource">
             <xsl:for-each select="$keywords">
               <xsl:variable name="v" select="replace(java:getKeywordValueByUri(@rdf:resource, $config/thesaurus, $lang), ',', ',,')"/>
-              <xsl:if test="string($v)">
-                <xsl:value-of select="$v"/>
-                <xsl:if test="position() != last()">,</xsl:if>
-              </xsl:if>
+              <xsl:variable name="vfallback" select="replace(java:getKeywordValueByUri(@rdf:resource, $config/thesaurus, 'eng'), ',', ',,')"/>
+              <xsl:choose>
+                <xsl:when test="$v">
+                  <xsl:value-of select="$v"/>
+                  <xsl:if test="position() != last()">,</xsl:if>
+                </xsl:when>
+                <xsl:when test="$vfallback">
+                  <xsl:value-of select="$vfallback"/>
+                  <xsl:if test="position() != last()">,</xsl:if>
+                </xsl:when>
+              </xsl:choose>
             </xsl:for-each>
           </xsl:when>
           <xsl:when test="$keywords//(skos:prefLabel[text() != ''])[1]">
@@ -185,6 +201,7 @@
     <xsl:variable name="config" select="if ($dcatKeywordConfig/*[@name = $name and @parent = $parent])
                          then $dcatKeywordConfig/*[@name = $name and @parent = $parent]
                          else $dcatKeywordConfig/*[@name = $name and not(@parent)]"/>
+
     <xsl:choose>
       <xsl:when test="count($config) = 1">
         <xsl:copy-of select="$config"/>

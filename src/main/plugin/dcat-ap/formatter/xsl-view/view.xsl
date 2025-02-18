@@ -35,6 +35,7 @@
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
+                xmlns:dcatap="http://data.europa.eu/r5r/"
                 xmlns:spdx="http://spdx.org/rdf/terms#"
                 xmlns:schema="http://schema.org/"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
@@ -185,22 +186,28 @@
   </xsl:template>
 
   <xsl:template mode="getOverviews" match="rdf:RDF">
-    <section class="gn-md-side-overview">
-      <h4>
-        <i class="fa fa-fw fa-image"><xsl:comment select="'image'"/></i>
-        <span><xsl:comment select="name()"/>
-          <xsl:value-of select="$schemaStrings/overviews"/>
-        </span>
-      </h4>
+    <xsl:variable name="overviews"
+                  select="//foaf:page/foaf:Document[matches(@rdf:about, '.*(.gif|.png|.jpeg|.jpg)$', 'i')]"
+                  as="node()*"/>
 
-      <xsl:for-each select="//foaf:page/foaf:Document[matches(@rdf:about, '.*(.gif|.png|.jpeg|.jpg)$', 'i')]">
-        <img data-gn-img-modal="md"
-             class="gn-img-thumbnail center-block"
-             alt="{$schemaStrings/overview}"
-             src="{normalize-space(@rdf:about)}"/>
-          <div class="gn-img-thumbnail-caption"><xsl:value-of select="dct:title" /></div>
-      </xsl:for-each>
-    </section>
+    <xsl:if test="$overviews">
+      <section class="gn-md-side-overview">
+        <h4>
+          <i class="fa fa-fw fa-image"></i>
+          <span>
+            <xsl:value-of select="$schemaStrings/overviews"/>
+          </span>
+        </h4>
+
+        <xsl:for-each select="$overviews">
+          <img data-gn-img-modal="md"
+               class="gn-img-thumbnail center-block"
+               alt="{$schemaStrings/overview}"
+               src="{normalize-space(@rdf:about)}"/>
+            <div class="gn-img-thumbnail-caption"><xsl:value-of select="dct:title" /></div>
+        </xsl:for-each>
+      </section>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template mode="render-view" match="field[template]" priority="3">
@@ -228,8 +235,12 @@
   <!-- Render Section... -->
 
   <xsl:template mode="render-view" match="section[@xpath]">
+    <xsl:param name="base" select="$metadata"/>
+
     <xsl:variable name="sectionContent">
-      <xsl:apply-templates mode="render-view" select="@xpath"/>
+      <xsl:apply-templates mode="render-view" select="@xpath">
+        <xsl:with-param name="base" select="$base"/>
+      </xsl:apply-templates>
     </xsl:variable>
     <!-- Hide sections if empty -->
     <xsl:if test="normalize-space($sectionContent)">
@@ -259,7 +270,7 @@
         <xsl:if test="normalize-space($rendered) != ''">
           <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
                  class="table table-striped" >
-            <xsl:copy-of select="$rendered"/>&#160;
+            <xsl:copy-of select="$rendered"/>
           </table>
         </xsl:if>
       </xsl:for-each>
@@ -297,9 +308,19 @@
             <xsl:value-of select="$title"/>
           </xsl:element>
         </xsl:if>
+
         <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
                class="table table-striped" >
-          <xsl:copy-of select="$sectionContent"/>&#160;
+          <xsl:for-each select="$sectionContent/*">
+            <xsl:choose>
+              <xsl:when test="name() = 'div'">
+                <xsl:copy-of select="tr"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:copy-of select="."/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:for-each>
         </table>
       </div>
     </xsl:if>
@@ -402,7 +423,7 @@
   </xsl:template>
 
   <xsl:template mode="render-field"
-                match="dcat:accessURL|dcat:downloadURL|dcat:landingPage">
+                match="dcat:accessURL|dcat:downloadURL|dcat:landingPage|dcatap:applicableLegislation">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string(@rdf:resource)"/>
     <xsl:if test="normalize-space($stringValue) != ''">
@@ -421,7 +442,8 @@
   <!-- Render grouped concepts by element name -->
   <xsl:template mode="render-field" match="dct:type|dct:accrualPeriodicity|dcat:theme|dct:language|dct:format|dcat:mediaType|
                                            adms:status|mdcat:levensfase|mdcat:ontwikkelingstoestand|dct:accessRights|dcat:compressFormat|
-                                           dcat:packageFormat|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut">
+                                           dcat:packageFormat|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut|
+                                           dcatap:hvdCategory">
     <xsl:param name="xpath"/>
     <xsl:variable name="name" select="name()"/>
     <xsl:if test="not(preceding-sibling::*[name(.) = $name and position()=1])">

@@ -52,7 +52,11 @@
       <xsl:when test="string-length($languageCode) = 2">
         <xsl:value-of select="$languageCode"/>
       </xsl:when>
-      <xsl:otherwise></xsl:otherwise>
+      <!-- VL specific / Fallback when CatalogRecord does not declare any language
+      Another approach could be XslUtil.getDefaultLangCode but return "eng"
+      Or add another method based on bean DefaultLanguage.
+      -->
+      <xsl:otherwise>en</xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 

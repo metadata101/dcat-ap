@@ -159,6 +159,7 @@
   </xsl:template>
 
   <xsl:template match="/root">
+
     <xsl:variable name="updated">
       <xsl:apply-templates select="//rdf:RDF"/>
     </xsl:variable>
@@ -321,20 +322,19 @@
      </xsl:copy>
   </xsl:template>
 
-  <!-- Ensure Distribution element ordering -->
-  <xsl:template match="dcat:Distribution[name(..)='dcat:distribution']" priority="10">
+  <!-- Ensure Distribution has rdf:about and dct:identifier -->
+  <xsl:template match="dcat:Distribution[name(..)='dcat:distribution'][count(dct:identifier[normalize-space() != '']) = 0 or normalize-space(@rdf:about) = '']" priority="10">
     <dcat:Distribution>
       <xsl:apply-templates select="@*"/>
-      <xsl:if test="count(dct:identifier[normalize-space() != '']) = 0 or normalize-space(@rdf:about) = ''">
-        <xsl:variable name="distroUUID" select="uuid:toString(uuid:randomUUID())"/>
-        <xsl:if test="normalize-space(@rdf:about) = ''">
-          <xsl:attribute name="rdf:about" select="concat(/root/env/nodeURL, 'resources/distributions/', $distroUUID)"/>
-        </xsl:if>
-        <xsl:if test="count(dct:identifier[normalize-space() != '']) = 0">
-          <dct:identifier>
-            <xsl:value-of select="$distroUUID"/>
-          </dct:identifier>
-        </xsl:if>
+
+      <xsl:variable name="distroUUID" select="uuid:randomUUID()"/>
+      <xsl:if test="normalize-space(@rdf:about) = ''">
+        <xsl:attribute name="rdf:about" select="concat(/root/env/nodeURL, 'resources/distributions/', $distroUUID)"/>
+      </xsl:if>
+      <xsl:if test="count(dct:identifier[normalize-space() != '']) = 0">
+        <dct:identifier>
+          <xsl:value-of select="$distroUUID"/>
+        </dct:identifier>
       </xsl:if>
 
       <xsl:apply-templates select="* except dct:identifier"/>
@@ -449,6 +449,9 @@
   <xsl:template match="@rdf:about[normalize-space() = '']|@rdf:datatype[normalize-space() = '']"
                 priority="10"/>
 
+  <xsl:template match="dct:format[count(@*|*) = 0]|dcat:theme[count(@rdf:*|*) = 0]"
+                priority="100"/>
+
   <!-- Fix value for attribute -->
   <xsl:template match="spdx:checksumValue" priority="10">
     <xsl:copy copy-namespaces="no">
@@ -474,6 +477,7 @@
   <xsl:template match="dct:LicenseDocument" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*|*[name() != 'dct:identifier']"/>
+
       <xsl:element name="dct:identifier">
         <xsl:value-of select="@rdf:about"/>
       </xsl:element>
@@ -533,6 +537,7 @@
     <xsl:namespace name="dcat" select="'http://www.w3.org/ns/dcat#'"/>
     <xsl:namespace name="schema" select="'http://schema.org/'"/>
     <xsl:namespace name="dc" select="'http://purl.org/dc/elements/1.1/'"/>
+    <xsl:namespace name="dcatap" select="'http://data.europa.eu/r5r/'"/>
     <xsl:namespace name="mdcat" select="'https://data.vlaanderen.be/ns/metadata-dcat#'"/>
     <xsl:namespace name="mobilitydcatap" select="'https://w3id.org/mobilitydcat-ap'"/>
   </xsl:template>

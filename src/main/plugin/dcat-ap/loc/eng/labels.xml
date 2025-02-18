@@ -1,28 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-  ~ Copyright (C) 2001-2016 Food and Agriculture Organization of the
-  ~ United Nations (FAO-UN), United Nations World Food Programme (WFP)
-  ~ and United Nations Environment Programme (UNEP)
-  ~
-  ~ This program is free software; you can redistribute it and/or modify
-  ~ it under the terms of the GNU General Public License as published by
-  ~ the Free Software Foundation; either version 2 of the License, or (at
-  ~ your option) any later version.
-  ~
-  ~ This program is distributed in the hope that it will be useful, but
-  ~ WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-  ~ General Public License for more details.
-  ~
-  ~ You should have received a copy of the GNU General Public License
-  ~ along with this program; if not, write to the Free Software
-  ~ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
-  ~
-  ~ Contact: Jeroen Ticheler - FAO - Viale delle Terme di Caracalla 2,
-  ~ Rome - Italy. email: geonetwork@osgeo.org
-  -->
-
 <labels xmlns:dct="http://purl.org/dc/terms/" xmlns:spdx="http://spdx.org/rdf/terms#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:adms="http://www.w3.org/ns/adms#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:locn="http://www.w3.org/ns/locn#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:schema="http://schema.org/">
   <element name="adms:Identifier">
     <label>Other identifier</label>
@@ -394,6 +370,11 @@
     <description>Resource URI</description>
     <btnLabel>Resource URI</btnLabel>
   </element>
+  <element name="rdf:resource" context="dcatap:applicableLegislation">
+    <label>Applicable legislation</label>
+    <description>Applicable legislation</description>
+    <btnLabel>Applicable legislation</btnLabel>
+  </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:accessURL/@rdf:resource">
     <label>Access URL</label>
     <description>Access URL</description>
@@ -676,7 +657,7 @@
   </element>
   <element name="schema:startDate">
     <label>Start date/time</label>
-    <description>The start of the operiod</description>
+    <description>The start of the period</description>
     <btnLabel>Start date/time</btnLabel>
   </element>
   <element name="skos:Concept">
@@ -949,33 +930,36 @@
     <description>Language</description>
     <btnLabel>Language</btnLabel>
   </element>
-
   <element name="mobilitydcatap:mobilityTheme">
     <label>Mobility theme</label>
     <description>This property refers to the mobility-related theme (i.e., a specific subject, category, or type) of the delivered content.
       A dataset may be associated with multiple themes. A theme is important for data seekers who are interested in a particular type of data content.</description>
+    <btnLabel>Mobility theme</btnLabel>
   </element>
   <element name="mobilitydcatap:transportMode">
     <label>Transport mode</label>
     <description>This property describes the transport mode that is covered by the delivered content. Data can be valid for more than one mode, so a multiple choice should be applied.</description>
+    <btnLabel>Transport mode</btnLabel>
   </element>
   <element name="mobilitydcatap:networkCoverage">
     <label>Network coverage</label>
     <description>This property describes the part of the transport network that is covered by the delivered content. For road traffic, the property SHOULD refer to the network classification for which the data is provided. As a minimum, an international or higher-level classification, e.g., via functional road classes, is recommended to allow data search across different countries. In addition, national classifications are allowed.
       For other transport modes, the property is meant to refer to the physical infrastructure which is used by the services covered by the data.
       For all modes, the property SHOULD also indicate if the data content relates to the EU’s trans-European transport network [EU-TEN-T].</description>
+    <btnLabel>Network coverage</btnLabel>
   </element>
   <element name="mobilitydcatap:georeferencingMethod">
     <label>Georeferencing method</label>
     <description>This property SHOULD be used to specify the georeferencing method used in the dataset.</description>
+    <btnLabel>Georeferencing method</btnLabel>
   </element>
   <element name="mobilitydcatap:intendedInformationService">
     <label>Intended information service</label>
     <description>This property MAY describe predefined information services, which the data content is intended to support.
       Such services MAY be, e.g., information services for multimodal mobility, as specified by EC Delegated Regulation 2017/1926 [EC-MMTIS-DR].
       Examples of such services include “location search”, which is based on a datasets with address identifiers, or “trip plan computation”, which is based on datasets about a road network.</description>
+    <btnLabel>Intended information service</btnLabel>
   </element>
-
   <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>HVD Category</label>
     <description>The HVD category to which this Dataset belongs.</description>
@@ -986,17 +970,26 @@
     <description>The HVD category to which this Data Service belongs.</description>
     <btnLabel>HVD Category</btnLabel>
   </element>
+  <element name="dcatap:hvdCategory">
+    <label>HVD Category</label>
+    <description/>
+    <btnLabel/>
+  </element>
   <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>Applicable legislation</label>
     <description>The legislation that mandates the creation or management of the Dataset.</description>
-    <btnLabel>applicable legislation</btnLabel>
+    <btnLabel>Applicable legislation</btnLabel>
   </element>
   <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
     <label>Applicable legislation</label>
     <description>The legislation that mandates the creation or management of the Data Service.</description>
-    <btnLabel>applicable legislation</btnLabel>
+    <btnLabel>Applicable legislation</btnLabel>
   </element>
-
+  <element name="dcatap:applicableLegislation">
+    <label>Applicable legislation</label>
+    <description>The legislation that mandates the creation or management of the resource.</description>
+    <btnLabel>Applicable legislation</btnLabel>
+  </element>
   <element name="mdcat:statuut">
     <label>Statute</label>
     <description>Tooltip: Statute</description>
