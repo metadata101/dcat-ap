@@ -31,13 +31,13 @@
         max="1"
         labelKey="dcat.addType"/>
     </for>
-    <for name="dcat:theme" use="thesaurus-list-picker">
-      <directiveAttributes
-        thesaurus="external.theme.datatheme"
-        xpath="/dcat:theme"
-        max=""
-        labelKey="dcat.addThemes"/>
-    </for>
+    <!-- <for name="dcat:theme" use="thesaurus-list-picker"> -->
+    <!--   <directiveAttributes -->
+    <!--     thesaurus="external.theme.datatheme" -->
+    <!--     xpath="/dcat:theme" -->
+    <!--     max="" -->
+    <!--     labelKey="dcat.addThemes"/> -->
+    <!-- </for> -->
     <for name="dct:accessRights" xpath="dcat:Dataset" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.access-right"
@@ -453,6 +453,7 @@
     <name>dct:creator</name>
     <name>spdx:checksum</name>
     <name>spdx:Checksum</name>
+    <name>dcat:theme</name>
   </fieldsWithFieldset>
 
   <multilingualFields>
@@ -499,6 +500,7 @@
       <name>vcard:postal-code</name>
       <name>vcard:fn</name>
       <name>skos:inScheme</name>
+      <name>skos:notation</name>
     </exclude>
   </multilingualFields>
 
@@ -586,6 +588,20 @@
                  or="keyword"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
 
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme[not(skos:Concept/skos:inScheme/@rdf:resource = ('http://vocab.belgif.be/auth/datatheme'))]"/>
+          <action type="add" or="theme" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dcat:theme>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel xml:lang=""/>
+                    <skos:inScheme rdf:resource=""/>
+                  </skos:Concept>
+                </dcat:theme>
+              </snippet>
+            </template>
+          </action>
+
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier"
                  or="identifier"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
@@ -632,15 +648,10 @@
             </template>
           </action>
 
-          <!-- Theme: vocab.belgif.be/auth/datatheme -->
-          <!-- TODO: custom label to indicate this is about themes from the specific thesaurus? -->
-          <!--          <dcat:theme>-->
-          <!--            <skos:Concept rdf:about="http://vocab.belgif.be/auth/datatheme/CULT">-->
-          <!--              <skos:prefLabel xml:lang="nl">Cultuur en sport</skos:prefLabel>-->
-          <!--              <skos:prefLabel xml:lang="en">Culture and sport</skos:prefLabel>-->
-          <!--              <skos:inScheme rdf:resource="http://vocab.belgif.be/auth/datatheme"/>-->
-          <!--            </skos:Concept>-->
-          <!--          </dcat:theme>-->
+          <!--
+            TODO: Custom label for theme based on thesaurus or label key
+            TODO: Nested directiveAttributes not working
+          -->
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme[skos:Concept/skos:inScheme/@rdf:resource = 'http://vocab.belgif.be/auth/datatheme']"
                  or="theme"
                  use="data-gn-keyword-picker"
@@ -651,6 +662,21 @@
               max=""
               labelKey="dcat-addThemes"/>
           </field>
+          <action type="add"
+                  or="theme"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(skos:Concept/skos:inScheme/@rdf:resource = 'http://vocab.belgif.be/auth/datatheme') = 0">
+            <template>
+              <snippet>
+                <dcat:theme>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="http://vocab.belgif.be/auth/datatheme"/>
+                  </skos:Concept>
+                </dcat:theme>
+              </snippet>
+            </template>
+          </action>
         </section>
 
         <section name="versionInformation">
@@ -1039,6 +1065,20 @@
               </snippet>
             </template>
           </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme[not(skos:Concept/skos:inScheme/@rdf:resource = ('http://vocab.belgif.be/auth/datatheme'))]"/>
+          <action type="add" or="theme" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:theme>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel xml:lang=""/>
+                    <skos:inScheme rdf:resource=""/>
+                  </skos:Concept>
+                </dcat:theme>
+              </snippet>
+            </template>
+          </action>
         </section>
 
         <section name="vl-section-metadatadcat"
@@ -1153,11 +1193,35 @@
             </template>
           </action>
 
-          <!-- Theme: vocab.belgif.be/auth/datatheme -->
-          <!-- TODO: custom label to indicate this is about themes from the specific thesaurus? -->
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme"
+          <!--
+            TODO: Custom label for theme based on thesaurus or label key
+            TODO: Nested directiveAttributes not working
+           -->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme[skos:Concept/skos:inScheme/@rdf:resource = 'http://vocab.belgif.be/auth/datatheme']"
                  or="theme"
-                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+                 use="data-gn-keyword-picker"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <directiveAttributes
+              thesaurus="external.theme.datatheme"
+              xpath="/dcat:theme"
+              max=""
+              labelKey="dcat-addThemes"/>
+          </field>
+          <action type="add"
+                  or="theme"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(skos:Concept/skos:inScheme/@rdf:resource = 'http://vocab.belgif.be/auth/datatheme') = 0">
+            <template>
+              <snippet>
+                <dcat:theme>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="http://vocab.belgif.be/auth/datatheme"/>
+                  </skos:Concept>
+                </dcat:theme>
+              </snippet>
+            </template>
+          </action>
         </section>
 
         <section name="versionInformation">
@@ -1326,6 +1390,7 @@
         <for name="dct:description"/>
         <for name="dcat:keyword"/>
         <for name="dcat:theme"/>
+        <for name="skos:Concept"/>
         <!-- Version info -->
         <for name="owl:versionInfo"/>
         <for name="dct:created"/>
