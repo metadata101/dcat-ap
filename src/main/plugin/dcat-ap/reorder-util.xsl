@@ -10,7 +10,7 @@
 
   <xsl:variable name="dcatSchema" select="document('./schema/dcat.xsd')"/>
 
-  <xsl:template name="dcat-reorder-elements" match="rdf:RDF">
+  <xsl:template name="dcat-reorder-elements">
     <xsl:param name="rdfRoot" as="node()"/>
     <xsl:apply-templates mode="reorder" select="$rdfRoot//rdf:RDF"/>
   </xsl:template>
