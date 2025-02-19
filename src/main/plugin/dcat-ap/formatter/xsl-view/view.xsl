@@ -278,16 +278,19 @@
 
     <xsl:if test="normalize-space($sectionContent)">
       <div id="gn-section-{generate-id()}" class="gn-tab-content">
-        <xsl:if test="@name">
-          <xsl:variable name="title" select="gn-fn-render:get-schema-strings($schemaStrings, @name)"/>
-          <xsl:element name="h{2 + count(ancestor-or-self::*[name(.) = 'section'])}">
-            <xsl:attribute name="class" select="'view-header'"/>
-            <xsl:attribute name="style" select="'border-bottom: 2px solid rgb(229, 229, 229); margin-top: 30px;font-size: 16px;color: rgb(40, 96, 144); position: relative;'"/>
-            <xsl:value-of select="$title"/>
-          </xsl:element>
-        </xsl:if>
-
-        <xsl:copy-of select="$sectionContent"/>
+        <xsl:variable name="sectionName" select="@name"/>
+        <xsl:for-each select="$sectionContent/table">
+          <xsl:if test="$sectionName">
+            <xsl:variable name="title" select="gn-fn-render:get-schema-strings($schemaStrings, $sectionName)"/>
+            <xsl:element name="h{2 + count(ancestor-or-self::*[name(.) = 'section'])}">
+              <xsl:attribute name="class" select="'view-header'"/>
+              <xsl:attribute name="style"
+                             select="'border-bottom: 2px solid rgb(229, 229, 229); margin-top: 30px;font-size: 16px;color: rgb(40, 96, 144); position: relative;'"/>
+              <xsl:value-of select="$title"/>
+            </xsl:element>
+          </xsl:if>
+          <xsl:copy-of select="."/>
+        </xsl:for-each>
       </div>
     </xsl:if>
 
@@ -309,19 +312,26 @@
           </xsl:element>
         </xsl:if>
 
-        <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
-               class="table table-striped" >
-          <xsl:for-each select="$sectionContent/*">
-            <xsl:choose>
-              <xsl:when test="name() = 'div'">
-                <xsl:copy-of select="tr"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:copy-of select="."/>
-              </xsl:otherwise>
-            </xsl:choose>
-          </xsl:for-each>
-        </table>
+        <xsl:choose>
+          <xsl:when test="$sectionContent/div/table">
+            <xsl:copy-of select="$sectionContent"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
+                   class="table table-striped hoody" >
+              <xsl:for-each select="$sectionContent/*">
+                <xsl:choose>
+                  <xsl:when test="name() = 'div'">
+                    <xsl:copy-of select="tr"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:copy-of select="."/>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:for-each>
+            </table>
+          </xsl:otherwise>
+        </xsl:choose>
       </div>
     </xsl:if>
   </xsl:template>
@@ -584,7 +594,7 @@
 
   <!-- Render values for URL -->
   <xsl:template mode="render-url" match="*|@*">
-    <a href="{.}" target="_blank" style="color=#06c; text-decoration: underline;">
+    <a href="{.}" target="_blank" style="color:#06c; text-decoration: underline;">
       <xsl:value-of select="." />
     </a>
   </xsl:template>
@@ -607,12 +617,12 @@
   <xsl:template mode="render-url" match="*[../name() = 'vcard:hasEmail']|@*[../name() = 'vcard:hasEmail']">
     <xsl:choose>
       <xsl:when test="starts-with(normalize-space(.), 'mailto:')">
-        <a href="{normalize-space(.)}" style="color=#06c; text-decoration: underline;">
+        <a href="{normalize-space(.)}" style="color:#06c; text-decoration: underline;">
           <xsl:value-of select="substring-after(normalize-space(.), 'mailto:')" />
         </a>
       </xsl:when>
       <xsl:otherwise>
-        <a href="{concat('mailto:', normalize-space(.))}" style="color=#06c; text-decoration: underline;">
+        <a href="{concat('mailto:', normalize-space(.))}" style="color:#06c; text-decoration: underline;">
           <xsl:value-of select="." />
         </a>
       </xsl:otherwise>
@@ -624,7 +634,7 @@
                        @*[name(..) = 'dct:relation' or name(..) = 'dct:source' or name(..) = 'dct:isVersionOf' or name(..) = 'dct:hasVersion']">
     <a
       href="{concat($nodeUrl,$langId,'/catalog.search#/search?resultType=details&amp;sortBy=relevance&amp;from=1&amp;to=20&amp;fast=index&amp;_content_type=json&amp;any=',.)}"
-      style="color=#06c; text-decoration: underline;">
+      style="color:#06c; text-decoration: underline;">
       <xsl:value-of select="."/>
     </a>
   </xsl:template>
