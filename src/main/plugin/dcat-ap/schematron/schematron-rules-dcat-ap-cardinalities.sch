@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:geonet="http://www.fao.org/geonetwork">
   <sch:ns prefix="spdx" uri="http://spdx.org/rdf/terms#"/>
   <sch:ns prefix="owl" uri="http://www.w3.org/2002/07/owl#"/>
   <sch:ns prefix="adms" uri="http://www.w3.org/ns/adms#"/>
@@ -26,29 +26,31 @@
   <sch:title xmlns="http://www.w3.org/2001/XMLSchema">{$loc/strings/schematron.title}</sch:title>
 
   <sch:pattern abstract="true" id="CardinalityCheck">
-    <sch:title>Cardinality of $element in $context</sch:title>
+    <sch:title>geonet:replacePlaceholders($loc/strings/cardinality.title, ('#context', '#element'), ('$context', '$element'))</sch:title>
     <sch:rule context="$context">
       <sch:assert test="count($element) &gt;= $min and ('$max' = 'n' or count($element) &lt;= $max)">
-        <sch:value-of select="'$context'"/>/<sch:value-of select="'$element'"/> should be of cardinality <sch:value-of select="'$min'"/>..<sch:value-of select="'$max'"/> but found <sch:value-of select="count($element)"/> nodes.</sch:assert>
+        <sch:value-of select="geonet:replacePlaceholders($loc/strings/cardinality.assert, ('#context', '#element', '#min', '#max', '#nodecount'), ('$context', '$element', '$min', '$max', string(count($element))))"/>
+      </sch:assert>
       <sch:report test="count($element) &gt;= $min and ('$max' = 'n' or count($element) &lt;= $max)">
-        <sch:value-of select="'$context'"/>/<sch:value-of select="'$element'"/> is of cardinality <sch:value-of select="'$min'"/>..<sch:value-of select="'$max'"/>. Found <sch:value-of select="count($element)"/> nodes.</sch:report>
+        <sch:value-of select="geonet:replacePlaceholders($loc/strings/cardinality.report, ('#context', '#element', '#min', '#max', '#nodecount'), ('$context', '$element', '$min', '$max', string(count($element))))"/>
+      </sch:report>
     </sch:rule>
   </sch:pattern>
 
   <sch:pattern abstract="true" id="MultilingualCardinalityCheck">
-    <sch:title>Cardinality of $element in $context per language</sch:title>
+    <sch:title>geonet:replacePlaceholders($loc/strings/multilingual.cardinality.title, ('#context', '#element'), ('$context', '$element'))</sch:title>
     <sch:rule context="$context">
       <sch:assert test="(count($element[@xml:lang]) = 0 or count($element[not(@xml:lang)]) = 0) and
       ((count(distinct-values($element/@xml:lang)) = count($element[@xml:lang])) or '$max' = 'n') and
       ((count($element[not(@xml:lang)]) &lt;= 1) or '$max' = 'n') and
       (count(distinct-values($element/@xml:lang)) &gt;= $min or (count($element[not(@xml:lang)]) &gt;= $min))">
-        These elements should be unique per language. The minimum cardinality is <sch:value-of select="$min"/>. You cannot mix occurrences without a language specified and occurrences with a language specified.
+        <sch:value-of select="geonet:replacePlaceholders($loc/strings/multilingual.cardinality.assert, ('#min'), ('$min'))"/>
       </sch:assert>
       <sch:report test="(count($element[@xml:lang]) = 0 or count($element[not(@xml:lang)]) = 0) and
       ((count(distinct-values($element/@xml:lang)) = count($element[@xml:lang])) or '$max' = 'n') and
       ((count($element[not(@xml:lang)]) &lt;= 1) or '$max' = 'n') and
       (count(distinct-values($element/@xml:lang)) &gt;= $min or (count($element[not(@xml:lang)]) &gt;= $min))">
-        These elements should be unique per language. The minimum cardinality is <sch:value-of select="$min"/>. You cannot mix occurrences without a language specified and occurrences with a language specified.
+        <sch:value-of select="geonet:replacePlaceholders($loc/strings/multilingual.cardinality.report, ('#min'), ('$min'))"/>
       </sch:report>
     </sch:rule>
   </sch:pattern>

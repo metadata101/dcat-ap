@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <cardinality.title>Kardinaliteit van #element in #context</cardinality.title>
+  <cardinality.assert>#context/#element zou kardinaliteit #min..#max moeten hebben maar er werden #nodecount node(s) gevonden.</cardinality.assert>
+  <cardinality.report>#context/#element heeft kardinaliteit #min..#max. Gevonden node(s): #nodecount.</cardinality.report>
+  <multilingual.cardinality.title>Kardinaliteit van #element in #context per taal</multilingual.cardinality.title>
+  <multilingual.cardinality.assert>Deze elementen zouden uniek moeten zijn per taal. De minimum kardinaliteit is #min. Elementen moeten ofwel allemaal een taal definiëren, of niet.</multilingual.cardinality.assert>
+  <multilingual.cardinality.report>De elementen voldoen aan de minimum kardinaliteit #min.</multilingual.cardinality.report>
+</strings>

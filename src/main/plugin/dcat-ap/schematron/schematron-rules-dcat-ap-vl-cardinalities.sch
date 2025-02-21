@@ -26,12 +26,14 @@
   <sch:title xmlns="http://www.w3.org/2001/XMLSchema">{$loc/strings/schematron.title}</sch:title>
 
   <sch:pattern abstract="true" id="CardinalityCheck">
-    <sch:title>Cardinality of $element in $context</sch:title>
+    <sch:title>geonet:replacePlaceholders($loc/strings/cardinality.title, ('#context', '#element'), ('$context', '$element'))</sch:title>
     <sch:rule context="$context">
       <sch:assert test="count($element) &gt;= $min and ('$max' = 'n' or count($element) &lt;= $max)">
-        <sch:value-of select="'$context'"/>/<sch:value-of select="'$element'"/> should be of cardinality <sch:value-of select="'$min'"/>..<sch:value-of select="'$max'"/> but found <sch:value-of select="count($element)"/> nodes.</sch:assert>
+        <sch:value-of select="geonet:replacePlaceholders($loc/strings/cardinality.assert, ('#context', '#element', '#min', '#max', '#nodecount'), ('$context', '$element', '$min', '$max', string(count($element))))"/>
+      </sch:assert>
       <sch:report test="count($element) &gt;= $min and ('$max' = 'n' or count($element) &lt;= $max)">
-        <sch:value-of select="'$context'"/>/<sch:value-of select="'$element'"/> is of cardinality <sch:value-of select="'$min'"/>..<sch:value-of select="'$max'"/>. Found <sch:value-of select="count($element)"/> nodes.</sch:report>
+        <sch:value-of select="geonet:replacePlaceholders($loc/strings/cardinality.report, ('#context', '#element', '#min', '#max', '#nodecount'), ('$context', '$element', '$min', '$max', string(count($element))))"/>
+      </sch:report>
     </sch:rule>
   </sch:pattern>
 
