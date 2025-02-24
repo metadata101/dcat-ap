@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <schematron.title>High Value Datasets - Verplicht</schematron.title>
+  <required.applicablelegislation.title>Vereiste toepasselijke wetgeving.</required.applicablelegislation.title>
+  <required.applicablelegislation.assert>ELI http://data.europa.eu/eli/reg_impl/2023/138/oj hoort aanwezig te zijn.</required.applicablelegislation.assert>
+  <required.applicablelegislation.report>ELI http://data.europa.eu/eli/reg_impl/2023/138/oj is aanwezig.</required.applicablelegislation.report>
 </strings>

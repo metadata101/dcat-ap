@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <schematron.title>DCAT-AP - Verplicht</schematron.title>
+  <required.language.title>Taal van een Catalogus Record.</required.language.title>
+  <required.language.assert>Het Catalogus Record definieert geen taal.</required.language.assert>
+  <required.language.report>Het Catalogus Record definieert ten minste één taal.</required.language.report>
 </strings>
