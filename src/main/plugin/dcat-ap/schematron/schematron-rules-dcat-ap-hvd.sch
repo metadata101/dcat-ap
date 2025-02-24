@@ -26,14 +26,10 @@
   <sch:title xmlns="http://www.w3.org/2001/XMLSchema">{$loc/strings/schematron.title}</sch:title>
 
   <sch:pattern id="required_applicableLegislation">
-    <sch:title>Required applicable legislation value.</sch:title>
+    <sch:title>$loc/strings/required.applicablelegislation.title</sch:title>
     <sch:rule context="/">
-      <sch:assert test="//dcatap:applicableLegislation[@rdf:resource='http://data.europa.eu/eli/reg_impl/2023/138/oj']">
-        For HVD the value must include the ELI http://data.europa.eu/eli/reg_impl/2023/138/oj.
-      </sch:assert>
-      <sch:report test="//dcatap:applicableLegislation[@rdf:resource='http://data.europa.eu/eli/reg_impl/2023/138/oj']">
-        For HVD the value must include the ELI http://data.europa.eu/eli/reg_impl/2023/138/oj.
-      </sch:report>
+      <sch:assert test="//dcatap:applicableLegislation[@rdf:resource='http://data.europa.eu/eli/reg_impl/2023/138/oj']">$loc/strings/required.applicablelegislation.assert</sch:assert>
+      <sch:report test="//dcatap:applicableLegislation[@rdf:resource='http://data.europa.eu/eli/reg_impl/2023/138/oj']">$loc/strings/required.applicablelegislation.report</sch:report>
     </sch:rule>
   </sch:pattern>
 </sch:schema>

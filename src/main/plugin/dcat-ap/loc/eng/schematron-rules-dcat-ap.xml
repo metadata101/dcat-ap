@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <schematron.title>DCAT-AP - Mandatory</schematron.title>
+  <required.language.title>Language of a CatalogRecord.</required.language.title>
+  <required.language.assert>The CatalogRecord does not define a language.</required.language.assert>
+  <required.language.report>The CatalogRecord has at least one dct:language.</required.language.report>
 </strings>
