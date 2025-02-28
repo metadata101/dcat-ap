@@ -294,7 +294,9 @@
             <dcat:CatalogRecord>
               <xsl:call-template name="handle-record-id"/>
               <dct:modified>
-                <xsl:value-of select="format-dateTime(/root/env/changeDate, '[Y0001]-[M01]-[D01]')"/>
+                <xsl:value-of select="if (matches(/root/env/changeDate, '^\d{4}-\d{2}-\d{2}$')) then format-date(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
+                  else if(/root/env/changeDate) then format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
+                  else dct:modified"/>
               </dct:modified>
             </dcat:CatalogRecord>
           </dcat:record>
@@ -309,7 +311,9 @@
     <xsl:copy copy-namespaces="no">
       <xsl:call-template name="handle-record-id"/>
       <dct:modified>
-        <xsl:value-of select="if (/root/env/changeDate) then format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]') else dct:modified"/>
+        <xsl:value-of select="if (matches(/root/env/changeDate, '^\d{4}-\d{2}-\d{2}$')) then format-date(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
+          else if(/root/env/changeDate) then format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
+          else dct:modified"/>
       </dct:modified>
       <xsl:apply-templates select="* except (dct:identifier|dct:modified|foaf:primaryTopic)"/>
     </xsl:copy>
