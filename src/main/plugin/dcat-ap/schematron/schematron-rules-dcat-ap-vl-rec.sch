@@ -26,11 +26,11 @@
 
   <sch:let name="profile" value="boolean(/*[starts-with(//dcat:CatalogRecord//dct:Standard/@rdf:about, 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL')])"/>
   <sch:pattern>
-    <sch:title>At least one theme from the data.gov.be vocabulary is required</sch:title>
+    <sch:title>$loc/strings/required.datatheme.title</sch:title>
     <sch:rule context="//dcat:Dataset[$profile]|//dcat:DataService[$profile]">
       <sch:let name="dataThemes" value="count(dcat:theme[starts-with(skos:Concept/@rdf:about, 'http://vocab.belgif.be/auth/datatheme')])"/>
-      <sch:assert test="$dataThemes &gt; 0">The dcat:Resource doesn't have a data.gov.be theme</sch:assert>
-      <sch:report test="$dataThemes &gt; 0">The dcat:Resource have a data.gov.be theme</sch:report>
+      <sch:assert test="$dataThemes &gt; 0">$loc/strings/required.language.assert</sch:assert>
+      <sch:report test="$dataThemes &gt; 0">$loc/strings/required.language.report</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="levensfase" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DataServiceShape/0aea9e8a54457ca50f1b00c07872cb7c7b39e8ba">
