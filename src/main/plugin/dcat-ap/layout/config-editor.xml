@@ -1614,9 +1614,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/ESRI:AIMS-http-configuration
             </dct:identifier>
             <dct:title xml:lang="nl">ESRI:AIMS-http-configuration</dct:title>
-            <dct:description xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een
-              URL.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een URL.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1626,11 +1624,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/GLG:KML-2.0-http-get-map
             </dct:identifier>
             <dct:title xml:lang="nl">KML-2.0-http-get-map</dct:title>
-            <dct:description xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie,
-              inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische
-              gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan
-              en waar te kijken.
-            </dct:description>
+            <dct:description xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie, inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan en waar te kijken.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1639,13 +1633,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/LDES">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/LDES</dct:identifier>
             <dct:title xml:lang="nl">LDES</dct:title>
-            <dct:description xml:lang="nl">Linked Data Event Stream of kortweg LDES is een collectie van onveranderlijke
-              elementen, waarbij zowel de collectie als de elementen beschreven zijn door het Resource Description
-              Framework (RDF). De LDES specificatie bouwt voort op de TREE hypermedia specificatie. Een Event Stream is
-              een uitbreiding is van de TREE hypermedia Collection die beschrijft hoe te navigeren over grote collectie
-              data-elementen. Dit laat toe om grote hoeveelheden data efficiënt te publiceren door gebruik te maken van
-              HTTP caching.
-            </dct:description>
+            <dct:description xml:lang="nl">Linked Data Event Stream of kortweg LDES is een collectie van onveranderlijke elementen, waarbij zowel de collectie als de elementen beschreven zijn door het Resource Description Framework (RDF). De LDES specificatie bouwt voort op de TREE hypermedia specificatie. Een Event Stream is een uitbreiding is van de TREE hypermedia Collection die beschrijft hoe te navigeren over grote collectie data-elementen. Dit laat toe om grote hoeveelheden data efficiënt te publiceren door gebruik te maken van HTTP caching.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1655,9 +1643,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/LINK-download-store
             </dct:identifier>
             <dct:title xml:lang="nl">LINK-download-store</dct:title>
-            <dct:description xml:lang="nl">Het Link Download store protocol levert een link op naar de download-store,
-              dit is een folder, winkel... voor directe download.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Link Download store protocol levert een link op naar de download-store, dit is een folder, winkel... voor directe download.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1666,8 +1652,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:CSW">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:CSW</dct:identifier>
             <dct:title xml:lang="nl">CSW</dct:title>
-            <dct:description xml:lang="nl">Het Catalogue Service Web protocol levert toegang tot een endpoint.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Catalogue Service Web protocol levert toegang tot een endpoint.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1676,9 +1661,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:GML">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:GML</dct:identifier>
             <dct:title xml:lang="nl">GML</dct:title>
-            <dct:description xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van
-              geografische kenmerken.
-            </dct:description>
+            <dct:description xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van geografische kenmerken.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1687,11 +1670,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:KML">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:KML</dct:identifier>
             <dct:title xml:lang="nl">KML</dct:title>
-            <dct:description xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie,
-              inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische
-              gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan
-              en waar te kijken.
-            </dct:description>
+            <dct:description xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie, inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan en waar te kijken.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1700,9 +1679,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:ODS">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:ODS</dct:identifier>
             <dct:title xml:lang="nl">ODS</dct:title>
-            <dct:description xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van
-              geografische kenmerken.
-            </dct:description>
+            <dct:description xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van geografische kenmerken.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1713,9 +1690,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features-items
             </dct:identifier>
             <dct:title xml:lang="nl">OGC API Features items</dct:title>
-            <dct:description xml:lang="nl">Deze OGC standaard definieert de API bouwblok items voor een OGC Feature
-              API
-            </dct:description>
+            <dct:description xml:lang="nl">Deze OGC standaard definieert de API bouwblok items voor een OGC Feature API</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1726,9 +1701,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features-landingpage
             </dct:identifier>
             <dct:title xml:lang="nl">OGC API Feature landing page</dct:title>
-            <dct:description xml:lang="nl">Deze OGC standaard definieert de API bouwblok landingspagina voor een OGC
-              Feature API
-            </dct:description>
+            <dct:description xml:lang="nl">Deze OGC standaard definieert de API bouwblok landingspagina voor een OGC Feature API</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1738,9 +1711,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features
             </dct:identifier>
             <dct:title xml:lang="nl">OGC API Features</dct:title>
-            <dct:description xml:lang="nl">Deze OGC standaard definieert API bouwblokken voor het aanmaken, wijzigen en
-              ondervragen van (geografische) features
-            </dct:description>
+            <dct:description xml:lang="nl">Deze OGC standaard definieert API bouwblokken voor het aanmaken, wijzigen en ondervragen van (geografische) features</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1752,11 +1723,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.0.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.0.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1767,11 +1734,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.0.0-http-get-coverage
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.0.0-http-get-coverage</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1783,11 +1746,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.1.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1798,11 +1757,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.0-http-get-coverage
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.1.0-http-get-coverage</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1814,11 +1769,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.1-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.1.1-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1829,11 +1780,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.1-http-get-coverage
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.1.1-http-get-coverage</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1845,12 +1792,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-2.0.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
-          </dct:Standard>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description></dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-19">
@@ -1860,11 +1802,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.0-http-get-coverage
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-2.0.0-http-get-coverage</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1876,11 +1814,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.1-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-2.0.1-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1891,11 +1825,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.1-http-get-coverage
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-2.0.1-http-get-coverage</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1904,11 +1834,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS</dct:identifier>
             <dct:title xml:lang="nl">WCS</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1920,11 +1846,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-describefeaturetype
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.0.0-http-describefeaturetype</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving
-              van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties
-              verwacht te coderen op output.
-            </dct:description>
-          </dct:Standard>
+            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties verwacht te coderen op output.</dct:description></dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-24">
@@ -1935,9 +1857,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.0.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument
-              dat een WFS beschrijft service geleverd door een server.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1948,9 +1868,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-get-feature
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.0.0-http-get-feature</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit
-              een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1962,10 +1880,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-describefeaturetype
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.1.0-http-describefeaturetype</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving
-              van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties
-              verwacht te coderen op output.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties verwacht te coderen op output.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1977,9 +1892,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.1.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument
-              dat een WFS beschrijft service geleverd door een server.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1990,9 +1903,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-get-feature
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.1.0-http-get-feature</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit
-              een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2003,9 +1914,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-getgmlobject
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.1.0-http-getgmlobject</dct:title>
-            <dct:description xml:lang="nl">Web Feature Service biedt directe ged etailleerde toegang tot geografische
-              informatie op feature- en feature-propertyniveau.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Service biedt directe ged etailleerde toegang tot geografische informatie op feature- en feature-propertyniveau.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2017,10 +1926,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-describefeaturetype
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-2.0.0-http-describefeaturetype</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving
-              van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties
-              verwacht te coderen op output.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties verwacht te coderen op output.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2032,9 +1938,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-2.0.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument
-              dat een WFS beschrijft service geleverd door een server.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2045,9 +1949,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-get-feature
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-2.0.0-http-get-feature</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit
-              een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2056,9 +1958,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS</dct:identifier>
             <dct:title xml:lang="nl">WFS</dct:title>
-            <dct:description xml:lang="nl">Web Feature Service biedt directe ged etailleerde toegang tot geografische
-              informatie op feature- en feature-propertyniveau.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Service biedt directe ged etailleerde toegang tot geografische informatie op feature- en feature-propertyniveau.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2070,10 +1970,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.1.1-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in
-              een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de
-              verzoekparameterwaarden.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de verzoekparameterwaarden.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2085,9 +1982,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-featureinfo
             </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.1.1-http-get-featureinfo</dct:title>
-            <dct:description xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over
-              functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2098,9 +1993,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-map
             </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.1.1-http-get-map</dct:title>
-            <dct:description xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een
-              GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2112,10 +2005,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.3.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in
-              een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de
-              verzoekparameterwaarden.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de verzoekparameterwaarden.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2127,9 +2017,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-featureinfo
             </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.3.0-http-get-featureinfo</dct:title>
-            <dct:description xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over
-              functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2140,9 +2028,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-map
             </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.3.0-http-get-map</dct:title>
-            <dct:description xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een
-              GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2151,9 +2037,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS</dct:identifier>
             <dct:title xml:lang="nl">WMS</dct:title>
-            <dct:description xml:lang="nl">Web Map Services genereren op dynamische wijze beelden uit verschillende
-              datasets.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Services genereren op dynamische wijze beelden uit verschillende datasets.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2165,9 +2049,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS-1.0.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WMTS-1.0.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde
-              gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2178,9 +2060,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS-1.0.0-http-get-tile
             </dct:identifier>
             <dct:title xml:lang="nl">WMTS-1.0.0-http-get-tile</dct:title>
-            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde
-              gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2189,9 +2069,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS</dct:identifier>
             <dct:title xml:lang="nl">WMTS</dct:title>
-            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde
-              gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2212,12 +2090,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/REST">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/REST</dct:identifier>
             <dct:title xml:lang="nl">REST</dct:title>
-            <dct:description xml:lang="nl">Representational State Transfer of kortweg REST is een architecturale stijl
-              voor gedistribueerde hypermedia-systemen zoals ingevoerd en gedefinieerd in 2000 door Roy Fielding,
-              waarbij de toegang tot en bewerking van objecten in een bepaald domein worden beschreven als standaard web
-              operaties op web resources. REST stoelt sterk op de concepten en principes van het HTTP-protocol waarvan
-              Roy Fielding mede-auteur is.
-            </dct:description>
+            <dct:description xml:lang="nl">Representational State Transfer of kortweg REST is een architecturale stijl voor gedistribueerde hypermedia-systemen zoals ingevoerd en gedefinieerd in 2000 door Roy Fielding, waarbij de toegang tot en bewerking van objecten in een bepaald domein worden beschreven als standaard web operaties op web resources. REST stoelt sterk op de concepten en principes van het HTTP-protocol waarvan Roy Fielding mede-auteur is.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2228,8 +2101,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:DOWNLOAD-1.0-ftp--download
             </dct:identifier>
             <dct:title xml:lang="nl">DOWNLOAD-1.0-ftp--download</dct:title>
-            <dct:description xml:lang="nl">Het Download FTP protocol levert een bestand ter directe download over FTP.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Download FTP protocol levert een bestand ter directe download over FTP.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2240,9 +2112,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:DOWNLOAD-1.0-http--download
             </dct:identifier>
             <dct:title xml:lang="nl">DOWNLOAD-1.0-http--download</dct:title>
-            <dct:description xml:lang="nl">Het Download HTTP protocol levert een bestand ter directe download over
-              HTTP.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Download HTTP protocol levert een bestand ter directe download over HTTP.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2252,8 +2122,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--atom
             </dct:identifier>
             <dct:title xml:lang="nl">LINK-1.0-http--atom</dct:title>
-            <dct:description xml:lang="nl">Het Link Atom Feed protocol levert toegang tot een ATOM feed via een URL.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Link Atom Feed protocol levert toegang tot een ATOM feed via een URL.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2263,8 +2132,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--link
             </dct:identifier>
             <dct:title xml:lang="nl">LINK-1.0-http--link</dct:title>
-            <dct:description xml:lang="nl">Het Link protocol levert toegang tot een webadres via een URL.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Link protocol levert toegang tot een webadres via een URL.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -2275,9 +2143,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--related
             </dct:identifier>
             <dct:title xml:lang="nl">LINK-1.0-http--related</dct:title>
-            <dct:description xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een
-              URL.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een URL.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
