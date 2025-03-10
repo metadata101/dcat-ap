@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <schematron.title>DCAT-AP-Vlaanderen - Recommended</schematron.title>
+  <required.datatheme.title>At least one theme from the data.gov.be vocabulary is expected</required.datatheme.title>
+  <required.datatheme.assert>The dcat:Resource doesn't have a data.gov.be theme</required.datatheme.assert>
+  <required.datatheme.report>The dcat:Resource have a data.gov.be theme</required.datatheme.report>
 </strings>
