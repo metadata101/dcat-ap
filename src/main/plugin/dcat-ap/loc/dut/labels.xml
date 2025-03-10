@@ -1022,23 +1022,23 @@
     <btnLabel>Landingspagina voor gebruiksinformatie</btnLabel>
   </element>
   <element name="mdcat:landingspaginaVoorStatusinformatie">
-    <label>Landingpage for status information</label>
+    <label>Landingspagina voor statusinformatie</label>
     <description>Een verwijzing naar de statuspagina van de dataservice.</description>
-    <btnLabel>Landingpage for status information</btnLabel>
+    <btnLabel>Landingspagina voor statusinformatie</btnLabel>
   </element>
   <element name="rdf:resource" context="mdcat:landingspaginaVoorStatusinformatie">
-    <label>Landingpage for status information</label>
+    <label>Landingspagina voor statusinformatie</label>
     <description>Een verwijzing naar de statuspagina van de dataservice.</description>
-    <btnLabel>Landingpage for status information</btnLabel>
+    <btnLabel>Landingspagina voor statusinformatie</btnLabel>
   </element>
   <element name="mdcat:levensfase">
-    <label>Lifecycle phase</label>
-    <description>The phase of the lifecycle of the dataservice.</description>
-    <btnLabel>Lifecycle phase</btnLabel>
+    <label>Levensfase</label>
+    <description>De levensfase van de data service.</description>
+    <btnLabel>Levensfase</btnLabel>
   </element>
   <element name="mdcat:ontwikkelingstoestand">
     <label>Ontwikkelingstoestand</label>
-    <description>The development status of the deployed dataservice.</description>
+    <description>De ontwikkelingstoestand voor de geïmplementeerde dataservice.</description>
     <btnLabel>Ontwikkelingstoestand</btnLabel>
   </element>
 </labels>
