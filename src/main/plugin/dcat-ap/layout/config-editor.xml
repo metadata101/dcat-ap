@@ -499,6 +499,7 @@
       <name>vcard:postal-code</name>
       <name>vcard:fn</name>
       <name>skos:inScheme</name>
+      <name>skos:notation</name>
     </exclude>
   </multilingualFields>
 
