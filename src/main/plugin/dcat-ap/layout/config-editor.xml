@@ -1030,7 +1030,16 @@
               </snippet>
             </template>
           </action>
-          <action type="associatedResource" name="linkToDataset" process="dataset"/>
+          
+          <action type="associatedResource" name="linkToDataset" process="dataset">
+            <directiveAttributes>{"sources": {
+              "metadataStore": {"params": {
+                "resourceType": ["dataset"],
+                "isTemplate": "n"
+              }},
+              "remoteurl": {"multiple": false}
+              }}</directiveAttributes>
+          </action>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword"/>
           <action type="add" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
