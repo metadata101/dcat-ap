@@ -643,7 +643,8 @@
           <!--              <skos:inScheme rdf:resource="http://vocab.belgif.be/auth/datatheme"/>-->
           <!--            </skos:Concept>-->
           <!--          </dcat:theme>-->
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme[skos:Concept/skos:inScheme/@rdf:resource = 'http://vocab.belgif.be/auth/datatheme']"
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"
+                 name="dcat:theme"
                  or="theme"
                  use="data-gn-keyword-picker"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
@@ -1031,7 +1032,7 @@
               </snippet>
             </template>
           </action>
-          
+
           <action type="associatedResource" name="linkToDataset" process="dataset">
             <directiveAttributes>{"sources": {
               "metadataStore": {"params": {
