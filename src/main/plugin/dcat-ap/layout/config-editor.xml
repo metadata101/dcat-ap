@@ -1290,18 +1290,28 @@
         </section>
 
         <section name="extraInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo"/>
-          <action type="add" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
+
+          <action type="add" or="language" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language) = 0">
             <template>
               <snippet>
-                <dct:conformsTo>
-                  <dct:Standard>
-                    <dct:identifier/>
-                    <dct:title xml:lang=""/>
-                    <dct:description xml:lang=""/>
-                  </dct:Standard>
-                </dct:conformsTo>
+                <dct:language>
+                  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/ENG">
+                    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+                    <skos:prefLabel xml:lang="en">English</skos:prefLabel>
+                    <skos:prefLabel xml:lang="nl">Engels</skos:prefLabel>
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+                  </skos:Concept>
+                </dct:language>
               </snippet>
+            </template>
+          </action>
+
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo"/>
+          <action type="add" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippets name="protocols-vl"/>
             </template>
           </action>
         </section>
