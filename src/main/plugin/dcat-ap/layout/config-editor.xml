@@ -513,7 +513,8 @@
           hideTimeInCalendar="true">
       <sidePanel>
         <directive data-gn-overview-manager=""
-                   data-file-types=".png,.gif,.jpeg,.jpg"/>
+                   data-file-types=".png,.gif,.jpeg,.jpg"
+                   displayIfRecord="count(//dcat:dataset) > 0"/>
 
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
         <directive data-gn-validation-report=""/>
