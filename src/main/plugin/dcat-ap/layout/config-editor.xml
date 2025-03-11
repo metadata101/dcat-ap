@@ -478,6 +478,7 @@
       <name>dct:identifier</name>
       <name>dct:language</name>
       <name>dct:format</name>
+      <name>dct:created</name>
       <name>dct:modified</name>
       <name>dct:issued</name>
       <name>dct:hasPart</name>
