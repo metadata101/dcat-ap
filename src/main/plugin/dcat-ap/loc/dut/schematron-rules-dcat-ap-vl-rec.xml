@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <schematron.title>DCAT-AP-Vlaanderen - Aanbevolen</schematron.title>
+  <required.datatheme.title>Tenminste één thema uit de data.gov.be codelijst wordt verwacht</required.datatheme.title>
+  <required.datatheme.assert>De dcat:Resource heeft geen data.gov.be thema</required.datatheme.assert>
+  <required.datatheme.report>De dcat:Resource heeft een data.gov.be thema</required.datatheme.report>
+</strings>

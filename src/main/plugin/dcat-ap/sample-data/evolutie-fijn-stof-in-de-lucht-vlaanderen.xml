@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:spdx="http://spdx.org/rdf/terms#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:adms="http://www.w3.org/ns/adms#" xmlns:locn="http://www.w3.org/ns/locn#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:schema="http://schema.org/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#" xsi:schemaLocation="http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.openarchives.org/OAI/2.0/rdf.xsd">
+  <dcat:Catalog rdf:about="https://metadata.vlaanderen.be/srv/resources/catalogs/c678d0fb-894d-403f-b146-4b96706a1a16">
+    <dct:title xml:lang="nl">Open Data Catalogus van agentschap Digitaal Vlaanderen</dct:title>
+    <dct:description xml:lang="nl">Deze catalogus bevat datasets ontsloten door agentschap Digitaal Vlaanderen</dct:description>
+    <dct:identifier>c678d0fb-894d-403f-b146-4b96706a1a16</dct:identifier>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://metadata.vlaanderen.be/srv/resources/organizations/agentschap%20Digitaal%20Vlaanderen">
+        <foaf:name xml:lang="nl">agentschap Digitaal Vlaanderen</foaf:name>
+        <dct:type>
+          <skos:Concept rdf:about="http://purl.org/adms/publishertype/LocalAuthority">
+            <skos:prefLabel xml:lang="nl">Lokaal bestuur</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">Local Authority</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">Local Authority</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">Local Authority</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0" />
+          </skos:Concept>
+        </dct:type>
+      </foaf:Agent>
+    </dct:publisher>
+    <foaf:homepage>
+      <foaf:Document rdf:about="https://metadata.vlaanderen.be/srv/dut/">
+        <foaf:name xml:lang="nl">Metadata Vlaanderen</foaf:name>
+      </foaf:Document>
+    </foaf:homepage>
+    <dct:license>
+      <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0">
+        <dct:type>
+          <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
+            <skos:prefLabel xml:lang="nl">Werk in het publiek domein</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">Public domain</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">Public domain</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">Public domain</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0" />
+          </skos:Concept>
+        </dct:type>
+        <dct:title xml:lang="nl">Creative Commons Zero verklaring</dct:title>
+        <dct:description xml:lang="nl">De instantie doet afstand van haar intellectuele eigendomsrechten voor zover dit wettelijk mogelijk is. Hierdoor kan de gebruiker de data hergebruiken voor eender welk doel, zonder een verplichting op naamsvermelding. Deze is de welbekende CC0 licentie.</dct:description>
+        <dct:identifier>https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0</dct:identifier>
+      </dct:LicenseDocument>
+    </dct:license>
+    <dct:language>
+      <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem" />
+        <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+        <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
+        <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
+        <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language" />
+      </skos:Concept>
+    </dct:language>
+    <dct:issued>2019-09-01</dct:issued>
+    <dct:modified>2019-09-01</dct:modified>
+    <dcat:contactPoint>
+      <vcard:Organization>
+        <vcard:organization-name>agentschap Digitaal Vlaanderen</vcard:organization-name>
+        <vcard:hasEmail rdf:resource="mailto:digitaal.vlaanderen@vlaanderen.be" />
+        <vcard:hasURL rdf:resource="https://www.vlaanderen.be/digitaal-vlaanderen" />
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dcat:record>
+      <dcat:CatalogRecord rdf:about="https://metadata.vlaanderen.be/srv/api/records/c29c6473-bc34-3c66-9c76-18f67d54d990">
+        <dct:identifier>c29c6473-bc34-3c66-9c76-18f67d54d990</dct:identifier>
+        <foaf:primaryTopic rdf:resource="https://metadata.vlaanderen.be/srv/resources/datasets/c96bf4c0-5669-4f52-81c7-34bfa8a6ba20" />
+        <dct:modified>2024-06-12</dct:modified>
+        <dct:conformsTo>
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
+            <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03</dct:identifier>
+            <dct:title>Dcat-ap-vl</dct:title>
+            <dct:description xml:lang="nl">Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
+            <owl:versionInfo>2.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </dcat:CatalogRecord>
+    </dcat:record>
+    <dcat:dataset>
+      <dcat:Dataset rdf:about="https://metadata.vlaanderen.be/srv/resources/datasets/c96bf4c0-5669-4f52-81c7-34bfa8a6ba20">
+        <dct:identifier>c96bf4c0-5669-4f52-81c7-34bfa8a6ba20</dct:identifier>
+        <dct:title xml:lang="nl">Evolutie fijn stof in de lucht</dct:title>
+        <dct:description xml:lang="nl">Fijn stof bestaat uit zeer kleine deeltjes die aanwezig zijn in de lucht. We spreken meestal over PM10 en PM2,5. Dat staat voor deeltjes die kleiner zijn dan 10 of 2,5 micrometer. Doordat ze zo klein zijn kunnen ze diep doordringen in de longen en schadelijk zijn voor de gezondheid.</dct:description>
+        <dcat:contactPoint>
+          <vcard:Organization>
+            <vcard:fn>Vlaamse Milieumaatschappij</vcard:fn>
+            <vcard:organization-name>Vlaamse Milieumaatschappij</vcard:organization-name>
+            <vcard:hasAddress>
+              <vcard:Address>
+                <vcard:street-address>Dokter de Moorstraat 24-26</vcard:street-address>
+                <vcard:locality>Aalst</vcard:locality>
+                <vcard:postal-code>9300</vcard:postal-code>
+                <vcard:country-name>België</vcard:country-name>
+              </vcard:Address>
+            </vcard:hasAddress>
+            <vcard:hasEmail rdf:resource="mailto:info@vmm.be" />
+            <vcard:hasURL rdf:resource="www.vmm.be" />
+            <vcard:hasTelephone>053 72 62 10</vcard:hasTelephone>
+          </vcard:Organization>
+        </dcat:contactPoint>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-12-07T14:06:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-06-12</dct:modified>
+        <dct:publisher>
+          <foaf:Agent>
+            <foaf:name xml:lang="nl">Vlaamse Milieumaatschappij</foaf:name>
+            <dct:type>
+              <skos:Concept rdf:about="http://purl.org/adms/publishertype/RegionalAuthority">
+                <skos:prefLabel xml:lang="nl">Regionaal bestuur</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Regional authority</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">Regional authority</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Regional authority</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0" />
+              </skos:Concept>
+            </dct:type>
+          </foaf:Agent>
+        </dct:publisher>
+        <dcat:keyword xml:lang="nl">fijn stof</dcat:keyword>
+        <dcat:keyword xml:lang="nl">PM2,5</dcat:keyword>
+        <dcat:keyword xml:lang="nl">PM10</dcat:keyword>
+        <dcat:keyword xml:lang="nl">zwarte koolstof</dcat:keyword>
+        <dcat:keyword xml:lang="nl">ultrafijn stof</dcat:keyword>
+        <dcat:keyword xml:lang="nl">luchtkwaliteit</dcat:keyword>
+        <mdcat:statuut>
+          <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
+            <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">Vlaamse Open data</skos:prefLabel>
+            <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden" />
+          </skos:Concept>
+        </mdcat:statuut>
+        <dcat:theme>
+          <skos:Concept rdf:about="http://vocab.belgif.be/auth/datatheme/ENVI">
+            <skos:prefLabel xml:lang="nl">Milieu</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">Environment</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">Environnement</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">Umwelt</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://vocab.belgif.be/auth/datatheme" />
+          </skos:Concept>
+        </dcat:theme>
+        <dct:accessRights>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">
+            <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement" />
+            <skos:prefLabel xml:lang="nl">publiek</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">public</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">public</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">public</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right" />
+          </skos:Concept>
+        </dct:accessRights>
+        <dct:language>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+            <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem" />
+            <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language" />
+          </skos:Concept>
+        </dct:language>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="https://metadata.vlaanderen.be/srv/resources/distributions/d5d86025-7415-45bc-9985-d27011ccf4f7">
+            <dct:identifier>d5d86025-7415-45bc-9985-d27011ccf4f7</dct:identifier>
+            <dct:title xml:lang="nl">Jaargemiddelde concentratie fijn stof (PM2,5) per typegebied</dct:title>
+            <dct:description xml:lang="nl">PM2,5-stofdeeltjes zijn kleiner dan 2,5 µm (= 0,025 mm). Er is een grote verscheidenheid in de deeltjes naar grootte en samenstelling. Stofdeeltjes worden ofwel rechtstreeks uitgestoten (primair stof) ofwel ontstaan ze in de atmosfeer (secundair stof).</dct:description>
+            <dcat:accessURL rdf:resource="https://www.vmm.be/lucht/fijn-stof/concentratie-pm2-5/pm2-5-jaargemiddelden/@@download/excel" />
+            <dct:format>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/XLSX">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent" />
+                <skos:prefLabel xml:lang="nl">Excel XLSX</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Excel XLSX</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">Excel XLSX</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Excel XLSX</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type" />
+              </skos:Concept>
+            </dct:format>
+            <dct:language>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem" />
+                <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language" />
+              </skos:Concept>
+            </dct:language>
+            <dct:license>
+              <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0">
+                <dct:title xml:lang="nl">Modellicentie voor gratis hergebruik</dct:title>
+                <dct:description xml:lang="nl">Onder deze licentie doet de instantie geen afstand van haar intellectuele rechten, maar mag de data voor eender welk doel hergebruikt worden, gratis en onder minimale restricties.</dct:description>
+                <dct:identifier>https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0</dct:identifier>
+              </dct:LicenseDocument>
+            </dct:license>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="https://metadata.vlaanderen.be/srv/resources/distributions/7d0af077-4722-4fa7-b28c-d3772729273e">
+            <dct:identifier>7d0af077-4722-4fa7-b28c-d3772729273e</dct:identifier>
+            <dct:title xml:lang="nl">Aantal dagen met een PM2,5-daggemiddelde hoger dan 25 µg/m³ per typegebied</dct:title>
+            <dct:description xml:lang="nl">PM2,5-stofdeeltjes zijn kleiner dan 2,5 µm (= 0,025 mm). Er is een grote verscheidenheid in de deeltjes naar grootte en samenstelling. Stofdeeltjes worden ofwel rechtstreeks uitgestoten (primair stof) ofwel ontstaan ze in de atmosfeer (secundair stof).</dct:description>
+            <dcat:accessURL rdf:resource="https://www.vmm.be/lucht/fijn-stof/concentratie-pm2-5/pm2-5-daggemiddelden/@@download/excel" />
+            <dct:format>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/XLSX">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent" />
+                <skos:prefLabel xml:lang="nl">Excel XLSX</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Excel XLSX</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">Excel XLSX</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Excel XLSX</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type" />
+              </skos:Concept>
+            </dct:format>
+            <dcat:mediaType>
+              <skos:Concept rdf:about="https://www.iana.org/assignments/media-types/application/vnd.ms-excel">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaType" />
+                <skos:prefLabel xml:lang="nl">application/vnd.ms-excel</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">application/vnd.ms-excel</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">application/vnd.ms-excel</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">application/vnd.ms-excel</skos:prefLabel>
+                <skos:inScheme rdf:resource="https://www.iana.org/assignments/media-types" />
+              </skos:Concept>
+            </dcat:mediaType>
+            <dct:language>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem" />
+                <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language" />
+              </skos:Concept>
+            </dct:language>
+            <dct:license>
+              <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0">
+                <dct:title xml:lang="nl">Modellicentie voor gratis hergebruik</dct:title>
+                <dct:description xml:lang="nl">Onder deze licentie doet de instantie geen afstand van haar intellectuele rechten, maar mag de data voor eender welk doel hergebruikt worden, gratis en onder minimale restricties.</dct:description>
+                <dct:identifier>https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0</dct:identifier>
+              </dct:LicenseDocument>
+            </dct:license>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="https://metadata.vlaanderen.be/srv/resources/distributions/cae2119f-28cb-4a87-b3ad-bb0c4a45e76d">
+            <dct:identifier>cae2119f-28cb-4a87-b3ad-bb0c4a45e76d</dct:identifier>
+            <dct:title xml:lang="nl">Jaargemiddelde concentratie fijn stof (PM10) per typegebied</dct:title>
+            <dct:description xml:lang="nl">PM10-stofdeeltjes zijn kleiner dan 10 µm (= 0,01 mm). Er is een grote verscheidenheid in de deeltjes naar grootte en samenstelling. Stofdeeltjes worden ofwel rechtstreeks uitgestoten (primair stof) ofwel ontstaan ze in de atmosfeer (secundair stof).</dct:description>
+            <dcat:accessURL rdf:resource="https://www.vmm.be/lucht/fijn-stof/concentratie-pm10/pm10-jaargemiddelden/@@download/excel" />
+            <dct:format>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/XLSX">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent" />
+                <skos:prefLabel xml:lang="nl">Excel XLSX</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Excel XLSX</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">Excel XLSX</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Excel XLSX</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type" />
+              </skos:Concept>
+            </dct:format>
+            <dct:language>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem" />
+                <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language" />
+              </skos:Concept>
+            </dct:language>
+            <dct:license>
+              <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0">
+                <dct:title xml:lang="nl">Modellicentie voor gratis hergebruik</dct:title>
+                <dct:description xml:lang="nl">Onder deze licentie doet de instantie geen afstand van haar intellectuele rechten, maar mag de data voor eender welk doel hergebruikt worden, gratis en onder minimale restricties.</dct:description>
+                <dct:identifier>https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0</dct:identifier>
+              </dct:LicenseDocument>
+            </dct:license>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="https://metadata.vlaanderen.be/srv/resources/distributions/0e45189a-7ff7-4170-a9ff-d0229e8f1a94">
+            <dct:identifier>0e45189a-7ff7-4170-a9ff-d0229e8f1a94</dct:identifier>
+            <dct:title xml:lang="nl">Jaargemiddelde concentratie zwarte koolstof per typegebied</dct:title>
+            <dct:description xml:lang="nl">zwarte koolstof (‘black carbon’ =BC) is een maat voor de roetconcentratie in de omgevingslucht</dct:description>
+            <dcat:accessURL rdf:resource="https://www.vmm.be/lucht/fijn-stof/concentratie-zwarte-koolstof/bc-jaargemiddelden/@@download/excel" />
+            <dct:format>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/XLSX">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent" />
+                <skos:prefLabel xml:lang="nl">Excel XLSX</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Excel XLSX</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">Excel XLSX</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Excel XLSX</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type" />
+              </skos:Concept>
+            </dct:format>
+            <dct:language>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem" />
+                <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language" />
+              </skos:Concept>
+            </dct:language>
+            <dct:license>
+              <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0">
+                <dct:title xml:lang="nl">Modellicentie voor gratis hergebruik</dct:title>
+                <dct:description xml:lang="nl">Onder deze licentie doet de instantie geen afstand van haar intellectuele rechten, maar mag de data voor eender welk doel hergebruikt worden, gratis en onder minimale restricties.</dct:description>
+                <dct:identifier>https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0</dct:identifier>
+              </dct:LicenseDocument>
+            </dct:license>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="https://metadata.vlaanderen.be/srv/resources/distributions/49f92291-09dd-43a7-b670-5f37cb008b36">
+            <dct:identifier>49f92291-09dd-43a7-b670-5f37cb008b36</dct:identifier>
+            <dct:title xml:lang="nl">Aantal ultrafijnstofdeeltjes per grootteklasse</dct:title>
+            <dct:description xml:lang="nl">ultrafijn stof (UFP) zijn deeltjes met een diameter kleiner dan 100 nm. De VMM meet UFP-deeltjes van 10 tot 100 nm.</dct:description>
+            <dcat:accessURL rdf:resource="https://www.vmm.be/lucht/fijn-stof/concentratie-ultrafijn-stof/aantal-ufp-deeltjes/@@download/excel" />
+            <dct:format>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/XLSX">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent" />
+                <skos:prefLabel xml:lang="nl">Excel XLSX</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Excel XLSX</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">Excel XLSX</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Excel XLSX</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type" />
+              </skos:Concept>
+            </dct:format>
+            <dcat:mediaType>
+              <skos:Concept rdf:about="https://www.iana.org/assignments/media-types/application/vnd.ms-excel">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaType" />
+                <skos:prefLabel xml:lang="nl">application/vnd.ms-excel</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">application/vnd.ms-excel</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">application/vnd.ms-excel</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">application/vnd.ms-excel</skos:prefLabel>
+                <skos:inScheme rdf:resource="https://www.iana.org/assignments/media-types" />
+              </skos:Concept>
+            </dcat:mediaType>
+            <dct:language>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem" />
+                <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language" />
+              </skos:Concept>
+            </dct:language>
+            <dct:license>
+              <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0">
+                <dct:title xml:lang="nl">Modellicentie voor gratis hergebruik</dct:title>
+                <dct:description xml:lang="nl">Onder deze licentie doet de instantie geen afstand van haar intellectuele rechten, maar mag de data voor eender welk doel hergebruikt worden, gratis en onder minimale restricties.</dct:description>
+                <dct:identifier>https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0</dct:identifier>
+              </dct:LicenseDocument>
+            </dct:license>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="https://metadata.vlaanderen.be/srv/resources/distributions/ada7532c-379b-4fc6-8b4e-2d42d770f07c">
+            <dct:identifier>ada7532c-379b-4fc6-8b4e-2d42d770f07c</dct:identifier>
+            <dct:title xml:lang="nl">Gemiddelde deeltjesgrootteverdeling, op meetplaatsen in Borgerhout en Steenokkerzeel</dct:title>
+            <dct:description xml:lang="nl">geeft de gemiddelde deeltjesgrootteverdeling weer, op meetplaatsen in Borgerhout en Steenokkerzeel</dct:description>
+            <dcat:accessURL rdf:resource="https://www.vmm.be/lucht/fijn-stof/concentratie-ultrafijn-stof/ufp-deeltjesgrooteverdeling/@@download/csv" />
+            <dct:format>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent" />
+                <skos:prefLabel xml:lang="nl">CSV</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">CSV</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">CSV</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">CSV</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type" />
+              </skos:Concept>
+            </dct:format>
+            <dcat:mediaType>
+              <skos:Concept rdf:about="https://www.iana.org/assignments/media-types/text/csv">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaType" />
+                <skos:prefLabel xml:lang="nl">text/csv</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">text/csv</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">text/csv</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">text/csv</skos:prefLabel>
+                <skos:inScheme rdf:resource="https://www.iana.org/assignments/media-types" />
+              </skos:Concept>
+            </dcat:mediaType>
+            <dct:language>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem" />
+                <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language" />
+              </skos:Concept>
+            </dct:language>
+            <dct:license>
+              <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0">
+                <dct:title xml:lang="nl">Modellicentie voor gratis hergebruik</dct:title>
+                <dct:description xml:lang="nl">Onder deze licentie doet de instantie geen afstand van haar intellectuele rechten, maar mag de data voor eender welk doel hergebruikt worden, gratis en onder minimale restricties.</dct:description>
+                <dct:identifier>https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0</dct:identifier>
+              </dct:LicenseDocument>
+            </dct:license>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="https://metadata.vlaanderen.be/srv/resources/distributions/25ae2db5-0315-4876-aa2e-18ce7cde19c4">
+            <dct:identifier>25ae2db5-0315-4876-aa2e-18ce7cde19c4</dct:identifier>
+            <dct:title xml:lang="nl">Evolutie van het aantal dagen met een PM10-daggemiddelde hoger dan 45 µg/m³ per typegebied</dct:title>
+            <dct:description xml:lang="nl">Deze grafiek geeft de evolutie weer van het aantal dagen met een PM10-daggemiddelde hoger dan 45 µg/m³ per typegebied in Vlaanderen vanaf 2000.</dct:description>
+            <dcat:accessURL rdf:resource="https://www.vmm.be/lucht/fijn-stof/concentratie-pm10/pm10-daggemiddelden-wgo/@@download/csv" />
+            <dct:format>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent" />
+                <skos:prefLabel xml:lang="nl">CSV</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">CSV</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">CSV</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">CSV</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type" />
+              </skos:Concept>
+            </dct:format>
+            <dcat:mediaType>
+              <skos:Concept rdf:about="https://www.iana.org/assignments/media-types/text/csv">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaType" />
+                <skos:prefLabel xml:lang="nl">text/csv</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">text/csv</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">text/csv</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">text/csv</skos:prefLabel>
+                <skos:inScheme rdf:resource="https://www.iana.org/assignments/media-types" />
+              </skos:Concept>
+            </dcat:mediaType>
+            <dct:language>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem" />
+                <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language" />
+              </skos:Concept>
+            </dct:language>
+            <dct:license>
+              <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0">
+                <dct:type>
+                  <skos:Concept rdf:about="http://purl.org/adms/licencetype/Attribution">
+                    <skos:prefLabel xml:lang="nl">Verplichte bronvermelding</skos:prefLabel>
+                    <skos:prefLabel xml:lang="en">Attribution</skos:prefLabel>
+                    <skos:prefLabel xml:lang="fr">Attribution</skos:prefLabel>
+                    <skos:prefLabel xml:lang="de">Attribution</skos:prefLabel>
+                    <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0" />
+                  </skos:Concept>
+                </dct:type>
+                <dct:title xml:lang="nl">Modellicentie voor gratis hergebruik</dct:title>
+                <dct:description xml:lang="nl">Onder deze licentie doet de instantie geen afstand van haar intellectuele rechten, maar mag de data voor eender welk doel hergebruikt worden, gratis en onder minimale restricties.</dct:description>
+                <dct:identifier>https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0</dct:identifier>
+              </dct:LicenseDocument>
+            </dct:license>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="https://metadata.vlaanderen.be/srv/resources/distributions/b380a962-9a34-4853-923d-e876f1fe03c3">
+            <dct:identifier>b380a962-9a34-4853-923d-e876f1fe03c3</dct:identifier>
+            <dct:title xml:lang="nl">Evolutie van het aantal dagen met een PM10-daggemiddelde hoger dan 50 µg/m³ per typegebied</dct:title>
+            <dct:description xml:lang="nl">Deze grafiek geeft de evolutie weer van het aantal dagen met een PM10-daggemiddelde hoger dan 50 µg/m³ per typegebied in Vlaanderen vanaf 2000</dct:description>
+            <dcat:accessURL rdf:resource="https://www.vmm.be/lucht/fijn-stof/concentratie-pm10/pm10-daggemiddelden-eu/@@download/csv" />
+            <dct:format>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent" />
+                <skos:prefLabel xml:lang="nl">CSV</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">CSV</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">CSV</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">CSV</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type" />
+              </skos:Concept>
+            </dct:format>
+            <dcat:mediaType>
+              <skos:Concept rdf:about="https://www.iana.org/assignments/media-types/text/csv">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaType" />
+                <skos:prefLabel xml:lang="nl">text/csv</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">text/csv</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">text/csv</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">text/csv</skos:prefLabel>
+                <skos:inScheme rdf:resource="https://www.iana.org/assignments/media-types" />
+              </skos:Concept>
+            </dcat:mediaType>
+            <dct:language>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem" />
+                <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language" />
+              </skos:Concept>
+            </dct:language>
+            <dct:license>
+              <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0">
+                <dct:type>
+                  <skos:Concept rdf:about="http://purl.org/adms/licencetype/Attribution">
+                    <skos:prefLabel xml:lang="nl">Verplichte bronvermelding</skos:prefLabel>
+                    <skos:prefLabel xml:lang="en">Attribution</skos:prefLabel>
+                    <skos:prefLabel xml:lang="fr">Attribution</skos:prefLabel>
+                    <skos:prefLabel xml:lang="de">Attribution</skos:prefLabel>
+                    <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0" />
+                  </skos:Concept>
+                </dct:type>
+                <dct:title xml:lang="nl">Modellicentie voor gratis hergebruik</dct:title>
+                <dct:description xml:lang="nl">Onder deze licentie doet de instantie geen afstand van haar intellectuele rechten, maar mag de data voor eender welk doel hergebruikt worden, gratis en onder minimale restricties.</dct:description>
+                <dct:identifier>https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0</dct:identifier>
+              </dct:LicenseDocument>
+            </dct:license>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="https://metadata.vlaanderen.be/srv/resources/distributions/8e370f4f-f2a9-4a12-9f34-ea104a896976">
+            <dct:identifier>8e370f4f-f2a9-4a12-9f34-ea104a896976</dct:identifier>
+            <dct:title xml:lang="nl">Gemiddeld dagverloop van de concentratie ultrafijn stof (10-100 nm deeltjes) op weekdagen en in het weekend, op meetplaatsen in Borgerhout en Steenokkerzeel</dct:title>
+            <dct:description xml:lang="nl">geeft het gemiddelde dagverloop van ultrafijn stof (10-100 nm deeltjes) op weekdagen en in het weekend weer, op meetplaatsen in Borgerhout en Steenokkerzeel</dct:description>
+            <dcat:accessURL rdf:resource="https://www.vmm.be/lucht/fijn-stof/concentratie-ultrafijn-stof/ufp-dageverloop/@@download/csv" />
+            <dct:format>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent" />
+                <skos:prefLabel xml:lang="nl">CSV</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">CSV</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">CSV</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">CSV</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type" />
+              </skos:Concept>
+            </dct:format>
+            <dcat:mediaType>
+              <skos:Concept rdf:about="https://www.iana.org/assignments/media-types/text/csv">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaType" />
+                <skos:prefLabel xml:lang="nl">text/csv</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">text/csv</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">text/csv</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">text/csv</skos:prefLabel>
+                <skos:inScheme rdf:resource="https://www.iana.org/assignments/media-types" />
+              </skos:Concept>
+            </dcat:mediaType>
+            <dct:language>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem" />
+                <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language" />
+              </skos:Concept>
+            </dct:language>
+            <dct:license>
+              <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0">
+                <dct:type>
+                  <skos:Concept rdf:about="http://purl.org/adms/licencetype/Attribution">
+                    <skos:prefLabel xml:lang="nl">Verplichte bronvermelding</skos:prefLabel>
+                    <skos:prefLabel xml:lang="en">Attribution</skos:prefLabel>
+                    <skos:prefLabel xml:lang="fr">Attribution</skos:prefLabel>
+                    <skos:prefLabel xml:lang="de">Attribution</skos:prefLabel>
+                    <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0" />
+                  </skos:Concept>
+                </dct:type>
+                <dct:title xml:lang="nl">Modellicentie voor gratis hergebruik</dct:title>
+                <dct:description xml:lang="nl">Onder deze licentie doet de instantie geen afstand van haar intellectuele rechten, maar mag de data voor eender welk doel hergebruikt worden, gratis en onder minimale restricties.</dct:description>
+                <dct:identifier>https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0</dct:identifier>
+              </dct:LicenseDocument>
+            </dct:license>
+          </dcat:Distribution>
+        </dcat:distribution>
+      </dcat:Dataset>
+    </dcat:dataset>
+  </dcat:Catalog>
+</rdf:RDF>
+

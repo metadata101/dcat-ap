@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.openarchives.org/OAI/2.0/rdf.xsd">
+  <dcat:Catalog xmlns:dcat="http://www.w3.org/ns/dcat#" rdf:about="https://data.stad.gent/api/v2/catalog/exports/rdf">
+    <dct:title xmlns:dct="http://purl.org/dc/terms/">Gent's catalog</dct:title>
+    <dct:description xmlns:dct="http://purl.org/dc/terms/">Gent Catalog</dct:description>
+    <dct:publisher xmlns:dct="http://purl.org/dc/terms/">
+      <foaf:Agent xmlns:foaf="http://xmlns.com/foaf/0.1/" rdf:about="http://www.opendatasoft.com">
+        <foaf:name>Opendatasoft</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <foaf:homepage xmlns:foaf="http://xmlns.com/foaf/0.1/">
+      <foaf:Document rdf:about="https://data.stad.gent" />
+    </foaf:homepage>
+    <dct:language xmlns:dct="http://purl.org/dc/terms/">
+      <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://id.loc.gov/vocabulary/iso639-1/nl">
+        <rdf:type rdf:resource="dct:LinguisticSystem" />
+      </skos:Concept>
+    </dct:language>
+    <dct:language xmlns:dct="http://purl.org/dc/terms/">
+      <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://id.loc.gov/vocabulary/iso639-1/en">
+        <rdf:type rdf:resource="dct:LinguisticSystem" />
+      </skos:Concept>
+    </dct:language>
+    <dcat:record>
+      <dcat:CatalogRecord rdf:about="https://data.stad.gent/api/v2/catalog/datasets/fietstelpaal-visserij-2023-gent-record">
+        <dct:identifier xmlns:dct="http://purl.org/dc/terms/">51e19866-35bd-3ee3-a49c-680943d5f8d4</dct:identifier>
+        <foaf:primaryTopic xmlns:foaf="http://xmlns.com/foaf/0.1/" rdf:resource="https://data.stad.gent/api/v2/catalog/datasets/fietstelpaal-visserij-2023-gent" />
+        <dct:modified xmlns:dct="http://purl.org/dc/terms/">2024-09-19T01:30:05.391Z</dct:modified>
+        <dct:conformsTo xmlns:dct="http://purl.org/dc/terms/">
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
+            <dct:title>Dcat-ap-vl</dct:title>
+            <dct:description>Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
+            <owl:versionInfo xmlns:owl="http://www.w3.org/2002/07/owl#">2.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+        <adms:identifier xmlns:adms="http://www.w3.org/ns/adms#">
+          <adms:Identifier>
+            <skos:notation xmlns:skos="http://www.w3.org/2004/02/skos/core#">https://data.stad.gent/api/v2/catalog/datasets/fietstelpaal-visserij-2023-gent-record</skos:notation>
+          </adms:Identifier>
+        </adms:identifier>
+      </dcat:CatalogRecord>
+    </dcat:record>
+    <dcat:dataset>
+      <dcat:Dataset rdf:about="https://data.stad.gent/api/v2/catalog/datasets/fietstelpaal-visserij-2023-gent">
+        <dct:identifier xmlns:dct="http://purl.org/dc/terms/">fietstelpaal-visserij-2023-gent</dct:identifier>
+        <dct:title xmlns:dct="http://purl.org/dc/terms/">Fietstelpaal Visserij 2023 Gent</dct:title>
+        <dct:description xmlns:dct="http://purl.org/dc/terms/">&lt;p&gt;Deze dataset bevat de data van de fietstelpaal Visserij van 2023. De metingen zijn per 5 minuten gegroepeerd in 3 waarden:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Totaal: totaal aantal gepasseerde fietsers&lt;/li&gt;&lt;li&gt;Hoofdrichting: aantal gepasseerde fietsers van Keizerviaduct naar Tweebruggenstraat&lt;/li&gt;&lt;li&gt;Tegenrichting: aantal gepasseerde fietsers van Tweebruggenstraat naar Keizerviaduct&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Locatie van de telpaal: &lt;a href="https://data.stad.gent/explore/dataset/fietstelpalen-gent/table/" style="background-color: rgb(255, 255, 255); font-family: sans-serif; font-size: 14px; font-weight: 400;" target="_blank"&gt;https://data.stad.gent/explore/dataset/fietstelpalen-gent/table/&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;No Data waarde: NaN&lt;/p&gt;&lt;div&gt;&lt;span style="font-family: inherit; font-size: 0.875rem;"&gt;&lt;br/&gt;&lt;/span&gt;&lt;/div&gt;</dct:description>
+        <dct:publisher xmlns:dct="http://purl.org/dc/terms/">
+          <foaf:Agent xmlns:foaf="http://xmlns.com/foaf/0.1/" />
+        </dct:publisher>
+        <dcat:keyword xml:lang="nl">Fietsen</dcat:keyword>
+        <dcat:keyword xml:lang="nl">Fietstelpaal</dcat:keyword>
+        <mdcat:statuut xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#">
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
+            <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">Vlaamse Open data</skos:prefLabel>
+            <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden" />
+          </skos:Concept>
+        </mdcat:statuut>
+        <dcat:theme>
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://data.stad.gent/id/theme/Mobiliteit">
+            <skos:inScheme rdf:resource="https://data.stad.gent/concept-scheme/themes" />
+          </skos:Concept>
+        </dcat:theme>
+        <dct:language xmlns:dct="http://purl.org/dc/terms/">
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://id.loc.gov/vocabulary/iso639-1/nl">
+            <rdf:type rdf:resource="dct:LinguisticSystem" />
+          </skos:Concept>
+        </dct:language>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="https://data.stad.gent/api/v2/catalog/datasets/fietstelpaal-visserij-2023-gent-csv">
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">csv export of https://data.stad.gent/api/v2/catalog/datasets/fietstelpaal-visserij-2023-gent</dct:description>
+            <dcat:accessURL rdf:resource="https://data.stad.gent/api/v2/catalog/datasets/fietstelpaal-visserij-2023-gent/exports/csv" />
+            <!--Range violation in input for dct:license: found a literal and was expecting
+          a resource, like:
+          <dct:license rdf:resource="Modellicentie Gratis Hergebruik"/>
+          or
+          dct:license <Modellicentie Gratis Hergebruik>
+        -->
+            <dct:license xmlns:dct="http://purl.org/dc/terms/">
+              <dct:LicenseDocument />
+            </dct:license>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="https://data.stad.gent/api/v2/catalog/datasets/fietstelpaal-visserij-2023-gent-json">
+            <dct:description xmlns:dct="http://purl.org/dc/terms/">json export of https://data.stad.gent/api/v2/catalog/datasets/fietstelpaal-visserij-2023-gent</dct:description>
+            <dcat:accessURL rdf:resource="https://data.stad.gent/api/v2/catalog/datasets/fietstelpaal-visserij-2023-gent/exports/json" />
+            <!--Range violation in input for dct:license: found a literal and was expecting
+          a resource, like:
+          <dct:license rdf:resource="Modellicentie Gratis Hergebruik"/>
+          or
+          dct:license <Modellicentie Gratis Hergebruik>
+        -->
+            <dct:license xmlns:dct="http://purl.org/dc/terms/">
+              <dct:LicenseDocument />
+            </dct:license>
+          </dcat:Distribution>
+        </dcat:distribution>
+      </dcat:Dataset>
+    </dcat:dataset>
+  </dcat:Catalog>
+</rdf:RDF>
+

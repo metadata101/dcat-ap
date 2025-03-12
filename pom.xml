@@ -5,11 +5,11 @@
   <parent>
     <artifactId>gn-schemas</artifactId>
     <groupId>org.geonetwork-opensource.schemas</groupId>
-    <version>4.4.5-SNAPSHOT</version>
+    <version>4.4.6-0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>gn-schema-dcat2</artifactId>
+  <artifactId>gn-schema-dcat-ap</artifactId>
   <name>GeoNetwork schema plugin for DCAT-AP standard</name>
   <packaging>jar</packaging>
 
@@ -62,6 +62,16 @@
 
   <build>
     <resources>
+      <!-- thesaurus files packaged into jar -->
+      <resource>
+        <directory>resources/thesauri/theme</directory>
+        <targetPath>thesaurus/theme</targetPath>
+      </resource>
+      <resource>
+        <directory>resources/thesauri/place</directory>
+        <targetPath>thesaurus/place</targetPath>
+      </resource>
+
       <resource>
         <directory>src/main/config/translations</directory>
         <targetPath>META-INF/catalog/locales</targetPath>

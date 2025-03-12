@@ -28,8 +28,13 @@
     xmlns:util="http://www.springframework.org/schema/util"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="dcat2SchemaPlugin"
-        class="org.fao.geonet.schema.dcatap.DCAT2SchemaPlugin">
+  <!-- copies the DCAT-AP thesaurus files -->
+  <bean id="dcat-ap.startup"
+        class="org.fao.geonet.schema.dcatap.init.SchemaInitializerThesauri">
+  </bean>
+
+  <bean id="dcat-apSchemaPlugin"
+        class="org.fao.geonet.schema.dcatap.DCATAPSchemaPlugin">
     <property name="xpathTitle">
       <util:list value-type="java.lang.String">
         <value>dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title</value>
@@ -46,7 +51,4 @@
       </list>
     </property>
   </bean>
-
-  <!-- <bean id="dcatap" class="org.fao.geonet.kernel.harvest.harvester.dcatap.DCAT2Harvester" -->
-  <!--       scope="prototype"/> -->
 </beans>

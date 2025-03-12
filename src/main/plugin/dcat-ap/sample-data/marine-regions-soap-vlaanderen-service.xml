@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.openarchives.org/OAI/2.0/rdf.xsd">
+  <dcat:Catalog xmlns:dcat="http://www.w3.org/ns/dcat#" rdf:about="htts://data.vlaanderen.be/id/catalog/vsds">
+    <dct:title xmlns:dct="http://purl.org/dc/terms/" xml:lang="nl">Vlaamse Smart Data Space datasets</dct:title>
+    <dct:description xmlns:dct="http://purl.org/dc/terms/" xml:lang="nl">Datesets in de VSDS, beschreven als LDES.</dct:description>
+    <dct:identifier xmlns:dct="http://purl.org/dc/terms/">htts://data.vlaanderen.be/id/catalog/vsds</dct:identifier>
+    <dct:publisher xmlns:dct="http://purl.org/dc/terms/">
+      <foaf:Agent xmlns:foaf="http://xmlns.com/foaf/0.1/">
+        <foaf:name xml:lang="nl">Digitaal Vlaanderen</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:license xmlns:dct="http://purl.org/dc/terms/">
+      <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0" />
+    </dct:license>
+    <dcat:contactPoint>
+      <vcard:Organization xmlns:vcard="http://www.w3.org/2006/vcard/ns#">
+        <vcard:hasEmail rdf:resource="mailto:vsds@vlaanderen.be" />
+        <!--Range violation for vcard:hasURL: found a literal and was expecting a
+            resource, like:
+            <vcard:hasURL rdf:resource="https://www.vlaanderen.be/vlaamse-smart-data-space-portaal"/>
+            or
+            vcard:hasURL <https://www.vlaanderen.be/vlaamse-smart-data-space-portaal>
+          -->
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dcat:record>
+      <dcat:CatalogRecord rdf:about="https://marineinfo.org/id/dataset/1426#MR_SOAPservice-record">
+        <dct:identifier xmlns:dct="http://purl.org/dc/terms/">7484c7e8-f8a2-3922-83bb-5b7f3c661afc</dct:identifier>
+        <foaf:primaryTopic xmlns:foaf="http://xmlns.com/foaf/0.1/" rdf:resource="https://marineinfo.org/id/dataset/1426#MR_SOAPservice" />
+        <dct:modified xmlns:dct="http://purl.org/dc/terms/">2024-09-19T02:15:00.379Z</dct:modified>
+        <dct:conformsTo xmlns:dct="http://purl.org/dc/terms/">
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
+            <dct:title>Dcat-ap-vl</dct:title>
+            <dct:description>Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
+            <owl:versionInfo xmlns:owl="http://www.w3.org/2002/07/owl#">2.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+        <adms:identifier xmlns:adms="http://www.w3.org/ns/adms#">
+          <adms:Identifier>
+            <skos:notation xmlns:skos="http://www.w3.org/2004/02/skos/core#">https://marineinfo.org/id/dataset/1426#MR_SOAPservice-record</skos:notation>
+          </adms:Identifier>
+        </adms:identifier>
+      </dcat:CatalogRecord>
+    </dcat:record>
+    <dcat:service>
+      <dcat:DataService rdf:about="https://marineinfo.org/id/dataset/1426#MR_SOAPservice">
+        <dct:identifier xmlns:dct="http://purl.org/dc/terms/">https://marineinfo.org/id/dataset/1426#MR_SOAPservice</dct:identifier>
+        <dct:title xmlns:dct="http://purl.org/dc/terms/" xml:lang="en">Marine Regions SOAP service</dct:title>
+        <dct:publisher xmlns:dct="http://purl.org/dc/terms/">
+          <foaf:Agent xmlns:foaf="http://xmlns.com/foaf/0.1/" rdf:about="https://ror.org/0496vr396">
+            <foaf:name xml:lang="en">Flanders Marine Institute</foaf:name>
+          </foaf:Agent>
+        </dct:publisher>
+        <dcat:endpointURL rdf:resource="https://www.marineregions.org/gazetteer.php?p=soap&amp;wsdl=1" />
+        <dcat:endpointURL rdf:resource="https://www.marineregions.org/gazetteer.php?p=soap&amp;wsdl=1" />
+        <dcat:endpointDescription rdf:resource="https://www.marineregions.org/gazetteer.php?p=webservices" />
+        <dcat:servesDataset rdf:resource="https://marineinfo.org/id/dataset/1426" />
+        <dcat:contactPoint>
+          <vcard:Organization xmlns:vcard="http://www.w3.org/2006/vcard/ns#">
+            <vcard:fn>Marine Regions Data Management team</vcard:fn>
+            <vcard:hasEmail rdf:resource="mailto:info@marineregions.org" />
+            <!--Range violation for vcard:hasURL: found a literal and was expecting a
+            resource, like:
+            <vcard:hasURL rdf:resource="https://www.marineregions.org/"/>
+            or
+            vcard:hasURL <https://www.marineregions.org/>
+          -->
+          </vcard:Organization>
+        </dcat:contactPoint>
+        <mdcat:statuut xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#">
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE">
+            <skos:prefLabel xml:lang="nl">Vlaamse Open data Service</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">Vlaamse Open data Service</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">Vlaamse Open data Service</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">Vlaamse Open data Service</skos:prefLabel>
+            <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden" />
+          </skos:Concept>
+        </mdcat:statuut>
+        <dct:accessRights xmlns:dct="http://purl.org/dc/terms/">
+          <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">
+            <rdf:type rdf:resource="dct:RightsStatement" />
+          </skos:Concept>
+        </dct:accessRights>
+        <dct:creator xmlns:dct="http://purl.org/dc/terms/">
+          <foaf:Agent xmlns:foaf="http://xmlns.com/foaf/0.1/" rdf:about="https://ror.org/0496vr396">
+            <foaf:name xml:lang="en">Flanders Marine Institute</foaf:name>
+          </foaf:Agent>
+        </dct:creator>
+        <dct:license xmlns:dct="http://purl.org/dc/terms/">
+          <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0" />
+        </dct:license>
+      </dcat:DataService>
+    </dcat:service>
+  </dcat:Catalog>
+</rdf:RDF>
+

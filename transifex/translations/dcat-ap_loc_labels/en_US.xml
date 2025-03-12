@@ -1,0 +1,1062 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <string-array name="adms:Identifier" customAttribute="customValue">
+    <item>Other identifier</item>
+    <item>Other identifier</item>
+    <item>Other identifier</item>
+  </string-array>
+  <string-array name="adms:identifier">
+    <item>Other identifier</item>
+    <item>Other identifier</item>
+    <item>Other identifier</item>
+  </string-array>
+  <string-array name="adms:sample" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample">
+    <item>Sample</item>
+    <item>Sample</item>
+    <item>Sample</item>
+  </string-array>
+  <string-array name="adms:status">
+    <item>Status</item>
+    <item>Status</item>
+    <item>Status</item>
+  </string-array>
+  <string-array name="adms:status" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/adms:status">
+    <item>Change type</item>
+    <item>Change type</item>
+    <item>Change type</item>
+  </string-array>
+  <string-array name="adms:status" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/adms:status">
+    <item>Change type</item>
+    <item>Change type</item>
+    <item>Change type</item>
+  </string-array>
+  <string-array name="adms:versionNotes">
+    <item>Version notes</item>
+    <item>Version notes</item>
+    <item>Version notes</item>
+  </string-array>
+  <string-array name="dcat:DataService">
+    <item>Data service</item>
+    <item>Data service</item>
+    <item>Data service</item>
+  </string-array>
+  <string-array name="dcat:Dataset">
+    <item>Dataset</item>
+    <item>Dataset</item>
+    <item>Dataset</item>
+  </string-array>
+  <string-array name="dcat:Distribution">
+    <item>Dataset distribution</item>
+    <item>Dataset distribution</item>
+    <item>Dataset distribution</item>
+  </string-array>
+  <string-array name="dcat:Relationship">
+    <item>Relation</item>
+    <item>Relation</item>
+    <item>Relation</item>
+  </string-array>
+  <string-array name="dcat:accessService">
+    <item>Access service</item>
+    <item>A data service that gives access to the distribution of the dataset</item>
+    <item>Access service</item>
+  </string-array>
+  <string-array name="dcat:accessURL">
+    <item>access URL</item>
+    <item>access URL</item>
+    <item>access URL</item>
+  </string-array>
+  <string-array name="dcat:byteSize">
+    <item>Size (bytes)</item>
+    <item>Size (bytes)</item>
+    <item>Size (bytes)</item>
+  </string-array>
+  <string-array name="dcat:compressFormat">
+    <item>Compression format</item>
+    <item>Compression format</item>
+    <item>Compression format</item>
+  </string-array>
+  <string-array name="dcat:contactPoint">
+    <item>Contact point</item>
+    <item>Contact point</item>
+    <item>Contact point</item>
+  </string-array>
+  <string-array name="dcat:distribution">
+    <item>Distribution</item>
+    <item>Distribution</item>
+    <item>Distribution</item>
+  </string-array>
+  <string-array name="dcat:downloadURL">
+    <item>Download URL</item>
+    <item>Download URL</item>
+    <item>Download URL</item>
+  </string-array>
+  <string-array name="dcat:endpointDescription">
+    <item>Endpoint description</item>
+    <item>Endpoint description</item>
+    <item>Endpoint description</item>
+  </string-array>
+  <string-array name="dcat:endpointURL">
+    <item>Endpoint URL</item>
+    <item>The root location or primary endpoint of the service (a Web-resolvable IRI).</item>
+    <item>Endpoint URL</item>
+  </string-array>
+  <string-array name="dcat:hadRole">
+    <item>Had role</item>
+    <item>The function of an entity or agent with respect to another entity or resource.</item>
+    <item>Had role</item>
+  </string-array>
+  <string-array name="dcat:keyword">
+    <item>Keyword</item>
+    <item>A keyword or tag describing the resource.</item>
+    <item>Keyword</item>
+  </string-array>
+  <string-array name="dcat:landingPage">
+    <item>Landing page</item>
+    <item>A Web page that can be navigated to in a Web browser to gain access to the catalog, a dataset, its distributions and/or additional information.</item>
+    <item>Landing page</item>
+  </string-array>
+  <string-array name="dcat:mediaType">
+    <item>Media type</item>
+    <item>The media type of the distribution as defined by IANA.</item>
+    <item>Media type</item>
+  </string-array>
+  <string-array name="dcat:packageFormat">
+    <item>Package format</item>
+    <item>The package format of the distribution in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together.</item>
+    <item>Package format</item>
+  </string-array>
+  <string-array name="dcat:qualifiedRelation">
+    <item>Qualified relation</item>
+    <item>Link to a description of a relationship with another resource</item>
+    <item>Qualified relation</item>
+  </string-array>
+  <string-array name="dcat:servesDataset">
+    <item>Serves dataset</item>
+    <item>A collection of data that this data service can distribute.</item>
+    <item>Serves dataset</item>
+  </string-array>
+  <string-array name="dcat:spatialResolutionInMeters">
+    <item>Spatial resolution in meters</item>
+    <item>Minimum spatial separation resolvable in a dataset, measured in meters.</item>
+    <item>Spatial resolution in meters</item>
+  </string-array>
+  <string-array name="dcat:temporalResolution">
+    <item>Temporal resolution</item>
+    <item>Minimum time period resolvable in the dataset.</item>
+    <item>Temporal resolution</item>
+  </string-array>
+  <string-array name="dcat:theme">
+    <item>Theme</item>
+    <item>A main category of the resource. A resource can have multiple themes.</item>
+    <item>Theme</item>
+  </string-array>
+  <string-array name="dct:LicenseDocument">
+    <item>License Document</item>
+    <item>A legal document giving official permission to do something with a resource.</item>
+    <item>License Document</item>
+  </string-array>
+  <string-array name="dct:Location">
+    <item>Location</item>
+    <item>A spatial region or named place.</item>
+    <item>Location</item>
+  </string-array>
+  <string-array name="dct:PeriodOfTime">
+    <item>Period of time</item>
+    <item>An interval of time that is named or defined by its start and end.</item>
+    <item>Period of time</item>
+  </string-array>
+  <string-array name="dct:ProvenanceStatement">
+    <item>provenance statement</item>
+    <item>provenance statement</item>
+    <item>provenance statement</item>
+  </string-array>
+  <string-array name="dct:RightsStatement">
+    <item>Rights statement</item>
+    <item>A statement about the intellectual property rights (IPR) held in or over a resource, a legal document giving official permission to do something with a resource, or a statement about access rights.</item>
+    <item>Rights statement</item>
+  </string-array>
+  <string-array name="dct:Standard">
+    <item>Standard</item>
+    <item>A reference point against which other things can be evaluated or compared.</item>
+    <item>Standard</item>
+  </string-array>
+  <string-array name="dct:accessRights">
+    <item>Access rights</item>
+    <item>Information about who can access the resource or an indication of its security status.</item>
+    <item>Access rights</item>
+  </string-array>
+  <string-array name="dct:accrualPeriodicity">
+    <item>Frequency</item>
+    <item>The frequency with which items are added to a collection.</item>
+    <item>Frequency</item>
+  </string-array>
+  <string-array name="dct:conformsTo">
+    <item>Conforms to standard</item>
+    <item>An established standard to which the described resource conforms.</item>
+    <item>Conforms to standard</item>
+  </string-array>
+  <string-array name="dct:created">
+    <item>Creation date</item>
+    <item>Date or range when this object was created.</item>
+    <item>Creation date</item>
+  </string-array>
+  <string-array name="dct:creator">
+    <item>Creator</item>
+    <item>An entity responsible for making the resource.</item>
+    <item>Creator</item>
+  </string-array>
+  <string-array name="dct:description">
+    <item>Description</item>
+    <item>Description</item>
+    <item>Description</item>
+  </string-array>
+  <string-array name="dct:format">
+    <item>Format</item>
+    <item>The file format, physical medium, or dimensions of the resource.</item>
+    <item>Format</item>
+  </string-array>
+  <string-array name="dct:hasVersion">
+    <item>Has version</item>
+    <item>A related resource that is a version, edition, or adaptation of the described resource.</item>
+    <item>Has version</item>
+  </string-array>
+  <string-array name="dct:identifier">
+    <item>Identifier</item>
+    <item>This is the identifier that one can use to refer to this resource, e.g., a URI or other unique identifier within the context of the catalogue. This value, which is predetermined and cannot be changed afterwards, is the UUID for the resource in GeoNetwork. More than one identifier can be added.</item>
+    <item>Identifier</item>
+  </string-array>
+  <string-array name="dct:isReferencedBy">
+    <item>Is referenced by</item>
+    <item>A related resource, such as a publication, that references, cites, or otherwise points to the cataloged resource.</item>
+    <item>Is referenced by</item>
+  </string-array>
+  <string-array name="dct:isVersionOf">
+    <item>Is a version of</item>
+    <item>A related resource of which the described resource is a version, edition, or adaptation.</item>
+    <item>Is a version of</item>
+  </string-array>
+  <string-array name="dct:issued">
+    <item>Date issued</item>
+    <item>Date of formal issuance of the resource.</item>
+    <item>Date issued</item>
+  </string-array>
+  <string-array name="dct:language">
+    <item>Language</item>
+    <item>Language</item>
+    <item>Language</item>
+  </string-array>
+  <string-array name="dct:license">
+    <item>Licence</item>
+    <item>A legal document giving official permission to do something with the resource.</item>
+    <item>Licence</item>
+  </string-array>
+  <string-array name="dct:modified">
+    <item>Date modified</item>
+    <item>Date on which the resource was changed.</item>
+    <item>Date modified</item>
+  </string-array>
+  <string-array name="dct:provenance">
+    <item>Provenance</item>
+    <item>A statement of any changes in ownership and custody of the resource since its creation that are significant for its authenticity, integrity and interpretation.</item>
+    <item>Provenance</item>
+  </string-array>
+  <string-array name="dct:publisher">
+    <item>Publisher</item>
+    <item>An entity responsible for making the resource available.</item>
+    <item>Publisher</item>
+  </string-array>
+  <string-array name="dct:relation">
+    <item>Relation</item>
+    <item>A related resource.</item>
+    <item>Relation</item>
+  </string-array>
+  <string-array name="dct:relation" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:relation">
+    <item>Related dataset</item>
+    <item>A resource with an unspecified relationship to the cataloged item.</item>
+    <item>Related dataset</item>
+  </string-array>
+  <string-array name="dct:relation" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:relation">
+    <item>Related dataset</item>
+    <item>A resource with an unspecified relationship to the cataloged item.</item>
+    <item>Related dataset</item>
+  </string-array>
+  <string-array name="dct:rights">
+    <item>Rights</item>
+    <item>Information about rights held in and over the resource.</item>
+    <item>Rights</item>
+  </string-array>
+  <string-array name="dct:rightsHolder">
+    <item>Rights holder</item>
+    <item>A person or organization owning or managing rights over the resource.</item>
+    <item>Rights holder</item>
+  </string-array>
+  <string-array name="dct:source">
+    <item>Source</item>
+    <item>A related resource from which the described resource is derived.</item>
+    <item>Source</item>
+  </string-array>
+  <string-array name="dct:spatial">
+    <item>Spatial coverage</item>
+    <item>Spatial characteristics of the resource.</item>
+    <item>Spatial coverage</item>
+  </string-array>
+  <string-array name="dct:subject">
+    <item>Subject</item>
+    <item>A topic of the resource.</item>
+    <item>Subject</item>
+  </string-array>
+  <string-array name="dct:temporal">
+    <item>Temporal Coverage</item>
+    <item>Temporal characteristics of the resource.</item>
+    <item>Temporal Coverage</item>
+  </string-array>
+  <string-array name="dct:title">
+    <item>Title</item>
+    <item>A name given to the resource.</item>
+    <item>Title</item>
+  </string-array>
+  <string-array name="dct:type">
+    <item>Type</item>
+    <item>The nature or genre of the resource.</item>
+    <item>Type</item>
+  </string-array>
+  <string-array name="foaf:Agent">
+    <item>Organisation</item>
+    <item>Organisation</item>
+    <item>Organisation</item>
+  </string-array>
+  <string-array name="foaf:Document">
+    <item>Document</item>
+    <item>Document</item>
+    <item>Document</item>
+  </string-array>
+  <string-array name="foaf:name">
+    <item>Name</item>
+    <item>Name</item>
+    <item>Name</item>
+  </string-array>
+  <string-array name="foaf:page">
+    <item>Documentation</item>
+    <item>Documentation</item>
+    <item>Documentation</item>
+  </string-array>
+  <!-- Uploading these would fail on transifex's side -->
+  <!--  <string-array name="http://inspire.ec.europa.eu/metadata-codelist/TopicCategory">-->
+  <!--    <item>ISO category</item>-->
+  <!--    <item/>-->
+  <!--    <item/>-->
+  <!--  </string-array>-->
+  <!--  <string-array name="http://inspire.ec.europa.eu/theme">-->
+  <!--    <item>INSPIRE Theme</item>-->
+  <!--    <item/>-->
+  <!--    <item/>-->
+  <!--  </string-array>-->
+  <!--  <string-array name="http://www.eionet.europa.eu/gemet">-->
+  <!--    <item>GEMET Concept</item>-->
+  <!--    <item/>-->
+  <!--    <item/>-->
+  <!--  </string-array>-->
+  <string-array name="locn:geometry">
+    <item>Geometry</item>
+    <item>Geometry</item>
+    <item>Geometry</item>
+  </string-array>
+  <string-array name="owl:versionInfo">
+    <item>Version</item>
+    <item>Version</item>
+    <item>Version</item>
+  </string-array>
+  <string-array name="rdf:about">
+    <item>URI</item>
+    <item>URI</item>
+    <item>URI</item>
+  </string-array>
+  <string-array name="rdf:about" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial/dct:Location/@rdf:about">
+    <item>Geographic identifier</item>
+    <item>Geographic identifier</item>
+    <item>Geographic identifier</item>
+  </string-array>
+  <string-array name="rdf:datatype">
+    <item>RDF datatype</item>
+    <item>RDF datatype</item>
+    <item>RDF datatype</item>
+  </string-array>
+  <string-array name="rdf:resource">
+    <item>Resource URI</item>
+    <item>Resource URI</item>
+    <item>Resource URI</item>
+  </string-array>
+  <string-array name="rdf:resource" product="dcatap:applicableLegislation">
+    <item>Applicable legislation</item>
+    <item>Applicable legislation</item>
+    <item>Applicable legislation</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:accessURL/@rdf:resource">
+    <item>Access URL</item>
+    <item>Access URL</item>
+    <item>Access URL</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:downloadURL/@rdf:resource">
+    <item>Download URL</item>
+    <item>Download URL</item>
+    <item>Download URL</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:mediaType/skos:Concept/rdf:type/@rdf:resource">
+    <item>RDF class</item>
+    <item>RDF class</item>
+    <item>RDF class</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:mediaType/skos:Concept/skos:inScheme/@rdf:resource">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:format/skos:Concept/skos:inScheme/@rdf:resource">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:language/skos:Concept/skos:inScheme/@rdf:resource">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasEmail/@rdf:resource">
+    <item>Email</item>
+    <item>Email</item>
+    <item>Email</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasURL/@rdf:resource">
+    <item>Website</item>
+    <item>Website</item>
+    <item>Website</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/adms:status/skos:Concept/rdf:type/@rdf:resource">
+    <item>RDF class</item>
+    <item>RDF class</item>
+    <item>RDF class</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/adms:status/skos:Concept/skos:inScheme/@rdf:resource">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:accessService/@rdf:resource">
+    <item>Access service</item>
+    <item>Access service</item>
+    <item>Access service</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:accessURL/@rdf:resource">
+    <item>Access URL</item>
+    <item>Access URL</item>
+    <item>Access URL</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:downloadURL/@rdf:resource">
+    <item>Download URL</item>
+    <item>Download URL</item>
+    <item>Download URL</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:mediaType/skos:Concept/rdf:type/@rdf:resource">
+    <item>RDF class</item>
+    <item>RDF class</item>
+    <item>RDF class</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:mediaType/skos:Concept/skos:inScheme/@rdf:resource">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:format/skos:Concept/rdf:type/@rdf:resource">
+    <item>RDF class</item>
+    <item>RDF class</item>
+    <item>RDF class</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:format/skos:Concept/skos:inScheme/@rdf:resource">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:language/skos:Concept/rdf:type/@rdf:resource">
+    <item>RDF class</item>
+    <item>RDF class</item>
+    <item>RDF class</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:language/skos:Concept/skos:inScheme/@rdf:resource">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:license/dct:LicenseDocument/dct:type/skos:Concept/rdf:type/@rdf:resource">
+    <item>RDF class</item>
+    <item>RDF class</item>
+    <item>RDF class</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:license/dct:LicenseDocument/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage/@rdf:resource">
+    <item>Landing page</item>
+    <item>Landing page</item>
+    <item>Landing page</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity/skos:Concept/rdf:type/@rdf:resource">
+    <item>RDF class</item>
+    <item>RDF class</item>
+    <item>RDF class</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity/skos:Concept/skos:inScheme/@rdf:resource">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:hasVersion/@rdf:resource">
+    <item>Has version</item>
+    <item>Has version</item>
+    <item>Has version</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isReferencedBy/@rdf:resource">
+    <item>Is referenced by</item>
+    <item>Is referenced by</item>
+    <item>Is referenced by</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isVersionOf/@rdf:resource">
+    <item>Is Version Of</item>
+    <item>A related resource of which the described resource is a version, edition, or adaptation.</item>
+    <item>Is Version Of</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language/skos:Concept/rdf:type/@rdf:resource">
+    <item>RDF class</item>
+    <item>RDF class</item>
+    <item>RDF class</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language/skos:Concept/skos:inScheme/@rdf:resource">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher/foaf:Agent/dct:type/skos:Concept/rdf:type/@rdf:resource">
+    <item>Rdf class</item>
+    <item>Rdf class</item>
+    <item>Rdf class</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher/foaf:Agent/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:relation/@rdf:resource">
+    <item>Related resource</item>
+    <item>Related resource</item>
+    <item>Related resource</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept/rdf:type/@rdf:resource">
+    <item>RDF class</item>
+    <item>RDF class</item>
+    <item>RDF class</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:source/@rdf:resource">
+    <item>Source</item>
+    <item>Source</item>
+    <item>Source</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:type/skos:Concept/rdf:type/@rdf:resource">
+    <item>RDF class</item>
+    <item>RDF class</item>
+    <item>RDF class</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasEmail/@rdf:resource">
+    <item>Email</item>
+    <item>Email</item>
+    <item>Email</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasURL/@rdf:resource">
+    <item>Website</item>
+    <item>Website</item>
+    <item>Website</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription/@rdf:resource">
+    <item>Endpoint description</item>
+    <item>Endpoint description</item>
+    <item>Endpoint description</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL/@rdf:resource">
+    <item>Endpoint URL</item>
+    <item>Endpoint URL</item>
+    <item>Endpoint URL</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage/@rdf:resource">
+    <item>Landing page</item>
+    <item>Landing page</item>
+    <item>Landing page</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset/@rdf:resource">
+    <item>Serves dataset</item>
+    <item>Serves dataset</item>
+    <item>Serves dataset</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:isReferencedBy/@rdf:resource">
+    <item>Is referenced by</item>
+    <item>Is referenced by</item>
+    <item>Is referenced by</item>
+  </string-array>
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:relation/@rdf:resource">
+    <item>Related dataset</item>
+    <item>Complete with a reference (title, identifier, ..) to a related service or related source of your dataset.</item>
+    <item>Related dataset</item>
+  </string-array>
+  <string-array name="rdf:resource" product="dcat:accessURL">
+    <item>Access URL</item>
+    <item>A URL of the resource that gives access to a distribution of the dataset. E.g. landing page, feed, SPARQL endpoint.</item>
+    <item>Access URL</item>
+  </string-array>
+  <string-array name="rdf:resource" product="dcat:downloadURL">
+    <item>Download URL</item>
+    <item>The URL of the downloadable file in a given format. E.g. CSV file or RDF file. The format is indicated by the distribution&apos;s dct:format and/or dcat:mediaType.</item>
+    <item>Download URL</item>
+  </string-array>
+  <string-array name="rdf:resource" product="dcat:endpointDescription">
+    <item>Endpoint description</item>
+    <item>A description of the services available via the end-points, including their operations, parameters etc.</item>
+    <item>Endpoint description</item>
+  </string-array>
+  <string-array name="rdf:resource" product="dcat:endpointURL">
+    <item>Endpoint URL</item>
+    <item>The root location or primary endpoint of the service (a Web-resolvable IRI).</item>
+    <item>Endpoint URL</item>
+  </string-array>
+  <string-array name="rdf:resource" product="dcat:landingPage">
+    <item>Landing page</item>
+    <item>A Web page that can be navigated to in a Web browser to gain access to the catalog, a dataset, its distributions and/or additional information.</item>
+    <item>Landing page</item>
+  </string-array>
+  <string-array name="rdf:resource" product="dcat:servesDataset">
+    <item>Serves dataset</item>
+    <item>A collection of data that this data service can distribute.</item>
+    <item>Serves dataset</item>
+  </string-array>
+  <string-array name="rdf:type">
+    <item>RDF type</item>
+    <item>RDF type</item>
+    <item>RDF type</item>
+  </string-array>
+  <string-array name="rdf:type" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/adms:status/skos:Concept/rdf:type/@rdf:resource">
+    <item>RDF class</item>
+    <item>RDF class</item>
+    <item>RDF class</item>
+  </string-array>
+  <string-array name="rdf:type" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:language/skos:Concept/rdf:type/@rdf:resource">
+    <item>RDF class</item>
+    <item>RDF class</item>
+    <item>RDF class</item>
+  </string-array>
+  <string-array name="rdf:type" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:license/dct:LicenseDocument/dct:type/skos:Concept/rdf:type/@rdf:resource">
+    <item>RDF class</item>
+    <item>RDF class</item>
+    <item>RDF class</item>
+  </string-array>
+  <string-array name="schema:endDate">
+    <item>End date/time</item>
+    <item>The end of the period.</item>
+    <item>End date/time</item>
+  </string-array>
+  <string-array name="schema:startDate">
+    <item>Start date/time</item>
+    <item>The start of the period</item>
+    <item>Start date/time</item>
+  </string-array>
+  <string-array name="skos:Concept">
+    <item>Concept</item>
+    <item>A category or a theme used to describe datasets in the catalog.</item>
+    <item>Concept</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:mediaType/skos:Concept">
+    <item>Media type</item>
+    <item>Media type</item>
+    <item>Media type</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:format/skos:Concept">
+    <item>Format</item>
+    <item>Format</item>
+    <item>Format</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:language/skos:Concept">
+    <item>Language</item>
+    <item>Language</item>
+    <item>Language</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:license/dct:LicenseDocument/dct:type/skos:Concept">
+    <item>Type</item>
+    <item>Type</item>
+    <item>Type</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/adms:status/skos:Concept">
+    <item>Change type</item>
+    <item>Change type</item>
+    <item>Change type</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:compressFormat/skos:Concept">
+    <item>Compression format</item>
+    <item>Compression format</item>
+    <item>Compression format</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:mediaType/skos:Concept">
+    <item>Media type</item>
+    <item>Media type</item>
+    <item>Media type</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:packageFormat/skos:Concept">
+    <item>Package format</item>
+    <item>Package format</item>
+    <item>Package format</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:format/skos:Concept">
+    <item>Format</item>
+    <item>Format</item>
+    <item>Format</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:language/skos:Concept">
+    <item>Language</item>
+    <item>Language</item>
+    <item>Language</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:license/dct:LicenseDocument/dct:type/skos:Concept">
+    <item>Type</item>
+    <item>Type</item>
+    <item>Type</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme/skos:Concept">
+    <item>Theme</item>
+    <item>Theme</item>
+    <item>Theme</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights/skos:Concept">
+    <item>Access rights</item>
+    <item>Access rights</item>
+    <item>Access rights</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity/skos:Concept">
+    <item>Frequency</item>
+    <item>Frequency</item>
+    <item>Frequency</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator/foaf:Agent/dct:type/skos:Concept">
+    <item>Type</item>
+    <item>Type</item>
+    <item>Type</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language/skos:Concept">
+    <item>Language</item>
+    <item>Language</item>
+    <item>Language</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher/foaf:Agent/dct:type/skos:Concept">
+    <item>Type</item>
+    <item>Type</item>
+    <item>Type</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept">
+    <item>Type</item>
+    <item>Type</item>
+    <item>Type</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:subject/skos:Concept">
+    <item>Subject</item>
+    <item>Subject</item>
+    <item>Subject</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:type/skos:Concept">
+    <item>Type</item>
+    <item>Type</item>
+    <item>Type</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme/skos:Concept">
+    <item>Theme</item>
+    <item>Theme</item>
+    <item>Theme</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights/skos:Concept">
+    <item>Access Rights</item>
+    <item>Information about who can access the resource or an indication of its security status.</item>
+    <item>Access Rights</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:creator/foaf:Agent/dct:type/skos:Concept">
+    <item>Type</item>
+    <item>Type</item>
+    <item>Type</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language/skos:Concept">
+    <item>Language</item>
+    <item>Language</item>
+    <item>Language</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/dct:type/skos:Concept">
+    <item>Type</item>
+    <item>Type</item>
+    <item>Type</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher/foaf:Agent/dct:type/skos:Concept">
+    <item>Type</item>
+    <item>Type</item>
+    <item>Type</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:subject/skos:Concept">
+    <item>Subject</item>
+    <item>Subject</item>
+    <item>Subject</item>
+  </string-array>
+  <string-array name="skos:Concept" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:type/skos:Concept">
+    <item>Type</item>
+    <item>Type</item>
+    <item>Type</item>
+  </string-array>
+  <string-array name="skos:inScheme">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="skos:inScheme" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/adms:status/skos:Concept/skos:inScheme/@rdf:resource">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="skos:inScheme" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:license/dct:LicenseDocument/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
+    <item>In scheme</item>
+    <item>In scheme</item>
+    <item>In scheme</item>
+  </string-array>
+  <string-array name="skos:notation">
+    <item>Notation</item>
+    <item>Notation</item>
+    <item>Notation</item>
+  </string-array>
+  <string-array name="skos:prefLabel">
+    <item>Preferred label</item>
+    <item>Preferred label</item>
+    <item>Preferred label</item>
+  </string-array>
+  <string-array name="spdx:Checksum">
+    <item>Checksum</item>
+    <item>Checksum</item>
+    <item>Checksum</item>
+  </string-array>
+  <string-array name="spdx:algorithm">
+    <item>Algorithm</item>
+    <item>Algorithm</item>
+    <item>Algorithm</item>
+  </string-array>
+  <string-array name="spdx:checksum">
+    <item>Checksum</item>
+    <item>Checksum</item>
+    <item>Checksum</item>
+  </string-array>
+  <string-array name="spdx:checksumValue">
+    <item>Checksum value</item>
+    <item>Checksum value</item>
+    <item>Checksum value</item>
+  </string-array>
+  <string-array name="vcard:Address">
+    <item>Address</item>
+    <item>Address</item>
+    <item>Address</item>
+  </string-array>
+  <string-array name="vcard:Organization">
+    <item>Contact organisation</item>
+    <item>Contact organisation</item>
+    <item>Contact organisation</item>
+  </string-array>
+  <string-array name="vcard:country-name">
+    <item>Country</item>
+    <item>Country</item>
+    <item>Country</item>
+  </string-array>
+  <string-array name="vcard:country-name" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress/vcard:Address/vcard:country-name">
+    <item>Country</item>
+    <item>Country</item>
+    <item>Country</item>
+  </string-array>
+  <string-array name="vcard:fn" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:fn">
+    <item>Contact name</item>
+    <item>Contact name</item>
+    <item>Contact name</item>
+  </string-array>
+  <string-array name="vcard:fn" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:fn">
+    <item>Contact name</item>
+    <item>Contact name</item>
+    <item>Contact name</item>
+  </string-array>
+  <string-array name="vcard:hasAddress" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
+    <item>Address</item>
+    <item>Address</item>
+    <item>Address</item>
+  </string-array>
+  <string-array name="vcard:hasAddress" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
+    <item>Address</item>
+    <item>Address</item>
+    <item>Address</item>
+  </string-array>
+  <string-array name="vcard:hasEmail">
+    <item>Email</item>
+    <item>Email</item>
+    <item>Email</item>
+  </string-array>
+  <string-array name="vcard:hasTelephone">
+    <item>Telephone number</item>
+    <item>Telephone number</item>
+    <item>Telephone number</item>
+  </string-array>
+  <string-array name="vcard:hasURL">
+    <item>Website</item>
+    <item>Website</item>
+    <item>Website</item>
+  </string-array>
+  <string-array name="vcard:locality">
+    <item>Locality</item>
+    <item>Locality</item>
+    <item>Locality</item>
+  </string-array>
+  <string-array name="vcard:organization-name">
+    <item>Organisation name</item>
+    <item>Organisation name</item>
+    <item>Organisation name</item>
+  </string-array>
+  <string-array name="vcard:postal-code">
+    <item>Postal code</item>
+    <item>Postal code</item>
+    <item>Postal code</item>
+  </string-array>
+  <string-array name="vcard:street-address">
+    <item>Street</item>
+    <item>Street</item>
+    <item>Street</item>
+  </string-array>
+  <string-array name="xml:lang">
+    <item>Language</item>
+    <item>Language</item>
+    <item>Language</item>
+  </string-array>
+
+  <string-array name="mobilitydcatap:mobilityTheme">
+    <item>Mobility theme</item>
+    <item>This property refers to the mobility-related theme (i.e., a specific subject, category, or type) of the delivered content.
+      A dataset may be associated with multiple themes. A theme is important for data seekers who are interested in a particular type of data content.</item>
+    <item>Mobility theme</item>
+  </string-array>
+  <string-array name="mobilitydcatap:transportMode">
+    <item>Transport mode</item>
+    <item>This property describes the transport mode that is covered by the delivered content. Data can be valid for more than one mode, so a multiple choice should be applied.</item>
+    <item>Transport mode</item>
+  </string-array>
+  <string-array name="mobilitydcatap:networkCoverage">
+    <item>Network coverage</item>
+    <item>This property describes the part of the transport network that is covered by the delivered content. For road traffic, the property SHOULD refer to the network classification for which the data is provided. As a minimum, an international or higher-level classification, e.g., via functional road classes, is recommended to allow data search across different countries. In addition, national classifications are allowed.
+      For other transport modes, the property is meant to refer to the physical infrastructure which is used by the services covered by the data.
+      For all modes, the property SHOULD also indicate if the data content relates to the EU’s trans-European transport network [EU-TEN-T].</item>
+    <item>Network coverage</item>
+  </string-array>
+  <string-array name="mobilitydcatap:georeferencingMethod">
+    <item>Georeferencing method</item>
+    <item>This property SHOULD be used to specify the georeferencing method used in the dataset.</item>
+    <item>Georeferencing method</item>
+  </string-array>
+  <string-array name="mobilitydcatap:intendedInformationService">
+    <item>Intended information service</item>
+    <item>This property MAY describe predefined information services, which the data content is intended to support.
+      Such services MAY be, e.g., information services for multimodal mobility, as specified by EC Delegated Regulation 2017/1926 [EC-MMTIS-DR].
+      Examples of such services include “location search”, which is based on a datasets with address identifiers, or “trip plan computation”, which is based on datasets about a road network.</item>
+    <item>Intended information service</item>
+  </string-array>
+
+  <string-array name="dcatap:hvdCategory" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+    <item>HVD Category</item>
+    <item>The HVD category to which this Dataset belongs.</item>
+    <item>HVD Category</item>
+  </string-array>
+  <string-array name="dcatap:hvdCategory" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+    <item>HVD Category</item>
+    <item>The HVD category to which this Data Service belongs.</item>
+    <item>HVD Category</item>
+  </string-array>
+  <string-array name="dcatap:hvdCategory">
+    <item>HVD Category</item>
+    <item>The HVD category to which this resource belongs.</item>
+    <item>HVD Category</item>
+  </string-array>
+  <string-array name="dcatap:applicableLegislation" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+    <item>Applicable legislation</item>
+    <item>The legislation that mandates the creation or management of the Dataset.</item>
+    <item>Applicable legislation</item>
+  </string-array>
+  <string-array name="dcatap:applicableLegislation" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+    <item>Applicable legislation</item>
+    <item>The legislation that mandates the creation or management of the Data Service.</item>
+    <item>Applicable legislation</item>
+  </string-array>
+  <string-array name="dcatap:applicableLegislation">
+    <item>Applicable legislation</item>
+    <item>The legislation that mandates the creation or management of the resource.</item>
+    <item>Applicable legislation</item>
+  </string-array>
+
+  <string-array name="mdcat:statuut">
+    <item>Statute</item>
+    <item>Tooltip: Statute</item>
+    <item>Statute</item>
+  </string-array>
+  <string-array name="mdcat:MAGDA-categorie">
+    <item>MAGDA-category</item>
+    <item>Tooltip: MAGDA-category</item>
+    <item>MAGDA-category</item>
+  </string-array>
+  <string-array name="mdcat:landingspaginaVoorAuthenticatie">
+    <item>Landingpage for authentication</item>
+    <item>A reference to the landing page that contains specific information on the authentication for the data service.</item>
+    <item>Landingpage for authentication</item>
+  </string-array>
+  <string-array name="rdf:resource" product="mdcat:landingspaginaVoorAuthenticatie">
+    <item>Landingpage for authentication</item>
+    <item>A reference to the landing page that contains specific information on the authentication for the data service.</item>
+    <item>Landingpage for authentication</item>
+  </string-array>
+  <string-array name="mdcat:landingspaginaVoorGebruiksinformatie">
+    <item>Landingpage for usage information</item>
+    <item>A reference to the landing page that contains specific information on the use of data service.</item>
+    <item>Landingpage for usage information</item>
+  </string-array>
+  <string-array name="rdf:resource" product="mdcat:landingspaginaVoorGebruiksinformatie">
+    <item>Landingpage for usage information</item>
+    <item>A reference to the landing page that contains specific information on the use of data service.</item>
+    <item>Landingpage for usage information</item>
+  </string-array>
+  <string-array name="mdcat:landingspaginaVoorStatusinformatie">
+    <item>Landingpage for status information</item>
+    <item>A reference to the statuspage of the data service.</item>
+    <item>Landingpage for status information</item>
+  </string-array>
+  <string-array name="rdf:resource" product="mdcat:landingspaginaVoorStatusinformatie">
+    <item>Landingpage for status information</item>
+    <item>A reference to the statuspage of the data service.</item>
+    <item>Landingpage for status information</item>
+  </string-array>
+  <string-array name="mdcat:levensfase">
+    <item>Lifecycle phase</item>
+    <item>The phase of the lifecycle of the dataservice.</item>
+    <item>Lifecycle phase</item>
+  </string-array>
+  <string-array name="mdcat:ontwikkelingstoestand">
+    <item>Development status</item>
+    <item>The development status of the deployed dataservice.</item>
+    <item>Development status</item>
+  </string-array>
+</resources>
