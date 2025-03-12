@@ -592,6 +592,8 @@
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier"
                  or="identifier"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:identifier/adms:Identifier"/>
         </section>
 
         <section name="vl-section-metadatadcat"
@@ -635,15 +637,6 @@
             </template>
           </action>
 
-          <!-- Theme: vocab.belgif.be/auth/datatheme -->
-          <!-- TODO: custom label to indicate this is about themes from the specific thesaurus? -->
-          <!--          <dcat:theme>-->
-          <!--            <skos:Concept rdf:about="http://vocab.belgif.be/auth/datatheme/CULT">-->
-          <!--              <skos:prefLabel xml:lang="nl">Cultuur en sport</skos:prefLabel>-->
-          <!--              <skos:prefLabel xml:lang="en">Culture and sport</skos:prefLabel>-->
-          <!--              <skos:inScheme rdf:resource="http://vocab.belgif.be/auth/datatheme"/>-->
-          <!--            </skos:Concept>-->
-          <!--          </dcat:theme>-->
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"
                  name="dcat:theme"
                  or="theme"
@@ -655,6 +648,7 @@
               max=""
               labelKey="dcat-addThemes"/>
           </field>
+
         </section>
 
         <section name="versionInformation">
@@ -667,6 +661,8 @@
               </snippet>
             </template>
           </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:versionNotes"/>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created" />
           <action type="add" or="created" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
@@ -697,6 +693,8 @@
               </snippet>
             </template>
           </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity"/>
         </section>
 
         <section name="usageInformation">
