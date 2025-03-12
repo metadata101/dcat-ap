@@ -666,7 +666,7 @@
     <item>RDF class</item>
     <item>RDF class</item>
   </string-array>
-  <string-array name="schema:endDate" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal/dct:PeriodOfTime/schema:endDate">
+  <string-array name="schema:endDate">
     <item>End date/time</item>
     <item>The end of the period.</item>
     <item>End date/time</item>
@@ -1021,40 +1021,32 @@
   </string-array>
   <string-array name="mdcat:landingspaginaVoorAuthenticatie">
     <item>Landingpage for authentication</item>
-    <item>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de
-      dataservice.
-    </item>
+    <item>A reference to the landing page that contains specific information on the authentication for the data service.</item>
     <item>Landingpage for authentication</item>
   </string-array>
   <string-array name="rdf:resource" product="mdcat:landingspaginaVoorAuthenticatie">
     <item>Landingpage for authentication</item>
-    <item>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de
-      dataservice.
-    </item>
+    <item>A reference to the landing page that contains specific information on the authentication for the data service.</item>
     <item>Landingpage for authentication</item>
   </string-array>
   <string-array name="mdcat:landingspaginaVoorGebruiksinformatie">
     <item>Landingpage for usage information</item>
-    <item>Een verwijzing naar de landingspagina met de specifieke informatie over het gebruik van de
-      dataservice.
-    </item>
+    <item>A reference to the landing page that contains specific information on the use of data service.</item>
     <item>Landingpage for usage information</item>
   </string-array>
   <string-array name="rdf:resource" product="mdcat:landingspaginaVoorGebruiksinformatie">
     <item>Landingpage for usage information</item>
-    <item>Een verwijzing naar de landingspagina met de specifieke informatie over het gebruik van de
-      dataservice.
-    </item>
+    <item>A reference to the landing page that contains specific information on the use of data service.</item>
     <item>Landingpage for usage information</item>
   </string-array>
   <string-array name="mdcat:landingspaginaVoorStatusinformatie">
     <item>Landingpage for status information</item>
-    <item>Een verwijzing naar de statuspagina van de dataservice.</item>
+    <item>A reference to the statuspage of the data service.</item>
     <item>Landingpage for status information</item>
   </string-array>
   <string-array name="rdf:resource" product="mdcat:landingspaginaVoorStatusinformatie">
     <item>Landingpage for status information</item>
-    <item>Een verwijzing naar de statuspagina van de dataservice.</item>
+    <item>A reference to the statuspage of the data service.</item>
     <item>Landingpage for status information</item>
   </string-array>
   <string-array name="mdcat:levensfase">

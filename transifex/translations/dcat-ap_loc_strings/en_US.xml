@@ -86,6 +86,7 @@
     <string name="protocol-41">WMTS-1.0.0-http-get-capabilities</string>
     <string name="protocol-42">WMTS-1.0.0-http-get-tile</string>
     <string name="protocol-43">WMTS</string>
+    <string name="protocol-44">REST guidelines Digitaal Vlaanderen</string>
     <string name="protocol-45">REST</string>
     <string name="protocol-46">DOWNLOAD-1.0-ftp--download</string>
     <string name="protocol-47">DOWNLOAD-1.0-http--download</string>

@@ -650,7 +650,7 @@
     <description>RDF class</description>
     <btnLabel>RDF class</btnLabel>
   </element>
-  <element name="schema:endDate" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal/dct:PeriodOfTime/schema:endDate">
+  <element name="schema:endDate">
     <label>End date/time</label>
     <description>The end of the period.</description>
     <btnLabel>End date/time</btnLabel>
@@ -972,8 +972,8 @@
   </element>
   <element name="dcatap:hvdCategory">
     <label>HVD Category</label>
-    <description/>
-    <btnLabel/>
+    <description>The HVD category to which this resource belongs.</description>
+    <btnLabel>HVD Category</btnLabel>
   </element>
   <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>Applicable legislation</label>
@@ -1002,40 +1002,32 @@
   </element>
   <element name="mdcat:landingspaginaVoorAuthenticatie">
     <label>Landingpage for authentication</label>
-    <description>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de
-      dataservice.
-    </description>
+    <description>A reference to the landing page that contains specific information on the authentication for the data service.</description>
     <btnLabel>Landingpage for authentication</btnLabel>
   </element>
   <element name="rdf:resource" context="mdcat:landingspaginaVoorAuthenticatie">
     <label>Landingpage for authentication</label>
-    <description>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de
-      dataservice.
-    </description>
+    <description>A reference to the landing page that contains specific information on the authentication for the data service.</description>
     <btnLabel>Landingpage for authentication</btnLabel>
   </element>
   <element name="mdcat:landingspaginaVoorGebruiksinformatie">
     <label>Landingpage for usage information</label>
-    <description>Een verwijzing naar de landingspagina met de specifieke informatie over het gebruik van de
-      dataservice.
-    </description>
+    <description>A reference to the landing page that contains specific information on the use of data service.</description>
     <btnLabel>Landingpage for usage information</btnLabel>
   </element>
   <element name="rdf:resource" context="mdcat:landingspaginaVoorGebruiksinformatie">
     <label>Landingpage for usage information</label>
-    <description>Een verwijzing naar de landingspagina met de specifieke informatie over het gebruik van de
-      dataservice.
-    </description>
+    <description>A reference to the landing page that contains specific information on the use of data service.</description>
     <btnLabel>Landingpage for usage information</btnLabel>
   </element>
   <element name="mdcat:landingspaginaVoorStatusinformatie">
     <label>Landingpage for status information</label>
-    <description>Een verwijzing naar de statuspagina van de dataservice.</description>
+    <description>A reference to the statuspage of the data service.</description>
     <btnLabel>Landingpage for status information</btnLabel>
   </element>
   <element name="rdf:resource" context="mdcat:landingspaginaVoorStatusinformatie">
     <label>Landingpage for status information</label>
-    <description>Een verwijzing naar de statuspagina van de dataservice.</description>
+    <description>A reference to the statuspage of the data service.</description>
     <btnLabel>Landingpage for status information</btnLabel>
   </element>
   <element name="mdcat:levensfase">
