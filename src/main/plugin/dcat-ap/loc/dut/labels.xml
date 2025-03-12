@@ -356,9 +356,9 @@
     <btnLabel>URI</btnLabel>
   </element>
   <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial/dct:Location/@rdf:about">
-    <label>Geographic identifier</label>
-    <description>Geographic identifier</description>
-    <btnLabel>Geographic identifier</btnLabel>
+    <label>Geografische identificator</label>
+    <description>Geografische identificator</description>
+    <btnLabel>Geografische identificator</btnLabel>
   </element>
   <element name="rdf:datatype">
     <label>RDF datatype</label>
@@ -366,9 +366,9 @@
     <btnLabel>RDF datatype</btnLabel>
   </element>
   <element name="rdf:resource">
-    <label>Resource URI</label>
-    <description>Resource URI</description>
-    <btnLabel>Resource URI</btnLabel>
+    <label>Bron URI</label>
+    <description>Bron URI</description>
+    <btnLabel>Bron URI</btnLabel>
   </element>
   <element name="rdf:resource" context="dcatap:applicableLegislation">
     <label>Toepasselijke wetgeving</label>
@@ -376,9 +376,9 @@
     <btnLabel>Toepasselijke wetgeving</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:accessURL/@rdf:resource">
-    <label>Access URL</label>
-    <description>Access URL</description>
-    <btnLabel>Access URL</btnLabel>
+    <label>URL</label>
+    <description>URL</description>
+    <btnLabel>URL</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:downloadURL/@rdf:resource">
     <label>Download URL</label>
@@ -386,29 +386,29 @@
     <btnLabel>Download URL</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:mediaType/skos:Concept/rdf:type/@rdf:resource">
-    <label>RDF class</label>
-    <description>RDF class</description>
-    <btnLabel>RDF class</btnLabel>
+    <label>RDF klasse</label>
+    <description>RDF klasse</description>
+    <btnLabel>RDF klasse</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:mediaType/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:format/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:language/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasEmail/@rdf:resource">
-    <label>Email</label>
-    <description>Email</description>
-    <btnLabel>Email</btnLabel>
+    <label>E-mail</label>
+    <description>E-mail</description>
+    <btnLabel>E-mail</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasURL/@rdf:resource">
     <label>Website</label>
@@ -416,24 +416,24 @@
     <btnLabel>Website</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/adms:status/skos:Concept/rdf:type/@rdf:resource">
-    <label>RDF class</label>
-    <description>RDF class</description>
-    <btnLabel>RDF class</btnLabel>
+    <label>RDF klasse</label>
+    <description>RDF klasse</description>
+    <btnLabel>RDF klasse</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/adms:status/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:accessService/@rdf:resource">
     <label>Access service</label>
-    <description>Access service</description>
+    <description>Een data service die toegang verschaft tot de distributie van de dataset</description>
     <btnLabel>Access service</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:accessURL/@rdf:resource">
-    <label>Access URL</label>
-    <description>Access URL</description>
-    <btnLabel>Access URL</btnLabel>
+    <label>URL</label>
+    <description>Een URL van een webpagina die toegang geeft tot de distributie van de resource. Deze pagina kan ook aangeven hoe gebruikers de dataset ter beschikking kunnen krijgen.</description>
+    <btnLabel>URL</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:downloadURL/@rdf:resource">
     <label>Download URL</label>
@@ -441,129 +441,129 @@
     <btnLabel>Download URL</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:mediaType/skos:Concept/rdf:type/@rdf:resource">
-    <label>RDF class</label>
-    <description>RDF class</description>
-    <btnLabel>RDF class</btnLabel>
+    <label>RDF klasse</label>
+    <description>RDF klasse</description>
+    <btnLabel>RDF klasse</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:mediaType/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:format/skos:Concept/rdf:type/@rdf:resource">
-    <label>RDF class</label>
-    <description>RDF class</description>
-    <btnLabel>RDF class</btnLabel>
+    <label>RDF klasse</label>
+    <description>RDF klasse</description>
+    <btnLabel>RDF klasse</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:format/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:language/skos:Concept/rdf:type/@rdf:resource">
-    <label>RDF class</label>
-    <description>RDF class</description>
-    <btnLabel>RDF class</btnLabel>
+    <label>RDF klasse</label>
+    <description>RDF klasse</description>
+    <btnLabel>RDF klasse</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:language/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:license/dct:LicenseDocument/dct:type/skos:Concept/rdf:type/@rdf:resource">
-    <label>RDF class</label>
-    <description>RDF class</description>
-    <btnLabel>RDF class</btnLabel>
+    <label>RDF klasse</label>
+    <description>RDF klasse</description>
+    <btnLabel>RDF klasse</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:license/dct:LicenseDocument/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage/@rdf:resource">
-    <label>Landing page</label>
-    <description>Landing page</description>
-    <btnLabel>Landing page</btnLabel>
+    <label>Landingspagina</label>
+    <description>Landingspagina</description>
+    <btnLabel>Landingspagina</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity/skos:Concept/rdf:type/@rdf:resource">
-    <label>RDF class</label>
-    <description>RDF class</description>
-    <btnLabel>RDF class</btnLabel>
+    <label>RDF klasse</label>
+    <description>RDF klasse</description>
+    <btnLabel>RDF klasse</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:hasVersion/@rdf:resource">
-    <label>Has version</label>
-    <description>Has version</description>
-    <btnLabel>Has version</btnLabel>
+    <label>Heeft als versie</label>
+    <description>Heeft als versie</description>
+    <btnLabel>Heeft als versie</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isReferencedBy/@rdf:resource">
-    <label>Is referenced by</label>
-    <description>Is referenced by</description>
-    <btnLabel>Is referenced by</btnLabel>
+    <label>Wordt verwezen door</label>
+    <description>Wordt verwezen door</description>
+    <btnLabel>Wordt verwezen door</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isVersionOf/@rdf:resource">
-    <label>Is Version Of</label>
-    <description>A related resource of which the described resource is a version, edition, or adaptation.</description>
-    <btnLabel>Is Version Of</btnLabel>
+    <label>Is versie van</label>
+    <description>Een gerelateerde bron van welke de beschreven bron een versie, editie of adaptatie is.</description>
+    <btnLabel>Is versie van</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language/skos:Concept/rdf:type/@rdf:resource">
-    <label>RDF class</label>
-    <description>RDF class</description>
-    <btnLabel>RDF class</btnLabel>
+    <label>RDF klasse</label>
+    <description>RDF klasse</description>
+    <btnLabel>RDF klasse</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher/foaf:Agent/dct:type/skos:Concept/rdf:type/@rdf:resource">
-    <label>Rdf class</label>
-    <description>Rdf class</description>
-    <btnLabel>Rdf class</btnLabel>
+    <label>RDF klasse</label>
+    <description>RDF klasse</description>
+    <btnLabel>RDF klasse</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher/foaf:Agent/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:relation/@rdf:resource">
-    <label>Related resource</label>
-    <description>Related resource</description>
-    <btnLabel>Related resource</btnLabel>
+    <label>Gerelateerde bron</label>
+    <description>Gerelateerde bron</description>
+    <btnLabel>Gerelateerde bron</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept/rdf:type/@rdf:resource">
-    <label>RDF class</label>
-    <description>RDF class</description>
-    <btnLabel>RDF class</btnLabel>
+    <label>RDF klasse</label>
+    <description>RDF klasse</description>
+    <btnLabel>RDF klasse</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder/foaf:Agent/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:source/@rdf:resource">
-    <label>Source</label>
-    <description>Source</description>
-    <btnLabel>Source</btnLabel>
+    <label>Bron</label>
+    <description>Bron</description>
+    <btnLabel>Bron</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:type/skos:Concept/rdf:type/@rdf:resource">
-    <label>RDF class</label>
-    <description>RDF class</description>
-    <btnLabel>RDF class</btnLabel>
+    <label>RDF klasse</label>
+    <description>RDF klasse</description>
+    <btnLabel>RDF klasse</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasEmail/@rdf:resource">
-    <label>Email</label>
-    <description>Email</description>
-    <btnLabel>Email</btnLabel>
+    <label>E-mail</label>
+    <description>E-mail</description>
+    <btnLabel>E-mail</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasURL/@rdf:resource">
     <label>Website</label>
@@ -571,9 +571,9 @@
     <btnLabel>Website</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription/@rdf:resource">
-    <label>Endpoint description</label>
-    <description>Endpoint description</description>
-    <btnLabel>Endpoint description</btnLabel>
+    <label>Endpointbeschrijving</label>
+    <description>Endpointbeschrijving</description>
+    <btnLabel>Endpointbeschrijving</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL/@rdf:resource">
     <label>Endpoint URL</label>
@@ -581,54 +581,54 @@
     <btnLabel>Endpoint URL</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage/@rdf:resource">
-    <label>Landing page</label>
-    <description>Landing page</description>
-    <btnLabel>Landing page</btnLabel>
+    <label>Landingspagina</label>
+    <description>Landingspagina</description>
+    <btnLabel>Landingspagina</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset/@rdf:resource">
-    <label>Serves dataset</label>
-    <description>Serves dataset</description>
-    <btnLabel>Serves dataset</btnLabel>
+    <label>Biedt informatie aan over</label>
+    <description>De data die via deze dataservice worden aangeboden.</description>
+    <btnLabel>Biedt informatie aan over</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:isReferencedBy/@rdf:resource">
-    <label>Is referenced by</label>
-    <description>Is referenced by</description>
-    <btnLabel>Is referenced by</btnLabel>
+    <label>Wordt naar verwezen door</label>
+    <description>Wordt naar verwezen door</description>
+    <btnLabel>Wordt naar verwezen door</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:relation/@rdf:resource">
-    <label>Related dataset</label>
-    <description>Complete with a reference (title, identifier, ..) to a related service or related source of your dataset.</description>
-    <btnLabel>Related dataset</btnLabel>
+    <label>Gerelateerde dataset</label>
+    <description>Vul aan met een referentie (titel, identificator, ...) naar een gerelateerde service of bron van je dataset.</description>
+    <btnLabel>Gerelateerde dataset</btnLabel>
   </element>
   <element name="rdf:resource" context="dcat:accessURL">
-    <label>Access URL</label>
-    <description>A URL of the resource that gives access to a distribution of the dataset. E.g. landing page, feed, SPARQL endpoint.</description>
-    <btnLabel>Access URL</btnLabel>
+    <label>URL</label>
+    <description>Een URL van een bron die toegang geeft tot de distributie van de dataset, e.g., landingspagina, feed, SPARQL endpoint.</description>
+    <btnLabel>URL</btnLabel>
   </element>
   <element name="rdf:resource" context="dcat:downloadURL">
     <label>Download URL</label>
-    <description>The URL of the downloadable file in a given format. E.g. CSV file or RDF file. The format is indicated by the distribution's dct:format and/or dcat:mediaType.</description>
+    <description>De URL van het te downloaden bestand in een gegeven formaat, e.g., CSV of RDF. Het formaat is aangegeven door de distributie&amp;apos;s dct:format en/of dcat:mediaType.</description>
     <btnLabel>Download URL</btnLabel>
   </element>
   <element name="rdf:resource" context="dcat:endpointDescription">
-    <label>Endpoint description</label>
-    <description>A description of the services available via the end-points, including their operations, parameters etc.</description>
-    <btnLabel>Endpoint description</btnLabel>
+    <label>Endpointbeschrijving</label>
+    <description>Een beschrijving van de services beschikbaar via de endpoints, inclusief hun operaties, parameters, etc.</description>
+    <btnLabel>Endpointbeschrijving</btnLabel>
   </element>
   <element name="rdf:resource" context="dcat:endpointURL">
     <label>Endpoint URL</label>
-    <description>The root location or primary endpoint of the service (a Web-resolvable IRI).</description>
+    <description>De rootlocatie van het primaire endpoint van de service (een Web-resolvable URI).</description>
     <btnLabel>Endpoint URL</btnLabel>
   </element>
   <element name="rdf:resource" context="dcat:landingPage">
-    <label>Landing page</label>
-    <description>A Web page that can be navigated to in a Web browser to gain access to the catalog, a dataset, its distributions and/or additional information.</description>
-    <btnLabel>Landing page</btnLabel>
+    <label>Landingspagina</label>
+    <description>Een webpagina waarnaar kan genavigeerd worden in een Web browser om toegang te krijgen tot de cataloog, een dataset, de distributies ervan en/of bijkomstige informatie.</description>
+    <btnLabel>Landingspagina</btnLabel>
   </element>
   <element name="rdf:resource" context="dcat:servesDataset">
-    <label>Serves dataset</label>
-    <description>A collection of data that this data service can distribute.</description>
-    <btnLabel>Serves dataset</btnLabel>
+    <label>Biedt informatie aan over</label>
+    <description>De data die via deze dataservice worden aangeboden.</description>
+    <btnLabel>Biedt informatie aan over</btnLabel>
   </element>
   <element name="rdf:type">
     <label>RDF type</label>
@@ -636,21 +636,21 @@
     <btnLabel>RDF type</btnLabel>
   </element>
   <element name="rdf:type" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/adms:status/skos:Concept/rdf:type/@rdf:resource">
-    <label>RDF class</label>
-    <description>RDF class</description>
-    <btnLabel>RDF class</btnLabel>
+    <label>RDF klasse</label>
+    <description>RDF klasse</description>
+    <btnLabel>RDF klasse</btnLabel>
   </element>
   <element name="rdf:type" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:language/skos:Concept/rdf:type/@rdf:resource">
-    <label>RDF class</label>
-    <description>RDF class</description>
-    <btnLabel>RDF class</btnLabel>
+    <label>RDF klasse</label>
+    <description>RDF klasse</description>
+    <btnLabel>RDF klasse</btnLabel>
   </element>
   <element name="rdf:type" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:license/dct:LicenseDocument/dct:type/skos:Concept/rdf:type/@rdf:resource">
-    <label>RDF class</label>
-    <description>RDF class</description>
-    <btnLabel>RDF class</btnLabel>
+    <label>RDF klasse</label>
+    <description>RDF klasse</description>
+    <btnLabel>RDF klasse</btnLabel>
   </element>
-  <element name="schema:endDate" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal/dct:PeriodOfTime/schema:endDate">
+  <element name="schema:endDate">
     <label>Einde datum/tijd</label>
     <description>Het einde van de periode.</description>
     <btnLabel>Einde datum/tijd</btnLabel>
@@ -662,23 +662,23 @@
   </element>
   <element name="skos:Concept">
     <label>Concept</label>
-    <description>A category or a theme used to describe datasets in the catalog.</description>
+    <description>Een categorie of een thema, gebruikt om datasets te beschrijven in de cataloog.</description>
     <btnLabel>Concept</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:mediaType/skos:Concept">
-    <label>Media type</label>
-    <description>Media type</description>
-    <btnLabel>Media type</btnLabel>
+    <label>Mediatype</label>
+    <description>Mediatype</description>
+    <btnLabel>Mediatype</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:format/skos:Concept">
-    <label>Format</label>
-    <description>Format</description>
-    <btnLabel>Format</btnLabel>
+    <label>Formaat</label>
+    <description>Formaat</description>
+    <btnLabel>Formaat</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:language/skos:Concept">
-    <label>Language</label>
-    <description>Language</description>
-    <btnLabel>Language</btnLabel>
+    <label>Taal</label>
+    <description>Taal</description>
+    <btnLabel>Taal</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:license/dct:LicenseDocument/dct:type/skos:Concept">
     <label>Type</label>
@@ -686,34 +686,34 @@
     <btnLabel>Type</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/adms:status/skos:Concept">
-    <label>Change type</label>
-    <description>Change type</description>
-    <btnLabel>Change type</btnLabel>
+    <label>Wijzigingstype</label>
+    <description>Wijzigingstype</description>
+    <btnLabel>Wijzigingstype</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:compressFormat/skos:Concept">
-    <label>Compression format</label>
-    <description>Compression format</description>
-    <btnLabel>Compression format</btnLabel>
+    <label>Compressieformaat</label>
+    <description>Compressieformaat</description>
+    <btnLabel>Compressieformaat</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:mediaType/skos:Concept">
-    <label>Media type</label>
-    <description>Media type</description>
-    <btnLabel>Media type</btnLabel>
+    <label>Mediatype</label>
+    <description>Mediatype</description>
+    <btnLabel>Mediatype</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dcat:packageFormat/skos:Concept">
-    <label>Package format</label>
-    <description>Package format</description>
-    <btnLabel>Package format</btnLabel>
+    <label>Package formaat</label>
+    <description>Package formaat</description>
+    <btnLabel>Package formaat</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:format/skos:Concept">
-    <label>Format</label>
-    <description>Format</description>
-    <btnLabel>Format</btnLabel>
+    <label>Formaat</label>
+    <description>Formaat</description>
+    <btnLabel>Formaat</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:language/skos:Concept">
-    <label>Language</label>
-    <description>Language</description>
-    <btnLabel>Language</btnLabel>
+    <label>Taal</label>
+    <description>Taal</description>
+    <btnLabel>Taal</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:license/dct:LicenseDocument/dct:type/skos:Concept">
     <label>Type</label>
@@ -721,19 +721,19 @@
     <btnLabel>Type</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme/skos:Concept">
-    <label>Theme</label>
-    <description>Theme</description>
-    <btnLabel>Theme</btnLabel>
+    <label>Thema</label>
+    <description>Thema</description>
+    <btnLabel>Thema</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights/skos:Concept">
-    <label>Access rights</label>
-    <description>Access rights</description>
-    <btnLabel>Access rights</btnLabel>
+    <label>Toegankelijkheid</label>
+    <description>Toegankelijkheid</description>
+    <btnLabel>Toegankelijkheid</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity/skos:Concept">
-    <label>Frequency</label>
-    <description>Frequency</description>
-    <btnLabel>Frequency</btnLabel>
+    <label>Updatefrequentie</label>
+    <description>Updatefrequentie</description>
+    <btnLabel>Updatefrequentie</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator/foaf:Agent/dct:type/skos:Concept">
     <label>Type</label>
@@ -741,9 +741,9 @@
     <btnLabel>Type</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language/skos:Concept">
-    <label>Language</label>
-    <description>Language</description>
-    <btnLabel>Language</btnLabel>
+    <label>Taal</label>
+    <description>Taal</description>
+    <btnLabel>Taal</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher/foaf:Agent/dct:type/skos:Concept">
     <label>Type</label>
@@ -766,14 +766,14 @@
     <btnLabel>Type</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme/skos:Concept">
-    <label>Theme</label>
-    <description>Theme</description>
-    <btnLabel>Theme</btnLabel>
+    <label>Thema</label>
+    <description>Thema</description>
+    <btnLabel>Thema</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights/skos:Concept">
-    <label>Access Rights</label>
-    <description>Information about who can access the resource or an indication of its security status.</description>
-    <btnLabel>Access Rights</btnLabel>
+    <label>Toegankelijkheid</label>
+    <description>Informatie over wie toegang heeft tot de resource, of een indicatie van de veiligheid status ervan.</description>
+    <btnLabel>Toegankelijkheid</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:creator/foaf:Agent/dct:type/skos:Concept">
     <label>Type</label>
@@ -781,9 +781,9 @@
     <btnLabel>Type</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language/skos:Concept">
-    <label>Language</label>
-    <description>Language</description>
-    <btnLabel>Language</btnLabel>
+    <label>Taal</label>
+    <description>Taal</description>
+    <btnLabel>Taal</btnLabel>
   </element>
   <element name="skos:Concept" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license/dct:LicenseDocument/dct:type/skos:Concept">
     <label>Type</label>
@@ -806,29 +806,29 @@
     <btnLabel>Type</btnLabel>
   </element>
   <element name="skos:inScheme">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="skos:inScheme" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/adms:status/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="skos:inScheme" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dct:license/dct:LicenseDocument/dct:type/skos:Concept/skos:inScheme/@rdf:resource">
-    <label>In scheme</label>
-    <description>In scheme</description>
-    <btnLabel>In scheme</btnLabel>
+    <label>In schema</label>
+    <description>In schema</description>
+    <btnLabel>In schema</btnLabel>
   </element>
   <element name="skos:notation">
-    <label>Notation</label>
-    <description>Notation</description>
-    <btnLabel>Notation</btnLabel>
+    <label>Notatie</label>
+    <description>Notatie</description>
+    <btnLabel>Notatie</btnLabel>
   </element>
   <element name="skos:prefLabel">
-    <label>Preferred label</label>
-    <description>Preferred label</description>
-    <btnLabel>Preferred label</btnLabel>
+    <label>Voorkeurslabel</label>
+    <description>Voorkeurslabel</description>
+    <btnLabel>Voorkeurslabel</btnLabel>
   </element>
   <element name="spdx:Checksum">
     <label>Checksum</label>
@@ -836,9 +836,9 @@
     <btnLabel>Checksum</btnLabel>
   </element>
   <element name="spdx:algorithm">
-    <label>Algorithm</label>
-    <description>Algorithm</description>
-    <btnLabel>Algorithm</btnLabel>
+    <label>Algoritme</label>
+    <description>Algoritme</description>
+    <btnLabel>Algoritme</btnLabel>
   </element>
   <element name="spdx:checksum">
     <label>Checksum</label>
@@ -846,9 +846,9 @@
     <btnLabel>Checksum</btnLabel>
   </element>
   <element name="spdx:checksumValue">
-    <label>Checksum value</label>
-    <description>Checksum value</description>
-    <btnLabel>Checksum value</btnLabel>
+    <label>Checksum waarde</label>
+    <description>Checksum waarde</description>
+    <btnLabel>Checksum waarde</btnLabel>
   </element>
   <element name="vcard:Address">
     <label>Adres</label>
@@ -936,9 +936,9 @@
     <btnLabel>Mobiliteitsthema</btnLabel>
   </element>
   <element name="mobilitydcatap:transportMode">
-    <label>Transport mode</label>
+    <label>Transportmodus</label>
     <description>This property describes the transport mode that is covered by the delivered content. Data can be valid for more than one mode, so a multiple choice should be applied.</description>
-    <btnLabel>Transport mode</btnLabel>
+    <btnLabel>Transportmodus</btnLabel>
   </element>
   <element name="mobilitydcatap:networkCoverage">
     <label>Network coverage</label>
@@ -953,11 +953,11 @@
     <btnLabel>Georeferencing method</btnLabel>
   </element>
   <element name="mobilitydcatap:intendedInformationService">
-    <label>Intended information service</label>
+    <label>Bedoelde informatie service</label>
     <description>This property MAY describe predefined information services, which the data content is intended to support.
       Such services MAY be, e.g., information services for multimodal mobility, as specified by EC Delegated Regulation 2017/1926 [EC-MMTIS-DR].
       Examples of such services include “location search”, which is based on a datasets with address identifiers, or “trip plan computation”, which is based on datasets about a road network.</description>
-    <btnLabel>Intended information service</btnLabel>
+    <btnLabel>Bedoelde informatie service</btnLabel>
   </element>
   <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>HVD Categorie</label>
@@ -971,8 +971,8 @@
   </element>
   <element name="dcatap:hvdCategory">
     <label>HVD Categorie</label>
-    <description/>
-    <btnLabel/>
+    <description>De HVD categorie waartoe deze bron behoort.</description>
+    <btnLabel>HVD Categorie</btnLabel>
   </element>
   <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>Toepasselijke wetgeving</label>
@@ -1001,14 +1001,12 @@
   </element>
   <element name="mdcat:landingspaginaVoorAuthenticatie">
     <label>Landingspagina voor authenticatie</label>
-    <description>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de
-      dataservice.
-    </description>
+    <description>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de data service.</description>
     <btnLabel>Landingspagina voor authenticatie</btnLabel>
   </element>
   <element name="rdf:resource" context="mdcat:landingspaginaVoorAuthenticatie">
     <label>Landingspagina voor authenticatie</label>
-    <description>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de dataservice. </description>
+    <description>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de data service.</description>
     <btnLabel>Landingspagina voor authenticatie</btnLabel>
   </element>
   <element name="mdcat:landingspaginaVoorGebruiksinformatie">
@@ -1023,17 +1021,17 @@
   </element>
   <element name="mdcat:landingspaginaVoorStatusinformatie">
     <label>Landingspagina voor statusinformatie</label>
-    <description>Een verwijzing naar de statuspagina van de dataservice.</description>
+    <description>Een referentie naar de statuspagina van de data service.</description>
     <btnLabel>Landingspagina voor statusinformatie</btnLabel>
   </element>
   <element name="rdf:resource" context="mdcat:landingspaginaVoorStatusinformatie">
     <label>Landingspagina voor statusinformatie</label>
-    <description>Een verwijzing naar de statuspagina van de dataservice.</description>
+    <description>Een referentie naar de statuspagina van de data service.</description>
     <btnLabel>Landingspagina voor statusinformatie</btnLabel>
   </element>
   <element name="mdcat:levensfase">
     <label>Levensfase</label>
-    <description>De levensfase van de data service.</description>
+    <description>De levensfase van de data service</description>
     <btnLabel>Levensfase</btnLabel>
   </element>
   <element name="mdcat:ontwikkelingstoestand">
