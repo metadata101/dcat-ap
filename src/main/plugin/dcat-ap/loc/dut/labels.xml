@@ -111,9 +111,9 @@
     <btnLabel>Trefwoord</btnLabel>
   </element>
   <element name="dcat:landingPage">
-    <label>Bijsluiter</label>
-    <description>Vul aan met een webpagina die als \'bijsluiter\' voor je resource dient. Deze webpagina bevat bijkomende informatie over je resource (bv. oorsprong van de dataset, kenmerken, specificaties, richtlijnen bij de interpretatie van de gegevens, toegangs- en gebruiksinformatie, ...).</description>
-    <btnLabel>Bijsluiter</btnLabel>
+    <label>Landingspagina</label>
+    <description>Vul aan met een webpagina die als landingspagina voor je resource dient. Deze webpagina bevat bijkomende informatie over je resource (bv. oorsprong van de dataset, kenmerken, specificaties, richtlijnen bij de interpretatie van de gegevens, toegangs- en gebruiksinformatie, ...).</description>
+    <btnLabel>Landingspagina</btnLabel>
   </element>
   <element name="dcat:mediaType">
     <label>Media type</label>
