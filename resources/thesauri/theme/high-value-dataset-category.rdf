@@ -206,14 +206,14 @@
 	<startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
 	<created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-09-05</created>
 	<versionInfo xmlns="http://www.w3.org/2002/07/owl#">2.1</versionInfo>
-	<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">High-value dataset categories</prefLabel>
-	<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="nl">Hoogwaardige dataset categorieën</prefLabel>
+	<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">High-value dataset (HVD) categories</prefLabel>
+	<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="nl">Hoogwaardige dataset (HVD) categorieën</prefLabel>
 	<prefLabel xmlns="http://www.w3.org/2008/05/skos-xl#" rdf:resource="http://data.europa.eu/bna/c2f6c56ff1cd008be33d5067b88fe077"/>
 	<modified xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-09-07</modified>
 	<identifier xmlns="http://purl.org/dc/terms/">http://data.europa.eu/bna/asd487ae75</identifier>
 	<issued xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-10-02</issued>
-	<title xmlns="http://purl.org/dc/terms/" xml:lang="en">High-value dataset categories</title>
-    <title xmlns="http://purl.org/dc/terms/" xml:lang="nl">Hoogwaardige dataset categorieën</title>
+	<title xmlns="http://purl.org/dc/terms/" xml:lang="en">High-value dataset (HVD) categories</title>
+    <title xmlns="http://purl.org/dc/terms/" xml:lang="nl">Hoogwaardige dataset (HVD) categorieën</title>
 	<hasTopConcept xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021"/>
 	<hasTopConcept xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b79e35eb"/>
 	<hasTopConcept xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07"/>
@@ -2147,8 +2147,8 @@
 <rdf:Description rdf:about="http://data.europa.eu/bna/c2f6c56ff1cd008be33d5067b88fe077">
 	<rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
 	<type xmlns="http://purl.org/dc/terms/" rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
-	<literalForm xmlns="http://www.w3.org/2008/05/skos-xl#" xml:lang="en">High-value dataset categories</literalForm>
-	<literalForm xmlns="http://www.w3.org/2008/05/skos-xl#" xml:lang="nl">Hoogwaardige dataset categorieën</literalForm>
+	<literalForm xmlns="http://www.w3.org/2008/05/skos-xl#" xml:lang="en">High-value dataset (HVD) categories</literalForm>
+	<literalForm xmlns="http://www.w3.org/2008/05/skos-xl#" xml:lang="nl">Hoogwaardige dataset (HVD) categorieën</literalForm>
 	<status xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
 </rdf:Description>
 
