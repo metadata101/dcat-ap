@@ -17,7 +17,7 @@
     <dc:title xml:lang="de">Data.gov.be themes</dc:title>
     <dc:title xml:lang="en">Data.gov.be themes</dc:title>
     <dc:title xml:lang="fr">Data.gov.be themes</dc:title>
-    <dc:title xml:lang="nl">Data.gov.be themes</dc:title>
+    <dc:title xml:lang="nl">Data.gov.be themas</dc:title>
     <owl:versionInfo>Production 2019-01-31</owl:versionInfo>
   </skos:ConceptScheme>
 
@@ -171,7 +171,7 @@
     <dc:title xml:lang="de">Data.gov.be themes</dc:title>
     <dc:title xml:lang="en">Data.gov.be themes</dc:title>
     <dc:title xml:lang="fr">Data.gov.be themes</dc:title>
-    <dc:title xml:lang="nl">Data.gov.be themes</dc:title>
+    <dc:title xml:lang="nl">Data.gov.be themas</dc:title>
     <void:dataDump rdf:resource="http://vocab.belgif.be/dataset/datatheme"/>
     <void:exampleResource rdf:resource="http://vocab.belgif.be/auth/datatheme/AGRI"/>
     <void:exampleResource rdf:resource="http://vocab.belgif.be/auth/datatheme/CULT"/>
