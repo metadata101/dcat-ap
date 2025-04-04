@@ -26,6 +26,7 @@
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:dcatap="http://data.europa.eu/r5r/"
                 xmlns:schema="http://schema.org/"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
@@ -209,6 +210,12 @@
           </xsl:for-each-group>
           <xsl:if test="position() != last()">,</xsl:if>
         </resourceLanguage>
+
+        <xsl:for-each select="dcatap:applicableLegislation">
+            <applicableLegislation type="object">
+                "<xsl:value-of select="@rdf:resource"/>"
+            </applicableLegislation>
+        </xsl:for-each>
 
         <xsl:apply-templates mode="index-keyword" select="."/>
 
