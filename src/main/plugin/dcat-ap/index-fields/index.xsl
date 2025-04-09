@@ -38,6 +38,7 @@
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
                 xmlns:geodcat="http://data.europa.eu/930/"
                 xmlns:saxon="http://saxon.sf.net/" xmlns:xls="http://www.w3.org/1999/XSL/Transform"
+                xmlns:java="java:org.fao.geonet.util.XslUtil"
                 extension-element-prefixes="saxon"
                 exclude-result-prefixes="#all"
                 version="2.0">
@@ -213,6 +214,7 @@
         <xsl:apply-templates mode="index-keyword" select="."/>
 
         <xsl:apply-templates mode="index-concept" select="."/>
+        <xsl:apply-templates mode="index-reference" select="."/>
         <xsl:apply-templates mode="index-spatial" select="."/>
 
         <xsl:apply-templates mode="index-constraints" select="."/>
@@ -297,8 +299,63 @@
     </tag>
   </xsl:template>
 
-  <xsl:template mode="index-concept" match="dcat:Dataset|dcat:DataService">
+  <!--
+    Mirror of mode `index-concept`, but for empty elements that only define @rdf:resource. Example: HVD's dcatap:applicableLegislation
+    Keyword values are pulled from the thesaurus defined in the editor.
+   -->
+  <xsl:template mode="index-reference" match="dcat:Dataset|dcat:DataService">
+    <xsl:for-each-group select="*[not(skos:Concept) and name() = $editorConfig/editor/fields/for[@use='thesaurus-list-picker']/@name]" group-by="name()">
+      <xsl:variable name="thesaurusId" select="$editorConfig/editor/fields/for[@name = name(current-group()[1])]/directiveAttributes/@thesaurus"/>
+      <xsl:variable name="key">
+        <xsl:if test="$thesaurusId != ''">
+          <xsl:value-of select="tokenize($thesaurusId[1], '\.')[last()]"/>
+        </xsl:if>
+      </xsl:variable>
+      <xsl:element name="th_{$key}Number">
+        <xsl:value-of select="count(current-group())"/>
+      </xsl:element>
+      <xsl:element name="th_{$key}">
+        <xsl:attribute name="type" select="'object'"/>
+        [
+        <xsl:for-each select="current-group()">
+          <xsl:variable name="resourceUri" select="@rdf:resource"/>
+          <xsl:variable name="defaultLabel" select="java:getKeywordValueByUri($resourceUri, $thesaurusId, $defaultMainLanguage2Char)"/>
+          {
+            "default": "<xsl:value-of select="util:escapeForJson($defaultLabel)"/>",
+            <xsl:for-each select="$allLanguages/lang">
+              <xsl:variable name="translatedLabel" select="util:escapeForJson(java:getKeywordValueByUri($resourceUri, $thesaurusId, @code))"/>
+              <xsl:if test="$translatedLabel!=''">
+                "lang<xsl:value-of select="@code"/>": "<xsl:value-of select="$translatedLabel"/>",
+              </xsl:if>
+            </xsl:for-each>
+            "link": "<xsl:value-of select="util:escapeForJson($resourceUri)"/>"
+          }
+          <xsl:if test="position() != last()">,</xsl:if>
+        </xsl:for-each>
+        ]
+      </xsl:element>
+      <xsl:element name="th_{$key}_tree">
+        <xsl:attribute name="type" select="'object'"/>
+        [
+        <xsl:for-each select="current-group()">
+          <xsl:variable name="resourceUri" select="@rdf:resource"/>
+          <xsl:variable name="defaultLabel" select="java:getKeywordValueByUri($resourceUri, $thesaurusId, $defaultMainLanguage2Char)"/>
+          {
+            "key": [
+              "<xsl:value-of select="util:escapeForJson($resourceUri)"/>"
+            ],
+            "default": [
+              "<xsl:value-of select="util:escapeForJson($defaultLabel)"/>"
+            ]
+          }
+          <xsl:if test="position() != last()">,</xsl:if>
+        </xsl:for-each>
+        ]
+      </xsl:element>
+    </xsl:for-each-group>
+  </xsl:template>
 
+  <xsl:template mode="index-concept" match="dcat:Dataset|dcat:DataService">
     <xsl:for-each-group select="*[skos:Concept and name() = $editorConfig/editor/fields/for[@use='thesaurus-list-picker']/@name]"
                         group-by="skos:Concept/skos:inScheme/@rdf:resource">
       <xsl:variable name="thesaurusId" select="$editorConfig/editor/fields/for[@name = name(current-group()[1])]/directiveAttributes/@thesaurus"/>
