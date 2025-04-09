@@ -371,9 +371,9 @@
     <btnLabel>Bron URI</btnLabel>
   </element>
   <element name="rdf:resource" context="dcatap:applicableLegislation">
-    <label>Toepasselijke wetgeving</label>
-    <description>Toepasselijke wetgeving</description>
-    <btnLabel>Toepasselijke wetgeving</btnLabel>
+    <label>Toepasselijke EU wetgeving</label>
+    <description>Toepasselijke EU wetgeving</description>
+    <btnLabel>Toepasselijke EU wetgeving</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:accessURL/@rdf:resource">
     <label>URL</label>
@@ -960,34 +960,34 @@
     <btnLabel>Bedoelde informatie service</btnLabel>
   </element>
   <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-    <label>HVD Categorie</label>
-    <description>De HVD categorie waartoe deze Dataset behoort.</description>
-    <btnLabel>HVD Categorie</btnLabel>
+    <label>Hoogwaardige Dataset (HVD) Categorie</label>
+    <description>De Hoogwaardige Dataset (HVD) categorie waartoe deze Dataset behoort.</description>
+    <btnLabel>Hoogwaardige Dataset (HVD) Categorie</btnLabel>
   </element>
   <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-    <label>HVD Categorie</label>
-    <description>De HVD categorie waartoe deze Data Service behoort.</description>
-    <btnLabel>HVD Categorie</btnLabel>
+    <label>Hoogwaardige Dataset (HVD) Categorie</label>
+    <description>De Hoogwaardige Dataset (HVD) categorie waartoe deze Data Service behoort.</description>
+    <btnLabel>Hoogwaardige Dataset (HVD) Categorie</btnLabel>
   </element>
   <element name="dcatap:hvdCategory">
-    <label>HVD Categorie</label>
-    <description>De HVD categorie waartoe deze bron behoort.</description>
-    <btnLabel>HVD Categorie</btnLabel>
+    <label>Hoogwaardige Dataset (HVD) Categorie</label>
+    <description>De Hoogwaardige Dataset (HVD) categorie waartoe deze bron behoort.</description>
+    <btnLabel>Hoogwaardige Dataset (HVD) Categorie</btnLabel>
   </element>
   <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-    <label>Toepasselijke wetgeving</label>
+    <label>Toepasselijke EU wetgeving</label>
     <description>De wetgeving die het aanmaken of beheren van de Dataset voorschrijft.</description>
-    <btnLabel>Toepasselijke wetgeving</btnLabel>
+    <btnLabel>Toepasselijke EU wetgeving</btnLabel>
   </element>
   <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-    <label>Toepasselijke wetgeving</label>
+    <label>Toepasselijke EU wetgeving</label>
     <description>De wetgeving die het aanmaken of beheren van de Data Service voorschrijft.</description>
-    <btnLabel>Toepasselijke wetgeving</btnLabel>
+    <btnLabel>Toepasselijke EU wetgeving</btnLabel>
   </element>
   <element name="dcatap:applicableLegislation">
-    <label>Toepasselijke wetgeving</label>
+    <label>Toepasselijke EU wetgeving</label>
     <description>De wetgeving die het aanmaken of beheren van de resource voorschrijft.</description>
-    <btnLabel>Toepasselijke wetgeving</btnLabel>
+    <btnLabel>Toepasselijke EU wetgeving</btnLabel>
   </element>
   <element name="mdcat:statuut">
     <label>Statuut</label>
