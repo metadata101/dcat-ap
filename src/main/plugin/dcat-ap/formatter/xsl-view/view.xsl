@@ -433,7 +433,36 @@
   </xsl:template>
 
   <xsl:template mode="render-field"
-                match="dcat:accessURL|dcat:downloadURL|dcat:landingPage|dcatap:applicableLegislation">
+                match="dcatap:applicableLegislation">
+    <xsl:param name="xpath"/>
+    <xsl:variable name="elementName" select="name(.)"/>
+    <xsl:variable name="thesaurusId" select="$configuration/editor/fields/for[@name = $elementName]/directiveAttributes/@thesaurus"/>
+    <xsl:variable name="stringValue" select="string(@rdf:resource)"/>
+    <xsl:if test="normalize-space($stringValue) != ''">
+      <tr>
+        <th style="{$thStyle}">
+          <xsl:value-of select="gn-fn-metadata:getLabel($schema, 'rdf:resource', $labels, name(.), '', concat(gn-fn-dcat-ap:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)), '/@rdf:resource'))/label" />
+        </th>
+        <td style="{$tdStyle}">
+          <xsl:variable name="defaultLabel" select="util:getKeywordValueByUri($stringValue, $thesaurusId, $defaultLang)"/>
+          <xsl:choose>
+            <xsl:when test="normalize-space($defaultLabel)!=''">
+              <xsl:call-template name="render-url">
+                <xsl:with-param name="href" select="@rdf:resource"/>
+                <xsl:with-param name="label" select="$defaultLabel"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates mode="render-url" select="@rdf:resource" />
+            </xsl:otherwise>
+          </xsl:choose>
+        </td>
+      </tr>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template mode="render-field"
+                match="dcat:accessURL|dcat:downloadURL|dcat:landingPage">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string(@rdf:resource)"/>
     <xsl:if test="normalize-space($stringValue) != ''">
@@ -596,6 +625,14 @@
   <xsl:template mode="render-url" match="*|@*">
     <a href="{.}" target="_blank" style="color:#06c; text-decoration: underline;">
       <xsl:value-of select="." />
+    </a>
+  </xsl:template>
+
+  <xsl:template name="render-url">
+    <xsl:param name="href"/>
+    <xsl:param name="label"/>
+    <a href="{$href}" target="_blank" style="color:#06c; text-decoration: underline;">
+      <xsl:value-of select="$label"/>
     </a>
   </xsl:template>
 
