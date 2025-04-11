@@ -215,4 +215,21 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
         }
         return null;
     }
+
+    @Override
+    public List<String> getMetadataLanguages(Element metadata) {
+        return List.of();
+    }
+
+    @Override
+    public boolean isMultilingualElementType(String elementType) {
+        List<String> multilingualElementTypes = List.of("rdf:plainLiteral");
+        return multilingualElementTypes.contains(elementType);
+    }
+
+    @Override
+    public boolean duplicateElementsForMultilingual() {
+        return true;
+    }
+
 }
