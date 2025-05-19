@@ -52,6 +52,13 @@
         max="1"
         labelKey="dcat.addAccessRight"/>
     </for>
+    <for name="dct:language" xpath="dcat:Catalog" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.language"
+        xpath="/dct:language"
+        max=""
+        labelKey="dcat.addLanguage"/>
+    </for>
     <for name="dct:language" xpath="dcat:CatalogRecord" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.language"
@@ -1314,6 +1321,21 @@
               <snippets name="protocols-vl"/>
             </template>
           </action>
+        </section>
+      </tab>
+
+      <tab id="tabCatalog" default="true" mode="flat" displayIfRecord="count(rdf:RDF[not(//dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
+        <section name="catalogInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dct:title"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dct:description"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dct:language"
+                 or="language"
+                 in="/rdf:RDF/dcat:Catalog"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:keyword"
+                 or="keyword"
+                 in="/rdf:RDF/dcat:Catalog"/>
+
         </section>
       </tab>
 

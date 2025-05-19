@@ -38,7 +38,7 @@
                required="no"/>
 
     <xsl:variable name="isVirtualCatalog"
-                  select="exists($metadata[not(dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
+                  select="exists($metadata[not(//dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
                   as="xs:boolean"/>
 
     <xsl:variable name="languageIri"
