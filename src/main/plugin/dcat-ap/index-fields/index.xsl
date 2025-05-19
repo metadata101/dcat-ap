@@ -58,15 +58,22 @@
 
   <xsl:template match="/">
 
-    <xsl:variable name="dateStamp" select=".//dcat:CatalogRecord/dct:modified"/>
-    <xsl:variable name="identifier" as="xs:string" select=".//dcat:CatalogRecord/dct:identifier"/>
-
     <xsl:variable name="virtualCatalog"
                   select="rdf:RDF[not(//dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog"
                   as="node()*"/>
+
     <xsl:variable name="isVirtualCatalog"
                   select="exists($virtualCatalog)"
                   as="xs:boolean"/>
+
+    <!-- Record associated in virtual catalog -->
+    <xsl:variable name="associatedRecords" as="node()*" select="rdf:RDF/dcat:Catalog/dcat:record/@rdf:resource"/>
+
+    <!-- When record is not a catalog, it should have only one CatalogRecord (cf. update-fixed-info). -->
+    <xsl:variable name="catalogRecord" as="node()" select=".//dcat:CatalogRecord[not(@rdf:about = $associatedRecords)]"/>
+
+    <xsl:variable name="identifier" as="xs:string*" select="$catalogRecord/dct:identifier"/>
+    <xsl:variable name="dateStamp" select="$catalogRecord/dct:modified"/>
 
     <xsl:for-each select="(.//(dcat:Dataset|dcat:DataService)|$virtualCatalog)">
       <doc>
