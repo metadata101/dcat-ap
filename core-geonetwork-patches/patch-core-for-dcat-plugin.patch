@@ -1,4 +1,4 @@
-From 961428a6ad2825385f0c84a6171dc54bcce2b5b3 Mon Sep 17 00:00:00 2001
+From 1c1242c5c35badc315bdfefbc15893f982b200e5 Mon Sep 17 00:00:00 2001
 From: Mathieu Chaussier <mathieu.chaussier@gim.be>
 Date: Thu, 20 Jun 2024 09:48:09 +0200
 Subject: [PATCH] Patch core for DCAT2 plugin
@@ -13,19 +13,19 @@ Subject: [PATCH] Patch core for DCAT2 plugin
  .../harvester/geonet/GeonetParams.java        | 12 +++
  .../plugin/iso19139/index-fields/index.xsl    | 71 ++++++++++++++++
  .../fao/geonet/api/records/MetadataUtils.java | 22 +++--
- .../resources/catalog/locales/en-admin.json   |  6 +-
+ .../resources/catalog/locales/en-admin.json   |  7 +-
  .../resources/catalog/locales/fr-admin.json   |  9 +-
- .../resources/catalog/locales/nl-admin.json   |  8 +-
- .../templates/admin/harvest/type/csw.html     | 17 ++++
+ .../resources/catalog/locales/nl-admin.json   |  9 +-
+ .../templates/admin/harvest/type/csw.html     | 16 ++++
  .../templates/admin/harvest/type/csw.js       |  4 +-
  .../admin/harvest/type/geonetwork.html        | 16 ++++
  .../admin/harvest/type/geonetwork.js          |  4 +-
  .../main/webapp/xsl/xml/harvesting/csw.xsl    |  3 +
  .../webapp/xsl/xml/harvesting/geonetwork.xsl  |  3 +
- 18 files changed, 271 insertions(+), 16 deletions(-)
+ 18 files changed, 272 insertions(+), 16 deletions(-)
 
 diff --git a/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java b/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java
-index 978ab63a75..13d7cfd9e5 100644
+index ae365d671b..12d7a2db3a 100644
 --- a/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java
 +++ b/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java
 @@ -137,6 +137,7 @@ public class EsSearchManager implements ISearchManager {
@@ -37,7 +37,7 @@ index 978ab63a75..13d7cfd9e5 100644
  
          FIELDLIST_RELATED_SCRIPTED = ImmutableMap.<String, String>builder()
 diff --git a/core/src/main/java/org/fao/geonet/util/XslUtil.java b/core/src/main/java/org/fao/geonet/util/XslUtil.java
-index 34b9ae272e..438ea0d8ef 100644
+index 067d3cc4b8..5f1077654f 100644
 --- a/core/src/main/java/org/fao/geonet/util/XslUtil.java
 +++ b/core/src/main/java/org/fao/geonet/util/XslUtil.java
 @@ -23,6 +23,7 @@
@@ -72,7 +72,7 @@ index 34b9ae272e..438ea0d8ef 100644
  import org.fao.geonet.schema.iso19139.ISO19139Namespaces;
  import org.fao.geonet.utils.Log;
  import org.fao.geonet.utils.Xml;
-@@ -1608,4 +1608,80 @@ public final class XslUtil {
+@@ -1622,4 +1622,80 @@ public final class XslUtil {
  
          return webAnalyticsConfiguration.getJavascriptCode();
      }
@@ -174,7 +174,7 @@ index c28295c8b6..88bfc88c97 100644
 +    HarvesterSetting findOneByNameAndStoredValueLike(@Nonnull String name, @Nonnull String value);
  }
 diff --git a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswHarvester.java b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswHarvester.java
-index 97a5b2fae7..a6db09fee5 100644
+index 6c62c9a34d..af1f4a3061 100644
 --- a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswHarvester.java
 +++ b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswHarvester.java
 @@ -60,6 +60,8 @@ public class CswHarvester extends AbstractHarvester<HarvestResult, CswParams> {
@@ -230,7 +230,7 @@ index 624a62e0f8..e5f677c8b6 100644
      }
  
 diff --git a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetHarvester.java b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetHarvester.java
-index b7c42e7d36..85b5560470 100644
+index 41ca25917a..cf736cd61d 100644
 --- a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetHarvester.java
 +++ b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/geonet/GeonetHarvester.java
 @@ -75,6 +75,9 @@ public class GeonetHarvester extends AbstractHarvester<HarvestResult, GeonetPara
@@ -288,7 +288,7 @@ index 4a8efadb75..ef034be719 100644
      }
  
 diff --git a/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl b/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl
-index 6f711e9680..ebe93b0ce8 100644
+index 1633bc08bd..d61b7c263a 100644
 --- a/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl
 +++ b/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl
 @@ -31,6 +31,7 @@
@@ -308,7 +308,7 @@ index 6f711e9680..ebe93b0ce8 100644
    <xsl:template match="/">
      <xsl:apply-templates mode="index"/>
    </xsl:template>
-@@ -1436,4 +1439,72 @@
+@@ -1445,4 +1448,72 @@
        </xsl:for-each>
      </xsl:for-each>
    </xsl:template>
@@ -382,10 +382,10 @@ index 6f711e9680..ebe93b0ce8 100644
 +  </xsl:function>
  </xsl:stylesheet>
 diff --git a/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java b/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java
-index 76bb7f594f..8100604bc5 100644
+index 09a9794a48..07778de8da 100644
 --- a/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java
 +++ b/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java
-@@ -59,6 +59,7 @@ import org.fao.geonet.repository.MetadataValidationRepository;
+@@ -60,6 +60,7 @@ import org.fao.geonet.repository.MetadataValidationRepository;
  import org.fao.geonet.repository.SourceRepository;
  import org.fao.geonet.repository.specification.MetadataValidationSpecs;
  import org.fao.geonet.services.relations.Get;
@@ -393,7 +393,7 @@ index 76bb7f594f..8100604bc5 100644
  import org.fao.geonet.utils.Log;
  import org.jdom.Content;
  import org.jdom.Element;
-@@ -173,16 +174,27 @@ public class MetadataUtils {
+@@ -174,16 +175,27 @@ public class MetadataUtils {
          // brothers&sisters
          //
          // * All of them could be remote records
@@ -427,84 +427,85 @@ index 76bb7f594f..8100604bc5 100644
                  && (type == RelatedItemType.siblings
                  || type == RelatedItemType.parent
 diff --git a/web-ui/src/main/resources/catalog/locales/en-admin.json b/web-ui/src/main/resources/catalog/locales/en-admin.json
-index 7f3cd11fd3..11f1d4a215 100644
+index 0a2b81fae3..6b5669bb7b 100644
 --- a/web-ui/src/main/resources/catalog/locales/en-admin.json
 +++ b/web-ui/src/main/resources/catalog/locales/en-admin.json
-@@ -1525,6 +1525,10 @@
-     "doiserver-euApiText": "Publication Office of the European Union",
-     "confirmDoiServerDelete": "Are you sure you want to delete this DOI server?",
-     "NoTranslationProvider": "No translation provider",
--    "LibreTranslate": "Libretranslate"
-+    "LibreTranslate": "Libretranslate",
+@@ -1583,6 +1583,11 @@
+     "sourceDatahubConfiguration-help": "You can configure the Datahub settings here. Please refer to the <a href='https://geonetwork.github.io/geonetwork-ui/main/docs/guide/configure.html' target='_blank'>GeoNetwork-UI configuration guide</a> for more information. The default configuration for the Datahub can be found <a href='https://github.com/geonetwork/geonetwork-ui/blob/main/conf/default.toml' target='_blank'>here</a>.<br>Note: leaving this configuration empty will fallback to the main portal configuration.",
+     "datahubEnabled": "Enable Datahub interface for this portal",
+     "datahubInfo": "This Datahub interface is accessible <a href='../../{{uuid}}/datahub'>here</a>.",
+-    "datahubPluginNotInstalled-help": "The Datahub plugin is not installed. Please refer to <a href='https://docs.geonetwork-opensource.org/4.4/install-guide/plugins/#datahub-integration-gn-datahub-integration' target='_blank'>the related documentation for more information</a> on installation and usage."
++    "datahubPluginNotInstalled-help": "The Datahub plugin is not installed. Please refer to <a href='https://docs.geonetwork-opensource.org/4.4/install-guide/plugins/#datahub-integration-gn-datahub-integration' target='_blank'>the related documentation for more information</a> on installation and usage.",
 +
-+  "==== DCAT custom ====": "",
-+  "resourceUriPattern": "Resource URI pattern",
-+  "resourceUriPatternHelp": "Pattern used to generate URI of the resources during the RDF export. Example of value: https://metadata.vlaanderen.be/srv/resources/{resourceType}/{resourceUuid}"
++
++    "==== DCAT custom ====": "",
++    "resourceUriPattern": "Resource URI pattern",
++    "resourceUriPatternHelp": "Pattern used to generate URI of the resources during the RDF export. Example of value: https://metadata.vlaanderen.be/srv/resources/{resourceType}/{resourceUuid}"
  }
  
 diff --git a/web-ui/src/main/resources/catalog/locales/fr-admin.json b/web-ui/src/main/resources/catalog/locales/fr-admin.json
-index a6d8d318c5..abcf30b00e 100644
+index a21b85452e..6a34f20fc9 100644
 --- a/web-ui/src/main/resources/catalog/locales/fr-admin.json
 +++ b/web-ui/src/main/resources/catalog/locales/fr-admin.json
-@@ -1507,5 +1507,10 @@
-     "fieldEmailNotValid": "Un email valide est requis",
-     "formConfirmExit": "Le formulaire comporte des modifications, si vous quittez, les modifications seront perdues. Voulez-vous quitter la page ?",
-     "NoTranslationProvider": "No translation provider",
--    "LibreTranslate": "Libretranslate"
+@@ -1545,5 +1545,10 @@
+     "sourceDatahubConfiguration-help": "Vous pouvez configurer les paramètres du Datahub ici. Pour plus d'informations, consultez le<a href='https://geonetwork.github.io/geonetwork-ui/main/docs/guide/configure.html' target='_blank'>guide de configuration du projet GeoNetwork-UI (EN)</a> . La configuration par défaut du Datahub est disponible <a href='https://github.com/geonetwork/geonetwork-ui/blob/main/conf/default.toml' target='_blank'>ici</a>. <br>Remarque : si vous laissez ce champ vide, la configuration du portail principal sera utilisée.",
+     "datahubEnabled": "Activer le Datahub pour ce portail",
+     "datahubInfo": "L'interface du Datahub est accessible <a href='../../{{uuid}}/datahub'>ici</a>.",
+-    "datahubPluginNotInstalled-help": "Le plugin d'intégration du Datahub n'est pas installé. Veuillez consulter <a href='https://docs.geonetwork-opensource.org/4.4/install-guide/plugins/#datahub-integration-gn-datahub-integration' target='_blank'>la documentation associée pour plus d'informations</a> sur l'installation et l'utilisation de ce plugin."
 -}
 \ No newline at end of file
-+    "LibreTranslate": "Libretranslate",
++    "datahubPluginNotInstalled-help": "Le plugin d'intégration du Datahub n'est pas installé. Veuillez consulter <a href='https://docs.geonetwork-opensource.org/4.4/install-guide/plugins/#datahub-integration-gn-datahub-integration' target='_blank'>la documentation associée pour plus d'informations</a> sur l'installation et l'utilisation de ce plugin.",
++
 +
 +    "==== DCAT custom ====": "",
 +    "resourceUriPattern": "Patterne de l'URI des resources",
 +    "resourceUriPatternHelp": "Patterne utilisé pour générer les URI des resources lors de l'export RDF. Exemple de valeur: https://metadata.vlaanderen.be/srv/resources/{resourceType}/{resourceUuid}"
-+
 +}
 diff --git a/web-ui/src/main/resources/catalog/locales/nl-admin.json b/web-ui/src/main/resources/catalog/locales/nl-admin.json
-index 11871c726b..90d711a2e6 100644
+index 3eae36d911..c72f7e6d48 100644
 --- a/web-ui/src/main/resources/catalog/locales/nl-admin.json
 +++ b/web-ui/src/main/resources/catalog/locales/nl-admin.json
-@@ -1507,5 +1507,9 @@
-     "fieldEmailNotValid": "Een geldig email adres is vereist",
-     "formConfirmExit": "The form has changes, if you exit the changes will be lost. Do you want to exit on the page?",
-     "NoTranslationProvider": "No translation provider",
--    "LibreTranslate": "Libretranslate"
+@@ -1545,5 +1545,10 @@
+     "sourceDatahubConfiguration-help": "You can configure the Datahub settings here. Please refer to the <a href='https://geonetwork.github.io/geonetwork-ui/main/docs/guide/configure.html' target='_blank'>GeoNetwork-UI configuration guide</a> for more information. The default configuration for the Datahub can be found <a href='https://github.com/geonetwork/geonetwork-ui/blob/main/conf/default.toml' target='_blank'>here</a>.<br>Note: leaving this configuration empty will fallback to the main portal configuration.",
+     "datahubEnabled": "Enable Datahub interface for this portal",
+     "datahubInfo": "This Datahub interface is accessible <a href='../../{{uuid}}/datahub'>here</a>.",
+-    "datahubPluginNotInstalled-help": "The Datahub plugin is not installed. Please refer to <a href='https://docs.geonetwork-opensource.org/4.4/install-guide/plugins/#datahub-integration-gn-datahub-integration' target='_blank'>the related documentation for more information</a> on installation and usage."
 -}
 \ No newline at end of file
-+    "LibreTranslate": "Libretranslate",
++    "datahubPluginNotInstalled-help": "The Datahub plugin is not installed. Please refer to <a href='https://docs.geonetwork-opensource.org/4.4/install-guide/plugins/#datahub-integration-gn-datahub-integration' target='_blank'>the related documentation for more information</a> on installation and usage.",
++
 +
 +    "==== DCAT custom ====": "",
 +    "resourceUriPattern": "Resource URI pattern",
 +    "resourceUriPatternHelp": "Pattern gebruikt om URI van de bronnen te genereren tijdens de RDF export. Bv: https://metadata.vlaanderen.be/srv/resources/{resourceType}/{resourceUuid}"
 +}
 diff --git a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.html b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.html
-index 03bee12552..827103ef87 100644
+index 03bee12552..15182a7301 100644
 --- a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.html
 +++ b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.html
-@@ -337,6 +337,23 @@
-       data-lang="{{lang}}"
-       data-label="csw-category"
-     ></div>
-+
-+    <div>
-+      <label
-+        id="gn-harvest-settings-gn-advanced-resource-uri-pattern-label"
-+        class="control-label"
-+        data-translate=""
-+        >resourceUriPattern</label
-+      >
-+      <input
-+        id="gn-harvest-settings-gn-advanced-resource-uri-pattern-input"
-+        type="text"
-+        class="form-control gn-csw-criteria"
-+        data-ng-model="harvesterSelected.site.resourceUriPattern"
-+      />
-+
-+      <p class="help-block" data-translate="">resourceUriPatternHelp</p>
-+    </div>
-   </fieldset>
+@@ -307,6 +307,22 @@
+         <p class="help-block" data-translate="">applyXSLToRecordHelp</p>
+       </div>
  
-   <div
++      <div id="gn-harvest-settings-gn-advanced-resource-uri-pattern-row">
++        <label
++          id="gn-harvest-settings-gn-advanced-resource-uri-pattern-label"
++          class="control-label"
++          data-translate=""
++        >resourceUriPattern</label>
++        <input
++          id="gn-harvest-settings-gn-advanced-resource-uri-pattern-input"
++          type="text"
++          class="form-control gn-csw-criteria"
++          data-ng-model="harvesterSelected.site.resourceUriPattern"
++        />
++
++        <p class="help-block" data-translate="">resourceUriPatternHelp</p>
++      </div>
++
+       <div id="gn-harvest-settings-csw-advanced-batchEdits-row">
+         <label
+           id="gn-harvest-settings-csw-advanced-batchEdits-label"
 diff --git a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.js b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.js
 index bc6eb3e163..e126119172 100644
 --- a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.js
@@ -605,5 +606,5 @@ index ecfc880f24..db96a7ca0d 100644
  
    <xsl:template match="*" mode="searches">
 -- 
-2.45.2.windows.1
+2.47.1.windows.2
 
