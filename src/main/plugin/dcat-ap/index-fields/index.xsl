@@ -61,7 +61,14 @@
     <xsl:variable name="dateStamp" select=".//dcat:CatalogRecord/dct:modified"/>
     <xsl:variable name="identifier" as="xs:string" select=".//dcat:CatalogRecord/dct:identifier"/>
 
-    <xsl:for-each select=".//(dcat:Dataset|dcat:DataService)">
+    <xsl:variable name="virtualCatalog"
+                  select="rdf:RDF[not(dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog"
+                  as="node()*"/>
+    <xsl:variable name="isVirtualCatalog"
+                  select="exists($virtualCatalog)"
+                  as="xs:boolean"/>
+
+    <xsl:for-each select="(.//(dcat:Dataset|dcat:DataService)|$virtualCatalog)">
       <doc>
         <xsl:copy-of select="gn-fn-index:add-field('docType', 'metadata')"/>
         <xsl:variable name="dateStamp" select="date-util:convertToISOZuluDateTime(normalize-space($dateStamp))"/>
@@ -81,6 +88,9 @@
         <xsl:choose>
           <xsl:when test="$isService">
             <resourceType>service</resourceType>
+          </xsl:when>
+          <xsl:when test="$isVirtualCatalog">
+            <resourceType>catalog</resourceType>
           </xsl:when>
           <xsl:otherwise>
             <resourceType>dataset</resourceType>
@@ -203,13 +213,18 @@
           </xsl:otherwise>
         </xsl:choose>
 
-        <resourceLanguage type="object">
-          <xsl:for-each-group select="dct:language/skos:Concept/@rdf:about|../../dct:language/skos:Concept/@rdf:about"
-                              group-by=".">
-            "<xsl:value-of select="gn-fn-index:langUriTo3Char(current-grouping-key())"/>"
-          </xsl:for-each-group>
-          <xsl:if test="position() != last()">,</xsl:if>
-        </resourceLanguage>
+        <xsl:variable name="resourceLanguages"
+                      select="dct:language/skos:Concept/@rdf:about|../../dct:language/skos:Concept/@rdf:about"/>
+
+        <xsl:if test="$resourceLanguages">
+          <resourceLanguage type="object">
+            <xsl:for-each-group select="$resourceLanguages"
+                                group-by=".">
+              "<xsl:value-of select="gn-fn-index:langUriTo3Char(current-grouping-key())"/>"
+            </xsl:for-each-group>
+            <xsl:if test="position() != last()">,</xsl:if>
+          </resourceLanguage>
+        </xsl:if>
 
         <xsl:apply-templates mode="index-keyword" select="."/>
 
