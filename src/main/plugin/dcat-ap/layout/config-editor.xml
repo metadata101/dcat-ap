@@ -1346,8 +1346,18 @@
       </tab>
 
       <tab id="tabCatalogAssociatedRecords" mode="flat" displayIfRecord="count(rdf:RDF[not(//dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
-        <section name="associatedRecords">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record"/>
+        <section>
+          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record"/>-->
+
+          <!-- List all related records to add additional properties.
+          When this element is removed, update-fixed-info also remove corresponding dcat:record in Catalog.
+          -->
+          <section forEach="/rdf:RDF/dcat:CatalogRecord[@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource]"
+                        name="associatedRecord"
+                        del=".">
+            <field xpath="dct:identifier"/>
+            <field xpath="dct:description" or="subject" in="."/>
+          </section>
 
           <action type="associatedResource"
                   name="linkToSibling"

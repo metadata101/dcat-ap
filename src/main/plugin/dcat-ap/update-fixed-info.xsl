@@ -308,7 +308,7 @@
   </xsl:template>
 
 
-  <xsl:template match="dcat:CatalogRecord" priority="2">
+  <xsl:template match="dcat:CatalogRecord[not($isVirtualCatalog)]" priority="2">
     <xsl:copy copy-namespaces="no">
       <xsl:call-template name="handle-record-id"/>
       <dct:modified>
