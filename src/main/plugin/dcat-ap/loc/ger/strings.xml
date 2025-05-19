@@ -19,6 +19,11 @@
   <geographicalInformation>Spatial and temporal extent</geographicalInformation>
   <relationInformation>Relation</relationInformation>
   <serviceInformation>Service information</serviceInformation>
+  <catalogInformation>Catalog information</catalogInformation>
+  <tabCatalog>Catalog</tabCatalog>
+  <tabCatalogAssociatedRecords>Associated records</tabCatalogAssociatedRecords>
+  <associatedRecords>Records</associatedRecords>
+  <associatedRecord>Associated record</associatedRecord>
   <extraInformation>Extra information</extraInformation>
   <catalogRecordInformation>Catalog record</catalogRecordInformation>
   <conformToInformation>Conformiteit met standaard</conformToInformation>
