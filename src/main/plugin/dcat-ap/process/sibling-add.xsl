@@ -46,16 +46,33 @@
       </xsl:if>
     </xsl:copy>
 
-    <!--
-     <dcat:CatalogRecord rdf:about="https://metadata.vlaanderen.be/srv/resources/records/record1">
-        <foaf:primaryTopic rdf:resource="https://metadata.vlaanderen.be/srv/resources/datasets/uri1"/>
-        <mdcat:stars>5</mdcat:stars>
-        <mdcat:customkeyword>
-        </mdcat:customkeyword>
-        <dct:subject>
-        </dct:subject>
-    </dcat:CatalogRecord>
-    -->
+    <xsl:if test="$uuids != ''">
+      <xsl:for-each select="tokenize($uuids, ',')">
+        <xsl:choose>
+          <xsl:when test="contains(., '#')">
+            <xsl:variable name="tokens" select="tokenize(., '#')"/>
+            <dcat:CatalogRecord rdf:about="{concat($nodeUrl, 'api/records/', $tokens[1])}">
+              <dct:identifier><xsl:value-of select="$tokens[1]"/></dct:identifier>
+              <!--
+              <foaf:primaryTopic rdf:resource="https://metadata.vlaanderen.be/srv/resources/datasets/3986f189-9c4a-4ebb-973c-75036a05cba9"/>
+              -->
+              <mdcat:stars></mdcat:stars>
+              <dct:subject></dct:subject>
+            </dcat:CatalogRecord>
+          </xsl:when>
+          <xsl:otherwise>
+            <dcat:CatalogRecord rdf:about="{concat($nodeUrl, 'api/records/', .)}">
+              <dct:identifier><xsl:value-of select="."/></dct:identifier>
+              <!--
+              <foaf:primaryTopic rdf:resource="https://metadata.vlaanderen.be/srv/resources/datasets/3986f189-9c4a-4ebb-973c-75036a05cba9"/>
+              -->
+              <mdcat:stars></mdcat:stars>
+              <dct:subject></dct:subject>
+            </dcat:CatalogRecord>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:for-each>
+    </xsl:if>
   </xsl:template>
 
 
