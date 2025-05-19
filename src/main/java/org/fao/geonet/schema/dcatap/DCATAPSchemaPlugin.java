@@ -64,6 +64,7 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
 
     static {
         allNamespaces = ImmutableSet.<Namespace>builder()
+            .add(DCATAPNamespaces.RDF)
             .add(DCATAPNamespaces.DC)
             .add(DCATAPNamespaces.DCT)
             .add(DCATAPNamespaces.DCAT)
@@ -85,15 +86,39 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
 
 
     /**
-     * Always return null. Not implemented for DCAT-AP records.
+     * For virtual catalog, return dcat:record elements
      *
      * @param metadata
      * @return
      */
     @Override
     public Set<AssociatedResource> getAssociatedResourcesUUIDs(Element metadata) {
-        return Collections.emptySet();
-    }
+
+        String xpathForAggregationInfo = "dcat:Catalog/dcat:record";
+        Set<AssociatedResource> listOfResources = new HashSet<>();
+        List<?> sibs = null;
+        try {
+            sibs = Xml
+                .selectNodes(
+                    metadata,
+                    xpathForAggregationInfo,
+                    allNamespaces.asList());
+
+            for (Object o : sibs) {
+                if (o instanceof Element) {
+                    Element sib = (Element) o;
+                    String url = sib.getAttributeValue("resource", DCATAPNamespaces.RDF);
+                    AssociatedResource resource =
+                        new AssociatedResource(url.substring(url.lastIndexOf('/') + 1), "", "isComposedOf", url, "");
+                    listOfResources.add(resource);
+                }
+            }
+        } catch (JDOMException e) {
+            e.printStackTrace();
+        }
+        return listOfResources;
+
+}
 
     @Override
     public Set<String> getAssociatedParentUUIDs(Element metadata) {

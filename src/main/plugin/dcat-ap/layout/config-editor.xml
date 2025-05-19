@@ -524,7 +524,13 @@
                    data-file-types=".png,.gif,.jpeg,.jpg"
                    displayIfRecord="count(//dcat:dataset) > 0"/>
 
-        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
+                         displayIfRecord="count(rdf:RDF[not(dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog) = 0"/>
+
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
+                   editor-config="dcatapcatalog"
+                   displayIfRecord="count(rdf:RDF[not(dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0"/>
+
         <directive data-gn-validation-report=""/>
       </sidePanel>
 
@@ -1336,6 +1342,21 @@
                  or="keyword"
                  in="/rdf:RDF/dcat:Catalog"/>
 
+        </section>
+      </tab>
+
+      <tab id="tabCatalogAssociatedRecords" mode="flat" displayIfRecord="count(rdf:RDF[not(//dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
+        <section name="associatedRecords">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record"/>
+
+          <action type="associatedResource"
+                  name="linkToSibling"
+                  btnClass="fa fa-plus"
+                  process="siblings">
+            <directiveAttributes>{"fields": {"associationType": "isComposedOf", "initiativeType": "" },
+              "sources": {"metadataStore": {"params": {"isTemplate": "n"}}
+              }}</directiveAttributes>
+          </action>
         </section>
       </tab>
 
