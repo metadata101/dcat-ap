@@ -62,7 +62,7 @@
     <xsl:variable name="identifier" as="xs:string" select=".//dcat:CatalogRecord/dct:identifier"/>
 
     <xsl:variable name="virtualCatalog"
-                  select="rdf:RDF[not(dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog"
+                  select="rdf:RDF[not(//dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog"
                   as="node()*"/>
     <xsl:variable name="isVirtualCatalog"
                   select="exists($virtualCatalog)"

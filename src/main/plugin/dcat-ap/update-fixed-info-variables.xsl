@@ -61,7 +61,7 @@
                 select="document('layout/config-editor.xml')"/>
 
   <xsl:variable name="isVirtualCatalog"
-                      select="exists(/root/rdf:RDF[not(dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
+                      select="exists(/root/rdf:RDF[not(//dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
                       as="xs:boolean"/>
 
   <xsl:variable name="resourceType">
