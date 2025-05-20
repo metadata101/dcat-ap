@@ -32,6 +32,7 @@ import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Sets;
+import org.apache.commons.lang.StringUtils;
 import org.fao.geonet.ApplicationContextHolder;
 import org.fao.geonet.constants.Geonet;
 import org.fao.geonet.index.es.EsRestClient;
@@ -108,9 +109,11 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
                 if (o instanceof Element) {
                     Element sib = (Element) o;
                     String url = sib.getAttributeValue("resource", DCATAPNamespaces.RDF);
-                    AssociatedResource resource =
-                        new AssociatedResource(url.substring(url.lastIndexOf('/') + 1), "", "isComposedOf", url, "");
-                    listOfResources.add(resource);
+                    if (StringUtils.isNotEmpty(url)) {
+                        AssociatedResource resource =
+                            new AssociatedResource(url.substring(url.lastIndexOf('/') + 1), "", "isComposedOf", url, "");
+                        listOfResources.add(resource);
+                    }
                 }
             }
         } catch (JDOMException e) {

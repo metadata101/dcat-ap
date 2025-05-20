@@ -525,11 +525,11 @@
                    displayIfRecord="count(//dcat:dataset) > 0"/>
 
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
-                         displayIfRecord="count(rdf:RDF[not(dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog) = 0"/>
+                         displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) = 0"/>
 
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
                    editor-config="dcatapcatalog"
-                   displayIfRecord="count(rdf:RDF[not(dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0"/>
+                   displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0"/>
 
         <directive data-gn-validation-report=""/>
       </sidePanel>
@@ -1330,7 +1330,7 @@
         </section>
       </tab>
 
-      <tab id="tabCatalog" default="true" mode="flat" displayIfRecord="count(rdf:RDF[not(//dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
+      <tab id="tabCatalog" default="true" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
         <section name="catalogInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dct:title"/>
           <field xpath="/rdf:RDF/dcat:Catalog/dct:description"/>
@@ -1345,7 +1345,7 @@
         </section>
       </tab>
 
-      <tab id="tabCatalogAssociatedRecords" mode="flat" displayIfRecord="count(rdf:RDF[not(//dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
+      <tab id="tabCatalogAssociatedRecords" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
         <section>
           <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record"/>-->
 
@@ -1356,7 +1356,7 @@
                         name="associatedRecord"
                         del=".">
             <field xpath="dct:identifier"/>
-            <field xpath="dct:description" or="subject" in="."/>
+<!-- TODO mdcat:stars, ...            <field xpath="dct:description" or="description" in="."/>-->
           </section>
 
           <action type="associatedResource"
