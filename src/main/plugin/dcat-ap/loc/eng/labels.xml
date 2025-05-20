@@ -995,6 +995,11 @@
     <description>Tooltip: Statute</description>
     <btnLabel>Statute</btnLabel>
   </element>
+  <element name="mdcat:stars">
+    <label>Stars</label>
+    <description></description>
+    <btnLabel></btnLabel>
+  </element>
   <element name="mdcat:MAGDA-categorie">
     <label>MAGDA-category</label>
     <description>Tooltip: MAGDA-category</description>

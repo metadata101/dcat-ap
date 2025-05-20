@@ -119,6 +119,7 @@
 
                 <!-- Profile / dcat-ap-vl & metadata-dcat -->
                 <xs:element ref="adms:identifier" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="mdcat:stars" minOccurs="0"/>
 
                 <!-- Profile / mobilityDCAT-AP -->
                 <!-- Mandatory -->
