@@ -50,7 +50,7 @@
         <xsl:value-of select="concat('dcat:', normalize-space($xsElement/@name))"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="normalize-space($xsElement/@ref)"/>
+        <xsl:value-of select="if (contains($xsElement/@ref, ':')) then normalize-space($xsElement/@ref) else concat('dcat:', normalize-space($xsElement/@ref))"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
