@@ -6,11 +6,7 @@
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
-                xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
-                xmlns:spdx="http://spdx.org/rdf/terms#"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
-                xmlns:owl="http://www.w3.org/2002/07/owl#"
-                xmlns:adms="http://www.w3.org/ns/adms#"
                 exclude-result-prefixes="#all"
                 version="2.0">
 
@@ -27,50 +23,27 @@
 
   <xsl:variable name="nodeUrl" select="util:getSettingValue('nodeUrl')"/>
 
+  <xsl:variable name="catalogUuid" select=".//rdf:RDF/dcat:CatalogRecord[not(@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource)]/dct:identifier"/>
+
   <xsl:template match="dcat:Catalog">
     <xsl:copy>
       <xsl:copy-of select="*"/>
 
       <xsl:if test="$uuids != ''">
         <xsl:for-each select="tokenize($uuids, ',')">
-          <xsl:choose>
-            <xsl:when test="contains(., '#')">
-              <xsl:variable name="tokens" select="tokenize(., '#')"/>
-              <dcat:record rdf:resource="{concat($nodeUrl, 'api/records/', $tokens[1])}"/>
-            </xsl:when>
-            <xsl:otherwise>
-              <dcat:record rdf:resource="{concat($nodeUrl, 'api/records/', .)}"/>
-            </xsl:otherwise>
-          </xsl:choose>
+          <xsl:variable name="tokens" select="tokenize(., '#')"/>
+          <dcat:record rdf:resource="{concat($nodeUrl, 'api/records/', $catalogUuid, '/', $tokens[1])}"/>
         </xsl:for-each>
       </xsl:if>
     </xsl:copy>
 
     <xsl:if test="$uuids != ''">
       <xsl:for-each select="tokenize($uuids, ',')">
-        <xsl:choose>
-          <xsl:when test="contains(., '#')">
-            <xsl:variable name="tokens" select="tokenize(., '#')"/>
-            <dcat:CatalogRecord rdf:about="{concat($nodeUrl, 'api/records/', $tokens[1])}">
-              <dct:identifier><xsl:value-of select="$tokens[1]"/></dct:identifier>
-              <!--
-              <foaf:primaryTopic rdf:resource="https://metadata.vlaanderen.be/srv/resources/datasets/3986f189-9c4a-4ebb-973c-75036a05cba9"/>
-              -->
-              <mdcat:stars></mdcat:stars>
-              <dct:subject></dct:subject>
-            </dcat:CatalogRecord>
-          </xsl:when>
-          <xsl:otherwise>
-            <dcat:CatalogRecord rdf:about="{concat($nodeUrl, 'api/records/', .)}">
-              <dct:identifier><xsl:value-of select="."/></dct:identifier>
-              <!--
-              <foaf:primaryTopic rdf:resource="https://metadata.vlaanderen.be/srv/resources/datasets/3986f189-9c4a-4ebb-973c-75036a05cba9"/>
-              -->
-              <mdcat:stars></mdcat:stars>
-              <dct:subject></dct:subject>
-            </dcat:CatalogRecord>
-          </xsl:otherwise>
-        </xsl:choose>
+        <xsl:variable name="tokens" select="tokenize(., '#')"/>
+        <dcat:CatalogRecord rdf:about="{concat($nodeUrl, 'api/records/', $catalogUuid, '/', $tokens[1])}">
+          <dct:identifier><xsl:value-of select="$tokens[1]"/></dct:identifier>
+          <foaf:primaryTopic rdf:resource="{concat($nodeUrl, 'api/records/', $tokens[1])}"/>
+        </dcat:CatalogRecord>
       </xsl:for-each>
     </xsl:if>
   </xsl:template>
@@ -82,6 +55,5 @@
     </xsl:copy>
   </xsl:template>
 
-  <!-- Always remove geonet:* elements. -->
   <xsl:template match="geonet:*" priority="2"/>
 </xsl:stylesheet>
