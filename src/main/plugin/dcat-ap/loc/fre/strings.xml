@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- -->
-
 <strings>
   <xml_dublin-core>Save this metadata as a Dublin Core XML file</xml_dublin-core>
   <xml_metadata-dcat>Save this metadata as a DCAT-AP XML file</xml_metadata-dcat>
@@ -8,11 +6,9 @@
   <advanced>Advanced</advanced>
   <xml>XML</xml>
   <tabDataset>Dataset</tabDataset>
-  <tabDistribution>Distributies</tabDistribution>
+  <tabDistribution>Distributions</tabDistribution>
   <tabService>Service</tabService>
   <tabRecord>Record</tabRecord>
-
-  <!-- Section labels -->
   <basicInformation>Basic information</basicInformation>
   <versionInformation>Version information</versionInformation>
   <usageInformation>Usage information</usageInformation>
@@ -24,31 +20,22 @@
   <conformToInformation>Conformiteit met standaard</conformToInformation>
   <overviews>Aperçus</overviews>
   <distribution>Distribution</distribution>
-
-  <!-- Thesauri pickers -->
   <dcat.addThemes>Thèmes</dcat.addThemes>
   <dcat.addTags>Mots clef/balises</dcat.addTags>
   <dcat.addType>Type</dcat.addType>
-  <dcat.addAccessRight>Droit d'accès</dcat.addAccessRight>
+  <dcat.addAccessRight>Droit d\'accès</dcat.addAccessRight>
   <dcat.addFormat>Format</dcat.addFormat>
   <dcat.addPackageFormat>Format du packet</dcat.addPackageFormat>
   <dcat.addCompressFormat>Format de compression</dcat.addCompressFormat>
   <dcat.addMediaType>Type de média</dcat.addMediaType>
   <dcat.addAccrualPeriodicity>Fréquence de mise à jour</dcat.addAccrualPeriodicity>
-  <dcat.addLanguage>Language</dcat.addLanguage>
-  <mdcat.addLevensfase>Status d'utilisation</mdcat.addLevensfase>
-  <mdcat.addOntwikkelingstoestand>Status de développement</mdcat.addOntwikkelingstoestand>
-  <mdcat.addMagdaCategorie>Catégorie MAGDA</mdcat.addMagdaCategorie>
-  <mdcat.addStatuut>Statut</mdcat.addStatuut>
-
-  <!-- Snippet label -->
+  <dcat.addLanguage>Langue</dcat.addLanguage>
   <add-license>License</add-license>
-  <license-modellicentie-gratis>Modellicentie voor gratis hergebruik</license-modellicentie-gratis>
-  <license-cc0>Creative Commons Zero verklaring</license-cc0>
-  <license-modellicentie-hergebruik>Modellicentie voor hergebruik tegen vergoeding</license-modellicentie-hergebruik>
-  <license-onvoorwaardelijk>Onvoorwaardelijk hergebruik</license-onvoorwaardelijk>
-  <license-empty>Vul uw eigen licentie in...</license-empty>
-
+  <license-modellicentie-gratis>Model license for free reuse</license-modellicentie-gratis>
+  <license-cc0>Creative Commons Zero declaration</license-cc0>
+  <license-modellicentie-hergebruik>Model license for paid reuse</license-modellicentie-hergebruik>
+  <license-onvoorwaardelijk>Unconditional reuse</license-onvoorwaardelijk>
+  <license-empty>Specify your own license...</license-empty>
   <protocol-01>ESRI:AIMS-http-configuration</protocol-01>
   <protocol-02>KML-2.0-http-get-map</protocol-02>
   <protocol-03>LDES</protocol-03>
@@ -92,12 +79,36 @@
   <protocol-41>WMTS-1.0.0-http-get-capabilities</protocol-41>
   <protocol-42>WMTS-1.0.0-http-get-tile</protocol-42>
   <protocol-43>WMTS</protocol-43>
-  <protocol-44>REST richtlijnen Digitaal Vlaanderen</protocol-44>
+  <protocol-44>REST guidelines Digitaal Vlaanderen</protocol-44>
   <protocol-45>REST</protocol-45>
   <protocol-46>DOWNLOAD-1.0-ftp--download</protocol-46>
   <protocol-47>DOWNLOAD-1.0-http--download</protocol-47>
   <protocol-48>LINK-1.0-http--atom</protocol-48>
   <protocol-49>LINK-1.0-http--link</protocol-49>
   <protocol-50>LINK-1.0-http--related</protocol-50>
-  <protocol-51>Vul uw eigen protocol in...</protocol-51>
+  <protocol-51>Enter your own protocol...</protocol-51>
+  <hvd-dataservice-section>High Value Dataset (HVD)</hvd-dataservice-section>
+  <hvd-dataservice-tab>Data Service</hvd-dataservice-tab>
+  <hvd-dataset-section>High Value Dataset (HVD)</hvd-dataset-section>
+  <hvd-dataset-tab>Dataset</hvd-dataset-tab>
+  <hvd-section>High Value Dataset (HVD)</hvd-section>
+  <hvd-tab>High Value Dataset</hvd-tab>
+  <hvd-view>High Value Dataset</hvd-view>
+  <mobility-section>Mobility</mobility-section>
+  <mobility-tab>Mobility</mobility-tab>
+  <mobility-view>Mobility</mobility-view>
+  <vl-view>Flanders</vl-view>
+  <vl-tab-service>Service</vl-tab-service>
+  <vl-tab-dataset>Dataset</vl-tab-dataset>
+  <vl-tab-distribution>Distributions</vl-tab-distribution>
+  <vl-section-metadatadcat>Metadata DCAT</vl-section-metadatadcat>
+  <vl-section-dcatapvl>DCAT-AP Vlaanderen</vl-section-dcatapvl>
+  <tabAdvancedService>Service</tabAdvancedService>
+  <tabAdvancedRecord>Record</tabAdvancedRecord>
+  <tabAdvancedDataset>Dataset</tabAdvancedDataset>
+  <tabAdvancedDistribution>Distribution</tabAdvancedDistribution>
+  <associatedResources>Associated resources</associatedResources>
+  <providedBy>Provided by</providedBy>
+  <linkToPortal>Access to the catalogue</linkToPortal>
+  <linkToPortal-help>Read here the full details and access to the data.</linkToPortal-help>
 </strings>

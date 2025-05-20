@@ -79,6 +79,7 @@
   <protocol-41>WMTS-1.0.0-http-get-capabilities</protocol-41>
   <protocol-42>WMTS-1.0.0-http-get-tile</protocol-42>
   <protocol-43>WMTS</protocol-43>
+  <protocol-44>REST guidelines Digitaal Vlaanderen</protocol-44>
   <protocol-45>REST</protocol-45>
   <protocol-46>DOWNLOAD-1.0-ftp--download</protocol-46>
   <protocol-47>DOWNLOAD-1.0-http--download</protocol-47>
@@ -86,12 +87,28 @@
   <protocol-49>LINK-1.0-http--link</protocol-49>
   <protocol-50>LINK-1.0-http--related</protocol-50>
   <protocol-51>Enter your own protocol...</protocol-51>
-
-  <hvd-view>High Value Dataset</hvd-view>
-  <hvd-tab>High Value Dataset</hvd-tab>
+  <hvd-dataservice-section>High Value Dataset (HVD)</hvd-dataservice-section>
+  <hvd-dataservice-tab>Data Service</hvd-dataservice-tab>
+  <hvd-dataset-section>High Value Dataset (HVD)</hvd-dataset-section>
+  <hvd-dataset-tab>Dataset</hvd-dataset-tab>
   <hvd-section>High Value Dataset (HVD)</hvd-section>
-
-  <mobility-view>Mobility</mobility-view>
-  <mobility-tab>Mobility</mobility-tab>
+  <hvd-tab>High Value Dataset</hvd-tab>
+  <hvd-view>High Value Dataset</hvd-view>
   <mobility-section>Mobility</mobility-section>
+  <mobility-tab>Mobility</mobility-tab>
+  <mobility-view>Mobility</mobility-view>
+  <vl-view>Flanders</vl-view>
+  <vl-tab-service>Service</vl-tab-service>
+  <vl-tab-dataset>Dataset</vl-tab-dataset>
+  <vl-tab-distribution>Distributions</vl-tab-distribution>
+  <vl-section-metadatadcat>Metadata DCAT</vl-section-metadatadcat>
+  <vl-section-dcatapvl>DCAT-AP Vlaanderen</vl-section-dcatapvl>
+  <tabAdvancedService>Service</tabAdvancedService>
+  <tabAdvancedRecord>Record</tabAdvancedRecord>
+  <tabAdvancedDataset>Dataset</tabAdvancedDataset>
+  <tabAdvancedDistribution>Distribution</tabAdvancedDistribution>
+  <associatedResources>Associated resources</associatedResources>
+  <providedBy>Provided by</providedBy>
+  <linkToPortal>Access to the catalogue</linkToPortal>
+  <linkToPortal-help>Read here the full details and access to the data.</linkToPortal-help>
 </strings>

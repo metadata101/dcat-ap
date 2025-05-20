@@ -99,6 +99,7 @@
         </xsl:for-each>
       </gn_replace_all>
     </xsl:variable>
+
     <xsl:copy-of select="$response"/>
   </xsl:template>
 

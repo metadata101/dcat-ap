@@ -7,8 +7,8 @@
   <default>Standard</default>
   <advanced>Advanced</advanced>
   <xml>XML</xml>
-  <tabDataset>Dataset</tabDataset>
-  <tabDistribution>Distributies</tabDistribution>
+  <tabDataset>Datensatz</tabDataset>
+  <tabDistribution>Verteilung</tabDistribution>
   <tabService>Service</tabService>
   <tabRecord>Record</tabRecord>
 
@@ -23,7 +23,7 @@
   <catalogRecordInformation>Catalog record</catalogRecordInformation>
   <conformToInformation>Conformiteit met standaard</conformToInformation>
   <overviews>Overviews</overviews>
-  <distribution>Distribution</distribution>
+  <distribution>Verteilung</distribution>
 
   <!-- Thesauri pickers -->
   <dcat.addThemes>Themes</dcat.addThemes>
@@ -92,7 +92,7 @@
   <protocol-41>WMTS-1.0.0-http-get-capabilities</protocol-41>
   <protocol-42>WMTS-1.0.0-http-get-tile</protocol-42>
   <protocol-43>WMTS</protocol-43>
-  <protocol-44>REST richtlijnen Digitaal Vlaanderen</protocol-44>
+  <protocol-44>REST Richtlinien Digitaal Vlaanderen</protocol-44>
   <protocol-45>REST</protocol-45>
   <protocol-46>DOWNLOAD-1.0-ftp--download</protocol-46>
   <protocol-47>DOWNLOAD-1.0-http--download</protocol-47>
@@ -100,4 +100,36 @@
   <protocol-49>LINK-1.0-http--link</protocol-49>
   <protocol-50>LINK-1.0-http--related</protocol-50>
   <protocol-51>Vul uw eigen protocol in...</protocol-51>
+
+  <hvd-dataservice-section>Hochwertiger Datensatz (HVD)</hvd-dataservice-section>
+  <hvd-dataservice-tab>Data Service</hvd-dataservice-tab>
+  <hvd-dataset-section>Hochwertiger Datensatz (HVD)</hvd-dataset-section>
+  <hvd-dataset-tab>Datensatz</hvd-dataset-tab>
+  <hvd-view>Hochwertiger Datensatz</hvd-view>
+
+  <mobility-section>Mobility</mobility-section>
+  <mobility-tab>Mobility</mobility-tab>
+  <mobility-view> > Mobility</mobility-view>
+
+  <metadatadcat-dataservice-section>Data Service</metadatadcat-dataservice-section>
+  <metadatadcat-dataservice-tab>Metadata DCAT</metadatadcat-dataservice-tab>
+  <metadatadcat-dataset-section>Datensatz</metadatadcat-dataset-section>
+  <metadatadcat-dataset-tab>Metadata DCAT</metadatadcat-dataset-tab>
+  <metadatadcat-view> > Metadata DCAT</metadatadcat-view>
+
+  <tabAdvancedService>Service</tabAdvancedService>
+  <tabAdvancedRecord>Record</tabAdvancedRecord>
+  <tabAdvancedDataset>Datensatz</tabAdvancedDataset>
+  <tabAdvancedDistribution>Verteilung</tabAdvancedDistribution>
+
+  <vl-view> > Vlaanderen</vl-view>
+  <vl-tab-service>Service</vl-tab-service>
+  <vl-tab-dataset>Dataset</vl-tab-dataset>
+  <vl-tab-distribution>Distributies</vl-tab-distribution>
+  <vl-section-metadatadcat>Metadata DCAT</vl-section-metadatadcat>
+  <vl-section-dcatapvl>DCAT-AP Vlaanderen</vl-section-dcatapvl>
+  <associatedResources>Associated resources</associatedResources>
+  <providedBy>Provided by</providedBy>
+  <linkToPortal>Access to the catalogue</linkToPortal>
+  <linkToPortal-help>Read here the full details and access to the data.</linkToPortal-help>
 </strings>

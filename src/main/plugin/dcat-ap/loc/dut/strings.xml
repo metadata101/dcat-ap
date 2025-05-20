@@ -3,7 +3,7 @@
   <xml_dublin-core>Sla deze metadata op als een Dublin Core XML bestand</xml_dublin-core>
   <xml_metadata-dcat>Sla deze metadata op als een DCAT-AP XML bestand</xml_metadata-dcat>
   <default>Standaard</default>
-  <advanced>Volledige</advanced>
+  <advanced>Volledig</advanced>
   <xml>XML</xml>
   <tabDataset>Dataset</tabDataset>
   <tabDistribution>Distributies</tabDistribution>
@@ -13,20 +13,20 @@
   <versionInformation>Versie informatie</versionInformation>
   <usageInformation>Gebruiksinformatie</usageInformation>
   <geographicalInformation>Ruimtelijke en temporele begrenzing</geographicalInformation>
-  <relationInformation>Verwantschappen</relationInformation>
+  <relationInformation>Relatie</relationInformation>
   <serviceInformation>Service informatie</serviceInformation>
   <extraInformation>Extra informatie</extraInformation>
-  <catalogRecordInformation>Catalog record</catalogRecordInformation>
+  <catalogRecordInformation>Cataloog record</catalogRecordInformation>
   <conformToInformation>Conformiteit met standaard</conformToInformation>
-  <overviews>Overviews</overviews>
+  <overviews>Overzichten</overviews>
   <distribution>Distributie</distribution>
-  <dcat.addThemes>Thema</dcat.addThemes>
-  <dcat.addTags>Trefwoorden</dcat.addTags>
+  <dcat.addThemes>Themas</dcat.addThemes>
+  <dcat.addTags>Tag/Trefwoorden</dcat.addTags>
   <dcat.addType>Type</dcat.addType>
-  <dcat.addAccessRight>Toegangsrechten</dcat.addAccessRight>
+  <dcat.addAccessRight>Toegankelijkheid</dcat.addAccessRight>
   <dcat.addFormat>Formaat</dcat.addFormat>
   <dcat.addPackageFormat>Package formaat</dcat.addPackageFormat>
-  <dcat.addCompressFormat>Compressie formaat</dcat.addCompressFormat>
+  <dcat.addCompressFormat>Compressieformaat</dcat.addCompressFormat>
   <dcat.addMediaType>Mediatype</dcat.addMediaType>
   <dcat.addAccrualPeriodicity>Updatefrequentie</dcat.addAccrualPeriodicity>
   <dcat.addLanguage>Taal</dcat.addLanguage>
@@ -79,6 +79,7 @@
   <protocol-41>WMTS-1.0.0-http-get-capabilities</protocol-41>
   <protocol-42>WMTS-1.0.0-http-get-tile</protocol-42>
   <protocol-43>WMTS</protocol-43>
+  <protocol-44>REST richtlijnen Digitaal Vlaanderen</protocol-44>
   <protocol-45>REST</protocol-45>
   <protocol-46>DOWNLOAD-1.0-ftp--download</protocol-46>
   <protocol-47>DOWNLOAD-1.0-http--download</protocol-47>
@@ -86,4 +87,28 @@
   <protocol-49>LINK-1.0-http--link</protocol-49>
   <protocol-50>LINK-1.0-http--related</protocol-50>
   <protocol-51>Vul uw eigen protocol in...</protocol-51>
+  <hvd-dataservice-section>Hoogwaardige Dataset (HVD)</hvd-dataservice-section>
+  <hvd-dataservice-tab>Data Service</hvd-dataservice-tab>
+  <hvd-dataset-section>Hoogwaardige Dataset (HVD)</hvd-dataset-section>
+  <hvd-dataset-tab>Dataset</hvd-dataset-tab>
+  <hvd-section>Hoogwaardige Dataset (HVD)</hvd-section>
+  <hvd-tab>Hoogwaardige Dataset (HVD)</hvd-tab>
+  <hvd-view>Hoogwaardige Dataset (HVD)</hvd-view>
+  <mobility-section>Mobility</mobility-section>
+  <mobility-tab>Mobility</mobility-tab>
+  <mobility-view>Mobility</mobility-view>
+  <vl-view>Vlaanderen</vl-view>
+  <vl-tab-service>Service</vl-tab-service>
+  <vl-tab-dataset>Dataset</vl-tab-dataset>
+  <vl-tab-distribution>Distributies</vl-tab-distribution>
+  <vl-section-metadatadcat>Metadata DCAT</vl-section-metadatadcat>
+  <vl-section-dcatapvl>DCAT-AP Vlaanderen</vl-section-dcatapvl>
+  <tabAdvancedService>Service</tabAdvancedService>
+  <tabAdvancedRecord>Record</tabAdvancedRecord>
+  <tabAdvancedDataset>Dataset</tabAdvancedDataset>
+  <tabAdvancedDistribution>Distributie</tabAdvancedDistribution>
+  <associatedResources>Gerelateerde bronnen</associatedResources>
+  <providedBy>Verzorgd door</providedBy>
+  <linkToPortal>Toegang tot het portaal</linkToPortal>
+  <linkToPortal-help>Lees hier de volle details en krijg toegang tot de data.</linkToPortal-help>
 </strings>

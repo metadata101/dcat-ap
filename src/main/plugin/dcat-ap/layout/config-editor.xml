@@ -134,7 +134,6 @@
         xpath="/dcatap:applicableLegislation"
         useReference="true"/>
     </for>
-
     <for name="mobilitydcatap:mobilityTheme" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.mobility-theme"
@@ -163,6 +162,34 @@
       <directiveAttributes
         thesaurus="external.theme.mobility-intended-information-service"
         xpath="/mobilitydcatap:intendedInformationService"/>
+    </for>
+
+
+    <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.magda-domain"
+        xpath="/mdcat:MAGDA-categorie"
+        labelKey="mdcat.addMagdaCategorie"/>
+    </for>
+    <for name="mdcat:statuut" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.GDI-Vlaanderen-trefwoorden"
+        xpath="/mdcat:statuut"
+        labelKey="mdcat.addStatuut"/>
+    </for>
+    <for name="mdcat:levensfase" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.levensfase"
+        xpath="/mdcat:levensfase"
+        max="1"
+        labelKey="mdcat.addLevensfase"/>
+    </for>
+    <for name="mdcat:ontwikkelingstoestand" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.ontwikkelingstoestand"
+        xpath="/mdcat:ontwikkelingstoestand"
+        max="1"
+        labelKey="mdcat.addOntwikkelingstoestand"/>
     </for>
 
     <!-- Check layout-custom-fields-date.xsl for logic -->
@@ -365,6 +392,38 @@
         </snippet>
       </template>
     </for>
+
+    <!-- dcat-ap-vl -->
+    <for name="mdcat:landingspaginaVoorAuthenticatie" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="mdcat:landingspaginaVoorAuthenticatie"/>
+        </values>
+        <snippet>
+          <mdcat:landingspaginaVoorAuthenticatie rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="mdcat:landingspaginaVoorGebruiksinformatie" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="mdcat:landingspaginaVoorGebruiksinformatie"/>
+        </values>
+        <snippet>
+          <mdcat:landingspaginaVoorGebruiksinformatie rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="mdcat:landingspaginaVoorStatusinformatie" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="mdcat:landingspaginaVoorStatusinformatie"/>
+        </values>
+        <snippet>
+          <mdcat:landingspaginaVoorStatusinformatie rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
   </fields>
 
   <!-- Complex fields. -->
@@ -429,6 +488,8 @@
       <name>dcat:temporalResolution</name>
       <name>dcat:startDate</name>
       <name>dcat:endDate</name>
+      <name>schema:startDate</name>
+      <name>schema:endDate</name>
       <name>dcat:servesDataset</name>
       <name>dcat:accessURL</name>
       <name>dcat:downloadURL</name>
@@ -439,6 +500,7 @@
       <name>dct:identifier</name>
       <name>dct:language</name>
       <name>dct:format</name>
+      <name>dct:created</name>
       <name>dct:modified</name>
       <name>dct:issued</name>
       <name>dct:hasPart</name>
@@ -457,6 +519,7 @@
       <name>vcard:postal-code</name>
       <name>vcard:fn</name>
       <name>skos:inScheme</name>
+      <name>skos:notation</name>
       <name>dcat:version</name>
       <name>dcat:hasVersion</name>
       <name>dcat:isVersionOf</name>
@@ -469,19 +532,323 @@
   </multilingualFields>
 
   <views>
-    <view name="hvd-view"
-          class="gn-label-above-input gn-indent-bluescale vl-editor-view"
+
+    <view name="default"
+          default="true"
+          class="gn-label-above-input gn-indent-bluescale"
           displayTooltips="true"
           displayTooltipsMode="onhover"
           hideTimeInCalendar="true">
-      <tab id="hvd-tab"  default="true">
-        <section name="hvd-section">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory"/>
+      <sidePanel>
+        <directive data-gn-overview-manager=""
+                   data-file-types=".png,.gif,.jpeg,.jpg"
+                   displayIfRecord="count(//dcat:dataset) > 0"/>
+
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
+        <directive data-gn-validation-report=""/>
+      </sidePanel>
+
+      <thesaurusList>
+        <thesaurus key="external.theme.publisher-type" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.datatheme" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.frequency" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.language" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.resource-type" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.file-type" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.media-types" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.licence-type" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.status" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.access-right" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.levensfase" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.ontwikkelingstoestand" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.high-value-data-set-category" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.eu-applicable-legislation" maxtags="1" transformations="" fieldset="false"/>
+      </thesaurusList>
+
+      <tab id="tabDataset" default="true" mode="flat" displayIfRecord="count(//dcat:dataset) > 0"
+           hideIfNotDisplayed="true">
+        <section name="basicInformation">
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title"/>
+          <action type="add" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title)=0">
+            <template>
+              <snippet>
+                <dct:title xml:lang=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description"/>
+          <action type="add" or="description" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description)=0">
+            <template>
+              <snippet>
+                <dct:description xml:lang=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher"/>
+          <action type="add" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                       if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher) = 0">
+            <template>
+              <snippet>
+                <dct:publisher>
+                  <foaf:Agent>
+                    <foaf:name xml:lang=""/>
+                    <dct:type>
+                      <skos:Concept>
+                        <skos:prefLabel xml:lang="nl"/>
+                        <skos:prefLabel xml:lang="en"/>
+                        <skos:prefLabel xml:lang="fr"/>
+                        <skos:prefLabel xml:lang="de"/>
+                        <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
+                      </skos:Concept>
+                    </dct:type>
+                  </foaf:Agent>
+                </dct:publisher>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:keyword"
+                 or="keyword"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier"
+                 or="identifier"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:identifier/adms:Identifier"/>
+        </section>
+
+        <section name="vl-section-metadatadcat"
+                       displayIfRecord="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+          <!-- MAGDA-categorie-->
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:MAGDA-categorie"/>
+          <action type="add"
+                  or="MAGDA-categorie"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:MAGDA-categorie) = 0"
+          >
+            <template>
+              <snippet>
+                <mdcat:MAGDA-categorie>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/MAGDA-categorie"/>
+                  </skos:Concept>
+                </mdcat:MAGDA-categorie>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- statuut-->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:statuut"/>
+          <action type="add"
+                  or="statuut"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:statuut) = 0"
+          >
+            <template>
+              <snippet>
+                <mdcat:statuut>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
+                  </skos:Concept>
+                </mdcat:statuut>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"
+                 name="dcat:theme"
+                 or="theme"
+                 use="data-gn-keyword-picker"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <directiveAttributes
+              thesaurus="external.theme.datatheme"
+              xpath="/dcat:theme"
+              max=""
+              labelKey="dcat-addThemes"/>
+          </field>
+
+        </section>
+
+        <section name="versionInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:version" />
+          <action type="add" or="version" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo)=0">
+            <template>
+              <snippet>
+                <owl:versionInfo/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:versionNotes"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created" />
+          <action type="add" or="created" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created)=0">
+            <template>
+              <snippet>
+                <dct:created/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified" />
+          <action type="add" or="modified" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified)=0">
+            <template>
+              <snippet>
+                <dct:modified/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued" />
+          <action type="add" or="issued" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued)=0">
+            <template>
+              <snippet>
+                <dct:issued/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity"/>
+
+          <!-- DCAT-AP v2 compatibility -->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo"
+                 or="versionInfo"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+        </section>
+
+        <section name="usageInformation">
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint"/>
+          <action type="add" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                       if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint) = 0">
+            <template>
+              <snippet>
+                <dcat:contactPoint>
+                  <vcard:Organization>
+                    <vcard:hasEmail rdf:resource=""/>
+                  </vcard:Organization>
+                </dcat:contactPoint>
+              </snippet>
+            </template>
+          </action>
+
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights"/>
+          <action type="add"
+                  or="accessRights"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights) = 0"
+          >
+            <template>
+              <snippet>
+                <dct:accessRights>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
+                  </skos:Concept>
+                </dct:accessRights>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage"/>
+          <action type="add" or="landingPage" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dcat:landingPage rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights"/>
+          <action type="add" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:rights>
+                  <dct:RightsStatement>
+                    <dct:title/>
+                    <dct:description/>
+                  </dct:RightsStatement>
+                </dct:rights>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
+        <section name="geographicalInformation">
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial"/>
+
+          <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                       if="not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
+            <template>
+              <snippet>
+                  <dct:spatial>
+                    <dct:Location rdf:about="http://www.naturalearthdata.com/ne_admin#Continent/Europe">
+                      <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">
+                        POLYGON ((43.2 35.3,43.2 81.4,-11.5 81.4,-11.5 35.3,43.2 35.3))
+                      </locn:geometry>
+                      <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#gmlLiteral">
+                        &lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;35.3 43.2 81.4 43.2 81.4 -11.5 35.3 -11.5 35.3 43.2&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;
+                      </locn:geometry>
+                    </dct:Location>
+                  </dct:spatial>
+                </snippet>
+            </template>
+          </action>
+
+          <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                       if="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+            <template>
+              <snippet>
+                <dct:spatial>
+                  <dct:Location rdf:about="http://mir.geopunt.be/cl/Geopunt/VlaamseAdminRegios/Vlaanderen">
+                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((5.92
+                      50.67,5.92 51.51,2.53 51.51,2.53 50.67,5.92 50.67))
+                    </locn:geometry>
+                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#gmlLiteral">&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;50.67
+                      5.92 51.51 5.92 51.51 2.53 50.67 2.53 50.67 5.92&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;
+                    </locn:geometry>
+                    <skos:prefLabel xml:lang="nl">Vlaams Gewest</skos:prefLabel>
+                  </dct:Location>
+                </dct:spatial>
+              </snippet>
+            </template>
+          </action>
+
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal"/>
+          <action type="add" or="temporal" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:temporal>
+                  <dct:PeriodOfTime>
+                    <schema:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    <schema:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                  </dct:PeriodOfTime>
+                </dct:temporal>
+              </snippet>
+            </template>
+          </action>
+        </section>
+        <section name="hvd-view">
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dcatap:hvdCategory"/>
 
           <action type="add"
-                       or="hvdCategory"
-                       in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                       if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:hvdCategory) = 0">
+                  or="hvdCategory"
+                  in="/rdf:RDF/dcat:Catalog/(dcat:dataset/dcat:Dataset|dcat:service/dcat:DataService)"
+                  if="count(rdf:RDF/dcat:Catalog/*/*/dcatap:hvdCategory) = 0">
             <template>
               <snippet>
                 <dcatap:hvdCategory>
@@ -493,11 +860,11 @@
             </template>
           </action>
 
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:applicableLegislation"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dcatap:applicableLegislation"/>
           <action type="add"
                   or="applicableLegislation"
-                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcatap:applicableLegislation) = 0">
+                  in="/rdf:RDF/dcat:Catalog/(dcat:dataset/dcat:Dataset|dcat:service/dcat:DataService)"
+                  if="count(rdf:RDF/dcat:Catalog/*/*/dcatap:applicableLegislation) = 0">
             <template>
               <snippet>
                 <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
@@ -505,11 +872,554 @@
             </template>
           </action>
         </section>
+
+        <section name="extraInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language"/>
+
+          <action type="add" or="language" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                       if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language) = 0">
+            <template>
+              <snippet>
+                <dct:language>
+                  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/ENG">
+                    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+                    <skos:prefLabel xml:lang="en">English</skos:prefLabel>
+                    <skos:prefLabel xml:lang="nl">Engels</skos:prefLabel>
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+                  </skos:Concept>
+                </dct:language>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo"/>
+
+          <action type="add" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dct:conformsTo>
+                  <dct:Standard>
+                    <dct:identifier/>
+                    <dct:title xml:lang=""/>
+                    <dct:description xml:lang=""/>
+                  </dct:Standard>
+                </dct:conformsTo>
+              </snippet>
+            </template>
+          </action>
+        </section>
       </tab>
+
+      <tab id="tabDistribution" mode="flat"
+           displayIfRecord="count(//dcat:dataset) > 0"
+           hideIfNotDisplayed="true">
+        <section>
+          <section name="distribution"
+                   forEach="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution"
+                   del=".">
+            <field xpath="dcat:Distribution/dct:title" or="title" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:description" or="description" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dcat:accessURL" or="accessURL" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:format" or="format" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dcat:mediaType" or="mediaType" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:language" or="language" in="dcat:Distribution"/>
+
+            <section xpath="dcat:Distribution/dct:license"/>
+
+            <action type="add" or="license" in="dcat:Distribution"
+                    if="count(dcat:Distribution/dct:license) = 0 and
+                        not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
+              <template>
+                <snippets name="licenses"/>
+              </template>
+            </action>
+            <action type="add" or="license" in="dcat:Distribution"
+                    if="count(dcat:Distribution/dct:license) = 0 and
+                        $p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+              <template>
+                <snippets name="licenses-vl"/>
+              </template>
+            </action>
+
+
+            <section xpath="dcat:Distribution/dct:rights"/>
+            <action type="add" or="rights" in="dcat:Distribution">
+              <template>
+                <snippet>
+                  <dct:rights>
+                    <dct:RightsStatement>
+                      <dct:title xml:lang=""/>
+                      <dct:description xml:lang=""/>
+                    </dct:RightsStatement>
+                  </dct:rights>
+                </snippet>
+              </template>
+            </action>
+
+            <section xpath="dcat:Distribution/dct:conformsTo"/>
+            <action type="add" or="conformsTo" in="dcat:Distribution"
+                    if="not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
+              <template>
+                <snippet>
+                  <dct:conformsTo>
+                    <dct:Standard rdf:about="">
+                      <dct:identifier/>
+                      <dct:title xml:lang=""/>
+                      <dct:description xml:lang=""/>
+                    </dct:Standard>
+                  </dct:conformsTo>
+                </snippet>
+              </template>
+            </action>
+            <action type="add" or="conformsTo" in="dcat:Distribution"
+                    if="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+              <template>
+                <snippets name="protocols-vl"/>
+              </template>
+            </action>
+          </section>
+          <action type="add" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippet>
+                <dcat:distribution>
+                  <dcat:Distribution>
+                    <dct:title xml:lang=""/>
+                    <dct:description xml:lang=""/>
+                    <dcat:accessURL rdf:resource=""/>
+                  </dcat:Distribution>
+                </dcat:distribution>
+              </snippet>
+            </template>
+          </action>
+        </section>
+      </tab>
+
+      <tab id="tabService" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0"
+           hideIfNotDisplayed="true">
+        <section name="basicInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title"/>
+          <action type="add" or="title" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title) = 0">
+            <template>
+              <snippet>
+                <dct:title xml:lang=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description"/>
+          <action type="add" or="description"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description) = 0">
+            <template>
+              <snippet>
+                <dct:description xml:lang=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher"/>
+          <action type="add" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:publisher) = 0">
+            <template>
+              <snippet>
+                <dct:publisher>
+                  <foaf:Agent>
+                    <foaf:name xml:lang="nl"/>
+                  </foaf:Agent>
+                </dct:publisher>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL"/>
+          <action type="add" or="endpointURL"
+                       in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                       if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL) = 0">
+            <template>
+              <snippet>
+                <dcat:endpointURL rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription"/>
+          <action type="add" or="endpointDescription"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription) = 0">
+            <template>
+              <snippet>
+                <dcat:endpointDescription rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
+          <action type="add" or="servesDataset"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:servesDataset rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <action type="associatedResource" name="linkToDataset" process="dataset">
+            <directiveAttributes>{"sources": {
+              "metadataStore": {"params": {
+                "resourceType": ["dataset"],
+                "isTemplate": "n"
+              }},
+              "remoteurl": {"multiple": false}
+              }}</directiveAttributes>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:keyword"/>
+          <action type="add" or="keyword" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:keyword/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
+        <section name="vl-section-metadatadcat"
+                       displayIfRecord="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:MAGDA-categorie"/>
+          <action type="add"
+                  or="MAGDA-categorie"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:MAGDA-categorie) = 0">
+            <template>
+              <snippet>
+                <mdcat:MAGDA-categorie>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/MAGDA-categorie"/>
+                  </skos:Concept>
+                </mdcat:MAGDA-categorie>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- statuut-->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statuut"/>
+          <action type="add"
+                  or="statuut"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:statuut) = 0"
+          >
+            <template>
+              <snippet>
+                <mdcat:statuut>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
+                  </skos:Concept>
+                </mdcat:statuut>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- levensfase -->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase"/>
+          <action type="add"
+                  or="levensfase"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:levensfase) = 0"
+          >
+            <template>
+              <snippet>
+                <mdcat:levensfase>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/levensfase"/>
+                  </skos:Concept>
+                </mdcat:levensfase>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- ontwikkelingstoestand -->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand"/>
+          <action type="add"
+                  or="ontwikkelingstoestand"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:ontwikkelingstoestand) = 0">
+            <template>
+              <snippet>
+                <mdcat:ontwikkelingstoestand>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand"/>
+                  </skos:Concept>
+                </mdcat:ontwikkelingstoestand>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- landingspaginaVoorAuthenticatie -->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie"/>
+          <action type="add" or="landingspaginaVoorAuthenticatie"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie) = 0">
+            <template>
+              <snippet>
+                <mdcat:landingspaginaVoorAuthenticatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- landingspaginaVoorStatusinformatie -->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie"/>
+          <action type="add" or="landingspaginaVoorStatusinformatie"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorStatusinformatie) = 0">
+            <template>
+              <snippet>
+                <mdcat:landingspaginaVoorStatusinformatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- landingspaginaVoorGebruiksinformatie -->
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie"/>
+          <action type="add" or="landingspaginaVoorGebruiksinformatie"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorGebruiksinformatie) = 0">
+            <template>
+              <snippet>
+                <mdcat:landingspaginaVoorGebruiksinformatie rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <!-- Theme: vocab.belgif.be/auth/datatheme -->
+          <!-- TODO: custom label to indicate this is about themes from the specific thesaurus? -->
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme"
+                 or="theme"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+        </section>
+
+        <section name="versionInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/owl:versionInfo" />
+          <action type="add" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/*/*/owl:versionInfo)=0">
+            <template>
+              <snippet>
+                <owl:versionInfo/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
+        <section name="usageInformation">
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint"/>
+          <action type="add" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:contactPoint>
+                  <vcard:Organization>
+                    <vcard:hasEmail rdf:resource=""/>
+                  </vcard:Organization>
+                </dcat:contactPoint>
+              </snippet>
+            </template>
+          </action>
+
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights"/>
+          <action type="add"
+                  or="accessRights"
+                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights) = 0"
+          >
+            <template>
+              <snippet>
+                <dct:accessRights>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
+                  </skos:Concept>
+                </dct:accessRights>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:landingPage"/>
+          <action type="add" or="landingPage" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dcat:landingPage rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:rights"/>
+          <action type="add" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippet>
+                <dct:rights>
+                  <dct:RightsStatement>
+                    <dct:title/>
+                    <dct:description/>
+                  </dct:RightsStatement>
+                </dct:rights>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
+        <section name="serviceInformation">
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license"/>
+          <action type="add" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                       if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license) = 0
+                            and not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
+            <template>
+              <snippets name="licenses"/>
+            </template>
+          </action>
+          <action type="add" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                       if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license) = 0 and
+                           $p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+            <template>
+              <snippets name="licenses-vl"/>
+            </template>
+          </action>
+        </section>
+
+        <section name="hvd-view">
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dcatap:hvdCategory"/>
+
+          <action type="add"
+                  or="hvdCategory"
+                  in="/rdf:RDF/dcat:Catalog/(dcat:dataset/dcat:Dataset|dcat:service/dcat:DataService)"
+                  if="count(rdf:RDF/dcat:Catalog/*/*/dcatap:hvdCategory) = 0">
+            <template>
+              <snippet>
+                <dcatap:hvdCategory>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel xml:lang=""></skos:prefLabel>
+                  </skos:Concept>
+                </dcatap:hvdCategory>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dcatap:applicableLegislation"/>
+          <action type="add"
+                  or="applicableLegislation"
+                  in="/rdf:RDF/dcat:Catalog/(dcat:dataset/dcat:Dataset|dcat:service/dcat:DataService)"
+                  if="count(rdf:RDF/dcat:Catalog/*/*/dcatap:applicableLegislation) = 0">
+            <template>
+              <snippet>
+                <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
+        <section name="extraInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language"/>
+
+          <action type="add" or="language" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:language) = 0">
+            <template>
+              <snippet>
+                <dct:language>
+                  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/ENG">
+                    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+                    <skos:prefLabel xml:lang="en">English</skos:prefLabel>
+                    <skos:prefLabel xml:lang="nl">Engels</skos:prefLabel>
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+                  </skos:Concept>
+                </dct:language>
+              </snippet>
+            </template>
+          </action>
+
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:conformsTo"/>
+          <action type="add" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <template>
+              <snippets name="protocols-vl"/>
+            </template>
+          </action>
+        </section>
+      </tab>
+
+      <tab id="tabRecord" mode="flat">
+        <section name="catalogRecordInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:description"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:modified"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:issued"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"
+                 or="language"
+                 in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
+        </section>
+
+        <section name="conformToInformation">
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:identifier"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title"/>
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dcat:version"/>
+
+          <!-- DCAT-AP v2 compatibility -->
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/owl:versionInfo"/>
+        </section>
+      </tab>
+
+      <flatModeExceptions>
+        <!-- Basic information -->
+        <for name="rdf:about"/>
+        <for name="dct:title"/>
+        <for name="dct:description"/>
+        <for name="dcat:keyword"/>
+        <for name="dcat:theme"/>
+        <!-- Version info -->
+        <for name="dcat:version"/>
+        <for name="owl:versionInfo"/>
+        <for name="dct:created"/>
+        <for name="dct:modified"/>
+        <for name="dct:issued"/>
+        <!-- Usage information -->
+        <for name="dct:accessRights"/>
+        <for name="vcard:fn"/>
+        <for name="vcard:organization-name"/>
+        <for name="vcard:hasEmail"/>
+        <for name="vcard:hasURL"/>
+        <for name="vcard:hasTelephone"/>
+        <for name="vcard:hasAddress"/>
+        <for name="vcard:street-address"/>
+        <for name="vcard:locality"/>
+        <for name="vcard:postal-code"/>
+        <for name="vcard:country-name"/>
+        <for name="foaf:Agent/dct:type"/>
+        <!-- Extra info -->
+        <for name="dct:language"/>
+        <for name="dct:conformsTo"/>
+        <!-- Distribution -->
+        <for name="dcat:Distribution"/>
+        <for name="dcat:accessURL"/>
+        <for name="dct:format"/>
+        <for name="dcat:mediaType"/>
+        <for name="dct:license"/>
+        <for name="dct:LicenseDocument"/>
+        <for name="dct:LicenseDocument/dct:type"/>
+        <for name="dct:rights"/>
+      </flatModeExceptions>
     </view>
 
-    <view name="mobility-view"
-          class="gn-label-above-input gn-indent-bluescale vl-editor-view"
+
+<!--  Disabled <view name="mobility-view"
+          class="gn-label-above-input gn-indent-bluescale"
           displayTooltips="true"
           displayTooltipsMode="onhover"
           hideTimeInCalendar="true">
@@ -608,581 +1518,7 @@
 
         </section>
       </tab>
-    </view>
-
-    <view name="default"
-          default="true"
-          class="gn-label-above-input gn-indent-bluescale vl-editor-view"
-          displayTooltips="true"
-          displayTooltipsMode="onhover"
-          hideTimeInCalendar="true">
-      <sidePanel>
-        <directive data-gn-overview-manager=""
-                   data-file-types=".png,.gif,.jpeg,.jpg"/>
-
-        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
-        <directive data-gn-validation-report=""/>
-      </sidePanel>
-
-      <thesaurusList>
-        <thesaurus key="external.theme.publisher-type" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.datatheme" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.frequency" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.language" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.resource-type" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.file-type" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.media-types" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.licence-type" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.status" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.access-right" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.levensfase" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.ontwikkelingstoestand" maxtags="1" transformations="" fieldset="false"/>
-      </thesaurusList>
-
-      <tab id="tabDataset" default="true" mode="flat" displayIfRecord="count(//dcat:dataset) > 0"
-           hideIfNotDisplayed="true">
-        <section name="basicInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title"/>
-
-
-          <action type="add" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title)=0">
-            <template>
-              <snippet>
-                <dct:title xml:lang=""/>
-              </snippet>
-            </template>
-          </action>
-
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description"/>
-
-          <action type="add" or="description" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description)=0">
-            <template>
-              <snippet>
-                <dct:description xml:lang=""></dct:description>
-              </snippet>
-            </template>
-          </action>
-
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher"/>
-
-          <action type="add" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dct:publisher>
-                  <foaf:Agent>
-                    <foaf:name xml:lang=""/>
-                    <dct:type>
-                      <skos:Concept>
-                        <skos:prefLabel xml:lang=""/>
-                        <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
-                      </skos:Concept>
-                    </dct:type>
-                  </foaf:Agent>
-                </dct:publisher>
-              </snippet>
-            </template>
-          </action>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:keyword"
-                 or="keyword"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"
-                 or="theme"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier"
-                 or="identifier"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-        </section>
-        <section name="versionInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:version"
-                 or="version"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified"
-                 or="modified"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued"
-                 or="issued"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-
-          <!-- DCAT-AP v2 compatibility -->
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo"
-                 or="versionInfo"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-        </section>
-        <section name="usageInformation">
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint"/>
-          <action type="add" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dcat:contactPoint>
-                  <vcard:Organization>
-                    <vcard:hasEmail rdf:resource=""/>
-                  </vcard:Organization>
-                </dcat:contactPoint>
-              </snippet>
-            </template>
-          </action>
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights"
-                 or="accessRights"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage"/>
-          <action type="add" or="landingPage" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dcat:landingPage rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-        </section>
-        <section name="geographicalInformation">
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial"/>
-          <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dct:spatial xmlns:dc="http://purl.org/dc/elements/1.1/">
-                  <dct:Location rdf:about="http://mir.geopunt.be/cl/Geopunt/VlaamseAdminRegios/Vlaanderen">
-                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((5.92
-                      50.67,5.92 51.51,2.53 51.51,2.53 50.67,5.92 50.67))
-                    </locn:geometry>
-                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#gmlLiteral">&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;50.67
-                      5.92 51.51 5.92 51.51 2.53 50.67 2.53 50.67 5.92&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;
-                    </locn:geometry>
-                    <skos:prefLabel xml:lang="nl">Vlaams Gewest</skos:prefLabel>
-                  </dct:Location>
-                </dct:spatial>
-              </snippet>
-            </template>
-          </action>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal"/>
-          <action type="add" or="temporal" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dct:temporal>
-                  <dct:PeriodOfTime>
-                    <schema:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
-                    <schema:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
-                  </dct:PeriodOfTime>
-                </dct:temporal>
-              </snippet>
-            </template>
-          </action>
-        </section>
-        <section name="extraInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language"
-                 or="language"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo"/>
-          <action type="add" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dct:conformsTo>
-                  <dct:Standard>
-                    <dct:identifier/>
-                    <dct:title xml:lang=""/>
-                    <dct:description xml:lang=""/>
-                  </dct:Standard>
-                </dct:conformsTo>
-              </snippet>
-            </template>
-          </action>
-        </section>
-      </tab>
-
-      <tab id="tabDistribution" mode="flat" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
-        <section>
-          <section name="distribution"
-                   forEach="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution"
-                   del=".">
-            <field xpath="dcat:Distribution/dct:title" or="title" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dct:description" or="description" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dcat:accessURL" or="accessURL" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dct:format" or="format" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dcat:mediaType" or="mediaType" in="dcat:Distribution"/>
-            <field xpath="dcat:Distribution/dct:language" or="language" in="dcat:Distribution"/>
-            <section xpath="dcat:Distribution/dct:license"/>
-            <action type="add" or="license" in="dcat:Distribution">
-              <template>
-                <snippets name="licenses"/>
-              </template>
-            </action>
-            <section xpath="dcat:Distribution/dct:rights"/>
-            <action type="add" or="rights" in="dcat:Distribution">
-              <template>
-                <snippet>
-                  <dct:rights>
-                    <dct:RightsStatement>
-                      <dct:title xml:lang=""/>
-                      <dct:description xml:lang=""/>
-                    </dct:RightsStatement>
-                  </dct:rights>
-                </snippet>
-              </template>
-            </action>
-            <section xpath="dcat:Distribution/dct:conformsTo"/>
-            <action type="add" or="conformsTo" in="dcat:Distribution">
-              <template>
-                <snippets name="protocols-vl"/>
-              </template>
-            </action>
-          </section>
-          <action type="add" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dcat:distribution>
-                  <dcat:Distribution>
-                    <dct:title xml:lang=""/>
-                    <dct:description xml:lang=""/>
-                    <dcat:accessURL rdf:resource=""/>
-                  </dcat:Distribution>
-                </dcat:distribution>
-              </snippet>
-            </template>
-          </action>
-        </section>
-      </tab>
-
-      <tab id="tabService" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0"
-           hideIfNotDisplayed="true">
-        <section name="basicInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title"/>
-          <action type="add" or="title" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title) = 0">
-            <template>
-              <snippet>
-                <dct:title xml:lang=""/>
-              </snippet>
-            </template>
-          </action>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description"/>
-          <action type="add" or="description"
-                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description) = 0">
-            <template>
-              <snippet>
-                <dct:description xml:lang=""/>
-              </snippet>
-            </template>
-          </action>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL"/>
-          <action type="add" or="endpointURL" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <dcat:endpointURL rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription"/>
-          <action type="add" or="endpointDescription"
-                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <dcat:endpointDescription rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset"/>
-          <action type="add" or="servesDataset"
-                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippet>
-                <dcat:servesDataset rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
-          <action type="associatedResource" name="linkToDataset" process="dataset"/>
-        </section>
-
-        <section name="serviceInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights" or="accessRights"
-                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license"/>
-          <action type="add" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
-            <template>
-              <snippets name="licenses"/>
-            </template>
-          </action>
-        </section>
-      </tab>
-
-      <tab id="tabRecord" mode="flat">
-        <section name="catalogRecordInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:description"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:modified"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:issued"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"
-                 or="language"
-                 in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
-        </section>
-        <section name="conformToInformation">
-          <field
-            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:identifier"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title"/>
-          <field
-            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
-          <field
-            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dcat:version"/>
-
-          <!-- DCAT-AP v2 compatibility -->
-          <field
-            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/owl:versionInfo"/>
-        </section>
-      </tab>
-      <flatModeExceptions>
-        <!-- Basic information -->
-        <for name="rdf:about"/>
-        <for name="dct:title"/>
-        <for name="dct:description"/>
-        <for name="dcat:keyword"/>
-        <for name="dcat:theme"/>
-        <!-- Version info -->
-        <for name="dcat:version"/>
-        <for name="owl:versionInfo"/>
-        <for name="dct:created"/>
-        <for name="dct:modified"/>
-        <for name="dct:issued"/>
-        <!-- Usage information -->
-        <for name="dct:accessRights"/>
-        <for name="vcard:fn"/>
-        <for name="vcard:organization-name"/>
-        <for name="vcard:hasEmail"/>
-        <for name="vcard:hasURL"/>
-        <for name="vcard:hasTelephone"/>
-        <for name="vcard:hasAddress"/>
-        <for name="vcard:street-address"/>
-        <for name="vcard:locality"/>
-        <for name="vcard:postal-code"/>
-        <for name="vcard:country-name"/>
-        <!-- Extra info -->
-        <for name="dct:language"/>
-        <for name="dct:conformsTo"/>
-        <!-- Distribution -->
-        <for name="dcat:Distribution"/>
-        <for name="dcat:accessURL"/>
-        <for name="dct:format"/>
-        <for name="dcat:mediaType"/>
-        <for name="dct:license"/>
-        <for name="dct:LicenseDocument"/>
-        <for name="dct:LicenseDocument/dct:type"/>
-        <for name="dct:rights"/>
-      </flatModeExceptions>
-    </view>
-
-    <view name="advanced"
-          class="gn-label-above-input gn-indent-bluescale vl-editor-view"
-          displayTooltips="true"
-          displayTooltipsMode="onhover"
-          hideTimeInCalendar="true">
-      <sidePanel>
-        <directive data-gn-overview-manager=""
-                   data-file-types=".png,.gif,.jpeg,.jpg"/>
-
-        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
-        <directive data-gn-validation-report=""/>
-      </sidePanel>
-
-      <thesaurusList>
-        <thesaurus key="external.theme.publisher-type" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.datatheme" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.frequency" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.language" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.resource-type" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.file-type" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.media-types" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.licence-type" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.status" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.access-right" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.levensfase" maxtags="1" transformations="" fieldset="false"/>
-        <thesaurus key="external.theme.ontwikkelingstoestand" maxtags="1" transformations="" fieldset="false"/>
-      </thesaurusList>
-
-      <tab id="tabAdvancedDataset" default="true" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
-        <section name="basicInformation">
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title" or="title"
-                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description" or="description"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher" or="publisher"
-                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:keyword" or="keyword"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier" or="identifier"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:identifier"/>
-        </section>
-
-        <section name="versionInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:version" or="version"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:versionNotes" or="versionNotes"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity" or="accrualPeriodicity"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created" or="created"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:modified" or="modified"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:issued" or="issued"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-
-          <!-- DCAT-AP v2 compatibility -->
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo" or="versionInfo"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-        </section>
-
-        <section name="usageInformation">
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint" or="contactPoint"
-                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accessRights" or="accessRights"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:landingPage" or="landingPage"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-        </section>
-
-        <section name="geographicalInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial"/>
-          <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dct:spatial>
-                  <dct:Location rdf:about="http://mir.geopunt.be/cl/Geopunt/VlaamseAdminRegios/Vlaanderen">
-                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((5.92
-                      50.67,5.92 51.51,2.53 51.51,2.53 50.67,5.92 50.67))
-                    </locn:geometry>
-                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#gmlLiteral">&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;50.67
-                      5.92 51.51 5.92 51.51 2.53 50.67 2.53 50.67 5.92&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;
-                    </locn:geometry>
-                    <skos:prefLabel xml:lang="nl">Vlaams Gewest</skos:prefLabel>
-                  </dct:Location>
-                </dct:spatial>
-              </snippet>
-            </template>
-          </action>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal" or="temporal"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-        </section>
-
-        <section name="relationInformation">
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:provenance" or="provenance"
-                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:relation" or="relation"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:source" or="source"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:isVersionOf" or="isVersionOf"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:hasVersion" or="hasVersion"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-
-          <!-- DCAT-AP v2 compatibility -->
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isVersionOf" or="isVersionOf"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:hasVersion" or="hasVersion"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-        </section>
-
-        <section name="extraInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language" or="language"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/foaf:page" or="page"
-                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo" or="conformsTo"
-                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:type" or="type"
-                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:qualifiedRelation" or="qualifiedRelation"
-                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:creator" or="creator"
-                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isReferencedBy" or="isReferencedBy"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-        </section>
-      </tab>
-
-      <tab id="tabAdvancedDistribution" displayIfRecord="count(//dcat:dataset) > 0" hideIfNotDisplayed="true">
-        <section>
-          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution"/>
-          <action type="add" name="distribution" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dcat:distribution>
-                  <dcat:Distribution>
-                    <dct:title xml:lang=""/>
-                    <dct:description xml:lang=""/>
-                    <dcat:accessURL rdf:resource=""/>
-                    <dcat:downloadURL rdf:resource=""/>
-                    <dct:format/>
-                  </dcat:Distribution>
-                </dcat:distribution>
-              </snippet>
-            </template>
-          </action>
-          <!--<section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample" or="sample" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset" name="FieldId315"/>-->
-        </section>
-      </tab>
-
-      <tab id="tabAdvancedService" default="true" displayIfRecord="count(//dcat:service) > 0" hideIfNotDisplayed="true">
-        <section name="basicInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title" or="title"
-                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description" or="description"
-                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointURL" or="endpointUrl"
-                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:endpointDescription"
-                 or="endpointDescription" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:servesDataset" or="servesDataset"
-                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-          <action type="associatedResource" name="linkToDataset" process="dataset"/>
-        </section>
-
-        <section name="serviceInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:accessRights" or="accessRights"
-                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license" or="license"
-                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
-        </section>
-
-      </tab>
-      <tab id="tabAdvancedRecord" mode="flat">
-        <section name="catalogRecordInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:description"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:modified"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:issued"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"
-                 or="language"
-                 in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
-        </section>
-        <section name="conformToInformation">
-          <field
-            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:identifier"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title"/>
-          <field
-            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
-        </section>
-      </tab>
-    </view>
-
-    <view name="fromroot">
-      <sidePanel>
-        <directive data-gn-overview-manager=""
-                   data-file-types=".png,.gif,.jpeg,.jpg"/>
-
-        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
-        <directive data-gn-validation-report=""/>
-      </sidePanel>
-      <tab id="dcat.catalog-record">
-        <section xpath="/rdf:RDF"/>
-      </tab>
-    </view>
+    </view>-->
 
     <view name="xml">
       <sidePanel>
@@ -1235,6 +1571,98 @@
         </dct:license>
       </snippet>
     </list>
+    <list name="licenses-vl">
+      <snippet label="license-modellicentie-gratis">
+        <dct:license>
+          <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0">
+            <dct:type>
+              <skos:Concept rdf:about="http://purl.org/adms/licencetype/Attribution">
+                <skos:prefLabel xml:lang="nl">Verplichte bronvermelding</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Attribution</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">Attribution</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Attribution</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
+              </skos:Concept>
+            </dct:type>
+            <dct:title xml:lang="nl">Modellicentie voor gratis hergebruik</dct:title>
+            <dct:description xml:lang="nl">Onder deze licentie doet de instantie geen afstand van haar intellectuele rechten, maar mag de data voor eender welk doel hergebruikt worden, gratis en onder minimale restricties.</dct:description>
+            <dct:identifier>https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0</dct:identifier>
+          </dct:LicenseDocument>
+        </dct:license>
+      </snippet>
+      <snippet label="license-cc0">
+        <dct:license>
+          <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0">
+            <dct:type>
+              <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
+                <skos:prefLabel xml:lang="nl">Werk in het publiek domein</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Public domain</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">Public domain</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Public domain</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
+              </skos:Concept>
+            </dct:type>
+            <dct:title xml:lang="nl">Creative Commons Zero verklaring</dct:title>
+            <dct:description xml:lang="nl">De instantie doet afstand van haar intellectuele eigendomsrechten voor zover dit wettelijk mogelijk is. Hierdoor kan de gebruiker de data hergebruiken voor eender welk doel, zonder een verplichting op naamsvermelding. Deze is de welbekende CC0 licentie.</dct:description>
+            <dct:identifier>https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0</dct:identifier>
+          </dct:LicenseDocument>
+        </dct:license>
+      </snippet>
+      <snippet label="license-modellicentie-hergebruik">
+        <dct:license>
+          <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-hergebruik-tegen-vergoeding/v1.0">
+            <dct:type>
+              <skos:Concept rdf:about="http://purl.org/adms/licencetype/Attribution">
+                <skos:prefLabel xml:lang="nl">Verplichte bronvermelding</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Attribution</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">Attribution</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Attribution</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0" />
+              </skos:Concept>
+            </dct:type>
+            <dct:title xml:lang="nl">Modellicentie voor hergebruik tegen vergoeding</dct:title>
+            <dct:description xml:lang="nl">Onder deze licentie stelt de instantie nog steeds haar data ter beschikking voor eender welk hergebruik, maar wil zij hiervoor een vergoeding ontvangen. In regel is deze vergoeding beperkt tot de marginale kosten voor vermenigvuldiging, verstrekking en verspreiding.</dct:description>
+            <dct:identifier>https://data.vlaanderen.be/id/licentie/modellicentie-hergebruik-tegen-vergoeding/v1.0</dct:identifier>
+          </dct:LicenseDocument>
+        </dct:license>
+      </snippet>
+      <snippet label="license-onvoorwaardelijk">
+        <dct:license>
+          <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/onvoorwaardelijk-hergebruik/v1.0">
+            <dct:type>
+              <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
+                <skos:prefLabel xml:lang="nl">Werk in het publiek domein</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Public domain</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">Public domain</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Public domain</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0" />
+              </skos:Concept>
+            </dct:type>
+            <dct:title xml:lang="nl">Onvoorwaardelijk hergebruik</dct:title>
+            <dct:description xml:lang="nl">Onvoorwaardelijk hergebruik</dct:description>
+            <dct:identifier>https://data.vlaanderen.be/id/licentie/onvoorwaardelijk-hergebruik/v1.0</dct:identifier>
+          </dct:LicenseDocument>
+        </dct:license>
+      </snippet>
+      <snippet label="license-empty">
+        <dct:license>
+          <dct:LicenseDocument rdf:about="">
+            <dct:type>
+              <skos:Concept>
+                <skos:prefLabel xml:lang="nl"/>
+                <skos:prefLabel xml:lang="en"/>
+                <skos:prefLabel xml:lang="fr"/>
+                <skos:prefLabel xml:lang="de"/>
+                <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
+              </skos:Concept>
+            </dct:type>
+            <dct:title xml:lang="nl"/>
+            <dct:description xml:lang="nl"/>
+            <!--dct:identifier/-->
+          </dct:LicenseDocument>
+        </dct:license>
+      </snippet>
+    </list>
     <list name="protocols-vl">
       <snippet label="protocol-01">
         <dct:conformsTo>
@@ -1243,9 +1671,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/ESRI:AIMS-http-configuration
             </dct:identifier>
             <dct:title xml:lang="nl">ESRI:AIMS-http-configuration</dct:title>
-            <dct:description xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een
-              URL.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een URL.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1255,11 +1681,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/GLG:KML-2.0-http-get-map
             </dct:identifier>
             <dct:title xml:lang="nl">KML-2.0-http-get-map</dct:title>
-            <dct:description xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie,
-              inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische
-              gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan
-              en waar te kijken.
-            </dct:description>
+            <dct:description xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie, inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan en waar te kijken.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1268,13 +1690,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/LDES">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/LDES</dct:identifier>
             <dct:title xml:lang="nl">LDES</dct:title>
-            <dct:description xml:lang="nl">Linked Data Event Stream of kortweg LDES is een collectie van onveranderlijke
-              elementen, waarbij zowel de collectie als de elementen beschreven zijn door het Resource Description
-              Framework (RDF). De LDES specificatie bouwt voort op de TREE hypermedia specificatie. Een Event Stream is
-              een uitbreiding is van de TREE hypermedia Collection die beschrijft hoe te navigeren over grote collectie
-              data-elementen. Dit laat toe om grote hoeveelheden data efficiënt te publiceren door gebruik te maken van
-              HTTP caching.
-            </dct:description>
+            <dct:description xml:lang="nl">Linked Data Event Stream of kortweg LDES is een collectie van onveranderlijke elementen, waarbij zowel de collectie als de elementen beschreven zijn door het Resource Description Framework (RDF). De LDES specificatie bouwt voort op de TREE hypermedia specificatie. Een Event Stream is een uitbreiding is van de TREE hypermedia Collection die beschrijft hoe te navigeren over grote collectie data-elementen. Dit laat toe om grote hoeveelheden data efficiënt te publiceren door gebruik te maken van HTTP caching.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1284,9 +1700,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/LINK-download-store
             </dct:identifier>
             <dct:title xml:lang="nl">LINK-download-store</dct:title>
-            <dct:description xml:lang="nl">Het Link Download store protocol levert een link op naar de download-store,
-              dit is een folder, winkel... voor directe download.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Link Download store protocol levert een link op naar de download-store, dit is een folder, winkel... voor directe download.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1295,8 +1709,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:CSW">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:CSW</dct:identifier>
             <dct:title xml:lang="nl">CSW</dct:title>
-            <dct:description xml:lang="nl">Het Catalogue Service Web protocol levert toegang tot een endpoint.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Catalogue Service Web protocol levert toegang tot een endpoint.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1305,9 +1718,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:GML">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:GML</dct:identifier>
             <dct:title xml:lang="nl">GML</dct:title>
-            <dct:description xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van
-              geografische kenmerken.
-            </dct:description>
+            <dct:description xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van geografische kenmerken.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1316,11 +1727,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:KML">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:KML</dct:identifier>
             <dct:title xml:lang="nl">KML</dct:title>
-            <dct:description xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie,
-              inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische
-              gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan
-              en waar te kijken.
-            </dct:description>
+            <dct:description xml:lang="nl">Keyhole Markup Language is een XML-taal gericht op geografische visualisatie, inclusief annotatie van kaarten en afbeeldingen. Dit omvat niet alleen de presentatie van grafische gegevens over de wereld, maar ook de controle van de navigatie van de gebruiker in de zin van waar te gaan en waar te kijken.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1329,9 +1736,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:ODS">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:ODS</dct:identifier>
             <dct:title xml:lang="nl">ODS</dct:title>
-            <dct:description xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van
-              geografische kenmerken.
-            </dct:description>
+            <dct:description xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van geografische kenmerken.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1342,9 +1747,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features-items
             </dct:identifier>
             <dct:title xml:lang="nl">OGC API Features items</dct:title>
-            <dct:description xml:lang="nl">Deze OGC standaard definieert de API bouwblok items voor een OGC Feature
-              API
-            </dct:description>
+            <dct:description xml:lang="nl">Deze OGC standaard definieert de API bouwblok items voor een OGC Feature API</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1355,9 +1758,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features-landingpage
             </dct:identifier>
             <dct:title xml:lang="nl">OGC API Feature landing page</dct:title>
-            <dct:description xml:lang="nl">Deze OGC standaard definieert de API bouwblok landingspagina voor een OGC
-              Feature API
-            </dct:description>
+            <dct:description xml:lang="nl">Deze OGC standaard definieert de API bouwblok landingspagina voor een OGC Feature API</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1367,9 +1768,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:OGC-API-Features
             </dct:identifier>
             <dct:title xml:lang="nl">OGC API Features</dct:title>
-            <dct:description xml:lang="nl">Deze OGC standaard definieert API bouwblokken voor het aanmaken, wijzigen en
-              ondervragen van (geografische) features
-            </dct:description>
+            <dct:description xml:lang="nl">Deze OGC standaard definieert API bouwblokken voor het aanmaken, wijzigen en ondervragen van (geografische) features</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1381,11 +1780,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.0.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.0.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1396,11 +1791,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.0.0-http-get-coverage
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.0.0-http-get-coverage</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1412,11 +1803,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.1.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1427,11 +1814,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.0-http-get-coverage
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.1.0-http-get-coverage</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1443,11 +1826,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.1-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.1.1-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1458,11 +1837,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-1.1.1-http-get-coverage
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-1.1.1-http-get-coverage</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1474,12 +1849,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-2.0.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
-          </dct:Standard>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description></dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-19">
@@ -1489,11 +1859,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.0-http-get-coverage
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-2.0.0-http-get-coverage</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1505,11 +1871,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.1-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-2.0.1-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1520,11 +1882,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS-2.0.1-http-get-coverage
             </dct:identifier>
             <dct:title xml:lang="nl">WCS-2.0.1-http-get-coverage</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1533,11 +1891,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WCS</dct:identifier>
             <dct:title xml:lang="nl">WCS</dct:title>
-            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale
-              gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen
-              vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en
-              algemene meshes.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Coverage Service ondersteunt het elektronisch ophalen van geospatiale gegevens als 'dekkingen', wat digitale geospatiale informatie is die ruimte/tijd-variërende verschijnselen vertegenwoordigt, met name ruimtelijke en tijdelijke regelmatige en onregelmatige rasters, puntenwolken en algemene meshes.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1549,11 +1903,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-describefeaturetype
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.0.0-http-describefeaturetype</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving
-              van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties
-              verwacht te coderen op output.
-            </dct:description>
-          </dct:Standard>
+            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties verwacht te coderen op output.</dct:description></dct:Standard>
         </dct:conformsTo>
       </snippet>
       <snippet label="protocol-24">
@@ -1564,9 +1914,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.0.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument
-              dat een WFS beschrijft service geleverd door een server.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1577,9 +1925,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.0.0-http-get-feature
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.0.0-http-get-feature</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit
-              een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1591,10 +1937,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-describefeaturetype
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.1.0-http-describefeaturetype</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving
-              van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties
-              verwacht te coderen op output.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties verwacht te coderen op output.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1606,9 +1949,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.1.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument
-              dat een WFS beschrijft service geleverd door een server.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1619,9 +1960,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-get-feature
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.1.0-http-get-feature</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit
-              een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1632,9 +1971,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-1.1.0-http-getgmlobject
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-1.1.0-http-getgmlobject</dct:title>
-            <dct:description xml:lang="nl">Web Feature Service biedt directe ged etailleerde toegang tot geografische
-              informatie op feature- en feature-propertyniveau.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Service biedt directe ged etailleerde toegang tot geografische informatie op feature- en feature-propertyniveau.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1646,10 +1983,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-describefeaturetype
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-2.0.0-http-describefeaturetype</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving
-              van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties
-              verwacht te coderen op output.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Services DescribeFeatureType retourneert een schemabeschrijving van de aangeboden functietypen door een WFS-instantie die definiëren hoe een WFS feature-instanties verwacht te coderen op output.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1661,9 +1995,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-2.0.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument
-              dat een WFS beschrijft service geleverd door een server.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Service GetCapabilities genereert een service-metadatadocument dat een WFS beschrijft service geleverd door een server.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1674,9 +2006,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS-2.0.0-http-get-feature
             </dct:identifier>
             <dct:title xml:lang="nl">WFS-2.0.0-http-get-feature</dct:title>
-            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit
-              een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Services Get Feature retourneert een selectie van functies uit een gegevensarchief die voldoen aan de query-expressies die zijn opgegeven in het verzoek.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1685,9 +2015,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WFS</dct:identifier>
             <dct:title xml:lang="nl">WFS</dct:title>
-            <dct:description xml:lang="nl">Web Feature Service biedt directe ged etailleerde toegang tot geografische
-              informatie op feature- en feature-propertyniveau.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Feature Service biedt directe ged etailleerde toegang tot geografische informatie op feature- en feature-propertyniveau.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1699,10 +2027,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.1.1-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in
-              een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de
-              verzoekparameterwaarden.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de verzoekparameterwaarden.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1714,9 +2039,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-featureinfo
             </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.1.1-http-get-featureinfo</dct:title>
-            <dct:description xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over
-              functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1727,9 +2050,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.1.1-http-get-map
             </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.1.1-http-get-map</dct:title>
-            <dct:description xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een
-              GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1741,10 +2062,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.3.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in
-              een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de
-              verzoekparameterwaarden.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Services Get Capabilities is het verkrijgen van servicemetadata in een machineleesbare (en door mensen leesbare) beschrijving van de informatie-inhoud van de server en de verzoekparameterwaarden.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1756,9 +2074,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-featureinfo
             </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.3.0-http-get-featureinfo</dct:title>
-            <dct:description xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over
-              functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Services Get Featureinfo biedt aanvullende informatie aan over functies in de afbeeldingen van kaarten die zijn geretourneerd door een eerder verzoek van GetMap.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1769,9 +2085,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-map
             </dct:identifier>
             <dct:title xml:lang="nl">WMS-1.3.0-http-get-map</dct:title>
-            <dct:description xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een
-              GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Services GetMap retourneert een kaart. Na ontvangst van een GetMap-verzoek, zal een WMS ofwel: aan het verzoek voldoen of een service-uitzondering afgeven.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1780,9 +2094,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS</dct:identifier>
             <dct:title xml:lang="nl">WMS</dct:title>
-            <dct:description xml:lang="nl">Web Map Services genereren op dynamische wijze beelden uit verschillende
-              datasets.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Services genereren op dynamische wijze beelden uit verschillende datasets.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1794,9 +2106,7 @@
               https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS-1.0.0-http-get-capabilities
             </dct:identifier>
             <dct:title xml:lang="nl">WMTS-1.0.0-http-get-capabilities</dct:title>
-            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde
-              gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1807,9 +2117,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS-1.0.0-http-get-tile
             </dct:identifier>
             <dct:title xml:lang="nl">WMTS-1.0.0-http-get-tile</dct:title>
-            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde
-              gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1818,9 +2126,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMTS</dct:identifier>
             <dct:title xml:lang="nl">WMTS</dct:title>
-            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde
-              gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.
-            </dct:description>
+            <dct:description xml:lang="nl">Web Map Tile Service kan kaarttegels ophalen van ruimtelijk gerefereerde gegevens met behulp van tegelafbeeldingen met vooraf gedefinieerde inhoud, omvang en resolutie.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1841,12 +2147,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/REST">
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/REST</dct:identifier>
             <dct:title xml:lang="nl">REST</dct:title>
-            <dct:description xml:lang="nl">Representational State Transfer of kortweg REST is een architecturale stijl
-              voor gedistribueerde hypermedia-systemen zoals ingevoerd en gedefinieerd in 2000 door Roy Fielding,
-              waarbij de toegang tot en bewerking van objecten in een bepaald domein worden beschreven als standaard web
-              operaties op web resources. REST stoelt sterk op de concepten en principes van het HTTP-protocol waarvan
-              Roy Fielding mede-auteur is.
-            </dct:description>
+            <dct:description xml:lang="nl">Representational State Transfer of kortweg REST is een architecturale stijl voor gedistribueerde hypermedia-systemen zoals ingevoerd en gedefinieerd in 2000 door Roy Fielding, waarbij de toegang tot en bewerking van objecten in een bepaald domein worden beschreven als standaard web operaties op web resources. REST stoelt sterk op de concepten en principes van het HTTP-protocol waarvan Roy Fielding mede-auteur is.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1857,8 +2158,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:DOWNLOAD-1.0-ftp--download
             </dct:identifier>
             <dct:title xml:lang="nl">DOWNLOAD-1.0-ftp--download</dct:title>
-            <dct:description xml:lang="nl">Het Download FTP protocol levert een bestand ter directe download over FTP.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Download FTP protocol levert een bestand ter directe download over FTP.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1869,9 +2169,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:DOWNLOAD-1.0-http--download
             </dct:identifier>
             <dct:title xml:lang="nl">DOWNLOAD-1.0-http--download</dct:title>
-            <dct:description xml:lang="nl">Het Download HTTP protocol levert een bestand ter directe download over
-              HTTP.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Download HTTP protocol levert een bestand ter directe download over HTTP.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1881,8 +2179,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--atom
             </dct:identifier>
             <dct:title xml:lang="nl">LINK-1.0-http--atom</dct:title>
-            <dct:description xml:lang="nl">Het Link Atom Feed protocol levert toegang tot een ATOM feed via een URL.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Link Atom Feed protocol levert toegang tot een ATOM feed via een URL.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1892,8 +2189,7 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--link
             </dct:identifier>
             <dct:title xml:lang="nl">LINK-1.0-http--link</dct:title>
-            <dct:description xml:lang="nl">Het Link protocol levert toegang tot een webadres via een URL.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Link protocol levert toegang tot een webadres via een URL.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -1904,13 +2200,11 @@
             <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/WWW:LINK-1.0-http--related
             </dct:identifier>
             <dct:title xml:lang="nl">LINK-1.0-http--related</dct:title>
-            <dct:description xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een
-              URL.
-            </dct:description>
+            <dct:description xml:lang="nl">Het Link Related protocol levert toegang tot een gerelateerde link via een URL.</dct:description>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
-      <snippet label="protocol-51">
+      <snippet label="protocol-51" sortLabel="ZZZZ">
         <dct:conformsTo>
           <dct:Standard xmlns:dct="http://purl.org/dc/terms/">
             <dct:identifier/>

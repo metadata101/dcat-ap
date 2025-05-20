@@ -52,19 +52,34 @@
       <xsl:when test="string-length($languageCode) = 2">
         <xsl:value-of select="$languageCode"/>
       </xsl:when>
-      <xsl:otherwise></xsl:otherwise>
+      <!-- VL specific / Fallback when CatalogRecord does not declare any language
+      Another approach could be XslUtil.getDefaultLangCode but return "eng"
+      Or add another method based on bean DefaultLanguage.
+      -->
+      <xsl:otherwise>en</xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
   <!-- Get the list of other languages in JSON -->
   <xsl:template name="get-dcat-ap-other-languages-as-json">
-    <xsl:variable name="langs">
-      <xsl:for-each select="$metadata//dcat:CatalogRecord/dct:language">
 
+    <xsl:variable name="langURIs">
+      <xsl:for-each select="$metadata//dcat:CatalogRecord/dct:language/(@rdf:resource|skos:Concept/@rdf:about|dct:LinguisticSystem/@rdf:about)">
+        <langURI>
+          <xsl:value-of select="string()"/>
+        </langURI>
+      </xsl:for-each>
+      <langURI>http://publications.europa.eu/resource/authority/language/ENG</langURI>
+      <langURI>http://publications.europa.eu/resource/authority/language/NLD</langURI>
+      <langURI>http://publications.europa.eu/resource/authority/language/DEU</langURI>
+      <langURI>http://publications.europa.eu/resource/authority/language/FRA</langURI>
+    </xsl:variable>
+    <xsl:variable name="langs">
+      <xsl:for-each select="distinct-values($langURIs/langURI)">
         <xsl:variable name="languageCode">
           <xsl:call-template name="get-dcat-ap-language">
             <xsl:with-param name="languageIri"
-                            select="(@rdf:resource, skos:Concept/@rdf:about, dct:LinguisticSystem/@rdf:about)[1]"/>
+                            select="."/>
           </xsl:call-template>
         </xsl:variable>
 

@@ -1,4 +1,358 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <schematron.title>DCAT-AP-Vlaanderen - Verplicht</schematron.title>
+  <pattern.title.1>vcard:hasEmail is een URI met het mailto-protocol.</pattern.title.1>
+  <pattern.assert.1>vcard:hasEmail eigenschap is geen URI met het mailto: protocol.</pattern.assert.1>
+  <pattern.report.1>vcard:hasEmail eigenschap is een URI met het mailto: protocol.</pattern.report.1>
+  <pattern.title.2>dct:license is CC0</pattern.title.2>
+  <pattern.assert.2>De dcat:Catalog heeft geen dct:license eigenschap met waarde 'https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0'.</pattern.assert.2>
+  <pattern.report.2>De dcat:Catalog heeft een dct:license eigenschap met waarde 'https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0'.</pattern.report.2>
+  <pattern.title.3>dct:accessRights moeten openbaar zijn</pattern.title.3>
+  <pattern.assert.3>De dcat:Dataset heeft geen dct:accessRights eigenschap met waarde 'http://publications.europa.eu/resource/authority/access-right/PUBLIC'.</pattern.assert.3>
+  <pattern.report.3>De dcat:Dataset heeft een dct:accessRights eigenschap met waarde 'http://publications.europa.eu/resource/authority/access-right/PUBLIC'.</pattern.report.3>
+  <pattern.title.4>Minimaal één trefwoord is vereist.</pattern.title.4>
+  <pattern.assert.4>De dcat:Resource heeft geen trefwoord.</pattern.assert.4>
+  <pattern.report.4>De dcat:Resource heeft minimaal één trefwoord.</pattern.report.4>
+  <pattern.title.5>Minimaal één van vcard:hasEmail of vcard:hasURL is vereist voor een contactpunt.</pattern.title.5>
+  <pattern.assert.5>Een vcard:Organization heeft geen vcard:hasEmail of vcard:hasURL eigenschap.</pattern.assert.5>
+  <pattern.report.5>Een vcard:Organization heeft een vcard:hasEmail of vcard:hasURL eigenschap.</pattern.report.5>
+  <pattern.title.6>Naam - De naam van de agent. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Agent%3Anaam)</pattern.title.6>
+  <pattern.assert.6>De range van naam moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (foaf:name)</pattern.assert.6>
+  <pattern.report.6>De range van naam moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (foaf:name)</pattern.report.6>
+  <pattern.title.7>v212. Naam - De naam van de agent. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Agent%3Anaam)</pattern.title.7>
+  <pattern.assert.7>Slechts één waarde voor elke taal toegestaan voor naam (foaf:name)</pattern.assert.7>
+  <pattern.report.7>Slechts één waarde voor elke taal toegestaan voor naam (foaf:name)</pattern.report.7>
+  <pattern.title.8>v000. Naam - De naam van de agent. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Agent%3Anaam)</pattern.title.8>
+  <pattern.assert.8>Minimaal één waarde verwacht voor naam (foaf:name)</pattern.assert.8>
+  <pattern.report.8>Minimaal één waarde verwacht voor naam (foaf:name)</pattern.report.8>
+  <pattern.title.9>1001. Contactpagina - Een webpagina die ofwel toelaat om contact op te nemen (via b.v. een webformulier) of die informatie bevat hoe men contact kan opnemen. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Contactinfo%3Acontactpagina)</pattern.title.9>
+  <pattern.assert.9>De range van contactpagina moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (foaf:page)</pattern.assert.9>
+  <pattern.report.9>De range van contactpagina moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (foaf:page)</pattern.report.9>
+  <pattern.title.10>1002. Contactpagina - Een webpagina die ofwel toelaat om contact op te nemen (via b.v. een webformulier) of die informatie bevat hoe men contact kan opnemen. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Contactinfo%3Acontactpagina)</pattern.title.10>
+  <pattern.assert.10>Maximaal één waarde toegestaan voor contactpagina (foaf:page)</pattern.assert.10>
+  <pattern.report.10>Maximaal één waarde toegestaan voor contactpagina (foaf:page)</pattern.report.10>
+  <pattern.title.11>413. E-mail - Het e-mailadres waarmee een gebruiker contact kan opnemen voor informatie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Contactinfo%3Ae-mail)</pattern.title.11>
+  <pattern.assert.11>De range van e-mail moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (vcard:hasEmail)</pattern.assert.11>
+  <pattern.report.11>De range van e-mail moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (vcard:hasEmail)</pattern.report.11>
+  <pattern.title.12>1004. E-mail - Het e-mailadres waarmee een gebruiker contact kan opnemen voor informatie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Contactinfo%3Ae-mail)</pattern.title.12>
+  <pattern.assert.12>Maximaal één waarde toegestaan voor e-mail (vcard:hasEmail)</pattern.assert.12>
+  <pattern.report.12>Maximaal één waarde toegestaan voor e-mail (vcard:hasEmail)</pattern.report.12>
+  <pattern.title.13>1201. Aanmaakdatum - De datum van (formele) opname van de bijbehorende dataset of dataservice in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Aaanmaakdatum)</pattern.title.13>
+  <pattern.assert.13>De range van aanmaakdatum moet van het type &lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; zijn. (dct:issued)</pattern.assert.13>
+  <pattern.report.13>De range van aanmaakdatum moet van het type &lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; zijn. (dct:issued)</pattern.report.13>
+  <pattern.title.14>1202. Aanmaakdatum - De datum van (formele) opname van de bijbehorende dataset of dataservice in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Aaanmaakdatum)</pattern.title.14>
+  <pattern.assert.14>Maximaal één waarde toegestaan voor aanmaakdatum (dct:issued)</pattern.assert.14>
+  <pattern.report.14>Maximaal één waarde toegestaan voor aanmaakdatum (dct:issued)</pattern.report.14>
+  <pattern.title.15>1204. Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor een record in de catalogus kan hier beschreven worden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Aalternatieve%20identificator)</pattern.title.15>
+  <pattern.assert.15>De range van alternatieve identificator moet van het type &lt;http://www.w3.org/ns/adms#Identifier&gt; zijn. (adms:identifier)</pattern.assert.15>
+  <pattern.report.15>De range van alternatieve identificator moet van het type &lt;http://www.w3.org/ns/adms#Identifier&gt; zijn. (adms:identifier)</pattern.report.15>
+  <pattern.title.16>1206. Hoofdonderwerp - De resource (dataset of dataservice) beschreven in het record. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Ahoofdonderwerp)</pattern.title.16>
+  <pattern.assert.16>Maximaal één waarde toegestaan voor hoofdonderwerp (foaf:primaryTopic)</pattern.assert.16>
+  <pattern.report.16>Maximaal één waarde toegestaan voor hoofdonderwerp (foaf:primaryTopic)</pattern.report.16>
+  <pattern.title.17>1208. Hoofdonderwerp - De resource (dataset of dataservice) beschreven in het record. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Ahoofdonderwerp)</pattern.title.17>
+  <pattern.assert.17>De range van hoofdonderwerp moet van het type &lt;http://www.w3.org/ns/dcat#Resource&gt; zijn. (foaf:primaryTopic)</pattern.assert.17>
+  <pattern.report.17>De range van hoofdonderwerp moet van het type &lt;http://www.w3.org/ns/dcat#Resource&gt; zijn. (foaf:primaryTopic)</pattern.report.17>
+  <pattern.title.18>1209. Hoofdonderwerp - De resource (dataset of dataservice) beschreven in het record. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Ahoofdonderwerp)</pattern.title.18>
+  <pattern.assert.18>Minimaal één waarde verwacht voor hoofdonderwerp (foaf:primaryTopic)</pattern.assert.18>
+  <pattern.report.18>Minimaal één waarde verwacht voor hoofdonderwerp (foaf:primaryTopic)</pattern.report.18>
+  <pattern.title.19>1210. Identificator - De unieke identificator van het record in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Aidentificator)</pattern.title.19>
+  <pattern.assert.19>De range van identificator moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Literal&gt; zijn. (dct:identifier)</pattern.assert.19>
+  <pattern.report.19>De range van identificator moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Literal&gt; zijn. (dct:identifier)</pattern.report.19>
+  <pattern.title.20>1211. Identificator - De unieke identificator van het record in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Aidentificator)</pattern.title.20>
+  <pattern.assert.20>Minimaal één waarde verwacht voor identificator (dct:identifier)</pattern.assert.20>
+  <pattern.report.20>Minimaal één waarde verwacht voor identificator (dct:identifier)</pattern.report.20>
+  <pattern.title.21>1212. Identificator - De unieke identificator van het record in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Aidentificator)</pattern.title.21>
+  <pattern.assert.21>Maximaal één waarde toegestaan voor identificator (dct:identifier)</pattern.assert.21>
+  <pattern.report.21>Maximaal één waarde toegestaan voor identificator (dct:identifier)</pattern.report.21>
+  <pattern.title.22>1215. Titel - De naam van het record in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Atitel)</pattern.title.22>
+  <pattern.assert.22>Maximaal één waarde toegestaan voor titel (dct:title)</pattern.assert.22>
+  <pattern.report.22>Maximaal één waarde toegestaan voor titel (dct:title)</pattern.report.22>
+  <pattern.title.23>1216. Titel - De naam van het record in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Atitel)</pattern.title.23>
+  <pattern.assert.23>Slechts één waarde voor elke taal toegestaan voor titel (dct:title)</pattern.assert.23>
+  <pattern.report.23>Slechts één waarde voor elke taal toegestaan voor titel (dct:title)</pattern.report.23>
+  <pattern.title.24>1217. Titel - De naam van het record in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Atitel)</pattern.title.24>
+  <pattern.assert.24>De range van titel moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:title)</pattern.assert.24>
+  <pattern.report.24>De range van titel moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:title)</pattern.report.24>
+  <pattern.title.25>1218. Wijzigingsdatum - De meest recente datum waarop de record in de catalogus is gewijzigd, bijgewerkt of aangepast. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Awijzigingsdatum)</pattern.title.25>
+  <pattern.assert.25>Maximaal één waarde toegestaan voor wijzigingsdatum (dct:modified)</pattern.assert.25>
+  <pattern.report.25>Maximaal één waarde toegestaan voor wijzigingsdatum (dct:modified)</pattern.report.25>
+  <pattern.title.26>1219. Wijzigingsdatum - De meest recente datum waarop de record in de catalogus is gewijzigd, bijgewerkt of aangepast. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Awijzigingsdatum)</pattern.title.26>
+  <pattern.assert.26>Minimaal één waarde verwacht voor wijzigingsdatum (dct:modified)</pattern.assert.26>
+  <pattern.report.26>Minimaal één waarde verwacht voor wijzigingsdatum (dct:modified)</pattern.report.26>
+  <pattern.title.27>1220. Wijzigingsdatum - De meest recente datum waarop de record in de catalogus is gewijzigd, bijgewerkt of aangepast. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusRecord%3Awijzigingsdatum)</pattern.title.27>
+  <pattern.assert.27>De range van wijzigingsdatum moet van het type &lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; zijn. (dct:modified)</pattern.assert.27>
+  <pattern.report.27>De range van wijzigingsdatum moet van het type &lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; zijn. (dct:modified)</pattern.report.27>
+  <pattern.title.28>1301. Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor een dataservice kan hier beschreven worden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Aalternatieve%20identificator)</pattern.title.28>
+  <pattern.assert.28>De range van alternatieve identificator moet van het type &lt;http://www.w3.org/ns/adms#Identifier&gt; zijn. (adms:identifier)</pattern.assert.28>
+  <pattern.report.28>De range van alternatieve identificator moet van het type &lt;http://www.w3.org/ns/adms#Identifier&gt; zijn. (adms:identifier)</pattern.report.28>
+  <pattern.title.29>1303. Beschrijving - Een bondige tekstuele omschrijving van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Abeschrijving)</pattern.title.29>
+  <pattern.assert.29>De range van beschrijving moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:description)</pattern.assert.29>
+  <pattern.report.29>De range van beschrijving moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:description)</pattern.report.29>
+  <pattern.title.30>1305. Beschrijving - Een bondige tekstuele omschrijving van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Abeschrijving)</pattern.title.30>
+  <pattern.assert.30>Maximaal één waarde toegestaan voor beschrijving (dct:description)</pattern.assert.30>
+  <pattern.report.30>Maximaal één waarde toegestaan voor beschrijving (dct:description)</pattern.report.30>
+  <pattern.title.31>1306. Beschrijving - Een bondige tekstuele omschrijving van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Abeschrijving)</pattern.title.31>
+  <pattern.assert.31>Slechts één waarde voor elke taal toegestaan voor beschrijving (dct:description)</pattern.assert.31>
+  <pattern.report.31>Slechts één waarde voor elke taal toegestaan voor beschrijving (dct:description)</pattern.report.31>
+  <pattern.title.32>1308. Biedt informatie aan over - De data die via deze dataservice worden aangeboden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Abiedt%20informatie%20aan%20over)</pattern.title.32>
+  <pattern.assert.32>De range van biedt informatie aan over moet van het type &lt;http://www.w3.org/ns/dcat#Dataset&gt; zijn. (dcat:servesdataset)</pattern.assert.32>
+  <pattern.report.32>De range van biedt informatie aan over moet van het type &lt;http://www.w3.org/ns/dcat#Dataset&gt; zijn. (dcat:servesdataset)</pattern.report.32>
+  <pattern.title.33>1309. Conform aan protocol - Een protocol waaraan de dataservice voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Aconform%20aan%20protocol)</pattern.title.33>
+  <pattern.assert.33>De range van conform aan protocol moet van het type &lt;http://purl.org/dc/terms/Standard&gt; zijn. (dct:conformsTo)</pattern.assert.33>
+  <pattern.report.33>De range van conform aan protocol moet van het type &lt;http://purl.org/dc/terms/Standard&gt; zijn. (dct:conformsTo)</pattern.report.33>
+  <pattern.title.34>1312. Contactinformatie - De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Acontactinformatie)</pattern.title.34>
+  <pattern.assert.34>Maximaal één waarde toegestaan voor contactinformatie (dcat:contactPoint)</pattern.assert.34>
+  <pattern.report.34>Maximaal één waarde toegestaan voor contactinformatie (dcat:contactPoint)</pattern.report.34>
+  <pattern.title.35>1313. Contactinformatie - De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Acontactinformatie)</pattern.title.35>
+  <pattern.assert.35>De range van contactinformatie moet van het type &lt;http://www.w3.org/2006/vcard/ns#Kind&gt; zijn. (dcat:contactPoint)</pattern.assert.35>
+  <pattern.report.35>De range van contactinformatie moet van het type &lt;http://www.w3.org/2006/vcard/ns#Kind&gt; zijn. (dcat:contactPoint)</pattern.report.35>
+  <pattern.title.36>1314. Contactinformatie - De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Acontactinformatie)</pattern.title.36>
+  <pattern.assert.36>Minimaal één waarde verwacht voor contactinformatie (dcat:contactPoint)</pattern.assert.36>
+  <pattern.report.36>Minimaal één waarde verwacht voor contactinformatie (dcat:contactPoint)</pattern.report.36>
+  <pattern.title.37>1315. Endpointurl - De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI). (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3AendpointURL)</pattern.title.37>
+  <pattern.assert.37>De range van endpointURL moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:endpointURL)</pattern.assert.37>
+  <pattern.report.37>De range van endpointURL moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:endpointURL)</pattern.report.37>
+  <pattern.title.38>1317. Endpointurl - De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI). (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3AendpointURL)</pattern.title.38>
+  <pattern.assert.38>Maximaal één waarde toegestaan voor endpointURL (dcat:endpointURL)</pattern.assert.38>
+  <pattern.report.38>Maximaal één waarde toegestaan voor endpointURL (dcat:endpointURL)</pattern.report.38>
+  <pattern.title.39>1318. Endpointurl - De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI). (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3AendpointURL)</pattern.title.39>
+  <pattern.assert.39>Minimaal één waarde verwacht voor endpointURL (dcat:endpointURL)</pattern.assert.39>
+  <pattern.report.39>Minimaal één waarde verwacht voor endpointURL (dcat:endpointURL)</pattern.report.39>
+  <pattern.title.40>1320. Endpointbeschrijving - Een beschrijving van de diensten die beschikbaar zijn via de end-points, met inbegrip van hun operaties, parameters, enz. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Aendpointbeschrijving)</pattern.title.40>
+  <pattern.assert.40>Maximaal één waarde toegestaan voor endpointbeschrijving (dcat:endpointDescription)</pattern.assert.40>
+  <pattern.report.40>Maximaal één waarde toegestaan voor endpointbeschrijving (dcat:endpointDescription)</pattern.report.40>
+  <pattern.title.41>1321. Endpointbeschrijving - Een beschrijving van de diensten die beschikbaar zijn via de end-points, met inbegrip van hun operaties, parameters, enz. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Aendpointbeschrijving)</pattern.title.41>
+  <pattern.assert.41>Minimaal één waarde verwacht voor endpointbeschrijving (dcat:endpointDescription)</pattern.assert.41>
+  <pattern.report.41>Minimaal één waarde verwacht voor endpointbeschrijving (dcat:endpointDescription)</pattern.report.41>
+  <pattern.title.42>1322. Endpointbeschrijving - Een beschrijving van de diensten die beschikbaar zijn via de end-points, met inbegrip van hun operaties, parameters, enz. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Aendpointbeschrijving)</pattern.title.42>
+  <pattern.assert.42>De range van endpointbeschrijving moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:endpointDescription)</pattern.assert.42>
+  <pattern.report.42>De range van endpointbeschrijving moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:endpointDescription)</pattern.report.42>
+  <pattern.title.43>1323. Identificator - De unieke identificator van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Aidentificator)</pattern.title.43>
+  <pattern.assert.43>De range van identificator moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Literal&gt; zijn. (dct:identifier)</pattern.assert.43>
+  <pattern.report.43>De range van identificator moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Literal&gt; zijn. (dct:identifier)</pattern.report.43>
+  <pattern.title.44>1323. Identificator - De unieke identificator van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Aidentificator)</pattern.title.44>
+  <pattern.assert.44>Minimaal één waarde verwacht voor identificator (dct:identifier)</pattern.assert.44>
+  <pattern.report.44>Minimaal één waarde verwacht voor identificator (dct:identifier)</pattern.report.44>
+  <pattern.title.45>1324. Identificator - De unieke identificator van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Aidentificator)</pattern.title.45>
+  <pattern.assert.45>Maximaal één waarde toegestaan voor identificator (dct:identifier)</pattern.assert.45>
+  <pattern.report.45>Maximaal één waarde toegestaan voor identificator (dct:identifier)</pattern.report.45>
+  <pattern.title.46>1327. Landingspagina - Een algemene webpagina waarnaar kan worden genavigeerd in een webbrowser, met algemene aanvullende informatie over de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Alandingspagina)</pattern.title.46>
+  <pattern.assert.46>De range van landingspagina moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:landingPage)</pattern.assert.46>
+  <pattern.report.46>De range van landingspagina moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:landingPage)</pattern.report.46>
+  <pattern.title.47>1328. Landingspagina voor authenticatie - Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Alandingspagina%20voor%20authenticatie)</pattern.title.47>
+  <pattern.assert.47>De range van landingspagina voor authenticatie moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (mdcat:landingspaginaVoorAuthenticatie)</pattern.assert.47>
+  <pattern.report.47>De range van landingspagina voor authenticatie moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (mdcat:landingspaginaVoorAuthenticatie)</pattern.report.47>
+  <pattern.title.48>1330. Landingspagina voor authenticatie - Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Alandingspagina%20voor%20authenticatie)</pattern.title.48>
+  <pattern.assert.48>Maximaal één waarde toegestaan voor landingspagina voor authenticatie (mdcat:landingspaginaVoorAuthenticatie)</pattern.assert.48>
+  <pattern.report.48>Maximaal één waarde toegestaan voor landingspagina voor authenticatie (mdcat:landingspaginaVoorAuthenticatie)</pattern.report.48>
+  <pattern.title.49>1332. Landingspagina voor gebruiksinformatie - Een verwijzing naar de landingspagina met de specifieke informatie over het gebruik van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Alandingspagina%20voor%20gebruiksinformatie)</pattern.title.49>
+  <pattern.assert.49>Maximaal één waarde toegestaan voor landingspagina voor gebruiksinformatie (mdcat:landingspaginaVoorGebruiksinformatie)</pattern.assert.49>
+  <pattern.report.49>Maximaal één waarde toegestaan voor landingspagina voor gebruiksinformatie (mdcat:landingspaginaVoorGebruiksinformatie)</pattern.report.49>
+  <pattern.title.50>1333. Landingspagina voor gebruiksinformatie - Een verwijzing naar de landingspagina met de specifieke informatie over het gebruik van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Alandingspagina%20voor%20gebruiksinformatie)</pattern.title.50>
+  <pattern.assert.50>De range van landingspagina voor gebruiksinformatie moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (mdcat:landingspaginaVoorGebruiksinformatie)</pattern.assert.50>
+  <pattern.report.50>De range van landingspagina voor gebruiksinformatie moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (mdcat:landingspaginaVoorGebruiksinformatie)</pattern.report.50>
+  <pattern.title.51>1334. Landingspagina voor statusinformatie - Een verwijzing naar de statuspagina van de dataservice (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Alandingspagina%20voor%20statusinformatie)</pattern.title.51>
+  <pattern.assert.51>De range van landingspagina voor statusinformatie moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (mdcat:landingspaginaVoorStatusinformatie)</pattern.assert.51>
+  <pattern.report.51>De range van landingspagina voor statusinformatie moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (mdcat:landingspaginaVoorStatusinformatie)</pattern.report.51>
+  <pattern.title.52>1336. Landingspagina voor statusinformatie - Een verwijzing naar de statuspagina van de dataservice (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Alandingspagina%20voor%20statusinformatie)</pattern.title.52>
+  <pattern.assert.52>Maximaal één waarde toegestaan voor landingspagina voor statusinformatie (mdcat:landingspaginaVoorStatusinformatie)</pattern.assert.52>
+  <pattern.report.52>Maximaal één waarde toegestaan voor landingspagina voor statusinformatie (mdcat:landingspaginaVoorStatusinformatie)</pattern.report.52>
+  <pattern.title.53>1338. Levensfase - De levensfase waarin de dataservice zich bevindt. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Alevensfase)</pattern.title.53>
+  <pattern.assert.53>De range van levensfase moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (mdcat:levensfase)</pattern.assert.53>
+  <pattern.report.53>De range van levensfase moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (mdcat:levensfase)</pattern.report.53>
+  <pattern.title.54>1340. Levensfase - De levensfase waarin de dataservice zich bevindt. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Alevensfase)</pattern.title.54>
+  <pattern.assert.54>Maximaal één waarde toegestaan voor levensfase (mdcat:levensfase)</pattern.assert.54>
+  <pattern.report.54>Maximaal één waarde toegestaan voor levensfase (mdcat:levensfase)</pattern.report.54>
+  <pattern.title.55>1341. Licentie - De licentie van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Alicentie)</pattern.title.55>
+  <pattern.assert.55>De range van licentie moet van het type &lt;http://purl.org/dc/terms/LicenseDocument&gt; zijn. (dct:license)</pattern.assert.55>
+  <pattern.report.55>De range van licentie moet van het type &lt;http://purl.org/dc/terms/LicenseDocument&gt; zijn. (dct:license)</pattern.report.55>
+  <pattern.title.56>1342. Licentie - De licentie van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Alicentie)</pattern.title.56>
+  <pattern.assert.56>Minimaal één waarde verwacht voor licentie (dct:license)</pattern.assert.56>
+  <pattern.report.56>Minimaal één waarde verwacht voor licentie (dct:license)</pattern.report.56>
+  <pattern.title.57>1343. Licentie - De licentie van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Alicentie)</pattern.title.57>
+  <pattern.assert.57>Maximaal één waarde toegestaan voor licentie (dct:license)</pattern.assert.57>
+  <pattern.report.57>Maximaal één waarde toegestaan voor licentie (dct:license)</pattern.report.57>
+  <pattern.title.58>1345. Ontwikkelingstoestand - De ontwikkelingstoestand waarin de dataservice is gedeployed. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Aontwikkelingstoestand)</pattern.title.58>
+  <pattern.assert.58>De range van ontwikkelingstoestand moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (mdcat:ontwikkelingstoestand)</pattern.assert.58>
+  <pattern.report.58>De range van ontwikkelingstoestand moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (mdcat:ontwikkelingstoestand)</pattern.report.58>
+  <pattern.title.59>1346. Ontwikkelingstoestand - De ontwikkelingstoestand waarin de dataservice is gedeployed. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Aontwikkelingstoestand)</pattern.title.59>
+  <pattern.assert.59>Maximaal één waarde toegestaan voor ontwikkelingstoestand (mdcat:ontwikkelingstoestand)</pattern.assert.59>
+  <pattern.report.59>Maximaal één waarde toegestaan voor ontwikkelingstoestand (mdcat:ontwikkelingstoestand)</pattern.report.59>
+  <pattern.title.60>1349. Rechten - Bepalingen van juridische aard die gelden op de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Arechten)</pattern.title.60>
+  <pattern.assert.60>De range van rechten moet van het type &lt;http://purl.org/dc/terms/RightsStatement&gt; zijn. (dct:rights)</pattern.assert.60>
+  <pattern.report.60>De range van rechten moet van het type &lt;http://purl.org/dc/terms/RightsStatement&gt; zijn. (dct:rights)</pattern.report.60>
+  <pattern.title.61>1351. Thema - De hoofdcategorie waartoe de dataservice behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Athema)</pattern.title.61>
+  <pattern.assert.61>De range van thema moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (dcat:theme)</pattern.assert.61>
+  <pattern.report.61>De range van thema moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (dcat:theme)</pattern.report.61>
+  <pattern.title.62>1354. Titel - De naam van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Atitel)</pattern.title.62>
+  <pattern.assert.62>Minimaal één waarde verwacht voor titel (dct:title)</pattern.assert.62>
+  <pattern.report.62>Minimaal één waarde verwacht voor titel (dct:title)</pattern.report.62>
+  <pattern.title.63>1356. Titel - De naam van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Atitel)</pattern.title.63>
+  <pattern.assert.63>Maximaal één waarde toegestaan voor titel (dct:title)</pattern.assert.63>
+  <pattern.report.63>Maximaal één waarde toegestaan voor titel (dct:title)</pattern.report.63>
+  <pattern.title.64>1357. Titel - De naam van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Atitel)</pattern.title.64>
+  <pattern.assert.64>Slechts één waarde voor elke taal toegestaan voor titel (dct:title)</pattern.assert.64>
+  <pattern.report.64>Slechts één waarde voor elke taal toegestaan voor titel (dct:title)</pattern.report.64>
+  <pattern.title.65>1358. Titel - De naam van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Atitel)</pattern.title.65>
+  <pattern.assert.65>De range van titel moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:title)</pattern.assert.65>
+  <pattern.report.65>De range van titel moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:title)</pattern.report.65>
+  <pattern.title.66>1360. Toegankelijkheid - De toegankelijkheid voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Atoegankelijkheid)</pattern.title.66>
+  <pattern.assert.66>Minimaal één waarde verwacht voor toegankelijkheid (dct:accessRights)</pattern.assert.66>
+  <pattern.report.66>Minimaal één waarde verwacht voor toegankelijkheid (dct:accessRights)</pattern.report.66>
+  <pattern.title.67>1361. Toegankelijkheid - De toegankelijkheid voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Atoegankelijkheid)</pattern.title.67>
+  <pattern.assert.67>De range van toegankelijkheid moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (dct:accessRights)</pattern.assert.67>
+  <pattern.report.67>De range van toegankelijkheid moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (dct:accessRights)</pattern.report.67>
+  <pattern.title.68>1363. Toegankelijkheid - De toegankelijkheid voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Atoegankelijkheid)</pattern.title.68>
+  <pattern.assert.68>Maximaal één waarde toegestaan voor toegankelijkheid (dct:accessRights)</pattern.assert.68>
+  <pattern.report.68>Maximaal één waarde toegestaan voor toegankelijkheid (dct:accessRights)</pattern.report.68>
+  <pattern.title.69>1365. Trefwoord - Een trefwoord of tag die de resource beschrijft. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Atrefwoord)</pattern.title.69>
+  <pattern.assert.69>De range van trefwoord moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dcat:keyword)</pattern.assert.69>
+  <pattern.report.69>De range van trefwoord moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dcat:keyword)</pattern.report.69>
+  <pattern.title.70>1667. Versie - Een unieke aanduiding van een variant van de dataservice door middel van een versienummer of -naam van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Aversie)</pattern.title.70>
+  <pattern.assert.70>Maximaal één waarde toegestaan voor versie (owl:versionInfo)</pattern.assert.70>
+  <pattern.report.70>Maximaal één waarde toegestaan voor versie (owl:versionInfo)</pattern.report.70>
+  <pattern.title.71>1668. Versie - Een unieke aanduiding van een variant van de dataservice door middel van een versienummer of -naam van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#DataService%3Aversie)</pattern.title.71>
+  <pattern.assert.71>De range van versie moet van het type &lt;http://www.w3.org/2001/XMLSchema#string&gt; zijn. (owl:versionInfo)</pattern.assert.71>
+  <pattern.report.71>De range van versie moet van het type &lt;http://www.w3.org/2001/XMLSchema#string&gt; zijn. (owl:versionInfo)</pattern.report.71>
+  <pattern.title.72>v067. Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor een dataset kan hier beschreven worden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Aalternatieve%20identificator)</pattern.title.72>
+  <pattern.assert.72>De range van alternatieve identificator moet van het type &lt;http://www.w3.org/ns/adms#Identifier&gt; zijn. (adms:identifier)</pattern.assert.72>
+  <pattern.report.72>De range van alternatieve identificator moet van het type &lt;http://www.w3.org/ns/adms#Identifier&gt; zijn. (adms:identifier)</pattern.report.72>
+  <pattern.title.73>v207. Beschrijving - Een bondige tekstuele omschrijving van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Abeschrijving)</pattern.title.73>
+  <pattern.assert.73>De range van beschrijving moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:description)</pattern.assert.73>
+  <pattern.report.73>De range van beschrijving moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:description)</pattern.report.73>
+  <pattern.title.74>1702. Beschrijving - Een bondige tekstuele omschrijving van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Abeschrijving)</pattern.title.74>
+  <pattern.assert.74>Maximaal één waarde toegestaan voor beschrijving (dct:description)</pattern.assert.74>
+  <pattern.report.74>Maximaal één waarde toegestaan voor beschrijving (dct:description)</pattern.report.74>
+  <pattern.title.75>v037. Beschrijving - Een bondige tekstuele omschrijving van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Abeschrijving)</pattern.title.75>
+  <pattern.assert.75>Minimaal één waarde verwacht voor beschrijving (dct:description)</pattern.assert.75>
+  <pattern.report.75>Minimaal één waarde verwacht voor beschrijving (dct:description)</pattern.report.75>
+  <pattern.title.76>v215. Beschrijving - Een bondige tekstuele omschrijving van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Abeschrijving)</pattern.title.76>
+  <pattern.assert.76>Slechts één waarde voor elke taal toegestaan voor beschrijving (dct:description)</pattern.assert.76>
+  <pattern.report.76>Slechts één waarde voor elke taal toegestaan voor beschrijving (dct:description)</pattern.report.76>
+  <pattern.title.77>v056. Conform - Een standaard, schema, applicatieprofiel, vocabularium waaraan de dataset voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Aconform)</pattern.title.77>
+  <pattern.assert.77>De range van conform moet van het type &lt;http://purl.org/dc/terms/Standard&gt; zijn. (dct:conformsTo)</pattern.assert.77>
+  <pattern.report.77>De range van conform moet van het type &lt;http://purl.org/dc/terms/Standard&gt; zijn. (dct:conformsTo)</pattern.report.77>
+  <pattern.title.78>1705. Contactinformatie - De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Acontactinformatie)</pattern.title.78>
+  <pattern.assert.78>Maximaal één waarde toegestaan voor contactinformatie (dcat:contactPoint)</pattern.assert.78>
+  <pattern.report.78>Maximaal één waarde toegestaan voor contactinformatie (dcat:contactPoint)</pattern.report.78>
+  <pattern.title.79>1706. Contactinformatie - De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Acontactinformatie)</pattern.title.79>
+  <pattern.assert.79>De range van contactinformatie moet van het type &lt;http://schema.org/ContactPoint&gt; zijn. (dcat:contactPoint)</pattern.assert.79>
+  <pattern.report.79>De range van contactinformatie moet van het type &lt;http://schema.org/ContactPoint&gt; zijn. (dcat:contactPoint)</pattern.report.79>
+  <pattern.title.80>v041. Contactinformatie - De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Acontactinformatie)</pattern.title.80>
+  <pattern.assert.80>Minimaal één waarde verwacht voor contactinformatie (dcat:contactPoint)</pattern.assert.80>
+  <pattern.report.80>Minimaal één waarde verwacht voor contactinformatie (dcat:contactPoint)</pattern.report.80>
+  <pattern.title.81>v046. Distributie - Een beschikbare distributie van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Adistributie)</pattern.title.81>
+  <pattern.assert.81>De range van distributie moet van het type &lt;http://www.w3.org/ns/dcat#Distribution&gt; zijn. (dcat:distribution)</pattern.assert.81>
+  <pattern.report.81>De range van distributie moet van het type &lt;http://www.w3.org/ns/dcat#Distribution&gt; zijn. (dcat:distribution)</pattern.report.81>
+  <pattern.title.82>v060. Identificator - De unieke identificator van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Aidentificator)</pattern.title.82>
+  <pattern.assert.82>De range van identificator moet van het type &lt;http://www.w3.org/ns/adms#Identifier&gt; zijn. (dct:identifier)</pattern.assert.82>
+  <pattern.report.82>De range van identificator moet van het type &lt;http://www.w3.org/ns/adms#Identifier&gt; zijn. (dct:identifier)</pattern.report.82>
+  <pattern.title.83>1708. Identificator - De unieke identificator van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Aidentificator)</pattern.title.83>
+  <pattern.assert.83>Minimaal één waarde verwacht voor identificator (dct:identifier)</pattern.assert.83>
+  <pattern.report.83>Minimaal één waarde verwacht voor identificator (dct:identifier)</pattern.report.83>
+  <pattern.title.84>1709. Identificator - De unieke identificator van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Aidentificator)</pattern.title.84>
+  <pattern.assert.84>Maximaal één waarde toegestaan voor identificator (dct:identifier)</pattern.assert.84>
+  <pattern.report.84>Maximaal één waarde toegestaan voor identificator (dct:identifier)</pattern.report.84>
+  <pattern.title.85>1712. Landingspagina - Een algemene webpagina waarnaar kan worden genavigeerd in een webbrowser, met algemene informatie over de dataset, zijn distributies en/of aanvullende informatie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Alandingspagina)</pattern.title.85>
+  <pattern.assert.85>De range van landingspagina moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:landingPage)</pattern.assert.85>
+  <pattern.report.85>De range van landingspagina moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:landingPage)</pattern.report.85>
+  <pattern.title.86>v115. Thema - De hoofdcategorie waartoe de dataset behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Athema)</pattern.title.86>
+  <pattern.assert.86>De range van thema moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (dcat:theme)</pattern.assert.86>
+  <pattern.report.86>De range van thema moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (dcat:theme)</pattern.report.86>
+  <pattern.title.87>v039. Titel - De naam van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Atitel)</pattern.title.87>
+  <pattern.assert.87>Minimaal één waarde verwacht voor titel (dct:title)</pattern.assert.87>
+  <pattern.report.87>Minimaal één waarde verwacht voor titel (dct:title)</pattern.report.87>
+  <pattern.title.88>v214. Titel - De naam van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Atitel)</pattern.title.88>
+  <pattern.assert.88>Slechts één waarde voor elke taal toegestaan voor titel (dct:title)</pattern.assert.88>
+  <pattern.report.88>Slechts één waarde voor elke taal toegestaan voor titel (dct:title)</pattern.report.88>
+  <pattern.title.89>v206. Titel - De naam van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Atitel)</pattern.title.89>
+  <pattern.assert.89>De range van titel moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:title)</pattern.assert.89>
+  <pattern.report.89>De range van titel moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:title)</pattern.report.89>
+  <pattern.title.90>1716. Toegankelijkheid - De toegankelijkheid voor de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Atoegankelijkheid)</pattern.title.90>
+  <pattern.assert.90>Minimaal één waarde verwacht voor toegankelijkheid (dct:accessRights)</pattern.assert.90>
+  <pattern.report.90>Minimaal één waarde verwacht voor toegankelijkheid (dct:accessRights)</pattern.report.90>
+  <pattern.title.91>1717. Toegankelijkheid - De toegankelijkheid voor de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Atoegankelijkheid)</pattern.title.91>
+  <pattern.assert.91>De range van toegankelijkheid moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (dct:accessRights)</pattern.assert.91>
+  <pattern.report.91>De range van toegankelijkheid moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (dct:accessRights)</pattern.report.91>
+  <pattern.title.92>v100. Toegankelijkheid - De toegankelijkheid voor de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Atoegankelijkheid)</pattern.title.92>
+  <pattern.assert.92>Maximaal één waarde toegestaan voor toegankelijkheid (dct:accessRights)</pattern.assert.92>
+  <pattern.report.92>Maximaal één waarde toegestaan voor toegankelijkheid (dct:accessRights)</pattern.report.92>
+  <pattern.title.93>1720. Trefwoord - Een trefwoord of tag die de resource beschrijft. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Atrefwoord)</pattern.title.93>
+  <pattern.assert.93>De range van trefwoord moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dcat:keyword)</pattern.assert.93>
+  <pattern.report.93>De range van trefwoord moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dcat:keyword)</pattern.report.93>
+  <pattern.title.94>v076. Versie - Een unieke aanduiding van een variant van de dataset door middel van een versienummer of -naam van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Aversie)</pattern.title.94>
+  <pattern.assert.94>Maximaal één waarde toegestaan voor versie (owl:versionInfo)</pattern.assert.94>
+  <pattern.report.94>Maximaal één waarde toegestaan voor versie (owl:versionInfo)</pattern.report.94>
+  <pattern.title.95>v075. Versie - Een unieke aanduiding van een variant van de dataset door middel van een versienummer of -naam van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Dataset%3Aversie)</pattern.title.95>
+  <pattern.assert.95>De range van versie moet van het type &lt;http://www.w3.org/2001/XMLSchema#string&gt; zijn. (owl:versionInfo)</pattern.assert.95>
+  <pattern.report.95>De range van versie moet van het type &lt;http://www.w3.org/2001/XMLSchema#string&gt; zijn. (owl:versionInfo)</pattern.report.95>
+  <pattern.title.96>1801. Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor een distributie kan hier beschreven worden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3Aalternatieve%20identificator)</pattern.title.96>
+  <pattern.assert.96>De range van alternatieve identificator moet van het type &lt;http://www.w3.org/ns/adms#Identifier&gt; zijn. (adms:identifier)</pattern.assert.96>
+  <pattern.report.96>De range van alternatieve identificator moet van het type &lt;http://www.w3.org/ns/adms#Identifier&gt; zijn. (adms:identifier)</pattern.report.96>
+  <pattern.title.97>v090. Downloadurl - De URL waar de data gedownload kan worden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3AdownloadURL)</pattern.title.97>
+  <pattern.assert.97>De range van downloadURL moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:downloadURL)</pattern.assert.97>
+  <pattern.report.97>De range van downloadURL moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:downloadURL)</pattern.report.97>
+  <pattern.title.98>v090. Downloadurl - De URL waar de data gedownload kan worden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3AdownloadURL)</pattern.title.98>
+  <pattern.assert.98>Maximaal één waarde toegestaan voor downloadURL (dcat:downloadURL)</pattern.assert.98>
+  <pattern.report.98>Maximaal één waarde toegestaan voor downloadURL (dcat:downloadURL)</pattern.report.98>
+  <pattern.title.99>1902. Identificator - De unieke identificator van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3Aidentificator)</pattern.title.99>
+  <pattern.assert.99>De range van identificator moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Literal&gt; zijn. (dct:identifier)</pattern.assert.99>
+  <pattern.report.99>De range van identificator moet van het type &lt;http://www.w3.org/2000/01/rdf-schema#Literal&gt; zijn. (dct:identifier)</pattern.report.99>
+  <pattern.title.100>1903. Identificator - De unieke identificator van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3Aidentificator)</pattern.title.100>
+  <pattern.assert.100>Minimaal één waarde verwacht voor identificator (dct:identifier)</pattern.assert.100>
+  <pattern.report.100>Minimaal één waarde verwacht voor identificator (dct:identifier)</pattern.report.100>
+  <pattern.title.101>1904. Identificator - De unieke identificator van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3Aidentificator)</pattern.title.101>
+  <pattern.assert.101>Maximaal één waarde toegestaan voor identificator (dct:identifier)</pattern.assert.101>
+  <pattern.report.101>Maximaal één waarde toegestaan voor identificator (dct:identifier)</pattern.report.101>
+  <pattern.title.102>v087. Licentie - De licentie van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3Alicentie)</pattern.title.102>
+  <pattern.assert.102>De range van licentie moet van het type &lt;http://purl.org/dc/terms/LicenseDocument&gt; zijn. (dct:license)</pattern.assert.102>
+  <pattern.report.102>De range van licentie moet van het type &lt;http://purl.org/dc/terms/LicenseDocument&gt; zijn. (dct:license)</pattern.report.102>
+  <pattern.title.103>v088. Licentie - De licentie van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3Alicentie)</pattern.title.103>
+  <pattern.assert.103>Maximaal één waarde toegestaan voor licentie (dct:license)</pattern.assert.103>
+  <pattern.report.103>Maximaal één waarde toegestaan voor licentie (dct:license)</pattern.report.103>
+  <pattern.title.104>1907. Rechten - Bepalingen van juridische aard die gelden op de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3Arechten)</pattern.title.104>
+  <pattern.assert.104>De range van rechten moet van het type &lt;http://purl.org/dc/terms/RightsStatement&gt; zijn. (dct:rights)</pattern.assert.104>
+  <pattern.report.104>De range van rechten moet van het type &lt;http://purl.org/dc/terms/RightsStatement&gt; zijn. (dct:rights)</pattern.report.104>
+  <pattern.title.105>1909. Titel - De naam van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3Atitel)</pattern.title.105>
+  <pattern.assert.105>Maximaal één waarde toegestaan voor titel (dct:title)</pattern.assert.105>
+  <pattern.report.105>Maximaal één waarde toegestaan voor titel (dct:title)</pattern.report.105>
+  <pattern.title.106>v216. Titel - De naam van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3Atitel)</pattern.title.106>
+  <pattern.assert.106>Slechts één waarde voor elke taal toegestaan voor titel (dct:title)</pattern.assert.106>
+  <pattern.report.106>Slechts één waarde voor elke taal toegestaan voor titel (dct:title)</pattern.report.106>
+  <pattern.title.107>v205. Titel - De naam van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3Atitel)</pattern.title.107>
+  <pattern.assert.107>De range van titel moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:title)</pattern.assert.107>
+  <pattern.report.107>De range van titel moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:title)</pattern.report.107>
+  <pattern.title.108>v220. Toegangsurl - Een URL waar de data kan gevonden worden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3AtoegangsURL)</pattern.title.108>
+  <pattern.assert.108>Maximaal één waarde toegestaan voor toegangsURL (dcat:accessURL)</pattern.assert.108>
+  <pattern.report.108>Maximaal één waarde toegestaan voor toegangsURL (dcat:accessURL)</pattern.report.108>
+  <pattern.title.109>1910. Toegangsurl - Een URL waar de data kan gevonden worden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3AtoegangsURL)</pattern.title.109>
+  <pattern.assert.109>De range van toegangsURL moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:accessURL)</pattern.assert.109>
+  <pattern.report.109>De range van toegangsURL moet van het type &lt;http://www.w3.org/2001/XMLSchema#anyURI&gt; zijn. (dcat:accessURL)</pattern.report.109>
+  <pattern.title.110>v079. Toegangsurl - Een URL waar de data kan gevonden worden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3AtoegangsURL)</pattern.title.110>
+  <pattern.assert.110>Minimaal één waarde verwacht voor toegangsURL (dcat:accessURL)</pattern.assert.110>
+  <pattern.report.110>Minimaal één waarde verwacht voor toegangsURL (dcat:accessURL)</pattern.report.110>
+  <pattern.title.111>1912. Wordt aangeboden door - Een dataservice die deze distributie aanbiedt. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#Distributie%3Awordt%20aangeboden%20door)</pattern.title.111>
+  <pattern.assert.111>De range van wordt aangeboden door moet van het type &lt;http://www.w3.org/ns/dcat#DataService&gt; zijn. (dcat:accessService)</pattern.assert.111>
+  <pattern.report.111>De range van wordt aangeboden door moet van het type &lt;http://www.w3.org/ns/dcat#DataService&gt; zijn. (dcat:accessService)</pattern.report.111>
+  <pattern.title.112>2005. Statuut - Een aanduiding van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusResource%3Astatuut)</pattern.title.112>
+  <pattern.assert.112>Minimaal één waarde verwacht voor statuut (mdcat:statuut)</pattern.assert.112>
+  <pattern.report.112>Minimaal één waarde verwacht voor statuut (mdcat:statuut)</pattern.report.112>
+  <pattern.title.113>2009. Statuut - Een aanduiding van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusResource%3Astatuut)</pattern.title.113>
+  <pattern.assert.113>De range van statuut moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (mdcat:statuut)</pattern.assert.113>
+  <pattern.report.113>De range van statuut moet van het type &lt;http://www.w3.org/2004/02/skos/core#Concept&gt; zijn. (mdcat:statuut)</pattern.report.113>
+  <pattern.title.114>2002. Uitgever - De uitgever, de entiteit die verantwoordelijk is voor het beschikbaar stellen, van de resource in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusResource%3Auitgever)</pattern.title.114>
+  <pattern.assert.114>Maximaal één waarde toegestaan voor uitgever (dct:publisher)</pattern.assert.114>
+  <pattern.report.114>Maximaal één waarde toegestaan voor uitgever (dct:publisher)</pattern.report.114>
+  <pattern.title.115>v052. Uitgever - De uitgever, de entiteit die verantwoordelijk is voor het beschikbaar stellen, van de resource in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusResource%3Auitgever)</pattern.title.115>
+  <pattern.assert.115>De range van uitgever moet van het type &lt;http://purl.org/dc/terms/Agent&gt; zijn. (dct:publisher)</pattern.assert.115>
+  <pattern.report.115>De range van uitgever moet van het type &lt;http://purl.org/dc/terms/Agent&gt; zijn. (dct:publisher)</pattern.report.115>
+  <pattern.title.116>v049. Uitgever - De uitgever, de entiteit die verantwoordelijk is voor het beschikbaar stellen, van de resource in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/ontwerpstandaard/2021-06-27#CatalogusResource%3Auitgever)</pattern.title.116>
+  <pattern.assert.116>Minimaal één waarde verwacht voor uitgever (dct:publisher)</pattern.assert.116>
+  <pattern.report.116>Minimaal één waarde verwacht voor uitgever (dct:publisher)</pattern.report.116>
+  <pattern.title.117>Beschrijving - Een bondige tekstuele omschrijving van de distributie.</pattern.title.117>
+  <pattern.assert.117>De range van beschrijving moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:description)</pattern.assert.117>
+  <pattern.report.117>De range van beschrijving moet van het type &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#langString&gt; zijn. (dct:description)</pattern.report.117>
+  <pattern.title.118>Beschrijving - Een bondige tekstuele omschrijving van de distributie.</pattern.title.118>
+  <pattern.assert.118>Slechts één waarde voor elke taal toegestaan voor beschrijving (dct:description)</pattern.assert.118>
+  <pattern.report.118>Slechts één waarde voor elke taal toegestaan voor beschrijving (dct:description)</pattern.report.118>
 </strings>

@@ -23,6 +23,12 @@
   -->
 
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  exclude-result-prefixes="#all">
-  <xsl:import href="csw-summary.xsl"/>
+                xmlns:geonet="http://www.fao.org/geonetwork"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                exclude-result-prefixes="#all">
+  <xsl:template match="/rdf:RDF">
+    <xsl:copy>
+      <xsl:copy-of select="*[name() != 'geonet:info']"/>
+    </xsl:copy>
+  </xsl:template>
 </xsl:stylesheet>

@@ -457,6 +457,9 @@
     <description>Tooltip: URI</description>
     <btnLabel>URI</btnLabel>
   </element>
+  <element name="rdf:resource" context="dcatap:applicableLegislation">
+    <label>Applicable legislation</label>
+  </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity/skos:Concept/rdf:type/@rdf:resource">
     <label>rdf class</label>
     <description>Tooltip: rdf class</description>
@@ -2195,5 +2198,55 @@
     <label>in scheme</label>
     <description>Tooltip: in scheme</description>
     <btnLabel>in scheme</btnLabel>
+  </element>
+
+  <element name="mobilitydcatap:mobilityTheme">
+    <label>Mobility theme</label>
+    <description>This property refers to the mobility-related theme (i.e., a specific subject, category, or type) of the delivered content.
+      A dataset may be associated with multiple themes. A theme is important for data seekers who are interested in a particular type of data content.</description>
+  </element>
+  <element name="mobilitydcatap:transportMode">
+    <label>Transport mode</label>
+    <description>This property describes the transport mode that is covered by the delivered content. Data can be valid for more than one mode, so a multiple choice should be applied.</description>
+  </element>
+  <element name="mobilitydcatap:networkCoverage">
+    <label>Network coverage</label>
+    <description>This property describes the part of the transport network that is covered by the delivered content. For road traffic, the property SHOULD refer to the network classification for which the data is provided. As a minimum, an international or higher-level classification, e.g., via functional road classes, is recommended to allow data search across different countries. In addition, national classifications are allowed.
+      For other transport modes, the property is meant to refer to the physical infrastructure which is used by the services covered by the data.
+      For all modes, the property SHOULD also indicate if the data content relates to the EU’s trans-European transport network [EU-TEN-T].</description>
+  </element>
+  <element name="mobilitydcatap:georeferencingMethod">
+    <label>Georeferencing method</label>
+    <description>This property SHOULD be used to specify the georeferencing method used in the dataset.</description>
+  </element>
+  <element name="mobilitydcatap:intendedInformationService">
+    <label>Intended information service</label>
+    <description>This property MAY describe predefined information services, which the data content is intended to support.
+      Such services MAY be, e.g., information services for multimodal mobility, as specified by EC Delegated Regulation 2017/1926 [EC-MMTIS-DR].
+      Examples of such services include “location search”, which is based on a datasets with address identifiers, or “trip plan computation”, which is based on datasets about a road network.</description>
+  </element>
+
+  <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+    <label>HVD Category</label>
+    <description>The HVD category to which this Dataset belongs.</description>
+    <btnLabel>HVD Category</btnLabel>
+  </element>
+  <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+    <label>HVD Category</label>
+    <description>The HVD category to which this Data Service belongs.</description>
+    <btnLabel>HVD Category</btnLabel>
+  </element>
+  <element name="dcatap:hvdCategory">
+    <label>HVD Category</label>
+  </element>
+  <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+    <label>Applicable legislation</label>
+    <description>The legislation that mandates the creation or management of the Dataset.</description>
+    <btnLabel>applicable legislation</btnLabel>
+  </element>
+  <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+    <label>Applicable legislation</label>
+    <description>The legislation that mandates the creation or management of the Data Service.</description>
+    <btnLabel>applicable legislation</btnLabel>
   </element>
 </labels>

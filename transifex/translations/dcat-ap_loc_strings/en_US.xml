@@ -86,6 +86,7 @@
     <string name="protocol-41">WMTS-1.0.0-http-get-capabilities</string>
     <string name="protocol-42">WMTS-1.0.0-http-get-tile</string>
     <string name="protocol-43">WMTS</string>
+    <string name="protocol-44">REST guidelines Digitaal Vlaanderen</string>
     <string name="protocol-45">REST</string>
     <string name="protocol-46">DOWNLOAD-1.0-ftp--download</string>
     <string name="protocol-47">DOWNLOAD-1.0-http--download</string>
@@ -93,4 +94,33 @@
     <string name="protocol-49">LINK-1.0-http--link</string>
     <string name="protocol-50">LINK-1.0-http--related</string>
     <string name="protocol-51">Enter your own protocol...</string>
+
+    <string name="hvd-dataservice-section">High Value Dataset (HVD)</string>
+    <string name="hvd-dataservice-tab">Data Service</string>
+    <string name="hvd-dataset-section">High Value Dataset (HVD)</string>
+    <string name="hvd-dataset-tab">Dataset</string>
+    <string name="hvd-section">High Value Dataset (HVD)</string>
+    <string name="hvd-tab">High Value Dataset</string>
+    <string name="hvd-view">High Value Dataset</string>
+
+    <string name="mobility-section">Mobility</string>
+    <string name="mobility-tab">Mobility</string>
+    <string name="mobility-view">Mobility</string>
+
+    <string name="vl-view">Flanders</string>
+    <string name="vl-tab-service">Service</string>
+    <string name="vl-tab-dataset">Dataset</string>
+    <string name="vl-tab-distribution">Distributions</string>
+    <string name="vl-section-metadatadcat">Metadata DCAT</string>
+    <string name="vl-section-dcatapvl">DCAT-AP Vlaanderen</string>
+
+    <string name="tabAdvancedService">Service</string>
+    <string name="tabAdvancedRecord">Record</string>
+    <string name="tabAdvancedDataset">Dataset</string>
+    <string name="tabAdvancedDistribution">Distribution</string>
+
+    <string name="associatedResources">Associated resources</string>
+    <string name="providedBy">Provided by</string>
+    <string name="linkToPortal">Access to the catalogue</string>
+    <string name="linkToPortal-help">Read here the full details and access to the data.</string>
 </resources>

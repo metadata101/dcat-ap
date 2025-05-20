@@ -191,9 +191,9 @@
     <btnLabel>Frequency</btnLabel>
   </element>
   <element name="dct:conformsTo">
-    <label>conforms to standard</label>
+    <label>Conforms to standard</label>
     <description>An established standard to which the described resource conforms.</description>
-    <btnLabel>conforms to standard</btnLabel>
+    <btnLabel>Conforms to standard</btnLabel>
   </element>
   <element name="dct:created">
     <label>Creation date</label>
@@ -369,6 +369,11 @@
     <label>Resource URI</label>
     <description>Resource URI</description>
     <btnLabel>Resource URI</btnLabel>
+  </element>
+  <element name="rdf:resource" context="dcatap:applicableLegislation">
+    <label>Applicable legislation</label>
+    <description>Applicable legislation</description>
+    <btnLabel>Applicable legislation</btnLabel>
   </element>
   <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:sample/dcat:Distribution/dcat:accessURL/@rdf:resource">
     <label>Access URL</label>
@@ -645,14 +650,14 @@
     <description>RDF class</description>
     <btnLabel>RDF class</btnLabel>
   </element>
-  <element name="schema:endDate" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal/dct:PeriodOfTime/schema:endDate">
+  <element name="schema:endDate">
     <label>End date/time</label>
     <description>The end of the period.</description>
     <btnLabel>End date/time</btnLabel>
   </element>
   <element name="schema:startDate">
     <label>Start date/time</label>
-    <description>The start of the operiod</description>
+    <description>The start of the period</description>
     <btnLabel>Start date/time</btnLabel>
   </element>
   <element name="skos:Concept">
@@ -925,51 +930,115 @@
     <description>Language</description>
     <btnLabel>Language</btnLabel>
   </element>
-
-
-  <!-- PROFILE / DCAT-AP-HVD -->
-  <element name="dcatap:hvdCategory">
-    <label>HVD category</label>
-    <description>The HVD category to which this Dataset belongs.
-      The HVD IR defines six thematic data categories: geospatial, earth observation and environment, meteorological, statistics, companies and company ownership, and mobility.
-      A new property HVD category is introduced to indicate the HVD category to which an resource, i.e. a dataset, belongs.
-      The controlled vocabulary with all possible values is maintained by the Publications Office.
-      A resource may belong to more than one data category.</description>
-  </element>
-  <element name="dcatap:applicableLegislation">
-    <label>Applicable legislation</label>
-    <description>The legislation that mandates the creation or management of the Data Service. For HVD the value MUST include the ELI http://data.europa.eu/eli/reg_impl/2023/138/oj.
-      As multiple legislations may apply to the resource the maximum cardinality is not limited. </description>
-  </element>
-
-
-
-
-
   <element name="mobilitydcatap:mobilityTheme">
     <label>Mobility theme</label>
     <description>This property refers to the mobility-related theme (i.e., a specific subject, category, or type) of the delivered content.
       A dataset may be associated with multiple themes. A theme is important for data seekers who are interested in a particular type of data content.</description>
+    <btnLabel>Mobility theme</btnLabel>
   </element>
   <element name="mobilitydcatap:transportMode">
     <label>Transport mode</label>
     <description>This property describes the transport mode that is covered by the delivered content. Data can be valid for more than one mode, so a multiple choice should be applied.</description>
+    <btnLabel>Transport mode</btnLabel>
   </element>
   <element name="mobilitydcatap:networkCoverage">
     <label>Network coverage</label>
     <description>This property describes the part of the transport network that is covered by the delivered content. For road traffic, the property SHOULD refer to the network classification for which the data is provided. As a minimum, an international or higher-level classification, e.g., via functional road classes, is recommended to allow data search across different countries. In addition, national classifications are allowed.
       For other transport modes, the property is meant to refer to the physical infrastructure which is used by the services covered by the data.
       For all modes, the property SHOULD also indicate if the data content relates to the EU’s trans-European transport network [EU-TEN-T].</description>
+    <btnLabel>Network coverage</btnLabel>
   </element>
   <element name="mobilitydcatap:georeferencingMethod">
     <label>Georeferencing method</label>
     <description>This property SHOULD be used to specify the georeferencing method used in the dataset.</description>
+    <btnLabel>Georeferencing method</btnLabel>
   </element>
   <element name="mobilitydcatap:intendedInformationService">
     <label>Intended information service</label>
     <description>This property MAY describe predefined information services, which the data content is intended to support.
       Such services MAY be, e.g., information services for multimodal mobility, as specified by EC Delegated Regulation 2017/1926 [EC-MMTIS-DR].
       Examples of such services include “location search”, which is based on a datasets with address identifiers, or “trip plan computation”, which is based on datasets about a road network.</description>
+    <btnLabel>Intended information service</btnLabel>
+  </element>
+  <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+    <label>HVD Category</label>
+    <description>The HVD category to which this Dataset belongs.</description>
+    <btnLabel>HVD Category</btnLabel>
+  </element>
+  <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+    <label>HVD Category</label>
+    <description>The HVD category to which this Data Service belongs.</description>
+    <btnLabel>HVD Category</btnLabel>
+  </element>
+  <element name="dcatap:hvdCategory">
+    <label>HVD Category</label>
+    <description>The HVD category to which this resource belongs.</description>
+    <btnLabel>HVD Category</btnLabel>
+  </element>
+  <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+    <label>Applicable legislation</label>
+    <description>The legislation that mandates the creation or management of the Dataset.</description>
+    <btnLabel>Applicable legislation</btnLabel>
+  </element>
+  <element name="dcatap:applicableLegislation" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+    <label>Applicable legislation</label>
+    <description>The legislation that mandates the creation or management of the Data Service.</description>
+    <btnLabel>Applicable legislation</btnLabel>
+  </element>
+  <element name="dcatap:applicableLegislation">
+    <label>Applicable legislation</label>
+    <description>The legislation that mandates the creation or management of the resource.</description>
+    <btnLabel>Applicable legislation</btnLabel>
+  </element>
+  <element name="mdcat:statuut">
+    <label>Statute</label>
+    <description>Tooltip: Statute</description>
+    <btnLabel>Statute</btnLabel>
+  </element>
+  <element name="mdcat:MAGDA-categorie">
+    <label>MAGDA-category</label>
+    <description>Tooltip: MAGDA-category</description>
+    <btnLabel>MAGDA-category</btnLabel>
+  </element>
+  <element name="mdcat:landingspaginaVoorAuthenticatie">
+    <label>Landingpage for authentication</label>
+    <description>A reference to the landing page that contains specific information on the authentication for the data service.</description>
+    <btnLabel>Landingpage for authentication</btnLabel>
+  </element>
+  <element name="rdf:resource" context="mdcat:landingspaginaVoorAuthenticatie">
+    <label>Landingpage for authentication</label>
+    <description>A reference to the landing page that contains specific information on the authentication for the data service.</description>
+    <btnLabel>Landingpage for authentication</btnLabel>
+  </element>
+  <element name="mdcat:landingspaginaVoorGebruiksinformatie">
+    <label>Landingpage for usage information</label>
+    <description>A reference to the landing page that contains specific information on the use of data service.</description>
+    <btnLabel>Landingpage for usage information</btnLabel>
+  </element>
+  <element name="rdf:resource" context="mdcat:landingspaginaVoorGebruiksinformatie">
+    <label>Landingpage for usage information</label>
+    <description>A reference to the landing page that contains specific information on the use of data service.</description>
+    <btnLabel>Landingpage for usage information</btnLabel>
+  </element>
+  <element name="mdcat:landingspaginaVoorStatusinformatie">
+    <label>Landingpage for status information</label>
+    <description>A reference to the statuspage of the data service.</description>
+    <btnLabel>Landingpage for status information</btnLabel>
+  </element>
+  <element name="rdf:resource" context="mdcat:landingspaginaVoorStatusinformatie">
+    <label>Landingpage for status information</label>
+    <description>A reference to the statuspage of the data service.</description>
+    <btnLabel>Landingpage for status information</btnLabel>
+  </element>
+  <element name="mdcat:levensfase">
+    <label>Lifecycle phase</label>
+    <description>The phase of the lifecycle of the dataservice.</description>
+    <btnLabel>Lifecycle phase</btnLabel>
+  </element>
+  <element name="mdcat:ontwikkelingstoestand">
+    <label>Development status</label>
+    <description>The development status of the deployed dataservice.</description>
+    <btnLabel>Development status</btnLabel>
   </element>
 
   <!-- DCAT-AP v2 compatibility -->

@@ -1,6 +1,10 @@
 # DCAT-AP Schema Plugin for GeoNetwork
 
-This repository contains a [DCAT-AP 2.0.0](https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic/solution/dcat-application-profile-data-portals-europe/release/200) schema plugin for [GeoNetwork](http://geonetwork-opensource.org/).
+This repository contains a [DCAT-AP](https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic/solution/dcat-application-profile-data-portals-europe/release/200) schema plugin for [GeoNetwork](http://geonetwork-opensource.org/). The plugin can be used to describe resources using
+* DCAT-AP,
+* [DCAT-AP-HVD](https://semiceu.github.io/DCAT-AP/releases/2.2.0-hvd/),
+* [Mobility-DCAT](https://mobilitydcat-ap.github.io/mobilityDCAT-AP/releases/),
+* [DCAT-AP-VL](https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/)
 
 ## Reference documents
 * [W3C Data Catalog Vocabulary (DCAT)](https://www.w3.org/TR/vocab-dcat/), Fadi Maali, John Erickson, 2014.
@@ -11,12 +15,12 @@ This repository contains a [DCAT-AP 2.0.0](https://joinup.ec.europa.eu/collectio
 
 This plugin has the following features:
 
-* **XML Schema for DCAT-AP**: GeoNetwork is capable of storing metadata in XML format. The plugin therefore defines its own XML Schema (see the [schema](/src/main/plugin/dcat-ap/schema) folder) for DCAT-AP that is used for the internal representation of DCAT-AP fields. To limit the data conversion needed, the XML Schema was designed to fully resemble an XML/RDF syntax of DCAT-AP.
+* **XML Schema for DCAT-AP**: GeoNetwork is capable of storing metadata in XML format. The plugin therefore defines its own XML Schema (see the [schema](src/main/plugin/dcat-ap/schema) folder) for DCAT-AP that is used for the internal representation of DCAT-AP fields. To limit the data conversion needed, the XML Schema was designed to fully resemble an XML/RDF syntax of DCAT-AP.
 * **indexing**: The plugin maximally populates GeoNetwork's existing index fields for a consistent search experience.
-* **editing**:  A custom form was created following the guidance in the GeoNetwork [form customization guide](http://geonetwork-opensource.org/manuals/trunk/eng/users/customizing-application/editor-ui/creating-custom-editor.html). The form uses the controlled vocabularies required by DCAT-AP. These are located in the folder[thesauri](/src/main/plugin/dcat-ap/thesauri) and can be imported in to GeoNetwork as SKOS [classification systems](https://geonetwork-opensource.org/manuals/3.6.x/is/administrator-guide/managing-classification-systems/index.html) using standard GeoNetwork functionality.
+* **editing**:  A custom form was created following the guidance in the GeoNetwork [form customization guide](https://docs.geonetwork-opensource.org/4.4/customizing-application/editor-ui/creating-custom-editor/). The form uses the controlled vocabularies required by DCAT-AP. These are located in the folder[thesauri](resources/thesauri) and can be imported in to GeoNetwork as SKOS [classification systems](https://docs.geonetwork-opensource.org/4.4/administrator-guide/managing-classification-systems/managing-thesaurus/) using standard GeoNetwork functionality.
 * **viewing**: A custom 'full view' to visualise DCAT-AP records. 
 * **multilingual metadata support**: The editor, view, and search benefit from the already existing multilingual capabilities of GeoNetwork.
-* **validation (XSD and Schematron)**: Validation steps are first XSD validation made on the schema, then the schematron validation defined in folder  [dcat-ap/schematron](/src/main/plugin/dcat-ap/schematron). Two rule sets are available: schematron-rules-dcat-ap, and schematron-rules-metadata-dcat-recommendations.
+* **validation (XSD and Schematron)**: Validation steps are first XSD validation made on the schema, then the schematron validation defined in folder  [dcat-ap/schematron](src/main/plugin/dcat-ap/schematron). Multiple rulesets are available as `.sch` files with a specific naming convention: `schematron-rules-dcat-ap(-x).sch`. The `-rec` suffix denotes the recommended ruleset, whereas `-cardinalities` denotes all cardinality related validation. The base file (no suffix) is meant for *required* rules.
 
 ## Installing the plugin
 
@@ -85,7 +89,7 @@ Add the module to `process-resources` phase of `web/pom.xml` to make sure it is 
 
 Commit these changes.
 
-Apply the [patches](/core-geonetwork-patches) to the GeoNetwork core. You may need to manually apply specific hunks of a patch.
+Apply the [patches](core-geonetwork-patches) to the GeoNetwork core. You may need to manually apply specific hunks of a patch.
 
 ```
 # execute the following in the core-geonetwork root directory 
@@ -95,9 +99,9 @@ git am --ignore-space-change --ignore-whitespace --reject --whitespace=fix schem
 Build and run the application following the
 [Software Development Documentation](https://github.com/geonetwork/core-geonetwork/tree/main/software_development). You'll need to have Java JDK 11 and [Maven](https://maven.apache.org/install.html) installed.
 
-Samples and templates can be imported via the 'Admin Console' > 'Metadata and Templates' > 'dcat-ap' menu.
+Samples and templates can be imported via the `Admin Console` > `Metadata and Templates` > `dcat-ap` menu.
 
-Make sure to import the thesauri located in `schemas/dcat-ap/resources/thesauri` as they are required for editing dcat-ap records.
+On startup, the application loads the thesauri located in `resources/thesauri` as they are required for editing dcat-ap records.
 
 ## Metadata rules: metadata identifier
 
@@ -136,7 +140,7 @@ New profile elements need to be added to the [schema XSD](src/main/plugin/dcat-a
 
 Cardinality is otherwise checked using schematron, whereas the XSD schema defines the elements and types (see validation).
 
-Defining new elements in the XSD can done in the following ways:
+Defining new elements in the XSD can be done in the following ways:
 
 * New elements from available ontologies
 
@@ -144,10 +148,8 @@ Defining new elements in the XSD can done in the following ways:
 <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
 ```
 
-* New elements from known ontologies. Check the top folder for existing described ontologies, e.g. `foaf`.
-
+* New elements from known ontologies. Check the top folder for existing described ontologies, e.g. `foaf`
 * New elements that are specific to the profile:
- 
   * Add the schema in [XSD profile folder](src/main/plugin/dcat-ap/schema/profiles)
   * Import the new schema in the base XSD
   * Add the element 
@@ -169,11 +171,7 @@ If the profile defines or uses new namespaces they need to be declared in:
 
 ### Vocabularies
 
-If some profile elements rely on vocabularies, add them to the [thesauri folder](resources/thesauri) using the SKOS format. Those vocabularies are imported when the application starts.
-
-Register the vocabulary in [src/main/plugin/dcat-ap/process/process-utility.xsl](src/main/plugin/dcat-ap/process/process-utility.xsl).
-
-Q: Maybe this can be generic?
+If some profile elements rely on vocabularies, add them to the [thesauri folder](resources/thesauri) using the SKOS format. Those vocabularies are imported when GeoNetwork starts.
 
 ### Editor configuration
 
@@ -191,10 +189,6 @@ First, add a view (and use a condition to display it only if the profile is used
     <tab id="hvd-tab"  default="true">
         ...
  ```
-
-Q:
-* check default view using `default='true'`. What happens if more than one default?
-* check which view to load by default? Maybe see EditorController.js
 
 Add one or more tabs to the view:
 
@@ -217,9 +211,9 @@ If the new element depends on a vocabulary, register the vocabulary:
 ```
 
 Then create the form:
-* A section with a title
-* A field for each existing element
-* A button to add an element if it does not yet exist
+* A `section` with a title
+* A `field` for each existing element
+* An `action` (which generates a button in the UI) to add an element if it does not yet exist
 
 ```xml
     <section name="hvd-section">
@@ -253,9 +247,7 @@ Two types of translations have to be added:
 
 #### Using a vocabulary for a field
 
-To use a vocabulary for a particular field, configure it in the editor configuration top section 
-
-Q: check if this can be configured using only the editor view?
+To use a vocabulary for a particular field, configure it in the editor configuration top section or in a specific section when declaring the field.
 
 ```xml
     <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker" profile="metadata-dcat">
@@ -267,8 +259,6 @@ Q: check if this can be configured using only the editor view?
 
 If the new element uses a custom namespace, the namespace needs to be registered in [src/main/plugin/dcat-ap/convert/thesaurus-transformation.xsl](src/main/plugin/dcat-ap/convert/thesaurus-transformation.xsl) 
 which converts a SKOS thesaurus to the profile schema.
-
-Q: Record in a language not available in vocabulary? to test with https://github.com/geonetwork/core-geonetwork/pull/8268 which may help
 
 #### Field with URI
 
@@ -293,7 +283,6 @@ If the element is an RDF resource URI ...
 </for>
 ```
 
-#### Q: Other type of fields?
 
 ### Validation
 
@@ -307,7 +296,10 @@ XSD is checking elements and types. Cardinalities and profiles' rules are checke
 
 Schematron rules can be enabled/disabled depending on the profile. See [configuring validation levels](https://docs.geonetwork-opensource.org/4.4/administrator-guide/managing-metadata-standards/configure-validation/).
 
-Q: Check how to enable/disable schematron rules for a profile with an example.
+For example: enabling the DCAT-AP-VL validation based on the defined standard within the record can be configured as follows:
+- `admin console` > `metadata and templates` > `validation`
+- select one of the validation rulesets, e.g., `DCAT-AP-Vlaanderen - Recommended`
+- add a rule of type `XPATH` with the following XPath: `//dcat:CatalogRecord//dct:Standard[@rdf:about = 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03']`
 
 Validation is also taking care of checking the version of a profile as it does not always declare a new namespace for a new version.
 
@@ -338,7 +330,7 @@ For additional elements, create an additional indexing XSLT, import it into the 
 
 ### Templates
 
-TODO
+[Default templates](src/main/plugin/dcat-ap/templates) are provided for the plugin. They can be imported via the 'Admin Console' > 'Metadata and Templates' > 'dcat-ap' menu.
 
 ### Interactions between profiles
 
@@ -363,7 +355,7 @@ If the profile requires a different encoding, modify:
 
 ## Community
 
-Comments and questions to the issue tracker.
+Comments and questions are welcomed on [the issue tracker](https://github.com/metadata101/dcat-ap/issues).
 
 ## More work required
 

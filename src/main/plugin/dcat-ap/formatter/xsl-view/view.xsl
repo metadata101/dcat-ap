@@ -35,6 +35,7 @@
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
+                xmlns:dcatap="http://data.europa.eu/r5r/"
                 xmlns:spdx="http://spdx.org/rdf/terms#"
                 xmlns:schema="http://schema.org/"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
@@ -185,22 +186,28 @@
   </xsl:template>
 
   <xsl:template mode="getOverviews" match="rdf:RDF">
-    <section class="gn-md-side-overview">
-      <h4>
-        <i class="fa fa-fw fa-image"><xsl:comment select="'image'"/></i>
-        <span><xsl:comment select="name()"/>
-          <xsl:value-of select="$schemaStrings/overviews"/>
-        </span>
-      </h4>
+    <xsl:variable name="overviews"
+                  select="//foaf:page/foaf:Document[matches(@rdf:about, '.*(.gif|.png|.jpeg|.jpg)$', 'i')]"
+                  as="node()*"/>
 
-      <xsl:for-each select="//foaf:page/foaf:Document[matches(@rdf:about, '.*(.gif|.png|.jpeg|.jpg)$', 'i')]">
-        <img data-gn-img-modal="md"
-             class="gn-img-thumbnail center-block"
-             alt="{$schemaStrings/overview}"
-             src="{normalize-space(@rdf:about)}"/>
-          <div class="gn-img-thumbnail-caption"><xsl:value-of select="dct:title" /></div>
-      </xsl:for-each>
-    </section>
+    <xsl:if test="$overviews">
+      <section class="gn-md-side-overview">
+        <h4>
+          <i class="fa fa-fw fa-image"></i>
+          <span>
+            <xsl:value-of select="$schemaStrings/overviews"/>
+          </span>
+        </h4>
+
+        <xsl:for-each select="$overviews">
+          <img data-gn-img-modal="md"
+               class="gn-img-thumbnail center-block"
+               alt="{$schemaStrings/overview}"
+               src="{normalize-space(@rdf:about)}"/>
+            <div class="gn-img-thumbnail-caption"><xsl:value-of select="dct:title" /></div>
+        </xsl:for-each>
+      </section>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template mode="render-view" match="field[template]" priority="3">
@@ -228,8 +235,12 @@
   <!-- Render Section... -->
 
   <xsl:template mode="render-view" match="section[@xpath]">
+    <xsl:param name="base" select="$metadata"/>
+
     <xsl:variable name="sectionContent">
-      <xsl:apply-templates mode="render-view" select="@xpath"/>
+      <xsl:apply-templates mode="render-view" select="@xpath">
+        <xsl:with-param name="base" select="$base"/>
+      </xsl:apply-templates>
     </xsl:variable>
     <!-- Hide sections if empty -->
     <xsl:if test="normalize-space($sectionContent)">
@@ -259,7 +270,7 @@
         <xsl:if test="normalize-space($rendered) != ''">
           <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
                  class="table table-striped" >
-            <xsl:copy-of select="$rendered"/>&#160;
+            <xsl:copy-of select="$rendered"/>
           </table>
         </xsl:if>
       </xsl:for-each>
@@ -267,16 +278,19 @@
 
     <xsl:if test="normalize-space($sectionContent)">
       <div id="gn-section-{generate-id()}" class="gn-tab-content">
-        <xsl:if test="@name">
-          <xsl:variable name="title" select="gn-fn-render:get-schema-strings($schemaStrings, @name)"/>
-          <xsl:element name="h{2 + count(ancestor-or-self::*[name(.) = 'section'])}">
-            <xsl:attribute name="class" select="'view-header'"/>
-            <xsl:attribute name="style" select="'border-bottom: 2px solid rgb(229, 229, 229); margin-top: 30px;font-size: 16px;color: rgb(40, 96, 144); position: relative;'"/>
-            <xsl:value-of select="$title"/>
-          </xsl:element>
-        </xsl:if>
-
-        <xsl:copy-of select="$sectionContent"/>
+        <xsl:variable name="sectionName" select="@name"/>
+        <xsl:for-each select="$sectionContent/table">
+          <xsl:if test="$sectionName">
+            <xsl:variable name="title" select="gn-fn-render:get-schema-strings($schemaStrings, $sectionName)"/>
+            <xsl:element name="h{2 + count(ancestor-or-self::*[name(.) = 'section'])}">
+              <xsl:attribute name="class" select="'view-header'"/>
+              <xsl:attribute name="style"
+                             select="'border-bottom: 2px solid rgb(229, 229, 229); margin-top: 30px;font-size: 16px;color: rgb(40, 96, 144); position: relative;'"/>
+              <xsl:value-of select="$title"/>
+            </xsl:element>
+          </xsl:if>
+          <xsl:copy-of select="."/>
+        </xsl:for-each>
       </div>
     </xsl:if>
 
@@ -297,10 +311,27 @@
             <xsl:value-of select="$title"/>
           </xsl:element>
         </xsl:if>
-        <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
-               class="table table-striped" >
-          <xsl:copy-of select="$sectionContent"/>&#160;
-        </table>
+
+        <xsl:choose>
+          <xsl:when test="$sectionContent/div/table">
+            <xsl:copy-of select="$sectionContent"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
+                   class="table table-striped hoody" >
+              <xsl:for-each select="$sectionContent/*">
+                <xsl:choose>
+                  <xsl:when test="name() = 'div'">
+                    <xsl:copy-of select="tr"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:copy-of select="."/>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:for-each>
+            </table>
+          </xsl:otherwise>
+        </xsl:choose>
       </div>
     </xsl:if>
   </xsl:template>
@@ -403,6 +434,35 @@
   </xsl:template>
 
   <xsl:template mode="render-field"
+                match="dcatap:applicableLegislation">
+    <xsl:param name="xpath"/>
+    <xsl:variable name="elementName" select="name(.)"/>
+    <xsl:variable name="thesaurusId" select="$configuration/editor/fields/for[@name = $elementName]/directiveAttributes/@thesaurus"/>
+    <xsl:variable name="stringValue" select="string(@rdf:resource)"/>
+    <xsl:if test="normalize-space($stringValue) != ''">
+      <tr>
+        <th style="{$thStyle}">
+          <xsl:value-of select="gn-fn-metadata:getLabel($schema, 'rdf:resource', $labels, name(.), '', concat(gn-fn-dcat-ap:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)), '/@rdf:resource'))/label" />
+        </th>
+        <td style="{$tdStyle}">
+          <xsl:variable name="defaultLabel" select="util:getKeywordValueByUri($stringValue, $thesaurusId, $defaultLang)"/>
+          <xsl:choose>
+            <xsl:when test="normalize-space($defaultLabel)!=''">
+              <xsl:call-template name="render-url">
+                <xsl:with-param name="href" select="@rdf:resource"/>
+                <xsl:with-param name="label" select="$defaultLabel"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates mode="render-url" select="@rdf:resource" />
+            </xsl:otherwise>
+          </xsl:choose>
+        </td>
+      </tr>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template mode="render-field"
                 match="dcat:accessURL|dcat:downloadURL|dcat:landingPage">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string(@rdf:resource)"/>
@@ -422,7 +482,8 @@
   <!-- Render grouped concepts by element name -->
   <xsl:template mode="render-field" match="dct:type|dct:accrualPeriodicity|dcat:theme|dct:language|dct:format|dcat:mediaType|
                                            adms:status|mdcat:levensfase|mdcat:ontwikkelingstoestand|dct:accessRights|dcat:compressFormat|
-                                           dcat:packageFormat|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut">
+                                           dcat:packageFormat|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut|
+                                           dcatap:hvdCategory">
     <xsl:param name="xpath"/>
     <xsl:variable name="name" select="name()"/>
     <xsl:if test="not(preceding-sibling::*[name(.) = $name and position()=1])">
@@ -564,8 +625,16 @@
 
   <!-- Render values for URL -->
   <xsl:template mode="render-url" match="*|@*">
-    <a href="{.}" target="_blank" style="color=#06c; text-decoration: underline;">
+    <a href="{.}" target="_blank" style="color:#06c; text-decoration: underline;">
       <xsl:value-of select="." />
+    </a>
+  </xsl:template>
+
+  <xsl:template name="render-url">
+    <xsl:param name="href"/>
+    <xsl:param name="label"/>
+    <a href="{$href}" target="_blank" style="color:#06c; text-decoration: underline;">
+      <xsl:value-of select="$label"/>
     </a>
   </xsl:template>
 
@@ -587,12 +656,12 @@
   <xsl:template mode="render-url" match="*[../name() = 'vcard:hasEmail']|@*[../name() = 'vcard:hasEmail']">
     <xsl:choose>
       <xsl:when test="starts-with(normalize-space(.), 'mailto:')">
-        <a href="{normalize-space(.)}" style="color=#06c; text-decoration: underline;">
+        <a href="{normalize-space(.)}" style="color:#06c; text-decoration: underline;">
           <xsl:value-of select="substring-after(normalize-space(.), 'mailto:')" />
         </a>
       </xsl:when>
       <xsl:otherwise>
-        <a href="{concat('mailto:', normalize-space(.))}" style="color=#06c; text-decoration: underline;">
+        <a href="{concat('mailto:', normalize-space(.))}" style="color:#06c; text-decoration: underline;">
           <xsl:value-of select="." />
         </a>
       </xsl:otherwise>
@@ -605,7 +674,7 @@
                        *[name(..) = 'dct:isVersionOf' or name(..) = 'dct:hasVersion']|@*[name(..) = 'dct:isVersionOf' or name(..) = 'dct:hasVersion']"> <!-- DCAT-AP v2 compatibility -->
     <a
       href="{concat($nodeUrl,$langId,'/catalog.search#/search?resultType=details&amp;sortBy=relevance&amp;from=1&amp;to=20&amp;fast=index&amp;_content_type=json&amp;any=',.)}"
-      style="color=#06c; text-decoration: underline;">
+      style="color:#06c; text-decoration: underline;">
       <xsl:value-of select="."/>
     </a>
   </xsl:template>
