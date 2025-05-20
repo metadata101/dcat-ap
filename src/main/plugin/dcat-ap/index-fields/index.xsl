@@ -59,7 +59,7 @@
   <xsl:template match="/">
 
     <xsl:variable name="virtualCatalog"
-                  select="rdf:RDF[not(//dcat:dataset/(dcat:Dataset|dcat:DataService))]/dcat:Catalog"
+                  select="rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog"
                   as="node()*"/>
 
     <xsl:variable name="isVirtualCatalog"
@@ -268,7 +268,7 @@
         <xsl:apply-templates mode="index-reference-date" select="."/>
 
         <xsl:if test="$isVirtualCatalog">
-          <xsl:for-each select="../dcat:CatalogRecord/dct:identifier">
+          <xsl:for-each select="../dcat:CatalogRecord[@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource]/dct:identifier">
             <agg_associated><xsl:value-of select="."/></agg_associated>
           </xsl:for-each>
         </xsl:if>
