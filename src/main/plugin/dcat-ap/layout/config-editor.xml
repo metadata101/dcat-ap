@@ -1347,7 +1347,14 @@
 
       <tab id="tabCatalogAssociatedRecords" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
         <section>
-          <!--          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record"/>-->
+          <action type="associatedResource"
+                  name="linkToSibling"
+                  btnClass="fa fa-plus"
+                  process="siblings">
+            <directiveAttributes>{"fields": {"associationType": "isComposedOf", "initiativeType": "" },
+              "sources": {"metadataStore": {"params": {"isTemplate": "n"}}
+              }}</directiveAttributes>
+          </action>
 
           <!-- List all related records to add additional properties.
           When this element is removed, update-fixed-info also remove corresponding dcat:record in Catalog.
@@ -1358,15 +1365,6 @@
             <field xpath="dct:identifier"/>
 <!-- TODO mdcat:stars, ...            <field xpath="dct:description" or="description" in="."/>-->
           </section>
-
-          <action type="associatedResource"
-                  name="linkToSibling"
-                  btnClass="fa fa-plus"
-                  process="siblings">
-            <directiveAttributes>{"fields": {"associationType": "isComposedOf", "initiativeType": "" },
-              "sources": {"metadataStore": {"params": {"isTemplate": "n"}}
-              }}</directiveAttributes>
-          </action>
         </section>
       </tab>
 

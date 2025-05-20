@@ -6,15 +6,6 @@
 >
   <dcat:Catalog rdf:about="https://metadata.vlaanderen.be/virtualcatalogtemplate">
     <dct:title xml:lang="nl">Virtual catalog template</dct:title>
-    <dct:description xml:lang="nl">Metadata Vlaanderen (agentschap Digitaal Vlaanderen)</dct:description>
-    <dcat:record rdf:resource="https://metadata.vlaanderen.be/srv/resources/records/record1"/>
+    <dct:description xml:lang="nl"></dct:description>
   </dcat:Catalog>
-  <dcat:CatalogRecord rdf:about="https://metadata.vlaanderen.be/srv/resources/records/record1">
-    <foaf:primaryTopic rdf:resource="https://metadata.vlaanderen.be/srv/resources/datasets/uri1"/>
-    <mdcat:stars></mdcat:stars>
-    <mdcat:customkeyword>
-    </mdcat:customkeyword>
-    <dct:subject>
-    </dct:subject>
-  </dcat:CatalogRecord>
 </rdf:RDF>

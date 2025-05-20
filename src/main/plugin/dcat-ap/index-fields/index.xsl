@@ -70,7 +70,7 @@
     <xsl:variable name="associatedRecords" as="node()*" select="rdf:RDF/dcat:Catalog/dcat:record/@rdf:resource"/>
 
     <!-- When record is not a catalog, it should have only one CatalogRecord (cf. update-fixed-info). -->
-    <xsl:variable name="catalogRecord" as="node()" select=".//dcat:CatalogRecord[not(@rdf:about = $associatedRecords)]"/>
+    <xsl:variable name="catalogRecord" as="node()?" select="(.//dcat:CatalogRecord[not(@rdf:about = $associatedRecords)])[1]"/>
 
     <xsl:variable name="identifier" as="xs:string*" select="$catalogRecord/dct:identifier"/>
     <xsl:variable name="dateStamp" select="$catalogRecord/dct:modified"/>
