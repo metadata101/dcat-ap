@@ -267,6 +267,11 @@
 
         <xsl:apply-templates mode="index-reference-date" select="."/>
 
+        <xsl:if test="$isVirtualCatalog">
+          <xsl:for-each select="../dcat:CatalogRecord/dct:identifier">
+            <agg_associated><xsl:value-of select="."/></agg_associated>
+          </xsl:for-each>
+        </xsl:if>
         <!-- Index more fields in this element -->
         <xsl:apply-templates mode="index-extra-fields" select="."/>
       </doc>
