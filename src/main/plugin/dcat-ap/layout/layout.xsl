@@ -322,6 +322,7 @@
       <xsl:variable name="isDisabled" select="
             (name(.) = 'dct:identifier' and count(preceding-sibling::*[name(.) = 'dct:identifier']) = 0 and name(..) = ('dcat:Dataset', 'dcat:DataService')) or
             (name(..) = 'dcat:Distribution' and name(.) = ('dct:identifier')) or
+            (name(.) = 'dct:identifier' and $isVirtualCatalogAssociatedRecord) or
             (name(..) = 'dcat:CatalogRecord' and not($isVirtualCatalogAssociatedRecord)) or
             (name(../../..) = 'dcat:CatalogRecord' and name(..) = 'dct:Standard')"/>
 
@@ -434,6 +435,19 @@
           </xsl:for-each>
         </xsl:otherwise>
       </xsl:choose>
+
+      <xsl:if test="name(.) = 'dct:identifier' and $isVirtualCatalogAssociatedRecord">
+        <xsl:variable name="recordTitle"
+                      select="java:getIndexField(
+                                '',
+                                normalize-space(text()),
+                                'resourceTitleObject',
+                                '')"/>
+
+        <xsl:if test="$recordTitle != ''">
+          <div class="col-md-12"><xsl:value-of select="$recordTitle"/></div>
+        </xsl:if>
+      </xsl:if>
     </xsl:if>
   </xsl:template>
 
