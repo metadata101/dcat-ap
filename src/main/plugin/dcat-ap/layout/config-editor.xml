@@ -22,6 +22,7 @@
     <for name="dct:description" use="textarea"/>
     <for name="adms:versionNotes" use="textarea"/>
     <for name="dcat:byteSize" use="number"/>
+    <for name="mdcat:stars" use="number"/>
     <for name="dcat:spatialResolutionInMeters" use="number"/>
 
     <for name="dct:type" xpath="foaf:Agent" use="thesaurus-list-picker">
@@ -1363,7 +1364,7 @@
                         name="associatedRecord"
                         del=".">
             <field xpath="dct:identifier"/>
-<!-- TODO mdcat:stars, ...            <field xpath="dct:description" or="description" in="."/>-->
+            <field xpath="mdcat:stars" or="stars" in="."/>
           </section>
         </section>
       </tab>
@@ -1428,6 +1429,7 @@
         <for name="dct:LicenseDocument"/>
         <for name="dct:LicenseDocument/dct:type"/>
         <for name="dct:rights"/>
+        <for name="mdcat:stars"/>
       </flatModeExceptions>
     </view>
 

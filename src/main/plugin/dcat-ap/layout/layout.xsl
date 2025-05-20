@@ -314,10 +314,15 @@
       <xsl:variable name="contextXpath" select="gn-fn-metadata:getXPath(.)"/>
       <xsl:variable name="fieldNode" select="$editorConfig/editor/fields/for[@name = $name and @templateModeOnly and (not(@xpath) or @xpath = $contextXpath)]"/>
 
+      <xsl:variable name="catalogRecordUri"
+                    select="ancestor::dcat:CatalogRecord/@rdf:about"/>
+      <xsl:variable name="isVirtualCatalogAssociatedRecord"
+                    select="$catalogRecordUri = ancestor::rdf:RDF/dcat:Catalog/dcat:record/@rdf:resource"/>
+
       <xsl:variable name="isDisabled" select="
             (name(.) = 'dct:identifier' and count(preceding-sibling::*[name(.) = 'dct:identifier']) = 0 and name(..) = ('dcat:Dataset', 'dcat:DataService')) or
             (name(..) = 'dcat:Distribution' and name(.) = ('dct:identifier')) or
-            (name(..) = 'dcat:CatalogRecord') or
+            (name(..) = 'dcat:CatalogRecord' and not($isVirtualCatalogAssociatedRecord)) or
             (name(../../..) = 'dcat:CatalogRecord' and name(..) = 'dct:Standard')"/>
 
       <xsl:choose>

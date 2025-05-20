@@ -30,4 +30,14 @@
   <xs:element name="ontwikkelingstoestand" type="skos:Concept"/>
   <xs:element name="MAGDA-categorie" type="dct:subject"/>
   <xs:element name="statuut" type="dct:subject"/>
+
+  <!-- 5 stars evaluation between 1 and 5 -->
+  <xs:element name="stars" type="xs:integer">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:minInclusive value="1"/>
+        <xs:maxInclusive value="5"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
 </xs:schema>
