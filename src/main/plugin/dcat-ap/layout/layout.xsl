@@ -445,7 +445,8 @@
                                 '')"/>
 
         <xsl:if test="$recordTitle != ''">
-          <div class="col-md-12"><xsl:value-of select="$recordTitle"/></div>
+          <div class="col-sm-9 col-xs-11">
+            <input type="text" readonly="readonly" value="{$recordTitle}" class="form-control"/></div>
         </xsl:if>
       </xsl:if>
     </xsl:if>
