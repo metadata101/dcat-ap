@@ -308,7 +308,9 @@
   </xsl:template>
 
 
-  <xsl:template match="dcat:CatalogRecord[not($isVirtualCatalog)]" priority="2">
+  <!-- Virtual catalog contains additional CatalogRecord for all associated resources.
+  Only alter the one matching the Catalog instance. -->
+  <xsl:template match="dcat:CatalogRecord[not(@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource)]" priority="2">
     <xsl:copy copy-namespaces="no">
       <xsl:call-template name="handle-record-id"/>
       <dct:modified>
