@@ -1537,7 +1537,19 @@
     </view>-->
 
     <view name="xml">
+
       <sidePanel>
+        <directive data-gn-overview-manager=""
+                   data-file-types=".png,.gif,.jpeg,.jpg"
+                   displayIfRecord="count(//dcat:dataset) > 0"/>
+
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
+                   displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) = 0"/>
+
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
+                   editor-config="dcatapcatalog"
+                   displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0"/>
+
         <directive data-gn-validation-report=""/>
       </sidePanel>
       <tab id="xml" default="true"/>
