@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:eli="http://data.europa.eu/eli/ontology" xmlns:dcatap="http://data.europa.eu/r5r/" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:adms="http://www.w3.org/ns/adms#" xmlns:pav="http://purl.org/pav/" xmlns:org="http://www.w3.org/ns/org#" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:dct="http://purl.org/dc/terms/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <dcat:Catalog rdf:about="http://geonetwork-ui/catalog">
+        <dcat:record>
+            <dcat:CatalogRecord>
+                <dct:identifier>urn:uuid:a06b1f40-f85f-469e-a1af-ede1b578553d</dct:identifier>
+                <dct:modified>2024-03-18T10:24:25.215Z</dct:modified>
+                <dct:issued>2020-11-16T12:00:00</dct:issued>
+                <dct:title xml:lang="fre">INSPIRE - Stations de mesure de la hauteur d'eau des cours d’eau non-navigables en Wallonie (BE)</dct:title>
+                <dct:description xml:lang="fre">Cette couche de données localise les principales stations de mesure des débits, ou limnigraphes, installées sur les cours d'eau non navigables.
+
+                    Afin de mieux appréhender la gestion des cours d'eau, la Direction des Cours d'eau non navigables (SPW - Agriculture, Ressources naturelles et Environnement - Département du Développement, de la Ruralité et des Cours d'eau et du Bien-être animal - Direction des Cours d'Eau non navigables) a développé au cours du temps un réseau de mesures en continu des hauteurs d'eau et des débits couvrant l'ensemble des bassins hydrographiques.
+
+                    Il s'agit d'un des deux réseaux de mesures limnimétriques sur l'ensemble de la Wallonie, l'autre étant celui exploité par la Direction de la Gestion hydrologique (SPW - Mobilité et Infrastructures - Département Expertises Hydraulique et Environnement - Direction de la Gestion hydrologique) et faisant partie du système WACONDAH (Water CONtrol DAta system for Hydrology and water management).
+
+                    La gestion du réseau se scinde en deux grandes parties : la mesure du niveau d’eau et la conversion de ce dernier en débit. Le bon fonctionnement des capteurs mesurant la hauteur d’eau est vérifié toutes les deux semaines minimum sur site et plusieurs fois par semaine à partir des graphiques. Au minimum 10 jaugeages par an sont réalisés pour chacune des stations de mesures afin de contrôler les courbes de tarage.
+
+                    Les données sont transférées automatiquement dans une base de données Oracle nommée AQUALIM. Elle contient des informations liées aux stations (description, localité, etc.), les visites de contrôle effectuées sur terrain, les données horaires, journalières, mensuelles et annuelles, l'historique des différentes crues, etc.
+
+                    De plus amples informations peuvent être obtenues via le site internet : L'hydrométrie en Wallonie - Hauteur (https://hydrometrie.wallonie.be/home/observations/hauteur.html?).</dct:description>
+                <dct:language>
+                    <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/FRA"/>
+                </dct:language>
+                <dct:source rdf:resource="https://metawal.wallonie.be/geonetwork/srv/api/records/a06b1f40-f85f-469e-a1af-ede1b578553d"/>
+                <dct:conformsTo>
+                    <dct:Standard rdf:about="http://data.europa.eu/r5r/"/>
+                </dct:conformsTo>
+                <dct:conformsTo>
+                    <dct:Standard>
+                        <dct:title>DCAT-AP</dct:title>
+                        <dct:description xml:lang="fre">Profil DCAT pour le partage d'informations sur les catalogues contenant des descriptions de jeux de données et de services de données en Europe, sous la maintenance de l'action SEMIC, Interoperable Europe.</dct:description>
+                        <owl:versionInfo xmlns:owl="http://www.w3.org/2002/07/owl#">2.0</owl:versionInfo>
+                    </dct:Standard>
+                </dct:conformsTo>
+                <foaf:primaryTopic rdf:resource="https://metawal.wallonie.be/geonetwork/srv/api/records/a06b1f40-f85f-469e-a1af-ede1b578553d"/>
+            </dcat:CatalogRecord>
+        </dcat:record>
+        <dcat:dataset>
+            <dcat:Dataset rdf:about="https://metawal.wallonie.be/geonetwork/srv/api/records/a06b1f40-f85f-469e-a1af-ede1b578553d">
+                <dct:type>
+                    <skos:Concept rdf:about="http://purl.org/dc/dcmitype/Dataset">
+                        <skos:prefLabel>Dataset</skos:prefLabel>
+                    </skos:Concept>
+                </dct:type>
+                <foaf:isPrimaryTopicOf>
+                    <dcat:CatalogRecord>
+                        <dct:identifier>urn:uuid:a06b1f40-f85f-469e-a1af-ede1b578553d</dct:identifier>
+                        <dct:modified>2024-03-18T10:24:25.215Z</dct:modified>
+                        <dct:issued>2020-11-16T12:00:00</dct:issued>
+                        <dct:title xml:lang="fre">INSPIRE - Stations de mesure de la hauteur d'eau des cours d’eau non-navigables en Wallonie (BE)</dct:title>
+                        <dct:description xml:lang="fre">Cette couche de données localise les principales stations de mesure des débits, ou limnigraphes, installées sur les cours d'eau non navigables.
+
+                            Afin de mieux appréhender la gestion des cours d'eau, la Direction des Cours d'eau non navigables (SPW - Agriculture, Ressources naturelles et Environnement - Département du Développement, de la Ruralité et des Cours d'eau et du Bien-être animal - Direction des Cours d'Eau non navigables) a développé au cours du temps un réseau de mesures en continu des hauteurs d'eau et des débits couvrant l'ensemble des bassins hydrographiques.
+
+                            Il s'agit d'un des deux réseaux de mesures limnimétriques sur l'ensemble de la Wallonie, l'autre étant celui exploité par la Direction de la Gestion hydrologique (SPW - Mobilité et Infrastructures - Département Expertises Hydraulique et Environnement - Direction de la Gestion hydrologique) et faisant partie du système WACONDAH (Water CONtrol DAta system for Hydrology and water management).
+
+                            La gestion du réseau se scinde en deux grandes parties : la mesure du niveau d’eau et la conversion de ce dernier en débit. Le bon fonctionnement des capteurs mesurant la hauteur d’eau est vérifié toutes les deux semaines minimum sur site et plusieurs fois par semaine à partir des graphiques. Au minimum 10 jaugeages par an sont réalisés pour chacune des stations de mesures afin de contrôler les courbes de tarage.
+
+                            Les données sont transférées automatiquement dans une base de données Oracle nommée AQUALIM. Elle contient des informations liées aux stations (description, localité, etc.), les visites de contrôle effectuées sur terrain, les données horaires, journalières, mensuelles et annuelles, l'historique des différentes crues, etc.
+
+                            De plus amples informations peuvent être obtenues via le site internet : L'hydrométrie en Wallonie - Hauteur (https://hydrometrie.wallonie.be/home/observations/hauteur.html?).</dct:description>
+                        <dct:language>
+                            <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/FRA"/>
+                        </dct:language>
+                        <dct:source rdf:resource="https://metawal.wallonie.be/geonetwork/srv/api/records/a06b1f40-f85f-469e-a1af-ede1b578553d"/>
+                        <dct:conformsTo>
+                            <dct:Standard rdf:about="http://data.europa.eu/r5r/"/>
+                        </dct:conformsTo>
+                        <foaf:primaryTopic rdf:resource="https://metawal.wallonie.be/geonetwork/srv/api/records/a06b1f40-f85f-469e-a1af-ede1b578553d"/>
+                    </dcat:CatalogRecord>
+                </foaf:isPrimaryTopicOf>
+                <dct:conformsTo>
+                    <dct:Standard>
+                        <dct:title xml:lang="fre">ISO 19115</dct:title>
+                        <owl:versionInfo xml:lang="fre">2003/Cor 1:2006</owl:versionInfo>
+                    </dct:Standard>
+                </dct:conformsTo>
+                <dct:title xml:lang="fre">INSPIRE - Stations de mesure de la hauteur d'eau des cours d’eau non-navigables en Wallonie (BE)</dct:title>
+                <dct:issued>2020-11-16</dct:issued>
+                <dct:modified>2023-05-12</dct:modified>
+                <dct:identifier>http://geodata.wallonie.be/id/a06b1f40-f85f-469e-a1af-ede1b578553d</dct:identifier>
+                <adms:identifier>
+                    <adms:Identifier>
+                        <skos:notation>EnvironmentalMonitoringFacility_SurfaceWater_Gauging</skos:notation>
+                    </adms:Identifier>
+                </adms:identifier>
+                <dct:description xml:lang="fre">Cette couche de données localise les principales stations de mesure des débits, ou limnigraphes, installées sur les cours d'eau non navigables.
+
+                    Afin de mieux appréhender la gestion des cours d'eau, la Direction des Cours d'eau non navigables (SPW - Agriculture, Ressources naturelles et Environnement - Département du Développement, de la Ruralité et des Cours d'eau et du Bien-être animal - Direction des Cours d'Eau non navigables) a développé au cours du temps un réseau de mesures en continu des hauteurs d'eau et des débits couvrant l'ensemble des bassins hydrographiques.
+
+                    Il s'agit d'un des deux réseaux de mesures limnimétriques sur l'ensemble de la Wallonie, l'autre étant celui exploité par la Direction de la Gestion hydrologique (SPW - Mobilité et Infrastructures - Département Expertises Hydraulique et Environnement - Direction de la Gestion hydrologique) et faisant partie du système WACONDAH (Water CONtrol DAta system for Hydrology and water management).
+
+                    La gestion du réseau se scinde en deux grandes parties : la mesure du niveau d’eau et la conversion de ce dernier en débit. Le bon fonctionnement des capteurs mesurant la hauteur d’eau est vérifié toutes les deux semaines minimum sur site et plusieurs fois par semaine à partir des graphiques. Au minimum 10 jaugeages par an sont réalisés pour chacune des stations de mesures afin de contrôler les courbes de tarage.
+
+                    Les données sont transférées automatiquement dans une base de données Oracle nommée AQUALIM. Elle contient des informations liées aux stations (description, localité, etc.), les visites de contrôle effectuées sur terrain, les données horaires, journalières, mensuelles et annuelles, l'historique des différentes crues, etc.
+
+                    De plus amples informations peuvent être obtenues via le site internet : L'hydrométrie en Wallonie - Hauteur (https://hydrometrie.wallonie.be/home/observations/hauteur.html?).</dct:description>
+                <adms:status>
+                    <skos:Concept rdf:about="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#planned">
+                        <skos:prefLabel xml:lang="fre">Planifié</skos:prefLabel>
+                    </skos:Concept>
+                </adms:status>
+                <dcat:contactPoint>
+                    <vcard:Organization>
+                        <vcard:org rdf:resource="n64"/>
+                        <vcard:hasEmail rdf:resource="mailto:helpdesk.carto@spw.wallonie.be"/>
+                    </vcard:Organization>
+                </dcat:contactPoint>
+                <prov:qualifiedAttribution>
+                    <prov:Attribution>
+                        <prov:agent>
+                            <foaf:Organization>
+                                <foaf:name xml:lang="fre">Direction des Cours d'eau non navigables (SPW - Agriculture, Ressources naturelles et Environnement - Département du Développement, de la Ruralité et des Cours d'eau et du Bien-être animal - Direction des Cours d'Eau non navigables)</foaf:name>
+                                <foaf:mbox rdf:resource="mailto:sebastien.gailliez@spw.wallonie.be"/>
+                            </foaf:Organization>
+                        </prov:agent>
+                        <dcat:hadRole>
+                            <dcat:Role rdf:about="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#custodian">
+                                <skos:prefLabel>custodian</skos:prefLabel>
+                            </dcat:Role>
+                        </dcat:hadRole>
+                    </prov:Attribution>
+                </prov:qualifiedAttribution>
+                <dct:rightsHolder>
+                    <foaf:Organization rdf:about="https://geoportail.wallonie.be">
+                        <foaf:name xml:lang="fre">Service public de Wallonie (SPW)</foaf:name>
+                        <foaf:mbox rdf:resource="mailto:helpdesk.carto@spw.wallonie.be"/>
+                        <foaf:workplaceHomepage xml:lang="fre">https://geoportail.wallonie.be</foaf:workplaceHomepage>
+                    </foaf:Organization>
+                </dct:rightsHolder>
+                <dcat:theme>
+                    <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/10">
+                        <skos:prefLabel xml:lang="fre">Nature et environnement</skos:prefLabel>
+                    </skos:Concept>
+                </dcat:theme>
+                <dcat:theme>
+                    <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/1020">
+                        <skos:prefLabel xml:lang="fre">Eau</skos:prefLabel>
+                    </skos:Concept>
+                </dcat:theme>
+                <dcat:theme>
+                    <skos:Concept rdf:about="http://inspire.ec.europa.eu/theme/ef">
+                        <skos:prefLabel xml:lang="fre">Installations de suivi environnemental</skos:prefLabel>
+                    </skos:Concept>
+                </dcat:theme>
+                <dcat:keyword xml:lang="fre">Monitoring stations (Water Framework Directive)</dcat:keyword>
+                <dcat:keyword xml:lang="fre">Directive 2000/60/EC</dcat:keyword>
+                <dcat:keyword xml:lang="fre">gestion de la quantité d'eau</dcat:keyword>
+                <dcat:keyword xml:lang="fre">surveillance de l'eau</dcat:keyword>
+                <dcat:keyword xml:lang="fre">gestion de cours d'eau</dcat:keyword>
+                <dcat:keyword xml:lang="fre">réseau de mesure</dcat:keyword>
+                <dcat:keyword xml:lang="fre">hydrographie</dcat:keyword>
+                <dcat:keyword xml:lang="fre">débit</dcat:keyword>
+                <dcat:keyword xml:lang="fre">mesure du courant (dans un cours d'eau)</dcat:keyword>
+                <dcat:keyword xml:lang="fre">eaux intérieures</dcat:keyword>
+                <dcat:keyword xml:lang="fre">programme</dcat:keyword>
+                <dcat:keyword xml:lang="fre">cours d'eau</dcat:keyword>
+                <dcat:keyword xml:lang="fre">station de surveillance</dcat:keyword>
+                <dcat:keyword xml:lang="fre">BDInfraSIG</dcat:keyword>
+                <dcat:keyword xml:lang="fre">Open Data</dcat:keyword>
+                <dcat:keyword xml:lang="fre">INSPIRE Priority Dataset</dcat:keyword>
+                <dcat:keyword xml:lang="fre">Reporting INSPIRE</dcat:keyword>
+                <dcat:keyword xml:lang="fre">WalOnMap</dcat:keyword>
+                <dcat:keyword xml:lang="fre">Extraction_DIG</dcat:keyword>
+                <dcat:keyword xml:lang="fre">réseau limnimétrique</dcat:keyword>
+                <dcat:keyword xml:lang="fre">limnimétrie</dcat:keyword>
+                <dcat:keyword xml:lang="fre">jaugeage</dcat:keyword>
+                <dcat:keyword xml:lang="fre">hauteur d'eau</dcat:keyword>
+                <dcat:keyword xml:lang="fre">échelle limnimétrique</dcat:keyword>
+                <dcat:keyword xml:lang="fre">aqualim</dcat:keyword>
+                <dcat:keyword xml:lang="fre">cours d'eau non navigable</dcat:keyword>
+                <dcat:theme>
+                    <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/SpatialScope/regional">
+                        <skos:prefLabel xml:lang="fre">Régional</skos:prefLabel>
+                    </skos:Concept>
+                </dcat:theme>
+                <dcat:keyword xml:lang="fre">Observation de la terre et environnement</dcat:keyword>
+                <dcat:keyword xml:lang="fre">2023/138</dcat:keyword>
+                <dct:accessRights>
+                    <dct:RightsStatement rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations"/>
+                </dct:accessRights>
+                <dct:rights>
+                    <dct:RightsStatement/>
+                </dct:rights>
+                <dct:rights>
+                    <dct:RightsStatement>
+                        <dct:description xml:lang="fre">Conditions d'accès et d'utilisation spécifiques</dct:description>
+                    </dct:RightsStatement>
+                </dct:rights>
+                <dct:isPartOf rdf:resource="https://metawal.wallonie.be/geonetwork/srv/api/records/49373603-418d-451b-afb5-7badc8783a43"/>
+                <dct:language>
+                    <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/FRA"/>
+                </dct:language>
+                <dct:conformsTo>
+                    <dct:Standard rdf:about="http://data.europa.eu/eli/reg/2010/1089"/>
+                </dct:conformsTo>
+                <dct:conformsTo>
+                    <dct:Standard>
+                        <rdfs:label xml:lang="fre">INSPIRE Data Specification on Environmental Monitoring Facilities - Guidelines v 3.0.0</rdfs:label>
+                        <dct:issued>2013-12-10</dct:issued>
+                    </dct:Standard>
+                </dct:conformsTo>
+                <dct:provenance>
+                    <dct:ProvenanceStatement>
+                        <dct:description xml:lang="fre">La Direction des Cours d'eau non navigables (SPW - Agriculture, Ressources naturelles et Environnement - Département du Développement, de la Ruralité et des Cours d'eau et du Bien-être animal - Direction des Cours d'Eau non navigables) gère un réseau de mesures limnimétriques. L'installation des premières stations de mesure a débuté à partir de 1966. De 1966 à 1987, la gestion du réseau de mesures limnimétriques est assurée par l'ancien service de l'Hydraulique agricole devenu la Direction des Cours d'eau non navigables. La digitalisation et la validation des données sont effectuées au sein du département d'hydrologie de l'Institut Royal Météorologique (IRM). Le réseau a compté jusqu'à 208 échelles limnimétriques. En 1967, les premiers limnigraphes ont fait leur apparition mais en nombre restreint (6 au total). Contrairement aux échelles limnimétriques, les limnigraphes permettent un enregistrement continu des hauteurs d'eau sur support papier. A la fin de l'année 1986, on pouvait compter un peu plus d'une cinquantaine de limnigraphes répartis sur les cours d'eau non navigables de la Wallonie. En 1988, la gestion du réseau de mesures limnimétriques est reprise par la Direction Générale des Ressources naturelles et de l'Environnement de la Région wallonne, et en plus particulier, par la Division de l'eau. Le réseau se modernise. Depuis le début de l'année 1991, les stations de mesure ont été remplacées progressivement par des U.P.A.D. (Unité portable d'acquisition de données), ce qui permet de disposer en temps réel de la hauteur d'eau des stations. En 1999, le projet AQUALIM a permis l'informatisation complète des activités liées à la limnimétrie (télégestion, suivi des maintenances et du parc de matériel, outils de validation, de traitement et de diffusion des données). Une base de données de type ORACLE (appelée également AQUALIM) permet la gestion quotidienne des mesures. Cette base de données est alimentée quotidiennement par un appel automatique des stations. Entre les années 2002 et 2010, le nombre de station de mesure a été quasiment doublé afin de connaître au mieux le débit des cours d'eau dont la Direction des Cours d'Eau non navigables a la gestion. Dans le courant de l'année 2011, une modernisation du réseau de mesure a eu lieu. L'objectif était de remplacer l'entièreté de toutes les stations de mesure (capteur, partie électronique, modem, câblage et coffret). Depuis le 01 juillet 2011, les données prises toutes les 10 minutes sont stockées et envoyées chaque heure vers la base de données AQUALIM.</dct:description>
+                    </dct:ProvenanceStatement>
+                </dct:provenance>
+                <dcat:theme>
+                    <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/ENVI">
+                        <skos:prefLabel xml:lang="fr">Environnement</skos:prefLabel>
+                    </skos:Concept>
+                </dcat:theme>
+                <dct:spatial>
+                    <dct:Location>
+                        <dcat:bbox>{"type":"Polygon","coordinates":[[[2.75,50.85],[6.50,50.85],[6.50,49.45],[2.75,49.45],[2.75,50.85]]]}</dcat:bbox>
+                    </dct:Location>
+                </dct:spatial>
+                <dct:accrualPeriodicity>
+                    <dct:Frequency rdf:about="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#asNeeded"/>
+                </dct:accrualPeriodicity>
+                <foaf:page>
+                    <foaf:Document rdf:about="https://metawal.wallonie.be/geonetwork/srv/api/records/a06b1f40-f85f-469e-a1af-ede1b578553d/attachments/EF.png">
+                        <dct:description xml:lang="fre">EF.png</dct:description>
+                    </foaf:Document>
+                </foaf:page>
+                <foaf:page>
+                    <foaf:Document rdf:about="https://hydrometrie.wallonie.be/home/observations/hauteur.html?">
+                        <dct:title xml:lang="fre">L'hydrométrie en Wallonie - Hauteur</dct:title>
+                        <dct:description xml:lang="fre">Cartographie en ligne des hauteurs d'eau sur le site du SPW</dct:description>
+                    </foaf:Document>
+                </foaf:page>
+                <dcat:distribution>
+                    <dcat:Distribution>
+                        <dct:title xml:lang="fre">INSPIRE - Installations de suivi environnemental en Wallonie (BE) - Service de visualisation WMS</dct:title>
+                        <dcat:accessURL rdf:resource="https://geoservices.wallonie.be/geoserver/inspire_ef/ows?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities"/>
+                        <dcat:accessService>
+                            <dcat:DataService>
+                                <dct:title xml:lang="fre">INSPIRE - Installations de suivi environnemental en Wallonie (BE) - Service de visualisation WMS</dct:title>
+                                <dcat:endpointURL rdf:resource="https://geoservices.wallonie.be/geoserver/inspire_ef/ows?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities"/>
+                                <dct:conformsTo>
+                                    <dct:Standard rdf:about="http://www.opengeospatial.org/standards/wms"/>
+                                </dct:conformsTo>
+                            </dcat:DataService>
+                        </dcat:accessService>
+                    </dcat:Distribution>
+                </dcat:distribution>
+                <dcat:distribution>
+                    <dcat:Distribution>
+                        <dct:title xml:lang="fre">INSPIRE - Installations de suivi environnemental en Wallonie (BE) - Service de téléchargement</dct:title>
+                        <dcat:accessURL rdf:resource="https://geoservices.wallonie.be/inspire/atom/EF_Service.xml"/>
+                    </dcat:Distribution>
+                </dcat:distribution>
+            </dcat:Dataset>
+        </dcat:dataset>
+    </dcat:Catalog>
+</rdf:RDF>

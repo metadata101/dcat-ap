@@ -60,12 +60,14 @@ Stylesheet used to update metadata adding a reference to a parent record.
                            dct:conformsTo|
                            foaf:page|
                            dct:accrualPeriodicity|
-                           dct:hasVersion|
-                           dct:isVersionOf|
+                           dcat:hasVersion|
+                           dcat:isVersionOf|
                            dcat:landingPage|
                            dct:language|
                            adms:identifier|
-                           dct:provenance"/>
+                           dct:provenance|
+                           dct:hasVersion|
+                           dct:isVersionOf"/> <!-- DCAT-AP v2 compatibility -->
 
       <xsl:copy-of select="dct:relation[@rdf:resource != $url]"/>
       <dct:relation rdf:resource="{$url}"/>
@@ -74,7 +76,7 @@ Stylesheet used to update metadata adding a reference to a parent record.
                            dct:spatial|
                            dct:temporal|
                            dct:type|
-                           owl:versionInfo|
+                           dcat:version|
                            adms:versionNotes|
                            dcat:extension|
                            dcat:distribution|
@@ -82,7 +84,8 @@ Stylesheet used to update metadata adding a reference to a parent record.
                            dcat:qualifiedRelation|
                            dct:creator|
                            dct:isReferencedBy|
-                           dct:rights"/>
+                           dct:rights|
+                           owl:versionInfo"/> <!-- DCAT-AP v2 compatibility -->
     </xsl:copy>
   </xsl:template>
 

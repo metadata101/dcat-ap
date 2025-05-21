@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:adms="http://www.w3.org/ns/adms#" xmlns:pav="http://purl.org/pav/" xmlns:org="http://www.w3.org/ns/org#" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:dct="http://purl.org/dc/terms/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <dcat:Catalog rdf:about="http://geonetwork-ui/catalog">
+        <dcat:record>
+            <dcat:CatalogRecord>
+                <dct:modified>2023-01-05T09:44:38.224Z</dct:modified>
+                <dct:title xml:lang="fre">Cartographie des sols agricoles de la plaine du Rhône</dct:title>
+                <dct:title xml:lang="ger">Thematische Karten der landwirtschaftlichen Böden im Rhonetal</dct:title>
+                <dct:description xml:lang="fre">Cartographie des sols agricoles de la plaine du Rhône comportant toutes les informations nécessaires sur les sols et leurs propriétés (cartes thématiques). Profils pédologiques et sondages sont aussi représentés.</dct:description>
+                <dct:description xml:lang="ger">Kartografie der landwirtschaftlichen Böden in der Rhoneebene mit allen notwendigen Informationen über die Böden und ihre Eigenschaften (thematische Karten). Bodenprofile und Sondierungen sind ebenfalls dargestellt.</dct:description>
+                <dct:language>
+                    <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/FRA"/>
+                </dct:language>
+                <dct:language>
+                    <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+                </dct:language>
+                <dct:language>
+                    <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/ITA"/>
+                </dct:language>
+                <dct:language>
+                    <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/ENG"/>
+                </dct:language>
+                <dct:language>
+                    <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/ROH"/>
+                </dct:language>
+                <dct:conformsTo>
+                    <dct:Standard rdf:about="http://data.europa.eu/r5r/"/>
+                </dct:conformsTo>
+                <dct:conformsTo>
+                    <dct:Standard>
+                        <dct:title>DCAT-AP</dct:title>
+                        <dct:description xml:lang="ger">DCAT-Profil zur gemeinsamen Nutzung von Informationen über Kataloge, die Datensätze und Datenservicebeschreibungen in Europa enthalten, unter der Wartung durch die SEMIC-Aktion, Interoperable Europe.</dct:description>
+                        <dct:description xml:lang="fre">Profil DCAT pour le partage d'informations sur les catalogues contenant des descriptions de jeux de données et de services de données en Europe, sous la maintenance de l'action SEMIC, Interoperable Europe.</dct:description>
+                        <dct:description xml:lang="eng">DCAT profile for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe, under maintenance by the SEMIC action, Interoperable Europe.</dct:description>
+                        <owl:versionInfo xmlns:owl="http://www.w3.org/2002/07/owl#">2.0</owl:versionInfo>
+                    </dct:Standard>
+                </dct:conformsTo>
+                <foaf:primaryTopic rdf:resource="https://geonetwork-ui.apps.gs-ch-prod.camptocamp.com/geonetwork/srv/api/records/a8b5e6c0-c21d-4c32-b8f9-10830215890a"/>
+                <dct:identifier>a8b5e6c0-c21d-4c32-b8f9-10830215890a </dct:identifier>
+            </dcat:CatalogRecord>
+        </dcat:record>
+        <dcat:dataset>
+            <dcat:DatasetSeries rdf:about="https://geonetwork-ui.apps.gs-ch-prod.camptocamp.com/geonetwork/srv/api/records/a8b5e6c0-c21d-4c32-b8f9-10830215890a">
+                <dct:type>
+                    <skos:Concept rdf:about="http://purl.org/dc/dcmitype/Collection">
+                        <skos:prefLabel>Collection</skos:prefLabel>
+                    </skos:Concept>
+                </dct:type>
+                <foaf:isPrimaryTopicOf>
+                    <dcat:CatalogRecord>
+                        <dct:modified>2023-01-05T09:44:38.224Z</dct:modified>
+                        <dct:title xml:lang="fre">Cartographie des sols agricoles de la plaine du Rhône</dct:title>
+                        <dct:title xml:lang="ger">Thematische Karten der landwirtschaftlichen Böden im Rhonetal</dct:title>
+                        <dct:description xml:lang="fre">Cartographie des sols agricoles de la plaine du Rhône comportant toutes les informations nécessaires sur les sols et leurs propriétés (cartes thématiques). Profils pédologiques et sondages sont aussi représentés.</dct:description>
+                        <dct:description xml:lang="ger">Kartografie der landwirtschaftlichen Böden in der Rhoneebene mit allen notwendigen Informationen über die Böden und ihre Eigenschaften (thematische Karten). Bodenprofile und Sondierungen sind ebenfalls dargestellt.</dct:description>
+                        <dct:language>
+                            <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/FRA"/>
+                        </dct:language>
+                        <dct:language>
+                            <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+                        </dct:language>
+                        <dct:language>
+                            <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/ITA"/>
+                        </dct:language>
+                        <dct:language>
+                            <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/ENG"/>
+                        </dct:language>
+                        <dct:language>
+                            <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/ROH"/>
+                        </dct:language>
+                        <dct:conformsTo>
+                            <dct:Standard rdf:about="http://data.europa.eu/r5r/"/>
+                        </dct:conformsTo>
+                        <foaf:primaryTopic rdf:resource="https://geonetwork-ui.apps.gs-ch-prod.camptocamp.com/geonetwork/srv/api/records/a8b5e6c0-c21d-4c32-b8f9-10830215890a"/>
+                        <dct:identifier>a8b5e6c0-c21d-4c32-b8f9-10830215890a </dct:identifier>
+                    </dcat:CatalogRecord>
+                </foaf:isPrimaryTopicOf>
+                <dct:title xml:lang="fre">Cartographie des sols agricoles de la plaine du Rhône</dct:title>
+                <dct:title xml:lang="ger">Thematische Karten der landwirtschaftlichen Böden im Rhonetal</dct:title>
+                <dct:issued>2013-11-29</dct:issued>
+                <dct:identifier>560</dct:identifier>
+                <dct:description xml:lang="fre">Cartographie des sols agricoles de la plaine du Rhône comportant toutes les informations nécessaires sur les sols et leurs propriétés (cartes thématiques). Profils pédologiques et sondages sont aussi représentés.</dct:description>
+                <dct:description xml:lang="ger">Kartografie der landwirtschaftlichen Böden in der Rhoneebene mit allen notwendigen Informationen über die Böden und ihre Eigenschaften (thematische Karten). Bodenprofile und Sondierungen sind ebenfalls dargestellt.</dct:description>
+                <adms:status>
+                    <skos:Concept rdf:about="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#completed">
+                        <skos:prefLabel xml:lang="fre">Finalisé</skos:prefLabel>
+                        <skos:prefLabel xml:lang="ger">Completed</skos:prefLabel>
+                        <skos:prefLabel xml:lang="ita">Completed</skos:prefLabel>
+                        <skos:prefLabel xml:lang="eng">Completed</skos:prefLabel>
+                        <skos:prefLabel xml:lang="roh">Completed</skos:prefLabel>
+                    </skos:Concept>
+                </adms:status>
+                <dcat:keyword xml:lang="fre">sol</dcat:keyword>
+                <dcat:keyword xml:lang="ger">Boden</dcat:keyword>
+                <dcat:keyword xml:lang="ita">suolo</dcat:keyword>
+                <dcat:keyword xml:lang="eng">soil</dcat:keyword>
+                <dcat:keyword xml:lang="fre">Usage des sols</dcat:keyword>
+                <dcat:keyword xml:lang="ger">Bodennutzung</dcat:keyword>
+                <dcat:keyword xml:lang="ita">Utilizzo del territorio</dcat:keyword>
+                <dcat:keyword xml:lang="eng">Land use</dcat:keyword>
+                <dcat:keyword xml:lang="fre">compactage du sol</dcat:keyword>
+                <dcat:keyword xml:lang="ger">Bodenverdichtung</dcat:keyword>
+                <dcat:keyword xml:lang="ita">compattazione del suolo</dcat:keyword>
+                <dcat:keyword xml:lang="eng">soil compaction</dcat:keyword>
+                <dcat:keyword xml:lang="fre">irrigation</dcat:keyword>
+                <dcat:keyword xml:lang="ger">Bewässerung</dcat:keyword>
+                <dcat:keyword xml:lang="ita">irrigazione</dcat:keyword>
+                <dcat:keyword xml:lang="eng">irrigation</dcat:keyword>
+                <dcat:keyword xml:lang="fre">drainage</dcat:keyword>
+                <dcat:keyword xml:lang="ger">Entwässerung</dcat:keyword>
+                <dcat:keyword xml:lang="ita">drenaggio</dcat:keyword>
+                <dcat:keyword xml:lang="eng">drainage</dcat:keyword>
+                <dct:language>
+                    <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/FRA"/>
+                </dct:language>
+                <dct:language>
+                    <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+                </dct:language>
+                <dct:provenance>
+                    <dct:ProvenanceStatement>
+                        <dct:description xml:lang="fre">Mandat du groupement Catena Rhône attribué par le Conseil d'Etat le 20.09.2006.</dct:description>
+                        <dct:description xml:lang="ger">Mandat am 20.09.2006 vom Staatsrat des Kantons Wallis an die Bürogruppierung Catena Rhône vergeben.</dct:description>
+                    </dct:ProvenanceStatement>
+                </dct:provenance>
+                <dct:source/>
+                <dcat:theme>
+                    <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/TECH">
+                        <skos:prefLabel xml:lang="de">Wissenschaft und Technologie</skos:prefLabel>
+                        <skos:prefLabel xml:lang="en">Science and technology</skos:prefLabel>
+                        <skos:prefLabel xml:lang="fr">Science et technologie</skos:prefLabel>
+                        <skos:prefLabel xml:lang="it">Scienza e tecnologia</skos:prefLabel>
+                    </skos:Concept>
+                </dcat:theme>
+                <dct:spatial>
+                    <dct:Location>
+                        <dcat:bbox>{"type":"Polygon","coordinates":[[[6.771418,46.655923],[8.479620,46.655923],[8.479620,45.859978],[6.771418,45.859978],[6.771418,46.655923]]]}</dcat:bbox>
+                    </dct:Location>
+                </dct:spatial>
+                <dct:accrualPeriodicity>
+                    <dct:Frequency rdf:about="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#notPlanned"/>
+                </dct:accrualPeriodicity>
+                <foaf:page>
+                    <foaf:Document rdf:about="https://geonetwork-ui.apps.gs-ch-prod.camptocamp.com/geonetwork/srv/api/records/a8b5e6c0-c21d-4c32-b8f9-10830215890a/attachments/SEN_CartesThematiquesSols.png"/>
+                </foaf:page>
+                <foaf:page>
+                    <foaf:Document rdf:about="https://sitonline.vs.ch/environnement/sols_cartes_thematiques/fr/">
+                        <dct:title xml:lang="fre">Géoportail du Canton du Valais</dct:title>
+                        <dct:title xml:lang="ger">Geoportal Kanton Wallis</dct:title>
+                    </foaf:Document>
+                </foaf:page>
+            </dcat:DatasetSeries>
+        </dcat:dataset>
+    </dcat:Catalog>
+</rdf:RDF>
