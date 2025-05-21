@@ -23,9 +23,10 @@
 
   <xsl:variable name="nodeUrl" select="util:getSettingValue('nodeUrl')"/>
 
-  <xsl:variable name="catalogUuid" select=".//rdf:RDF/dcat:CatalogRecord[not(@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource)]/dct:identifier"/>
+  <xsl:variable name="catalogUuid" select="/rdf:RDF/geonet:info/uuid"/>
 
   <xsl:template match="dcat:Catalog">
+
     <xsl:copy>
       <xsl:copy-of select="*"/>
 

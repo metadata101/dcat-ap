@@ -9,10 +9,9 @@
                 version="2.0">
 
   <xsl:param name="uuidref"/>
+  <xsl:variable name="catalogUuid" select="/rdf:RDF/geonet:info/uuid"/>
 
   <xsl:variable name="nodeUrl" select="util:getSettingValue('nodeUrl')"/>
-
-  <xsl:variable name="catalogUuid" select=".//rdf:RDF/dcat:CatalogRecord[not(@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource)]/dct:identifier"/>
 
   <xsl:template match="dcat:Catalog/dcat:record[@rdf:resource = concat($nodeUrl, 'api/records/', $catalogUuid, '/', $uuidref)]|
                                      dcat:CatalogRecord[@rdf:about = concat($nodeUrl, 'api/records/', $catalogUuid, '/', $uuidref)]"/>
