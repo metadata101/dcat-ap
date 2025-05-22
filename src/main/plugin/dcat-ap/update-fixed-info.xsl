@@ -36,6 +36,8 @@
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:gml="http://www.opengis.net/gml"
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+                xmlns:dcatutil="java:org.fao.geonet.schema.dcatap.util.XslUtil"
+                xmlns:util="java:org.fao.geonet.util.XslUtil"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
@@ -444,7 +446,21 @@
             <xsl:attribute name="rdf:datatype">http://www.opengis.net/ont/geosparql#gmlLiteral</xsl:attribute>
           </xsl:element>
         </xsl:if>
-        <xsl:apply-templates select="node()[name(.) != 'locn:geometry']"/>
+        <xsl:apply-templates select="node()[* except (locn:geometry, skos:prefLabel)]"/>
+
+        <xsl:variable name="keywordUri" select="@rdf:about"/>
+        <xsl:variable name="keywordLabels"
+                      select="dcatutil:getKeywordValuesByUri($keywordUri, '', string-join($locales/lang/@id, ','))"
+                      as="node()?"/>
+
+        <xsl:for-each select="$locales/lang">
+          <xsl:variable name="label" select="$keywordLabels/keyword/*[name() = current()/@id]"/>
+          <xsl:if test="$label != ''">
+            <skos:prefLabel xml:lang="{current()/@code}">
+              <xsl:value-of select="$label"/>
+            </skos:prefLabel>
+          </xsl:if>
+        </xsl:for-each>
       </xsl:if>
     </xsl:copy>
   </xsl:template>
