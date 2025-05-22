@@ -444,10 +444,21 @@
                                 'resourceTitleObject',
                                 '')"/>
 
-        <xsl:if test="$recordTitle != ''">
-          <div class="col-sm-9 col-xs-11">
-            <input type="text" readonly="readonly" value="{$recordTitle}" class="form-control"/></div>
-        </xsl:if>
+        <xsl:choose>
+          <xsl:when test="$recordTitle != ''">
+            <div class="col-sm-9 col-xs-11">
+              <input type="text" readonly="readonly" value="{$recordTitle}" class="form-control"/>
+            </div>
+          </xsl:when>
+          <xsl:otherwise>
+            <div class="col-sm-9 col-xs-11">
+              <div class="alert alert-danger">
+                <strong><xsl:value-of select="$strings/virtualCatalogAssociatedRecordNotFound"/></strong><br/>
+                <xsl:value-of select="$strings/virtualCatalogAssociatedRecordNotFound-help"/>
+              </div>
+            </div>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:if>
     </xsl:if>
   </xsl:template>

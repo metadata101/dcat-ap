@@ -20,6 +20,8 @@
   <tabCatalogAssociatedRecords>Associated records</tabCatalogAssociatedRecords>
   <associatedRecords>Records</associatedRecords>
   <associatedRecord>Associated record</associatedRecord>
+  <virtualCatalogAssociatedRecordNotFound>Associated record not found in catalog.</virtualCatalogAssociatedRecordNotFound>
+  <virtualCatalogAssociatedRecordNotFound-help>Record may have been deleted. Check the relationship.</virtualCatalogAssociatedRecordNotFound-help>
   <extraInformation>Extra informatie</extraInformation>
   <catalogRecordInformation>Cataloog record</catalogRecordInformation>
   <conformToInformation>Conformiteit met standaard</conformToInformation>
