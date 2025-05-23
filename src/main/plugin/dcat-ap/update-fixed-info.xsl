@@ -36,6 +36,8 @@
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:gml="http://www.opengis.net/gml"
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+                xmlns:dcatutil="java:org.fao.geonet.schema.dcatap.util.XslUtil"
+                xmlns:util="java:org.fao.geonet.util.XslUtil"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
@@ -398,6 +400,7 @@
   <xsl:template match="dct:Location" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*"/>
+
       <xsl:variable name="coverage">
         <xsl:choose>
           <xsl:when test="count(locn:geometry[ends-with(@rdf:datatype, '#wktLiteral')])>0">
@@ -411,41 +414,73 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
+
       <xsl:variable name="n" select="substring-after($coverage, 'North ')"/>
-      <xsl:if test="string-length($n)=0">
-        <xsl:copy-of select="node()"/>
-      </xsl:if>
-      <xsl:if test="string-length($n)>0">
-        <xsl:variable name="north" select="substring-before($n, ',')"/>
-        <xsl:variable name="s" select="substring-after($coverage, 'South ')"/>
-        <xsl:variable name="south" select="substring-before($s, ',')"/>
-        <xsl:variable name="e" select="substring-after($coverage, 'East ')"/>
-        <xsl:variable name="east" select="substring-before($e, ',')"/>
-        <xsl:variable name="w" select="substring-after($coverage, 'West ')"/>
-        <xsl:variable name="west" select="if (contains($w, '. ')) then substring-before($w, '. ') else $w"/>
-        <xsl:variable name="isValid" select="number($west) and number($east) and number($south) and number($north)"/>
-        <xsl:if test="$isValid">
-          <xsl:variable name="wktLiteral" select="concat('POLYGON ((',$west,' ',$south,',',$west,' ',$north,',',$east,' ',$north,',', $east,' ', $south,',', $west,' ',$south,'))')"/>
-          <xsl:variable name="gmlLiteral" select="concat('&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;',$south,' ',$west,' ',$north,' ', $west, ' ', $north, ' ', $east, ' ', $south, ' ', $east,' ', $south, ' ', $west, '&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;')"/>
-          <xsl:element name="locn:geometry">
-            <xsl:attribute name="rdf:datatype">http://www.opengis.net/ont/geosparql#wktLiteral</xsl:attribute>
-            <xsl:value-of select="$wktLiteral"/>
-          </xsl:element>
-          <xsl:element name="locn:geometry">
-            <xsl:attribute name="rdf:datatype">http://www.opengis.net/ont/geosparql#gmlLiteral</xsl:attribute>
-            <xsl:value-of select="$gmlLiteral"/>
-          </xsl:element>
-        </xsl:if>
-        <xsl:if test="not($isValid)">
-          <xsl:element name="locn:geometry">
-            <xsl:attribute name="rdf:datatype">http://www.opengis.net/ont/geosparql#wktLiteral</xsl:attribute>
-          </xsl:element>
-          <xsl:element name="locn:geometry">
-            <xsl:attribute name="rdf:datatype">http://www.opengis.net/ont/geosparql#gmlLiteral</xsl:attribute>
-          </xsl:element>
-        </xsl:if>
-        <xsl:apply-templates select="node()[name(.) != 'locn:geometry']"/>
-      </xsl:if>
+
+      <!-- Build WKT representation of the geom if DC text representation is provided. -->
+      <xsl:choose>
+        <xsl:when test="string-length($n) > 0">
+          <xsl:variable name="north" select="substring-before($n, ',')"/>
+          <xsl:variable name="s" select="substring-after($coverage, 'South ')"/>
+          <xsl:variable name="south" select="substring-before($s, ',')"/>
+          <xsl:variable name="e" select="substring-after($coverage, 'East ')"/>
+          <xsl:variable name="east" select="substring-before($e, ',')"/>
+          <xsl:variable name="w" select="substring-after($coverage, 'West ')"/>
+          <xsl:variable name="west" select="if (contains($w, '. ')) then substring-before($w, '. ') else $w"/>
+          <xsl:variable name="isValid" select="number($west) and number($east) and number($south) and number($north)"/>
+          <xsl:choose>
+            <xsl:when test="$isValid">
+              <xsl:variable name="wktLiteral" select="concat('POLYGON ((',$west,' ',$south,',',$west,' ',$north,',',$east,' ',$north,',', $east,' ', $south,',', $west,' ',$south,'))')"/>
+              <xsl:variable name="gmlLiteral" select="concat('&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;',$south,' ',$west,' ',$north,' ', $west, ' ', $north, ' ', $east, ' ', $south, ' ', $east,' ', $south, ' ', $west, '&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;')"/>
+              <locn:geometry>
+                <xsl:attribute name="rdf:datatype">http://www.opengis.net/ont/geosparql#wktLiteral</xsl:attribute>
+                <xsl:value-of select="$wktLiteral"/>
+              </locn:geometry>
+              <locn:geometry>
+                <xsl:attribute name="rdf:datatype">http://www.opengis.net/ont/geosparql#gmlLiteral</xsl:attribute>
+                <xsl:value-of select="$gmlLiteral"/>
+              </locn:geometry>
+            </xsl:when>
+            <xsl:otherwise>
+              <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"/>
+              <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#gmlLiteral"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:copy-of select="locn:geometry"/>
+        </xsl:otherwise>
+      </xsl:choose>
+
+      <xsl:apply-templates select="* except (locn:geometry|skos:prefLabel)"/>
+
+      <xsl:variable name="keywordUri" select="@rdf:about"/>
+      <xsl:choose>
+        <xsl:when test="$keywordUri != '' and count($locales/lang) > 0">
+          <xsl:variable name="keywordLabels"
+                        select="dcatutil:getKeywordValuesByUri($keywordUri, '', string-join($locales/lang/@id, ','))"
+                        as="node()?"/>
+
+          <xsl:choose>
+            <xsl:when test="$keywordLabels/keyword">
+              <xsl:for-each select="$locales/lang">
+                <xsl:variable name="label" select="$keywordLabels/keyword/*[name() = current()/@id]"/>
+                <xsl:if test="$label != ''">
+                  <skos:prefLabel xml:lang="{current()/@code}">
+                    <xsl:value-of select="$label"/>
+                  </skos:prefLabel>
+                </xsl:if>
+              </xsl:for-each>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:copy-of select="skos:prefLabel"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:copy-of select="skos:prefLabel"/>
+        </xsl:otherwise>
+      </xsl:choose>
     </xsl:copy>
   </xsl:template>
 
