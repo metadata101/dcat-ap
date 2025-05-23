@@ -33,17 +33,6 @@
 
   <xsl:param name="displayInfo"/>
 
-  <xsl:template match="dataset">
-    <xsl:variable name="info" select="geonet:info"/>
-    <csw:Record>
-      <xsl:apply-templates select="*[name(.)!='geonet:info']"/>
-      <xsl:apply-templates select="dct:spatial" mode="bbox"/>
-      <!-- GeoNetwork elements added when resultType is equal to results_with_summary -->
-      <xsl:if test="$displayInfo = 'true'">
-        <xsl:copy-of select="$info"/>
-      </xsl:if>
-    </csw:Record>
-  </xsl:template>
 
   <xsl:template match="@*|node()">
     <xsl:copy>
