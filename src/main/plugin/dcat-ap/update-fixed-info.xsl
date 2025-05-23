@@ -456,7 +456,7 @@
 
       <xsl:variable name="keywordUri" select="@rdf:about"/>
       <xsl:choose>
-        <xsl:when test="$keywordUri != ''">
+        <xsl:when test="$keywordUri != '' and count($locales/lang) > 0">
           <xsl:variable name="keywordLabels"
                         select="dcatutil:getKeywordValuesByUri($keywordUri, '', string-join($locales/lang/@id, ','))"
                         as="node()?"/>
