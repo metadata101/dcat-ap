@@ -1,0 +1,22 @@
+{
+  "config": {
+    "display": "radio",
+    "multilingualFields": [],
+    "associatedResourcesTypes": [
+      {
+        "type": "siblings",
+        "label": "linkToSibling",
+        "config": {
+          "fields": {"associationType": "isComposedOf", "initiativeType": "" },
+          "sources": {
+            "metadataStore": {
+              "params": {
+                "isTemplate": "n"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -994,6 +994,11 @@
     <description>Statuut</description>
     <btnLabel>Statuut</btnLabel>
   </element>
+  <element name="mdcat:stars">
+    <label>Stars</label>
+    <description></description>
+    <btnLabel></btnLabel>
+  </element>
   <element name="mdcat:MAGDA-categorie">
     <label>MAGDA-categorie</label>
     <description>MAGDA-categorie</description>

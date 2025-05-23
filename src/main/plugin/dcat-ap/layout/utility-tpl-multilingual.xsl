@@ -35,8 +35,18 @@
   <!-- Get the main metadata languages -->
   <xsl:template name="get-dcat-ap-language">
     <xsl:param name="languageIri"
-               select="$metadata//dcat:CatalogRecord/dct:language[1]/(@rdf:resource|skos:Concept/@rdf:about|dct:LinguisticSystem/@rdf:about)"
                required="no"/>
+
+    <xsl:variable name="isVirtualCatalog"
+                  select="exists($metadata[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
+                  as="xs:boolean"/>
+
+    <xsl:variable name="languageIri"
+               select="if ($languageIri)
+                            then $languageIri
+                            else if ($isVirtualCatalog)
+                            then $metadata/dcat:Catalog/dct:language[1]/(@rdf:resource|skos:Concept/@rdf:about|dct:LinguisticSystem/@rdf:about)
+                            else $metadata//dcat:CatalogRecord/dct:language[1]/(@rdf:resource|skos:Concept/@rdf:about|dct:LinguisticSystem/@rdf:about)"/>
 
     <xsl:variable name="languageCode"
                   select="lower-case(replace(
@@ -63,8 +73,17 @@
   <!-- Get the list of other languages in JSON -->
   <xsl:template name="get-dcat-ap-other-languages-as-json">
 
+    <xsl:variable name="isVirtualCatalog"
+                  select="exists($metadata[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
+                  as="xs:boolean"/>
+
+    <xsl:variable name="languageContainerElement"
+                  select="if ($isVirtualCatalog)
+                              then $metadata/dcat:Catalog/dct:language
+                              else $metadata//dcat:CatalogRecord/dct:language"/>
+
     <xsl:variable name="langURIs">
-      <xsl:for-each select="$metadata//dcat:CatalogRecord/dct:language/(@rdf:resource|skos:Concept/@rdf:about|dct:LinguisticSystem/@rdf:about)">
+      <xsl:for-each select="$languageContainerElement/(@rdf:resource|skos:Concept/@rdf:about|dct:LinguisticSystem/@rdf:about)">
         <langURI>
           <xsl:value-of select="string()"/>
         </langURI>
@@ -74,6 +93,7 @@
       <langURI>http://publications.europa.eu/resource/authority/language/DEU</langURI>
       <langURI>http://publications.europa.eu/resource/authority/language/FRA</langURI>
     </xsl:variable>
+
     <xsl:variable name="langs">
       <xsl:for-each select="distinct-values($langURIs/langURI)">
         <xsl:variable name="languageCode">

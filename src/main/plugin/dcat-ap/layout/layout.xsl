@@ -314,10 +314,16 @@
       <xsl:variable name="contextXpath" select="gn-fn-metadata:getXPath(.)"/>
       <xsl:variable name="fieldNode" select="$editorConfig/editor/fields/for[@name = $name and @templateModeOnly and (not(@xpath) or @xpath = $contextXpath)]"/>
 
+      <xsl:variable name="catalogRecordUri"
+                    select="ancestor::dcat:CatalogRecord/@rdf:about"/>
+      <xsl:variable name="isVirtualCatalogAssociatedRecord"
+                    select="$catalogRecordUri = ancestor::rdf:RDF/dcat:Catalog/dcat:record/@rdf:resource"/>
+
       <xsl:variable name="isDisabled" select="
             (name(.) = 'dct:identifier' and count(preceding-sibling::*[name(.) = 'dct:identifier']) = 0 and name(..) = ('dcat:Dataset', 'dcat:DataService')) or
             (name(..) = 'dcat:Distribution' and name(.) = ('dct:identifier')) or
-            (name(..) = 'dcat:CatalogRecord') or
+            (name(.) = 'dct:identifier' and $isVirtualCatalogAssociatedRecord) or
+            (name(..) = 'dcat:CatalogRecord' and not($isVirtualCatalogAssociatedRecord)) or
             (name(../../..) = 'dcat:CatalogRecord' and name(..) = 'dct:Standard')"/>
 
       <xsl:choose>
@@ -429,6 +435,31 @@
           </xsl:for-each>
         </xsl:otherwise>
       </xsl:choose>
+
+      <xsl:if test="name(.) = 'dct:identifier' and $isVirtualCatalogAssociatedRecord">
+        <xsl:variable name="recordTitle"
+                      select="java:getIndexField(
+                                '',
+                                normalize-space(text()),
+                                'resourceTitleObject',
+                                '')"/>
+
+        <xsl:choose>
+          <xsl:when test="$recordTitle != ''">
+            <div class="col-sm-9 col-xs-11">
+              <input type="text" readonly="readonly" value="{$recordTitle}" class="form-control"/>
+            </div>
+          </xsl:when>
+          <xsl:otherwise>
+            <div class="col-sm-9 col-xs-11">
+              <div class="alert alert-danger">
+                <strong><xsl:value-of select="$strings/virtualCatalogAssociatedRecordNotFound"/></strong><br/>
+                <xsl:value-of select="$strings/virtualCatalogAssociatedRecordNotFound-help"/>
+              </div>
+            </div>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:if>
     </xsl:if>
   </xsl:template>
 

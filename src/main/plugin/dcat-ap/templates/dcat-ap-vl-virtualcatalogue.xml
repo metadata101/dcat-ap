@@ -1,0 +1,20 @@
+<rdf:RDF xmlns:schema="http://schema.org/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:dct="http://purl.org/dc/terms/"
+         xmlns:dcat="http://www.w3.org/ns/dcat#">
+  <dcat:Catalog rdf:about="https://metadata.vlaanderen.be/virtualcatalogtemplate">
+    <dct:description xml:lang="nl">Metadata Vlaanderen (agentschap Digitaal Vlaanderen)</dct:description>
+    <dct:language>
+      <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+        <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+        <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
+        <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
+        <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+      </skos:Concept>
+    </dct:language>
+    <dct:title xml:lang="nl">Virtual catalog template</dct:title>
+  </dcat:Catalog>
+</rdf:RDF>
