@@ -509,6 +509,7 @@
       <name>vcard:fn</name>
       <name>skos:inScheme</name>
       <name>skos:notation</name>
+      <name>mdcat:stars</name>
     </exclude>
   </multilingualFields>
 
