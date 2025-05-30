@@ -60,7 +60,7 @@
           <xs:element name="dataset" type="dcat:Dataset_type" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="landingPage" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element name="record" type="dcat:CatalogRecord_type" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="record" type="dcat:Catalog_CatalogRecord_type" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="service" type="dcat:DataService_type" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="theme" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="themeTaxonomy" type="skos:ConceptScheme" minOccurs="0" maxOccurs="unbounded"/>
@@ -92,6 +92,13 @@
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Catalog_CatalogRecord_type">
+    <xs:sequence>
+      <xs:element ref="dcat:CatalogRecord" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute ref="rdf:resource"/>
   </xs:complexType>
 
   <xs:element name="CatalogRecord" type="dcat:CatalogRecord_type"/>
@@ -126,7 +133,6 @@
           <!-- Optional -->
           <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
-        <xs:attribute ref="rdf:resource"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
