@@ -68,13 +68,13 @@
     <sch:param name="max" value="1"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Catalog_publisher">
-    <sch:param name="context" value="//dcat:Catalog"/>
+    <sch:param name="context" value="//dcat:Catalog[dcat:dataset or dcat:dataservice]"/>
     <sch:param name="element" value="dct:publisher"/>
     <sch:param name="min" value="1"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Catalog_record">
-    <sch:param name="context" value="//dcat:Catalog"/>
+    <sch:param name="context" value="//dcat:Catalog[dcat:dataset or dcat:dataservice]"/>
     <sch:param name="element" value="dcat:record"/>
     <sch:param name="min" value="1"/>
     <sch:param name="max" value="1"/>
@@ -98,7 +98,7 @@
     <sch:param name="max" value="n"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Catalog_modified">
-    <sch:param name="context" value="//dcat:Catalog"/>
+    <sch:param name="context" value="//dcat:Catalog[dcat:dataset or dcat:dataservice]"/>
     <sch:param name="element" value="dct:modified"/>
     <sch:param name="min" value="0"/>
     <sch:param name="max" value="n"/>
@@ -141,7 +141,7 @@
     <sch:param name="max" value="1"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="CatalogRecord_modified">
-    <sch:param name="context" value="dcat:CatalogRecord"/>
+    <sch:param name="context" value="dcat:CatalogRecord[ancestor::dcat:Catalog[dcat:dataset or dcat:dataservice]]"/>
     <sch:param name="element" value="dct:modified"/>
     <sch:param name="min" value="1"/>
     <sch:param name="max" value="1"/>
