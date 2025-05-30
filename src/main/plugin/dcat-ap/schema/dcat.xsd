@@ -44,7 +44,6 @@
   <xs:import namespace="http://data.europa.eu/r5r/" schemaLocation="profiles/eu-dcat-ap-hvd.xsd"/>
   <xs:import namespace="https://w3id.org/mobilitydcat-ap" schemaLocation="profiles/eu-dcat-ap-mobility.xsd"/>
 
-
   <xs:element name="Catalog" type="dcat:Catalog_type"/>
 
   <!-- dcat:Catalog-->
@@ -95,43 +94,41 @@
     </xs:complexContent>
   </xs:complexType>
 
+  <xs:element name="CatalogRecord" type="dcat:CatalogRecord_type"/>
+
   <!-- dcat:CatalogRecord-->
   <xs:complexType name="CatalogRecord_type">
-    <xs:sequence>
-      <xs:element name="CatalogRecord">
-        <xs:complexType>
-          <xs:complexContent>
-            <xs:extension base="rdf:Resource">
-              <xs:sequence>
-                <!-- dcat -->
-                <xs:element ref="foaf:primaryTopic" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:modified" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="adms:status" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:issued" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:source" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
-                <!-- additionally, required by GeoNetwork for identification -->
-                <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/> <!-- Required by GeoNetwork for MD identifications -->
+    <xs:complexContent>
+      <xs:extension base="rdf:Resource">
+        <xs:sequence>
+          <!-- dcat -->
+          <xs:element ref="foaf:primaryTopic" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:modified" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="adms:status" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:issued" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:source" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
+          <!-- additionally, required by GeoNetwork for identification -->
+          <xs:element ref="dct:identifier" minOccurs="0"
+                      maxOccurs="unbounded"/> <!-- Required by GeoNetwork for MD identifications -->
 
-                <!-- Profile / dcat-ap-vl & metadata-dcat -->
-                <xs:element ref="adms:identifier" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="mdcat:stars" minOccurs="0"/>
+          <!-- Profile / dcat-ap-vl & metadata-dcat -->
+          <xs:element ref="adms:identifier" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="mdcat:stars" minOccurs="0" maxOccurs="unbounded"/>
 
-                <!-- Profile / mobilityDCAT-AP -->
-                <!-- Mandatory -->
-                <xs:element ref="dct:created" minOccurs="0" maxOccurs="unbounded"/>
-                <!-- Optional -->
-                <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:extension>
-          </xs:complexContent>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
+          <!-- Profile / mobilityDCAT-AP -->
+          <!-- Mandatory -->
+          <xs:element ref="dct:created" minOccurs="0" maxOccurs="unbounded"/>
+          <!-- Optional -->
+          <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute ref="rdf:resource"/>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
 
   <!-- dcat:Dataset-->

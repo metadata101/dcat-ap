@@ -104,9 +104,10 @@ The Resource Description Framework [RDF] is defined to have an extensible system
   </xs:complexType>
   <!-- CatalogRoot -->
   <xs:complexType name="CatalogRoot">
-    <xs:choice>
+    <xs:sequence>
       <xs:element ref="dcat:Catalog"/>
-    </xs:choice>
+      <xs:element ref="dcat:CatalogRecord" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
   </xs:complexType>
   <!-- individual elements -->
   <xs:element name="type" type="rdf:ResourceRef"/>
