@@ -92,6 +92,9 @@
 
   <xsl:variable name="resourceUUID">
     <xsl:choose>
+      <xsl:when test="$isVirtualCatalog">
+        <xsl:value-of select="$recordUUID"/>
+      </xsl:when>
       <xsl:when test="count($resource/dct:identifier[matches(., concat('^', $uuidRegex, '$'))]) > 0">
         <xsl:value-of select="$resource/dct:identifier[matches(., concat('^', $uuidRegex, '$'))][1]"/>
       </xsl:when>
