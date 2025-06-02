@@ -193,6 +193,15 @@
     </xsl:copy>
   </xsl:template>
 
+  <xsl:template match="dcat:Catalog[$isVirtualCatalog and not(dct:identifier)]" priority="10">
+    <xsl:copy>
+      <xsl:apply-templates select="@*|*"/>
+      <dct:identifier>
+        <xsl:value-of select="$recordUUID"/>
+      </dct:identifier>
+    </xsl:copy>
+  </xsl:template>
+
   <xsl:template match="dcat:Catalog[not($isVirtualCatalog)]" priority="10">
     <dcat:Catalog>
       <xsl:attribute name="rdf:about">
