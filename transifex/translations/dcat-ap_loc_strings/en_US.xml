@@ -9,6 +9,12 @@
     <string name="tabDistribution">Distributions</string>
     <string name="tabService">Service</string>
     <string name="tabRecord">Record</string>
+    <string name="tabCatalog">Catalog</string>
+    <string name="tabCatalogAssociatedRecords">Associated records</string>
+    <string name="associatedRecords">Associated records</string>
+    <string name="associatedRecord">Associated record</string>
+    <string name="virtualCatalogAssociatedRecordNotFound">Associated record not found in catalog.</string>
+    <string name="virtualCatalogAssociatedRecordNotFound-help">Record may have been deleted. Check the relationship.</string>
 
     <!-- Section labels -->
     <string name="basicInformation">Basic information</string>
@@ -17,6 +23,7 @@
     <string name="geographicalInformation">Spatial and temporal extent</string>
     <string name="relationInformation">Relation</string>
     <string name="serviceInformation">Service information</string>
+    <string name="catalogInformation">Catalog information</string>
     <string name="extraInformation">Extra information</string>
     <string name="catalogRecordInformation">Catalog record</string>
     <string name="conformToInformation">Conformiteit met standaard</string>

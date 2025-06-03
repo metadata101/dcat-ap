@@ -9,19 +9,19 @@
   <tabDistribution>Distributies</tabDistribution>
   <tabService>Service</tabService>
   <tabRecord>Record</tabRecord>
+  <tabCatalog>Catalogus</tabCatalog>
+  <tabCatalogAssociatedRecords>Geassocieerde records</tabCatalogAssociatedRecords>
+  <associatedRecords>Geassocieerde records</associatedRecords>
+  <associatedRecord>Geassocieerd record</associatedRecord>
+  <virtualCatalogAssociatedRecordNotFound>Geassocieerd records niet in catalogus gevonden</virtualCatalogAssociatedRecordNotFound>
+  <virtualCatalogAssociatedRecordNotFound-help>Record kan verwijderd geweest zijn. Check de relatie.</virtualCatalogAssociatedRecordNotFound-help>
   <basicInformation>Basisinformatie</basicInformation>
   <versionInformation>Versie informatie</versionInformation>
   <usageInformation>Gebruiksinformatie</usageInformation>
   <geographicalInformation>Ruimtelijke en temporele begrenzing</geographicalInformation>
   <relationInformation>Relatie</relationInformation>
   <serviceInformation>Service informatie</serviceInformation>
-  <catalogInformation>Catalogus informatie</catalogInformation>
-  <tabCatalog>Catalogus</tabCatalog>
-  <tabCatalogAssociatedRecords>Associated records</tabCatalogAssociatedRecords>
-  <associatedRecords>Records</associatedRecords>
-  <associatedRecord>Associated record</associatedRecord>
-  <virtualCatalogAssociatedRecordNotFound>Associated record not found in catalog.</virtualCatalogAssociatedRecordNotFound>
-  <virtualCatalogAssociatedRecordNotFound-help>Record may have been deleted. Check the relationship.</virtualCatalogAssociatedRecordNotFound-help>
+  <catalogInformation>Catalogusinformatie</catalogInformation>
   <extraInformation>Extra informatie</extraInformation>
   <catalogRecordInformation>Cataloog record</catalogRecordInformation>
   <conformToInformation>Conformiteit met standaard</conformToInformation>
@@ -101,9 +101,9 @@
   <hvd-section>Hoogwaardige Dataset (HVD)</hvd-section>
   <hvd-tab>Hoogwaardige Dataset (HVD)</hvd-tab>
   <hvd-view>Hoogwaardige Dataset (HVD)</hvd-view>
-  <mobility-section>Mobility</mobility-section>
-  <mobility-tab>Mobility</mobility-tab>
-  <mobility-view>Mobility</mobility-view>
+  <mobility-section>Mobiliteit</mobility-section>
+  <mobility-tab>Mobiliteit</mobility-tab>
+  <mobility-view>Mobiliteit</mobility-view>
   <vl-view>Vlaanderen</vl-view>
   <vl-tab-service>Service</vl-tab-service>
   <vl-tab-dataset>Dataset</vl-tab-dataset>
