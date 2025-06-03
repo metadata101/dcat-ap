@@ -9,12 +9,19 @@
   <tabDistribution>Distributions</tabDistribution>
   <tabService>Service</tabService>
   <tabRecord>Record</tabRecord>
+  <tabCatalog>Catalog</tabCatalog>
+  <tabCatalogAssociatedRecords>Associated records</tabCatalogAssociatedRecords>
+  <associatedRecords>Associated records</associatedRecords>
+  <associatedRecord>Associated record</associatedRecord>
+  <virtualCatalogAssociatedRecordNotFound>Associated record not found in catalog.</virtualCatalogAssociatedRecordNotFound>
+  <virtualCatalogAssociatedRecordNotFound-help>Record may have been deleted. Check the relationship.</virtualCatalogAssociatedRecordNotFound-help>
   <basicInformation>Basic information</basicInformation>
   <versionInformation>Version information</versionInformation>
   <usageInformation>Usage information</usageInformation>
   <geographicalInformation>Spatial and temporal extent</geographicalInformation>
   <relationInformation>Relation</relationInformation>
   <serviceInformation>Service information</serviceInformation>
+  <catalogInformation>Catalog information</catalogInformation>
   <extraInformation>Extra information</extraInformation>
   <catalogRecordInformation>Catalog record</catalogRecordInformation>
   <conformToInformation>Conformiteit met standaard</conformToInformation>

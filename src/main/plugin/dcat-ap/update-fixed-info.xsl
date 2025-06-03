@@ -57,7 +57,6 @@
   <xsl:include href="update-fixed-info-variables.xsl"/>
   <xsl:include href="update-fixed-info-dcat-ap-vl.xsl"/>
 
-
   <!-- Ignore element not in main language (they are handled in dcat2-translations-builder. -->
   <xsl:template match="*[
                           count(*) = 0
@@ -194,7 +193,16 @@
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="dcat:Catalog" priority="10">
+  <xsl:template match="dcat:Catalog[$isVirtualCatalog and not(dct:identifier)]" priority="10">
+    <xsl:copy>
+      <xsl:apply-templates select="@*|*"/>
+      <dct:identifier>
+        <xsl:value-of select="$recordUUID"/>
+      </dct:identifier>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="dcat:Catalog[not($isVirtualCatalog)]" priority="10">
     <dcat:Catalog>
       <xsl:attribute name="rdf:about">
         <xsl:value-of select="concat($resourcePrefix, '/catalogs/', $env/system/site/siteId)"/>
@@ -309,7 +317,9 @@
   </xsl:template>
 
 
-  <xsl:template match="dcat:CatalogRecord" priority="2">
+  <!-- Virtual catalog contains additional CatalogRecord for all associated resources.
+  Only alter the one matching the Catalog instance. -->
+  <xsl:template match="dcat:CatalogRecord[not(@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource)]" priority="2">
     <xsl:copy copy-namespaces="no">
       <xsl:call-template name="handle-record-id"/>
       <dct:modified>

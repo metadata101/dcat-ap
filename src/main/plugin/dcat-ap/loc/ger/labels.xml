@@ -1890,6 +1890,11 @@
     <description>Tooltip: version</description>
     <btnLabel>version</btnLabel>
   </element>
+  <element name="mdcat:stars">
+    <label>Stars</label>
+    <description></description>
+    <btnLabel></btnLabel>
+  </element>
   <element name="mdcat:landingspaginaVoorAuthenticatie" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:landingspaginaVoorAuthenticatie">
     <label>Authentication</label>
     <description>Landing page with information about authentication.</description>

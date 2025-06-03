@@ -22,6 +22,7 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
@@ -59,13 +60,23 @@
   <xsl:variable name="editorConfig"
                 select="document('layout/config-editor.xml')"/>
 
+  <xsl:variable name="isVirtualCatalog"
+                      select="exists(/root/rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
+                      as="xs:boolean"/>
+
   <xsl:variable name="resourceType">
     <xsl:choose>
       <xsl:when test="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
         <xsl:value-of select="'datasets'"/>
       </xsl:when>
-      <xsl:otherwise>
+      <xsl:when test="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DataService">
         <xsl:value-of select="'services'"/>
+      </xsl:when>
+      <xsl:when test="$isVirtualCatalog">
+        <xsl:value-of select="'catalog'"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="'datasets'"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -81,6 +92,9 @@
 
   <xsl:variable name="resourceUUID">
     <xsl:choose>
+      <xsl:when test="$isVirtualCatalog">
+        <xsl:value-of select="$recordUUID"/>
+      </xsl:when>
       <xsl:when test="count($resource/dct:identifier[matches(., concat('^', $uuidRegex, '$'))]) > 0">
         <xsl:value-of select="$resource/dct:identifier[matches(., concat('^', $uuidRegex, '$'))][1]"/>
       </xsl:when>
