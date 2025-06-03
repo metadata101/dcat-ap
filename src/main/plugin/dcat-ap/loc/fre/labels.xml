@@ -945,7 +945,7 @@
     <label>Network coverage</label>
     <description>This property describes the part of the transport network that is covered by the delivered content. For road traffic, the property SHOULD refer to the network classification for which the data is provided. As a minimum, an international or higher-level classification, e.g., via functional road classes, is recommended to allow data search across different countries. In addition, national classifications are allowed.
       For other transport modes, the property is meant to refer to the physical infrastructure which is used by the services covered by the data.
-      For all modes, the property SHOULD also indicate if the data content relates to the EU’s trans-European transport network [EU-TEN-T].</description>
+      For all modes, the property SHOULD also indicate if the data content relates to the EU&#x2019;s trans-European transport network [EU-TEN-T].</description>
     <btnLabel>Network coverage</btnLabel>
   </element>
   <element name="mobilitydcatap:georeferencingMethod">
@@ -957,7 +957,7 @@
     <label>Intended information service</label>
     <description>This property MAY describe predefined information services, which the data content is intended to support.
       Such services MAY be, e.g., information services for multimodal mobility, as specified by EC Delegated Regulation 2017/1926 [EC-MMTIS-DR].
-      Examples of such services include “location search”, which is based on a datasets with address identifiers, or “trip plan computation”, which is based on datasets about a road network.</description>
+      Examples of such services include &#x201C;location search&#x201D;, which is based on a datasets with address identifiers, or &#x201C;trip plan computation&#x201D;, which is based on datasets about a road network.</description>
     <btnLabel>Intended information service</btnLabel>
   </element>
   <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
@@ -994,11 +994,6 @@
     <label>Statute</label>
     <description>Tooltip: Statute</description>
     <btnLabel>Statute</btnLabel>
-  </element>
-  <element name="mdcat:stars">
-    <label>Stars</label>
-    <description></description>
-    <btnLabel></btnLabel>
   </element>
   <element name="mdcat:MAGDA-categorie">
     <label>MAGDA-category</label>
@@ -1044,5 +1039,10 @@
     <label>Development status</label>
     <description>The development status of the deployed dataservice.</description>
     <btnLabel>Development status</btnLabel>
+  </element>
+  <element name="mdcat:stars">
+    <label>Stars</label>
+    <description>Rating of 1-5 stars</description>
+    <btnLabel>Stars</btnLabel>
   </element>
 </labels>
