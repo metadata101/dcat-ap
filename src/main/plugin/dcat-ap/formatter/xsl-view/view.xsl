@@ -279,11 +279,15 @@
     </xsl:variable>
 
     <xsl:variable name="toMatch" select="section|field"/>
+
+    <xsl:variable name="forEachXPath" select="@forEach"/>
+
     <xsl:variable name="sectionContent">
       <xsl:for-each select="$localBase/*">
         <xsl:variable name="rendered">
           <xsl:apply-templates mode="render-view" select="$toMatch">
-            <xsl:with-param name="base" select="./*"/>
+            <!-- The default behaviour uses a container element, which does not work for the dcat:CatalogRecord case. Also see the render-view for fields, overridden in this file, for a related change. -->
+            <xsl:with-param name="base" select="if (starts-with($forEachXPath, '/rdf:RDF/dcat:CatalogRecord')) then . else ./*"/>
           </xsl:apply-templates>
         </xsl:variable>
         <xsl:if test="normalize-space($rendered) != ''">
@@ -313,6 +317,48 @@
       </div>
     </xsl:if>
 
+  </xsl:template>
+
+  <!-- Overrides implementation in GN render-layout.xsl for fields, the default behaviour does not suffice. -->
+  <xsl:template mode="render-view"
+                match="field[not(template)]|list[@xpath]">
+    <!-- This should be e.g. a single dcat:Distribution -->
+    <xsl:param name="base" select="$metadata"/>
+
+    <!-- In the case of @forEach, an issue arises. In ISO, there's always a container element present.
+         This was fine for dcat:distribution/dcat:Distribution too. However, for /rdf:RDF/CatalogRecord, there is no
+         such container element, which is why we need to modify the xpath for target node selection slightly.
+         TODO check at a later stage how to deal with this properly, potentially during a full rework of the view -->
+    <xsl:variable name="finalXPath">
+      <xsl:choose>
+        <xsl:when test="../@forEach='/rdf:RDF/dcat:CatalogRecord[@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource]'">
+          <xsl:value-of select="concat('/', @xpath)"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="concat('/../', @xpath)"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <!-- Matching nodes -->
+    <xsl:variable name="nodes">
+      <saxon:call-template name="{concat('evaluate-', $schema)}">
+        <xsl:with-param name="base" select="$base"/>
+        <xsl:with-param name="in" select="$finalXPath"/>
+      </saxon:call-template>
+    </xsl:variable>
+
+    <xsl:variable name="fieldName">
+      <xsl:if test="@name">
+        <xsl:value-of select="gn-fn-render:get-schema-strings($schemaStrings, @name)"/>
+      </xsl:if>
+    </xsl:variable>
+
+    <xsl:for-each select="$nodes">
+      <xsl:apply-templates mode="render-field">
+        <xsl:with-param name="fieldName" select="$fieldName"/>
+      </xsl:apply-templates>
+    </xsl:for-each>
   </xsl:template>
 
   <xsl:template mode="render-view" match="section[not(@xpath) and not(@forEach)]">
@@ -394,11 +440,12 @@
     </xsl:if>
   </xsl:template>
 
+
   <!-- Field with no lang : display all -->
   <xsl:template mode="render-field" match="dct:created|dct:issued|dct:modified|dct:identifier|skos:notation|schema:startDate|
                                            schema:endDate|vcard:street-address|vcard:locality|vcard:postal-code|vcard:country-name|
                                            vcard:hasTelephone|vcard:fn|vcard:organization-name|skos:prefLabel|owl:versionInfo|
-                                           adms:versionNotes|dcat:byteSize|dcat:hadRole|dcat:spatialResolutionInMeters|dcat:temporalResolution">
+                                           adms:versionNotes|dcat:byteSize|dcat:hadRole|dcat:spatialResolutionInMeters|dcat:temporalResolution|mdcat:stars">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <xsl:if test="normalize-space($stringValue) != ''">
