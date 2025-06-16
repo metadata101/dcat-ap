@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:geonet="http://www.fao.org/geonetwork"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
@@ -27,8 +26,9 @@
   <xsl:variable name="catalogUuid" select="/rdf:RDF/geonet:info/uuid"/>
 
   <xsl:template match="dcat:Catalog">
+    <!-- All associated records and itself (to avoid linking to existing) -->
     <xsl:variable name="associatedUuids"
-                  select="ancestor::rdf:RDF/dcat:CatalogRecord/dct:identifier/text()"/>
+                  select="ancestor::rdf:RDF//dcat:CatalogRecord/dct:identifier/text()"/>
 
     <xsl:variable name="uuidsToAdd" as="node()*">
       <xsl:for-each select="tokenize($uuids, ',')">
