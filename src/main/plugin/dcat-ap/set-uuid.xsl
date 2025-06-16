@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
@@ -7,21 +8,35 @@
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 version="2.0">
 
-  <!-- Variables -->
-  <!-- ============================================== -->
-  <xsl:variable name="record" select="/root/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
   <xsl:variable name="uuidRegex" select="'([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}'"/>
+
+  <xsl:variable name="isVirtualCatalog"
+                select="exists(/root/rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
+                as="xs:boolean"/>
+
+  <xsl:variable name="record" select="if ($isVirtualCatalog)
+                                           then rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord[@rdf:about != ../dcat:Catalog/dcat:record/@rdf:resource]
+                                           else rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
+
   <xsl:variable name="resourceType">
     <xsl:choose>
       <xsl:when test="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
         <xsl:value-of select="'datasets'"/>
       </xsl:when>
-      <xsl:otherwise>
+      <xsl:when test="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DataService">
         <xsl:value-of select="'services'"/>
+      </xsl:when>
+      <xsl:when test="$isVirtualCatalog">
+        <xsl:value-of select="'catalog'"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="'datasets'"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
+
   <xsl:variable name="recordUUID" select="string(/root/env/uuid)"/>
+
   <xsl:variable name="recordAbout">
     <xsl:choose>
       <xsl:when test="matches($record/@rdf:about, $uuidRegex)">
@@ -34,8 +49,6 @@
   </xsl:variable>
 
 
-  <!-- Templates -->
-  <!-- ============================================== -->
   <xsl:template match="/">
     <xsl:apply-templates select="root/rdf:RDF"/>
   </xsl:template>
