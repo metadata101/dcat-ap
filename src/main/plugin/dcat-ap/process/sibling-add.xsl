@@ -7,6 +7,7 @@
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 exclude-result-prefixes="#all"
                 version="2.0">
 
@@ -26,29 +27,33 @@
   <xsl:variable name="catalogUuid" select="/rdf:RDF/geonet:info/uuid"/>
 
   <xsl:template match="dcat:Catalog">
+    <xsl:variable name="associatedUuids"
+                  select="ancestor::rdf:RDF/dcat:CatalogRecord/dct:identifier/text()"/>
+
+    <xsl:variable name="uuidsToAdd" as="node()*">
+      <xsl:for-each select="tokenize($uuids, ',')">
+        <xsl:variable name="uuid" select="tokenize(., '#')[1]"/>
+        <xsl:if test="$uuids != '' and not($uuid = $associatedUuids)">
+          <uuid><xsl:value-of select="$uuid"/></uuid>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:variable>
 
     <xsl:copy>
       <xsl:copy-of select="*"/>
 
-      <xsl:if test="$uuids != ''">
-        <xsl:for-each select="tokenize($uuids, ',')">
-          <xsl:variable name="tokens" select="tokenize(., '#')"/>
-          <dcat:record rdf:resource="{concat($nodeUrl, 'api/records/', $catalogUuid, '/', $tokens[1])}"/>
-        </xsl:for-each>
-      </xsl:if>
+      <xsl:for-each select="$uuidsToAdd">
+        <dcat:record rdf:resource="{concat($nodeUrl, 'api/records/', $catalogUuid, '/', current())}"/>
+      </xsl:for-each>
     </xsl:copy>
 
-    <xsl:if test="$uuids != ''">
-      <xsl:for-each select="tokenize($uuids, ',')">
-        <xsl:variable name="tokens" select="tokenize(., '#')"/>
-        <dcat:CatalogRecord rdf:about="{concat($nodeUrl, 'api/records/', $catalogUuid, '/', $tokens[1])}">
-          <dct:identifier><xsl:value-of select="$tokens[1]"/></dct:identifier>
-          <foaf:primaryTopic rdf:resource="{concat($nodeUrl, 'api/records/', $tokens[1])}"/>
-        </dcat:CatalogRecord>
-      </xsl:for-each>
-    </xsl:if>
+    <xsl:for-each select="$uuidsToAdd">
+      <dcat:CatalogRecord rdf:about="{concat($nodeUrl, 'api/records/', $catalogUuid, '/', current())}">
+        <dct:identifier><xsl:value-of select="current()"/></dct:identifier>
+        <foaf:primaryTopic rdf:resource="{concat($nodeUrl, 'api/records/', current())}"/>
+      </dcat:CatalogRecord>
+    </xsl:for-each>
   </xsl:template>
-
 
   <xsl:template match="@*|*|text()">
     <xsl:copy>
