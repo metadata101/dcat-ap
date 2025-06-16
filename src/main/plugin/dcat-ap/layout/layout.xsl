@@ -446,8 +446,13 @@
 
         <xsl:choose>
           <xsl:when test="$recordTitle != ''">
-            <div class="col-sm-9 col-xs-11">
-              <input type="text" readonly="readonly" value="{$recordTitle}" class="form-control"/>
+            <div class="form-group gn-field ">
+              <label class="col-sm-2 form-label">
+                <xsl:value-of select="gn-fn-metadata:getLabel($schema, 'dct:title', $labels, '', '', '')/label"/>
+              </label>
+              <div class="col-sm-9 col-xs-11">
+                <input type="text" readonly="readonly" value="{$recordTitle}" class="form-control"/>
+              </div>
             </div>
           </xsl:when>
           <xsl:otherwise>
