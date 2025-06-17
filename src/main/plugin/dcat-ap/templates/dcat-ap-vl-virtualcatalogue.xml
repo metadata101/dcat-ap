@@ -15,6 +15,7 @@
         <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
       </skos:Concept>
     </dct:language>
-    <dct:title xml:lang="nl">Virtual catalog template</dct:title>
+    <dct:title xml:lang="nl">Virtuele catalogus</dct:title>
+    <dct:title xml:lang="en">Virtual catalog</dct:title>
   </dcat:Catalog>
 </rdf:RDF>
