@@ -57,7 +57,7 @@
                               replace($languageIri, 'http://id.loc.gov/vocabulary/iso639-1/', ''),
                             'http://id.loc.gov/vocabulary/iso639-2/', ''),
                           'http://publications.europa.eu/resource/authority/language/', ''))"/>
-    
+
     <xsl:choose>
       <xsl:when test="string-length($languageCode) = 3">
         <xsl:value-of select="xslutil:twoCharLangCode($languageCode)"/>
@@ -94,10 +94,6 @@
           <xsl:value-of select="string()"/>
         </langURI>
       </xsl:for-each>
-      <langURI>http://publications.europa.eu/resource/authority/language/ENG</langURI>
-      <langURI>http://publications.europa.eu/resource/authority/language/NLD</langURI>
-      <langURI>http://publications.europa.eu/resource/authority/language/DEU</langURI>
-      <langURI>http://publications.europa.eu/resource/authority/language/FRA</langURI>
     </xsl:variable>
 
     <xsl:variable name="langs">

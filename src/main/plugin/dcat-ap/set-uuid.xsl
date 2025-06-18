@@ -3,6 +3,7 @@
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:util="java:org.fao.geonet.util.XslUtil"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
@@ -43,7 +44,7 @@
         <xsl:value-of select="replace($record/@rdf:about, $uuidRegex, $recordUUID)"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="concat(/root/env/nodeURL, 'api/records/', $recordUUID)"/>
+        <xsl:value-of select="concat(util:getSettingValue('nodeUrl'), 'api/records/', $recordUUID)"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -53,16 +54,40 @@
     <xsl:apply-templates select="root/rdf:RDF"/>
   </xsl:template>
 
-  <xsl:template match="dcat:Catalog[not(dcat:record)]">
+
+  <xsl:template match="dcat:Catalog">
     <xsl:copy>
       <xsl:apply-templates select="@*|dct:title|dct:description|dct:publisher|dct:rightsHolder|foaf:homepage|dct:license|dct:language|
                                    dct:issued|dct:modified|dcat:themeTaxonomy|dct:hasPart|dct:isPartOf"/>
 
-      <xsl:call-template name="generate-record"/>
+      <xsl:choose>
+        <xsl:when test="dcat:record">
+          <xsl:apply-templates select="dcat:record"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="generate-record"/>
+        </xsl:otherwise>
+      </xsl:choose>
 
       <xsl:apply-templates select="dct:rights|dct:spatial|dcat:dataset|dcat:service|dcat:contactPoint|dcat:keyword|
                                    dcat:landingPage|dcat:qualifiedRelation|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut|
-                                   dcat:theme|dct:accessRights|dct:conformsTo|dct:creator|dct:identifier|dct:isReferencedBy|
+                                   dcat:theme|dct:accessRights|dct:conformsTo|dct:creator"/>
+
+
+      <!--
+      Update virtual catalog identifier if not the new record UUID.
+      Virtual catalogs dct:identifier is synchronized with the CatalogRecord dct:identifier.
+      -->
+      <xsl:choose>
+        <xsl:when test="$isVirtualCatalog">
+          <dct:identifier><xsl:value-of select="$recordUUID"/></dct:identifier>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="dct:identifier"/>
+        </xsl:otherwise>
+      </xsl:choose>
+
+      <xsl:apply-templates select="dct:isReferencedBy|
                                    dct:relation|dct:type"/>
     </xsl:copy>
   </xsl:template>
@@ -100,8 +125,8 @@
   </xsl:template>
 
 
-  <!-- Named templates -->
-  <!-- ============================================== -->
+
+
   <xsl:template name="generate-record">
     <xsl:element name="dcat:record">
       <xsl:element name="dcat:CatalogRecord">

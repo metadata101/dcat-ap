@@ -160,7 +160,6 @@
   </xsl:template>
 
   <xsl:template match="/root">
-
     <xsl:variable name="updated">
       <xsl:apply-templates select="//rdf:RDF"/>
     </xsl:variable>
@@ -318,7 +317,7 @@
 
 
   <!-- Virtual catalog contains additional CatalogRecord for all associated resources.
-  Only alter the one matching the Catalog instance. -->
+  Only alter the one matching the Catalog instance. Create the dcat:record for the Catalog if it does not exist. -->
   <xsl:template match="dcat:CatalogRecord[$isVirtualCatalog
                                         and (count(../dcat:Catalog/dcat:record/@rdf:resource) = 0
                                                 or not(@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource))]" priority="2">
