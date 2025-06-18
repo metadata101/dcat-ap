@@ -14,6 +14,13 @@
             <owl:versionInfo>2.0.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
+        <dct:language>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+            <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+            <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+          </skos:Concept>
+        </dct:language>
+        <dct:identifier>3b066851-89b8-488f-ab67-3deb52442022</dct:identifier>
       </dcat:CatalogRecord>
     </dcat:record>
     <dct:description xml:lang="nl">Metadata Vlaanderen (agentschap Digitaal Vlaanderen)</dct:description>
@@ -21,9 +28,6 @@
       <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
         <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
         <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
-        <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
-        <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
-        <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
         <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
       </skos:Concept>
     </dct:language>
