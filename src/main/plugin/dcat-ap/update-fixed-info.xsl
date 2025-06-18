@@ -331,6 +331,10 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- Remove all dcat:record not matching a CatalogRecord -->
+  <xsl:template match="dcat:Catalog/dcat:record[not(@rdf:resource = ../../dcat:CatalogRecord/@rdf:about)]" priority="2"/>
+
+  
   <xsl:template match="dcat:Dataset|dcat:DataService" priority="10">
      <xsl:copy copy-namespaces="no">
        <xsl:call-template name="handle-resource-id"/>
