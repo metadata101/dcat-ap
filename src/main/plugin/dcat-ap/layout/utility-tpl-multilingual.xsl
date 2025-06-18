@@ -41,11 +41,14 @@
                   select="exists($metadata[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
                   as="xs:boolean"/>
 
+    <xsl:variable name="catalogIdentifier"
+                        select="$metadata/dcat:Catalog/dct:identifier"/>
+
     <xsl:variable name="languageIri"
                select="if ($languageIri)
                             then $languageIri
                             else if ($isVirtualCatalog)
-                            then $metadata/dcat:Catalog/dct:language[1]/(@rdf:resource|skos:Concept/@rdf:about|dct:LinguisticSystem/@rdf:about)
+                            then $metadata//dcat:CatalogRecord[dct:identifier = $catalogIdentifier]/dct:language[1]/(@rdf:resource|skos:Concept/@rdf:about|dct:LinguisticSystem/@rdf:about)
                             else $metadata//dcat:CatalogRecord/dct:language[1]/(@rdf:resource|skos:Concept/@rdf:about|dct:LinguisticSystem/@rdf:about)"/>
 
     <xsl:variable name="languageCode"
@@ -54,7 +57,7 @@
                               replace($languageIri, 'http://id.loc.gov/vocabulary/iso639-1/', ''),
                             'http://id.loc.gov/vocabulary/iso639-2/', ''),
                           'http://publications.europa.eu/resource/authority/language/', ''))"/>
-
+    
     <xsl:choose>
       <xsl:when test="string-length($languageCode) = 3">
         <xsl:value-of select="xslutil:twoCharLangCode($languageCode)"/>
@@ -77,9 +80,12 @@
                   select="exists($metadata[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
                   as="xs:boolean"/>
 
+    <xsl:variable name="catalogIdentifier"
+                  select="$metadata/dcat:Catalog/dct:identifier"/>
+
     <xsl:variable name="languageContainerElement"
                   select="if ($isVirtualCatalog)
-                              then $metadata/dcat:Catalog/dct:language
+                              then $metadata//dcat:CatalogRecord[dct:identifier = $catalogIdentifier]/dct:language
                               else $metadata//dcat:CatalogRecord/dct:language"/>
 
     <xsl:variable name="langURIs">
