@@ -40,6 +40,10 @@
   <xsl:variable name="iso2letterLanguageCode" select="lower-case(java:twoCharLangCode(/root/gui/language))"/>
   <xsl:variable name="resourcePrefix" select="$env/metadata/resourceIdentifierPrefix"/>
 
+  <xsl:variable name="isVirtualCatalog"
+                select="exists(/root/rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
+                as="xs:boolean"/>
+
   <xsl:variable name="metadata"
                 select="/root/rdf:RDF"/>
 
@@ -59,10 +63,6 @@
 
   <xsl:variable name="editorConfig"
                 select="document('layout/config-editor.xml')"/>
-
-  <xsl:variable name="isVirtualCatalog"
-                      select="exists(/root/rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
-                      as="xs:boolean"/>
 
   <xsl:variable name="resourceType">
     <xsl:choose>

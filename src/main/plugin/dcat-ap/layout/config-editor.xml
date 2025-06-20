@@ -1335,7 +1335,26 @@
       <tab id="tabCatalog" default="true" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
         <section name="catalogInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dct:title"/>
+          <action type="add" or="title" in="/rdf:RDF/dcat:Catalog"
+                  if="count(rdf:RDF/dcat:Catalog/dct:title)=0">
+            <template>
+              <snippet>
+                <dct:title xml:lang=""/>
+              </snippet>
+            </template>
+          </action>
+
           <field xpath="/rdf:RDF/dcat:Catalog/dct:description"/>
+          <action type="add" or="description"
+                  in="/rdf:RDF/dcat:Catalog"
+                  if="count(rdf:RDF/dcat:Catalog/dct:description) = 0">
+            <template>
+              <snippet>
+                <dct:description xml:lang=""/>
+              </snippet>
+            </template>
+          </action>
+          
           <field xpath="/rdf:RDF/dcat:Catalog/dct:language"
                  or="language"
                  in="/rdf:RDF/dcat:Catalog"/>

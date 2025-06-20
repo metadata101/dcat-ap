@@ -1,17 +1,45 @@
-<rdf:RDF xmlns:schema="http://schema.org/"
+<rdf:RDF xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+         xmlns:schema="http://schema.org/"
          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:spdx="http://spdx.org/rdf/terms#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:adms="http://www.w3.org/ns/adms#"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:locn="http://www.w3.org/ns/locn#"
+         xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
          xmlns:dct="http://purl.org/dc/terms/"
-         xmlns:dcat="http://www.w3.org/ns/dcat#">
+         xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+         xmlns:dcat="http://www.w3.org/ns/dcat#"
+         xmlns:dcatap="http://data.europa.eu/r5r/">
   <dcat:Catalog rdf:about="https://metadata.vlaanderen.be/virtualcatalogtemplate">
-    <dct:description xml:lang="nl">Metadata Vlaanderen (agentschap Digitaal Vlaanderen)</dct:description>
+    <dcat:record>
+      <dcat:CatalogRecord>
+        <dct:modified>2025-06-18</dct:modified>
+        <dct:conformsTo>
+          <dct:Standard rdf:about="https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/200">
+            <dct:identifier>https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/200</dct:identifier>
+            <dct:title xml:lang="nl">DCAT-AP</dct:title>
+            <owl:versionInfo>2.0.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+        <dct:language>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+            <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+            <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+          </skos:Concept>
+        </dct:language>
+        <dct:identifier>94ae7a9f-a6ad-4087-82cd-464c34dd9dde</dct:identifier>
+      </dcat:CatalogRecord>
+    </dcat:record>
+    <dct:identifier>94ae7a9f-a6ad-4087-82cd-464c34dd9dde</dct:identifier>
     <dct:language>
       <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
         <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
         <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
-        <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
-        <skos:prefLabel xml:lang="de">Niederländisch</skos:prefLabel>
-        <skos:prefLabel xml:lang="fr">néerlandais</skos:prefLabel>
         <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
       </skos:Concept>
     </dct:language>

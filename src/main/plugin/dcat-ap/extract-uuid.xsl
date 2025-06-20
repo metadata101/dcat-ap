@@ -28,8 +28,12 @@
                 xmlns:dcat="http://www.w3.org/ns/dcat#">
 
     <xsl:template match="/">
+      <xsl:variable name="isVirtualCatalog"
+                    select="exists(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"/>
       <uuid>
-        <xsl:value-of select="rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
+        <xsl:value-of select="if ($isVirtualCatalog)
+                                           then rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord[@rdf:about != ../dcat:Catalog/dcat:record/@rdf:resource]/dct:identifier
+                                           else rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
       </uuid>
   </xsl:template>
 
