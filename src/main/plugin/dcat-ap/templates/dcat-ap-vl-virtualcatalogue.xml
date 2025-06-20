@@ -22,6 +22,9 @@
           <dct:Standard rdf:about="https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/200">
             <dct:identifier>https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/200</dct:identifier>
             <dct:title xml:lang="nl">DCAT-AP</dct:title>
+            <dct:title xml:lang="en">DCAT-AP</dct:title>
+            <dct:description xml:lang="nl">DCAT Applicatieprofiel voor Europese data portalen</dct:description>
+            <dct:description xml:lang="en">DCAT Application Profile for data portals in Europe</dct:description>
             <owl:versionInfo>2.0.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
@@ -29,6 +32,7 @@
           <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
             <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
             <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
             <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
           </skos:Concept>
         </dct:language>
