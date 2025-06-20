@@ -326,6 +326,37 @@
             (name(..) = 'dcat:CatalogRecord' and not($isVirtualCatalogAssociatedRecord)) or
             (name(../../..) = 'dcat:CatalogRecord' and name(..) = 'dct:Standard')"/>
 
+
+      <xsl:if test="name(.) = 'dct:identifier' and $isVirtualCatalogAssociatedRecord">
+        <xsl:variable name="recordTitle"
+                      select="java:getIndexField(
+                                '',
+                                normalize-space(text()),
+                                'resourceTitleObject',
+                                '')"/>
+
+
+        <div class="form-group gn-field ">
+          <label class="col-sm-2 form-label">
+            <xsl:value-of select="gn-fn-metadata:getLabel($schema, 'dct:title', $labels, '', '', '')/label"/>
+          </label>
+          <div class="col-sm-9 col-xs-11">
+            <xsl:choose>
+              <xsl:when test="$recordTitle != ''">
+                <input type="text" readonly="readonly" value="{$recordTitle}" class="form-control"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <div class="alert alert-danger">
+                  <strong><xsl:value-of select="$strings/virtualCatalogAssociatedRecordNotFound"/></strong><br/>
+                  <xsl:value-of select="$strings/virtualCatalogAssociatedRecordNotFound-help"/>
+                </div>
+              </xsl:otherwise>
+            </xsl:choose>
+          </div>
+        </div>
+      </xsl:if>
+
+
       <xsl:choose>
         <xsl:when test="count($fieldNode/*)>0 and $fieldNode/@templateModeOnly and not($isDisabled)">
           <xsl:variable name="del" select="'.'"/>
@@ -435,31 +466,6 @@
           </xsl:for-each>
         </xsl:otherwise>
       </xsl:choose>
-
-      <xsl:if test="name(.) = 'dct:identifier' and $isVirtualCatalogAssociatedRecord">
-        <xsl:variable name="recordTitle"
-                      select="java:getIndexField(
-                                '',
-                                normalize-space(text()),
-                                'resourceTitleObject',
-                                '')"/>
-
-        <xsl:choose>
-          <xsl:when test="$recordTitle != ''">
-            <div class="col-sm-9 col-xs-11">
-              <input type="text" readonly="readonly" value="{$recordTitle}" class="form-control"/>
-            </div>
-          </xsl:when>
-          <xsl:otherwise>
-            <div class="col-sm-9 col-xs-11">
-              <div class="alert alert-danger">
-                <strong><xsl:value-of select="$strings/virtualCatalogAssociatedRecordNotFound"/></strong><br/>
-                <xsl:value-of select="$strings/virtualCatalogAssociatedRecordNotFound-help"/>
-              </div>
-            </div>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:if>
     </xsl:if>
   </xsl:template>
 

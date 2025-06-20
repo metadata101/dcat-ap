@@ -160,7 +160,6 @@
   </xsl:template>
 
   <xsl:template match="/root">
-
     <xsl:variable name="updated">
       <xsl:apply-templates select="//rdf:RDF"/>
     </xsl:variable>
@@ -317,9 +316,11 @@
   </xsl:template>
 
 
-  <!-- Virtual catalog contains additional CatalogRecord for all associated resources.
-  Only alter the one matching the Catalog instance. -->
-  <xsl:template match="dcat:CatalogRecord[not(@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource)]" priority="2">
+  <!-- Virtual catalog contains additional CatalogRecords for all associated resources. Only alter the one matching the
+  Catalog instance. Create the dcat:record for the Catalog if it does not exist. -->
+  <xsl:template match="dcat:CatalogRecord[$isVirtualCatalog
+                                        and (count(../dcat:Catalog/dcat:record/@rdf:resource) = 0
+                                                or not(@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource))]" priority="2">
     <xsl:copy copy-namespaces="no">
       <xsl:call-template name="handle-record-id"/>
       <dct:modified>
@@ -330,6 +331,10 @@
       <xsl:apply-templates select="* except (dct:identifier|dct:modified|foaf:primaryTopic)"/>
     </xsl:copy>
   </xsl:template>
+
+  <!-- Remove all records that don't match a CatalogRecord. Associated records are added using the sibling-add.xsl
+  process. Removing the CatalogRecord from the main form needs to also remove the corresponding dcat:record element. -->
+  <xsl:template match="dcat:Catalog/dcat:record[$isVirtualCatalog and @rdf:resource and not(@rdf:resource = ../../dcat:CatalogRecord/@rdf:about)]" priority="2"/>
 
   <xsl:template match="dcat:Dataset|dcat:DataService" priority="10">
      <xsl:copy copy-namespaces="no">

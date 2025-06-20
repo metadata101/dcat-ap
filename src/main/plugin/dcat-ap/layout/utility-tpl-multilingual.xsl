@@ -41,11 +41,14 @@
                   select="exists($metadata[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
                   as="xs:boolean"/>
 
+    <xsl:variable name="catalogIdentifier"
+                        select="$metadata/dcat:Catalog/dct:identifier"/>
+
     <xsl:variable name="languageIri"
                select="if ($languageIri)
                             then $languageIri
                             else if ($isVirtualCatalog)
-                            then $metadata/dcat:Catalog/dct:language[1]/(@rdf:resource|skos:Concept/@rdf:about|dct:LinguisticSystem/@rdf:about)
+                            then $metadata//dcat:CatalogRecord[dct:identifier = $catalogIdentifier]/dct:language[1]/(@rdf:resource|skos:Concept/@rdf:about|dct:LinguisticSystem/@rdf:about)
                             else $metadata//dcat:CatalogRecord/dct:language[1]/(@rdf:resource|skos:Concept/@rdf:about|dct:LinguisticSystem/@rdf:about)"/>
 
     <xsl:variable name="languageCode"
@@ -77,9 +80,12 @@
                   select="exists($metadata[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
                   as="xs:boolean"/>
 
+    <xsl:variable name="catalogIdentifier"
+                  select="$metadata/dcat:Catalog/dct:identifier"/>
+
     <xsl:variable name="languageContainerElement"
                   select="if ($isVirtualCatalog)
-                              then $metadata/dcat:Catalog/dct:language
+                              then $metadata//dcat:CatalogRecord[dct:identifier = $catalogIdentifier]/dct:language
                               else $metadata//dcat:CatalogRecord/dct:language"/>
 
     <xsl:variable name="langURIs">
@@ -88,10 +94,6 @@
           <xsl:value-of select="string()"/>
         </langURI>
       </xsl:for-each>
-      <langURI>http://publications.europa.eu/resource/authority/language/ENG</langURI>
-      <langURI>http://publications.europa.eu/resource/authority/language/NLD</langURI>
-      <langURI>http://publications.europa.eu/resource/authority/language/DEU</langURI>
-      <langURI>http://publications.europa.eu/resource/authority/language/FRA</langURI>
     </xsl:variable>
 
     <xsl:variable name="langs">
