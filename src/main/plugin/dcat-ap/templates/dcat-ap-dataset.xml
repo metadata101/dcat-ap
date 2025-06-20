@@ -9,8 +9,10 @@
       <dcat:CatalogRecord>
         <dct:conformsTo>
           <dct:Standard rdf:about="https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/200">
-            <dct:title>DCAT-AP</dct:title>
-            <dct:description xml:lang="nl">Some description TODO</dct:description>
+            <dct:title xml:lang="en">DCAT-AP</dct:title>
+            <dct:title xml:lang="nl">DCAT-AP</dct:title>
+            <dct:description xml:lang="en">DCAT Application Profile for data portals in Europe</dct:description>
+            <dct:description xml:lang="nl">DCAT Applicatieprofiel voor Europese data portalen</dct:description>
             <owl:versionInfo>2.0.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
