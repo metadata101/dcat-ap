@@ -18,7 +18,9 @@
     </dcat:record>
     <dcat:service>
       <dcat:DataService>
-        <dct:title xml:lang="nl">DCAT-AP service</dct:title>
+        <dct:title xml:lang="en">Generic DCAT-AP service</dct:title>
+        <dct:title xml:lang="nl">Generieke DCAT-AP service</dct:title>
+        <dct:description xml:lang="en"/>
         <dct:description xml:lang="nl"/>
       </dcat:DataService>
     </dcat:service>
