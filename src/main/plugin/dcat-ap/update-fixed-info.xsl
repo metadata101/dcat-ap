@@ -294,6 +294,7 @@
           </xsl:if>
         </vcard:Organization>
       </dcat:contactPoint>
+      
       <xsl:choose>
         <xsl:when test="dcat:record/dcat:CatalogRecord">
           <xsl:apply-templates select="dcat:record"/>
@@ -318,9 +319,11 @@
 
   <!-- Virtual catalog contains additional CatalogRecords for all associated resources. Only alter the one matching the
   Catalog instance. Create the dcat:record for the Catalog if it does not exist. -->
-  <xsl:template match="dcat:CatalogRecord[$isVirtualCatalog
-                                        and (count(../dcat:Catalog/dcat:record/@rdf:resource) = 0
-                                                or not(@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource))]" priority="2">
+  <xsl:template match="dcat:CatalogRecord[not($isVirtualCatalog) or (
+                                          $isVirtualCatalog
+                                          and (count(../dcat:Catalog/dcat:record/@rdf:resource) = 0
+                                          or not(@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource))
+                                          )]" priority="2">
     <xsl:copy copy-namespaces="no">
       <xsl:call-template name="handle-record-id"/>
       <dct:modified>
