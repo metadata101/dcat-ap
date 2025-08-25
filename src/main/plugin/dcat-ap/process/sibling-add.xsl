@@ -25,6 +25,16 @@
 
   <xsl:variable name="catalogUuid" select="/rdf:RDF/geonet:info/uuid"/>
 
+  <xsl:function name="dcat:get-resource-iri" as="xs:string">
+    <xsl:param name="recordUuid" as="xs:string"/>
+    <xsl:param name="catalogUuid" as="xs:string"/>
+    <xsl:param name="nodeUrl" as="xs:string"/>
+
+    <xsl:sequence select="if(starts-with($recordUuid, 'http'))
+                                                     then $recordUuid
+                                                     else concat($nodeUrl, 'api/records/', $catalogUuid, '/',$recordUuid)"/>
+  </xsl:function>
+
   <xsl:template match="dcat:Catalog">
     <!-- All associated records and itself (to avoid linking to existing) -->
     <xsl:variable name="associatedUuids"
@@ -43,12 +53,12 @@
       <xsl:copy-of select="*"/>
 
       <xsl:for-each select="$uuidsToAdd">
-        <dcat:record rdf:resource="{concat($nodeUrl, 'api/records/', $catalogUuid, '/', current())}"/>
+        <dcat:record rdf:resource="{dcat:get-resource-iri(current(), $catalogUuid, $nodeUrl)}"/>
       </xsl:for-each>
     </xsl:copy>
 
     <xsl:for-each select="$uuidsToAdd">
-      <dcat:CatalogRecord rdf:about="{concat($nodeUrl, 'api/records/', $catalogUuid, '/', current())}">
+      <dcat:CatalogRecord rdf:about="{dcat:get-resource-iri(current(), $catalogUuid, $nodeUrl)}">
         <dct:identifier><xsl:value-of select="current()"/></dct:identifier>
         <foaf:primaryTopic rdf:resource="{concat($nodeUrl, 'api/records/', current())}"/>
       </dcat:CatalogRecord>

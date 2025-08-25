@@ -14,7 +14,9 @@
   <xsl:variable name="nodeUrl" select="util:getSettingValue('nodeUrl')"/>
 
   <xsl:template match="dcat:Catalog/dcat:record[@rdf:resource = concat($nodeUrl, 'api/records/', $catalogUuid, '/', $uuidref)]|
-                                     dcat:CatalogRecord[@rdf:about = concat($nodeUrl, 'api/records/', $catalogUuid, '/', $uuidref)]"/>
+                                     dcat:CatalogRecord[@rdf:about = concat($nodeUrl, 'api/records/', $catalogUuid, '/', $uuidref)]|
+                                     dcat:Catalog/dcat:record[starts-with(@rdf:resource, 'http') and @rdf:resource = $uuidref]|
+                                     dcat:CatalogRecord[starts-with(@rdf:about, 'http') and @rdf:about = $uuidref]"/>
 
   <xsl:template match="@*|*|text()">
     <xsl:copy>
