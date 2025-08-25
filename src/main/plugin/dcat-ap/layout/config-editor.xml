@@ -639,7 +639,7 @@
         </section>
 
         <section name="vl-section-metadatadcat"
-                       displayIfRecord="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+                       displayIfRecord="$p2 = ('DCAT-AP-VL', 'metadata-dcat')">
           <!-- MAGDA-categorie-->
           <field
             xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:MAGDA-categorie"/>
@@ -694,9 +694,19 @@
         </section>
 
         <section name="versionInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:version" />
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:version" if="$p3 = '3.0.0'" />
           <action type="add" or="version" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo)=0">
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:version) = 0 and $p3 = '3.0.0'">
+            <template>
+              <snippet>
+                <dcat:version/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo" if="$p3 = '2.0.0'"/>
+          <action type="add" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo) = 0 and $p3 = '2.0.0'">
             <template>
               <snippet>
                 <owl:versionInfo/>
@@ -738,10 +748,6 @@
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity"/>
 
-          <!-- DCAT-AP v2 compatibility -->
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo"
-                 or="versionInfo"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
 
         <section name="usageInformation">
@@ -806,7 +812,7 @@
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial"/>
 
           <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                       if="not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
+                       if="not($p2 = ('DCAT-AP-VL', 'metadata-dcat'))">
             <template>
               <snippet>
                   <dct:spatial>
@@ -824,7 +830,7 @@
           </action>
 
           <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                       if="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+                       if="$p2 = ('DCAT-AP-VL', 'metadata-dcat')">
             <template>
               <snippet>
                 <dct:spatial>
@@ -943,14 +949,14 @@
 
             <action type="add" or="license" in="dcat:Distribution"
                     if="count(dcat:Distribution/dct:license) = 0 and
-                        not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
+                        not($p2 = ('DCAT-AP-VL', 'metadata-dcat'))">
               <template>
                 <snippets name="licenses"/>
               </template>
             </action>
             <action type="add" or="license" in="dcat:Distribution"
                     if="count(dcat:Distribution/dct:license) = 0 and
-                        $p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+                        $p2 = ('DCAT-AP-VL', 'metadata-dcat')">
               <template>
                 <snippets name="licenses-vl"/>
               </template>
@@ -973,7 +979,7 @@
 
             <section xpath="dcat:Distribution/dct:conformsTo"/>
             <action type="add" or="conformsTo" in="dcat:Distribution"
-                    if="not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
+                    if="not($p2 = ('DCAT-AP-VL', 'metadata-dcat'))">
               <template>
                 <snippet>
                   <dct:conformsTo>
@@ -987,7 +993,7 @@
               </template>
             </action>
             <action type="add" or="conformsTo" in="dcat:Distribution"
-                    if="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+                    if="$p2 = ('DCAT-AP-VL', 'metadata-dcat')">
               <template>
                 <snippets name="protocols-vl"/>
               </template>
@@ -1100,7 +1106,7 @@
         </section>
 
         <section name="vl-section-metadatadcat"
-                       displayIfRecord="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+                       displayIfRecord="$p2 = ('DCAT-AP-VL', 'metadata-dcat')">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:MAGDA-categorie"/>
           <action type="add"
                   or="MAGDA-categorie"
@@ -1219,9 +1225,19 @@
         </section>
 
         <section name="versionInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/*/*/owl:versionInfo" />
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:version" if="$p3 = '3.0.0'" />
+          <action type="add" or="version" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:version) = 0 and $p3 = '3.0.0'">
+            <template>
+              <snippet>
+                <dcat:version/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/owl:versionInfo" if="$p3 = '2.0.0'"/>
           <action type="add" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
-                  if="count(rdf:RDF/dcat:Catalog/*/*/owl:versionInfo)=0">
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/owl:versionInfo) = 0 and $p3 = '2.0.0'">
             <template>
               <snippet>
                 <owl:versionInfo/>
@@ -1291,14 +1307,14 @@
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license"/>
           <action type="add" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
                        if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license) = 0
-                            and not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
+                            and not($p2 = ('DCAT-AP-VL', 'metadata-dcat'))">
             <template>
               <snippets name="licenses"/>
             </template>
           </action>
           <action type="add" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
                        if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license) = 0 and
-                           $p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+                           $p2 = ('DCAT-AP-VL', 'metadata-dcat')">
             <template>
               <snippets name="licenses-vl"/>
             </template>
@@ -1386,7 +1402,7 @@
               </snippet>
             </template>
           </action>
-          
+
           <field xpath="/rdf:RDF/dcat:Catalog/dct:language"
                  or="language"
                  in="/rdf:RDF/dcat:Catalog"/>
@@ -1422,29 +1438,30 @@
       </tab>
 
       <tab id="tabRecord" mode="flat">
-        <section name="catalogRecordInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:description"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:modified"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:issued"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"
-                 or="language"
-                 in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
-        </section>
+        <section>
+          <section name="catalogRecordInformation">
+            <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title"/>
+            <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:description"/>
+            <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
+            <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:modified"/>
+            <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:issued"/>
+            <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"
+                   or="language"
+                   in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
+          </section>
 
-        <section name="conformToInformation">
-          <field
-            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:identifier"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title"/>
-          <field
-            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
-          <field
-            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dcat:version"/>
+          <section name="conformToInformation" del="." forEach="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo">
+            <field xpath="dct:Standard/dct:identifier"/>
+            <field xpath="dct:Standard/dct:title"/>
+            <field xpath="dct:Standard/dct:description"/>
+            <field xpath="dct:Standard/owl:versionInfo"/>
+          </section>
 
-          <!-- DCAT-AP v2 compatibility -->
-          <field
-            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/owl:versionInfo"/>
+          <!-- <action type="add" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"> -->
+          <!--   <template> -->
+          <!--     <snippets name="dcat-profiles"/> -->
+          <!--   </template> -->
+          <!-- </action> -->
         </section>
       </tab>
 
@@ -2295,6 +2312,64 @@
             <dct:identifier/>
             <dct:title xml:lang=""/>
             <dct:description xml:lang=""/>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
+    </list>
+    <list name="dcat-profiles">
+      <snippet label="dcat-ap-2.0.0">
+        <dct:conformsTo>
+          <dct:Standard rdf:about="https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/200">
+            <dct:title xml:lang="en">DCAT-AP</dct:title>
+            <dct:title xml:lang="nl">DCAT-AP</dct:title>
+            <dct:description xml:lang="en">DCAT Application Profile for data portals in Europe</dct:description>
+            <dct:description xml:lang="nl">DCAT Applicatieprofiel voor Europese data portalen</dct:description>
+            <owl:versionInfo>2.0.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
+      <snippet label="dcat-ap-3.0.0">
+        <dct:conformsTo>
+          <dct:Standard rdf:about="https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/300">
+            <dct:title>DCAT-AP</dct:title>
+            <dct:description xml:lang="nl">Some description TODO</dct:description>
+            <owl:versionInfo>3.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
+      <snippet label="dcat-ap-vl-2.0.0">
+        <dct:conformsTo>
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
+            <dct:title xml:lang="nl">DCAT-AP Vlaanderen</dct:title>
+            <dct:description xml:lang="nl">Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
+            <owl:versionInfo>2.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
+      <snippet label="dcat-ap-vl-3.0.0">
+        <dct:conformsTo>
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/xxx">
+            <dct:title xml:lang="nl">DCAT-AP Vlaanderen</dct:title>
+            <dct:description xml:lang="nl">Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
+            <owl:versionInfo>3.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
+      <snippet label="metadata-dcat-2.0.0">
+        <dct:conformsTo>
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22">
+            <dct:title xml:lang="nl">Metadata DCAT</dct:title>
+            <dct:description xml:lang="nl">Het applicatieprofiel “Metadata DCAT”. Dit is een applicatieprofiel gebaseerd op DCAT en richt zich op het verzamelen van informatie over generieke datasets, distributies en services die door een overheid beschikbaar gesteld worden. De datasets en services omvatten zowel publiek toegankelijke als afgeschermde data en diensten (ontwikkeld in en voor eender welk technisch perspectief). Het samenbrengen van al deze informatie in een catalogus laat toe om de vindbaarheid van deze datasets en services te verhogen. Dit applicatieprofiel is het generieke basisprofiel. Afgeleide profielen kunnen zeker aangemaakt worden voor specifieke domeinen of communities. Bijvoorbeeld is DCAT-AP-VL zo’n afgeleid applicatieprofiel, specifiek voor het Open data domein en bijhorende community.</dct:description>
+            <owl:versionInfo>2.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
+      <snippet label="metadata-dcat-3.0.0">
+        <dct:conformsTo>
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/xxx">
+            <dct:title xml:lang="nl">Metadata DCAT</dct:title>
+            <dct:description xml:lang="nl">Het applicatieprofiel “Metadata DCAT”. Dit is een applicatieprofiel gebaseerd op DCAT en richt zich op het verzamelen van informatie over generieke datasets, distributies en services die door een overheid beschikbaar gesteld worden. De datasets en services omvatten zowel publiek toegankelijke als afgeschermde data en diensten (ontwikkeld in en voor eender welk technisch perspectief). Het samenbrengen van al deze informatie in een catalogus laat toe om de vindbaarheid van deze datasets en services te verhogen. Dit applicatieprofiel is het generieke basisprofiel. Afgeleide profielen kunnen zeker aangemaakt worden voor specifieke domeinen of communities. Bijvoorbeeld is DCAT-AP-VL zo’n afgeleid applicatieprofiel, specifiek voor het Open data domein en bijhorende community.</dct:description>
+            <owl:versionInfo>3.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>

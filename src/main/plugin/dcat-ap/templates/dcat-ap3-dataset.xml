@@ -11,14 +11,14 @@
           <dct:Standard rdf:about="https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/300">
             <dct:title>DCAT-AP</dct:title>
             <dct:description xml:lang="nl">Some description TODO</dct:description>
-            <owl:versionInfo>3.0.0</owl:versionInfo>
+            <owl:versionInfo>3.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
       </dcat:CatalogRecord>
     </dcat:record>
     <dcat:dataset>
       <dcat:Dataset>
-        <dct:title xml:lang="nl">DCAT-AP dataset</dct:title>
+        <dct:title xml:lang="nl">DCAT-AP 3 dataset</dct:title>
         <dct:description xml:lang="nl"/>
       </dcat:Dataset>
     </dcat:dataset>

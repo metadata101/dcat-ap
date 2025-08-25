@@ -1062,4 +1062,9 @@
     <description>Version</description>
     <btnLabel>Version</btnLabel>
   </element>
+  <element name="dcat:version">
+    <label>Version</label>
+    <description>Version</description>
+    <btnLabel>Version</btnLabel>
+  </element>
 </labels>
