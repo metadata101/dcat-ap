@@ -152,7 +152,7 @@
   </element>
   <element name="dct:LicenseDocument">
     <label>Licentie Document</label>
-    <description>Een legaal document dat officiële toestemming geeft om iets te doen met een resource.</description>
+    <description>Een legaal document dat offici&#xEB;le toestemming geeft om iets te doen met een resource.</description>
     <btnLabel>Licentie Document</btnLabel>
   </element>
   <element name="dct:Location">
@@ -222,7 +222,7 @@
   </element>
   <element name="dct:identifier">
     <label>Identificator</label>
-    <description>Vul aan met een identificator waarmee een gebruiker naar deze resource kan verwijzen (bv. een URI of een andere unieke identificator in de context van de catalogus). De vooraf ingevulde en niet te wijzigen waarde is de UUID voor deze resource in GeoNetwork. Je kan één of meerdere eigen identificatoren toevoegen. </description>
+    <description>Vul aan met een identificator waarmee een gebruiker naar deze resource kan verwijzen (bv. een URI of een andere unieke identificator in de context van de catalogus). De vooraf ingevulde en niet te wijzigen waarde is de UUID voor deze resource in GeoNetwork. Je kan &#xE9;&#xE9;n of meerdere eigen identificatoren toevoegen. </description>
     <btnLabel>Identificator</btnLabel>
   </element>
   <element name="dct:isReferencedBy">
@@ -932,7 +932,7 @@
   </element>
   <element name="mobilitydcatap:mobilityTheme">
     <label>Mobiliteitsthema</label>
-    <description>Deze eigenschap refereert naar het mobiliteits-gerelateerde thema (i.e., een specifiek onderwerp, categorie of type) van de geleverde inhoud.\n\nEen dataset mag geassocieerd worden met meerdere themas. Een thema is belangrijk voor geïnteresseerden in een bepaald type data.</description>
+    <description>Deze eigenschap refereert naar het mobiliteits-gerelateerde thema (i.e., een specifiek onderwerp, categorie of type) van de geleverde inhoud.\n\nEen dataset mag geassocieerd worden met meerdere themas. Een thema is belangrijk voor ge&#xEF;nteresseerden in een bepaald type data.</description>
     <btnLabel>Mobiliteitsthema</btnLabel>
   </element>
   <element name="mobilitydcatap:transportMode">
@@ -944,7 +944,7 @@
     <label>Network coverage</label>
     <description>This property describes the part of the transport network that is covered by the delivered content. For road traffic, the property SHOULD refer to the network classification for which the data is provided. As a minimum, an international or higher-level classification, e.g., via functional road classes, is recommended to allow data search across different countries. In addition, national classifications are allowed.
       For other transport modes, the property is meant to refer to the physical infrastructure which is used by the services covered by the data.
-      For all modes, the property SHOULD also indicate if the data content relates to the EU’s trans-European transport network [EU-TEN-T].</description>
+      For all modes, the property SHOULD also indicate if the data content relates to the EU&#x2019;s trans-European transport network [EU-TEN-T].</description>
     <btnLabel>Network coverage</btnLabel>
   </element>
   <element name="mobilitydcatap:georeferencingMethod">
@@ -956,7 +956,7 @@
     <label>Bedoelde informatie service</label>
     <description>This property MAY describe predefined information services, which the data content is intended to support.
       Such services MAY be, e.g., information services for multimodal mobility, as specified by EC Delegated Regulation 2017/1926 [EC-MMTIS-DR].
-      Examples of such services include “location search”, which is based on a datasets with address identifiers, or “trip plan computation”, which is based on datasets about a road network.</description>
+      Examples of such services include &#x201C;location search&#x201D;, which is based on a datasets with address identifiers, or &#x201C;trip plan computation&#x201D;, which is based on datasets about a road network.</description>
     <btnLabel>Bedoelde informatie service</btnLabel>
   </element>
   <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
@@ -1036,7 +1036,12 @@
   </element>
   <element name="mdcat:ontwikkelingstoestand">
     <label>Ontwikkelingstoestand</label>
-    <description>De ontwikkelingstoestand voor de geïmplementeerde dataservice.</description>
+    <description>De ontwikkelingstoestand voor de ge&#xEF;mplementeerde dataservice.</description>
     <btnLabel>Ontwikkelingstoestand</btnLabel>
+  </element>
+  <element name="mdcat:stars">
+    <label>Sterren</label>
+    <description>Rating van 1-5 sterren</description>
+    <btnLabel>Sterren</btnLabel>
   </element>
 </labels>

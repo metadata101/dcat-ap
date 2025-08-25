@@ -1073,4 +1073,9 @@
     <item>The development status of the deployed dataservice.</item>
     <item>Development status</item>
   </string-array>
+  <string-array name="mdcat:stars">
+    <item>Stars</item>
+    <item>Rating of 1-5 stars</item>
+    <item>Stars</item>
+  </string-array>
 </resources>

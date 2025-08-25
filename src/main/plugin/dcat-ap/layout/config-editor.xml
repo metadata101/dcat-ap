@@ -22,6 +22,7 @@
     <for name="dct:description" use="textarea"/>
     <for name="adms:versionNotes" use="textarea"/>
     <for name="dcat:byteSize" use="number"/>
+    <for name="mdcat:stars" use="number"/>
     <for name="dcat:spatialResolutionInMeters" use="number"/>
 
     <for name="dct:type" xpath="foaf:Agent" use="thesaurus-list-picker">
@@ -51,6 +52,13 @@
         xpath="/dct:accessRights"
         max="1"
         labelKey="dcat.addAccessRight"/>
+    </for>
+    <for name="dct:language" xpath="dcat:Catalog" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.language"
+        xpath="/dct:language"
+        max=""
+        labelKey="dcat.addLanguage"/>
     </for>
     <for name="dct:language" xpath="dcat:CatalogRecord" use="thesaurus-list-picker">
       <directiveAttributes
@@ -520,6 +528,7 @@
       <name>vcard:fn</name>
       <name>skos:inScheme</name>
       <name>skos:notation</name>
+      <name>mdcat:stars</name>
       <name>dcat:version</name>
       <name>dcat:hasVersion</name>
       <name>dcat:isVersionOf</name>
@@ -544,7 +553,13 @@
                    data-file-types=".png,.gif,.jpeg,.jpg"
                    displayIfRecord="count(//dcat:dataset) > 0"/>
 
-        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
+                         displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) = 0"/>
+
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
+                   editor-config="dcatapcatalog"
+                   displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0"/>
+
         <directive data-gn-validation-report=""/>
       </sidePanel>
 
@@ -1349,6 +1364,63 @@
         </section>
       </tab>
 
+      <tab id="tabCatalog" default="true" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
+        <section name="catalogInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dct:title"/>
+          <action type="add" or="title" in="/rdf:RDF/dcat:Catalog"
+                  if="count(rdf:RDF/dcat:Catalog/dct:title)=0">
+            <template>
+              <snippet>
+                <dct:title xml:lang=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dct:description"/>
+          <action type="add" or="description"
+                  in="/rdf:RDF/dcat:Catalog"
+                  if="count(rdf:RDF/dcat:Catalog/dct:description) = 0">
+            <template>
+              <snippet>
+                <dct:description xml:lang=""/>
+              </snippet>
+            </template>
+          </action>
+          
+          <field xpath="/rdf:RDF/dcat:Catalog/dct:language"
+                 or="language"
+                 in="/rdf:RDF/dcat:Catalog"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:keyword"
+                 or="keyword"
+                 in="/rdf:RDF/dcat:Catalog"/>
+
+        </section>
+      </tab>
+
+      <tab id="tabCatalogAssociatedRecords" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
+        <section>
+          <action type="associatedResource"
+                  name="linkToSibling"
+                  btnClass="fa fa-plus"
+                  process="siblings">
+            <directiveAttributes>{"fields": {"associationType": "isComposedOf", "initiativeType": "" },
+              "sources": {"metadataStore": {"params": {"isTemplate": "n"}}
+              }}</directiveAttributes>
+          </action>
+
+          <!-- List all related records to add additional properties.
+          When this element is removed, update-fixed-info also remove corresponding dcat:record in Catalog.
+          -->
+          <section forEach="/rdf:RDF/dcat:CatalogRecord[@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource]"
+                        name="associatedRecord"
+                        del=".">
+            <field xpath="dct:identifier"/>
+            <field xpath="mdcat:stars" or="stars" in="."/>
+          </section>
+        </section>
+      </tab>
+
       <tab id="tabRecord" mode="flat">
         <section name="catalogRecordInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title"/>
@@ -1414,6 +1486,7 @@
         <for name="dct:LicenseDocument"/>
         <for name="dct:LicenseDocument/dct:type"/>
         <for name="dct:rights"/>
+        <for name="mdcat:stars"/>
       </flatModeExceptions>
     </view>
 
@@ -1521,7 +1594,19 @@
     </view>-->
 
     <view name="xml">
+
       <sidePanel>
+        <directive data-gn-overview-manager=""
+                   data-file-types=".png,.gif,.jpeg,.jpg"
+                   displayIfRecord="count(//dcat:dataset) > 0"/>
+
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
+                   displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) = 0"/>
+
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
+                   editor-config="dcatapcatalog"
+                   displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0"/>
+
         <directive data-gn-validation-report=""/>
       </sidePanel>
       <tab id="xml" default="true"/>

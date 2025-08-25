@@ -58,10 +58,24 @@
 
   <xsl:template match="/">
 
-    <xsl:variable name="dateStamp" select=".//dcat:CatalogRecord/dct:modified"/>
-    <xsl:variable name="identifier" as="xs:string" select=".//dcat:CatalogRecord/dct:identifier"/>
+    <xsl:variable name="virtualCatalog"
+                  select="rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog"
+                  as="node()*"/>
 
-    <xsl:for-each select=".//(dcat:Dataset|dcat:DataService)">
+    <xsl:variable name="isVirtualCatalog"
+                  select="exists($virtualCatalog)"
+                  as="xs:boolean"/>
+
+    <!-- Record associated in virtual catalog -->
+    <xsl:variable name="associatedRecords" as="node()*" select="rdf:RDF/dcat:Catalog/dcat:record/@rdf:resource"/>
+
+    <!-- When record is not a catalog, it should have only one CatalogRecord (cf. update-fixed-info). -->
+    <xsl:variable name="catalogRecord" as="node()?" select="(.//dcat:CatalogRecord[not(@rdf:about = $associatedRecords)])[1]"/>
+
+    <xsl:variable name="identifier" as="xs:string*" select="$catalogRecord/dct:identifier"/>
+    <xsl:variable name="dateStamp" select="$catalogRecord/dct:modified"/>
+
+    <xsl:for-each select="(.//(dcat:Dataset|dcat:DataService)|$virtualCatalog)">
       <doc>
         <xsl:copy-of select="gn-fn-index:add-field('docType', 'metadata')"/>
         <xsl:variable name="dateStamp" select="date-util:convertToISOZuluDateTime(normalize-space($dateStamp))"/>
@@ -81,6 +95,9 @@
         <xsl:choose>
           <xsl:when test="$isService">
             <resourceType>service</resourceType>
+          </xsl:when>
+          <xsl:when test="$isVirtualCatalog">
+            <resourceType>catalog</resourceType>
           </xsl:when>
           <xsl:otherwise>
             <resourceType>dataset</resourceType>
@@ -203,13 +220,18 @@
           </xsl:otherwise>
         </xsl:choose>
 
-        <resourceLanguage type="object">
-          <xsl:for-each-group select="dct:language/skos:Concept/@rdf:about|../../dct:language/skos:Concept/@rdf:about"
-                              group-by=".">
-            "<xsl:value-of select="gn-fn-index:langUriTo3Char(current-grouping-key())"/>"
-          </xsl:for-each-group>
-          <xsl:if test="position() != last()">,</xsl:if>
-        </resourceLanguage>
+        <xsl:variable name="resourceLanguages"
+                      select="dct:language/skos:Concept/@rdf:about|../../dct:language/skos:Concept/@rdf:about"/>
+
+        <xsl:if test="$resourceLanguages">
+          <resourceLanguage type="object">
+            <xsl:for-each-group select="$resourceLanguages"
+                                group-by=".">
+              "<xsl:value-of select="gn-fn-index:langUriTo3Char(current-grouping-key())"/>"
+            </xsl:for-each-group>
+            <xsl:if test="position() != last()">,</xsl:if>
+          </resourceLanguage>
+        </xsl:if>
 
         <xsl:apply-templates mode="index-keyword" select="."/>
 
@@ -245,6 +267,11 @@
 
         <xsl:apply-templates mode="index-reference-date" select="."/>
 
+        <xsl:if test="$isVirtualCatalog">
+          <xsl:for-each select="../dcat:CatalogRecord[@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource]/dct:identifier">
+            <agg_associated><xsl:value-of select="."/></agg_associated>
+          </xsl:for-each>
+        </xsl:if>
         <!-- Index more fields in this element -->
         <xsl:apply-templates mode="index-extra-fields" select="."/>
       </doc>

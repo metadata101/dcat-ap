@@ -116,6 +116,21 @@ When saving a record, this uuid is appended to the dataset URI, provided that th
 </dcat:CatalogRecord>
 ```
 
+## Transifex for translations
+
+A script is included to manage translation work. The files currently managed by this process can be found in:
+- `/src/main/plugin/dcat-ap/loc/xxx/labels.xml`
+- `/src/main/plugin/dcat-ap/loc/xxx/strings.xml`
+
+For the above files, a counterpart was created in `/transifex/translations/xxx/en_US.xml`. This counterpart file is structured to be parseable by Transifex. When modifying any of the contained strings, apply the following process:
+1. Modify the *counterpart*, following the same structure.
+2. Execute `transifex.sh -u` to upload the `en_US` changes to Transifex.
+3. Use Transifex to do translation work: https://app.transifex.com/geonetwork/metadata101.
+4. Execute `transifex.sh -d` to download the latest changes to the `/transifex/translations` folder.
+5. Execute `transifex.sh -a` to apply the changes to the various plugin loc files.
+6. Check git status for changes, commit when happy.
+
+
 ## How to create a profile? 
 
 Various implementations / profiles exist of DCAT-AP, each corresponding to, e.g., a specific use case or national implementation. This section illustrates the necessary steps in order to add such a profile to the plugin.

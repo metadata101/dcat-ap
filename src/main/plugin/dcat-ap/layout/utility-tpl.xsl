@@ -36,7 +36,10 @@
   </xsl:template>
 
   <xsl:template name="get-dcat-ap-title">
-    <xsl:value-of select="$metadata/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title[1]|$metadata/dcat:Catalog/dcat:service/dcat:DataService/dct:title[1]"/>
+    <xsl:value-of select="$metadata/dcat:Catalog/(
+                                        dcat:dataset/dcat:Dataset/dct:title[1]
+                                        |dcat:service/dcat:DataService/dct:title[1]
+                                        |dct:title[1])[1]"/>
   </xsl:template>
 
   <xsl:template name="get-dcat-ap-extents-as-json">[]</xsl:template>

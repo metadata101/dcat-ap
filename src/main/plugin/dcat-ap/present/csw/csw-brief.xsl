@@ -23,37 +23,40 @@
   -->
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
-    xmlns:dc ="http://purl.org/dc/elements/1.1/"
-    xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:dcat="http://www.w3.org/ns/dcat#"
-    xmlns:geonet="http://www.fao.org/geonetwork">
+                xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
+                xmlns:dc="http://purl.org/dc/elements/1.1/"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:geonet="http://www.fao.org/geonetwork">
 
   <xsl:param name="displayInfo"/>
 
-  <xsl:template match="dataset">
+  <xsl:template match="//dcat:CatalogRecord[not(@rdf:about =  ../dcat:Catalog/dcat:record/@rdf:resource)]">
     <xsl:variable name="info" select="geonet:info"/>
     <csw:BriefRecord>
       <xsl:for-each select="dct:identifier">
-        <dct:identifier><xsl:value-of select="."/></dct:identifier>
+        <dc:identifier>
+          <xsl:value-of select="."/>
+        </dc:identifier>
       </xsl:for-each>
 
-<!-- Change for CSW 2.0.2 - title is mandatory -->
-      <dc:title>
-      <xsl:for-each select="dc:title">
-        <xsl:value-of select="."/>
-      </xsl:for-each>
-      </dc:title>
-
-      <xsl:for-each select="dc:type">
-        <dc:type><xsl:value-of select="."/></dc:type>
+      <xsl:for-each select="ancestor::rdf:RDF//(dcat:Dataset|dcat:DataService)/dct:title">
+        <dc:title>
+          <xsl:value-of select="."/>
+        </dc:title>
       </xsl:for-each>
 
-      <!-- GeoNetwork elements added when resultType is equal to results_with_summary -->
-      <xsl:if test="$displayInfo = 'true'">
-        <xsl:copy-of select="$info"/>
+      <xsl:if test="ancestor::rdf:RDF//dcat:Dataset">
+        <dc:type>dataset</dc:type>
       </xsl:if>
-
+      <xsl:if test="ancestor::rdf:RDF//dcat:DataService">
+        <dc:type>service</dc:type>
+      </xsl:if>
     </csw:BriefRecord>
+  </xsl:template>
+
+  <xsl:template match="@*|node()" priority="0">
+    <xsl:apply-templates select="@*|node()"/>
   </xsl:template>
 </xsl:stylesheet>
