@@ -338,7 +338,7 @@
   <!-- dcat:DatasetSeries -->
   <xs:complexType name="DatasetSeries_type">
     <xs:complexContent>
-      <xs:extension base="Dataset_type"/>
+      <xs:extension base="dcat:Dataset_type"/>
     </xs:complexContent>
   </xs:complexType>
 
