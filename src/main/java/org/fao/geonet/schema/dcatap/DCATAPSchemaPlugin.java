@@ -116,10 +116,18 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
                     String url = sib.getAttributeValue("resource", DCATAPNamespaces.RDF);
                     if (StringUtils.isNotEmpty(url)) {
                         boolean isRemote = !url.startsWith(baseURL);
+
+                        List<?> titleNode = Xml
+                            .selectNodes(
+                                metadata,
+                                String.format("dcat:CatalogRecord[@rdf:about='%s']/dct:title", url),
+                                allNamespaces.asList());
+
                         AssociatedResource resource =
                             new AssociatedResource(
                                 isRemote ? url : url.substring(url.lastIndexOf('/') + 1),
-                                "", "isComposedOf", url, "");
+                                "", "isComposedOf", url,
+                                titleNode == null || titleNode.isEmpty() ? "" : ((Element) titleNode.get(0)).getTextNormalize());
                         listOfResources.add(resource);
                     }
                 }
