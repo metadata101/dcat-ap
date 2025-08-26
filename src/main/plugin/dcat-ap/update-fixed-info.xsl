@@ -191,10 +191,11 @@
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
-
-  <xsl:template match="dcat:Catalog[$isVirtualCatalog and not(dct:identifier)]" priority="10">
+  
+  <!-- Ensure virtual Catalog identifier is corresponding to the db UUID and the CatalogRecord one. -->
+  <xsl:template match="dcat:Catalog[$isVirtualCatalog]" priority="10">
     <xsl:copy>
-      <xsl:apply-templates select="@*|*"/>
+      <xsl:apply-templates select="@*|(* except dct:identifier)"/>
       <dct:identifier>
         <xsl:value-of select="$recordUUID"/>
       </dct:identifier>
