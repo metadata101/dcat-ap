@@ -1383,6 +1383,7 @@
           <section forEach="/rdf:RDF/dcat:CatalogRecord[@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource]"
                         name="associatedRecord"
                         del=".">
+            <field xpath="dct:title" or="title" in="."/>
             <field xpath="dct:identifier"/>
             <field xpath="mdcat:stars" or="stars" in="."/>
           </section>
