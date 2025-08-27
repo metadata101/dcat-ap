@@ -26,13 +26,13 @@
   <xsl:variable name="catalogUuid" select="/rdf:RDF/geonet:info/uuid"/>
 
   <xsl:function name="dcat:get-resource-iri" as="xs:string">
-    <xsl:param name="recordUuid" as="xs:string"/>
+    <xsl:param name="record" as="node()"/>
     <xsl:param name="catalogUuid" as="xs:string"/>
     <xsl:param name="nodeUrl" as="xs:string"/>
 
-    <xsl:sequence select="if(starts-with($recordUuid, 'http'))
-                                                     then $recordUuid
-                                                     else concat($nodeUrl, 'api/records/', $catalogUuid, '/',$recordUuid)"/>
+    <xsl:sequence select="if(starts-with($record/url, 'http'))
+                                                     then $record/url
+                                                     else concat($nodeUrl, 'api/records/', $catalogUuid, '/',$record/uuid)"/>
   </xsl:function>
 
   <xsl:template match="dcat:Catalog">
@@ -42,9 +42,14 @@
 
     <xsl:variable name="uuidsToAdd" as="node()*">
       <xsl:for-each select="tokenize($uuids, ',')">
-        <xsl:variable name="uuid" select="tokenize(., '#')[1]"/>
+        <xsl:variable name="uuidTypesTitleAndURL" select="tokenize(., '#')"/>
+        <xsl:variable name="uuid" select="$uuidTypesTitleAndURL[1]"/>
         <xsl:if test="$uuids != '' and not($uuid = $associatedUuids)">
-          <uuid><xsl:value-of select="$uuid"/></uuid>
+          <record>
+            <uuid><xsl:value-of select="$uuid"/></uuid>
+            <title><xsl:value-of select="$uuidTypesTitleAndURL[4]"/></title>
+            <url><xsl:value-of select="$uuidTypesTitleAndURL[5]"/></url>
+          </record>
         </xsl:if>
       </xsl:for-each>
     </xsl:variable>
@@ -59,8 +64,11 @@
 
     <xsl:for-each select="$uuidsToAdd">
       <dcat:CatalogRecord rdf:about="{dcat:get-resource-iri(current(), $catalogUuid, $nodeUrl)}">
-        <dct:identifier><xsl:value-of select="current()"/></dct:identifier>
-        <foaf:primaryTopic rdf:resource="{concat($nodeUrl, 'api/records/', current())}"/>
+        <dct:identifier><xsl:value-of select="current()/uuid"/></dct:identifier>
+        <foaf:primaryTopic rdf:resource="{dcat:get-resource-iri(current(), $catalogUuid, $nodeUrl)}"/>
+        <xsl:if test="current()/title != ''">
+          <dct:title><xsl:value-of select="current()/title"/></dct:title>
+        </xsl:if>
       </dcat:CatalogRecord>
     </xsl:for-each>
   </xsl:template>
