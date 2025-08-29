@@ -203,7 +203,7 @@
 
         <resourceIdentifier type="object">
           {
-          "code": "<xsl:value-of select="dct:identifier[0]/string()"/>",
+          "code": "<xsl:value-of select="dct:identifier[1]/string()"/>",
           "codeSpace": "",
           "link": "<xsl:value-of select="@rdf:about"/>"
           }
