@@ -144,6 +144,9 @@
         </xsl:choose>
       </xsl:variable>
 
+      <xsl:variable name="keywordIds"
+                    select="string-join($keywords/(@rdf:resource|*/@rdf:about), ',')"/>
+
       <xsl:variable name="transformation" select="if ($config/useReference = 'true')
                                                 then 'to-dcat-ap-concept-reference'
                                                 else 'to-dcat-ap-concept'"/>
@@ -161,6 +164,7 @@
            data-thesaurus-title="{($strings/*[name() = $config/labelKey], $labels/element[@name = $config/@name]/label)[1]}"
            data-thesaurus-key="{$config/thesaurus}"
            data-keywords="{$values}"
+           data-keyword-ids="{$keywordIds}"
            data-transformations="{$transformation}"
            data-current-transformation="{$transformation}"
            data-max-tags="{$config/max}"
