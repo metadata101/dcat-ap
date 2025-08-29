@@ -39,6 +39,7 @@
                 xmlns:geodcat="http://data.europa.eu/930/"
                 xmlns:saxon="http://saxon.sf.net/" xmlns:xls="http://www.w3.org/1999/XSL/Transform"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
+                xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 extension-element-prefixes="saxon"
                 exclude-result-prefixes="#all"
                 version="2.0">
@@ -271,6 +272,20 @@
           <xsl:for-each select="../dcat:CatalogRecord[@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource]/dct:identifier">
             <agg_associated><xsl:value-of select="."/></agg_associated>
           </xsl:for-each>
+
+          <virtualCatalogRecords type="object">[
+          <xsl:for-each select="../dcat:CatalogRecord[@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource]">
+            {
+              "uuid": "<xsl:value-of select="dct:identifier"/>"
+              <xsl:if test="dct:title">
+                ,"resourceTitleObject": <xsl:value-of select="gn-fn-index:add-multilingual-field('resourceTitle', dct:title, $allLanguages, true())"/>
+              </xsl:if>
+              <xsl:if test="mdcat:stars">
+                ,"stars": <xsl:value-of select="mdcat:stars"/>
+              </xsl:if>
+            }<xsl:if test="position() != last()">,</xsl:if>
+          </xsl:for-each>
+          ]</virtualCatalogRecords>
         </xsl:if>
         <!-- Index more fields in this element -->
         <xsl:apply-templates mode="index-extra-fields" select="."/>

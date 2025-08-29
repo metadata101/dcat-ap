@@ -184,6 +184,8 @@
         </p>
       </div>
     </xsl:if>
+
+    <div data-gn-virtual-catalog-record-details="mdView.current.record.uuid"></div>
   </xsl:template>
 
   <xsl:template mode="getMetadataHierarchyLevel" match="rdf:RDF">
