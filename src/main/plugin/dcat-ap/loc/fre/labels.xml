@@ -1045,4 +1045,9 @@
     <description>Rating of 1-5 stars</description>
     <btnLabel>Stars</btnLabel>
   </element>
+  <element name="dcat:version">
+    <label>Version</label>
+    <description>Version</description>
+    <btnLabel>Version</btnLabel>
+  </element>
 </labels>

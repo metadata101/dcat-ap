@@ -1,0 +1,83 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:dct="http://purl.org/dc/terms/"
+         xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+         xmlns:dcat="http://www.w3.org/ns/dcat#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
+         xsi:schemaLocation="http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.openarchives.org/OAI/2.0/rdf.xsd">
+  <dcat:Catalog>
+    <dcat:record>
+      <dcat:CatalogRecord>
+        <dct:modified>2020-06-09</dct:modified>
+        <dct:conformsTo>
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/xxx">
+            <dct:title xml:lang="nl">DCAT-AP Vlaanderen</dct:title>
+            <dct:description xml:lang="nl">Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
+            <owl:versionInfo>3.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+        <dct:language>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+            <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+            <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+          </skos:Concept>
+        </dct:language>
+      </dcat:CatalogRecord>
+    </dcat:record>
+    <dcat:dataset>
+      <dcat:Dataset>
+        <dct:title xml:lang="nl">Generieke Open data, conform DCAT-AP VL v3.0</dct:title>
+        <dct:title xml:lang="en">Generic Open data, conforming to DCAT-AP VL v3.0</dct:title>
+        <dct:description xml:lang="nl"/>
+        <dcat:contactPoint>
+          <vcard:Organization>
+            <vcard:hasEmail rdf:resource=""/>
+          </vcard:Organization>
+        </dcat:contactPoint>
+        <dct:publisher>
+          <foaf:Agent>
+            <foaf:name xml:lang="nl"/>
+            <dct:type>
+              <skos:Concept>
+                <skos:prefLabel xml:lang="nl"/>
+                <skos:prefLabel xml:lang="en"/>
+                <skos:prefLabel xml:lang="fr"/>
+                <skos:prefLabel xml:lang="de"/>
+                <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
+              </skos:Concept>
+            </dct:type>
+          </foaf:Agent>
+        </dct:publisher>
+        <dcat:keyword xml:lang="nl"/>
+        <mdcat:statuut>
+          <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
+            <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
+            <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
+          </skos:Concept>
+        </mdcat:statuut>
+        <dcat:theme/>
+        <dct:accessRights>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">
+            <skos:prefLabel xml:lang="nl">publiek</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">public</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">public</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">public</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
+          </skos:Concept>
+        </dct:accessRights>
+        <dcat:distribution>
+          <dcat:Distribution>
+            <dct:title xml:lang="nl"/>
+            <dct:description/>
+            <dcat:accessURL rdf:resource=""/>
+            <dct:format/>
+          </dcat:Distribution>
+        </dcat:distribution>
+      </dcat:Dataset>
+    </dcat:dataset>
+  </dcat:Catalog>
+</rdf:RDF>

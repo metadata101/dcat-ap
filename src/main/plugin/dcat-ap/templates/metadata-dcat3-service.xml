@@ -1,0 +1,61 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:dct="http://purl.org/dc/terms/"
+         xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+         xmlns:dcat="http://www.w3.org/ns/dcat#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xsi:schemaLocation="http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.openarchives.org/OAI/2.0/rdf.xsd">
+  <dcat:Catalog>
+    <dcat:record>
+      <dcat:CatalogRecord>
+        <dct:modified>2020-04-16</dct:modified>
+        <dct:conformsTo>
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/xxx">
+            <dct:title xml:lang="nl">Metadata DCAT</dct:title>
+            <dct:description xml:lang="nl">Het applicatieprofiel “Metadata DCAT”. Dit is een applicatieprofiel gebaseerd op DCAT en richt zich op het verzamelen van informatie over generieke datasets, distributies en services die door een overheid beschikbaar gesteld worden. De datasets en services omvatten zowel publiek toegankelijke als afgeschermde data en diensten (ontwikkeld in en voor eender welk technisch perspectief). Het samenbrengen van al deze informatie in een catalogus laat toe om de vindbaarheid van deze datasets en services te verhogen. Dit applicatieprofiel is het generieke basisprofiel. Afgeleide profielen kunnen zeker aangemaakt worden voor specifieke domeinen of communities. Bijvoorbeeld is DCAT-AP-VL zo’n afgeleid applicatieprofiel, specifiek voor het Open data domein en bijhorende community.</dct:description>
+            <owl:versionInfo>3.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+        <dct:language>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+            <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+            <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+          </skos:Concept>
+        </dct:language>
+      </dcat:CatalogRecord>
+    </dcat:record>
+    <dcat:service>
+      <dcat:DataService>
+        <dct:title xml:lang="nl">Generieke Gesloten services, conform metadata-DCAT v3.0</dct:title>
+        <dct:title xml:lang="en">Generic Closed services, conforming to metadata-DCAT v3.0</dct:title>
+        <dct:description/>
+        <dct:publisher>
+          <foaf:Agent>
+            <foaf:name xml:lang="nl"/>
+          </foaf:Agent>
+        </dct:publisher>
+        <dcat:endpointURL rdf:resource=""/>
+        <dcat:endpointDescription rdf:resource=""/>
+        <dcat:servesDataset rdf:resource=""/>
+        <dcat:landingPage rdf:resource=""/>
+        <dcat:contactPoint>
+          <vcard:Organization>
+            <vcard:hasEmail rdf:resource=""/>
+          </vcard:Organization>
+        </dcat:contactPoint>
+        <dcat:keyword xml:lang="nl"/>
+        <dct:accessRights>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC">
+            <skos:prefLabel xml:lang="nl">Toegang met voorwaarden</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">with conditions</skos:prefLabel>
+            <skos:prefLabel xml:lang="fr">with conditions</skos:prefLabel>
+            <skos:prefLabel xml:lang="de">with conditions</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
+          </skos:Concept>
+        </dct:accessRights>
+      </dcat:DataService>
+    </dcat:service>
+  </dcat:Catalog>
+</rdf:RDF>
