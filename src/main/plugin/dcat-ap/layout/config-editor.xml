@@ -1354,7 +1354,7 @@
               </snippet>
             </template>
           </action>
-          
+
           <field xpath="/rdf:RDF/dcat:Catalog/dct:language"
                  or="language"
                  in="/rdf:RDF/dcat:Catalog"/>
