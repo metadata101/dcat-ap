@@ -1045,8 +1045,8 @@
     <btnLabel>Sterren</btnLabel>
   </element>
   <element name="dcat:version">
-    <label>Versie (dcat:version)</label>
+    <label>Versie</label>
     <description>Vul aan met een verwijzing naar de versie (bvb een versienummer, een versie-benaming,...) van deze resource. </description>
-    <btnLabel>Versie (dcat:version)</btnLabel>
+    <btnLabel>Versie</btnLabel>
   </element>
 </labels>
