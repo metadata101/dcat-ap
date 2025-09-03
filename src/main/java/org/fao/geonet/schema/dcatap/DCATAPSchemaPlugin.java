@@ -52,6 +52,7 @@ import org.jdom.filter.ElementFilter;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -105,13 +106,28 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
                     xpathForAggregationInfo,
                     allNamespaces.asList());
 
+            SettingManager settingManager = ApplicationContextHolder.get().getBean(SettingManager.class);
+            String baseURL = settingManager.getBaseURL();
+
+
             for (Object o : sibs) {
                 if (o instanceof Element) {
                     Element sib = (Element) o;
                     String url = sib.getAttributeValue("resource", DCATAPNamespaces.RDF);
                     if (StringUtils.isNotEmpty(url)) {
+                        boolean isRemote = !url.startsWith(baseURL);
+
+                        List<?> titleNode = Xml
+                            .selectNodes(
+                                metadata,
+                                String.format("dcat:CatalogRecord[@rdf:about='%s']/dct:title", url),
+                                allNamespaces.asList());
+
                         AssociatedResource resource =
-                            new AssociatedResource(url.substring(url.lastIndexOf('/') + 1), "", "isComposedOf", url, "");
+                            new AssociatedResource(
+                                isRemote ? url : url.substring(url.lastIndexOf('/') + 1),
+                                "", "isComposedOf", url,
+                                titleNode == null || titleNode.isEmpty() ? "" : ((Element) titleNode.get(0)).getTextNormalize());
                         listOfResources.add(resource);
                     }
                 }
