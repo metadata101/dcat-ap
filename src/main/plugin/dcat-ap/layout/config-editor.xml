@@ -580,7 +580,7 @@
         <thesaurus key="external.theme.eu-applicable-legislation" maxtags="1" transformations="" fieldset="false"/>
       </thesaurusList>
 
-      <tab id="tabDataset" default="true" mode="flat" displayIfRecord="count(//dcat:dataset) > 0"
+      <tab id="tabDataset" default="true" mode="flat" displayIfRecord="count(//dcat:dataset/dcat:Dataset) > 0"
            hideIfNotDisplayed="true">
         <section name="basicInformation">
 
@@ -931,9 +931,7 @@
         </section>
       </tab>
 
-      <tab id="tabDistribution" mode="flat"
-           displayIfRecord="count(//dcat:dataset) > 0"
-           hideIfNotDisplayed="true">
+      <tab id="tabDistribution" mode="flat" displayIfRecord="count(//dcat:dataset/dcat:Dataset) > 0" hideIfNotDisplayed="true">
         <section>
           <section name="distribution"
                    forEach="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution"
@@ -1015,7 +1013,7 @@
         </section>
       </tab>
 
-      <tab id="tabService" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0"
+      <tab id="tabService" default="true" mode="flat" displayIfRecord="count(//dcat:service/dcat:DataService) > 0"
            hideIfNotDisplayed="true">
         <section name="basicInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title"/>
@@ -1380,7 +1378,32 @@
         </section>
       </tab>
 
-      <tab id="tabCatalog" default="true" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
+      <tab id="tabDatasetSeries" default="true" mode="flat" displayIfRecord="count(//dcat:dataset/dcat:DatasetSeries) > 0">
+        <section name="basicInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:title"/>
+          <action type="add" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:title) = 0">
+            <template>
+              <snippet>
+                <dct:title xml:lang=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:description"/>
+          <action type="add" or="description"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:description) = 0">
+            <template>
+              <snippet>
+                <dct:description xml:lang=""/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+      </tab>
+
+      <tab id="tabCatalog" default="true" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
         <section name="catalogInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dct:title"/>
           <action type="add" or="title" in="/rdf:RDF/dcat:Catalog"
@@ -1414,7 +1437,7 @@
         </section>
       </tab>
 
-      <tab id="tabCatalogAssociatedRecords" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
+      <tab id="tabCatalogAssociatedRecords" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
         <section>
           <action type="associatedResource"
                   name="linkToSibling"

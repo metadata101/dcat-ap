@@ -8,6 +8,7 @@
   <tabDataset>Dataset</tabDataset>
   <tabDistribution>Distributions</tabDistribution>
   <tabService>Service</tabService>
+  <tabDatasetSeries>Dataset series</tabDatasetSeries>
   <tabRecord>Record</tabRecord>
   <tabCatalog>Catalog</tabCatalog>
   <tabCatalogAssociatedRecords>Associated records</tabCatalogAssociatedRecords>

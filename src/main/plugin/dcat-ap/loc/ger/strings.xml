@@ -10,6 +10,7 @@
   <tabDataset>Datensatz</tabDataset>
   <tabDistribution>Verteilung</tabDistribution>
   <tabService>Service</tabService>
+  <tabDatasetSeries>Dataset series</tabDatasetSeries>
   <tabRecord>Record</tabRecord>
 
   <!-- Section labels -->

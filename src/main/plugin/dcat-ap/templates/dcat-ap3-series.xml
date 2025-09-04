@@ -10,7 +10,7 @@
         <dct:conformsTo>
           <dct:Standard rdf:about="https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/300">
             <dct:title>DCAT-AP</dct:title>
-            <dct:description xml:lang="nl">Some description TODO</dct:description>
+            <dct:description>Some description TODO</dct:description>
             <owl:versionInfo>3.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
@@ -18,8 +18,8 @@
     </dcat:record>
     <dcat:dataset>
       <dcat:DatasetSeries>
-        <dct:title xml:lang="nl">DCAT-AP 3 series</dct:title>
-        <dct:description xml:lang="nl"/>
+        <dct:title>DCAT-AP 3 series</dct:title>
+        <dct:description/>
       </dcat:DatasetSeries>
     </dcat:dataset>
   </dcat:Catalog>
