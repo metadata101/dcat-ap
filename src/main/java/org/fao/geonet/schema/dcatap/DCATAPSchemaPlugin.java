@@ -174,18 +174,12 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
             .collect(Collectors.toSet());
     }
 
-    @Override
-    public Set<AssociatedResource> getAssociatedParents(Element metadata) {
-        return Collections.emptySet();
-    }
-
-    @Override
-    public Set<AssociatedResource> getAssociatedDatasets(Element metadata) {
+    private Set<AssociatedResource> getAssociatedResourcesByXpath(Element metadata, String xpath) {
         try {
-            return Xml.selectNodes(metadata, "*//dcat:DataService/dcat:servesDataset/@rdf:resource|*//dcat:DataService/dcat:servesDataset/dcat:Dataset/@rdf:about", allNamespaces.asList())
+            return Xml.selectNodes(metadata, xpath, allNamespaces.asList())
                 .stream()
                 .filter(node -> node instanceof Attribute)
-                .map(node -> ((Attribute)node).getValue())
+                .map(node -> ((Attribute) node).getValue())
                 .filter(s -> s != null && !s.isBlank())
                 .map(this::getAssociatedResourceByURI)
                 .filter(Objects::nonNull)
@@ -194,6 +188,16 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
             e.printStackTrace();
         }
         return Collections.emptySet();
+    }
+
+    @Override
+    public Set<AssociatedResource> getAssociatedParents(Element metadata) {
+        return getAssociatedResourcesByXpath(metadata, "*//dcat:inSeries/@rdf:resource");
+    }
+
+    @Override
+    public Set<AssociatedResource> getAssociatedDatasets(Element metadata) {
+        return getAssociatedResourcesByXpath(metadata, "*//dcat:DataService/dcat:servesDataset/@rdf:resource|*//dcat:DataService/dcat:servesDataset/dcat:Dataset/@rdf:about");
     }
 
     @Override

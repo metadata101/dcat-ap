@@ -41,7 +41,7 @@
   <xsl:variable name="resourcePrefix" select="$env/metadata/resourceIdentifierPrefix"/>
 
   <xsl:variable name="isVirtualCatalog"
-                select="exists(/root/rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
+                select="exists(/root/rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog)"
                 as="xs:boolean"/>
 
   <xsl:variable name="metadata"

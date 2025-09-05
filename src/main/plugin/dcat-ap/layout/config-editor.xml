@@ -554,8 +554,10 @@
                    displayIfRecord="count(//dcat:dataset|rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog) > 0"/>
 
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
-                         displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) = 0"/>
-
+                   editor-config="dcataptwodefault"
+                    displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) = 0 and $p3 = '2.0.0'"/>
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
+                   displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) = 0 and $p3 != '2.0.0'"/>
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
                    editor-config="dcatapcatalog"
                    displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0"/>
