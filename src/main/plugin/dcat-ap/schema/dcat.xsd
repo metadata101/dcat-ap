@@ -45,6 +45,7 @@
   <xs:import namespace="https://w3id.org/mobilitydcat-ap" schemaLocation="profiles/eu-dcat-ap-mobility.xsd"/>
 
   <xs:element name="Catalog" type="dcat:Catalog_type"/>
+  <xs:element name="CatalogRecord" type="dcat:CatalogRecord_type"/>
 
   <!-- dcat:Catalog-->
   <xs:complexType name="Catalog_type">
@@ -57,7 +58,7 @@
           <!-- dcat -->
           <xs:element name="catalog" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="contactPoint" type="vcard:Organization" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element name="dataset" type="dcat:Dataset_type" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="dataset" type="dcat:DatasetOrDatasetSeries_type" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="landingPage" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="record" type="dcat:Catalog_CatalogRecord_type" minOccurs="0" maxOccurs="unbounded"/>
@@ -83,6 +84,7 @@
           <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:type" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="foaf:homepage" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>
 
           <!-- Profile / dcat-ap-vl  & metadata-dcat -->
           <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
@@ -100,8 +102,6 @@
     </xs:sequence>
     <xs:attribute ref="rdf:resource"/>
   </xs:complexType>
-
-  <xs:element name="CatalogRecord" type="dcat:CatalogRecord_type"/>
 
   <!-- dcat:CatalogRecord-->
   <xs:complexType name="CatalogRecord_type">
@@ -137,9 +137,9 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <!-- dcat:Dataset-->
-  <xs:complexType name="Dataset_type">
-    <xs:sequence>
+  <!-- dcat:Dataset or dcat:DatasetSeries -->
+  <xs:complexType name="DatasetOrDatasetSeries_type">
+    <xs:choice>
       <xs:element name="Dataset">
         <xs:complexType>
           <xs:complexContent>
@@ -165,10 +165,8 @@
                 <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:creator" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:hasVersion" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:isReferencedBy" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dct:isVersionOf" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:issued" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:language" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:modified" minOccurs="0" maxOccurs="unbounded"/>
@@ -182,7 +180,11 @@
                 <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:type" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="foaf:page" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="version" type="rdf:PlainLiteral"  minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="isVersionOf" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="hasVersion" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="inSeries" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
 
                 <!-- Profile / dcat-ap-vl & metadata-dcat -->
                 <xs:element ref="dct:created" minOccurs="0" maxOccurs="unbounded"/>
@@ -200,7 +202,6 @@
                 <xs:element ref="mobilitydcatap:networkCoverage" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="mobilitydcatap:georeferencingMethod" minOccurs="0" maxOccurs="unbounded"/>
                 <!-- Optional -->
-                <!-- <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>-->
                 <xs:element ref="mobilitydcatap:intendedInformationService" minOccurs="0" maxOccurs="unbounded"/>
                 <!--
                 TODO:
@@ -210,14 +211,35 @@
 
                 <!-- Profile / DCAT-AP-HVD -->
                 <xs:element ref="dcatap:hvdCategory" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>
+
+                <!-- DCAT-AP v2 compatibility -->
+                <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:hasVersion" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:isVersionOf" minOccurs="0" maxOccurs="unbounded"/>
               </xs:sequence>
             </xs:extension>
           </xs:complexContent>
 
         </xs:complexType>
       </xs:element>
-    </xs:sequence>
+
+      <xs:element name="DatasetSeries">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="rdf:Resource">
+              <xs:sequence>
+                <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="first" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="last" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="prev" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="next" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
   </xs:complexType>
 
   <!-- dcat:Distribution-->
@@ -238,9 +260,9 @@
                 <xs:element name="spatialResolutionInMeters" type="xs:decimal" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="temporalResolution" type="xs:duration" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="adms:status" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcat:compressFormat" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcat:mediaType" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcat:packageFormat" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="mediaType" type="skos:Concept" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="compressFormat" type="skos:Concept" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="packageFormat" type="skos:Concept" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcatap:availability" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="unbounded"/><!-- to be discussed: should be a dct:RightsStatement -->
                 <xs:element ref="dct:conformsTo" minOccurs="0" maxOccurs="unbounded"/>
@@ -254,6 +276,7 @@
                 <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="foaf:page" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="spdx:checksum" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>
 
                 <!-- Profile / dcat-ap-vl & metadata-dcat -->
                 <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
@@ -306,6 +329,10 @@
                 <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:type" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="version" type="rdf:PlainLiteral"  minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:format" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="inSeries" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
 
                 <!-- dcat-ap-vl & metadata-dcat -->
                 <xs:element name="theme" type="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
@@ -322,11 +349,12 @@
                 <xs:element ref="mdcat:levensfase" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="mdcat:ontwikkelingstoestand" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
+
+                <!-- DCAT-AP v2 compatibility -->
                 <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="unbounded"/>
 
                 <!-- Profile / DCAT-AP-HVD -->
                 <xs:element ref="dcatap:hvdCategory" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>
               </xs:sequence>
             </xs:extension>
           </xs:complexContent>
@@ -335,10 +363,7 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:element name="mediaType" type="skos:Concept"/>
-  <xs:element name="compressFormat" type="skos:Concept"/>
-  <xs:element name="packageFormat" type="skos:Concept"/>
-
+  <!-- dcat:Relationship -->
   <xs:complexType name="Relationship_type">
     <xs:sequence>
       <xs:element name="Relationship">

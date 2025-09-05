@@ -308,23 +308,23 @@
         </snippet>
       </template>
     </for>
-    <for name="dct:isVersionOf" templateModeOnly="true" forceLabel="true" label="key">
+    <for name="dcat:isVersionOf" templateModeOnly="true" forceLabel="true" label="key">
       <template>
         <values>
-          <key label="key" xpath="@rdf:resource" tooltip="dct:isVersionOf" required="true"/>
+          <key label="key" xpath="@rdf:resource" tooltip="dcat:isVersionOf" required="true"/>
         </values>
         <snippet>
-          <dct:isVersionOf rdf:resource="{{key}}"/>
+          <dcat:isVersionOf rdf:resource="{{key}}"/>
         </snippet>
       </template>
     </for>
-    <for name="dct:hasVersion" templateModeOnly="true" forceLabel="true" label="key">
+    <for name="dcat:hasVersion" templateModeOnly="true" forceLabel="true" label="key">
       <template>
         <values>
-          <key label="key" xpath="@rdf:resource" tooltip="dct:hasVersion" required="true"/>
+          <key label="key" xpath="@rdf:resource" tooltip="dcat:hasVersion" required="true"/>
         </values>
         <snippet>
-          <dct:hasVersion rdf:resource="{{key}}"/>
+          <dcat:hasVersion rdf:resource="{{key}}"/>
         </snippet>
       </template>
     </for>
@@ -375,6 +375,28 @@
         </values>
         <snippet>
           <spdx:algorithm rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+
+    <!-- DCAT-AP v2 compatibility -->
+    <for name="dct:isVersionOf" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="dct:isVersionOf" required="true"/>
+        </values>
+        <snippet>
+          <dct:isVersionOf rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="dct:hasVersion" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="dct:hasVersion" required="true"/>
+        </values>
+        <snippet>
+          <dct:hasVersion rdf:resource="{{key}}"/>
         </snippet>
       </template>
     </for>
@@ -493,14 +515,11 @@
       <name>dct:isPartOf</name>
       <name>dct:relation</name>
       <name>dct:isReferencedBy</name>
-      <name>dct:hasVersion</name>
-      <name>dct:isVersionOf</name>
       <name>dct:source</name>
       <name>dct:spatial</name>
       <name>dct:accrualPeriodicity</name>
       <name>foaf:Document</name>
       <name>foaf:primaryTopic</name>
-      <name>owl:versionInfo</name>
       <name>prov:atTime</name>
       <name>spdx:checksum</name>
       <name>vcard:hasEmail</name>
@@ -510,6 +529,14 @@
       <name>skos:inScheme</name>
       <name>skos:notation</name>
       <name>mdcat:stars</name>
+      <name>dcat:version</name>
+      <name>dcat:hasVersion</name>
+      <name>dcat:isVersionOf</name>
+
+      <!-- DCAT-AP v2 compatibility -->
+      <name>owl:versionInfo</name>
+      <name>dct:hasVersion</name>
+      <name>dct:isVersionOf</name>
     </exclude>
   </multilingualFields>
 
@@ -553,7 +580,7 @@
         <thesaurus key="external.theme.eu-applicable-legislation" maxtags="1" transformations="" fieldset="false"/>
       </thesaurusList>
 
-      <tab id="tabDataset" default="true" mode="flat" displayIfRecord="count(//dcat:dataset) > 0"
+      <tab id="tabDataset" default="true" mode="flat" displayIfRecord="count(//dcat:dataset/dcat:Dataset) > 0"
            hideIfNotDisplayed="true">
         <section name="basicInformation">
 
@@ -612,7 +639,7 @@
         </section>
 
         <section name="vl-section-metadatadcat"
-                       displayIfRecord="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+                       displayIfRecord="$p2 = ('DCAT-AP-VL', 'metadata-dcat')">
           <!-- MAGDA-categorie-->
           <field
             xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:MAGDA-categorie"/>
@@ -667,9 +694,19 @@
         </section>
 
         <section name="versionInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo" />
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:version" if="$p3 = '3.0.0'" />
+          <action type="add" or="version" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:version) = 0 and $p3 = '3.0.0'">
+            <template>
+              <snippet>
+                <dcat:version/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo" if="$p3 = '2.0.0'"/>
           <action type="add" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo)=0">
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/owl:versionInfo) = 0 and $p3 = '2.0.0'">
             <template>
               <snippet>
                 <owl:versionInfo/>
@@ -710,6 +747,7 @@
           </action>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity"/>
+
         </section>
 
         <section name="usageInformation">
@@ -774,7 +812,7 @@
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial"/>
 
           <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                       if="not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
+                       if="not($p2 = ('DCAT-AP-VL', 'metadata-dcat'))">
             <template>
               <snippet>
                   <dct:spatial>
@@ -792,7 +830,7 @@
           </action>
 
           <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                       if="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+                       if="$p2 = ('DCAT-AP-VL', 'metadata-dcat')">
             <template>
               <snippet>
                 <dct:spatial>
@@ -893,9 +931,7 @@
         </section>
       </tab>
 
-      <tab id="tabDistribution" mode="flat"
-           displayIfRecord="count(//dcat:dataset) > 0"
-           hideIfNotDisplayed="true">
+      <tab id="tabDistribution" mode="flat" displayIfRecord="count(//dcat:dataset/dcat:Dataset) > 0" hideIfNotDisplayed="true">
         <section>
           <section name="distribution"
                    forEach="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution"
@@ -911,14 +947,14 @@
 
             <action type="add" or="license" in="dcat:Distribution"
                     if="count(dcat:Distribution/dct:license) = 0 and
-                        not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
+                        not($p2 = ('DCAT-AP-VL', 'metadata-dcat'))">
               <template>
                 <snippets name="licenses"/>
               </template>
             </action>
             <action type="add" or="license" in="dcat:Distribution"
                     if="count(dcat:Distribution/dct:license) = 0 and
-                        $p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+                        $p2 = ('DCAT-AP-VL', 'metadata-dcat')">
               <template>
                 <snippets name="licenses-vl"/>
               </template>
@@ -941,7 +977,7 @@
 
             <section xpath="dcat:Distribution/dct:conformsTo"/>
             <action type="add" or="conformsTo" in="dcat:Distribution"
-                    if="not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
+                    if="not($p2 = ('DCAT-AP-VL', 'metadata-dcat'))">
               <template>
                 <snippet>
                   <dct:conformsTo>
@@ -955,7 +991,7 @@
               </template>
             </action>
             <action type="add" or="conformsTo" in="dcat:Distribution"
-                    if="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+                    if="$p2 = ('DCAT-AP-VL', 'metadata-dcat')">
               <template>
                 <snippets name="protocols-vl"/>
               </template>
@@ -977,7 +1013,7 @@
         </section>
       </tab>
 
-      <tab id="tabService" default="true" mode="flat" displayIfRecord="count(//dcat:service) > 0"
+      <tab id="tabService" default="true" mode="flat" displayIfRecord="count(//dcat:service/dcat:DataService) > 0"
            hideIfNotDisplayed="true">
         <section name="basicInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title"/>
@@ -1068,7 +1104,7 @@
         </section>
 
         <section name="vl-section-metadatadcat"
-                       displayIfRecord="$p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+                       displayIfRecord="$p2 = ('DCAT-AP-VL', 'metadata-dcat')">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/mdcat:MAGDA-categorie"/>
           <action type="add"
                   or="MAGDA-categorie"
@@ -1187,9 +1223,19 @@
         </section>
 
         <section name="versionInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/*/*/owl:versionInfo" />
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:version" if="$p3 = '3.0.0'" />
+          <action type="add" or="version" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:version) = 0 and $p3 = '3.0.0'">
+            <template>
+              <snippet>
+                <dcat:version/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/owl:versionInfo" if="$p3 = '2.0.0'"/>
           <action type="add" or="versionInfo" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
-                  if="count(rdf:RDF/dcat:Catalog/*/*/owl:versionInfo)=0">
+                  if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/owl:versionInfo) = 0 and $p3 = '2.0.0'">
             <template>
               <snippet>
                 <owl:versionInfo/>
@@ -1259,14 +1305,14 @@
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license"/>
           <action type="add" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
                        if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license) = 0
-                            and not($p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'))">
+                            and not($p2 = ('DCAT-AP-VL', 'metadata-dcat'))">
             <template>
               <snippets name="licenses"/>
             </template>
           </action>
           <action type="add" or="license" in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"
                        if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:license) = 0 and
-                           $p2 = ('https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03', 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22')">
+                           $p2 = ('DCAT-AP-VL', 'metadata-dcat')">
             <template>
               <snippets name="licenses-vl"/>
             </template>
@@ -1332,7 +1378,33 @@
         </section>
       </tab>
 
-      <tab id="tabCatalog" default="true" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
+      <tab id="tabDatasetSeries" default="true" mode="flat"
+           displayIfRecord="count(//dcat:dataset/dcat:DatasetSeries) > 0" hideIfNotDisplayed="true">
+        <section name="basicInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:title"/>
+          <action type="add" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:title) = 0">
+            <template>
+              <snippet>
+                <dct:title xml:lang=""/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:description"/>
+          <action type="add" or="description"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:description) = 0">
+            <template>
+              <snippet>
+                <dct:description xml:lang=""/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+      </tab>
+
+      <tab id="tabCatalog" default="true" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
         <section name="catalogInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dct:title"/>
           <action type="add" or="title" in="/rdf:RDF/dcat:Catalog"
@@ -1366,7 +1438,7 @@
         </section>
       </tab>
 
-      <tab id="tabCatalogAssociatedRecords" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
+      <tab id="tabCatalogAssociatedRecords" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
         <section>
           <action type="associatedResource"
                   name="linkToSibling"
@@ -1391,25 +1463,35 @@
       </tab>
 
       <tab id="tabRecord" mode="flat">
-        <section name="catalogRecordInformation">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:description"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:modified"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:issued"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"
-                 or="language"
-                 in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
-        </section>
+        <section>
+          <section name="catalogRecordInformation">
+            <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title"/>
+            <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:description"/>
+            <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
+            <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:modified"/>
+            <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:issued"/>
+            <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"
+                   or="language"
+                   in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
+          </section>
 
-        <section name="conformToInformation">
-          <field
-            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:identifier"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:title"/>
-          <field
-            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/dct:description"/>
-          <field
-            xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/owl:versionInfo"/>
+          <section name="conformToInformation" del="." forEach="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo">
+            <field xpath="dct:Standard/dct:identifier"/>
+            <field xpath="dct:Standard/dct:title"/>
+            <field xpath="dct:Standard/dct:description"/>
+            <field xpath="dct:Standard/owl:versionInfo"/>
+          </section>
+
+          <action type="add" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord" if="$p3 = '2.0.0'">
+            <template>
+              <snippets name="dcat-profiles-200"/>
+            </template>
+          </action>
+          <action type="add" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord" if="$p3 = '3.0.0'" >
+            <template>
+              <snippets name="dcat-profiles-300"/>
+            </template>
+          </action>
         </section>
       </tab>
 
@@ -1421,6 +1503,7 @@
         <for name="dcat:keyword"/>
         <for name="dcat:theme"/>
         <!-- Version info -->
+        <for name="dcat:version"/>
         <for name="owl:versionInfo"/>
         <for name="dct:created"/>
         <for name="dct:modified"/>
@@ -2259,6 +2342,74 @@
             <dct:identifier/>
             <dct:title xml:lang=""/>
             <dct:description xml:lang=""/>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
+    </list>
+    <list name="dcat-profiles-200">
+      <snippet label="dcat-ap-200">
+        <dct:conformsTo>
+          <dct:Standard
+            rdf:about="https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/200">
+            <dct:title xml:lang="en">DCAT-AP</dct:title>
+            <dct:title xml:lang="nl">DCAT-AP</dct:title>
+            <dct:description xml:lang="en">DCAT Application Profile for data portals in Europe</dct:description>
+            <dct:description xml:lang="nl">DCAT Applicatieprofiel voor Europese data portalen</dct:description>
+            <owl:versionInfo>2.0.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
+      <snippet label="dcat-ap-vl-200">
+        <dct:conformsTo>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
+            <dct:title xml:lang="nl">DCAT-AP Vlaanderen</dct:title>
+            <dct:description xml:lang="nl">Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.
+            </dct:description>
+            <owl:versionInfo>2.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
+      <snippet label="metadata-dcat-200">
+        <dct:conformsTo>
+          <dct:Standard
+            rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22">
+            <dct:title xml:lang="nl">Metadata DCAT</dct:title>
+            <dct:description xml:lang="nl">Het applicatieprofiel “Metadata DCAT”. Dit is een applicatieprofiel gebaseerd op DCAT en richt zich op het verzamelen van informatie over generieke datasets, distributies en services die door een overheid beschikbaar gesteld worden. De datasets en services omvatten zowel publiek toegankelijke als afgeschermde data en diensten (ontwikkeld in en voor eender welk technisch perspectief). Het samenbrengen van al deze informatie in een catalogus laat toe om de vindbaarheid van deze datasets en services te verhogen. Dit applicatieprofiel is het generieke basisprofiel. Afgeleide profielen kunnen zeker aangemaakt worden voor specifieke domeinen of communities. Bijvoorbeeld is DCAT-AP-VL zo’n afgeleid applicatieprofiel, specifiek voor het Open data domein en bijhorende community.
+            </dct:description>
+            <owl:versionInfo>2.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
+    </list>
+    <list name="dcat-profiles-300">
+      <snippet label="dcat-ap-300">
+        <dct:conformsTo>
+          <dct:Standard
+            rdf:about="https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/300">
+            <dct:title>DCAT-AP</dct:title>
+            <dct:description xml:lang="nl">Some description TODO</dct:description>
+            <owl:versionInfo>3.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
+      <snippet label="dcat-ap-vl-300">
+        <dct:conformsTo>
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/xxx">
+            <dct:title xml:lang="nl">DCAT-AP Vlaanderen</dct:title>
+            <dct:description xml:lang="nl">Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.
+            </dct:description>
+            <owl:versionInfo>3.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
+      <snippet label="metadata-dcat-300">
+        <dct:conformsTo>
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/xxx">
+            <dct:title xml:lang="nl">Metadata DCAT</dct:title>
+            <dct:description xml:lang="nl">Het applicatieprofiel “Metadata DCAT”. Dit is een applicatieprofiel gebaseerd op DCAT en richt zich op het verzamelen van informatie over generieke datasets, distributies en services die door een overheid beschikbaar gesteld worden. De datasets en services omvatten zowel publiek toegankelijke als afgeschermde data en diensten (ontwikkeld in en voor eender welk technisch perspectief). Het samenbrengen van al deze informatie in een catalogus laat toe om de vindbaarheid van deze datasets en services te verhogen. Dit applicatieprofiel is het generieke basisprofiel. Afgeleide profielen kunnen zeker aangemaakt worden voor specifieke domeinen of communities. Bijvoorbeeld is DCAT-AP-VL zo’n afgeleid applicatieprofiel, specifiek voor het Open data domein en bijhorende community.
+            </dct:description>
+            <owl:versionInfo>3.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
