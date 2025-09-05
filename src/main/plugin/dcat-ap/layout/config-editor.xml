@@ -1378,7 +1378,8 @@
         </section>
       </tab>
 
-      <tab id="tabDatasetSeries" default="true" mode="flat" displayIfRecord="count(//dcat:dataset/dcat:DatasetSeries) > 0">
+      <tab id="tabDatasetSeries" default="true" mode="flat"
+           displayIfRecord="count(//dcat:dataset/dcat:DatasetSeries) > 0" hideIfNotDisplayed="true">
         <section name="basicInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:title"/>
           <action type="add" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
