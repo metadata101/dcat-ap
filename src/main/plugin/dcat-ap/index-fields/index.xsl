@@ -36,6 +36,7 @@
                 xmlns:index="java:org.fao.geonet.kernel.search.EsSearchManager"
                 xmlns:date-util="java:org.fao.geonet.utils.DateUtil"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
+                xmlns:dcatutil="java:org.fao.geonet.schema.dcatap.util.XslUtil"
                 xmlns:geodcat="http://data.europa.eu/930/"
                 xmlns:saxon="http://saxon.sf.net/" xmlns:xls="http://www.w3.org/1999/XSL/Transform"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
@@ -295,6 +296,12 @@
           </xsl:for-each>
           ]</virtualCatalogRecords>
         </xsl:if>
+
+        <xsl:for-each select="dcat:inSeries[normalize-space(@rdf:resource) != '']">
+          <parentUuid>
+            <xsl:value-of select="dcatutil:getUUIDByURI(normalize-space(@rdf:resource))"/>
+          </parentUuid>
+        </xsl:for-each>
         <!-- Index more fields in this element -->
         <xsl:apply-templates mode="index-extra-fields" select="."/>
       </doc>

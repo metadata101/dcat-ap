@@ -152,12 +152,6 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
             .collect(Collectors.toSet());
     }
 
-    // @Override
-    // public Set<String> getAssociatedExternalDatasetLinks(Element metadata) {
-    //     ElementFilter elementFilter = new ElementFilter("servesDataset", DCATAPNamespaces.DCAT);
-    //     return this.getAssociatedExternalRdfLinks(metadata, elementFilter);
-    // }
-
     @Override
     public Set<String> getAssociatedFeatureCatalogueUUIDs(Element metadata) {
         return getAssociatedFeatureCatalogues(metadata)
