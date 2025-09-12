@@ -53,6 +53,22 @@
             "remoteurl": {"multiple": false}
           }
         }
+      },
+      {
+        "type": "siblings",
+        "label": "linkToSibling",
+        "config": {
+          "sources": {
+            "metadataStore": {
+              "params": {
+                "isTemplate": "n"
+              }
+            },
+            "remoteurl": {
+              "multiple": true
+            }
+          }
+        }
       }
     ]
   }

@@ -26,7 +26,7 @@
 Stylesheet used to remove a reference to a parent record.
 -->
 <xsl:stylesheet version="2.0"
-                xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:geonet="http://www.fao.org/geonetwork">
   <!-- Parent metadata record UUID -->
@@ -40,7 +40,6 @@ Stylesheet used to remove a reference to a parent record.
     </xsl:copy>
   </xsl:template>
 
-  <!-- Remove geonet:* elements. -->
-  <xsl:template match="geonet:*|dct:isPartOf[text() = $parentUuid]"
-                priority="2"/>
+  <!-- Remove geonet:* elements or any DCAT inSeries reference. -->
+  <xsl:template match="geonet:*|dcat:inSeries" priority="2"/>
 </xsl:stylesheet>
