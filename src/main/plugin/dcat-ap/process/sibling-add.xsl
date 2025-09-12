@@ -21,6 +21,8 @@
   <xsl:param name="associationType"/>
   <xsl:param name="initiativeType"/>
 
+  <xsl:include href="../reorder-util.xsl"/>
+
   <xsl:variable name="nodeUrl" select="util:getSettingValue('nodeUrl')"/>
 
   <xsl:variable name="catalogUuid" select="/rdf:RDF/geonet:info/uuid"/>
@@ -35,7 +37,7 @@
                                                      else concat($nodeUrl, 'api/records/', $catalogUuid, '/',$record/uuid)"/>
   </xsl:function>
 
-  <xsl:template match="dcat:Catalog">
+  <xsl:template match="dcat:Catalog[$associationType = 'catalog']">
     <!-- All associated records and itself (to avoid linking to existing) -->
     <xsl:variable name="associatedUuids"
                   select="ancestor::rdf:RDF//dcat:CatalogRecord/dct:identifier/text()"/>
@@ -71,6 +73,37 @@
         </xsl:if>
       </dcat:CatalogRecord>
     </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="*[name() = ('dcat:Dataset', 'dcat:DataService', 'dcat:DatasetSeries') and $associationType = 'nextResource']">
+    <xsl:variable name="resourceWithNext">
+      <xsl:copy>
+        <xsl:copy-of select="@*"/>
+        <xsl:apply-templates select="@*|*|text()"/>
+
+        <xsl:variable name="existingNext" select="dcat:next"/>
+
+        <xsl:variable name="uriToAdd" as="node()*">
+          <xsl:for-each select="tokenize($uuids, ',')">
+            <xsl:variable name="uuidTypesTitleAndURL" select="tokenize(., '#')"/>
+            <xsl:variable name="uuid" select="$uuidTypesTitleAndURL[1]"/>
+            <xsl:variable name="uri" select="util:getRecordResourceURI($uuid)"/>
+            <xsl:if test="count($existingNext[@rdf:resource = $uri]) = 0">
+              <record>
+                <uuid><xsl:value-of select="$uuid"/></uuid>
+                <uri><xsl:value-of select="$uri"/></uri>
+              </record>
+            </xsl:if>
+          </xsl:for-each>
+        </xsl:variable>
+        <xsl:for-each select="$uriToAdd">
+          <dcat:next>
+            <xsl:attribute name="rdf:resource" select="uri"/>
+          </dcat:next>
+        </xsl:for-each>
+      </xsl:copy>
+    </xsl:variable>
+    <xsl:apply-templates mode="reorder" select="$resourceWithNext"/>
   </xsl:template>
 
   <xsl:template match="@*|*|text()">
