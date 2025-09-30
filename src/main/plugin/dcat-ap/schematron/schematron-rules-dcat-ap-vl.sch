@@ -641,14 +641,15 @@
       <sch:report test="$isLiteral and $hasLang">$loc/strings/pattern.report.73</sch:report>
     </sch:rule>
   </sch:pattern>
-  <sch:pattern name="beschrijving" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape/4a16176c26d8d5526c76974a1530f1ffdd596e93">
-    <sch:title>$loc/strings/pattern.title.74</sch:title>
-    <sch:rule context="//dcat:Dataset[$profile]">
-      <sch:let name="validMax" value="count(dct:description) &lt;= 1"/>
-      <sch:assert test="$validMax">$loc/strings/pattern.assert.74</sch:assert>
-      <sch:report test="$validMax">$loc/strings/pattern.report.74</sch:report>
-    </sch:rule>
-  </sch:pattern>
+  <!-- To fix in shacl>schematron conversion, should handle multilinguality and should perhaps be put in -rec file? -->
+  <!--  <sch:pattern name="beschrijving" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape/4a16176c26d8d5526c76974a1530f1ffdd596e93">-->
+  <!--    <sch:title>$loc/strings/pattern.title.74</sch:title>-->
+  <!--    <sch:rule context="//dcat:Dataset[$profile]">-->
+  <!--      <sch:let name="validMax" value="count(dct:description) &lt;= 1"/>-->
+  <!--      <sch:assert test="$validMax">$loc/strings/pattern.assert.74</sch:assert>-->
+  <!--      <sch:report test="$validMax">$loc/strings/pattern.report.74</sch:report>-->
+  <!--    </sch:rule>-->
+  <!--  </sch:pattern>-->
   <sch:pattern name="beschrijving" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape/7521953addc62cf367ab3c8ec0dc63cb5981ea23">
     <sch:title>$loc/strings/pattern.title.75</sch:title>
     <sch:rule context="//dcat:Dataset[$profile]">
@@ -903,14 +904,15 @@
       <sch:report test="$validClass">$loc/strings/pattern.report.104</sch:report>
     </sch:rule>
   </sch:pattern>
-  <sch:pattern name="titel" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DistributieShape/5c245f65e6c2294cd7079eb566de6fd4e4adb829">
-    <sch:title>$loc/strings/pattern.title.105</sch:title>
-    <sch:rule context="//dcat:Distribution[$profile]">
-      <sch:let name="validMax" value="count(dct:title) &lt;= 1"/>
-      <sch:assert test="$validMax">$loc/strings/pattern.assert.105</sch:assert>
-      <sch:report test="$validMax">$loc/strings/pattern.report.105</sch:report>
-    </sch:rule>
-  </sch:pattern>
+  <!-- To fix in shacl>schematron conversion, should handle multilinguality and should perhaps be put in -rec file? -->
+  <!--  <sch:pattern name="titel" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DistributieShape/5c245f65e6c2294cd7079eb566de6fd4e4adb829">-->
+  <!--    <sch:title>$loc/strings/pattern.title.105</sch:title>-->
+  <!--    <sch:rule context="//dcat:Distribution[$profile]">-->
+  <!--      <sch:let name="validMax" value="count(dct:title) &lt;= 1"/>-->
+  <!--      <sch:assert test="$validMax">$loc/strings/pattern.assert.105</sch:assert>-->
+  <!--      <sch:report test="$validMax">$loc/strings/pattern.report.105</sch:report>-->
+  <!--    </sch:rule>-->
+  <!--  </sch:pattern>-->
   <sch:pattern name="titel" id="https://data.vlaanderen.be/shacl/DCAT-AP-VL#DistributieShape/8041fe094c27b123422bd03a4e13ff0641087607">
     <sch:title>$loc/strings/pattern.title.106</sch:title>
     <sch:rule context="//dcat:Distribution/dct:title[$profile]">
