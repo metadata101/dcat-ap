@@ -191,7 +191,7 @@
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
-  
+
   <!-- Ensure virtual Catalog identifier is corresponding to the db UUID and the CatalogRecord one. -->
   <xsl:template match="dcat:Catalog[$isVirtualCatalog]" priority="10">
     <xsl:copy>
@@ -295,7 +295,7 @@
           </xsl:if>
         </vcard:Organization>
       </dcat:contactPoint>
-      
+
       <xsl:choose>
         <xsl:when test="dcat:record/dcat:CatalogRecord">
           <xsl:apply-templates select="dcat:record"/>
@@ -340,7 +340,7 @@
   process. Removing the CatalogRecord from the main form needs to also remove the corresponding dcat:record element. -->
   <xsl:template match="dcat:Catalog/dcat:record[$isVirtualCatalog and @rdf:resource and not(@rdf:resource = ../../dcat:CatalogRecord/@rdf:about)]" priority="2"/>
 
-  <xsl:template match="dcat:Dataset|dcat:DataService" priority="10">
+  <xsl:template match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries" priority="10">
      <xsl:copy copy-namespaces="no">
        <xsl:call-template name="handle-resource-id"/>
        <xsl:apply-templates select="* except dct:identifier"/>
