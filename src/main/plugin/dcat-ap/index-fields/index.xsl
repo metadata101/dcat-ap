@@ -224,7 +224,11 @@
               select="gn-fn-index:add-field('mainLanguage', $defaultMainLanguage3Char)"/>
           </xsl:otherwise>
         </xsl:choose>
-
+        
+        <xsl:for-each select="$allLanguages/*[not(@default)]">
+          <xsl:copy-of select="gn-fn-index:add-field('otherLanguage', @code)"/>
+        </xsl:for-each>
+        
         <xsl:variable name="resourceLanguages"
                       select="dct:language/skos:Concept/@rdf:about|../../dct:language/skos:Concept/@rdf:about"/>
 
