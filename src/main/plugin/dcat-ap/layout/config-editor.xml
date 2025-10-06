@@ -1495,6 +1495,12 @@
             <field xpath="dct:Standard/owl:versionInfo"/>
           </section>
 
+          <action type="add" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord" if="count($p3) = 0">
+            <template>
+              <snippets name="dcat-profiles-300"/>
+              <snippets name="dcat-profiles-200"/>
+            </template>
+          </action>
           <action type="add" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord" if="$p3 = '2.0.0'">
             <template>
               <snippets name="dcat-profiles-200"/>
