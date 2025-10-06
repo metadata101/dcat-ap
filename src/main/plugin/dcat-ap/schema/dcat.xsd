@@ -84,6 +84,8 @@
           <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:type" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="foaf:homepage" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="foaf:page" minOccurs="0" maxOccurs="unbounded"/>
+
           <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>
 
           <!-- Profile / dcat-ap-vl  & metadata-dcat -->
@@ -230,6 +232,7 @@
               <xs:sequence>
                 <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="foaf:page" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="first" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="last" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="prev" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
