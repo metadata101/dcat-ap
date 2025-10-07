@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:dct="http://purl.org/dc/terms/"
+         xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.w3.org/1999/02/22-rdf-syntax-ns# https://metadata.dev-vlaanderen.be/xml/schemas/dcat-ap/schema.xsd">
+  <dcat:Catalog>
+    <dcat:record>
+      <dcat:CatalogRecord
+        rdf:about="https://metadata.dev-vlaanderen.be/srv/api/records/00d11159-1bf8-4149-b3a4-98c272344736">
+        <foaf:primaryTopic
+          rdf:resource="https://metadata.dev-vlaanderen.be/srv/resources/catalog/00d11159-1bf8-4149-b3a4-98c272344736"/>
+        <dct:modified>2025-09-03</dct:modified>
+        <dct:conformsTo>
+          <dct:Standard
+            rdf:about="https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/200">
+            <dct:identifier>
+              https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/200
+            </dct:identifier>
+            <dct:title xml:lang="nl">DCAT-AP</dct:title>
+            <dct:description xml:lang="nl">DCAT Applicatieprofiel voor Europese data portalen</dct:description>
+            <owl:versionInfo>2.0.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+        <dct:language>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+            <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+            <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+          </skos:Concept>
+        </dct:language>
+        <dct:identifier>00d11159-1bf8-4149-b3a4-98c272344736</dct:identifier>
+      </dcat:CatalogRecord>
+    </dcat:record>
+    <dcat:record
+      rdf:resource="https://metadata.dev-vlaanderen.be/srv/api/records/00d11159-1bf8-4149-b3a4-98c272344736/09cb78dd-73f8-5434-a05d-f361e2a4f988"/>
+    <dcat:record
+      rdf:resource="https://metadata.dev-vlaanderen.be/srv/api/records/00d11159-1bf8-4149-b3a4-98c272344736/0c3ab5d8-2787-4db6-806c-8182d78a4a9b"/>
+    <dcat:record
+      rdf:resource="https://metadata.dev-vlaanderen.be/srv/api/records/00d11159-1bf8-4149-b3a4-98c272344736/b51c0f35-7f52-530a-8498-d668339192b6"/>
+    <dct:identifier>00d11159-1bf8-4149-b3a4-98c272344736</dct:identifier>
+    <dct:language>
+      <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+        <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+        <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+      </skos:Concept>
+    </dct:language>
+    <dct:title xml:lang="nl">xcvxcv</dct:title>
+  </dcat:Catalog>
+  <dcat:CatalogRecord
+    rdf:about="https://metadata.dev-vlaanderen.be/srv/api/records/00d11159-1bf8-4149-b3a4-98c272344736/b51c0f35-7f52-530a-8498-d668339192b6">
+    <foaf:primaryTopic
+      rdf:resource="https://metadata.dev-vlaanderen.be/srv/api/records/00d11159-1bf8-4149-b3a4-98c272344736/b51c0f35-7f52-530a-8498-d668339192b6"/>
+    <dct:identifier>b51c0f35-7f52-530a-8498-d668339192b6</dct:identifier>
+  </dcat:CatalogRecord>
+  <dcat:CatalogRecord
+    rdf:about="https://metadata.dev-vlaanderen.be/srv/api/records/00d11159-1bf8-4149-b3a4-98c272344736/09cb78dd-73f8-5434-a05d-f361e2a4f988">
+    <foaf:primaryTopic
+      rdf:resource="https://metadata.dev-vlaanderen.be/srv/api/records/00d11159-1bf8-4149-b3a4-98c272344736/09cb78dd-73f8-5434-a05d-f361e2a4f988"/>
+    <dct:identifier>09cb78dd-73f8-5434-a05d-f361e2a4f988</dct:identifier>
+  </dcat:CatalogRecord>
+  <dcat:CatalogRecord
+    rdf:about="https://metadata.dev-vlaanderen.be/srv/api/records/00d11159-1bf8-4149-b3a4-98c272344736/0c3ab5d8-2787-4db6-806c-8182d78a4a9b">
+    <foaf:primaryTopic
+      rdf:resource="https://metadata.dev-vlaanderen.be/srv/api/records/00d11159-1bf8-4149-b3a4-98c272344736/0c3ab5d8-2787-4db6-806c-8182d78a4a9b"/>
+    <dct:identifier>0c3ab5d8-2787-4db6-806c-8182d78a4a9b</dct:identifier>
+  </dcat:CatalogRecord>
+</rdf:RDF>
+
