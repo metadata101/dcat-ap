@@ -1435,6 +1435,19 @@
                  or="keyword"
                  in="/rdf:RDF/dcat:Catalog"/>
 
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:contactPoint"/>
+          <action type="add" or="contactPoint" in="/rdf:RDF/dcat:Catalog"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:contactPoint) = 0">
+            <template>
+              <snippet>
+                <dcat:contactPoint>
+                  <vcard:Organization>
+                    <vcard:hasEmail rdf:resource=""/>
+                  </vcard:Organization>
+                </dcat:contactPoint>
+              </snippet>
+            </template>
+          </action>
         </section>
       </tab>
 
