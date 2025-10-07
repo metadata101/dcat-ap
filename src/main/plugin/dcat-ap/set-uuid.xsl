@@ -8,52 +8,41 @@
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 version="2.0">
+  <!--
+  DCAT record UUID is defined in:
+  * rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/@rdf:about
+  * rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier
 
+  Set modified date if not present.
+  -->
   <xsl:variable name="uuidRegex" select="'([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}'"/>
 
   <xsl:variable name="isVirtualCatalog"
-                select="exists(/root/rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
+                select="exists(/root/rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog)"
                 as="xs:boolean"/>
 
-  <xsl:variable name="record" select="if ($isVirtualCatalog)
-                                           then rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord[@rdf:about != ../dcat:Catalog/dcat:record/@rdf:resource]
-                                           else rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
+  <xsl:variable name="record"
+                select="if ($isVirtualCatalog)
+                                           then /root/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord[not(@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource)]
+                                           else /root/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
 
-  <xsl:variable name="resourceType">
-    <xsl:choose>
-      <xsl:when test="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-        <xsl:value-of select="'datasets'"/>
-      </xsl:when>
-      <xsl:when test="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DataService">
-        <xsl:value-of select="'services'"/>
-      </xsl:when>
-      <xsl:when test="$isVirtualCatalog">
-        <xsl:value-of select="'catalog'"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="'datasets'"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
+  <xsl:variable name="newUuid"
+                select="string(/root/env/uuid)"
+                as="xs:string"/>
 
-  <xsl:variable name="recordUUID" select="string(/root/env/uuid)"/>
+  <xsl:variable name="newRdfAbout"
+                select="if (matches($record/@rdf:about, $uuidRegex))
+                            then replace($record/@rdf:about, $uuidRegex, $newUuid)
+                            else concat(util:getSettingValue('nodeUrl'), 'api/records/', $newUuid)"
+                as="xs:string"/>
 
-  <xsl:variable name="recordAbout">
-    <xsl:choose>
-      <xsl:when test="matches($record/@rdf:about, $uuidRegex)">
-        <xsl:value-of select="replace($record/@rdf:about, $uuidRegex, $recordUUID)"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="concat(util:getSettingValue('nodeUrl'), 'api/records/', $recordUUID)"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-
+  <xsl:variable name="currentDate"
+                select="format-dateTime(current-dateTime(), '[Y0001]-[M01]-[D01]')"
+                as="xs:string"/>
 
   <xsl:template match="/">
     <xsl:apply-templates select="root/rdf:RDF"/>
   </xsl:template>
-
 
   <xsl:template match="dcat:Catalog">
     <xsl:copy>
@@ -65,7 +54,7 @@
           <xsl:apply-templates select="dcat:record"/>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:call-template name="generate-record"/>
+          <xsl:call-template name="add-catalogue-record"/>
         </xsl:otherwise>
       </xsl:choose>
 
@@ -80,7 +69,7 @@
       -->
       <xsl:choose>
         <xsl:when test="$isVirtualCatalog">
-          <dct:identifier><xsl:value-of select="$recordUUID"/></dct:identifier>
+          <dct:identifier><xsl:value-of select="$newUuid"/></dct:identifier>
         </xsl:when>
         <xsl:otherwise>
           <xsl:apply-templates select="dct:identifier"/>
@@ -92,54 +81,57 @@
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="dcat:record[not(dcat:CatalogRecord)]">
-    <xsl:call-template name="generate-record"/>
+  <xsl:template match="dcat:record[not($isVirtualCatalog) and not(dcat:CatalogRecord)]">
+    <xsl:call-template name="add-catalogue-record"/>
   </xsl:template>
 
-  <xsl:template match="dcat:CatalogRecord">
+  <xsl:template match="dcat:CatalogRecord[not($isVirtualCatalog) or (
+                                          $isVirtualCatalog
+                                          and (count(../dcat:Catalog/dcat:record/@rdf:resource) = 0
+                                          or not(@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource))
+                                          )]">
     <xsl:copy>
       <xsl:apply-templates select="@*[not(name(.) = 'rdf:about')]"/>
-      <xsl:attribute name="rdf:about" select="$recordAbout"/>
+      <xsl:attribute name="rdf:about" select="$newRdfAbout"/>
       <xsl:element name="dct:identifier">
-        <xsl:value-of select="$recordUUID"/>
+        <xsl:value-of select="$newUuid"/>
       </xsl:element>
       <!-- foaf:primaryTopic will be generated by update-fixed-info.xsl -->
       <xsl:if test="not(dct:modified)">
-        <xsl:value-of select="format-dateTime(current-dateTime(), '[Y0001]-[M01]-[D01]')"/>
+        <dct:modified>
+          <xsl:value-of select="$currentDate"/>
+        </dct:modified>
       </xsl:if>
       <xsl:apply-templates select="*[name(.) != 'dct:identifier' and name(.) != 'foaf:primaryTopic']"/>
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="dcat:Dataset|dcat:DataService">
+  <xsl:template match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries">
     <xsl:copy>
       <!-- Remove resource identification, will be generated by update-fixed-info -->
       <xsl:apply-templates select="@*[name() != 'rdf:about']|*[name() != 'dct:identifier']"/>
     </xsl:copy>
   </xsl:template>
 
+  <xsl:template name="add-catalogue-record">
+    <dcat:record>
+      <dcat:CatalogRecord>
+        <xsl:attribute name="rdf:about" select="$newRdfAbout"/>
+        <dct:identifier>
+          <xsl:value-of select="$newUuid"/>
+        </dct:identifier>
+        <!-- foaf:primaryTopic will be generated by the updated-fixed-info -->
+        <dct:modified>
+          <xsl:value-of select="$currentDate"/>
+        </dct:modified>
+      </dcat:CatalogRecord>
+    </dcat:record>
+  </xsl:template>
+
   <xsl:template match="@*|node()">
     <xsl:copy>
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
-  </xsl:template>
-
-
-
-
-  <xsl:template name="generate-record">
-    <xsl:element name="dcat:record">
-      <xsl:element name="dcat:CatalogRecord">
-        <xsl:attribute name="rdf:about" select="$recordAbout"/>
-        <dct:identifier>
-          <xsl:value-of select="$recordUUID"/>
-        </dct:identifier>
-        <!-- foaf:primaryTopic will be generated by the updated-fixed-info -->
-        <dct:modified>
-          <xsl:value-of select="format-dateTime(current-dateTime(), '[Y0001]-[M01]-[D01]')"/>
-        </dct:modified>
-      </xsl:element>
-    </xsl:element>
   </xsl:template>
 
 </xsl:stylesheet>

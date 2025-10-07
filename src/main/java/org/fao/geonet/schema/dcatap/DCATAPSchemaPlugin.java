@@ -61,7 +61,7 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
     public static final String IDENTIFIER = "dcat-ap";
     private static final Pattern UUID_PATTERN = Pattern.compile("([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}");
 
-    private static final ImmutableSet<Namespace> allNamespaces;
+    public static final ImmutableSet<Namespace> allNamespaces;
     private static final Map<String, Namespace> allTypenames;
 
     static {
