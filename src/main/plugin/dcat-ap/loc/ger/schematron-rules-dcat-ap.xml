@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <schematron.title>DCAT-AP - Obligatorisch</schematron.title>
+  <required.language.title>Sprache eines Katalogeintrags.</required.language.title>
+  <required.language.assert>Der Katalogdatensatz definiert keine Sprache.</required.language.assert>
+  <required.language.report>Der Katalogdatensatz definiert mindestens eine Sprache.</required.language.report>
+  <required.catalogtitle.title>Titel eines Katalogs.</required.catalogtitle.title>
+  <required.catalogtitle.assert>Der Katalog hat keinen Titel.</required.catalogtitle.assert>
+  <required.catalogtitle.report>Der Katalog hat mindestens einen dct:title.</required.catalogtitle.report>
 </strings>

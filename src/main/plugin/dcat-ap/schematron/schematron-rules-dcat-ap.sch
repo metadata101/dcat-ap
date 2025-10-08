@@ -34,4 +34,14 @@
     </sch:rule>
   </sch:pattern>
 
+  <sch:pattern>
+    <sch:title>$loc/strings/required.catalogtitle.title</sch:title>
+    <sch:rule context="//rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog">
+      <sch:let name="title" value="dct:title != ''"/>
+      <sch:assert test="$title">$loc/strings/required.catalogtitle.assert</sch:assert>
+      <sch:report test="$title">$loc/strings/required.catalogtitle.report</sch:report>
+    </sch:rule>
+  </sch:pattern>
+
+
 </sch:schema>
