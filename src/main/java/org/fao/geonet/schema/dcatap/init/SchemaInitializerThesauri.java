@@ -23,25 +23,19 @@
 
 package org.fao.geonet.schema.dcatap.init;
 
-import org.fao.geonet.constants.Geonet;
-import org.fao.geonet.domain.Setting;
-import org.fao.geonet.domain.SettingDataType;
-import org.fao.geonet.kernel.GeonetworkDataDirectory;
-import org.fao.geonet.kernel.setting.SettingManager;
-import org.fao.geonet.repository.SettingRepository;
-import org.fao.geonet.utils.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationListener;
-import org.springframework.core.Ordered;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.regex.Pattern;
+import org.fao.geonet.constants.Geonet;
+import org.fao.geonet.kernel.GeonetworkDataDirectory;
+import org.fao.geonet.utils.Log;
+import org.springframework.context.ApplicationListener;
+import org.springframework.core.Ordered;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 /**
  * This class sets up the thesaurus files required by the DCAT-AP schema.
