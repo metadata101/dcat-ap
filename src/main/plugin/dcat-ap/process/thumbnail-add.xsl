@@ -47,21 +47,14 @@
     <xsl:apply-templates select="rdf:RDF"/>
   </xsl:template>
 
-  <xsl:template match="dcat:Dataset|dcat:DataService">
-    <xsl:variable name="elements-after"
-                  select="dcat:qualifiedRelation|
-                        dct:creator|
-                        dct:isReferencedBy|
-                        dct:rights" />
-
+  <xsl:template match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries|rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog">
     <xsl:copy copy-namespaces="no">
-      <xsl:copy-of select="* except $elements-after" copy-namespaces="no" />
-      <xsl:call-template name="fill"/>
-      <xsl:copy-of select="$elements-after" copy-namespaces="no" />
+      <xsl:copy-of select="*" copy-namespaces="no" />
+      <xsl:call-template name="add-thumbnail"/>
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template name="fill">
+  <xsl:template name="add-thumbnail">
     <xsl:if test="$thumbnail_url != ''">
       <foaf:page>
         <foaf:Document rdf:about="{$thumbnail_url}">
@@ -72,7 +65,6 @@
       </foaf:page>
     </xsl:if>
   </xsl:template>
-
 
   <!-- Do a copy of every nodes and attributes -->
   <xsl:template match="@*|node()">
