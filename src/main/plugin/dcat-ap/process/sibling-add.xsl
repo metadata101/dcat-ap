@@ -2,6 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:geonet="http://www.fao.org/geonetwork"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
+                xmlns:dcatutil="java:org.fao.geonet.schema.dcatap.util.XslUtil"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
@@ -32,7 +33,7 @@
 
     <xsl:sequence select="if(starts-with($record/url, 'http'))
                                                      then $record/url
-                                                     else concat($nodeUrl, 'api/records/', $catalogUuid, '/',$record/uuid)"/>
+                                                     else concat($nodeUrl, 'api/records/', $catalogUuid, '#',$record/uuid)"/>
   </xsl:function>
 
   <xsl:template match="dcat:Catalog">
@@ -63,12 +64,17 @@
     </xsl:copy>
 
     <xsl:for-each select="$uuidsToAdd">
+      <xsl:variable name="datasetUri"
+                          select="dcatutil:getRecordResourceURI(current())"
+                          as="xs:string?"/>
+
       <dcat:CatalogRecord rdf:about="{dcat:get-resource-iri(current(), $catalogUuid, $nodeUrl)}">
         <dct:identifier><xsl:value-of select="current()/uuid"/></dct:identifier>
-        <foaf:primaryTopic rdf:resource="{dcat:get-resource-iri(current(), $catalogUuid, $nodeUrl)}"/>
+        <foaf:primaryTopic rdf:resource="{if ($datasetUri) then $datasetUri else dcat:get-resource-iri(current(), $catalogUuid, $nodeUrl)}"/>
         <xsl:if test="current()/title != ''">
           <dct:title><xsl:value-of select="current()/title"/></dct:title>
         </xsl:if>
+        <dct:modified><xsl:value-of select="format-date(current-date(), '[Y0001]-[M01]-[D01]')"/></dct:modified>
       </dcat:CatalogRecord>
     </xsl:for-each>
   </xsl:template>

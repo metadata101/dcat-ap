@@ -23,23 +23,25 @@
 
 package org.fao.geonet.schema.dcatap;
 
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-
-import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import org.apache.commons.lang.StringUtils;
 import org.fao.geonet.ApplicationContextHolder;
-import org.fao.geonet.constants.Geonet;
-import org.fao.geonet.index.es.EsRestClient;
-import org.fao.geonet.kernel.schema.SchemaPlugin;
 import org.fao.geonet.kernel.schema.AssociatedResource;
 import org.fao.geonet.kernel.schema.AssociatedResourcesSchemaPlugin;
 import org.fao.geonet.kernel.schema.MultilingualSchemaPlugin;
+import org.fao.geonet.kernel.schema.SchemaPlugin;
 import org.fao.geonet.kernel.search.EsSearchManager;
 import org.fao.geonet.kernel.setting.SettingManager;
 import org.fao.geonet.utils.Log;
@@ -48,11 +50,6 @@ import org.jdom.Attribute;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
-import org.jdom.filter.ElementFilter;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -125,7 +122,7 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
 
                         AssociatedResource resource =
                             new AssociatedResource(
-                                isRemote ? url : url.substring(url.lastIndexOf('/') + 1),
+                                isRemote ? url : url.substring(url.lastIndexOf('#') + 1),
                                 "", "isComposedOf", url,
                                 titleNode == null || titleNode.isEmpty() ? "" : ((Element) titleNode.get(0)).getTextNormalize());
                         listOfResources.add(resource);
