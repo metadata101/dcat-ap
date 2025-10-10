@@ -4,4 +4,7 @@
   <required.language.title>Language of a CatalogRecord.</required.language.title>
   <required.language.assert>The CatalogRecord does not define a language.</required.language.assert>
   <required.language.report>The CatalogRecord has at least one dct:language.</required.language.report>
+  <required.catalogtitle.title>Title of a Catalog.</required.catalogtitle.title>
+  <required.catalogtitle.assert>The Catalog does not have a title.</required.catalogtitle.assert>
+  <required.catalogtitle.report>The Catalog has at least one dct:title.</required.catalogtitle.report>
 </strings>

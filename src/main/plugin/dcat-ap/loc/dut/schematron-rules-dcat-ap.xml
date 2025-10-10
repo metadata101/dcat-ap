@@ -4,4 +4,7 @@
   <required.language.title>Taal van een Catalogus Record.</required.language.title>
   <required.language.assert>Het Catalogus Record definieert geen taal.</required.language.assert>
   <required.language.report>Het Catalogus Record definieert ten minste één taal.</required.language.report>
+  <required.catalogtitle.title>Titel van een Catalogus.</required.catalogtitle.title>
+  <required.catalogtitle.assert>De Catalogus heeft geen titel.</required.catalogtitle.assert>
+  <required.catalogtitle.report>De Catalogus heeft op zijn minst één dct:title.</required.catalogtitle.report>
 </strings>
