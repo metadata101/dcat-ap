@@ -1434,7 +1434,9 @@
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:keyword"
                  or="keyword"
                  in="/rdf:RDF/dcat:Catalog"/>
+        </section>
 
+        <section name="usageInformation">
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:contactPoint"/>
           <action type="add" or="contactPoint" in="/rdf:RDF/dcat:Catalog"
                   if="count(rdf:RDF/dcat:Catalog/dcat:contactPoint) = 0">
@@ -1445,6 +1447,32 @@
                     <vcard:hasEmail rdf:resource=""/>
                   </vcard:Organization>
                 </dcat:contactPoint>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dct:rights"/>
+          <action type="add" or="rights" in="/rdf:RDF/dcat:Catalog">
+            <template>
+              <snippet>
+                <dct:rights>
+                  <dct:RightsStatement>
+                    <dct:title/>
+                    <dct:description/>
+                  </dct:RightsStatement>
+                </dct:rights>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcatap:applicableLegislation"/>
+          <action type="add"
+                  or="applicableLegislation"
+                  in="/rdf:RDF/dcat:Catalog"
+                  if="count(rdf:RDF/dcat:Catalog/dcatap:applicableLegislation) = 0">
+            <template>
+              <snippet>
+                <dcatap:applicableLegislation rdf:resource=""/>
               </snippet>
             </template>
           </action>
