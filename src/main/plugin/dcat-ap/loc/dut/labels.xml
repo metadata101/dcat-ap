@@ -950,6 +950,11 @@
     <description>Vul aan met een verwijzing (titel, identificator,...) naar een resource waarvan je resource een versie of een uitgave is.</description>
     <btnLabel>Is een versie van</btnLabel>
   </element>
+  <element name="dcat:version">
+    <label>Versie</label>
+    <description>Vul aan met een verwijzing naar de versie (bvb een versienummer, een versie-benaming,...) van deze resource.</description>
+    <btnLabel>Versie</btnLabel>
+  </element>
   <element name="mobilitydcatap:mobilityTheme">
     <label>Mobiliteitsthema</label>
     <description>Deze eigenschap refereert naar het mobiliteits-gerelateerde thema (i.e., een specifiek onderwerp, categorie of type) van de geleverde inhoud.\n\nEen dataset mag geassocieerd worden met meerdere themas. Een thema is belangrijk voor geïnteresseerden in een bepaald type data.</description>

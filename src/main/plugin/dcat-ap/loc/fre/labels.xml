@@ -950,6 +950,11 @@
     <description>A related resource of which the described resource is a version, edition, or adaptation.</description>
     <btnLabel>Is a version of</btnLabel>
   </element>
+  <element name="dcat:version">
+    <label>Version</label>
+    <description>Version</description>
+    <btnLabel>Version</btnLabel>
+  </element>
   <element name="mobilitydcatap:mobilityTheme">
     <label>Mobility theme</label>
     <description>This property refers to the mobility-related theme (i.e., a specific subject, category, or type) of the delivered content.

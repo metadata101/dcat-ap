@@ -970,6 +970,11 @@
     <item>A related resource of which the described resource is a version, edition, or adaptation.</item>
     <item>Is a version of</item>
   </string-array>
+  <string-array name="dcat:version">
+    <item>Version</item>
+    <item>Version</item>
+    <item>Version</item>
+  </string-array>
 
   <string-array name="mobilitydcatap:mobilityTheme">
     <item>Mobility theme</item>
