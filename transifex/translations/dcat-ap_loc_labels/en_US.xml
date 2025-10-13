@@ -898,12 +898,22 @@
     <item>Contact name</item>
     <item>Contact name</item>
   </string-array>
+  <string-array name="vcard:fn" product="/rdf:RDF/dcat:Catalog/dcat:contactPoint/vcard:Organization/vcard:fn">
+    <item>Contact name</item>
+    <item>Contact name</item>
+    <item>Contact name</item>
+  </string-array>
   <string-array name="vcard:hasAddress" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
     <item>Address</item>
     <item>Address</item>
     <item>Address</item>
   </string-array>
   <string-array name="vcard:hasAddress" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
+    <item>Address</item>
+    <item>Address</item>
+    <item>Address</item>
+  </string-array>
+  <string-array name="vcard:hasAddress" product="/rdf:RDF/dcat:Catalog/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
     <item>Address</item>
     <item>Address</item>
     <item>Address</item>
@@ -959,6 +969,11 @@
     <item>Is a version of</item>
     <item>A related resource of which the described resource is a version, edition, or adaptation.</item>
     <item>Is a version of</item>
+  </string-array>
+  <string-array name="dcat:version">
+    <item>Version</item>
+    <item>Version</item>
+    <item>Version</item>
   </string-array>
 
   <string-array name="mobilitydcatap:mobilityTheme">
