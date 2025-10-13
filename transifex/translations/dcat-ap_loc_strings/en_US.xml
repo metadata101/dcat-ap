@@ -8,6 +8,7 @@
     <string name="tabDataset">Dataset</string>
     <string name="tabDistribution">Distributions</string>
     <string name="tabService">Service</string>
+    <string name="tabDatasetSeries">Dataset series</string>
     <string name="tabRecord">Record</string>
     <string name="tabCatalog">Catalog</string>
     <string name="tabCatalogAssociatedRecords">Associated records</string>
@@ -101,6 +102,13 @@
     <string name="protocol-49">LINK-1.0-http--link</string>
     <string name="protocol-50">LINK-1.0-http--related</string>
     <string name="protocol-51">Enter your own protocol...</string>
+
+    <string name="dcat-ap-200">DCAT-AP - 2.0.0</string>
+    <string name="dcat-ap-vl-200">DCAT-AP Flanders - 2.0.0</string>
+    <string name="metadata-dcat-200">Metadata DCAT - 2.0.0</string>
+    <string name="dcat-ap-300">DCAT-AP - 3.0.0</string>
+    <string name="dcat-ap-vl-300">DCAT-AP Flanders - 3.0.0</string>
+    <string name="metadata-dcat-300">Metadata DCAT - 3.0.0</string>
 
     <string name="hvd-dataservice-section">High Value Dataset (HVD)</string>
     <string name="hvd-dataservice-tab">Data Service</string>

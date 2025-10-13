@@ -96,10 +96,10 @@
   <protocol-50>LINK-1.0-http--related</protocol-50>
   <protocol-51>Enter your own protocol...</protocol-51>
   <dcat-ap-200>DCAT-AP - 2.0.0</dcat-ap-200>
-  <dcat-ap-vl-200>DCAT-AP Vlaanderen - 2.0.0</dcat-ap-vl-200>
+  <dcat-ap-vl-200>DCAT-AP Flanders - 2.0.0</dcat-ap-vl-200>
   <metadata-dcat-200>Metadata DCAT - 2.0.0</metadata-dcat-200>
   <dcat-ap-300>DCAT-AP - 3.0.0</dcat-ap-300>
-  <dcat-ap-vl-300>DCAT-AP Vlaanderen - 3.0.0</dcat-ap-vl-300>
+  <dcat-ap-vl-300>DCAT-AP Flanders - 3.0.0</dcat-ap-vl-300>
   <metadata-dcat-300>Metadata DCAT - 3.0.0</metadata-dcat-300>
   <hvd-dataservice-section>High Value Dataset (HVD)</hvd-dataservice-section>
   <hvd-dataservice-tab>Data Service</hvd-dataservice-tab>

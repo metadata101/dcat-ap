@@ -345,7 +345,7 @@
     <description>Geometry</description>
     <btnLabel>Geometry</btnLabel>
   </element>
-  <element name="dcat:version">
+  <element name="owl:versionInfo">
     <label>Version</label>
     <description>Version</description>
     <btnLabel>Version</btnLabel>
@@ -495,7 +495,7 @@
     <description>In scheme</description>
     <btnLabel>In scheme</btnLabel>
   </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:hasVersion/@rdf:resource">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:hasVersion/@rdf:resource|                                              /rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:hasVersion/@rdf:resource">
     <label>Has version</label>
     <description>Has version</description>
     <btnLabel>Has version</btnLabel>
@@ -505,7 +505,7 @@
     <description>Is referenced by</description>
     <btnLabel>Is referenced by</btnLabel>
   </element>
-  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isVersionOf/@rdf:resource">
+  <element name="rdf:resource" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:isVersionOf/@rdf:resource|                                              /rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isVersionOf/@rdf:resource">
     <label>Is Version Of</label>
     <description>A related resource of which the described resource is a version, edition, or adaptation.</description>
     <btnLabel>Is Version Of</btnLabel>
@@ -880,12 +880,22 @@
     <description>Contact name</description>
     <btnLabel>Contact name</btnLabel>
   </element>
+  <element name="vcard:fn" context="/rdf:RDF/dcat:Catalog/dcat:contactPoint/vcard:Organization/vcard:fn">
+    <label>Contact name</label>
+    <description>Contact name</description>
+    <btnLabel>Contact name</btnLabel>
+  </element>
   <element name="vcard:hasAddress" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
     <label>Address</label>
     <description>Address</description>
     <btnLabel>Address</btnLabel>
   </element>
   <element name="vcard:hasAddress" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
+    <label>Address</label>
+    <description>Address</description>
+    <btnLabel>Address</btnLabel>
+  </element>
+  <element name="vcard:hasAddress" context="/rdf:RDF/dcat:Catalog/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
     <label>Address</label>
     <description>Address</description>
     <btnLabel>Address</btnLabel>
@@ -930,6 +940,16 @@
     <description>Language</description>
     <btnLabel>Language</btnLabel>
   </element>
+  <element name="dct:hasVersion">
+    <label>Has version</label>
+    <description>A related resource that is a version, edition, or adaptation of the described resource.</description>
+    <btnLabel>Has version</btnLabel>
+  </element>
+  <element name="dct:isVersionOf">
+    <label>Is a version of</label>
+    <description>A related resource of which the described resource is a version, edition, or adaptation.</description>
+    <btnLabel>Is a version of</btnLabel>
+  </element>
   <element name="mobilitydcatap:mobilityTheme">
     <label>Mobility theme</label>
     <description>This property refers to the mobility-related theme (i.e., a specific subject, category, or type) of the delivered content.
@@ -945,7 +965,7 @@
     <label>Network coverage</label>
     <description>This property describes the part of the transport network that is covered by the delivered content. For road traffic, the property SHOULD refer to the network classification for which the data is provided. As a minimum, an international or higher-level classification, e.g., via functional road classes, is recommended to allow data search across different countries. In addition, national classifications are allowed.
       For other transport modes, the property is meant to refer to the physical infrastructure which is used by the services covered by the data.
-      For all modes, the property SHOULD also indicate if the data content relates to the EU&#x2019;s trans-European transport network [EU-TEN-T].</description>
+      For all modes, the property SHOULD also indicate if the data content relates to the EU’s trans-European transport network [EU-TEN-T].</description>
     <btnLabel>Network coverage</btnLabel>
   </element>
   <element name="mobilitydcatap:georeferencingMethod">
@@ -957,7 +977,7 @@
     <label>Intended information service</label>
     <description>This property MAY describe predefined information services, which the data content is intended to support.
       Such services MAY be, e.g., information services for multimodal mobility, as specified by EC Delegated Regulation 2017/1926 [EC-MMTIS-DR].
-      Examples of such services include &#x201C;location search&#x201D;, which is based on a datasets with address identifiers, or &#x201C;trip plan computation&#x201D;, which is based on datasets about a road network.</description>
+      Examples of such services include “location search”, which is based on a datasets with address identifiers, or “trip plan computation”, which is based on datasets about a road network.</description>
     <btnLabel>Intended information service</btnLabel>
   </element>
   <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
@@ -1044,27 +1064,5 @@
     <label>Stars</label>
     <description>Rating of 1-5 stars</description>
     <btnLabel>Stars</btnLabel>
-  </element>
-
-  <!-- DCAT-AP v2 compatibility -->
-  <element name="dct:hasVersion">
-    <label>Has version</label>
-    <description>A related resource that is a version, edition, or adaptation of the described resource.</description>
-    <btnLabel>Has version</btnLabel>
-  </element>
-  <element name="dct:isVersionOf">
-    <label>Is a version of</label>
-    <description>A related resource of which the described resource is a version, edition, or adaptation.</description>
-    <btnLabel>Is a version of</btnLabel>
-  </element>
-  <element name="owl:versionInfo">
-    <label>Version</label>
-    <description>Version</description>
-    <btnLabel>Version</btnLabel>
-  </element>
-  <element name="dcat:version">
-    <label>Version</label>
-    <description>Version</description>
-    <btnLabel>Version</btnLabel>
   </element>
 </labels>
