@@ -872,17 +872,17 @@
   </element>
   <element name="vcard:fn" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:fn">
     <label>Naam Contactpunt</label>
-    <description>Vul aan met de naam/benaming van het contactpunt voor deze resource (bv. \'helpdesk van Informatie Vlaanderen\'). Via een contactpunt kunnen gebruikers bijkomende informatie over deze resource bekomen of opmerkingen over deze resource bezorgen. </description>
+    <description>Vul aan met de naam/benaming van het contactpunt voor deze resource (bv. ‘helpdesk van Informatie Vlaanderen’). Via een contactpunt kunnen gebruikers bijkomende informatie over deze resource bekomen of opmerkingen over deze resource bezorgen. </description>
     <btnLabel>Naam Contactpunt</btnLabel>
   </element>
   <element name="vcard:fn" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:fn">
     <label>Naam Contactpunt</label>
-    <description>Vul aan met de naam/benaming van het contactpunt voor deze resource (bv. \'helpdesk van Informatie Vlaanderen\'). Via een contactpunt kunnen gebruikers bijkomende informatie over deze resource bekomen of opmerkingen over deze resource bezorgen. </description>
+    <description>Vul aan met de naam/benaming van het contactpunt voor deze resource (bv. ‘helpdesk van Informatie Vlaanderen’). Via een contactpunt kunnen gebruikers bijkomende informatie over deze resource bekomen of opmerkingen over deze resource bezorgen. </description>
     <btnLabel>Naam Contactpunt</btnLabel>
   </element>
   <element name="vcard:fn" context="/rdf:RDF/dcat:Catalog/dcat:contactPoint/vcard:Organization/vcard:fn">
     <label>Naam Contactpunt</label>
-    <description>Vul aan met de naam/benaming van het contactpunt voor deze resource (bv. \'helpdesk van Informatie Vlaanderen\'). Via een contactpunt kunnen gebruikers bijkomende informatie over deze resource bekomen of opmerkingen over deze resource bezorgen.</description>
+    <description>Vul aan met de naam/benaming van het contactpunt voor deze resource (bv. ‘helpdesk van Informatie Vlaanderen’). Via een contactpunt kunnen gebruikers bijkomende informatie over deze resource bekomen of opmerkingen over deze resource bezorgen. </description>
     <btnLabel>Naam Contactpunt</btnLabel>
   </element>
   <element name="vcard:hasAddress" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
