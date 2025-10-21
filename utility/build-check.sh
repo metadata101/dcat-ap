@@ -32,6 +32,13 @@ if ! command -v xmlstarlet &> /dev/null; then
     exit 1
 fi
 
+# check if rsync is installed
+if ! command -v rsync &> /dev/null; then
+    echo "ERROR: rsync is not installed or not in PATH" >&2
+    echo "Please install rsync before running this script" >&2
+    exit 1
+fi
+
 # check if git is installed
 if ! command -v git &> /dev/null; then
     echo "ERROR: git is not installed or not in PATH" >&2
