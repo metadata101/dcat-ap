@@ -10,17 +10,34 @@
 
   <xsl:variable name="dcatSchema" select="document('./schema/dcat.xsd')"/>
 
-  <xsl:template name="dcat-reorder-elements" match="rdf:RDF">
+  <xsl:template name="dcat-reorder-elements">
     <xsl:param name="rdfRoot" as="node()"/>
     <xsl:apply-templates mode="reorder" select="$rdfRoot//rdf:RDF"/>
   </xsl:template>
 
-  <xsl:template mode="reorder" match="dcat:Catalog|dcat:CatalogRecord|dcat:Dataset|dcat:Distribution|dcat:DataService">
+  <xsl:template mode="reorder" match="dcat:Catalog|dcat:CatalogRecord">
     <xsl:variable name="typeName" select="concat(local-name(), '_type')"/>
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@rdf:about"/>
       <xsl:variable name="catalog" select="."/>
       <xsl:for-each select="$dcatSchema//xs:complexType[@name = $typeName]//xs:extension[@base = 'rdf:Resource']//xs:element">
+        <xsl:variable name="elementName">
+          <xsl:call-template name="to-element-name">
+            <xsl:with-param name="xsElement" select="."/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:apply-templates mode="reorder" select="$catalog/*[name() = $elementName]"/>
+      </xsl:for-each>
+    </xsl:copy>
+  </xsl:template>
+
+
+  <xsl:template mode="reorder" match="dcat:Dataset|dcat:Distribution|dcat:DataService|dcat:DatasetSeries">
+    <xsl:variable name="localName" select="local-name()"/>
+    <xsl:copy copy-namespaces="no">
+      <xsl:apply-templates select="@rdf:about"/>
+      <xsl:variable name="catalog" select="."/>
+      <xsl:for-each select="$dcatSchema//xs:element[@name = $localName]//xs:extension[@base = 'rdf:Resource']//xs:element">
         <xsl:variable name="elementName">
           <xsl:call-template name="to-element-name">
             <xsl:with-param name="xsElement" select="."/>
@@ -50,7 +67,7 @@
         <xsl:value-of select="concat('dcat:', normalize-space($xsElement/@name))"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="normalize-space($xsElement/@ref)"/>
+        <xsl:value-of select="if (contains($xsElement/@ref, ':')) then normalize-space($xsElement/@ref) else concat('dcat:', normalize-space($xsElement/@ref))"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>

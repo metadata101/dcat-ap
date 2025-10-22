@@ -36,6 +36,7 @@
     xmlns:schema="http://schema.org/"
     xmlns:locn="http://www.w3.org/ns/locn#"
     xmlns:gml="http://www.opengis.net/gml"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:gn="http://www.fao.org/geonetwork"
     xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
     xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
@@ -54,6 +55,9 @@
     <xsl:variable name="labelConfig" select="gn-fn-metadata:getLabel($schema, name(), $labels, name(..), '', $xpath)"/>
     <xsl:variable name="elementRef" select="gn:element/@ref"/>
     <xsl:variable name="isRequired" select="gn:element/@min = 1"/>
+    <xsl:variable name="isCatalogRecordReadonlyDate"
+                        select="name(.) = 'dct:modified' and name(..) = 'dcat:CatalogRecord'"
+                        as="xs:boolean"/>
 
     <div class="form-group gn-field gn-date {if ($isRequired) then 'gn-required' else ''}"
          id="gn-el-{$elementRef}"
@@ -79,20 +83,31 @@
             </xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
-        <div data-gn-date-picker="{$value}"
-             data-gn-field-tooltip="{$tooltip}"
-             data-label=""
-             data-tag-name="{name()}"
-             data-element-name="{name()}"
-             data-element-ref="{concat('_X', gn:element/@ref)}"
-             data-hide-time="{if ($viewConfig/@hideTimeInCalendar = 'true') then 'true' else 'false'}"
-             data-hide-date-mode="{if ($viewConfig/@hideTimeInCalendar = 'true') then 'true' else 'false'}">
-        </div>
+
+        <xsl:choose>
+          <xsl:when test="$isCatalogRecordReadonlyDate">
+            <input type="text" class="form-control" value="{$value}" disabled=""/>
+          </xsl:when>
+          <xsl:otherwise>
+            <div data-gn-date-picker="{$value}"
+                 data-gn-field-tooltip="{$tooltip}"
+                 data-label=""
+                 data-tag-name="{name()}"
+                 data-readonly="true"
+                 data-element-name="{name()}"
+                 data-element-ref="{concat('_X', gn:element/@ref)}"
+                 data-hide-time="{if ($viewConfig/@hideTimeInCalendar = 'true') then 'true' else 'false'}"
+                 data-hide-date-mode="{if ($viewConfig/@hideTimeInCalendar = 'true') then 'true' else 'false'}">
+            </div>
+          </xsl:otherwise>
+        </xsl:choose>
       </div>
       <div class="col-sm-1 col-xs-1 gn-control">
-        <xsl:call-template name="render-form-field-control-remove">
-          <xsl:with-param name="editInfo" select="gn:element"/>
-        </xsl:call-template>
+        <xsl:if test="not($isCatalogRecordReadonlyDate)">
+          <xsl:call-template name="render-form-field-control-remove">
+            <xsl:with-param name="editInfo" select="gn:element"/>
+          </xsl:call-template>
+        </xsl:if>
       </div>
 
       <div class="col-sm-offset-2 col-sm-9">

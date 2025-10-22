@@ -22,11 +22,14 @@
  */
 package org.fao.geonet.schema.dcatap.util;
 
-import com.vividsolutions.jts.geom.Envelope;
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.io.WKTReader;
+import co.elastic.clients.elasticsearch.core.SearchResponse;
+import co.elastic.clients.elasticsearch.core.search.Hit;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.fao.geonet.ApplicationContextHolder;
 import org.fao.geonet.constants.Geonet;
@@ -34,12 +37,16 @@ import org.fao.geonet.exceptions.TermNotFoundException;
 import org.fao.geonet.kernel.KeywordBean;
 import org.fao.geonet.kernel.Thesaurus;
 import org.fao.geonet.kernel.ThesaurusManager;
+import org.fao.geonet.kernel.search.EsSearchManager;
 import org.fao.geonet.utils.Log;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.output.DOMOutputter;
+import org.locationtech.jts.geom.Envelope;
+import org.locationtech.jts.geom.Geometry;
+import org.locationtech.jts.io.WKTReader;
 import org.springframework.context.ApplicationContext;
 import org.w3c.dom.Node;
 
@@ -123,5 +130,35 @@ public final class XslUtil {
         } catch (Throwable e) {
         }
         return ret;
+    }
+
+
+    public static String getRecordResourceURI(String uuid) {
+        var searchManager = ApplicationContextHolder.get().getBean(EsSearchManager.class);
+
+        try {
+            Set<String> source = new HashSet<>();
+            source.add("rdfResourceIdentifier");
+            SearchResponse response = searchManager.query(String.format("+uuid:%s", uuid), null, source, 0, 1);
+
+            if (response.hits().hits().isEmpty()) {
+                return null;
+            }
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            Hit h = (Hit) response.hits().hits().get(0);
+            Object rdfResourceIdentifier = objectMapper.convertValue(h.source(), Map.class).get("rdfResourceIdentifier");
+            if (rdfResourceIdentifier instanceof String) {
+                return (String) rdfResourceIdentifier;
+            } else if (rdfResourceIdentifier instanceof ArrayList) {
+                return ((ArrayList<String>) rdfResourceIdentifier).get(0);
+            } else {
+                throw new Exception("Cannot obtain resource URI from " + rdfResourceIdentifier.toString());
+            }
+
+        } catch (Exception e) {
+            Log.error(Log.JEEVES, "GET Record resource identifier '" + uuid + "' error: " + e.getMessage(), e);
+        }
+        return null;
     }
 }

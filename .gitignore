@@ -13,3 +13,5 @@ doc
 transifex/.tx
 transifex/translations
 !transifex/translations/*/en_US.xml
+.tmp/
+utility/.tmp/

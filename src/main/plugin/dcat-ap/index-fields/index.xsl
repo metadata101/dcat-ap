@@ -39,6 +39,7 @@
                 xmlns:geodcat="http://data.europa.eu/930/"
                 xmlns:saxon="http://saxon.sf.net/" xmlns:xls="http://www.w3.org/1999/XSL/Transform"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
+                xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 extension-element-prefixes="saxon"
                 exclude-result-prefixes="#all"
                 version="2.0">
@@ -59,7 +60,7 @@
   <xsl:template match="/">
 
     <xsl:variable name="virtualCatalog"
-                  select="rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog"
+                  select="rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog"
                   as="node()*"/>
 
     <xsl:variable name="isVirtualCatalog"
@@ -75,7 +76,7 @@
     <xsl:variable name="identifier" as="xs:string*" select="$catalogRecord/dct:identifier"/>
     <xsl:variable name="dateStamp" select="$catalogRecord/dct:modified"/>
 
-    <xsl:for-each select="(.//(dcat:Dataset|dcat:DataService)|$virtualCatalog)">
+    <xsl:for-each select="(.//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries)|$virtualCatalog)">
       <doc>
         <xsl:copy-of select="gn-fn-index:add-field('docType', 'metadata')"/>
         <xsl:variable name="dateStamp" select="date-util:convertToISOZuluDateTime(normalize-space($dateStamp))"/>
@@ -90,6 +91,7 @@
         <xsl:apply-templates mode="index-catalog-contacts" select="../../../dcat:Catalog"/>
 
         <xsl:variable name="isService" as="xs:boolean" select="name() = 'dcat:DataService'"/>
+        <xsl:variable name="isDatasetSeries" as="xs:boolean" select="name() = 'dcat:DatasetSeries'"/>
 
         <!-- # Resource type -->
         <xsl:choose>
@@ -98,6 +100,9 @@
           </xsl:when>
           <xsl:when test="$isVirtualCatalog">
             <resourceType>catalog</resourceType>
+          </xsl:when>
+          <xsl:when test="$isDatasetSeries">
+            <resourceType>series</resourceType>
           </xsl:when>
           <xsl:otherwise>
             <resourceType>dataset</resourceType>
@@ -203,7 +208,7 @@
 
         <resourceIdentifier type="object">
           {
-          "code": "<xsl:value-of select="dct:identifier[0]/string()"/>",
+          "code": "<xsl:value-of select="dct:identifier[1]/string()"/>",
           "codeSpace": "",
           "link": "<xsl:value-of select="@rdf:about"/>"
           }
@@ -219,7 +224,11 @@
               select="gn-fn-index:add-field('mainLanguage', $defaultMainLanguage3Char)"/>
           </xsl:otherwise>
         </xsl:choose>
-
+        
+        <xsl:for-each select="$allLanguages/*[not(@default)]">
+          <xsl:copy-of select="gn-fn-index:add-field('otherLanguage', @code)"/>
+        </xsl:for-each>
+        
         <xsl:variable name="resourceLanguages"
                       select="dct:language/skos:Concept/@rdf:about|../../dct:language/skos:Concept/@rdf:about"/>
 
@@ -271,6 +280,20 @@
           <xsl:for-each select="../dcat:CatalogRecord[@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource]/dct:identifier">
             <agg_associated><xsl:value-of select="."/></agg_associated>
           </xsl:for-each>
+
+          <virtualCatalogRecords type="object">[
+          <xsl:for-each select="../dcat:CatalogRecord[@rdf:about = ../dcat:Catalog/dcat:record/@rdf:resource]">
+            {
+              "uuid": "<xsl:value-of select="dct:identifier"/>"
+              <xsl:if test="dct:title">
+                ,"resourceTitleObject": <xsl:value-of select="gn-fn-index:add-multilingual-field('resourceTitle', dct:title, $allLanguages, true())"/>
+              </xsl:if>
+              <xsl:if test="mdcat:stars">
+                ,"stars": <xsl:value-of select="mdcat:stars"/>
+              </xsl:if>
+            }<xsl:if test="position() != last()">,</xsl:if>
+          </xsl:for-each>
+          ]</virtualCatalogRecords>
         </xsl:if>
         <!-- Index more fields in this element -->
         <xsl:apply-templates mode="index-extra-fields" select="."/>
@@ -278,7 +301,7 @@
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template mode="index-constraints" match="dcat:Dataset|dcat:DataService">
+  <xsl:template mode="index-constraints" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries">
     <xsl:variable name="constraints">
       <xsl:for-each-group select="dct:license|dcat:distribution/dcat:Distribution/dct:license"
                           group-by="dct:LicenseDocument/@rdf:about">
@@ -297,7 +320,7 @@
     <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap('modelLicentie', dct:LicenseDocument, $allLanguages, false(), false(), 'dct:title')"/>
   </xsl:template>
 
-  <xsl:template mode="index-keyword" match="dcat:Dataset|dcat:DataService">
+  <xsl:template mode="index-keyword" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries">
     <xsl:variable name="keywords">
       <xsl:copy-of select="dcat:keyword[normalize-space() != '']"/>/>
       <xsl:copy-of select="(dct:subject|dcat:theme)[skos:Concept/skos:prefLabel[normalize-space() != '']]/skos:Concept"/>
@@ -330,7 +353,7 @@
     Mirror of mode `index-concept`, but for empty elements that only define @rdf:resource. Example: HVD's dcatap:applicableLegislation
     Keyword values are pulled from the thesaurus defined in the editor.
    -->
-  <xsl:template mode="index-reference" match="dcat:Dataset|dcat:DataService">
+  <xsl:template mode="index-reference" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries">
     <xsl:for-each-group select="*[not(skos:Concept) and name() = $editorConfig/editor/fields/for[@use='thesaurus-list-picker']/@name]" group-by="name()">
       <xsl:variable name="thesaurusId" select="$editorConfig/editor/fields/for[@name = name(current-group()[1])]/directiveAttributes/@thesaurus"/>
       <xsl:variable name="key">
@@ -382,7 +405,7 @@
     </xsl:for-each-group>
   </xsl:template>
 
-  <xsl:template mode="index-concept" match="dcat:Dataset|dcat:DataService">
+  <xsl:template mode="index-concept" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries">
     <xsl:for-each-group select="*[skos:Concept and name() = $editorConfig/editor/fields/for[@use='thesaurus-list-picker']/@name]"
                         group-by="skos:Concept/skos:inScheme/@rdf:resource">
       <xsl:variable name="thesaurusId" select="$editorConfig/editor/fields/for[@name = name(current-group()[1])]/directiveAttributes/@thesaurus"/>
@@ -846,7 +869,7 @@
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template mode="index-reference-date" match="dcat:Dataset|dcat:DataService">
+  <xsl:template mode="index-reference-date" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries">
     <xsl:variable name="refDate">
       <xsl:for-each select="dct:*[name()=('dct:modified','dct:created','dct:issued') and .!='' and not(contains(.,'1900') or contains(.,'1753'))]">
         <xsl:sort select="date-util:convertToISOZuluDateTime(normalize-space(.))" order="descending"/>

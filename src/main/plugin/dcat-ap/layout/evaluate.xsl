@@ -41,8 +41,11 @@
                 xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:saxon="http://saxon.sf.net/"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 extension-element-prefixes="saxon"
                 exclude-result-prefixes="#all">
+
+  <xsl:import href="../dcat-profiles.xsl"/>
 
   <!-- Evaluate an expression. This is schema dependant in order to properly
         set namespaces required for evaluate.
@@ -55,9 +58,18 @@
     <xsl:param name="base" as="node()"/>
     <xsl:param name="in"/>
 
-    <!-- $p2 is the dcat-ap profile -->
-    <xsl:variable name="p2" select="string($metadata//dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about)"/>
-    <xsl:variable name="nodeOrAttribute" select="saxon:evaluate(concat('$p1', if (ends-with($in,'.')) then concat($in,'/text()') else $in), $base, $p2)"/>
+    <!-- $p2 is the dcat-ap profiles list -->
+    <xsl:variable name="p2" as="xs:string*">
+      <xsl:for-each select="$metadata//dcat:CatalogRecord/dct:conformsTo/dct:Standard">
+        <xsl:variable name="stdURI" select="@rdf:about"/>
+        <xsl:sequence select="string($dcat-profiles/profile[@uri = $stdURI]/alias)"/>
+      </xsl:for-each>
+    </xsl:variable>
+
+    <!-- $p3 is the DCAT version -->
+    <xsl:variable name="p3" select="$dcat-profiles/profile[@uri = ($metadata//dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about)[1]]/dcatVersion/string()"/>
+
+    <xsl:variable name="nodeOrAttribute" select="saxon:evaluate(concat('$p1', if (ends-with($in,'.')) then concat($in,'/text()') else $in), $base, $p2, $p3)"/>
 
     <xsl:choose>
       <xsl:when test="$nodeOrAttribute instance of text()+">
@@ -80,8 +92,17 @@
     <xsl:param name="base" as="node()"/>
     <xsl:param name="in"/>
 
-    <!-- $p2 is the dcat-ap profile -->
-    <xsl:variable name="p2" select="string($metadata//dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about)"/>
-    <xsl:value-of select="saxon:evaluate(concat('$p1', $in), $base, $p2)"/>
+    <!-- $p2 is the dcat-ap profiles list -->
+    <xsl:variable name="p2" as="xs:string*">
+      <xsl:for-each select="$metadata//dcat:CatalogRecord/dct:conformsTo/dct:Standard">
+        <xsl:variable name="stdURI" select="@rdf:about"/>
+        <xsl:sequence select="string($dcat-profiles/profile[@uri = $stdURI]/alias)"/>
+      </xsl:for-each>
+    </xsl:variable>
+
+    <!-- $p3 is the DCAT version -->
+    <xsl:variable name="p3" select="$dcat-profiles/profile[@uri = ($metadata//dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about)[1]]/dcatVersion/string()"/>
+
+    <xsl:value-of select="saxon:evaluate(concat('$p1', $in), $base, $p2, $p3)"/>
   </xsl:template>
 </xsl:stylesheet>
