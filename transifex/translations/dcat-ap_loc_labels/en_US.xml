@@ -215,7 +215,7 @@
     <item>The file format, physical medium, or dimensions of the resource.</item>
     <item>Format</item>
   </string-array>
-  <string-array name="dct:hasVersion">
+  <string-array name="dcat:hasVersion">
     <item>Has version</item>
     <item>A related resource that is a version, edition, or adaptation of the described resource.</item>
     <item>Has version</item>
@@ -230,7 +230,7 @@
     <item>A related resource, such as a publication, that references, cites, or otherwise points to the cataloged resource.</item>
     <item>Is referenced by</item>
   </string-array>
-  <string-array name="dct:isVersionOf">
+  <string-array name="dcat:isVersionOf">
     <item>Is a version of</item>
     <item>A related resource of which the described resource is a version, edition, or adaptation.</item>
     <item>Is a version of</item>
@@ -511,7 +511,8 @@
     <item>In scheme</item>
     <item>In scheme</item>
   </string-array>
-  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:hasVersion/@rdf:resource">
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:hasVersion/@rdf:resource|
+                                             /rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:hasVersion/@rdf:resource"> <!-- DCAT-AP v2 compatibility -->">
     <item>Has version</item>
     <item>Has version</item>
     <item>Has version</item>
@@ -521,7 +522,8 @@
     <item>Is referenced by</item>
     <item>Is referenced by</item>
   </string-array>
-  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isVersionOf/@rdf:resource">
+  <string-array name="rdf:resource" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:isVersionOf/@rdf:resource|
+                                             /rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:isVersionOf/@rdf:resource"> <!-- DCAT-AP v2 compatibility -->
     <item>Is Version Of</item>
     <item>A related resource of which the described resource is a version, edition, or adaptation.</item>
     <item>Is Version Of</item>
@@ -896,12 +898,22 @@
     <item>Contact name</item>
     <item>Contact name</item>
   </string-array>
+  <string-array name="vcard:fn" product="/rdf:RDF/dcat:Catalog/dcat:contactPoint/vcard:Organization/vcard:fn">
+    <item>Contact name</item>
+    <item>Contact name</item>
+    <item>Contact name</item>
+  </string-array>
   <string-array name="vcard:hasAddress" product="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
     <item>Address</item>
     <item>Address</item>
     <item>Address</item>
   </string-array>
   <string-array name="vcard:hasAddress" product="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
+    <item>Address</item>
+    <item>Address</item>
+    <item>Address</item>
+  </string-array>
+  <string-array name="vcard:hasAddress" product="/rdf:RDF/dcat:Catalog/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
     <item>Address</item>
     <item>Address</item>
     <item>Address</item>
@@ -945,6 +957,23 @@
     <item>Language</item>
     <item>Language</item>
     <item>Language</item>
+  </string-array>
+
+  <!-- DCAT-AP v2 compatibility -->
+  <string-array name="dct:hasVersion">
+    <item>Has version</item>
+    <item>A related resource that is a version, edition, or adaptation of the described resource.</item>
+    <item>Has version</item>
+  </string-array>
+  <string-array name="dct:isVersionOf">
+    <item>Is a version of</item>
+    <item>A related resource of which the described resource is a version, edition, or adaptation.</item>
+    <item>Is a version of</item>
+  </string-array>
+  <string-array name="dcat:version">
+    <item>Version</item>
+    <item>Version</item>
+    <item>Version</item>
   </string-array>
 
   <string-array name="mobilitydcatap:mobilityTheme">

@@ -13,6 +13,9 @@
               "params": {
                 "isTemplate": "n"
               }
+            },
+            "remoteurl": {
+              "multiple": false
             }
           }
         }

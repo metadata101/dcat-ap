@@ -17,9 +17,6 @@
                 ],
                 "isTemplate": "n"
               }
-            },
-            "remoteurl": {
-              "multiple": false
             }
           }
         }
@@ -37,9 +34,6 @@
                 ],
                 "isTemplate": "n"
               }
-            },
-            "remoteurl": {
-              "multiple": false
             }
           }
         }
