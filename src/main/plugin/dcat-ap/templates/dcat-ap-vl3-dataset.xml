@@ -29,8 +29,8 @@
     </dcat:record>
     <dcat:dataset>
       <dcat:Dataset>
-        <dct:title xml:lang="nl">Generieke Open data, conform DCAT-AP VL v3.0</dct:title>
-        <dct:title xml:lang="en">Generic Open data, conforming to DCAT-AP VL v3.0</dct:title>
+        <dct:title xml:lang="nl">Open dataset</dct:title>
+        <dct:title xml:lang="en">Open dataset</dct:title>
         <dct:description xml:lang="nl"/>
         <dcat:contactPoint>
           <vcard:Organization>
