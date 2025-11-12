@@ -29,8 +29,8 @@
     </dcat:record>
     <dcat:service>
       <dcat:DataService>
-        <dct:title xml:lang="nl">Generieke Open API's, conform DCAT-AP VL v3.0</dct:title>
-        <dct:title xml:lang="en">Generic Open API's, conforming to DCAT-AP VL v3.0</dct:title>
+        <dct:title xml:lang="nl">Open dataservice</dct:title>
+        <dct:title xml:lang="en">Open dataservice</dct:title>
         <dct:description/>
         <dct:publisher>
           <foaf:Agent>

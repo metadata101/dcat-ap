@@ -18,7 +18,8 @@
     </dcat:record>
     <dcat:dataset>
       <dcat:DatasetSeries>
-        <dct:title>DCAT-AP 3 series</dct:title>
+        <dct:title xml:lang="en">Series of datasets</dct:title>
+        <dct:title xml:lang="nl">Serie van datasets</dct:title>
         <dct:description/>
       </dcat:DatasetSeries>
     </dcat:dataset>

@@ -18,7 +18,7 @@
     </dcat:record>
     <dcat:dataset>
       <dcat:Dataset>
-        <dct:title xml:lang="nl">DCAT-AP 3 dataset</dct:title>
+        <dct:title xml:lang="nl">Dataset</dct:title>
         <dct:description xml:lang="nl"/>
       </dcat:Dataset>
     </dcat:dataset>

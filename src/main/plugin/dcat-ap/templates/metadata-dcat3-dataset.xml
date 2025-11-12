@@ -28,8 +28,8 @@
     </dcat:record>
     <dcat:dataset>
       <dcat:Dataset>
-        <dct:title xml:lang="nl">Generieke Gesloten data, conform metadata-DCAT v3.0</dct:title>
-        <dct:title xml:lang="en">Generic Closed data, conforming to metadata-DCAT v3.0</dct:title>
+        <dct:title xml:lang="nl">Dataset</dct:title>
+        <dct:title xml:lang="en">Dataset</dct:title>
         <dct:description xml:lang="nl"/>
         <dcat:contactPoint>
           <vcard:Organization>

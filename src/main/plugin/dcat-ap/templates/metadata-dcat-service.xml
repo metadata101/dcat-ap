@@ -28,8 +28,8 @@
     </dcat:record>
     <dcat:service>
       <dcat:DataService>
-        <dct:title xml:lang="nl">Generieke Gesloten services, conform metadata-DCAT v2.0</dct:title>
-        <dct:title xml:lang="en">Generic Closed services, conforming to metadata-DCAT v2.0</dct:title>
+        <dct:title xml:lang="nl">Dataservice</dct:title>
+        <dct:title xml:lang="en">Dataservice</dct:title>
         <dct:description/>
         <dct:publisher>
           <foaf:Agent>

@@ -20,8 +20,8 @@
     </dcat:record>
     <dcat:dataset>
       <dcat:Dataset>
-        <dct:title xml:lang="en">Generic DCAT-AP dataset</dct:title>
-        <dct:title xml:lang="nl">Generieke DCAT-AP dataset</dct:title>
+        <dct:title xml:lang="en">Dataset</dct:title>
+        <dct:title xml:lang="nl">Dataset</dct:title>
         <dct:description xml:lang="en"/>
         <dct:description xml:lang="nl"/>
       </dcat:Dataset>

@@ -1065,7 +1065,7 @@
     <btnLabel>Ontwikkelingstoestand</btnLabel>
   </element>
   <element name="mdcat:stars">
-    <label>Sterren</label>
+    <label>Beoordeling</label>
     <description>Rating van 1-5 sterren</description>
     <btnLabel>Sterren</btnLabel>
   </element>
