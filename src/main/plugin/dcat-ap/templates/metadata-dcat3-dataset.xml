@@ -28,8 +28,8 @@
     </dcat:record>
     <dcat:dataset>
       <dcat:Dataset>
-        <dct:title xml:lang="nl">Dataset</dct:title>
-        <dct:title xml:lang="en">Dataset</dct:title>
+        <dct:title xml:lang="nl">Gesloten dataset</dct:title>
+        <dct:title xml:lang="en">Closed dataset</dct:title>
         <dct:description xml:lang="nl"/>
         <dcat:contactPoint>
           <vcard:Organization>

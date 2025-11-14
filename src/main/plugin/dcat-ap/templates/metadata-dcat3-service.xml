@@ -28,8 +28,8 @@
     </dcat:record>
     <dcat:service>
       <dcat:DataService>
-        <dct:title xml:lang="nl">Dataservice</dct:title>
-        <dct:title xml:lang="en">Dataservice</dct:title>
+        <dct:title xml:lang="nl">Gesloten Dataservice</dct:title>
+        <dct:title xml:lang="en">Closed Dataservice</dct:title>
         <dct:description/>
         <dct:publisher>
           <foaf:Agent>
