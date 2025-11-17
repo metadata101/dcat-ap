@@ -320,7 +320,7 @@
     <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap('modelLicentie', dct:LicenseDocument, $allLanguages, false(), false(), 'dct:title')"/>
   </xsl:template>
 
-  <xsl:template mode="index-keyword" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries">
+  <xsl:template mode="index-keyword" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries|dcat:Catalog">
     <xsl:variable name="keywords">
       <xsl:copy-of select="dcat:keyword[normalize-space() != '']"/>/>
       <xsl:copy-of select="(dct:subject|dcat:theme)[skos:Concept/skos:prefLabel[normalize-space() != '']]/skos:Concept"/>
@@ -353,7 +353,7 @@
     Mirror of mode `index-concept`, but for empty elements that only define @rdf:resource. Example: HVD's dcatap:applicableLegislation
     Keyword values are pulled from the thesaurus defined in the editor.
    -->
-  <xsl:template mode="index-reference" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries">
+  <xsl:template mode="index-reference" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries|dcat:Catalog">
     <xsl:for-each-group select="*[not(skos:Concept) and name() = $editorConfig/editor/fields/for[@use='thesaurus-list-picker']/@name]" group-by="name()">
       <xsl:variable name="thesaurusId" select="$editorConfig/editor/fields/for[@name = name(current-group()[1])]/directiveAttributes/@thesaurus"/>
       <xsl:variable name="key">
@@ -405,7 +405,7 @@
     </xsl:for-each-group>
   </xsl:template>
 
-  <xsl:template mode="index-concept" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries">
+  <xsl:template mode="index-concept" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries|dcat:Catalog">
     <xsl:for-each-group select="*[skos:Concept and name() = $editorConfig/editor/fields/for[@use='thesaurus-list-picker']/@name]"
                         group-by="skos:Concept/skos:inScheme/@rdf:resource">
       <xsl:variable name="thesaurusId" select="$editorConfig/editor/fields/for[@name = name(current-group()[1])]/directiveAttributes/@thesaurus"/>
