@@ -984,6 +984,10 @@
       Examples of such services include “location search”, which is based on a datasets with address identifiers, or “trip plan computation”, which is based on datasets about a road network.</description>
     <btnLabel>Bedoelde informatie service</btnLabel>
   </element>
+  <element name="mobilitydcatap:applicationLayerProtocol">
+    <label>Application layer protocol</label>
+    <description>The transmitting channel, i.e., the Application Layer Protocol, of the distribution.</description>
+  </element>
   <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>Hoogwaardige Dataset (HVD) Categorie</label>
     <description>De Hoogwaardige Dataset (HVD) categorie waartoe deze Dataset behoort.</description>

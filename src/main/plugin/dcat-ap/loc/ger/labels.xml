@@ -2230,7 +2230,10 @@
       Such services MAY be, e.g., information services for multimodal mobility, as specified by EC Delegated Regulation 2017/1926 [EC-MMTIS-DR].
       Examples of such services include “location search”, which is based on a datasets with address identifiers, or “trip plan computation”, which is based on datasets about a road network.</description>
   </element>
-
+  <element name="mobilitydcatap:applicationLayerProtocol">
+    <label>Application layer protocol</label>
+    <description>The transmitting channel, i.e., the Application Layer Protocol, of the distribution.</description>
+  </element>
   <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>HVD Category</label>
     <description>The HVD category to which this Dataset belongs.</description>
