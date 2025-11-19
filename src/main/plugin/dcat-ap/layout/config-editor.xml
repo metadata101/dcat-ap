@@ -542,6 +542,7 @@
     <name>mobilitydcatap:assessmentResult</name>
     <name>dqv:hasQualityAnnotation</name>
     <name>geodcatap:referenceSystem</name>
+    <name>locn:address</name>
   </fieldsWithFieldset>
 
   <multilingualFields>
@@ -1821,9 +1822,19 @@
         <for name="foaf:Agent/foaf:firstName"/>
         <for name="foaf:Agent/foaf:surname"/>
         <for name="foaf:Agent/foaf:phone"/>
+        <for name="foaf:Agent/locn:address"/>
+        <for name="locn:fullAddress"/>
+        <for name="locn:poBox"/>
+        <for name="locn:thoroughfare"/>
+        <for name="locn:locatorDesignator"/>
+        <for name="locn:locatorName"/>
+        <for name="locn:addressArea"/>
+        <for name="locn:postName"/>
+        <for name="locn:postCode"/>
+        <for name="locn:adminUnitL2"/>
+        <for name="locn:adminUnitL1"/>
         <!-- TODO mobility
          <for name="foaf:Agent/org:memberOf"/>
-        <for name="foaf:Agent/locn:address"/>
         -->
         <!-- Extra info -->
         <for name="dct:language"/>

@@ -37,6 +37,7 @@
                 xmlns:cnt="http://www.w3.org/2011/content#"
                 xmlns:oa="http://www.w3.org/ns/oa#"
                 xmlns:dqv="http://www.w3.org/ns/dqv#"
+                xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
@@ -196,7 +197,7 @@
 
 
   <!-- the other elements in DC. -->
-  <xsl:template mode="mode-dcat-ap" priority="100" match="dc:*|dct:*|dcat:*|vcard:*|foaf:*|spdx:*|adms:*|owl:*|schema:*|skos:*|mdcat:*|cnt:*|oa:*|mobilitydcatap:*">
+  <xsl:template mode="mode-dcat-ap" priority="100" match="dc:*|dct:*|dcat:*|vcard:*|foaf:*|spdx:*|adms:*|owl:*|schema:*|skos:*|mdcat:*|cnt:*|oa:*|mobilitydcatap:*|locn:*">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
     <xsl:param name="overrideLabel" select="''" required="no"/>

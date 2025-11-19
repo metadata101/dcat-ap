@@ -369,6 +369,52 @@
     <description>Geometry</description>
     <btnLabel>Geometry</btnLabel>
   </element>
+  <element name="locn:address">
+    <label>Address</label>
+    <description>An "address representation" as conceptually defined by the INSPIRE Address Representation data type. The locn:addressId property may be used to link this locn:Address to other representations.</description>
+  </element>
+  <element name="locn:poBox">
+    <label>PO Box</label>
+    <description>The Post Office Box number. The domain of locn:poBox is locn:Address.</description>
+  </element>
+  <element name="locn:fullAddress">
+    <label>Full address</label>
+    <description>The complete address written as a string, with or without formatting. The domain of locn:fullAddress is locn:Address.
+    </description>
+  </element>
+  <element name="locn:thoroughfare">
+    <label>Thoroughfare</label>
+    <description>An address component that represents the name of a passage or way through from one location to another. A thoroughfare is not necessarily a road, it might be a waterway or some other feature. The domain of locn:thoroughfare is locn:Address.</description>
+  </element>
+  <element name="locn:locatorName">
+    <label>Locator name</label>
+    <description>Proper noun(s) applied to the real world entity identified by the locator. The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.</description>
+  </element>
+  <element name="locn:addressArea">
+    <label>Address area</label>
+    <description>The name or names of a geographic area or locality that groups a number of addressable objects for addressing purposes, without being an administrative unit. This would typically be part of a city, a neighbourhood or village. The domain of locn:addressArea is locn:Address.</description>
+  </element>
+  <element name="locn:postName">
+    <label>Post name</label>
+    <description>The key postal division of the address, usually the city. (INSPIRE's definition is "One or more names created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."). The domain of locn:postName is locn:Address.</description>
+  </element>
+  <element name="locn:postCode">
+    <label>Post code</label>
+    <description>The post code (a.k.a postal code, zip code etc.). Post codes are common elements in many countries' postal address systems. The domain of locn:postCode is locn:Address.</description>
+  </element>
+  <element name="locn:adminUnitL2">
+    <label>Admin unit L2</label>
+    <description>The region of the address, usually a county, state or other such area that typically encompasses several localities. The domain of locn:adminUnitL2 is locn:Address and the range is a literal, conceptually defined by the INSPIRE Geographical Name data type.
+    </description>
+  </element>
+  <element name="locn:adminUnitL1">
+    <label>Admin unit L1</label>
+    <description>The uppermost administrative unit for the address, almost always a country. The domain of locn:adminUnitL1 is locn:Address and the range is a literal, conceptually defined by the INSPIRE Geographical Name data type.</description>
+  </element>
+  <element name="locn:locatorDesignator">
+    <label>Locator designator</label>
+    <description>A number or a sequence of characters that uniquely identifies the locator within the relevant scope(s). The full identification of the locator could include one or more locator designators.</description>
+  </element>
   <element name="owl:versionInfo">
     <label>Version</label>
     <description>Version</description>
