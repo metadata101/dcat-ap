@@ -622,6 +622,75 @@
                    displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0"/>
 
         <directive data-gn-validation-report=""/>
+
+
+        <text>
+          <style>
+            .gn-dcat-badge::before{
+            }
+            .gn-dcat-ap-mobility::before,
+            .gn-surname::before,
+            .gn-phone::before,
+            .gn-firstName::before,
+            .gn-mbox::before,
+            .gn-address::before,
+            .gn-characterEncoding::before,
+            .gn-mobilityDataStandard::before,
+            .gn-assessmentResult::before,
+            .gn-referenceSystem::before,
+            .gn-hasQualityAnnotation::before,
+            .gn-dataFormatNotes::before,
+            [data-thesaurus-key="external.theme.mobility-application-layer-protocol"]::before,
+            [data-thesaurus-key="external.theme.mobility-communication-method"]::before,
+            [data-thesaurus-key="external.theme.mobility-grammar"]::before,
+            [data-thesaurus-key="external.theme.mobility-intended-information-service"]::before,
+            [data-thesaurus-key="external.theme.mobility-network-coverage"]::before,
+            [data-thesaurus-key="external.theme.mobility-theme"]::before,
+            [data-thesaurus-key="external.theme.mobility-transport-mode"]::before,
+            [data-thesaurus-key="external.theme.mobility-intended-information-service"]::before,
+            [data-thesaurus-key="external.theme.mobility-georeferencing-method"]::before
+            {
+            content: "mobility" !important;
+            background-color: #f5f5f5;
+            color: #333333;
+            position: relative;
+            top: 4px;
+            right: -15px;
+            padding: 3px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            }
+            .gn-dcat-ap-hvd::before,
+            [data-thesaurus-key="external.theme.high-value-dataset-category"]::before
+            {
+            content: "hvd" !important;
+            background-color: #f5f5f5;
+            color: #333333;
+            position: relative;
+            top: 4px;
+            right: -15px;
+            padding: 3px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            }
+            .gn-dcat-ap-hvd+mobility,
+            [data-thesaurus-key="external.theme.eu-applicable-legislation"]::before
+            {
+            content: "hvd+mobility" !important;
+            background-color: #f5f5f5;
+            color: #333333;
+            position: relative;
+            top: 4px;
+            right: -15px;
+            padding: 3px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            }
+          </style>
+        </text>
       </sidePanel>
 
       <thesaurusList>
