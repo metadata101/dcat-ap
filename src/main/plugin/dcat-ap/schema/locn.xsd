@@ -24,4 +24,27 @@
   <!--   </xs:complexContent> -->
   <!-- </xs:complexType> -->
 
+  <!-- TODO: mobility
+  centroid
+  bounding bbox
+  gazetteer
+  ...
+  -->
+
+  <xs:complexType name="Address">
+    <xs:sequence>
+      <xs:element name="fullAddress" type="rdf:TypedLiteral" minOccurs="0" />
+      <xs:element name="poBox" type="rdf:TypedLiteral" minOccurs="0" />
+      <xs:element name="thoroughfare" type="rdf:TypedLiteral" minOccurs="0" />
+      <xs:element name="locatorDesignator" type="rdf:TypedLiteral" minOccurs="0" />
+      <xs:element name="locatorName" type="rdf:TypedLiteral" minOccurs="0" />
+      <xs:element name="addressArea" type="rdf:TypedLiteral" minOccurs="0" />
+      <xs:element name="postName" type="rdf:TypedLiteral" minOccurs="0" />
+      <xs:element name="postCode" type="rdf:TypedLiteral" minOccurs="0" />
+      <xs:element name="adminUnitL2" type="rdf:TypedLiteral" minOccurs="0" />
+      <xs:element name="adminUnitL1" type="rdf:TypedLiteral" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="address" type="locn:Address"/>
 </xs:schema>
