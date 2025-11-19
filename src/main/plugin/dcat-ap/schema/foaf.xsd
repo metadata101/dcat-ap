@@ -64,9 +64,9 @@
   <xs:element name="page" type="foaf:Document"/>
   <xs:element name="homepage" type="foaf:Document"/>
   <xs:element name="workplaceHomepage" type="rdf:ResourceRef"/>
-  <xs:element name="mbox" type="xs:anyURI"/>
+  <xs:element name="mbox" type="rdf:ResourceRef"/>
   <xs:element name="name" type="rdf:PlainLiteral"/>
   <xs:element name="firstName" type="rdf:PlainLiteral"/>
   <xs:element name="surname" type="rdf:PlainLiteral"/>
-  <xs:element name="phone" type="xs:anyURI"/>
+  <xs:element name="phone" type="rdf:ResourceRef"/>
 </xs:schema>

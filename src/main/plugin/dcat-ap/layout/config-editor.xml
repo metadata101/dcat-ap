@@ -455,7 +455,6 @@
     </for>
 
     <!-- dcat-ap-mobility -->
-
     <for name="foaf:workplaceHomepage" templateModeOnly="true" forceLabel="true" label="key">
       <template>
         <values>
@@ -463,6 +462,28 @@
         </values>
         <snippet>
           <foaf:workplaceHomepage rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+
+    <for name="foaf:mbox" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="foaf:mbox" required="true"/>
+        </values>
+        <snippet>
+          <foaf:mbox rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+
+    <for name="foaf:phone" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="foaf:phone" required="true"/>
+        </values>
+        <snippet>
+          <foaf:phone rdf:resource="{{key}}"/>
         </snippet>
       </template>
     </for>
@@ -571,8 +592,6 @@
       <name>dcat:hasVersion</name>
       <name>dcat:isVersionOf</name>
       <name>locn:address</name>
-      <name>foaf:mbox</name>
-      <name>foaf:phone</name>
 
       <!-- DCAT-AP v2 compatibility -->
       <name>owl:versionInfo</name>
