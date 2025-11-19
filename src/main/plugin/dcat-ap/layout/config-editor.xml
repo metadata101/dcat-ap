@@ -16,6 +16,8 @@
         xmlns:locn="http://www.w3.org/ns/locn#"
         xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
         xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+        xmlns:geodcatap="http://data.europa.eu/930/"
+        xmlns:cnt="http://www.w3.org/2011/content#"
         xmlns:dqv="http://www.w3.org/ns/dqv#"
         xsi:noNamespaceSchemaLocation="../../../../../../config-editor.xsd">
   <!-- Define form field types per metadata element. -->
@@ -518,6 +520,7 @@
     <name>mobilitydcatap:mobilityDataStandard</name>
     <name>mobilitydcatap:assessmentResult</name>
     <name>dqv:hasQualityAnnotation</name>
+    <name>geodcatap:referenceSystem</name>
   </fieldsWithFieldset>
 
   <multilingualFields>
@@ -567,6 +570,7 @@
       <name>dcat:version</name>
       <name>dcat:hasVersion</name>
       <name>dcat:isVersionOf</name>
+      <name>locn:address</name>
 
       <!-- DCAT-AP v2 compatibility -->
       <name>owl:versionInfo</name>
@@ -999,6 +1003,16 @@
             </template>
           </action>
 
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/geodcatap:referenceSystem"/>
+          <action type="add"
+                  or="referenceSystem"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippets name="crs"/>
+            </template>
+          </action>
+
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:georeferencingMethod"/>
 
           <action type="add"
@@ -1146,6 +1160,8 @@
             </action>
 
             <section name="mobility-section">
+              <field xpath="dcat:Distribution/cnt:characterEncoding" or="characterEncoding" in="dcat:Distribution"/>
+
               <field xpath="dcat:Distribution/mobilitydcatap:applicationLayerProtocol"/>
 
               <action type="add"
@@ -1807,6 +1823,8 @@
         <for name="mobilitydcatap:assessmentResult"/>
         <for name="mobilitydcatap:dataFormatNotes"/>
         <for name="dqv:hasQualityAnnotation"/>
+        <for name="geodcatap:referenceSystem"/>
+        <for name="cnt:characterEncoding"/>
       </flatModeExceptions>
     </view>
 
@@ -2604,6 +2622,80 @@
             <owl:versionInfo>3.0.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
+      </snippet>
+    </list>
+    <list name="crs">
+      <snippet label="add-crs-21500">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/21500</dct:identifier>
+                  <dct:title>Belge 1950 (Brussels) / Belge Lambert 50</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-31370">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/31370</dct:identifier>
+                  <dct:title>Belge 1972 / Belgian Lambert 72</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-23031">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/23031</dct:identifier>
+                  <dct:title>ED50 / UTM zone 31N</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-23032">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/23032</dct:identifier>
+                  <dct:title>ED50 / UTM zone 32N</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-3812">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/3812</dct:identifier>
+                  <dct:title>ETRS89 / Belgian Lambert 2008</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-4258">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/4258</dct:identifier>
+                  <dct:title>ETRS89</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-1094">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://epsg.io/1094-datum</dct:identifier>
+                  <dct:title>High Water</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-5710">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/5710</dct:identifier>
+                  <dct:title>Ostend height</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-anchor">
+        <geodcatap:referenceSystem>
+          <dct:Standard>
+            <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/</dct:identifier>
+            <dct:title></dct:title>
+          </dct:Standard>
+        </geodcatap:referenceSystem>
       </snippet>
     </list>
   </snippets>

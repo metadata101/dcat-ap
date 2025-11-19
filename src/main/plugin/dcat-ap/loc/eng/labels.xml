@@ -340,6 +340,30 @@
     <description>Documentation</description>
     <btnLabel>Documentation</btnLabel>
   </element>
+  <element name="foaf:workplaceHomepage">
+    <label>URL</label>
+    <description>The Web site of the agent.</description>
+  </element>
+  <element name="foaf:firstName">
+    <label>First name</label>
+    <description>The first name of the agent.</description>
+  </element>
+  <element name="foaf:surname">
+    <label>Surname</label>
+    <description>The surname of the agent.</description>
+  </element>
+  <element name="foaf:phone">
+    <label>Phone</label>
+    <description>The phone number of the agent, specified using fully qualified tel: URI scheme RFC3966.</description>
+  </element>
+  <element name="foaf:mbox">
+    <label>Email</label>
+    <description>The email address of the agent, specified using fully qualified mailto: URI scheme RFC6068.</description>
+  </element>
+  <element name="org:memberOf">
+    <label>Member of</label>
+    <description>The affiliation of the agent.</description>
+  </element>
   <element name="locn:geometry">
     <label>Geometry</label>
     <description>Geometry</description>
@@ -988,6 +1012,46 @@
   <element name="mobilitydcatap:applicationLayerProtocol">
     <label>Application layer protocol</label>
     <description>The transmitting channel, i.e., the Application Layer Protocol, of the distribution.</description>
+  </element>
+  <element name="mobilitydcatap:mobilityDataStandard">
+    <label>Data standard</label>
+    <description>The mobility data standard, as applied for the delivered content within the distribution. A mobility data standard, e.g., DATEX II, combines syntax and semantic definitions of entities in a certain domain (e.g., for DATEX II: road traffic information), and optionally adds technical rules for data exchange.</description>
+  </element>
+  <element name="mobilitydcatap:communicationMethod">
+    <label>Communication method</label>
+    <description>Indicates for dynamically provided distributions, e.g., data feeds, if the data interface of the data provider system functions in a push or pull mode.</description>
+  </element>
+  <element name="mobilitydcatap:grammar">
+    <label>Technical data grammar format</label>
+    <description>The technical data grammar format of the delivered content within the Distribution. It describes the standard on top of the elementary syntax that describe data structures in the dataset.</description>
+  </element>
+  <element name="mobilitydcatap:assessmentResult">
+    <label>Assessment result</label>
+    <description>The results and outcomes from an assessment process by an external organisation, e.g., a National Body in the context of EU Delegated Regulations. EU Delegated Regulations require Member States to set up procedures to assess the compliance of the Delegated Regulations, e.g. regarding the provisioning of data via a NAP. These assessment processes are handled by National Bodies and installed individually in each Member State.
+      The property may point to the most recent assessment procedure, including its date, its result as a free-text and/or a link referring to an assessment report online.</description>
+  </element>
+  <element name="mobilitydcatap:dataFormatNotes">
+    <label>Data format notes</label>
+    <description>Any additional information about the format of the delivered content within the distribution in a textual format.</description>
+  </element>
+  <element name="oa:hasBody">
+    <label>URL linking to further details or results</label>
+    <description>The result of the latest assessment procedure, in form of a URL linking to further details or results. Alternatively, textual information is provided using the Embedded Textual Body construction of the Web Annotation Data Model, which allows to specify text formats and languages which might be relevant for multilingual purposes.</description>
+  </element>
+  <element name="dqv:hasQualityAnnotation">
+    <label>Quality annotation</label>
+    <description>An annotation about any quality aspects regarding the delivered content, in particular methods, metrics/indicators and results of a quality assessment in the responsibility of the Data Owner.</description>
+  </element>
+  <element name="cnt:characterEncoding">
+    <label>Character encoding</label>
+    <description>The technical encoding format of the delivered content within the distribution.</description>
+    <helper>
+      <option value="UTF-8">UTF-8</option>
+    </helper>
+  </element>
+  <element name="geodcatap:referenceSystem">
+    <label>Reference system</label>
+    <description>The spatial reference system used in the delivered content. To be specified via the “EPSG coordinate reference systems” register operated by OGC.</description>
   </element>
   <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>HVD Category</label>

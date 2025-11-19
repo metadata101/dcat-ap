@@ -39,6 +39,7 @@
                 xmlns:cnt="http://www.w3.org/2011/content#"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+                xmlns:geodcatap="http://data.europa.eu/930/"
                 xmlns:dqv="http://www.w3.org/ns/dqv#"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:saxon="http://saxon.sf.net/"

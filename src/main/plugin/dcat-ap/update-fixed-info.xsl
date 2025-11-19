@@ -40,6 +40,7 @@
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+                xmlns:cnt="http://www.w3.org/2011/content#"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 xmlns:saxon="http://saxon.sf.net/"
                 xmlns:uuid="java:java.util.UUID"
@@ -606,5 +607,9 @@
     <xsl:namespace name="dcatap" select="'http://data.europa.eu/r5r/'"/>
     <xsl:namespace name="mdcat" select="'https://data.vlaanderen.be/ns/metadata-dcat#'"/>
     <xsl:namespace name="mobilitydcatap" select="'https://w3id.org/mobilitydcat-ap'"/>
+    <xsl:namespace name="geodcatap" select="'http://data.europa.eu/930/'"/>
+    <xsl:namespace name="oa" select="'http://www.w3.org/ns/oa#'"/>
+    <xsl:namespace name="dqv" select="'http://www.w3.org/ns/dqv#'"/>
+    <xsl:namespace name="cnt" select="'http://www.w3.org/2011/content#'"/>
   </xsl:template>
 </xsl:stylesheet>

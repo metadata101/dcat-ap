@@ -139,6 +139,7 @@
           <xsl:with-param name="labels" select="$labels"/>
         </xsl:apply-templates>
       </xsl:with-param>
+      <!-- When disabled, remove control is also not available. -->
       <xsl:with-param name="isDisabled" select="name() = 'spdx:Checksum' or
                                                 name() = 'vcard:Organization' or
                                                 name() = 'adms:Identifier' or
