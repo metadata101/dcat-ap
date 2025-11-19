@@ -191,7 +191,7 @@
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
-  
+
   <!-- Ensure virtual Catalog identifier is corresponding to the db UUID and the CatalogRecord one. -->
   <xsl:template match="dcat:Catalog[$isVirtualCatalog]" priority="10">
     <xsl:copy>
@@ -295,7 +295,7 @@
           </xsl:if>
         </vcard:Organization>
       </dcat:contactPoint>
-      
+
       <xsl:choose>
         <xsl:when test="dcat:record/dcat:CatalogRecord">
           <xsl:apply-templates select="dcat:record"/>
@@ -305,10 +305,14 @@
             <dcat:CatalogRecord>
               <xsl:call-template name="handle-record-id"/>
               <dct:modified>
-                <xsl:value-of select="if (matches(/root/env/changeDate, '^\d{4}-\d{2}-\d{2}$')) then format-date(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
+                <xsl:value-of select="
+                if (matches(/root/env/changeDate, '^\d{4}-\d{2}-\d{2}$')) then format-date(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
                   else if(/root/env/changeDate) then format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
                   else dct:modified"/>
               </dct:modified>
+              <xsl:if test="/root/env/createDate">
+                <dct:created><xsl:value-of select="format-dateTime(/root/env/createDate,'[Y0001]-[M01]-[D01]')"/></dct:created>
+              </xsl:if>
             </dcat:CatalogRecord>
           </dcat:record>
         </xsl:otherwise>
@@ -328,10 +332,14 @@
     <xsl:copy copy-namespaces="no">
       <xsl:call-template name="handle-record-id"/>
       <dct:modified>
-        <xsl:value-of select="if (matches(/root/env/changeDate, '^\d{4}-\d{2}-\d{2}$')) then format-date(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
+        <xsl:value-of select="
+        if (matches(/root/env/changeDate, '^\d{4}-\d{2}-\d{2}$')) then format-date(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
           else if(/root/env/changeDate) then format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
           else dct:modified"/>
       </dct:modified>
+      <xsl:if test="not(dct:created) and /root/env/createDate">
+        <dct:created><xsl:value-of select="format-dateTime(/root/env/createDate,'[Y0001]-[M01]-[D01]')"/></dct:created>
+      </xsl:if>
       <xsl:apply-templates select="* except (dct:identifier|dct:modified|foaf:primaryTopic)"/>
     </xsl:copy>
   </xsl:template>
