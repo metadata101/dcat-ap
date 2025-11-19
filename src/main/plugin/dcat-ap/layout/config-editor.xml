@@ -571,6 +571,8 @@
       <name>dcat:hasVersion</name>
       <name>dcat:isVersionOf</name>
       <name>locn:address</name>
+      <name>foaf:mbox</name>
+      <name>foaf:phone</name>
 
       <!-- DCAT-AP v2 compatibility -->
       <name>owl:versionInfo</name>
