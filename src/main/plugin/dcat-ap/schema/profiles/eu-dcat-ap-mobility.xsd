@@ -4,6 +4,7 @@
            xmlns:skos="http://www.w3.org/2004/02/skos/core#"
            xmlns:dct="http://purl.org/dc/terms/"
            xmlns:oa="http://www.w3.org/ns/oa#"
+           xmlns:owl="http://www.w3.org/2002/07/owl#"
            xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
            targetNamespace="https://w3id.org/mobilitydcat-ap"
            elementFormDefault="qualified"
@@ -18,6 +19,7 @@
   <xs:import namespace="http://www.w3.org/2004/02/skos/core#" schemaLocation="../skos.xsd"/>
   <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="../dcterms.xsd"/>
   <xs:import namespace="http://www.w3.org/ns/oa#" schemaLocation="../oa.xsd"/>
+  <xs:import namespace="http://www.w3.org/2002/07/owl#" schemaLocation="../owl.xsd"/>
 
   <xs:element name="mobilityTheme" type="skos:Concept"/>
   <xs:element name="transportMode" type="skos:Concept"/>
@@ -34,9 +36,12 @@
 
   <xs:complexType name="DataStandard">
     <xs:sequence>
-      <xs:element ref="mobilitydcatap:specificContentModel" minOccurs="0"/><!--Broken link in the spec to the vocabulary -->
+      <!--TODO Added in mobility DCAT 3
+      Broken link in the spec to the vocabulary
+      <xs:element ref="mobilitydcatap:specificContentModel" minOccurs="0"/>-->
       <xs:element ref="dct:conformsTo"/><!-- is a skos:Concept in mobility dcat instead of dct:Standard -->
-      <!--    <xs:element ref="dcat:version"/> to add in the schema? -->
+      <!--TODO In mobility v1 was owl:versionInfo, is dcat:version in v3 -->
+      <xs:element ref="owl:versionInfo"/>
       <xs:element ref="mobilitydcatap:schema" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
