@@ -619,30 +619,6 @@
            hideIfNotDisplayed="true">
         <section name="basicInformation">
 
-          <text>
-            <style>
-              .gn-dcat-badge::after {
-                position: relative;
-                top: 4px;
-                right: -17px;
-                padding: 2px;
-                border-radius: 1px;
-                font-size: 0.75rem;
-                text-transform: uppercase;
-              }
-              .gn-dcat-ap-mobilty::after {
-                content: "mobility" !important;
-                background-color: #ffcb01;
-                color: #062330;
-              }
-              .gn-dcat-ap-hvd::after {
-                content: "mobility" !important;
-                background-color: #062330;
-                color: white;
-              }
-            </style>
-          </text>
-
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title"/>
           <action type="add" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title)=0">
@@ -806,7 +782,21 @@
           </action>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity"/>
-
+          <action type="add"
+                  or="accrualPeriodicity"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity) = 0"
+          >
+            <template>
+              <snippet>
+                <dct:accrualPeriodicity>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                  </skos:Concept>
+                </dct:accrualPeriodicity>
+              </snippet>
+            </template>
+          </action>
         </section>
 
         <section name="usageInformation">
@@ -1729,6 +1719,7 @@
             <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title"/>
             <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:description"/>
             <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
+            <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:created"/>
             <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:modified"/>
             <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:issued"/>
             <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"
@@ -2601,6 +2592,16 @@
             <dct:description xml:lang="nl">Het applicatieprofiel “Metadata DCAT”. Dit is een applicatieprofiel gebaseerd op DCAT en richt zich op het verzamelen van informatie over generieke datasets, distributies en services die door een overheid beschikbaar gesteld worden. De datasets en services omvatten zowel publiek toegankelijke als afgeschermde data en diensten (ontwikkeld in en voor eender welk technisch perspectief). Het samenbrengen van al deze informatie in een catalogus laat toe om de vindbaarheid van deze datasets en services te verhogen. Dit applicatieprofiel is het generieke basisprofiel. Afgeleide profielen kunnen zeker aangemaakt worden voor specifieke domeinen of communities. Bijvoorbeeld is DCAT-AP-VL zo’n afgeleid applicatieprofiel, specifiek voor het Open data domein en bijhorende community.
             </dct:description>
             <owl:versionInfo>3.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
+      <snippet label="dcat-ap-mobility-300">
+        <dct:conformsTo>
+          <dct:Standard
+            rdf:about="https://www.w3.org/mobility-ap/">
+            <dct:title>mobilityDCAT-AP</dct:title>
+            <dct:description xml:lang="nl">A mobility extension for the DCAT application profile for data portals in Europe</dct:description>
+            <owl:versionInfo>3.0.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
