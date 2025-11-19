@@ -88,5 +88,12 @@
       <dcatVersion>3.0.0</dcatVersion>
     </profile>
 
+    <profile uri="https://www.w3.org/mobility-ap/">
+      <alias>mobilityDCAT-AP</alias>
+      <description>A mobility extension for the DCAT application profile for data portals in Europe </description>
+      <versionInfo>3.0.0</versionInfo>
+      <dcatVersion>3.0.0</dcatVersion>
+    </profile>
+
   </xsl:variable>
 </xsl:stylesheet>

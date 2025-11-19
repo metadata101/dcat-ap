@@ -970,7 +970,8 @@
         </section>
 
 
-        <section name="mobility-section">
+        <section name="mobility-section"
+                       displayIfRecord="$p2 = ('mobilityDCAT-AP')">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:mobilityTheme"/>
 
           <action type="add"
@@ -1181,7 +1182,8 @@
               </template>
             </action>
 
-            <section name="mobility-section">
+            <section name="mobility-section"
+                           displayIfRecord="$p2 = ('mobilityDCAT-AP')">
               <field xpath="dcat:Distribution/cnt:characterEncoding" or="characterEncoding" in="dcat:Distribution"/>
 
               <field xpath="dcat:Distribution/mobilitydcatap:applicationLayerProtocol"/>
