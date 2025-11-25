@@ -47,6 +47,9 @@
               "label": "linkToParent",
               "params": {
                 "resourceType": ["series"],
+                "documentStandard": [
+                  "dcat-ap"
+                ],
                 "isTemplate": "n"
               }
             },
@@ -61,6 +64,9 @@
           "sources": {
             "metadataStore": {
               "params": {
+                "documentStandard": [
+                  "dcat-ap"
+                ],
                 "isTemplate": "n"
               }
             },
