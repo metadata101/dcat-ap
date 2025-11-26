@@ -568,6 +568,7 @@
       <thesaurusList>
         <thesaurus key="external.theme.publisher-type" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.datatheme" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.belgif-datatheme" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.frequency" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.language" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.resource-type" maxtags="1" transformations="" fieldset="false"/>
@@ -682,15 +683,20 @@
           </action>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"
+                 or="theme"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"
+                 if="$p2 = ('DCAT-AP-VL', 'metadata-dcat')"
                  name="dcat:theme"
                  or="theme"
                  use="data-gn-keyword-picker"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
             <directiveAttributes
-              thesaurus="external.theme.datatheme"
+              thesaurus="external.theme.belgif-datatheme"
               xpath="/dcat:theme"
               max=""
-              labelKey="dcat-addThemes"/>
+              labelKey="dcat-addVLThemes"/>
           </field>
 
         </section>

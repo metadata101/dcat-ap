@@ -119,11 +119,21 @@
     <xsl:param name="ref" as="xs:string"/>
     <xsl:param name="keywords" as="node()*"/>
 
+    <xsl:variable name="keywordsForConfig" as="node()*"
+                  select="gn-fn-dcat-ap:filterKeywordsForConfig($keywords, $config)"/>
+
     <xsl:if test="gn-fn-dcat-ap:shouldShow($config)">
+      <xsl:variable name="elementRefSuffix"
+                    select="if (normalize-space($config/thesaurus) != '')
+                            then concat('_', replace(normalize-space($config/thesaurus), '[^A-Za-z0-9]', '_'))
+                            else ''"/>
+      <xsl:variable name="dataElementRef"
+                    select="concat('_P', $ref, '_', replace($config/@name, ':', 'COLON'), $elementRefSuffix)"/>
+
       <xsl:variable name="values">
         <xsl:choose>
-          <xsl:when test="$config/useReference = 'true' and $keywords/@rdf:resource">
-            <xsl:for-each select="$keywords">
+          <xsl:when test="$config/useReference = 'true' and $keywordsForConfig/@rdf:resource">
+            <xsl:for-each select="$keywordsForConfig">
               <xsl:variable name="v" select="replace(java:getKeywordValueByUri(@rdf:resource, $config/thesaurus, $lang), ',', ',,')"/>
               <xsl:variable name="vfallback" select="replace(java:getKeywordValueByUri(@rdf:resource, $config/thesaurus, 'eng'), ',', ',,')"/>
               <xsl:choose>
@@ -138,14 +148,14 @@
               </xsl:choose>
             </xsl:for-each>
           </xsl:when>
-          <xsl:when test="$keywords//(skos:prefLabel[text() != ''])[1]">
-            <xsl:value-of select="string-join($keywords//(skos:prefLabel[text() != ''])[1]/replace(text(), ',', ',,'), ',')"/>
+          <xsl:when test="$keywordsForConfig//(skos:prefLabel[text() != ''])[1]">
+            <xsl:value-of select="string-join($keywordsForConfig//(skos:prefLabel[text() != ''])[1]/replace(text(), ',', ',,'), ',')"/>
           </xsl:when>
         </xsl:choose>
       </xsl:variable>
 
       <xsl:variable name="keywordIds"
-                    select="string-join($keywords/(@rdf:resource|*/@rdf:about), ',')"/>
+                    select="string-join($keywordsForConfig/(@rdf:resource|*/@rdf:about), ',')"/>
 
       <xsl:variable name="transformation" select="if ($config/useReference = 'true')
                                                 then 'to-dcat-ap-concept-reference'
@@ -158,7 +168,7 @@
 
       <div data-gn-keyword-selector="tagsinput"
            data-metadata-id=""
-           data-element-ref="{concat('_P', $ref, '_', replace($config/@name, ':', 'COLON'))}"
+           data-element-ref="{$dataElementRef}"
            data-element-xpath="{$elemXpath}"
            data-wrapper="{$config/@name}"
            data-thesaurus-title="{($strings/*[name() = $config/labelKey], $labels/element[@name = $config/@name]/label)[1]}"
@@ -175,6 +185,44 @@
            class=""/>
     </xsl:if>
   </xsl:template>
+
+  <xsl:function name="gn-fn-dcat-ap:filterKeywordsForConfig" as="node()*">
+    <xsl:param name="keywords" as="node()*"/>
+    <xsl:param name="config" as="node()"/>
+
+    <xsl:variable name="thesaurusKey" select="normalize-space($config/thesaurus)"/>
+    <xsl:variable name="thesaurusUri" select="java:getThesaurusUriByKey($thesaurusKey)"/>
+
+    <xsl:choose>
+      <xsl:when test="not($config) or $thesaurusKey = ''">
+        <xsl:sequence select="$keywords"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:sequence select="$keywords[gn-fn-dcat-ap:isKeywordMatchingConfig(., $thesaurusKey, $thesaurusUri)]"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:function>
+
+  <xsl:function name="gn-fn-dcat-ap:isKeywordMatchingConfig" as="xs:boolean">
+    <xsl:param name="keyword" as="node()"/>
+    <xsl:param name="thesaurusKey" as="xs:string"/>
+    <xsl:param name="thesaurusUri" as="xs:string"/>
+
+    <xsl:variable name="currentKeyword" select="$keyword[1]"/>
+
+    <xsl:variable name="uri"
+                  select="normalize-space(($currentKeyword/@rdf:resource|$currentKeyword/*/@rdf:about)[1])"/>
+    <xsl:variable name="matchByUri"
+                  select="$thesaurusKey != '' and $uri != '' and
+                          (java:getKeywordValueByUri($uri, $thesaurusKey, $lang) != '' or
+                           java:getKeywordValueByUri($uri, $thesaurusKey, 'eng') != '')"/>
+    <xsl:variable name="schemeUri"
+                  select="normalize-space(($currentKeyword//skos:inScheme/@rdf:resource)[1])"/>
+    <xsl:variable name="matchByScheme"
+                  select="$schemeUri != '' and $thesaurusUri != '' and $schemeUri = $thesaurusUri"/>
+
+    <xsl:sequence select="$matchByUri or $matchByScheme"/>
+  </xsl:function>
 
 
   <xsl:template name="GetThesaurusElementXpath">
