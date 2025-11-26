@@ -46,14 +46,18 @@
             "metadataStore": {
               "label": "linkToParent",
               "params": {
-                "resourceType": ["series"],
+                "resourceType": [
+                  "series"
+                ],
                 "documentStandard": [
                   "dcat-ap"
                 ],
                 "isTemplate": "n"
               }
             },
-            "remoteurl": {"multiple": false}
+            "remoteurl": {
+              "multiple": false
+            }
           }
         }
       },
@@ -68,6 +72,19 @@
                   "dcat-ap"
                 ],
                 "isTemplate": "n"
+              },
+              "searchParamsPerType": {
+                "catalog-*": {
+                  "type": [
+                    "catalog"
+                  ]
+                },
+                "nextResource-*": {
+                  "type": [
+                    "dataset",
+                    "service"
+                  ]
+                }
               }
             },
             "remoteurl": {
