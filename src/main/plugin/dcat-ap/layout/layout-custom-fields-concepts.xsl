@@ -254,7 +254,8 @@
         <xsl:value-of select="concat('(', $resourcePath, '/', name(../..), ')[', $index, ']', $config/xpath)"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="concat($resourcePath, $config/xpath)"/>
+        <xsl:variable name="thesaurusUri" select="java:getThesaurusUriByKey(normalize-space($config/thesaurus))"/>
+        <xsl:value-of select="concat($resourcePath, $config/xpath, '[skos:Concept/skos:inScheme/@rdf:resource=''', $thesaurusUri, ''']')"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
