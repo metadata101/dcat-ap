@@ -1040,7 +1040,7 @@
 
 
         <section name="mobility-section"
-                       displayIfRecord="$p2 = ('mobilityDCAT-AP')">
+                       displayIfRecord="$p2 = ('mobilityDCAT-AP 3.0.0', 'mobilityDCAT-AP 1.1.0')">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:mobilityTheme"/>
 
           <action type="add"
@@ -1252,7 +1252,7 @@
             </action>
 
             <section name="mobility-section"
-                           displayIfRecord="$p2 = ('mobilityDCAT-AP')">
+                           displayIfRecord="$p2 = ('mobilityDCAT-AP 3.0.0', 'mobilityDCAT-AP 1.1.0')">
               <field xpath="dcat:Distribution/cnt:characterEncoding" or="characterEncoding" in="dcat:Distribution"/>
 
               <field xpath="dcat:Distribution/mobilitydcatap:applicationLayerProtocol"/>
@@ -2684,6 +2684,16 @@
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
+      <snippet label="dcat-ap-mobility-110">
+        <dct:conformsTo>
+          <dct:Standard
+            rdf:about="https://w3id.org/mobilitydcat-ap/releases/1.1.0/">
+            <dct:title>mobilityDCAT-AP 1.1.0</dct:title>
+            <dct:description xml:lang="nl">A mobility extension for the DCAT application profile for data portals in Europe</dct:description>
+            <owl:versionInfo>1.0.1</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
     </list>
     <list name="dcat-profiles-300">
       <snippet label="dcat-ap-300">
@@ -2720,7 +2730,7 @@
         <dct:conformsTo>
           <dct:Standard
             rdf:about="https://www.w3.org/mobility-ap/">
-            <dct:title>mobilityDCAT-AP</dct:title>
+            <dct:title>mobilityDCAT-AP 3.0.0</dct:title>
             <dct:description xml:lang="nl">A mobility extension for the DCAT application profile for data portals in Europe</dct:description>
             <owl:versionInfo>3.0.0</owl:versionInfo>
           </dct:Standard>

@@ -110,7 +110,8 @@
   <dcat-ap-300>DCAT-AP - 3.0.0</dcat-ap-300>
   <dcat-ap-vl-300>DCAT-AP Flanders - 3.0.0</dcat-ap-vl-300>
   <metadata-dcat-300>Metadata DCAT - 3.0.0</metadata-dcat-300>
-  <dcat-ap-mobility-300>DCAT-AP mobility</dcat-ap-mobility-300>
+  <dcat-ap-mobility-300>DCAT-AP mobility - 3.0.0</dcat-ap-mobility-300>
+  <dcat-ap-mobility-110>DCAT-AP mobility - 1.1.0</dcat-ap-mobility-110>
   <hvd-dataservice-section>High Value Dataset (HVD)</hvd-dataservice-section>
   <hvd-dataservice-tab>Data Service</hvd-dataservice-tab>
   <hvd-dataset-section>High Value Dataset (HVD)</hvd-dataset-section>
