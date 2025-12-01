@@ -1196,6 +1196,8 @@
             <field xpath="dcat:Distribution/dct:format" or="format" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dcat:mediaType" or="mediaType" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dct:language" or="language" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:issued" or="issued" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:modified" or="modified" in="dcat:Distribution"/>
 
             <section xpath="dcat:Distribution/dct:license"/>
 
