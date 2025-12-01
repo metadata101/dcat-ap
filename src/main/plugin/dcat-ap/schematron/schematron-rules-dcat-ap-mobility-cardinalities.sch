@@ -93,6 +93,12 @@
     <sch:param name="min" value="1"/><!-- Optional in DCAT AP -->
     <sch:param name="max" value="1"/>
   </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Dataset_PeriodOfTime">
+    <sch:param name="context" value="//dcat:Dataset/dct:temporal/dct:PeriodOfTime"/>
+    <sch:param name="element" value="schema:startDate"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Dataset_identifier">
     <sch:param name="context" value="//dcat:Dataset"/>
     <sch:param name="element" value="dct:identifier"/>
@@ -160,6 +166,36 @@
     <sch:param name="context" value="foaf:Agent"/>
     <sch:param name="element" value="locn:address"/>
     <sch:param name="min" value="1"/><!-- Not in DCAT-AP -->
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Agent_address_adminUnitL1">
+    <sch:param name="context" value="locn:address"/>
+    <sch:param name="element" value="locn:adminUnitL1"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Agent_address_adminUnitL2">
+    <sch:param name="context" value="locn:address"/>
+    <sch:param name="element" value="locn:adminUnitL2"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Agent_address_postName">
+    <sch:param name="context" value="locn:address"/>
+    <sch:param name="element" value="locn:postName"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Agent_address_postCode">
+    <sch:param name="context" value="locn:address"/>
+    <sch:param name="element" value="locn:postCode"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Agent_address_thoroughfare">
+    <sch:param name="context" value="locn:address"/>
+    <sch:param name="element" value="locn:thoroughfare"/>
+    <sch:param name="min" value="1"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
 
