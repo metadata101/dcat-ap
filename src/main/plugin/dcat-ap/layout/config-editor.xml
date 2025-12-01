@@ -2692,7 +2692,7 @@
             rdf:about="https://w3id.org/mobilitydcat-ap/releases/1.1.0/">
             <dct:title>mobilityDCAT-AP 1.1.0</dct:title>
             <dct:description xml:lang="nl">A mobility extension for the DCAT application profile for data portals in Europe</dct:description>
-            <owl:versionInfo>1.0.1</owl:versionInfo>
+            <owl:versionInfo>1.1.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>

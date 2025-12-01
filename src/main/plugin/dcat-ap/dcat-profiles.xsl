@@ -95,10 +95,10 @@
       <dcatVersion>3.0.0</dcatVersion>
     </profile>
 
-    <profile uri="https://w3id.org/mobilitydcat-ap/releases/1.0.1/">
+    <profile uri="https://w3id.org/mobilitydcat-ap/releases/1.1.0/">
       <alias>mobilityDCAT-AP 1.1.0</alias>
       <description>A mobility extension for the DCAT application profile for data portals in Europe </description>
-      <versionInfo>1.0.1</versionInfo>
+      <versionInfo>1.1.0</versionInfo>
       <dcatVersion>2.0.0</dcatVersion>
     </profile>
 
