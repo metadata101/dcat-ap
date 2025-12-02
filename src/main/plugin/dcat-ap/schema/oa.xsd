@@ -2,6 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
            xmlns:oa="http://www.w3.org/ns/oa#"
+           xmlns:skos="http://www.w3.org/2004/02/skos/core#"
            targetNamespace="http://www.w3.org/ns/oa#"
            elementFormDefault="qualified"
            attributeFormDefault="qualified">
@@ -18,5 +19,4 @@
 
   <xs:element name="hasBody" type="rdf:ResourceRef"/>
   <xs:element name="motivatedBy" type="skos:Concept"/>
-
 </xs:schema>
