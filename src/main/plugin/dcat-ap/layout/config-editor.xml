@@ -510,6 +510,7 @@
     <name>vcard:hasAddress</name>
     <name>vcard:Address</name>
     <name>dct:publisher</name>
+    <name>dct:rightsHolder</name>
     <name>foaf:Agent</name>
     <name>dct:accessRights</name>
     <name>dct:spatial</name>
@@ -958,6 +959,30 @@
                     <dct:description/>
                   </dct:RightsStatement>
                 </dct:rights>
+              </snippet>
+            </template>
+          </action>
+
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder"/>
+          <action type="add" or="rightsHolder" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder) = 0">
+            <template>
+              <snippet>
+                <dct:rightsHolder>
+                  <foaf:Agent>
+                    <foaf:name xml:lang=""/>
+                    <dct:type>
+                      <skos:Concept>
+                        <skos:prefLabel xml:lang="nl"/>
+                        <skos:prefLabel xml:lang="en"/>
+                        <skos:prefLabel xml:lang="fr"/>
+                        <skos:prefLabel xml:lang="de"/>
+                        <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
+                      </skos:Concept>
+                    </dct:type>
+                  </foaf:Agent>
+                </dct:rightsHolder>
               </snippet>
             </template>
           </action>
@@ -1917,7 +1942,7 @@
         <for name="locn:postCode"/>
         <for name="locn:adminUnitL2"/>
         <for name="locn:adminUnitL1"/>
-
+        <for name="dct:rightsHolder"/>
         <for name="adms:versionNotes"/>
         <!-- TODO mobility
          <for name="foaf:Agent/org:memberOf"/>
