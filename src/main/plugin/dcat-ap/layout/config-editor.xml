@@ -17,6 +17,7 @@
         xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
         xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
         xmlns:geodcatap="http://data.europa.eu/930/"
+        xmlns:oa="http://www.w3.org/ns/oa#"
         xmlns:cnt="http://www.w3.org/2011/content#"
         xmlns:dqv="http://www.w3.org/ns/dqv#"
         xsi:noNamespaceSchemaLocation="../../../../../../config-editor.xsd">
@@ -376,6 +377,16 @@
         </values>
         <snippet>
           <skos:inScheme rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+    <for name="oa:hasBody" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="oa:hasBody" required="true"/>
+        </values>
+        <snippet>
+          <oa:hasBody rdf:resource="{{key}}"/>
         </snippet>
       </template>
     </for>
