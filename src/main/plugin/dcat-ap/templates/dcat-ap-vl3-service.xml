@@ -6,8 +6,7 @@
          xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
          xmlns:dcat="http://www.w3.org/ns/dcat#"
          xmlns:owl="http://www.w3.org/2002/07/owl#"
-         xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
-         xsi:schemaLocation="http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.openarchives.org/OAI/2.0/rdf.xsd">
+         xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#">
   <dcat:Catalog>
     <dcat:record>
       <dcat:CatalogRecord>
