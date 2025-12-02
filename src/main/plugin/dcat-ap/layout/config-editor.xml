@@ -593,6 +593,16 @@
       <name>dcat:hasVersion</name>
       <name>dcat:isVersionOf</name>
       <name>locn:address</name>
+      <name>locn:fullAddress</name>
+      <name>locn:poBox</name>
+      <name>locn:thoroughfare</name>
+      <name>locn:locatorDesignator</name>
+      <name>locn:locatorName</name>
+      <name>locn:addressArea</name>
+      <name>locn:postName</name>
+      <name>locn:postCode</name>
+      <name>locn:adminUnitL2</name>
+      <name>locn:adminUnitL1</name>
 
       <!-- DCAT-AP v2 compatibility -->
       <name>owl:versionInfo</name>
