@@ -49,36 +49,52 @@
   <sch:pattern is-a="CardinalityCheck" id="Dataset_transportMode">
     <sch:param name="context" value="//dcat:Dataset"/>
     <sch:param name="element" value="mobilitydcatap:transportMode"/>
-    <sch:param name="min" value="1"/>
+    <sch:param name="min" value="0"/>
     <sch:param name="max" value="n"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Dataset_applicableLegislation">
     <sch:param name="context" value="//dcat:Dataset"/>
     <sch:param name="element" value="dcatap:applicableLegislation"/>
-    <sch:param name="min" value="1"/>
+    <sch:param name="min" value="0"/>
     <sch:param name="max" value="n"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Dataset_temporal">
     <sch:param name="context" value="//dcat:Dataset"/>
     <sch:param name="element" value="dct:temporal"/>
-    <sch:param name="min" value="1"/>
-    <sch:param name="max" value="1"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="n"/>
   </sch:pattern>
 
-  <sch:pattern is-a="CardinalityCheck" id="Dataset_mobilityDataStandard">
+  <sch:pattern is-a="CardinalityCheck" id="Distribution_mobilityDataStandard">
     <sch:param name="context" value="//dcat:Distribution"/>
     <sch:param name="element" value="mobilitydcatap:mobilityDataStandard"/>
     <sch:param name="min" value="1"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
-
-  <sch:pattern is-a="CardinalityCheck" id="Dataset_applicationLayerProtocol">
+  <sch:pattern is-a="CardinalityCheck" id="Distribution_applicationLayerProtocol">
     <sch:param name="context" value="//dcat:Distribution"/>
     <sch:param name="element" value="mobilitydcatap:applicationLayerProtocol"/>
-    <sch:param name="min" value="1"/>
+    <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
-
+  <sch:pattern is-a="CardinalityCheck" id="Distribution_grammar">
+    <sch:param name="context" value="//dcat:Distribution"/>
+    <sch:param name="element" value="mobilitydcatap:grammar"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Distribution_communicationMethod">
+    <sch:param name="context" value="//dcat:Distribution"/>
+    <sch:param name="element" value="mobilitydcatap:communicationMethod"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Distribution_dataFormatNotes">
+    <sch:param name="context" value="//dcat:Distribution"/>
+    <sch:param name="element" value="mobilitydcatap:dataFormatNotes"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
 
   <!-- Overwrite DCAT-AP generic cardinalities -->
   <sch:pattern is-a="CardinalityCheck" id="Dataset_accrualPeriodicity">
@@ -90,37 +106,37 @@
   <sch:pattern is-a="CardinalityCheck" id="Dataset_contactPoint">
     <sch:param name="context" value="//dcat:Dataset"/>
     <sch:param name="element" value="dcat:contactPoint"/>
-    <sch:param name="min" value="1"/><!-- Optional in DCAT AP -->
-    <sch:param name="max" value="1"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="n"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Dataset_PeriodOfTime">
     <sch:param name="context" value="//dcat:Dataset/dct:temporal/dct:PeriodOfTime"/>
     <sch:param name="element" value="schema:startDate"/>
-    <sch:param name="min" value="1"/>
-    <sch:param name="max" value="1"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="n"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Dataset_identifier">
     <sch:param name="context" value="//dcat:Dataset"/>
     <sch:param name="element" value="dct:identifier"/>
-    <sch:param name="min" value="1"/><!-- 0 in DCAT AP -->
-    <sch:param name="max" value="1"/><!-- n in DCAT AP VL -->
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="n"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Dataset_language">
     <sch:param name="context" value="//dcat:Dataset"/>
     <sch:param name="element" value="dct:language"/>
-    <sch:param name="min" value="1"/><!-- Optional in DCAT AP -->
+    <sch:param name="min" value="0"/>
     <sch:param name="max" value="n"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Dataset_modified">
     <sch:param name="context" value="//dcat:Dataset"/>
     <sch:param name="element" value="dct:modified"/>
-    <sch:param name="min" value="1"/><!-- Optional in DCAT AP -->
+    <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Dataset_issued">
     <sch:param name="context" value="//dcat:Dataset"/>
     <sch:param name="element" value="dct:issued"/>
-    <sch:param name="min" value="1"/><!-- Optional in DCAT AP -->
+    <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
 
@@ -134,8 +150,8 @@
   <sch:pattern is-a="MultilingualCardinalityCheck" id="Distribution_title">
     <sch:param name="context" value="dcat:Distribution"/>
     <sch:param name="element" value="dct:title"/>
-    <sch:param name="min" value="1"/><!-- 0 in DCAT-AP -->
-    <sch:param name="max" value="1"/>
+    <sch:param name="min" value="0"/><!-- 0 in DCAT-AP -->
+    <sch:param name="max" value="n"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Distribution_format">
     <sch:param name="context" value="dcat:Distribution"/>
@@ -159,58 +175,63 @@
   <sch:pattern is-a="CardinalityCheck" id="Agent_mbox">
     <sch:param name="context" value="foaf:Agent"/>
     <sch:param name="element" value="foaf:mbox"/>
-    <sch:param name="min" value="1"/>
-    <sch:param name="max" value="1"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="n"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Agent_address">
     <sch:param name="context" value="foaf:Agent"/>
     <sch:param name="element" value="locn:address"/>
-    <sch:param name="min" value="1"/><!-- Not in DCAT-AP -->
-    <sch:param name="max" value="1"/>
+    <sch:param name="min" value="0"/><!-- Not in DCAT-AP -->
+    <sch:param name="max" value="n"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Agent_address_adminUnitL1">
     <sch:param name="context" value="locn:address"/>
     <sch:param name="element" value="locn:adminUnitL1"/>
-    <sch:param name="min" value="1"/>
+    <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Agent_address_adminUnitL2">
     <sch:param name="context" value="locn:address"/>
     <sch:param name="element" value="locn:adminUnitL2"/>
-    <sch:param name="min" value="1"/>
+    <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Agent_address_postName">
     <sch:param name="context" value="locn:address"/>
     <sch:param name="element" value="locn:postName"/>
-    <sch:param name="min" value="1"/>
+    <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Agent_address_postCode">
     <sch:param name="context" value="locn:address"/>
     <sch:param name="element" value="locn:postCode"/>
-    <sch:param name="min" value="1"/>
+    <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Agent_address_thoroughfare">
     <sch:param name="context" value="locn:address"/>
     <sch:param name="element" value="locn:thoroughfare"/>
-    <sch:param name="min" value="1"/>
+    <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
 
-
-  <!-- Overwrite DCAT-AP and Mobility 1.1.0 generic cardinalities -->
+  <!-- Removed in mobilityDCAT-AP 1.1.0 -->
   <sch:pattern is-a="CardinalityCheck" id="Distribution_issued">
     <sch:param name="context" value="dcat:Distribution"/>
     <sch:param name="element" value="dct:issued"/>
-    <sch:param name="min" value="1"/><!-- 0 in DCAT-AP, in mobility 1.1.0 -->
-    <sch:param name="max" value="1"/>
+    <sch:param name="min" value="0"/><!-- 0 in DCAT-AP, in mobility 1.1.0 -->
+    <sch:param name="max" value="0"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Distribution_modified">
     <sch:param name="context" value="dcat:Distribution"/>
     <sch:param name="element" value="dct:modified"/>
-    <sch:param name="min" value="1"/><!-- 0 in DCAT-AP, in mobility 1.1.0 -->
-    <sch:param name="max" value="1"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="0"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Dataset_creator">
+    <sch:param name="context" value="//dcat:Dataset"/>
+    <sch:param name="element" value="dct:creator"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="0"/>
   </sch:pattern>
 </sch:schema>
