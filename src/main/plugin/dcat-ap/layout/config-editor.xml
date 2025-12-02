@@ -854,7 +854,8 @@
             </template>
           </action>
 
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:versionNotes"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:versionNotes"
+                 or="versionNotes" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created" />
           <action type="add" or="created" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
@@ -1916,6 +1917,8 @@
         <for name="locn:postCode"/>
         <for name="locn:adminUnitL2"/>
         <for name="locn:adminUnitL1"/>
+
+        <for name="adms:versionNotes"/>
         <!-- TODO mobility
          <for name="foaf:Agent/org:memberOf"/>
         -->
