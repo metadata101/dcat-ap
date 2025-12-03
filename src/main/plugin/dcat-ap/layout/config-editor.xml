@@ -662,13 +662,15 @@
             .gn-dcat-badge::before{
             }
             .gn-dcat-ap-mobility::before,
+            .gn-mobility-section > legend::after,
             .gn-surname::before,
             .gn-phone::before,
             .gn-firstName::before,
             .gn-mbox::before,
             .gn-address::before,
             .gn-characterEncoding::before,
-            .gn-mobilityDataStandard::before,
+            .gn-distribution .gn-temporal > legend::after,
+            .gn-mobilityDataStandard > legend::after,
             .gn-assessmentResult::before,
             .gn-referenceSystem::before,
             .gn-hasQualityAnnotation::before,
@@ -799,6 +801,20 @@
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:identifier/adms:Identifier"/>
+          <!--
+          TODO: This is a bit complicated, because GN does not support having 2 elements with same local-name.
+          Here we have dct:identifier and adms:identifier and it would require some changes to support that
+          See 1049 of form-configurator.xsl:
+          <action type="add"
+                  or="identifier"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+          >
+            <template>
+              <snippet>
+                <adms:identifier/>
+              </snippet>
+            </template>
+          </action>-->
         </section>
 
         <section name="vl-section-metadatadcat"
@@ -1980,6 +1996,7 @@
         <for name="locn:adminUnitL1"/>
         <for name="dct:rightsHolder"/>
         <for name="adms:versionNotes"/>
+        <for name="adms:identifier"/>
         <!-- TODO mobility
          <for name="foaf:Agent/org:memberOf"/>
         -->
