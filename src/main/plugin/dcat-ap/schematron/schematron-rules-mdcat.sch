@@ -33,7 +33,7 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>At least one of vcard:hasEmail or vcard:hasURL is a required for a contactpoint.</sch:title>
+    <sch:title>At least one of vcard:hasEmail or vcard:hasURL is a required property of a contactpoint.</sch:title>
     <sch:rule context="//dcat:contactPoint">
       <sch:let name="hasEmail" value="normalize-space(vcard:Organization/vcard:hasEmail/@rdf:resource) != ''"/>
       <sch:let name="hasUrl" value="normalize-space(vcard:Organization/vcard:hasURL/@rdf:resource) != ''"/>

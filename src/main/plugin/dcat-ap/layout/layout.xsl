@@ -35,6 +35,10 @@
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
                 xmlns:schema="http://schema.org/"
                 xmlns:cnt="http://www.w3.org/2011/content#"
+                xmlns:oa="http://www.w3.org/ns/oa#"
+                xmlns:dqv="http://www.w3.org/ns/dqv#"
+                xmlns:locn="http://www.w3.org/ns/locn#"
+                xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
                 xmlns:gn="http://www.fao.org/geonetwork"
@@ -136,6 +140,7 @@
           <xsl:with-param name="labels" select="$labels"/>
         </xsl:apply-templates>
       </xsl:with-param>
+      <!-- When disabled, remove control is also not available. -->
       <xsl:with-param name="isDisabled" select="name() = 'spdx:Checksum' or
                                                 name() = 'vcard:Organization' or
                                                 name() = 'adms:Identifier' or
@@ -192,7 +197,7 @@
 
 
   <!-- the other elements in DC. -->
-  <xsl:template mode="mode-dcat-ap" priority="100" match="dc:*|dct:*|dcat:*|vcard:*|foaf:*|spdx:*|adms:*|owl:*|schema:*|skos:*|mdcat:*|cnt:*">
+  <xsl:template mode="mode-dcat-ap" priority="100" match="dc:*|dct:*|dcat:*|vcard:*|foaf:*|spdx:*|adms:*|owl:*|schema:*|skos:*|mdcat:*|cnt:*|oa:*|mobilitydcatap:*|locn:*">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
     <xsl:param name="overrideLabel" select="''" required="no"/>
@@ -471,7 +476,7 @@
 
   <!-- Hide from the editor in default view -->
   <xsl:template mode="mode-dcat-ap" priority="2001"
-                match="*[((name(.) = 'dcat:downloadURL' and name(..) = 'dcat:Distribution') or
+                match="*[(
                           (name(.) = 'dct:issued' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dct:identifier' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dct:modified' and name(..) = 'dcat:Distribution') or

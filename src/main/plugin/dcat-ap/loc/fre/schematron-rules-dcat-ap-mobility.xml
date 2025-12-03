@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <schematron.title>Mobility - Mandatory</schematron.title>
+  <required.dcat_theme_tran.title>DCAT theme</required.dcat_theme_tran.title>
+  <required.dcat_theme_tran.report>DCAT theme is set to Transport</required.dcat_theme_tran.report>
+  <required.dcat_theme_tran.assert>In most cases, it is assumed that the relevant value for mobility data portals theme is Transport. Check the DCAT theme.</required.dcat_theme_tran.assert>
+</strings>

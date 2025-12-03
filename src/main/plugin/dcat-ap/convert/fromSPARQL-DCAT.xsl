@@ -51,9 +51,6 @@ Rome - Italy. email: geonetwork@osgeo.org
     <xsl:variable name="catalogURIs" select="//sr:result[sr:binding[@name='predicate']/sr:uri = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type' and
                                              sr:binding[@name='object']/sr:uri = 'http://www.w3.org/ns/dcat#Catalog']/sr:binding[@name='subject']"/>
     <rdf:RDF>
-      <!-- Set the xsi:schemaLocation attribute, used for validation: http://www.openarchives.org/OAI/2.0/rdf.xsd -->
-      <xsl:attribute name="xsi:schemaLocation"
-                     select="'http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.openarchives.org/OAI/2.0/rdf.xsd'"/>
       <xsl:for-each select="$catalogURIs">
         <xsl:variable name="catalogURI" select="./*"/>
         <dcat:Catalog rdf:about="{./*}">

@@ -82,7 +82,9 @@
                     <xsl:if test="$lang != ''">
                       <skos:prefLabel>
                         <xsl:attribute name="xml:lang" select="util:twoCharLangCode($lang)"/>
-                        <xsl:value-of select="$keyword/values/value[@language = $lang]/text()"/>
+
+                        <xsl:variable name="labelValue" select="$keyword/values/value[@language = $lang]/text()"/>
+                        <xsl:value-of select="if ($labelValue) then $labelValue else $keyword/value"/>
                       </skos:prefLabel>
                     </xsl:if>
                   </xsl:for-each>
