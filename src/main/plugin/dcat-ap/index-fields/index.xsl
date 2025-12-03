@@ -224,11 +224,11 @@
               select="gn-fn-index:add-field('mainLanguage', $defaultMainLanguage3Char)"/>
           </xsl:otherwise>
         </xsl:choose>
-        
+
         <xsl:for-each select="$allLanguages/*[not(@default)]">
           <xsl:copy-of select="gn-fn-index:add-field('otherLanguage', @code)"/>
         </xsl:for-each>
-        
+
         <xsl:variable name="resourceLanguages"
                       select="dct:language/skos:Concept/@rdf:about|../../dct:language/skos:Concept/@rdf:about"/>
 
@@ -785,7 +785,7 @@
         "mimeType":
         "<xsl:value-of
         select="normalize-space(substring-after(dcat:mediaType/skos:Concept/@rdf:about, '/media-types/'))"/>" ,
-        "url":"<xsl:value-of select="normalize-space(dcat:accessURL/@rdf:resource)"/>",
+        "url":"<xsl:value-of select="normalize-space(dcat:accessURL[1]/@rdf:resource)"/>",
         "name":
         <xsl:choose>
           <xsl:when test="count(dct:title)= 1">
