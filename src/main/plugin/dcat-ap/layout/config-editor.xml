@@ -1246,6 +1246,19 @@
             <field xpath="dcat:Distribution/dct:language" or="language" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dct:issued" or="issued" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dct:modified" or="modified" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:temporal"/>
+            <action type="add" or="temporal" in="dcat:Distribution">
+              <template>
+                <snippet>
+                  <dct:temporal>
+                    <dct:PeriodOfTime>
+                      <schema:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                      <schema:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    </dct:PeriodOfTime>
+                  </dct:temporal>
+                </snippet>
+              </template>
+            </action>
 
             <section xpath="dcat:Distribution/dct:license"/>
 
@@ -1981,6 +1994,7 @@
         <for name="dqv:hasQualityAnnotation"/>
         <for name="geodcatap:referenceSystem"/>
         <for name="cnt:characterEncoding"/>
+        <for name="dct:temporal"/>
       </flatModeExceptions>
     </view>
 
