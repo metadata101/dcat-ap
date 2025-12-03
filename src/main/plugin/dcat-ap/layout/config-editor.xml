@@ -1240,6 +1240,7 @@
             <field xpath="dcat:Distribution/dct:title" or="title" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dct:description" or="description" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dcat:accessURL" or="accessURL" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dcat:downloadURL" or="downloadURL" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dct:format" or="format" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dcat:mediaType" or="mediaType" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dct:language" or="language" in="dcat:Distribution"/>
@@ -1964,6 +1965,7 @@
         <!-- Distribution -->
         <for name="dcat:Distribution"/>
         <for name="dcat:accessURL"/>
+        <for name="dcat:downloadURL"/>
         <for name="dct:format"/>
         <for name="dcat:mediaType"/>
         <for name="dct:license"/>

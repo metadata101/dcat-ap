@@ -476,7 +476,7 @@
 
   <!-- Hide from the editor in default view -->
   <xsl:template mode="mode-dcat-ap" priority="2001"
-                match="*[((name(.) = 'dcat:downloadURL' and name(..) = 'dcat:Distribution') or
+                match="*[(
                           (name(.) = 'dct:issued' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dct:identifier' and name(..) = 'dcat:Distribution') or
                           (name(.) = 'dct:modified' and name(..) = 'dcat:Distribution') or
