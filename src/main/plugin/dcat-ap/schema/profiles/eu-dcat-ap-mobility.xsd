@@ -30,7 +30,7 @@
   <xs:element name="specificContentModel" type="skos:Concept"/>
   <xs:element name="communicationMethod" type="skos:Concept"/>
   <xs:element name="grammar" type="skos:Concept"/>
-  <xs:element name="schema" type="rdf:Resource"/>
+  <xs:element name="schema" type="rdf:ResourceRef"/>
   <xs:element name="dataFormatNotes" type="rdf:PlainLiteral"/>
   <xs:element name="mobilityDataStandard" type="mobilitydcatap:DataStandard"/>
 
@@ -39,9 +39,9 @@
       <!--TODO Added in mobility DCAT 3
       Broken link in the spec to the vocabulary
       <xs:element ref="mobilitydcatap:specificContentModel" minOccurs="0"/>-->
-      <xs:element ref="dct:conformsTo"/><!-- is a skos:Concept in mobility dcat instead of dct:Standard -->
+      <xs:element ref="dct:conformsTo" minOccurs="0"/><!-- is a skos:Concept in mobility dcat instead of dct:Standard -->
       <!--TODO In mobility v1 was owl:versionInfo, is dcat:version in v3 -->
-      <xs:element ref="owl:versionInfo"/>
+      <xs:element ref="owl:versionInfo" minOccurs="0"/>
       <xs:element ref="mobilitydcatap:schema" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>

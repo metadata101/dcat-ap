@@ -1063,6 +1063,10 @@
     <label>Data standard</label>
     <description>The mobility data standard, as applied for the delivered content within the distribution. A mobility data standard, e.g., DATEX II, combines syntax and semantic definitions of entities in a certain domain (e.g., for DATEX II: road traffic information), and optionally adds technical rules for data exchange.</description>
   </element>
+  <element name="mobilitydcatap:schema">
+    <label>Data standard schema</label>
+    <description>The schema of the mobility data standard, as applied within the delivered content. There are different options how to reference the schema. It might be a reference to a portal-internal catalogue of schemas, a reference to an individual schema (that is provided by the data publisher), or a reference to an external catalogue of schemas (like a stakeholder-based DATEX II profile published on the datex2.eu page). The data platform SHOULD keep an archive of commonly used schemas. The data provider SHOULD be able to select an applicable schema from this archive, or to upload an own, individual schema. In any case, the schema should be available as a resource.</description>
+  </element>
   <element name="mobilitydcatap:communicationMethod">
     <label>Communication method</label>
     <description>Indicates for dynamically provided distributions, e.g., data feeds, if the data interface of the data provider system functions in a push or pull mode.</description>

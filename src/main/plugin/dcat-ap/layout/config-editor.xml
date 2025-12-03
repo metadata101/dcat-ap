@@ -477,6 +477,17 @@
       </template>
     </for>
 
+    <for name="mobilitydcatap:schema" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="mobilitydcatap:schema" required="true"/>
+        </values>
+        <snippet>
+          <mobilitydcatap:schema rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+
     <for name="foaf:mbox" templateModeOnly="true" forceLabel="true" label="key">
       <template>
         <values>
@@ -1989,6 +2000,9 @@
         <!-- Mobility -->
         <for name="mobilitydcatap:communicationMethod"/>
         <for name="mobilitydcatap:mobilityDataStandard"/>
+        <for name="mobilitydcatap:mobilityDataStandard/owl:versionInfo"/>
+        <for name="mobilitydcatap:mobilityDataStandard/dct:conformsTo"/>
+        <for name="mobilitydcatap:mobilityDataStandard/mobilitydcatap:schema"/>
         <for name="mobilitydcatap:assessmentResult"/>
         <for name="mobilitydcatap:dataFormatNotes"/>
         <for name="dqv:hasQualityAnnotation"/>
