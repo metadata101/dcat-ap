@@ -325,6 +325,10 @@
     <description>Organisatie</description>
     <btnLabel>Organisatie</btnLabel>
   </element>
+  <element name="foaf:homepage">
+    <label>Home page</label>
+    <description>URL of the homepage of something, which is a general web resource.</description>
+  </element>
   <element name="foaf:Document">
     <label>Document</label>
     <description>Document</description>

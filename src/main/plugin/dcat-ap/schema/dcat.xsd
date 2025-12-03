@@ -138,6 +138,7 @@
           <xs:element ref="dct:created" minOccurs="0" maxOccurs="unbounded"/>
           <!-- Optional -->
           <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:spatial" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
