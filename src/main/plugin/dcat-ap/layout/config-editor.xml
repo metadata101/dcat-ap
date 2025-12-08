@@ -1223,11 +1223,22 @@
             </template>
           </action>
 
-          <!-- Theme: vocab.belgif.be/auth/datatheme -->
-          <!-- TODO: custom label to indicate this is about themes from the specific thesaurus? -->
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme"
                  or="theme"
                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme"
+                 if="$p2 = ('DCAT-AP-VL', 'metadata-dcat')"
+                 name="dcat:theme"
+                 or="theme"
+                 use="data-gn-keyword-picker"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <directiveAttributes
+              thesaurus="external.theme.belgif-datatheme"
+              xpath="/dcat:theme"
+              max=""
+              labelKey="dcat-addVLThemes"/>
+          </field>
         </section>
 
         <section name="versionInformation">
