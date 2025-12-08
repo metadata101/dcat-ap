@@ -29,6 +29,8 @@
 
   <sch:title xmlns="http://www.w3.org/2001/XMLSchema">{$loc/strings/schematron.title}</sch:title>
 
+  <sch:let name="virtualCatalogContext" value="//dcat:Catalog[not(//dcat:Dataset|//dcat:DataService|//dcat:DatasetSeries)]"/>
+
   <sch:pattern abstract="true" id="CardinalityCheck">
     <sch:title>geonet:replacePlaceholders($loc/strings/cardinality.title, ('#context', '#element'), ('$context', '$element'))</sch:title>
     <sch:rule context="$context">
@@ -135,49 +137,49 @@
   </sch:pattern>
 
   <sch:pattern is-a="CardinalityCheck" id="Catalog_title">
-    <sch:param name="context" value="//dcat:Catalog"/>
+    <sch:param name="context" value="//dcat:Catalog[not(//dcat:Dataset|//dcat:DataService|//dcat:DatasetSeries)]"/>
     <sch:param name="element" value="dct:title"/>
     <sch:param name="min" value="1"/>
     <sch:param name="max" value="n"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Catalog_record">
-    <sch:param name="context" value="//dcat:Catalog"/>
+    <sch:param name="context" value="//dcat:Catalog[not(//dcat:Dataset|//dcat:DataService|//dcat:DatasetSeries)]"/>
     <sch:param name="element" value="dcat:record"/>
     <sch:param name="min" value="1"/>
     <sch:param name="max" value="n"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Catalog_identifier">
-    <sch:param name="context" value="//dcat:Catalog"/>
+    <sch:param name="context" value="//dcat:Catalog[not(//dcat:Dataset|//dcat:DataService|//dcat:DatasetSeries)]"/>
     <sch:param name="element" value="dct:identifier"/>
     <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Catalog_homepage">
-    <sch:param name="context" value="//dcat:Catalog"/>
+    <sch:param name="context" value="//dcat:Catalog[not(//dcat:Dataset|//dcat:DataService|//dcat:DatasetSeries)]"/>
     <sch:param name="element" value="foaf:homepage"/>
     <sch:param name="min" value="1"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Catalog_publisher">
-    <sch:param name="context" value="//dcat:Catalog"/>
+    <sch:param name="context" value="//dcat:Catalog[not(//dcat:Dataset|//dcat:DataService|//dcat:DatasetSeries)]"/>
     <sch:param name="element" value="dct:publisher"/>
     <sch:param name="min" value="1"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Catalog_spatial">
-    <sch:param name="context" value="//dcat:Catalog"/>
+    <sch:param name="context" value="//dcat:Catalog[not(//dcat:Dataset|//dcat:DataService|//dcat:DatasetSeries)]"/>
     <sch:param name="element" value="dct:spatial"/>
     <sch:param name="min" value="1"/>
     <sch:param name="max" value="n"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Catalog_issued">
-    <sch:param name="context" value="//dcat:Catalog"/>
+    <sch:param name="context" value="//dcat:Catalog[not(//dcat:Dataset|//dcat:DataService|//dcat:DatasetSeries)]"/>
     <sch:param name="element" value="dct:issued"/>
     <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Catalog_modified">
-    <sch:param name="context" value="//dcat:Catalog"/>
+    <sch:param name="context" value="//dcat:Catalog[not(//dcat:Dataset|//dcat:DataService|//dcat:DatasetSeries)]"/>
     <sch:param name="element" value="dct:modified"/>
     <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
