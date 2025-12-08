@@ -33,6 +33,9 @@
   <gns:title xml:lang="en">DCAT-AP</gns:title>
   <gns:description>DCAT Application Profile for Data Portals in Europe v2.0 (DCAT-AP v2.0).</gns:description>
   <gns:standardUrl>https://www.w3.org/TR/vocab-dcat-2/</gns:standardUrl>
+  <!-- Empty schema location will set the location to the XSD published by the catalogue
+  eg. https://metadata.vlaanderen.be/xml/schemas/dcat-ap/schema.xsd
+  -->
   <gns:schemaLocation/>
   <gns:autodetect xmlns:dcat="http://www.w3.org/ns/dcat#">
     <!--

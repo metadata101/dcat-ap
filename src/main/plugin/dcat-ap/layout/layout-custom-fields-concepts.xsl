@@ -55,7 +55,7 @@
   <!-- Element using a thesaurus .-->
   <xsl:template mode="mode-dcat-ap"
                          priority="4000"
-                        match="*[(skos:Concept or @rdf:resource) and gn-fn-dcat-ap:getThesaurusConfig(name(), name(..))]">
+                        match="*[(skos:Concept or @rdf:resource) and gn-fn-dcat-ap:getThesaurusConfig(name(), name(..))]|dcat:theme">
     <xsl:param name="config" required="no"/>
 
     <xsl:if test="not(preceding-sibling::*[1]) or preceding-sibling::*[1]/name() != current()/name()">
@@ -179,9 +179,16 @@
 
   <xsl:template name="GetThesaurusElementXpath">
     <xsl:param name="config" as="node()"/>
+    <!--
+    Build the full xpath to the element using the thesaurus based on its position in the DCAT AP structure.
+    Same element name can appear in different places (eg. dct:publisher/dct:type).
+    Config-editor define the xpath for the parent context ie. dct:publisher in that case
+    but we need the full xpath to the element itself.
+    -->
     <xsl:variable name="resourcePath"
                   select="concat('./dcat:Catalog',
                                   if (ancestor::*[1]/name() = 'dcat:Catalog') then ''
+                                  else if (ancestor::*[2]/name() = 'dct:publisher' and ancestor::*[3]/name() = 'dcat:Catalog') then ''
                                   else if (ancestor::*[1]/name() = 'dcat:CatalogRecord') then '/dcat:record/dcat:CatalogRecord'
                                   else if ($isDcatService) then '/dcat:service/dcat:DataService'
                                   else '/dcat:dataset/dcat:Dataset')"/>

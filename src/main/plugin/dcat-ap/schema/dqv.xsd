@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+           xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+           xmlns:oa="http://www.w3.org/ns/oa#"
+           xmlns:dqv="http://www.w3.org/ns/dqv#"
+           targetNamespace="http://www.w3.org/ns/dqv#"
+           elementFormDefault="qualified"
+           attributeFormDefault="qualified">
+
+  <xs:annotation>
+    <xs:documentation xml:lang="en">
+      An XML Schema for the Data Quality Vocabulary (DQV).
+      See http://www.w3.org/ns/dqv#
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
+  <xs:import namespace="http://www.w3.org/2004/02/skos/core#" schemaLocation="skos.xsd"/>
+  <xs:import namespace="http://www.w3.org/ns/oa#" schemaLocation="oa.xsd"/>
+
+  <xs:complexType name="QualityAnnotation">
+      <xs:sequence>
+        <xs:element ref="oa:hasBody"/>
+<!--     TODO   <xs:element ref="oa:hasTarget"/>-->
+      </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="hasQualityAnnotation" type="dqv:QualityAnnotation"/>
+</xs:schema>
