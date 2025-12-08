@@ -1506,7 +1506,14 @@
                         del=".">
             <field xpath="dct:title" or="title" in="."/>
             <field xpath="dct:identifier"/>
-            <field xpath="mdcat:stars" or="stars" in="."/>
+            <field xpath="mdcat:stars" in="."/>
+            <action type="add" in="." or="stars" if="count(mdcat:stars)=0">
+              <template>
+                <snippet>
+                  <mdcat:stars>1</mdcat:stars>
+                </snippet>
+              </template>
+            </action>
           </section>
         </section>
       </tab>
