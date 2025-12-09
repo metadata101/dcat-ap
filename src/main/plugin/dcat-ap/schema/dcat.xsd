@@ -13,6 +13,8 @@
            xmlns:cnt="http://www.w3.org/2011/content#"
            xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
            xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+           xmlns:geodcatap="http://data.europa.eu/930/"
+           xmlns:dqv="http://www.w3.org/ns/dqv#"
            targetNamespace="http://www.w3.org/ns/dcat#"
            elementFormDefault="qualified"
            attributeFormDefault="qualified">
@@ -43,6 +45,8 @@
   <xs:import namespace="https://data.vlaanderen.be/ns/metadata-dcat#" schemaLocation="profiles/mdcat.xsd"/>
   <xs:import namespace="http://data.europa.eu/r5r/" schemaLocation="profiles/eu-dcat-ap-hvd.xsd"/>
   <xs:import namespace="https://w3id.org/mobilitydcat-ap" schemaLocation="profiles/eu-dcat-ap-mobility.xsd"/>
+  <xs:import namespace="http://www.w3.org/ns/dqv#" schemaLocation="dqv.xsd"/>
+  <xs:import namespace="http://data.europa.eu/930/" schemaLocation="geodcatap.xsd"/>
 
   <xs:element name="Catalog" type="dcat:Catalog_type"/>
   <xs:element name="CatalogRecord" type="dcat:CatalogRecord_type"/>
@@ -134,6 +138,7 @@
           <xs:element ref="dct:created" minOccurs="0" maxOccurs="unbounded"/>
           <!-- Optional -->
           <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="dct:spatial" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -207,11 +212,9 @@
                 <xs:element ref="mobilitydcatap:georeferencingMethod" minOccurs="0" maxOccurs="unbounded"/>
                 <!-- Optional -->
                 <xs:element ref="mobilitydcatap:intendedInformationService" minOccurs="0" maxOccurs="unbounded"/>
-                <!--
-                TODO:
-                assessmentResult
-                hasQualityAnnotation
-                -->
+                <xs:element ref="mobilitydcatap:assessmentResult" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dqv:hasQualityAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="geodcatap:referenceSystem" minOccurs="0" maxOccurs="unbounded"/>
 
                 <!-- Profile / DCAT-AP-HVD -->
                 <xs:element ref="dcatap:hvdCategory" minOccurs="0" maxOccurs="unbounded"/>
@@ -294,7 +297,7 @@
                 <xs:element ref="mobilitydcatap:dataFormatNotes" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="mobilitydcatap:grammar" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="adms:sample" minOccurs="0" maxOccurs="unbounded"/>
-                <!--                <xs:element ref="mobilitydcat:mobilityDataStandard" minOccurs="0" maxOccurs="unbounded"/>-->
+                <xs:element ref="mobilitydcatap:mobilityDataStandard" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:temporal" minOccurs="0" maxOccurs="unbounded"/>
               </xs:sequence>
             </xs:extension>

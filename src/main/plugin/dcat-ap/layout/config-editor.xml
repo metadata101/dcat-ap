@@ -16,6 +16,10 @@
         xmlns:locn="http://www.w3.org/ns/locn#"
         xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
         xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+        xmlns:geodcatap="http://data.europa.eu/930/"
+        xmlns:oa="http://www.w3.org/ns/oa#"
+        xmlns:cnt="http://www.w3.org/2011/content#"
+        xmlns:dqv="http://www.w3.org/ns/dqv#"
         xsi:noNamespaceSchemaLocation="../../../../../../config-editor.xsd">
   <!-- Define form field types per metadata element. -->
   <fields>
@@ -146,6 +150,24 @@
       <directiveAttributes
         thesaurus="external.theme.mobility-theme"
         xpath="/mobilitydcatap:mobilityTheme"/>
+    </for>
+
+    <for name="mobilitydcatap:applicationLayerProtocol" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.mobility-application-layer-protocol"
+        xpath="/dcat:Distribution/mobilitydcatap:applicationLayerProtocol"/>
+    </for>
+
+    <for name="mobilitydcatap:communicationMethod" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.mobility-communication-method"
+        xpath="/dcat:Distribution/mobilitydcatap:communicationMethod"/>
+    </for>
+
+    <for name="mobilitydcatap:grammar" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.mobility-grammar"
+        xpath="/dcat:Distribution/mobilitydcatap:grammar"/>
     </for>
 
     <for name="mobilitydcatap:transportMode" use="thesaurus-list-picker">
@@ -358,6 +380,16 @@
         </snippet>
       </template>
     </for>
+    <for name="oa:hasBody" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="oa:hasBody" required="true"/>
+        </values>
+        <snippet>
+          <oa:hasBody rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
     <for name="dcat:accessService" templateModeOnly="true" forceLabel="true" label="key">
       <template>
         <values>
@@ -432,6 +464,51 @@
         </snippet>
       </template>
     </for>
+
+    <!-- dcat-ap-mobility -->
+    <for name="foaf:workplaceHomepage" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="foaf:workplaceHomepage" required="true"/>
+        </values>
+        <snippet>
+          <foaf:workplaceHomepage rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+
+    <for name="mobilitydcatap:schema" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="mobilitydcatap:schema" required="true"/>
+        </values>
+        <snippet>
+          <mobilitydcatap:schema rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+
+    <for name="foaf:mbox" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="foaf:mbox" required="true"/>
+        </values>
+        <snippet>
+          <foaf:mbox rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
+
+    <for name="foaf:phone" templateModeOnly="true" forceLabel="true" label="key">
+      <template>
+        <values>
+          <key label="key" xpath="@rdf:resource" tooltip="foaf:phone" required="true"/>
+        </values>
+        <snippet>
+          <foaf:phone rdf:resource="{{key}}"/>
+        </snippet>
+      </template>
+    </for>
   </fields>
 
   <!-- Complex fields. -->
@@ -455,6 +532,7 @@
     <name>vcard:hasAddress</name>
     <name>vcard:Address</name>
     <name>dct:publisher</name>
+    <name>dct:rightsHolder</name>
     <name>foaf:Agent</name>
     <name>dct:accessRights</name>
     <name>dct:spatial</name>
@@ -483,6 +561,11 @@
     <name>dct:creator</name>
     <name>spdx:checksum</name>
     <name>spdx:Checksum</name>
+    <name>mobilitydcatap:mobilityDataStandard</name>
+    <name>mobilitydcatap:assessmentResult</name>
+    <name>dqv:hasQualityAnnotation</name>
+    <name>geodcatap:referenceSystem</name>
+    <name>locn:address</name>
   </fieldsWithFieldset>
 
   <multilingualFields>
@@ -532,6 +615,17 @@
       <name>dcat:version</name>
       <name>dcat:hasVersion</name>
       <name>dcat:isVersionOf</name>
+      <name>locn:address</name>
+      <name>locn:fullAddress</name>
+      <name>locn:poBox</name>
+      <name>locn:thoroughfare</name>
+      <name>locn:locatorDesignator</name>
+      <name>locn:locatorName</name>
+      <name>locn:addressArea</name>
+      <name>locn:postName</name>
+      <name>locn:postCode</name>
+      <name>locn:adminUnitL2</name>
+      <name>locn:adminUnitL1</name>
 
       <!-- DCAT-AP v2 compatibility -->
       <name>owl:versionInfo</name>
@@ -563,6 +657,77 @@
                    displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0"/>
 
         <directive data-gn-validation-report=""/>
+
+
+        <text>
+          <style>
+            .gn-dcat-badge::before{
+            }
+            .gn-dcat-ap-mobility::before,
+            .gn-mobility-section > legend::after,
+            .gn-surname::before,
+            .gn-phone::before,
+            .gn-firstName::before,
+            .gn-mbox::before,
+            .gn-address::before,
+            .gn-characterEncoding::before,
+            .gn-distribution .gn-temporal > legend::after,
+            .gn-mobilityDataStandard > legend::after,
+            .gn-assessmentResult::before,
+            .gn-referenceSystem::before,
+            .gn-hasQualityAnnotation::before,
+            .gn-dataFormatNotes::before,
+            [data-thesaurus-key="external.theme.mobility-application-layer-protocol"]::before,
+            [data-thesaurus-key="external.theme.mobility-communication-method"]::before,
+            [data-thesaurus-key="external.theme.mobility-grammar"]::before,
+            [data-thesaurus-key="external.theme.mobility-intended-information-service"]::before,
+            [data-thesaurus-key="external.theme.mobility-network-coverage"]::before,
+            [data-thesaurus-key="external.theme.mobility-theme"]::before,
+            [data-thesaurus-key="external.theme.mobility-transport-mode"]::before,
+            [data-thesaurus-key="external.theme.mobility-intended-information-service"]::before,
+            [data-thesaurus-key="external.theme.mobility-georeferencing-method"]::before
+            {
+            content: "mobility" !important;
+            background-color: #f5f5f5;
+            color: #333333;
+            position: relative;
+            top: 4px;
+            right: -15px;
+            padding: 3px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            }
+            .gn-dcat-ap-hvd::before,
+            [data-thesaurus-key="external.theme.high-value-dataset-category"]::before
+            {
+            content: "hvd" !important;
+            background-color: #f5f5f5;
+            color: #333333;
+            position: relative;
+            top: 4px;
+            right: -15px;
+            padding: 3px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            }
+            .gn-dcat-ap-hvd+mobility,
+            [data-thesaurus-key="external.theme.eu-applicable-legislation"]::before
+            {
+            content: "hvd+mobility" !important;
+            background-color: #f5f5f5;
+            color: #333333;
+            position: relative;
+            top: 4px;
+            right: -15px;
+            padding: 3px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            }
+          </style>
+        </text>
       </sidePanel>
 
       <thesaurusList>
@@ -639,6 +804,20 @@
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:identifier/adms:Identifier"/>
+          <!--
+          TODO: This is a bit complicated, because GN does not support having 2 elements with same local-name.
+          Here we have dct:identifier and adms:identifier and it would require some changes to support that
+          See 1049 of form-configurator.xsl:
+          <action type="add"
+                  or="identifier"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+          >
+            <template>
+              <snippet>
+                <adms:identifier/>
+              </snippet>
+            </template>
+          </action>-->
         </section>
 
         <section name="vl-section-metadatadcat"
@@ -722,7 +901,8 @@
             </template>
           </action>
 
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:versionNotes"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:versionNotes"
+                 or="versionNotes" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:created" />
           <action type="add" or="created" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
@@ -755,7 +935,21 @@
           </action>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity"/>
-
+          <action type="add"
+                  or="accrualPeriodicity"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:accrualPeriodicity) = 0"
+          >
+            <template>
+              <snippet>
+                <dct:accrualPeriodicity>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                  </skos:Concept>
+                </dct:accrualPeriodicity>
+              </snippet>
+            </template>
+          </action>
         </section>
 
         <section name="usageInformation">
@@ -811,6 +1005,30 @@
                     <dct:description/>
                   </dct:RightsStatement>
                 </dct:rights>
+              </snippet>
+            </template>
+          </action>
+
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder"/>
+          <action type="add" or="rightsHolder" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder) = 0">
+            <template>
+              <snippet>
+                <dct:rightsHolder>
+                  <foaf:Agent>
+                    <foaf:name xml:lang=""/>
+                    <dct:type>
+                      <skos:Concept>
+                        <skos:prefLabel xml:lang="nl"/>
+                        <skos:prefLabel xml:lang="en"/>
+                        <skos:prefLabel xml:lang="fr"/>
+                        <skos:prefLabel xml:lang="de"/>
+                        <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
+                      </skos:Concept>
+                    </dct:type>
+                  </foaf:Agent>
+                </dct:rightsHolder>
               </snippet>
             </template>
           </action>
@@ -902,6 +1120,116 @@
           </action>
         </section>
 
+
+        <section name="mobility-section"
+                       displayIfRecord="$p2 = ('mobilityDCAT-AP 3.0.0', 'mobilityDCAT-AP 1.1.0')">
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:mobilityTheme"/>
+
+          <action type="add"
+                  or="mobilityTheme"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:mobilityTheme) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:mobilityTheme>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:mobilityTheme>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:transportMode"/>
+
+          <action type="add"
+                  or="transportMode"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:transportMode) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:transportMode>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:transportMode>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:networkCoverage"/>
+
+          <action type="add"
+                  or="networkCoverage"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:networkCoverage) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:networkCoverage>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:networkCoverage>
+              </snippet>
+            </template>
+          </action>
+
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/geodcatap:referenceSystem"/>
+          <action type="add"
+                  or="referenceSystem"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippets name="crs"/>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:georeferencingMethod"/>
+
+          <action type="add"
+                  or="georeferencingMethod"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:georeferencingMethod) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:georeferencingMethod>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:georeferencingMethod>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:intendedInformationService"/>
+
+          <action type="add"
+                  or="intendedInformationService"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:intendedInformationService) = 0"
+          >
+            <template>
+              <snippet>
+                <mobilitydcatap:intendedInformationService>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel></skos:prefLabel>
+                  </skos:Concept>
+                </mobilitydcatap:intendedInformationService>
+              </snippet>
+            </template>
+          </action>
+
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:assessmentResult"
+                    or="assessmentResult" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dqv:hasQualityAnnotation"
+                    or="hasQualityAnnotation" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+        </section>
+
         <section name="extraInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:language"/>
 
@@ -947,9 +1275,25 @@
             <field xpath="dcat:Distribution/dct:title" or="title" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dct:description" or="description" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dcat:accessURL" or="accessURL" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dcat:downloadURL" or="downloadURL" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dct:format" or="format" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dcat:mediaType" or="mediaType" in="dcat:Distribution"/>
             <field xpath="dcat:Distribution/dct:language" or="language" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:issued" or="issued" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:modified" or="modified" in="dcat:Distribution"/>
+            <field xpath="dcat:Distribution/dct:temporal"/>
+            <action type="add" or="temporal" in="dcat:Distribution">
+              <template>
+                <snippet>
+                  <dct:temporal>
+                    <dct:PeriodOfTime>
+                      <schema:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                      <schema:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    </dct:PeriodOfTime>
+                  </dct:temporal>
+                </snippet>
+              </template>
+            </action>
 
             <section xpath="dcat:Distribution/dct:license"/>
 
@@ -1004,7 +1348,72 @@
                 <snippets name="protocols-vl"/>
               </template>
             </action>
+
+            <section name="mobility-section"
+                           displayIfRecord="$p2 = ('mobilityDCAT-AP 3.0.0', 'mobilityDCAT-AP 1.1.0')">
+              <field xpath="dcat:Distribution/cnt:characterEncoding" or="characterEncoding" in="dcat:Distribution"/>
+
+              <field xpath="dcat:Distribution/mobilitydcatap:applicationLayerProtocol"/>
+
+              <action type="add"
+                      or="applicationLayerProtocol"
+                      in="dcat:Distribution"
+                      if="count(dcat:Distribution/mobilitydcatap:applicationLayerProtocol) = 0"
+              >
+                <template>
+                  <snippet>
+                    <mobilitydcatap:applicationLayerProtocol>
+                      <skos:Concept rdf:about="">
+                        <skos:prefLabel></skos:prefLabel>
+                      </skos:Concept>
+                    </mobilitydcatap:applicationLayerProtocol>
+                  </snippet>
+                </template>
+              </action>
+
+
+              <field xpath="dcat:Distribution/mobilitydcatap:communicationMethod"/>
+              <action type="add"
+                      or="communicationMethod"
+                      in="dcat:Distribution"
+                      if="count(dcat:Distribution/mobilitydcatap:communicationMethod) = 0"
+              >
+                <template>
+                  <snippet>
+                    <mobilitydcatap:communicationMethod>
+                      <skos:Concept rdf:about="">
+                        <skos:prefLabel></skos:prefLabel>
+                      </skos:Concept>
+                    </mobilitydcatap:communicationMethod>
+                  </snippet>
+                </template>
+              </action>
+
+              <field xpath="dcat:Distribution/mobilitydcatap:grammar"/>
+              <action type="add"
+                      or="grammar"
+                      in="dcat:Distribution"
+                      if="count(dcat:Distribution/mobilitydcatap:grammar) = 0"
+              >
+                <template>
+                  <snippet>
+                    <mobilitydcatap:grammar>
+                      <skos:Concept rdf:about="">
+                        <skos:prefLabel></skos:prefLabel>
+                      </skos:Concept>
+                    </mobilitydcatap:grammar>
+                  </snippet>
+                </template>
+              </action>
+
+              <field xpath="dcat:Distribution/mobilitydcatap:mobilityDataStandard"
+                     or="mobilityDataStandard" in="dcat:Distribution"/>
+
+              <field xpath="dcat:Distribution/mobilitydcatap:dataFormatNotes"
+                     or="dataFormatNotes" in="dcat:Distribution"/>
+            </section>
           </section>
+
           <action type="add" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
             <template>
               <snippet>
@@ -1496,6 +1905,60 @@
             </template>
           </action>
         </section>
+
+
+        <section name="extraInformation">
+          <field xpath="/rdf:RDF/dcat:Catalog/dct:publisher"/>
+          <action type="add" or="publisher" in="/rdf:RDF/dcat:Catalog"
+                  if="count(rdf:RDF/dcat:Catalog/dct:publisher) = 0">
+            <template>
+              <snippet>
+                <dct:publisher>
+                  <foaf:Agent>
+                    <foaf:name xml:lang="nl"/>
+                  </foaf:Agent>
+                </dct:publisher>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/foaf:homepage"/>
+          <action type="add" or="homepage" in="/rdf:RDF/dcat:Catalog"
+                  if="count(rdf:RDF/dcat:Catalog/dct:homepage) = 0">
+            <template>
+              <snippet>
+                <foaf:homepage>
+                  <foaf:Document>
+                    <foaf:name xml:lang="nl"/>
+                  </foaf:Document>
+                </foaf:homepage>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dct:issued" or="issued" in="/rdf:RDF/dcat:Catalog"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dct:modified" or="modified" in="/rdf:RDF/dcat:Catalog"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dct:spatial"/>
+          <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog">
+            <template>
+              <snippet>
+                <dct:spatial>
+                  <dct:Location rdf:about="http://mir.geopunt.be/cl/Geopunt/VlaamseAdminRegios/Vlaanderen">
+                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((5.92
+                      50.67,5.92 51.51,2.53 51.51,2.53 50.67,5.92 50.67))
+                    </locn:geometry>
+                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#gmlLiteral">&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;50.67
+                      5.92 51.51 5.92 51.51 2.53 50.67 2.53 50.67 5.92&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;
+                    </locn:geometry>
+                    <skos:prefLabel xml:lang="nl">Vlaams Gewest</skos:prefLabel>
+                  </dct:Location>
+                </dct:spatial>
+              </snippet>
+            </template>
+          </action>
+        </section>
       </tab>
 
       <tab id="tabCatalogAssociatedRecords" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
@@ -1535,6 +1998,7 @@
             <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:title"/>
             <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:description"/>
             <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:identifier"/>
+            <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:created"/>
             <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:modified"/>
             <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:issued"/>
             <field xpath="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:language"
@@ -1594,12 +2058,35 @@
         <for name="vcard:postal-code"/>
         <for name="vcard:country-name"/>
         <for name="foaf:Agent/dct:type"/>
+        <for name="foaf:Agent/foaf:workplaceHomepage"/>
+        <for name="foaf:Agent/foaf:mbox"/>
+        <for name="foaf:Agent/foaf:firstName"/>
+        <for name="foaf:Agent/foaf:surname"/>
+        <for name="foaf:Agent/foaf:phone"/>
+        <for name="foaf:Agent/locn:address"/>
+        <for name="locn:fullAddress"/>
+        <for name="locn:poBox"/>
+        <for name="locn:thoroughfare"/>
+        <for name="locn:locatorDesignator"/>
+        <for name="locn:locatorName"/>
+        <for name="locn:addressArea"/>
+        <for name="locn:postName"/>
+        <for name="locn:postCode"/>
+        <for name="locn:adminUnitL2"/>
+        <for name="locn:adminUnitL1"/>
+        <for name="dct:rightsHolder"/>
+        <for name="adms:versionNotes"/>
+        <for name="adms:identifier"/>
+        <!-- TODO mobility
+         <for name="foaf:Agent/org:memberOf"/>
+        -->
         <!-- Extra info -->
         <for name="dct:language"/>
         <for name="dct:conformsTo"/>
         <!-- Distribution -->
         <for name="dcat:Distribution"/>
         <for name="dcat:accessURL"/>
+        <for name="dcat:downloadURL"/>
         <for name="dct:format"/>
         <for name="dcat:mediaType"/>
         <for name="dct:license"/>
@@ -1607,114 +2094,25 @@
         <for name="dct:LicenseDocument/dct:type"/>
         <for name="dct:rights"/>
         <for name="mdcat:stars"/>
+        <!-- Mobility -->
+        <for name="mobilitydcatap:communicationMethod"/>
+        <for name="mobilitydcatap:mobilityDataStandard"/>
+        <for name="mobilitydcatap:mobilityDataStandard/owl:versionInfo"/>
+        <for name="mobilitydcatap:mobilityDataStandard/dct:conformsTo"/>
+        <for name="mobilitydcatap:mobilityDataStandard/mobilitydcatap:schema"/>
+        <for name="mobilitydcatap:assessmentResult"/>
+        <for name="mobilitydcatap:dataFormatNotes"/>
+        <for name="dqv:hasQualityAnnotation"/>
+        <for name="geodcatap:referenceSystem"/>
+        <for name="cnt:characterEncoding"/>
+        <for name="dct:temporal"/>
+        <for name="dct:spatial"/>
+        <for name="foaf:homepage"/>
       </flatModeExceptions>
     </view>
 
 
-<!--  Disabled <view name="mobility-view"
-          class="gn-label-above-input gn-indent-bluescale"
-          displayTooltips="true"
-          displayTooltipsMode="onhover"
-          hideTimeInCalendar="true">
-      <tab id="mobility-tab"  default="true">
-        <section name="mobility-section">
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:mobilityTheme"/>
-
-          <action type="add"
-                       or="mobilityTheme"
-                       in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                       if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:mobilityTheme) = 0"
-          >
-            <template>
-              <snippet>
-                <mobilitydcatap:mobilityTheme>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel></skos:prefLabel>
-                  </skos:Concept>
-                </mobilitydcatap:mobilityTheme>
-              </snippet>
-            </template>
-          </action>
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:transportMode"/>
-
-          <action type="add"
-                  or="transportMode"
-                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:transportMode) = 0"
-          >
-            <template>
-              <snippet>
-                <mobilitydcatap:transportMode>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel></skos:prefLabel>
-                  </skos:Concept>
-                </mobilitydcatap:transportMode>
-              </snippet>
-            </template>
-          </action>
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:networkCoverage"/>
-
-          <action type="add"
-                  or="networkCoverage"
-                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:networkCoverage) = 0"
-          >
-            <template>
-              <snippet>
-                <mobilitydcatap:networkCoverage>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel></skos:prefLabel>
-                  </skos:Concept>
-                </mobilitydcatap:networkCoverage>
-              </snippet>
-            </template>
-          </action>
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:georeferencingMethod"/>
-
-          <action type="add"
-                  or="georeferencingMethod"
-                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:georeferencingMethod) = 0"
-          >
-            <template>
-              <snippet>
-                <mobilitydcatap:georeferencingMethod>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel></skos:prefLabel>
-                  </skos:Concept>
-                </mobilitydcatap:georeferencingMethod>
-              </snippet>
-            </template>
-          </action>
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:intendedInformationService"/>
-
-          <action type="add"
-                  or="intendedInformationService"
-                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:intendedInformationService) = 0"
-          >
-            <template>
-              <snippet>
-                <mobilitydcatap:intendedInformationService>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel></skos:prefLabel>
-                  </skos:Concept>
-                </mobilitydcatap:intendedInformationService>
-              </snippet>
-            </template>
-          </action>
-
-        </section>
-      </tab>
-    </view>-->
-
     <view name="xml">
-
       <sidePanel>
         <directive data-gn-overview-manager=""
                    data-file-types=".png,.gif,.jpeg,.jpg"
@@ -2466,6 +2864,16 @@
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
+      <snippet label="dcat-ap-mobility-110">
+        <dct:conformsTo>
+          <dct:Standard
+            rdf:about="https://w3id.org/mobilitydcat-ap/releases/1.1.0/">
+            <dct:title>mobilityDCAT-AP 1.1.0</dct:title>
+            <dct:description xml:lang="nl">A mobility extension for the DCAT application profile for data portals in Europe</dct:description>
+            <owl:versionInfo>1.1.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
     </list>
     <list name="dcat-profiles-300">
       <snippet label="dcat-ap-300">
@@ -2497,6 +2905,90 @@
             <owl:versionInfo>3.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
+      </snippet>
+      <snippet label="dcat-ap-mobility-300">
+        <dct:conformsTo>
+          <dct:Standard
+            rdf:about="https://www.w3.org/mobility-ap/">
+            <dct:title>mobilityDCAT-AP 3.0.0</dct:title>
+            <dct:description xml:lang="nl">A mobility extension for the DCAT application profile for data portals in Europe</dct:description>
+            <owl:versionInfo>3.0.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
+    </list>
+    <list name="crs">
+      <snippet label="add-crs-21500">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/21500</dct:identifier>
+                  <dct:title>Belge 1950 (Brussels) / Belge Lambert 50</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-31370">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/31370</dct:identifier>
+                  <dct:title>Belge 1972 / Belgian Lambert 72</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-23031">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/23031</dct:identifier>
+                  <dct:title>ED50 / UTM zone 31N</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-23032">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/23032</dct:identifier>
+                  <dct:title>ED50 / UTM zone 32N</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-3812">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/3812</dct:identifier>
+                  <dct:title>ETRS89 / Belgian Lambert 2008</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-4258">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/4258</dct:identifier>
+                  <dct:title>ETRS89</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-1094">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://epsg.io/1094-datum</dct:identifier>
+                  <dct:title>High Water</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-5710">
+        <geodcatap:referenceSystem>
+               <dct:Standard>
+                  <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/5710</dct:identifier>
+                  <dct:title>Ostend height</dct:title>
+               </dct:Standard>
+            </geodcatap:referenceSystem>
+      </snippet>
+      <snippet label="add-crs-anchor">
+        <geodcatap:referenceSystem>
+          <dct:Standard>
+            <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/</dct:identifier>
+            <dct:title></dct:title>
+          </dct:Standard>
+        </geodcatap:referenceSystem>
       </snippet>
     </list>
   </snippets>
