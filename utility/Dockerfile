@@ -1,5 +1,5 @@
 ARG GN_VERSION=4.4.9
-FROM geonetwork:4.4.9
+FROM geonetwork:${GN_VERSION}
 
 USER jetty
 
@@ -10,4 +10,4 @@ RUN rm -rf /opt/geonetwork/*
 COPY geonetwork.war /opt/geonetwork/geonetwork.war
 RUN cd /opt/geonetwork && \
     unzip -q geonetwork.war && \
-    rm geonetwork.war \
+    rm geonetwork.war

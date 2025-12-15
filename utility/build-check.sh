@@ -267,7 +267,18 @@ if [ ! -d "web/src/main/webapp/WEB-INF/data/config/schema_plugins/dcat-ap" ]; th
 fi
 echo "[+] dcat-ap schema plugin present in web module"
 
-cd ..
+echo "[-] Exporting GeoNetwork WAR for docker-compose..."
+WAR_DEST="$PROJECT_ROOT/utility/geonetwork.war"
+WAR_SRC="web/target/geonetwork.war"
+
+if [ -z "$WAR_SRC" ] || [ ! -f "$WAR_SRC" ]; then
+    echo "ERROR: Could not find the GeoNetwork WAR (expected web/target/geonetwork.war)" >&2
+    exit 1
+fi
+
+mkdir -p "$(dirname "$WAR_DEST")"
+mv "$WAR_SRC" "$WAR_DEST"
+echo "[+] WAR exported to: $WAR_DEST"
 
 echo "[-] Cleaning up temporary directory..."
 cd "$PROJECT_ROOT"

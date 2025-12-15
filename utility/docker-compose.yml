@@ -7,7 +7,7 @@ services:
       POSTGRES_USER: geonetwork
       POSTGRES_DB: geonetwork
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      test: [ "CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB" ]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -41,16 +41,18 @@ services:
       xpack.security.enabled: false
       xpack.security.enrollment.enabled: false
 
-  geonework:
+  geonetwork:
     build: .
     container_name: gn
     ports:
       - "8080:8080"
     depends_on:
-      - database
-      - elasticsearch
+      database:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
     healthcheck:
-      test: "curl -f http://localhost:8080/"
+      test: [ "CMD-SHELL", "curl -fsS http://localhost:8080/ >/dev/null || exit 1" ]
       interval: 5s
       timeout: 5s
       retries: 20

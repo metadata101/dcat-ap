@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build-check:
+  build:
     name: GeoNetwork Compatibility Check
     runs-on: ubuntu-latest
 
@@ -30,7 +30,106 @@ jobs:
         cd utility
         bash build-check.sh
 
+    - name: Upload GeoNetwork WAR
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: geonetwork-war
+        path: utility/geonetwork.war
+        if-no-files-found: error
+        retention-days: 3
+
     - name: Cleanup on failure
       if: failure()
       run: |
         rm -rf .tmp
+
+  e2e:
+    name: Cypress E2E Tests
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download GeoNetwork WAR
+      uses: actions/download-artifact@v4
+      with:
+        name: geonetwork-war
+        path: .
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24'
+        cache: 'npm'
+        cache-dependency-path: e2e/package-lock.json
+
+    - name: Start GeoNetwork stack
+      run: |
+        cd utility
+        docker compose up -d --build
+
+    - name: Wait for GeoNetwork to be healthy
+      shell: bash
+      run: |
+        set -euo pipefail
+        cd utility
+
+        svc="geonetwork"
+        cid="$(docker compose ps -q "$svc")"
+        if [ -z "$cid" ]; then
+          echo "ERROR: Container ID not found for service: $svc" >&2
+          docker compose ps >&2 || true
+          exit 1
+        fi
+
+        echo "Waiting for $svc ($cid) to become healthy..."
+        end=$((SECONDS+300))
+        while [ $SECONDS -lt $end ]; do
+          status="$(docker inspect -f '{{if .State.Health}}{{.State.Health.Status}}{{else}}no-healthcheck{{end}}' "$cid")"
+          echo "status=$status"
+          if [ "$status" = "healthy" ]; then
+            exit 0
+          fi
+          if [ "$status" = "unhealthy" ]; then
+            docker compose logs --no-color >&2 || true
+            exit 1
+          fi
+          sleep 5
+        done
+
+        echo "Timed out waiting for $svc to be healthy" >&2
+        docker compose logs --no-color >&2 || true
+        exit 1
+
+    - name: Run Cypress tests
+      uses: cypress-io/github-action@v6
+      with:
+        working-directory: e2e
+        install-command: npm ci
+        command: npx cypress run --config-file cypress.config.ts
+
+    - name: Upload Cypress artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: cypress-artifacts
+        path: |
+          e2e/cypress/videos
+          e2e/cypress/screenshots
+        if-no-files-found: ignore
+        retention-days: 3
+
+    - name: Docker logs (on failure)
+      if: failure()
+      run: |
+        cd utility
+        docker compose logs --no-color
+
+    - name: Stop GeoNetwork stack
+      if: always()
+      run: |
+        cd utility
+        docker compose down -v
