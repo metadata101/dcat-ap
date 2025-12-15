@@ -157,6 +157,7 @@ MODULE_EXISTS="$(xmlstarlet sel -N x="$MAVEN_NS" -t -v "count(/x:project/x:modul
 if [ "${MODULE_EXISTS:-0}" = "0" ]; then
     xmlstarlet ed -P -L -N x="$MAVEN_NS" \
         -s "/x:project/x:modules" -t elem -n "module" -v "dcat-ap" \
+        -d "/x:project/x:modules/module[last()]/@xmlns" \
         "$SCHEMAS_POM"
     echo "[+] Added dcat-ap module to schemas/pom.xml"
 else
@@ -168,6 +169,7 @@ DEP_EXISTS="$(xmlstarlet sel -N x="$MAVEN_NS" -t -v "count(/x:project/x:dependen
 if [ "${DEP_EXISTS:-0}" = "0" ]; then
     xmlstarlet ed -P -L -N x="$MAVEN_NS" \
         -s "/x:project/x:dependencies" -t elem -n "dependency" -v "" \
+        -d "/x:project/x:dependencies/dependency[last()]/@xmlns" \
         -s "/x:project/x:dependencies/x:dependency[last()]" -t elem -n "groupId" -v "org.geonetwork-opensource.schemas" \
         -s "/x:project/x:dependencies/x:dependency[last()]" -t elem -n "artifactId" -v "gn-schema-dcat-ap" \
         -s "/x:project/x:dependencies/x:dependency[last()]" -t elem -n "version" -v "\${project.version}" \
@@ -193,6 +195,7 @@ UNPACK_ITEM_EXISTS="$(xmlstarlet sel -N x="$MAVEN_NS" -t -v "count($UNPACK_XPATH
 if [ "${UNPACK_ITEM_EXISTS:-0}" = "0" ]; then
     xmlstarlet ed -P -L -N x="$MAVEN_NS" \
         -s "$UNPACK_XPATH" -t elem -n "artifactItem" -v "" \
+        -d "$UNPACK_XPATH/artifactItem[last()]/@xmlns" \
         -s "$UNPACK_XPATH/x:artifactItem[last()]" -t elem -n "groupId" -v "org.geonetwork-opensource.schemas" \
         -s "$UNPACK_XPATH/x:artifactItem[last()]" -t elem -n "artifactId" -v "gn-schema-dcat-ap" \
         -s "$UNPACK_XPATH/x:artifactItem[last()]" -t elem -n "type" -v "zip" \
@@ -234,6 +237,7 @@ if [ "${DEBUG}" = "true" ]; then
 
     for f in "${SCRIPT_CONFIG_FILES[@]}"; do
         if [ -f "$f" ] && ! git diff --quiet -- "$f"; then
+            echo "$f"
             cat "$f"
         fi
     done
