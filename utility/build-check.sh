@@ -167,10 +167,10 @@ echo "[-] Ensuring gn-schema-dcat-ap dependency is present in web/pom.xml..."
 DEP_EXISTS="$(xmlstarlet sel -N x="$MAVEN_NS" -t -v "count(/x:project/x:dependencies/x:dependency[x:groupId='org.geonetwork-opensource.schemas' and x:artifactId='gn-schema-dcat-ap'])" "$WEB_POM")"
 if [ "${DEP_EXISTS:-0}" = "0" ]; then
     xmlstarlet ed -P -L -N x="$MAVEN_NS" \
-        -s "/x:project/x:dependencies" -t elem -n "x:dependency" -v "" \
-        -s "/x:project/x:dependencies/x:dependency[last()]" -t elem -n "x:groupId" -v "org.geonetwork-opensource.schemas" \
-        -s "/x:project/x:dependencies/x:dependency[last()]" -t elem -n "x:artifactId" -v "gn-schema-dcat-ap" \
-        -s "/x:project/x:dependencies/x:dependency[last()]" -t elem -n "x:version" -v "\${project.version}" \
+        -s "/x:project/x:dependencies" -t elem -n "dependency" -v "" \
+        -s "/x:project/x:dependencies/x:dependency[last()]" -t elem -n "groupId" -v "org.geonetwork-opensource.schemas" \
+        -s "/x:project/x:dependencies/x:dependency[last()]" -t elem -n "artifactId" -v "gn-schema-dcat-ap" \
+        -s "/x:project/x:dependencies/x:dependency[last()]" -t elem -n "version" -v "\${project.version}" \
         "$WEB_POM"
     echo "[+] Added gn-schema-dcat-ap dependency to web/pom.xml"
 else
