@@ -208,28 +208,27 @@ else
     echo "[=] gn-schema-dcat-ap artifactItem already present in unpack-schemas"
 fi
 
-if [ -f "$SPRING_CONFIG" ]; then
-    DCAT_CODELIST_VALUE='standards/dcat-ap/codelists/dcat:Resource'
-    if ! grep -qF "$DCAT_CODELIST_VALUE" "$SPRING_CONFIG"; then
-        echo "[-] Adding DCAT codelists to translation packs (config-spring-geonetwork.xml)..."
-        # Insert into both translation packs described in the README (search + editor) using minimal, idempotent text edits.
-        if command -v perl >/dev/null 2>&1; then
-            perl -0777 -i -pe "s#(<entry\\s+key=\"search\"\\s*>\\s*<util:list>)(?!.*?\\Q$DCAT_CODELIST_VALUE\\E)(.*?)</util:list>#\\1\\2  <!--  DCAT codelists  -->\\n  <value>$DCAT_CODELIST_VALUE</value>\\n</util:list>#s" "$SPRING_CONFIG" || true
-            perl -0777 -i -pe "s#(<entry\\s+key=\"editor\"\\s*>\\s*<util:list>)(?!.*?\\Q$DCAT_CODELIST_VALUE\\E)(.*?)</util:list>#\\1\\2  <!--  DCAT codelists  -->\\n  <value>$DCAT_CODELIST_VALUE</value>\\n</util:list>#s" "$SPRING_CONFIG" || true
-        else
-            echo "WARNING: perl not available; skipping translation pack auto-wiring" >&2
-        fi
-        if grep -qF "$DCAT_CODELIST_VALUE" "$SPRING_CONFIG"; then
-            echo "[+] Added DCAT codelist translation pack entries"
-        else
-            echo "WARNING: Could not auto-insert DCAT codelist translation pack entries; build will still continue" >&2
-        fi
-    else
-        echo "[=] DCAT codelist translation pack entries already present"
-    fi
-else
-    echo "WARNING: Spring config not found (skipping translation pack wiring): $SPRING_CONFIG" >&2
-fi
+#if [ -f "$SPRING_CONFIG" ]; then
+#    DCAT_CODELIST_VALUE='standards/dcat-ap/codelists/dcat:Resource'
+#    if ! grep -qF "$DCAT_CODELIST_VALUE" "$SPRING_CONFIG"; then
+#        echo "[-] Adding DCAT codelists to translation packs (config-spring-geonetwork.xml)..."
+#        if command -v perl >/dev/null 2>&1; then
+#            perl -0777 -i -pe "s#(<entry\\s+key=\"search\"\\s*>\\s*<util:list>)(?!.*?\\Q$DCAT_CODELIST_VALUE\\E)(.*?)</util:list>#\\1\\2  <!--  DCAT codelists  -->\\n  <value>$DCAT_CODELIST_VALUE</value>\\n</util:list>#s" "$SPRING_CONFIG" || true
+#            perl -0777 -i -pe "s#(<entry\\s+key=\"editor\"\\s*>\\s*<util:list>)(?!.*?\\Q$DCAT_CODELIST_VALUE\\E)(.*?)</util:list>#\\1\\2  <!--  DCAT codelists  -->\\n  <value>$DCAT_CODELIST_VALUE</value>\\n</util:list>#s" "$SPRING_CONFIG" || true
+#        else
+#            echo "WARNING: perl not available; skipping translation pack auto-wiring" >&2
+#        fi
+#        if grep -qF "$DCAT_CODELIST_VALUE" "$SPRING_CONFIG"; then
+#            echo "[+] Added DCAT codelist translation pack entries"
+#        else
+#            echo "WARNING: Could not auto-insert DCAT codelist translation pack entries; build will still continue" >&2
+#        fi
+#    else
+#        echo "[=] DCAT codelist translation pack entries already present"
+#    fi
+#else
+#    echo "WARNING: Spring config not found (skipping translation pack wiring): $SPRING_CONFIG" >&2
+#fi
 
 if [ "${DEBUG}" = "true" ]; then
     echo ""
