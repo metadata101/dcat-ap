@@ -81,7 +81,7 @@ if [ -d "core-geonetwork" ]; then
     rm -rf core-geonetwork
 fi
 
-git clone --depth 1 --branch "$GN_RELEASE_VERSION" \
+git clone --depth 3 --recursive --branch "$GN_RELEASE_VERSION" \
     https://github.com/geonetwork/core-geonetwork.git
 
 if [ ! -d "core-geonetwork" ]; then

@@ -1,6 +1,6 @@
 describe('Check homepage', () => {
   before(() => {
-    cy.visit('/');
+    cy.visit('/srv/dut/catalog.search#/home');
   });
 
   it('Display the footer', () => {
