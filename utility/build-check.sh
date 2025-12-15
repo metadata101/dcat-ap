@@ -2,6 +2,9 @@
 
 set -euo pipefail # safety flags
 
+# Hardcoded debug flag for CI troubleshooting.
+DEBUG="true"
+
 # get the absolute path to the dcat-ap project root
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
@@ -222,6 +225,19 @@ if [ -f "$SPRING_CONFIG" ]; then
     fi
 else
     echo "WARNING: Spring config not found (skipping translation pack wiring): $SPRING_CONFIG" >&2
+fi
+
+if [ "${DEBUG}" = "true" ]; then
+    echo ""
+    echo "[-] DEBUG: Files modified by this script:"
+    SCRIPT_CONFIG_FILES=("$SCHEMAS_POM" "$WEB_POM" "$SPRING_CONFIG")
+
+    for f in "${SCRIPT_CONFIG_FILES[@]}"; do
+        if [ -f "$f" ] && ! git diff --quiet -- "$f"; then
+            cat "$f"
+        fi
+    done
+    echo ""
 fi
 
 echo "[-] Building GeoNetwork with dcat-ap plugin..."
