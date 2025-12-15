@@ -86,18 +86,20 @@ if [ ! -d "core-geonetwork" ]; then
     exit 1
 fi
 
+cd core-geonetwork
+
 echo "[+] Successfully cloned core-geonetwork"
 
-echo "[-] Copying dcat-ap plugin to core-geonetwork/schemas..."
+echo "[-] Copying dcat-ap plugin to schemas..."
 
 # create schemas directory if needed
-mkdir -p core-geonetwork/schemas/dcat-ap
+mkdir -p schemas/dcat-ap
 
 # copy files from dcat-ap project, excluding git and other non-required
 rsync -av --exclude='.git' --exclude='.tmp' --exclude='utility' \
-    "$PROJECT_ROOT/" core-geonetwork/schemas/dcat-ap/
+    "$PROJECT_ROOT/" schemas/dcat-ap/
 
-if [ ! -f "core-geonetwork/schemas/dcat-ap/pom.xml" ]; then
+if [ ! -f "schemas/dcat-ap/pom.xml" ]; then
     echo "ERROR: Failed to copy dcat-ap plugin" >&2
     exit 1
 fi
@@ -106,10 +108,8 @@ echo "[+] Successfully copied dcat-ap plugin"
 
 echo "[-] Applying patches from core-geonetwork-patches..."
 
-cd core-geonetwork
-
 # count patch files
-PATCH_DIR="$PROJECT_ROOT/core-geonetwork-patches"
+PATCH_DIR="schemas/dcat-ap/core-geonetwork-patches"
 PATCH_COUNT=$(ls -1 "$PATCH_DIR"/*.patch 2>/dev/null | wc -l)
 
 if [ "$PATCH_COUNT" -eq 0 ]; then
@@ -117,32 +117,117 @@ if [ "$PATCH_COUNT" -eq 0 ]; then
 else
     echo "[+] Found $PATCH_COUNT patch file(s) to apply"
 
-    # apply each patch file
-    for patch_file in "$PATCH_DIR"/*.patch; do
-        if [ -f "$patch_file" ]; then
-            echo "[-] Applying $(basename "$patch_file")..."
+    git config user.email "build-check@example.invalid"
+    git config user.name "build-check"
 
-            if ! git apply --check "$patch_file" 2>&1; then
-                echo "ERROR: Patch $(basename "$patch_file") does not apply cleanly" >&2
-                echo "Please check the patch file and the GeoNetwork version compatibility" >&2
-                exit 1
-            fi
+    echo "[-] Running: git am --ignore-space-change --ignore-whitespace --reject --whitespace=fix $PATCH_DIR/*.patch"
+    if ! git am --ignore-space-change --ignore-whitespace --reject --whitespace=fix "$PATCH_DIR"/*.patch; then
+        echo "ERROR: Failed to apply patches using git am" >&2
+        echo "Try checking patch compatibility with GeoNetwork $GN_RELEASE_VERSION and run: git am --abort" >&2
+        exit 1
+    fi
 
-            git apply "$patch_file"
-            echo "[+] Successfully applied $(basename "$patch_file")"
-        fi
-    done
-
-    echo "[+] All patches applied successfully"
+    echo "[+] All patches applied successfully (git am)"
 fi
 
-cd ..
+
+echo "[-] Wiring dcat-ap into GeoNetwork build (schemas + web)..."
+
+SCHEMAS_POM="schemas/pom.xml"
+WEB_POM="web/pom.xml"
+SPRING_CONFIG="web/src/main/webResources/WEB-INF/config-spring-geonetwork.xml"
+
+if [ ! -f "$SCHEMAS_POM" ]; then
+    echo "ERROR: Expected schemas pom not found: $SCHEMAS_POM" >&2
+    exit 1
+fi
+
+if [ ! -f "$WEB_POM" ]; then
+    echo "ERROR: Expected web pom not found: $WEB_POM" >&2
+    exit 1
+fi
+
+MAVEN_NS="http://maven.apache.org/POM/4.0.0"
+
+echo "[-] Ensuring <module>dcat-ap</module> is present in schemas/pom.xml..."
+MODULE_EXISTS="$(xmlstarlet sel -N x="$MAVEN_NS" -t -v "count(/x:project/x:modules/x:module[.='dcat-ap'])" "$SCHEMAS_POM")"
+if [ "${MODULE_EXISTS:-0}" = "0" ]; then
+    xmlstarlet ed -P -L -N x="$MAVEN_NS" \
+        -s "/x:project/x:modules" -t elem -n "module" -v "dcat-ap" \
+        "$SCHEMAS_POM"
+    echo "[+] Added dcat-ap module to schemas/pom.xml"
+else
+    echo "[=] dcat-ap module already present in schemas/pom.xml"
+fi
+
+echo "[-] Ensuring gn-schema-dcat-ap dependency is present in web/pom.xml..."
+DEP_EXISTS="$(xmlstarlet sel -N x="$MAVEN_NS" -t -v "count(/x:project/x:dependencies/x:dependency[x:groupId='org.geonetwork-opensource.schemas' and x:artifactId='gn-schema-dcat-ap'])" "$WEB_POM")"
+if [ "${DEP_EXISTS:-0}" = "0" ]; then
+    xmlstarlet ed -P -L -N x="$MAVEN_NS" \
+        -s "/x:project/x:dependencies" -t elem -n "x:dependency" -v "" \
+        -s "/x:project/x:dependencies/x:dependency[last()]" -t elem -n "x:groupId" -v "org.geonetwork-opensource.schemas" \
+        -s "/x:project/x:dependencies/x:dependency[last()]" -t elem -n "x:artifactId" -v "gn-schema-dcat-ap" \
+        -s "/x:project/x:dependencies/x:dependency[last()]" -t elem -n "x:version" -v "\${project.version}" \
+        "$WEB_POM"
+    echo "[+] Added gn-schema-dcat-ap dependency to web/pom.xml"
+else
+    echo "[=] gn-schema-dcat-ap dependency already present in web/pom.xml"
+fi
+
+echo "[-] Ensuring gn-schema-dcat-ap is unpacked in web/pom.xml (unpack-schemas)..."
+UNPACK_XPATH_ALL="//x:execution[x:id='unpack-schemas']/x:configuration/x:artifactItems"
+UNPACK_NODE_COUNT="$(xmlstarlet sel -N x="$MAVEN_NS" -t -v "count($UNPACK_XPATH_ALL)" "$WEB_POM")"
+if [ "${UNPACK_NODE_COUNT:-0}" = "0" ]; then
+    echo "ERROR: Could not locate maven-dependency-plugin unpack-schemas artifactItems block in web/pom.xml" >&2
+    exit 1
+fi
+if [ "${UNPACK_NODE_COUNT:-0}" != "1" ]; then
+    echo "WARNING: Found $UNPACK_NODE_COUNT unpack-schemas artifactItems blocks; updating the first one only" >&2
+fi
+UNPACK_XPATH="($UNPACK_XPATH_ALL)[1]"
+
+UNPACK_ITEM_EXISTS="$(xmlstarlet sel -N x="$MAVEN_NS" -t -v "count($UNPACK_XPATH/x:artifactItem[x:groupId='org.geonetwork-opensource.schemas' and x:artifactId='gn-schema-dcat-ap'])" "$WEB_POM")"
+if [ "${UNPACK_ITEM_EXISTS:-0}" = "0" ]; then
+    xmlstarlet ed -P -L -N x="$MAVEN_NS" \
+        -s "$UNPACK_XPATH" -t elem -n "artifactItem" -v "" \
+        -s "$UNPACK_XPATH/x:artifactItem[last()]" -t elem -n "groupId" -v "org.geonetwork-opensource.schemas" \
+        -s "$UNPACK_XPATH/x:artifactItem[last()]" -t elem -n "artifactId" -v "gn-schema-dcat-ap" \
+        -s "$UNPACK_XPATH/x:artifactItem[last()]" -t elem -n "type" -v "zip" \
+        -s "$UNPACK_XPATH/x:artifactItem[last()]" -t elem -n "overWrite" -v "false" \
+        -s "$UNPACK_XPATH/x:artifactItem[last()]" -t elem -n "outputDirectory" -v "\${schema-plugins.dir}" \
+        "$WEB_POM"
+    echo "[+] Added gn-schema-dcat-ap artifactItem to unpack-schemas in web/pom.xml"
+else
+    echo "[=] gn-schema-dcat-ap artifactItem already present in unpack-schemas"
+fi
+
+if [ -f "$SPRING_CONFIG" ]; then
+    DCAT_CODELIST_VALUE='standards/dcat-ap/codelists/dcat:Resource'
+    if ! grep -qF "$DCAT_CODELIST_VALUE" "$SPRING_CONFIG"; then
+        echo "[-] Adding DCAT codelists to translation packs (config-spring-geonetwork.xml)..."
+        # Insert into both translation packs described in the README (search + editor) using minimal, idempotent text edits.
+        if command -v perl >/dev/null 2>&1; then
+            perl -0777 -i -pe "s#(<entry\\s+key=\"search\"\\s*>\\s*<util:list>)(?!.*?\\Q$DCAT_CODELIST_VALUE\\E)(.*?)</util:list>#\\1\\2  <!--  DCAT codelists  -->\\n  <value>$DCAT_CODELIST_VALUE</value>\\n</util:list>#s" "$SPRING_CONFIG" || true
+            perl -0777 -i -pe "s#(<entry\\s+key=\"editor\"\\s*>\\s*<util:list>)(?!.*?\\Q$DCAT_CODELIST_VALUE\\E)(.*?)</util:list>#\\1\\2  <!--  DCAT codelists  -->\\n  <value>$DCAT_CODELIST_VALUE</value>\\n</util:list>#s" "$SPRING_CONFIG" || true
+        else
+            echo "WARNING: perl not available; skipping translation pack auto-wiring" >&2
+        fi
+        if grep -qF "$DCAT_CODELIST_VALUE" "$SPRING_CONFIG"; then
+            echo "[+] Added DCAT codelist translation pack entries"
+        else
+            echo "WARNING: Could not auto-insert DCAT codelist translation pack entries; build will still continue" >&2
+        fi
+    else
+        echo "[=] DCAT codelist translation pack entries already present"
+    fi
+else
+    echo "WARNING: Spring config not found (skipping translation pack wiring): $SPRING_CONFIG" >&2
+fi
 
 echo "[-] Building GeoNetwork with dcat-ap plugin..."
 echo "[-] Running: mvn clean install -DskipTests"
 echo ""
 
-cd core-geonetwork
 
 if ! mvn clean install -DskipTests; then
     echo "" >&2
@@ -153,6 +238,13 @@ fi
 
 echo ""
 echo "[+] Build completed successfully!"
+
+echo "[-] Verifying dcat-ap was unpacked into the webapp..."
+if [ ! -d "web/src/main/webapp/WEB-INF/data/config/schema_plugins/dcat-ap" ]; then
+    echo "ERROR: dcat-ap schema plugin was not unpacked into web module (schema_plugins/dcat-ap missing)" >&2
+    exit 1
+fi
+echo "[+] dcat-ap schema plugin present in web module"
 
 cd ..
 
