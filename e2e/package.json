@@ -1,0 +1,13 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "DCAT-ap Cypress e2e tests",
+  "main": "index.js",
+  "scripts": {
+    "open:local": "cypress open --config-file cypress.local.config.ts"
+  },
+  "devDependencies": {
+    "cypress": "^15.7.1",
+    "typescript": "^5.9.3"
+  }
+}

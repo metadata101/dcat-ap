@@ -2,8 +2,8 @@
 
 set -euo pipefail # safety flags
 
-# Hardcoded debug flag for CI troubleshooting.
-DEBUG="true"
+# Flag for CI troubleshooting.
+DEBUG="false"
 
 # get the absolute path to the dcat-ap project root
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
