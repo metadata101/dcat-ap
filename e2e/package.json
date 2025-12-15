@@ -7,7 +7,9 @@
     "open:local": "cypress open --config-file cypress.local.config.ts"
   },
   "devDependencies": {
+    "@types/pg": "^8.16.0",
     "cypress": "^15.7.1",
+    "pg": "^8.16.3",
     "typescript": "^5.9.3"
   }
 }

@@ -2,6 +2,8 @@ services:
   database:
     image: postgres:18-alpine
     container_name: db
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_PASSWORD: geonetwork
       POSTGRES_USER: geonetwork
@@ -15,6 +17,8 @@ services:
   elasticsearch:
     image: elasticsearch:8.14.3
     container_name: es
+    ports:
+      - "9200:9200"
     ulimits:
       memlock:
         soft: -1

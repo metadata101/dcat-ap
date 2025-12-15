@@ -1,9 +1,10 @@
 describe('Check homepage', () => {
   before(() => {
-    cy.visit('/srv/dut/catalog.search#/home');
+    cy.baseSetup();
+    cy.visit('/srv/eng/catalog.search#/home');
   });
 
   it('Display the footer', () => {
-    cy.contains('Browse by');
+    cy.contains('The catalog currently contains no information.');
   });
 });
