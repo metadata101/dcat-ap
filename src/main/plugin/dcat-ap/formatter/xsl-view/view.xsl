@@ -576,7 +576,7 @@
   <!-- Render grouped concepts by element name -->
   <xsl:template mode="render-field" match="dct:type|dct:accrualPeriodicity|dcat:theme|dct:language|dct:format|dcat:mediaType|
                                            adms:status|mdcat:levensfase|mdcat:ontwikkelingstoestand|dct:accessRights|dcat:compressFormat|
-                                           dcat:packageFormat|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut|
+                                           dcat:packageFormat|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut|mdcat:oslostandaard|
                                            dcatap:hvdCategory">
     <xsl:param name="xpath"/>
     <xsl:variable name="name" select="name()"/>

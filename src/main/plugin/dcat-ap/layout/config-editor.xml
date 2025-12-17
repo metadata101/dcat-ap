@@ -173,6 +173,13 @@
     </for>
 
 
+    <for name="mdcat:oslostandaard" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.standaarden"
+        xpath="/mdcat:oslostandaard"
+        labelKey="mdcat.addOslostandaard"/>
+    </for>
+
     <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.magda-domain"
@@ -643,6 +650,25 @@
 
         <section name="vl-section-metadatadcat"
                        displayIfRecord="$p2 = ('DCAT-AP-VL', 'metadata-dcat')">
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:oslostandaard"/>
+          <action type="add"
+                  or="oslostandaard"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:oslostandaard) = 0"
+          >
+            <template>
+              <snippet>
+                <mdcat:oslostandaard>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+                  </skos:Concept>
+                </mdcat:oslostandaard>
+              </snippet>
+            </template>
+          </action>
+
           <!-- MAGDA-categorie-->
           <field
             xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:MAGDA-categorie"/>

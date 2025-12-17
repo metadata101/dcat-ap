@@ -29,6 +29,7 @@
   <xs:element name="levensfase" type="skos:Concept"/>
   <xs:element name="ontwikkelingstoestand" type="skos:Concept"/>
   <xs:element name="MAGDA-categorie" type="dct:subject"/>
+  <xs:element name="oslostandaard" type="dct:subject"/>
   <xs:element name="statuut" type="dct:subject"/>
 
   <!-- 5 stars evaluation between 1 and 5 -->

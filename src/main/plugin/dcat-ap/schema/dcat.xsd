@@ -91,6 +91,7 @@
           <!-- Profile / dcat-ap-vl  & metadata-dcat -->
           <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="mdcat:oslostandaard" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
@@ -195,6 +196,7 @@
                 <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="mdcat:oslostandaard" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="extension" type="rdf:Statement" minOccurs="0" maxOccurs="unbounded"/>
 
