@@ -87,6 +87,29 @@ Add the module to `process-resources` phase of `web/pom.xml` to make sure it is 
 </execution>
 ```
 
+Add the codelist translations to the I18N translation packages in `web/src/main/webResources/WEB-INF/config-spring-geonetwork.xml`: 
+
+```xml
+<util:map id="translationPacks">
+  <!-- ... -->
+  <entry key="search">
+    <util:list>
+      <!-- ... -->
+      <!--  DCAT codelists  -->
+      <value>standards/dcat-ap/codelists/dcat:Resource</value>
+    </util:list>
+  </entry>
+  <!-- ... -->
+  <entry key="editor">
+    <util:list>
+      <!-- ... -->
+      <!--  DCAT codelists  -->
+      <value>standards/dcat-ap/codelists/dcat:Resource</value>
+    </util:list>
+  </entry>
+</util:map>
+```
+
 Commit these changes.
 
 Apply the [patches](core-geonetwork-patches) to the GeoNetwork core. You may need to manually apply specific hunks of a patch.

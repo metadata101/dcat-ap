@@ -26,26 +26,35 @@
 Stylesheet used to update metadata adding a reference to a parent record.
 -->
 <xsl:stylesheet version="2.0"
-                xmlns:dc="http://purl.org/dc/elements/1.1/"
-                xmlns:dct="http://purl.org/dc/terms/"
-        xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:util="java:org.fao.geonet.util.XslUtil"
+                xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:geonet="http://www.fao.org/geonetwork">
+
+  <xsl:include href="../reorder-util.xsl"/>
 
   <!-- Parent metadata record UUID -->
   <xsl:param name="parentUuid"/>
 
-  <xsl:template match="/dataset">
-    <xsl:copy>
-      <xsl:copy-of select="@*"/>
-      <xsl:copy-of
-          select="dc:*|dct:*|dcat:*"/>
+  <xsl:template match="dcat:Dataset|dcat:DataService">
+    <xsl:variable name="resourceWithParent">
+      <xsl:copy>
+        <xsl:copy-of select="@*"/>
+        <xsl:apply-templates select="@*|*|text() except dcat:inSeries"/>
 
-      <xsl:if test="not(dct:isPartOf[text() = $parentUuid])">
-        <dct:isPartOf>
-          <xsl:value-of select="$parentUuid"/>
-        </dct:isPartOf>
-      </xsl:if>
+        <xsl:variable name="seriesURI" select="util:getRecordResourceURI($parentUuid)"/>
+        <dcat:inSeries>
+          <xsl:attribute name="rdf:resource" select="$seriesURI"/>
+        </dcat:inSeries>
+      </xsl:copy>
+    </xsl:variable>
+    <xsl:apply-templates mode="reorder" select="$resourceWithParent"/>
+  </xsl:template>
+
+  <xsl:template match="@*|*|text()">
+    <xsl:copy>
+      <xsl:apply-templates select="@*|*|text()"/>
     </xsl:copy>
   </xsl:template>
 

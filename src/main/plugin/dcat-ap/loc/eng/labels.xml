@@ -1020,6 +1020,11 @@
     <description>Tooltip: Statute</description>
     <btnLabel>Statute</btnLabel>
   </element>
+  <element name="mdcat:oslostandaard">
+    <label>OSLO standaard</label>
+    <description>Tooltip: OSLO standaard</description>
+    <btnLabel>OSLO standaard</btnLabel>
+  </element>
   <element name="mdcat:MAGDA-categorie">
     <label>MAGDA-category</label>
     <description>Tooltip: MAGDA-category</description>

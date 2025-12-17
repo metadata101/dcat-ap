@@ -91,6 +91,7 @@
           <!-- Profile / dcat-ap-vl  & metadata-dcat -->
           <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="mdcat:oslostandaard" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
@@ -187,12 +188,15 @@
                 <xs:element name="hasVersion" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="inSeries" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="prev" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="next" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
 
                 <!-- Profile / dcat-ap-vl & metadata-dcat -->
                 <xs:element ref="dct:created" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:subject" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="mdcat:MAGDA-categorie" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="mdcat:oslostandaard" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="mdcat:statuut" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="extension" type="rdf:Statement" minOccurs="0" maxOccurs="unbounded"/>
 
@@ -230,13 +234,12 @@
           <xs:complexContent>
             <xs:extension base="rdf:Resource">
               <xs:sequence>
+                <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="foaf:page" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element name="first" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element name="last" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element name="prev" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element name="next" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
+                <!-- <xs:element name="first" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/> -->
+                <!-- <xs:element name="last" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/> -->
               </xs:sequence>
             </xs:extension>
           </xs:complexContent>

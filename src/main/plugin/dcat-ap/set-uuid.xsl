@@ -59,7 +59,7 @@
       </xsl:choose>
 
       <xsl:apply-templates select="dct:rights|dct:spatial|dcat:dataset|dcat:service|dcat:contactPoint|dcat:keyword|
-                                   dcat:landingPage|dcat:qualifiedRelation|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut|
+                                   dcat:landingPage|dcat:qualifiedRelation|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut|mdcat:oslostandaard|
                                    dcat:theme|dct:accessRights|dct:conformsTo|dct:creator"/>
 
 

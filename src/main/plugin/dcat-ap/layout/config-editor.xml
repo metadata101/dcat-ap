@@ -173,6 +173,13 @@
     </for>
 
 
+    <for name="mdcat:oslostandaard" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.standaarden"
+        xpath="/mdcat:oslostandaard"
+        labelKey="mdcat.addOslostandaard"/>
+    </for>
+
     <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.magda-domain"
@@ -554,8 +561,10 @@
                    displayIfRecord="count(//dcat:dataset|rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog) > 0"/>
 
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
-                         displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) = 0"/>
-
+                   editor-config="dcataptwodefault"
+                    displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) = 0 and $p3 = '2.0.0'"/>
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
+                   displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) = 0 and $p3 != '2.0.0'"/>
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
                    editor-config="dcatapcatalog"
                    displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0"/>
@@ -566,6 +575,7 @@
       <thesaurusList>
         <thesaurus key="external.theme.publisher-type" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.datatheme" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.belgif-datatheme" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.frequency" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.language" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.resource-type" maxtags="1" transformations="" fieldset="false"/>
@@ -640,6 +650,25 @@
 
         <section name="vl-section-metadatadcat"
                        displayIfRecord="$p2 = ('DCAT-AP-VL', 'metadata-dcat')">
+          <field
+            xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:oslostandaard"/>
+          <action type="add"
+                  or="oslostandaard"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:oslostandaard) = 0"
+          >
+            <template>
+              <snippet>
+                <mdcat:oslostandaard>
+                  <skos:Concept rdf:about="">
+                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+                  </skos:Concept>
+                </mdcat:oslostandaard>
+              </snippet>
+            </template>
+          </action>
+
           <!-- MAGDA-categorie-->
           <field
             xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mdcat:MAGDA-categorie"/>
@@ -680,15 +709,20 @@
           </action>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"
+                 or="theme"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"
+                 if="$p2 = ('DCAT-AP-VL', 'metadata-dcat')"
                  name="dcat:theme"
                  or="theme"
                  use="data-gn-keyword-picker"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
             <directiveAttributes
-              thesaurus="external.theme.datatheme"
+              thesaurus="external.theme.belgif-datatheme"
               xpath="/dcat:theme"
               max=""
-              labelKey="dcat-addThemes"/>
+              labelKey="dcat-addVLThemes"/>
           </field>
 
         </section>
@@ -1215,11 +1249,22 @@
             </template>
           </action>
 
-          <!-- Theme: vocab.belgif.be/auth/datatheme -->
-          <!-- TODO: custom label to indicate this is about themes from the specific thesaurus? -->
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme"
                  or="theme"
                  in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:theme"
+                 if="$p2 = ('DCAT-AP-VL', 'metadata-dcat')"
+                 name="dcat:theme"
+                 or="theme"
+                 use="data-gn-keyword-picker"
+                 in="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService">
+            <directiveAttributes
+              thesaurus="external.theme.belgif-datatheme"
+              xpath="/dcat:theme"
+              max=""
+              labelKey="dcat-addVLThemes"/>
+          </field>
         </section>
 
         <section name="versionInformation">
@@ -1498,7 +1543,14 @@
                         del=".">
             <field xpath="dct:title" or="title" in="."/>
             <field xpath="dct:identifier"/>
-            <field xpath="mdcat:stars" or="stars" in="."/>
+            <field xpath="mdcat:stars" in="."/>
+            <action type="add" in="." or="stars" if="count(mdcat:stars)=0">
+              <template>
+                <snippet>
+                  <mdcat:stars>1</mdcat:stars>
+                </snippet>
+              </template>
+            </action>
           </section>
         </section>
       </tab>

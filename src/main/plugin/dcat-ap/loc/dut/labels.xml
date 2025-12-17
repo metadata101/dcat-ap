@@ -1019,6 +1019,11 @@
     <description>Statuut</description>
     <btnLabel>Statuut</btnLabel>
   </element>
+  <element name="mdcat:oslostandaard">
+    <label>OSLO standaard</label>
+    <description>Tooltip: OSLO standaard</description>
+    <btnLabel>OSLO standaard</btnLabel>
+  </element>
   <element name="mdcat:MAGDA-categorie">
     <label>MAGDA-categorie</label>
     <description>MAGDA-categorie</description>
