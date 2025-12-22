@@ -36,6 +36,7 @@
                 xmlns:index="java:org.fao.geonet.kernel.search.EsSearchManager"
                 xmlns:date-util="java:org.fao.geonet.utils.DateUtil"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
+                xmlns:dcatutil="java:org.fao.geonet.schema.dcatap.util.XslUtil"
                 xmlns:geodcat="http://data.europa.eu/930/"
                 xmlns:saxon="http://saxon.sf.net/" xmlns:xls="http://www.w3.org/1999/XSL/Transform"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
@@ -224,11 +225,11 @@
               select="gn-fn-index:add-field('mainLanguage', $defaultMainLanguage3Char)"/>
           </xsl:otherwise>
         </xsl:choose>
-        
+
         <xsl:for-each select="$allLanguages/*[not(@default)]">
           <xsl:copy-of select="gn-fn-index:add-field('otherLanguage', @code)"/>
         </xsl:for-each>
-        
+
         <xsl:variable name="resourceLanguages"
                       select="dct:language/skos:Concept/@rdf:about|../../dct:language/skos:Concept/@rdf:about"/>
 
@@ -295,6 +296,17 @@
           </xsl:for-each>
           ]</virtualCatalogRecords>
         </xsl:if>
+
+        <xsl:for-each select="dcat:inSeries[normalize-space(@rdf:resource) != '']">
+          <parentUuid>
+            <xsl:value-of select="dcatutil:getUUIDByURI(normalize-space(@rdf:resource))"/>
+          </parentUuid>
+        </xsl:for-each>
+        <xsl:for-each select="dcat:next[normalize-space(@rdf:resource) != '']">
+          <nextUUIDInSeries>
+            <xsl:value-of select="dcatutil:getUUIDByURI(normalize-space(@rdf:resource))"/>
+          </nextUUIDInSeries>
+        </xsl:for-each>
         <!-- Index more fields in this element -->
         <xsl:apply-templates mode="index-extra-fields" select="."/>
       </doc>
@@ -320,7 +332,7 @@
     <xsl:copy-of select="gn-fn-index:add-multilingual-field-dcat-ap('modelLicentie', dct:LicenseDocument, $allLanguages, false(), false(), 'dct:title')"/>
   </xsl:template>
 
-  <xsl:template mode="index-keyword" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries">
+  <xsl:template mode="index-keyword" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries|dcat:Catalog">
     <xsl:variable name="keywords">
       <xsl:copy-of select="dcat:keyword[normalize-space() != '']"/>/>
       <xsl:copy-of select="(dct:subject|dcat:theme)[skos:Concept/skos:prefLabel[normalize-space() != '']]/skos:Concept"/>
@@ -353,7 +365,7 @@
     Mirror of mode `index-concept`, but for empty elements that only define @rdf:resource. Example: HVD's dcatap:applicableLegislation
     Keyword values are pulled from the thesaurus defined in the editor.
    -->
-  <xsl:template mode="index-reference" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries">
+  <xsl:template mode="index-reference" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries|dcat:Catalog">
     <xsl:for-each-group select="*[not(skos:Concept) and name() = $editorConfig/editor/fields/for[@use='thesaurus-list-picker']/@name]" group-by="name()">
       <xsl:variable name="thesaurusId" select="$editorConfig/editor/fields/for[@name = name(current-group()[1])]/directiveAttributes/@thesaurus"/>
       <xsl:variable name="key">
@@ -405,7 +417,7 @@
     </xsl:for-each-group>
   </xsl:template>
 
-  <xsl:template mode="index-concept" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries">
+  <xsl:template mode="index-concept" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries|dcat:Catalog">
     <xsl:for-each-group select="*[skos:Concept and name() = $editorConfig/editor/fields/for[@use='thesaurus-list-picker']/@name]"
                         group-by="skos:Concept/skos:inScheme/@rdf:resource">
       <xsl:variable name="thesaurusId" select="$editorConfig/editor/fields/for[@name = name(current-group()[1])]/directiveAttributes/@thesaurus"/>
@@ -785,7 +797,7 @@
         "mimeType":
         "<xsl:value-of
         select="normalize-space(substring-after(dcat:mediaType/skos:Concept/@rdf:about, '/media-types/'))"/>" ,
-        "url":"<xsl:value-of select="normalize-space(dcat:accessURL/@rdf:resource)"/>",
+        "url":"<xsl:value-of select="normalize-space(dcat:accessURL[1]/@rdf:resource)"/>",
         "name":
         <xsl:choose>
           <xsl:when test="count(dct:title)= 1">

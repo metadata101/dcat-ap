@@ -41,7 +41,7 @@
   <xsl:variable name="resourcePrefix" select="$env/metadata/resourceIdentifierPrefix"/>
 
   <xsl:variable name="isVirtualCatalog"
-                select="exists(/root/rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
+                select="exists(/root/rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog)"
                 as="xs:boolean"/>
 
   <xsl:variable name="metadata"
@@ -72,6 +72,9 @@
       <xsl:when test="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DataService">
         <xsl:value-of select="'services'"/>
       </xsl:when>
+      <xsl:when test="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries">
+        <xsl:value-of select="'series'"/>
+      </xsl:when>
       <xsl:when test="$isVirtualCatalog">
         <xsl:value-of select="'catalog'"/>
       </xsl:when>
@@ -85,7 +88,8 @@
   <xsl:variable name="uuidRegex" select="'([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}'"/>
   <xsl:variable name="record" select="/root/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
   <xsl:variable name="resource" select="/root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset|
-                                        /root/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService"/>
+                                        /root/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService|
+                                        /root/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"/>
 
   <xsl:variable name="recordUUID" select="/root/env/uuid"/>
   <xsl:variable name="recordAbout" select="concat(/root/env/nodeURL, 'api/records/', $recordUUID)"/>
