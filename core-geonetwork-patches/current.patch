@@ -1,7 +1,3 @@
-#
-# patch checked against v4.4.9-0
-#
-
 From da9167b24b2a92fc57deaaf7c0c2d3ea5a9c958e Mon Sep 17 00:00:00 2001
 From: Mathieu Chaussier <mathieu.chaussier@gim.be>
 Date: Thu, 20 Jun 2024 09:48:09 +0200
