@@ -875,7 +875,7 @@
               thesaurus="external.theme.belgif-datatheme"
               xpath="/dcat:theme"
               max=""
-              labelKey="dcat-addVLThemes"/>
+              labelKey="dcat.addVLThemes"/>
           </field>
 
         </section>
@@ -1646,7 +1646,7 @@
               thesaurus="external.theme.belgif-datatheme"
               xpath="/dcat:theme"
               max=""
-              labelKey="dcat-addVLThemes"/>
+              labelKey="dcat.addVLThemes"/>
           </field>
         </section>
 

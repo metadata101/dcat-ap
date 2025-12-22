@@ -28,7 +28,7 @@
     <entry>
       <code>catalog</code>
       <label>Catalogue</label>
-      <description>Partie du catalogue virtuel</description>
+      <description>Partie du sous-catalogue</description>
     </entry>
     <entry>
       <code>nextResource</code>

@@ -29,7 +29,7 @@
   <overviews>Overzichten</overviews>
   <distribution>Distributie</distribution>
   <dcat.addThemes>Themas</dcat.addThemes>
-  <dcat-addVLThemes>VL Themas</dcat-addVLThemes>
+  <dcat.addVLThemes>VL Themas</dcat.addVLThemes>
   <dcat.addTags>Tag/Trefwoorden</dcat.addTags>
   <dcat.addType>Type</dcat.addType>
   <dcat.addAccessRight>Toegankelijkheid</dcat.addAccessRight>
