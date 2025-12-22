@@ -29,6 +29,7 @@
   <overviews>Overzichten</overviews>
   <distribution>Distributie</distribution>
   <dcat.addThemes>Themas</dcat.addThemes>
+  <dcat.addVLThemes>VL Themas</dcat.addVLThemes>
   <dcat.addTags>Tag/Trefwoorden</dcat.addTags>
   <dcat.addType>Type</dcat.addType>
   <dcat.addAccessRight>Toegankelijkheid</dcat.addAccessRight>
@@ -95,12 +96,23 @@
   <protocol-49>LINK-1.0-http--link</protocol-49>
   <protocol-50>LINK-1.0-http--related</protocol-50>
   <protocol-51>Vul uw eigen protocol in...</protocol-51>
+  <add-crs-1094>High Water (EPSG(version 8.0 released 10/8/2012):1094)</add-crs-1094>
+  <add-crs-21500>Belge 1950 (Brussels) / Belge Lambert 50 (EPSG:21500)</add-crs-21500>
+  <add-crs-23031>ED50 / UTM zone 31N (EPSG:23031)</add-crs-23031>
+  <add-crs-23032>ED50 / UTM zone 32N (EPSG:23032)</add-crs-23032>
+  <add-crs-31370>Belge 1972 / Belgian Lambert 72 (EPSG:31370)</add-crs-31370>
+  <add-crs-3812>ETRS89 / Belgian Lambert 2008</add-crs-3812>
+  <add-crs-4258>ETRS89</add-crs-4258>
+  <add-crs-5710>Ostend height (EPSG:5710)</add-crs-5710>
+  <add-crs-anchor>Add your own CRS...</add-crs-anchor>
   <dcat-ap-200>DCAT-AP - 2.0.0</dcat-ap-200>
   <dcat-ap-vl-200>DCAT-AP Vlaanderen - 2.0.0</dcat-ap-vl-200>
   <metadata-dcat-200>Metadata DCAT - 2.0.0</metadata-dcat-200>
   <dcat-ap-300>DCAT-AP - 3.0.0</dcat-ap-300>
   <dcat-ap-vl-300>DCAT-AP Vlaanderen - 3.0.0</dcat-ap-vl-300>
   <metadata-dcat-300>Metadata DCAT - 3.0.0</metadata-dcat-300>
+  <dcat-ap-mobility-300>DCAT-AP mobility - 3.0.0</dcat-ap-mobility-300>
+  <dcat-ap-mobility-110>DCAT-AP mobility - 1.1.0</dcat-ap-mobility-110>
   <hvd-dataservice-section>Hoogwaardige Dataset (HVD)</hvd-dataservice-section>
   <hvd-dataservice-tab>Data Service</hvd-dataservice-tab>
   <hvd-dataset-section>Hoogwaardige Dataset (HVD)</hvd-dataset-section>

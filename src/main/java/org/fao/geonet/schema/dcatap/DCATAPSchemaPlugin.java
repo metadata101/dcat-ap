@@ -28,16 +28,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 import org.apache.commons.lang.StringUtils;
 import org.fao.geonet.ApplicationContextHolder;
+import org.fao.geonet.kernel.datamanager.IMetadataSchemaUtils;
+import org.fao.geonet.kernel.datamanager.base.BaseMetadataUtils;
 import org.fao.geonet.kernel.schema.AssociatedResource;
 import org.fao.geonet.kernel.schema.AssociatedResourcesSchemaPlugin;
 import org.fao.geonet.kernel.schema.MultilingualSchemaPlugin;
@@ -50,6 +44,10 @@ import org.jdom.Attribute;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
+
+import java.util.*;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -85,14 +83,22 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
 
 
     /**
-     * For virtual catalog, return dcat:record elements
-     *
      * @param metadata
      * @return
      */
     @Override
     public Set<AssociatedResource> getAssociatedResourcesUUIDs(Element metadata) {
+        Set<AssociatedResource> aggregated = new HashSet<>();
+        aggregated.addAll(getAssociatedVirtualCatalog(metadata));
+        aggregated.addAll(getAssociatedNext(metadata));
+        aggregated.addAll(getAssociatedPrevious(metadata));
+        return aggregated;
+    }
 
+    /**
+     * For virtual catalog, return dcat:record elements
+     */
+    private Set<AssociatedResource> getAssociatedVirtualCatalog(Element metadata) {
         String xpathForAggregationInfo = "dcat:Catalog/dcat:record";
         Set<AssociatedResource> listOfResources = new HashSet<>();
         List<?> sibs = null;
@@ -105,7 +111,6 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
 
             SettingManager settingManager = ApplicationContextHolder.get().getBean(SettingManager.class);
             String baseURL = settingManager.getBaseURL();
-
 
             for (Object o : sibs) {
                 if (o instanceof Element) {
@@ -133,8 +138,62 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
             e.printStackTrace();
         }
         return listOfResources;
+    }
 
-}
+    /**
+     * For next records, resolve dcat:next elements
+     */
+    private Set<AssociatedResource> getAssociatedNext(Element metadata) {
+        Set<AssociatedResource> results = getAssociatedResourcesByXpath(metadata, "*//dcat:next/@rdf:resource");
+        return results.stream()
+            .peek(ar -> ar.setAssociationType("nextResource"))
+            .collect(Collectors.toSet());
+    }
+
+    /**
+     * For previous records, find datasets that point to the current one with a dcat:next
+     */
+    private Set<AssociatedResource> getAssociatedPrevious(Element metadata) {
+        try {
+            String currentUuid = getCurrentUuid(metadata);
+            if (currentUuid == null) {
+                return Collections.emptySet();
+            }
+            var searchManager = ApplicationContextHolder.get().getBean(EsSearchManager.class);
+            var response = searchManager.query(String.format("+nextUUIDInSeries:\"%s\"", currentUuid), null,
+                Sets.newHashSet("uuid", "resourceTitleObject.default"), 0, 100);
+
+            if (response.hits().hits().isEmpty()) {
+                return Collections.emptySet();
+            }
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            Set<AssociatedResource> res = new HashSet<>();
+            for (Object oh : response.hits().hits()) {
+                Hit h = (Hit) oh;
+                Map associatedRecord = objectMapper.convertValue(h.source(), Map.class);
+                AssociatedResource ar = new AssociatedResource(
+                    (String) associatedRecord.get("uuid"),
+                    "",
+                    "previousResource",
+                    null,
+                    ((Map<String, String>) associatedRecord.get("resourceTitleObject")).get("default")
+                );
+                res.add(ar);
+            }
+            return res;
+        } catch (Exception e) {
+            Log.error(Log.JEEVES, "GET associated previous resources error: " + e.getMessage(), e);
+        }
+        return Collections.emptySet();
+    }
+
+    private String getCurrentUuid(Element metadata) throws Exception {
+        BaseMetadataUtils metadataUtils = ApplicationContextHolder.get().getBean(BaseMetadataUtils.class);
+        IMetadataSchemaUtils metadataSchemaUtils = ApplicationContextHolder.get().getBean(IMetadataSchemaUtils.class);
+        String schema = metadataSchemaUtils.autodetectSchema(metadata);
+        return metadataUtils.extractUUID(schema, metadata);
+    }
 
     @Override
     public Set<String> getAssociatedParentUUIDs(Element metadata) {
@@ -152,12 +211,6 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
             .collect(Collectors.toSet());
     }
 
-    // @Override
-    // public Set<String> getAssociatedExternalDatasetLinks(Element metadata) {
-    //     ElementFilter elementFilter = new ElementFilter("servesDataset", DCATAPNamespaces.DCAT);
-    //     return this.getAssociatedExternalRdfLinks(metadata, elementFilter);
-    // }
-
     @Override
     public Set<String> getAssociatedFeatureCatalogueUUIDs(Element metadata) {
         return getAssociatedFeatureCatalogues(metadata)
@@ -174,18 +227,12 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
             .collect(Collectors.toSet());
     }
 
-    @Override
-    public Set<AssociatedResource> getAssociatedParents(Element metadata) {
-        return Collections.emptySet();
-    }
-
-    @Override
-    public Set<AssociatedResource> getAssociatedDatasets(Element metadata) {
+    private Set<AssociatedResource> getAssociatedResourcesByXpath(Element metadata, String xpath) {
         try {
-            return Xml.selectNodes(metadata, "*//dcat:DataService/dcat:servesDataset/@rdf:resource|*//dcat:DataService/dcat:servesDataset/dcat:Dataset/@rdf:about", allNamespaces.asList())
+            return Xml.selectNodes(metadata, xpath, allNamespaces.asList())
                 .stream()
                 .filter(node -> node instanceof Attribute)
-                .map(node -> ((Attribute)node).getValue())
+                .map(node -> ((Attribute) node).getValue())
                 .filter(s -> s != null && !s.isBlank())
                 .map(this::getAssociatedResourceByURI)
                 .filter(Objects::nonNull)
@@ -194,6 +241,16 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
             e.printStackTrace();
         }
         return Collections.emptySet();
+    }
+
+    @Override
+    public Set<AssociatedResource> getAssociatedParents(Element metadata) {
+        return getAssociatedResourcesByXpath(metadata, "*//dcat:inSeries/@rdf:resource");
+    }
+
+    @Override
+    public Set<AssociatedResource> getAssociatedDatasets(Element metadata) {
+        return getAssociatedResourcesByXpath(metadata, "*//dcat:DataService/dcat:servesDataset/@rdf:resource|*//dcat:DataService/dcat:servesDataset/dcat:Dataset/@rdf:about");
     }
 
     @Override
@@ -231,8 +288,8 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
         var searchManager = ApplicationContextHolder.get().getBean(EsSearchManager.class);
         try {
             var response = searchManager.query(String.format("+rdfResourceIdentifier.keyword:\"%s\"", uri), null,
-                    Sets.newHashSet("uuid", "resourceTitleObject.default"),
-                    0, 1);
+                Sets.newHashSet("uuid", "resourceTitleObject.default"),
+                0, 1);
 
             if (response.hits().hits().isEmpty()) {
                 return null;
@@ -245,11 +302,11 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
             Hit h = (Hit) response.hits().hits().get(0);
             Map associatedRecord = objectMapper.convertValue(h.source(), Map.class);
             return new AssociatedResource(
-                (String)associatedRecord.get("uuid"),
+                (String) associatedRecord.get("uuid"),
                 "",
                 "",
                 uri,
-                ((Map<String, String>)associatedRecord.get("resourceTitleObject")).get("default")
+                ((Map<String, String>) associatedRecord.get("resourceTitleObject")).get("default")
             );
         } catch (Exception e) {
             Log.error(Log.JEEVES, "GET associated resource '" + uri + "' error: " + e.getMessage(), e);

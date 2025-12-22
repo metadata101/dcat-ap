@@ -150,7 +150,7 @@
     <sch:param name="context" value="dcat:CatalogRecord"/>
     <sch:param name="element" value="dct:conformsTo"/>
     <sch:param name="min" value="0"/>
-    <sch:param name="max" value="1"/>
+    <sch:param name="max" value="n"/><!-- we are not conform dcat2 here, but as we want to support multiple profiles in this editor we are getting ahead of ourselves and implementing 0..n as was done in dcat3 -->
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="CatalogRecord_status">
     <sch:param name="context" value="dcat:CatalogRecord"/>

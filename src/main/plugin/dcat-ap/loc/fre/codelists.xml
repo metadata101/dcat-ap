@@ -23,4 +23,17 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 
-<codelists/>
+<codelists>
+  <codelist name="dcat:Resource" alias="associationType">
+    <entry>
+      <code>catalog</code>
+      <label>Catalogue</label>
+      <description>Partie du sous-catalogue</description>
+    </entry>
+    <entry>
+      <code>nextResource</code>
+      <label>Ressource suivante</label>
+      <description>Ressource suivante dans la série</description>
+    </entry>
+  </codelist>
+</codelists>
