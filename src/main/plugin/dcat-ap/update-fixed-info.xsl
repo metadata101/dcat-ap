@@ -349,7 +349,7 @@
   process. Removing the CatalogRecord from the main form needs to also remove the corresponding dcat:record element. -->
   <xsl:template match="dcat:Catalog/dcat:record[$isVirtualCatalog and @rdf:resource and not(@rdf:resource = ../../dcat:CatalogRecord/@rdf:about)]" priority="2"/>
 
-  <xsl:template match="dcat:Dataset|dcat:DataService" priority="10">
+  <xsl:template match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries" priority="10">
      <xsl:copy copy-namespaces="no">
        <xsl:call-template name="handle-resource-id"/>
        <xsl:apply-templates select="* except dct:identifier"/>

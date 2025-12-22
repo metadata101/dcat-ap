@@ -37,6 +37,61 @@
             }
           }
         }
+      },
+      {
+        "type": "parent",
+        "label": "linkToParent",
+        "config": {
+          "sources": {
+            "metadataStore": {
+              "label": "linkToParent",
+              "params": {
+                "resourceType": [
+                  "series"
+                ],
+                "documentStandard": [
+                  "dcat-ap"
+                ],
+                "isTemplate": "n"
+              }
+            },
+            "remoteurl": {
+              "multiple": false
+            }
+          }
+        }
+      },
+      {
+        "type": "siblings",
+        "label": "linkToSibling",
+        "config": {
+          "sources": {
+            "metadataStore": {
+              "params": {
+                "documentStandard": [
+                  "dcat-ap"
+                ],
+                "isTemplate": "n"
+              },
+              "searchParamsPerType": {
+                "catalog-*": {
+                  "type": [
+                    "catalog"
+                  ]
+                },
+                "nextResource-*": {
+                  "type": [
+                    "dataset",
+                    "service"
+                  ]
+                }
+              }
+            },
+            "remoteurl": {
+              "multiple": true
+            }
+          }
+        }
       }
     ]
   }

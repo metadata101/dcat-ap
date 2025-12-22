@@ -119,63 +119,53 @@
      -->
     <xsl:choose>
       <xsl:when test="count(//dcat:Dataset) > 0">
-        <xsl:choose>
-          <xsl:when test="//dcat:Dataset/dct:title[@xml:lang = $langId-2char]">
-            <xsl:value-of select="//dcat:Dataset/dct:title[@xml:lang = $langId-2char][1]"/>
-          </xsl:when>
-          <xsl:when test="//dcat:Dataset/dct:title[@xml:lang = $defaultLang-2char]">
-            <xsl:value-of select="concat(//dcat:Dataset/dct:title[@xml:lang = $defaultLang-2char][1], ' (', normalize-space(//dcat:Dataset/dct:title[@xml:lang = $defaultLang-2char][1]/@xml:lang), ')')"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="//dcat:Dataset/dct:title[1]"/>
-            <xsl:if test="//dcat:Dataset/dct:title[1]/@xml:lang and normalize-space(//dcat:Dataset/dct:title[1]/@xml:lang) != '' ">
-              <xsl:value-of select="concat(' (',//dcat:Dataset/dct:title[1]/@xml:lang,')')" />
-            </xsl:if>
-          </xsl:otherwise>
-        </xsl:choose>
+        <xsl:call-template name="renderTitleByLanguagePreference">
+          <xsl:with-param name="titleNodes" select="//dcat:Dataset/dct:title"/>
+        </xsl:call-template>
       </xsl:when>
       <xsl:when test="count(//dcat:DataService) > 0">
-        <xsl:choose>
-          <xsl:when test="//dcat:DataService/dct:title[@xml:lang = $langId-2char]">
-            <xsl:value-of select="//dcat:DataService/dct:title[@xml:lang = $langId-2char][1]"/>
-          </xsl:when>
-          <xsl:when test="//dcat:DataService/dct:title[@xml:lang = $defaultLang-2char]">
-            <xsl:value-of select="concat(//dcat:DataService/dct:title[@xml:lang = $defaultLang-2char][1], ' (', normalize-space(//dcat:DataService/dct:title[@xml:lang = $defaultLang-2char][1]/@xml:lang), ')')"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="//dcat:DataService/dct:title[1]"/>
-            <xsl:if test="//dcat:DataService/dct:title[1]/@xml:lang and normalize-space(//dcat:DataService/dct:title[1]/@xml:lang) != '' ">
-              <xsl:value-of select="concat(' (',//dcat:DataService/dct:title[1]/@xml:lang,')')" />
-            </xsl:if>
-          </xsl:otherwise>
-        </xsl:choose>
+        <xsl:call-template name="renderTitleByLanguagePreference">
+          <xsl:with-param name="titleNodes" select="//dcat:DataService/dct:title"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="count(//dcat:DatasetSeries) > 0">
+        <xsl:call-template name="renderTitleByLanguagePreference">
+          <xsl:with-param name="titleNodes" select="//dcat:DatasetSeries/dct:title"/>
+        </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:choose>
-          <xsl:when test="//dcat:Catalog/dct:title[@xml:lang = $langId-2char]">
-            <xsl:value-of select="//dcat:Catalog/dct:title[@xml:lang = $langId-2char][1]"/>
-          </xsl:when>
-          <xsl:when test="//dcat:Catalog/dct:title[@xml:lang = $defaultLang-2char]">
-            <xsl:value-of select="concat(//dcat:Catalog/dct:title[@xml:lang = $defaultLang-2char][1], ' (', normalize-space(//dcat:Catalog/dct:title[@xml:lang = $defaultLang-2char][1]/@xml:lang), ')')"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="//dcat:Catalog/dct:title[1]"/>
-            <xsl:if test="//dcat:Catalog/dct:title[1]/@xml:lang and normalize-space(//dcat:Catalog/dct:title[1]/@xml:lang) != '' ">
-              <xsl:value-of select="concat(' (',//dcat:Catalog/dct:title[1]/@xml:lang,')')" />
-            </xsl:if>
-          </xsl:otherwise>
-        </xsl:choose>
+        <xsl:call-template name="renderTitleByLanguagePreference">
+          <xsl:with-param name="titleNodes" select="//dcat:Catalog/dct:title"/>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="renderTitleByLanguagePreference">
+    <xsl:param name="titleNodes"/>
+    <xsl:choose>
+      <xsl:when test="$titleNodes[@xml:lang = $langId-2char]">
+        <xsl:value-of select="$titleNodes[@xml:lang = $langId-2char][1]"/>
+      </xsl:when>
+      <xsl:when test="$titleNodes[@xml:lang = $defaultLang-2char]">
+        <xsl:value-of select="concat($titleNodes[@xml:lang = $defaultLang-2char][1], ' (', normalize-space($titleNodes[@xml:lang = $defaultLang-2char][1]/@xml:lang), ')')"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$titleNodes[1]"/>
+        <xsl:if test="$titleNodes[1]/@xml:lang and normalize-space($titleNodes[1]/@xml:lang) != '' ">
+          <xsl:value-of select="concat(' (',$titleNodes[1]/@xml:lang,')')" />
+        </xsl:if>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
   <xsl:template mode="getMetadataAbstract" match="rdf:RDF">
-    <xsl:value-of select="//dcat:Dataset/dct:description|//dcat:DataService/dct:description|//dcat:Catalog/dct:description" />
+    <xsl:value-of select="//dcat:Dataset/dct:description|//dcat:DataService/dct:description|//dcat:DatasetSeries/dct:description|//dcat:Catalog/dct:description" />
   </xsl:template>
 
   <xsl:template mode="getMetadataHeader" match="rdf:RDF">
     <div class="gn-abstract">
-      <xsl:value-of select="(//dcat:Dataset/dct:description|//dcat:DataService/dct:description|//dcat:Catalog/dct:description)[1]"/>
+      <xsl:value-of select="(//dcat:Dataset/dct:description|//dcat:DataService/dct:description|//dcat:DatasetSeries/dct:description|//dcat:Catalog/dct:description)[1]"/>
     </div>
     <xsl:if test="$root = 'div'">
       <div class="one-line-ellipsis" ng-if="user.isEditorOrMore()">
@@ -195,6 +185,9 @@
       </xsl:when>
       <xsl:when test="count(//dcat:DataService) > 0">
         <xsl:value-of select="'service'"/>
+      </xsl:when>
+      <xsl:when test="count(//dcat:DatasetSeries) > 0">
+        <xsl:value-of select="'series'"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="'catalog'"/>
@@ -350,13 +343,39 @@
       </saxon:call-template>
     </xsl:variable>
 
+    <xsl:variable name="name" select="name($nodes/*[1])"/>
+    <xsl:variable name="thesaurusId">
+      <xsl:choose>
+        <xsl:when test="normalize-space(directiveAttributes/@thesaurus) != ''">
+          <xsl:value-of select="normalize-space(directiveAttributes/@thesaurus)"/>
+        </xsl:when>
+        <xsl:when test="normalize-space($configuration/editor/fields/for[@name = $name][1]/directiveAttributes/@thesaurus) != ''">
+          <xsl:value-of select="normalize-space($configuration/editor/fields/for[@name = $name][1]/directiveAttributes/@thesaurus)"/>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="filteredNode">
+      <xsl:choose>
+        <xsl:when test="normalize-space($thesaurusId) = ''">
+          <xsl:copy-of select="$nodes"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <saxon:call-template name="{concat('evaluate-', $schema)}">
+            <xsl:with-param name="base" select="$nodes"/>
+            <xsl:with-param name="in" select="concat('/*[skos:Concept/skos:inScheme/@rdf:resource = ''', util:getThesaurusUriByKey($thesaurusId), ''']')"/>
+          </saxon:call-template>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
     <xsl:variable name="fieldName">
       <xsl:if test="@name">
         <xsl:value-of select="gn-fn-render:get-schema-strings($schemaStrings, @name)"/>
       </xsl:if>
     </xsl:variable>
 
-    <xsl:for-each select="$nodes">
+    <xsl:for-each select="$filteredNode">
       <xsl:apply-templates mode="render-field">
         <xsl:with-param name="fieldName" select="$fieldName"/>
       </xsl:apply-templates>
