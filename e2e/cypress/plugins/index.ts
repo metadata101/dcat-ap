@@ -38,7 +38,10 @@ export function setupNodeEvents(
 ) {
   on("task", {
     resetDB() {
-      return runSQLFile(config.env, "reset.sql");
+      return Promise.all([
+        runSQLFile(config.env, "reset.sql"),
+        runSQLFile(config.env, "records.sql")
+      ])
     },
   });
 
