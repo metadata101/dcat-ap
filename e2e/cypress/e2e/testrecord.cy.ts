@@ -17,7 +17,17 @@ describe('The test record', () => {
 
   it.only('is not modified unexpectedly by the editor', () => {
     function cleanXml(xml: string) {
-      return xml.replace(/<dct:modified>.+?<\/dct:modified>/g, '')
+      // retrieve the catalog uuid (generated and set by geonetwork at start up)
+      const matches = /http:\/\/localhost:8080\/geonetwork\/srv\/resources\/catalogs\/([\w-]+)/.exec(xml)
+      expect(matches).to.have.length(2)
+      const catalogUuid = matches[1]
+      expect(catalogUuid).to.have.length.of.at.least(5)
+      const dummyCatalogUuid = 'dummy-catalog-uuid'
+      return xml
+        // modified will depend on the day of the cypress run, remove the element
+        .replace(/<dct:modified>.+?<\/dct:modified>/g, '')
+        // each time geonetwork is regenerated, the catalog uuid changes... replace it by a dummy value so it's always the same
+        .split(catalogUuid).join(dummyCatalogUuid)
     }
 
     cy.visit('/srv/eng/catalog.search#/metadata/345f47ef-abd5-4f2f-9ab7-d723565cccea');

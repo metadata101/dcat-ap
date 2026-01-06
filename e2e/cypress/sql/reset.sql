@@ -1,3 +1,2 @@
+-- clear all metadata
 delete from metadata;
-
--- insert test
