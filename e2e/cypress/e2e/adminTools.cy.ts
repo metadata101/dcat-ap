@@ -1,7 +1,7 @@
 describe('Admin tools', () => {
   before(() => {
-    cy.baseSetup();
-  });
+    cy.baseSetup()
+  })
 
   it('Can reindex', () => {
     cy.login()
@@ -14,5 +14,5 @@ describe('Admin tools', () => {
     cy.wait('@indexRequest').its('response.statusCode').should('eq', 200)
     // at this point geonetwork should not indicate an active indexing process anymore
     cy.isIndexing().should('be.false')
-  });
-});
+  })
+})
