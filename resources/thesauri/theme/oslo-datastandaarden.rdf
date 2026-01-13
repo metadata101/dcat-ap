@@ -16,6 +16,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein 2.0.0</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/energiemanagementsysteem/">
@@ -23,6 +25,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-14</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-14</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Energiemanagementsysteem</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/inname-openbaar-domein/">
@@ -30,13 +34,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-04-23</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-04-23</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Inname openbaar domein</skos:prefLabel>
-    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/aim-object/">
-    <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
-    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
-    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel AIM Object</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/slimmeraadpleegomgeving">
@@ -44,13 +43,17 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-02-08</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-02-08</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Slimme Raadpleegomgeving</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://data.vlaanderen.be/doc/implementatiemodel/cultureel-erfgoed-basisregistratie">
+  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/aim-object/">
     <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-10-02</dcterms:modified>
-    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-10-02</dcterms:created>
-    <skos:prefLabel xml:lang="nl">Implementatiemodel Basisregistratie Cultureel Erfgoed</skos:prefLabel>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
+    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel AIM Object</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/bodem-en-ondergrond/bodem/">
@@ -58,13 +61,17 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-04-28</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-04-28</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Bodem</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/proeven-metingen/">
+  <rdf:Description rdf:about="https://data.vlaanderen.be/doc/implementatiemodel/cultureel-erfgoed-basisregistratie">
     <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
-    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
-    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Proeven en metingen</skos:prefLabel>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-10-02</dcterms:modified>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-10-02</dcterms:created>
+    <skos:prefLabel xml:lang="nl">Implementatiemodel Basisregistratie Cultureel Erfgoed</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/zaalreservatie/">
@@ -72,6 +79,17 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-01</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-01</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Zaalreservatie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/proeven-metingen/">
+    <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
+    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Proeven en metingen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/software-hardware/">
@@ -79,6 +97,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Software en hardware</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/verlichtingsinstallatie/">
@@ -86,6 +106,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Verlichtingsinstallatie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/fietstelinstallatie/">
@@ -93,6 +115,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Fietstelinstallatie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/anpr-trajectcontrole/">
@@ -100,6 +124,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel ANPR en trajectcontrole</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/gebieden">
@@ -107,6 +133,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein 2.0.0 - Applicatieprofiel Gebieden</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/financiele-rapportering">
@@ -114,6 +142,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-03-17</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-03-17</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Financiële Rapportering</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/gebouwenregister/">
@@ -121,6 +151,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-08</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-08</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Gebouwenregister</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/verharding-wegfundering/">
@@ -128,6 +160,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Verharding en wegfundering</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/omgevingsvergunning">
@@ -135,6 +169,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-11-07</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-11-07</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Omgevingsvergunning</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/elektrische-componenten/">
@@ -142,6 +178,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Elektrische componenten</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/ventilatie/">
@@ -149,6 +187,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Ventilatie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/logies-basis/">
@@ -156,6 +196,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-05</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-05</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Toeristische Logies Basis</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/vastgoed">
@@ -163,6 +205,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-06-30</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-06-30</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Vastgoed</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/fietsinfrastructuur">
@@ -170,6 +214,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-12-17</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-12-17</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Fietsinfrastructuur</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/begraafplaatsenbeheer">
@@ -177,6 +223,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein 2.0.0 - Applicatieprofiel Begraafplaatsenbeheer</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/leermiddelen">
@@ -184,6 +232,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-08-20</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-08-20</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Leermiddelen en doelen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/besluitvorming">
@@ -191,6 +241,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-02-04</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-02-04</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Besluitvorming</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/perceel/">
@@ -198,6 +250,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-06-18</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-06-18</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Perceel</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/onbegroeid-voorkomen/">
@@ -205,6 +259,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein - Applicatieprofiel Onbegroeid Voorkomen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit/dienstregeling-en-planning/tijdstabellen/">
@@ -212,6 +268,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-04-21</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-04-21</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Mobiliteit: Dienstregeling en Planning Tijdstabellen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/cultureel-erfgoed-object">
@@ -219,6 +277,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-04-22</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-04-22</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Cultureel Erfgoed Object</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/generiek-basis/">
@@ -226,13 +286,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-03-23</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-03-23</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Generiek basis</skos:prefLabel>
-    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/luidspreker-intercom/">
-    <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
-    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
-    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Luidsprekers en intercom</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/hulp-dienstverlening-gedetineerden">
@@ -240,6 +295,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-18</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-18</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Hulp- en Dienstverlening aan Gedetineerden</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/leerprestatiecredential">
@@ -247,6 +304,17 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-12-20</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-12-20</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Leerprestatiecredential</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/luidspreker-intercom/">
+    <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
+    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Luidsprekers en intercom</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/loongegevens">
@@ -254,6 +322,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-16</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-16</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel loongegevens</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/FeitelijkeVerenigingen/">
@@ -261,13 +331,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-02-03</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-02-03</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Feitelijke Verenigingen</skos:prefLabel>
-    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/tunnelevacuatie/">
-    <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
-    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
-    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Tunnelevacuatie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/generieke-terugmeldfaciliteit/">
@@ -275,6 +340,17 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-02-07</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-02-07</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Generieke Terugmeldfaciliteit</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/tunnelevacuatie/">
+    <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
+    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Tunnelevacuatie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/slimme-stadsdistributie">
@@ -282,6 +358,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-16</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-16</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel OSLO Slimme Stadsdistributie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/infrastructuurelementen/">
@@ -289,6 +367,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein - Applicatieprofiel Infrastructuurelementen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/bedrijventerrein/">
@@ -296,6 +376,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-06-18</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-06-18</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Bedrijventerrein</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/bestuurlijk-sanctieregister">
@@ -303,10 +385,11 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-06-23</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-06-23</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Bestuurlijk Sanctieregister</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel">
-    <skos:narrower rdf:resource="https://data.vlaanderen.be/doc/applicatieprofiel/cultureel-erfgoed-object"/>
     <skos:narrower rdf:resource="https://data.vlaanderen.be/ns/openbaardomein"/>
     <skos:narrower rdf:resource="https://data.vlaanderen.be/doc/applicatieprofiel/bodem-en-ondergrond/grondwatermeetnet/"/>
     <skos:narrower rdf:resource="https://data.vlaanderen.be/doc/applicatieprofiel/begroeid-voorkomen/"/>
@@ -317,10 +400,12 @@
     <skos:narrower rdf:resource="https://data.vlaanderen.be/doc/applicatieprofiel/leerinschrijfcredential/"/>
     <skos:narrower rdf:resource="https://data.vlaanderen.be/doc/applicatieprofiel/FeitelijkeVerenigingen/"/>
     <skos:narrower rdf:resource="https://data.vlaanderen.be/doc/applicatieprofiel/waterkwaliteit"/>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
     <skos:narrower rdf:resource="https://data.vlaanderen.be/doc/applicatieprofiel/adresregister/"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
     <skos:definition xml:lang="nl">Dit type document is een specificatie op basis van de termen uit een of meerdere vocabularia. Het geeft aan hoe data binnen een generiek applicatie domein dient gebruikt te worden.</skos:definition>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel</skos:prefLabel>
+    <skos:narrower rdf:resource="https://data.vlaanderen.be/doc/applicatieprofiel/cultureel-erfgoed-object"/>
     <skos:narrower rdf:resource="https://data.vlaanderen.be/doc/applicatieprofiel/ruimtelijke-indicatoren"/>
     <skos:narrower rdf:resource="https://data.vlaanderen.be/doc/applicatieprofiel/wegenregister/"/>
     <skos:narrower rdf:resource="https://data.vlaanderen.be/doc/applicatieprofiel/watervoorkomen/"/>
@@ -423,6 +508,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein 2.0.0 - Applicatieprofiel Begroeid Voorkomen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/meten-in-vlaanderen/">
@@ -430,6 +517,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Meten in Vlaanderen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/bodem-en-ondergrond/interpretaties/">
@@ -437,6 +526,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Bodem en Ondergrond Interpretaties</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/ruimtelijke-indicatoren">
@@ -444,6 +535,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-12-05</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-12-05</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Ruimtelijke Indicatoren</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/lokale-economie">
@@ -451,6 +544,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-01-17</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-01-17</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Lokale Economie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/thermografische-gebouwanalyse">
@@ -458,6 +553,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-22</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-22</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Thermografische Gebouwanalyse</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/notificatie-basis/">
@@ -465,6 +562,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-02-07</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-02-07</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Notificatie Basis</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/terreindelen/">
@@ -472,6 +571,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein - Applicatieprofiel Terreindelen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/eenvoudige-datatypes/">
@@ -479,6 +580,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Eenvoudige datatypes</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/openbare-nutsvoorzieningkasten/">
@@ -486,6 +589,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-28</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-28</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Openbare Nutsvoorzieningkasten</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/complexe-datatypes/">
@@ -493,6 +598,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Complexe datatypes</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/watervoorkomen/">
@@ -500,6 +607,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein - Applicatieprofiel Water voorkomen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://purl.eu/doc/applicationprofile/mobility/passenger-transport-hubs/index_en.html">
@@ -507,6 +616,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-12-01</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-12-01</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Passenger Transport Hubs</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/openbaar-domein/">
@@ -514,6 +625,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Openbaar Domein</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/draagconstructies/">
@@ -521,6 +634,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Draagconstructies</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/ecologische-maatregelen/">
@@ -528,6 +643,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Ecologische maatregelen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/signalisatie/">
@@ -535,6 +652,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Signalisatie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/brandleiding/">
@@ -542,6 +661,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Brandleiding</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://productencatalogus.data.vlaanderen.be/doc/implementatiemodel/ipdc-lpdc">
@@ -549,6 +670,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-04</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-04</dcterms:created>
     <skos:prefLabel xml:lang="nl">Vocabularium en implementatiemodel IPDC - LPDC</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <skos:prefLabel xml:lang="nl">Implementatiemodel IPDC - LPDC</skos:prefLabel>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
@@ -557,6 +680,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-07-03</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-07-03</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Organisatie Basis</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-trips-en-aanbod">
@@ -564,6 +689,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-04-23</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-04-23</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Mobiliteit: Trips en Aanbod</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/GEODCAT-AP-VL/kandidaatstandaard/2025-12-09/">
@@ -571,6 +698,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-09-10</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-09-10</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel GeoDCAT-AP VL</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/waterdelen/">
@@ -578,6 +707,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein - Applicatieprofiel Waterdelen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/verkeersborden/">
@@ -585,6 +716,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-04-23</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-04-23</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Verkeersborden</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/dienstencataloog/">
@@ -592,10 +725,11 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-10</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-10</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Dienstencataloog</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel">
-    <skos:narrower rdf:resource="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/kasten-cabines-behuizing/"/>
     <skos:narrower rdf:resource="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/signalisatie/"/>
     <skos:narrower rdf:resource="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/luidspreker-intercom/"/>
     <skos:narrower rdf:resource="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/relaties/"/>
@@ -606,10 +740,12 @@
     <skos:narrower rdf:resource="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/union-datatypes/"/>
     <skos:narrower rdf:resource="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/aim-object/"/>
     <skos:narrower rdf:resource="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/draagconstructies/"/>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
     <skos:narrower rdf:resource="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/elektrische-componenten/"/>
     <skos:topConceptOf rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
     <skos:definition xml:lang="nl"> Dit Type document is een specificatie op basis van de termen uit een of meerdere vocabularia. Het heeft aan hoe data binnen een specifiek applicatiedomein dient gebruikt te worden. Dikwijls, maar niet verplicht, implementeert een implementatie model de afspraken van een bijhorend applicatieprofiel</skos:definition>
     <skos:prefLabel xml:lang="nl">Implementatiemodel</skos:prefLabel>
+    <skos:narrower rdf:resource="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/kasten-cabines-behuizing/"/>
     <skos:narrower rdf:resource="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/zone-30/"/>
     <skos:narrower rdf:resource="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/tunnelevacuatie/"/>
     <skos:narrower rdf:resource="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/meten-in-vlaanderen/"/>
@@ -643,6 +779,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-02-07</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-02-07</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Contactvoorkeuren</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/master/">
@@ -650,6 +788,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Master-implementatiemodel</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/vegetatie/">
@@ -657,6 +797,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Vegetatie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/relaties/">
@@ -664,6 +806,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Relaties</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/bodem-en-ondergrond/sonderingen/">
@@ -671,6 +815,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-08-01</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-08-01</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Sonderingen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit/vervoersknooppunten">
@@ -678,6 +824,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-12-01</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-12-01</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Vervoersknooppunten</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/ns/cultuurparticipatie">
@@ -685,6 +833,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-04-28</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-04-28</dcterms:created>
     <skos:prefLabel xml:lang="nl">Vocabularium Cultuurparticipatie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/bodem-en-ondergrond/observaties/">
@@ -692,13 +842,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Bodem en Ondergrond Observaties</skos:prefLabel>
-    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/slagboom-doorsteek/">
-    <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
-    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
-    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Slagbomen en doorsteken</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/watervoorkomen">
@@ -706,6 +851,17 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein 2.0.0 - Applicatieprofiel Watervoorkomen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/slagboom-doorsteek/">
+    <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
+    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Slagbomen en doorsteken</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/optisch-transport-netwerk/">
@@ -713,6 +869,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Optisch transport netwerk</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/statistiek">
@@ -720,6 +878,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-06-01</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-06-01</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel OSLO Statistiek</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/waterdelen">
@@ -727,6 +887,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein 2.0.0 - Applicatieprofiel Waterdelen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang">
@@ -734,6 +896,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-11-08</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-11-08</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Mobiliteit: Intelligente Toegang</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/lijnvormige-elementen/">
@@ -741,6 +905,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Lijnvormige elementen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/inbreuken-zwaar-vervoer/">
@@ -748,6 +914,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Inbreuken zwaar vervoer</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/">
@@ -755,6 +923,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-07-20</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-07-20</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Besluit Publicatie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/publicatie-advertentie/">
@@ -762,6 +932,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-11-09</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-11-09</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Publicatie-Advertentie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/bodem-en-ondergrond/">
@@ -769,6 +941,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Bodem en Ondergrond</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/dynamische-borden/">
@@ -776,6 +950,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Dynamische borden</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/voorwaarden-dienstverlening/">
@@ -783,6 +959,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-07-11</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-07-11</dcterms:created>
     <skos:prefLabel xml:lang="nl">OSLO Voorwaarden Dienstverlening</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/incentiveringsplatform">
@@ -790,6 +968,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-03-21</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-03-21</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Incentiveringsplatform</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/rooilijnplannen/">
@@ -797,6 +977,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-06-01</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-06-01</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Rooilijnplannen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/verkeersmetingen">
@@ -804,6 +986,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-12-01</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-12-01</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Verkeersmetingen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/terreindelen">
@@ -811,6 +995,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein 2.0.0 - Applicatieprofiel Terreindelen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/persoon-basis/">
@@ -818,6 +1004,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-10</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-10</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Persoon basis</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/hulpposten/">
@@ -825,6 +1013,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Hulpposten</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/openbaar-domein">
@@ -832,6 +1022,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein 2.0.0 - Basisprofiel Openbaar Domein</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/bodem-en-ondergrond/grondboringen/">
@@ -839,6 +1031,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Grondboringen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/vrachtwagenparkeren">
@@ -846,6 +1040,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-30</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-30</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Vrachtwagenparkeren</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/vegetatie-elementen/">
@@ -853,6 +1049,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein - Applicatieprofiel Vegetatie-elementen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/waterkwaliteit">
@@ -860,6 +1058,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-06-01</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-06-01</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel OSLO Waterkwaliteit</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://implementatie.data.vlaanderen.be/doc/implementatiemodel/kwaliteit-wegen-en-wegmarkeringen/">
@@ -867,6 +1067,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-07-24</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-07-24</dcterms:created>
     <skos:prefLabel xml:lang="nl">Implementatiemodel Kwaliteit Wegen en Wegmarkeringen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/vlaamse-codex/">
@@ -874,6 +1076,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-02-07</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-02-07</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Vlaamse Codex</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/issue-tracking-voor-burgers-en-organisaties/">
@@ -881,6 +1085,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-02-07</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-02-07</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Issue tracking voor burgers en organisaties</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/camerainstallatie/">
@@ -888,6 +1094,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Camerainstallatie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/cultureel-erfgoed-event">
@@ -895,6 +1103,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-04-22</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-04-22</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Cultureel Erfgoed Event</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/">
@@ -902,13 +1112,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-04-22</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-04-22</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel metadata DCAT</skos:prefLabel>
-    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/union-datatypes/">
-    <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
-    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
-    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Union datatypes</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/energiehuis">
@@ -916,6 +1121,17 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-06-19</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-06-19</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Energiehuis</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/union-datatypes/">
+    <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
+    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Union datatypes</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/adresregister/">
@@ -923,6 +1139,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-10</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-10</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Adresregister</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL">
@@ -930,6 +1148,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel DCAT-AP VL 2.0</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/bodem-en-ondergrond/grondwatermeetnet/">
@@ -937,6 +1157,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-08-01</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-08-01</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Grondwatermeetnet</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteitsbudget/">
@@ -944,6 +1166,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-11-10</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-11-10</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Mobiliteitsbudget</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/overlijdensaangifte">
@@ -951,6 +1175,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-02-01</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-02-01</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Overlijdensaangifte</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/dienst-transactiemodel/">
@@ -958,6 +1184,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-02-07</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-02-07</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Dienst Transactiemodel</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/wegenregister/">
@@ -965,6 +1193,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-10</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-10</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Wegenregister</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/datakwaliteit">
@@ -972,6 +1202,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-06-01</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-06-01</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel OSLO Datakwaliteit</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/onbegroeid-voorkomen">
@@ -979,6 +1211,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein 2.0.0 - Applicatieprofiel Onbegroeid Voorkomen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/verkeersregelinstallatie/">
@@ -986,6 +1220,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Verkeersregelinstallatie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/begroeid-voorkomen/">
@@ -993,6 +1229,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein - Applicatieprofiel Begroeid Voorkomen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/subsidieregister/">
@@ -1000,13 +1238,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-01-01</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-01-01</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Besluit Subsidies</skos:prefLabel>
-    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/luchtkwaliteit/">
-    <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
-    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
-    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Luchtkwaliteit</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/observaties-en-metingen/">
@@ -1014,6 +1247,17 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Observaties en Metingen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/luchtkwaliteit/">
+    <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
+    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Luchtkwaliteit</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/schuldbeheer">
@@ -1021,6 +1265,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-15</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-15</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Schuldbeheer</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/infrastructuurelementen">
@@ -1028,6 +1274,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein 2.0.0 - Applicatieprofiel Infrastructuurelementen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/ruimtelijke-bereiken/">
@@ -1035,6 +1283,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Ruimtelijke Bereiken</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit/dienstregeling-en-planning/stopplaatsen/">
@@ -1042,6 +1292,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-04-21</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-04-21</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Mobiliteit: Dienstregeling en Planning Stopplaatsen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/riolering/">
@@ -1049,6 +1301,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Riolering</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/implementatiemodel/verkeersmeldingen/">
@@ -1056,6 +1310,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-06-04</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-06-04</dcterms:created>
     <skos:prefLabel xml:lang="nl">Implementatiemodel Verkeersmeldingen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie">
@@ -1063,6 +1319,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-04-28</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-04-28</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Cultuurparticipatie</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/begraafplaatsen">
@@ -1070,6 +1328,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein 2.0.0 - Applicatieprofiel Begraafplaatsen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/vegetatie-elementen">
@@ -1077,6 +1337,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-30</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein 2.0.0 - Applicatieprofiel Vegetatie-elementen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/kandidaatstandaard/2025-12-09/">
@@ -1084,6 +1346,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-09-10</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-09-10</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel DCAT-AP VL</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/begraafplaatsenbeheer/">
@@ -1091,13 +1355,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-27</dcterms:created>
     <skos:prefLabel xml:lang="nl">Openbaar Domein - Applicatieprofiel Begraafplaatsenbeheer</skos:prefLabel>
-    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/zone-30/">
-    <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
-    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
-    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Zone 30</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit/dienstregeling-en-planning/voertuigplanning/">
@@ -1105,6 +1364,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-04-21</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-04-21</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Mobiliteit: Dienstregeling en Planning Voertuigplanning</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/cultuur-en-jeugd/infrastructuur">
@@ -1112,6 +1373,17 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-03-21</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-03-21</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Cultuur- en Jeugdinfrastructuur</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/zone-30/">
+    <dcterms:type rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
+    <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Zone 30</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/ldes">
@@ -1119,6 +1391,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-12-01</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-12-01</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel LDES</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/id/conceptscheme/StandaardType">
@@ -1134,6 +1408,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-07-20</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-07-20</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Mandatendatabank</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/sensoren-en-bemonstering/">
@@ -1141,6 +1417,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Sensoren en Bemonstering</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DigitaleWatermeter">
@@ -1148,6 +1426,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-04-30</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-04-30</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Digitale Watermeter</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://wegenenverkeer.data.vlaanderen.be/doc/implementatiemodel/kasten-cabines-behuizing/">
@@ -1155,6 +1435,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-02</dcterms:created>
     <skos:prefLabel xml:lang="nl">wegenenverkeer implementatiemodel Kasten, cabines, behuizing</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/erosiepoel">
@@ -1162,6 +1444,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-23</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-23</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Erosiepoel</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/dossier">
@@ -1169,6 +1453,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-09-25</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-09-25</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Dossier</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-mobiliteit/">
@@ -1176,6 +1462,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-06-01</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-06-01</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Besluit Mobiliteit</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/leerinschrijfcredential/">
@@ -1183,6 +1471,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-04-08</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-04-08</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Leerinschrijfcredential</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/dienstverlening-aan-personen/">
@@ -1190,6 +1480,8 @@
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-03-19</dcterms:modified>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-03-19</dcterms:created>
     <skos:prefLabel xml:lang="nl">Applicatieprofiel Dienstverlening Aan Personen</skos:prefLabel>
+    <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/StandaardType"/>
+    <skos:broader rdf:resource="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel"/>
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
 </rdf:RDF>

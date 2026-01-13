@@ -5,9 +5,6 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX dvcs: <https://data.vlaanderen.be/id/conceptscheme/>
 
-# execute on the graph
-# sparql --graph https://data.vlaanderen.be/doc/concept/StandaardType/Vocabularium --graph https://data.vlaanderen.be/doc/concept/StandaardType/TechnischeStandaard --graph https://data.vlaanderen.be/doc/concept/StandaardType/Applicatieprofiel --graph https://data.vlaanderen.be/id/conceptscheme/StandaardType --graph https://data.vlaanderen.be/standaarden --query test.sparql --results RDF/XML
-
 CONSTRUCT {
   # conceptscheme
   ?cs a skos:ConceptScheme .
@@ -21,12 +18,15 @@ CONSTRUCT {
   ?c1 skos:definition ?c1definition .
   ?c1 skos:topConceptOf ?cs .
   ?c1 skos:narrower ?c2 .
+  ?c1 skos:inScheme ?cs .
   # standaard
   ?c2 a skos:Concept .
   ?c2 dcterms:type ?c1 .
   ?c2 dcterms:modified ?c2modified.
   ?c2 dcterms:created ?c2created.
   ?c2 skos:prefLabel ?c2title .
+  ?c2 skos:inScheme ?cs .
+  ?c2 skos:broader ?c1 .
 }
 WHERE {
   # conceptscheme
