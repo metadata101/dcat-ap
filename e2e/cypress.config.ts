@@ -1,5 +1,5 @@
-import { defineConfig } from "cypress";
-import { setupNodeEvents } from "./cypress/plugins";
+import { defineConfig } from "cypress"
+import { setupNodeEvents } from "./cypress/plugins"
 
 export default defineConfig({
   e2e: {
@@ -15,4 +15,4 @@ export default defineConfig({
     db_user: "geonetwork",
     db_password: "geonetwork",
   }
-});
+})

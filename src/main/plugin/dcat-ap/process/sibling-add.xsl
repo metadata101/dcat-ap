@@ -38,7 +38,7 @@
                                                      else concat($nodeUrl, 'api/records/', $catalogUuid, '#',$record/uuid)"/>
   </xsl:function>
 
-  <xsl:template match="dcat:Catalog[$associationType = 'catalog']">
+  <xsl:template match="dcat:Catalog[$associationType = 'isComposedOf']">
     <!-- All associated records and itself (to avoid linking to existing) -->
     <xsl:variable name="associatedUuids"
                   select="ancestor::rdf:RDF//dcat:CatalogRecord/dct:identifier/text()"/>

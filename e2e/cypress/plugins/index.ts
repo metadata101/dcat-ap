@@ -1,14 +1,14 @@
 /// <reference types="cypress" />
-import * as fs from "fs";
-import { Client, ClientConfig } from "pg";
+import * as fs from "fs"
+import { Client, ClientConfig } from "pg"
 
 type DbEnv = {
-  db_host?: string;
-  db_port?: string | number;
-  db_user?: string;
-  db_password?: string;
-  db_name?: string;
-};
+  db_host?: string
+  db_port?: string | number
+  db_user?: string
+  db_password?: string
+  db_name?: string
+}
 
 async function getDbClient(env: DbEnv): Promise<Client> {
   const dbConfig = {
@@ -17,19 +17,19 @@ async function getDbClient(env: DbEnv): Promise<Client> {
     user: env.db_user,
     password: env.db_password,
     database: env.db_name,
-  } satisfies ClientConfig;
+  } satisfies ClientConfig
 
-  const client = new Client(dbConfig);
-  await client.connect();
-  return client;
+  const client = new Client(dbConfig)
+  await client.connect()
+  return client
 }
 
 async function runSQLFile(env: DbEnv, file: string) {
-  const client = await getDbClient(env);
-  const sqlSetupFile = fs.readFileSync(`cypress/sql/${file}`, "utf-8");
-  await client.query(sqlSetupFile);
-  await client.end();
-  return true;
+  const client = await getDbClient(env)
+  const sqlSetupFile = fs.readFileSync(`cypress/sql/${file}`, "utf-8")
+  await client.query(sqlSetupFile)
+  await client.end()
+  return true
 }
 
 export function setupNodeEvents(
@@ -38,9 +38,12 @@ export function setupNodeEvents(
 ) {
   on("task", {
     resetDB() {
-      return runSQLFile(config.env, "reset.sql");
+      return Promise.all([
+        runSQLFile(config.env, "reset.sql"),
+        runSQLFile(config.env, "records.sql")
+      ])
     },
-  });
+  })
 
-  return config;
+  return config
 }
