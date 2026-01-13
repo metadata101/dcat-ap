@@ -1,0 +1,47 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dvcs: <https://data.vlaanderen.be/id/conceptscheme/>
+
+CONSTRUCT {
+  # conceptscheme
+  ?cs a skos:ConceptScheme .
+  ?cs skos:prefLabel ?cslabel .
+  ?cs skos:definition ?csdefinition .
+  ?cs skos:hasTopConcept ?c1 .
+  ?cs dcterms:title "OSLO Standaardenregister" .
+  # standaardtype
+  ?c1 a skos:Concept .
+  ?c1 skos:prefLabel ?c1label .
+  ?c1 skos:definition ?c1definition .
+  ?c1 skos:topConceptOf ?cs .
+  ?c1 skos:narrower ?c2 .
+  ?c1 skos:inScheme ?cs .
+  # standaard
+  ?c2 a skos:Concept .
+  ?c2 dcterms:type ?c1 .
+  ?c2 dcterms:modified ?c2modified.
+  ?c2 dcterms:created ?c2created.
+  ?c2 skos:prefLabel ?c2title .
+  ?c2 skos:inScheme ?cs .
+  ?c2 skos:broader ?c1 .
+}
+WHERE {
+  # conceptscheme
+  ?cs rdf:type skos:ConceptScheme .
+  ?cs skos:prefLabel ?cslabel .
+  ?cs skos:definition ?csdefinition .
+  # standaardtype
+  ?c1 skos:topConceptOf ?cs .
+  ?c1 skos:prefLabel ?c1label .
+  ?c1 skos:definition ?c1definition .
+  # standaard
+  ?c2 dcterms:type ?c1 .
+  ?c2 dcterms:modified ?c2modified.
+  ?c2 dcterms:created ?c2created.
+  ?c2 dcterms:title ?c2title .
+  # filter on types
+  FILTER (?c1 in (<https://data.vlaanderen.be/id/concept/StandaardType/Implementatiemodel>,<https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel>))
+}
