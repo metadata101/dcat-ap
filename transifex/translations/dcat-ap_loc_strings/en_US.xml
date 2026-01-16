@@ -47,6 +47,7 @@
     <string name="add-license">License</string>
     <string name="license-modellicentie-gratis">Model license for free reuse</string>
     <string name="license-cc0">Creative Commons Zero declaration</string>
+    <string name="license-cc4">Creative Commons Attribution 4.0 International</string>
     <string name="license-modellicentie-hergebruik">Model license for paid reuse</string>
     <string name="license-onvoorwaardelijk">Unconditional reuse</string>
     <string name="license-empty">Specify your own license...</string>

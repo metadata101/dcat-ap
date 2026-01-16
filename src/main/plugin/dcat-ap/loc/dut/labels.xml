@@ -31,9 +31,9 @@
     <btnLabel>Status</btnLabel>
   </element>
   <element name="adms:versionNotes">
-    <label>Versie nota\'s</label>
+    <label>Versie notas</label>
     <description>Een beschrijving van de wijzigingen/verschillen t.o.v. de vorige versie van je resource in een bepaalde taal (default is Nederlands).</description>
-    <btnLabel>Versie nota\'s</btnLabel>
+    <btnLabel>Versie notas</btnLabel>
   </element>
   <element name="dcat:DataService">
     <label>Data service</label>
