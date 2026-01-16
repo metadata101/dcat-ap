@@ -2211,6 +2211,27 @@
           </dct:LicenseDocument>
         </dct:license>
       </snippet>
+      <snippet label="license-cc4">
+        <dct:license>
+          <dct:LicenseDocument rdf:about="https://creativecommons.org/licenses/by/4.0/">
+            <dct:type>
+              <skos:Concept rdf:about="http://purl.org/adms/licencetype/Attribution">
+                <skos:prefLabel xml:lang="nl">Verplichte bronvermelding</skos:prefLabel>
+                <skos:prefLabel xml:lang="en">Attribution</skos:prefLabel>
+                <skos:prefLabel xml:lang="fr">Attribution</skos:prefLabel>
+                <skos:prefLabel xml:lang="de">Attribution</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0" />
+              </skos:Concept>
+            </dct:type>
+            <dct:title xml:lang="nl">Creative Commons – Naamsvermelding 4.0 Internationaal</dct:title>
+            <dct:title xml:lang="en">Creative Commons – Attribution 4.0 International</dct:title>
+            <dct:title xml:lang="fr">Creative Commons – Attribution 4.0 International</dct:title>
+            <dct:title xml:lang="de">Creative Commons – Namensnennung 4.0 International</dct:title>
+            <dct:description xml:lang="nl">Onder deze licentie doet de instantie geen afstand van haar intellectuele rechten, maar mag de data voor eender welk doel hergebruik worden, gratis maar mits naamsvermelding.</dct:description>
+            <dct:identifier>https://creativecommons.org/licenses/by/4.0/</dct:identifier>
+          </dct:LicenseDocument>
+        </dct:license>
+      </snippet>
       <snippet label="license-modellicentie-hergebruik">
         <dct:license>
           <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/modellicentie-hergebruik-tegen-vergoeding/v1.0">
