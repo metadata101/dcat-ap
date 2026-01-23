@@ -21,6 +21,7 @@
           <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
             <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
             <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
           </skos:Concept>
         </dct:language>
       </dcat:CatalogRecord>
