@@ -4,7 +4,24 @@
   <required.language.title>Taal van een Catalogus Record.</required.language.title>
   <required.language.assert>Het Catalogus Record definieert geen taal.</required.language.assert>
   <required.language.report>Het Catalogus Record definieert ten minste één taal.</required.language.report>
+
   <required.catalogtitle.title>Titel van een Catalogus.</required.catalogtitle.title>
   <required.catalogtitle.assert>De Catalogus heeft geen titel.</required.catalogtitle.assert>
   <required.catalogtitle.report>De Catalogus heeft op zijn minst één dct:title.</required.catalogtitle.report>
+
+  <required.dataservicetitle.count.title>Een DataService heeft steeds minstens 1 titel.</required.dataservicetitle.count.title>
+  <required.dataservicetitle.count.assert>Titel niet opgegeven (dct:title).</required.dataservicetitle.count.assert>
+  <required.dataservicetitle.count.report>Titel werd opgegeven (dct:title).</required.dataservicetitle.count.report>
+
+  <required.dataservicetitle.uniquelang.title>Een DataService heeft maximaal één titel per taal.</required.dataservicetitle.uniquelang.title>
+  <required.dataservicetitle.uniquelang.assert>Meerdere titels gevonden voor eenzelfde taal.</required.dataservicetitle.uniquelang.assert>
+  <required.dataservicetitle.uniquelang.report>Uniciteit van titel is in orde.</required.dataservicetitle.uniquelang.report>
+
+  <required.dataservicetitle.validstring.title>Een DataService titel moet tekst bevatten.</required.dataservicetitle.validstring.title>
+  <required.dataservicetitle.validstring.assert>Een lege titel werd gevonden.</required.dataservicetitle.validstring.assert>
+  <required.dataservicetitle.validstring.report>Titel bevat tekst.</required.dataservicetitle.validstring.report>
+
+  <required.dataserviceendpointURL.validstring.title>De endpointURL van een DataService moet een IRI bevatten.</required.dataserviceendpointURL.validstring.title>
+  <required.dataserviceendpointURL.validstring.assert>De opgegeven endpointURL is geen geldige IRI.</required.dataserviceendpointURL.validstring.assert>
+  <required.dataserviceendpointURL.validstring.report>De endpointURL is een geldige IRI.</required.dataserviceendpointURL.validstring.report>
 </strings>
