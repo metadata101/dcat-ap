@@ -945,7 +945,7 @@
               <snippet>
                 <dct:accrualPeriodicity>
                   <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/frequency"/>
                   </skos:Concept>
                 </dct:accrualPeriodicity>
               </snippet>
