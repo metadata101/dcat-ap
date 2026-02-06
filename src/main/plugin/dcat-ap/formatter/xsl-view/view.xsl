@@ -28,17 +28,20 @@
                 xmlns:dc="http://purl.org/dc/elements/1.1/"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:dqv="http://www.w3.org/ns/dqv#"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
+                xmlns:oa="http://www.w3.org/ns/oa#"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
                 xmlns:dcatap="http://data.europa.eu/r5r/"
                 xmlns:spdx="http://spdx.org/rdf/terms#"
                 xmlns:schema="http://schema.org/"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
                 xmlns:gn-fn-render="http://geonetwork-opensource.org/xsl/functions/render"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
@@ -386,6 +389,7 @@
     <xsl:variable name="sectionContent">
       <xsl:apply-templates mode="render-view" select="section|field"/>
     </xsl:variable>
+
     <!-- Hide sections if empty -->
     <xsl:if test="normalize-space($sectionContent)">
       <div id="gn-section-{generate-id()}" class="gn-tab-content">
@@ -433,7 +437,7 @@
   </xsl:template>
 
   <!-- Field with lang : display only field of current lang or first one if not exist -->
-  <xsl:template mode="render-field" match="dct:title|dct:description|foaf:name|adms:versionNotes">
+  <xsl:template mode="render-field" match="dct:title|dct:description|foaf:name|adms:versionNotes|foaf:firstName|foaf:surname">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <xsl:variable name="name" select="name()"/>
@@ -549,14 +553,15 @@
     </xsl:if>
   </xsl:template>
 
+  <!-- render the element name (key) and the @rdf:resource (value) -->
   <xsl:template mode="render-field"
-                match="dcat:accessURL|dcat:downloadURL|dcat:landingPage">
+                match="dcat:accessURL|dcat:downloadURL|dcat:landingPage|foaf:mbox|foaf:phone|foaf:workplaceHomepage">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string(@rdf:resource)"/>
     <xsl:if test="normalize-space($stringValue) != ''">
       <tr>
         <th style="{$thStyle}">
-          <xsl:value-of select="gn-fn-metadata:getLabel($schema, 'rdf:resource', $labels, name(.), '', concat(gn-fn-dcat-ap:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)), '/@rdf:resource'))/label" />
+          <xsl:value-of select="gn-fn-metadata:getLabel($schema, name(.), $labels, name(..), '', gn-fn-dcat-ap:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)))/label" />
         </th>
         <td style="{$tdStyle}">
           <xsl:apply-templates mode="render-url" select="@rdf:resource" />
@@ -570,7 +575,9 @@
   <xsl:template mode="render-field" match="dct:type|dct:accrualPeriodicity|dcat:theme|dct:language|dct:format|dcat:mediaType|
                                            adms:status|mdcat:levensfase|mdcat:ontwikkelingstoestand|dct:accessRights|dcat:compressFormat|
                                            dcat:packageFormat|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut|
-                                           dcatap:hvdCategory">
+                                           dcatap:hvdCategory|
+                                           mobilitydcatap:networkCoverage|mobilitydcatap:transportMode| mobilitydcatap:mobilityTheme|
+                                           mobilitydcatap:georeferencingMethod|mobilitydcatap:intendedInformationService">
     <xsl:param name="xpath"/>
     <xsl:variable name="name" select="name()"/>
     <xsl:if test="not(preceding-sibling::*[name(.) = $name and position()=1])">
@@ -597,6 +604,25 @@
           </td>
         </tr>
       </xsl:for-each-group>
+    </xsl:if>
+  </xsl:template>
+
+  <!-- element that include an ao:hasBody -->
+  <xsl:template mode="render-field" match="mobilitydcatap:assessmentResult|dqv:hasQualityAnnotation">
+    <xsl:param name="xpath"/>
+    <xsl:variable name="stringValue" select="string(oa:hasBody/@rdf:resource)"/>
+    <xsl:if test="normalize-space($stringValue) != ''">
+      <tr>
+        <th style="{$thStyle}">
+          <xsl:value-of select="gn-fn-metadata:getLabel($schema, name(.), $labels, name(..), '', gn-fn-dcat-ap:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)))/label" />
+        </th>
+        <td style="{$tdStyle}">
+          <xsl:apply-templates mode="render-url" select="oa:hasBody/@rdf:resource" />
+          <xsl:if test="dct:issued">
+            (<xsl:value-of select="gn-fn-metadata:getLabel($schema, 'dct:issued', $labels)/label "/><xsl:value-of select="' '"/><xsl:value-of select="dct:issued"/>)
+          </xsl:if>
+        </td>
+      </tr>
     </xsl:if>
   </xsl:template>
 
