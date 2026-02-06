@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <schematron.title>Mobiliteit - Aanbevolen</schematron.title>
+  <recommended.dcat_theme_tran.title>DCAT thema</recommended.dcat_theme_tran.title>
+  <recommended.dcat_theme_tran.report>Het Transport thema werd gebruikt</recommended.dcat_theme_tran.report>
+  <recommended.dcat_theme_tran.assert>In de meeste gevallen wordt aangenomen dat de relevante waarde voor het thema van dataportalen in het domein Mobiliteit "Transport" is.</recommended.dcat_theme_tran.assert>
 </strings>

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <schematron.title>Mobility - Empfohlen</schematron.title>
+  <recommended.dcat_theme_tran.title>DCAT Thema</recommended.dcat_theme_tran.title>
+  <recommended.dcat_theme_tran.report>Das Thema Transport wurde verwendet</recommended.dcat_theme_tran.report>
+  <recommended.dcat_theme_tran.assert>In den meisten Fällen wird davon ausgegangen, dass der relevante Wert für das Thema Datenportale im Mobilitätsbereich „Transport“ lautet.</recommended.dcat_theme_tran.assert>
 </strings>
