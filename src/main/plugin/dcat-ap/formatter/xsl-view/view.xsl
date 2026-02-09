@@ -686,7 +686,7 @@
 
   <xsl:template mode="render-field" match="dcat:contactPoint|dct:publisher|dct:rightsHolder|dct:provenance|foaf:page|dct:temporal|
                                            dct:license|dct:rights|dct:conformsTo|dcat:distribution|adms:sample|
-                                           vcard:hasAddress|adms:identifier|dct:creator|dcat:qualifiedRelation">
+                                           vcard:hasAddress|adms:identifier|dct:creator|dcat:qualifiedRelation|adms:Identifier">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <!-- Special case for dct:license with an empty dct:LicenseDocument with only @rdf:about or for dcat:contactPoint with only vcard:hasEmail and vcard:hasURL-->
