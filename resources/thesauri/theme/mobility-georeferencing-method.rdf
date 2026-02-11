@@ -46,9 +46,10 @@
     <skos:inScheme
       xmlns:terms="http://purl.org/dc/terms/"
                    rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
-    <skos:prefLabel
-      xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">ALERT-C
-    </skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">ALERT-C (LCL)</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">ALERT-C (LCL)</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">ALERT-C (LCL)</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">ALERT-C (LCL)</skos:prefLabel>
     <skos:topConceptOf
       xmlns:terms="http://purl.org/dc/terms/"
                        rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
@@ -58,9 +59,10 @@
     <skos:inScheme
       xmlns:terms="http://purl.org/dc/terms/"
                    rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
-    <skos:prefLabel
-      xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">Geocoordinates
-    </skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">Geocoordinates</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">Geocoördinaten</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">Coordonnées géographiques</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">Geokoördinaten</skos:prefLabel>
     <skos:topConceptOf
       xmlns:terms="http://purl.org/dc/terms/"
                        rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
@@ -70,9 +72,10 @@
     <skos:inScheme
       xmlns:terms="http://purl.org/dc/terms/"
                    rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
-    <skos:prefLabel
-      xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">GML
-    </skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">GML</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">GML</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">GML</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">GML</skos:prefLabel>
     <skos:topConceptOf
       xmlns:terms="http://purl.org/dc/terms/"
                        rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
@@ -82,9 +85,10 @@
     <skos:inScheme
       xmlns:terms="http://purl.org/dc/terms/"
                    rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
-    <skos:prefLabel
-      xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">ISO 19148
-    </skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">ISO 19148</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">ISO 19148</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">ISO 19148</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">ISO 19148</skos:prefLabel>
     <skos:topConceptOf
       xmlns:terms="http://purl.org/dc/terms/"
                        rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
@@ -94,9 +98,10 @@
     <skos:inScheme
       xmlns:terms="http://purl.org/dc/terms/"
                    rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
-    <skos:prefLabel
-      xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">OpenLR
-    </skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">OpenLR</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">OpenLR</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">OpenLR</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">OpenLR</skos:prefLabel>
     <skos:topConceptOf
       xmlns:terms="http://purl.org/dc/terms/"
                        rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
@@ -106,9 +111,10 @@
     <skos:inScheme
       xmlns:terms="http://purl.org/dc/terms/"
                    rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
-    <skos:prefLabel
-      xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">Other
-    </skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">Other</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">Andere</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">Autre</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">Anderen</skos:prefLabel>
     <skos:topConceptOf
       xmlns:terms="http://purl.org/dc/terms/"
                        rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
@@ -118,9 +124,10 @@
     <skos:inScheme
       xmlns:terms="http://purl.org/dc/terms/"
                    rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
-    <skos:prefLabel
-      xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">TPEG-LOC
-    </skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">TPEG-LOC</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">TPEG-LOC</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">TPEG-LOC</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">TPEG-LOC</skos:prefLabel>
     <skos:topConceptOf
       xmlns:terms="http://purl.org/dc/terms/"
       rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
