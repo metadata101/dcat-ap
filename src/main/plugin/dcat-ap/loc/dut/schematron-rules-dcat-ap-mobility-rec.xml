@@ -4,4 +4,7 @@
   <recommended.dcat_theme_tran.title>DCAT thema</recommended.dcat_theme_tran.title>
   <recommended.dcat_theme_tran.report>Het Transport thema werd gebruikt</recommended.dcat_theme_tran.report>
   <recommended.dcat_theme_tran.assert>In de meeste gevallen wordt aangenomen dat de relevante waarde voor het thema van dataportalen in het domein Mobiliteit "Transport" is.</recommended.dcat_theme_tran.assert>
+  <property.removed.title>De eigenschap #element in #context werd als verwijderd opgegeven in mobilityDCAT-AP.</property.removed.title>
+  <property.removed.assert>De eigenschap #element werd gevonden in #context.</property.removed.assert>
+  <property.removed.report>De eigenschap #element werd niet gevonden in #context.</property.removed.report>
 </strings>

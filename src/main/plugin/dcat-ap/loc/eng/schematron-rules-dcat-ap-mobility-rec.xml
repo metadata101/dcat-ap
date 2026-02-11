@@ -4,4 +4,7 @@
   <recommended.dcat_theme_tran.title>DCAT theme</recommended.dcat_theme_tran.title>
   <recommended.dcat_theme_tran.report>The Transport theme was used</recommended.dcat_theme_tran.report>
   <recommended.dcat_theme_tran.assert>In most cases, it is assumed that the relevant value for mobility data portals theme is Transport. Check the DCAT theme.</recommended.dcat_theme_tran.assert>
+  <property.removed.title>The property #element in #context was removed in mobilityDCAT-AP.</property.removed.title>
+  <property.removed.assert>Property #element was found in #context.</property.removed.assert>
+  <property.removed.report>Property #element was not found in #context.</property.removed.report>
 </strings>

@@ -4,4 +4,7 @@
   <recommended.dcat_theme_tran.title>DCAT Thema</recommended.dcat_theme_tran.title>
   <recommended.dcat_theme_tran.report>Das Thema Transport wurde verwendet</recommended.dcat_theme_tran.report>
   <recommended.dcat_theme_tran.assert>In den meisten Fällen wird davon ausgegangen, dass der relevante Wert für das Thema Datenportale im Mobilitätsbereich „Transport“ lautet.</recommended.dcat_theme_tran.assert>
+  <property.removed.title>Die Eigenschaft #element in #context wurde in mobilityDCAT-AP entfernt.</property.removed.title>
+  <property.removed.assert>Die Eigenschaft #element wurde in #context gefunden.</property.removed.assert>
+  <property.removed.report>Die Eigenschaft #element wurde in #context nicht gefunden.</property.removed.report>
 </strings>
