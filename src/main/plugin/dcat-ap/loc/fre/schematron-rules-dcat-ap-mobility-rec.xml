@@ -4,4 +4,7 @@
   <recommended.dcat_theme_tran.title>DCAT thème</recommended.dcat_theme_tran.title>
   <recommended.dcat_theme_tran.report>Le thème Transport a été utilisé</recommended.dcat_theme_tran.report>
   <recommended.dcat_theme_tran.assert>Dans la plupart des cas, on considère que la valeur pertinente pour le sujet des portails de données dans le domaine de la mobilité est «Transport».</recommended.dcat_theme_tran.assert>
+  <property.removed.title>La propriété #element dans #context a été supprimée dans mobilityDCAT-AP.</property.removed.title>
+  <property.removed.assert>La propriété #element a été trouvée dans #context.</property.removed.assert>
+  <property.removed.report>La propriété #element n’a pas été trouvée dans #context.</property.removed.report>
 </strings>
