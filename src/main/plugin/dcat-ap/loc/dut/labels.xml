@@ -1102,8 +1102,8 @@
     </helper>
   </element>
   <element name="geodcatap:referenceSystem">
-    <label>Reference system</label>
-    <description>The spatial reference system used in the delivered content. To be specified via the “EPSG coordinate reference systems” register operated by OGC.</description>
+    <label>Referentiesysteem</label>
+    <description>Het ruimtelijke referentiesysteem dat in de geleverde inhoud wordt gebruikt. Dit dient te worden gespecificeerd via het register "EPSG-coördinatenreferentiesystemen" dat wordt beheerd door OGC.</description>
   </element>
   <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>Hoogwaardige Dataset (HVD) Categorie</label>

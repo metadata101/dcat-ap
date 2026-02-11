@@ -29,6 +29,7 @@
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:dqv="http://www.w3.org/ns/dqv#"
+                xmlns:geodcatap="http://data.europa.eu/930/"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -684,9 +685,10 @@
     </tr>
   </xsl:template>
 
+  <!-- render nested content -->
   <xsl:template mode="render-field" match="dcat:contactPoint|dct:publisher|dct:rightsHolder|dct:provenance|foaf:page|dct:temporal|
                                            dct:license|dct:rights|dct:conformsTo|dcat:distribution|adms:sample|
-                                           vcard:hasAddress|adms:identifier|dct:creator|dcat:qualifiedRelation|adms:Identifier">
+                                           vcard:hasAddress|adms:identifier|dct:creator|dcat:qualifiedRelation|adms:Identifier|geodcatap:referenceSystem">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <!-- Special case for dct:license with an empty dct:LicenseDocument with only @rdf:about or for dcat:contactPoint with only vcard:hasEmail and vcard:hasURL-->
