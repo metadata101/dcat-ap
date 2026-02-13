@@ -4,7 +4,24 @@
   <required.language.title>Langue d'une donnée catalogue.</required.language.title>
   <required.language.assert>L'enregistrement du catalogue ne définit pas de langue.</required.language.assert>
   <required.language.report>L'enregistrement du catalogue définit au moins une langue.</required.language.report>
+
   <required.catalogtitle.title>Titre d'un catalogue.</required.catalogtitle.title>
   <required.catalogtitle.assert>Le catalogue n'a pas de titre.</required.catalogtitle.assert>
   <required.catalogtitle.report>Le catalogue contient au moins un dct:title.</required.catalogtitle.report>
+
+  <required.dataservicetitle.count.title>Un DataService a toujours au moins un titre.</required.dataservicetitle.count.title>
+  <required.dataservicetitle.count.assert>Titre non fourni (dct:title).</required.dataservicetitle.count.assert>
+  <required.dataservicetitle.count.report>Un titre a été fourni (dct:title).</required.dataservicetitle.count.report>
+
+  <required.dataservicetitle.uniquelang.title>Un DataService a au maximum un titre par langue.</required.dataservicetitle.uniquelang.title>
+  <required.dataservicetitle.uniquelang.assert>Plusieurs titres trouvés pour une même langue.</required.dataservicetitle.uniquelang.assert>
+  <required.dataservicetitle.uniquelang.report>L’unicité du titre est correcte.</required.dataservicetitle.uniquelang.report>
+
+  <required.dataservicetitle.validstring.title>Un titre de DataService doit contenir du texte.</required.dataservicetitle.validstring.title>
+  <required.dataservicetitle.validstring.assert>Un titre vide a été trouvé.</required.dataservicetitle.validstring.assert>
+  <required.dataservicetitle.validstring.report>Le titre contient du texte.</required.dataservicetitle.validstring.report>
+
+  <required.dataserviceendpointURL.validstring.title>L’endpointURL d’un DataService doit contenir un IRI.</required.dataserviceendpointURL.validstring.title>
+  <required.dataserviceendpointURL.validstring.assert>L’endpointURL fournie n’est pas un IRI valide.</required.dataserviceendpointURL.validstring.assert>
+  <required.dataserviceendpointURL.validstring.report>L’endpointURL est un IRI valide.</required.dataserviceendpointURL.validstring.report>
 </strings>

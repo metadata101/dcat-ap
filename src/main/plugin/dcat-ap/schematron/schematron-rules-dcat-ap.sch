@@ -43,5 +43,42 @@
     </sch:rule>
   </sch:pattern>
 
+  <!-- DataService title should be present and have valid content. -->
+  <sch:pattern>
+    <sch:title>$loc/strings/required.dataservicetitle.count.title</sch:title>
+    <sch:rule context="//dcat:DataService">
+      <sch:let name="validMin" value="count(dct:title) &gt;= 1"/>
+      <sch:assert test="$validMin">$loc/strings/required.dataservicetitle.count.assert</sch:assert>
+      <sch:report test="$validMin">$loc/strings/required.dataservicetitle.count.report</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>$loc/strings/required.dataservicetitle.uniquelang.title</sch:title>
+    <sch:rule context="//dcat:DataService/dct:title">
+      <sch:let name="current" value="."/>
+      <sch:let name="isUniqueLang" value="count(preceding-sibling::dct:title[string() = string($current) and @xml:lang = $current/@xml:lang]) = 0"/>
+      <sch:assert test="$isUniqueLang">$loc/strings/required.dataservicetitle.uniquelang.assert</sch:assert>
+      <sch:report test="$isUniqueLang">$loc/strings/required.dataservicetitle.uniquelang.report</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>$loc/strings/required.dataservicetitle.validstring.title</sch:title>
+    <sch:rule context="//dcat:DataService/dct:title">
+      <sch:let name="isLiteral" value="normalize-space(.) != ''"/>
+      <sch:let name="hasLang" value="normalize-space(@xml:lang) != ''"/>
+      <sch:assert test="$isLiteral and $hasLang">$loc/strings/required.dataservicetitle.validstring.assert</sch:assert>
+      <sch:report test="$isLiteral and $hasLang">$loc/strings/required.dataservicetitle.validstring.report</sch:report>
+    </sch:rule>
+  </sch:pattern>
 
+  <!-- DataService should have a valid endpointURL. -->
+  <sch:pattern>
+    <sch:title>$loc/strings/required.dataserviceendpointURL.validstring.title</sch:title>
+    <sch:rule context="//dcat:DataService/dcat:endpointURL">
+      <sch:let name="resource" value="@rdf:resource"/>
+      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
+      <sch:assert test="$validClass">$loc/strings/required.dataserviceendpointURL.validstring.assert</sch:assert>
+      <sch:report test="$validClass">$loc/strings/required.dataserviceendpointURL.validstring.report</sch:report>
+    </sch:rule>
+  </sch:pattern>
 </sch:schema>
