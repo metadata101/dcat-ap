@@ -343,25 +343,26 @@
     <label>Documentatie</label>
     <description>Documentatie</description>
     <btnLabel>Documentatie</btnLabel>
-  </element><element name="foaf:workplaceHomepage">
-    <label>URL</label>
-    <description>The Web site of the agent.</description>
+  </element>
+  <element name="foaf:workplaceHomepage">
+    <label>Werkplek startpagina</label>
+    <description>The startpagina van de werkplek van de agent.</description>
   </element>
   <element name="foaf:firstName">
-    <label>First name</label>
-    <description>The first name of the agent.</description>
+    <label>Voornaam</label>
+    <description>De voornaam van de agent.</description>
   </element>
   <element name="foaf:surname">
-    <label>Surname</label>
-    <description>The surname of the agent.</description>
+    <label>Achternaam</label>
+    <description>De achternaam van de agent.</description>
   </element>
   <element name="foaf:phone">
-    <label>Phone</label>
-    <description>The phone number of the agent, specified using fully qualified tel: URI scheme RFC3966.</description>
+    <label>Telefoon</label>
+    <description>Het telefoonnummer van de agent, gespecificeerd met behulp van het volledig gekwalificeerde tel: URI-schema RFC3966.</description>
   </element>
   <element name="foaf:mbox">
-    <label>Email</label>
-    <description>The email address of the agent, specified using fully qualified mailto: URI scheme RFC6068.</description>
+    <label>E-mail</label>
+    <description>Het e-mailadres van de agent, gespecificeerd met behulp van het volledig gekwalificeerde mailto: URI-schema RFC6068.</description>
   </element>
   <element name="org:memberOf">
     <label>Member of</label>
@@ -1046,9 +1047,9 @@
     <btnLabel>Dekking netwerk</btnLabel>
   </element>
   <element name="mobilitydcatap:georeferencingMethod">
-    <label>Georeferencing method</label>
-    <description>This property SHOULD be used to specify the georeferencing method used in the dataset.</description>
-    <btnLabel>Georeferencing method</btnLabel>
+    <label>Georeferentiemethode</label>
+    <description>Deze eigenschap MOET worden gebruikt om de georeferentiemethode te specificeren die in de dataset is gebruikt.</description>
+    <btnLabel>Georeferentiemethode</btnLabel>
   </element>
   <element name="mobilitydcatap:intendedInformationService">
     <label>Bedoelde informatie service</label>
@@ -1078,9 +1079,8 @@
     <description>The technical data grammar format of the delivered content within the Distribution. It describes the standard on top of the elementary syntax that describe data structures in the dataset.</description>
   </element>
   <element name="mobilitydcatap:assessmentResult">
-    <label>Assessment result</label>
-    <description>The results and outcomes from an assessment process by an external organisation, e.g., a National Body in the context of EU Delegated Regulations. EU Delegated Regulations require Member States to set up procedures to assess the compliance of the Delegated Regulations, e.g. regarding the provisioning of data via a NAP. These assessment processes are handled by National Bodies and installed individually in each Member State.
-      The property may point to the most recent assessment procedure, including its date, its result as a free-text and/or a link referring to an assessment report online.</description>
+    <label>Beoordelingsresultaat</label>
+    <description>De resultaten en uitkomsten van een beoordelingsproces door een externe organisatie, e.g., een nationale instantie in het kader van gedelegeerde EU-verordeningen. Gedelegeerde EU-verordeningen vereisen dat lidstaten procedures instellen om de naleving van de gedelegeerde verordeningen te beoordelen, bijvoorbeeld met betrekking tot de verstrekking van gegevens via een NAP. Deze beoordelingsprocessen worden uitgevoerd door nationale instanties en zijn per lidstaat afzonderlijk geïmplementeerd. De eigenschap kan verwijzen naar de meest recente beoordelingsprocedure, inclusief de datum, het resultaat als vrije tekst en/of een link naar een online beoordelingsrapport.</description>
   </element>
   <element name="mobilitydcatap:dataFormatNotes">
     <label>Data format notes</label>
@@ -1091,8 +1091,8 @@
     <description>The result of the latest assessment procedure, in form of a URL linking to further details or results. Alternatively, textual information is provided using the Embedded Textual Body construction of the Web Annotation Data Model, which allows to specify text formats and languages which might be relevant for multilingual purposes.</description>
   </element>
   <element name="dqv:hasQualityAnnotation">
-    <label>Quality annotation</label>
-    <description>An annotation about any quality aspects regarding the delivered content, in particular methods, metrics/indicators and results of a quality assessment in the responsibility of the Data Owner.</description>
+    <label>Kwaliteitsannotatie</label>
+    <description>Een toelichting over alle kwaliteitsaspecten met betrekking tot de geleverde inhoud, in het bijzonder methoden, meetmethoden/indicatoren en resultaten van een kwaliteitsbeoordeling waarvoor de Data Owner verantwoordelijk is.</description>
   </element>
   <element name="cnt:characterEncoding">
     <label>Character encoding</label>
@@ -1102,8 +1102,8 @@
     </helper>
   </element>
   <element name="geodcatap:referenceSystem">
-    <label>Reference system</label>
-    <description>The spatial reference system used in the delivered content. To be specified via the “EPSG coordinate reference systems” register operated by OGC.</description>
+    <label>Referentiesysteem</label>
+    <description>Het ruimtelijke referentiesysteem dat in de geleverde inhoud wordt gebruikt. Dit dient te worden gespecificeerd via het register "EPSG-coördinatenreferentiesystemen" dat wordt beheerd door OGC.</description>
   </element>
   <element name="dcatap:hvdCategory" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
     <label>Hoogwaardige Dataset (HVD) Categorie</label>
