@@ -772,6 +772,14 @@
             </template>
           </action>
 
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"
+                 or="theme"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:keyword"
+                 or="keyword"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+
           <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher"/>
           <action type="add" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
                        if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:publisher) = 0">
@@ -795,10 +803,6 @@
             </template>
           </action>
 
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:keyword"
-                 or="keyword"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:identifier"
                  or="identifier"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
@@ -818,6 +822,7 @@
               </snippet>
             </template>
           </action>-->
+
         </section>
 
         <section name="vl-section-metadatadcat"
@@ -860,10 +865,6 @@
               </snippet>
             </template>
           </action>
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"
-                 or="theme"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:theme"
                  if="$p2 = ('DCAT-AP-VL', 'metadata-dcat')"
@@ -944,7 +945,7 @@
               <snippet>
                 <dct:accrualPeriodicity>
                   <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/frequency"/>
                   </skos:Concept>
                 </dct:accrualPeriodicity>
               </snippet>

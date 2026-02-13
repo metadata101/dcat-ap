@@ -345,7 +345,7 @@
     <btnLabel>Documentation</btnLabel>
   </element>
   <element name="foaf:workplaceHomepage">
-    <label>URL</label>
+    <label>Workplace homepage</label>
     <description>The Web site of the agent.</description>
   </element>
   <element name="foaf:firstName">

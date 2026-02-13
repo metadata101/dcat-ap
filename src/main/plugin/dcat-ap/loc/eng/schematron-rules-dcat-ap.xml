@@ -4,7 +4,24 @@
   <required.language.title>Language of a CatalogRecord.</required.language.title>
   <required.language.assert>The CatalogRecord does not define a language.</required.language.assert>
   <required.language.report>The CatalogRecord has at least one dct:language.</required.language.report>
+
   <required.catalogtitle.title>Title of a Catalog.</required.catalogtitle.title>
   <required.catalogtitle.assert>The Catalog does not have a title.</required.catalogtitle.assert>
   <required.catalogtitle.report>The Catalog has at least one dct:title.</required.catalogtitle.report>
+
+  <required.dataservicetitle.count.title>A DataService always has at least one title.</required.dataservicetitle.count.title>
+  <required.dataservicetitle.count.assert>Title not provided (dct:title).</required.dataservicetitle.count.assert>
+  <required.dataservicetitle.count.report>Title was provided (dct:title).</required.dataservicetitle.count.report>
+
+  <required.dataservicetitle.uniquelang.title>A DataService has at most one title per language.</required.dataservicetitle.uniquelang.title>
+  <required.dataservicetitle.uniquelang.assert>Multiple titles found for the same language.</required.dataservicetitle.uniquelang.assert>
+  <required.dataservicetitle.uniquelang.report>Title uniqueness is correct.</required.dataservicetitle.uniquelang.report>
+
+  <required.dataservicetitle.validstring.title>A DataService title must contain text.</required.dataservicetitle.validstring.title>
+  <required.dataservicetitle.validstring.assert>An empty title was found.</required.dataservicetitle.validstring.assert>
+  <required.dataservicetitle.validstring.report>The title contains text.</required.dataservicetitle.validstring.report>
+
+  <required.dataserviceendpointURL.validstring.title>The endpointURL of a DataService must contain an IRI.</required.dataserviceendpointURL.validstring.title>
+  <required.dataserviceendpointURL.validstring.assert>The provided endpointURL is not a valid IRI.</required.dataserviceendpointURL.validstring.assert>
+  <required.dataserviceendpointURL.validstring.report>The endpointURL is a valid IRI.</required.dataserviceendpointURL.validstring.report>
 </strings>
