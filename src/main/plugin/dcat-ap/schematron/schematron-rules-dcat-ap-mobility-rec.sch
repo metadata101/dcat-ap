@@ -125,10 +125,10 @@
     <sch:param name="context" value="dcat:Dataset"/>
     <sch:param name="element" value="dct:provenance "/>
   </sch:pattern>"
-  <sch:pattern Dataseta="PropertyRemovedCheck" id="Dataset_source ">
+  <sch:pattern is-a="PropertyRemovedCheck" id="Dataset_source ">
     <sch:param name="context" value="dcat:Dataset"/>
     <sch:param name="element" value="dct:source "/>
-  </sch:pattern>"
+  </sch:pattern>
   <sch:pattern is-a="PropertyRemovedCheck" id="Dataset_type">
     <sch:param name="context" value="dcat:Dataset"/>
     <sch:param name="element" value="dct:type"/>

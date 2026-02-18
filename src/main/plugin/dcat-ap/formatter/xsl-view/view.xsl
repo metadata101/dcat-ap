@@ -29,6 +29,7 @@
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:dqv="http://www.w3.org/ns/dqv#"
+                xmlns:cnt="http://www.w3.org/2011/content#"
                 xmlns:geodcatap="http://data.europa.eu/930/"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
@@ -96,6 +97,7 @@
   <!-- Styling -->
   <xsl:variable name="thStyle" select="'border-style: solid; border-color: #ddd; border-width: 1px 0 1px 1px; width: 20%; padding: 8px; line-height: 1.428571429; vertical-align: top; box-sizing: border-box; text-align: left; min-width: 100px'"/>
   <xsl:variable name="tdStyle" select="'border-style: solid; border-color: #ddd; border-width: 1px 1px 1px 0; padding-left: 0; width: 80%; word-break: break-word; padding: 8px; line-height: 1.428571429; vertical-align: top; box-sizing: border-box;'"/>
+  <xsl:variable name="aboveTableHeader" select="'line-height: 1.428571429; vertical-align: top; box-sizing: border-box; text-align: left; min-width: 100px; font-weight: bold; font-size: 14px; padding-bottom: 10px; display: inline-block; margin-top: 7px;'"/>
 
   <!-- Overwrite the default 'render-toc' template -->
   <xsl:template mode="render-toc" match="view" priority="10">
@@ -268,6 +270,7 @@
     </xsl:if>
   </xsl:template>
 
+  <!-- loop over, e.g., dcat:distribution -->
   <xsl:template mode="render-view" match="section[@forEach]" priority="10">
     <xsl:param name="base" select="$metadata"/>
     <xsl:variable name="localBase">
@@ -284,6 +287,7 @@
     <xsl:variable name="sectionContent">
       <xsl:for-each select="$localBase/*">
         <xsl:variable name="rendered">
+          <!-- this renders a distribution: base should be the distribution, and the context should be the fields -->
           <xsl:apply-templates mode="render-view" select="$toMatch">
             <!-- The default behaviour uses a container element, which does not work for the dcat:CatalogRecord case. Also see the render-view for fields, overridden in this file, for a related change. -->
             <xsl:with-param name="base" select="if (starts-with($forEachXPath, '/rdf:RDF/dcat:CatalogRecord')) then . else ./*"/>
@@ -291,8 +295,21 @@
         </xsl:variable>
         <xsl:if test="normalize-space($rendered) != ''">
           <table style="box-sizing: border-box; width: 100%; max-width: 100%; margin-bottom: 20px; background-color: transparent; border-collapse: collapse; border-spacing: 0;"
-                 class="table table-striped" >
-            <xsl:copy-of select="$rendered"/>
+                 class="table table-striped">
+            <xsl:for-each select="$rendered/*">
+              <xsl:choose>
+                <xsl:when test="name(.) = 'div'">
+                  <tr>
+                    <td colspan="2">
+                      <xsl:copy-of select="."/>
+                    </td>
+                  </tr>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:copy-of select="."/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:for-each>
           </table>
         </xsl:if>
       </xsl:for-each>
@@ -387,8 +404,11 @@
   </xsl:template>
 
   <xsl:template mode="render-view" match="section[not(@xpath) and not(@forEach)]">
+    <xsl:param name="base" select="$metadata"/>
     <xsl:variable name="sectionContent">
-      <xsl:apply-templates mode="render-view" select="section|field"/>
+      <xsl:apply-templates mode="render-view" select="section|field">
+        <xsl:with-param name="base" select="$base"/>
+      </xsl:apply-templates>
     </xsl:variable>
 
     <!-- Hide sections if empty -->
@@ -438,7 +458,7 @@
   </xsl:template>
 
   <!-- Field with lang : display only field of current lang or first one if not exist -->
-  <xsl:template mode="render-field" match="dct:title|dct:description|foaf:name|adms:versionNotes|foaf:firstName|foaf:surname">
+  <xsl:template mode="render-field" match="dct:title|dct:description|foaf:name|adms:versionNotes|foaf:firstName|foaf:surname|cnt:characterEncoding">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <xsl:variable name="name" select="name()"/>
@@ -471,8 +491,8 @@
   <xsl:template mode="render-field" match="dct:created|dct:issued|dct:modified|dct:identifier|skos:notation|schema:startDate|
                                            schema:endDate|vcard:street-address|vcard:locality|vcard:postal-code|vcard:country-name|
                                            vcard:hasTelephone|vcard:fn|vcard:organization-name|skos:prefLabel|dcat:version|
-                                           adms:versionNotes|dcat:byteSize|dcat:hadRole|dcat:spatialResolutionInMeters|dcat:temporalResolution|mdcat:stars|
-                                           owl:versionInfo"> <!-- DCAT-AP v2 compatibility -->
+                                           adms:versionNotes|dcat:byteSize|dcat:hadRole|dcat:spatialResolutionInMeters|dcat:temporalResolution|mdcat:stars|owl:versionInfo|
+                                           locn:fullAddress|locn:poBox|locn:thoroughfare|locn:locatorDesignator|locn:locatorName|locn:postName|locn:postCode|locn:adminUnitL1|locn:adminUnitL2|locn:addressArea">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <xsl:if test="normalize-space($stringValue) != ''">
@@ -577,8 +597,10 @@
                                            adms:status|mdcat:levensfase|mdcat:ontwikkelingstoestand|dct:accessRights|dcat:compressFormat|
                                            dcat:packageFormat|dct:subject|mdcat:MAGDA-categorie|mdcat:statuut|
                                            dcatap:hvdCategory|
-                                           mobilitydcatap:networkCoverage|mobilitydcatap:transportMode| mobilitydcatap:mobilityTheme|
-                                           mobilitydcatap:georeferencingMethod|mobilitydcatap:intendedInformationService">
+                                           mobilitydcatap:networkCoverage|mobilitydcatap:transportMode|mobilitydcatap:mobilityTheme|
+                                           mobilitydcatap:georeferencingMethod|mobilitydcatap:intendedInformationService|
+                                           mobilitydcatap:communicationMethod|mobilitydcatap:applicationLayerProtocol|
+                                           mobilitydcatap:grammar">
     <xsl:param name="xpath"/>
     <xsl:variable name="name" select="name()"/>
     <xsl:if test="not(preceding-sibling::*[name(.) = $name and position()=1])">
@@ -626,7 +648,6 @@
       </tr>
     </xsl:if>
   </xsl:template>
-
 
   <!-- Bbox is displayed with an overview and the geom displayed on it and
     the coordinates displayed around -->
@@ -685,7 +706,7 @@
     </tr>
   </xsl:template>
 
-  <!-- render nested content -->
+  <!-- render nested content, with the header left of the table -->
   <xsl:template mode="render-field" match="dcat:contactPoint|dct:publisher|dct:rightsHolder|dct:provenance|foaf:page|dct:temporal|
                                            dct:license|dct:rights|dct:conformsTo|dcat:distribution|adms:sample|
                                            vcard:hasAddress|adms:identifier|dct:creator|dcat:qualifiedRelation|adms:Identifier|geodcatap:referenceSystem">
@@ -715,6 +736,34 @@
     </xsl:if>
   </xsl:template>
 
+  <!-- render nested content, but with the header above the table -->
+  <xsl:template mode="render-field" match="locn:address|dct:LicenseDocument|dct:RightsStatement|dct:rightsHolder">
+    <xsl:param name="xpath"/>
+    <xsl:variable name="stringValue" select="string()"/>
+    <!-- Special case for dct:license with an empty dct:LicenseDocument with only @rdf:about or for dcat:contactPoint with only vcard:hasEmail and vcard:hasURL-->
+    <xsl:if test="normalize-space($stringValue) != '' or
+                  (normalize-space(./*/@rdf:about) != '') or
+                  (name() = 'dcat:contactPoint' and count(./vcard:Organization/*[normalize-space(@rdf:resource) != ''])>0) or
+                  (name() = 'dct:publisher' and normalize-space(./foaf:Agent/@rdf:about) != '')">
+      <tr>
+        <td style="{$thStyle}" colspan="2">
+          <span style="{$aboveTableHeader}">
+            <xsl:value-of select="gn-fn-metadata:getLabel($schema, name(.), $labels, name(..), '', gn-fn-dcat-ap:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)))/label" />
+            <xsl:if test="@xml:lang">
+              ( <xsl:value-of select="." /> )
+            </xsl:if>
+          </span>
+          <table style="background-color: rgba(0, 0, 0, 0.035); margin-bottom: 0; box-sizing: border-box; width: 100%; max-width: 100%; border-collapse: collapse; border-spacing: 0;"
+                 class="table nested-table">
+            <xsl:apply-templates mode="render-field" select="@*|*">
+              <xsl:with-param name="xpath" select="$xpath"/>
+            </xsl:apply-templates>
+          </table>
+        </td>
+      </tr>
+    </xsl:if>
+  </xsl:template>
+
   <!-- Traverse the tree -->
   <xsl:template mode="render-field" match="*">
     <xsl:param name="xpath"/>
@@ -722,7 +771,6 @@
       <xsl:with-param name="xpath" select="$xpath"/>
     </xsl:apply-templates>
   </xsl:template>
-
 
   <!-- ########################## -->
   <!-- Render values for text with clickable URL ... -->

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <schematron.title>Mobility - Mandatory</schematron.title>
+  <distribution.accessurl.content.title>Der Inhalt von accessURL muss eine gültige URI sein.</distribution.accessurl.content.title>
+  <distribution.accessurl.content.assert>Eine gültige URI wurde gefunden.</distribution.accessurl.content.assert>
+  <distribution.accessurl.content.report>Die URI ist ungültig.</distribution.accessurl.content.report>
 </strings>
