@@ -36,6 +36,23 @@
     </sch:rule>
   </sch:pattern>
 
+  <!-- "Mandatory" properties in BE (NAP). These are not defined in a standard so they are highlighted in the recommendation section instead. -->
+  <sch:pattern id="distribution_issued_mandatory_be">
+    <sch:title>$loc/strings/distribution.issued.mandatory.be.title</sch:title>
+    <sch:rule context="dcat:Distribution">
+      <sch:assert test="count(dct:issued) = 1">$loc/strings/distribution.issued.mandatory.be.assert</sch:assert>
+      <sch:report test="count(dct:issued) = 1">$loc/strings/distribution.issued.mandatory.be.report</sch:report>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern id="distribution_modified_mandatory_be">
+    <sch:title>$loc/strings/distribution.modified.mandatory.be.title</sch:title>
+    <sch:rule context="dcat:Distribution">
+      <sch:assert test="count(dct:modified) = 1">$loc/strings/distribution.modified.mandatory.be.assert</sch:assert>
+      <sch:report test="count(dct:modified) = 1">$loc/strings/distribution.modified.mandatory.be.report</sch:report>
+    </sch:rule>
+  </sch:pattern>
+
+
   <!-- "Removed" properties in mobility are mentioned separately from the cardinalities as there is no consensus yet on whether these need to be dealt with as a strict removal. -->
   <sch:pattern abstract="true" id="PropertyRemovedCheck">
     <sch:title>geonet:replacePlaceholders($loc/strings/property.removed.title, ('#context', '#element'), ('$context', '$element'))</sch:title>

@@ -7,4 +7,10 @@
   <property.removed.title>De eigenschap #element in #context werd als verwijderd opgegeven in mobilityDCAT-AP.</property.removed.title>
   <property.removed.assert>De eigenschap #element werd gevonden in #context.</property.removed.assert>
   <property.removed.report>De eigenschap #element werd niet gevonden in #context.</property.removed.report>
+  <distribution.issued.mandatory.be.title>In het Belgische NAP wordt dct:issued als verplicht gezien. Indien dit record in een Belgische context gebruikt wordt is het aangeraden dit te volgen.</distribution.issued.mandatory.be.title>
+  <distribution.issued.mandatory.be.assert>Er werden ofwel geen, of meerdere, dct:issued elementen.</distribution.issued.mandatory.be.assert>
+  <distribution.issued.mandatory.be.report>Er werd exact één dct:issued element gevonden.</distribution.issued.mandatory.be.report>
+  <distribution.modified.mandatory.be.title>In het Belgische NAP wordt dct:modified als verplicht gezien. Indien dit record in een Belgische context gebruikt wordt is het aangeraden dit te volgen.</distribution.modified.mandatory.be.title>
+  <distribution.modified.mandatory.be.assert>Er werden ofwel geen, of meerdere, dct:modified elementen.</distribution.modified.mandatory.be.assert>
+  <distribution.modified.mandatory.be.report>Er werd exact één dct:modified element gevonden.</distribution.modified.mandatory.be.report>
 </strings>
