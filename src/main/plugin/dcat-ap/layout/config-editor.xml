@@ -2891,7 +2891,10 @@
           <dct:Standard
             rdf:about="https://w3id.org/mobilitydcat-ap/releases/1.1.0/">
             <dct:title>mobilityDCAT-AP 1.1.0</dct:title>
-            <dct:description xml:lang="nl">A mobility extension for the DCAT application profile for data portals in Europe</dct:description>
+            <dct:description xml:lang="en">A mobility extension for the DCAT application profile for data portals in Europe.</dct:description>
+            <dct:description xml:lang="nl">Een mobiliteitsuitbreiding voor het DCAT applicatieprofiel voor Europese dataportalen.</dct:description>
+            <dct:description xml:lang="fr">Une extension de mobilité pour le profil d'application DCAT destiné aux portails de données en Europe.</dct:description>
+            <dct:description xml:lang="de">Eine Mobilitätserweiterung für das DCAT-Anwendungsprofil für Datenportale in Europa.</dct:description>
             <owl:versionInfo>1.1.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>

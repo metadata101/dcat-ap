@@ -25,4 +25,14 @@
 
   <sch:title xmlns="http://www.w3.org/2001/XMLSchema">{$loc/strings/schematron.title}</sch:title>
 
+  <sch:pattern id="Distribution_accessURL_content">
+    <sch:title>$loc/strings/distribution.accessurl.content.title</sch:title>
+    <sch:rule context="//dcat:Distribution/dcat:accessURL">
+      <sch:let name="isNotEmpty" value="normalize-space(@rdf:resource) != ''"/>
+      <sch:let name="isURI" value="matches(@rdf:resource, '^\w+:(/?/?)[^\s]+$')"/>
+      <sch:assert test="$isNotEmpty and $isURI">$loc/strings/distribution.accessurl.content.assert</sch:assert>
+      <sch:report test="$isNotEmpty and $isURI">$loc/strings/distribution.accessurl.content.report</sch:report>
+    </sch:rule>
+  </sch:pattern>
+
 </sch:schema>
