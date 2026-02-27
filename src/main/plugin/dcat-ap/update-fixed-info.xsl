@@ -392,6 +392,15 @@
     </xsl:choose>
   </xsl:template>
 
+  <!-- Remove duplicate dcatap:applicableLegislation -->
+  <xsl:template match="dcatap:applicableLegislation" priority="10">
+    <xsl:variable name="uri" select="@rdf:resource"/>
+    <xsl:variable name="previousExamples" select="preceding-sibling::dcatap:applicableLegislation[@rdf:resource=$uri]"/>
+    <xsl:if test="count($previousExamples)=0">
+      <xsl:copy-of select="."/>
+    </xsl:if>
+  </xsl:template>
+
   <!-- Fill concepts with resourceType -->
   <xsl:template match="skos:Concept" priority="10">
     <xsl:copy copy-namespaces="no">
