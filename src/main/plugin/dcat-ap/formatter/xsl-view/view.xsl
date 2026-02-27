@@ -378,14 +378,20 @@
 
     <xsl:variable name="filteredNode">
       <xsl:choose>
+        <!-- no thesaurus found, do not further process them with thesaurus information in mind -->
         <xsl:when test="normalize-space($thesaurusId) = ''">
           <xsl:copy-of select="$nodes"/>
         </xsl:when>
-        <xsl:otherwise>
+        <!-- nodes with skos:Concepts inside found, filter only those -->
+        <xsl:when test="count($nodes/*[skos:Concept])>0">
           <saxon:call-template name="{concat('evaluate-', $schema)}">
             <xsl:with-param name="base" select="$nodes"/>
             <xsl:with-param name="in" select="concat('/*[skos:Concept/skos:inScheme/@rdf:resource = ''', util:getThesaurusUriByKey($thesaurusId), ''']')"/>
           </saxon:call-template>
+        </xsl:when>
+        <!-- fallback: use the nodes as they are, e.g., dcatap:applicableLegislation[@rdf:resource] -->
+        <xsl:otherwise>
+          <xsl:copy-of select="$nodes"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
