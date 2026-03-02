@@ -880,6 +880,19 @@
               labelKey="dcat.addVLThemes"/>
           </field>
 
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo"
+                 if="$p2 = ('DCAT-AP-VL', 'metadata-dcat')"
+                 name="dct:conformsTo"
+                 or="theme"
+                 use="data-gn-keyword-picker"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <directiveAttributes
+              thesaurus="external.theme.oslo-datastandaarden"
+              xpath="/dct:conformsTo"
+              max=""
+              labelKey="dcat.addOSLOstandard"/>
+          </field>
+
         </section>
 
         <section name="versionInformation">
