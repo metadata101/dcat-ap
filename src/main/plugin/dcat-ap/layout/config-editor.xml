@@ -612,6 +612,7 @@
       <name>skos:inScheme</name>
       <name>skos:notation</name>
       <name>mdcat:stars</name>
+      <name>mobilitydcatap:mobilityDataStandard</name>
       <name>dcat:version</name>
       <name>dcat:hasVersion</name>
       <name>dcat:isVersionOf</name>
