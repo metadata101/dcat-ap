@@ -261,8 +261,17 @@
         <xsl:value-of select="concat('(', $resourcePath, '/', name(../..), ')[', $index, ']', $config/xpath)"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:variable name="thesaurusUri" select="java:getThesaurusUriByKey(normalize-space($config/thesaurus))"/>
-        <xsl:value-of select="concat($resourcePath, $config/xpath, '[skos:Concept/skos:inScheme/@rdf:resource=''', $thesaurusUri, ''']')"/>
+        <!-- When a thesaurus is used to encode an element with reference ie. rdf:resource,
+        we can't target by thesaurusUri so we target the element created-->
+        <xsl:choose>
+          <xsl:when test="$config/useReference = 'true'">
+            <xsl:value-of select="concat($resourcePath, $config/xpath)"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:variable name="thesaurusUri" select="java:getThesaurusUriByKey(normalize-space($config/thesaurus))"/>
+            <xsl:value-of select="concat($resourcePath, $config/xpath, '[skos:Concept/skos:inScheme/@rdf:resource=''', $thesaurusUri, ''']')"/>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
