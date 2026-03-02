@@ -85,6 +85,12 @@
     <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Dataset_distribution">
+    <sch:param name="context" value="//dcat:Dataset"/>
+    <sch:param name="element" value="dcat:distribution"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="n"/>
+  </sch:pattern>
 
   <sch:pattern is-a="CardinalityCheck" id="DataService_endpointURL">
     <sch:param name="context" value="//dcat:DataService"/>
@@ -132,6 +138,12 @@
   <sch:pattern is-a="CardinalityCheck" id="CatalogRecord_primaryTopic">
     <sch:param name="context" value="//dcat:CatalogRecord"/>
     <sch:param name="element" value="foaf:primaryTopic"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="CatalogRecord_identifier">
+    <sch:param name="context" value="//dcat:CatalogRecord"/>
+    <sch:param name="element" value="dct:identifier"/>
     <sch:param name="min" value="1"/>
     <sch:param name="max" value="1"/>
   </sch:pattern>
@@ -183,6 +195,20 @@
     <sch:param name="element" value="dct:modified"/>
     <sch:param name="min" value="0"/>
     <sch:param name="max" value="1"/>
+  </sch:pattern>
+  <sch:pattern is-a="CardinalityCheck" id="Catalog_homepage">
+    <sch:param name="context" value="//dcat:Catalog[not(//dcat:Dataset|//dcat:DataService|//dcat:DatasetSeries)]"/>
+    <sch:param name="element" value="foaf:homepage"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="1"/>
+  </sch:pattern>
+
+  <!-- non-virtual catalog -->
+  <sch:pattern is-a="CardinalityCheck" id="Catalog_nonvirtual_record">
+    <sch:param name="context" value="//dcat:Catalog[//dcat:Dataset|//dcat:DataService|//dcat:DatasetSeries]"/>
+    <sch:param name="element" value="dcat:record"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="n"/>
   </sch:pattern>
 
   <sch:pattern is-a="CardinalityCheck" id="Distribution_mobilityDataStandard">
@@ -365,120 +391,10 @@
     <sch:param name="max" value="1"/>
   </sch:pattern>
 
-  <!-- Removed in mobilityDCAT-AP 1.1.0 -->
-  <sch:pattern is-a="CardinalityCheck" id="Distribution_issued">
-    <sch:param name="context" value="dcat:Distribution"/>
-    <sch:param name="element" value="dct:issued"/>
-    <sch:param name="min" value="0"/><!-- 0 in DCAT-AP, in mobility 1.1.0 -->
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Distribution_modified">
-    <sch:param name="context" value="dcat:Distribution"/>
-    <sch:param name="element" value="dct:modified"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Dataset_creator">
-    <sch:param name="context" value="//dcat:Dataset"/>
-    <sch:param name="element" value="dct:creator"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Dataset_sample">
-    <sch:param name="context" value="//dcat:Dataset"/>
-    <sch:param name="element" value="dct:sample"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Dataset_qualifiedAttribution">
-    <sch:param name="context" value="//dcat:Dataset"/>
-    <sch:param name="element" value="prov:qualifiedAttribution"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Dataset_wasGeneratedBy">
-    <sch:param name="context" value="//dcat:Dataset"/>
-    <sch:param name="element" value="prov:wasGeneratedBy"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-
-  <sch:pattern is-a="CardinalityCheck" id="Distribution_byteSize">
-    <sch:param name="context" value="//dcat:Distribution"/>
-    <sch:param name="element" value="dcat:byteSize"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Distribution_compressFormat">
-    <sch:param name="context" value="//dcat:Distribution"/>
-    <sch:param name="element" value="dcat:compressFormat"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Distribution_mediaType">
-    <sch:param name="context" value="//dcat:Distribution"/>
-    <sch:param name="element" value="dcat:mediaType"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Distribution_packageFormat">
-    <sch:param name="context" value="//dcat:Distribution"/>
-    <sch:param name="element" value="dcat:packageFormat"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Distribution_spatialResolutionInMeters">
-    <sch:param name="context" value="//dcat:Distribution"/>
-    <sch:param name="element" value="dcat:spatialResolutionInMeters"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Distribution_temporalResolution">
-    <sch:param name="context" value="//dcat:Distribution"/>
-    <sch:param name="element" value="dcat:temporalResolution"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Distribution_availability">
-    <sch:param name="context" value="//dcat:Distribution"/>
-    <sch:param name="element" value="dcatap:availability"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Distribution_issued">
-    <sch:param name="context" value="//dcat:Distribution"/>
-    <sch:param name="element" value="dct:issued"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Distribution_modified">
-    <sch:param name="context" value="//dcat:Distribution"/>
-    <sch:param name="element" value="dct:modified"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Distribution_language">
-    <sch:param name="context" value="//dcat:Distribution"/>
-    <sch:param name="element" value="dct:language"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Distribution_documentation">
-    <sch:param name="context" value="//dcat:Distribution"/>
-    <sch:param name="element" value="foaf:page"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Distribution_hasPolicy">
-    <sch:param name="context" value="//dcat:Distribution"/>
-    <sch:param name="element" value="odrl:hasPolicy"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
-  </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="Distribution_checksum">
-    <sch:param name="context" value="//dcat:Distribution"/>
-    <sch:param name="element" value="spdx:checksum"/>
-    <sch:param name="min" value="0"/>
-    <sch:param name="max" value="0"/>
+  <sch:pattern is-a="CardinalityCheck" id="RightsStatement_type">
+    <sch:param name="context" value="//dct:RightsStatement"/>
+    <sch:param name="element" value="dct:type"/>
+    <sch:param name="min" value="1"/>
+    <sch:param name="max" value="n"/>
   </sch:pattern>
 </sch:schema>
