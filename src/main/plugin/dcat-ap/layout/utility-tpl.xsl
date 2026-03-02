@@ -38,6 +38,7 @@
   <xsl:template name="get-dcat-ap-title">
     <xsl:value-of select="$metadata/dcat:Catalog/(
                                         dcat:dataset/dcat:Dataset/dct:title[1]
+                                        |dcat:dataset/dcat:DatasetSeries/dct:title[1]
                                         |dcat:service/dcat:DataService/dct:title[1]
                                         |dct:title[1])[1]"/>
   </xsl:template>
