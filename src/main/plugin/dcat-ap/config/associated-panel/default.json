@@ -1,43 +1,6 @@
 {
   "config": {
-    "display": "radio",
-    "multilingualFields": [],
     "associatedResourcesTypes": [
-      {
-        "type": "service",
-        "label": "linkToService",
-        "condition": "!gnCurrentEdit.isService",
-        "config": {
-          "sources": {
-            "metadataStore": {
-              "label": "searchAservice",
-              "params": {
-                "resourceType": [
-                  "service"
-                ],
-                "isTemplate": "n"
-              }
-            }
-          }
-        }
-      },
-      {
-        "type": "dataset",
-        "label": "linkToDataset",
-        "condition": "gnCurrentEdit.isService",
-        "config": {
-          "sources": {
-            "metadataStore": {
-              "params": {
-                "resourceType": [
-                  "dataset"
-                ],
-                "isTemplate": "n"
-              }
-            }
-          }
-        }
-      },
       {
         "type": "parent",
         "label": "linkToParent",
@@ -74,11 +37,6 @@
                 "isTemplate": "n"
               },
               "searchParamsPerType": {
-                "catalog-*": {
-                  "type": [
-                    "catalog"
-                  ]
-                },
                 "nextResource-*": {
                   "type": [
                     "dataset",

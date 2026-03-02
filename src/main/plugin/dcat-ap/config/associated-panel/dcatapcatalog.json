@@ -1,7 +1,5 @@
 {
   "config": {
-    "display": "radio",
-    "multilingualFields": [],
     "associatedResourcesTypes": [
       {
         "type": "siblings",

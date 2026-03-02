@@ -380,6 +380,18 @@ Some limitations or improvements on the existing mechanism:
 3. Vocabularies are shared between profiles. How to manage them? Should we provide vocabularies in all EU languages when possible?
 4. Versioning. Is validation the step which validates the version of a profile?  
 
+
+### Associated resources
+
+Relation between records are the following:
+* A Dataset can be associated to a DatasetSeries with `dcat:inSeries` (see `parent-add.xsl`)
+* A Dataset can be associated to a more recent version with `dcat:next` (see `sibling-add.xsl`)
+* A DataService can be associated to a Dataset with `dcat:servesDataset` (see `dataset-add.xsl`)
+* A DatasetSeries do not contain any link to its members
+* A Virtual catalog can be associated to a Dataset, DatasetSeries or DataService with `dcat:record` (see `sibling-add.xsl`)
+
+See [associated-panel](src/main/plugin/dcat-ap/config/associated-panel) for associated resources configuration.
+
 ### Advanced configuration
 
 #### Thumbnails
