@@ -28,6 +28,7 @@ Stylesheet used to update metadata adding a reference to a parent record.
 <xsl:stylesheet version="2.0"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
+                xmlns:dcatutil="java:org.fao.geonet.schema.dcatap.util.XslUtil"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:geonet="http://www.fao.org/geonetwork">
@@ -37,18 +38,19 @@ Stylesheet used to update metadata adding a reference to a parent record.
   <!-- Parent metadata record UUID -->
   <xsl:param name="parentUuid"/>
 
-  <xsl:template match="dcat:Dataset|dcat:DataService">
+  <xsl:template match="dcat:Dataset|dcat:DatasetSeries|dcat:DataService">
     <xsl:variable name="resourceWithParent">
       <xsl:copy>
         <xsl:copy-of select="@*"/>
         <xsl:apply-templates select="@*|*|text() except dcat:inSeries"/>
 
-        <xsl:variable name="seriesURI" select="util:getRecordResourceURI($parentUuid)"/>
+        <xsl:variable name="seriesURI" select="dcatutil:getRecordResourceURI($parentUuid)"/>
         <dcat:inSeries>
           <xsl:attribute name="rdf:resource" select="$seriesURI"/>
         </dcat:inSeries>
       </xsl:copy>
     </xsl:variable>
+
     <xsl:apply-templates mode="reorder" select="$resourceWithParent"/>
   </xsl:template>
 
