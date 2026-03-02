@@ -2,13 +2,14 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:geonet="http://www.fao.org/geonetwork"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
+                xmlns:dcatutil="java:org.fao.geonet.schema.dcatap.util.XslUtil"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 exclude-result-prefixes="#all"
                 version="2.0">
 
   <xsl:param name="uuidref"/>
-  <xsl:variable name="uriRef" select="util:getRecordResourceURI($uuidref)"/>
+  <xsl:variable name="uriRef" select="dcatutil:getRecordResourceURI($uuidref)"/>
   <xsl:variable name="catalogUuid" select="/rdf:RDF/geonet:info/uuid"/>
 
   <xsl:variable name="nodeUrl" select="util:getSettingValue('nodeUrl')"/>

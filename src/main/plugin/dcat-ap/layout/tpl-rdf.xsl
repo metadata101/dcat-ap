@@ -63,7 +63,7 @@
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template mode="dcat-ap-rdf-export" match="dcat:Dataset|dcat:DataService" priority="10">
+  <xsl:template mode="dcat-ap-rdf-export" match="dcat:Dataset|dcat:DatasetSeries|dcat:DataService" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:choose>
         <xsl:when test="normalize-space(@rdf:about) != ''">

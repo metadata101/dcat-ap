@@ -41,7 +41,7 @@
         </dc:identifier>
       </xsl:for-each>
 
-      <xsl:for-each select="ancestor::rdf:RDF//(dcat:Dataset|dcat:DataService)/dct:title">
+      <xsl:for-each select="ancestor::rdf:RDF//(dcat:Dataset|dcat:DatasetSeries|dcat:DataService)/dct:title">
         <dc:title>
           <xsl:value-of select="."/>
         </dc:title>
