@@ -374,12 +374,12 @@
     <btnLabel>Geometrie</btnLabel>
   </element>
   <element name="locn:address">
-  <label>Address</label>
-  <description>An "address representation" as conceptually defined by the INSPIRE Address Representation data type. The locn:addressId property may be used to link this locn:Address to other representations.</description>
-</element>
+    <label>Adres</label>
+    <description>Een "adresrepresentatie" zoals conceptueel gedefinieerd door het INSPIRE Address Representation-datatype. De eigenschap locn:addressId kan worden gebruikt om dit locn:Address te koppelen aan andere representaties.</description>
+  </element>
   <element name="locn:poBox">
-    <label>PO Box</label>
-    <description>The Post Office Box number. The domain of locn:poBox is locn:Address.</description>
+    <label>Postbus</label>
+    <description>Het postbusnummer. Het domein van locn:poBox is locn:Address.</description>
   </element>
   <element name="locn:fullAddress">
     <label>Volledig adres</label>
@@ -1039,9 +1039,7 @@
   </element>
   <element name="mobilitydcatap:networkCoverage">
     <label>Dekking netwerk</label>
-    <description>This property describes the part of the transport network that is covered by the delivered content. For road traffic, the property SHOULD refer to the network classification for which the data is provided. As a minimum, an international or higher-level classification, e.g., via functional road classes, is recommended to allow data search across different countries. In addition, national classifications are allowed.
-      For other transport modes, the property is meant to refer to the physical infrastructure which is used by the services covered by the data.
-      For all modes, the property SHOULD also indicate if the data content relates to the EU’s trans-European transport network [EU-TEN-T].</description>
+    <description>Deze eigenschap beschrijft het deel van het vervoersnetwerk dat door de geleverde inhoud wordt gedekt. Voor wegverkeer MOET de eigenschap verwijzen naar de netwerkclassificatie waarvoor de gegevens worden verstrekt. Minimaal wordt een internationale of hogere classificatie aanbevolen, bijvoorbeeld via functionele wegklassen, om gegevenszoekopdrachten over verschillende landen heen mogelijk te maken. Daarnaast zijn nationale classificaties toegestaan. Voor andere vervoerswijzen is de eigenschap bedoeld om te verwijzen naar de fysieke infrastructuur die wordt gebruikt door de diensten waarop de gegevens betrekking hebben. Voor alle modi ZOU de eigenschap ook MOETEN aangeven of de gegevensinhoud betrekking heeft op het trans-Europese vervoersnetwerk van de EU [EU-TEN-T].</description>
     <btnLabel>Dekking netwerk</btnLabel>
   </element>
   <element name="mobilitydcatap:georeferencingMethod">
@@ -1051,50 +1049,50 @@
   </element>
   <element name="mobilitydcatap:intendedInformationService">
     <label>Bedoelde informatie service</label>
-    <description>This property MAY describe predefined information services, which the data content is intended to support.
-      Such services MAY be, e.g., information services for multimodal mobility, as specified by EC Delegated Regulation 2017/1926 [EC-MMTIS-DR].
-      Examples of such services include “location search”, which is based on a datasets with address identifiers, or “trip plan computation”, which is based on datasets about a road network.</description>
+    <description>Deze eigenschap MAG vooraf gedefinieerde informatiediensten beschrijven, die de gegevensinhoud moet ondersteunen.
+      Dergelijke diensten MOGEN bijvoorbeeld informatiediensten voor multimodale mobiliteit zijn, zoals gespecificeerd in de gedelegeerde verordening 2017/1926 van de EG [EC-MMTIS-DR].
+      Voorbeelden van dergelijke diensten zijn "locatie zoeken", gebaseerd op datasets met adresgegevens, of "reisplanning", gebaseerd op datasets over een wegennet.</description>
     <btnLabel>Bedoelde informatie service</btnLabel>
   </element>
   <element name="mobilitydcatap:applicationLayerProtocol">
-    <label>Application layer protocol</label>
-    <description>The transmitting channel, i.e., the Application Layer Protocol, of the distribution.</description>
+    <label>Applicatielaagprotocol</label>
+    <description>Het transmissiekanaal, i.e., het applicatielaagprotocol, van de distributie.</description>
   </element>
   <element name="mobilitydcatap:mobilityDataStandard">
-    <label>Data standard</label>
-    <description>The mobility data standard, as applied for the delivered content within the distribution. A mobility data standard, e.g., DATEX II, combines syntax and semantic definitions of entities in a certain domain (e.g., for DATEX II: road traffic information), and optionally adds technical rules for data exchange.</description>
+    <label>Datastandaard</label>
+    <description>De mobiliteitsdatastandaard die wordt toegepast op de geleverde inhoud binnen de distributie. Een mobiliteitsdatastandaard, bijvoorbeeld DATEX II, combineert syntactische en semantische definities van entiteiten binnen een bepaald domein (bijvoorbeeld voor DATEX II: road traffic information) en voegt optioneel technische regels voor gegevensuitwisseling toe.</description>
   </element>
   <element name="mobilitydcatap:schema">
-    <label>Data standard schema</label>
-    <description>The schema of the mobility data standard, as applied within the delivered content. There are different options how to reference the schema. It might be a reference to a portal-internal catalogue of schemas, a reference to an individual schema (that is provided by the data publisher), or a reference to an external catalogue of schemas (like a stakeholder-based DATEX II profile published on the datex2.eu page). The data platform SHOULD keep an archive of commonly used schemas. The data provider SHOULD be able to select an applicable schema from this archive, or to upload an own, individual schema. In any case, the schema should be available as a resource.</description>
+    <label>Schema van de datastandaard</label>
+    <description>Het schema van de mobiliteitsdatastandaard zoals toegepast binnen de geleverde inhoud. Er zijn verschillende manieren om naar het schema te verwijzen. Dit kan een verwijzing zijn naar een portaalintern schemaregister, een verwijzing naar een individueel schema (aangeleverd door de datapublisher), of een verwijzing naar een extern schemaregister (zoals een stakeholder-gebaseerd DATEX II-profiel dat wordt gepubliceerd op de datex2.eu‑pagina). Het dataplatform ZOU een archief MOETEN bijhouden van veelgebruikte schema’s. De gegevensaanbieder ZOU een toepasselijk schema uit dit archief MOETEN kunnen selecteren of een eigen schema kunnen uploaden. In ieder geval zou het schema beschikbaar moeten zijn als een bron.</description>
   </element>
   <element name="mobilitydcatap:communicationMethod">
-    <label>Communication method</label>
-    <description>Indicates for dynamically provided distributions, e.g., data feeds, if the data interface of the data provider system functions in a push or pull mode.</description>
+    <label>Communicatiemethode</label>
+    <description>Geeft voor dynamisch aangeboden distributies, e.g. datafeeds, aan of de gegevensinterface van het systeem van de gegevensaanbieder in push- of pull‑modus werkt.</description>
   </element>
   <element name="mobilitydcatap:grammar">
-    <label>Technical data grammar format</label>
-    <description>The technical data grammar format of the delivered content within the Distribution. It describes the standard on top of the elementary syntax that describe data structures in the dataset.</description>
+    <label>Technisch datagrammaticaformaat</label>
+    <description>Het technische datagrammaticaformaat van de geleverde inhoud binnen de distributie. Het beschrijft de standaard bovenop de elementaire syntax die datastructuren in de dataset definieert.</description>
   </element>
   <element name="mobilitydcatap:assessmentResult">
     <label>Beoordelingsresultaat</label>
     <description>De resultaten en uitkomsten van een beoordelingsproces door een externe organisatie, e.g., een nationale instantie in het kader van gedelegeerde EU-verordeningen. Gedelegeerde EU-verordeningen vereisen dat lidstaten procedures instellen om de naleving van de gedelegeerde verordeningen te beoordelen, bijvoorbeeld met betrekking tot de verstrekking van gegevens via een NAP. Deze beoordelingsprocessen worden uitgevoerd door nationale instanties en zijn per lidstaat afzonderlijk geïmplementeerd. De eigenschap kan verwijzen naar de meest recente beoordelingsprocedure, inclusief de datum, het resultaat als vrije tekst en/of een link naar een online beoordelingsrapport.</description>
   </element>
   <element name="mobilitydcatap:dataFormatNotes">
-    <label>Data format notes</label>
-    <description>Any additional information about the format of the delivered content within the distribution in a textual format.</description>
+    <label>Opmerkingen over dataformaat</label>
+    <description>Aanvullende informatie over het formaat van de geleverde inhoud binnen de distributie, in tekstuele vorm.</description>
   </element>
   <element name="oa:hasBody">
-    <label>URL linking to further details or results</label>
-    <description>The result of the latest assessment procedure, in form of a URL linking to further details or results. Alternatively, textual information is provided using the Embedded Textual Body construction of the Web Annotation Data Model, which allows to specify text formats and languages which might be relevant for multilingual purposes.</description>
+    <label>URL die linkt naar verdere details of resultaten</label>
+    <description>Het resultaat van de meest recente beoordelingsprocedure, in de vorm van een URL die verwijst naar verdere details of resultaten. Als alternatief kan tekstuele informatie worden verstrekt via de Embedded Textual Body‑constructie van het Web Annotation Data Model, waarmee tekstformaten en talen kunnen worden gespecificeerd die relevant kunnen zijn voor meertalige doeleinden.</description>
   </element>
   <element name="dqv:hasQualityAnnotation">
     <label>Kwaliteitsannotatie</label>
     <description>Een toelichting over alle kwaliteitsaspecten met betrekking tot de geleverde inhoud, in het bijzonder methoden, meetmethoden/indicatoren en resultaten van een kwaliteitsbeoordeling waarvoor de Data Owner verantwoordelijk is.</description>
   </element>
   <element name="cnt:characterEncoding">
-    <label>Character encoding</label>
-    <description>The technical encoding format of the delivered content within the distribution.</description>
+    <label>Tekencodering</label>
+    <description>Het technische coderingsformaat van de geleverde inhoud binnen de distributie.</description>
     <helper>
       <option value="UTF-8">UTF-8</option>
     </helper>
