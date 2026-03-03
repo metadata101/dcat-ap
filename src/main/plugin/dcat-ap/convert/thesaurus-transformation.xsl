@@ -67,37 +67,39 @@
     <xsl:variable name="response">
       <gn_replace_all>
         <xsl:for-each select="//keyword">
-          <xsl:element name="{$wrapper}">
-            <skos:Concept>
-              <xsl:attribute name="rdf:about">
-                <xsl:value-of select="if (contains(uri, '@@@'))
+
+          <xsl:variable name="rdfAbout"
+                         select="if (contains(uri, '@@@'))
                                       then substring-after(uri, '@@@')
                                       else uri"/>
-              </xsl:attribute>
-              <xsl:variable name="keyword" select="."/>
-              <xsl:choose>
-                <xsl:when test="count($listOfLanguage) > 0">
-                  <xsl:for-each select="$listOfLanguage">
-                    <xsl:variable name="lang" select="."/>
-                    <xsl:if test="$lang != ''">
-                      <skos:prefLabel>
-                        <xsl:attribute name="xml:lang" select="util:twoCharLangCode($lang)"/>
 
-                        <xsl:variable name="labelValue" select="$keyword/values/value[@language = $lang]/text()"/>
-                        <xsl:value-of select="if ($labelValue) then $labelValue else $keyword/value"/>
-                      </skos:prefLabel>
-                    </xsl:if>
-                  </xsl:for-each>
-                </xsl:when>
-                <xsl:otherwise>
-                  <skos:prefLabel>
-                    <xsl:value-of select="$keyword/value/text()"/>
-                  </skos:prefLabel>
-                </xsl:otherwise>
-              </xsl:choose>
-              <skos:inScheme rdf:resource="{$inSchemeURI}"/>
-            </skos:Concept>
-          </xsl:element>
+          <xsl:choose>
+            <xsl:when test="$wrapper = 'dct:conformsTo'">
+              <dct:conformsTo>
+                <dct:Standard rdf:about="{$rdfAbout}">
+                  <dct:identifier><xsl:value-of select="$rdfAbout"/></dct:identifier>
+
+                  <xsl:call-template name="build-element-from-concept">
+                    <xsl:with-param name="elementName" select="'dct:title'"/>
+                    <xsl:with-param name="listOfLanguage" select="$listOfLanguage"/>
+                    <xsl:with-param name="keyword" select="."/>
+                  </xsl:call-template>
+                </dct:Standard>
+              </dct:conformsTo>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:element name="{$wrapper}">
+                <skos:Concept rdf:about="{$rdfAbout}">
+                  <xsl:call-template name="build-element-from-concept">
+                    <xsl:with-param name="elementName" select="'skos:prefLabel'"/>
+                    <xsl:with-param name="listOfLanguage" select="$listOfLanguage"/>
+                    <xsl:with-param name="keyword" select="."/>
+                  </xsl:call-template>
+                  <skos:inScheme rdf:resource="{$inSchemeURI}"/>
+                </skos:Concept>
+              </xsl:element>
+            </xsl:otherwise>
+          </xsl:choose>
         </xsl:for-each>
       </gn_replace_all>
     </xsl:variable>
@@ -105,6 +107,32 @@
     <xsl:copy-of select="$response"/>
   </xsl:template>
 
+
+  <xsl:template name="build-element-from-concept">
+    <xsl:param name="elementName" select="'skos:prefLabel'"/>
+    <xsl:param name="listOfLanguage"/>
+    <xsl:param name="keyword"/>
+    <xsl:choose>
+      <xsl:when test="count($listOfLanguage) > 0">
+        <xsl:for-each select="$listOfLanguage">
+          <xsl:variable name="lang" select="."/>
+          <xsl:if test="$lang != ''">
+            <xsl:element name="{$elementName}">
+              <xsl:attribute name="xml:lang" select="util:twoCharLangCode($lang)"/>
+
+              <xsl:variable name="labelValue" select="$keyword/values/value[@language = $lang]/text()"/>
+              <xsl:value-of select="if ($labelValue) then $labelValue else $keyword/value"/>
+            </xsl:element>
+          </xsl:if>
+        </xsl:for-each>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:element name="{$elementName}">
+          <xsl:value-of select="$keyword/value/text()"/>
+        </xsl:element>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 
   <xsl:template name="to-dcat-ap-concept-reference">
     <xsl:variable name="listOfLanguage"
@@ -138,6 +166,8 @@
         </xsl:for-each>
       </gn_replace_all>
     </xsl:variable>
+
+
     <xsl:copy-of select="$response"/>
   </xsl:template>
 </xsl:stylesheet>

@@ -57,6 +57,16 @@
         max="1"
         labelKey="dcat.addAccessRight"/>
     </for>
+    <!-- conformsTo is a particular case. skos:Concept are converted
+     to dct:Standard (see thesaurus-transformation.xsl).
+     Editor form XPath pointing to the element is hardcoded (see layout-custom-fields-concepts.xsl). -->
+    <for name="dct:conformsTo" xpath="dcat:Dataset" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.oslo-datastandaarden"
+        xpath="/dct:conformsTo"
+        labelKey="dct:conformsTo"
+      />
+    </for>
     <for name="dct:language" xpath="dcat:Catalog" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.language"
@@ -892,7 +902,6 @@
               max=""
               labelKey="dcat.addOSLOstandard"/>
           </field>
-
         </section>
 
         <section name="versionInformation">
@@ -1266,22 +1275,6 @@
                     <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
                   </skos:Concept>
                 </dct:language>
-              </snippet>
-            </template>
-          </action>
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo"/>
-
-          <action type="add" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dct:conformsTo>
-                  <dct:Standard>
-                    <dct:identifier/>
-                    <dct:title xml:lang=""/>
-                    <dct:description xml:lang=""/>
-                  </dct:Standard>
-                </dct:conformsTo>
               </snippet>
             </template>
           </action>
