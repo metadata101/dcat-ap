@@ -1102,6 +1102,7 @@
                 <dcatap:hvdCategory>
                   <skos:Concept rdf:about="">
                     <skos:prefLabel xml:lang=""></skos:prefLabel>
+                    <skos:inScheme rdf:resource="http://data.europa.eu/bna/asd487ae75"/>
                   </skos:Concept>
                 </dcatap:hvdCategory>
               </snippet>
@@ -1136,6 +1137,7 @@
                 <mobilitydcatap:mobilityTheme>
                   <skos:Concept rdf:about="">
                     <skos:prefLabel></skos:prefLabel>
+                    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/mobility-theme"/>
                   </skos:Concept>
                 </mobilitydcatap:mobilityTheme>
               </snippet>
@@ -1154,6 +1156,7 @@
                 <mobilitydcatap:transportMode>
                   <skos:Concept rdf:about="">
                     <skos:prefLabel></skos:prefLabel>
+                    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/transport-mode"/>
                   </skos:Concept>
                 </mobilitydcatap:transportMode>
               </snippet>
@@ -1172,6 +1175,7 @@
                 <mobilitydcatap:networkCoverage>
                   <skos:Concept rdf:about="">
                     <skos:prefLabel></skos:prefLabel>
+                    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
                   </skos:Concept>
                 </mobilitydcatap:networkCoverage>
               </snippet>
@@ -1200,6 +1204,7 @@
                 <mobilitydcatap:georeferencingMethod>
                   <skos:Concept rdf:about="">
                     <skos:prefLabel></skos:prefLabel>
+                    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
                   </skos:Concept>
                 </mobilitydcatap:georeferencingMethod>
               </snippet>
@@ -1218,6 +1223,7 @@
                 <mobilitydcatap:intendedInformationService>
                   <skos:Concept rdf:about="">
                     <skos:prefLabel></skos:prefLabel>
+                    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/intended-information-service"/>
                   </skos:Concept>
                 </mobilitydcatap:intendedInformationService>
               </snippet>
@@ -1366,6 +1372,7 @@
                     <mobilitydcatap:applicationLayerProtocol>
                       <skos:Concept rdf:about="">
                         <skos:prefLabel></skos:prefLabel>
+                        <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol"/>
                       </skos:Concept>
                     </mobilitydcatap:applicationLayerProtocol>
                   </snippet>
@@ -1384,6 +1391,7 @@
                     <mobilitydcatap:communicationMethod>
                       <skos:Concept rdf:about="">
                         <skos:prefLabel></skos:prefLabel>
+                        <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/communication-method"/>
                       </skos:Concept>
                     </mobilitydcatap:communicationMethod>
                   </snippet>
@@ -1401,6 +1409,7 @@
                     <mobilitydcatap:grammar>
                       <skos:Concept rdf:about="">
                         <skos:prefLabel></skos:prefLabel>
+                        <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/grammar"/>
                       </skos:Concept>
                     </mobilitydcatap:grammar>
                   </snippet>
