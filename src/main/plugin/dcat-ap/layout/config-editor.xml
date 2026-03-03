@@ -902,6 +902,17 @@
               max=""
               labelKey="dcat.addOSLOstandard"/>
           </field>
+          <action type="add"
+                  or="conformsTo"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo) = 0"
+          >
+            <template>
+              <snippet>
+                <dct:conformsTo/>
+              </snippet>
+            </template>
+          </action>
         </section>
 
         <section name="versionInformation">
