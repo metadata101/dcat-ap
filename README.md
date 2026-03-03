@@ -395,6 +395,29 @@ If the profile requires a different encoding, modify:
 
 Comments and questions are welcomed on [the issue tracker](https://github.com/metadata101/dcat-ap/issues).
 
+
+
+## Testing
+
+Setup a Postgres database and configure a GeoNetwork instance to use it. From GeoNetwork source, use:
+
+```shell
+cd web 
+mvn jetty:run -Ddb.type=postgres -Ddb.name=geonetwork -Ddb.username=www-data -Ddb.password=www-data -Ddb.port=5432
+```
+
+Adjust the base URL and the database configuration in [cypress.local.config.ts](e2e/cypress.local.config.ts).
+
+Start the tests in the `e2e` folder of the plugin:
+
+```shell
+cd schemas/dcat-ap/e2e
+npm install
+npm run open:local
+```
+
+
+
 ## More work required
 
 This plugin would merit further improvements in at least the following areas:
