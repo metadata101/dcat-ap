@@ -238,6 +238,8 @@
     <for name="dct:modified" use="gn-date-picker"/>
     <for name="schema:startDate" use="gn-date-picker"/>
     <for name="schema:endDate" use="gn-date-picker"/>
+    <for name="dcat:startDate" use="gn-date-picker"/>
+    <for name="dcat:endDate" use="gn-date-picker"/>
 
 
     <for name="dcat:landingPage" templateModeOnly="true" forceLabel="true" label="key">
@@ -1112,18 +1114,21 @@
 
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal"/>
+
           <action type="add" or="temporal" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
             <template>
               <snippet>
                 <dct:temporal>
                   <dct:PeriodOfTime>
-                    <schema:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
-                    <schema:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
                   </dct:PeriodOfTime>
                 </dct:temporal>
               </snippet>
             </template>
           </action>
+
+
         </section>
         <section name="hvd-view">
           <field xpath="/rdf:RDF/dcat:Catalog/*/*/dcatap:hvdCategory"/>
@@ -2339,8 +2344,6 @@
               <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
                 <skos:prefLabel xml:lang="nl">Werk in het publiek domein</skos:prefLabel>
                 <skos:prefLabel xml:lang="en">Public domain</skos:prefLabel>
-                <skos:prefLabel xml:lang="fr">Public domain</skos:prefLabel>
-                <skos:prefLabel xml:lang="de">Public domain</skos:prefLabel>
                 <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
               </skos:Concept>
             </dct:type>

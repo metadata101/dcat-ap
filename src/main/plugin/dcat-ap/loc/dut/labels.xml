@@ -732,6 +732,16 @@
     <description>De start van de periode</description>
     <btnLabel>Start datum/tijd</btnLabel>
   </element>
+  <element name="dcat:endDate">
+    <label>Einde datum/tijd</label>
+    <description>Het einde van de periode.</description>
+    <btnLabel>Einde datum/tijd</btnLabel>
+  </element>
+  <element name="dcat:startDate">
+    <label>Start datum/tijd</label>
+    <description>De start van de periode</description>
+    <btnLabel>Start datum/tijd</btnLabel>
+  </element>
   <element name="skos:Concept">
     <label>Concept</label>
     <description>Een categorie of een thema, gebruikt om datasets te beschrijven in de cataloog.</description>

@@ -413,7 +413,7 @@
   </xsl:template>
 
   <!-- Fix value for attribute -->
-  <xsl:template match="dct:created|dct:issued|dct:modified|schema:startDate|schema:endDate" priority="10">
+  <xsl:template match="dct:created|dct:issued|dct:modified|*:startDate|*:endDate" priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:copy-of select="@*[name() != 'rdf:datatype']"/>
       <xsl:attribute name="rdf:datatype">
