@@ -893,9 +893,7 @@
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo"
                  if="$p2 = ('DCAT-AP-VL', 'metadata-dcat')"
                  name="dct:conformsTo"
-                 or="theme"
-                 use="data-gn-keyword-picker"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+                 use="data-gn-keyword-picker">
             <directiveAttributes
               thesaurus="external.theme.oslo-datastandaarden"
               xpath="/dct:conformsTo"
@@ -905,7 +903,7 @@
           <action type="add"
                   or="conformsTo"
                   in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo) = 0"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo) = 0 and $p2 = ('DCAT-AP-VL', 'metadata-dcat')"
           >
             <template>
               <snippet>
