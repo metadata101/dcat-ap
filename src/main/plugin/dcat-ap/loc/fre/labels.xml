@@ -734,6 +734,16 @@
     <description>The start of the period</description>
     <btnLabel>Start date/time</btnLabel>
   </element>
+  <element name="dcat:endDate">
+    <label>End date/time</label>
+    <description>The end of the period.</description>
+    <btnLabel>End date/time</btnLabel>
+  </element>
+  <element name="dcat:startDate">
+    <label>Start date/time</label>
+    <description>The start of the period</description>
+    <btnLabel>Start date/time</btnLabel>
+  </element>
   <element name="skos:Concept">
     <label>Concept</label>
     <description>A category or a theme used to describe datasets in the catalog.</description>

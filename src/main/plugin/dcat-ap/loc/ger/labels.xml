@@ -678,6 +678,16 @@
     <description>Tooltip: start date/time</description>
     <btnLabel>start date/time</btnLabel>
   </element>
+  <element name="dcat:endDate" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal/dct:PeriodOfTime/dcat:endDate">
+    <label>end date/time</label>
+    <description>Tooltip: end date/time</description>
+    <btnLabel>end date/time</btnLabel>
+  </element>
+  <element name="dcat:startDate" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal/dct:PeriodOfTime/dcat:startDate">
+    <label>start date/time</label>
+    <description>Tooltip: start date/time</description>
+    <btnLabel>start date/time</btnLabel>
+  </element>
   <element name="schema:endDate" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal/dct:PeriodOfTime/schema:endDate">
     <label>end date/time</label>
     <description>Tooltip: end date/time</description>

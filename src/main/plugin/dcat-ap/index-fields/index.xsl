@@ -126,9 +126,9 @@
 
         <xsl:for-each select="dct:temporal/dct:PeriodOfTime">
           <xsl:variable name="start"
-                        select="schema:startDate"/>
+                        select="*:startDate"/>
           <xsl:variable name="end"
-                        select="schema:endDate"/>
+                        select="*:endDate"/>
 
           <xsl:variable name="zuluStartDate"
                         select="date-util:convertToISOZuluDateTime($start)"/>

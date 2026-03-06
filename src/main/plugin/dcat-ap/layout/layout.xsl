@@ -56,6 +56,7 @@
   <xsl:include href="layout-profile.xsl"/>
 
   <xsl:variable name="isDcatService" select="count($metadata/dcat:Catalog/dcat:service/dcat:DataService) > 0"/>
+  <xsl:variable name="isDcatSeries" select="count($metadata/dcat:Catalog/dcat:dataset/dcat:DatasetSeries) > 0"/>
 
   <!-- Ignore all gn element -->
   <xsl:template mode="mode-dcat-ap" match="gn:*|@gn:*" priority="1000"/>

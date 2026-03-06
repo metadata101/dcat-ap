@@ -231,13 +231,29 @@
       </xs:element>
 
       <xs:element name="DatasetSeries">
+        <xs:annotation>
+          <xs:documentation>
+            DCAT-AP VL 3.0 definition of a series.
+            https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/
+          </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
           <xs:complexContent>
             <xs:extension base="rdf:Resource">
               <xs:sequence>
                 <xs:element ref="dct:identifier" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="adms:identifier" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcatap:applicableLegislation" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="contactPoint" type="vcard:Organization" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:spatial" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:accrualPeriodicity" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:issued" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:temporal" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dct:modified" minOccurs="0" maxOccurs="unbounded"/>
+
                 <xs:element ref="foaf:page" minOccurs="0" maxOccurs="unbounded"/>
                 <!-- <xs:element name="first" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/> -->
                 <!-- <xs:element name="last" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/> -->

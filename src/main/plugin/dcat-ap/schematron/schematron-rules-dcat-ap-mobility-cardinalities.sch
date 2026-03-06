@@ -281,7 +281,7 @@
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="Dataset_PeriodOfTime">
     <sch:param name="context" value="//dcat:Dataset/dct:temporal/dct:PeriodOfTime"/>
-    <sch:param name="element" value="schema:startDate"/>
+    <sch:param name="element" value="*:startDate"/>
     <sch:param name="min" value="0"/>
     <sch:param name="max" value="n"/>
   </sch:pattern>

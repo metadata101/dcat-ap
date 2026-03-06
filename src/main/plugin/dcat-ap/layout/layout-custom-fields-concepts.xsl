@@ -240,6 +240,7 @@
                                   else if (ancestor::*[2]/name() = 'dct:publisher' and ancestor::*[3]/name() = 'dcat:Catalog') then ''
                                   else if (ancestor::*[1]/name() = 'dcat:CatalogRecord') then '/dcat:record/dcat:CatalogRecord'
                                   else if ($isDcatService) then '/dcat:service/dcat:DataService'
+                                  else if ($isDcatSeries) then '/dcat:dataset/dcat:DatasetSeries'
                                   else '/dcat:dataset/dcat:Dataset')"/>
 
     <xsl:choose>
