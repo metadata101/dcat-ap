@@ -29,7 +29,6 @@
     <dcat:service>
       <dcat:DataService>
         <dct:title xml:lang="nl">Generieke Gesloten services, conform metadata-DCAT v2.0</dct:title>
-        <dct:title xml:lang="en">Generic Closed services, conforming to metadata-DCAT v2.0</dct:title>
         <dct:description/>
         <dct:publisher>
           <foaf:Agent>
@@ -49,9 +48,6 @@
         <dct:accessRights>
           <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC">
             <skos:prefLabel xml:lang="nl">Toegang met voorwaarden</skos:prefLabel>
-            <skos:prefLabel xml:lang="en">with conditions</skos:prefLabel>
-            <skos:prefLabel xml:lang="fr">with conditions</skos:prefLabel>
-            <skos:prefLabel xml:lang="de">with conditions</skos:prefLabel>
             <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
           </skos:Concept>
         </dct:accessRights>
