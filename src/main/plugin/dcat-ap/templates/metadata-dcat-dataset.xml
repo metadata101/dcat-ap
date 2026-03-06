@@ -29,7 +29,6 @@
     <dcat:dataset>
       <dcat:Dataset>
         <dct:title xml:lang="nl">Gesloten dataset</dct:title>
-        <dct:title xml:lang="en">Closed dataset</dct:title>
         <dct:description xml:lang="nl"/>
         <dcat:contactPoint>
           <vcard:Organization>
@@ -42,9 +41,6 @@
             <dct:type>
               <skos:Concept>
                 <skos:prefLabel xml:lang="nl"/>
-                <skos:prefLabel xml:lang="en"/>
-                <skos:prefLabel xml:lang="fr"/>
-                <skos:prefLabel xml:lang="de"/>
                 <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
               </skos:Concept>
             </dct:type>
@@ -55,9 +51,6 @@
         <dct:accessRights>
           <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC">
             <skos:prefLabel xml:lang="nl">niet publiek</skos:prefLabel>
-            <skos:prefLabel xml:lang="en">non public</skos:prefLabel>
-            <skos:prefLabel xml:lang="fr">non public</skos:prefLabel>
-            <skos:prefLabel xml:lang="de">non public</skos:prefLabel>
             <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
           </skos:Concept>
         </dct:accessRights>

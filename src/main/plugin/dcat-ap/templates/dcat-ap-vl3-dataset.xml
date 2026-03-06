@@ -30,7 +30,6 @@
     <dcat:dataset>
       <dcat:Dataset>
         <dct:title xml:lang="nl">Open dataset</dct:title>
-        <dct:title xml:lang="en">Open dataset</dct:title>
         <dct:description xml:lang="nl"/>
         <dcat:contactPoint>
           <vcard:Organization>
@@ -43,9 +42,6 @@
             <dct:type>
               <skos:Concept>
                 <skos:prefLabel xml:lang="nl"/>
-                <skos:prefLabel xml:lang="en"/>
-                <skos:prefLabel xml:lang="fr"/>
-                <skos:prefLabel xml:lang="de"/>
                 <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
               </skos:Concept>
             </dct:type>
@@ -55,7 +51,6 @@
         <mdcat:statuut>
           <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
             <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
-            <skos:prefLabel xml:lang="en">Vlaamse Open data</skos:prefLabel>
             <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
           </skos:Concept>
         </mdcat:statuut>
@@ -63,16 +58,13 @@
         <dct:accessRights>
           <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">
             <skos:prefLabel xml:lang="nl">publiek</skos:prefLabel>
-            <skos:prefLabel xml:lang="en">public</skos:prefLabel>
-            <skos:prefLabel xml:lang="fr">public</skos:prefLabel>
-            <skos:prefLabel xml:lang="de">public</skos:prefLabel>
             <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
           </skos:Concept>
         </dct:accessRights>
         <dcat:distribution>
           <dcat:Distribution>
             <dct:title xml:lang="nl"/>
-            <dct:description/>
+            <dct:description xml:lang="nl"/>
             <dcat:accessURL rdf:resource=""/>
             <dct:format/>
           </dcat:Distribution>
