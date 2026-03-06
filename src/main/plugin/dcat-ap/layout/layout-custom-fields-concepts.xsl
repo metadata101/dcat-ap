@@ -4,6 +4,7 @@
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
@@ -55,7 +56,7 @@
   <!-- Element using a thesaurus .-->
   <xsl:template mode="mode-dcat-ap"
                          priority="4000"
-                        match="*[(skos:Concept or @rdf:resource) and gn-fn-dcat-ap:getThesaurusConfig(name(), name(..))]|dcat:theme">
+                        match="*[(skos:Concept or @rdf:resource) and gn-fn-dcat-ap:getThesaurusConfig(name(), name(..))]|dcat:theme|dcat:Dataset/dct:conformsTo">
     <xsl:param name="config" required="no"/>
 
     <xsl:if test="not(preceding-sibling::*[1]) or preceding-sibling::*[1]/name() != current()/name()">
@@ -239,6 +240,7 @@
                                   else if (ancestor::*[2]/name() = 'dct:publisher' and ancestor::*[3]/name() = 'dcat:Catalog') then ''
                                   else if (ancestor::*[1]/name() = 'dcat:CatalogRecord') then '/dcat:record/dcat:CatalogRecord'
                                   else if ($isDcatService) then '/dcat:service/dcat:DataService'
+                                  else if ($isDcatSeries) then '/dcat:dataset/dcat:DatasetSeries'
                                   else '/dcat:dataset/dcat:Dataset')"/>
 
     <xsl:choose>
@@ -261,8 +263,17 @@
         <xsl:value-of select="concat('(', $resourcePath, '/', name(../..), ')[', $index, ']', $config/xpath)"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:variable name="thesaurusUri" select="java:getThesaurusUriByKey(normalize-space($config/thesaurus))"/>
-        <xsl:value-of select="concat($resourcePath, $config/xpath, '[skos:Concept/skos:inScheme/@rdf:resource=''', $thesaurusUri, ''']')"/>
+        <!-- When a thesaurus is used to encode an element with reference ie. rdf:resource,
+        we can't target by thesaurusUri so we target the element created-->
+        <xsl:choose>
+          <xsl:when test="$config/useReference = 'true' or $config/xpath = '/dct:conformsTo'">
+            <xsl:value-of select="concat($resourcePath, $config/xpath)"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:variable name="thesaurusUri" select="java:getThesaurusUriByKey(normalize-space($config/thesaurus))"/>
+            <xsl:value-of select="concat($resourcePath, $config/xpath, '[skos:Concept/skos:inScheme/@rdf:resource=''', $thesaurusUri, ''']')"/>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>

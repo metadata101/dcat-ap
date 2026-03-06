@@ -38,7 +38,7 @@
                required="no"/>
 
     <xsl:variable name="isVirtualCatalog"
-                  select="exists($metadata[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
+                  select="exists($metadata[not(//(dcat:Dataset|dcat:DatasetSeries|dcat:DataService))]/dcat:Catalog)"
                   as="xs:boolean"/>
 
     <xsl:variable name="catalogIdentifier"
@@ -77,7 +77,7 @@
   <xsl:template name="get-dcat-ap-other-languages-as-json">
 
     <xsl:variable name="isVirtualCatalog"
-                  select="exists($metadata[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog)"
+                  select="exists($metadata[not(//(dcat:Dataset|dcat:DatasetSeries|dcat:DataService))]/dcat:Catalog)"
                   as="xs:boolean"/>
 
     <xsl:variable name="catalogIdentifier"

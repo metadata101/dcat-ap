@@ -93,7 +93,7 @@
           <xsl:for-each select="tokenize($uuids, ',')">
             <xsl:variable name="uuidTypesTitleAndURL" select="tokenize(., '#')"/>
             <xsl:variable name="uuid" select="$uuidTypesTitleAndURL[1]"/>
-            <xsl:variable name="uri" select="util:getRecordResourceURI($uuid)"/>
+            <xsl:variable name="uri" select="dcatutil:getRecordResourceURI($uuid)"/>
             <xsl:if test="count($existingNext[@rdf:resource = $uri]) = 0">
               <record>
                 <uuid><xsl:value-of select="$uuid"/></uuid>

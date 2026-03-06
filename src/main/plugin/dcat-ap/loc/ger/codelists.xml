@@ -26,11 +26,6 @@
 <codelists>
   <codelist name="dcat:Resource" alias="associationType">
     <entry>
-      <code>catalog</code>
-      <label>Katalog</label>
-      <description>Teil des Unterkatalogs</description>
-    </entry>
-    <entry>
       <code>nextResource</code>
       <label>Nächste Ressource</label>
       <description>Nächste Ressource in der Reihe</description>

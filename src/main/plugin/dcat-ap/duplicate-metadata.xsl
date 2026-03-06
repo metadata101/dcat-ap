@@ -33,7 +33,7 @@
     </xsl:element>
   </xsl:template>
 
-  <xsl:template match="dcat:Dataset|dcat:DataService">
+  <xsl:template match="dcat:Dataset|dcat:DatasetSeries|dcat:DataService">
     <xsl:copy>
       <xsl:apply-templates select="@*[not(name() = 'rdf:about')]"/>
 

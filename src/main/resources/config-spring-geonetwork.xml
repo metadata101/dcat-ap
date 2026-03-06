@@ -38,8 +38,9 @@
     <property name="xpathTitle">
       <util:list value-type="java.lang.String">
         <value>dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title</value>
+        <value>dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:title</value>
         <value>dcat:Catalog/dcat:service/dcat:DataService/dct:title</value>
-        <value>dcat:Catalog[not(//dcat:Dataset) and not(//dcat:DataService)]/dct:title</value>
+        <value>dcat:Catalog[not(//dcat:Dataset) and not(//dcat:DataService) and not(//dcat:DatasetSeries)]/dct:title</value>
       </util:list>
     </property>
     <property name="savedQueries">

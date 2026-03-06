@@ -57,6 +57,16 @@
         max="1"
         labelKey="dcat.addAccessRight"/>
     </for>
+    <!-- conformsTo is a particular case. skos:Concept are converted
+     to dct:Standard (see thesaurus-transformation.xsl).
+     Editor form XPath pointing to the element is hardcoded (see layout-custom-fields-concepts.xsl). -->
+    <for name="dct:conformsTo" xpath="dcat:Dataset" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.oslo-datastandaarden"
+        xpath="/dct:conformsTo"
+        labelKey="dct:conformsTo"
+      />
+    </for>
     <for name="dct:language" xpath="dcat:Catalog" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.language"
@@ -228,6 +238,8 @@
     <for name="dct:modified" use="gn-date-picker"/>
     <for name="schema:startDate" use="gn-date-picker"/>
     <for name="schema:endDate" use="gn-date-picker"/>
+    <for name="dcat:startDate" use="gn-date-picker"/>
+    <for name="dcat:endDate" use="gn-date-picker"/>
 
 
     <for name="dcat:landingPage" templateModeOnly="true" forceLabel="true" label="key">
@@ -612,6 +624,7 @@
       <name>skos:inScheme</name>
       <name>skos:notation</name>
       <name>mdcat:stars</name>
+      <name>mobilitydcatap:mobilityDataStandard</name>
       <name>dcat:version</name>
       <name>dcat:hasVersion</name>
       <name>dcat:isVersionOf</name>
@@ -647,17 +660,20 @@
                    data-file-types=".png,.gif,.jpeg,.jpg"
                    displayIfRecord="count(//dcat:dataset|rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog) > 0"/>
 
+
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
                    editor-config="dcataptwodefault"
-                    displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) = 0 and $p3 = '2.0.0'"/>
+                   displayIfRecord="count(//dcat:Dataset) > 0 and $p3 = '2.0.0'"/>
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
-                   displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) = 0 and $p3 != '2.0.0'"/>
+                   displayIfRecord="count(//dcat:Dataset) > 0 and $p3 != '2.0.0'"/>
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
                    editor-config="dcatapcatalog"
-                   displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0"/>
+                   displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DatasetSeries|dcat:DataService))]/dcat:Catalog) > 0"/>
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
+                   editor-config="dcatapservice"
+                   displayIfRecord="count(//dcat:DataService) > 0"/>
 
         <directive data-gn-validation-report=""/>
-
 
         <text>
           <style>
@@ -879,6 +895,27 @@
               labelKey="dcat.addVLThemes"/>
           </field>
 
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo"
+                 if="$p2 = ('DCAT-AP-VL', 'metadata-dcat')"
+                 name="dct:conformsTo"
+                 use="data-gn-keyword-picker">
+            <directiveAttributes
+              thesaurus="external.theme.oslo-datastandaarden"
+              xpath="/dct:conformsTo"
+              max=""
+              labelKey="dcat.addOSLOstandard"/>
+          </field>
+          <action type="add"
+                  or="conformsTo"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo) = 0 and $p2 = ('DCAT-AP-VL', 'metadata-dcat')"
+          >
+            <template>
+              <snippet>
+                <dct:conformsTo/>
+              </snippet>
+            </template>
+          </action>
         </section>
 
         <section name="versionInformation">
@@ -1077,18 +1114,21 @@
 
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:temporal"/>
+
           <action type="add" or="temporal" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
             <template>
               <snippet>
                 <dct:temporal>
                   <dct:PeriodOfTime>
-                    <schema:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
-                    <schema:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
                   </dct:PeriodOfTime>
                 </dct:temporal>
               </snippet>
             </template>
           </action>
+
+
         </section>
         <section name="hvd-view">
           <field xpath="/rdf:RDF/dcat:Catalog/*/*/dcatap:hvdCategory"/>
@@ -1102,6 +1142,7 @@
                 <dcatap:hvdCategory>
                   <skos:Concept rdf:about="">
                     <skos:prefLabel xml:lang=""></skos:prefLabel>
+                    <skos:inScheme rdf:resource="http://data.europa.eu/bna/asd487ae75"/>
                   </skos:Concept>
                 </dcatap:hvdCategory>
               </snippet>
@@ -1136,6 +1177,7 @@
                 <mobilitydcatap:mobilityTheme>
                   <skos:Concept rdf:about="">
                     <skos:prefLabel></skos:prefLabel>
+                    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/mobility-theme"/>
                   </skos:Concept>
                 </mobilitydcatap:mobilityTheme>
               </snippet>
@@ -1154,6 +1196,7 @@
                 <mobilitydcatap:transportMode>
                   <skos:Concept rdf:about="">
                     <skos:prefLabel></skos:prefLabel>
+                    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/transport-mode"/>
                   </skos:Concept>
                 </mobilitydcatap:transportMode>
               </snippet>
@@ -1172,6 +1215,7 @@
                 <mobilitydcatap:networkCoverage>
                   <skos:Concept rdf:about="">
                     <skos:prefLabel></skos:prefLabel>
+                    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
                   </skos:Concept>
                 </mobilitydcatap:networkCoverage>
               </snippet>
@@ -1200,6 +1244,7 @@
                 <mobilitydcatap:georeferencingMethod>
                   <skos:Concept rdf:about="">
                     <skos:prefLabel></skos:prefLabel>
+                    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
                   </skos:Concept>
                 </mobilitydcatap:georeferencingMethod>
               </snippet>
@@ -1218,6 +1263,7 @@
                 <mobilitydcatap:intendedInformationService>
                   <skos:Concept rdf:about="">
                     <skos:prefLabel></skos:prefLabel>
+                    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/intended-information-service"/>
                   </skos:Concept>
                 </mobilitydcatap:intendedInformationService>
               </snippet>
@@ -1249,22 +1295,6 @@
               </snippet>
             </template>
           </action>
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo"/>
-
-          <action type="add" or="conformsTo" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dct:conformsTo>
-                  <dct:Standard>
-                    <dct:identifier/>
-                    <dct:title xml:lang=""/>
-                    <dct:description xml:lang=""/>
-                  </dct:Standard>
-                </dct:conformsTo>
-              </snippet>
-            </template>
-          </action>
         </section>
       </tab>
 
@@ -1288,8 +1318,8 @@
                 <snippet>
                   <dct:temporal>
                     <dct:PeriodOfTime>
-                      <schema:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
-                      <schema:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                      <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                      <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
                     </dct:PeriodOfTime>
                   </dct:temporal>
                 </snippet>
@@ -1366,6 +1396,7 @@
                     <mobilitydcatap:applicationLayerProtocol>
                       <skos:Concept rdf:about="">
                         <skos:prefLabel></skos:prefLabel>
+                        <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol"/>
                       </skos:Concept>
                     </mobilitydcatap:applicationLayerProtocol>
                   </snippet>
@@ -1384,6 +1415,7 @@
                     <mobilitydcatap:communicationMethod>
                       <skos:Concept rdf:about="">
                         <skos:prefLabel></skos:prefLabel>
+                        <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/communication-method"/>
                       </skos:Concept>
                     </mobilitydcatap:communicationMethod>
                   </snippet>
@@ -1401,6 +1433,7 @@
                     <mobilitydcatap:grammar>
                       <skos:Concept rdf:about="">
                         <skos:prefLabel></skos:prefLabel>
+                        <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/grammar"/>
                       </skos:Concept>
                     </mobilitydcatap:grammar>
                   </snippet>
@@ -1830,8 +1863,167 @@
               </snippet>
             </template>
           </action>
+
+
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:publisher"/>
+          <action type="add" or="publisher" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:publisher) = 0">
+            <template>
+              <snippet>
+                <dct:publisher>
+                  <foaf:Agent>
+                    <foaf:name xml:lang=""/>
+                    <dct:type>
+                      <skos:Concept>
+                        <skos:prefLabel xml:lang="nl"/>
+                        <skos:prefLabel xml:lang="en"/>
+                        <skos:prefLabel xml:lang="fr"/>
+                        <skos:prefLabel xml:lang="de"/>
+                        <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
+                      </skos:Concept>
+                    </dct:type>
+                  </foaf:Agent>
+                </dct:publisher>
+              </snippet>
+            </template>
+          </action>
+
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:identifier"
+                 or="identifier"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/adms:identifier/adms:Identifier"/>
+
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dcatap:applicableLegislation"/>
+          <action type="add"
+                  or="applicableLegislation"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dcatap:applicableLegislation) = 0">
+            <template>
+              <snippet>
+                <dcatap:applicableLegislation rdf:resource=""/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
+        <section name="versionInformation">
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:issued" />
+          <action type="add" or="issued" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:issued)=0">
+            <template>
+              <snippet>
+                <dct:issued/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:modified" />
+          <action type="add" or="modified" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:modified)=0">
+            <template>
+              <snippet>
+                <dct:modified/>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:accrualPeriodicity"/>
+          <action type="add"
+                  or="accrualPeriodicity"
+                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:accrualPeriodicity) = 0"
+          >
+            <template>
+              <snippet>
+                <dct:accrualPeriodicity>
+                  <skos:Concept rdf:about="">
+                    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/frequency"/>
+                  </skos:Concept>
+                </dct:accrualPeriodicity>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
+
+        <section name="usageInformation">
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dcat:contactPoint"/>
+          <action type="add" or="contactPoint" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dcat:contactPoint) = 0">
+            <template>
+              <snippet>
+                <dcat:contactPoint>
+                  <vcard:Organization>
+                    <vcard:hasEmail rdf:resource=""/>
+                  </vcard:Organization>
+                </dcat:contactPoint>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
+
+        <section name="geographicalInformation">
+          <section xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:spatial"/>
+
+          <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
+                  if="not($p2 = ('DCAT-AP-VL', 'metadata-dcat'))">
+            <template>
+              <snippet>
+                <dct:spatial>
+                  <dct:Location rdf:about="http://www.naturalearthdata.com/ne_admin#Continent/Europe">
+                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">
+                      POLYGON ((43.2 35.3,43.2 81.4,-11.5 81.4,-11.5 35.3,43.2 35.3))
+                    </locn:geometry>
+                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#gmlLiteral">
+                      &lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;35.3 43.2 81.4 43.2 81.4 -11.5 35.3 -11.5 35.3 43.2&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;
+                    </locn:geometry>
+                  </dct:Location>
+                </dct:spatial>
+              </snippet>
+            </template>
+          </action>
+
+          <action type="add" or="spatial" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
+                  if="$p2 = ('DCAT-AP-VL', 'metadata-dcat')">
+            <template>
+              <snippet>
+                <dct:spatial>
+                  <dct:Location rdf:about="http://mir.geopunt.be/cl/Geopunt/VlaamseAdminRegios/Vlaanderen">
+                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((5.92
+                      50.67,5.92 51.51,2.53 51.51,2.53 50.67,5.92 50.67))
+                    </locn:geometry>
+                    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#gmlLiteral">&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;50.67
+                      5.92 51.51 5.92 51.51 2.53 50.67 2.53 50.67 5.92&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;
+                    </locn:geometry>
+                    <skos:prefLabel xml:lang="nl">Vlaams Gewest</skos:prefLabel>
+                  </dct:Location>
+                </dct:spatial>
+              </snippet>
+            </template>
+          </action>
+
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:temporal"/>
+          <action type="add" or="temporal" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries">
+            <template>
+              <snippet>
+                <dct:temporal>
+                  <dct:PeriodOfTime>
+                    <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                  </dct:PeriodOfTime>
+                </dct:temporal>
+              </snippet>
+            </template>
+          </action>
         </section>
       </tab>
+
 
       <tab id="tabCatalog" default="true" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
         <section name="catalogInformation">
@@ -2120,11 +2312,16 @@
                    displayIfRecord="count(//dcat:dataset|rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog) > 0"/>
 
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
-                   displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) = 0"/>
-
+                   editor-config="dcataptwodefault"
+                   displayIfRecord="count(//dcat:Dataset) > 0 and $p3 = '2.0.0'"/>
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
+                   displayIfRecord="count(//dcat:Dataset) > 0 and $p3 != '2.0.0'"/>
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
                    editor-config="dcatapcatalog"
-                   displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService))]/dcat:Catalog) > 0"/>
+                   displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DatasetSeries|dcat:DataService))]/dcat:Catalog) > 0"/>
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"
+                   editor-config="dcatapservice"
+                   displayIfRecord="count(//dcat:DataService) > 0"/>
 
         <directive data-gn-validation-report=""/>
       </sidePanel>
@@ -2147,8 +2344,6 @@
               <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
                 <skos:prefLabel xml:lang="nl">Werk in het publiek domein</skos:prefLabel>
                 <skos:prefLabel xml:lang="en">Public domain</skos:prefLabel>
-                <skos:prefLabel xml:lang="fr">Public domain</skos:prefLabel>
-                <skos:prefLabel xml:lang="de">Public domain</skos:prefLabel>
                 <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
               </skos:Concept>
             </dct:type>
@@ -2891,7 +3086,10 @@
           <dct:Standard
             rdf:about="https://w3id.org/mobilitydcat-ap/releases/1.1.0/">
             <dct:title>mobilityDCAT-AP 1.1.0</dct:title>
-            <dct:description xml:lang="nl">A mobility extension for the DCAT application profile for data portals in Europe</dct:description>
+            <dct:description xml:lang="en">A mobility extension for the DCAT application profile for data portals in Europe.</dct:description>
+            <dct:description xml:lang="nl">Een mobiliteitsuitbreiding voor het DCAT applicatieprofiel voor Europese dataportalen.</dct:description>
+            <dct:description xml:lang="fr">Une extension de mobilité pour le profil d'application DCAT destiné aux portails de données en Europe.</dct:description>
+            <dct:description xml:lang="de">Eine Mobilitätserweiterung für das DCAT-Anwendungsprofil für Datenportale in Europa.</dct:description>
             <owl:versionInfo>1.1.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
