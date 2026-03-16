@@ -494,8 +494,8 @@
 
 
   <!-- Field with no lang : display all -->
-  <xsl:template mode="render-field" match="dct:created|dct:issued|dct:modified|dct:identifier|skos:notation|schema:startDate|
-                                           schema:endDate|vcard:street-address|vcard:locality|vcard:postal-code|vcard:country-name|
+  <xsl:template mode="render-field" match="dct:created|dct:issued|dct:modified|dct:identifier|skos:notation|*:startDate|
+                                           *:endDate|vcard:street-address|vcard:locality|vcard:postal-code|vcard:country-name|
                                            vcard:hasTelephone|vcard:fn|vcard:organization-name|skos:prefLabel|dcat:version|
                                            adms:versionNotes|dcat:byteSize|dcat:hadRole|dcat:spatialResolutionInMeters|dcat:temporalResolution|mdcat:stars|owl:versionInfo|
                                            locn:fullAddress|locn:poBox|locn:thoroughfare|locn:locatorDesignator|locn:locatorName|locn:postName|locn:postCode|locn:adminUnitL1|locn:adminUnitL2|locn:addressArea">
