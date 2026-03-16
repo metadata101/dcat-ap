@@ -23,7 +23,7 @@
   <xs:import namespace="http://www.w3.org/ns/locn#" schemaLocation="locn.xsd"/>
   <xs:import namespace="http://www.w3.org/2002/07/owl#" schemaLocation="owl.xsd"/>
   <xs:import namespace="http://www.w3.org/2006/time#" schemaLocation="time.xsd"/>
-  <xs:import namespace="http://www.w3.org/ns/dcat#" schemaLocation="dcat-core.xsd"/>
+  <xs:import namespace="http://www.w3.org/ns/dcat#" schemaLocation="dcat.xsd"/>
 
   <!-- individual elements -->
   <xs:element name="alternative" type="rdf:PlainLiteral"/>
@@ -147,13 +147,13 @@
         <xs:complexType>
           <xs:sequence>
             <!-- optional properties for dct:PeriodOfTime-->
-            <!-- First implementation -->
-            <xs:element ref="schema:startDate" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="schema:endDate" minOccurs="0" maxOccurs="1"/>
-
             <!-- DCAT 2 and 3 types -->
             <xs:element ref="dcat:startDate" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dcat:endDate" minOccurs="0" maxOccurs="1"/>
+
+            <!-- First implementation -->
+            <xs:element ref="schema:startDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="schema:endDate" minOccurs="0" maxOccurs="1"/>
 
             <xs:element ref="time:hasBeginning" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="time:hasEnd" minOccurs="0" maxOccurs="1"/>
