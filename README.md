@@ -392,6 +392,30 @@ Relation between records are the following:
 
 See [associated-panel](src/main/plugin/dcat-ap/config/associated-panel) for associated resources configuration.
 
+
+### Record view
+
+The default view is using the index fields to display the metadata. The full view by default is using the formatter `xsl-view` with the `advanced` view which does not exist for DCAT. To set the proper view for DCAT-AP, the following configuration can be used:
+
+```js
+formatter: {
+  list: [
+    {
+      label: "defaultView",
+      url: ""
+    },
+    {
+      label: "full",
+      'views': [{
+        'if': {'documentStandard': 'dcat-ap'},
+        'url' : '/formatters/xsl-view?root=div&view=default'
+      }],
+      url: "/formatters/xsl-view?root=div&view=advanced"
+    }
+  ]
+```
+
+
 ### Advanced configuration
 
 #### Thumbnails
@@ -423,7 +447,7 @@ Adjust the base URL and the database configuration in [cypress.local.config.ts](
 Start the tests in the `e2e` folder of the plugin:
 
 ```shell
-cd schemas/dcat-ap/e2e
+cd e2e
 npm install
 npm run open:local
 ```
