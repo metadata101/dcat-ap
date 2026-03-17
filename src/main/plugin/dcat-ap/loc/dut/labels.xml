@@ -1181,6 +1181,10 @@
     <description>Een referentie naar de statuspagina van de data service.</description>
     <btnLabel>Landingspagina voor statusinformatie</btnLabel>
   </element>
+  <element name="rdf:resource" context="mobilitydcatap:schema">
+    <label>Schema van de datastandaard</label>
+    <description>De mobiliteitsdatastandaard die wordt toegepast op de geleverde inhoud binnen de distributie. Een mobiliteitsdatastandaard, bijvoorbeeld DATEX II, combineert syntactische en semantische definities van entiteiten binnen een bepaald domein (bijvoorbeeld voor DATEX II: road traffic information) en voegt optioneel technische regels voor gegevensuitwisseling toe.</description>
+  </element>
   <element name="mdcat:levensfase">
     <label>Levensfase</label>
     <description>De levensfase van de data service</description>
