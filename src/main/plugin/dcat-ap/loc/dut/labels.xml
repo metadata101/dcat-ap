@@ -1183,7 +1183,7 @@
   </element>
   <element name="rdf:resource" context="mobilitydcatap:schema">
     <label>Schema van de datastandaard</label>
-    <description>De mobiliteitsdatastandaard die wordt toegepast op de geleverde inhoud binnen de distributie. Een mobiliteitsdatastandaard, bijvoorbeeld DATEX II, combineert syntactische en semantische definities van entiteiten binnen een bepaald domein (bijvoorbeeld voor DATEX II: road traffic information) en voegt optioneel technische regels voor gegevensuitwisseling toe.</description>
+    <description>Het schema van de mobiliteitsdatastandaard, zoals toegepast binnen de geleverde content. Er zijn verschillende manieren om naar het schema te verwijzen. Dit kan een verwijzing zijn naar een interne catalogus van schema's binnen het portaal, een verwijzing naar een individueel schema (aangeleverd door de data-aanbieder) of een verwijzing naar een externe catalogus van schema's (zoals een op stakeholder-gebaseerd DATEX II-profiel dat is gepubliceerd op de datex2.eu pagina). Het dataplatform ZOU een archief MOETEN bijhouden van veelgebruikte schema's. De data-aanbieder ZOU een toepasselijk schema uit dit archief MOETEN kunnen selecteren of een eigen, individueel schema kunnen uploaden. In elk geval zou het schema beschikbaar moeten zijn als bron.</description>
   </element>
   <element name="mdcat:levensfase">
     <label>Levensfase</label>

@@ -1178,8 +1178,8 @@
     <btnLabel>Landingpage for usage information</btnLabel>
   </element>
   <element name="rdf:resource" context="mobilitydcatap:schema">
-    <label>Data standard schema</label>
-    <description>The schema of the mobility data standard, as applied within the delivered content. There are different options how to reference the schema. It might be a reference to a portal-internal catalogue of schemas, a reference to an individual schema (that is provided by the data publisher), or a reference to an external catalogue of schemas (like a stakeholder-based DATEX II profile published on the datex2.eu page). The data platform SHOULD keep an archive of commonly used schemas. The data provider SHOULD be able to select an applicable schema from this archive, or to upload an own, individual schema. In any case, the schema should be available as a resource.</description>
+    <label>Schéma de données standard</label>
+    <description>Le schéma de la norme de données de mobilité, tel qu'appliqué au contenu fourni. Plusieurs options permettent de référencer ce schéma: une référence à un catalogue de schémas interne au portail, une référence à un schéma spécifique (fourni par l'éditeur de données) ou une référence à un catalogue de schémas externe (comme un profil DATEX II collaboratif publié sur le site datex2.eu). La plateforme de données DOIT conserver une archive des schémas fréquemment utilisés. Le fournisseur de données DOIT pouvoir sélectionner un schéma approprié dans cette archive ou importer son propre schéma. Dans tous les cas, le schéma doit être accessible en tant que ressource.</description>
   </element>
   <element name="mdcat:landingspaginaVoorStatusinformatie">
     <label>Landingpage for status information</label>
