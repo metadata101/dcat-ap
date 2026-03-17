@@ -26,7 +26,7 @@
     </dcat:record>
     <dcat:dataset>
       <dcat:Dataset>
-        <dct:title xml:lang="en">Generic mobilityDCAT-AP dataset</dct:title>
+        <dct:title xml:lang="en">mobilityDCAT-AP dataset</dct:title>
         <dct:description xml:lang="en"/>
         <dcat:theme>
           <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/TRAN">
