@@ -2363,8 +2363,8 @@
     <btnLabel>Landingpage for status information</btnLabel>
   </element>
   <element name="rdf:resource" context="mobilitydcatap:schema">
-    <label>Data standard schema</label>
-    <description>The schema of the mobility data standard, as applied within the delivered content. There are different options how to reference the schema. It might be a reference to a portal-internal catalogue of schemas, a reference to an individual schema (that is provided by the data publisher), or a reference to an external catalogue of schemas (like a stakeholder-based DATEX II profile published on the datex2.eu page). The data platform SHOULD keep an archive of commonly used schemas. The data provider SHOULD be able to select an applicable schema from this archive, or to upload an own, individual schema. In any case, the schema should be available as a resource.</description>
+    <label>Datenstandardschema</label>
+    <description>Das Schema des Mobilitätsdatenstandards, wie es in den bereitgestellten Inhalten angewendet wird. Es gibt verschiedene Möglichkeiten, auf das Schema zu verweisen. Dies kann ein Verweis auf einen portalinternen Schemakatalog, ein Verweis auf ein individuelles Schema (bereitgestellt vom Datenanbieter) oder ein Verweis auf einen externen Schemakatalog (z. B. ein Stakeholder-basiertes DATEX II-Profil auf datex2.eu) sein. Die Datenplattform SOLLTE ein Archiv häufig verwendeter Schemas führen. Der Datenanbieter SOLLTE ein passendes Schema aus diesem Archiv auswählen oder ein eigenes, individuelles Schema hochladen können. In jedem Fall sollte das Schema als Ressource verfügbar sein.</description>
   </element>
   <element name="mdcat:levensfase">
     <label>Lifecycle phase</label>
