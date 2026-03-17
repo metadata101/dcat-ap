@@ -11,13 +11,13 @@
           <dct:Standard rdf:about="https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/300">
             <dct:title xml:lang="nl">DCAT-AP</dct:title>
             <dct:description xml:lang="nl">Het DCAT-applicatieprofiel voor dataportalen in Europa (DCAT-AP) is een specificatie gebaseerd op de Data Catalogue Vocabulary (DCAT) van het W3C voor het beschrijven van datasets van de publieke sector in Europa. Het belangrijkste doel is om het zoeken naar datasets over verschillende dataportalen heen mogelijk te maken en om data van de publieke sector beter doorzoekbaar te maken, ongeacht landsgrenzen of sectoren. Dit kan worden bereikt door de uitwisseling van beschrijvingen van datasets tussen dataportalen.</dct:description>
-            <owl:versionInfo>3.0</owl:versionInfo>
+            <owl:versionInfo>3.0.1</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
         <dct:language>
-          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/ENG">
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
             <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
-            <skos:prefLabel xml:lang="en">English</skos:prefLabel>
+            <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
             <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
           </skos:Concept>
         </dct:language>

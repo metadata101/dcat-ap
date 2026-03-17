@@ -9,16 +9,16 @@
       <dcat:CatalogRecord>
         <dct:conformsTo>
           <dct:Standard rdf:about="https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/200">
-            <dct:title xml:lang="en">DCAT-AP</dct:title>
-            <dct:description xml:lang="en">DCAT Application Profile for data portals in Europe</dct:description>
+            <dct:title xml:lang="nl">DCAT-AP</dct:title>
+            <dct:description xml:lang="nl">DCAT Applicatieprofiel voor Europese dataportalen</dct:description>
             <owl:versionInfo>2.0.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
         <dct:conformsTo>
           <dct:Standard rdf:about="https://w3id.org/mobilitydcat-ap/releases/1.1.0/">
             <dct:identifier>https://w3id.org/mobilitydcat-ap/releases/1.1.0/</dct:identifier>
-            <dct:title xml:lang="en">mobilityDCAT-AP 1.1.0</dct:title>
-            <dct:description xml:lang="en">A mobility extension for the DCAT application profile for data portals in Europe.</dct:description>
+            <dct:title xml:lang="nl">mobilityDCAT-AP 1.1.0</dct:title>
+            <dct:description xml:lang="nl">Een mobiliteitsuitbreiding voor het DCAT-applicatieprofiel voor Europese dataportalen.</dct:description>
             <owl:versionInfo>1.1.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
@@ -26,11 +26,11 @@
     </dcat:record>
     <dcat:dataset>
       <dcat:Dataset>
-        <dct:title xml:lang="en">Generic mobilityDCAT-AP dataset</dct:title>
-        <dct:description xml:lang="en"/>
+        <dct:title xml:lang="nl">Mobiliteit dataset</dct:title>
+        <dct:description xml:lang="nl"/>
         <dcat:theme>
           <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/TRAN">
-            <skos:prefLabel xml:lang="en">Transport</skos:prefLabel>
+            <skos:prefLabel xml:lang="nl">Transport</skos:prefLabel>
             <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
           </skos:Concept>
         </dcat:theme>
