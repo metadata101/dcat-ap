@@ -95,7 +95,7 @@
 
 
   <!-- Styling -->
-  <xsl:variable name="thStyle" select="'border-style: solid; border-color: #ddd; border-width: 1px 0 1px 1px; width: 20%; padding: 8px; line-height: 1.428571429; vertical-align: top; box-sizing: border-box; text-align: left; min-width: 100px'"/>
+  <xsl:variable name="thStyle" select="'border-style: solid; border-color: #ddd; border-width: 1px 0 1px 1px; width: 25%; padding: 8px; line-height: 1.428571429; vertical-align: top; box-sizing: border-box; text-align: left; min-width: 100px'"/>
   <xsl:variable name="tdStyle" select="'border-style: solid; border-color: #ddd; border-width: 1px 1px 1px 0; padding-left: 0; width: 80%; word-break: break-word; padding: 8px; line-height: 1.428571429; vertical-align: top; box-sizing: border-box;'"/>
   <xsl:variable name="aboveTableHeader" select="'line-height: 1.428571429; vertical-align: top; box-sizing: border-box; text-align: left; min-width: 100px; font-weight: bold; font-size: 14px; padding-bottom: 10px; display: inline-block; margin-top: 7px;'"/>
 
