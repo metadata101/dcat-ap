@@ -967,6 +967,11 @@
     <description>Vul aan met de naam/benaming van het contactpunt voor deze resource (bv. ‘helpdesk van Informatie Vlaanderen’). Via een contactpunt kunnen gebruikers bijkomende informatie over deze resource bekomen of opmerkingen over deze resource bezorgen. </description>
     <btnLabel>Naam Contactpunt</btnLabel>
   </element>
+  <element name="vcard:fn">
+    <label>Naam Contactpunt</label>
+    <description>Vul aan met de naam/benaming van het contactpunt voor deze resource (bv. ‘helpdesk van Informatie Vlaanderen’). Via een contactpunt kunnen gebruikers bijkomende informatie over deze resource bekomen of opmerkingen over deze resource bezorgen. </description>
+    <btnLabel>Naam Contactpunt</btnLabel>
+  </element>
   <element name="vcard:hasAddress" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
     <label>Adres</label>
     <description>Adres</description>
@@ -978,6 +983,11 @@
     <btnLabel>Adres</btnLabel>
   </element>
   <element name="vcard:hasAddress" context="/rdf:RDF/dcat:Catalog/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
+    <label>Adres</label>
+    <description>Adres</description>
+    <btnLabel>Adres</btnLabel>
+  </element>
+  <element name="vcard:hasAddress">
     <label>Adres</label>
     <description>Adres</description>
     <btnLabel>Adres</btnLabel>
@@ -1180,6 +1190,10 @@
     <label>Landingspagina voor statusinformatie</label>
     <description>Een referentie naar de statuspagina van de data service.</description>
     <btnLabel>Landingspagina voor statusinformatie</btnLabel>
+  </element>
+  <element name="rdf:resource" context="mobilitydcatap:schema">
+    <label>Schema van de datastandaard</label>
+    <description>Het schema van de mobiliteitsdatastandaard, zoals toegepast binnen de geleverde content. Er zijn verschillende manieren om naar het schema te verwijzen. Dit kan een verwijzing zijn naar een interne catalogus van schema's binnen het portaal, een verwijzing naar een individueel schema (aangeleverd door de data-aanbieder) of een verwijzing naar een externe catalogus van schema's (zoals een op stakeholder-gebaseerd DATEX II-profiel dat is gepubliceerd op de datex2.eu pagina). Het dataplatform ZOU een archief MOETEN bijhouden van veelgebruikte schema's. De data-aanbieder ZOU een toepasselijk schema uit dit archief MOETEN kunnen selecteren of een eigen, individueel schema kunnen uploaden. In elk geval zou het schema beschikbaar moeten zijn als bron.</description>
   </element>
   <element name="mdcat:levensfase">
     <label>Levensfase</label>

@@ -56,7 +56,10 @@
   <!-- Element using a thesaurus .-->
   <xsl:template mode="mode-dcat-ap"
                          priority="4000"
-                        match="*[(skos:Concept or @rdf:resource) and gn-fn-dcat-ap:getThesaurusConfig(name(), name(..))]|dcat:theme|dcat:Dataset/dct:conformsTo">
+                        match="*[(skos:Concept or @rdf:resource) and gn-fn-dcat-ap:getThesaurusConfig(name(), name(..))]|dcat:theme|
+                                                  dcat:Dataset/dct:conformsTo|
+                                                  mobilitydcatap:mobilityDataStandard/dct:conformsTo|
+                                                  dct:rights/dct:RightsStatement/dct:type">
     <xsl:param name="config" required="no"/>
 
     <xsl:if test="not(preceding-sibling::*[1]) or preceding-sibling::*[1]/name() != current()/name()">
@@ -243,7 +246,24 @@
                                   else if ($isDcatSeries) then '/dcat:dataset/dcat:DatasetSeries'
                                   else '/dcat:dataset/dcat:Dataset')"/>
 
+    <!--
+    Maybe at some point we can default to use the current node to build
+    the xpath instead of the quite complex logic above which depend on the config.
+    -->
+    <xsl:variable name="xpath"
+                         select="replace(
+                                        replace(
+                                          string-join(ancestor-or-self::*/name(), '/'),
+                                          'root/rdf:RDF', '.'),
+                                          'geonet:child', concat(current()/@prefix, ':', current()/@name))"/>
+
     <xsl:choose>
+      <xsl:when test="$xpath = (
+        './dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:rights/dct:RightsStatement/dct:type',
+        './dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/mobilitydcatap:mobilityDataStandard/dct:conformsTo'
+        )">
+        <xsl:value-of select="$xpath"/>
+      </xsl:when>
       <xsl:when test="starts-with($config/xpath, '/dcat:Distribution')">
         <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution)[dcat:Distribution/@rdf:about=''', ../@rdf:about ,''']', $config/xpath)"/>
       </xsl:when>

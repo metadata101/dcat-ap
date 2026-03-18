@@ -50,6 +50,8 @@
 
   <xs:element name="Catalog" type="dcat:Catalog_type"/>
   <xs:element name="CatalogRecord" type="dcat:CatalogRecord_type"/>
+  <xs:element name="startDate" type="rdf:DateOrDateTimeLiteral"/>
+  <xs:element name="endDate" type="rdf:DateOrDateTimeLiteral"/>
 
   <!-- dcat:Catalog-->
   <xs:complexType name="Catalog_type">

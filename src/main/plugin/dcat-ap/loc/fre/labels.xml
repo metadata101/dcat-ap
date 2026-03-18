@@ -969,6 +969,11 @@
     <description>Contact name</description>
     <btnLabel>Contact name</btnLabel>
   </element>
+  <element name="vcard:fn">
+    <label>Contact name</label>
+    <description>Contact name</description>
+    <btnLabel>Contact name</btnLabel>
+  </element>
   <element name="vcard:hasAddress" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
     <label>Address</label>
     <description>Address</description>
@@ -980,6 +985,11 @@
     <btnLabel>Address</btnLabel>
   </element>
   <element name="vcard:hasAddress" context="/rdf:RDF/dcat:Catalog/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
+    <label>Address</label>
+    <description>Address</description>
+    <btnLabel>Address</btnLabel>
+  </element>
+  <element name="vcard:hasAddress">
     <label>Address</label>
     <description>Address</description>
     <btnLabel>Address</btnLabel>
@@ -1176,6 +1186,10 @@
     <label>Landingpage for usage information</label>
     <description>A reference to the landing page that contains specific information on the use of data service.</description>
     <btnLabel>Landingpage for usage information</btnLabel>
+  </element>
+  <element name="rdf:resource" context="mobilitydcatap:schema">
+    <label>Schéma de données standard</label>
+    <description>Le schéma de la norme de données de mobilité, tel qu'appliqué au contenu fourni. Plusieurs options permettent de référencer ce schéma: une référence à un catalogue de schémas interne au portail, une référence à un schéma spécifique (fourni par l'éditeur de données) ou une référence à un catalogue de schémas externe (comme un profil DATEX II collaboratif publié sur le site datex2.eu). La plateforme de données DOIT conserver une archive des schémas fréquemment utilisés. Le fournisseur de données DOIT pouvoir sélectionner un schéma approprié dans cette archive ou importer son propre schéma. Dans tous les cas, le schéma doit être accessible en tant que ressource.</description>
   </element>
   <element name="mdcat:landingspaginaVoorStatusinformatie">
     <label>Landingpage for status information</label>

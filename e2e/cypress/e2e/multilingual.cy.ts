@@ -10,7 +10,7 @@ describe('The multilingual functionality', () => {
 
   it('does not duplicate elements upon saving or navigating to other tabs', () => {
     cy.visit('/srv/eng/catalog.edit#/create')
-    cy.get('a').contains('Generieke Open data, conform DCAT-AP VL v2.0').click()
+    cy.get('a').contains('Generieke Open data, conform DCAT-AP-VL 2019-10-03').click()
     cy.get('button').contains('Create').click()
     // get the new metadata id from the location so we can query its xml content
     let hashRegexp = /^#\/metadata\/(\d+)\?.*/;

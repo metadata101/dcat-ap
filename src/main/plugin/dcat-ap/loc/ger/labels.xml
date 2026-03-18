@@ -1819,12 +1819,22 @@
     <description>Tooltip: contact name</description>
     <btnLabel>contact name</btnLabel>
   </element>
+  <element name="vcard:fn">
+    <label>contact name</label>
+    <description>Tooltip: contact name</description>
+    <btnLabel>contact name</btnLabel>
+  </element>
   <element name="vcard:organization-name" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:organization-name">
     <label>organisation name</label>
     <description>Tooltip: organisation name</description>
     <btnLabel>organisation name</btnLabel>
   </element>
   <element name="vcard:hasAddress" context="/rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
+    <label>address</label>
+    <description>Tooltip: address</description>
+    <btnLabel>address</btnLabel>
+  </element>
+  <element name="vcard:hasAddress">
     <label>address</label>
     <description>Tooltip: address</description>
     <btnLabel>address</btnLabel>
@@ -2361,6 +2371,10 @@
     <label>Landingpage for status information</label>
     <description>A reference to the statuspage of the data service.</description>
     <btnLabel>Landingpage for status information</btnLabel>
+  </element>
+  <element name="rdf:resource" context="mobilitydcatap:schema">
+    <label>Datenstandardschema</label>
+    <description>Das Schema des Mobilitätsdatenstandards, wie es in den bereitgestellten Inhalten angewendet wird. Es gibt verschiedene Möglichkeiten, auf das Schema zu verweisen. Dies kann ein Verweis auf einen portalinternen Schemakatalog, ein Verweis auf ein individuelles Schema (bereitgestellt vom Datenanbieter) oder ein Verweis auf einen externen Schemakatalog (z. B. ein Stakeholder-basiertes DATEX II-Profil auf datex2.eu) sein. Die Datenplattform SOLLTE ein Archiv häufig verwendeter Schemas führen. Der Datenanbieter SOLLTE ein passendes Schema aus diesem Archiv auswählen oder ein eigenes, individuelles Schema hochladen können. In jedem Fall sollte das Schema als Ressource verfügbar sein.</description>
   </element>
   <element name="mdcat:levensfase">
     <label>Lifecycle phase</label>
