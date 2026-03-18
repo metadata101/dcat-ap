@@ -969,6 +969,11 @@
     <description>Contact name</description>
     <btnLabel>Contact name</btnLabel>
   </element>
+  <element name="vcard:fn">
+    <label>Contact name</label>
+    <description>Contact name</description>
+    <btnLabel>Contact name</btnLabel>
+  </element>
   <element name="vcard:hasAddress" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
     <label>Address</label>
     <description>Address</description>
@@ -980,6 +985,11 @@
     <btnLabel>Address</btnLabel>
   </element>
   <element name="vcard:hasAddress" context="/rdf:RDF/dcat:Catalog/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
+    <label>Address</label>
+    <description>Address</description>
+    <btnLabel>Address</btnLabel>
+  </element>
+  <element name="vcard:hasAddress">
     <label>Address</label>
     <description>Address</description>
     <btnLabel>Address</btnLabel>
