@@ -67,6 +67,14 @@
         labelKey="dct:conformsTo"
       />
     </for>
+    <for name="dct:conformsTo" xpath="mobilitydcatap:mobilityDataStandard" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.mobility-data-standard"
+        max="1"
+        xpath="/dct:conformsTo"
+        labelKey="dct:conformsTo"
+      />
+    </for>
     <for name="dct:language" xpath="dcat:Catalog" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.language"
@@ -1444,7 +1452,7 @@
 
               <field xpath="dcat:Distribution/mobilitydcatap:mobilityDataStandard"
                      or="mobilityDataStandard" in="dcat:Distribution"/>
-
+              
               <field xpath="dcat:Distribution/mobilitydcatap:dataFormatNotes"
                      or="dataFormatNotes" in="dcat:Distribution"/>
             </section>
