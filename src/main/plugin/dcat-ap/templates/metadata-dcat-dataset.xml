@@ -14,7 +14,7 @@
           <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22">
             <dct:title xml:lang="nl">Metadata DCAT</dct:title>
             <dct:description xml:lang="nl">Het applicatieprofiel “Metadata DCAT”. Dit is een applicatieprofiel gebaseerd op DCAT en richt zich op het verzamelen van informatie over generieke datasets, distributies en services die door een overheid beschikbaar gesteld worden. De datasets en services omvatten zowel publiek toegankelijke als afgeschermde data en diensten (ontwikkeld in en voor eender welk technisch perspectief). Het samenbrengen van al deze informatie in een catalogus laat toe om de vindbaarheid van deze datasets en services te verhogen. Dit applicatieprofiel is het generieke basisprofiel. Afgeleide profielen kunnen zeker aangemaakt worden voor specifieke domeinen of communities. Bijvoorbeeld is DCAT-AP-VL zo’n afgeleid applicatieprofiel, specifiek voor het Open data domein en bijhorende community.</dct:description>
-            <owl:versionInfo>2.0</owl:versionInfo>
+            <owl:versionInfo>2021-04-22</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
         <dct:language>
@@ -28,8 +28,7 @@
     </dcat:record>
     <dcat:dataset>
       <dcat:Dataset>
-        <dct:title xml:lang="nl">Generieke Gesloten data, conform metadata-DCAT v2.0</dct:title>
-        <dct:title xml:lang="en">Generic Closed data, conforming to metadata-DCAT v2.0</dct:title>
+        <dct:title xml:lang="nl">Generieke Gesloten data, conform metadata-DCAT 2021-04-22</dct:title>
         <dct:description xml:lang="nl"/>
         <dcat:contactPoint>
           <vcard:Organization>
@@ -42,9 +41,6 @@
             <dct:type>
               <skos:Concept>
                 <skos:prefLabel xml:lang="nl"/>
-                <skos:prefLabel xml:lang="en"/>
-                <skos:prefLabel xml:lang="fr"/>
-                <skos:prefLabel xml:lang="de"/>
                 <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
               </skos:Concept>
             </dct:type>
@@ -55,9 +51,6 @@
         <dct:accessRights>
           <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC">
             <skos:prefLabel xml:lang="nl">niet publiek</skos:prefLabel>
-            <skos:prefLabel xml:lang="en">non public</skos:prefLabel>
-            <skos:prefLabel xml:lang="fr">non public</skos:prefLabel>
-            <skos:prefLabel xml:lang="de">non public</skos:prefLabel>
             <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
           </skos:Concept>
         </dct:accessRights>
