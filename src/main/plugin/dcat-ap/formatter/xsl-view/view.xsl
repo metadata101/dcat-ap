@@ -582,7 +582,7 @@
 
   <!-- render the element name (key) and the @rdf:resource (value) -->
   <xsl:template mode="render-field"
-                match="dcat:accessURL|dcat:downloadURL|dcat:landingPage|foaf:mbox|foaf:phone|foaf:workplaceHomepage">
+                match="dcat:accessURL|dcat:downloadURL|dcat:landingPage|foaf:mbox|foaf:phone|foaf:workplaceHomepage|vcard:hasEmail|vcard:hasURL">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string(@rdf:resource)"/>
     <xsl:if test="normalize-space($stringValue) != ''">
