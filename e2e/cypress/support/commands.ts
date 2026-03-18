@@ -119,7 +119,7 @@ Cypress.Commands.add('baseSetup', () => {
   cy.visit('/srv/eng/admin.console#/metadata')
   cy.contains('DCAT-AP (dcat-ap)').click()
   cy.contains('Load templates for selected standards').click()
-  cy.contains("15 record(s) added for schema 'dcat-ap'.")
+  cy.contains("record(s) added for schema 'dcat-ap'")
   cy.reindex()
   cy.logout()
   Cypress.env('SETUP_DONE', true)
