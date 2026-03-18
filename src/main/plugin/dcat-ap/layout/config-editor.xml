@@ -1174,7 +1174,7 @@
 
 
         <section name="mobility-section"
-                       displayIfRecord="$p2 = ('mobilityDCAT')">
+                       displayIfRecord="$p2 = ('mobilityDCAT-AP')">
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:mobilityTheme"/>
 
           <action type="add"
@@ -1452,7 +1452,7 @@
 
               <field xpath="dcat:Distribution/mobilitydcatap:mobilityDataStandard"
                      or="mobilityDataStandard" in="dcat:Distribution"/>
-              
+
               <field xpath="dcat:Distribution/mobilitydcatap:dataFormatNotes"
                      or="dataFormatNotes" in="dcat:Distribution"/>
             </section>
