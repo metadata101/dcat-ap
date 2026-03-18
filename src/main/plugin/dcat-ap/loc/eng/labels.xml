@@ -969,6 +969,11 @@
     <description>Contact name</description>
     <btnLabel>Contact name</btnLabel>
   </element>
+  <element name="vcard:fn">
+    <label>Contact name</label>
+    <description>Contact name</description>
+    <btnLabel>Contact name</btnLabel>
+  </element>
   <element name="vcard:hasAddress" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
     <label>Address</label>
     <description>Address</description>
@@ -980,6 +985,11 @@
     <btnLabel>Address</btnLabel>
   </element>
   <element name="vcard:hasAddress" context="/rdf:RDF/dcat:Catalog/dcat:contactPoint/vcard:Organization/vcard:hasAddress">
+    <label>Address</label>
+    <description>Address</description>
+    <btnLabel>Address</btnLabel>
+  </element>
+  <element name="vcard:hasAddress">
     <label>Address</label>
     <description>Address</description>
     <btnLabel>Address</btnLabel>
@@ -1186,6 +1196,10 @@
     <label>Landingpage for status information</label>
     <description>A reference to the statuspage of the data service.</description>
     <btnLabel>Landingpage for status information</btnLabel>
+  </element>
+  <element name="rdf:resource" context="mobilitydcatap:schema">
+    <label>Data standard schema</label>
+    <description>The schema of the mobility data standard, as applied within the delivered content. There are different options how to reference the schema. It might be a reference to a portal-internal catalogue of schemas, a reference to an individual schema (that is provided by the data publisher), or a reference to an external catalogue of schemas (like a stakeholder-based DATEX II profile published on the datex2.eu page). The data platform SHOULD keep an archive of commonly used schemas. The data provider SHOULD be able to select an applicable schema from this archive, or to upload an own, individual schema. In any case, the schema should be available as a resource.</description>
   </element>
   <element name="mdcat:levensfase">
     <label>Lifecycle phase</label>
