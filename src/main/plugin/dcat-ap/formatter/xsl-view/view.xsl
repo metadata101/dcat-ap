@@ -463,6 +463,11 @@
     </xsl:apply-templates>
   </xsl:template>
 
+  <!-- Hide fields.
+  In edit mode, specific rules are https://github.com/metadata101/dcat-ap/blob/main/src/main/plugin/dcat-ap/layout/layout.xsl#L479
+  -->
+  <xsl:template mode="render-field" match="dct:LicenseDocument/dct:identifier"/>
+
   <!-- Field with lang : display only field of current lang or first one if not exist -->
   <xsl:template mode="render-field" match="dct:title|dct:description|foaf:name|adms:versionNotes|foaf:firstName|foaf:surname|cnt:characterEncoding">
     <xsl:param name="xpath"/>
