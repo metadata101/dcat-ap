@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:terms="http://purl.org/dc/terms/">
+  <skos:ConceptScheme rdf:about="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage">
+    <terms:creator xml:lang="en">Mario Scrocca (Cefriel)</terms:creator>
+    <terms:creator xml:lang="en">Peter Lubrich (BASt)</terms:creator>
+    <terms:description xml:lang="en">Controlled vocabulary for the conditions for access and usage for a Rights Statement.</terms:description>
+    <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/" />
+    <terms:publisher xml:lang="en">NAPCORE SubWG4.4</terms:publisher>
+    <terms:title xml:lang="en">Conditions for access and usage</terms:title>
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/contractual-arrangement" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/contractual-arrangement-fee-required" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/contractual-arrangement-free-of-charge" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/fee-required" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/free-of-charge" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/licence-provided" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/licence-provided-fee-required" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/licence-provided-free-of-charge" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/other" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/royalty-free" />
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/contractual-arrangement">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+    <skos:prefLabel xml:lang="en">Contractual arrangement</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/contractual-arrangement-fee-required">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+    <skos:prefLabel xml:lang="en">Contractual arrangement, fee required</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/contractual-arrangement-free-of-charge">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+    <skos:prefLabel xml:lang="en">Contractual arrangement, free of charge</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/fee-required">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+    <skos:prefLabel xml:lang="en">Fee required</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/free-of-charge">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+    <skos:prefLabel xml:lang="en">Free of charge</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/licence-provided">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+    <skos:prefLabel xml:lang="en">Licence provided</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/licence-provided-fee-required">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+    <skos:prefLabel xml:lang="en">Licence provided, fee required</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/licence-provided-free-of-charge">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+    <skos:prefLabel xml:lang="en">Licence provided, free of charge</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/other">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+    <skos:prefLabel xml:lang="en">Other</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage/royalty-free">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+    <skos:prefLabel xml:lang="en">Royalty-free</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage" />
+  </skos:Concept>
+</rdf:RDF>
+

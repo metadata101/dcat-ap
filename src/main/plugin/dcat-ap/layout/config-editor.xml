@@ -137,6 +137,13 @@
         max="1"
         labelKey="dcat.addType"/>
     </for>
+    <for name="dct:type" xpath="dct:RightsStatement" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.mobility-conditions-for-access-and-usage"
+        xpath="/dct:rights/dct:RightsStatement/dct:type"
+        max="1"
+        labelKey="dcat.addType"/>
+    </for>
     <for name="dct:accrualPeriodicity" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.frequency"
@@ -1041,6 +1048,7 @@
                   <dct:RightsStatement>
                     <dct:title/>
                     <dct:description/>
+                    <dct:type/>
                   </dct:RightsStatement>
                 </dct:rights>
               </snippet>
@@ -1352,6 +1360,7 @@
                     <dct:RightsStatement>
                       <dct:title xml:lang=""/>
                       <dct:description xml:lang=""/>
+                      <dct:type/>
                     </dct:RightsStatement>
                   </dct:rights>
                 </snippet>
