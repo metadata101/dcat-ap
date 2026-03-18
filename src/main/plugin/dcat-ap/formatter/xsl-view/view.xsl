@@ -743,7 +743,7 @@
   </xsl:template>
 
   <!-- render nested content, but with the header above the table -->
-  <xsl:template mode="render-field" match="locn:address|dct:LicenseDocument|dct:RightsStatement|dct:rightsHolder">
+  <xsl:template mode="render-field" match="locn:address|dct:LicenseDocument|dct:RightsStatement|dct:rightsHolder|dct:Standard">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <!-- Special case for dct:license with an empty dct:LicenseDocument with only @rdf:about or for dcat:contactPoint with only vcard:hasEmail and vcard:hasURL-->
