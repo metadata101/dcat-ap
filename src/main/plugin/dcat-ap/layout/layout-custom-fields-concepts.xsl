@@ -56,7 +56,9 @@
   <!-- Element using a thesaurus .-->
   <xsl:template mode="mode-dcat-ap"
                          priority="4000"
-                        match="*[(skos:Concept or @rdf:resource) and gn-fn-dcat-ap:getThesaurusConfig(name(), name(..))]|dcat:theme|dcat:Dataset/dct:conformsTo">
+                        match="*[(skos:Concept or @rdf:resource) and gn-fn-dcat-ap:getThesaurusConfig(name(), name(..))]|dcat:theme|
+                                                  dcat:Dataset/dct:conformsTo|
+                                                  dct:rights/dct:RightsStatement/dct:type">
     <xsl:param name="config" required="no"/>
 
     <xsl:if test="not(preceding-sibling::*[1]) or preceding-sibling::*[1]/name() != current()/name()">
@@ -243,7 +245,13 @@
                                   else if ($isDcatSeries) then '/dcat:dataset/dcat:DatasetSeries'
                                   else '/dcat:dataset/dcat:Dataset')"/>
 
+    <xsl:variable name="xpath"
+                         select="replace(string-join(ancestor-or-self::*/name(), '/'), 'root/rdf:RDF', '.')"/>
+
     <xsl:choose>
+      <xsl:when test="$xpath = './dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:rights/dct:RightsStatement/dct:type'">
+        <xsl:value-of select="$xpath"/>
+      </xsl:when>
       <xsl:when test="starts-with($config/xpath, '/dcat:Distribution')">
         <xsl:value-of select="concat('(', $resourcePath, '/dcat:distribution)[dcat:Distribution/@rdf:about=''', ../@rdf:about ,''']', $config/xpath)"/>
       </xsl:when>
