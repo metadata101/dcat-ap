@@ -35,6 +35,7 @@
   </xsl:template>
 
   <xsl:template match="dcat:record/dcat:CatalogRecord">
+    <xsl:message>INFLATE: doing CatalogRecord</xsl:message>
     <xsl:copy>
       <xsl:copy-of select="@*"/>
       <xsl:copy-of select="* except dct:language"/>
