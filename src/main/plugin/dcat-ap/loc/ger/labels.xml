@@ -392,9 +392,9 @@
     <btnLabel>Conforms To</btnLabel>
   </element>
   <element name="dct:Standard" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo/dct:Standard">
-    <label>standard</label>
-    <description>Tooltip: standard</description>
-    <btnLabel>standard</btnLabel>
+    <label>Konformität mit dem Standard</label>
+    <description>Konformität mit dem Standard</description>
+    <btnLabel>Konformität mit dem Standard</btnLabel>
   </element>
   <element name="rdf:about" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:conformsTo/dct:Standard/@rdf:about">
     <label>URI</label>

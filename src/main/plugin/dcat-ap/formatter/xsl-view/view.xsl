@@ -469,7 +469,7 @@
   <xsl:template mode="render-field" match="dct:LicenseDocument/dct:identifier"/>
 
   <!-- Field with lang : display only field of current lang or first one if not exist -->
-  <xsl:template mode="render-field" match="dct:title|dct:description|foaf:name|adms:versionNotes|foaf:firstName|foaf:surname|cnt:characterEncoding">
+  <xsl:template mode="render-field" match="dct:title|dct:description|foaf:name|adms:versionNotes|foaf:firstName|foaf:surname|cnt:characterEncoding|mobilitydcatap:dataFormatNotes">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <xsl:variable name="name" select="name()"/>
@@ -653,7 +653,7 @@
         <td style="{$tdStyle}">
           <xsl:apply-templates mode="render-url" select="oa:hasBody/@rdf:resource" />
           <xsl:if test="dct:issued">
-            (<xsl:value-of select="gn-fn-metadata:getLabel($schema, 'dct:issued', $labels)/label "/><xsl:value-of select="' '"/><xsl:value-of select="dct:issued"/>)
+            <br/>(<xsl:value-of select="gn-fn-metadata:getLabel($schema, 'dct:issued', $labels)/label "/><xsl:value-of select="' '"/><xsl:value-of select="dct:issued"/>)
           </xsl:if>
         </td>
       </tr>
@@ -718,8 +718,8 @@
   </xsl:template>
 
   <!-- render nested content, with the header left of the table -->
-  <xsl:template mode="render-field" match="dcat:contactPoint|dct:publisher|dct:rightsHolder|dct:provenance|foaf:page|dct:temporal|
-                                           dct:license|dct:rights|dct:conformsTo|dcat:distribution|adms:sample|
+  <xsl:template mode="render-field" match="dcat:contactPoint|dct:rights/dct:RightsStatement|dct:publisher/foaf:Agent|dct:publisher|dct:rightsHolder|dct:provenance|foaf:page|dct:temporal|
+                                           dct:license|dct:conformsTo/dct:Standard|dcat:distribution|adms:sample|
                                            vcard:hasAddress|adms:identifier|dct:creator|dcat:qualifiedRelation|adms:Identifier|geodcatap:referenceSystem">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
