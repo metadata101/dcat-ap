@@ -469,7 +469,7 @@
   <xsl:template mode="render-field" match="dct:LicenseDocument/dct:identifier"/>
 
   <!-- Field with lang : display only field of current lang or first one if not exist -->
-  <xsl:template mode="render-field" match="dct:title|dct:description|foaf:name|adms:versionNotes|foaf:firstName|foaf:surname|cnt:characterEncoding">
+  <xsl:template mode="render-field" match="dct:title|dct:description|foaf:name|adms:versionNotes|foaf:firstName|foaf:surname|cnt:characterEncoding|mobilitydcatap:dataFormatNotes">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <xsl:variable name="name" select="name()"/>
