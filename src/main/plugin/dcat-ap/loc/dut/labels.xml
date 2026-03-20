@@ -175,6 +175,11 @@
     <description>Rechtenverklaring</description>
     <btnLabel>Rechtenverklaring</btnLabel>
   </element>
+  <element name="dct:Standard" context="dct:conformsTo">
+    <label>Conformiteit met standaard</label>
+    <description>Conformiteit met standaard</description>
+    <btnLabel>Conformiteit met standaard</btnLabel>
+  </element>
   <element name="dct:Standard">
     <label>Standaard</label>
     <description>Standaard</description>
