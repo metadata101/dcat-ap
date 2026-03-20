@@ -653,7 +653,7 @@
         <td style="{$tdStyle}">
           <xsl:apply-templates mode="render-url" select="oa:hasBody/@rdf:resource" />
           <xsl:if test="dct:issued">
-            (<xsl:value-of select="gn-fn-metadata:getLabel($schema, 'dct:issued', $labels)/label "/><xsl:value-of select="' '"/><xsl:value-of select="dct:issued"/>)
+            <br/>(<xsl:value-of select="gn-fn-metadata:getLabel($schema, 'dct:issued', $labels)/label "/><xsl:value-of select="' '"/><xsl:value-of select="dct:issued"/>)
           </xsl:if>
         </td>
       </tr>
