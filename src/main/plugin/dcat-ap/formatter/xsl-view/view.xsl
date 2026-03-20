@@ -718,8 +718,8 @@
   </xsl:template>
 
   <!-- render nested content, with the header left of the table -->
-  <xsl:template mode="render-field" match="dcat:contactPoint|dct:publisher/foaf:Agent|dct:publisher|dct:rightsHolder|dct:provenance|foaf:page|dct:temporal|
-                                           dct:license|dct:rights|dct:conformsTo|dcat:distribution|adms:sample|
+  <xsl:template mode="render-field" match="dcat:contactPoint|dct:rights/dct:RightsStatement|dct:publisher/foaf:Agent|dct:publisher|dct:rightsHolder|dct:provenance|foaf:page|dct:temporal|
+                                           dct:license|dct:conformsTo|dcat:distribution|adms:sample|
                                            vcard:hasAddress|adms:identifier|dct:creator|dcat:qualifiedRelation|adms:Identifier|geodcatap:referenceSystem">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>

@@ -171,9 +171,9 @@
     <btnLabel>Herkomstbeschrijving</btnLabel>
   </element>
   <element name="dct:RightsStatement">
-    <label>Bepaling</label>
-    <description>Bepaling</description>
-    <btnLabel>Bepaling</btnLabel>
+    <label>Rechtenverklaring</label>
+    <description>Rechtenverklaring</description>
+    <btnLabel>Rechtenverklaring</btnLabel>
   </element>
   <element name="dct:Standard">
     <label>Standaard</label>
