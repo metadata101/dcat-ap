@@ -156,9 +156,9 @@
     <btnLabel>Licentie Document</btnLabel>
   </element>
   <element name="dct:Location">
-    <label>Locatie</label>
-    <description>Locatie</description>
-    <btnLabel>Locatie</btnLabel>
+    <label>Ruimtelijke begrenzing</label>
+    <description>Ruimtelijke begrenzing</description>
+    <btnLabel>Ruimtelijke begrenzing</btnLabel>
   </element>
   <element name="dct:PeriodOfTime">
     <label>Begrenzing</label>
