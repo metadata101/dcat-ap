@@ -175,6 +175,11 @@
     <description>A statement about the intellectual property rights (IPR) held in or over a resource, a legal document giving official permission to do something with a resource, or a statement about access rights.</description>
     <btnLabel>Rights statement</btnLabel>
   </element>
+  <element name="dct:Standard" context="dct:conformsTo">
+    <label>Conformité aux normes</label>
+    <description>Conformité aux normes</description>
+    <btnLabel>Conformité aux normes</btnLabel>
+  </element>
   <element name="dct:Standard">
     <label>Standard</label>
     <description>A reference point against which other things can be evaluated or compared.</description>

@@ -51,6 +51,9 @@
                         rdf:resource="https://w3id.org/mobilitydcat-ap/mobility-data-standard/ocit-c"/>
     <skos:hasTopConcept
       xmlns:terms="http://purl.org/dc/terms/"
+                        rdf:resource="https://w3id.org/mobilitydcat-ap/mobility-data-standard/ocpi"/>
+    <skos:hasTopConcept
+      xmlns:terms="http://purl.org/dc/terms/"
                         rdf:resource="https://w3id.org/mobilitydcat-ap/mobility-data-standard/other"/>
     <skos:hasTopConcept
       xmlns:terms="http://purl.org/dc/terms/"
@@ -192,6 +195,18 @@
                    rdf:resource="https://w3id.org/mobilitydcat-ap/mobility-data-standard"/>
     <skos:prefLabel
       xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">OCIT-C
+    </skos:prefLabel>
+    <skos:topConceptOf
+      xmlns:terms="http://purl.org/dc/terms/"
+                       rdf:resource="https://w3id.org/mobilitydcat-ap/mobility-data-standard"/>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                rdf:about="https://w3id.org/mobilitydcat-ap/mobility-data-standard/ocpi">
+    <skos:inScheme
+      xmlns:terms="http://purl.org/dc/terms/"
+                   rdf:resource="https://w3id.org/mobilitydcat-ap/mobility-data-standard"/>
+    <skos:prefLabel
+      xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">OCPI
     </skos:prefLabel>
     <skos:topConceptOf
       xmlns:terms="http://purl.org/dc/terms/"
