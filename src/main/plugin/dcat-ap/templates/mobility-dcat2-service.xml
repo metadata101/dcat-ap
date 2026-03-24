@@ -9,23 +9,23 @@
       <dcat:CatalogRecord>
         <dct:conformsTo>
           <dct:Standard rdf:about="https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/200">
-            <dct:title xml:lang="en">DCAT-AP</dct:title>
-            <dct:description xml:lang="en">DCAT Application Profile for data portals in Europe</dct:description>
+            <dct:title xml:lang="nl">DCAT-AP</dct:title>
+            <dct:description xml:lang="nl">DCAT Applicatieprofiel voor Europese dataportalen</dct:description>
             <owl:versionInfo>2.0.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
         <dct:conformsTo>
           <dct:Standard rdf:about="https://w3id.org/mobilitydcat-ap/releases/1.1.0/">
             <dct:identifier>https://w3id.org/mobilitydcat-ap/releases/1.1.0/</dct:identifier>
-            <dct:title xml:lang="en">mobilityDCAT-AP 1.1.0</dct:title>
-            <dct:description xml:lang="en">A mobility extension for the DCAT application profile for data portals in Europe.</dct:description>
+            <dct:title xml:lang="nl">mobilityDCAT-AP 1.1.0</dct:title>
+            <dct:description xml:lang="nl">Een mobiliteitsuitbreiding voor het DCAT-applicatieprofiel voor Europese dataportalen.</dct:description>
             <owl:versionInfo>1.1.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
         <dct:language>
-          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/ENG">
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
             <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
-            <skos:prefLabel xml:lang="en">English</skos:prefLabel>
+            <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
             <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
           </skos:Concept>
         </dct:language>
@@ -33,8 +33,8 @@
     </dcat:record>
     <dcat:service>
       <dcat:DataService>
-        <dct:title xml:lang="en">Mobility DCAT-AP service</dct:title>
-        <dct:description xml:lang="en"/>
+        <dct:title xml:lang="nl">Mobiliteit service</dct:title>
+        <dct:description xml:lang="nl"/>
       </dcat:DataService>
     </dcat:service>
   </dcat:Catalog>
