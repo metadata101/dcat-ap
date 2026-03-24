@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+<xsl:stylesheet xmlns:adms="http://www.w3.org/ns/adms#"
                 xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:foaf="http://xmlns.com/foaf/0.1/"
+                xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:saxon="http://saxon.sf.net/"
+                xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 version="2.0"
                 exclude-result-prefixes="#all">
@@ -35,13 +40,17 @@
   </xsl:template>
 
   <xsl:template match="dcat:record/dcat:CatalogRecord">
+    <xsl:variable name="dcatSchema" select="doc('schema/dcat.xsd')"/>
+    <xsl:variable name="preLanguage" select="string-join($dcatSchema//xs:complexType[@name='CatalogRecord_type']//xs:element[@ref='dct:language']//preceding-sibling::xs:element/@ref, '|')"/>
+    <xsl:variable name="postLanguage" select="string-join($dcatSchema//xs:complexType[@name='CatalogRecord_type']//xs:element[@ref='dct:language']//following-sibling::xs:element/@ref, '|')"/>
     <xsl:copy>
       <xsl:copy-of select="@*"/>
-      <xsl:copy-of select="* except dct:language"/>
+      <!-- copy all elements that occur _before_ dct:language (necessary as otherwise we would not be respecting the schema ordering) -->
+      <xsl:copy-of select="saxon:evaluate($preLanguage)"/>
 
+      <!-- now process the languages, perhaps insert one if applicable -->
       <xsl:variable name="registeredLanguages"
                     select="dct:language"/>
-
       <xsl:choose>
         <xsl:when test="not($registeredLanguages)">
           <xsl:for-each select="$languageAttributes">
@@ -55,6 +64,9 @@
           <xsl:copy-of select="$registeredLanguages"/>
         </xsl:otherwise>
       </xsl:choose>
+
+      <!-- copy all elements _after_ dct:language -->
+      <xsl:copy-of select="saxon:evaluate($postLanguage)"/>
     </xsl:copy>
   </xsl:template>
 
