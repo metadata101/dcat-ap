@@ -29,7 +29,7 @@
 
   <sch:pattern id="recommended_theme">
     <sch:title>$loc/strings/recommended.dcat_theme_tran.title</sch:title>
-    <sch:rule context="//dcat:Dataset|//dcat:DataService">
+    <sch:rule context="//dcat:Dataset">
       <sch:let name="tranDcatTheme" value="dcat:theme[skos:Concept/@rdf:about='http://vocab.belgif.be/auth/datatheme/TRAN' or skos:Concept/@rdf:about='http://publications.europa.eu/resource/authority/data-theme/TRAN']"/>
       <sch:assert test="count($tranDcatTheme) = 1">$loc/strings/recommended.dcat_theme_tran.assert</sch:assert>
       <sch:report test="count($tranDcatTheme) = 1">$loc/strings/recommended.dcat_theme_tran.report</sch:report>
