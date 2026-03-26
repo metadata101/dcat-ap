@@ -22,12 +22,14 @@
  */
 package org.fao.geonet.schema.dcatap;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.util.Map;
-import org.fao.geonet.schemas.AbstractFormatterTest;
-import org.fao.geonet.schemas.TestSupport;
-import static org.fao.geonet.schemas.TestSupport.getResource;
-import static org.fao.geonet.schemas.TestSupport.getResourceInsideSchema;
+
+import org.fao.geonet.api.records.formatters.AbstractFormatterTest;
+import org.fao.geonet.schema.TestSupport;
+import static org.fao.geonet.schema.TestSupport.getResource;
+import static org.fao.geonet.schema.TestSupport.getResourceInsideSchema;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -50,5 +52,10 @@ public class DcatApFullViewTest extends AbstractFormatterTest {
         XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat().setLineSeparator("\n"));
         String actual = xmlOutputter.outputString(new Document(transformed));
         TestSupport.assertGeneratedDataByteMatchExpected("dataset-full-view.html", actual, GENERATE_EXPECTED_FILE);
+    }
+
+    @Override
+    protected File getTestMetadataFile() throws Exception {
+        return null;
     }
 }
