@@ -26,8 +26,8 @@
       <dcatVersion>3.0.0</dcatVersion>
     </profile>
 
-    <profile uri="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
-      <alias>DCAT-AP-VL</alias>
+    <profile uri="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21">
+      <alias>DCAT-AP Vlaanderen</alias>
       <description>Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is
         een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data
         Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste
@@ -43,7 +43,7 @@
       <dcatVersion>2.0.0</dcatVersion>
     </profile>
     <profile uri="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12">
-      <alias>DCAT-AP-VL</alias>
+      <alias>DCAT-AP Vlaanderen</alias>
       <description>Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is
         een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data
         Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste
@@ -60,7 +60,7 @@
     </profile>
 
     <profile uri="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22">
-      <alias>metadata-dcat</alias>
+      <alias>Metadata DCAT</alias>
       <description>Het applicatieprofiel “Metadata DCAT”. Dit is een applicatieprofiel gebaseerd op DCAT en richt zich
         op het verzamelen van informatie over generieke datasets, distributies en services die door een overheid
         beschikbaar gesteld worden. De datasets en services omvatten zowel publiek toegankelijke als afgeschermde data
