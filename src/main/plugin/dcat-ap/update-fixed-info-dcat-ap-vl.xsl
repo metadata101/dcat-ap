@@ -44,8 +44,8 @@
                 exclude-result-prefixes="#all"
                 version="2.0">
 
-  <xsl:variable name="dcatapvlURI" select="'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03'"/>
-  <xsl:variable name="metadatadcatURI" select="'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'"/>
+  <xsl:variable name="dcatapvlURI" select="'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21'"/>
+  <xsl:variable name="metadatadcatURI" select="'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21'"/>
 
 
   <!-- Rename dct:subject -->
@@ -59,8 +59,8 @@
 
   <!-- Ensure catalog record VL profile is correctly encoded. This overwrites what was set in the snippet list of config-editor.xml and ensures all languages are present. -->
   <xsl:template mode="update-fixed-info-profile" match="dcat:CatalogRecord/dct:conformsTo/dct:Standard[$profile = $dcatapvlURI]">
-    <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
-      <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03</dct:identifier>
+    <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21">
+      <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21</dct:identifier>
       <dct:title xml:lang="nl">DCAT-AP Vlaanderen</dct:title>
       <dct:title xml:lang="fr">DCAT-AP Flandre</dct:title>
       <dct:title xml:lang="de">DCAT-AP Flandern</dct:title>
@@ -74,8 +74,8 @@
   </xsl:template>
 
   <xsl:template mode="update-fixed-info-profile" match="dcat:CatalogRecord/dct:conformsTo/dct:Standard[$profile = $metadatadcatURI]">
-    <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22">
-      <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22</dct:identifier>
+    <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21">
+      <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21</dct:identifier>
       <dct:title xml:lang="nl">Metadata DCAT</dct:title>
       <dct:title xml:lang="fr">Metadata DCAT</dct:title>
       <dct:title xml:lang="de">Metadata DCAT</dct:title>

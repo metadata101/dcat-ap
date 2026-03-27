@@ -105,8 +105,8 @@ $$
         <foaf:primaryTopic rdf:resource="http://localhost:8080/srv/resources/datasets/16752832-7ef7-4539-9869-5236400cf249" />
         <dct:modified>2025-12-24</dct:modified>
         <dct:conformsTo>
-          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
-            <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03</dct:identifier>
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21">
+            <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21</dct:identifier>
             <dct:title xml:lang="nl">DCAT-AP Vlaanderen</dct:title>
             <dct:title xml:lang="fr">DCAT-AP Flandre</dct:title>
             <dct:title xml:lang="de">DCAT-AP Flandern</dct:title>
