@@ -2942,10 +2942,10 @@
       <snippet label="dcat-ap-vl-200">
         <dct:conformsTo>
           <!-- copy of update-fixed-info-dcat-ap-vl information -->
-          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21">
             <dct:title xml:lang="en">DCAT-AP Flanders</dct:title>
             <dct:description xml:lang="en">This application profile describes Open Data Catalogues in Flanders. DCAT-AP Flanders (DCAT-AP VL) is a further specialization of DCAT-AP. The application to which this profile relates is an Open Data Portal in Flanders. Open Data Portals are catalogs of Open Data datasets. Their main purpose is to make data discoverable and thus stimulate its reuse. Open Data Portals play a central role in the government's mission to achieve accessibility to government information. With this application profile, we promote the uniformity of available information across datasets. We also simplify the aggregation process of multiple Open Data Catalogs. This document contains the mandatory elements and additional elements on which DCAT-AP Flanders provides a statement. Recommended and optional information for which no additional agreements exist within the context of DCAT-AP Flanders are not included in this document. For this, we refer to the DCAT-AP specification itself.</dct:description>
-            <owl:versionInfo>2019-10-03</owl:versionInfo>
+            <owl:versionInfo>2022-04-21</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>

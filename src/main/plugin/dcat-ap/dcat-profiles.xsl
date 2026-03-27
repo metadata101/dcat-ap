@@ -26,7 +26,7 @@
       <dcatVersion>3.0.0</dcatVersion>
     </profile>
 
-    <profile uri="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
+    <profile uri="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21">
       <alias>DCAT-AP Vlaanderen</alias>
       <description>Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is
         een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data
