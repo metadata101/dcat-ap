@@ -2952,10 +2952,10 @@
       <snippet label="metadata-dcat-200">
         <dct:conformsTo>
           <!-- copy of update-fixed-info-dcat-ap-vl information -->
-          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22">
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21">
             <dct:title xml:lang="en">Metadata DCAT</dct:title>
             <dct:description xml:lang="en">The "Metadata DCAT" application profile. This application profile is based on DCAT and focuses on collecting information about generic datasets, distributions, and services made available by a government. The datasets and services include both publicly accessible and private data and services (developed in and for any technical perspective). Bringing all this information together in a catalog increases the discoverability of these datasets and services. This application profile is the generic base profile. Derived profiles can certainly be created for specific domains or communities. For example, DCAT-AP-VL is such a derived application profile, specifically for the Open Data domain and its associated community.</dct:description>
-            <owl:versionInfo>2021-04-22</owl:versionInfo>
+            <owl:versionInfo>2022-04-21</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>

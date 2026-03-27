@@ -221,7 +221,7 @@ First, add a view (and use a condition to display it only if the profile is used
 
  ```xml
  <views
-  displayIfRecord="count(//dcat:CatalogRecord/dct:conformsTo/dct:Standard[@rdf:about = 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22']) > 0"
+  displayIfRecord="count(//dcat:CatalogRecord/dct:conformsTo/dct:Standard[@rdf:about = 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21']) > 0"
 >
   <view name="hvd-view">
     <tab id="hvd-tab"  default="true">

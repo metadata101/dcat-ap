@@ -25,7 +25,7 @@
   <sch:title xmlns="http://www.w3.org/2001/XMLSchema">{$loc/strings/schematron.title}</sch:title>
 
   <sch:pattern name="conform aan protocol" id="https://data.vlaanderen.be/shacl/metadata_dcat#DataServiceShape/c394e1e5ae80a00d2aa307d647168d0c6733df26">
-    <sch:title>Conform aan protocol - Een protocol waaraan de dataservice voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Aconform%20aan%20protocol)</sch:title>
+    <sch:title>Conform aan protocol - Een protocol waaraan de dataservice voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#DataService%3Aconform%20aan%20protocol)</sch:title>
     <sch:rule context="//dcat:DataService/dct:conformsTo">
       <sch:let name="hasValue" value="skos:Concept/skos:inScheme/@rdf:resource = 'https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol'"/>
       <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol&gt; verwacht voor conform aan protocol (dct:conformsTo)</sch:assert>
@@ -33,7 +33,7 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="levensfase" id="https://data.vlaanderen.be/shacl/metadata_dcat#DataServiceShape/0aea9e8a54457ca50f1b00c07872cb7c7b39e8ba">
-    <sch:title>1337. Levensfase - De levensfase waarin de dataservice zich bevindt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Alevensfase)</sch:title>
+    <sch:title>1337. Levensfase - De levensfase waarin de dataservice zich bevindt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#DataService%3Alevensfase)</sch:title>
     <sch:rule context="//dcat:DataService/mdcat:levensfase">
       <sch:let name="hasValue" value="skos:Concept/skos:inScheme/@rdf:resource = 'https://data.vlaanderen.be/id/conceptscheme/levensfase'"/>
       <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://data.vlaanderen.be/id/conceptscheme/levensfase&gt; verwacht voor levensfase (mdcat:levensfase)</sch:assert>
@@ -41,7 +41,7 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="ontwikkelingstoestand" id="https://data.vlaanderen.be/shacl/metadata_dcat#DataServiceShape/f9862087b9d1ec8465f46ee21e166c45776cf8bd">
-    <sch:title>1348. Ontwikkelingstoestand - De ontwikkelingstoestand waarin de dataservice is gedeployed. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Aontwikkelingstoestand)</sch:title>
+    <sch:title>1348. Ontwikkelingstoestand - De ontwikkelingstoestand waarin de dataservice is gedeployed. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#DataService%3Aontwikkelingstoestand)</sch:title>
     <sch:rule context="//dcat:DataService/mdcat:ontwikkelingstoestand">
       <sch:let name="hasValue" value="skos:Concept/skos:inScheme/@rdf:resource = 'https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand'"/>
       <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand&gt; verwacht voor ontwikkelingstoestand (mdcat:ontwikkelingstoestand)</sch:assert>
@@ -49,7 +49,7 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="statuut" id="https://data.vlaanderen.be/shacl/metadata_dcat#DataServiceShape/67325124afc7d6eac4402056620665f7348ef62a">
-    <sch:title>Statuut - Een aanduiding van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Astatuut)</sch:title>
+    <sch:title>Statuut - Een aanduiding van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#DataService%3Astatuut)</sch:title>
     <sch:rule context="//dcat:DataService/mdcat:statuut">
       <sch:let name="hasValue" value="skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'"/>
       <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden&gt; verwacht voor statuut (mdcat:statuut)</sch:assert>
@@ -57,7 +57,7 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="thema" id="https://data.vlaanderen.be/shacl/metadata_dcat#DataServiceShape/48290800138d735a1909018da1426a5d120eedf0">
-    <sch:title>1352. Thema - De hoofdcategorie waartoe de dataservice behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Athema)</sch:title>
+    <sch:title>1352. Thema - De hoofdcategorie waartoe de dataservice behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#DataService%3Athema)</sch:title>
     <sch:rule context="//dcat:DataService/dcat:theme">
       <sch:let name="hasValue" value="skos:Concept/skos:inScheme/@rdf:resource = 'http://vocab.belgif.be/auth/datatheme'"/>
       <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://vocab.belgif.be/auth/datatheme&gt; verwacht voor thema (dcat:theme)</sch:assert>
@@ -65,7 +65,7 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="toegankelijkheid" id="https://data.vlaanderen.be/shacl/metadata_dcat#DataServiceShape/c5f6c428a4ae32239d9662d58fa65ae4f0cf49e6">
-    <sch:title>1362. Toegankelijkheid - De toegankelijkheid voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#DataService%3Atoegankelijkheid)</sch:title>
+    <sch:title>1362. Toegankelijkheid - De toegankelijkheid voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#DataService%3Atoegankelijkheid)</sch:title>
     <sch:rule context="//dcat:DataService/dct:accessRights">
       <sch:let name="hasValue" value="skos:Concept/skos:inScheme/@rdf:resource = 'http://publications.europa.eu/resource/authority/access-right'"/>
       <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;http://publications.europa.eu/resource/authority/access-right&gt; verwacht voor toegankelijkheid (dct:accessRights)</sch:assert>
@@ -73,7 +73,7 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="statuut" id="https://data.vlaanderen.be/shacl/metadata_dcat#DatasetShape/67325124afc7d6eac4402056620665f7348ef62a">
-    <sch:title>Statuut - Een aanduiding van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Dataset%3Astatuut)</sch:title>
+    <sch:title>Statuut - Een aanduiding van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset%3Astatuut)</sch:title>
     <sch:rule context="//dcat:Dataset/mdcat:statuut">
       <sch:let name="hasValue" value="skos:Concept/skos:inScheme/@rdf:resource = 'https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden'"/>
       <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden&gt; verwacht voor statuut (mdcat:statuut)</sch:assert>
@@ -81,7 +81,7 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="thema" id="https://data.vlaanderen.be/shacl/metadata_dcat#DatasetShape/48290800138d735a1909018da1426a5d120eedf0">
-    <sch:title>1713. Thema - De hoofdcategorie waartoe de dataset behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Dataset%3Athema)</sch:title>
+    <sch:title>1713. Thema - De hoofdcategorie waartoe de dataset behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset%3Athema)</sch:title>
     <sch:rule context="//dcat:Dataset/dcat:theme">
       <sch:let name="hasValue" value="skos:Concept/skos:inScheme/@rdf:resource = 'http://vocab.belgif.be/auth/datatheme'"/>
       <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://vocab.belgif.be/auth/datatheme&gt; verwacht voor thema (dcat:theme)</sch:assert>
@@ -89,7 +89,7 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="toegankelijkheid" id="https://data.vlaanderen.be/shacl/metadata_dcat#DatasetShape/c5f6c428a4ae32239d9662d58fa65ae4f0cf49e6">
-    <sch:title>1718. Toegankelijkheid - De toegankelijkheid voor de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Dataset%3Atoegankelijkheid)</sch:title>
+    <sch:title>1718. Toegankelijkheid - De toegankelijkheid voor de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset%3Atoegankelijkheid)</sch:title>
     <sch:rule context="//dcat:Dataset/dct:accessRights">
       <sch:let name="hasValue" value="skos:Concept/skos:inScheme/@rdf:resource = 'http://publications.europa.eu/resource/authority/access-right'"/>
       <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;http://publications.europa.eu/resource/authority/access-right&gt; verwacht voor toegankelijkheid (dct:accessRights)</sch:assert>
@@ -97,7 +97,7 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="formaat" id="https://data.vlaanderen.be/shacl/metadata_dcat#DistributieShape/6700896d1cda0a52b587461e48a50c4d221f043b">
-    <sch:title>Formaat - Het bestandsformaat waarin de data wordt gedeeld. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#Distributie%3Aformaat)</sch:title>
+    <sch:title>Formaat - Het bestandsformaat waarin de data wordt gedeeld. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Distributie%3Aformaat)</sch:title>
     <sch:rule context="//dcat:Distribution/dct:format">
       <sch:let name="hasValue" value="skos:Concept/skos:inScheme/@rdf:resource = 'http://publications.europa.eu/resource/authority/file-type'"/>
       <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;http://publications.europa.eu/resource/authority/file-type&gt; verwacht voor formaat (dct:format)</sch:assert>
@@ -105,7 +105,7 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="mediatype" id="https://data.vlaanderen.be/shacl/metadata_dcat#VoorbeeldWeergaveShape/91e8d1bb173f793bde16cb8a3dc8fde7844b5204">
-    <sch:title>Mediatype - Het voorstellingsvorm van de afbeelding (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#VoorbeeldWeergave%3Amediatype)</sch:title>
+    <sch:title>Mediatype - Het voorstellingsvorm van de afbeelding (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#VoorbeeldWeergave%3Amediatype)</sch:title>
     <sch:rule context="//dcat:Distribution/dcat:mediatype">
       <sch:let name="hasValue" value="skos:Concept/skos:inScheme/@rdf:resource = 'https://www.iana.org/assignments/media-types/media-types.xhtml'"/>
       <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://www.iana.org/assignments/media-types/media-types.xhtml&gt; verwacht voor mediatype (dcat:mediatype)</sch:assert>
@@ -113,7 +113,7 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="rol" id="https://data.vlaanderen.be/shacl/metadata_dcat#RelatieQualificatieShape/110bcc4a81256c6b4b080feb1fd85186147a7841">
-    <sch:title>Rol - De functie hoe de entiteiten zich tot elkaar verhouden.  (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#RelatieQualificatie%3Arol)</sch:title>
+    <sch:title>Rol - De functie hoe de entiteiten zich tot elkaar verhouden.  (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#RelatieQualificatie%3Arol)</sch:title>
     <sch:rule context="//dcat:Relationship/dcat:hadRole">
       <sch:let name="hasValue" value="skos:Concept/skos:inScheme/@rdf:resource = 'http://inspire.ec.europa.eu/metadata-codelist/SpatialRepresentationType'"/>
       <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;http://inspire.ec.europa.eu/metadata-codelist/SpatialRepresentationType&gt; verwacht voor rol (dcat:hadRole)</sch:assert>
