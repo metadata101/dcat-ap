@@ -1046,21 +1046,6 @@
             </template>
           </action>
 
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rights"/>
-          <action type="add" or="rights" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
-            <template>
-              <snippet>
-                <dct:rights>
-                  <dct:RightsStatement>
-                    <dct:title/>
-                    <dct:description/>
-                  </dct:RightsStatement>
-                </dct:rights>
-              </snippet>
-            </template>
-          </action>
-
-
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder"/>
           <action type="add" or="rightsHolder" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:rightsHolder) = 0">

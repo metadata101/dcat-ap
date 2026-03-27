@@ -85,7 +85,6 @@
           <xs:element ref="dct:modified" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:publisher" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:relation" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="dct:rights" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:spatial" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:title" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="dct:type" minOccurs="0" maxOccurs="unbounded"/>
