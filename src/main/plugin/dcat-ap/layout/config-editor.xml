@@ -2192,7 +2192,7 @@
                    in="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord"/>
           </section>
 
-          <section name="conformToInformation" del="." forEach="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo">
+          <section name="conformToInformation" del="." delConfirm="removeApplicationProfileWarning" forEach="/rdf:RDF/dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo">
             <field xpath="dct:Standard/dct:identifier"/>
             <field xpath="dct:Standard/dct:title"/>
             <field xpath="dct:Standard/dct:description"/>
