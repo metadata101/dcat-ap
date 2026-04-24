@@ -166,7 +166,7 @@ Using the `conformsTo` element in the `CatalogRecord` element, the profile is id
       <dcat:record>
          <dcat:CatalogRecord ...
             <dct:conformsTo>
-               <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
+               <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21">
 ```
 
 When the profile is only adding a couple of elements to potentially one or more existing profiles (e.g. HVD adds the `dcatap:hvdCategory` element), 
@@ -221,7 +221,7 @@ First, add a view (and use a condition to display it only if the profile is used
 
  ```xml
  <views
-  displayIfRecord="count(//dcat:CatalogRecord/dct:conformsTo/dct:Standard[@rdf:about = 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22']) > 0"
+  displayIfRecord="count(//dcat:CatalogRecord/dct:conformsTo/dct:Standard[@rdf:about = 'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21']) > 0"
 >
   <view name="hvd-view">
     <tab id="hvd-tab"  default="true">
@@ -337,7 +337,7 @@ Schematron rules can be enabled/disabled depending on the profile. See [configur
 For example: enabling the DCAT-AP-VL validation based on the defined standard within the record can be configured as follows:
 - `admin console` > `metadata and templates` > `validation`
 - select one of the validation rulesets, e.g., `DCAT-AP-Vlaanderen - Recommended`
-- add a rule of type `XPATH` with the following XPath: `//dcat:CatalogRecord//dct:Standard[@rdf:about = 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03']`
+- add a rule of type `XPATH` with the following XPath: `//dcat:CatalogRecord//dct:Standard[@rdf:about = 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21']`
 
 Validation is also taking care of checking the version of a profile as it does not always declare a new namespace for a new version.
 
@@ -359,7 +359,7 @@ For additional elements, create an additional indexing XSLT, import it into the 
 
 ```xml
 <xsl:template mode="index-extra-fields"
-              match="rdf:RDF[dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about='https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03']">
+              match="rdf:RDF[dcat:Catalog/dcat:record/dcat:CatalogRecord/dct:conformsTo/dct:Standard/@rdf:about='https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21']">
 
   <xsl:call-template name="index-dcat-ap-vl-license"/>
   <xsl:apply-templates mode="index-dcat-ap-vl" select="descendant::dcat:DataService"/>
