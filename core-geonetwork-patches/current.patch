@@ -1,7 +1,7 @@
-From da9167b24b2a92fc57deaaf7c0c2d3ea5a9c958e Mon Sep 17 00:00:00 2001
-From: Mathieu Chaussier <mathieu.chaussier@gim.be>
-Date: Thu, 20 Jun 2024 09:48:09 +0200
-Subject: [PATCH] Patch core for DCAT2 plugin
+From c6b1547fa1937d92e78db1d5280348066f95ca16 Mon Sep 17 00:00:00 2001
+From: joachimnielandt <joachim.nielandt@vlaanderen.be>
+Date: Tue, 28 Apr 2026 15:45:57 +0200
+Subject: [PATCH] Patch for 4.4.10
 
 ---
  .../geonet/kernel/search/EsSearchManager.java |  1 +
@@ -12,36 +12,36 @@ Subject: [PATCH] Patch core for DCAT2 plugin
  .../plugin/iso19139/index-fields/index.xsl    | 71 ++++++++++++++++
  .../fao/geonet/api/records/MetadataUtils.java | 22 +++--
  .../resources/catalog/locales/en-admin.json   |  5 +-
- .../resources/catalog/locales/fr-admin.json   |  5 +-
- .../resources/catalog/locales/nl-admin.json   |  5 +-
+ .../resources/catalog/locales/fr-admin.json   |  7 +-
+ .../resources/catalog/locales/nl-admin.json   |  7 +-
  .../templates/admin/harvest/type/csw.html     | 17 ++++
  .../templates/admin/harvest/type/csw.js       |  4 +-
  .../admin/harvest/type/geonetwork.html        | 16 ++++
  .../admin/harvest/type/geonetwork.js          |  4 +-
  .../main/webapp/xsl/xml/harvesting/csw.xsl    |  3 +
  .../webapp/xsl/xml/harvesting/geonetwork.xsl  |  3 +
- 16 files changed, 250 insertions(+), 14 deletions(-)
+ 16 files changed, 252 insertions(+), 16 deletions(-)
 
 diff --git a/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java b/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java
-index 432ae3a101..d56f80fe80 100644
+index 204d491..a52e269 100644
 --- a/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java
 +++ b/core/src/main/java/org/fao/geonet/kernel/search/EsSearchManager.java
-@@ -120,6 +120,7 @@ public class EsSearchManager implements ISearchManager {
+@@ -122,6 +122,7 @@ public class EsSearchManager implements ISearchManager {
              .add(Geonet.IndexFieldNames.RESOURCEABSTRACT)
              .add(Geonet.IndexFieldNames.RESOURCEABSTRACT + "Object")
              .add("operatesOn")
 +            .add("rdfResourceIdentifier")
              .build();
- 
+
          FIELDLIST_RELATED = ImmutableSet.<String>builder()
 diff --git a/core/src/main/java/org/fao/geonet/util/XslUtil.java b/core/src/main/java/org/fao/geonet/util/XslUtil.java
-index 067d3cc4b8..5f1077654f 100644
+index 4e8d5bb..c343754 100644
 --- a/core/src/main/java/org/fao/geonet/util/XslUtil.java
 +++ b/core/src/main/java/org/fao/geonet/util/XslUtil.java
 @@ -23,6 +23,7 @@
- 
+
  package org.fao.geonet.util;
- 
+
 +import co.elastic.clients.elasticsearch.core.SearchResponse;
  import co.elastic.clients.elasticsearch.core.search.Hit;
  import com.fasterxml.jackson.core.JsonProcessingException;
@@ -70,8 +70,8 @@ index 067d3cc4b8..5f1077654f 100644
  import org.fao.geonet.schema.iso19139.ISO19139Namespaces;
  import org.fao.geonet.utils.Log;
  import org.fao.geonet.utils.Xml;
-@@ -1622,4 +1622,80 @@ public final class XslUtil {
- 
+@@ -1637,4 +1637,80 @@ public final class XslUtil {
+
          return webAnalyticsConfiguration.getJavascriptCode();
      }
 +
@@ -152,7 +152,7 @@ index 067d3cc4b8..5f1077654f 100644
 +    }
  }
 diff --git a/domain/src/main/java/org/fao/geonet/repository/HarvesterSettingRepository.java b/domain/src/main/java/org/fao/geonet/repository/HarvesterSettingRepository.java
-index c28295c8b6..88bfc88c97 100644
+index c28295c..88bfc88 100644
 --- a/domain/src/main/java/org/fao/geonet/repository/HarvesterSettingRepository.java
 +++ b/domain/src/main/java/org/fao/geonet/repository/HarvesterSettingRepository.java
 @@ -74,4 +74,15 @@ public interface HarvesterSettingRepository extends GeonetRepository<HarvesterSe
@@ -172,7 +172,7 @@ index c28295c8b6..88bfc88c97 100644
 +    HarvesterSetting findOneByNameAndStoredValueLike(@Nonnull String name, @Nonnull String value);
  }
 diff --git a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswHarvester.java b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswHarvester.java
-index 6c62c9a34d..af1f4a3061 100644
+index 6c62c9a..af1f4a3 100644
 --- a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswHarvester.java
 +++ b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswHarvester.java
 @@ -60,6 +60,8 @@ public class CswHarvester extends AbstractHarvester<HarvestResult, CswParams> {
@@ -181,17 +181,17 @@ index 6c62c9a34d..af1f4a3061 100644
          harvesterSettingsManager.add("id:" + siteId, "sortBy", params.sortBy);
 +        // DCAT custom
 +        harvesterSettingsManager.add("id:" + siteId, "resourceUriPattern", params.resourceUriPattern);
- 
+
          //--- store dynamic filter nodes
          String filtersID = harvesterSettingsManager.add(path, "filters", "");
 diff --git a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswParams.java b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswParams.java
-index 624a62e0f8..e5f677c8b6 100644
+index 624a62e..e5f677c 100644
 --- a/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswParams.java
 +++ b/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/csw/CswParams.java
 @@ -53,6 +53,9 @@ public class CswParams extends AbstractParams {
- 
+
      public Integer hopCount;
- 
+
 +    // DCAT custom
 +    public String resourceUriPattern;
 +
@@ -199,36 +199,36 @@ index 624a62e0f8..e5f677c8b6 100644
       * The filter is a process (see schema/process folder) which depends on the schema. It could be
       * composed of parameter which will be sent to XSL transformation using the following syntax :
 @@ -105,6 +108,8 @@ public class CswParams extends AbstractParams {
- 
+
          bboxFilter = node.getChild("bboxFilter");
- 
+
 +        // DCAT custom
 +        resourceUriPattern = Util.getParam(site, "resourceUriPattern", "");
      }
- 
+
      /**
 @@ -136,6 +141,9 @@ public class CswParams extends AbstractParams {
          }
- 
+
          bboxFilter = node.getChild("bboxFilter");
 +
 +        // DCAT custom
 +        resourceUriPattern = Util.getParam(site, "resourceUriPattern", "");
      }
- 
+
      /**
 @@ -159,6 +167,9 @@ public class CswParams extends AbstractParams {
          copy.eltFilters = eltFilters;
          copy.bboxFilter = bboxFilter;
- 
+
 +        // DCAT custom
 +        copy.resourceUriPattern = resourceUriPattern;
 +
          return copy;
      }
- 
+
 diff --git a/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl b/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl
-index 106ea2a6b5..edcc4efc63 100644
+index 106ea2a..edcc4ef 100644
 --- a/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl
 +++ b/schemas/iso19139/src/main/plugin/iso19139/index-fields/index.xsl
 @@ -31,6 +31,7 @@
@@ -242,7 +242,7 @@ index 106ea2a6b5..edcc4efc63 100644
 @@ -72,6 +73,8 @@
    <xsl:variable name="parentAssociatedResourceType" select="'partOfSeamlessDatabase'"/>
    <xsl:variable name="childrenAssociatedResourceType" select="'isComposedOf'"/>
- 
+
 +  <xsl:variable name="uuidRegex" select="'([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}'"/>
 +
    <xsl:template match="/">
@@ -322,7 +322,7 @@ index 106ea2a6b5..edcc4efc63 100644
 +  </xsl:function>
  </xsl:stylesheet>
 diff --git a/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java b/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java
-index 8660f17c83..f3541590ff 100644
+index 8660f17..f354159 100644
 --- a/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java
 +++ b/services/src/main/java/org/fao/geonet/api/records/MetadataUtils.java
 @@ -61,6 +61,7 @@ import org.fao.geonet.repository.MetadataValidationRepository;
@@ -367,55 +367,56 @@ index 8660f17c83..f3541590ff 100644
                  && (type == RelatedItemType.siblings
                  || type == RelatedItemType.parent
 diff --git a/web-ui/src/main/resources/catalog/locales/en-admin.json b/web-ui/src/main/resources/catalog/locales/en-admin.json
-index 4657a67f7e..8e5fc1d86d 100644
+index ad660ca..a59f5ef 100644
 --- a/web-ui/src/main/resources/catalog/locales/en-admin.json
 +++ b/web-ui/src/main/resources/catalog/locales/en-admin.json
-@@ -1610,6 +1610,9 @@
-     "datahubEnabled": "Enable Datahub interface for this portal",
-     "datahubInfo": "This Datahub interface is accessible <a href='../../{{uuid}}/datahub'>here</a>.",
-     "datahubPluginNotInstalled-help": "The Datahub plugin is not installed. Please refer to <a href='https://docs.geonetwork-opensource.org/4.4/install-guide/plugins/#datahub-integration-gn-datahub-integration' target='_blank'>the related documentation for more information</a> on installation and usage.",
--    "harvesterErrorRetrieveSources": "Error retrieving remote catalogs"
-+    "harvesterErrorRetrieveSources": "Error retrieving remote catalogs",
+@@ -1638,5 +1638,8 @@
+     "anonymousAccessList": "Anonymous access list to unpublished records",
+     "anonymousAccessListDelete": "Revoke access",
+     "anonymousAccessListEmpty": "No anonymous access to display",
+-    "anonymousAccessDeleted": "Anonymous access revoked"
++    "anonymousAccessDeleted": "Anonymous access revoked",
 +    "==== DCAT CUSTOM ====": "",
 +    "resourceUriPattern": "Resource URI pattern",
 +    "resourceUriPatternHelp": "Pattern used to generate URI of the resources during the RDF export. Example of value: https://metadata.vlaanderen.be/srv/resources/{resourceType}/{resourceUuid}"
  }
- 
 diff --git a/web-ui/src/main/resources/catalog/locales/fr-admin.json b/web-ui/src/main/resources/catalog/locales/fr-admin.json
-index 97d05fd585..b30f8c94a0 100644
+index d720f9c..99e88df 100644
 --- a/web-ui/src/main/resources/catalog/locales/fr-admin.json
 +++ b/web-ui/src/main/resources/catalog/locales/fr-admin.json
-@@ -1610,5 +1610,8 @@
-     "datahubEnabled": "Activer le Datahub pour ce portail",
-     "datahubInfo": "L'interface du Datahub est accessible <a href='../../{{uuid}}/datahub'>ici</a>.",
-     "datahubPluginNotInstalled-help": "Le plugin d'intégration du Datahub n'est pas installé. Veuillez consulter <a href='https://docs.geonetwork-opensource.org/4.4/install-guide/plugins/#datahub-integration-gn-datahub-integration' target='_blank'>la documentation associée pour plus d'informations</a> sur l'installation et l'utilisation de ce plugin.",
--    "harvesterErrorRetrieveSources": "Erreur lors de la récupération des catalogues distants"
-+    "harvesterErrorRetrieveSources": "Erreur lors de la récupération des catalogues distants",
+@@ -1638,5 +1638,8 @@
+     "anonymousAccessList": "Anonymous access list to unpublished records",
+     "anonymousAccessListDelete": "Revoke access",
+     "anonymousAccessListEmpty": "No anonymous access to display",
+-    "anonymousAccessDeleted": "Anonymous access revoked"
+-}
+\ No newline at end of file
++    "anonymousAccessDeleted": "Anonymous access revoked",
 +    "==== DCAT custom ====": "",
 +    "resourceUriPattern": "Patterne de l'URI des resources",
 +    "resourceUriPatternHelp": "Patterne utilisé pour générer les URI des resources lors de l'export RDF. Exemple de valeur: https://metadata.vlaanderen.be/srv/resources/{resourceType}/{resourceUuid}"
- }
-\ No newline at end of file
++}
 diff --git a/web-ui/src/main/resources/catalog/locales/nl-admin.json b/web-ui/src/main/resources/catalog/locales/nl-admin.json
-index 1422dbfddd..89cafd7564 100644
+index 6635938..df91d2a 100644
 --- a/web-ui/src/main/resources/catalog/locales/nl-admin.json
 +++ b/web-ui/src/main/resources/catalog/locales/nl-admin.json
-@@ -1610,5 +1610,8 @@
-     "datahubEnabled": "Enable Datahub interface for this portal",
-     "datahubInfo": "This Datahub interface is accessible <a href='../../{{uuid}}/datahub'>here</a>.",
-     "datahubPluginNotInstalled-help": "The Datahub plugin is not installed. Please refer to <a href='https://docs.geonetwork-opensource.org/4.4/install-guide/plugins/#datahub-integration-gn-datahub-integration' target='_blank'>the related documentation for more information</a> on installation and usage.",
--    "harvesterErrorRetrieveSources": "Error retrieving remote catalogs"
-+    "harvesterErrorRetrieveSources": "Error retrieving remote catalogs",
-+    "==== DCAT custom ====": "",
-+    "resourceUriPattern": "Resource URI pattern",
-+    "resourceUriPatternHelp": "Pattern gebruikt om URI van de bronnen te genereren tijdens de RDF export. Bv: https://metadata.vlaanderen.be/srv/resources/{resourceType}/{resourceUuid}"
- }
+@@ -1638,5 +1638,8 @@
+     "anonymousAccessList": "Lijst van niet-gepubliceerde records met anonieme toegang",
+     "anonymousAccessListDelete": "Toegang intrekken",
+     "anonymousAccessListEmpty": "Geen anonieme toegang gevonden",
+-    "anonymousAccessDeleted": "Anonieme toegang ingetrokken"
+-}
 \ No newline at end of file
++    "anonymousAccessDeleted": "Anonieme toegang ingetrokken",
++    "==== DCAT custom ====": "",
++    "resourceUriPattern": "Resource URI patroon",
++    "resourceUriPatternHelp": "Patroon gebruikt om URI van de bronnen te genereren tijdens de RDF export. Bv: https://metadata.vlaanderen.be/srv/resources/{resourceType}/{resourceUuid}"
++}
 diff --git a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.html b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.html
-index 03bee12552..827103ef87 100644
+index 048ebc0..5570d35 100644
 --- a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.html
 +++ b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.html
-@@ -337,6 +337,23 @@
+@@ -366,6 +366,23 @@
        data-lang="{{lang}}"
        data-label="csw-category"
      ></div>
@@ -437,13 +438,13 @@ index 03bee12552..827103ef87 100644
 +      <p class="help-block" data-translate="">resourceUriPatternHelp</p>
 +    </div>
    </fieldset>
- 
+
    <div
 diff --git a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.js b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.js
-index bc6eb3e163..e126119172 100644
+index 47d55b1..70e1e29 100644
 --- a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.js
 +++ b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/csw.js
-@@ -24,7 +24,8 @@ var gnHarvestercsw = {
+@@ -26,7 +26,8 @@ var gnHarvestercsw = {
          "outputSchema": "http://www.isotc211.org/2005/gmd",
          "sortBy": "identifier:A",
          "queryScope": "local",
@@ -453,7 +454,7 @@ index bc6eb3e163..e126119172 100644
        },
        "content" : {
          "validate" : "NOVALIDATION",
-@@ -113,6 +114,7 @@ var gnHarvestercsw = {
+@@ -117,6 +118,7 @@ var gnHarvestercsw = {
        + '    <sortBy>' + h.site.sortBy + '</sortBy>'
        + '    <queryScope>' + h.site.queryScope + '</queryScope>'
        + '    <hopCount>' + h.site.hopCount + '</hopCount>'
@@ -462,7 +463,7 @@ index bc6eb3e163..e126119172 100644
        + gnHarvestercsw.buildResponseCSWBBOXFilter($scope)
        + gnHarvestercsw.buildResponseCSWFilter($scope)
 diff --git a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.html b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.html
-index d7a36ee29a..c47ddc3f57 100644
+index d7a36ee..c47ddc3 100644
 --- a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.html
 +++ b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.html
 @@ -266,6 +266,22 @@
@@ -486,10 +487,10 @@ index d7a36ee29a..c47ddc3f57 100644
 +      <p class="help-block" data-translate="">resourceUriPatternHelp</p>
 +    </div>
    </fieldset>
- 
+
    <div data-gn-harvester-translate-content-configurator="harvesterSelected.content"></div>
 diff --git a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.js b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.js
-index 8ca175afcd..a3c9441323 100644
+index 8ca175a..a3c9441 100644
 --- a/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.js
 +++ b/web-ui/src/main/resources/catalog/templates/admin/harvest/type/geonetwork.js
 @@ -21,7 +21,8 @@ var gnHarvestergeonetwork = {
@@ -511,10 +512,10 @@ index 8ca175afcd..a3c9441323 100644
        + '  <searches>'
        + '    <search>'
 diff --git a/web/src/main/webapp/xsl/xml/harvesting/csw.xsl b/web/src/main/webapp/xsl/xml/harvesting/csw.xsl
-index afbd470d75..33b6e31d5b 100644
+index 7030f76..1c3a27c 100644
 --- a/web/src/main/webapp/xsl/xml/harvesting/csw.xsl
 +++ b/web/src/main/webapp/xsl/xml/harvesting/csw.xsl
-@@ -31,6 +31,9 @@
+@@ -37,6 +37,9 @@
      <sortBy>
        <xsl:value-of select="sortBy/value"/>
      </sortBy>
@@ -522,10 +523,10 @@ index afbd470d75..33b6e31d5b 100644
 +      <xsl:value-of select="resourceUriPattern/value"/>
 +    </resourceUriPattern>
    </xsl:template>
- 
- 
+
+
 diff --git a/web/src/main/webapp/xsl/xml/harvesting/geonetwork.xsl b/web/src/main/webapp/xsl/xml/harvesting/geonetwork.xsl
-index ecfc880f24..db96a7ca0d 100644
+index ecfc880..db96a7c 100644
 --- a/web/src/main/webapp/xsl/xml/harvesting/geonetwork.xsl
 +++ b/web/src/main/webapp/xsl/xml/harvesting/geonetwork.xsl
 @@ -22,6 +22,9 @@
@@ -536,8 +537,8 @@ index ecfc880f24..db96a7ca0d 100644
 +      <xsl:value-of select="resourceUriPattern/value"/>
 +    </resourceUriPattern>
    </xsl:template>
- 
+
    <xsl:template match="*" mode="searches">
--- 
-2.51.0
+--
+2.53.0
 
