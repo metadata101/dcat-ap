@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <schematron.title>DCAT-AP (v2.1.1)</schematron.title>
+  <dcat-ap-211.pattern.assert.1>Wert muss buchstäblich sein (  skos:prefLabel  )</dcat-ap-211.pattern.assert.1>
+  <dcat-ap-211.pattern.assert.10>Wert muss buchstäblich sein (  dcat:keyword  )</dcat-ap-211.pattern.assert.10>
+  <dcat-ap-211.pattern.assert.11>Wert erfüllt nicht die SHACL-Beschränkung (  dct:relation   )</dcat-ap-211.pattern.assert.11>
+  <dcat-ap-211.pattern.assert.12>Wert muss buchstäblich sein (  owl:versionInfo  )</dcat-ap-211.pattern.assert.12>
+  <dcat-ap-211.pattern.assert.13>Wert muss buchstäblich sein (  adms:versionNotes  )</dcat-ap-211.pattern.assert.13>
+  <dcat-ap-211.pattern.assert.14>Wert erfüllt nicht die SHACL-Beschränkung (  dc:isReferencedBy   )</dcat-ap-211.pattern.assert.14>
+  <dcat-ap-211.pattern.assert.15>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-211.pattern.assert.15>
+  <dcat-ap-211.pattern.assert.16>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-211.pattern.assert.16>
+  <dcat-ap-211.pattern.assert.17>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-211.pattern.assert.17>
+  <dcat-ap-211.pattern.assert.18>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:downloadURL   )</dcat-ap-211.pattern.assert.18>
+  <dcat-ap-211.pattern.assert.19>Es werden mindestens 1 Werte benötigt (  dcat:accessURL  )</dcat-ap-211.pattern.assert.19>
+  <dcat-ap-211.pattern.assert.2>Wert muss buchstäblich sein (  foaf:name  )</dcat-ap-211.pattern.assert.2>
+  <dcat-ap-211.pattern.assert.20>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-211.pattern.assert.20>
+  <dcat-ap-211.pattern.assert.21>Wert muss   spdx:checksumAlgorithm_sha1   (  spdx:algorithm   )</dcat-ap-211.pattern.assert.21>
+  <dcat-ap-211.pattern.assert.22>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-211.pattern.assert.22>
+  <dcat-ap-211.pattern.assert.23>Wert muss buchstäblich sein (  dcat:bbox  )</dcat-ap-211.pattern.assert.23>
+  <dcat-ap-211.pattern.assert.24>Wert muss buchstäblich sein (  dcat:centroid  )</dcat-ap-211.pattern.assert.24>
+  <dcat-ap-211.pattern.assert.25>Wert muss buchstäblich sein (  locn:geometry  )</dcat-ap-211.pattern.assert.25>
+  <dcat-ap-211.pattern.assert.26>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-211.pattern.assert.26>
+  <dcat-ap-211.pattern.assert.27>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-211.pattern.assert.27>
+  <dcat-ap-211.pattern.assert.3>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-211.pattern.assert.3>
+  <dcat-ap-211.pattern.assert.4>Es werden mindestens 1 Werte benötigt (  dcat:endpointURL  )</dcat-ap-211.pattern.assert.4>
+  <dcat-ap-211.pattern.assert.5>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-211.pattern.assert.5>
+  <dcat-ap-211.pattern.assert.6>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:endpointDescription   )</dcat-ap-211.pattern.assert.6>
+  <dcat-ap-211.pattern.assert.7>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-211.pattern.assert.7>
+  <dcat-ap-211.pattern.assert.8>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-211.pattern.assert.8>
+  <dcat-ap-211.pattern.assert.9>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-211.pattern.assert.9>
+  <dcat-ap-211.pattern.report.1>Wert muss buchstäblich sein (  skos:prefLabel  )</dcat-ap-211.pattern.report.1>
+  <dcat-ap-211.pattern.report.10>Wert muss buchstäblich sein (  dcat:keyword  )</dcat-ap-211.pattern.report.10>
+  <dcat-ap-211.pattern.report.11>Wert erfüllt nicht die SHACL-Beschränkung (  dct:relation   )</dcat-ap-211.pattern.report.11>
+  <dcat-ap-211.pattern.report.12>Wert muss buchstäblich sein (  owl:versionInfo  )</dcat-ap-211.pattern.report.12>
+  <dcat-ap-211.pattern.report.13>Wert muss buchstäblich sein (  adms:versionNotes  )</dcat-ap-211.pattern.report.13>
+  <dcat-ap-211.pattern.report.14>Wert erfüllt nicht die SHACL-Beschränkung (  dc:isReferencedBy   )</dcat-ap-211.pattern.report.14>
+  <dcat-ap-211.pattern.report.15>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-211.pattern.report.15>
+  <dcat-ap-211.pattern.report.16>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-211.pattern.report.16>
+  <dcat-ap-211.pattern.report.17>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-211.pattern.report.17>
+  <dcat-ap-211.pattern.report.18>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:downloadURL   )</dcat-ap-211.pattern.report.18>
+  <dcat-ap-211.pattern.report.19>Es werden mindestens 1 Werte benötigt (  dcat:accessURL  )</dcat-ap-211.pattern.report.19>
+  <dcat-ap-211.pattern.report.2>Wert muss buchstäblich sein (  foaf:name  )</dcat-ap-211.pattern.report.2>
+  <dcat-ap-211.pattern.report.20>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-211.pattern.report.20>
+  <dcat-ap-211.pattern.report.21>Wert muss   spdx:checksumAlgorithm_sha1   (  spdx:algorithm   )</dcat-ap-211.pattern.report.21>
+  <dcat-ap-211.pattern.report.22>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-211.pattern.report.22>
+  <dcat-ap-211.pattern.report.23>Wert muss buchstäblich sein (  dcat:bbox  )</dcat-ap-211.pattern.report.23>
+  <dcat-ap-211.pattern.report.24>Wert muss buchstäblich sein (  dcat:centroid  )</dcat-ap-211.pattern.report.24>
+  <dcat-ap-211.pattern.report.25>Wert muss buchstäblich sein (  locn:geometry  )</dcat-ap-211.pattern.report.25>
+  <dcat-ap-211.pattern.report.26>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-211.pattern.report.26>
+  <dcat-ap-211.pattern.report.27>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-211.pattern.report.27>
+  <dcat-ap-211.pattern.report.3>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-211.pattern.report.3>
+  <dcat-ap-211.pattern.report.4>Es werden mindestens 1 Werte benötigt (  dcat:endpointURL  )</dcat-ap-211.pattern.report.4>
+  <dcat-ap-211.pattern.report.5>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-211.pattern.report.5>
+  <dcat-ap-211.pattern.report.6>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:endpointDescription   )</dcat-ap-211.pattern.report.6>
+  <dcat-ap-211.pattern.report.7>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-211.pattern.report.7>
+  <dcat-ap-211.pattern.report.8>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-211.pattern.report.8>
+  <dcat-ap-211.pattern.report.9>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-211.pattern.report.9>
+  <dcat-ap-211.pattern.title.1> skos:prefLabel  </dcat-ap-211.pattern.title.1>
+  <dcat-ap-211.pattern.title.10> dcat:keyword  </dcat-ap-211.pattern.title.10>
+  <dcat-ap-211.pattern.title.11> dct:relation  </dcat-ap-211.pattern.title.11>
+  <dcat-ap-211.pattern.title.12> owl:versionInfo  </dcat-ap-211.pattern.title.12>
+  <dcat-ap-211.pattern.title.13> adms:versionNotes  </dcat-ap-211.pattern.title.13>
+  <dcat-ap-211.pattern.title.14> dc:isReferencedBy  </dcat-ap-211.pattern.title.14>
+  <dcat-ap-211.pattern.title.15> dct:description  </dcat-ap-211.pattern.title.15>
+  <dcat-ap-211.pattern.title.16> dct:title  </dcat-ap-211.pattern.title.16>
+  <dcat-ap-211.pattern.title.17> dct:title  </dcat-ap-211.pattern.title.17>
+  <dcat-ap-211.pattern.title.18> dcat:downloadURL  </dcat-ap-211.pattern.title.18>
+  <dcat-ap-211.pattern.title.19> dcat:accessURL   - Mindestkarteinalität 1</dcat-ap-211.pattern.title.19>
+  <dcat-ap-211.pattern.title.2> foaf:name  </dcat-ap-211.pattern.title.2>
+  <dcat-ap-211.pattern.title.20> dct:description  </dcat-ap-211.pattern.title.20>
+  <dcat-ap-211.pattern.title.21> spdx:algorithm  </dcat-ap-211.pattern.title.21>
+  <dcat-ap-211.pattern.title.22> dct:title  </dcat-ap-211.pattern.title.22>
+  <dcat-ap-211.pattern.title.23> dcat:bbox  </dcat-ap-211.pattern.title.23>
+  <dcat-ap-211.pattern.title.24> dcat:centroid  </dcat-ap-211.pattern.title.24>
+  <dcat-ap-211.pattern.title.25> locn:geometry  </dcat-ap-211.pattern.title.25>
+  <dcat-ap-211.pattern.title.26> dct:title  </dcat-ap-211.pattern.title.26>
+  <dcat-ap-211.pattern.title.27> dct:description  </dcat-ap-211.pattern.title.27>
+  <dcat-ap-211.pattern.title.3> dct:title  </dcat-ap-211.pattern.title.3>
+  <dcat-ap-211.pattern.title.4> dcat:endpointURL   - Mindestkarteinalität 1</dcat-ap-211.pattern.title.4>
+  <dcat-ap-211.pattern.title.5> dct:description  </dcat-ap-211.pattern.title.5>
+  <dcat-ap-211.pattern.title.6> dcat:endpointDescription  </dcat-ap-211.pattern.title.6>
+  <dcat-ap-211.pattern.title.7> dct:description  </dcat-ap-211.pattern.title.7>
+  <dcat-ap-211.pattern.title.8> dct:title  </dcat-ap-211.pattern.title.8>
+  <dcat-ap-211.pattern.title.9> dct:identifier  </dcat-ap-211.pattern.title.9>
+</strings>

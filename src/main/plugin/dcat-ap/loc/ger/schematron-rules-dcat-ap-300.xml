@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <schematron.title>DCAT-AP (v3.0.0)</schematron.title>
+  <dcat-ap-300.pattern.assert.1>Wert erfüllt nicht die SHACL-Beschränkung (  dct:language   )</dcat-ap-300.pattern.assert.1>
+  <dcat-ap-300.pattern.assert.10>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:catalog   )</dcat-ap-300.pattern.assert.10>
+  <dcat-ap-300.pattern.assert.11>höchstens 1 Werte sind erlaubt (  dct:creator  )</dcat-ap-300.pattern.assert.11>
+  <dcat-ap-300.pattern.assert.12>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:dataset   )</dcat-ap-300.pattern.assert.12>
+  <dcat-ap-300.pattern.assert.13>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-300.pattern.assert.13>
+  <dcat-ap-300.pattern.assert.14>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-300.pattern.assert.14>
+  <dcat-ap-300.pattern.assert.15>höchstens 1 Werte sind erlaubt (  foaf:homepage  )</dcat-ap-300.pattern.assert.15>
+  <dcat-ap-300.pattern.assert.16>Wert muss buchstäblich sein (  dcat:bbox  )</dcat-ap-300.pattern.assert.16>
+  <dcat-ap-300.pattern.assert.17>Wert muss buchstäblich sein (  dcat:centroid  )</dcat-ap-300.pattern.assert.17>
+  <dcat-ap-300.pattern.assert.18>Wert muss buchstäblich sein (  locn:geometry  )</dcat-ap-300.pattern.assert.18>
+  <dcat-ap-300.pattern.assert.19>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-300.pattern.assert.19>
+  <dcat-ap-300.pattern.assert.2>Wert muss ein IRI sein (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.assert.2>
+  <dcat-ap-300.pattern.assert.20>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-300.pattern.assert.20>
+  <dcat-ap-300.pattern.assert.21>Wert muss buchstäblich sein (  skos:prefLabel  )</dcat-ap-300.pattern.assert.21>
+  <dcat-ap-300.pattern.assert.22>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-300.pattern.assert.22>
+  <dcat-ap-300.pattern.assert.23>Wert muss ein IRI sein (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.assert.23>
+  <dcat-ap-300.pattern.assert.24>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:contactPoint   )</dcat-ap-300.pattern.assert.24>
+  <dcat-ap-300.pattern.assert.25>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-300.pattern.assert.25>
+  <dcat-ap-300.pattern.assert.26>höchstens 1 Werte sind erlaubt (  dct:accrualPeriodicity  )</dcat-ap-300.pattern.assert.26>
+  <dcat-ap-300.pattern.assert.27>Wert erfüllt nicht die SHACL-Beschränkung (  dct:spatial   )</dcat-ap-300.pattern.assert.27>
+  <dcat-ap-300.pattern.assert.28>Wert muss buchstäblich sein (  dct:modified  )</dcat-ap-300.pattern.assert.28>
+  <dcat-ap-300.pattern.assert.29>höchstens 1 Werte sind erlaubt (  dct:publisher  )</dcat-ap-300.pattern.assert.29>
+  <dcat-ap-300.pattern.assert.3>höchstens 1 Werte sind erlaubt (  dct:license  )</dcat-ap-300.pattern.assert.3>
+  <dcat-ap-300.pattern.assert.30>Wert muss buchstäblich sein (  dct:issued  )</dcat-ap-300.pattern.assert.30>
+  <dcat-ap-300.pattern.assert.31>Wert erfüllt nicht die SHACL-Beschränkung (  dct:temporal   )</dcat-ap-300.pattern.assert.31>
+  <dcat-ap-300.pattern.assert.32>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-300.pattern.assert.32>
+  <dcat-ap-300.pattern.assert.33>höchstens 1 Werte sind erlaubt (  dct:accessRights  )</dcat-ap-300.pattern.assert.33>
+  <dcat-ap-300.pattern.assert.34>Wert muss ein IRI sein (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.assert.34>
+  <dcat-ap-300.pattern.assert.35>Wert erfüllt nicht die SHACL-Beschränkung (  dct:conformsTo   )</dcat-ap-300.pattern.assert.35>
+  <dcat-ap-300.pattern.assert.36>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:contactPoint   )</dcat-ap-300.pattern.assert.36>
+  <dcat-ap-300.pattern.assert.37>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-300.pattern.assert.37>
+  <dcat-ap-300.pattern.assert.38>Es werden mindestens 1 Werte benötigt (  dcat:endpointURL  )</dcat-ap-300.pattern.assert.38>
+  <dcat-ap-300.pattern.assert.39>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:endpointDescription   )</dcat-ap-300.pattern.assert.39>
+  <dcat-ap-300.pattern.assert.4>Wert erfüllt nicht die SHACL-Beschränkung (  dct:spatial   )</dcat-ap-300.pattern.assert.4>
+  <dcat-ap-300.pattern.assert.40>Wert erfüllt nicht die SHACL-Beschränkung (  dct:format   )</dcat-ap-300.pattern.assert.40>
+  <dcat-ap-300.pattern.assert.41>Wert muss buchstäblich sein (  dcat:keyword  )</dcat-ap-300.pattern.assert.41>
+  <dcat-ap-300.pattern.assert.42>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:landingPage   )</dcat-ap-300.pattern.assert.42>
+  <dcat-ap-300.pattern.assert.43>höchstens 1 Werte sind erlaubt (  dct:license  )</dcat-ap-300.pattern.assert.43>
+  <dcat-ap-300.pattern.assert.44>höchstens 1 Werte sind erlaubt (  dct:publisher  )</dcat-ap-300.pattern.assert.44>
+  <dcat-ap-300.pattern.assert.45>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:servesDataset   )</dcat-ap-300.pattern.assert.45>
+  <dcat-ap-300.pattern.assert.46>Wert muss ein IRI sein (  dcat:theme  )</dcat-ap-300.pattern.assert.46>
+  <dcat-ap-300.pattern.assert.47>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-300.pattern.assert.47>
+  <dcat-ap-300.pattern.assert.48>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:accessService   )</dcat-ap-300.pattern.assert.48>
+  <dcat-ap-300.pattern.assert.49>Es werden mindestens 1 Werte benötigt (  dcat:accessURL  )</dcat-ap-300.pattern.assert.49>
+  <dcat-ap-300.pattern.assert.5>Wert erfüllt nicht die SHACL-Beschränkung (  dct:hasPart   )</dcat-ap-300.pattern.assert.5>
+  <dcat-ap-300.pattern.assert.50>Wert muss ein IRI sein (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.assert.50>
+  <dcat-ap-300.pattern.assert.51>höchstens 1 Werte sind erlaubt (  dcat-ap:availability  )</dcat-ap-300.pattern.assert.51>
+  <dcat-ap-300.pattern.assert.52>höchstens 1 Werte sind erlaubt (  spdx:checksum  )</dcat-ap-300.pattern.assert.52>
+  <dcat-ap-300.pattern.assert.53>höchstens 1 Werte sind erlaubt (  dcat:compressFormat  )</dcat-ap-300.pattern.assert.53>
+  <dcat-ap-300.pattern.assert.54>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-300.pattern.assert.54>
+  <dcat-ap-300.pattern.assert.55>Wert erfüllt nicht die SHACL-Beschränkung (  foaf:page   )</dcat-ap-300.pattern.assert.55>
+  <dcat-ap-300.pattern.assert.56>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:downloadURL   )</dcat-ap-300.pattern.assert.56>
+  <dcat-ap-300.pattern.assert.57>höchstens 1 Werte sind erlaubt (  dct:format  )</dcat-ap-300.pattern.assert.57>
+  <dcat-ap-300.pattern.assert.58>höchstens 1 Werte sind erlaubt (  odrl:hasPolicy  )</dcat-ap-300.pattern.assert.58>
+  <dcat-ap-300.pattern.assert.59>Wert erfüllt nicht die SHACL-Beschränkung (  dct:language   )</dcat-ap-300.pattern.assert.59>
+  <dcat-ap-300.pattern.assert.6>höchstens 1 Werte sind erlaubt (  dct:rights  )</dcat-ap-300.pattern.assert.6>
+  <dcat-ap-300.pattern.assert.60>höchstens 1 Werte sind erlaubt (  dct:license  )</dcat-ap-300.pattern.assert.60>
+  <dcat-ap-300.pattern.assert.61>Wert erfüllt nicht die SHACL-Beschränkung (  dct:conformsTo   )</dcat-ap-300.pattern.assert.61>
+  <dcat-ap-300.pattern.assert.62>höchstens 1 Werte sind erlaubt (  dcat:mediaType  )</dcat-ap-300.pattern.assert.62>
+  <dcat-ap-300.pattern.assert.63>höchstens 1 Werte sind erlaubt (  dcat:packageFormat  )</dcat-ap-300.pattern.assert.63>
+  <dcat-ap-300.pattern.assert.64>höchstens 1 Werte sind erlaubt (  dct:rights  )</dcat-ap-300.pattern.assert.64>
+  <dcat-ap-300.pattern.assert.65>höchstens 1 Werte sind erlaubt (  adms:status  )</dcat-ap-300.pattern.assert.65>
+  <dcat-ap-300.pattern.assert.66>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-300.pattern.assert.66>
+  <dcat-ap-300.pattern.assert.67>höchstens 1 Werte sind erlaubt (  dct:accessRights  )</dcat-ap-300.pattern.assert.67>
+  <dcat-ap-300.pattern.assert.68>Wert muss ein IRI sein (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.assert.68>
+  <dcat-ap-300.pattern.assert.69>Wert erfüllt nicht die SHACL-Beschränkung (  dct:conformsTo   )</dcat-ap-300.pattern.assert.69>
+  <dcat-ap-300.pattern.assert.7>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:record   )</dcat-ap-300.pattern.assert.7>
+  <dcat-ap-300.pattern.assert.70>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:contactPoint   )</dcat-ap-300.pattern.assert.70>
+  <dcat-ap-300.pattern.assert.71>Wert erfüllt nicht die SHACL-Beschränkung (  dct:creator   )</dcat-ap-300.pattern.assert.71>
+  <dcat-ap-300.pattern.assert.72>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:distribution   )</dcat-ap-300.pattern.assert.72>
+  <dcat-ap-300.pattern.assert.73>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-300.pattern.assert.73>
+  <dcat-ap-300.pattern.assert.74>Wert erfüllt nicht die SHACL-Beschränkung (  foaf:page   )</dcat-ap-300.pattern.assert.74>
+  <dcat-ap-300.pattern.assert.75>höchstens 1 Werte sind erlaubt (  dct:accrualPeriodicity  )</dcat-ap-300.pattern.assert.75>
+  <dcat-ap-300.pattern.assert.76>Wert erfüllt nicht die SHACL-Beschränkung (  dct:spatial   )</dcat-ap-300.pattern.assert.76>
+  <dcat-ap-300.pattern.assert.77>Wert erfüllt nicht die SHACL-Beschränkung (  dct:hasVersion   )</dcat-ap-300.pattern.assert.77>
+  <dcat-ap-300.pattern.assert.78>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-300.pattern.assert.78>
+  <dcat-ap-300.pattern.assert.79>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:inSeries   )</dcat-ap-300.pattern.assert.79>
+  <dcat-ap-300.pattern.assert.8>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:themeTaxonomy   )</dcat-ap-300.pattern.assert.8>
+  <dcat-ap-300.pattern.assert.80>Wert erfüllt nicht die SHACL-Beschränkung (  dct:isReferencedBy   )</dcat-ap-300.pattern.assert.80>
+  <dcat-ap-300.pattern.assert.81>Wert muss buchstäblich sein (  dcat:keyword  )</dcat-ap-300.pattern.assert.81>
+  <dcat-ap-300.pattern.assert.82>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:landingPage   )</dcat-ap-300.pattern.assert.82>
+  <dcat-ap-300.pattern.assert.83>Wert erfüllt nicht die SHACL-Beschränkung (  dct:language   )</dcat-ap-300.pattern.assert.83>
+  <dcat-ap-300.pattern.assert.84>Wert erfüllt nicht die SHACL-Beschränkung (  adms:identifier   )</dcat-ap-300.pattern.assert.84>
+  <dcat-ap-300.pattern.assert.85>Wert erfüllt nicht die SHACL-Beschränkung (  dct:provenance   )</dcat-ap-300.pattern.assert.85>
+  <dcat-ap-300.pattern.assert.86>höchstens 1 Werte sind erlaubt (  dct:publisher  )</dcat-ap-300.pattern.assert.86>
+  <dcat-ap-300.pattern.assert.87>Wert erfüllt nicht die SHACL-Beschränkung (  prov:qualifiedAttribution   )</dcat-ap-300.pattern.assert.87>
+  <dcat-ap-300.pattern.assert.88>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:qualifiedRelation   )</dcat-ap-300.pattern.assert.88>
+  <dcat-ap-300.pattern.assert.89>Wert erfüllt nicht die SHACL-Beschränkung (  dct:relation   )</dcat-ap-300.pattern.assert.89>
+  <dcat-ap-300.pattern.assert.9>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:service   )</dcat-ap-300.pattern.assert.9>
+  <dcat-ap-300.pattern.assert.90>Wert erfüllt nicht die SHACL-Beschränkung (  adms:sample   )</dcat-ap-300.pattern.assert.90>
+  <dcat-ap-300.pattern.assert.91>Wert erfüllt nicht die SHACL-Beschränkung (  dct:source   )</dcat-ap-300.pattern.assert.91>
+  <dcat-ap-300.pattern.assert.92>Wert erfüllt nicht die SHACL-Beschränkung (  dct:temporal   )</dcat-ap-300.pattern.assert.92>
+  <dcat-ap-300.pattern.assert.93>Wert muss ein IRI sein (  dcat:theme  )</dcat-ap-300.pattern.assert.93>
+  <dcat-ap-300.pattern.assert.94>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-300.pattern.assert.94>
+  <dcat-ap-300.pattern.assert.95>Wert erfüllt nicht die SHACL-Beschränkung (  dct:type   )</dcat-ap-300.pattern.assert.95>
+  <dcat-ap-300.pattern.assert.96>Wert muss buchstäblich sein (  dcat:version  )</dcat-ap-300.pattern.assert.96>
+  <dcat-ap-300.pattern.assert.97>Wert muss buchstäblich sein (  adms:versionNotes  )</dcat-ap-300.pattern.assert.97>
+  <dcat-ap-300.pattern.assert.98>Wert erfüllt nicht die SHACL-Beschränkung (  prov:wasGeneratedBy   )</dcat-ap-300.pattern.assert.98>
+  <dcat-ap-300.pattern.assert.99>Wert muss buchstäblich sein (  foaf:name  )</dcat-ap-300.pattern.assert.99>
+  <dcat-ap-300.pattern.report.1>Wert erfüllt nicht die SHACL-Beschränkung (  dct:language   )</dcat-ap-300.pattern.report.1>
+  <dcat-ap-300.pattern.report.10>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:catalog   )</dcat-ap-300.pattern.report.10>
+  <dcat-ap-300.pattern.report.11>höchstens 1 Werte sind erlaubt (  dct:creator  )</dcat-ap-300.pattern.report.11>
+  <dcat-ap-300.pattern.report.12>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:dataset   )</dcat-ap-300.pattern.report.12>
+  <dcat-ap-300.pattern.report.13>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-300.pattern.report.13>
+  <dcat-ap-300.pattern.report.14>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-300.pattern.report.14>
+  <dcat-ap-300.pattern.report.15>höchstens 1 Werte sind erlaubt (  foaf:homepage  )</dcat-ap-300.pattern.report.15>
+  <dcat-ap-300.pattern.report.16>Wert muss buchstäblich sein (  dcat:bbox  )</dcat-ap-300.pattern.report.16>
+  <dcat-ap-300.pattern.report.17>Wert muss buchstäblich sein (  dcat:centroid  )</dcat-ap-300.pattern.report.17>
+  <dcat-ap-300.pattern.report.18>Wert muss buchstäblich sein (  locn:geometry  )</dcat-ap-300.pattern.report.18>
+  <dcat-ap-300.pattern.report.19>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-300.pattern.report.19>
+  <dcat-ap-300.pattern.report.2>Wert muss ein IRI sein (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.report.2>
+  <dcat-ap-300.pattern.report.20>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-300.pattern.report.20>
+  <dcat-ap-300.pattern.report.21>Wert muss buchstäblich sein (  skos:prefLabel  )</dcat-ap-300.pattern.report.21>
+  <dcat-ap-300.pattern.report.22>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-300.pattern.report.22>
+  <dcat-ap-300.pattern.report.23>Wert muss ein IRI sein (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.report.23>
+  <dcat-ap-300.pattern.report.24>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:contactPoint   )</dcat-ap-300.pattern.report.24>
+  <dcat-ap-300.pattern.report.25>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-300.pattern.report.25>
+  <dcat-ap-300.pattern.report.26>höchstens 1 Werte sind erlaubt (  dct:accrualPeriodicity  )</dcat-ap-300.pattern.report.26>
+  <dcat-ap-300.pattern.report.27>Wert erfüllt nicht die SHACL-Beschränkung (  dct:spatial   )</dcat-ap-300.pattern.report.27>
+  <dcat-ap-300.pattern.report.28>Wert muss buchstäblich sein (  dct:modified  )</dcat-ap-300.pattern.report.28>
+  <dcat-ap-300.pattern.report.29>höchstens 1 Werte sind erlaubt (  dct:publisher  )</dcat-ap-300.pattern.report.29>
+  <dcat-ap-300.pattern.report.3>höchstens 1 Werte sind erlaubt (  dct:license  )</dcat-ap-300.pattern.report.3>
+  <dcat-ap-300.pattern.report.30>Wert muss buchstäblich sein (  dct:issued  )</dcat-ap-300.pattern.report.30>
+  <dcat-ap-300.pattern.report.31>Wert erfüllt nicht die SHACL-Beschränkung (  dct:temporal   )</dcat-ap-300.pattern.report.31>
+  <dcat-ap-300.pattern.report.32>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-300.pattern.report.32>
+  <dcat-ap-300.pattern.report.33>höchstens 1 Werte sind erlaubt (  dct:accessRights  )</dcat-ap-300.pattern.report.33>
+  <dcat-ap-300.pattern.report.34>Wert muss ein IRI sein (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.report.34>
+  <dcat-ap-300.pattern.report.35>Wert erfüllt nicht die SHACL-Beschränkung (  dct:conformsTo   )</dcat-ap-300.pattern.report.35>
+  <dcat-ap-300.pattern.report.36>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:contactPoint   )</dcat-ap-300.pattern.report.36>
+  <dcat-ap-300.pattern.report.37>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-300.pattern.report.37>
+  <dcat-ap-300.pattern.report.38>Es werden mindestens 1 Werte benötigt (  dcat:endpointURL  )</dcat-ap-300.pattern.report.38>
+  <dcat-ap-300.pattern.report.39>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:endpointDescription   )</dcat-ap-300.pattern.report.39>
+  <dcat-ap-300.pattern.report.4>Wert erfüllt nicht die SHACL-Beschränkung (  dct:spatial   )</dcat-ap-300.pattern.report.4>
+  <dcat-ap-300.pattern.report.40>Wert erfüllt nicht die SHACL-Beschränkung (  dct:format   )</dcat-ap-300.pattern.report.40>
+  <dcat-ap-300.pattern.report.41>Wert muss buchstäblich sein (  dcat:keyword  )</dcat-ap-300.pattern.report.41>
+  <dcat-ap-300.pattern.report.42>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:landingPage   )</dcat-ap-300.pattern.report.42>
+  <dcat-ap-300.pattern.report.43>höchstens 1 Werte sind erlaubt (  dct:license  )</dcat-ap-300.pattern.report.43>
+  <dcat-ap-300.pattern.report.44>höchstens 1 Werte sind erlaubt (  dct:publisher  )</dcat-ap-300.pattern.report.44>
+  <dcat-ap-300.pattern.report.45>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:servesDataset   )</dcat-ap-300.pattern.report.45>
+  <dcat-ap-300.pattern.report.46>Wert muss ein IRI sein (  dcat:theme  )</dcat-ap-300.pattern.report.46>
+  <dcat-ap-300.pattern.report.47>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-300.pattern.report.47>
+  <dcat-ap-300.pattern.report.48>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:accessService   )</dcat-ap-300.pattern.report.48>
+  <dcat-ap-300.pattern.report.49>Es werden mindestens 1 Werte benötigt (  dcat:accessURL  )</dcat-ap-300.pattern.report.49>
+  <dcat-ap-300.pattern.report.5>Wert erfüllt nicht die SHACL-Beschränkung (  dct:hasPart   )</dcat-ap-300.pattern.report.5>
+  <dcat-ap-300.pattern.report.50>Wert muss ein IRI sein (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.report.50>
+  <dcat-ap-300.pattern.report.51>höchstens 1 Werte sind erlaubt (  dcat-ap:availability  )</dcat-ap-300.pattern.report.51>
+  <dcat-ap-300.pattern.report.52>höchstens 1 Werte sind erlaubt (  spdx:checksum  )</dcat-ap-300.pattern.report.52>
+  <dcat-ap-300.pattern.report.53>höchstens 1 Werte sind erlaubt (  dcat:compressFormat  )</dcat-ap-300.pattern.report.53>
+  <dcat-ap-300.pattern.report.54>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-300.pattern.report.54>
+  <dcat-ap-300.pattern.report.55>Wert erfüllt nicht die SHACL-Beschränkung (  foaf:page   )</dcat-ap-300.pattern.report.55>
+  <dcat-ap-300.pattern.report.56>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:downloadURL   )</dcat-ap-300.pattern.report.56>
+  <dcat-ap-300.pattern.report.57>höchstens 1 Werte sind erlaubt (  dct:format  )</dcat-ap-300.pattern.report.57>
+  <dcat-ap-300.pattern.report.58>höchstens 1 Werte sind erlaubt (  odrl:hasPolicy  )</dcat-ap-300.pattern.report.58>
+  <dcat-ap-300.pattern.report.59>Wert erfüllt nicht die SHACL-Beschränkung (  dct:language   )</dcat-ap-300.pattern.report.59>
+  <dcat-ap-300.pattern.report.6>höchstens 1 Werte sind erlaubt (  dct:rights  )</dcat-ap-300.pattern.report.6>
+  <dcat-ap-300.pattern.report.60>höchstens 1 Werte sind erlaubt (  dct:license  )</dcat-ap-300.pattern.report.60>
+  <dcat-ap-300.pattern.report.61>Wert erfüllt nicht die SHACL-Beschränkung (  dct:conformsTo   )</dcat-ap-300.pattern.report.61>
+  <dcat-ap-300.pattern.report.62>höchstens 1 Werte sind erlaubt (  dcat:mediaType  )</dcat-ap-300.pattern.report.62>
+  <dcat-ap-300.pattern.report.63>höchstens 1 Werte sind erlaubt (  dcat:packageFormat  )</dcat-ap-300.pattern.report.63>
+  <dcat-ap-300.pattern.report.64>höchstens 1 Werte sind erlaubt (  dct:rights  )</dcat-ap-300.pattern.report.64>
+  <dcat-ap-300.pattern.report.65>höchstens 1 Werte sind erlaubt (  adms:status  )</dcat-ap-300.pattern.report.65>
+  <dcat-ap-300.pattern.report.66>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-300.pattern.report.66>
+  <dcat-ap-300.pattern.report.67>höchstens 1 Werte sind erlaubt (  dct:accessRights  )</dcat-ap-300.pattern.report.67>
+  <dcat-ap-300.pattern.report.68>Wert muss ein IRI sein (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.report.68>
+  <dcat-ap-300.pattern.report.69>Wert erfüllt nicht die SHACL-Beschränkung (  dct:conformsTo   )</dcat-ap-300.pattern.report.69>
+  <dcat-ap-300.pattern.report.7>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:record   )</dcat-ap-300.pattern.report.7>
+  <dcat-ap-300.pattern.report.70>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:contactPoint   )</dcat-ap-300.pattern.report.70>
+  <dcat-ap-300.pattern.report.71>Wert erfüllt nicht die SHACL-Beschränkung (  dct:creator   )</dcat-ap-300.pattern.report.71>
+  <dcat-ap-300.pattern.report.72>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:distribution   )</dcat-ap-300.pattern.report.72>
+  <dcat-ap-300.pattern.report.73>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-300.pattern.report.73>
+  <dcat-ap-300.pattern.report.74>Wert erfüllt nicht die SHACL-Beschränkung (  foaf:page   )</dcat-ap-300.pattern.report.74>
+  <dcat-ap-300.pattern.report.75>höchstens 1 Werte sind erlaubt (  dct:accrualPeriodicity  )</dcat-ap-300.pattern.report.75>
+  <dcat-ap-300.pattern.report.76>Wert erfüllt nicht die SHACL-Beschränkung (  dct:spatial   )</dcat-ap-300.pattern.report.76>
+  <dcat-ap-300.pattern.report.77>Wert erfüllt nicht die SHACL-Beschränkung (  dct:hasVersion   )</dcat-ap-300.pattern.report.77>
+  <dcat-ap-300.pattern.report.78>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-300.pattern.report.78>
+  <dcat-ap-300.pattern.report.79>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:inSeries   )</dcat-ap-300.pattern.report.79>
+  <dcat-ap-300.pattern.report.8>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:themeTaxonomy   )</dcat-ap-300.pattern.report.8>
+  <dcat-ap-300.pattern.report.80>Wert erfüllt nicht die SHACL-Beschränkung (  dct:isReferencedBy   )</dcat-ap-300.pattern.report.80>
+  <dcat-ap-300.pattern.report.81>Wert muss buchstäblich sein (  dcat:keyword  )</dcat-ap-300.pattern.report.81>
+  <dcat-ap-300.pattern.report.82>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:landingPage   )</dcat-ap-300.pattern.report.82>
+  <dcat-ap-300.pattern.report.83>Wert erfüllt nicht die SHACL-Beschränkung (  dct:language   )</dcat-ap-300.pattern.report.83>
+  <dcat-ap-300.pattern.report.84>Wert erfüllt nicht die SHACL-Beschränkung (  adms:identifier   )</dcat-ap-300.pattern.report.84>
+  <dcat-ap-300.pattern.report.85>Wert erfüllt nicht die SHACL-Beschränkung (  dct:provenance   )</dcat-ap-300.pattern.report.85>
+  <dcat-ap-300.pattern.report.86>höchstens 1 Werte sind erlaubt (  dct:publisher  )</dcat-ap-300.pattern.report.86>
+  <dcat-ap-300.pattern.report.87>Wert erfüllt nicht die SHACL-Beschränkung (  prov:qualifiedAttribution   )</dcat-ap-300.pattern.report.87>
+  <dcat-ap-300.pattern.report.88>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:qualifiedRelation   )</dcat-ap-300.pattern.report.88>
+  <dcat-ap-300.pattern.report.89>Wert erfüllt nicht die SHACL-Beschränkung (  dct:relation   )</dcat-ap-300.pattern.report.89>
+  <dcat-ap-300.pattern.report.9>Wert erfüllt nicht die SHACL-Beschränkung (  dcat:service   )</dcat-ap-300.pattern.report.9>
+  <dcat-ap-300.pattern.report.90>Wert erfüllt nicht die SHACL-Beschränkung (  adms:sample   )</dcat-ap-300.pattern.report.90>
+  <dcat-ap-300.pattern.report.91>Wert erfüllt nicht die SHACL-Beschränkung (  dct:source   )</dcat-ap-300.pattern.report.91>
+  <dcat-ap-300.pattern.report.92>Wert erfüllt nicht die SHACL-Beschränkung (  dct:temporal   )</dcat-ap-300.pattern.report.92>
+  <dcat-ap-300.pattern.report.93>Wert muss ein IRI sein (  dcat:theme  )</dcat-ap-300.pattern.report.93>
+  <dcat-ap-300.pattern.report.94>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-300.pattern.report.94>
+  <dcat-ap-300.pattern.report.95>Wert erfüllt nicht die SHACL-Beschränkung (  dct:type   )</dcat-ap-300.pattern.report.95>
+  <dcat-ap-300.pattern.report.96>Wert muss buchstäblich sein (  dcat:version  )</dcat-ap-300.pattern.report.96>
+  <dcat-ap-300.pattern.report.97>Wert muss buchstäblich sein (  adms:versionNotes  )</dcat-ap-300.pattern.report.97>
+  <dcat-ap-300.pattern.report.98>Wert erfüllt nicht die SHACL-Beschränkung (  prov:wasGeneratedBy   )</dcat-ap-300.pattern.report.98>
+  <dcat-ap-300.pattern.report.99>Wert muss buchstäblich sein (  foaf:name  )</dcat-ap-300.pattern.report.99>
+  <dcat-ap-300.pattern.title.1> dct:language  </dcat-ap-300.pattern.title.1>
+  <dcat-ap-300.pattern.title.10> dcat:catalog  </dcat-ap-300.pattern.title.10>
+  <dcat-ap-300.pattern.title.11> dct:creator   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.11>
+  <dcat-ap-300.pattern.title.12> dcat:dataset  </dcat-ap-300.pattern.title.12>
+  <dcat-ap-300.pattern.title.13> dct:description  </dcat-ap-300.pattern.title.13>
+  <dcat-ap-300.pattern.title.14> dct:title  </dcat-ap-300.pattern.title.14>
+  <dcat-ap-300.pattern.title.15> foaf:homepage   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.15>
+  <dcat-ap-300.pattern.title.16> dcat:bbox  </dcat-ap-300.pattern.title.16>
+  <dcat-ap-300.pattern.title.17> dcat:centroid  </dcat-ap-300.pattern.title.17>
+  <dcat-ap-300.pattern.title.18> locn:geometry  </dcat-ap-300.pattern.title.18>
+  <dcat-ap-300.pattern.title.19> dct:title  </dcat-ap-300.pattern.title.19>
+  <dcat-ap-300.pattern.title.2> dcat-ap:applicableLegislation  </dcat-ap-300.pattern.title.2>
+  <dcat-ap-300.pattern.title.20> dct:description  </dcat-ap-300.pattern.title.20>
+  <dcat-ap-300.pattern.title.21> skos:prefLabel  </dcat-ap-300.pattern.title.21>
+  <dcat-ap-300.pattern.title.22> dct:title  </dcat-ap-300.pattern.title.22>
+  <dcat-ap-300.pattern.title.23> dcat-ap:applicableLegislation  </dcat-ap-300.pattern.title.23>
+  <dcat-ap-300.pattern.title.24> dcat:contactPoint  </dcat-ap-300.pattern.title.24>
+  <dcat-ap-300.pattern.title.25> dct:description  </dcat-ap-300.pattern.title.25>
+  <dcat-ap-300.pattern.title.26> dct:accrualPeriodicity   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.26>
+  <dcat-ap-300.pattern.title.27> dct:spatial  </dcat-ap-300.pattern.title.27>
+  <dcat-ap-300.pattern.title.28> dct:modified  </dcat-ap-300.pattern.title.28>
+  <dcat-ap-300.pattern.title.29> dct:publisher   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.29>
+  <dcat-ap-300.pattern.title.3> dct:license   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.3>
+  <dcat-ap-300.pattern.title.30> dct:issued  </dcat-ap-300.pattern.title.30>
+  <dcat-ap-300.pattern.title.31> dct:temporal  </dcat-ap-300.pattern.title.31>
+  <dcat-ap-300.pattern.title.32> dct:title  </dcat-ap-300.pattern.title.32>
+  <dcat-ap-300.pattern.title.33> dct:accessRights   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.33>
+  <dcat-ap-300.pattern.title.34> dcat-ap:applicableLegislation  </dcat-ap-300.pattern.title.34>
+  <dcat-ap-300.pattern.title.35> dct:conformsTo  </dcat-ap-300.pattern.title.35>
+  <dcat-ap-300.pattern.title.36> dcat:contactPoint  </dcat-ap-300.pattern.title.36>
+  <dcat-ap-300.pattern.title.37> dct:description  </dcat-ap-300.pattern.title.37>
+  <dcat-ap-300.pattern.title.38> dcat:endpointURL   - Mindestkarteinalität 1</dcat-ap-300.pattern.title.38>
+  <dcat-ap-300.pattern.title.39> dcat:endpointDescription  </dcat-ap-300.pattern.title.39>
+  <dcat-ap-300.pattern.title.4> dct:spatial  </dcat-ap-300.pattern.title.4>
+  <dcat-ap-300.pattern.title.40> dct:format  </dcat-ap-300.pattern.title.40>
+  <dcat-ap-300.pattern.title.41> dcat:keyword  </dcat-ap-300.pattern.title.41>
+  <dcat-ap-300.pattern.title.42> dcat:landingPage  </dcat-ap-300.pattern.title.42>
+  <dcat-ap-300.pattern.title.43> dct:license   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.43>
+  <dcat-ap-300.pattern.title.44> dct:publisher   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.44>
+  <dcat-ap-300.pattern.title.45> dcat:servesDataset  </dcat-ap-300.pattern.title.45>
+  <dcat-ap-300.pattern.title.46> dcat:theme  </dcat-ap-300.pattern.title.46>
+  <dcat-ap-300.pattern.title.47> dct:title  </dcat-ap-300.pattern.title.47>
+  <dcat-ap-300.pattern.title.48> dcat:accessService  </dcat-ap-300.pattern.title.48>
+  <dcat-ap-300.pattern.title.49> dcat:accessURL   - Mindestkarteinalität 1</dcat-ap-300.pattern.title.49>
+  <dcat-ap-300.pattern.title.5> dct:hasPart  </dcat-ap-300.pattern.title.5>
+  <dcat-ap-300.pattern.title.50> dcat-ap:applicableLegislation  </dcat-ap-300.pattern.title.50>
+  <dcat-ap-300.pattern.title.51> dcat-ap:availability   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.51>
+  <dcat-ap-300.pattern.title.52> spdx:checksum   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.52>
+  <dcat-ap-300.pattern.title.53> dcat:compressFormat   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.53>
+  <dcat-ap-300.pattern.title.54> dct:description  </dcat-ap-300.pattern.title.54>
+  <dcat-ap-300.pattern.title.55> foaf:page  </dcat-ap-300.pattern.title.55>
+  <dcat-ap-300.pattern.title.56> dcat:downloadURL  </dcat-ap-300.pattern.title.56>
+  <dcat-ap-300.pattern.title.57> dct:format   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.57>
+  <dcat-ap-300.pattern.title.58> odrl:hasPolicy   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.58>
+  <dcat-ap-300.pattern.title.59> dct:language  </dcat-ap-300.pattern.title.59>
+  <dcat-ap-300.pattern.title.6> dct:rights   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.6>
+  <dcat-ap-300.pattern.title.60> dct:license   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.60>
+  <dcat-ap-300.pattern.title.61> dct:conformsTo  </dcat-ap-300.pattern.title.61>
+  <dcat-ap-300.pattern.title.62> dcat:mediaType   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.62>
+  <dcat-ap-300.pattern.title.63> dcat:packageFormat   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.63>
+  <dcat-ap-300.pattern.title.64> dct:rights   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.64>
+  <dcat-ap-300.pattern.title.65> adms:status   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.65>
+  <dcat-ap-300.pattern.title.66> dct:title  </dcat-ap-300.pattern.title.66>
+  <dcat-ap-300.pattern.title.67> dct:accessRights   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.67>
+  <dcat-ap-300.pattern.title.68> dcat-ap:applicableLegislation  </dcat-ap-300.pattern.title.68>
+  <dcat-ap-300.pattern.title.69> dct:conformsTo  </dcat-ap-300.pattern.title.69>
+  <dcat-ap-300.pattern.title.7> dcat:record  </dcat-ap-300.pattern.title.7>
+  <dcat-ap-300.pattern.title.70> dcat:contactPoint  </dcat-ap-300.pattern.title.70>
+  <dcat-ap-300.pattern.title.71> dct:creator  </dcat-ap-300.pattern.title.71>
+  <dcat-ap-300.pattern.title.72> dcat:distribution  </dcat-ap-300.pattern.title.72>
+  <dcat-ap-300.pattern.title.73> dct:description  </dcat-ap-300.pattern.title.73>
+  <dcat-ap-300.pattern.title.74> foaf:page  </dcat-ap-300.pattern.title.74>
+  <dcat-ap-300.pattern.title.75> dct:accrualPeriodicity   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.75>
+  <dcat-ap-300.pattern.title.76> dct:spatial  </dcat-ap-300.pattern.title.76>
+  <dcat-ap-300.pattern.title.77> dct:hasVersion  </dcat-ap-300.pattern.title.77>
+  <dcat-ap-300.pattern.title.78> dct:identifier  </dcat-ap-300.pattern.title.78>
+  <dcat-ap-300.pattern.title.79> dcat:inSeries  </dcat-ap-300.pattern.title.79>
+  <dcat-ap-300.pattern.title.8> dcat:themeTaxonomy  </dcat-ap-300.pattern.title.8>
+  <dcat-ap-300.pattern.title.80> dct:isReferencedBy  </dcat-ap-300.pattern.title.80>
+  <dcat-ap-300.pattern.title.81> dcat:keyword  </dcat-ap-300.pattern.title.81>
+  <dcat-ap-300.pattern.title.82> dcat:landingPage  </dcat-ap-300.pattern.title.82>
+  <dcat-ap-300.pattern.title.83> dct:language  </dcat-ap-300.pattern.title.83>
+  <dcat-ap-300.pattern.title.84> adms:identifier  </dcat-ap-300.pattern.title.84>
+  <dcat-ap-300.pattern.title.85> dct:provenance  </dcat-ap-300.pattern.title.85>
+  <dcat-ap-300.pattern.title.86> dct:publisher   - maximale Herzlichkeit 1</dcat-ap-300.pattern.title.86>
+  <dcat-ap-300.pattern.title.87> prov:qualifiedAttribution  </dcat-ap-300.pattern.title.87>
+  <dcat-ap-300.pattern.title.88> dcat:qualifiedRelation  </dcat-ap-300.pattern.title.88>
+  <dcat-ap-300.pattern.title.89> dct:relation  </dcat-ap-300.pattern.title.89>
+  <dcat-ap-300.pattern.title.9> dcat:service  </dcat-ap-300.pattern.title.9>
+  <dcat-ap-300.pattern.title.90> adms:sample  </dcat-ap-300.pattern.title.90>
+  <dcat-ap-300.pattern.title.91> dct:source  </dcat-ap-300.pattern.title.91>
+  <dcat-ap-300.pattern.title.92> dct:temporal  </dcat-ap-300.pattern.title.92>
+  <dcat-ap-300.pattern.title.93> dcat:theme  </dcat-ap-300.pattern.title.93>
+  <dcat-ap-300.pattern.title.94> dct:title  </dcat-ap-300.pattern.title.94>
+  <dcat-ap-300.pattern.title.95> dct:type  </dcat-ap-300.pattern.title.95>
+  <dcat-ap-300.pattern.title.96> dcat:version  </dcat-ap-300.pattern.title.96>
+  <dcat-ap-300.pattern.title.97> adms:versionNotes  </dcat-ap-300.pattern.title.97>
+  <dcat-ap-300.pattern.title.98> prov:wasGeneratedBy  </dcat-ap-300.pattern.title.98>
+  <dcat-ap-300.pattern.title.99> foaf:name  </dcat-ap-300.pattern.title.99>
+</strings>

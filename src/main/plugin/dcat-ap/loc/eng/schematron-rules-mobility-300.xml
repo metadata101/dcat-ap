@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <schematron.title>Mobility (v3.0.0)</schematron.title>
+  <mobility-300.pattern.assert.1>Access URL is mandatory. Exactly one access URL must be provided as an IRI (dcat:accessURL)</mobility-300.pattern.assert.1>
+  <mobility-300.pattern.assert.10>Publisher is mandatory. Exactly one publisher must be provided (dct:publisher)</mobility-300.pattern.assert.10>
+  <mobility-300.pattern.assert.11>Title is mandatory, must have a valid EU language tag, cannot be empty, and each language can appear only once (dct:title)</mobility-300.pattern.assert.11>
+  <mobility-300.pattern.assert.12>Conditions for access and usage is mandatory. Must be from the mobilityDCAT-AP controlled vocabulary (dct:type)</mobility-300.pattern.assert.12>
+  <mobility-300.pattern.assert.13>Homepage is mandatory and there must be exactly one (foaf:homepage)</mobility-300.pattern.assert.13>
+  <mobility-300.pattern.assert.14>Title is mandatory, must have a valid EU language tag (BCP47), cannot be empty, and each language can appear only once (dct:title)</mobility-300.pattern.assert.14>
+  <mobility-300.pattern.assert.15>Description is mandatory, must have a valid EU language tag (BCP47), cannot be empty, and each language can appear only once (dct:description)</mobility-300.pattern.assert.15>
+  <mobility-300.pattern.assert.16>Title is mandatory. At least one title must be provided as a literal (dct:title)</mobility-300.pattern.assert.16>
+  <mobility-300.pattern.assert.17>Description is mandatory, must have a valid EU language tag, cannot be empty, and each language can appear only once (dct:description)</mobility-300.pattern.assert.17>
+  <mobility-300.pattern.assert.18>Distribution is mandatory. At least one distribution must be provided (dcat:distribution)</mobility-300.pattern.assert.18>
+  <mobility-300.pattern.assert.19>Frequency is mandatory. Exactly one value from EU Frequency vocabulary (http://publications.europa.eu/resource/authority/frequency/*) or mobilityDCAT-AP update-frequency vocabulary must be provided (dct:accrualPeriodicity)</mobility-300.pattern.assert.19>
+  <mobility-300.pattern.assert.2>Mobility data standard is mandatory. Must be either a URI from https://w3id.org/mobilitydcat-ap/mobility-data-standard/ vocabulary OR a mobilitydcatap:MobilityDataStandard instance (mobilitydcatap:mobilityDataStandard)</mobility-300.pattern.assert.2>
+  <mobility-300.pattern.assert.20>Mobility theme is mandatory. At least one theme from the controlled vocabulary (https://w3id.org/mobilitydcat-ap/mobility-theme/*) must be provided (mobilitydcatap:mobilityTheme)</mobility-300.pattern.assert.20>
+  <mobility-300.pattern.assert.21>Spatial coverage is mandatory. At least one geographical area must be provided (dct:spatial)</mobility-300.pattern.assert.21>
+  <mobility-300.pattern.assert.22>Title is mandatory, must have a valid EU language tag (e.g., @en), cannot be empty, and each language can appear only once (dct:title)</mobility-300.pattern.assert.22>
+  <mobility-300.pattern.assert.23>Publisher is mandatory. Exactly one publisher must be provided (dct:publisher)</mobility-300.pattern.assert.23>
+  <mobility-300.pattern.assert.3>Format is mandatory. Exactly one format from http://publications.europa.eu/resource/authority/file-type/* must be provided (dct:format)</mobility-300.pattern.assert.3>
+  <mobility-300.pattern.assert.4>Rights is mandatory. Exactly one rights statement must be provided (dct:rights)</mobility-300.pattern.assert.4>
+  <mobility-300.pattern.assert.5>Email is mandatory. Exactly one email must be provided as an IRI (mailto: scheme) (vcard:hasEmail)</mobility-300.pattern.assert.5>
+  <mobility-300.pattern.assert.6>Name is mandatory. Exactly one name must be provided as a literal (vcard:fn)</mobility-300.pattern.assert.6>
+  <mobility-300.pattern.assert.7>Preferred label is mandatory. At least one preferred label must be provided as a literal (skos:prefLabel)</mobility-300.pattern.assert.7>
+  <mobility-300.pattern.assert.8>Category scheme must be a blank node or IRI and can appear at most once (skos:inScheme)</mobility-300.pattern.assert.8>
+  <mobility-300.pattern.assert.9>Description is mandatory, must have a valid EU language tag, cannot be empty, and each language can appear only once (dct:description)</mobility-300.pattern.assert.9>
+  <mobility-300.pattern.report.1>Access URL is mandatory. Exactly one access URL must be provided as an IRI (dcat:accessURL)</mobility-300.pattern.report.1>
+  <mobility-300.pattern.report.10>Publisher is mandatory. Exactly one publisher must be provided (dct:publisher)</mobility-300.pattern.report.10>
+  <mobility-300.pattern.report.11>Title is mandatory, must have a valid EU language tag, cannot be empty, and each language can appear only once (dct:title)</mobility-300.pattern.report.11>
+  <mobility-300.pattern.report.12>Conditions for access and usage is mandatory. Must be from the mobilityDCAT-AP controlled vocabulary (dct:type)</mobility-300.pattern.report.12>
+  <mobility-300.pattern.report.13>Homepage is mandatory and there must be exactly one (foaf:homepage)</mobility-300.pattern.report.13>
+  <mobility-300.pattern.report.14>Title is mandatory, must have a valid EU language tag (BCP47), cannot be empty, and each language can appear only once (dct:title)</mobility-300.pattern.report.14>
+  <mobility-300.pattern.report.15>Description is mandatory, must have a valid EU language tag (BCP47), cannot be empty, and each language can appear only once (dct:description)</mobility-300.pattern.report.15>
+  <mobility-300.pattern.report.16>Title is mandatory. At least one title must be provided as a literal (dct:title)</mobility-300.pattern.report.16>
+  <mobility-300.pattern.report.17>Description is mandatory, must have a valid EU language tag, cannot be empty, and each language can appear only once (dct:description)</mobility-300.pattern.report.17>
+  <mobility-300.pattern.report.18>Distribution is mandatory. At least one distribution must be provided (dcat:distribution)</mobility-300.pattern.report.18>
+  <mobility-300.pattern.report.19>Frequency is mandatory. Exactly one value from EU Frequency vocabulary (http://publications.europa.eu/resource/authority/frequency/*) or mobilityDCAT-AP update-frequency vocabulary must be provided (dct:accrualPeriodicity)</mobility-300.pattern.report.19>
+  <mobility-300.pattern.report.2>Mobility data standard is mandatory. Must be either a URI from https://w3id.org/mobilitydcat-ap/mobility-data-standard/ vocabulary OR a mobilitydcatap:MobilityDataStandard instance (mobilitydcatap:mobilityDataStandard)</mobility-300.pattern.report.2>
+  <mobility-300.pattern.report.20>Mobility theme is mandatory. At least one theme from the controlled vocabulary (https://w3id.org/mobilitydcat-ap/mobility-theme/*) must be provided (mobilitydcatap:mobilityTheme)</mobility-300.pattern.report.20>
+  <mobility-300.pattern.report.21>Spatial coverage is mandatory. At least one geographical area must be provided (dct:spatial)</mobility-300.pattern.report.21>
+  <mobility-300.pattern.report.22>Title is mandatory, must have a valid EU language tag (e.g., @en), cannot be empty, and each language can appear only once (dct:title)</mobility-300.pattern.report.22>
+  <mobility-300.pattern.report.23>Publisher is mandatory. Exactly one publisher must be provided (dct:publisher)</mobility-300.pattern.report.23>
+  <mobility-300.pattern.report.3>Format is mandatory. Exactly one format from http://publications.europa.eu/resource/authority/file-type/* must be provided (dct:format)</mobility-300.pattern.report.3>
+  <mobility-300.pattern.report.4>Rights is mandatory. Exactly one rights statement must be provided (dct:rights)</mobility-300.pattern.report.4>
+  <mobility-300.pattern.report.5>Email is mandatory. Exactly one email must be provided as an IRI (mailto: scheme) (vcard:hasEmail)</mobility-300.pattern.report.5>
+  <mobility-300.pattern.report.6>Name is mandatory. Exactly one name must be provided as a literal (vcard:fn)</mobility-300.pattern.report.6>
+  <mobility-300.pattern.report.7>Preferred label is mandatory. At least one preferred label must be provided as a literal (skos:prefLabel)</mobility-300.pattern.report.7>
+  <mobility-300.pattern.report.8>Category scheme must be a blank node or IRI and can appear at most once (skos:inScheme)</mobility-300.pattern.report.8>
+  <mobility-300.pattern.report.9>Description is mandatory, must have a valid EU language tag, cannot be empty, and each language can appear only once (dct:description)</mobility-300.pattern.report.9>
+  <mobility-300.pattern.title.1>Access url - A URL that gives access to a Distribution of the Dataset.</mobility-300.pattern.title.1>
+  <mobility-300.pattern.title.10>Publisher</mobility-300.pattern.title.10>
+  <mobility-300.pattern.title.11>Title</mobility-300.pattern.title.11>
+  <mobility-300.pattern.title.12>Conditions for access and usage</mobility-300.pattern.title.12>
+  <mobility-300.pattern.title.13>Homepage</mobility-300.pattern.title.13>
+  <mobility-300.pattern.title.14>Title - A name given to the Catalogue. Must have valid EU language tag, cannot be empty, each language can appear only once (§8).</mobility-300.pattern.title.14>
+  <mobility-300.pattern.title.15>Description - A free-text account of the Catalogue. Must have valid EU language tag, cannot be empty, each language can appear only once (§8).</mobility-300.pattern.title.15>
+  <mobility-300.pattern.title.16>Title - A name of the Category Scheme. May be repeated for different versions of the name.</mobility-300.pattern.title.16>
+  <mobility-300.pattern.title.17>Description - This property contains more information about the dataset as a brief, free-text description. This property can be repeated for parallel language versions of the description (§8).</mobility-300.pattern.title.17>
+  <mobility-300.pattern.title.18>Dataset distribution - This property links the dataset to an available distribution. In mobilityDCAT-AP, it is mandatory that each dataset has at least one distribution.</mobility-300.pattern.title.18>
+  <mobility-300.pattern.title.19>Frequency - This property describes how often the delivered content is updated. The obligation of this property is raised to 'mandatory' in mobilityDCAT-AP (§4.10.1).</mobility-300.pattern.title.19>
+  <mobility-300.pattern.title.2>Mobility data standard - The mobility data standard applied for the delivered content (§4.18).</mobility-300.pattern.title.2>
+  <mobility-300.pattern.title.20>Mobility theme - This property refers to the mobility-related theme (i.e., a specific subject, category, or type) of the delivered content. A dataset may be associated with multiple themes (§4.10.1).</mobility-300.pattern.title.20>
+  <mobility-300.pattern.title.21>Spatial / geographic coverage - This property refers to a geographic region that is covered by the delivered content. The obligation of this property is raised to 'mandatory' in mobilityDCAT-AP (§4.10.1).</mobility-300.pattern.title.21>
+  <mobility-300.pattern.title.22>Title - This property contains a name given to the dataset in a generic term. The name should be a meaningful, unique and unambiguous label. This property can be repeated for parallel language versions (§8).</mobility-300.pattern.title.22>
+  <mobility-300.pattern.title.23>Publisher - This property refers to an entity (company and person) that publishes the corresponding dataset. The obligation of this property is raised to 'mandatory' in mobilityDCAT-AP (§4.10.1).</mobility-300.pattern.title.23>
+  <mobility-300.pattern.title.3>Format - The technical syntax of the delivered content. Made mandatory in mobilityDCAT-AP (§4.11.1). Must be from EU File Type vocabulary (§5.2).</mobility-300.pattern.title.3>
+  <mobility-300.pattern.title.4>Rights - A Rights Statement about intellectual property rights. Made mandatory in mobilityDCAT-AP (§4.11.1).</mobility-300.pattern.title.4>
+  <mobility-300.pattern.title.5>Email</mobility-300.pattern.title.5>
+  <mobility-300.pattern.title.6>Name</mobility-300.pattern.title.6>
+  <mobility-300.pattern.title.7>Preferred label - A preferred label of the Category. This property can be repeated for parallel language versions of the label.</mobility-300.pattern.title.7>
+  <mobility-300.pattern.title.8>Category scheme - The Category Scheme to which the Category belongs. This property is analogous to an addition by GeoDCAT-AP v2.0.0.</mobility-300.pattern.title.8>
+  <mobility-300.pattern.title.9>Description</mobility-300.pattern.title.9>
+</strings>
