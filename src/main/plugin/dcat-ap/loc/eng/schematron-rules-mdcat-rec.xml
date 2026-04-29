@@ -1,4 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <schematron.title>Metadata DCAT - Recommended</schematron.title>
+  <mdcat-rec.pattern.assert.1>Value must belong to concept scheme http://publications.europa.eu/resource/authority/file-type (dct:format)</mdcat-rec.pattern.assert.1>
+  <mdcat-rec.pattern.assert.10>Value must belong to concept scheme http://publications.europa.eu/resource/authority/access-right (dct:accessRights)</mdcat-rec.pattern.assert.10>
+  <mdcat-rec.pattern.assert.11>Value must belong to concept scheme https://www.iana.org/assignments/media-types/media-types.xhtml (dcat:mediatype)</mdcat-rec.pattern.assert.11>
+  <mdcat-rec.pattern.assert.2>Value must belong to concept scheme https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol (dct:conformsTo)</mdcat-rec.pattern.assert.2>
+  <mdcat-rec.pattern.assert.3>Value must belong to concept scheme https://data.vlaanderen.be/id/conceptscheme/levensfase (mdcat:levensfase)</mdcat-rec.pattern.assert.3>
+  <mdcat-rec.pattern.assert.4>Value must belong to concept scheme https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand (mdcat:ontwikkelingstoestand)</mdcat-rec.pattern.assert.4>
+  <mdcat-rec.pattern.assert.5>Value must belong to concept scheme https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden (mdcat:statuut)</mdcat-rec.pattern.assert.5>
+  <mdcat-rec.pattern.assert.6>Value must belong to concept scheme http://vocab.belgif.be/auth/datatheme (dcat:theme)</mdcat-rec.pattern.assert.6>
+  <mdcat-rec.pattern.assert.7>Value must belong to concept scheme http://publications.europa.eu/resource/authority/access-right (dct:accessRights)</mdcat-rec.pattern.assert.7>
+  <mdcat-rec.pattern.assert.8>Value must belong to concept scheme https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden (mdcat:statuut)</mdcat-rec.pattern.assert.8>
+  <mdcat-rec.pattern.assert.9>Value must belong to concept scheme http://vocab.belgif.be/auth/datatheme (dcat:theme)</mdcat-rec.pattern.assert.9>
+  <mdcat-rec.pattern.report.1>Value must belong to concept scheme http://publications.europa.eu/resource/authority/file-type (dct:format)</mdcat-rec.pattern.report.1>
+  <mdcat-rec.pattern.report.10>Value must belong to concept scheme http://publications.europa.eu/resource/authority/access-right (dct:accessRights)</mdcat-rec.pattern.report.10>
+  <mdcat-rec.pattern.report.11>Value must belong to concept scheme https://www.iana.org/assignments/media-types/media-types.xhtml (dcat:mediatype)</mdcat-rec.pattern.report.11>
+  <mdcat-rec.pattern.report.2>Value must belong to concept scheme https://data.vlaanderen.be/id/conceptscheme/dataserviceprotocol (dct:conformsTo)</mdcat-rec.pattern.report.2>
+  <mdcat-rec.pattern.report.3>Value must belong to concept scheme https://data.vlaanderen.be/id/conceptscheme/levensfase (mdcat:levensfase)</mdcat-rec.pattern.report.3>
+  <mdcat-rec.pattern.report.4>Value must belong to concept scheme https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand (mdcat:ontwikkelingstoestand)</mdcat-rec.pattern.report.4>
+  <mdcat-rec.pattern.report.5>Value must belong to concept scheme https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden (mdcat:statuut)</mdcat-rec.pattern.report.5>
+  <mdcat-rec.pattern.report.6>Value must belong to concept scheme http://vocab.belgif.be/auth/datatheme (dcat:theme)</mdcat-rec.pattern.report.6>
+  <mdcat-rec.pattern.report.7>Value must belong to concept scheme http://publications.europa.eu/resource/authority/access-right (dct:accessRights)</mdcat-rec.pattern.report.7>
+  <mdcat-rec.pattern.report.8>Value must belong to concept scheme https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden (mdcat:statuut)</mdcat-rec.pattern.report.8>
+  <mdcat-rec.pattern.report.9>Value must belong to concept scheme http://vocab.belgif.be/auth/datatheme (dcat:theme)</mdcat-rec.pattern.report.9>
+  <mdcat-rec.pattern.title.1>Formaat - Het bestandsformaat waarin de data wordt gedeeld. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Distributie.formaat)</mdcat-rec.pattern.title.1>
+  <mdcat-rec.pattern.title.10>Toegankelijkheid - De toegankelijkheid voor de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.toegankelijkheid)</mdcat-rec.pattern.title.10>
+  <mdcat-rec.pattern.title.11>Mediatype - Het voorstellingsvorm van de afbeelding (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Voorbeeldweergave.mediatype)</mdcat-rec.pattern.title.11>
+  <mdcat-rec.pattern.title.2>Conform aan protocol - Een protocol waaraan de dataservice voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.conformaanprotocol)</mdcat-rec.pattern.title.2>
+  <mdcat-rec.pattern.title.3>Levensfase - De levensfase waarin de dataservice zich bevindt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.levensfase)</mdcat-rec.pattern.title.3>
+  <mdcat-rec.pattern.title.4>Ontwikkelingstoestand - De ontwikkelingstoestand waarin de dataservice is gedeployed. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.ontwikkelingstoestand)</mdcat-rec.pattern.title.4>
+  <mdcat-rec.pattern.title.5>Statuut - Een aanduiding van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.statuut)</mdcat-rec.pattern.title.5>
+  <mdcat-rec.pattern.title.6>Thema - De hoofdcategorie waartoe de dataservice behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.thema)</mdcat-rec.pattern.title.6>
+  <mdcat-rec.pattern.title.7>Toegankelijkheid - De toegankelijkheid voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.toegankelijkheid)</mdcat-rec.pattern.title.7>
+  <mdcat-rec.pattern.title.8>Statuut - Een aanduiding van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.statuut)</mdcat-rec.pattern.title.8>
+  <mdcat-rec.pattern.title.9>Thema - De hoofdcategorie waartoe de dataset behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.thema)</mdcat-rec.pattern.title.9>
 </strings>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <schematron.title>Mobility (v3.0.0)</schematron.title>
+  <mobility-300.pattern.assert.1>Toegang URL is verplicht. Precies één toegangsURL moet worden verstrekt als een IRI (  dcat:accessURL )</mobility-300.pattern.assert.1>
+  <mobility-300.pattern.assert.10>Uitgever is verplicht. Precies één uitgever moet worden verstrekt (  dct:publisher  )</mobility-300.pattern.assert.10>
+  <mobility-300.pattern.assert.11>Titel is verplicht, moet een geldig EU-taalmerk hebben, kan niet leeg zijn, en elke taal kan slechts één keer verschijnen (  dct:title  )</mobility-300.pattern.assert.11>
+  <mobility-300.pattern.assert.12>Voorwaarden voor toegang en gebruik zijn verplicht. Moet afkomstig zijn van de vocabulaire van MobilityDCAT-AP (  dct:type  )</mobility-300.pattern.assert.12>
+  <mobility-300.pattern.assert.13>Homepage is verplicht en er moet er precies één zijn (  foaf:homepage )</mobility-300.pattern.assert.13>
+  <mobility-300.pattern.assert.14>Titel is verplicht, moet een geldig EU-taalmerk hebben (BCP47), kan niet leeg zijn, en elke taal kan slechts één keer verschijnen (  dct:title  )</mobility-300.pattern.assert.14>
+  <mobility-300.pattern.assert.15>Beschrijving is verplicht, moet een geldig EU-taalmerk (BCP47) hebben, kan niet leeg zijn, en elke taal kan slechts één keer verschijnen (  dct:description  )</mobility-300.pattern.assert.15>
+  <mobility-300.pattern.assert.16>Titel is verplicht. Ten minste één titel moet letterlijk worden gegeven (  dct:title  )</mobility-300.pattern.assert.16>
+  <mobility-300.pattern.assert.17>Beschrijving is verplicht, moet een geldig EU-taalmerk hebben, kan niet leeg zijn, en elke taal kan slechts één keer verschijnen (  dct:description  )</mobility-300.pattern.assert.17>
+  <mobility-300.pattern.assert.18>Distributie is verplicht. Er moet ten minste één distributie beschikbaar zijn (  dcat:distribution )</mobility-300.pattern.assert.18>
+  <mobility-300.pattern.assert.19>Frequentie is verplicht. Exact één waarde van de EU-frequentie woordenschat (http://publications.europa.eu/resource/authority/frequency/*) of mobilityDCAT-AP-update-frequency vocabulary (  dct:accrualPeriodicity )</mobility-300.pattern.assert.19>
+  <mobility-300.pattern.assert.2>Mobiliteitsgegevensnorm is verplicht. Moet ofwel een URI zijn van https://w3id.org/Mobilitydcat-ap/Mobility-data-standard/vocabulaire OF een   mobilitydcatap:MobilityDataStandard   instance (  mobilitydcatap:mobilityDataStandard  )</mobility-300.pattern.assert.2>
+  <mobility-300.pattern.assert.20>Mobiliteitsthema is verplicht. Ten minste één thema uit de gecontroleerde woordenschat (https://w3id.org/Mobilitydcat-ap/Mobility-theme/*) moet worden verstrekt (  mobilitydcatap:mobilityTheme  )</mobility-300.pattern.assert.20>
+  <mobility-300.pattern.assert.21>Ruimtelijke dekking is verplicht. Er moet ten minste één geografisch gebied beschikbaar zijn (  dct:spatial  )</mobility-300.pattern.assert.21>
+  <mobility-300.pattern.assert.22>Titel is verplicht, moet een geldig EU-taalmerk hebben (bijv. @en), kan niet leeg zijn, en elke taal kan slechts eenmaal verschijnen (  dct:title  )</mobility-300.pattern.assert.22>
+  <mobility-300.pattern.assert.23>Uitgever is verplicht. Precies één uitgever moet worden verstrekt (  dct:publisher  )</mobility-300.pattern.assert.23>
+  <mobility-300.pattern.assert.3>Formaat is verplicht. Precies één formaat van http://publications.europa.eu/resource/authority/file-type/* moet worden verstrekt (  dct:format  )</mobility-300.pattern.assert.3>
+  <mobility-300.pattern.assert.4>Rechten zijn verplicht. Precies één rechtenverklaring moet worden gegeven (  dct:rights  )</mobility-300.pattern.assert.4>
+  <mobility-300.pattern.assert.5>E-mail is verplicht. Precies één e-mail moet worden verstrekt als een IRI (mailto: scheme) (  vcard:hasEmail  )</mobility-300.pattern.assert.5>
+  <mobility-300.pattern.assert.6>Naam is verplicht. Precies één naam moet letterlijk worden opgegeven (  vcard:fn  )</mobility-300.pattern.assert.6>
+  <mobility-300.pattern.assert.7>Voorkeurslabel is verplicht. Ten minste één voorkeurslabel moet als letterlijk worden verstrekt (  skos:prefLabel  )</mobility-300.pattern.assert.7>
+  <mobility-300.pattern.assert.8>Categorieschema moet een blanco knooppunt of IRI zijn en kan maximaal één keer verschijnen (  skos:inScheme  )</mobility-300.pattern.assert.8>
+  <mobility-300.pattern.assert.9>Beschrijving is verplicht, moet een geldig EU-taalmerk hebben, kan niet leeg zijn, en elke taal kan slechts één keer verschijnen (  dct:description  )</mobility-300.pattern.assert.9>
+  <mobility-300.pattern.report.1>Toegang URL is verplicht. Precies één toegangsURL moet worden verstrekt als een IRI (  dcat:accessURL )</mobility-300.pattern.report.1>
+  <mobility-300.pattern.report.10>Uitgever is verplicht. Precies één uitgever moet worden verstrekt (  dct:publisher  )</mobility-300.pattern.report.10>
+  <mobility-300.pattern.report.11>Titel is verplicht, moet een geldig EU-taalmerk hebben, kan niet leeg zijn, en elke taal kan slechts één keer verschijnen (  dct:title  )</mobility-300.pattern.report.11>
+  <mobility-300.pattern.report.12>Voorwaarden voor toegang en gebruik zijn verplicht. Moet afkomstig zijn van de vocabulaire van MobilityDCAT-AP (  dct:type  )</mobility-300.pattern.report.12>
+  <mobility-300.pattern.report.13>Homepage is verplicht en er moet er precies één zijn (  foaf:homepage )</mobility-300.pattern.report.13>
+  <mobility-300.pattern.report.14>Titel is verplicht, moet een geldig EU-taalmerk hebben (BCP47), kan niet leeg zijn, en elke taal kan slechts één keer verschijnen (  dct:title  )</mobility-300.pattern.report.14>
+  <mobility-300.pattern.report.15>Beschrijving is verplicht, moet een geldig EU-taalmerk (BCP47) hebben, kan niet leeg zijn, en elke taal kan slechts één keer verschijnen (  dct:description  )</mobility-300.pattern.report.15>
+  <mobility-300.pattern.report.16>Titel is verplicht. Ten minste één titel moet letterlijk worden gegeven (  dct:title  )</mobility-300.pattern.report.16>
+  <mobility-300.pattern.report.17>Beschrijving is verplicht, moet een geldig EU-taalmerk hebben, kan niet leeg zijn, en elke taal kan slechts één keer verschijnen (  dct:description  )</mobility-300.pattern.report.17>
+  <mobility-300.pattern.report.18>Distributie is verplicht. Er moet ten minste één distributie beschikbaar zijn (  dcat:distribution )</mobility-300.pattern.report.18>
+  <mobility-300.pattern.report.19>Frequentie is verplicht. Exact één waarde van de EU-frequentie woordenschat (http://publications.europa.eu/resource/authority/frequency/*) of mobilityDCAT-AP-update-frequency vocabulary (  dct:accrualPeriodicity )</mobility-300.pattern.report.19>
+  <mobility-300.pattern.report.2>Mobiliteitsgegevensnorm is verplicht. Moet ofwel een URI zijn van https://w3id.org/Mobilitydcat-ap/Mobility-data-standard/vocabulaire OF een   mobilitydcatap:MobilityDataStandard   instance (  mobilitydcatap:mobilityDataStandard  )</mobility-300.pattern.report.2>
+  <mobility-300.pattern.report.20>Mobiliteitsthema is verplicht. Ten minste één thema uit de gecontroleerde woordenschat (https://w3id.org/Mobilitydcat-ap/Mobility-theme/*) moet worden verstrekt (  mobilitydcatap:mobilityTheme  )</mobility-300.pattern.report.20>
+  <mobility-300.pattern.report.21>Ruimtelijke dekking is verplicht. Er moet ten minste één geografisch gebied beschikbaar zijn (  dct:spatial  )</mobility-300.pattern.report.21>
+  <mobility-300.pattern.report.22>Titel is verplicht, moet een geldig EU-taalmerk hebben (bijv. @en), kan niet leeg zijn, en elke taal kan slechts eenmaal verschijnen (  dct:title  )</mobility-300.pattern.report.22>
+  <mobility-300.pattern.report.23>Uitgever is verplicht. Precies één uitgever moet worden verstrekt (  dct:publisher  )</mobility-300.pattern.report.23>
+  <mobility-300.pattern.report.3>Formaat is verplicht. Precies één formaat van http://publications.europa.eu/resource/authority/file-type/* moet worden verstrekt (  dct:format  )</mobility-300.pattern.report.3>
+  <mobility-300.pattern.report.4>Rechten zijn verplicht. Precies één rechtenverklaring moet worden gegeven (  dct:rights  )</mobility-300.pattern.report.4>
+  <mobility-300.pattern.report.5>E-mail is verplicht. Precies één e-mail moet worden verstrekt als een IRI (mailto: scheme) (  vcard:hasEmail  )</mobility-300.pattern.report.5>
+  <mobility-300.pattern.report.6>Naam is verplicht. Precies één naam moet letterlijk worden opgegeven (  vcard:fn  )</mobility-300.pattern.report.6>
+  <mobility-300.pattern.report.7>Voorkeurslabel is verplicht. Ten minste één voorkeurslabel moet als letterlijk worden verstrekt (  skos:prefLabel  )</mobility-300.pattern.report.7>
+  <mobility-300.pattern.report.8>Categorieschema moet een blanco knooppunt of IRI zijn en kan maximaal één keer verschijnen (  skos:inScheme  )</mobility-300.pattern.report.8>
+  <mobility-300.pattern.report.9>Beschrijving is verplicht, moet een geldig EU-taalmerk hebben, kan niet leeg zijn, en elke taal kan slechts één keer verschijnen (  dct:description  )</mobility-300.pattern.report.9>
+  <mobility-300.pattern.title.1>Toegang tot url - Een URL die toegang geeft tot een Distributie van de Dataset.</mobility-300.pattern.title.1>
+  <mobility-300.pattern.title.10>Uitgever</mobility-300.pattern.title.10>
+  <mobility-300.pattern.title.11>Titel</mobility-300.pattern.title.11>
+  <mobility-300.pattern.title.12>Voorwaarden voor toegang en gebruik</mobility-300.pattern.title.12>
+  <mobility-300.pattern.title.13>Startpagina</mobility-300.pattern.title.13>
+  <mobility-300.pattern.title.14>Titel - Naam van de catalogus. Moet een geldig EU-taalmerk hebben, kan niet leeg zijn, elke taal kan slechts één keer verschijnen (§8).</mobility-300.pattern.title.14>
+  <mobility-300.pattern.title.15>Beschrijving - Een gratis tekstaccount van de Catalogus. Moet een geldig EU-taalmerk hebben, kan niet leeg zijn, elke taal kan slechts één keer verschijnen (§8).</mobility-300.pattern.title.15>
+  <mobility-300.pattern.title.16>Titel - Naam van de categorieregeling. Kan worden herhaald voor verschillende versies van de naam.</mobility-300.pattern.title.16>
+  <mobility-300.pattern.title.17>Omschrijving Deze eigenschap bevat meer informatie over de dataset als een korte, gratis tekstbeschrijving. Deze eigenschap kan worden herhaald voor parallelle taalversies van de beschrijving (§8).</mobility-300.pattern.title.17>
+  <mobility-300.pattern.title.18>Dataset distributie - Deze eigenschap koppelt de dataset aan een beschikbare distributie. Bij MobilityDCAT-AP is het verplicht dat elke dataset minstens één distributie heeft.</mobility-300.pattern.title.18>
+  <mobility-300.pattern.title.19>Frequentie Deze eigenschap beschrijft hoe vaak de geleverde inhoud wordt bijgewerkt. De verplichting van deze eigenschap wordt tot 'verplicht' in mobiliteitsDCAT-AP (§4.10.1).</mobility-300.pattern.title.19>
+  <mobility-300.pattern.title.2>Mobiliteitsdatanorm - De mobiliteitsdatanorm voor de geleverde inhoud (§4.18).</mobility-300.pattern.title.2>
+  <mobility-300.pattern.title.20>Mobiliteitsthema - Deze eigenschap verwijst naar het mobiliteitsgerelateerde thema (d.w.z. een specifiek onderwerp, categorie of type) van de geleverde inhoud. Een dataset kan worden geassocieerd met meerdere thema's (§4.10.1).</mobility-300.pattern.title.20>
+  <mobility-300.pattern.title.21>Ruimtelijk / geografisch bereik - Deze eigenschap verwijst naar een geografisch gebied dat wordt bestreken door de geleverde inhoud. De verplichting van deze eigenschap wordt tot 'verplicht' in mobiliteitsDCAT-AP (§4.10.1).</mobility-300.pattern.title.21>
+  <mobility-300.pattern.title.22>Titel Deze eigenschap bevat een naam gegeven aan de dataset in een generieke term. De naam moet een betekenisvol, uniek en ondubbelzinnig etiket zijn. Deze eigenschap kan worden herhaald voor parallelle taalversies (§8).</mobility-300.pattern.title.22>
+  <mobility-300.pattern.title.23>Uitgever - Deze eigenschap verwijst naar een entiteit (bedrijf en persoon) die de bijbehorende dataset publiceert. De verplichting van deze eigenschap wordt tot 'verplicht' in mobiliteitsDCAT-AP (§4.10.1).</mobility-300.pattern.title.23>
+  <mobility-300.pattern.title.3>Formaat - De technische syntax van de geleverde inhoud. verplicht gesteld in mobiliteitsDCAT-AP (§4.11.1). Moet afkomstig zijn van de woordenschat van het EU-bestandstype (§5.2).</mobility-300.pattern.title.3>
+  <mobility-300.pattern.title.4>Rechten - Een verklaring over intellectuele-eigendomsrechten. verplicht gesteld in mobiliteitsDCAT-AP (§4.11.1).</mobility-300.pattern.title.4>
+  <mobility-300.pattern.title.5>E-mail</mobility-300.pattern.title.5>
+  <mobility-300.pattern.title.6>Naam</mobility-300.pattern.title.6>
+  <mobility-300.pattern.title.7>Voorkeurslabel - Een voorkeurslabel van de categorie. Deze eigenschap kan worden herhaald voor parallelle taalversies van het label.</mobility-300.pattern.title.7>
+  <mobility-300.pattern.title.8>Categorieregeling - Categorieregeling waartoe de categorie behoort. Deze eigenschap is analoog aan een toevoeging door GeoDCAT-AP v2.0.0.</mobility-300.pattern.title.8>
+  <mobility-300.pattern.title.9>Omschrijving</mobility-300.pattern.title.9>
+</strings>

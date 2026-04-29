@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <schematron.title>Mobility - Recommended (v3.0.0)</schematron.title>
+  <mobility-300-rec.pattern.assert.1>Das Applikationsschichtprotokoll muss aus dem kontrollierten Vokabular stammen und kann maximal einmal erscheinen (   mobilitydcatap:applicationLayerProtocol  )</mobility-300-rec.pattern.assert.1>
+  <mobility-300-rec.pattern.assert.10>Temporale Abdeckung muss ein leerer Knoten oder IRI sein (  dct:temporal  )</mobility-300-rec.pattern.assert.10>
+  <mobility-300-rec.pattern.assert.11>Der Transportmodus muss vom kontrollierten Vokabular stammen (https://w3id.org/mobilitydcat-ap/transport-mode/*) (  mobilitydcatap:transportMode   )</mobility-300-rec.pattern.assert.11>
+  <mobility-300-rec.pattern.assert.2>Beschreibung muss ein gültiges EU-Sprach-Tag haben, kann nicht leer sein, jede Sprache nur einmal (  dct:description  )</mobility-300-rec.pattern.assert.2>
+  <mobility-300-rec.pattern.assert.3>Lizenz muss ein leerer Knoten oder IRI sein und kann maximal einmal erscheinen (  dct:license   )</mobility-300-rec.pattern.assert.3>
+  <mobility-300-rec.pattern.assert.4>Georeferencing-Methode muss vom kontrollierten Vokabular stammen (https://w3id.org/mobilitydcat-ap/georeferencing-method/*) (   mobilitydcatap:georeferencingMethod   )</mobility-300-rec.pattern.assert.4>
+  <mobility-300-rec.pattern.assert.5>Kontaktpunkt muss ein leerer Knoten oder IRI sein (  dcat:contactPoint  )</mobility-300-rec.pattern.assert.5>
+  <mobility-300-rec.pattern.assert.6>Schlagwörter müssen gültige EU-Sprache Tags haben und können nicht leer sein (  dcat:keyword  )</mobility-300-rec.pattern.assert.6>
+  <mobility-300-rec.pattern.assert.7>Die Netzabdeckung muss vom kontrollierten Vokabular stammen (https://w3id.org/mobilitydcat-ap/network-coverage/*) (  mobilitydcatap:networkCoverage   )</mobility-300-rec.pattern.assert.7>
+  <mobility-300-rec.pattern.assert.8>Rechteinhaber muss ein leerer Knoten oder IRI sein (  dct:rightsHolder  )</mobility-300-rec.pattern.assert.8>
+  <mobility-300-rec.pattern.assert.9>Thema muss aus dem EU Data Themes vocabulary sein (http://publications.europa.eu/resource/authority/data-theme/*) (  dcat:theme   )</mobility-300-rec.pattern.assert.9>
+  <mobility-300-rec.pattern.report.1>Das Applikationsschichtprotokoll muss aus dem kontrollierten Vokabular stammen und kann maximal einmal erscheinen (   mobilitydcatap:applicationLayerProtocol  )</mobility-300-rec.pattern.report.1>
+  <mobility-300-rec.pattern.report.10>Temporale Abdeckung muss ein leerer Knoten oder IRI sein (  dct:temporal  )</mobility-300-rec.pattern.report.10>
+  <mobility-300-rec.pattern.report.11>Der Transportmodus muss vom kontrollierten Vokabular stammen (https://w3id.org/mobilitydcat-ap/transport-mode/*) (  mobilitydcatap:transportMode   )</mobility-300-rec.pattern.report.11>
+  <mobility-300-rec.pattern.report.2>Beschreibung muss ein gültiges EU-Sprach-Tag haben, kann nicht leer sein, jede Sprache nur einmal (  dct:description  )</mobility-300-rec.pattern.report.2>
+  <mobility-300-rec.pattern.report.3>Lizenz muss ein leerer Knoten oder IRI sein und kann maximal einmal erscheinen (  dct:license   )</mobility-300-rec.pattern.report.3>
+  <mobility-300-rec.pattern.report.4>Georeferencing-Methode muss vom kontrollierten Vokabular stammen (https://w3id.org/mobilitydcat-ap/georeferencing-method/*) (   mobilitydcatap:georeferencingMethod   )</mobility-300-rec.pattern.report.4>
+  <mobility-300-rec.pattern.report.5>Kontaktpunkt muss ein leerer Knoten oder IRI sein (  dcat:contactPoint  )</mobility-300-rec.pattern.report.5>
+  <mobility-300-rec.pattern.report.6>Schlagwörter müssen gültige EU-Sprache Tags haben und können nicht leer sein (  dcat:keyword  )</mobility-300-rec.pattern.report.6>
+  <mobility-300-rec.pattern.report.7>Die Netzabdeckung muss vom kontrollierten Vokabular stammen (https://w3id.org/mobilitydcat-ap/network-coverage/*) (  mobilitydcatap:networkCoverage   )</mobility-300-rec.pattern.report.7>
+  <mobility-300-rec.pattern.report.8>Rechteinhaber muss ein leerer Knoten oder IRI sein (  dct:rightsHolder  )</mobility-300-rec.pattern.report.8>
+  <mobility-300-rec.pattern.report.9>Thema muss aus dem EU Data Themes vocabulary sein (http://publications.europa.eu/resource/authority/data-theme/*) (  dcat:theme   )</mobility-300-rec.pattern.report.9>
+  <mobility-300-rec.pattern.title.1>Anwendungsschichtprotokoll - Der Sendekanal (Application Layer Protocol) der Verteilung (§4.11.2).</mobility-300-rec.pattern.title.1>
+  <mobility-300-rec.pattern.title.10>Vorübergehende Deckung - Diese Eigenschaft bezieht sich auf einen zeitlichen Zeitraum, d.h. den Anfang und das Ende, der zeitlichen Referenz des gelieferten Inhalts (§4.10.2).</mobility-300-rec.pattern.title.10>
+  <mobility-300-rec.pattern.title.11>Transportmodus - Diese Eigenschaft beschreibt den Transportmodus, der durch den gelieferten Inhalt abgedeckt wird (§4.10.2).</mobility-300-rec.pattern.title.11>
+  <mobility-300-rec.pattern.title.2>Beschreibung - Ein Freitextkonto der Distribution. Kann bei parallelen Sprachversionen wiederholt werden (§4.11.2).</mobility-300-rec.pattern.title.2>
+  <mobility-300-rec.pattern.title.3>Lizenz - Die Lizenz, nach der die Verteilung zur Verfügung gestellt wird (§4.11.2).</mobility-300-rec.pattern.title.3>
+  <mobility-300-rec.pattern.title.4>Georeferencing-Methode - Diese Eigenschaft SHOULD wird verwendet, um die im Datensatz verwendete Georeferencing-Methode anzugeben (§4.10.2).</mobility-300-rec.pattern.title.4>
+  <mobility-300-rec.pattern.title.5>Kontaktstelle - Diese Eigenschaft enthält Kontaktinformationen, die für die Kommunikation mit einem für den Datensatz verantwortlichen Unternehmen oder einer Person verwendet werden können (§4.10.2).</mobility-300-rec.pattern.title.5>
+  <mobility-300-rec.pattern.title.6>Keyword / tag - Diese Eigenschaft enthält ein Schlüsselwort oder ein Tag, das den Datensatz beschreibt (§4.10.2).</mobility-300-rec.pattern.title.6>
+  <mobility-300-rec.pattern.title.7>Netzabdeckung - Diese Eigenschaft beschreibt den Teil des Transportnetzes, der durch den gelieferten Inhalt abgedeckt wird (§4.10.2).</mobility-300-rec.pattern.title.7>
+  <mobility-300-rec.pattern.title.8>Rechteinhaber - Diese Eigenschaft bezieht sich auf ein Unternehmen, das die Rechte der in einem Datensatz bereitgestellten Daten rechtlich besitzt oder hält (§4.10.2).</mobility-300-rec.pattern.title.8>
+  <mobility-300-rec.pattern.title.9>Thema / Kategorie - Diese Eigenschaft bezieht sich auf das generische Thema (d.h. ein bestimmtes Thema, Kategorie oder Typ) der gelieferten Inhalte. Die Kategorie wird über einen kontrollierten Wortschatz "Datenthemen" des Amtes der Europäischen Union (§4.10.2) beschrieben.</mobility-300-rec.pattern.title.9>
+</strings>

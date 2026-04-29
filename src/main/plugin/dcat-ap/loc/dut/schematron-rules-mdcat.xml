@@ -1,4 +1,319 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <schematron.title>Metadata DCAT - Verplicht</schematron.title>
+  <mdcat.pattern.assert.1> vcard:hasEmail    eigenschap is geen URI met het mailto: protocol.</mdcat.pattern.assert.1>
+  <mdcat.pattern.assert.10>Een alternatieve identificator (dan de unieke identificator) voor de catalogus kan hier beschreven worden. (adms:identifier)</mdcat.pattern.assert.10>
+  <mdcat.pattern.assert.11>Een bondige tekstuele omschrijving van de catalogus. (dct:description)</mdcat.pattern.assert.11>
+  <mdcat.pattern.assert.12>De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de catalogus. (dcat:contactPoint)</mdcat.pattern.assert.12>
+  <mdcat.pattern.assert.13>Een dataservice die deel uitmaakt van de catalogus. (dcat:service)</mdcat.pattern.assert.13>
+  <mdcat.pattern.assert.14>Een dataset die deel uitmaakt van de catalogus. (dcat:dataset)</mdcat.pattern.assert.14>
+  <mdcat.pattern.assert.15>De licentie van de catalogus. (dct:license)</mdcat.pattern.assert.15>
+  <mdcat.pattern.assert.16>Een record beschrijft de registratie van één enkele dataset of dataservice die onderdeel is van de catalogus. (dcat:record)</mdcat.pattern.assert.16>
+  <mdcat.pattern.assert.17>De naam van de catalogus. (dct:title)</mdcat.pattern.assert.17>
+  <mdcat.pattern.assert.18>De uitgever, de entiteit die verantwoordelijk is voor het beschikbaar stellen, van de catalogus. (dct:publisher)</mdcat.pattern.assert.18>
+  <mdcat.pattern.assert.19>De datum van (formele) opname van de bijbehorende dataset of dataservice in de catalogus. (dct:issued)</mdcat.pattern.assert.19>
+  <mdcat.pattern.assert.2>Een   vcard:Organization   heeft geen   vcard:hasEmail   of een   vcard:hasURL    eigenschap.</mdcat.pattern.assert.2>
+  <mdcat.pattern.assert.20>Een alternatieve identificator (dan de unieke identificator) voor een record in de catalogus kan hier beschreven worden. (adms:identifier)</mdcat.pattern.assert.20>
+  <mdcat.pattern.assert.21>Een webpagina in een menselijk leesbare vorm van de bron metadata record. (mdcat:landingpageVoorBronMetadata)</mdcat.pattern.assert.21>
+  <mdcat.pattern.assert.22>De record in een andere catalogus waarvan deze record en de beschrijvingen van het bijhorende hoofdonderwerp van afgeleid zijn. (dct:source)</mdcat.pattern.assert.22>
+  <mdcat.pattern.assert.23>De (metadata) standaard volgens welke
+regels het hoofdonderwerp waarnaar de
+Catalogus Record verwijst, beschreven
+wordt. (dct:conformsTo)</mdcat.pattern.assert.23>
+  <mdcat.pattern.assert.24>De resource (dataset of dataservice) beschreven in het record. (foaf:primaryTopic)</mdcat.pattern.assert.24>
+  <mdcat.pattern.assert.25>De naam van het record in de catalogus. (dct:title)</mdcat.pattern.assert.25>
+  <mdcat.pattern.assert.26>De meest recente datum waarop de record in de catalogus is gewijzigd, bijgewerkt of aangepast. (dct:modified)</mdcat.pattern.assert.26>
+  <mdcat.pattern.assert.27>Een alternatieve identificator (dan de unieke identificator) voor een distributie kan hier beschreven worden. (adms:identifier)</mdcat.pattern.assert.27>
+  <mdcat.pattern.assert.28>Een standaard, schema, implementatie-
+model, applicatieprofiel, vocabularium
+waaraan de distributie voldoet. (dct:conformsTo)</mdcat.pattern.assert.28>
+  <mdcat.pattern.assert.29>De URL waar de data gedownload kan worden. (dcat:downloadURL)</mdcat.pattern.assert.29>
+  <mdcat.pattern.assert.3>De naam van de agent. (foaf:name)</mdcat.pattern.assert.3>
+  <mdcat.pattern.assert.30>Het bestandsformaat waarin de data wordt gedeeld. (dct:format)</mdcat.pattern.assert.30>
+  <mdcat.pattern.assert.31>De licentie van de distributie. (dct:license)</mdcat.pattern.assert.31>
+  <mdcat.pattern.assert.32>Bepalingen van juridische aard die gelden op de distributie. (dct:rights)</mdcat.pattern.assert.32>
+  <mdcat.pattern.assert.33>De naam van de distributie. (dct:title)</mdcat.pattern.assert.33>
+  <mdcat.pattern.assert.34>Een URL waar de data kan gevonden worden. (dcat:accessURL)</mdcat.pattern.assert.34>
+  <mdcat.pattern.assert.35>de agent die instaat voor de verdeling (geodcat:distributor)</mdcat.pattern.assert.35>
+  <mdcat.pattern.assert.36>Een dataservice die deze distributie aanbiedt. (dcat:accessService)</mdcat.pattern.assert.36>
+  <mdcat.pattern.assert.37>Een alternatieve identificator (dan de unieke identificator) voor een dataservice kan hier beschreven worden. (adms:identifier)</mdcat.pattern.assert.37>
+  <mdcat.pattern.assert.38>Een bondige tekstuele omschrijving van de dataservice. (dct:description)</mdcat.pattern.assert.38>
+  <mdcat.pattern.assert.39>De data die via deze dataservice worden aangeboden. (dcat:servesdataset)</mdcat.pattern.assert.39>
+  <mdcat.pattern.assert.4>Een webpagina die ofwel toelaat om contact op te nemen (via b.v. een webformulier) of die informatie bevat hoe men contact kan opnemen. (foaf:page)</mdcat.pattern.assert.4>
+  <mdcat.pattern.assert.40>Een protocol waaraan de dataservice voldoet. (dct:conformsTo)</mdcat.pattern.assert.40>
+  <mdcat.pattern.assert.41>De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de dataservice. (dcat:contactPoint)</mdcat.pattern.assert.41>
+  <mdcat.pattern.assert.42>Het tijdsmoment waarop de dataservice voor het eerst werd geactiveerd. (dct:created)</mdcat.pattern.assert.42>
+  <mdcat.pattern.assert.43>De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI). (dcat:endpointURL)</mdcat.pattern.assert.43>
+  <mdcat.pattern.assert.44>Een beschrijving van de diensten die beschikbaar zijn via de end-points, met inbegrip van hun operaties, parameters, enz. (dcat:endpointDescription)</mdcat.pattern.assert.44>
+  <mdcat.pattern.assert.45>Een algemene webpagina waarnaar kan worden genavigeerd in een webbrowser, met algemene aanvullende informatie over de dataservice. (dcat:landingPage)</mdcat.pattern.assert.45>
+  <mdcat.pattern.assert.46>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de dataservice. (mdcat:landingspaginaVoorAuthenticatie)</mdcat.pattern.assert.46>
+  <mdcat.pattern.assert.47>Een verwijzing naar de landingspagina met de specifieke informatie over het gebruik van de dataservice. (mdcat:landingspaginaVoorGebruiksinformatie)</mdcat.pattern.assert.47>
+  <mdcat.pattern.assert.48>Een verwijzing naar de statuspagina van de dataservice (mdcat:landingspaginaVoorStatusinformatie)</mdcat.pattern.assert.48>
+  <mdcat.pattern.assert.49>De levensfase waarin de dataservice zich bevindt. (mdcat:levensfase)</mdcat.pattern.assert.49>
+  <mdcat.pattern.assert.5>Het e-mailadres waarmee een gebruiker contact kan opnemen voor informatie. (vcard:hasEmail)</mdcat.pattern.assert.5>
+  <mdcat.pattern.assert.50>De licentie van de dataservice. (dct:license)</mdcat.pattern.assert.50>
+  <mdcat.pattern.assert.51>De ontwikkelingstoestand waarin de dataservice is gedeployed. (mdcat:ontwikkelingstoestand)</mdcat.pattern.assert.51>
+  <mdcat.pattern.assert.52>Het tijdsmoment waarop de service werd gepubliceerd door de uitgever. (dct:issued)</mdcat.pattern.assert.52>
+  <mdcat.pattern.assert.53>Bepalingen van juridische aard die gelden op de dataservice. (dct:rights)</mdcat.pattern.assert.53>
+  <mdcat.pattern.assert.54>Een aanduiding van op welke basis de catalogusresource beschikbaar is. (mdcat:statuut)</mdcat.pattern.assert.54>
+  <mdcat.pattern.assert.55>De hoofdcategorie waartoe de dataservice behoort. (dcat:theme)</mdcat.pattern.assert.55>
+  <mdcat.pattern.assert.56>De naam van de dataservice. (dct:title)</mdcat.pattern.assert.56>
+  <mdcat.pattern.assert.57>De toegankelijkheid voor de dataservice. (dct:accessRights)</mdcat.pattern.assert.57>
+  <mdcat.pattern.assert.58>Een trefwoord of tag die de resource beschrijft. (dcat:keyword)</mdcat.pattern.assert.58>
+  <mdcat.pattern.assert.59>Een unieke aanduiding van een variant van de dataservice door middel van een versienummer of -naam van de dataservice. (owl:versionInfo)</mdcat.pattern.assert.59>
+  <mdcat.pattern.assert.6>Identificator vh object opgesplitst in zijn onderdelen. (generiek:gestructureerdeIdentificator)</mdcat.pattern.assert.6>
+  <mdcat.pattern.assert.60>Het tijdsmoment waarop de dataservice werd gewijzigd (dct:modified)</mdcat.pattern.assert.60>
+  <mdcat.pattern.assert.61>Referentie naar verbonden klasse. (mdcat:RelatieQualificatie.catalogusResource.source)</mdcat.pattern.assert.61>
+  <mdcat.pattern.assert.62>Referentie naar verbonden klasse. (mdcat:RelatieQualificatie.catalogusResource.target)</mdcat.pattern.assert.62>
+  <mdcat.pattern.assert.63>De functie hoe de entiteiten zich tot elkaar verhouden. (dcat:hadRole)</mdcat.pattern.assert.63>
+  <mdcat.pattern.assert.64>Een bondige tekstuele omschrijving van de
+standaard (dct:description)</mdcat.pattern.assert.64>
+  <mdcat.pattern.assert.65>De datum waarop de standaard werd
+gepubliceerd (dct:issued)</mdcat.pattern.assert.65>
+  <mdcat.pattern.assert.66>Een URL waarop men de specificatie kan
+vinden (rdfs:seeAlso)</mdcat.pattern.assert.66>
+  <mdcat.pattern.assert.67>naam van de standaard (dct:title)</mdcat.pattern.assert.67>
+  <mdcat.pattern.assert.68>Een categorisatie van de standaard (dct:type)</mdcat.pattern.assert.68>
+  <mdcat.pattern.assert.69>De versie van de standaard (owl:versionInfo)</mdcat.pattern.assert.69>
+  <mdcat.pattern.assert.7>Link naar de agent die de identificator heeft uitgegeven. (dct:creator)</mdcat.pattern.assert.7>
+  <mdcat.pattern.assert.70>Een afkorting, of notatie waaronder de
+standaard bekend is. (skos:prefLabel)</mdcat.pattern.assert.70>
+  <mdcat.pattern.assert.71>een verband tussen twee resources. (dct:relation)</mdcat.pattern.assert.71>
+  <mdcat.pattern.assert.72>De uitgever, de entiteit die verantwoordelijk is voor het beschikbaar stellen, van de resource in de catalogus. (dct:publisher)</mdcat.pattern.assert.72>
+  <mdcat.pattern.assert.73>Een alternatieve identificator (dan de unieke identificator) voor een dataset kan hier beschreven worden. (adms:identifier)</mdcat.pattern.assert.73>
+  <mdcat.pattern.assert.74>Een bondige tekstuele omschrijving van de dataset. (dct:description)</mdcat.pattern.assert.74>
+  <mdcat.pattern.assert.75>Een standaard, schema, applicatieprofiel, vocabularium, CRS, ... waaraan de dataset voldoet. (dct:conformsTo)</mdcat.pattern.assert.75>
+  <mdcat.pattern.assert.76>De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de dataset. (dcat:contactPoint)</mdcat.pattern.assert.76>
+  <mdcat.pattern.assert.77>Het tijdsmoment waarop de dataset ontstaan is. (dct:created)</mdcat.pattern.assert.77>
+  <mdcat.pattern.assert.78>Een beschikbare distributie van de dataset. (dcat:distribution)</mdcat.pattern.assert.78>
+  <mdcat.pattern.assert.79>de agent die de eigendomsrechten heeft (dct:rightsHolder)</mdcat.pattern.assert.79>
+  <mdcat.pattern.assert.8>Naam vd agent die de identificator heeft toegekend. (adms:schemaAgency)</mdcat.pattern.assert.8>
+  <mdcat.pattern.assert.80>Het geografische gebied waarover de dataset informatie heeft. (dct:spatial)</mdcat.pattern.assert.80>
+  <mdcat.pattern.assert.81>De ontstaansgeschiedenis van een dataset. (dct:provenance)</mdcat.pattern.assert.81>
+  <mdcat.pattern.assert.82>Een algemene webpagina waarnaar kan worden genavigeerd in een webbrowser, met algemene informatie over de dataset, zijn distributies en/of aanvullende informatie. (dcat:landingPage)</mdcat.pattern.assert.82>
+  <mdcat.pattern.assert.83>Het tijdsmoment waarop de dataset werd gepubliceerd door de uitgever. (dct:issued)</mdcat.pattern.assert.83>
+  <mdcat.pattern.assert.84>Een aanduiding van op welke basis de catalogusresource beschikbaar is. (mdcat:statuut)</mdcat.pattern.assert.84>
+  <mdcat.pattern.assert.85>De hoofdcategorie waartoe de dataset behoort. (dcat:theme)</mdcat.pattern.assert.85>
+  <mdcat.pattern.assert.86>De naam van de dataset. (dct:title)</mdcat.pattern.assert.86>
+  <mdcat.pattern.assert.87>De toegankelijkheid voor de dataset. (dct:accessRights)</mdcat.pattern.assert.87>
+  <mdcat.pattern.assert.88>Een trefwoord of tag die de resource beschrijft. (dcat:keyword)</mdcat.pattern.assert.88>
+  <mdcat.pattern.assert.89>Een unieke aanduiding van een variant van de dataset door middel van een versienummer of -naam van de dataset. (owl:versionInfo)</mdcat.pattern.assert.89>
+  <mdcat.pattern.assert.9>Tijdstip waarop de identificator werd uitgegeven. (dct:issued)</mdcat.pattern.assert.9>
+  <mdcat.pattern.assert.90>Een verkleinde weergave van een afbeelding die de dataset illustreert.? (adms:sample)</mdcat.pattern.assert.90>
+  <mdcat.pattern.assert.91>Het tijdsmoment waarop de dataset werd geactualiseerd (dct:modified)</mdcat.pattern.assert.91>
+  <mdcat.pattern.assert.92>een eenduidige, beknopte beschrijving die de plaats benoemt. (rdfs:label)</mdcat.pattern.assert.92>
+  <mdcat.pattern.assert.93>Een bondige tekstuele omschrijving van de afbeelding (dct:description)</mdcat.pattern.assert.93>
+  <mdcat.pattern.assert.94>De URL waar de afbeelding gedownload kan worden. (dcat:downloadURL)</mdcat.pattern.assert.94>
+  <mdcat.pattern.assert.95>Het voorstellingsvorm van de afbeelding (dcat:mediatype)</mdcat.pattern.assert.95>
+  <mdcat.pattern.assert.96>naam van de afbeelding (dct:title)</mdcat.pattern.assert.96>
+  <mdcat.pattern.report.1> vcard:hasEmail    eigenschap is een URI met het mailto: protocol.</mdcat.pattern.report.1>
+  <mdcat.pattern.report.10>Een alternatieve identificator (dan de unieke identificator) voor de catalogus kan hier beschreven worden. (adms:identifier)</mdcat.pattern.report.10>
+  <mdcat.pattern.report.11>Een bondige tekstuele omschrijving van de catalogus. (dct:description)</mdcat.pattern.report.11>
+  <mdcat.pattern.report.12>De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de catalogus. (dcat:contactPoint)</mdcat.pattern.report.12>
+  <mdcat.pattern.report.13>Een dataservice die deel uitmaakt van de catalogus. (dcat:service)</mdcat.pattern.report.13>
+  <mdcat.pattern.report.14>Een dataset die deel uitmaakt van de catalogus. (dcat:dataset)</mdcat.pattern.report.14>
+  <mdcat.pattern.report.15>De licentie van de catalogus. (dct:license)</mdcat.pattern.report.15>
+  <mdcat.pattern.report.16>Een record beschrijft de registratie van één enkele dataset of dataservice die onderdeel is van de catalogus. (dcat:record)</mdcat.pattern.report.16>
+  <mdcat.pattern.report.17>De naam van de catalogus. (dct:title)</mdcat.pattern.report.17>
+  <mdcat.pattern.report.18>De uitgever, de entiteit die verantwoordelijk is voor het beschikbaar stellen, van de catalogus. (dct:publisher)</mdcat.pattern.report.18>
+  <mdcat.pattern.report.19>De datum van (formele) opname van de bijbehorende dataset of dataservice in de catalogus. (dct:issued)</mdcat.pattern.report.19>
+  <mdcat.pattern.report.2>Een   vcard:Organization   heeft een   vcard:hasEmail   of een   vcard:hasURL    eigenschap.</mdcat.pattern.report.2>
+  <mdcat.pattern.report.20>Een alternatieve identificator (dan de unieke identificator) voor een record in de catalogus kan hier beschreven worden. (adms:identifier)</mdcat.pattern.report.20>
+  <mdcat.pattern.report.21>Een webpagina in een menselijk leesbare vorm van de bron metadata record. (mdcat:landingpageVoorBronMetadata)</mdcat.pattern.report.21>
+  <mdcat.pattern.report.22>De record in een andere catalogus waarvan deze record en de beschrijvingen van het bijhorende hoofdonderwerp van afgeleid zijn. (dct:source)</mdcat.pattern.report.22>
+  <mdcat.pattern.report.23>De (metadata) standaard volgens welke
+regels het hoofdonderwerp waarnaar de
+Catalogus Record verwijst, beschreven
+wordt. (dct:conformsTo)</mdcat.pattern.report.23>
+  <mdcat.pattern.report.24>De resource (dataset of dataservice) beschreven in het record. (foaf:primaryTopic)</mdcat.pattern.report.24>
+  <mdcat.pattern.report.25>De naam van het record in de catalogus. (dct:title)</mdcat.pattern.report.25>
+  <mdcat.pattern.report.26>De meest recente datum waarop de record in de catalogus is gewijzigd, bijgewerkt of aangepast. (dct:modified)</mdcat.pattern.report.26>
+  <mdcat.pattern.report.27>Een alternatieve identificator (dan de unieke identificator) voor een distributie kan hier beschreven worden. (adms:identifier)</mdcat.pattern.report.27>
+  <mdcat.pattern.report.28>Een standaard, schema, implementatie-
+model, applicatieprofiel, vocabularium
+waaraan de distributie voldoet. (dct:conformsTo)</mdcat.pattern.report.28>
+  <mdcat.pattern.report.29>De URL waar de data gedownload kan worden. (dcat:downloadURL)</mdcat.pattern.report.29>
+  <mdcat.pattern.report.3>De naam van de agent. (foaf:name)</mdcat.pattern.report.3>
+  <mdcat.pattern.report.30>Het bestandsformaat waarin de data wordt gedeeld. (dct:format)</mdcat.pattern.report.30>
+  <mdcat.pattern.report.31>De licentie van de distributie. (dct:license)</mdcat.pattern.report.31>
+  <mdcat.pattern.report.32>Bepalingen van juridische aard die gelden op de distributie. (dct:rights)</mdcat.pattern.report.32>
+  <mdcat.pattern.report.33>De naam van de distributie. (dct:title)</mdcat.pattern.report.33>
+  <mdcat.pattern.report.34>Een URL waar de data kan gevonden worden. (dcat:accessURL)</mdcat.pattern.report.34>
+  <mdcat.pattern.report.35>de agent die instaat voor de verdeling (geodcat:distributor)</mdcat.pattern.report.35>
+  <mdcat.pattern.report.36>Een dataservice die deze distributie aanbiedt. (dcat:accessService)</mdcat.pattern.report.36>
+  <mdcat.pattern.report.37>Een alternatieve identificator (dan de unieke identificator) voor een dataservice kan hier beschreven worden. (adms:identifier)</mdcat.pattern.report.37>
+  <mdcat.pattern.report.38>Een bondige tekstuele omschrijving van de dataservice. (dct:description)</mdcat.pattern.report.38>
+  <mdcat.pattern.report.39>De data die via deze dataservice worden aangeboden. (dcat:servesdataset)</mdcat.pattern.report.39>
+  <mdcat.pattern.report.4>Een webpagina die ofwel toelaat om contact op te nemen (via b.v. een webformulier) of die informatie bevat hoe men contact kan opnemen. (foaf:page)</mdcat.pattern.report.4>
+  <mdcat.pattern.report.40>Een protocol waaraan de dataservice voldoet. (dct:conformsTo)</mdcat.pattern.report.40>
+  <mdcat.pattern.report.41>De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de dataservice. (dcat:contactPoint)</mdcat.pattern.report.41>
+  <mdcat.pattern.report.42>Het tijdsmoment waarop de dataservice voor het eerst werd geactiveerd. (dct:created)</mdcat.pattern.report.42>
+  <mdcat.pattern.report.43>De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI). (dcat:endpointURL)</mdcat.pattern.report.43>
+  <mdcat.pattern.report.44>Een beschrijving van de diensten die beschikbaar zijn via de end-points, met inbegrip van hun operaties, parameters, enz. (dcat:endpointDescription)</mdcat.pattern.report.44>
+  <mdcat.pattern.report.45>Een algemene webpagina waarnaar kan worden genavigeerd in een webbrowser, met algemene aanvullende informatie over de dataservice. (dcat:landingPage)</mdcat.pattern.report.45>
+  <mdcat.pattern.report.46>Een verwijzing naar de landingspagina met de specifieke informatie over de authenticatie voor de dataservice. (mdcat:landingspaginaVoorAuthenticatie)</mdcat.pattern.report.46>
+  <mdcat.pattern.report.47>Een verwijzing naar de landingspagina met de specifieke informatie over het gebruik van de dataservice. (mdcat:landingspaginaVoorGebruiksinformatie)</mdcat.pattern.report.47>
+  <mdcat.pattern.report.48>Een verwijzing naar de statuspagina van de dataservice (mdcat:landingspaginaVoorStatusinformatie)</mdcat.pattern.report.48>
+  <mdcat.pattern.report.49>De levensfase waarin de dataservice zich bevindt. (mdcat:levensfase)</mdcat.pattern.report.49>
+  <mdcat.pattern.report.5>Het e-mailadres waarmee een gebruiker contact kan opnemen voor informatie. (vcard:hasEmail)</mdcat.pattern.report.5>
+  <mdcat.pattern.report.50>De licentie van de dataservice. (dct:license)</mdcat.pattern.report.50>
+  <mdcat.pattern.report.51>De ontwikkelingstoestand waarin de dataservice is gedeployed. (mdcat:ontwikkelingstoestand)</mdcat.pattern.report.51>
+  <mdcat.pattern.report.52>Het tijdsmoment waarop de service werd gepubliceerd door de uitgever. (dct:issued)</mdcat.pattern.report.52>
+  <mdcat.pattern.report.53>Bepalingen van juridische aard die gelden op de dataservice. (dct:rights)</mdcat.pattern.report.53>
+  <mdcat.pattern.report.54>Een aanduiding van op welke basis de catalogusresource beschikbaar is. (mdcat:statuut)</mdcat.pattern.report.54>
+  <mdcat.pattern.report.55>De hoofdcategorie waartoe de dataservice behoort. (dcat:theme)</mdcat.pattern.report.55>
+  <mdcat.pattern.report.56>De naam van de dataservice. (dct:title)</mdcat.pattern.report.56>
+  <mdcat.pattern.report.57>De toegankelijkheid voor de dataservice. (dct:accessRights)</mdcat.pattern.report.57>
+  <mdcat.pattern.report.58>Een trefwoord of tag die de resource beschrijft. (dcat:keyword)</mdcat.pattern.report.58>
+  <mdcat.pattern.report.59>Een unieke aanduiding van een variant van de dataservice door middel van een versienummer of -naam van de dataservice. (owl:versionInfo)</mdcat.pattern.report.59>
+  <mdcat.pattern.report.6>Identificator vh object opgesplitst in zijn onderdelen. (generiek:gestructureerdeIdentificator)</mdcat.pattern.report.6>
+  <mdcat.pattern.report.60>Het tijdsmoment waarop de dataservice werd gewijzigd (dct:modified)</mdcat.pattern.report.60>
+  <mdcat.pattern.report.61>Referentie naar verbonden klasse. (mdcat:RelatieQualificatie.catalogusResource.source)</mdcat.pattern.report.61>
+  <mdcat.pattern.report.62>Referentie naar verbonden klasse. (mdcat:RelatieQualificatie.catalogusResource.target)</mdcat.pattern.report.62>
+  <mdcat.pattern.report.63>De functie hoe de entiteiten zich tot elkaar verhouden. (dcat:hadRole)</mdcat.pattern.report.63>
+  <mdcat.pattern.report.64>Een bondige tekstuele omschrijving van de
+standaard (dct:description)</mdcat.pattern.report.64>
+  <mdcat.pattern.report.65>De datum waarop de standaard werd
+gepubliceerd (dct:issued)</mdcat.pattern.report.65>
+  <mdcat.pattern.report.66>Een URL waarop men de specificatie kan
+vinden (rdfs:seeAlso)</mdcat.pattern.report.66>
+  <mdcat.pattern.report.67>naam van de standaard (dct:title)</mdcat.pattern.report.67>
+  <mdcat.pattern.report.68>Een categorisatie van de standaard (dct:type)</mdcat.pattern.report.68>
+  <mdcat.pattern.report.69>De versie van de standaard (owl:versionInfo)</mdcat.pattern.report.69>
+  <mdcat.pattern.report.7>Link naar de agent die de identificator heeft uitgegeven. (dct:creator)</mdcat.pattern.report.7>
+  <mdcat.pattern.report.70>Een afkorting, of notatie waaronder de
+standaard bekend is. (skos:prefLabel)</mdcat.pattern.report.70>
+  <mdcat.pattern.report.71>een verband tussen twee resources. (dct:relation)</mdcat.pattern.report.71>
+  <mdcat.pattern.report.72>De uitgever, de entiteit die verantwoordelijk is voor het beschikbaar stellen, van de resource in de catalogus. (dct:publisher)</mdcat.pattern.report.72>
+  <mdcat.pattern.report.73>Een alternatieve identificator (dan de unieke identificator) voor een dataset kan hier beschreven worden. (adms:identifier)</mdcat.pattern.report.73>
+  <mdcat.pattern.report.74>Een bondige tekstuele omschrijving van de dataset. (dct:description)</mdcat.pattern.report.74>
+  <mdcat.pattern.report.75>Een standaard, schema, applicatieprofiel, vocabularium, CRS, ... waaraan de dataset voldoet. (dct:conformsTo)</mdcat.pattern.report.75>
+  <mdcat.pattern.report.76>De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de dataset. (dcat:contactPoint)</mdcat.pattern.report.76>
+  <mdcat.pattern.report.77>Het tijdsmoment waarop de dataset ontstaan is. (dct:created)</mdcat.pattern.report.77>
+  <mdcat.pattern.report.78>Een beschikbare distributie van de dataset. (dcat:distribution)</mdcat.pattern.report.78>
+  <mdcat.pattern.report.79>de agent die de eigendomsrechten heeft (dct:rightsHolder)</mdcat.pattern.report.79>
+  <mdcat.pattern.report.8>Naam vd agent die de identificator heeft toegekend. (adms:schemaAgency)</mdcat.pattern.report.8>
+  <mdcat.pattern.report.80>Het geografische gebied waarover de dataset informatie heeft. (dct:spatial)</mdcat.pattern.report.80>
+  <mdcat.pattern.report.81>De ontstaansgeschiedenis van een dataset. (dct:provenance)</mdcat.pattern.report.81>
+  <mdcat.pattern.report.82>Een algemene webpagina waarnaar kan worden genavigeerd in een webbrowser, met algemene informatie over de dataset, zijn distributies en/of aanvullende informatie. (dcat:landingPage)</mdcat.pattern.report.82>
+  <mdcat.pattern.report.83>Het tijdsmoment waarop de dataset werd gepubliceerd door de uitgever. (dct:issued)</mdcat.pattern.report.83>
+  <mdcat.pattern.report.84>Een aanduiding van op welke basis de catalogusresource beschikbaar is. (mdcat:statuut)</mdcat.pattern.report.84>
+  <mdcat.pattern.report.85>De hoofdcategorie waartoe de dataset behoort. (dcat:theme)</mdcat.pattern.report.85>
+  <mdcat.pattern.report.86>De naam van de dataset. (dct:title)</mdcat.pattern.report.86>
+  <mdcat.pattern.report.87>De toegankelijkheid voor de dataset. (dct:accessRights)</mdcat.pattern.report.87>
+  <mdcat.pattern.report.88>Een trefwoord of tag die de resource beschrijft. (dcat:keyword)</mdcat.pattern.report.88>
+  <mdcat.pattern.report.89>Een unieke aanduiding van een variant van de dataset door middel van een versienummer of -naam van de dataset. (owl:versionInfo)</mdcat.pattern.report.89>
+  <mdcat.pattern.report.9>Tijdstip waarop de identificator werd uitgegeven. (dct:issued)</mdcat.pattern.report.9>
+  <mdcat.pattern.report.90>Een verkleinde weergave van een afbeelding die de dataset illustreert.? (adms:sample)</mdcat.pattern.report.90>
+  <mdcat.pattern.report.91>Het tijdsmoment waarop de dataset werd geactualiseerd (dct:modified)</mdcat.pattern.report.91>
+  <mdcat.pattern.report.92>een eenduidige, beknopte beschrijving die de plaats benoemt. (rdfs:label)</mdcat.pattern.report.92>
+  <mdcat.pattern.report.93>Een bondige tekstuele omschrijving van de afbeelding (dct:description)</mdcat.pattern.report.93>
+  <mdcat.pattern.report.94>De URL waar de afbeelding gedownload kan worden. (dcat:downloadURL)</mdcat.pattern.report.94>
+  <mdcat.pattern.report.95>Het voorstellingsvorm van de afbeelding (dcat:mediatype)</mdcat.pattern.report.95>
+  <mdcat.pattern.report.96>naam van de afbeelding (dct:title)</mdcat.pattern.report.96>
+  <mdcat.pattern.title.1> vcard:hasEmail    is een URI met het mailto protocol.</mdcat.pattern.title.1>
+  <mdcat.pattern.title.10>Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor de catalogus kan hier worden beschreven. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Catalogus.alternatieveidentificator)</mdcat.pattern.title.10>
+  <mdcat.pattern.title.11>Beschrijving - Een bondige tekstuele beschrijving van de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Catalogus.beschrijving)</mdcat.pattern.title.11>
+  <mdcat.pattern.title.12>Contactinformatie - De relevante contactinformatie waarin een eindige gebruiker in contact kan komen met de verantwoordelijken van de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Catalogus.contactinformatie)</mdcat.pattern.title.12>
+  <mdcat.pattern.title.13>Heeft dataservice - Een dataservice die deel maakt van de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Catalogus.heeftDataService)</mdcat.pattern.title.13>
+  <mdcat.pattern.title.14>Heeft dataset - Een dataset die deel maakt van de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Catalogus.heeftDataset)</mdcat.pattern.title.14>
+  <mdcat.pattern.title.15>Licentie - De licentie van de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Catalogus.licentie)</mdcat.pattern.title.15>
+  <mdcat.pattern.title.16>Record - Een record beschreven de registratie van één enkele dataservice die onderdeel is van de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Catalogus.record)</mdcat.pattern.title.16>
+  <mdcat.pattern.title.17>Titel - De naam van de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Catalogus.titel)</mdcat.pattern.title.17>
+  <mdcat.pattern.title.18>Uitgever - De uitgever, de eigenaar die verantwoordelijk is voor het beschikbaar stellen, van de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Catalogus.uitgever)</mdcat.pattern.title.18>
+  <mdcat.pattern.title.19>Aanmaakdatum - De datum van (formele) opname van de bijhorende dataset van dataservice in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#CatalogusRecord.aanmaakdatum)</mdcat.pattern.title.19>
+  <mdcat.pattern.title.2>Ten minste één van   vcard:hasEmail   of   vcard:hasURL   is een vereiste eigenschap van een contactpunt.</mdcat.pattern.title.2>
+  <mdcat.pattern.title.20>Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor een record in de catalogus kan hier worden geschreven. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#CatalogusRecord.alternatieveidentificator)</mdcat.pattern.title.20>
+  <mdcat.pattern.title.21>Bron metadata record landingpagina - Een webpagina in een menselijke leesbare vorm van de bron metadata record. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#CatalogusRecord.bronmetadatarecordlandingspagina)</mdcat.pattern.title.21>
+  <mdcat.pattern.title.22>Bron metadatarecord - De record in een andere catalogus waarin deze record en de beschrijvingen van het bijhorende hoofdonderwerp van aflevering zijn. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#CatalogusRecord.bronmetadatarecord)</mdcat.pattern.title.22>
+  <mdcat.pattern.title.23>Conform - De (metadata) standaard volgt welke
+regels het hoofdonderwerp waarnaar de
+Bibliografische data Record verkrijgbaar, beschikbaar
+Wordt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#CatalogusRecord.conform)</mdcat.pattern.title.23>
+  <mdcat.pattern.title.24>Hoofdonderwerp - De resource (dataset van dataservice) beschreven in het record. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#CatalogusRecord.hoofdonderwerp)</mdcat.pattern.title.24>
+  <mdcat.pattern.title.25>Titel - De naam van het record in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#CatalogusRecord.titel)</mdcat.pattern.title.25>
+  <mdcat.pattern.title.26>Wijzigingsdatum - De meest recente datum waarop de record in de catalogus is weergegeven, bijgewerkt van aanegast. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#CatalogusRecord.wijzigingsdatum)</mdcat.pattern.title.26>
+  <mdcat.pattern.title.27>Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor een distributie kan hier worden geschreven. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Distributie.alternatieveidentificator)</mdcat.pattern.title.27>
+  <mdcat.pattern.title.28>Conform - Een standaard, schema, implementatie-
+model, applicatieprofiel, vocabularium
+Waaraan de distributie volgt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Distributie.conform)</mdcat.pattern.title.28>
+  <mdcat.pattern.title.29>Downloadurl - De URL waar de data gedownload kan worden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Distributie.downloadURL)</mdcat.pattern.title.29>
+  <mdcat.pattern.title.3>Naam De naam van de agent. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Agent.naam)</mdcat.pattern.title.3>
+  <mdcat.pattern.title.30>Formaat - Het standformulier waarin de data wordt weergegeven. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Distributie.formaat)</mdcat.pattern.title.30>
+  <mdcat.pattern.title.31>Licentie - De licentie van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Distributie.licente)</mdcat.pattern.title.31>
+  <mdcat.pattern.title.32>Rechts - Bepalingen van juridische aard die gelden op de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Distributie.rechten)</mdcat.pattern.title.32>
+  <mdcat.pattern.title.33>Titel - De naam van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Distributie.titel)</mdcat.pattern.title.33>
+  <mdcat.pattern.title.34>Toegangsurl - Een URL waar de data kan gevonden worden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Distributie.toegangsURL)</mdcat.pattern.title.34>
+  <mdcat.pattern.title.35>Verdeler - de agent die instaat voor de behandeling (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Distributie.verdeler)</mdcat.pattern.title.35>
+  <mdcat.pattern.title.36>Word aangesloten door - Een dataservice die deze distributie biedt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Distributie.wordtangebodendoor)</mdcat.pattern.title.36>
+  <mdcat.pattern.title.37>Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor een dataservice kan hier worden beschreven. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.alternatieveidentificator)</mdcat.pattern.title.37>
+  <mdcat.pattern.title.38>Beschrijving - Een bondige tekstuele beschrijving van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.beschrift)</mdcat.pattern.title.38>
+  <mdcat.pattern.title.39>Biedt informatie aan over - De data die via deze dataservice worden aangeboden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.biedtininformatieaanover)</mdcat.pattern.title.39>
+  <mdcat.pattern.title.4>Contactpagina - Een webpagina die ofwel gebruikt om contact op te nemen (via b.v. een webformulierier) of die informatie bevat hoe mannen contact kan opnemen. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Contactinfo.contactpagina)</mdcat.pattern.title.4>
+  <mdcat.pattern.title.40>Conform aan protocol - Een protocol waar de dataservice voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.conformaanprotocol)</mdcat.pattern.title.40>
+  <mdcat.pattern.title.41>Contactinformatie - De relevante contactinformatie waarin een eindige gebruiker in contact kan komen met de verantwoordelijken van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.contactinformatie)</mdcat.pattern.title.41>
+  <mdcat.pattern.title.42>Creatiedatum - Het tijdsmoment waar de dataservice voor het eerst geactiveerd. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.creatiedatum)</mdcat.pattern.title.42>
+  <mdcat.pattern.title.43>Endpointurl - De rootlokatie van het primaire eindpunt van de dienst (een web-oplosbare URI). (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.endpointURL)</mdcat.pattern.title.43>
+  <mdcat.pattern.title.44>Endpointbeschrijving - Een beschrijving van de diensten die beschikbaar zijn via de eindpunten, met vermelding van hun opera's, parameters, enz. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.endpointbeschrijving)</mdcat.pattern.title.44>
+  <mdcat.pattern.title.45>Landingspagina - Een algemene webpagina waar kan worden genoten in een webbrowser, met algemene informatie over de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.landingspagina)</mdcat.pattern.title.45>
+  <mdcat.pattern.title.46>Landingspagina voor authentieke - Een wijziging naar de landspagina met de specifieke informatie over de authentieke voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.landingspaginavoorauthenticatie)</mdcat.pattern.title.46>
+  <mdcat.pattern.title.47>Landingspagina voor gebruiksinformatie - Een wijziging naar de landspagina met de specifieke informatie over het gebruik van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.landingspaginavoorgebruikersinformatie)</mdcat.pattern.title.47>
+  <mdcat.pattern.title.48>Landingspagina voor statusinformatie - Een wijziging naar de statuspagina van de dataservice (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.landingspaginavoorstatusinformatie)</mdcat.pattern.title.48>
+  <mdcat.pattern.title.49>Levensfase - De levensfase waarin de dataservice zich bevindt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.levensfase)</mdcat.pattern.title.49>
+  <mdcat.pattern.title.5>E-mail - Het e-mailadres waarin een gebruiker contact kan opnemen voor informatie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Contactinfo.e-mail)</mdcat.pattern.title.5>
+  <mdcat.pattern.title.50>Licentie - De licentie van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.licentie)</mdcat.pattern.title.50>
+  <mdcat.pattern.title.51>Ontwikkeling en ontwikkeling van de gegevensdienst. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.ontontwikkelingswerk)</mdcat.pattern.title.51>
+  <mdcat.pattern.title.52>Publicatiedatum - Het tijdsmoment waar de service werd gepubliceerd door de uitgever. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.publicatiedatum)</mdcat.pattern.title.52>
+  <mdcat.pattern.title.53>Rechts - Bepalingen van juridische aard die gelden op de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.rechten)</mdcat.pattern.title.53>
+  <mdcat.pattern.title.54>Statuut - Een overzicht van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.status)</mdcat.pattern.title.54>
+  <mdcat.pattern.title.55>Thema - De hoofdcategorie waartoe de dataservice behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.thema)</mdcat.pattern.title.55>
+  <mdcat.pattern.title.56>Titel - De naam van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.titel)</mdcat.pattern.title.56>
+  <mdcat.pattern.title.57>Toegankelijkheid - De toegang voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.toeganbaarheid)</mdcat.pattern.title.57>
+  <mdcat.pattern.title.58>Trefwoord - Een Trefwoord of tag die de resource beschreven. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.trefwoord)</mdcat.pattern.title.58>
+  <mdcat.pattern.title.59>Versie - Een unieke weergave van een variant van de dataservice door middel van een versie van -naam van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.versie)</mdcat.pattern.title.59>
+  <mdcat.pattern.title.6>Gestructureerde identificator - Identificator vh object verdeeld in zijn onderdelen. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Identificator.gestructurerdeidentificator)</mdcat.pattern.title.6>
+  <mdcat.pattern.title.60>Wijzigingsdatum - Het tijdsmoment waarop de dataservice werd ontvangen (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.wijzigingsdatum)</mdcat.pattern.title.60>
+  <mdcat.pattern.title.61>Bibliografische gegevensbron (bron) - Referentie naar verenigingen klant. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#RelatieQualificatie.CatalogusResource(source))</mdcat.pattern.title.61>
+  <mdcat.pattern.title.62>Bibliografische gegevensbron (doel) - Referentie naar verenigingen klant. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#RelatieQualificatie.CatalogusResource(target))</mdcat.pattern.title.62>
+  <mdcat.pattern.title.63>Rol - De functie hoe de eigenschappen zich tot elkaar houden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#RelatieQualificatie.rol)</mdcat.pattern.title.63>
+  <mdcat.pattern.title.64>Beschrijving - Een gebonden tekstuele beschrijving van de
+standaard (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Standaard.beschrift)</mdcat.pattern.title.64>
+  <mdcat.pattern.title.65>Publicatiedatum - De datum waarop de standaard werd
+gepubliceerd (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Standaard.publicatiedatum)</mdcat.pattern.title.65>
+  <mdcat.pattern.title.66>Specifieke url - Een URL waar mannen de specifieke kan
+vinden (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Standaard.specificatieURL)</mdcat.pattern.title.66>
+  <mdcat.pattern.title.67>Titel - naam van de standaard (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Standaard.titel)</mdcat.pattern.title.67>
+  <mdcat.pattern.title.68>Type - Een categorie van de standaard (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Standaard.type)</mdcat.pattern.title.68>
+  <mdcat.pattern.title.69>Versie - De versie van de standaard (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Standaard.versie)</mdcat.pattern.title.69>
+  <mdcat.pattern.title.7>Toegekend door - Link naar de agent die de identificator heeft uitgegeven. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Identificator.toegekenddoor)</mdcat.pattern.title.7>
+  <mdcat.pattern.title.70>Voorkeurslabel - Een afkorting, of notatie waaronder de
+standaard bekend is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Standaard.voorkeurslabel)</mdcat.pattern.title.70>
+  <mdcat.pattern.title.71>Relatie - een verband tussen twee bronnen. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#CatalogusResource.relatie)</mdcat.pattern.title.71>
+  <mdcat.pattern.title.72>Uitgever - De uitgever, de eigenaar die verantwoordelijk is voor het beschikbaar stellen, van de resource in de catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#CatalogusResource.uitgever)</mdcat.pattern.title.72>
+  <mdcat.pattern.title.73>Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor een dataset kan hier beschreven worden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.alternatieveidentificator)</mdcat.pattern.title.73>
+  <mdcat.pattern.title.74>Beschrijving - Een bondige tekstuele beschrijving van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.beschrift)</mdcat.pattern.title.74>
+  <mdcat.pattern.title.75>Conform - Een standaard, schema, applicatieprofiel, vocabularium, CRS, ... waar de dataset voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.conform)</mdcat.pattern.title.75>
+  <mdcat.pattern.title.76>Contactinformatie - De relevante contactinformatie waarin een eindgebruiker in contact kan komen met de verantwoordelijken van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.contactinformatie)</mdcat.pattern.title.76>
+  <mdcat.pattern.title.77>Creatiedatum - Het tijdsmoment waar de dataset ontstaan is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.creatiedatum)</mdcat.pattern.title.77>
+  <mdcat.pattern.title.78>Distributie - Een beschikbare distributie van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.distributie)</mdcat.pattern.title.78>
+  <mdcat.pattern.title.79>Eigenaar - de agent die de eigendomsrechten heeft (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.eigenaar)</mdcat.pattern.title.79>
+  <mdcat.pattern.title.8>Toegekend door (string) - Naam vd agent die de identificator heeft toegevoegd. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Identificator.toegekenddoor(String))</mdcat.pattern.title.8>
+  <mdcat.pattern.title.80>Geografische verpakking - Het geografische gebied waarover de dataset informatie heeft. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.geografischedekking)</mdcat.pattern.title.80>
+  <mdcat.pattern.title.81>Herkomst - De ontstaansgeschiedenis van een dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.herkomst)</mdcat.pattern.title.81>
+  <mdcat.pattern.title.82>Landingspagina - Een algemene webpagina waar kan worden gevonden in een webbrowser, met algemene informatie over de dataset, zijn distributies en/of volledige informatie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.landingspagina)</mdcat.pattern.title.82>
+  <mdcat.pattern.title.83>Publicatiedatum - Het tijdsmoment waarin de dataset werd gepubliceerd door de uitgever. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.publicatiedatum)</mdcat.pattern.title.83>
+  <mdcat.pattern.title.84>Statuut - Een overzicht van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.statuut)</mdcat.pattern.title.84>
+  <mdcat.pattern.title.85>Thema - De hoofdcategorie waartoe de dataset behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.thema)</mdcat.pattern.title.85>
+  <mdcat.pattern.title.86>Titel - De naam van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.titel)</mdcat.pattern.title.86>
+  <mdcat.pattern.title.87>Toegankelijkheid - De toegang voor de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.toeganbaarheid)</mdcat.pattern.title.87>
+  <mdcat.pattern.title.88>Trefwoord - Een Trefwoord of tag die de resource beschreven. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.trefwoord)</mdcat.pattern.title.88>
+  <mdcat.pattern.title.89>Versie - Een unieke weergave van een variant van de dataset door middel van een versienummer of -naam van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.versie)</mdcat.pattern.title.89>
+  <mdcat.pattern.title.9>Toegekend op - Tijdstip waar de identificator werd uitgeschakeld. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Identificator.toegekendop)</mdcat.pattern.title.9>
+  <mdcat.pattern.title.90>Voorbeeldweergave - Een kleine weergave van een afbeelding die de dataset illustreert.? (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.voorbeeldweergave)</mdcat.pattern.title.90>
+  <mdcat.pattern.title.91>Wijzigingsdatum - Het tijdsmoment waarin de dataset werd geactualiseerd (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.wijzigingsdatum)</mdcat.pattern.title.91>
+  <mdcat.pattern.title.92>Plaatsnaam - een unieke, bekende beschrijving die de plaatsnaamt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#plaats.plaatsnaam)</mdcat.pattern.title.92>
+  <mdcat.pattern.title.93>Beschrijving - Een bondige tekstuele beschrijving van de afbeelding (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Voorbeeldweergave.beschrijving)</mdcat.pattern.title.93>
+  <mdcat.pattern.title.94>Downloadurl - De URL waar de afbeelding gedownload kan worden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Voorbeeldweergave.downloadURL)</mdcat.pattern.title.94>
+  <mdcat.pattern.title.95>Mediatype - Het voorstelvorm van de afbeelding (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Voorbeeldweergave.mediatype)</mdcat.pattern.title.95>
+  <mdcat.pattern.title.96>Titel - naam van de afbeelding (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Voorbeeldweergave.titel)</mdcat.pattern.title.96>
 </strings>

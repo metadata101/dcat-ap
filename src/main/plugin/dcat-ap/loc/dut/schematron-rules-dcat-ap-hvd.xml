@@ -1,7 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
-  <schematron.title>Hoogwaardige Datasets (HVD) - Verplicht</schematron.title>
-  <required.applicablelegislation.title>Vereiste toepasselijke EU wetgeving.</required.applicablelegislation.title>
-  <required.applicablelegislation.assert>ELI http://data.europa.eu/eli/reg_impl/2023/138/oj hoort aanwezig te zijn.</required.applicablelegislation.assert>
-  <required.applicablelegislation.report>ELI http://data.europa.eu/eli/reg_impl/2023/138/oj is aanwezig.</required.applicablelegislation.report>
+  <schematron.title>High Value Datasets (v3.0.0)</schematron.title>
+  <dcat-ap-hvd.pattern.assert.1>De wetgeving die de oprichting of het beheer van de Distributie voorschrijft (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.1>
+  <dcat-ap-hvd.pattern.assert.10>Een verklaring die rechten in verband met de Distributie specificeert. (  dct:rights  )</dcat-ap-hvd.pattern.assert.10>
+  <dcat-ap-hvd.pattern.assert.11>Een licentie op grond waarvan de distributie beschikbaar wordt gesteld. (  dct:license  )</dcat-ap-hvd.pattern.assert.11>
+  <dcat-ap-hvd.pattern.assert.12>Een licentie op grond waarvan de distributie beschikbaar wordt gesteld. (  dct:license  )</dcat-ap-hvd.pattern.assert.12>
+  <dcat-ap-hvd.pattern.assert.13>De toepasselijke wetgeving moet worden vastgesteld op het HVD IR ELI. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.13>
+  <dcat-ap-hvd.pattern.assert.14>Een Dataset die deel uitmaakt van de Catalogus. (  dcat:dataset  )</dcat-ap-hvd.pattern.assert.14>
+  <dcat-ap-hvd.pattern.assert.15>Een catalogusrecord dat deel uitmaakt van de Catalogus (  dcat:record  )</dcat-ap-hvd.pattern.assert.15>
+  <dcat-ap-hvd.pattern.assert.16>Een catalogusrecord dat deel uitmaakt van de Catalogus (  dcat:record  )</dcat-ap-hvd.pattern.assert.16>
+  <dcat-ap-hvd.pattern.assert.17>Een Dataset die deel uitmaakt van de Catalogus. (  dcat:dataset  )</dcat-ap-hvd.pattern.assert.17>
+  <dcat-ap-hvd.pattern.assert.18>Een site of eindpunt (Gegevensdienst) die in de catalogus is opgenomen. (  dcat:service  )</dcat-ap-hvd.pattern.assert.18>
+  <dcat-ap-hvd.pattern.assert.19>Een site of eindpunt (Gegevensdienst) die in de catalogus is opgenomen. (  dcat:service  )</dcat-ap-hvd.pattern.assert.19>
+  <dcat-ap-hvd.pattern.assert.2>Een vast schema waaraan de beschreven verdeling voldoet. (  dct:conformsTo  )</dcat-ap-hvd.pattern.assert.2>
+  <dcat-ap-hvd.pattern.assert.20>De wetgeving die de oprichting of het beheer van de Dataset-serie voorschrijft. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.20>
+  <dcat-ap-hvd.pattern.assert.21>De wetgeving die de oprichting of het beheer van de Dataset-serie voorschrijft. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.21>
+  <dcat-ap-hvd.pattern.assert.22>De HVD-categorie waartoe deze Dataset behoort. (  dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.assert.22>
+  <dcat-ap-hvd.pattern.assert.23>De HVD-categorie waartoe deze Dataset behoort. (  dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.assert.23>
+  <dcat-ap-hvd.pattern.assert.24>De toepasselijke wetgeving moet worden vastgesteld op het HVD IR ELI. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.24>
+  <dcat-ap-hvd.pattern.assert.25>Een link naar de Dataset, Data service of Catalog beschreven in het record. (  foaf:primaryTopic  )</dcat-ap-hvd.pattern.assert.25>
+  <dcat-ap-hvd.pattern.assert.26>Een link naar de Dataset, Data service of Catalog beschreven in het record. (  foaf:primaryTopic  )</dcat-ap-hvd.pattern.assert.26>
+  <dcat-ap-hvd.pattern.assert.27>De wetgeving die de oprichting of het beheer van de gegevensdienst voorschrijft. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.27>
+  <dcat-ap-hvd.pattern.assert.28>Deze eigenschap verwijst naar een verzameling gegevens die deze dataservice kan verspreiden. (  dcat:servesDataset  )</dcat-ap-hvd.pattern.assert.28>
+  <dcat-ap-hvd.pattern.assert.29>De HVD-categorie waartoe deze Data Service behoort. (  dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.assert.29>
+  <dcat-ap-hvd.pattern.assert.3>Een dataservice die toegang geeft tot de distributie van de dataset (  dcat:accessService  )</dcat-ap-hvd.pattern.assert.3>
+  <dcat-ap-hvd.pattern.assert.30>De rootlocatie of het primaire eindpunt van de dienst (een IRI). (  dcat:endpointURL  )</dcat-ap-hvd.pattern.assert.30>
+  <dcat-ap-hvd.pattern.assert.31>De HVD-categorie waartoe deze Data Service behoort. (  dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.assert.31>
+  <dcat-ap-hvd.pattern.assert.32>Een beschrijving van de beschikbare diensten via de eindpunten, met inbegrip van hun activiteiten, parameters enz. (  dcat:endpointDescription  )</dcat-ap-hvd.pattern.assert.32>
+  <dcat-ap-hvd.pattern.assert.33>Een pagina met aanvullende informatie over de Data Service. (  foaf:page  )</dcat-ap-hvd.pattern.assert.33>
+  <dcat-ap-hvd.pattern.assert.34>De wetgeving die de oprichting of het beheer van de gegevensdienst voorschrijft. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.34>
+  <dcat-ap-hvd.pattern.assert.35>Contactinformatie die kan worden gebruikt voor het verzenden van opmerkingen over de Data Service. (  dcat:contactPoint  )</dcat-ap-hvd.pattern.assert.35>
+  <dcat-ap-hvd.pattern.assert.36>Een verklaring die rechten in verband met de Distributie specificeert. (  dct:rights  )</dcat-ap-hvd.pattern.assert.36>
+  <dcat-ap-hvd.pattern.assert.37>Een pagina met aanvullende informatie over de Data Service. (  foaf:page  )</dcat-ap-hvd.pattern.assert.37>
+  <dcat-ap-hvd.pattern.assert.38>Contactinformatie die kan worden gebruikt voor het verzenden van opmerkingen over de Data Service. (  dcat:contactPoint  )</dcat-ap-hvd.pattern.assert.38>
+  <dcat-ap-hvd.pattern.assert.39>Een verklaring die rechten in verband met de Distributie specificeert. (  dct:rights  )</dcat-ap-hvd.pattern.assert.39>
+  <dcat-ap-hvd.pattern.assert.4>Een vast schema waaraan de beschreven verdeling voldoet. (  dct:conformsTo  )</dcat-ap-hvd.pattern.assert.4>
+  <dcat-ap-hvd.pattern.assert.40>Deze eigenschap verwijst naar een verzameling gegevens die deze dataservice kan verspreiden. (  dcat:servesDataset  )</dcat-ap-hvd.pattern.assert.40>
+  <dcat-ap-hvd.pattern.assert.41>Een licentie op grond waarvan de gegevensdienst beschikbaar wordt gesteld. (  dct:license  )</dcat-ap-hvd.pattern.assert.41>
+  <dcat-ap-hvd.pattern.assert.42>Een beschrijving van de beschikbare diensten via de eindpunten, met inbegrip van hun activiteiten, parameters enz. (  dcat:endpointDescription  )</dcat-ap-hvd.pattern.assert.42>
+  <dcat-ap-hvd.pattern.assert.43>De rootlocatie of het primaire eindpunt van de dienst (een IRI). (  dcat:endpointURL  )</dcat-ap-hvd.pattern.assert.43>
+  <dcat-ap-hvd.pattern.assert.44>Een licentie op grond waarvan de gegevensdienst beschikbaar wordt gesteld. (  dct:license  )</dcat-ap-hvd.pattern.assert.44>
+  <dcat-ap-hvd.pattern.assert.45>De toepasselijke wetgeving moet worden vastgesteld op het HVD IR ELI. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.45>
+  <dcat-ap-hvd.pattern.assert.46>Een e-mailadres via welke contact kan worden gemaakt. (  vcard:hasEmail  )</dcat-ap-hvd.pattern.assert.46>
+  <dcat-ap-hvd.pattern.assert.47>Een webpagina die het mogelijk maakt contact te maken (d.w.z. een webformulier) of de informatie bevat hoe je in contact komt. (  vcard:hasURL  )</dcat-ap-hvd.pattern.assert.47>
+  <dcat-ap-hvd.pattern.assert.48>Een e-mailadres via welke contact kan worden gemaakt. (  vcard:hasEmail  )</dcat-ap-hvd.pattern.assert.48>
+  <dcat-ap-hvd.pattern.assert.49>Een webpagina die het mogelijk maakt contact te maken (d.w.z. een webformulier) of de informatie bevat hoe je in contact komt. (  vcard:hasURL  )</dcat-ap-hvd.pattern.assert.49>
+  <dcat-ap-hvd.pattern.assert.5>Een URL die toegang geeft tot een Distributie van de Dataset. (  dcat:accessURL  )</dcat-ap-hvd.pattern.assert.5>
+  <dcat-ap-hvd.pattern.assert.50>Een uitvoeringsregel of andere specificatie. (  dct:conformsTo  )</dcat-ap-hvd.pattern.assert.50>
+  <dcat-ap-hvd.pattern.assert.51>De wetgeving die de oprichting of het beheer van het gegevensbestand voorschrijft. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.51>
+  <dcat-ap-hvd.pattern.assert.52>Een beschikbare Distributie voor de Dataset. (  dcat:distribution  )</dcat-ap-hvd.pattern.assert.52>
+  <dcat-ap-hvd.pattern.assert.53>Een datasetreeks waarvan de dataset deel uitmaakt. (  dcat:inSeries  )</dcat-ap-hvd.pattern.assert.53>
+  <dcat-ap-hvd.pattern.assert.54>De wetgeving die de oprichting of het beheer van het gegevensbestand voorschrijft. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.54>
+  <dcat-ap-hvd.pattern.assert.55>Contactinformatie die kan worden gebruikt voor het versturen van opmerkingen over de Dataset. (  dcat:contactPoint  )</dcat-ap-hvd.pattern.assert.55>
+  <dcat-ap-hvd.pattern.assert.56>Een datasetreeks waarvan de dataset deel uitmaakt. (  dcat:inSeries  )</dcat-ap-hvd.pattern.assert.56>
+  <dcat-ap-hvd.pattern.assert.57>De HVD-categorie waartoe deze Dataset behoort. (  dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.assert.57>
+  <dcat-ap-hvd.pattern.assert.58>De HVD-categorie waartoe deze Dataset behoort. (  dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.assert.58>
+  <dcat-ap-hvd.pattern.assert.59>Contactinformatie die kan worden gebruikt voor het versturen van opmerkingen over de Dataset. (  dcat:contactPoint  )</dcat-ap-hvd.pattern.assert.59>
+  <dcat-ap-hvd.pattern.assert.6>De wetgeving die de oprichting of het beheer van de Distributie voorschrijft (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.6>
+  <dcat-ap-hvd.pattern.assert.60>Een uitvoeringsregel of andere specificatie. (  dct:conformsTo  )</dcat-ap-hvd.pattern.assert.60>
+  <dcat-ap-hvd.pattern.assert.61>Een beschikbare Distributie voor de Dataset. (  dcat:distribution  )</dcat-ap-hvd.pattern.assert.61>
+  <dcat-ap-hvd.pattern.assert.62>De toepasselijke wetgeving moet worden vastgesteld op het HVD IR ELI. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.62>
+  <dcat-ap-hvd.pattern.assert.7>Een dataservice die toegang geeft tot de distributie van de dataset (  dcat:accessService  )</dcat-ap-hvd.pattern.assert.7>
+  <dcat-ap-hvd.pattern.assert.8>Een verklaring die rechten in verband met de Distributie specificeert. (  dct:rights  )</dcat-ap-hvd.pattern.assert.8>
+  <dcat-ap-hvd.pattern.assert.9>Een URL die toegang geeft tot een Distributie van de Dataset. (  dcat:accessURL  )</dcat-ap-hvd.pattern.assert.9>
+  <dcat-ap-hvd.pattern.report.1>De wetgeving die de oprichting of het beheer van de Distributie voorschrijft (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.1>
+  <dcat-ap-hvd.pattern.report.10>Een verklaring die rechten in verband met de Distributie specificeert. (  dct:rights  )</dcat-ap-hvd.pattern.report.10>
+  <dcat-ap-hvd.pattern.report.11>Een licentie op grond waarvan de distributie beschikbaar wordt gesteld. (  dct:license  )</dcat-ap-hvd.pattern.report.11>
+  <dcat-ap-hvd.pattern.report.12>Een licentie op grond waarvan de distributie beschikbaar wordt gesteld. (  dct:license  )</dcat-ap-hvd.pattern.report.12>
+  <dcat-ap-hvd.pattern.report.13>De toepasselijke wetgeving moet worden vastgesteld op het HVD IR ELI. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.13>
+  <dcat-ap-hvd.pattern.report.14>Een Dataset die deel uitmaakt van de Catalogus. (  dcat:dataset  )</dcat-ap-hvd.pattern.report.14>
+  <dcat-ap-hvd.pattern.report.15>Een catalogusrecord dat deel uitmaakt van de Catalogus (  dcat:record  )</dcat-ap-hvd.pattern.report.15>
+  <dcat-ap-hvd.pattern.report.16>Een catalogusrecord dat deel uitmaakt van de Catalogus (  dcat:record  )</dcat-ap-hvd.pattern.report.16>
+  <dcat-ap-hvd.pattern.report.17>Een Dataset die deel uitmaakt van de Catalogus. (  dcat:dataset  )</dcat-ap-hvd.pattern.report.17>
+  <dcat-ap-hvd.pattern.report.18>Een site of eindpunt (Gegevensdienst) die in de catalogus is opgenomen. (  dcat:service  )</dcat-ap-hvd.pattern.report.18>
+  <dcat-ap-hvd.pattern.report.19>Een site of eindpunt (Gegevensdienst) die in de catalogus is opgenomen. (  dcat:service  )</dcat-ap-hvd.pattern.report.19>
+  <dcat-ap-hvd.pattern.report.2>Een vast schema waaraan de beschreven verdeling voldoet. (  dct:conformsTo  )</dcat-ap-hvd.pattern.report.2>
+  <dcat-ap-hvd.pattern.report.20>De wetgeving die de oprichting of het beheer van de Dataset-serie voorschrijft. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.20>
+  <dcat-ap-hvd.pattern.report.21>De wetgeving die de oprichting of het beheer van de Dataset-serie voorschrijft. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.21>
+  <dcat-ap-hvd.pattern.report.22>De HVD-categorie waartoe deze Dataset behoort. (  dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.report.22>
+  <dcat-ap-hvd.pattern.report.23>De HVD-categorie waartoe deze Dataset behoort. (  dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.report.23>
+  <dcat-ap-hvd.pattern.report.24>De toepasselijke wetgeving moet worden vastgesteld op het HVD IR ELI. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.24>
+  <dcat-ap-hvd.pattern.report.25>Een link naar de Dataset, Data service of Catalog beschreven in het record. (  foaf:primaryTopic  )</dcat-ap-hvd.pattern.report.25>
+  <dcat-ap-hvd.pattern.report.26>Een link naar de Dataset, Data service of Catalog beschreven in het record. (  foaf:primaryTopic  )</dcat-ap-hvd.pattern.report.26>
+  <dcat-ap-hvd.pattern.report.27>De wetgeving die de oprichting of het beheer van de gegevensdienst voorschrijft. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.27>
+  <dcat-ap-hvd.pattern.report.28>Deze eigenschap verwijst naar een verzameling gegevens die deze dataservice kan verspreiden. (  dcat:servesDataset  )</dcat-ap-hvd.pattern.report.28>
+  <dcat-ap-hvd.pattern.report.29>De HVD-categorie waartoe deze Data Service behoort. (  dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.report.29>
+  <dcat-ap-hvd.pattern.report.3>Een dataservice die toegang geeft tot de distributie van de dataset (  dcat:accessService  )</dcat-ap-hvd.pattern.report.3>
+  <dcat-ap-hvd.pattern.report.30>De rootlocatie of het primaire eindpunt van de dienst (een IRI). (  dcat:endpointURL  )</dcat-ap-hvd.pattern.report.30>
+  <dcat-ap-hvd.pattern.report.31>De HVD-categorie waartoe deze Data Service behoort. (  dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.report.31>
+  <dcat-ap-hvd.pattern.report.32>Een beschrijving van de beschikbare diensten via de eindpunten, met inbegrip van hun activiteiten, parameters enz. (  dcat:endpointDescription  )</dcat-ap-hvd.pattern.report.32>
+  <dcat-ap-hvd.pattern.report.33>Een pagina met aanvullende informatie over de Data Service. (  foaf:page  )</dcat-ap-hvd.pattern.report.33>
+  <dcat-ap-hvd.pattern.report.34>De wetgeving die de oprichting of het beheer van de gegevensdienst voorschrijft. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.34>
+  <dcat-ap-hvd.pattern.report.35>Contactinformatie die kan worden gebruikt voor het verzenden van opmerkingen over de Data Service. (  dcat:contactPoint  )</dcat-ap-hvd.pattern.report.35>
+  <dcat-ap-hvd.pattern.report.36>Een verklaring die rechten in verband met de Distributie specificeert. (  dct:rights  )</dcat-ap-hvd.pattern.report.36>
+  <dcat-ap-hvd.pattern.report.37>Een pagina met aanvullende informatie over de Data Service. (  foaf:page  )</dcat-ap-hvd.pattern.report.37>
+  <dcat-ap-hvd.pattern.report.38>Contactinformatie die kan worden gebruikt voor het verzenden van opmerkingen over de Data Service. (  dcat:contactPoint  )</dcat-ap-hvd.pattern.report.38>
+  <dcat-ap-hvd.pattern.report.39>Een verklaring die rechten in verband met de Distributie specificeert. (  dct:rights  )</dcat-ap-hvd.pattern.report.39>
+  <dcat-ap-hvd.pattern.report.4>Een vast schema waaraan de beschreven verdeling voldoet. (  dct:conformsTo  )</dcat-ap-hvd.pattern.report.4>
+  <dcat-ap-hvd.pattern.report.40>Deze eigenschap verwijst naar een verzameling gegevens die deze dataservice kan verspreiden. (  dcat:servesDataset  )</dcat-ap-hvd.pattern.report.40>
+  <dcat-ap-hvd.pattern.report.41>Een licentie op grond waarvan de gegevensdienst beschikbaar wordt gesteld. (  dct:license  )</dcat-ap-hvd.pattern.report.41>
+  <dcat-ap-hvd.pattern.report.42>Een beschrijving van de beschikbare diensten via de eindpunten, met inbegrip van hun activiteiten, parameters enz. (  dcat:endpointDescription  )</dcat-ap-hvd.pattern.report.42>
+  <dcat-ap-hvd.pattern.report.43>De rootlocatie of het primaire eindpunt van de dienst (een IRI). (  dcat:endpointURL  )</dcat-ap-hvd.pattern.report.43>
+  <dcat-ap-hvd.pattern.report.44>Een licentie op grond waarvan de gegevensdienst beschikbaar wordt gesteld. (  dct:license  )</dcat-ap-hvd.pattern.report.44>
+  <dcat-ap-hvd.pattern.report.45>De toepasselijke wetgeving moet worden vastgesteld op het HVD IR ELI. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.45>
+  <dcat-ap-hvd.pattern.report.46>Een e-mailadres via welke contact kan worden gemaakt. (  vcard:hasEmail  )</dcat-ap-hvd.pattern.report.46>
+  <dcat-ap-hvd.pattern.report.47>Een webpagina die het mogelijk maakt contact te maken (d.w.z. een webformulier) of de informatie bevat hoe je in contact komt. (  vcard:hasURL  )</dcat-ap-hvd.pattern.report.47>
+  <dcat-ap-hvd.pattern.report.48>Een e-mailadres via welke contact kan worden gemaakt. (  vcard:hasEmail  )</dcat-ap-hvd.pattern.report.48>
+  <dcat-ap-hvd.pattern.report.49>Een webpagina die het mogelijk maakt contact te maken (d.w.z. een webformulier) of de informatie bevat hoe je in contact komt. (  vcard:hasURL  )</dcat-ap-hvd.pattern.report.49>
+  <dcat-ap-hvd.pattern.report.5>Een URL die toegang geeft tot een Distributie van de Dataset. (  dcat:accessURL  )</dcat-ap-hvd.pattern.report.5>
+  <dcat-ap-hvd.pattern.report.50>Een uitvoeringsregel of andere specificatie. (  dct:conformsTo  )</dcat-ap-hvd.pattern.report.50>
+  <dcat-ap-hvd.pattern.report.51>De wetgeving die de oprichting of het beheer van het gegevensbestand voorschrijft. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.51>
+  <dcat-ap-hvd.pattern.report.52>Een beschikbare Distributie voor de Dataset. (  dcat:distribution  )</dcat-ap-hvd.pattern.report.52>
+  <dcat-ap-hvd.pattern.report.53>Een datasetreeks waarvan de dataset deel uitmaakt. (  dcat:inSeries  )</dcat-ap-hvd.pattern.report.53>
+  <dcat-ap-hvd.pattern.report.54>De wetgeving die de oprichting of het beheer van het gegevensbestand voorschrijft. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.54>
+  <dcat-ap-hvd.pattern.report.55>Contactinformatie die kan worden gebruikt voor het versturen van opmerkingen over de Dataset. (  dcat:contactPoint  )</dcat-ap-hvd.pattern.report.55>
+  <dcat-ap-hvd.pattern.report.56>Een datasetreeks waarvan de dataset deel uitmaakt. (  dcat:inSeries  )</dcat-ap-hvd.pattern.report.56>
+  <dcat-ap-hvd.pattern.report.57>De HVD-categorie waartoe deze Dataset behoort. (  dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.report.57>
+  <dcat-ap-hvd.pattern.report.58>De HVD-categorie waartoe deze Dataset behoort. (  dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.report.58>
+  <dcat-ap-hvd.pattern.report.59>Contactinformatie die kan worden gebruikt voor het versturen van opmerkingen over de Dataset. (  dcat:contactPoint  )</dcat-ap-hvd.pattern.report.59>
+  <dcat-ap-hvd.pattern.report.6>De wetgeving die de oprichting of het beheer van de Distributie voorschrijft (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.6>
+  <dcat-ap-hvd.pattern.report.60>Een uitvoeringsregel of andere specificatie. (  dct:conformsTo  )</dcat-ap-hvd.pattern.report.60>
+  <dcat-ap-hvd.pattern.report.61>Een beschikbare Distributie voor de Dataset. (  dcat:distribution  )</dcat-ap-hvd.pattern.report.61>
+  <dcat-ap-hvd.pattern.report.62>De toepasselijke wetgeving moet worden vastgesteld op het HVD IR ELI. (  dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.62>
+  <dcat-ap-hvd.pattern.report.7>Een dataservice die toegang geeft tot de distributie van de dataset (  dcat:accessService  )</dcat-ap-hvd.pattern.report.7>
+  <dcat-ap-hvd.pattern.report.8>Een verklaring die rechten in verband met de Distributie specificeert. (  dct:rights  )</dcat-ap-hvd.pattern.report.8>
+  <dcat-ap-hvd.pattern.report.9>Een URL die toegang geeft tot een Distributie van de Dataset. (  dcat:accessURL  )</dcat-ap-hvd.pattern.report.9>
+  <dcat-ap-hvd.pattern.title.1>Toepasselijke wetgeving - De wetgeving die de oprichting of het beheer van de Distributie voorschrijft (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distributie.toepasselijke wetgeving)</dcat-ap-hvd.pattern.title.1>
+  <dcat-ap-hvd.pattern.title.10>Rechten - Een verklaring die rechten met betrekking tot de Distributie specificeert. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distributie.rights)</dcat-ap-hvd.pattern.title.10>
+  <dcat-ap-hvd.pattern.title.11>Licentie - Een licentie op grond waarvan de Distributie beschikbaar wordt gesteld. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distributie.licentie)</dcat-ap-hvd.pattern.title.11>
+  <dcat-ap-hvd.pattern.title.12>Licentie - Een licentie op grond waarvan de Distributie beschikbaar wordt gesteld. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distributie.licentie)</dcat-ap-hvd.pattern.title.12>
+  <dcat-ap-hvd.pattern.title.13>De toepasselijke wetgeving moet worden vastgesteld op het HVD IR ELI. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distributie.toepasselijke wetgeving)</dcat-ap-hvd.pattern.title.13>
+  <dcat-ap-hvd.pattern.title.14>Dataset - Een Dataset die deel uitmaakt van de Catalogus. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.dataset)</dcat-ap-hvd.pattern.title.14>
+  <dcat-ap-hvd.pattern.title.15>Record - A Catalogusrecord dat deel uitmaakt van de Catalogus (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.record)</dcat-ap-hvd.pattern.title.15>
+  <dcat-ap-hvd.pattern.title.16>Record - A Catalogusrecord dat deel uitmaakt van de Catalogus (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.record)</dcat-ap-hvd.pattern.title.16>
+  <dcat-ap-hvd.pattern.title.17>Dataset - Een Dataset die deel uitmaakt van de Catalogus. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.dataset)</dcat-ap-hvd.pattern.title.17>
+  <dcat-ap-hvd.pattern.title.18>Service - Een site of eindpunt (Gegevensdienst) die is opgenomen in de Catalogus. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.service)</dcat-ap-hvd.pattern.title.18>
+  <dcat-ap-hvd.pattern.title.19>Service - Een site of eindpunt (Gegevensdienst) die is opgenomen in de Catalogus. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.service)</dcat-ap-hvd.pattern.title.19>
+  <dcat-ap-hvd.pattern.title.2>Gekoppelde schema's - Een vast schema waaraan de beschreven Distributie voldoet. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distributie.linkedschemas)</dcat-ap-hvd.pattern.title.2>
+  <dcat-ap-hvd.pattern.title.20>Toepasselijke wetgeving - De wetgeving die de oprichting of het beheer van de Dataset-serie voorschrijft. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DatasetSeries.toepasselijke wetgeving)</dcat-ap-hvd.pattern.title.20>
+  <dcat-ap-hvd.pattern.title.21>Toepasselijke wetgeving - De wetgeving die de oprichting of het beheer van de Dataset-serie voorschrijft. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DatasetSeries.toepasselijke wetgeving)</dcat-ap-hvd.pattern.title.21>
+  <dcat-ap-hvd.pattern.title.22>Hvd categorie - De HVD categorie waartoe deze Dataset behoort. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DatasetSeries.HVDCategorie)</dcat-ap-hvd.pattern.title.22>
+  <dcat-ap-hvd.pattern.title.23>Hvd categorie - De HVD categorie waartoe deze Dataset behoort. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DatasetSeries.HVDCategorie)</dcat-ap-hvd.pattern.title.23>
+  <dcat-ap-hvd.pattern.title.24>De toepasselijke wetgeving moet worden vastgesteld op het HVD IR ELI. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DatasetSeries.toepasselijke wetgeving)</dcat-ap-hvd.pattern.title.24>
+  <dcat-ap-hvd.pattern.title.25>Primair onderwerp - Een link naar de Dataset, Data service of Catalog beschreven in het record. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#CatalogueRecord.primarytopic)</dcat-ap-hvd.pattern.title.25>
+  <dcat-ap-hvd.pattern.title.26>Primair onderwerp - Een link naar de Dataset, Data service of Catalog beschreven in het record. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#CatalogueRecord.primarytopic)</dcat-ap-hvd.pattern.title.26>
+  <dcat-ap-hvd.pattern.title.27>Toepasselijke wetgeving - De wetgeving die de oprichting of het beheer van de gegevensdienst voorschrijft. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.toepasselijke wetgeving)</dcat-ap-hvd.pattern.title.27>
+  <dcat-ap-hvd.pattern.title.28>Dataset servers - Deze eigenschap verwijst naar een verzameling gegevens die deze dataservice kan verspreiden. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.servesdataset)</dcat-ap-hvd.pattern.title.28>
+  <dcat-ap-hvd.pattern.title.29>Hvd categorie - De HVD categorie waartoe deze Data Service behoort. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.HVDcategorie)</dcat-ap-hvd.pattern.title.29>
+  <dcat-ap-hvd.pattern.title.3>Toegangsdienst - Een gegevensdienst die toegang geeft tot de distributie van de dataset (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.accessservice)</dcat-ap-hvd.pattern.title.3>
+  <dcat-ap-hvd.pattern.title.30>Eindpunt url - De rootlocatie of het primaire eindpunt van de dienst (een IRI). (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.endpointURL)</dcat-ap-hvd.pattern.title.30>
+  <dcat-ap-hvd.pattern.title.31>Hvd categorie - De HVD categorie waartoe deze Data Service behoort. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.HVDcategorie)</dcat-ap-hvd.pattern.title.31>
+  <dcat-ap-hvd.pattern.title.32>Eindpuntbeschrijving - Een beschrijving van de beschikbare diensten via de eindpunten, met inbegrip van hun activiteiten, parameters enz. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.endpointdescription)</dcat-ap-hvd.pattern.title.32>
+  <dcat-ap-hvd.pattern.title.33>Documentatie - Een pagina met aanvullende informatie over de Data Service. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.documentation)</dcat-ap-hvd.pattern.title.33>
+  <dcat-ap-hvd.pattern.title.34>Toepasselijke wetgeving - De wetgeving die de oprichting of het beheer van de gegevensdienst voorschrijft. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.toepasselijke wetgeving)</dcat-ap-hvd.pattern.title.34>
+  <dcat-ap-hvd.pattern.title.35>Contactpunt - Contactinformatie die kan worden gebruikt voor het verzenden van opmerkingen over de Data Service. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.contactpoint)</dcat-ap-hvd.pattern.title.35>
+  <dcat-ap-hvd.pattern.title.36>Rechten - Een verklaring die rechten met betrekking tot de Distributie specificeert. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.rights)</dcat-ap-hvd.pattern.title.36>
+  <dcat-ap-hvd.pattern.title.37>Documentatie - Een pagina met aanvullende informatie over de Data Service. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.documentation)</dcat-ap-hvd.pattern.title.37>
+  <dcat-ap-hvd.pattern.title.38>Contactpunt - Contactinformatie die kan worden gebruikt voor het verzenden van opmerkingen over de Data Service. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.contactpoint)</dcat-ap-hvd.pattern.title.38>
+  <dcat-ap-hvd.pattern.title.39>Rechten - Een verklaring die rechten met betrekking tot de Distributie specificeert. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.rights)</dcat-ap-hvd.pattern.title.39>
+  <dcat-ap-hvd.pattern.title.4>Gekoppelde schema's - Een vast schema waaraan de beschreven Distributie voldoet. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distributie.linkedschemas)</dcat-ap-hvd.pattern.title.4>
+  <dcat-ap-hvd.pattern.title.40>Dataset servers - Deze eigenschap verwijst naar een verzameling gegevens die deze dataservice kan verspreiden. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.servesdataset)</dcat-ap-hvd.pattern.title.40>
+  <dcat-ap-hvd.pattern.title.41>Licentie - Een licentie op grond waarvan de gegevensdienst beschikbaar wordt gesteld. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.licence)</dcat-ap-hvd.pattern.title.41>
+  <dcat-ap-hvd.pattern.title.42>Eindpuntbeschrijving - Een beschrijving van de beschikbare diensten via de eindpunten, met inbegrip van hun activiteiten, parameters enz. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.endpointdescription)</dcat-ap-hvd.pattern.title.42>
+  <dcat-ap-hvd.pattern.title.43>Eindpunt url - De rootlocatie of het primaire eindpunt van de dienst (een IRI). (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.endpointURL)</dcat-ap-hvd.pattern.title.43>
+  <dcat-ap-hvd.pattern.title.44>Licentie - Een licentie op grond waarvan de gegevensdienst beschikbaar wordt gesteld. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.licence)</dcat-ap-hvd.pattern.title.44>
+  <dcat-ap-hvd.pattern.title.45>De toepasselijke wetgeving moet worden vastgesteld op het HVD IR ELI. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.toepasselijke wetgeving)</dcat-ap-hvd.pattern.title.45>
+  <dcat-ap-hvd.pattern.title.46>E-mail - Een e-mailadres via welke contact kan worden gemaakt. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Kind.email)</dcat-ap-hvd.pattern.title.46>
+  <dcat-ap-hvd.pattern.title.47>Contactpagina - Een webpagina die het mogelijk maakt contact te maken (d.w.z. een webformulier) of de informatie bevat hoe u contact kunt opnemen. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Kind.contactpagina)</dcat-ap-hvd.pattern.title.47>
+  <dcat-ap-hvd.pattern.title.48>E-mail - Een e-mailadres via welke contact kan worden gemaakt. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Kind.email)</dcat-ap-hvd.pattern.title.48>
+  <dcat-ap-hvd.pattern.title.49>Contactpagina - Een webpagina die het mogelijk maakt contact te maken (d.w.z. een webformulier) of de informatie bevat hoe u contact kunt opnemen. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Kind.contactpagina)</dcat-ap-hvd.pattern.title.49>
+  <dcat-ap-hvd.pattern.title.5>Toegang tot url - Een URL die toegang geeft tot een Distributie van de Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distributie.accessURL)</dcat-ap-hvd.pattern.title.5>
+  <dcat-ap-hvd.pattern.title.50>In overeenstemming met - Een uitvoeringsregel of andere specificatie. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.conformsto)</dcat-ap-hvd.pattern.title.50>
+  <dcat-ap-hvd.pattern.title.51>Toepasselijke wetgeving - De wetgeving die de oprichting of het beheer van het gegevensbestand voorschrijft. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.toepasselijke wetgeving)</dcat-ap-hvd.pattern.title.51>
+  <dcat-ap-hvd.pattern.title.52>Datasetdistributie - Een beschikbare Distributie voor de Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.datasetdistributie)</dcat-ap-hvd.pattern.title.52>
+  <dcat-ap-hvd.pattern.title.53>In serie - Een datasetreeks waarvan de dataset deel uitmaakt. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.inseries)</dcat-ap-hvd.pattern.title.53>
+  <dcat-ap-hvd.pattern.title.54>Toepasselijke wetgeving - De wetgeving die de oprichting of het beheer van het gegevensbestand voorschrijft. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.toepasselijke wetgeving)</dcat-ap-hvd.pattern.title.54>
+  <dcat-ap-hvd.pattern.title.55>Contactpunt - Contactinformatie die kan worden gebruikt voor het verzenden van opmerkingen over de Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.contactpunt)</dcat-ap-hvd.pattern.title.55>
+  <dcat-ap-hvd.pattern.title.56>In serie - Een datasetreeks waarvan de dataset deel uitmaakt. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.inseries)</dcat-ap-hvd.pattern.title.56>
+  <dcat-ap-hvd.pattern.title.57>Hvd categorie - De HVD categorie waartoe deze Dataset behoort. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.HVDCategorie)</dcat-ap-hvd.pattern.title.57>
+  <dcat-ap-hvd.pattern.title.58>Hvd categorie - De HVD categorie waartoe deze Dataset behoort. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.HVDCategorie)</dcat-ap-hvd.pattern.title.58>
+  <dcat-ap-hvd.pattern.title.59>Contactpunt - Contactinformatie die kan worden gebruikt voor het verzenden van opmerkingen over de Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.contactpunt)</dcat-ap-hvd.pattern.title.59>
+  <dcat-ap-hvd.pattern.title.6>Toepasselijke wetgeving - De wetgeving die de oprichting of het beheer van de Distributie voorschrijft (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distributie.toepasselijke wetgeving)</dcat-ap-hvd.pattern.title.6>
+  <dcat-ap-hvd.pattern.title.60>In overeenstemming met - Een uitvoeringsregel of andere specificatie. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.conformsto)</dcat-ap-hvd.pattern.title.60>
+  <dcat-ap-hvd.pattern.title.61>Datasetdistributie - Een beschikbare Distributie voor de Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.datasetdistributie)</dcat-ap-hvd.pattern.title.61>
+  <dcat-ap-hvd.pattern.title.62>De toepasselijke wetgeving moet worden vastgesteld op het HVD IR ELI. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.toepasselijke wetgeving)</dcat-ap-hvd.pattern.title.62>
+  <dcat-ap-hvd.pattern.title.7>Toegangsdienst - Een gegevensdienst die toegang geeft tot de distributie van de dataset (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.accessservice)</dcat-ap-hvd.pattern.title.7>
+  <dcat-ap-hvd.pattern.title.8>Rechten - Een verklaring die rechten met betrekking tot de Distributie specificeert. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distributie.rights)</dcat-ap-hvd.pattern.title.8>
+  <dcat-ap-hvd.pattern.title.9>Toegang tot url - Een URL die toegang geeft tot een Distributie van de Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distributie.accessURL)</dcat-ap-hvd.pattern.title.9>
 </strings>

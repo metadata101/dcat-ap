@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <schematron.title>DCAT-AP (v2.1.1)</schematron.title>
+  <dcat-ap-211.pattern.assert.1>Waarde moet letterlijk zijn (  skos:prefLabel  )</dcat-ap-211.pattern.assert.1>
+  <dcat-ap-211.pattern.assert.10>Waarde moet letterlijk zijn (  dcat:keyword  )</dcat-ap-211.pattern.assert.10>
+  <dcat-ap-211.pattern.assert.11>Waarde voldoet niet aan de SHACL-beperking (  dct:relation  )</dcat-ap-211.pattern.assert.11>
+  <dcat-ap-211.pattern.assert.12>Waarde moet letterlijk zijn (  owl:versionInfo  )</dcat-ap-211.pattern.assert.12>
+  <dcat-ap-211.pattern.assert.13>Waarde moet letterlijk zijn (  adms:versionNotes  )</dcat-ap-211.pattern.assert.13>
+  <dcat-ap-211.pattern.assert.14>Waarde voldoet niet aan de SHACL-beperking (  dc:isReferencedBy  )</dcat-ap-211.pattern.assert.14>
+  <dcat-ap-211.pattern.assert.15>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-211.pattern.assert.15>
+  <dcat-ap-211.pattern.assert.16>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-211.pattern.assert.16>
+  <dcat-ap-211.pattern.assert.17>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-211.pattern.assert.17>
+  <dcat-ap-211.pattern.assert.18>Waarde voldoet niet aan de SHACL-beperking (  dcat:downloadURL  )</dcat-ap-211.pattern.assert.18>
+  <dcat-ap-211.pattern.assert.19>Ten minste 1 waarde(s) zijn vereist (  dcat:accessURL )</dcat-ap-211.pattern.assert.19>
+  <dcat-ap-211.pattern.assert.2>Waarde moet letterlijk zijn (  foaf:name  )</dcat-ap-211.pattern.assert.2>
+  <dcat-ap-211.pattern.assert.20>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-211.pattern.assert.20>
+  <dcat-ap-211.pattern.assert.21>Waarde moet zijn   spdx:checksumAlgorithm_sha1   (  spdx:algorithm  )</dcat-ap-211.pattern.assert.21>
+  <dcat-ap-211.pattern.assert.22>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-211.pattern.assert.22>
+  <dcat-ap-211.pattern.assert.23>Waarde moet letterlijk zijn (  dcat:bbox  )</dcat-ap-211.pattern.assert.23>
+  <dcat-ap-211.pattern.assert.24>Waarde moet letterlijk zijn (  dcat:centroid  )</dcat-ap-211.pattern.assert.24>
+  <dcat-ap-211.pattern.assert.25>Waarde moet letterlijk zijn (  locn:geometry  )</dcat-ap-211.pattern.assert.25>
+  <dcat-ap-211.pattern.assert.26>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-211.pattern.assert.26>
+  <dcat-ap-211.pattern.assert.27>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-211.pattern.assert.27>
+  <dcat-ap-211.pattern.assert.3>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-211.pattern.assert.3>
+  <dcat-ap-211.pattern.assert.4>Ten minste 1 waarde(s) zijn vereist (  dcat:endpointURL )</dcat-ap-211.pattern.assert.4>
+  <dcat-ap-211.pattern.assert.5>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-211.pattern.assert.5>
+  <dcat-ap-211.pattern.assert.6>Waarde voldoet niet aan de SHACL-beperking (  dcat:endpointDescription  )</dcat-ap-211.pattern.assert.6>
+  <dcat-ap-211.pattern.assert.7>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-211.pattern.assert.7>
+  <dcat-ap-211.pattern.assert.8>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-211.pattern.assert.8>
+  <dcat-ap-211.pattern.assert.9>Waarde moet letterlijk zijn (  dct:identifier  )</dcat-ap-211.pattern.assert.9>
+  <dcat-ap-211.pattern.report.1>Waarde moet letterlijk zijn (  skos:prefLabel  )</dcat-ap-211.pattern.report.1>
+  <dcat-ap-211.pattern.report.10>Waarde moet letterlijk zijn (  dcat:keyword  )</dcat-ap-211.pattern.report.10>
+  <dcat-ap-211.pattern.report.11>Waarde voldoet niet aan de SHACL-beperking (  dct:relation  )</dcat-ap-211.pattern.report.11>
+  <dcat-ap-211.pattern.report.12>Waarde moet letterlijk zijn (  owl:versionInfo  )</dcat-ap-211.pattern.report.12>
+  <dcat-ap-211.pattern.report.13>Waarde moet letterlijk zijn (  adms:versionNotes  )</dcat-ap-211.pattern.report.13>
+  <dcat-ap-211.pattern.report.14>Waarde voldoet niet aan de SHACL-beperking (  dc:isReferencedBy  )</dcat-ap-211.pattern.report.14>
+  <dcat-ap-211.pattern.report.15>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-211.pattern.report.15>
+  <dcat-ap-211.pattern.report.16>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-211.pattern.report.16>
+  <dcat-ap-211.pattern.report.17>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-211.pattern.report.17>
+  <dcat-ap-211.pattern.report.18>Waarde voldoet niet aan de SHACL-beperking (  dcat:downloadURL  )</dcat-ap-211.pattern.report.18>
+  <dcat-ap-211.pattern.report.19>Ten minste 1 waarde(s) zijn vereist (  dcat:accessURL )</dcat-ap-211.pattern.report.19>
+  <dcat-ap-211.pattern.report.2>Waarde moet letterlijk zijn (  foaf:name  )</dcat-ap-211.pattern.report.2>
+  <dcat-ap-211.pattern.report.20>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-211.pattern.report.20>
+  <dcat-ap-211.pattern.report.21>Waarde moet zijn   spdx:checksumAlgorithm_sha1   (  spdx:algorithm  )</dcat-ap-211.pattern.report.21>
+  <dcat-ap-211.pattern.report.22>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-211.pattern.report.22>
+  <dcat-ap-211.pattern.report.23>Waarde moet letterlijk zijn (  dcat:bbox  )</dcat-ap-211.pattern.report.23>
+  <dcat-ap-211.pattern.report.24>Waarde moet letterlijk zijn (  dcat:centroid  )</dcat-ap-211.pattern.report.24>
+  <dcat-ap-211.pattern.report.25>Waarde moet letterlijk zijn (  locn:geometry  )</dcat-ap-211.pattern.report.25>
+  <dcat-ap-211.pattern.report.26>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-211.pattern.report.26>
+  <dcat-ap-211.pattern.report.27>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-211.pattern.report.27>
+  <dcat-ap-211.pattern.report.3>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-211.pattern.report.3>
+  <dcat-ap-211.pattern.report.4>Ten minste 1 waarde(s) zijn vereist (  dcat:endpointURL )</dcat-ap-211.pattern.report.4>
+  <dcat-ap-211.pattern.report.5>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-211.pattern.report.5>
+  <dcat-ap-211.pattern.report.6>Waarde voldoet niet aan de SHACL-beperking (  dcat:endpointDescription  )</dcat-ap-211.pattern.report.6>
+  <dcat-ap-211.pattern.report.7>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-211.pattern.report.7>
+  <dcat-ap-211.pattern.report.8>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-211.pattern.report.8>
+  <dcat-ap-211.pattern.report.9>Waarde moet letterlijk zijn (  dct:identifier  )</dcat-ap-211.pattern.report.9>
+  <dcat-ap-211.pattern.title.1> skos:prefLabel    - letterlijke beperking</dcat-ap-211.pattern.title.1>
+  <dcat-ap-211.pattern.title.10> dcat:keyword    - letterlijke beperking</dcat-ap-211.pattern.title.10>
+  <dcat-ap-211.pattern.title.11> dct:relation    - beperking</dcat-ap-211.pattern.title.11>
+  <dcat-ap-211.pattern.title.12> owl:versionInfo    - letterlijke beperking</dcat-ap-211.pattern.title.12>
+  <dcat-ap-211.pattern.title.13> adms:versionNotes    - letterlijke beperking</dcat-ap-211.pattern.title.13>
+  <dcat-ap-211.pattern.title.14> dc:isReferencedBy    - beperking</dcat-ap-211.pattern.title.14>
+  <dcat-ap-211.pattern.title.15> dct:description    - letterlijke beperking</dcat-ap-211.pattern.title.15>
+  <dcat-ap-211.pattern.title.16> dct:title    - letterlijke beperking</dcat-ap-211.pattern.title.16>
+  <dcat-ap-211.pattern.title.17> dct:title    - letterlijke beperking</dcat-ap-211.pattern.title.17>
+  <dcat-ap-211.pattern.title.18> dcat:downloadURL    - beperking</dcat-ap-211.pattern.title.18>
+  <dcat-ap-211.pattern.title.19> dcat:accessURL    - minimale kardinaliteit 1</dcat-ap-211.pattern.title.19>
+  <dcat-ap-211.pattern.title.2> foaf:name    - letterlijke beperking</dcat-ap-211.pattern.title.2>
+  <dcat-ap-211.pattern.title.20> dct:description    - letterlijke beperking</dcat-ap-211.pattern.title.20>
+  <dcat-ap-211.pattern.title.21> spdx:algorithm   - vaste waarde   spdx:checksumAlgorithm_sha1  </dcat-ap-211.pattern.title.21>
+  <dcat-ap-211.pattern.title.22> dct:title    - letterlijke beperking</dcat-ap-211.pattern.title.22>
+  <dcat-ap-211.pattern.title.23> dcat:bbox    - letterlijke beperking</dcat-ap-211.pattern.title.23>
+  <dcat-ap-211.pattern.title.24> dcat:centroid    - letterlijke beperking</dcat-ap-211.pattern.title.24>
+  <dcat-ap-211.pattern.title.25> locn:geometry    - letterlijke beperking</dcat-ap-211.pattern.title.25>
+  <dcat-ap-211.pattern.title.26> dct:title    - letterlijke beperking</dcat-ap-211.pattern.title.26>
+  <dcat-ap-211.pattern.title.27> dct:description    - letterlijke beperking</dcat-ap-211.pattern.title.27>
+  <dcat-ap-211.pattern.title.3> dct:title    - letterlijke beperking</dcat-ap-211.pattern.title.3>
+  <dcat-ap-211.pattern.title.4> dcat:endpointURL    - minimale kardinaliteit 1</dcat-ap-211.pattern.title.4>
+  <dcat-ap-211.pattern.title.5> dct:description    - letterlijke beperking</dcat-ap-211.pattern.title.5>
+  <dcat-ap-211.pattern.title.6> dcat:endpointDescription    - beperking</dcat-ap-211.pattern.title.6>
+  <dcat-ap-211.pattern.title.7> dct:description    - letterlijke beperking</dcat-ap-211.pattern.title.7>
+  <dcat-ap-211.pattern.title.8> dct:title    - letterlijke beperking</dcat-ap-211.pattern.title.8>
+  <dcat-ap-211.pattern.title.9> dct:identifier    - letterlijke beperking</dcat-ap-211.pattern.title.9>
+</strings>
