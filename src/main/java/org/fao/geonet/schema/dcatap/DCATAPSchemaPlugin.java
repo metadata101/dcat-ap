@@ -143,24 +143,24 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
     /**
      * For next records, resolve dcat:next elements
      */
-    private Set<AssociatedResource> getAssociatedNext(Element metadata) {
-        Set<AssociatedResource> results = getAssociatedResourcesByXpath(metadata, "*//dcat:next/@rdf:resource");
+    private Set<AssociatedResource> getAssociatedPrevious(Element metadata) {
+        Set<AssociatedResource> results = getAssociatedResourcesByXpath(metadata, "*//dcat:prev/@rdf:resource");
         return results.stream()
-            .peek(ar -> ar.setAssociationType("nextResource"))
+            .peek(ar -> ar.setAssociationType("revisionOf"))
             .collect(Collectors.toSet());
     }
 
     /**
      * For previous records, find datasets that point to the current one with a dcat:next
      */
-    private Set<AssociatedResource> getAssociatedPrevious(Element metadata) {
+    private Set<AssociatedResource> getAssociatedNext(Element metadata) {
         try {
             String currentUuid = getCurrentUuid(metadata);
             if (currentUuid == null) {
                 return Collections.emptySet();
             }
             var searchManager = ApplicationContextHolder.get().getBean(EsSearchManager.class);
-            var response = searchManager.query(String.format("+nextUUIDInSeries:\"%s\"", currentUuid), null,
+            var response = searchManager.query(String.format("+previousUUIDInSeries:\"%s\"", currentUuid), null,
                 Sets.newHashSet("uuid", "resourceTitleObject.default"), 0, 100);
 
             if (response.hits().hits().isEmpty()) {
@@ -175,7 +175,7 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
                 AssociatedResource ar = new AssociatedResource(
                     (String) associatedRecord.get("uuid"),
                     "",
-                    "previousResource",
+                    "nextResource",
                     null,
                     ((Map<String, String>) associatedRecord.get("resourceTitleObject")).get("default")
                 );
@@ -183,7 +183,7 @@ public class DCATAPSchemaPlugin extends SchemaPlugin implements AssociatedResour
             }
             return res;
         } catch (Exception e) {
-            Log.error(Log.JEEVES, "GET associated previous resources error: " + e.getMessage(), e);
+            Log.error(Log.JEEVES, "GET associated next resources error: " + e.getMessage(), e);
         }
         return Collections.emptySet();
     }

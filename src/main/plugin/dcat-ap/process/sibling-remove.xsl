@@ -20,6 +20,7 @@
                                      dcat:CatalogRecord[starts-with(@rdf:about, 'http') and @rdf:about = $uuidref]"/>
 
   <xsl:template match="dcat:next[@rdf:resource = $uriRef]"/>
+  <xsl:template match="dcat:prev[@rdf:resource = $uriRef]"/>
 
   <xsl:template match="@*|*|text()">
     <xsl:copy>

@@ -81,7 +81,7 @@
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template match="*[name() = ('dcat:Dataset', 'dcat:DataService', 'dcat:DatasetSeries') and $associationType = 'nextResource']">
+  <xsl:template match="*[name() = ('dcat:Dataset', 'dcat:DataService', 'dcat:DatasetSeries') and $associationType = ('nextResource', 'revisionOf')]">
     <xsl:variable name="resourceWithNext">
       <xsl:copy>
         <xsl:copy-of select="@*"/>
@@ -102,10 +102,11 @@
             </xsl:if>
           </xsl:for-each>
         </xsl:variable>
+
         <xsl:for-each select="$uriToAdd">
-          <dcat:next>
+          <xsl:element name="{if ($associationType = 'nextResource') then 'dcat:next' else 'dcat:prev'}">
             <xsl:attribute name="rdf:resource" select="uri"/>
-          </dcat:next>
+          </xsl:element>
         </xsl:for-each>
       </xsl:copy>
     </xsl:variable>
