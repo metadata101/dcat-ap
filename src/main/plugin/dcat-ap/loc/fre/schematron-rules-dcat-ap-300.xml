@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <schematron.title>DCAT-AP (v3.0.0)</schematron.title>
+  <dcat-ap-300.pattern.assert.1>La valeur ne satisfait pas à la contrainte SHACL ( dct:language  )</dcat-ap-300.pattern.assert.1>
+  <dcat-ap-300.pattern.assert.10>La valeur ne satisfait pas à la contrainte SHACL ( dcat:catalog  )</dcat-ap-300.pattern.assert.10>
+  <dcat-ap-300.pattern.assert.11>Au plus 1 valeur(s) sont autorisées ( dct:creator  )</dcat-ap-300.pattern.assert.11>
+  <dcat-ap-300.pattern.assert.12>La valeur ne satisfait pas à la contrainte SHACL ( dcat:dataset  )</dcat-ap-300.pattern.assert.12>
+  <dcat-ap-300.pattern.assert.13>La valeur doit être littérale ( dct:description  )</dcat-ap-300.pattern.assert.13>
+  <dcat-ap-300.pattern.assert.14>La valeur doit être littérale ( dct:title  )</dcat-ap-300.pattern.assert.14>
+  <dcat-ap-300.pattern.assert.15>Au plus 1 valeur(s) sont autorisées ( foaf:homepage  )</dcat-ap-300.pattern.assert.15>
+  <dcat-ap-300.pattern.assert.16>La valeur doit être littérale ( dcat:bbox  )</dcat-ap-300.pattern.assert.16>
+  <dcat-ap-300.pattern.assert.17>La valeur doit être littérale ( dcat:centroid  )</dcat-ap-300.pattern.assert.17>
+  <dcat-ap-300.pattern.assert.18>La valeur doit être littérale ( locn:geometry  )</dcat-ap-300.pattern.assert.18>
+  <dcat-ap-300.pattern.assert.19>La valeur doit être littérale ( dct:title  )</dcat-ap-300.pattern.assert.19>
+  <dcat-ap-300.pattern.assert.2>La valeur doit être une IRI ( dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.assert.2>
+  <dcat-ap-300.pattern.assert.20>La valeur doit être littérale ( dct:description  )</dcat-ap-300.pattern.assert.20>
+  <dcat-ap-300.pattern.assert.21>La valeur doit être littérale ( skos:prefLabel  )</dcat-ap-300.pattern.assert.21>
+  <dcat-ap-300.pattern.assert.22>La valeur doit être littérale ( dct:title  )</dcat-ap-300.pattern.assert.22>
+  <dcat-ap-300.pattern.assert.23>La valeur doit être une IRI ( dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.assert.23>
+  <dcat-ap-300.pattern.assert.24>La valeur ne satisfait pas à la contrainte SHACL ( dcat:contactPoint  )</dcat-ap-300.pattern.assert.24>
+  <dcat-ap-300.pattern.assert.25>La valeur doit être littérale ( dct:description  )</dcat-ap-300.pattern.assert.25>
+  <dcat-ap-300.pattern.assert.26>Au plus 1 valeur(s) sont autorisées ( dct:accrualPeriodicity  )</dcat-ap-300.pattern.assert.26>
+  <dcat-ap-300.pattern.assert.27>La valeur ne satisfait pas à la contrainte SHACL ( dct:spatial  )</dcat-ap-300.pattern.assert.27>
+  <dcat-ap-300.pattern.assert.28>La valeur doit être littérale ( dct:modified  )</dcat-ap-300.pattern.assert.28>
+  <dcat-ap-300.pattern.assert.29>Au plus 1 valeur(s) sont autorisées ( dct:publisher  )</dcat-ap-300.pattern.assert.29>
+  <dcat-ap-300.pattern.assert.3>Au plus 1 valeur(s) sont autorisées ( dct:license  )</dcat-ap-300.pattern.assert.3>
+  <dcat-ap-300.pattern.assert.30>La valeur doit être littérale ( dct:issued  )</dcat-ap-300.pattern.assert.30>
+  <dcat-ap-300.pattern.assert.31>La valeur ne satisfait pas à la contrainte SHACL ( dct:temporal  )</dcat-ap-300.pattern.assert.31>
+  <dcat-ap-300.pattern.assert.32>La valeur doit être littérale ( dct:title  )</dcat-ap-300.pattern.assert.32>
+  <dcat-ap-300.pattern.assert.33>Au plus 1 valeur(s) sont autorisées ( dct:accessRights  )</dcat-ap-300.pattern.assert.33>
+  <dcat-ap-300.pattern.assert.34>La valeur doit être une IRI ( dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.assert.34>
+  <dcat-ap-300.pattern.assert.35>La valeur ne satisfait pas à la contrainte SHACL ( dct:conformsTo  )</dcat-ap-300.pattern.assert.35>
+  <dcat-ap-300.pattern.assert.36>La valeur ne satisfait pas à la contrainte SHACL ( dcat:contactPoint  )</dcat-ap-300.pattern.assert.36>
+  <dcat-ap-300.pattern.assert.37>La valeur doit être littérale ( dct:description  )</dcat-ap-300.pattern.assert.37>
+  <dcat-ap-300.pattern.assert.38>Au moins 1 valeur(s) sont requises ( dcat:endpointURL  )</dcat-ap-300.pattern.assert.38>
+  <dcat-ap-300.pattern.assert.39>La valeur ne satisfait pas à la contrainte SHACL ( dcat:endpointDescription  )</dcat-ap-300.pattern.assert.39>
+  <dcat-ap-300.pattern.assert.4>La valeur ne satisfait pas à la contrainte SHACL ( dct:spatial  )</dcat-ap-300.pattern.assert.4>
+  <dcat-ap-300.pattern.assert.40>La valeur ne satisfait pas à la contrainte SHACL ( dct:format  )</dcat-ap-300.pattern.assert.40>
+  <dcat-ap-300.pattern.assert.41>La valeur doit être littérale ( dcat:keyword  )</dcat-ap-300.pattern.assert.41>
+  <dcat-ap-300.pattern.assert.42>La valeur ne satisfait pas à la contrainte SHACL ( dcat:landingPage  )</dcat-ap-300.pattern.assert.42>
+  <dcat-ap-300.pattern.assert.43>Au plus 1 valeur(s) sont autorisées ( dct:license  )</dcat-ap-300.pattern.assert.43>
+  <dcat-ap-300.pattern.assert.44>Au plus 1 valeur(s) sont autorisées ( dct:publisher  )</dcat-ap-300.pattern.assert.44>
+  <dcat-ap-300.pattern.assert.45>La valeur ne satisfait pas à la contrainte SHACL ( dcat:servesDataset  )</dcat-ap-300.pattern.assert.45>
+  <dcat-ap-300.pattern.assert.46>La valeur doit être une IRI ( dcat:theme  )</dcat-ap-300.pattern.assert.46>
+  <dcat-ap-300.pattern.assert.47>La valeur doit être littérale ( dct:title  )</dcat-ap-300.pattern.assert.47>
+  <dcat-ap-300.pattern.assert.48>La valeur ne satisfait pas à la contrainte SHACL ( dcat:accessService  )</dcat-ap-300.pattern.assert.48>
+  <dcat-ap-300.pattern.assert.49>Au moins 1 valeur(s) sont requises ( dcat:accessURL  )</dcat-ap-300.pattern.assert.49>
+  <dcat-ap-300.pattern.assert.5>La valeur ne satisfait pas à la contrainte SHACL ( dct:hasPart  )</dcat-ap-300.pattern.assert.5>
+  <dcat-ap-300.pattern.assert.50>La valeur doit être une IRI ( dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.assert.50>
+  <dcat-ap-300.pattern.assert.51>Au plus 1 valeur(s) sont autorisées ( dcat-ap:availability  )</dcat-ap-300.pattern.assert.51>
+  <dcat-ap-300.pattern.assert.52>Au plus 1 valeur(s) sont autorisées ( spdx:checksum  )</dcat-ap-300.pattern.assert.52>
+  <dcat-ap-300.pattern.assert.53>Au plus 1 valeur(s) sont autorisées ( dcat:compressFormat  )</dcat-ap-300.pattern.assert.53>
+  <dcat-ap-300.pattern.assert.54>La valeur doit être littérale ( dct:description  )</dcat-ap-300.pattern.assert.54>
+  <dcat-ap-300.pattern.assert.55>La valeur ne satisfait pas à la contrainte SHACL ( foaf:page  )</dcat-ap-300.pattern.assert.55>
+  <dcat-ap-300.pattern.assert.56>La valeur ne satisfait pas à la contrainte SHACL ( dcat:downloadURL  )</dcat-ap-300.pattern.assert.56>
+  <dcat-ap-300.pattern.assert.57>Au plus 1 valeur(s) sont autorisées ( dct:format  )</dcat-ap-300.pattern.assert.57>
+  <dcat-ap-300.pattern.assert.58>Au plus 1 valeur(s) sont autorisées ( odrl:hasPolicy  )</dcat-ap-300.pattern.assert.58>
+  <dcat-ap-300.pattern.assert.59>La valeur ne satisfait pas à la contrainte SHACL ( dct:language  )</dcat-ap-300.pattern.assert.59>
+  <dcat-ap-300.pattern.assert.6>Au plus 1 valeur(s) sont autorisées ( dct:rights  )</dcat-ap-300.pattern.assert.6>
+  <dcat-ap-300.pattern.assert.60>Au plus 1 valeur(s) sont autorisées ( dct:license  )</dcat-ap-300.pattern.assert.60>
+  <dcat-ap-300.pattern.assert.61>La valeur ne satisfait pas à la contrainte SHACL ( dct:conformsTo  )</dcat-ap-300.pattern.assert.61>
+  <dcat-ap-300.pattern.assert.62>Au plus 1 valeur(s) sont autorisées ( dcat:mediaType  )</dcat-ap-300.pattern.assert.62>
+  <dcat-ap-300.pattern.assert.63>Au plus 1 valeur(s) sont autorisées ( dcat:packageFormat  )</dcat-ap-300.pattern.assert.63>
+  <dcat-ap-300.pattern.assert.64>Au plus 1 valeur(s) sont autorisées ( dct:rights  )</dcat-ap-300.pattern.assert.64>
+  <dcat-ap-300.pattern.assert.65>Au plus 1 valeur(s) sont autorisées ( adms:status  )</dcat-ap-300.pattern.assert.65>
+  <dcat-ap-300.pattern.assert.66>La valeur doit être littérale ( dct:title  )</dcat-ap-300.pattern.assert.66>
+  <dcat-ap-300.pattern.assert.67>Au plus 1 valeur(s) sont autorisées ( dct:accessRights  )</dcat-ap-300.pattern.assert.67>
+  <dcat-ap-300.pattern.assert.68>La valeur doit être une IRI ( dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.assert.68>
+  <dcat-ap-300.pattern.assert.69>La valeur ne satisfait pas à la contrainte SHACL ( dct:conformsTo  )</dcat-ap-300.pattern.assert.69>
+  <dcat-ap-300.pattern.assert.7>La valeur ne satisfait pas à la contrainte SHACL ( dcat:record  )</dcat-ap-300.pattern.assert.7>
+  <dcat-ap-300.pattern.assert.70>La valeur ne satisfait pas à la contrainte SHACL ( dcat:contactPoint  )</dcat-ap-300.pattern.assert.70>
+  <dcat-ap-300.pattern.assert.71>La valeur ne satisfait pas à la contrainte SHACL ( dct:creator  )</dcat-ap-300.pattern.assert.71>
+  <dcat-ap-300.pattern.assert.72>La valeur ne satisfait pas à la contrainte SHACL ( dcat:distribution  )</dcat-ap-300.pattern.assert.72>
+  <dcat-ap-300.pattern.assert.73>La valeur doit être littérale ( dct:description  )</dcat-ap-300.pattern.assert.73>
+  <dcat-ap-300.pattern.assert.74>La valeur ne satisfait pas à la contrainte SHACL ( foaf:page  )</dcat-ap-300.pattern.assert.74>
+  <dcat-ap-300.pattern.assert.75>Au plus 1 valeur(s) sont autorisées ( dct:accrualPeriodicity  )</dcat-ap-300.pattern.assert.75>
+  <dcat-ap-300.pattern.assert.76>La valeur ne satisfait pas à la contrainte SHACL ( dct:spatial  )</dcat-ap-300.pattern.assert.76>
+  <dcat-ap-300.pattern.assert.77>La valeur ne satisfait pas à la contrainte SHACL ( dct:hasVersion  )</dcat-ap-300.pattern.assert.77>
+  <dcat-ap-300.pattern.assert.78>La valeur doit être littérale ( dct:identifier  )</dcat-ap-300.pattern.assert.78>
+  <dcat-ap-300.pattern.assert.79>La valeur ne satisfait pas à la contrainte SHACL ( dcat:inSeries  )</dcat-ap-300.pattern.assert.79>
+  <dcat-ap-300.pattern.assert.8>La valeur ne satisfait pas à la contrainte SHACL ( dcat:themeTaxonomy  )</dcat-ap-300.pattern.assert.8>
+  <dcat-ap-300.pattern.assert.80>La valeur ne satisfait pas à la contrainte SHACL ( dct:isReferencedBy  )</dcat-ap-300.pattern.assert.80>
+  <dcat-ap-300.pattern.assert.81>La valeur doit être littérale ( dcat:keyword  )</dcat-ap-300.pattern.assert.81>
+  <dcat-ap-300.pattern.assert.82>La valeur ne satisfait pas à la contrainte SHACL ( dcat:landingPage  )</dcat-ap-300.pattern.assert.82>
+  <dcat-ap-300.pattern.assert.83>La valeur ne satisfait pas à la contrainte SHACL ( dct:language  )</dcat-ap-300.pattern.assert.83>
+  <dcat-ap-300.pattern.assert.84>La valeur ne satisfait pas à la contrainte SHACL ( adms:identifier  )</dcat-ap-300.pattern.assert.84>
+  <dcat-ap-300.pattern.assert.85>La valeur ne satisfait pas à la contrainte SHACL ( dct:provenance  )</dcat-ap-300.pattern.assert.85>
+  <dcat-ap-300.pattern.assert.86>Au plus 1 valeur(s) sont autorisées ( dct:publisher  )</dcat-ap-300.pattern.assert.86>
+  <dcat-ap-300.pattern.assert.87>La valeur ne satisfait pas à la contrainte SHACL ( prov:qualifiedAttribution  )</dcat-ap-300.pattern.assert.87>
+  <dcat-ap-300.pattern.assert.88>La valeur ne satisfait pas à la contrainte SHACL ( dcat:qualifiedRelation  )</dcat-ap-300.pattern.assert.88>
+  <dcat-ap-300.pattern.assert.89>La valeur ne satisfait pas à la contrainte SHACL ( dct:relation  )</dcat-ap-300.pattern.assert.89>
+  <dcat-ap-300.pattern.assert.9>La valeur ne satisfait pas à la contrainte SHACL ( dcat:service  )</dcat-ap-300.pattern.assert.9>
+  <dcat-ap-300.pattern.assert.90>La valeur ne satisfait pas à la contrainte SHACL ( adms:sample  )</dcat-ap-300.pattern.assert.90>
+  <dcat-ap-300.pattern.assert.91>La valeur ne satisfait pas à la contrainte SHACL ( dct:source  )</dcat-ap-300.pattern.assert.91>
+  <dcat-ap-300.pattern.assert.92>La valeur ne satisfait pas à la contrainte SHACL ( dct:temporal  )</dcat-ap-300.pattern.assert.92>
+  <dcat-ap-300.pattern.assert.93>La valeur doit être une IRI ( dcat:theme  )</dcat-ap-300.pattern.assert.93>
+  <dcat-ap-300.pattern.assert.94>La valeur doit être littérale ( dct:title  )</dcat-ap-300.pattern.assert.94>
+  <dcat-ap-300.pattern.assert.95>La valeur ne satisfait pas à la contrainte SHACL ( dct:type  )</dcat-ap-300.pattern.assert.95>
+  <dcat-ap-300.pattern.assert.96>La valeur doit être littérale ( dcat:version  )</dcat-ap-300.pattern.assert.96>
+  <dcat-ap-300.pattern.assert.97>La valeur doit être littérale ( adms:versionNotes  )</dcat-ap-300.pattern.assert.97>
+  <dcat-ap-300.pattern.assert.98>La valeur ne satisfait pas à la contrainte SHACL ( prov:wasGeneratedBy  )</dcat-ap-300.pattern.assert.98>
+  <dcat-ap-300.pattern.assert.99>La valeur doit être littérale ( foaf:name  )</dcat-ap-300.pattern.assert.99>
+  <dcat-ap-300.pattern.report.1>La valeur ne satisfait pas à la contrainte SHACL ( dct:language  )</dcat-ap-300.pattern.report.1>
+  <dcat-ap-300.pattern.report.10>La valeur ne satisfait pas à la contrainte SHACL ( dcat:catalog  )</dcat-ap-300.pattern.report.10>
+  <dcat-ap-300.pattern.report.11>Au plus 1 valeur(s) sont autorisées ( dct:creator  )</dcat-ap-300.pattern.report.11>
+  <dcat-ap-300.pattern.report.12>La valeur ne satisfait pas à la contrainte SHACL ( dcat:dataset  )</dcat-ap-300.pattern.report.12>
+  <dcat-ap-300.pattern.report.13>La valeur doit être littérale ( dct:description  )</dcat-ap-300.pattern.report.13>
+  <dcat-ap-300.pattern.report.14>La valeur doit être littérale ( dct:title  )</dcat-ap-300.pattern.report.14>
+  <dcat-ap-300.pattern.report.15>Au plus 1 valeur(s) sont autorisées ( foaf:homepage  )</dcat-ap-300.pattern.report.15>
+  <dcat-ap-300.pattern.report.16>La valeur doit être littérale ( dcat:bbox  )</dcat-ap-300.pattern.report.16>
+  <dcat-ap-300.pattern.report.17>La valeur doit être littérale ( dcat:centroid  )</dcat-ap-300.pattern.report.17>
+  <dcat-ap-300.pattern.report.18>La valeur doit être littérale ( locn:geometry  )</dcat-ap-300.pattern.report.18>
+  <dcat-ap-300.pattern.report.19>La valeur doit être littérale ( dct:title  )</dcat-ap-300.pattern.report.19>
+  <dcat-ap-300.pattern.report.2>La valeur doit être une IRI ( dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.report.2>
+  <dcat-ap-300.pattern.report.20>La valeur doit être littérale ( dct:description  )</dcat-ap-300.pattern.report.20>
+  <dcat-ap-300.pattern.report.21>La valeur doit être littérale ( skos:prefLabel  )</dcat-ap-300.pattern.report.21>
+  <dcat-ap-300.pattern.report.22>La valeur doit être littérale ( dct:title  )</dcat-ap-300.pattern.report.22>
+  <dcat-ap-300.pattern.report.23>La valeur doit être une IRI ( dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.report.23>
+  <dcat-ap-300.pattern.report.24>La valeur ne satisfait pas à la contrainte SHACL ( dcat:contactPoint  )</dcat-ap-300.pattern.report.24>
+  <dcat-ap-300.pattern.report.25>La valeur doit être littérale ( dct:description  )</dcat-ap-300.pattern.report.25>
+  <dcat-ap-300.pattern.report.26>Au plus 1 valeur(s) sont autorisées ( dct:accrualPeriodicity  )</dcat-ap-300.pattern.report.26>
+  <dcat-ap-300.pattern.report.27>La valeur ne satisfait pas à la contrainte SHACL ( dct:spatial  )</dcat-ap-300.pattern.report.27>
+  <dcat-ap-300.pattern.report.28>La valeur doit être littérale ( dct:modified  )</dcat-ap-300.pattern.report.28>
+  <dcat-ap-300.pattern.report.29>Au plus 1 valeur(s) sont autorisées ( dct:publisher  )</dcat-ap-300.pattern.report.29>
+  <dcat-ap-300.pattern.report.3>Au plus 1 valeur(s) sont autorisées ( dct:license  )</dcat-ap-300.pattern.report.3>
+  <dcat-ap-300.pattern.report.30>La valeur doit être littérale ( dct:issued  )</dcat-ap-300.pattern.report.30>
+  <dcat-ap-300.pattern.report.31>La valeur ne satisfait pas à la contrainte SHACL ( dct:temporal  )</dcat-ap-300.pattern.report.31>
+  <dcat-ap-300.pattern.report.32>La valeur doit être littérale ( dct:title  )</dcat-ap-300.pattern.report.32>
+  <dcat-ap-300.pattern.report.33>Au plus 1 valeur(s) sont autorisées ( dct:accessRights  )</dcat-ap-300.pattern.report.33>
+  <dcat-ap-300.pattern.report.34>La valeur doit être une IRI ( dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.report.34>
+  <dcat-ap-300.pattern.report.35>La valeur ne satisfait pas à la contrainte SHACL ( dct:conformsTo  )</dcat-ap-300.pattern.report.35>
+  <dcat-ap-300.pattern.report.36>La valeur ne satisfait pas à la contrainte SHACL ( dcat:contactPoint  )</dcat-ap-300.pattern.report.36>
+  <dcat-ap-300.pattern.report.37>La valeur doit être littérale ( dct:description  )</dcat-ap-300.pattern.report.37>
+  <dcat-ap-300.pattern.report.38>Au moins 1 valeur(s) sont requises ( dcat:endpointURL  )</dcat-ap-300.pattern.report.38>
+  <dcat-ap-300.pattern.report.39>La valeur ne satisfait pas à la contrainte SHACL ( dcat:endpointDescription  )</dcat-ap-300.pattern.report.39>
+  <dcat-ap-300.pattern.report.4>La valeur ne satisfait pas à la contrainte SHACL ( dct:spatial  )</dcat-ap-300.pattern.report.4>
+  <dcat-ap-300.pattern.report.40>La valeur ne satisfait pas à la contrainte SHACL ( dct:format  )</dcat-ap-300.pattern.report.40>
+  <dcat-ap-300.pattern.report.41>La valeur doit être littérale ( dcat:keyword  )</dcat-ap-300.pattern.report.41>
+  <dcat-ap-300.pattern.report.42>La valeur ne satisfait pas à la contrainte SHACL ( dcat:landingPage  )</dcat-ap-300.pattern.report.42>
+  <dcat-ap-300.pattern.report.43>Au plus 1 valeur(s) sont autorisées ( dct:license  )</dcat-ap-300.pattern.report.43>
+  <dcat-ap-300.pattern.report.44>Au plus 1 valeur(s) sont autorisées ( dct:publisher  )</dcat-ap-300.pattern.report.44>
+  <dcat-ap-300.pattern.report.45>La valeur ne satisfait pas à la contrainte SHACL ( dcat:servesDataset  )</dcat-ap-300.pattern.report.45>
+  <dcat-ap-300.pattern.report.46>La valeur doit être une IRI ( dcat:theme  )</dcat-ap-300.pattern.report.46>
+  <dcat-ap-300.pattern.report.47>La valeur doit être littérale ( dct:title  )</dcat-ap-300.pattern.report.47>
+  <dcat-ap-300.pattern.report.48>La valeur ne satisfait pas à la contrainte SHACL ( dcat:accessService  )</dcat-ap-300.pattern.report.48>
+  <dcat-ap-300.pattern.report.49>Au moins 1 valeur(s) sont requises ( dcat:accessURL  )</dcat-ap-300.pattern.report.49>
+  <dcat-ap-300.pattern.report.5>La valeur ne satisfait pas à la contrainte SHACL ( dct:hasPart  )</dcat-ap-300.pattern.report.5>
+  <dcat-ap-300.pattern.report.50>La valeur doit être une IRI ( dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.report.50>
+  <dcat-ap-300.pattern.report.51>Au plus 1 valeur(s) sont autorisées ( dcat-ap:availability  )</dcat-ap-300.pattern.report.51>
+  <dcat-ap-300.pattern.report.52>Au plus 1 valeur(s) sont autorisées ( spdx:checksum  )</dcat-ap-300.pattern.report.52>
+  <dcat-ap-300.pattern.report.53>Au plus 1 valeur(s) sont autorisées ( dcat:compressFormat  )</dcat-ap-300.pattern.report.53>
+  <dcat-ap-300.pattern.report.54>La valeur doit être littérale ( dct:description  )</dcat-ap-300.pattern.report.54>
+  <dcat-ap-300.pattern.report.55>La valeur ne satisfait pas à la contrainte SHACL ( foaf:page  )</dcat-ap-300.pattern.report.55>
+  <dcat-ap-300.pattern.report.56>La valeur ne satisfait pas à la contrainte SHACL ( dcat:downloadURL  )</dcat-ap-300.pattern.report.56>
+  <dcat-ap-300.pattern.report.57>Au plus 1 valeur(s) sont autorisées ( dct:format  )</dcat-ap-300.pattern.report.57>
+  <dcat-ap-300.pattern.report.58>Au plus 1 valeur(s) sont autorisées ( odrl:hasPolicy  )</dcat-ap-300.pattern.report.58>
+  <dcat-ap-300.pattern.report.59>La valeur ne satisfait pas à la contrainte SHACL ( dct:language  )</dcat-ap-300.pattern.report.59>
+  <dcat-ap-300.pattern.report.6>Au plus 1 valeur(s) sont autorisées ( dct:rights  )</dcat-ap-300.pattern.report.6>
+  <dcat-ap-300.pattern.report.60>Au plus 1 valeur(s) sont autorisées ( dct:license  )</dcat-ap-300.pattern.report.60>
+  <dcat-ap-300.pattern.report.61>La valeur ne satisfait pas à la contrainte SHACL ( dct:conformsTo  )</dcat-ap-300.pattern.report.61>
+  <dcat-ap-300.pattern.report.62>Au plus 1 valeur(s) sont autorisées ( dcat:mediaType  )</dcat-ap-300.pattern.report.62>
+  <dcat-ap-300.pattern.report.63>Au plus 1 valeur(s) sont autorisées ( dcat:packageFormat  )</dcat-ap-300.pattern.report.63>
+  <dcat-ap-300.pattern.report.64>Au plus 1 valeur(s) sont autorisées ( dct:rights  )</dcat-ap-300.pattern.report.64>
+  <dcat-ap-300.pattern.report.65>Au plus 1 valeur(s) sont autorisées ( adms:status  )</dcat-ap-300.pattern.report.65>
+  <dcat-ap-300.pattern.report.66>La valeur doit être littérale ( dct:title  )</dcat-ap-300.pattern.report.66>
+  <dcat-ap-300.pattern.report.67>Au plus 1 valeur(s) sont autorisées ( dct:accessRights  )</dcat-ap-300.pattern.report.67>
+  <dcat-ap-300.pattern.report.68>La valeur doit être une IRI ( dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.report.68>
+  <dcat-ap-300.pattern.report.69>La valeur ne satisfait pas à la contrainte SHACL ( dct:conformsTo  )</dcat-ap-300.pattern.report.69>
+  <dcat-ap-300.pattern.report.7>La valeur ne satisfait pas à la contrainte SHACL ( dcat:record  )</dcat-ap-300.pattern.report.7>
+  <dcat-ap-300.pattern.report.70>La valeur ne satisfait pas à la contrainte SHACL ( dcat:contactPoint  )</dcat-ap-300.pattern.report.70>
+  <dcat-ap-300.pattern.report.71>La valeur ne satisfait pas à la contrainte SHACL ( dct:creator  )</dcat-ap-300.pattern.report.71>
+  <dcat-ap-300.pattern.report.72>La valeur ne satisfait pas à la contrainte SHACL ( dcat:distribution  )</dcat-ap-300.pattern.report.72>
+  <dcat-ap-300.pattern.report.73>La valeur doit être littérale ( dct:description  )</dcat-ap-300.pattern.report.73>
+  <dcat-ap-300.pattern.report.74>La valeur ne satisfait pas à la contrainte SHACL ( foaf:page  )</dcat-ap-300.pattern.report.74>
+  <dcat-ap-300.pattern.report.75>Au plus 1 valeur(s) sont autorisées ( dct:accrualPeriodicity  )</dcat-ap-300.pattern.report.75>
+  <dcat-ap-300.pattern.report.76>La valeur ne satisfait pas à la contrainte SHACL ( dct:spatial  )</dcat-ap-300.pattern.report.76>
+  <dcat-ap-300.pattern.report.77>La valeur ne satisfait pas à la contrainte SHACL ( dct:hasVersion  )</dcat-ap-300.pattern.report.77>
+  <dcat-ap-300.pattern.report.78>La valeur doit être littérale ( dct:identifier  )</dcat-ap-300.pattern.report.78>
+  <dcat-ap-300.pattern.report.79>La valeur ne satisfait pas à la contrainte SHACL ( dcat:inSeries  )</dcat-ap-300.pattern.report.79>
+  <dcat-ap-300.pattern.report.8>La valeur ne satisfait pas à la contrainte SHACL ( dcat:themeTaxonomy  )</dcat-ap-300.pattern.report.8>
+  <dcat-ap-300.pattern.report.80>La valeur ne satisfait pas à la contrainte SHACL ( dct:isReferencedBy  )</dcat-ap-300.pattern.report.80>
+  <dcat-ap-300.pattern.report.81>La valeur doit être littérale ( dcat:keyword  )</dcat-ap-300.pattern.report.81>
+  <dcat-ap-300.pattern.report.82>La valeur ne satisfait pas à la contrainte SHACL ( dcat:landingPage  )</dcat-ap-300.pattern.report.82>
+  <dcat-ap-300.pattern.report.83>La valeur ne satisfait pas à la contrainte SHACL ( dct:language  )</dcat-ap-300.pattern.report.83>
+  <dcat-ap-300.pattern.report.84>La valeur ne satisfait pas à la contrainte SHACL ( adms:identifier  )</dcat-ap-300.pattern.report.84>
+  <dcat-ap-300.pattern.report.85>La valeur ne satisfait pas à la contrainte SHACL ( dct:provenance  )</dcat-ap-300.pattern.report.85>
+  <dcat-ap-300.pattern.report.86>Au plus 1 valeur(s) sont autorisées ( dct:publisher  )</dcat-ap-300.pattern.report.86>
+  <dcat-ap-300.pattern.report.87>La valeur ne satisfait pas à la contrainte SHACL ( prov:qualifiedAttribution  )</dcat-ap-300.pattern.report.87>
+  <dcat-ap-300.pattern.report.88>La valeur ne satisfait pas à la contrainte SHACL ( dcat:qualifiedRelation  )</dcat-ap-300.pattern.report.88>
+  <dcat-ap-300.pattern.report.89>La valeur ne satisfait pas à la contrainte SHACL ( dct:relation  )</dcat-ap-300.pattern.report.89>
+  <dcat-ap-300.pattern.report.9>La valeur ne satisfait pas à la contrainte SHACL ( dcat:service  )</dcat-ap-300.pattern.report.9>
+  <dcat-ap-300.pattern.report.90>La valeur ne satisfait pas à la contrainte SHACL ( adms:sample  )</dcat-ap-300.pattern.report.90>
+  <dcat-ap-300.pattern.report.91>La valeur ne satisfait pas à la contrainte SHACL ( dct:source  )</dcat-ap-300.pattern.report.91>
+  <dcat-ap-300.pattern.report.92>La valeur ne satisfait pas à la contrainte SHACL ( dct:temporal  )</dcat-ap-300.pattern.report.92>
+  <dcat-ap-300.pattern.report.93>La valeur doit être une IRI ( dcat:theme  )</dcat-ap-300.pattern.report.93>
+  <dcat-ap-300.pattern.report.94>La valeur doit être littérale ( dct:title  )</dcat-ap-300.pattern.report.94>
+  <dcat-ap-300.pattern.report.95>La valeur ne satisfait pas à la contrainte SHACL ( dct:type  )</dcat-ap-300.pattern.report.95>
+  <dcat-ap-300.pattern.report.96>La valeur doit être littérale ( dcat:version  )</dcat-ap-300.pattern.report.96>
+  <dcat-ap-300.pattern.report.97>La valeur doit être littérale ( adms:versionNotes  )</dcat-ap-300.pattern.report.97>
+  <dcat-ap-300.pattern.report.98>La valeur ne satisfait pas à la contrainte SHACL ( prov:wasGeneratedBy  )</dcat-ap-300.pattern.report.98>
+  <dcat-ap-300.pattern.report.99>La valeur doit être littérale ( foaf:name  )</dcat-ap-300.pattern.report.99>
+  <dcat-ap-300.pattern.title.1> dct:language   - contrainte</dcat-ap-300.pattern.title.1>
+  <dcat-ap-300.pattern.title.10> dcat:catalog   - contrainte</dcat-ap-300.pattern.title.10>
+  <dcat-ap-300.pattern.title.11> dct:creator   - cardinalité maximale 1</dcat-ap-300.pattern.title.11>
+  <dcat-ap-300.pattern.title.12> dcat:dataset   - contrainte</dcat-ap-300.pattern.title.12>
+  <dcat-ap-300.pattern.title.13> dct:description   - contrainte littérale</dcat-ap-300.pattern.title.13>
+  <dcat-ap-300.pattern.title.14> dct:title   - contrainte littérale</dcat-ap-300.pattern.title.14>
+  <dcat-ap-300.pattern.title.15> foaf:homepage   - cardinalité maximale 1</dcat-ap-300.pattern.title.15>
+  <dcat-ap-300.pattern.title.16> dcat:bbox   - contrainte littérale</dcat-ap-300.pattern.title.16>
+  <dcat-ap-300.pattern.title.17> dcat:centroid   - contrainte littérale</dcat-ap-300.pattern.title.17>
+  <dcat-ap-300.pattern.title.18> locn:geometry   - contrainte littérale</dcat-ap-300.pattern.title.18>
+  <dcat-ap-300.pattern.title.19> dct:title   - contrainte littérale</dcat-ap-300.pattern.title.19>
+  <dcat-ap-300.pattern.title.2> dcat-ap:applicableLegislation    - Contrainte IRI</dcat-ap-300.pattern.title.2>
+  <dcat-ap-300.pattern.title.20> dct:description   - contrainte littérale</dcat-ap-300.pattern.title.20>
+  <dcat-ap-300.pattern.title.21> skos:prefLabel   - contrainte littérale</dcat-ap-300.pattern.title.21>
+  <dcat-ap-300.pattern.title.22> dct:title   - contrainte littérale</dcat-ap-300.pattern.title.22>
+  <dcat-ap-300.pattern.title.23> dcat-ap:applicableLegislation    - Contrainte IRI</dcat-ap-300.pattern.title.23>
+  <dcat-ap-300.pattern.title.24> dcat:contactPoint   - contrainte</dcat-ap-300.pattern.title.24>
+  <dcat-ap-300.pattern.title.25> dct:description   - contrainte littérale</dcat-ap-300.pattern.title.25>
+  <dcat-ap-300.pattern.title.26> dct:accrualPeriodicity   - cardinalité maximale 1</dcat-ap-300.pattern.title.26>
+  <dcat-ap-300.pattern.title.27> dct:spatial   - contrainte</dcat-ap-300.pattern.title.27>
+  <dcat-ap-300.pattern.title.28> dct:modified   - contrainte littérale</dcat-ap-300.pattern.title.28>
+  <dcat-ap-300.pattern.title.29> dct:publisher   - cardinalité maximale 1</dcat-ap-300.pattern.title.29>
+  <dcat-ap-300.pattern.title.3> dct:license   - cardinalité maximale 1</dcat-ap-300.pattern.title.3>
+  <dcat-ap-300.pattern.title.30> dct:issued   - contrainte littérale</dcat-ap-300.pattern.title.30>
+  <dcat-ap-300.pattern.title.31> dct:temporal   - contrainte</dcat-ap-300.pattern.title.31>
+  <dcat-ap-300.pattern.title.32> dct:title   - contrainte littérale</dcat-ap-300.pattern.title.32>
+  <dcat-ap-300.pattern.title.33> dct:accessRights   - cardinalité maximale 1</dcat-ap-300.pattern.title.33>
+  <dcat-ap-300.pattern.title.34> dcat-ap:applicableLegislation    - Contrainte IRI</dcat-ap-300.pattern.title.34>
+  <dcat-ap-300.pattern.title.35> dct:conformsTo   - contrainte</dcat-ap-300.pattern.title.35>
+  <dcat-ap-300.pattern.title.36> dcat:contactPoint   - contrainte</dcat-ap-300.pattern.title.36>
+  <dcat-ap-300.pattern.title.37> dct:description   - contrainte littérale</dcat-ap-300.pattern.title.37>
+  <dcat-ap-300.pattern.title.38> dcat:endpointURL   - cardinalité minimale 1</dcat-ap-300.pattern.title.38>
+  <dcat-ap-300.pattern.title.39> dcat:endpointDescription   - contrainte</dcat-ap-300.pattern.title.39>
+  <dcat-ap-300.pattern.title.4> dct:spatial   - contrainte</dcat-ap-300.pattern.title.4>
+  <dcat-ap-300.pattern.title.40> dct:format   - contrainte</dcat-ap-300.pattern.title.40>
+  <dcat-ap-300.pattern.title.41> dcat:keyword   - contrainte littérale</dcat-ap-300.pattern.title.41>
+  <dcat-ap-300.pattern.title.42> dcat:landingPage   - contrainte</dcat-ap-300.pattern.title.42>
+  <dcat-ap-300.pattern.title.43> dct:license   - cardinalité maximale 1</dcat-ap-300.pattern.title.43>
+  <dcat-ap-300.pattern.title.44> dct:publisher   - cardinalité maximale 1</dcat-ap-300.pattern.title.44>
+  <dcat-ap-300.pattern.title.45> dcat:servesDataset   - contrainte</dcat-ap-300.pattern.title.45>
+  <dcat-ap-300.pattern.title.46> dcat:theme    - Contrainte IRI</dcat-ap-300.pattern.title.46>
+  <dcat-ap-300.pattern.title.47> dct:title   - contrainte littérale</dcat-ap-300.pattern.title.47>
+  <dcat-ap-300.pattern.title.48> dcat:accessService   - contrainte</dcat-ap-300.pattern.title.48>
+  <dcat-ap-300.pattern.title.49> dcat:accessURL   - cardinalité minimale 1</dcat-ap-300.pattern.title.49>
+  <dcat-ap-300.pattern.title.5> dct:hasPart   - contrainte</dcat-ap-300.pattern.title.5>
+  <dcat-ap-300.pattern.title.50> dcat-ap:applicableLegislation    - Contrainte IRI</dcat-ap-300.pattern.title.50>
+  <dcat-ap-300.pattern.title.51> dcat-ap:availability   - cardinalité maximale 1</dcat-ap-300.pattern.title.51>
+  <dcat-ap-300.pattern.title.52> spdx:checksum   - cardinalité maximale 1</dcat-ap-300.pattern.title.52>
+  <dcat-ap-300.pattern.title.53> dcat:compressFormat   - cardinalité maximale 1</dcat-ap-300.pattern.title.53>
+  <dcat-ap-300.pattern.title.54> dct:description   - contrainte littérale</dcat-ap-300.pattern.title.54>
+  <dcat-ap-300.pattern.title.55> foaf:page   - contrainte</dcat-ap-300.pattern.title.55>
+  <dcat-ap-300.pattern.title.56> dcat:downloadURL   - contrainte</dcat-ap-300.pattern.title.56>
+  <dcat-ap-300.pattern.title.57> dct:format   - cardinalité maximale 1</dcat-ap-300.pattern.title.57>
+  <dcat-ap-300.pattern.title.58> odrl:hasPolicy   - cardinalité maximale 1</dcat-ap-300.pattern.title.58>
+  <dcat-ap-300.pattern.title.59> dct:language   - contrainte</dcat-ap-300.pattern.title.59>
+  <dcat-ap-300.pattern.title.6> dct:rights   - cardinalité maximale 1</dcat-ap-300.pattern.title.6>
+  <dcat-ap-300.pattern.title.60> dct:license   - cardinalité maximale 1</dcat-ap-300.pattern.title.60>
+  <dcat-ap-300.pattern.title.61> dct:conformsTo   - contrainte</dcat-ap-300.pattern.title.61>
+  <dcat-ap-300.pattern.title.62> dcat:mediaType   - cardinalité maximale 1</dcat-ap-300.pattern.title.62>
+  <dcat-ap-300.pattern.title.63> dcat:packageFormat   - cardinalité maximale 1</dcat-ap-300.pattern.title.63>
+  <dcat-ap-300.pattern.title.64> dct:rights   - cardinalité maximale 1</dcat-ap-300.pattern.title.64>
+  <dcat-ap-300.pattern.title.65> adms:status   - cardinalité maximale 1</dcat-ap-300.pattern.title.65>
+  <dcat-ap-300.pattern.title.66> dct:title   - contrainte littérale</dcat-ap-300.pattern.title.66>
+  <dcat-ap-300.pattern.title.67> dct:accessRights   - cardinalité maximale 1</dcat-ap-300.pattern.title.67>
+  <dcat-ap-300.pattern.title.68> dcat-ap:applicableLegislation    - Contrainte IRI</dcat-ap-300.pattern.title.68>
+  <dcat-ap-300.pattern.title.69> dct:conformsTo   - contrainte</dcat-ap-300.pattern.title.69>
+  <dcat-ap-300.pattern.title.7> dcat:record   - contrainte</dcat-ap-300.pattern.title.7>
+  <dcat-ap-300.pattern.title.70> dcat:contactPoint   - contrainte</dcat-ap-300.pattern.title.70>
+  <dcat-ap-300.pattern.title.71> dct:creator   - contrainte</dcat-ap-300.pattern.title.71>
+  <dcat-ap-300.pattern.title.72> dcat:distribution   - contrainte</dcat-ap-300.pattern.title.72>
+  <dcat-ap-300.pattern.title.73> dct:description   - contrainte littérale</dcat-ap-300.pattern.title.73>
+  <dcat-ap-300.pattern.title.74> foaf:page   - contrainte</dcat-ap-300.pattern.title.74>
+  <dcat-ap-300.pattern.title.75> dct:accrualPeriodicity   - cardinalité maximale 1</dcat-ap-300.pattern.title.75>
+  <dcat-ap-300.pattern.title.76> dct:spatial   - contrainte</dcat-ap-300.pattern.title.76>
+  <dcat-ap-300.pattern.title.77> dct:hasVersion   - contrainte</dcat-ap-300.pattern.title.77>
+  <dcat-ap-300.pattern.title.78> dct:identifier   - contrainte littérale</dcat-ap-300.pattern.title.78>
+  <dcat-ap-300.pattern.title.79> dcat:inSeries   - contrainte</dcat-ap-300.pattern.title.79>
+  <dcat-ap-300.pattern.title.8> dcat:themeTaxonomy   - contrainte</dcat-ap-300.pattern.title.8>
+  <dcat-ap-300.pattern.title.80> dct:isReferencedBy   - contrainte</dcat-ap-300.pattern.title.80>
+  <dcat-ap-300.pattern.title.81> dcat:keyword   - contrainte littérale</dcat-ap-300.pattern.title.81>
+  <dcat-ap-300.pattern.title.82> dcat:landingPage   - contrainte</dcat-ap-300.pattern.title.82>
+  <dcat-ap-300.pattern.title.83> dct:language   - contrainte</dcat-ap-300.pattern.title.83>
+  <dcat-ap-300.pattern.title.84> adms:identifier   - contrainte</dcat-ap-300.pattern.title.84>
+  <dcat-ap-300.pattern.title.85> dct:provenance   - contrainte</dcat-ap-300.pattern.title.85>
+  <dcat-ap-300.pattern.title.86> dct:publisher   - cardinalité maximale 1</dcat-ap-300.pattern.title.86>
+  <dcat-ap-300.pattern.title.87> prov:qualifiedAttribution   - contrainte</dcat-ap-300.pattern.title.87>
+  <dcat-ap-300.pattern.title.88> dcat:qualifiedRelation   - contrainte</dcat-ap-300.pattern.title.88>
+  <dcat-ap-300.pattern.title.89> dct:relation   - contrainte</dcat-ap-300.pattern.title.89>
+  <dcat-ap-300.pattern.title.9> dcat:service   - contrainte</dcat-ap-300.pattern.title.9>
+  <dcat-ap-300.pattern.title.90> adms:sample   - contrainte</dcat-ap-300.pattern.title.90>
+  <dcat-ap-300.pattern.title.91> dct:source   - contrainte</dcat-ap-300.pattern.title.91>
+  <dcat-ap-300.pattern.title.92> dct:temporal   - contrainte</dcat-ap-300.pattern.title.92>
+  <dcat-ap-300.pattern.title.93> dcat:theme    - Contrainte IRI</dcat-ap-300.pattern.title.93>
+  <dcat-ap-300.pattern.title.94> dct:title   - contrainte littérale</dcat-ap-300.pattern.title.94>
+  <dcat-ap-300.pattern.title.95> dct:type   - contrainte</dcat-ap-300.pattern.title.95>
+  <dcat-ap-300.pattern.title.96> dcat:version   - contrainte littérale</dcat-ap-300.pattern.title.96>
+  <dcat-ap-300.pattern.title.97> adms:versionNotes   - contrainte littérale</dcat-ap-300.pattern.title.97>
+  <dcat-ap-300.pattern.title.98> prov:wasGeneratedBy   - contrainte</dcat-ap-300.pattern.title.98>
+  <dcat-ap-300.pattern.title.99> foaf:name   - contrainte littérale</dcat-ap-300.pattern.title.99>
+</strings>
