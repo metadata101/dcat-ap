@@ -37,6 +37,12 @@
                 "isTemplate": "n"
               },
               "searchParamsPerType": {
+                "revisionOf-*": {
+                  "type": [
+                    "dataset",
+                    "service"
+                  ]
+                },
                 "nextResource-*": {
                   "type": [
                     "dataset",
