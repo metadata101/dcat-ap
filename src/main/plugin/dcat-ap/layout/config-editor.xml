@@ -629,6 +629,7 @@
       <name>dct:spatial</name>
       <name>dct:type</name>
       <name>dct:accrualPeriodicity</name>
+      <name>foaf:Agent</name>
       <name>foaf:Document</name>
       <name>foaf:primaryTopic</name>
       <name>prov:atTime</name>
@@ -789,7 +790,7 @@
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:title)=0">
             <template>
               <snippet>
-                <dct:title xml:lang="en"/>
+                <dct:title/>
               </snippet>
             </template>
           </action>
@@ -799,7 +800,7 @@
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:description)=0">
             <template>
               <snippet>
-                <dct:description xml:lang="en"/>
+                <dct:description/>
               </snippet>
             </template>
           </action>
@@ -819,10 +820,10 @@
               <snippet>
                 <dct:publisher>
                   <foaf:Agent>
-                    <foaf:name xml:lang="en"/>
+                    <foaf:name/>
                     <dct:type>
                       <skos:Concept>
-                        <skos:prefLabel xml:lang="en"/>
+                        <skos:prefLabel/>
                         <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
                       </skos:Concept>
                     </dct:type>
@@ -1053,10 +1054,10 @@
               <snippet>
                 <dct:rightsHolder>
                   <foaf:Agent>
-                    <foaf:name xml:lang="en"/>
+                    <foaf:name/>
                     <dct:type>
                       <skos:Concept>
-                        <skos:prefLabel xml:lang="en"/>
+                        <skos:prefLabel/>
                         <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
                       </skos:Concept>
                     </dct:type>
@@ -1343,8 +1344,8 @@
                 <snippet>
                   <dct:rights>
                     <dct:RightsStatement>
-                      <dct:title xml:lang="en"/>
-                      <dct:description xml:lang="en"/>
+                      <dct:title/>
+                      <dct:description/>
                       <dct:type/>
                     </dct:RightsStatement>
                   </dct:rights>
@@ -1360,8 +1361,8 @@
                   <dct:conformsTo>
                     <dct:Standard rdf:about="">
                       <dct:identifier/>
-                      <dct:title xml:lang="en"/>
-                      <dct:description xml:lang="en"/>
+                      <dct:title/>
+                      <dct:description/>
                     </dct:Standard>
                   </dct:conformsTo>
                 </snippet>
@@ -1447,8 +1448,8 @@
               <snippet>
                 <dcat:distribution>
                   <dcat:Distribution>
-                    <dct:title xml:lang="en"/>
-                    <dct:description xml:lang="en"/>
+                    <dct:title/>
+                    <dct:description/>
                     <dcat:accessURL rdf:resource=""/>
                   </dcat:Distribution>
                 </dcat:distribution>
@@ -1466,7 +1467,7 @@
                   if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:title) = 0">
             <template>
               <snippet>
-                <dct:title xml:lang="en"/>
+                <dct:title/>
               </snippet>
             </template>
           </action>
@@ -1477,7 +1478,7 @@
                   if="count(rdf:RDF/dcat:Catalog/dcat:service/dcat:DataService/dct:description) = 0">
             <template>
               <snippet>
-                <dct:description xml:lang="en"/>
+                <dct:description/>
               </snippet>
             </template>
           </action>
@@ -1489,7 +1490,7 @@
               <snippet>
                 <dct:publisher>
                   <foaf:Agent>
-                    <foaf:name xml:lang="en"/>
+                    <foaf:name/>
                   </foaf:Agent>
                 </dct:publisher>
               </snippet>
@@ -1786,7 +1787,7 @@
               <snippet>
                 <dcatap:hvdCategory>
                   <skos:Concept rdf:about="">
-                    <skos:prefLabel xml:lang="en"></skos:prefLabel>
+                    <skos:prefLabel/>
                   </skos:Concept>
                 </dcatap:hvdCategory>
               </snippet>
@@ -1841,7 +1842,7 @@
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:title) = 0">
             <template>
               <snippet>
-                <dct:title xml:lang="en"/>
+                <dct:title/>
               </snippet>
             </template>
           </action>
@@ -1852,7 +1853,7 @@
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:description) = 0">
             <template>
               <snippet>
-                <dct:description xml:lang="en"/>
+                <dct:description/>
               </snippet>
             </template>
           </action>
@@ -1865,13 +1866,10 @@
               <snippet>
                 <dct:publisher>
                   <foaf:Agent>
-                    <foaf:name xml:lang=""/>
+                    <foaf:name/>
                     <dct:type>
                       <skos:Concept>
-                        <skos:prefLabel xml:lang="nl"/>
-                        <skos:prefLabel xml:lang="en"/>
-                        <skos:prefLabel xml:lang="fr"/>
-                        <skos:prefLabel xml:lang="de"/>
+                        <skos:prefLabel/>
                         <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
                       </skos:Concept>
                     </dct:type>
@@ -2022,24 +2020,12 @@
         <section name="catalogInformation">
           <field xpath="/rdf:RDF/dcat:Catalog/dct:title"/>
           <action type="add" or="title" in="/rdf:RDF/dcat:Catalog"
-                  if="count(rdf:RDF/dcat:Catalog/dct:title)=0">
-            <template>
-              <snippet>
-                <dct:title xml:lang="en"/>
-              </snippet>
-            </template>
-          </action>
+                  if="count(rdf:RDF/dcat:Catalog/dct:title)=0"/>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dct:description"/>
           <action type="add" or="description"
                   in="/rdf:RDF/dcat:Catalog"
-                  if="count(rdf:RDF/dcat:Catalog/dct:description) = 0">
-            <template>
-              <snippet>
-                <dct:description xml:lang="en"/>
-              </snippet>
-            </template>
-          </action>
+                  if="count(rdf:RDF/dcat:Catalog/dct:description) = 0"/>
 
           <field xpath="/rdf:RDF/dcat:Catalog/dct:language"
                  or="language"
@@ -2101,7 +2087,7 @@
               <snippet>
                 <dct:publisher>
                   <foaf:Agent>
-                    <foaf:name xml:lang="en"/>
+                    <foaf:name/>
                   </foaf:Agent>
                 </dct:publisher>
               </snippet>
@@ -2115,7 +2101,7 @@
               <snippet>
                 <foaf:homepage>
                   <foaf:Document>
-                    <foaf:name xml:lang="en"/>
+                    <foaf:name/>
                   </foaf:Document>
                 </foaf:homepage>
               </snippet>
@@ -2351,12 +2337,12 @@
           <dct:LicenseDocument rdf:about="">
             <dct:type>
               <skos:Concept>
-                <skos:prefLabel xml:lang="en"/>
+                <skos:prefLabel/>
                 <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
               </skos:Concept>
             </dct:type>
-            <dct:title xml:lang="en"/>
-            <dct:description xml:lang="en"/>
+            <dct:title/>
+            <dct:description/>
             <!--dct:identifier/-->
           </dct:LicenseDocument>
         </dct:license>
@@ -2979,7 +2965,7 @@
         <dct:conformsTo>
           <dct:Standard
             rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest/">
-            <dct:title>mobilityDCAT-AP 3.0.0</dct:title>
+            <dct:title xml:lang="en">mobilityDCAT-AP 3.0.0</dct:title>
             <dct:description xml:lang="en">A mobility extension for the DCAT application profile for data portals in Europe</dct:description>
             <owl:versionInfo>3.0.0</owl:versionInfo>
           </dct:Standard>
