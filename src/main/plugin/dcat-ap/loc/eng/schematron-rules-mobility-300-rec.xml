@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <schematron.title>Mobility - Recommended (v3.0.0)</schematron.title>
+  <mobility-300-rec.pattern.assert.1>Application layer protocol must be from the controlled vocabulary and can appear at most once (mobilitydcatap:applicationLayerProtocol)</mobility-300-rec.pattern.assert.1>
+  <mobility-300-rec.pattern.assert.10>Temporal coverage must be a blank node or IRI (dct:temporal)</mobility-300-rec.pattern.assert.10>
+  <mobility-300-rec.pattern.assert.11>Transport mode must be from the controlled vocabulary (https://w3id.org/mobilitydcat-ap/transport-mode/*) (mobilitydcatap:transportMode)</mobility-300-rec.pattern.assert.11>
+  <mobility-300-rec.pattern.assert.2>Description must have valid EU language tag, cannot be empty, each language only once (dct:description)</mobility-300-rec.pattern.assert.2>
+  <mobility-300-rec.pattern.assert.3>Licence must be a blank node or IRI and can appear at most once (dct:license)</mobility-300-rec.pattern.assert.3>
+  <mobility-300-rec.pattern.assert.4>Georeferencing method must be from the controlled vocabulary (https://w3id.org/mobilitydcat-ap/georeferencing-method/*) (mobilitydcatap:georeferencingMethod)</mobility-300-rec.pattern.assert.4>
+  <mobility-300-rec.pattern.assert.5>Contact point must be a blank node or IRI (dcat:contactPoint)</mobility-300-rec.pattern.assert.5>
+  <mobility-300-rec.pattern.assert.6>Keywords must have valid EU language tags and cannot be empty (dcat:keyword)</mobility-300-rec.pattern.assert.6>
+  <mobility-300-rec.pattern.assert.7>Network coverage must be from the controlled vocabulary (https://w3id.org/mobilitydcat-ap/network-coverage/*) (mobilitydcatap:networkCoverage)</mobility-300-rec.pattern.assert.7>
+  <mobility-300-rec.pattern.assert.8>Rights holder must be a blank node or IRI (dct:rightsHolder)</mobility-300-rec.pattern.assert.8>
+  <mobility-300-rec.pattern.assert.9>Theme must be from the EU Data Themes vocabulary (http://publications.europa.eu/resource/authority/data-theme/*) (dcat:theme)</mobility-300-rec.pattern.assert.9>
+  <mobility-300-rec.pattern.report.1>Application layer protocol must be from the controlled vocabulary and can appear at most once (mobilitydcatap:applicationLayerProtocol)</mobility-300-rec.pattern.report.1>
+  <mobility-300-rec.pattern.report.10>Temporal coverage must be a blank node or IRI (dct:temporal)</mobility-300-rec.pattern.report.10>
+  <mobility-300-rec.pattern.report.11>Transport mode must be from the controlled vocabulary (https://w3id.org/mobilitydcat-ap/transport-mode/*) (mobilitydcatap:transportMode)</mobility-300-rec.pattern.report.11>
+  <mobility-300-rec.pattern.report.2>Description must have valid EU language tag, cannot be empty, each language only once (dct:description)</mobility-300-rec.pattern.report.2>
+  <mobility-300-rec.pattern.report.3>Licence must be a blank node or IRI and can appear at most once (dct:license)</mobility-300-rec.pattern.report.3>
+  <mobility-300-rec.pattern.report.4>Georeferencing method must be from the controlled vocabulary (https://w3id.org/mobilitydcat-ap/georeferencing-method/*) (mobilitydcatap:georeferencingMethod)</mobility-300-rec.pattern.report.4>
+  <mobility-300-rec.pattern.report.5>Contact point must be a blank node or IRI (dcat:contactPoint)</mobility-300-rec.pattern.report.5>
+  <mobility-300-rec.pattern.report.6>Keywords must have valid EU language tags and cannot be empty (dcat:keyword)</mobility-300-rec.pattern.report.6>
+  <mobility-300-rec.pattern.report.7>Network coverage must be from the controlled vocabulary (https://w3id.org/mobilitydcat-ap/network-coverage/*) (mobilitydcatap:networkCoverage)</mobility-300-rec.pattern.report.7>
+  <mobility-300-rec.pattern.report.8>Rights holder must be a blank node or IRI (dct:rightsHolder)</mobility-300-rec.pattern.report.8>
+  <mobility-300-rec.pattern.report.9>Theme must be from the EU Data Themes vocabulary (http://publications.europa.eu/resource/authority/data-theme/*) (dcat:theme)</mobility-300-rec.pattern.report.9>
+  <mobility-300-rec.pattern.title.1>Application layer protocol - The transmitting channel (Application Layer Protocol) of the distribution (§4.11.2).</mobility-300-rec.pattern.title.1>
+  <mobility-300-rec.pattern.title.10>Temporal coverage - This property refers to a temporal period, i.e., the beginning and the end, of the time reference of the delivered content (§4.10.2).</mobility-300-rec.pattern.title.10>
+  <mobility-300-rec.pattern.title.11>Transport mode - This property describes the transport mode that is covered by the delivered content (§4.10.2).</mobility-300-rec.pattern.title.11>
+  <mobility-300-rec.pattern.title.2>Description - A free-text account of the Distribution. May be repeated for parallel language versions (§4.11.2).</mobility-300-rec.pattern.title.2>
+  <mobility-300-rec.pattern.title.3>Licence - The licence under which the Distribution is made available (§4.11.2).</mobility-300-rec.pattern.title.3>
+  <mobility-300-rec.pattern.title.4>Georeferencing method - This property SHOULD be used to specify the georeferencing method used in the dataset (§4.10.2).</mobility-300-rec.pattern.title.4>
+  <mobility-300-rec.pattern.title.5>Contact point - This property contains contact information that can be used for communication with a company or person responsible for the dataset (§4.10.2).</mobility-300-rec.pattern.title.5>
+  <mobility-300-rec.pattern.title.6>Keyword / tag - This property contains a keyword or tag describing the Dataset (§4.10.2).</mobility-300-rec.pattern.title.6>
+  <mobility-300-rec.pattern.title.7>Network coverage - This property describes the part of the transport network that is covered by the delivered content (§4.10.2).</mobility-300-rec.pattern.title.7>
+  <mobility-300-rec.pattern.title.8>Rights holder - This property refers to an entity that legally owns or holds the rights of the data provided in a dataset (§4.10.2).</mobility-300-rec.pattern.title.8>
+  <mobility-300-rec.pattern.title.9>Theme / category - This property refers to the generic theme (i.e., a specific subject, category, or type) of the delivered content. The category is described via a controlled vocabulary 'Data Themes' by the Publications Office of the European Union (§4.10.2).</mobility-300-rec.pattern.title.9>
+</strings>

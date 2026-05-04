@@ -9,9 +9,9 @@
   <sch:ns prefix="dct" uri="http://purl.org/dc/terms/"/>
   <sch:ns prefix="vcard" uri="http://www.w3.org/2006/vcard/ns#"/>
   <sch:ns prefix="dcat" uri="http://www.w3.org/ns/dcat#"/>
-  <sch:ns prefix="dcatap" uri="http://data.europa.eu/r5r/"/>
   <sch:ns prefix="schema" uri="http://schema.org/"/>
   <sch:ns prefix="rdf" uri="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+  <sch:ns prefix="shacl" uri="https://purl.eu/ns/shacl#"/>
   <sch:ns prefix="skos" uri="http://www.w3.org/2004/02/skos/core#"/>
   <sch:ns prefix="xml" uri="http://www.w3.org/XML/1998/namespace"/>
   <sch:ns prefix="gco" uri="http://www.isotc211.org/2005/gco"/>
@@ -20,9 +20,20 @@
   <sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
   <sch:ns prefix="mdcat" uri="https://data.vlaanderen.be/ns/metadata-dcat#"/>
   <sch:ns prefix="geodcat" uri="http://data.europa.eu/930/"/>
-  <sch:ns prefix="generiek" uri="https://data.vlaanderen.be/ns/generiek#"/>
+  <sch:ns prefix="geodcat-w3c" uri="http://www.w3.org/ns/geodcat#"/>
+  <sch:ns prefix="generiek" uri="http://data.vlaanderen.be/ns/generiek#"/>
   <sch:ns prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
-
+  <sch:ns prefix="sh" uri="http://www.w3.org/ns/shacl#"/>
+  <sch:ns prefix="mobilitydcatap" uri="https://w3id.org/mobilitydcat-ap#"/>
+  <sch:ns prefix="oa" uri="http://www.w3.org/ns/oa#"/>
+  <sch:ns prefix="content" uri="http://www.w3.org/2011/content#"/>
+  <sch:ns prefix="org" uri="http://www.w3.org/ns/org#"/>
+  <sch:ns prefix="prov" uri="http://www.w3.org/ns/prov#"/>
+  <sch:ns prefix="dcat-ap" uri="http://data.europa.eu/r5r/"/>
+  <sch:ns prefix="odrl" uri="http://www.w3.org/ns/odrl/2/"/>
+  <sch:ns prefix="dqv" uri="http://www.w3.org/ns/dqv#"/>
+  <sch:ns prefix="eli" uri="http://data.europa.eu/eli/ontology#"/>
+  <sch:ns prefix="time" uri="http://www.w3.org/2006/time#"/>
   <sch:title xmlns="http://www.w3.org/2001/XMLSchema">{$loc/strings/schematron.title}</sch:title>
-
+  <sch:let name="profile" value="boolean(//dcat-ap:applicableLegislation[@rdf:resource='http://data.europa.eu/eli/reg_impl/2023/138/oj'])"/>
 </sch:schema>

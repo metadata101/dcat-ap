@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <schematron.title>DCAT-AP (v2.1.1)</schematron.title>
+  <dcat-ap-211.pattern.assert.1>La valeur doit être littérale ( skos:prefLabel  )</dcat-ap-211.pattern.assert.1>
+  <dcat-ap-211.pattern.assert.10>La valeur doit être littérale ( dcat:keyword  )</dcat-ap-211.pattern.assert.10>
+  <dcat-ap-211.pattern.assert.11>La valeur ne satisfait pas à la contrainte SHACL ( dct:relation  )</dcat-ap-211.pattern.assert.11>
+  <dcat-ap-211.pattern.assert.12>La valeur doit être littérale ( owl:versionInfo  )</dcat-ap-211.pattern.assert.12>
+  <dcat-ap-211.pattern.assert.13>La valeur doit être littérale ( adms:versionNotes  )</dcat-ap-211.pattern.assert.13>
+  <dcat-ap-211.pattern.assert.14>La valeur ne satisfait pas à la contrainte SHACL ( dc:isReferencedBy  )</dcat-ap-211.pattern.assert.14>
+  <dcat-ap-211.pattern.assert.15>La valeur doit être littérale ( dct:description  )</dcat-ap-211.pattern.assert.15>
+  <dcat-ap-211.pattern.assert.16>La valeur doit être littérale ( dct:title  )</dcat-ap-211.pattern.assert.16>
+  <dcat-ap-211.pattern.assert.17>La valeur doit être littérale ( dct:title  )</dcat-ap-211.pattern.assert.17>
+  <dcat-ap-211.pattern.assert.18>La valeur ne satisfait pas à la contrainte SHACL ( dcat:downloadURL  )</dcat-ap-211.pattern.assert.18>
+  <dcat-ap-211.pattern.assert.19>Au moins 1 valeur(s) sont requises ( dcat:accessURL  )</dcat-ap-211.pattern.assert.19>
+  <dcat-ap-211.pattern.assert.2>La valeur doit être littérale ( foaf:name  )</dcat-ap-211.pattern.assert.2>
+  <dcat-ap-211.pattern.assert.20>La valeur doit être littérale ( dct:description  )</dcat-ap-211.pattern.assert.20>
+  <dcat-ap-211.pattern.assert.21>La valeur doit être   spdx:checksumAlgorithm_sha1   ( spdx:algorithm  )</dcat-ap-211.pattern.assert.21>
+  <dcat-ap-211.pattern.assert.22>La valeur doit être littérale ( dct:title  )</dcat-ap-211.pattern.assert.22>
+  <dcat-ap-211.pattern.assert.23>La valeur doit être littérale ( dcat:bbox  )</dcat-ap-211.pattern.assert.23>
+  <dcat-ap-211.pattern.assert.24>La valeur doit être littérale ( dcat:centroid  )</dcat-ap-211.pattern.assert.24>
+  <dcat-ap-211.pattern.assert.25>La valeur doit être littérale ( locn:geometry  )</dcat-ap-211.pattern.assert.25>
+  <dcat-ap-211.pattern.assert.26>La valeur doit être littérale ( dct:title  )</dcat-ap-211.pattern.assert.26>
+  <dcat-ap-211.pattern.assert.27>La valeur doit être littérale ( dct:description  )</dcat-ap-211.pattern.assert.27>
+  <dcat-ap-211.pattern.assert.3>La valeur doit être littérale ( dct:title  )</dcat-ap-211.pattern.assert.3>
+  <dcat-ap-211.pattern.assert.4>Au moins 1 valeur(s) sont requises ( dcat:endpointURL  )</dcat-ap-211.pattern.assert.4>
+  <dcat-ap-211.pattern.assert.5>La valeur doit être littérale ( dct:description  )</dcat-ap-211.pattern.assert.5>
+  <dcat-ap-211.pattern.assert.6>La valeur ne satisfait pas à la contrainte SHACL ( dcat:endpointDescription  )</dcat-ap-211.pattern.assert.6>
+  <dcat-ap-211.pattern.assert.7>La valeur doit être littérale ( dct:description  )</dcat-ap-211.pattern.assert.7>
+  <dcat-ap-211.pattern.assert.8>La valeur doit être littérale ( dct:title  )</dcat-ap-211.pattern.assert.8>
+  <dcat-ap-211.pattern.assert.9>La valeur doit être littérale ( dct:identifier  )</dcat-ap-211.pattern.assert.9>
+  <dcat-ap-211.pattern.report.1>La valeur doit être littérale ( skos:prefLabel  )</dcat-ap-211.pattern.report.1>
+  <dcat-ap-211.pattern.report.10>La valeur doit être littérale ( dcat:keyword  )</dcat-ap-211.pattern.report.10>
+  <dcat-ap-211.pattern.report.11>La valeur ne satisfait pas à la contrainte SHACL ( dct:relation  )</dcat-ap-211.pattern.report.11>
+  <dcat-ap-211.pattern.report.12>La valeur doit être littérale ( owl:versionInfo  )</dcat-ap-211.pattern.report.12>
+  <dcat-ap-211.pattern.report.13>La valeur doit être littérale ( adms:versionNotes  )</dcat-ap-211.pattern.report.13>
+  <dcat-ap-211.pattern.report.14>La valeur ne satisfait pas à la contrainte SHACL ( dc:isReferencedBy  )</dcat-ap-211.pattern.report.14>
+  <dcat-ap-211.pattern.report.15>La valeur doit être littérale ( dct:description  )</dcat-ap-211.pattern.report.15>
+  <dcat-ap-211.pattern.report.16>La valeur doit être littérale ( dct:title  )</dcat-ap-211.pattern.report.16>
+  <dcat-ap-211.pattern.report.17>La valeur doit être littérale ( dct:title  )</dcat-ap-211.pattern.report.17>
+  <dcat-ap-211.pattern.report.18>La valeur ne satisfait pas à la contrainte SHACL ( dcat:downloadURL  )</dcat-ap-211.pattern.report.18>
+  <dcat-ap-211.pattern.report.19>Au moins 1 valeur(s) sont requises ( dcat:accessURL  )</dcat-ap-211.pattern.report.19>
+  <dcat-ap-211.pattern.report.2>La valeur doit être littérale ( foaf:name  )</dcat-ap-211.pattern.report.2>
+  <dcat-ap-211.pattern.report.20>La valeur doit être littérale ( dct:description  )</dcat-ap-211.pattern.report.20>
+  <dcat-ap-211.pattern.report.21>La valeur doit être   spdx:checksumAlgorithm_sha1   ( spdx:algorithm  )</dcat-ap-211.pattern.report.21>
+  <dcat-ap-211.pattern.report.22>La valeur doit être littérale ( dct:title  )</dcat-ap-211.pattern.report.22>
+  <dcat-ap-211.pattern.report.23>La valeur doit être littérale ( dcat:bbox  )</dcat-ap-211.pattern.report.23>
+  <dcat-ap-211.pattern.report.24>La valeur doit être littérale ( dcat:centroid  )</dcat-ap-211.pattern.report.24>
+  <dcat-ap-211.pattern.report.25>La valeur doit être littérale ( locn:geometry  )</dcat-ap-211.pattern.report.25>
+  <dcat-ap-211.pattern.report.26>La valeur doit être littérale ( dct:title  )</dcat-ap-211.pattern.report.26>
+  <dcat-ap-211.pattern.report.27>La valeur doit être littérale ( dct:description  )</dcat-ap-211.pattern.report.27>
+  <dcat-ap-211.pattern.report.3>La valeur doit être littérale ( dct:title  )</dcat-ap-211.pattern.report.3>
+  <dcat-ap-211.pattern.report.4>Au moins 1 valeur(s) sont requises ( dcat:endpointURL  )</dcat-ap-211.pattern.report.4>
+  <dcat-ap-211.pattern.report.5>La valeur doit être littérale ( dct:description  )</dcat-ap-211.pattern.report.5>
+  <dcat-ap-211.pattern.report.6>La valeur ne satisfait pas à la contrainte SHACL ( dcat:endpointDescription  )</dcat-ap-211.pattern.report.6>
+  <dcat-ap-211.pattern.report.7>La valeur doit être littérale ( dct:description  )</dcat-ap-211.pattern.report.7>
+  <dcat-ap-211.pattern.report.8>La valeur doit être littérale ( dct:title  )</dcat-ap-211.pattern.report.8>
+  <dcat-ap-211.pattern.report.9>La valeur doit être littérale ( dct:identifier  )</dcat-ap-211.pattern.report.9>
+  <dcat-ap-211.pattern.title.1> skos:prefLabel   - contrainte littérale</dcat-ap-211.pattern.title.1>
+  <dcat-ap-211.pattern.title.10> dcat:keyword   - contrainte littérale</dcat-ap-211.pattern.title.10>
+  <dcat-ap-211.pattern.title.11> dct:relation   - contrainte</dcat-ap-211.pattern.title.11>
+  <dcat-ap-211.pattern.title.12> owl:versionInfo   - contrainte littérale</dcat-ap-211.pattern.title.12>
+  <dcat-ap-211.pattern.title.13> adms:versionNotes   - contrainte littérale</dcat-ap-211.pattern.title.13>
+  <dcat-ap-211.pattern.title.14> dc:isReferencedBy   - contrainte</dcat-ap-211.pattern.title.14>
+  <dcat-ap-211.pattern.title.15> dct:description   - contrainte littérale</dcat-ap-211.pattern.title.15>
+  <dcat-ap-211.pattern.title.16> dct:title   - contrainte littérale</dcat-ap-211.pattern.title.16>
+  <dcat-ap-211.pattern.title.17> dct:title   - contrainte littérale</dcat-ap-211.pattern.title.17>
+  <dcat-ap-211.pattern.title.18> dcat:downloadURL   - contrainte</dcat-ap-211.pattern.title.18>
+  <dcat-ap-211.pattern.title.19> dcat:accessURL   - cardinalité minimale 1</dcat-ap-211.pattern.title.19>
+  <dcat-ap-211.pattern.title.2> foaf:name   - contrainte littérale</dcat-ap-211.pattern.title.2>
+  <dcat-ap-211.pattern.title.20> dct:description   - contrainte littérale</dcat-ap-211.pattern.title.20>
+  <dcat-ap-211.pattern.title.21> spdx:algorithm   - valeur fixe   spdx:checksumAlgorithm_sha1  </dcat-ap-211.pattern.title.21>
+  <dcat-ap-211.pattern.title.22> dct:title   - contrainte littérale</dcat-ap-211.pattern.title.22>
+  <dcat-ap-211.pattern.title.23> dcat:bbox   - contrainte littérale</dcat-ap-211.pattern.title.23>
+  <dcat-ap-211.pattern.title.24> dcat:centroid   - contrainte littérale</dcat-ap-211.pattern.title.24>
+  <dcat-ap-211.pattern.title.25> locn:geometry   - contrainte littérale</dcat-ap-211.pattern.title.25>
+  <dcat-ap-211.pattern.title.26> dct:title   - contrainte littérale</dcat-ap-211.pattern.title.26>
+  <dcat-ap-211.pattern.title.27> dct:description   - contrainte littérale</dcat-ap-211.pattern.title.27>
+  <dcat-ap-211.pattern.title.3> dct:title   - contrainte littérale</dcat-ap-211.pattern.title.3>
+  <dcat-ap-211.pattern.title.4> dcat:endpointURL   - cardinalité minimale 1</dcat-ap-211.pattern.title.4>
+  <dcat-ap-211.pattern.title.5> dct:description   - contrainte littérale</dcat-ap-211.pattern.title.5>
+  <dcat-ap-211.pattern.title.6> dcat:endpointDescription   - contrainte</dcat-ap-211.pattern.title.6>
+  <dcat-ap-211.pattern.title.7> dct:description   - contrainte littérale</dcat-ap-211.pattern.title.7>
+  <dcat-ap-211.pattern.title.8> dct:title   - contrainte littérale</dcat-ap-211.pattern.title.8>
+  <dcat-ap-211.pattern.title.9> dct:identifier   - contrainte littérale</dcat-ap-211.pattern.title.9>
+</strings>

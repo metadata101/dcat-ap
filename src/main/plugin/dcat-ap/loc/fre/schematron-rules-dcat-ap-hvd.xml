@@ -1,4 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
-  <schematron.title>High Value Datasets - Obligatoire</schematron.title>
+  <schematron.title>High Value Datasets (v3.0.0)</schematron.title>
+  <dcat-ap-hvd.pattern.assert.1>La loi qui régit la création ou la gestion de la distribution ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.1>
+  <dcat-ap-hvd.pattern.assert.10>Une déclaration qui précise les droits associés à la distribution. ( dct:rights  )</dcat-ap-hvd.pattern.assert.10>
+  <dcat-ap-hvd.pattern.assert.11>Licence de mise à disposition de la distribution. ( dct:license  )</dcat-ap-hvd.pattern.assert.11>
+  <dcat-ap-hvd.pattern.assert.12>Licence de mise à disposition de la distribution. ( dct:license  )</dcat-ap-hvd.pattern.assert.12>
+  <dcat-ap-hvd.pattern.assert.13>La législation applicable doit être fixée à l'ELI IR de HVD. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.13>
+  <dcat-ap-hvd.pattern.assert.14>Un ensemble de données qui fait partie du catalogue. ( dcat:dataset  )</dcat-ap-hvd.pattern.assert.14>
+  <dcat-ap-hvd.pattern.assert.15>Un document de catalogue qui fait partie du catalogue (  dcat:record  )</dcat-ap-hvd.pattern.assert.15>
+  <dcat-ap-hvd.pattern.assert.16>Un document de catalogue qui fait partie du catalogue (  dcat:record  )</dcat-ap-hvd.pattern.assert.16>
+  <dcat-ap-hvd.pattern.assert.17>Un ensemble de données qui fait partie du catalogue. ( dcat:dataset  )</dcat-ap-hvd.pattern.assert.17>
+  <dcat-ap-hvd.pattern.assert.18>Un site ou un point final (Service de données) qui est listé dans le catalogue. ( dcat:service  )</dcat-ap-hvd.pattern.assert.18>
+  <dcat-ap-hvd.pattern.assert.19>Un site ou un point final (Service de données) qui est listé dans le catalogue. ( dcat:service  )</dcat-ap-hvd.pattern.assert.19>
+  <dcat-ap-hvd.pattern.assert.2>Un schéma établi auquel la distribution décrite est conforme. ( dct:conformsTo  )</dcat-ap-hvd.pattern.assert.2>
+  <dcat-ap-hvd.pattern.assert.20>La législation qui régit la création ou la gestion de la série de données. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.20>
+  <dcat-ap-hvd.pattern.assert.21>La législation qui régit la création ou la gestion de la série de données. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.21>
+  <dcat-ap-hvd.pattern.assert.22>La catégorie HVD à laquelle appartient ce Dataset. ( dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.assert.22>
+  <dcat-ap-hvd.pattern.assert.23>La catégorie HVD à laquelle appartient ce Dataset. ( dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.assert.23>
+  <dcat-ap-hvd.pattern.assert.24>La législation applicable doit être fixée à l'ELI IR de HVD. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.24>
+  <dcat-ap-hvd.pattern.assert.25>Un lien vers l'ensemble de données, le service de données ou le catalogue décrit dans l'enregistrement. ( foaf:primaryTopic  )</dcat-ap-hvd.pattern.assert.25>
+  <dcat-ap-hvd.pattern.assert.26>Un lien vers l'ensemble de données, le service de données ou le catalogue décrit dans l'enregistrement. ( foaf:primaryTopic  )</dcat-ap-hvd.pattern.assert.26>
+  <dcat-ap-hvd.pattern.assert.27>La législation qui régit la création ou la gestion du Service de données. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.27>
+  <dcat-ap-hvd.pattern.assert.28>Cette propriété fait référence à une collecte de données que ce service de données peut distribuer. ( dcat:servesDataset  )</dcat-ap-hvd.pattern.assert.28>
+  <dcat-ap-hvd.pattern.assert.29>La catégorie HVD à laquelle ce service de données appartient. ( dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.assert.29>
+  <dcat-ap-hvd.pattern.assert.3>Un service de données qui donne accès à la distribution de l'ensemble de données ( dcat:accessService  )</dcat-ap-hvd.pattern.assert.3>
+  <dcat-ap-hvd.pattern.assert.30>L'emplacement de la racine ou le critère principal du service (un IRI). ( dcat:endpointURL  )</dcat-ap-hvd.pattern.assert.30>
+  <dcat-ap-hvd.pattern.assert.31>La catégorie HVD à laquelle ce service de données appartient. ( dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.assert.31>
+  <dcat-ap-hvd.pattern.assert.32>Une description des services disponibles via les points d'arrivée, y compris leurs opérations, paramètres, etc. ( dcat:endpointDescription  )</dcat-ap-hvd.pattern.assert.32>
+  <dcat-ap-hvd.pattern.assert.33>Une page qui fournit des informations supplémentaires sur le Service de données. ( foaf:page  )</dcat-ap-hvd.pattern.assert.33>
+  <dcat-ap-hvd.pattern.assert.34>La législation qui régit la création ou la gestion du Service de données. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.34>
+  <dcat-ap-hvd.pattern.assert.35>Coordonnées qui peuvent être utilisées pour envoyer des commentaires sur le Service de données. ( dcat:contactPoint  )</dcat-ap-hvd.pattern.assert.35>
+  <dcat-ap-hvd.pattern.assert.36>Une déclaration qui précise les droits associés à la distribution. ( dct:rights  )</dcat-ap-hvd.pattern.assert.36>
+  <dcat-ap-hvd.pattern.assert.37>Une page qui fournit des informations supplémentaires sur le Service de données. ( foaf:page  )</dcat-ap-hvd.pattern.assert.37>
+  <dcat-ap-hvd.pattern.assert.38>Coordonnées qui peuvent être utilisées pour envoyer des commentaires sur le Service de données. ( dcat:contactPoint  )</dcat-ap-hvd.pattern.assert.38>
+  <dcat-ap-hvd.pattern.assert.39>Une déclaration qui précise les droits associés à la distribution. ( dct:rights  )</dcat-ap-hvd.pattern.assert.39>
+  <dcat-ap-hvd.pattern.assert.4>Un schéma établi auquel la distribution décrite est conforme. ( dct:conformsTo  )</dcat-ap-hvd.pattern.assert.4>
+  <dcat-ap-hvd.pattern.assert.40>Cette propriété fait référence à une collecte de données que ce service de données peut distribuer. ( dcat:servesDataset  )</dcat-ap-hvd.pattern.assert.40>
+  <dcat-ap-hvd.pattern.assert.41>Licence en vertu de laquelle le service de données est disponible. ( dct:license  )</dcat-ap-hvd.pattern.assert.41>
+  <dcat-ap-hvd.pattern.assert.42>Une description des services disponibles via les points d'arrivée, y compris leurs opérations, paramètres, etc. ( dcat:endpointDescription  )</dcat-ap-hvd.pattern.assert.42>
+  <dcat-ap-hvd.pattern.assert.43>L'emplacement de la racine ou le critère principal du service (un IRI). ( dcat:endpointURL  )</dcat-ap-hvd.pattern.assert.43>
+  <dcat-ap-hvd.pattern.assert.44>Licence en vertu de laquelle le service de données est disponible. ( dct:license  )</dcat-ap-hvd.pattern.assert.44>
+  <dcat-ap-hvd.pattern.assert.45>La législation applicable doit être fixée à l'ELI IR de HVD. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.45>
+  <dcat-ap-hvd.pattern.assert.46>Une adresse e-mail par laquelle vous pouvez contacter. ( vcard:hasEmail  )</dcat-ap-hvd.pattern.assert.46>
+  <dcat-ap-hvd.pattern.assert.47>Une page Web qui permet soit de prendre contact (c.-à-d. un formulaire Web) ou l'information contient comment entrer en contact. ( vcard:hasURL  )</dcat-ap-hvd.pattern.assert.47>
+  <dcat-ap-hvd.pattern.assert.48>Une adresse e-mail par laquelle vous pouvez contacter. ( vcard:hasEmail  )</dcat-ap-hvd.pattern.assert.48>
+  <dcat-ap-hvd.pattern.assert.49>Une page Web qui permet soit de prendre contact (c.-à-d. un formulaire Web) ou l'information contient comment entrer en contact. ( vcard:hasURL  )</dcat-ap-hvd.pattern.assert.49>
+  <dcat-ap-hvd.pattern.assert.5>Une URL qui donne accès à une distribution de données. ( dcat:accessURL  )</dcat-ap-hvd.pattern.assert.5>
+  <dcat-ap-hvd.pattern.assert.50>Une règle d'application ou une autre spécification. ( dct:conformsTo  )</dcat-ap-hvd.pattern.assert.50>
+  <dcat-ap-hvd.pattern.assert.51>La législation qui régit la création ou la gestion de l'ensemble de données. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.51>
+  <dcat-ap-hvd.pattern.assert.52>Une distribution disponible pour l'ensemble de données. ( dcat:distribution  )</dcat-ap-hvd.pattern.assert.52>
+  <dcat-ap-hvd.pattern.assert.53>Une série de données dont l'ensemble fait partie. ( dcat:inSeries  )</dcat-ap-hvd.pattern.assert.53>
+  <dcat-ap-hvd.pattern.assert.54>La législation qui régit la création ou la gestion de l'ensemble de données. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.54>
+  <dcat-ap-hvd.pattern.assert.55>Les informations de contact qui peuvent être utilisées pour envoyer des commentaires sur le Dataset. ( dcat:contactPoint  )</dcat-ap-hvd.pattern.assert.55>
+  <dcat-ap-hvd.pattern.assert.56>Une série de données dont l'ensemble fait partie. ( dcat:inSeries  )</dcat-ap-hvd.pattern.assert.56>
+  <dcat-ap-hvd.pattern.assert.57>La catégorie HVD à laquelle appartient ce Dataset. ( dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.assert.57>
+  <dcat-ap-hvd.pattern.assert.58>La catégorie HVD à laquelle appartient ce Dataset. ( dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.assert.58>
+  <dcat-ap-hvd.pattern.assert.59>Les informations de contact qui peuvent être utilisées pour envoyer des commentaires sur le Dataset. ( dcat:contactPoint  )</dcat-ap-hvd.pattern.assert.59>
+  <dcat-ap-hvd.pattern.assert.6>La loi qui régit la création ou la gestion de la distribution ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.6>
+  <dcat-ap-hvd.pattern.assert.60>Une règle d'application ou une autre spécification. ( dct:conformsTo  )</dcat-ap-hvd.pattern.assert.60>
+  <dcat-ap-hvd.pattern.assert.61>Une distribution disponible pour l'ensemble de données. ( dcat:distribution  )</dcat-ap-hvd.pattern.assert.61>
+  <dcat-ap-hvd.pattern.assert.62>La législation applicable doit être fixée à l'ELI IR de HVD. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.assert.62>
+  <dcat-ap-hvd.pattern.assert.7>Un service de données qui donne accès à la distribution de l'ensemble de données ( dcat:accessService  )</dcat-ap-hvd.pattern.assert.7>
+  <dcat-ap-hvd.pattern.assert.8>Une déclaration qui précise les droits associés à la distribution. ( dct:rights  )</dcat-ap-hvd.pattern.assert.8>
+  <dcat-ap-hvd.pattern.assert.9>Une URL qui donne accès à une distribution de données. ( dcat:accessURL  )</dcat-ap-hvd.pattern.assert.9>
+  <dcat-ap-hvd.pattern.report.1>La loi qui régit la création ou la gestion de la distribution ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.1>
+  <dcat-ap-hvd.pattern.report.10>Une déclaration qui précise les droits associés à la distribution. ( dct:rights  )</dcat-ap-hvd.pattern.report.10>
+  <dcat-ap-hvd.pattern.report.11>Licence de mise à disposition de la distribution. ( dct:license  )</dcat-ap-hvd.pattern.report.11>
+  <dcat-ap-hvd.pattern.report.12>Licence de mise à disposition de la distribution. ( dct:license  )</dcat-ap-hvd.pattern.report.12>
+  <dcat-ap-hvd.pattern.report.13>La législation applicable doit être fixée à l'ELI IR de HVD. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.13>
+  <dcat-ap-hvd.pattern.report.14>Un ensemble de données qui fait partie du catalogue. ( dcat:dataset  )</dcat-ap-hvd.pattern.report.14>
+  <dcat-ap-hvd.pattern.report.15>Un document de catalogue qui fait partie du catalogue (  dcat:record  )</dcat-ap-hvd.pattern.report.15>
+  <dcat-ap-hvd.pattern.report.16>Un document de catalogue qui fait partie du catalogue (  dcat:record  )</dcat-ap-hvd.pattern.report.16>
+  <dcat-ap-hvd.pattern.report.17>Un ensemble de données qui fait partie du catalogue. ( dcat:dataset  )</dcat-ap-hvd.pattern.report.17>
+  <dcat-ap-hvd.pattern.report.18>Un site ou un point final (Service de données) qui est listé dans le catalogue. ( dcat:service  )</dcat-ap-hvd.pattern.report.18>
+  <dcat-ap-hvd.pattern.report.19>Un site ou un point final (Service de données) qui est listé dans le catalogue. ( dcat:service  )</dcat-ap-hvd.pattern.report.19>
+  <dcat-ap-hvd.pattern.report.2>Un schéma établi auquel la distribution décrite est conforme. ( dct:conformsTo  )</dcat-ap-hvd.pattern.report.2>
+  <dcat-ap-hvd.pattern.report.20>La législation qui régit la création ou la gestion de la série de données. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.20>
+  <dcat-ap-hvd.pattern.report.21>La législation qui régit la création ou la gestion de la série de données. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.21>
+  <dcat-ap-hvd.pattern.report.22>La catégorie HVD à laquelle appartient ce Dataset. ( dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.report.22>
+  <dcat-ap-hvd.pattern.report.23>La catégorie HVD à laquelle appartient ce Dataset. ( dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.report.23>
+  <dcat-ap-hvd.pattern.report.24>La législation applicable doit être fixée à l'ELI IR de HVD. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.24>
+  <dcat-ap-hvd.pattern.report.25>Un lien vers l'ensemble de données, le service de données ou le catalogue décrit dans l'enregistrement. ( foaf:primaryTopic  )</dcat-ap-hvd.pattern.report.25>
+  <dcat-ap-hvd.pattern.report.26>Un lien vers l'ensemble de données, le service de données ou le catalogue décrit dans l'enregistrement. ( foaf:primaryTopic  )</dcat-ap-hvd.pattern.report.26>
+  <dcat-ap-hvd.pattern.report.27>La législation qui régit la création ou la gestion du Service de données. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.27>
+  <dcat-ap-hvd.pattern.report.28>Cette propriété fait référence à une collecte de données que ce service de données peut distribuer. ( dcat:servesDataset  )</dcat-ap-hvd.pattern.report.28>
+  <dcat-ap-hvd.pattern.report.29>La catégorie HVD à laquelle ce service de données appartient. ( dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.report.29>
+  <dcat-ap-hvd.pattern.report.3>Un service de données qui donne accès à la distribution de l'ensemble de données ( dcat:accessService  )</dcat-ap-hvd.pattern.report.3>
+  <dcat-ap-hvd.pattern.report.30>L'emplacement de la racine ou le critère principal du service (un IRI). ( dcat:endpointURL  )</dcat-ap-hvd.pattern.report.30>
+  <dcat-ap-hvd.pattern.report.31>La catégorie HVD à laquelle ce service de données appartient. ( dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.report.31>
+  <dcat-ap-hvd.pattern.report.32>Une description des services disponibles via les points d'arrivée, y compris leurs opérations, paramètres, etc. ( dcat:endpointDescription  )</dcat-ap-hvd.pattern.report.32>
+  <dcat-ap-hvd.pattern.report.33>Une page qui fournit des informations supplémentaires sur le Service de données. ( foaf:page  )</dcat-ap-hvd.pattern.report.33>
+  <dcat-ap-hvd.pattern.report.34>La législation qui régit la création ou la gestion du Service de données. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.34>
+  <dcat-ap-hvd.pattern.report.35>Coordonnées qui peuvent être utilisées pour envoyer des commentaires sur le Service de données. ( dcat:contactPoint  )</dcat-ap-hvd.pattern.report.35>
+  <dcat-ap-hvd.pattern.report.36>Une déclaration qui précise les droits associés à la distribution. ( dct:rights  )</dcat-ap-hvd.pattern.report.36>
+  <dcat-ap-hvd.pattern.report.37>Une page qui fournit des informations supplémentaires sur le Service de données. ( foaf:page  )</dcat-ap-hvd.pattern.report.37>
+  <dcat-ap-hvd.pattern.report.38>Coordonnées qui peuvent être utilisées pour envoyer des commentaires sur le Service de données. ( dcat:contactPoint  )</dcat-ap-hvd.pattern.report.38>
+  <dcat-ap-hvd.pattern.report.39>Une déclaration qui précise les droits associés à la distribution. ( dct:rights  )</dcat-ap-hvd.pattern.report.39>
+  <dcat-ap-hvd.pattern.report.4>Un schéma établi auquel la distribution décrite est conforme. ( dct:conformsTo  )</dcat-ap-hvd.pattern.report.4>
+  <dcat-ap-hvd.pattern.report.40>Cette propriété fait référence à une collecte de données que ce service de données peut distribuer. ( dcat:servesDataset  )</dcat-ap-hvd.pattern.report.40>
+  <dcat-ap-hvd.pattern.report.41>Licence en vertu de laquelle le service de données est disponible. ( dct:license  )</dcat-ap-hvd.pattern.report.41>
+  <dcat-ap-hvd.pattern.report.42>Une description des services disponibles via les points d'arrivée, y compris leurs opérations, paramètres, etc. ( dcat:endpointDescription  )</dcat-ap-hvd.pattern.report.42>
+  <dcat-ap-hvd.pattern.report.43>L'emplacement de la racine ou le critère principal du service (un IRI). ( dcat:endpointURL  )</dcat-ap-hvd.pattern.report.43>
+  <dcat-ap-hvd.pattern.report.44>Licence en vertu de laquelle le service de données est disponible. ( dct:license  )</dcat-ap-hvd.pattern.report.44>
+  <dcat-ap-hvd.pattern.report.45>La législation applicable doit être fixée à l'ELI IR de HVD. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.45>
+  <dcat-ap-hvd.pattern.report.46>Une adresse e-mail par laquelle vous pouvez contacter. ( vcard:hasEmail  )</dcat-ap-hvd.pattern.report.46>
+  <dcat-ap-hvd.pattern.report.47>Une page Web qui permet soit de prendre contact (c.-à-d. un formulaire Web) ou l'information contient comment entrer en contact. ( vcard:hasURL  )</dcat-ap-hvd.pattern.report.47>
+  <dcat-ap-hvd.pattern.report.48>Une adresse e-mail par laquelle vous pouvez contacter. ( vcard:hasEmail  )</dcat-ap-hvd.pattern.report.48>
+  <dcat-ap-hvd.pattern.report.49>Une page Web qui permet soit de prendre contact (c.-à-d. un formulaire Web) ou l'information contient comment entrer en contact. ( vcard:hasURL  )</dcat-ap-hvd.pattern.report.49>
+  <dcat-ap-hvd.pattern.report.5>Une URL qui donne accès à une distribution de données. ( dcat:accessURL  )</dcat-ap-hvd.pattern.report.5>
+  <dcat-ap-hvd.pattern.report.50>Une règle d'application ou une autre spécification. ( dct:conformsTo  )</dcat-ap-hvd.pattern.report.50>
+  <dcat-ap-hvd.pattern.report.51>La législation qui régit la création ou la gestion de l'ensemble de données. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.51>
+  <dcat-ap-hvd.pattern.report.52>Une distribution disponible pour l'ensemble de données. ( dcat:distribution  )</dcat-ap-hvd.pattern.report.52>
+  <dcat-ap-hvd.pattern.report.53>Une série de données dont l'ensemble fait partie. ( dcat:inSeries  )</dcat-ap-hvd.pattern.report.53>
+  <dcat-ap-hvd.pattern.report.54>La législation qui régit la création ou la gestion de l'ensemble de données. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.54>
+  <dcat-ap-hvd.pattern.report.55>Les informations de contact qui peuvent être utilisées pour envoyer des commentaires sur le Dataset. ( dcat:contactPoint  )</dcat-ap-hvd.pattern.report.55>
+  <dcat-ap-hvd.pattern.report.56>Une série de données dont l'ensemble fait partie. ( dcat:inSeries  )</dcat-ap-hvd.pattern.report.56>
+  <dcat-ap-hvd.pattern.report.57>La catégorie HVD à laquelle appartient ce Dataset. ( dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.report.57>
+  <dcat-ap-hvd.pattern.report.58>La catégorie HVD à laquelle appartient ce Dataset. ( dcat-ap:hvdCategory  )</dcat-ap-hvd.pattern.report.58>
+  <dcat-ap-hvd.pattern.report.59>Les informations de contact qui peuvent être utilisées pour envoyer des commentaires sur le Dataset. ( dcat:contactPoint  )</dcat-ap-hvd.pattern.report.59>
+  <dcat-ap-hvd.pattern.report.6>La loi qui régit la création ou la gestion de la distribution ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.6>
+  <dcat-ap-hvd.pattern.report.60>Une règle d'application ou une autre spécification. ( dct:conformsTo  )</dcat-ap-hvd.pattern.report.60>
+  <dcat-ap-hvd.pattern.report.61>Une distribution disponible pour l'ensemble de données. ( dcat:distribution  )</dcat-ap-hvd.pattern.report.61>
+  <dcat-ap-hvd.pattern.report.62>La législation applicable doit être fixée à l'ELI IR de HVD. ( dcat-ap:applicableLegislation  )</dcat-ap-hvd.pattern.report.62>
+  <dcat-ap-hvd.pattern.report.7>Un service de données qui donne accès à la distribution de l'ensemble de données ( dcat:accessService  )</dcat-ap-hvd.pattern.report.7>
+  <dcat-ap-hvd.pattern.report.8>Une déclaration qui précise les droits associés à la distribution. ( dct:rights  )</dcat-ap-hvd.pattern.report.8>
+  <dcat-ap-hvd.pattern.report.9>Une URL qui donne accès à une distribution de données. ( dcat:accessURL  )</dcat-ap-hvd.pattern.report.9>
+  <dcat-ap-hvd.pattern.title.1>Législation applicable - Législation qui prévoit la création ou la gestion de la distribution (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.lagislation applicable)</dcat-ap-hvd.pattern.title.1>
+  <dcat-ap-hvd.pattern.title.10>Droits - Une déclaration qui précise les droits associés à la distribution. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.rights)</dcat-ap-hvd.pattern.title.10>
+  <dcat-ap-hvd.pattern.title.11>Licence - Licence en vertu de laquelle la distribution est offerte. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.licence)</dcat-ap-hvd.pattern.title.11>
+  <dcat-ap-hvd.pattern.title.12>Licence - Licence en vertu de laquelle la distribution est offerte. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.licence)</dcat-ap-hvd.pattern.title.12>
+  <dcat-ap-hvd.pattern.title.13>La législation applicable doit être fixée à l'ELI IR de HVD. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.législation applicable)</dcat-ap-hvd.pattern.title.13>
+  <dcat-ap-hvd.pattern.title.14>Dataset - Un ensemble de données faisant partie du catalogue. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.dataset)</dcat-ap-hvd.pattern.title.14>
+  <dcat-ap-hvd.pattern.title.15>Dossier - Un dossier de catalogue qui fait partie du catalogue (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.record)</dcat-ap-hvd.pattern.title.15>
+  <dcat-ap-hvd.pattern.title.16>Dossier - Un dossier de catalogue qui fait partie du catalogue (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.record)</dcat-ap-hvd.pattern.title.16>
+  <dcat-ap-hvd.pattern.title.17>Dataset - Un ensemble de données faisant partie du catalogue. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.dataset)</dcat-ap-hvd.pattern.title.17>
+  <dcat-ap-hvd.pattern.title.18>Service - Un site ou un point final (Service de données) qui est énuméré dans le catalogue. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.service)</dcat-ap-hvd.pattern.title.18>
+  <dcat-ap-hvd.pattern.title.19>Service - Un site ou un point final (Service de données) qui est énuméré dans le catalogue. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.service)</dcat-ap-hvd.pattern.title.19>
+  <dcat-ap-hvd.pattern.title.2>Schémas liés - Schéma établi auquel la distribution décrite est conforme. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.linkedschemas)</dcat-ap-hvd.pattern.title.2>
+  <dcat-ap-hvd.pattern.title.20>Législation applicable - Législation qui prévoit la création ou la gestion de la série de données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DatasetSeries.législation applicable)</dcat-ap-hvd.pattern.title.20>
+  <dcat-ap-hvd.pattern.title.21>Législation applicable - Législation qui prévoit la création ou la gestion de la série de données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DatasetSeries.législation applicable)</dcat-ap-hvd.pattern.title.21>
+  <dcat-ap-hvd.pattern.title.22>Catégorie Hvd - La catégorie HVD à laquelle appartient ce Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DatasetSeries.HVDCategory)</dcat-ap-hvd.pattern.title.22>
+  <dcat-ap-hvd.pattern.title.23>Catégorie Hvd - La catégorie HVD à laquelle appartient ce Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DatasetSeries.HVDCategory)</dcat-ap-hvd.pattern.title.23>
+  <dcat-ap-hvd.pattern.title.24>La législation applicable doit être fixée à l'ELI IR de HVD. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DatasetSeries.législation applicable)</dcat-ap-hvd.pattern.title.24>
+  <dcat-ap-hvd.pattern.title.25>Sujet principal - Lien vers l'ensemble de données, le service de données ou le catalogue décrit dans l'enregistrement. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#CatalogueRecord.primarytopic)</dcat-ap-hvd.pattern.title.25>
+  <dcat-ap-hvd.pattern.title.26>Sujet principal - Lien vers l'ensemble de données, le service de données ou le catalogue décrit dans l'enregistrement. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#CatalogueRecord.primarytopic)</dcat-ap-hvd.pattern.title.26>
+  <dcat-ap-hvd.pattern.title.27>Législation applicable - Législation qui prévoit la création ou la gestion du Service de données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.législation applicable)</dcat-ap-hvd.pattern.title.27>
+  <dcat-ap-hvd.pattern.title.28>Servez l'ensemble de données - Cette propriété fait référence à une collecte de données que ce service de données peut distribuer. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.servesdataset)</dcat-ap-hvd.pattern.title.28>
+  <dcat-ap-hvd.pattern.title.29>Catégorie Hvd - La catégorie HVD à laquelle ce service de données appartient. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.HVDcategory)</dcat-ap-hvd.pattern.title.29>
+  <dcat-ap-hvd.pattern.title.3>Service d'accès - Service de données qui donne accès à la distribution de l'ensemble de données (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.accessservice)</dcat-ap-hvd.pattern.title.3>
+  <dcat-ap-hvd.pattern.title.30>Url d'extrémité - L'emplacement de la racine ou le critère principal du service (IRI). (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.endpointURL)</dcat-ap-hvd.pattern.title.30>
+  <dcat-ap-hvd.pattern.title.31>Catégorie Hvd - La catégorie HVD à laquelle ce service de données appartient. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.HVDcategory)</dcat-ap-hvd.pattern.title.31>
+  <dcat-ap-hvd.pattern.title.32>Description du point d'arrivée - Description des services offerts par les points d'arrivée, y compris leurs opérations, paramètres, etc. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.endpointdescription)</dcat-ap-hvd.pattern.title.32>
+  <dcat-ap-hvd.pattern.title.33>Documentation - Une page qui fournit des renseignements supplémentaires sur le Service de données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.documentation)</dcat-ap-hvd.pattern.title.33>
+  <dcat-ap-hvd.pattern.title.34>Législation applicable - Législation qui prévoit la création ou la gestion du Service de données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.législation applicable)</dcat-ap-hvd.pattern.title.34>
+  <dcat-ap-hvd.pattern.title.35>Point de contact - Coordonnées qui peuvent être utilisées pour envoyer des commentaires sur le Service de données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.contactpoint)</dcat-ap-hvd.pattern.title.35>
+  <dcat-ap-hvd.pattern.title.36>Droits - Une déclaration qui précise les droits associés à la distribution. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.rights)</dcat-ap-hvd.pattern.title.36>
+  <dcat-ap-hvd.pattern.title.37>Documentation - Une page qui fournit des renseignements supplémentaires sur le Service de données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.documentation)</dcat-ap-hvd.pattern.title.37>
+  <dcat-ap-hvd.pattern.title.38>Point de contact - Coordonnées qui peuvent être utilisées pour envoyer des commentaires sur le Service de données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.contactpoint)</dcat-ap-hvd.pattern.title.38>
+  <dcat-ap-hvd.pattern.title.39>Droits - Une déclaration qui précise les droits associés à la distribution. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.rights)</dcat-ap-hvd.pattern.title.39>
+  <dcat-ap-hvd.pattern.title.4>Schémas liés - Schéma établi auquel la distribution décrite est conforme. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.linkedschemas)</dcat-ap-hvd.pattern.title.4>
+  <dcat-ap-hvd.pattern.title.40>Servez l'ensemble de données - Cette propriété fait référence à une collecte de données que ce service de données peut distribuer. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.servesdataset)</dcat-ap-hvd.pattern.title.40>
+  <dcat-ap-hvd.pattern.title.41>Licence - Licence en vertu de laquelle le service de données est disponible. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.licence)</dcat-ap-hvd.pattern.title.41>
+  <dcat-ap-hvd.pattern.title.42>Description du point d'arrivée - Description des services offerts par les points d'arrivée, y compris leurs opérations, paramètres, etc. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.endpointdescription)</dcat-ap-hvd.pattern.title.42>
+  <dcat-ap-hvd.pattern.title.43>Url d'extrémité - L'emplacement de la racine ou le critère principal du service (IRI). (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.endpointURL)</dcat-ap-hvd.pattern.title.43>
+  <dcat-ap-hvd.pattern.title.44>Licence - Licence en vertu de laquelle le service de données est disponible. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.licence)</dcat-ap-hvd.pattern.title.44>
+  <dcat-ap-hvd.pattern.title.45>La législation applicable doit être fixée à l'ELI IR de HVD. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.législation applicable)</dcat-ap-hvd.pattern.title.45>
+  <dcat-ap-hvd.pattern.title.46>E-mail - Une adresse e-mail via quel contact peut être fait. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Kind.email)</dcat-ap-hvd.pattern.title.46>
+  <dcat-ap-hvd.pattern.title.47>Page de contact - Une page Web qui permet soit de prendre contact (c.-à-d. un formulaire Web) ou l'information contient comment entrer en contact. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Kind.contactpage)</dcat-ap-hvd.pattern.title.47>
+  <dcat-ap-hvd.pattern.title.48>E-mail - Une adresse e-mail via quel contact peut être fait. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Kind.email)</dcat-ap-hvd.pattern.title.48>
+  <dcat-ap-hvd.pattern.title.49>Page de contact - Une page Web qui permet soit de prendre contact (c.-à-d. un formulaire Web) ou l'information contient comment entrer en contact. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Kind.contactpage)</dcat-ap-hvd.pattern.title.49>
+  <dcat-ap-hvd.pattern.title.5>Accès url - URL qui donne accès à une distribution de données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.accessURL)</dcat-ap-hvd.pattern.title.5>
+  <dcat-ap-hvd.pattern.title.50>Conforme à - Une règle d'exécution ou une autre spécification. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.conformsto)</dcat-ap-hvd.pattern.title.50>
+  <dcat-ap-hvd.pattern.title.51>Législation applicable - Législation qui prévoit la création ou la gestion de l'ensemble de données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.lagislation applicable)</dcat-ap-hvd.pattern.title.51>
+  <dcat-ap-hvd.pattern.title.52>Distribution des données - Une distribution disponible pour l'ensemble des données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.datasetdistribution)</dcat-ap-hvd.pattern.title.52>
+  <dcat-ap-hvd.pattern.title.53>En série - série de données dont l'ensemble fait partie. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.inseries)</dcat-ap-hvd.pattern.title.53>
+  <dcat-ap-hvd.pattern.title.54>Législation applicable - Législation qui prévoit la création ou la gestion de l'ensemble de données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.lagislation applicable)</dcat-ap-hvd.pattern.title.54>
+  <dcat-ap-hvd.pattern.title.55>Point de contact - Coordonnées qui peuvent être utilisées pour envoyer des commentaires sur l'ensemble de données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.contactpoint)</dcat-ap-hvd.pattern.title.55>
+  <dcat-ap-hvd.pattern.title.56>En série - série de données dont l'ensemble fait partie. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.inseries)</dcat-ap-hvd.pattern.title.56>
+  <dcat-ap-hvd.pattern.title.57>Catégorie Hvd - La catégorie HVD à laquelle appartient ce Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.HVDCategory)</dcat-ap-hvd.pattern.title.57>
+  <dcat-ap-hvd.pattern.title.58>Catégorie Hvd - La catégorie HVD à laquelle appartient ce Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.HVDCategory)</dcat-ap-hvd.pattern.title.58>
+  <dcat-ap-hvd.pattern.title.59>Point de contact - Coordonnées qui peuvent être utilisées pour envoyer des commentaires sur l'ensemble de données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.contactpoint)</dcat-ap-hvd.pattern.title.59>
+  <dcat-ap-hvd.pattern.title.6>Législation applicable - Législation qui prévoit la création ou la gestion de la distribution (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.lagislation applicable)</dcat-ap-hvd.pattern.title.6>
+  <dcat-ap-hvd.pattern.title.60>Conforme à - Une règle d'exécution ou une autre spécification. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.conformsto)</dcat-ap-hvd.pattern.title.60>
+  <dcat-ap-hvd.pattern.title.61>Distribution des données - Une distribution disponible pour l'ensemble des données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.datasetdistribution)</dcat-ap-hvd.pattern.title.61>
+  <dcat-ap-hvd.pattern.title.62>La législation applicable doit être fixée à l'ELI IR de HVD. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.lagislation applicable)</dcat-ap-hvd.pattern.title.62>
+  <dcat-ap-hvd.pattern.title.7>Service d'accès - Service de données qui donne accès à la distribution de l'ensemble de données (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.accessservice)</dcat-ap-hvd.pattern.title.7>
+  <dcat-ap-hvd.pattern.title.8>Droits - Une déclaration qui précise les droits associés à la distribution. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.rights)</dcat-ap-hvd.pattern.title.8>
+  <dcat-ap-hvd.pattern.title.9>Accès url - URL qui donne accès à une distribution de données. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.accessURL)</dcat-ap-hvd.pattern.title.9>
 </strings>

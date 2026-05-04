@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <schematron.title>DCAT-AP-Vlaanderen - Empfohlen</schematron.title>
+  <dcat-ap-vl-rec.pattern.assert.1>Das   dcat:Resource  hat kein data.gov.be Theme</dcat-ap-vl-rec.pattern.assert.1>
+  <dcat-ap-vl-rec.pattern.report.1>Die   dcat:Resource   haben ein data.gov.be Theme</dcat-ap-vl-rec.pattern.report.1>
+  <dcat-ap-vl-rec.pattern.title.1>Mindestens ein Thema aus den Daten.gov.be vocabulary ist erforderlich</dcat-ap-vl-rec.pattern.title.1>
 </strings>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <schematron.title>Mobility (v3.0.0)</schematron.title>
+  <mobility-300.pattern.assert.1>L'URL d'accès est obligatoire. Exactement une URL d'accès doit être fournie en tant qu'IRI ( dcat:accessURL  )</mobility-300.pattern.assert.1>
+  <mobility-300.pattern.assert.10>L'éditeur est obligatoire. Exactement un éditeur doit être fourni ( dct:publisher  )</mobility-300.pattern.assert.10>
+  <mobility-300.pattern.assert.11>Le titre est obligatoire, doit avoir une étiquette de langue européenne valide, ne peut pas être vide, et chaque langue ne peut apparaître qu'une seule fois ( dct:title  )</mobility-300.pattern.assert.11>
+  <mobility-300.pattern.assert.12>Les conditions d'accès et d'utilisation sont obligatoires. Doit provenir du vocabulaire contrôlé de mobilitéDCAT-AP ( dct:type  )</mobility-300.pattern.assert.12>
+  <mobility-300.pattern.assert.13>La page d'accueil est obligatoire et il doit y en avoir exactement une ( foaf:homepage  )</mobility-300.pattern.assert.13>
+  <mobility-300.pattern.assert.14>Le titre est obligatoire, doit avoir une étiquette de langue européenne valide (BCP47), ne peut pas être vide, et chaque langue ne peut apparaître qu'une seule fois ( dct:title  )</mobility-300.pattern.assert.14>
+  <mobility-300.pattern.assert.15>La description est obligatoire, doit avoir une étiquette de langue européenne valide (BCP47), ne peut pas être vide, et chaque langue ne peut apparaître qu'une seule fois ( dct:description  )</mobility-300.pattern.assert.15>
+  <mobility-300.pattern.assert.16>Le titre est obligatoire. Au moins un titre doit être fourni comme titre littéral (  dct:title  )</mobility-300.pattern.assert.16>
+  <mobility-300.pattern.assert.17>La description est obligatoire, doit avoir une balise de langue européenne valide, ne peut pas être vide, et chaque langue ne peut apparaître qu'une seule fois ( dct:description  )</mobility-300.pattern.assert.17>
+  <mobility-300.pattern.assert.18>La distribution est obligatoire. Au moins une distribution doit être fournie ( dcat:distribution  )</mobility-300.pattern.assert.18>
+  <mobility-300.pattern.assert.19>La fréquence est obligatoire. Une valeur exacte du vocabulaire de fréquence de l'UE (http://publications.europa.eu/resource/authority/ frequency/*) ou du vocabulaire de fréquence de mise à jour DCAT-AP doit être fournie ( dct:accrualPeriodicity  )</mobility-300.pattern.assert.19>
+  <mobility-300.pattern.assert.2>La norme sur les données de mobilité est obligatoire. Doit être soit une URI de https://w3id.org/mobilitydcat-ap/mobility-data-standard/ vocabulaire OU une instance   mobilitydcatap:MobilityDataStandard    ( mobilitydcatap:mobilityDataStandard  )</mobility-300.pattern.assert.2>
+  <mobility-300.pattern.assert.20>Le thème de la mobilité est obligatoire. Au moins un thème du vocabulaire contrôlé (https://w3id.org/mobilitydcat-ap/mobility-theme/*) doit être fourni ( mobilitydcatap:mobilityTheme  )</mobility-300.pattern.assert.20>
+  <mobility-300.pattern.assert.21>La couverture spatiale est obligatoire. Au moins une zone géographique doit être fournie ( dct:spatial  )</mobility-300.pattern.assert.21>
+  <mobility-300.pattern.assert.22>Le titre est obligatoire, doit avoir une étiquette de langue européenne valide (p. ex. @en), ne peut pas être vide, et chaque langue ne peut apparaître qu'une seule fois ( dct:title  )</mobility-300.pattern.assert.22>
+  <mobility-300.pattern.assert.23>L'éditeur est obligatoire. Exactement un éditeur doit être fourni ( dct:publisher  )</mobility-300.pattern.assert.23>
+  <mobility-300.pattern.assert.3>Le format est obligatoire. Exactement un format à partir de http://publications.europa.eu/resource/authority/file-type/* doit être fourni ( dct:format  )</mobility-300.pattern.assert.3>
+  <mobility-300.pattern.assert.4>Les droits sont obligatoires. Exactement une déclaration de droits doit être fournie ( dct:rights  )</mobility-300.pattern.assert.4>
+  <mobility-300.pattern.assert.5>Le courriel est obligatoire. Exactement un courriel doit être fourni comme IRI (mailto: scheme) (  vcard:hasEmail  )</mobility-300.pattern.assert.5>
+  <mobility-300.pattern.assert.6>Le nom est obligatoire. Exactement un nom doit être fourni comme un nom littéral (  vcard:fn  )</mobility-300.pattern.assert.6>
+  <mobility-300.pattern.assert.7>L'étiquette préférée est obligatoire. Au moins une étiquette préférée doit être fournie sous forme littérale (  skos:prefLabel  )</mobility-300.pattern.assert.7>
+  <mobility-300.pattern.assert.8>Le schéma de catégorie doit être un noeud blanc ou IRI et peut apparaître au plus une fois (  skos:inScheme  )</mobility-300.pattern.assert.8>
+  <mobility-300.pattern.assert.9>La description est obligatoire, doit avoir une balise de langue européenne valide, ne peut pas être vide, et chaque langue ne peut apparaître qu'une seule fois ( dct:description  )</mobility-300.pattern.assert.9>
+  <mobility-300.pattern.report.1>L'URL d'accès est obligatoire. Exactement une URL d'accès doit être fournie en tant qu'IRI ( dcat:accessURL  )</mobility-300.pattern.report.1>
+  <mobility-300.pattern.report.10>L'éditeur est obligatoire. Exactement un éditeur doit être fourni ( dct:publisher  )</mobility-300.pattern.report.10>
+  <mobility-300.pattern.report.11>Le titre est obligatoire, doit avoir une étiquette de langue européenne valide, ne peut pas être vide, et chaque langue ne peut apparaître qu'une seule fois ( dct:title  )</mobility-300.pattern.report.11>
+  <mobility-300.pattern.report.12>Les conditions d'accès et d'utilisation sont obligatoires. Doit provenir du vocabulaire contrôlé de mobilitéDCAT-AP ( dct:type  )</mobility-300.pattern.report.12>
+  <mobility-300.pattern.report.13>La page d'accueil est obligatoire et il doit y en avoir exactement une ( foaf:homepage  )</mobility-300.pattern.report.13>
+  <mobility-300.pattern.report.14>Le titre est obligatoire, doit avoir une étiquette de langue européenne valide (BCP47), ne peut pas être vide, et chaque langue ne peut apparaître qu'une seule fois ( dct:title  )</mobility-300.pattern.report.14>
+  <mobility-300.pattern.report.15>La description est obligatoire, doit avoir une étiquette de langue européenne valide (BCP47), ne peut pas être vide, et chaque langue ne peut apparaître qu'une seule fois ( dct:description  )</mobility-300.pattern.report.15>
+  <mobility-300.pattern.report.16>Le titre est obligatoire. Au moins un titre doit être fourni comme titre littéral (  dct:title  )</mobility-300.pattern.report.16>
+  <mobility-300.pattern.report.17>La description est obligatoire, doit avoir une balise de langue européenne valide, ne peut pas être vide, et chaque langue ne peut apparaître qu'une seule fois ( dct:description  )</mobility-300.pattern.report.17>
+  <mobility-300.pattern.report.18>La distribution est obligatoire. Au moins une distribution doit être fournie ( dcat:distribution  )</mobility-300.pattern.report.18>
+  <mobility-300.pattern.report.19>La fréquence est obligatoire. Une valeur exacte du vocabulaire de fréquence de l'UE (http://publications.europa.eu/resource/authority/ frequency/*) ou du vocabulaire de fréquence de mise à jour DCAT-AP doit être fournie ( dct:accrualPeriodicity  )</mobility-300.pattern.report.19>
+  <mobility-300.pattern.report.2>La norme sur les données de mobilité est obligatoire. Doit être soit une URI de https://w3id.org/mobilitydcat-ap/mobility-data-standard/ vocabulaire OU une instance   mobilitydcatap:MobilityDataStandard    ( mobilitydcatap:mobilityDataStandard  )</mobility-300.pattern.report.2>
+  <mobility-300.pattern.report.20>Le thème de la mobilité est obligatoire. Au moins un thème du vocabulaire contrôlé (https://w3id.org/mobilitydcat-ap/mobility-theme/*) doit être fourni ( mobilitydcatap:mobilityTheme  )</mobility-300.pattern.report.20>
+  <mobility-300.pattern.report.21>La couverture spatiale est obligatoire. Au moins une zone géographique doit être fournie ( dct:spatial  )</mobility-300.pattern.report.21>
+  <mobility-300.pattern.report.22>Le titre est obligatoire, doit avoir une étiquette de langue européenne valide (p. ex. @en), ne peut pas être vide, et chaque langue ne peut apparaître qu'une seule fois ( dct:title  )</mobility-300.pattern.report.22>
+  <mobility-300.pattern.report.23>L'éditeur est obligatoire. Exactement un éditeur doit être fourni ( dct:publisher  )</mobility-300.pattern.report.23>
+  <mobility-300.pattern.report.3>Le format est obligatoire. Exactement un format à partir de http://publications.europa.eu/resource/authority/file-type/* doit être fourni ( dct:format  )</mobility-300.pattern.report.3>
+  <mobility-300.pattern.report.4>Les droits sont obligatoires. Exactement une déclaration de droits doit être fournie ( dct:rights  )</mobility-300.pattern.report.4>
+  <mobility-300.pattern.report.5>Le courriel est obligatoire. Exactement un courriel doit être fourni comme IRI (mailto: scheme) (  vcard:hasEmail  )</mobility-300.pattern.report.5>
+  <mobility-300.pattern.report.6>Le nom est obligatoire. Exactement un nom doit être fourni comme un nom littéral (  vcard:fn  )</mobility-300.pattern.report.6>
+  <mobility-300.pattern.report.7>L'étiquette préférée est obligatoire. Au moins une étiquette préférée doit être fournie sous forme littérale (  skos:prefLabel  )</mobility-300.pattern.report.7>
+  <mobility-300.pattern.report.8>Le schéma de catégorie doit être un noeud blanc ou IRI et peut apparaître au plus une fois (  skos:inScheme  )</mobility-300.pattern.report.8>
+  <mobility-300.pattern.report.9>La description est obligatoire, doit avoir une balise de langue européenne valide, ne peut pas être vide, et chaque langue ne peut apparaître qu'une seule fois ( dct:description  )</mobility-300.pattern.report.9>
+  <mobility-300.pattern.title.1>Accès url - URL qui donne accès à une distribution de données.</mobility-300.pattern.title.1>
+  <mobility-300.pattern.title.10>Éditeur</mobility-300.pattern.title.10>
+  <mobility-300.pattern.title.11>Titre</mobility-300.pattern.title.11>
+  <mobility-300.pattern.title.12>Conditions d'accès et d'utilisation</mobility-300.pattern.title.12>
+  <mobility-300.pattern.title.13>Page d'accueil</mobility-300.pattern.title.13>
+  <mobility-300.pattern.title.14>Titre - Nom donné au catalogue. Doit avoir une étiquette de langue européenne valide, ne peut pas être vide, chaque langue ne peut apparaître qu'une seule fois (§8).</mobility-300.pattern.title.14>
+  <mobility-300.pattern.title.15>Description - Un compte en texte libre du catalogue. Doit avoir une étiquette de langue européenne valide, ne peut pas être vide, chaque langue ne peut apparaître qu'une seule fois (§8).</mobility-300.pattern.title.15>
+  <mobility-300.pattern.title.16>Titre - Nom du schéma de catégorie. Peut être répété pour différentes versions du nom.</mobility-300.pattern.title.16>
+  <mobility-300.pattern.title.17>Désignation des marchandises Cette propriété contient plus d'informations sur l'ensemble de données comme une brève description en texte libre. Cette propriété peut être répétée pour les versions en langage parallèle de la description (§8).</mobility-300.pattern.title.17>
+  <mobility-300.pattern.title.18>Distribution de données - Cette propriété relie l'ensemble de données à une distribution disponible. Dans mobilityDCAT-AP, il est obligatoire que chaque ensemble de données ait au moins une distribution.</mobility-300.pattern.title.18>
+  <mobility-300.pattern.title.19>Fréquence Cette propriété décrit à quelle fréquence le contenu livré est mis à jour. L'obligation de cette propriété est portée à «obligatoire» en matière de mobilitéDCAT-AP (§4.10.1).</mobility-300.pattern.title.19>
+  <mobility-300.pattern.title.2>Standard de données de mobilité - La norme de données de mobilité appliquée pour le contenu livré (§4.18).</mobility-300.pattern.title.2>
+  <mobility-300.pattern.title.20>Thème de mobilité - Cette propriété fait référence au thème de mobilité (c.-à-d. un sujet, une catégorie ou un type précis) du contenu livré. Un ensemble de données peut être associé à plusieurs thèmes (§4.10.1).</mobility-300.pattern.title.20>
+  <mobility-300.pattern.title.21>Couverture géographique Cette propriété fait référence à une région géographique couverte par le contenu livré. L'obligation de cette propriété est portée à «obligatoire» en matière de mobilitéDCAT-AP (§4.10.1).</mobility-300.pattern.title.21>
+  <mobility-300.pattern.title.22>Titre Cette propriété contient un nom donné à l'ensemble de données dans un terme générique. Le nom doit être une étiquette significative, unique et sans ambiguïté. Cette propriété peut être répétée pour les versions en langage parallèle (§8).</mobility-300.pattern.title.22>
+  <mobility-300.pattern.title.23>Éditeur - Ce bien fait référence à une entité (société et personne) qui publie l'ensemble de données correspondant. L'obligation de cette propriété est portée à «obligatoire» en matière de mobilitéDCAT-AP (§4.10.1).</mobility-300.pattern.title.23>
+  <mobility-300.pattern.title.3>Format - La syntaxe technique du contenu livré. Rendre obligatoire la mobilitéDCAT-AP (§4.11.1). Doit provenir du vocabulaire UE Type de fichier (§5.2).</mobility-300.pattern.title.3>
+  <mobility-300.pattern.title.4>Droits - Déclaration sur les droits de propriété intellectuelle. Rendre obligatoire la mobilitéDCAT-AP (§4.11.1).</mobility-300.pattern.title.4>
+  <mobility-300.pattern.title.5>Courriel</mobility-300.pattern.title.5>
+  <mobility-300.pattern.title.6>Dénomination</mobility-300.pattern.title.6>
+  <mobility-300.pattern.title.7>Étiquette préférée - Étiquette préférée de la catégorie. Cette propriété peut être répétée pour les versions en langage parallèle de l'étiquette.</mobility-300.pattern.title.7>
+  <mobility-300.pattern.title.8>Régime de catégorie - Régime de catégorie auquel appartient la catégorie. Cette propriété est analogue à un ajout de GeoDCAT-AP v2.0.0.</mobility-300.pattern.title.8>
+  <mobility-300.pattern.title.9>Désignation des marchandises</mobility-300.pattern.title.9>
+</strings>

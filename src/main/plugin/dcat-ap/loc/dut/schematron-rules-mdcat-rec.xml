@@ -1,4 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <schematron.title>Metadata DCAT - Aanbevolen</schematron.title>
+  <mdcat-rec.pattern.assert.1>Het bestandsformaat waarin de data wordt gedeeld. (dct:format)</mdcat-rec.pattern.assert.1>
+  <mdcat-rec.pattern.assert.10>De toegankelijkheid voor de dataset. (dct:accessRights)</mdcat-rec.pattern.assert.10>
+  <mdcat-rec.pattern.assert.11>Het voorstellingsvorm van de afbeelding (dcat:mediatype)</mdcat-rec.pattern.assert.11>
+  <mdcat-rec.pattern.assert.2>Een protocol waaraan de dataservice voldoet. (dct:conformsTo)</mdcat-rec.pattern.assert.2>
+  <mdcat-rec.pattern.assert.3>De levensfase waarin de dataservice zich bevindt. (mdcat:levensfase)</mdcat-rec.pattern.assert.3>
+  <mdcat-rec.pattern.assert.4>De ontwikkelingstoestand waarin de dataservice is gedeployed. (mdcat:ontwikkelingstoestand)</mdcat-rec.pattern.assert.4>
+  <mdcat-rec.pattern.assert.5>Een aanduiding van op welke basis de catalogusresource beschikbaar is. (mdcat:statuut)</mdcat-rec.pattern.assert.5>
+  <mdcat-rec.pattern.assert.6>De hoofdcategorie waartoe de dataservice behoort. (dcat:theme)</mdcat-rec.pattern.assert.6>
+  <mdcat-rec.pattern.assert.7>De toegankelijkheid voor de dataservice. (dct:accessRights)</mdcat-rec.pattern.assert.7>
+  <mdcat-rec.pattern.assert.8>Een aanduiding van op welke basis de catalogusresource beschikbaar is. (mdcat:statuut)</mdcat-rec.pattern.assert.8>
+  <mdcat-rec.pattern.assert.9>De hoofdcategorie waartoe de dataset behoort. (dcat:theme)</mdcat-rec.pattern.assert.9>
+  <mdcat-rec.pattern.report.1>Het bestandsformaat waarin de data wordt gedeeld. (dct:format)</mdcat-rec.pattern.report.1>
+  <mdcat-rec.pattern.report.10>De toegankelijkheid voor de dataset. (dct:accessRights)</mdcat-rec.pattern.report.10>
+  <mdcat-rec.pattern.report.11>Het voorstellingsvorm van de afbeelding (dcat:mediatype)</mdcat-rec.pattern.report.11>
+  <mdcat-rec.pattern.report.2>Een protocol waaraan de dataservice voldoet. (dct:conformsTo)</mdcat-rec.pattern.report.2>
+  <mdcat-rec.pattern.report.3>De levensfase waarin de dataservice zich bevindt. (mdcat:levensfase)</mdcat-rec.pattern.report.3>
+  <mdcat-rec.pattern.report.4>De ontwikkelingstoestand waarin de dataservice is gedeployed. (mdcat:ontwikkelingstoestand)</mdcat-rec.pattern.report.4>
+  <mdcat-rec.pattern.report.5>Een aanduiding van op welke basis de catalogusresource beschikbaar is. (mdcat:statuut)</mdcat-rec.pattern.report.5>
+  <mdcat-rec.pattern.report.6>De hoofdcategorie waartoe de dataservice behoort. (dcat:theme)</mdcat-rec.pattern.report.6>
+  <mdcat-rec.pattern.report.7>De toegankelijkheid voor de dataservice. (dct:accessRights)</mdcat-rec.pattern.report.7>
+  <mdcat-rec.pattern.report.8>Een aanduiding van op welke basis de catalogusresource beschikbaar is. (mdcat:statuut)</mdcat-rec.pattern.report.8>
+  <mdcat-rec.pattern.report.9>De hoofdcategorie waartoe de dataset behoort. (dcat:theme)</mdcat-rec.pattern.report.9>
+  <mdcat-rec.pattern.title.1>Formaat - Het standformulier waarin de data wordt weergegeven. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Distributie.formaat)</mdcat-rec.pattern.title.1>
+  <mdcat-rec.pattern.title.10>Toegankelijkheid - De toegang voor de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.toeganbaarheid)</mdcat-rec.pattern.title.10>
+  <mdcat-rec.pattern.title.11>Mediatype - Het voorstelvorm van de afbeelding (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Voorbeeldweergave.mediatype)</mdcat-rec.pattern.title.11>
+  <mdcat-rec.pattern.title.2>Conform aan protocol - Een protocol waar de dataservice voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.conformaanprotocol)</mdcat-rec.pattern.title.2>
+  <mdcat-rec.pattern.title.3>Levensfase - De levensfase waarin de dataservice zich bevindt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.levensfase)</mdcat-rec.pattern.title.3>
+  <mdcat-rec.pattern.title.4>Ontwikkeling en ontwikkeling van de gegevensdienst. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.ontontwikkelingswerk)</mdcat-rec.pattern.title.4>
+  <mdcat-rec.pattern.title.5>Statuut - Een overzicht van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.status)</mdcat-rec.pattern.title.5>
+  <mdcat-rec.pattern.title.6>Thema - De hoofdcategorie waartoe de dataservice behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.thema)</mdcat-rec.pattern.title.6>
+  <mdcat-rec.pattern.title.7>Toegankelijkheid - De toegang voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataservice.toeganbaarheid)</mdcat-rec.pattern.title.7>
+  <mdcat-rec.pattern.title.8>Statuut - Een overzicht van op welke basis de catalogusresource beschikbaar is. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.statuut)</mdcat-rec.pattern.title.8>
+  <mdcat-rec.pattern.title.9>Thema - De hoofdcategorie waartoe de dataset behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendstandaard/2022-04-21#Dataset.thema)</mdcat-rec.pattern.title.9>
 </strings>

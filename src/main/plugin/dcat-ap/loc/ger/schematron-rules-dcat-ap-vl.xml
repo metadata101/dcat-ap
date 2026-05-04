@@ -1,4 +1,379 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <schematron.title>DCAT-AP-Vlaanderen - Obligatorisch</schematron.title>
+  <dcat-ap-vl.pattern.assert.1> vcard:hasEmail  Eigenschaft ist kein URI mit dem Mailto: Protokoll.</dcat-ap-vl.pattern.assert.1>
+  <dcat-ap-vl.pattern.assert.10>Referenzressource muss vom Typ   dct:LicenseDocument (  dct:license   ) sein</dcat-ap-vl.pattern.assert.10>
+  <dcat-ap-vl.pattern.assert.100>Referenzressource muss vom Typ   skos:Concept (  dcat:theme   ) sein</dcat-ap-vl.pattern.assert.100>
+  <dcat-ap-vl.pattern.assert.101>Referenzressource muss vom Typ   dct:LicenseDocument (  dct:license   ) sein</dcat-ap-vl.pattern.assert.101>
+  <dcat-ap-vl.pattern.assert.102>Wert muss buchstäblich sein (  dct:created  )</dcat-ap-vl.pattern.assert.102>
+  <dcat-ap-vl.pattern.assert.103>Wert muss buchstäblich sein (  dct:modified  )</dcat-ap-vl.pattern.assert.103>
+  <dcat-ap-vl.pattern.assert.104>Wert muss buchstäblich sein (  dct:issued  )</dcat-ap-vl.pattern.assert.104>
+  <dcat-ap-vl.pattern.assert.105>Referenzressource muss vom Typ   dcat:Dataset (  dcat:servesdataset   ) sein</dcat-ap-vl.pattern.assert.105>
+  <dcat-ap-vl.pattern.assert.106>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-vl.pattern.assert.106>
+  <dcat-ap-vl.pattern.assert.107>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-vl.pattern.assert.107>
+  <dcat-ap-vl.pattern.assert.108>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-vl.pattern.assert.108>
+  <dcat-ap-vl.pattern.assert.109>Referenzressource muss vom Typ   vcard:Organization (  dcat:contactPoint   ) sein</dcat-ap-vl.pattern.assert.109>
+  <dcat-ap-vl.pattern.assert.11>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</dcat-ap-vl.pattern.assert.11>
+  <dcat-ap-vl.pattern.assert.110>Referenzressource muss vom Typ   eli:LegalResource (  dcat-ap:applicableLegislation   ) sein</dcat-ap-vl.pattern.assert.110>
+  <dcat-ap-vl.pattern.assert.111>Referenzressource muss vom Typ   dct:Frequency (  dct:accrualPeriodicity   ) sein</dcat-ap-vl.pattern.assert.111>
+  <dcat-ap-vl.pattern.assert.112>Wert muss buchstäblich sein (  dct:issued  )</dcat-ap-vl.pattern.assert.112>
+  <dcat-ap-vl.pattern.assert.113>Wert muss buchstäblich sein (  dct:modified  )</dcat-ap-vl.pattern.assert.113>
+  <dcat-ap-vl.pattern.assert.114>Referenzressource muss vom Typ   dct:Location (  dct:spatial   ) sein</dcat-ap-vl.pattern.assert.114>
+  <dcat-ap-vl.pattern.assert.115>Referenzressource muss vom Typ   dct:PeriodOfTime (  dct:temporal   ) sein</dcat-ap-vl.pattern.assert.115>
+  <dcat-ap-vl.pattern.assert.116>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</dcat-ap-vl.pattern.assert.116>
+  <dcat-ap-vl.pattern.assert.117>Referenzressource muss vom Typ   foaf:Agent (  dct:publisher   ) sein</dcat-ap-vl.pattern.assert.117>
+  <dcat-ap-vl.pattern.assert.118>Referenzressource muss vom Typ   rdfs:Resource (  vcard:hasEmail   ) sein</dcat-ap-vl.pattern.assert.118>
+  <dcat-ap-vl.pattern.assert.119>Referenzressource muss vom Typ   rdfs:Resource (  foaf:page   ) sein</dcat-ap-vl.pattern.assert.119>
+  <dcat-ap-vl.pattern.assert.12>Referenzressource muss vom Typ   rdfs:Resource (  dcat:downloadURL   ) sein</dcat-ap-vl.pattern.assert.12>
+  <dcat-ap-vl.pattern.assert.120>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</dcat-ap-vl.pattern.assert.120>
+  <dcat-ap-vl.pattern.assert.121>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</dcat-ap-vl.pattern.assert.121>
+  <dcat-ap-vl.pattern.assert.122>Referenzressource muss vom Typ   rdfs:Resource (  dcat:downloadURL   ) sein</dcat-ap-vl.pattern.assert.122>
+  <dcat-ap-vl.pattern.assert.123>Referenzressource muss vom Typ   skos:Concept (  dcat:mediatype   ) sein</dcat-ap-vl.pattern.assert.123>
+  <dcat-ap-vl.pattern.assert.13>Referenzressource muss vom Typ   rdfs:Resource (  dcat:accessURL   ) sein</dcat-ap-vl.pattern.assert.13>
+  <dcat-ap-vl.pattern.assert.14>Referenzressource muss vom Typ   dcat:DataService (  dcat:accessService   ) sein</dcat-ap-vl.pattern.assert.14>
+  <dcat-ap-vl.pattern.assert.15>Referenzressource muss vom Typ   foaf:Agent (  geodcat:distributor   ) sein</dcat-ap-vl.pattern.assert.15>
+  <dcat-ap-vl.pattern.assert.16>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-vl.pattern.assert.16>
+  <dcat-ap-vl.pattern.assert.17>Wert muss gültig sein   xs:dateTime (  dct:issued   )</dcat-ap-vl.pattern.assert.17>
+  <dcat-ap-vl.pattern.assert.18>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</dcat-ap-vl.pattern.assert.18>
+  <dcat-ap-vl.pattern.assert.19>Wert muss gültig sein   xs:dateTime (  dct:modified   )</dcat-ap-vl.pattern.assert.19>
+  <dcat-ap-vl.pattern.assert.2>Die   dcat:Catalog   hat keine   dct:license   Eigenschaft mit dem Wert 'https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0'.</dcat-ap-vl.pattern.assert.2>
+  <dcat-ap-vl.pattern.assert.20>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingpageVoorBronMetadata   ) sein</dcat-ap-vl.pattern.assert.20>
+  <dcat-ap-vl.pattern.assert.21>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</dcat-ap-vl.pattern.assert.21>
+  <dcat-ap-vl.pattern.assert.22>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</dcat-ap-vl.pattern.assert.22>
+  <dcat-ap-vl.pattern.assert.23>Referenzressource muss vom Typ   rdfs:Resource (  dct:source   ) sein</dcat-ap-vl.pattern.assert.23>
+  <dcat-ap-vl.pattern.assert.24>Wert muss mindestens eine der erlaubten Alternativen erfüllen (  foaf:primaryTopic  )</dcat-ap-vl.pattern.assert.24>
+  <dcat-ap-vl.pattern.assert.25>Wert muss ein nicht leeres Literal sein (  dcat:version  )</dcat-ap-vl.pattern.assert.25>
+  <dcat-ap-vl.pattern.assert.26>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</dcat-ap-vl.pattern.assert.26>
+  <dcat-ap-vl.pattern.assert.27>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dcat:keyword  )</dcat-ap-vl.pattern.assert.27>
+  <dcat-ap-vl.pattern.assert.28>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</dcat-ap-vl.pattern.assert.28>
+  <dcat-ap-vl.pattern.assert.29>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-vl.pattern.assert.29>
+  <dcat-ap-vl.pattern.assert.3>Der   dcat:Resource   hat kein Stichwort.</dcat-ap-vl.pattern.assert.3>
+  <dcat-ap-vl.pattern.assert.30>Referenzressource muss vom Typ   skos:Concept (  dct:accessRights   ) sein</dcat-ap-vl.pattern.assert.30>
+  <dcat-ap-vl.pattern.assert.31>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</dcat-ap-vl.pattern.assert.31>
+  <dcat-ap-vl.pattern.assert.32>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</dcat-ap-vl.pattern.assert.32>
+  <dcat-ap-vl.pattern.assert.33>Referenzressource muss vom Typ   dcat:Distribution (  adms:sample   ) sein</dcat-ap-vl.pattern.assert.33>
+  <dcat-ap-vl.pattern.assert.34>Referenzressource muss vom Typ   skos:Concept (  mdcat:statuut   ) sein</dcat-ap-vl.pattern.assert.34>
+  <dcat-ap-vl.pattern.assert.35>Referenzressource muss vom Typ   skos:Concept (  dcat:theme   ) sein</dcat-ap-vl.pattern.assert.35>
+  <dcat-ap-vl.pattern.assert.36>Referenzressource muss vom Typ   rdfs:Resource (  dcat:landingPage   ) sein</dcat-ap-vl.pattern.assert.36>
+  <dcat-ap-vl.pattern.assert.37>Wert muss buchstäblich sein (  dct:issued  )</dcat-ap-vl.pattern.assert.37>
+  <dcat-ap-vl.pattern.assert.38>Referenzressource muss vom Typ   dct:ProvenanceStatement (  dct:provenance   ) sein</dcat-ap-vl.pattern.assert.38>
+  <dcat-ap-vl.pattern.assert.39>Referenzressource muss vom Typ   vcard:Organization (  dcat:contactPoint   ) sein</dcat-ap-vl.pattern.assert.39>
+  <dcat-ap-vl.pattern.assert.4>Eine   vcard:Organization   hat keine   vcard:hasEmail   oder eine   vcard:hasURL   Eigenschaft.</dcat-ap-vl.pattern.assert.4>
+  <dcat-ap-vl.pattern.assert.40>Wert muss buchstäblich sein (  dct:modified  )</dcat-ap-vl.pattern.assert.40>
+  <dcat-ap-vl.pattern.assert.41>Wert muss buchstäblich sein (  dct:created  )</dcat-ap-vl.pattern.assert.41>
+  <dcat-ap-vl.pattern.assert.42>Referenzressource muss vom Typ   dct:Location (  dct:spatial   ) sein</dcat-ap-vl.pattern.assert.42>
+  <dcat-ap-vl.pattern.assert.43>Referenzressource muss vom Typ   dcat:Distribution (  dcat:distribution   ) sein</dcat-ap-vl.pattern.assert.43>
+  <dcat-ap-vl.pattern.assert.44>Referenzressource muss vom Typ   foaf:Agent (  dct:rightsHolder   ) sein</dcat-ap-vl.pattern.assert.44>
+  <dcat-ap-vl.pattern.assert.45>Referenzressource muss vom Typ   dcat:DatasetSeries (  dcat:inSeries   ) sein</dcat-ap-vl.pattern.assert.45>
+  <dcat-ap-vl.pattern.assert.46>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  foaf:name  )</dcat-ap-vl.pattern.assert.46>
+  <dcat-ap-vl.pattern.assert.47>Wert muss buchstäblich sein (  dcat:endDate  )</dcat-ap-vl.pattern.assert.47>
+  <dcat-ap-vl.pattern.assert.48>Wert muss buchstäblich sein (  dcat:startDate  )</dcat-ap-vl.pattern.assert.48>
+  <dcat-ap-vl.pattern.assert.49>Referenzressource muss vom Typ   time:Instant (  time:hasBeginning   ) sein</dcat-ap-vl.pattern.assert.49>
+  <dcat-ap-vl.pattern.assert.5>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-vl.pattern.assert.5>
+  <dcat-ap-vl.pattern.assert.50>Referenzressource muss vom Typ   time:Instant (  time:hasEnd   ) sein</dcat-ap-vl.pattern.assert.50>
+  <dcat-ap-vl.pattern.assert.51>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</dcat-ap-vl.pattern.assert.51>
+  <dcat-ap-vl.pattern.assert.52>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</dcat-ap-vl.pattern.assert.52>
+  <dcat-ap-vl.pattern.assert.53>Wert muss ein nicht leeres Literal sein (  owl:versionInfo  )</dcat-ap-vl.pattern.assert.53>
+  <dcat-ap-vl.pattern.assert.54>Wert muss ein nicht leeres Literal sein (  skos:prefLabel  )</dcat-ap-vl.pattern.assert.54>
+  <dcat-ap-vl.pattern.assert.55>Referenzressource muss vom Typ   skos:Concept (  dct:type   ) sein</dcat-ap-vl.pattern.assert.55>
+  <dcat-ap-vl.pattern.assert.56>Referenzressource muss vom Typ   rdfs:Resource (  rdfs:seeAlso   ) sein</dcat-ap-vl.pattern.assert.56>
+  <dcat-ap-vl.pattern.assert.57>Wert muss buchstäblich sein (  dct:issued  )</dcat-ap-vl.pattern.assert.57>
+  <dcat-ap-vl.pattern.assert.58>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-vl.pattern.assert.58>
+  <dcat-ap-vl.pattern.assert.59>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</dcat-ap-vl.pattern.assert.59>
+  <dcat-ap-vl.pattern.assert.6>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</dcat-ap-vl.pattern.assert.6>
+  <dcat-ap-vl.pattern.assert.60>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</dcat-ap-vl.pattern.assert.60>
+  <dcat-ap-vl.pattern.assert.61>Referenzressource muss vom Typ   vcard:Organization (  dcat:contactPoint   ) sein</dcat-ap-vl.pattern.assert.61>
+  <dcat-ap-vl.pattern.assert.62>Referenzressource muss vom Typ   dct:LicenseDocument (  dct:license   ) sein</dcat-ap-vl.pattern.assert.62>
+  <dcat-ap-vl.pattern.assert.63>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</dcat-ap-vl.pattern.assert.63>
+  <dcat-ap-vl.pattern.assert.64>Referenzressource muss vom Typ   dcat:CatalogRecord (  dcat:record   ) sein</dcat-ap-vl.pattern.assert.64>
+  <dcat-ap-vl.pattern.assert.65>Referenzressource muss vom Typ   foaf:Agent (  dct:publisher   ) sein</dcat-ap-vl.pattern.assert.65>
+  <dcat-ap-vl.pattern.assert.66>Referenzressource muss vom Typ   dcat:Dataset (  dcat:dataset   ) sein</dcat-ap-vl.pattern.assert.66>
+  <dcat-ap-vl.pattern.assert.67>Referenzressource muss vom Typ   dcat:DataService (  dcat:service   ) sein</dcat-ap-vl.pattern.assert.67>
+  <dcat-ap-vl.pattern.assert.68>Wert muss buchstäblich sein (  locn:geometry  )</dcat-ap-vl.pattern.assert.68>
+  <dcat-ap-vl.pattern.assert.69>Wert muss buchstäblich sein (  dcat:bbox  )</dcat-ap-vl.pattern.assert.69>
+  <dcat-ap-vl.pattern.assert.7>Referenzressource muss vom Typ   dct:RightsStatement (  dct:rights   ) sein</dcat-ap-vl.pattern.assert.7>
+  <dcat-ap-vl.pattern.assert.70>Wert muss buchstäblich sein (  dcat:centroid  )</dcat-ap-vl.pattern.assert.70>
+  <dcat-ap-vl.pattern.assert.71>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  rdfs:label  )</dcat-ap-vl.pattern.assert.71>
+  <dcat-ap-vl.pattern.assert.72>Referenzressource muss vom Typ   foaf:Agent (  dct:publisher   ) sein</dcat-ap-vl.pattern.assert.72>
+  <dcat-ap-vl.pattern.assert.73>Wert muss mindestens eine der erlaubten Alternativen erfüllen (  dct:relation  )</dcat-ap-vl.pattern.assert.73>
+  <dcat-ap-vl.pattern.assert.74>Referenzressource muss vom Typ   skos:Concept (  dcat:hadRole   ) sein</dcat-ap-vl.pattern.assert.74>
+  <dcat-ap-vl.pattern.assert.75>Wert muss mindestens eine der erlaubten Alternativen erfüllen (  mdcat:RelatieQualificatie.catalogusResource.source  )</dcat-ap-vl.pattern.assert.75>
+  <dcat-ap-vl.pattern.assert.76>Wert muss mindestens eine der erlaubten Alternativen erfüllen (  mdcat:RelatieQualificatie.catalogusResource.target  )</dcat-ap-vl.pattern.assert.76>
+  <dcat-ap-vl.pattern.assert.77>Wert muss ein nicht leeres Literal sein (  adms:schemaAgency  )</dcat-ap-vl.pattern.assert.77>
+  <dcat-ap-vl.pattern.assert.78>Wert muss gültig sein   xs:dateTime (  dct:issued   )</dcat-ap-vl.pattern.assert.78>
+  <dcat-ap-vl.pattern.assert.79>Referenzressource muss vom Typ   generiek:GestructureerdeIdentificator (  generiek:gestructureerdeIdentificator   ) sein</dcat-ap-vl.pattern.assert.79>
+  <dcat-ap-vl.pattern.assert.8>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</dcat-ap-vl.pattern.assert.8>
+  <dcat-ap-vl.pattern.assert.80>Referenzressource muss vom Typ   foaf:Agent (  dct:creator   ) sein</dcat-ap-vl.pattern.assert.80>
+  <dcat-ap-vl.pattern.assert.81>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</dcat-ap-vl.pattern.assert.81>
+  <dcat-ap-vl.pattern.assert.82>Wert muss ein nicht leeres Literal sein (  dcat:version  )</dcat-ap-vl.pattern.assert.82>
+  <dcat-ap-vl.pattern.assert.83>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-vl.pattern.assert.83>
+  <dcat-ap-vl.pattern.assert.84>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dcat:keyword  )</dcat-ap-vl.pattern.assert.84>
+  <dcat-ap-vl.pattern.assert.85>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</dcat-ap-vl.pattern.assert.85>
+  <dcat-ap-vl.pattern.assert.86>Referenzressource muss vom Typ   vcard:Organization (  dcat:contactPoint   ) sein</dcat-ap-vl.pattern.assert.86>
+  <dcat-ap-vl.pattern.assert.87>Referenzressource muss vom Typ   rdfs:Resource (  dcat:endpointURL   ) sein</dcat-ap-vl.pattern.assert.87>
+  <dcat-ap-vl.pattern.assert.88>Referenzressource muss vom Typ   rdfs:Resource (  dcat:endpointDescription   ) sein</dcat-ap-vl.pattern.assert.88>
+  <dcat-ap-vl.pattern.assert.89>Referenzressource muss vom Typ   rdfs:Resource (  dcat:landingPage   ) sein</dcat-ap-vl.pattern.assert.89>
+  <dcat-ap-vl.pattern.assert.9>Referenzressource muss vom Typ   skos:Concept (  dct:format   ) sein</dcat-ap-vl.pattern.assert.9>
+  <dcat-ap-vl.pattern.assert.90>Referenzressource muss vom Typ   skos:Concept (  mdcat:ontwikkelingstoestand   ) sein</dcat-ap-vl.pattern.assert.90>
+  <dcat-ap-vl.pattern.assert.91>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingspaginaVoorAuthenticatie   ) sein</dcat-ap-vl.pattern.assert.91>
+  <dcat-ap-vl.pattern.assert.92>Referenzressource muss vom Typ   skos:Concept (  mdcat:levensfase   ) sein</dcat-ap-vl.pattern.assert.92>
+  <dcat-ap-vl.pattern.assert.93>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingspaginaVoorStatusinformatie   ) sein</dcat-ap-vl.pattern.assert.93>
+  <dcat-ap-vl.pattern.assert.94>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</dcat-ap-vl.pattern.assert.94>
+  <dcat-ap-vl.pattern.assert.95>Referenzressource muss vom Typ   skos:Concept (  dct:accessRights   ) sein</dcat-ap-vl.pattern.assert.95>
+  <dcat-ap-vl.pattern.assert.96>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</dcat-ap-vl.pattern.assert.96>
+  <dcat-ap-vl.pattern.assert.97>Referenzressource muss vom Typ   skos:Concept (  mdcat:statuut   ) sein</dcat-ap-vl.pattern.assert.97>
+  <dcat-ap-vl.pattern.assert.98>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingspaginaVoorGebruiksinformatie   ) sein</dcat-ap-vl.pattern.assert.98>
+  <dcat-ap-vl.pattern.assert.99>Referenzressource muss vom Typ   dct:RightsStatement (  dct:rights   ) sein</dcat-ap-vl.pattern.assert.99>
+  <dcat-ap-vl.pattern.report.1> vcard:hasEmail  Eigenschaft ist eine URI mit dem Mailto: Protokoll.</dcat-ap-vl.pattern.report.1>
+  <dcat-ap-vl.pattern.report.10>Referenzressource muss vom Typ   dct:LicenseDocument (  dct:license   ) sein</dcat-ap-vl.pattern.report.10>
+  <dcat-ap-vl.pattern.report.100>Referenzressource muss vom Typ   skos:Concept (  dcat:theme   ) sein</dcat-ap-vl.pattern.report.100>
+  <dcat-ap-vl.pattern.report.101>Referenzressource muss vom Typ   dct:LicenseDocument (  dct:license   ) sein</dcat-ap-vl.pattern.report.101>
+  <dcat-ap-vl.pattern.report.102>Wert muss buchstäblich sein (  dct:created  )</dcat-ap-vl.pattern.report.102>
+  <dcat-ap-vl.pattern.report.103>Wert muss buchstäblich sein (  dct:modified  )</dcat-ap-vl.pattern.report.103>
+  <dcat-ap-vl.pattern.report.104>Wert muss buchstäblich sein (  dct:issued  )</dcat-ap-vl.pattern.report.104>
+  <dcat-ap-vl.pattern.report.105>Referenzressource muss vom Typ   dcat:Dataset (  dcat:servesdataset   ) sein</dcat-ap-vl.pattern.report.105>
+  <dcat-ap-vl.pattern.report.106>Wert muss buchstäblich sein (  dct:description  )</dcat-ap-vl.pattern.report.106>
+  <dcat-ap-vl.pattern.report.107>Wert muss buchstäblich sein (  dct:title  )</dcat-ap-vl.pattern.report.107>
+  <dcat-ap-vl.pattern.report.108>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-vl.pattern.report.108>
+  <dcat-ap-vl.pattern.report.109>Referenzressource muss vom Typ   vcard:Organization (  dcat:contactPoint   ) sein</dcat-ap-vl.pattern.report.109>
+  <dcat-ap-vl.pattern.report.11>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</dcat-ap-vl.pattern.report.11>
+  <dcat-ap-vl.pattern.report.110>Referenzressource muss vom Typ   eli:LegalResource (  dcat-ap:applicableLegislation   ) sein</dcat-ap-vl.pattern.report.110>
+  <dcat-ap-vl.pattern.report.111>Referenzressource muss vom Typ   dct:Frequency (  dct:accrualPeriodicity   ) sein</dcat-ap-vl.pattern.report.111>
+  <dcat-ap-vl.pattern.report.112>Wert muss buchstäblich sein (  dct:issued  )</dcat-ap-vl.pattern.report.112>
+  <dcat-ap-vl.pattern.report.113>Wert muss buchstäblich sein (  dct:modified  )</dcat-ap-vl.pattern.report.113>
+  <dcat-ap-vl.pattern.report.114>Referenzressource muss vom Typ   dct:Location (  dct:spatial   ) sein</dcat-ap-vl.pattern.report.114>
+  <dcat-ap-vl.pattern.report.115>Referenzressource muss vom Typ   dct:PeriodOfTime (  dct:temporal   ) sein</dcat-ap-vl.pattern.report.115>
+  <dcat-ap-vl.pattern.report.116>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</dcat-ap-vl.pattern.report.116>
+  <dcat-ap-vl.pattern.report.117>Referenzressource muss vom Typ   foaf:Agent (  dct:publisher   ) sein</dcat-ap-vl.pattern.report.117>
+  <dcat-ap-vl.pattern.report.118>Referenzressource muss vom Typ   rdfs:Resource (  vcard:hasEmail   ) sein</dcat-ap-vl.pattern.report.118>
+  <dcat-ap-vl.pattern.report.119>Referenzressource muss vom Typ   rdfs:Resource (  foaf:page   ) sein</dcat-ap-vl.pattern.report.119>
+  <dcat-ap-vl.pattern.report.12>Referenzressource muss vom Typ   rdfs:Resource (  dcat:downloadURL   ) sein</dcat-ap-vl.pattern.report.12>
+  <dcat-ap-vl.pattern.report.120>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</dcat-ap-vl.pattern.report.120>
+  <dcat-ap-vl.pattern.report.121>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</dcat-ap-vl.pattern.report.121>
+  <dcat-ap-vl.pattern.report.122>Referenzressource muss vom Typ   rdfs:Resource (  dcat:downloadURL   ) sein</dcat-ap-vl.pattern.report.122>
+  <dcat-ap-vl.pattern.report.123>Referenzressource muss vom Typ   skos:Concept (  dcat:mediatype   ) sein</dcat-ap-vl.pattern.report.123>
+  <dcat-ap-vl.pattern.report.13>Referenzressource muss vom Typ   rdfs:Resource (  dcat:accessURL   ) sein</dcat-ap-vl.pattern.report.13>
+  <dcat-ap-vl.pattern.report.14>Referenzressource muss vom Typ   dcat:DataService (  dcat:accessService   ) sein</dcat-ap-vl.pattern.report.14>
+  <dcat-ap-vl.pattern.report.15>Referenzressource muss vom Typ   foaf:Agent (  geodcat:distributor   ) sein</dcat-ap-vl.pattern.report.15>
+  <dcat-ap-vl.pattern.report.16>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-vl.pattern.report.16>
+  <dcat-ap-vl.pattern.report.17>Wert muss gültig sein   xs:dateTime (  dct:issued   )</dcat-ap-vl.pattern.report.17>
+  <dcat-ap-vl.pattern.report.18>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</dcat-ap-vl.pattern.report.18>
+  <dcat-ap-vl.pattern.report.19>Wert muss gültig sein   xs:dateTime (  dct:modified   )</dcat-ap-vl.pattern.report.19>
+  <dcat-ap-vl.pattern.report.2>Die   dcat:Catalog   hat eine   dct:license   Eigenschaft mit dem Wert 'https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0'.</dcat-ap-vl.pattern.report.2>
+  <dcat-ap-vl.pattern.report.20>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingpageVoorBronMetadata   ) sein</dcat-ap-vl.pattern.report.20>
+  <dcat-ap-vl.pattern.report.21>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</dcat-ap-vl.pattern.report.21>
+  <dcat-ap-vl.pattern.report.22>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</dcat-ap-vl.pattern.report.22>
+  <dcat-ap-vl.pattern.report.23>Referenzressource muss vom Typ   rdfs:Resource (  dct:source   ) sein</dcat-ap-vl.pattern.report.23>
+  <dcat-ap-vl.pattern.report.24>Wert muss mindestens eine der erlaubten Alternativen erfüllen (  foaf:primaryTopic  )</dcat-ap-vl.pattern.report.24>
+  <dcat-ap-vl.pattern.report.25>Wert muss ein nicht leeres Literal sein (  dcat:version  )</dcat-ap-vl.pattern.report.25>
+  <dcat-ap-vl.pattern.report.26>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</dcat-ap-vl.pattern.report.26>
+  <dcat-ap-vl.pattern.report.27>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dcat:keyword  )</dcat-ap-vl.pattern.report.27>
+  <dcat-ap-vl.pattern.report.28>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</dcat-ap-vl.pattern.report.28>
+  <dcat-ap-vl.pattern.report.29>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-vl.pattern.report.29>
+  <dcat-ap-vl.pattern.report.3>Die   dcat:Resource   haben mindestens ein Stichwort.</dcat-ap-vl.pattern.report.3>
+  <dcat-ap-vl.pattern.report.30>Referenzressource muss vom Typ   skos:Concept (  dct:accessRights   ) sein</dcat-ap-vl.pattern.report.30>
+  <dcat-ap-vl.pattern.report.31>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</dcat-ap-vl.pattern.report.31>
+  <dcat-ap-vl.pattern.report.32>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</dcat-ap-vl.pattern.report.32>
+  <dcat-ap-vl.pattern.report.33>Referenzressource muss vom Typ   dcat:Distribution (  adms:sample   ) sein</dcat-ap-vl.pattern.report.33>
+  <dcat-ap-vl.pattern.report.34>Referenzressource muss vom Typ   skos:Concept (  mdcat:statuut   ) sein</dcat-ap-vl.pattern.report.34>
+  <dcat-ap-vl.pattern.report.35>Referenzressource muss vom Typ   skos:Concept (  dcat:theme   ) sein</dcat-ap-vl.pattern.report.35>
+  <dcat-ap-vl.pattern.report.36>Referenzressource muss vom Typ   rdfs:Resource (  dcat:landingPage   ) sein</dcat-ap-vl.pattern.report.36>
+  <dcat-ap-vl.pattern.report.37>Wert muss buchstäblich sein (  dct:issued  )</dcat-ap-vl.pattern.report.37>
+  <dcat-ap-vl.pattern.report.38>Referenzressource muss vom Typ   dct:ProvenanceStatement (  dct:provenance   ) sein</dcat-ap-vl.pattern.report.38>
+  <dcat-ap-vl.pattern.report.39>Referenzressource muss vom Typ   vcard:Organization (  dcat:contactPoint   ) sein</dcat-ap-vl.pattern.report.39>
+  <dcat-ap-vl.pattern.report.4>Eine   vcard:Organization   hat eine   vcard:hasEmail   oder eine   vcard:hasURL   Eigenschaft.</dcat-ap-vl.pattern.report.4>
+  <dcat-ap-vl.pattern.report.40>Wert muss buchstäblich sein (  dct:modified  )</dcat-ap-vl.pattern.report.40>
+  <dcat-ap-vl.pattern.report.41>Wert muss buchstäblich sein (  dct:created  )</dcat-ap-vl.pattern.report.41>
+  <dcat-ap-vl.pattern.report.42>Referenzressource muss vom Typ   dct:Location (  dct:spatial   ) sein</dcat-ap-vl.pattern.report.42>
+  <dcat-ap-vl.pattern.report.43>Referenzressource muss vom Typ   dcat:Distribution (  dcat:distribution   ) sein</dcat-ap-vl.pattern.report.43>
+  <dcat-ap-vl.pattern.report.44>Referenzressource muss vom Typ   foaf:Agent (  dct:rightsHolder   ) sein</dcat-ap-vl.pattern.report.44>
+  <dcat-ap-vl.pattern.report.45>Referenzressource muss vom Typ   dcat:DatasetSeries (  dcat:inSeries   ) sein</dcat-ap-vl.pattern.report.45>
+  <dcat-ap-vl.pattern.report.46>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  foaf:name  )</dcat-ap-vl.pattern.report.46>
+  <dcat-ap-vl.pattern.report.47>Wert muss buchstäblich sein (  dcat:endDate  )</dcat-ap-vl.pattern.report.47>
+  <dcat-ap-vl.pattern.report.48>Wert muss buchstäblich sein (  dcat:startDate  )</dcat-ap-vl.pattern.report.48>
+  <dcat-ap-vl.pattern.report.49>Referenzressource muss vom Typ   time:Instant (  time:hasBeginning   ) sein</dcat-ap-vl.pattern.report.49>
+  <dcat-ap-vl.pattern.report.5>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-vl.pattern.report.5>
+  <dcat-ap-vl.pattern.report.50>Referenzressource muss vom Typ   time:Instant (  time:hasEnd   ) sein</dcat-ap-vl.pattern.report.50>
+  <dcat-ap-vl.pattern.report.51>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</dcat-ap-vl.pattern.report.51>
+  <dcat-ap-vl.pattern.report.52>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</dcat-ap-vl.pattern.report.52>
+  <dcat-ap-vl.pattern.report.53>Wert muss ein nicht leeres Literal sein (  owl:versionInfo  )</dcat-ap-vl.pattern.report.53>
+  <dcat-ap-vl.pattern.report.54>Wert muss ein nicht leeres Literal sein (  skos:prefLabel  )</dcat-ap-vl.pattern.report.54>
+  <dcat-ap-vl.pattern.report.55>Referenzressource muss vom Typ   skos:Concept (  dct:type   ) sein</dcat-ap-vl.pattern.report.55>
+  <dcat-ap-vl.pattern.report.56>Referenzressource muss vom Typ   rdfs:Resource (  rdfs:seeAlso   ) sein</dcat-ap-vl.pattern.report.56>
+  <dcat-ap-vl.pattern.report.57>Wert muss buchstäblich sein (  dct:issued  )</dcat-ap-vl.pattern.report.57>
+  <dcat-ap-vl.pattern.report.58>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-vl.pattern.report.58>
+  <dcat-ap-vl.pattern.report.59>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</dcat-ap-vl.pattern.report.59>
+  <dcat-ap-vl.pattern.report.6>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</dcat-ap-vl.pattern.report.6>
+  <dcat-ap-vl.pattern.report.60>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</dcat-ap-vl.pattern.report.60>
+  <dcat-ap-vl.pattern.report.61>Referenzressource muss vom Typ   vcard:Organization (  dcat:contactPoint   ) sein</dcat-ap-vl.pattern.report.61>
+  <dcat-ap-vl.pattern.report.62>Referenzressource muss vom Typ   dct:LicenseDocument (  dct:license   ) sein</dcat-ap-vl.pattern.report.62>
+  <dcat-ap-vl.pattern.report.63>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</dcat-ap-vl.pattern.report.63>
+  <dcat-ap-vl.pattern.report.64>Referenzressource muss vom Typ   dcat:CatalogRecord (  dcat:record   ) sein</dcat-ap-vl.pattern.report.64>
+  <dcat-ap-vl.pattern.report.65>Referenzressource muss vom Typ   foaf:Agent (  dct:publisher   ) sein</dcat-ap-vl.pattern.report.65>
+  <dcat-ap-vl.pattern.report.66>Referenzressource muss vom Typ   dcat:Dataset (  dcat:dataset   ) sein</dcat-ap-vl.pattern.report.66>
+  <dcat-ap-vl.pattern.report.67>Referenzressource muss vom Typ   dcat:DataService (  dcat:service   ) sein</dcat-ap-vl.pattern.report.67>
+  <dcat-ap-vl.pattern.report.68>Wert muss buchstäblich sein (  locn:geometry  )</dcat-ap-vl.pattern.report.68>
+  <dcat-ap-vl.pattern.report.69>Wert muss buchstäblich sein (  dcat:bbox  )</dcat-ap-vl.pattern.report.69>
+  <dcat-ap-vl.pattern.report.7>Referenzressource muss vom Typ   dct:RightsStatement (  dct:rights   ) sein</dcat-ap-vl.pattern.report.7>
+  <dcat-ap-vl.pattern.report.70>Wert muss buchstäblich sein (  dcat:centroid  )</dcat-ap-vl.pattern.report.70>
+  <dcat-ap-vl.pattern.report.71>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  rdfs:label  )</dcat-ap-vl.pattern.report.71>
+  <dcat-ap-vl.pattern.report.72>Referenzressource muss vom Typ   foaf:Agent (  dct:publisher   ) sein</dcat-ap-vl.pattern.report.72>
+  <dcat-ap-vl.pattern.report.73>Wert muss mindestens eine der erlaubten Alternativen erfüllen (  dct:relation  )</dcat-ap-vl.pattern.report.73>
+  <dcat-ap-vl.pattern.report.74>Referenzressource muss vom Typ   skos:Concept (  dcat:hadRole   ) sein</dcat-ap-vl.pattern.report.74>
+  <dcat-ap-vl.pattern.report.75>Wert muss mindestens eine der erlaubten Alternativen erfüllen (  mdcat:RelatieQualificatie.catalogusResource.source  )</dcat-ap-vl.pattern.report.75>
+  <dcat-ap-vl.pattern.report.76>Wert muss mindestens eine der erlaubten Alternativen erfüllen (  mdcat:RelatieQualificatie.catalogusResource.target  )</dcat-ap-vl.pattern.report.76>
+  <dcat-ap-vl.pattern.report.77>Wert muss ein nicht leeres Literal sein (  adms:schemaAgency  )</dcat-ap-vl.pattern.report.77>
+  <dcat-ap-vl.pattern.report.78>Wert muss gültig sein   xs:dateTime (  dct:issued   )</dcat-ap-vl.pattern.report.78>
+  <dcat-ap-vl.pattern.report.79>Referenzressource muss vom Typ   generiek:GestructureerdeIdentificator (  generiek:gestructureerdeIdentificator   ) sein</dcat-ap-vl.pattern.report.79>
+  <dcat-ap-vl.pattern.report.8>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</dcat-ap-vl.pattern.report.8>
+  <dcat-ap-vl.pattern.report.80>Referenzressource muss vom Typ   foaf:Agent (  dct:creator   ) sein</dcat-ap-vl.pattern.report.80>
+  <dcat-ap-vl.pattern.report.81>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</dcat-ap-vl.pattern.report.81>
+  <dcat-ap-vl.pattern.report.82>Wert muss ein nicht leeres Literal sein (  dcat:version  )</dcat-ap-vl.pattern.report.82>
+  <dcat-ap-vl.pattern.report.83>Wert muss buchstäblich sein (  dct:identifier  )</dcat-ap-vl.pattern.report.83>
+  <dcat-ap-vl.pattern.report.84>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dcat:keyword  )</dcat-ap-vl.pattern.report.84>
+  <dcat-ap-vl.pattern.report.85>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</dcat-ap-vl.pattern.report.85>
+  <dcat-ap-vl.pattern.report.86>Referenzressource muss vom Typ   vcard:Organization (  dcat:contactPoint   ) sein</dcat-ap-vl.pattern.report.86>
+  <dcat-ap-vl.pattern.report.87>Referenzressource muss vom Typ   rdfs:Resource (  dcat:endpointURL   ) sein</dcat-ap-vl.pattern.report.87>
+  <dcat-ap-vl.pattern.report.88>Referenzressource muss vom Typ   rdfs:Resource (  dcat:endpointDescription   ) sein</dcat-ap-vl.pattern.report.88>
+  <dcat-ap-vl.pattern.report.89>Referenzressource muss vom Typ   rdfs:Resource (  dcat:landingPage   ) sein</dcat-ap-vl.pattern.report.89>
+  <dcat-ap-vl.pattern.report.9>Referenzressource muss vom Typ   skos:Concept (  dct:format   ) sein</dcat-ap-vl.pattern.report.9>
+  <dcat-ap-vl.pattern.report.90>Referenzressource muss vom Typ   skos:Concept (  mdcat:ontwikkelingstoestand   ) sein</dcat-ap-vl.pattern.report.90>
+  <dcat-ap-vl.pattern.report.91>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingspaginaVoorAuthenticatie   ) sein</dcat-ap-vl.pattern.report.91>
+  <dcat-ap-vl.pattern.report.92>Referenzressource muss vom Typ   skos:Concept (  mdcat:levensfase   ) sein</dcat-ap-vl.pattern.report.92>
+  <dcat-ap-vl.pattern.report.93>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingspaginaVoorStatusinformatie   ) sein</dcat-ap-vl.pattern.report.93>
+  <dcat-ap-vl.pattern.report.94>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</dcat-ap-vl.pattern.report.94>
+  <dcat-ap-vl.pattern.report.95>Referenzressource muss vom Typ   skos:Concept (  dct:accessRights   ) sein</dcat-ap-vl.pattern.report.95>
+  <dcat-ap-vl.pattern.report.96>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</dcat-ap-vl.pattern.report.96>
+  <dcat-ap-vl.pattern.report.97>Referenzressource muss vom Typ   skos:Concept (  mdcat:statuut   ) sein</dcat-ap-vl.pattern.report.97>
+  <dcat-ap-vl.pattern.report.98>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingspaginaVoorGebruiksinformatie   ) sein</dcat-ap-vl.pattern.report.98>
+  <dcat-ap-vl.pattern.report.99>Referenzressource muss vom Typ   dct:RightsStatement (  dct:rights   ) sein</dcat-ap-vl.pattern.report.99>
+  <dcat-ap-vl.pattern.title.1> vcard:hasEmail   ist ein URI mit dem Mailto-Protokoll.</dcat-ap-vl.pattern.title.1>
+  <dcat-ap-vl.pattern.title.10>Licentie - De licentie van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Distributie.Licentie)</dcat-ap-vl.pattern.title.10>
+  <dcat-ap-vl.pattern.title.100>Thema - De hoofdcategorie waartoe de dataservice behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Thema)</dcat-ap-vl.pattern.title.100>
+  <dcat-ap-vl.pattern.title.101>Licentie - De licentie van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Licentie)</dcat-ap-vl.pattern.title.101>
+  <dcat-ap-vl.pattern.title.102>Creatiedatum - Het tijdsmoment waarop de dataservice voor het eerst werd geactiveerd. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Creatiedatum)</dcat-ap-vl.pattern.title.102>
+  <dcat-ap-vl.pattern.title.103>Wijzigingsdatum - Het tijdsmoment waarop de dataserviced gewijzigd. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Wijzigingsdatum)</dcat-ap-vl.pattern.title.103>
+  <dcat-ap-vl.pattern.title.104>Publicatiedatum - Het tijdsmoment waarop de dataservice werd gepubliceerd door de uitgever. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Publicatiedatum)</dcat-ap-vl.pattern.title.104>
+  <dcat-ap-vl.pattern.title.105>Biedt informatie aan over - De data die via deze dataservice wurde aangeboden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.BiedtInformatieAanOver)</dcat-ap-vl.pattern.title.105>
+  <dcat-ap-vl.pattern.title.106>Beschrijving - Een bondige tekstuele bescrhijving van de Dataset Serie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#DatasetSerie.Beschrijving)</dcat-ap-vl.pattern.title.106>
+  <dcat-ap-vl.pattern.title.107>Titel - De naam van de dataset serie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#DatasetSerie.Titel)</dcat-ap-vl.pattern.title.107>
+  <dcat-ap-vl.pattern.title.108>Identificator - De unieke identificator van de dataset serie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#DatasetSerie.Identificator)</dcat-ap-vl.pattern.title.108>
+  <dcat-ap-vl.pattern.title.109>Kontaktinformatie - De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de Dataset Serie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#DatasetSerie.Contactinformatie)</dcat-ap-vl.pattern.title.109>
+  <dcat-ap-vl.pattern.title.11>Konformieren - Een standaard, Schema, implementatie-
+Modell, applicatieprofiel, vocabularium
+waaraan de distributie voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Distributie.Conform)</dcat-ap-vl.pattern.title.11>
+  <dcat-ap-vl.pattern.title.110>Belanghebbende nassgeving - De nassgeving die aanzet tot het aanmaken von het beheren van de Dataset Serie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#DatasetSerie.BelanghebbendeWetgeving)</dcat-ap-vl.pattern.title.110>
+  <dcat-ap-vl.pattern.title.111>Periodiciteit - De maat waarmee de dataset serie wordt bijgewerkt. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#DatasetSerie.Periodiciteit)</dcat-ap-vl.pattern.title.111>
+  <dcat-ap-vl.pattern.title.112>Publicatie datum - Het tijdsmoment waarop de dataset serie werd gepubliceerd door de uitgever. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#DatasetSerie.PublicatieDatum)</dcat-ap-vl.pattern.title.112>
+  <dcat-ap-vl.pattern.title.113>Wijzigingsdatum - Het meest newe moment waarop de dataset series is bijgewerkt. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#DatasetSerie.Wijzigingsdatum)</dcat-ap-vl.pattern.title.113>
+  <dcat-ap-vl.pattern.title.114>Geografische dekking - Het geografische gebied waarover de dataset serie informatie heeft. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#DatasetSerie.GeografischeDekking)</dcat-ap-vl.pattern.title.114>
+  <dcat-ap-vl.pattern.title.115>Temporele dekking - De tijdsperiode die de dataset serie bestrijkt. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#DatasetSerie.TemporeleDekking)</dcat-ap-vl.pattern.title.115>
+  <dcat-ap-vl.pattern.title.116>Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor een dataset serie kan hier beschreven wurden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#DatasetSerie.AlternatieveIdentificator)</dcat-ap-vl.pattern.title.116>
+  <dcat-ap-vl.pattern.title.117>Uitgever - De uitgever, de entiteit die verantwoordelijk ist voor het beschikbaar stellen, van de Resources in de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#DatasetSerie.Uitgever)</dcat-ap-vl.pattern.title.117>
+  <dcat-ap-vl.pattern.title.118>E-mail - Het e-mailadres waarmee een gebruiker contact kan opnemen voor informatie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Contactinfo.E-mail)</dcat-ap-vl.pattern.title.118>
+  <dcat-ap-vl.pattern.title.119>Kontaktpagina - Een webpagina die vonwel toelaat om contact op te nemen (via b.v. een webformulier) von die informatie bevat hoe men contact kan opnemen. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Contactinfo.Contactpagina)</dcat-ap-vl.pattern.title.119>
+  <dcat-ap-vl.pattern.title.12>Downloadurl - De URL waar de data gedownload kunnen wurde. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Distributie.Downloadurl)</dcat-ap-vl.pattern.title.12>
+  <dcat-ap-vl.pattern.title.120>Titel - Naam van de afbeelding. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Voorbeeldweergave.Titel)</dcat-ap-vl.pattern.title.120>
+  <dcat-ap-vl.pattern.title.121>Beschrijving - Een bondige tekstuele omschrijving van de afbeelding. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Voorbeeldweergave.Beschrijving)</dcat-ap-vl.pattern.title.121>
+  <dcat-ap-vl.pattern.title.122>Downloadurl - De URL waar de afbeelding gedownload kan wurde. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Voorbeeldweergave.Downloadurl)</dcat-ap-vl.pattern.title.122>
+  <dcat-ap-vl.pattern.title.123>Mediatype - De voorstellingsvorm van de afbeelding. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Voorbeeldweergave.Mediatype)</dcat-ap-vl.pattern.title.123>
+  <dcat-ap-vl.pattern.title.13>Toegangsurl - Een URL waar de data kunnen gevonden wurden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Distributie.Toegangsurl)</dcat-ap-vl.pattern.title.13>
+  <dcat-ap-vl.pattern.title.14>Wordt aangeboden door - Een dataservice die deze distributie aanbiedt. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Distributie.WordtAangebodenDoor)</dcat-ap-vl.pattern.title.14>
+  <dcat-ap-vl.pattern.title.15>Verdeler - De agent die instaat voor de verdeling. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Distributie.Verdeler)</dcat-ap-vl.pattern.title.15>
+  <dcat-ap-vl.pattern.title.16>Identificator - De unieke identificator van het record in de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#CatalogusRecord.Identificator)</dcat-ap-vl.pattern.title.16>
+  <dcat-ap-vl.pattern.title.17>Aanmaakdatum - De datum van (formele) opname van de bijbehorende dataset of dataservice in de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#CatalogusRecord.Aanmaakdatum)</dcat-ap-vl.pattern.title.17>
+  <dcat-ap-vl.pattern.title.18>Titel - De naam van het Aufnahme in de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#CatalogusRecord.Titel)</dcat-ap-vl.pattern.title.18>
+  <dcat-ap-vl.pattern.title.19>Wijzigingsdatum - De meest newe datum waarop het record in de Catalogus ist gewijzigd, bijgewerkt von aangepast. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#CatalogusRecord.Wijzigingdatums)</dcat-ap-vl.pattern.title.19>
+  <dcat-ap-vl.pattern.title.2> dct:license   ist CC0</dcat-ap-vl.pattern.title.2>
+  <dcat-ap-vl.pattern.title.20>Bron Metadatensatz landenspagina - Een webpagina waarop het bron-metadatarecord in menselijk leesbare vorm wordt weergeven. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#CatalogusRecord.BronMetadataRecordLandingspagina)</dcat-ap-vl.pattern.title.20>
+  <dcat-ap-vl.pattern.title.21>Alternatieve identificator - Een alternatieve identificator (een andere identificator dan de unieke identificator) voor een record in de Catalogus kan hier beschreven wurden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#CatalogusRecord.AlternatieveIdentificator)</dcat-ap-vl.pattern.title.21>
+  <dcat-ap-vl.pattern.title.22>Conform - De (meta)datastandaard volgens welke het hoofdonderp van het Catalogusrecord ist beschreven. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#CatalogusRecord.Conform)</dcat-ap-vl.pattern.title.22>
+  <dcat-ap-vl.pattern.title.23>Bron metadatarecord - Het Record in een andere Catalogus waarvan deze Record en de beschrijvingen van het bijhorende hoofdonderp van afgeleid zijn. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#CatalogusRecord.BronMetadatarecord)</dcat-ap-vl.pattern.title.23>
+  <dcat-ap-vl.pattern.title.24>Hoofdonderwerp - De Ressource (Datensatz von Dataservice) beschreven in Het Record. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#CatalogusRecord.Hoofdonderwerp)</dcat-ap-vl.pattern.title.24>
+  <dcat-ap-vl.pattern.title.25>Versie - Een unieke aanduiding van een Variante van de dataset door middel van een versienummer of -naam van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Versie)</dcat-ap-vl.pattern.title.25>
+  <dcat-ap-vl.pattern.title.26>Beschrijving - Een bondige tekstuele omschrijving van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Beschrijving)</dcat-ap-vl.pattern.title.26>
+  <dcat-ap-vl.pattern.title.27>Trefwoord - Een trefwoord des tag die de Ressource beschrijft. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Trefwoord)</dcat-ap-vl.pattern.title.27>
+  <dcat-ap-vl.pattern.title.28>Titel - De naam van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Titel)</dcat-ap-vl.pattern.title.28>
+  <dcat-ap-vl.pattern.title.29>Identificator - De unieke identificator van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Identificator)</dcat-ap-vl.pattern.title.29>
+  <dcat-ap-vl.pattern.title.3>Es ist mindestens ein Stichwort erforderlich.</dcat-ap-vl.pattern.title.3>
+  <dcat-ap-vl.pattern.title.30>Toegankelijkheid - De toegankelijkheid voor de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Toegankelijkheid)</dcat-ap-vl.pattern.title.30>
+  <dcat-ap-vl.pattern.title.31>Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor een dataset kan hier beschreven wurden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.AlternatieveIdentificator)</dcat-ap-vl.pattern.title.31>
+  <dcat-ap-vl.pattern.title.32>Konformieren - Een standaard, Schema, applicatieprofiel, vocabularium, CRS, ... waaraan de dataset voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Conform)</dcat-ap-vl.pattern.title.32>
+  <dcat-ap-vl.pattern.title.33>Voorbeeldweergave - Een verkleinde weergave van een afbeelding die de dataset illustreert. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Voorbeeldweergave)</dcat-ap-vl.pattern.title.33>
+  <dcat-ap-vl.pattern.title.34>Statuut - Een aanduiding van op welke basis de Catalogusresource beschikbaar ist. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Statuut)</dcat-ap-vl.pattern.title.34>
+  <dcat-ap-vl.pattern.title.35>Thema - De hoofdcategorie waartoe de dataset behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Thema)</dcat-ap-vl.pattern.title.35>
+  <dcat-ap-vl.pattern.title.36>Landingspagina - Een algemene webpagina waarnaar kan wurde genavigeerd in een webbrowser, met algemene informatie over de dataset, zijn distributies en/of aanvullende informatie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Landingspagina)</dcat-ap-vl.pattern.title.36>
+  <dcat-ap-vl.pattern.title.37>Publicatiedatum - Het tijdsmoment waarop de dataset werd gepubliceerd door de uitgever. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Publicatiedatum)</dcat-ap-vl.pattern.title.37>
+  <dcat-ap-vl.pattern.title.38>Herkomst - De ontstaansgeschiedenis van een dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Herkomst)</dcat-ap-vl.pattern.title.38>
+  <dcat-ap-vl.pattern.title.39>Kontaktinformatie - De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Contactinformatie)</dcat-ap-vl.pattern.title.39>
+  <dcat-ap-vl.pattern.title.4>Mindestens eine von   vcard:hasEmail  oder   vcard:hasURL    ist eine erforderliche Eigenschaft eines Kontaktpunktes.</dcat-ap-vl.pattern.title.4>
+  <dcat-ap-vl.pattern.title.40>Wijzigingsdatum - Het tijdsmoment waarop de dataset werd geactualiseerd. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Wijzigingsdatum)</dcat-ap-vl.pattern.title.40>
+  <dcat-ap-vl.pattern.title.41>Creatiedatum - Het tijdsmoment waarop de dataset ontstaan ist. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Creatiedatum)</dcat-ap-vl.pattern.title.41>
+  <dcat-ap-vl.pattern.title.42>Geografische dekking - Het geografische gebied waarover de dataset informatie heeft. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.GeografischeDekking)</dcat-ap-vl.pattern.title.42>
+  <dcat-ap-vl.pattern.title.43>Distributie - Een beschikbare Distributie van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Distributie)</dcat-ap-vl.pattern.title.43>
+  <dcat-ap-vl.pattern.title.44>Eigenaar - De agent die de eigendomsrechten heeft? (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.Eigenaar)</dcat-ap-vl.pattern.title.44>
+  <dcat-ap-vl.pattern.title.45>In serie - Een Dataset Serie waartoe de dataset behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataset.InSerie)</dcat-ap-vl.pattern.title.45>
+  <dcat-ap-vl.pattern.title.46>Naam... De naam van de agent. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Agent.Naam)</dcat-ap-vl.pattern.title.46>
+  <dcat-ap-vl.pattern.title.47>Eind datum - Het einde van de periode. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Tijdsperiode.EindDatum)</dcat-ap-vl.pattern.title.47>
+  <dcat-ap-vl.pattern.title.48>Startdatum - De start van de periode. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Tijdsperiode.StartDatum)</dcat-ap-vl.pattern.title.48>
+  <dcat-ap-vl.pattern.title.49>Heeft start - Het beginnen van een Intervallperiode. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Tijdsperiode.HeeftStart)</dcat-ap-vl.pattern.title.49>
+  <dcat-ap-vl.pattern.title.5>Identificator - De unieke identificator van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Distributie.Identificator)</dcat-ap-vl.pattern.title.5>
+  <dcat-ap-vl.pattern.title.50>Heeft einde - Het einde van een Intervalle. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Tijdsperiode.HeeftEinde)</dcat-ap-vl.pattern.title.50>
+  <dcat-ap-vl.pattern.title.51>Titel - Naam van de standaard. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Standaard.Titel)</dcat-ap-vl.pattern.title.51>
+  <dcat-ap-vl.pattern.title.52>Beschrijving - Een bondige tekstuele omschrijving van de
+standaard. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Standaard.Beschrijving)</dcat-ap-vl.pattern.title.52>
+  <dcat-ap-vl.pattern.title.53>Versie - De versie van de standaard. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Standaard.Versie)</dcat-ap-vl.pattern.title.53>
+  <dcat-ap-vl.pattern.title.54>Voorkeurslabel - Een afkorting, of notatie waaronder de
+Das ist Standaard bekend. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Standaard.Voorkeurslabel)</dcat-ap-vl.pattern.title.54>
+  <dcat-ap-vl.pattern.title.55>Typ - Een categorisatie van de standaard. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Standaard.Type)</dcat-ap-vl.pattern.title.55>
+  <dcat-ap-vl.pattern.title.56>Bestimmte url - Een URL waarop men de specificatie kan
+vinden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Standaard.SpecificatieUrl)</dcat-ap-vl.pattern.title.56>
+  <dcat-ap-vl.pattern.title.57>Publicatiedatum - De datum waarop de standaard
+gepubliceerd. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Standaard.Publicatiedatum)</dcat-ap-vl.pattern.title.57>
+  <dcat-ap-vl.pattern.title.58>Identificator - De unieke identificator voor de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Catalogus.Identificator)</dcat-ap-vl.pattern.title.58>
+  <dcat-ap-vl.pattern.title.59>Titel - De naam van de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Catalogus.Titel)</dcat-ap-vl.pattern.title.59>
+  <dcat-ap-vl.pattern.title.6>Titel - De naam van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Distributie.Titel)</dcat-ap-vl.pattern.title.6>
+  <dcat-ap-vl.pattern.title.60>Beschrijving - Een bondige tekstuele omschrijving van de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Catalogus.Beschrijving)</dcat-ap-vl.pattern.title.60>
+  <dcat-ap-vl.pattern.title.61>Kontaktinformatie - De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Catalogus.Contactinformatie)</dcat-ap-vl.pattern.title.61>
+  <dcat-ap-vl.pattern.title.62>Licentie - De licentie van de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Catalogus.Licentie)</dcat-ap-vl.pattern.title.62>
+  <dcat-ap-vl.pattern.title.63>Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor de Catalogus kan hier beschreven wurden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Catalogus.AlternatieveIdentificator)</dcat-ap-vl.pattern.title.63>
+  <dcat-ap-vl.pattern.title.64>Record - Een record beschrijft de registratie van één enkele dataset of dataservice die onderdeel is van de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Catalogus.Record)</dcat-ap-vl.pattern.title.64>
+  <dcat-ap-vl.pattern.title.65>Uitgever - De uitgever van de Catalogus (de entiteit die verantwoordelijk ist voor het beschikbaar stellen van de Catalogus). (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Catalogus.Uitgever)</dcat-ap-vl.pattern.title.65>
+  <dcat-ap-vl.pattern.title.66>Heeft dataset - Een dataset die deel uitmaakt van de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Catalogus.HeeftDataset)</dcat-ap-vl.pattern.title.66>
+  <dcat-ap-vl.pattern.title.67>Heeft dataservice - Een dataservice die deel uitmaakt van de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Catalogus.HeeftDataservice)</dcat-ap-vl.pattern.title.67>
+  <dcat-ap-vl.pattern.title.68>Geometrie - De geografische beschrijving van een plaats. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Plaats.Geometrie)</dcat-ap-vl.pattern.title.68>
+  <dcat-ap-vl.pattern.title.69>Bounding box - De begrenzing van een plaats als een geografische rechthoek. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Plaats.BoundingBox)</dcat-ap-vl.pattern.title.69>
+  <dcat-ap-vl.pattern.title.7>Rechten - Bepalingen van juridische aard die gelden op de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Distributie.Rechten)</dcat-ap-vl.pattern.title.7>
+  <dcat-ap-vl.pattern.title.70>Centroïde - Het geografische middelpunt van een plaats. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Plaats.Centroïde)</dcat-ap-vl.pattern.title.70>
+  <dcat-ap-vl.pattern.title.71>Plaatsnaam - Een eenduidige, beknopte beschrijving die de plaats benoemt. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Plaats.Plaatsnaam)</dcat-ap-vl.pattern.title.71>
+  <dcat-ap-vl.pattern.title.72>Uitgever - De uitgever van de Catalogus (de entiteit die verantwoordelijk ist voor het beschikbaar stellen van de Catalogus). (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#CatalogusResource.Uitgever)</dcat-ap-vl.pattern.title.72>
+  <dcat-ap-vl.pattern.title.73>Relatie - Een verband tussen twee Resources. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#CatalogusResource.Relatie)</dcat-ap-vl.pattern.title.73>
+  <dcat-ap-vl.pattern.title.74>Rol - De functie hoe de entiteiten zich tot elkaar verhouden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#RelatieQualificatie.Rol)</dcat-ap-vl.pattern.title.74>
+  <dcat-ap-vl.pattern.title.75>Bronresource - De Catalogus Ressource waarvan de relatie start. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#RelatieQualificatie.Bronresource)</dcat-ap-vl.pattern.title.75>
+  <dcat-ap-vl.pattern.title.76>Doelresource - De Catalogus Ressource waarin de relatie eindigt (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#RelatieQualificatie.Doelresource)</dcat-ap-vl.pattern.title.76>
+  <dcat-ap-vl.pattern.title.77>Toegekend door (string) - Naam vd agent die de identificator heeft toegekend. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Identificator.ToegekendDoor(string))</dcat-ap-vl.pattern.title.77>
+  <dcat-ap-vl.pattern.title.78>Toegekend op - Tijdstip waarop de identificator d uitgegeven. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Identificator.ToegekendOp)</dcat-ap-vl.pattern.title.78>
+  <dcat-ap-vl.pattern.title.79>Gestructureerde identificator - Identificator vh object opgesplitst in zijn onderdelen. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Identificator.GestructureerdeIdentificator)</dcat-ap-vl.pattern.title.79>
+  <dcat-ap-vl.pattern.title.8>Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor een distributie kan hier beschreven wurden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Distributie.AlternatieveIdentificator)</dcat-ap-vl.pattern.title.8>
+  <dcat-ap-vl.pattern.title.80>Toegekend Tür - Link naar de agent die de identificator heeft uitgeven. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Identificator.ToegekendDoor)</dcat-ap-vl.pattern.title.80>
+  <dcat-ap-vl.pattern.title.81>Beschrijving - Een bondige tekstuele omschrijving van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Beschrijving)</dcat-ap-vl.pattern.title.81>
+  <dcat-ap-vl.pattern.title.82>Versie - Een unieke aanduiding van een Variante van de dataservice door middel van een versienummer of -naam van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Versie)</dcat-ap-vl.pattern.title.82>
+  <dcat-ap-vl.pattern.title.83>Identificator - De unieke identificator van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Identificator)</dcat-ap-vl.pattern.title.83>
+  <dcat-ap-vl.pattern.title.84>Trefwoord - Een trefwoord des tag die de bron beschrijft. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Trefwoord)</dcat-ap-vl.pattern.title.84>
+  <dcat-ap-vl.pattern.title.85>Titel - De naam van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Titel)</dcat-ap-vl.pattern.title.85>
+  <dcat-ap-vl.pattern.title.86>Kontaktinformatie - De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Contactinformatie)</dcat-ap-vl.pattern.title.86>
+  <dcat-ap-vl.pattern.title.87>Endpointurl - De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI). (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Endpointurl)</dcat-ap-vl.pattern.title.87>
+  <dcat-ap-vl.pattern.title.88>Endpointbeschrijving - Een beschrijving van de diensten die beschikbaar zijn via de endpoints, met inbegrip van z.B. hun Operties, parameter. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Endpointbeschrijving)</dcat-ap-vl.pattern.title.88>
+  <dcat-ap-vl.pattern.title.89>Landingspagina - Een algemene webpagina waarnaar kan wurde genavigeerd in een webbrowser, met algemene aanvullende informatie über de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Landingspagina)</dcat-ap-vl.pattern.title.89>
+  <dcat-ap-vl.pattern.title.9>Formaat - Het bestandsformaat waarin de data been gedeeld. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Distributie.Formaat)</dcat-ap-vl.pattern.title.9>
+  <dcat-ap-vl.pattern.title.90>Ontwikkelingstoestand - De ontwikkelingstoestand waarin de dataservice wird eingesetzt. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Ontwikkelingstoestand)</dcat-ap-vl.pattern.title.90>
+  <dcat-ap-vl.pattern.title.91>Landingspagina voor authentischatie - Een verwijzing naar de landspagina met de specifieke informatie over de authentischatie voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.LandingspaginaVoorAuthenticatie)</dcat-ap-vl.pattern.title.91>
+  <dcat-ap-vl.pattern.title.92>Levensfase - De levensfase waarin de dataservice zich bevindt. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Levensfase)</dcat-ap-vl.pattern.title.92>
+  <dcat-ap-vl.pattern.title.93>Landingspagina voor statusinformatie - Een verwijzing naar de statuspagina van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.LandingspaginaVoorStatusinformatie)</dcat-ap-vl.pattern.title.93>
+  <dcat-ap-vl.pattern.title.94>Alternatieve identificator - Een alternatieve identificator (een andere identificator dan de unieke identificator) voor een record in de Catalogus kan hier beschreven wurden. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.AlternatieveIdentificator)</dcat-ap-vl.pattern.title.94>
+  <dcat-ap-vl.pattern.title.95>Toegankelijkheid - De toegankelijkheid voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Toegankelijkheid)</dcat-ap-vl.pattern.title.95>
+  <dcat-ap-vl.pattern.title.96>Konformieren Sie aan Protokoll - Een Protokoll waaraan de dataservice voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.ConformAanProtocol)</dcat-ap-vl.pattern.title.96>
+  <dcat-ap-vl.pattern.title.97>Statuut - Een aanduiding van op welke basis de Catalogusresource beschikbaar ist. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.Statuut)</dcat-ap-vl.pattern.title.97>
+  <dcat-ap-vl.pattern.title.98>Landingspagina voor gebruiksinformatie - Een verwijzing naar de landspagina met de specifieke informatie over het gebruik van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#Dataservice.LandingspaginaVoorGebruiksinformatie)</dcat-ap-vl.pattern.title.98>
+  <dcat-ap-vl.pattern.title.99>Rechten - Bepalingen van juridische aard die gelden op de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12#DataserviceRechten)</dcat-ap-vl.pattern.title.99>
 </strings>

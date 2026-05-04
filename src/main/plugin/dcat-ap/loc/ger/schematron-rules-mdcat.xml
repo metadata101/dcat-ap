@@ -1,4 +1,301 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <schematron.title>Metadata DCAT - Obligatorisch</schematron.title>
+  <mdcat.pattern.assert.1> vcard:hasEmail  Eigenschaft ist kein URI mit dem Mailto: Protokoll.</mdcat.pattern.assert.1>
+  <mdcat.pattern.assert.10>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</mdcat.pattern.assert.10>
+  <mdcat.pattern.assert.11>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</mdcat.pattern.assert.11>
+  <mdcat.pattern.assert.12>Referenzressource muss vom Typ   vcard:Organization (  dcat:contactPoint   ) sein</mdcat.pattern.assert.12>
+  <mdcat.pattern.assert.13>Referenzressource muss vom Typ   dcat:DataService (  dcat:service   ) sein</mdcat.pattern.assert.13>
+  <mdcat.pattern.assert.14>Referenzressource muss vom Typ   dcat:Dataset (  dcat:dataset   ) sein</mdcat.pattern.assert.14>
+  <mdcat.pattern.assert.15>Referenzressource muss vom Typ   dct:LicenseDocument (  dct:license   ) sein</mdcat.pattern.assert.15>
+  <mdcat.pattern.assert.16>Referenzressource muss vom Typ   dcat:CatalogRecord (  dcat:record   ) sein</mdcat.pattern.assert.16>
+  <mdcat.pattern.assert.17>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</mdcat.pattern.assert.17>
+  <mdcat.pattern.assert.18>Referenzressource muss vom Typ   foaf:Agent (  dct:publisher   ) sein</mdcat.pattern.assert.18>
+  <mdcat.pattern.assert.19>Wert muss gültig sein   xs:dateTime (  dct:issued   )</mdcat.pattern.assert.19>
+  <mdcat.pattern.assert.2>Eine   vcard:Organization   hat keine   vcard:hasEmail   oder eine   vcard:hasURL   Eigenschaft.</mdcat.pattern.assert.2>
+  <mdcat.pattern.assert.20>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</mdcat.pattern.assert.20>
+  <mdcat.pattern.assert.21>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingpageVoorBronMetadata   ) sein</mdcat.pattern.assert.21>
+  <mdcat.pattern.assert.22>Referenzressource muss vom Typ   rdfs:Resource (  dct:source   ) sein</mdcat.pattern.assert.22>
+  <mdcat.pattern.assert.23>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</mdcat.pattern.assert.23>
+  <mdcat.pattern.assert.24>Referenzressource muss vom Typ   dcat:Resource (  foaf:primaryTopic   ) sein</mdcat.pattern.assert.24>
+  <mdcat.pattern.assert.25>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</mdcat.pattern.assert.25>
+  <mdcat.pattern.assert.26>Wert muss gültig sein   xs:dateTime (  dct:modified   )</mdcat.pattern.assert.26>
+  <mdcat.pattern.assert.27>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</mdcat.pattern.assert.27>
+  <mdcat.pattern.assert.28>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</mdcat.pattern.assert.28>
+  <mdcat.pattern.assert.29>Referenzressource muss vom Typ   rdfs:Resource (  dcat:downloadURL   ) sein</mdcat.pattern.assert.29>
+  <mdcat.pattern.assert.3>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  foaf:name  )</mdcat.pattern.assert.3>
+  <mdcat.pattern.assert.30>Referenzressource muss vom Typ   skos:Concept (  dct:format   ) sein</mdcat.pattern.assert.30>
+  <mdcat.pattern.assert.31>Referenzressource muss vom Typ   dct:LicenseDocument (  dct:license   ) sein</mdcat.pattern.assert.31>
+  <mdcat.pattern.assert.32>Referenzressource muss vom Typ   dct:RightsStatement (  dct:rights   ) sein</mdcat.pattern.assert.32>
+  <mdcat.pattern.assert.33>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</mdcat.pattern.assert.33>
+  <mdcat.pattern.assert.34>Referenzressource muss vom Typ   rdfs:Resource (  dcat:accessURL   ) sein</mdcat.pattern.assert.34>
+  <mdcat.pattern.assert.35>Referenzressource muss vom Typ   foaf:Agent (  geodcat:distributor   ) sein</mdcat.pattern.assert.35>
+  <mdcat.pattern.assert.36>Referenzressource muss vom Typ   dcat:DataService (  dcat:accessService   ) sein</mdcat.pattern.assert.36>
+  <mdcat.pattern.assert.37>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</mdcat.pattern.assert.37>
+  <mdcat.pattern.assert.38>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</mdcat.pattern.assert.38>
+  <mdcat.pattern.assert.39>Referenzressource muss vom Typ   dcat:Dataset (  dcat:servesdataset   ) sein</mdcat.pattern.assert.39>
+  <mdcat.pattern.assert.4>Referenzressource muss vom Typ   rdfs:Resource (  foaf:page   ) sein</mdcat.pattern.assert.4>
+  <mdcat.pattern.assert.40>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</mdcat.pattern.assert.40>
+  <mdcat.pattern.assert.41>Referenzressource muss vom Typ   vcard:Organization (  dcat:contactPoint   ) sein</mdcat.pattern.assert.41>
+  <mdcat.pattern.assert.42>Wert muss gültig sein   xs:dateTime (  dct:created   )</mdcat.pattern.assert.42>
+  <mdcat.pattern.assert.43>Referenzressource muss vom Typ   rdfs:Resource (  dcat:endpointURL   ) sein</mdcat.pattern.assert.43>
+  <mdcat.pattern.assert.44>Referenzressource muss vom Typ   rdfs:Resource (  dcat:endpointDescription   ) sein</mdcat.pattern.assert.44>
+  <mdcat.pattern.assert.45>Referenzressource muss vom Typ   rdfs:Resource (  dcat:landingPage   ) sein</mdcat.pattern.assert.45>
+  <mdcat.pattern.assert.46>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingspaginaVoorAuthenticatie   ) sein</mdcat.pattern.assert.46>
+  <mdcat.pattern.assert.47>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingspaginaVoorGebruiksinformatie   ) sein</mdcat.pattern.assert.47>
+  <mdcat.pattern.assert.48>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingspaginaVoorStatusinformatie   ) sein</mdcat.pattern.assert.48>
+  <mdcat.pattern.assert.49>Referenzressource muss vom Typ   skos:Concept (  mdcat:levensfase   ) sein</mdcat.pattern.assert.49>
+  <mdcat.pattern.assert.5>Referenzressource muss vom Typ   rdfs:Resource (  vcard:hasEmail   ) sein</mdcat.pattern.assert.5>
+  <mdcat.pattern.assert.50>Referenzressource muss vom Typ   dct:LicenseDocument (  dct:license   ) sein</mdcat.pattern.assert.50>
+  <mdcat.pattern.assert.51>Referenzressource muss vom Typ   skos:Concept (  mdcat:ontwikkelingstoestand   ) sein</mdcat.pattern.assert.51>
+  <mdcat.pattern.assert.52>Wert muss gültig sein   xs:dateTime (  dct:issued   )</mdcat.pattern.assert.52>
+  <mdcat.pattern.assert.53>Referenzressource muss vom Typ   dct:RightsStatement (  dct:rights   ) sein</mdcat.pattern.assert.53>
+  <mdcat.pattern.assert.54>Referenzressource muss vom Typ   skos:Concept (  mdcat:statuut   ) sein</mdcat.pattern.assert.54>
+  <mdcat.pattern.assert.55>Referenzressource muss vom Typ   skos:Concept (  dcat:theme   ) sein</mdcat.pattern.assert.55>
+  <mdcat.pattern.assert.56>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</mdcat.pattern.assert.56>
+  <mdcat.pattern.assert.57>Referenzressource muss vom Typ   skos:Concept (  dct:accessRights   ) sein</mdcat.pattern.assert.57>
+  <mdcat.pattern.assert.58>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dcat:keyword  )</mdcat.pattern.assert.58>
+  <mdcat.pattern.assert.59>Wert muss ein nicht leeres Literal sein (  owl:versionInfo  )</mdcat.pattern.assert.59>
+  <mdcat.pattern.assert.6>Referenzressource muss vom Typ   generiek:GestructureerdeIdentificator (  generiek:gestructureerdeIdentificator   ) sein</mdcat.pattern.assert.6>
+  <mdcat.pattern.assert.60>Wert muss gültig sein   xs:dateTime (  dct:modified   )</mdcat.pattern.assert.60>
+  <mdcat.pattern.assert.61>Referenzressource muss vom Typ   dcat:Resource (  mdcat:RelatieQualificatie.catalogusResource.source   ) sein</mdcat.pattern.assert.61>
+  <mdcat.pattern.assert.62>Referenzressource muss vom Typ   dcat:Resource (  mdcat:RelatieQualificatie.catalogusResource.target   ) sein</mdcat.pattern.assert.62>
+  <mdcat.pattern.assert.63>Referenzressource muss vom Typ   skos:Concept (  dcat:hadRole   ) sein</mdcat.pattern.assert.63>
+  <mdcat.pattern.assert.64>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</mdcat.pattern.assert.64>
+  <mdcat.pattern.assert.65>Wert muss gültig sein   xs:dateTime (  dct:issued   )</mdcat.pattern.assert.65>
+  <mdcat.pattern.assert.66>Referenzressource muss vom Typ   rdfs:Resource (  rdfs:seeAlso   ) sein</mdcat.pattern.assert.66>
+  <mdcat.pattern.assert.67>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</mdcat.pattern.assert.67>
+  <mdcat.pattern.assert.68>Referenzressource muss vom Typ   skos:Concept (  dct:type   ) sein</mdcat.pattern.assert.68>
+  <mdcat.pattern.assert.69>Wert muss ein nicht leeres Literal sein (  owl:versionInfo  )</mdcat.pattern.assert.69>
+  <mdcat.pattern.assert.7>Referenzressource muss vom Typ   foaf:Agent (  dct:creator   ) sein</mdcat.pattern.assert.7>
+  <mdcat.pattern.assert.70>Wert muss ein nicht leeres Literal sein (  skos:prefLabel  )</mdcat.pattern.assert.70>
+  <mdcat.pattern.assert.71>Referenzressource muss vom Typ   dcat:Resource (  dct:relation   ) sein</mdcat.pattern.assert.71>
+  <mdcat.pattern.assert.72>Referenzressource muss vom Typ   foaf:Agent (  dct:publisher   ) sein</mdcat.pattern.assert.72>
+  <mdcat.pattern.assert.73>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</mdcat.pattern.assert.73>
+  <mdcat.pattern.assert.74>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</mdcat.pattern.assert.74>
+  <mdcat.pattern.assert.75>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</mdcat.pattern.assert.75>
+  <mdcat.pattern.assert.76>Referenzressource muss vom Typ   vcard:Organization (  dcat:contactPoint   ) sein</mdcat.pattern.assert.76>
+  <mdcat.pattern.assert.77>Wert muss gültig sein   xs:dateTime (  dct:created   )</mdcat.pattern.assert.77>
+  <mdcat.pattern.assert.78>Referenzressource muss vom Typ   dcat:Distribution (  dcat:distribution   ) sein</mdcat.pattern.assert.78>
+  <mdcat.pattern.assert.79>Referenzressource muss vom Typ   foaf:Agent (  dct:rightsHolder   ) sein</mdcat.pattern.assert.79>
+  <mdcat.pattern.assert.8>Wert muss ein nicht leeres Literal sein (  adms:schemaAgency  )</mdcat.pattern.assert.8>
+  <mdcat.pattern.assert.80>Referenzressource muss vom Typ   dct:Location (  dct:spatial   ) sein</mdcat.pattern.assert.80>
+  <mdcat.pattern.assert.81>Referenzressource muss vom Typ   dct:ProvenanceStatement (  dct:provenance   ) sein</mdcat.pattern.assert.81>
+  <mdcat.pattern.assert.82>Referenzressource muss vom Typ   rdfs:Resource (  dcat:landingPage   ) sein</mdcat.pattern.assert.82>
+  <mdcat.pattern.assert.83>Wert muss gültig sein   xs:dateTime (  dct:issued   )</mdcat.pattern.assert.83>
+  <mdcat.pattern.assert.84>Referenzressource muss vom Typ   skos:Concept (  mdcat:statuut   ) sein</mdcat.pattern.assert.84>
+  <mdcat.pattern.assert.85>Referenzressource muss vom Typ   skos:Concept (  dcat:theme   ) sein</mdcat.pattern.assert.85>
+  <mdcat.pattern.assert.86>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</mdcat.pattern.assert.86>
+  <mdcat.pattern.assert.87>Referenzressource muss vom Typ   skos:Concept (  dct:accessRights   ) sein</mdcat.pattern.assert.87>
+  <mdcat.pattern.assert.88>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dcat:keyword  )</mdcat.pattern.assert.88>
+  <mdcat.pattern.assert.89>Wert muss ein nicht leeres Literal sein (  owl:versionInfo  )</mdcat.pattern.assert.89>
+  <mdcat.pattern.assert.9>Wert muss gültig sein   xs:dateTime (  dct:issued   )</mdcat.pattern.assert.9>
+  <mdcat.pattern.assert.90>Referenzressource muss vom Typ   dcat:Distribution (  adms:sample   ) sein</mdcat.pattern.assert.90>
+  <mdcat.pattern.assert.91>Wert muss gültig sein   xs:dateTime (  dct:modified   )</mdcat.pattern.assert.91>
+  <mdcat.pattern.assert.92>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  rdfs:label  )</mdcat.pattern.assert.92>
+  <mdcat.pattern.assert.93>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</mdcat.pattern.assert.93>
+  <mdcat.pattern.assert.94>Referenzressource muss vom Typ   rdfs:Resource (  dcat:downloadURL   ) sein</mdcat.pattern.assert.94>
+  <mdcat.pattern.assert.95>Referenzressource muss vom Typ   skos:Concept (  dcat:mediatype   ) sein</mdcat.pattern.assert.95>
+  <mdcat.pattern.assert.96>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</mdcat.pattern.assert.96>
+  <mdcat.pattern.report.1> vcard:hasEmail  Eigenschaft ist eine URI mit dem Mailto: Protokoll.</mdcat.pattern.report.1>
+  <mdcat.pattern.report.10>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</mdcat.pattern.report.10>
+  <mdcat.pattern.report.11>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</mdcat.pattern.report.11>
+  <mdcat.pattern.report.12>Referenzressource muss vom Typ   vcard:Organization (  dcat:contactPoint   ) sein</mdcat.pattern.report.12>
+  <mdcat.pattern.report.13>Referenzressource muss vom Typ   dcat:DataService (  dcat:service   ) sein</mdcat.pattern.report.13>
+  <mdcat.pattern.report.14>Referenzressource muss vom Typ   dcat:Dataset (  dcat:dataset   ) sein</mdcat.pattern.report.14>
+  <mdcat.pattern.report.15>Referenzressource muss vom Typ   dct:LicenseDocument (  dct:license   ) sein</mdcat.pattern.report.15>
+  <mdcat.pattern.report.16>Referenzressource muss vom Typ   dcat:CatalogRecord (  dcat:record   ) sein</mdcat.pattern.report.16>
+  <mdcat.pattern.report.17>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</mdcat.pattern.report.17>
+  <mdcat.pattern.report.18>Referenzressource muss vom Typ   foaf:Agent (  dct:publisher   ) sein</mdcat.pattern.report.18>
+  <mdcat.pattern.report.19>Wert muss gültig sein   xs:dateTime (  dct:issued   )</mdcat.pattern.report.19>
+  <mdcat.pattern.report.2>Eine   vcard:Organization   hat eine   vcard:hasEmail   oder eine   vcard:hasURL   Eigenschaft.</mdcat.pattern.report.2>
+  <mdcat.pattern.report.20>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</mdcat.pattern.report.20>
+  <mdcat.pattern.report.21>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingpageVoorBronMetadata   ) sein</mdcat.pattern.report.21>
+  <mdcat.pattern.report.22>Referenzressource muss vom Typ   rdfs:Resource (  dct:source   ) sein</mdcat.pattern.report.22>
+  <mdcat.pattern.report.23>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</mdcat.pattern.report.23>
+  <mdcat.pattern.report.24>Referenzressource muss vom Typ   dcat:Resource (  foaf:primaryTopic   ) sein</mdcat.pattern.report.24>
+  <mdcat.pattern.report.25>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</mdcat.pattern.report.25>
+  <mdcat.pattern.report.26>Wert muss gültig sein   xs:dateTime (  dct:modified   )</mdcat.pattern.report.26>
+  <mdcat.pattern.report.27>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</mdcat.pattern.report.27>
+  <mdcat.pattern.report.28>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</mdcat.pattern.report.28>
+  <mdcat.pattern.report.29>Referenzressource muss vom Typ   rdfs:Resource (  dcat:downloadURL   ) sein</mdcat.pattern.report.29>
+  <mdcat.pattern.report.3>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  foaf:name  )</mdcat.pattern.report.3>
+  <mdcat.pattern.report.30>Referenzressource muss vom Typ   skos:Concept (  dct:format   ) sein</mdcat.pattern.report.30>
+  <mdcat.pattern.report.31>Referenzressource muss vom Typ   dct:LicenseDocument (  dct:license   ) sein</mdcat.pattern.report.31>
+  <mdcat.pattern.report.32>Referenzressource muss vom Typ   dct:RightsStatement (  dct:rights   ) sein</mdcat.pattern.report.32>
+  <mdcat.pattern.report.33>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</mdcat.pattern.report.33>
+  <mdcat.pattern.report.34>Referenzressource muss vom Typ   rdfs:Resource (  dcat:accessURL   ) sein</mdcat.pattern.report.34>
+  <mdcat.pattern.report.35>Referenzressource muss vom Typ   foaf:Agent (  geodcat:distributor   ) sein</mdcat.pattern.report.35>
+  <mdcat.pattern.report.36>Referenzressource muss vom Typ   dcat:DataService (  dcat:accessService   ) sein</mdcat.pattern.report.36>
+  <mdcat.pattern.report.37>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</mdcat.pattern.report.37>
+  <mdcat.pattern.report.38>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</mdcat.pattern.report.38>
+  <mdcat.pattern.report.39>Referenzressource muss vom Typ   dcat:Dataset (  dcat:servesdataset   ) sein</mdcat.pattern.report.39>
+  <mdcat.pattern.report.4>Referenzressource muss vom Typ   rdfs:Resource (  foaf:page   ) sein</mdcat.pattern.report.4>
+  <mdcat.pattern.report.40>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</mdcat.pattern.report.40>
+  <mdcat.pattern.report.41>Referenzressource muss vom Typ   vcard:Organization (  dcat:contactPoint   ) sein</mdcat.pattern.report.41>
+  <mdcat.pattern.report.42>Wert muss gültig sein   xs:dateTime (  dct:created   )</mdcat.pattern.report.42>
+  <mdcat.pattern.report.43>Referenzressource muss vom Typ   rdfs:Resource (  dcat:endpointURL   ) sein</mdcat.pattern.report.43>
+  <mdcat.pattern.report.44>Referenzressource muss vom Typ   rdfs:Resource (  dcat:endpointDescription   ) sein</mdcat.pattern.report.44>
+  <mdcat.pattern.report.45>Referenzressource muss vom Typ   rdfs:Resource (  dcat:landingPage   ) sein</mdcat.pattern.report.45>
+  <mdcat.pattern.report.46>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingspaginaVoorAuthenticatie   ) sein</mdcat.pattern.report.46>
+  <mdcat.pattern.report.47>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingspaginaVoorGebruiksinformatie   ) sein</mdcat.pattern.report.47>
+  <mdcat.pattern.report.48>Referenzressource muss vom Typ   rdfs:Resource (  mdcat:landingspaginaVoorStatusinformatie   ) sein</mdcat.pattern.report.48>
+  <mdcat.pattern.report.49>Referenzressource muss vom Typ   skos:Concept (  mdcat:levensfase   ) sein</mdcat.pattern.report.49>
+  <mdcat.pattern.report.5>Referenzressource muss vom Typ   rdfs:Resource (  vcard:hasEmail   ) sein</mdcat.pattern.report.5>
+  <mdcat.pattern.report.50>Referenzressource muss vom Typ   dct:LicenseDocument (  dct:license   ) sein</mdcat.pattern.report.50>
+  <mdcat.pattern.report.51>Referenzressource muss vom Typ   skos:Concept (  mdcat:ontwikkelingstoestand   ) sein</mdcat.pattern.report.51>
+  <mdcat.pattern.report.52>Wert muss gültig sein   xs:dateTime (  dct:issued   )</mdcat.pattern.report.52>
+  <mdcat.pattern.report.53>Referenzressource muss vom Typ   dct:RightsStatement (  dct:rights   ) sein</mdcat.pattern.report.53>
+  <mdcat.pattern.report.54>Referenzressource muss vom Typ   skos:Concept (  mdcat:statuut   ) sein</mdcat.pattern.report.54>
+  <mdcat.pattern.report.55>Referenzressource muss vom Typ   skos:Concept (  dcat:theme   ) sein</mdcat.pattern.report.55>
+  <mdcat.pattern.report.56>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</mdcat.pattern.report.56>
+  <mdcat.pattern.report.57>Referenzressource muss vom Typ   skos:Concept (  dct:accessRights   ) sein</mdcat.pattern.report.57>
+  <mdcat.pattern.report.58>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dcat:keyword  )</mdcat.pattern.report.58>
+  <mdcat.pattern.report.59>Wert muss ein nicht leeres Literal sein (  owl:versionInfo  )</mdcat.pattern.report.59>
+  <mdcat.pattern.report.6>Referenzressource muss vom Typ   generiek:GestructureerdeIdentificator (  generiek:gestructureerdeIdentificator   ) sein</mdcat.pattern.report.6>
+  <mdcat.pattern.report.60>Wert muss gültig sein   xs:dateTime (  dct:modified   )</mdcat.pattern.report.60>
+  <mdcat.pattern.report.61>Referenzressource muss vom Typ   dcat:Resource (  mdcat:RelatieQualificatie.catalogusResource.source   ) sein</mdcat.pattern.report.61>
+  <mdcat.pattern.report.62>Referenzressource muss vom Typ   dcat:Resource (  mdcat:RelatieQualificatie.catalogusResource.target   ) sein</mdcat.pattern.report.62>
+  <mdcat.pattern.report.63>Referenzressource muss vom Typ   skos:Concept (  dcat:hadRole   ) sein</mdcat.pattern.report.63>
+  <mdcat.pattern.report.64>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</mdcat.pattern.report.64>
+  <mdcat.pattern.report.65>Wert muss gültig sein   xs:dateTime (  dct:issued   )</mdcat.pattern.report.65>
+  <mdcat.pattern.report.66>Referenzressource muss vom Typ   rdfs:Resource (  rdfs:seeAlso   ) sein</mdcat.pattern.report.66>
+  <mdcat.pattern.report.67>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</mdcat.pattern.report.67>
+  <mdcat.pattern.report.68>Referenzressource muss vom Typ   skos:Concept (  dct:type   ) sein</mdcat.pattern.report.68>
+  <mdcat.pattern.report.69>Wert muss ein nicht leeres Literal sein (  owl:versionInfo  )</mdcat.pattern.report.69>
+  <mdcat.pattern.report.7>Referenzressource muss vom Typ   foaf:Agent (  dct:creator   ) sein</mdcat.pattern.report.7>
+  <mdcat.pattern.report.70>Wert muss ein nicht leeres Literal sein (  skos:prefLabel  )</mdcat.pattern.report.70>
+  <mdcat.pattern.report.71>Referenzressource muss vom Typ   dcat:Resource (  dct:relation   ) sein</mdcat.pattern.report.71>
+  <mdcat.pattern.report.72>Referenzressource muss vom Typ   foaf:Agent (  dct:publisher   ) sein</mdcat.pattern.report.72>
+  <mdcat.pattern.report.73>Referenzressource muss vom Typ   adms:Identifier (  adms:identifier   ) sein</mdcat.pattern.report.73>
+  <mdcat.pattern.report.74>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</mdcat.pattern.report.74>
+  <mdcat.pattern.report.75>Referenzressource muss vom Typ   dct:Standard (  dct:conformsTo   ) sein</mdcat.pattern.report.75>
+  <mdcat.pattern.report.76>Referenzressource muss vom Typ   vcard:Organization (  dcat:contactPoint   ) sein</mdcat.pattern.report.76>
+  <mdcat.pattern.report.77>Wert muss gültig sein   xs:dateTime (  dct:created   )</mdcat.pattern.report.77>
+  <mdcat.pattern.report.78>Referenzressource muss vom Typ   dcat:Distribution (  dcat:distribution   ) sein</mdcat.pattern.report.78>
+  <mdcat.pattern.report.79>Referenzressource muss vom Typ   foaf:Agent (  dct:rightsHolder   ) sein</mdcat.pattern.report.79>
+  <mdcat.pattern.report.8>Wert muss ein nicht leeres Literal sein (  adms:schemaAgency  )</mdcat.pattern.report.8>
+  <mdcat.pattern.report.80>Referenzressource muss vom Typ   dct:Location (  dct:spatial   ) sein</mdcat.pattern.report.80>
+  <mdcat.pattern.report.81>Referenzressource muss vom Typ   dct:ProvenanceStatement (  dct:provenance   ) sein</mdcat.pattern.report.81>
+  <mdcat.pattern.report.82>Referenzressource muss vom Typ   rdfs:Resource (  dcat:landingPage   ) sein</mdcat.pattern.report.82>
+  <mdcat.pattern.report.83>Wert muss gültig sein   xs:dateTime (  dct:issued   )</mdcat.pattern.report.83>
+  <mdcat.pattern.report.84>Referenzressource muss vom Typ   skos:Concept (  mdcat:statuut   ) sein</mdcat.pattern.report.84>
+  <mdcat.pattern.report.85>Referenzressource muss vom Typ   skos:Concept (  dcat:theme   ) sein</mdcat.pattern.report.85>
+  <mdcat.pattern.report.86>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</mdcat.pattern.report.86>
+  <mdcat.pattern.report.87>Referenzressource muss vom Typ   skos:Concept (  dct:accessRights   ) sein</mdcat.pattern.report.87>
+  <mdcat.pattern.report.88>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dcat:keyword  )</mdcat.pattern.report.88>
+  <mdcat.pattern.report.89>Wert muss ein nicht leeres Literal sein (  owl:versionInfo  )</mdcat.pattern.report.89>
+  <mdcat.pattern.report.9>Wert muss gültig sein   xs:dateTime (  dct:issued   )</mdcat.pattern.report.9>
+  <mdcat.pattern.report.90>Referenzressource muss vom Typ   dcat:Distribution (  adms:sample   ) sein</mdcat.pattern.report.90>
+  <mdcat.pattern.report.91>Wert muss gültig sein   xs:dateTime (  dct:modified   )</mdcat.pattern.report.91>
+  <mdcat.pattern.report.92>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  rdfs:label  )</mdcat.pattern.report.92>
+  <mdcat.pattern.report.93>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:description  )</mdcat.pattern.report.93>
+  <mdcat.pattern.report.94>Referenzressource muss vom Typ   rdfs:Resource (  dcat:downloadURL   ) sein</mdcat.pattern.report.94>
+  <mdcat.pattern.report.95>Referenzressource muss vom Typ   skos:Concept (  dcat:mediatype   ) sein</mdcat.pattern.report.95>
+  <mdcat.pattern.report.96>Der Wert muss ein nicht leeres, sprachlich markiertes Wort sein (  dct:title  )</mdcat.pattern.report.96>
+  <mdcat.pattern.title.1> vcard:hasEmail   ist ein URI mit dem Mailto-Protokoll.</mdcat.pattern.title.1>
+  <mdcat.pattern.title.10>Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor de Catalogus kan hier beschreven wurden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Catalogus.alternatieveidentificator)</mdcat.pattern.title.10>
+  <mdcat.pattern.title.11>Beschrijving - Een bondige tekstuele omschrijving van de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Catalogus.beschrijving)</mdcat.pattern.title.11>
+  <mdcat.pattern.title.12>Kontaktinformatie - De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Catalogus.contactinformatie)</mdcat.pattern.title.12>
+  <mdcat.pattern.title.13>Heeft dataservice - Een dataservice die deel uitmaakt van de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Catalogus.heeftDataService)</mdcat.pattern.title.13>
+  <mdcat.pattern.title.14>Heeft dataset - Een dataset die deel uitmaakt van de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Catalogus.heeftDataset)</mdcat.pattern.title.14>
+  <mdcat.pattern.title.15>Licentie - De licentie van de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Catalogus.licentie)</mdcat.pattern.title.15>
+  <mdcat.pattern.title.16>Record - Een record beschrijft de registratie van één enkele dataset of dataservice die onderdeel is van de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Catalogus.record)</mdcat.pattern.title.16>
+  <mdcat.pattern.title.17>Titel - De naam van de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Catalogus.titel)</mdcat.pattern.title.17>
+  <mdcat.pattern.title.18>Uitgever - De uitgever, de entiteit die verantwoordelijk ist voor het beschikbaar stellen, van de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Catalogus.uitgever)</mdcat.pattern.title.18>
+  <mdcat.pattern.title.19>Aanmaakdatum - De datum van (formele) opname van de bijbehorende dataset of dataservice in de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#CatalogusRecord.aanmadatumak)</mdcat.pattern.title.19>
+  <mdcat.pattern.title.2>Mindestens eine von   vcard:hasEmail  oder   vcard:hasURL    ist eine erforderliche Eigenschaft eines Kontaktpunktes.</mdcat.pattern.title.2>
+  <mdcat.pattern.title.20>Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor een record in de Catalogus kan hier beschreven wurden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#CatalogusRecord.alternatieveidentificator)</mdcat.pattern.title.20>
+  <mdcat.pattern.title.21>Bron Metadatensatz landenspagina - Een webpagina in een menselijk leesbare vorm van de bron metadata record. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#CatalogusRecord.bronmetadatarecordlandingspagina)</mdcat.pattern.title.21>
+  <mdcat.pattern.title.22>Bron metadatarecord - De record in een andere Catalogus waarvan deze record en de beschrijvingen van het bijhorende hoofdonderp van afgeleid zijn. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#CatalogusRecord.bronmetadatarecord)</mdcat.pattern.title.22>
+  <mdcat.pattern.title.23>Conform - De (metadata) standaard volgens welke
+regels het hoofdonderwerp waarnaar de
+Catalogus Record verwijst, beschreven
+Wortt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#CatalogusRecord.conform)</mdcat.pattern.title.23>
+  <mdcat.pattern.title.24>Hoofdonderwerp - De Ressource (Datensatz von Dataservice) beschreven in Het Record. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#CatalogusRecord.hoofdonderwerp)</mdcat.pattern.title.24>
+  <mdcat.pattern.title.25>Titel - De naam van het Aufnahme in de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#CatalogusRecord.titel)</mdcat.pattern.title.25>
+  <mdcat.pattern.title.26>Wijzigingsdatum - De meest newe datum waarop de record in de Catalogus ist gewijzigd, bijgewerkt von aangepast. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#CatalogusRecord.wijzigingsdatum)</mdcat.pattern.title.26>
+  <mdcat.pattern.title.27>Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor een distributie kan hier beschreven wurden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Distributie.alternatieveidentificator)</mdcat.pattern.title.27>
+  <mdcat.pattern.title.28>Konformieren - Een standaard, Schema, implementatie-
+Modell, applicatieprofiel, vocabularium
+waaraan de distributie voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Distributie.conform)</mdcat.pattern.title.28>
+  <mdcat.pattern.title.29>Downloadurl - De URL waar de data gedownload kan wurde. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Distributie.downloadURL)</mdcat.pattern.title.29>
+  <mdcat.pattern.title.3>Naam... De naam van de agent. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Agent.naam)</mdcat.pattern.title.3>
+  <mdcat.pattern.title.30>Formaat - Het bestandsformaat waarin de data wordt gedeeld. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Distributie.formaat)</mdcat.pattern.title.30>
+  <mdcat.pattern.title.31>Licentie - De licentie van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Distributie.licentie)</mdcat.pattern.title.31>
+  <mdcat.pattern.title.32>Rechten - Bepalingen van juridische aard die gelden op de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Distributie.rechten)</mdcat.pattern.title.32>
+  <mdcat.pattern.title.33>Titel - De naam van de distributie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Distributie.titel)</mdcat.pattern.title.33>
+  <mdcat.pattern.title.34>Toegangsurl - Een URL waar de data kan gevonden wurden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Distributie.toegangsURL)</mdcat.pattern.title.34>
+  <mdcat.pattern.title.35>Verdeler - de agent die instaat voor de verdeling (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Distributie.verdeler)</mdcat.pattern.title.35>
+  <mdcat.pattern.title.36>Wordt aangeboden door - Een dataservice die deze distributie aanbiedt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Distributie.wordtaangebodendoor)</mdcat.pattern.title.36>
+  <mdcat.pattern.title.37>Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor een dataservice kan hier beschreven wurden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.alternatieveidentificator)</mdcat.pattern.title.37>
+  <mdcat.pattern.title.38>Beschrijving - Een bondige tekstuele omschrijving van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.beschrijving)</mdcat.pattern.title.38>
+  <mdcat.pattern.title.39>Biedt informatie aan over - De data die via deze dataservice wurde aangeboden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.biedtinformatieaanover)</mdcat.pattern.title.39>
+  <mdcat.pattern.title.4>Kontaktpagina - Een webpagina die vonwel toelaat om contact op te nemen (via b.v. een webformulier) von die informatie bevat hoe men contact kan opnemen. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Contactinfo.contactpagina)</mdcat.pattern.title.4>
+  <mdcat.pattern.title.40>Konformieren Sie aan Protokoll - Een Protokoll waaraan de dataservice voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.conformaanprotocol)</mdcat.pattern.title.40>
+  <mdcat.pattern.title.41>Kontaktinformatie - De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.contactinformatie)</mdcat.pattern.title.41>
+  <mdcat.pattern.title.42>Creatiedatum - Het tijdsmoment waarop de dataservice voor het eerst werd geactiveerd. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.creatiedatum)</mdcat.pattern.title.42>
+  <mdcat.pattern.title.43>Endpointurl - De rootlocatie of het primaire endpoint van de dienst (een web-resolvable URI). (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.endpointURL)</mdcat.pattern.title.43>
+  <mdcat.pattern.title.44>Endpointbeschrijving - Een beschrijving van de diensten die beschikbaar zijn via de endpoints, met inbegrip van hun Operties, parameter, enz. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.endpointbeschrijving)</mdcat.pattern.title.44>
+  <mdcat.pattern.title.45>Landingspagina - Een algemene webpagina waarnaar kan wurde genavigeerd in een webbrowser, met algemene aanvullende informatie über de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.landingspagina)</mdcat.pattern.title.45>
+  <mdcat.pattern.title.46>Landingspagina voor authentischatie - Een verwijzing naar de landspagina met de specifieke informatie over de authentischatie voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.landingspaginavoorauthenticatie)</mdcat.pattern.title.46>
+  <mdcat.pattern.title.47>Landingspagina voor gebruiksinformatie - Een verwijzing naar de landspagina met de specifieke informatie over het gebruik van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.landingspaginavoorgebruiksinformatie)</mdcat.pattern.title.47>
+  <mdcat.pattern.title.48>Landingspagina voor statusinformatie - Een verwijzing naar de statuspagina van de dataservice (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.landingspaginavoorstatusinformatie)</mdcat.pattern.title.48>
+  <mdcat.pattern.title.49>Levensfase - De levensfase waarin de dataservice zich bevindt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.levensfase)</mdcat.pattern.title.49>
+  <mdcat.pattern.title.5>E-mail - Het e-mailadres waarmee een gebruiker contact kan opnemen voor informatie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Contactinfo.e-mail)</mdcat.pattern.title.5>
+  <mdcat.pattern.title.50>Licentie - De licentie van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.licentie)</mdcat.pattern.title.50>
+  <mdcat.pattern.title.51>Ontwikkelingstoestand - De ontwikkelingstoestand waarin de dataservice wird eingesetzt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.ontwikkelingstoestand)</mdcat.pattern.title.51>
+  <mdcat.pattern.title.52>Publicatiedatum - Het tijdsmoment waarop de service werd gepubliceerd door de uitgever. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.publicatiedatum)</mdcat.pattern.title.52>
+  <mdcat.pattern.title.53>Rechten - Bepalingen van juridische aard die gelden op de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.rechten)</mdcat.pattern.title.53>
+  <mdcat.pattern.title.54>Statuut - Een aanduiding van op welke basis de Catalogusresource beschikbaar ist. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.statuut)</mdcat.pattern.title.54>
+  <mdcat.pattern.title.55>Thema - De hoofdcategorie waartoe de dataservice behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.thema)</mdcat.pattern.title.55>
+  <mdcat.pattern.title.56>Titel - De naam van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.titel)</mdcat.pattern.title.56>
+  <mdcat.pattern.title.57>Toegankelijkheid - De toegankelijkheid voor de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.toegankelijkheid)</mdcat.pattern.title.57>
+  <mdcat.pattern.title.58>Trefwoord - Een trefwoord des tag die de Ressource beschrijft. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.trefwoord)</mdcat.pattern.title.58>
+  <mdcat.pattern.title.59>Versie - Een unieke aanduiding van een Variante van de dataservice door middel van een versienummer of -naam van de dataservice. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.versie)</mdcat.pattern.title.59>
+  <mdcat.pattern.title.6>Gestructureerde identificator - Identificator vh object opgesplitst in zijn onderdelen. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Identificator.gestructureerdeidentificator)</mdcat.pattern.title.6>
+  <mdcat.pattern.title.60>Wijzigingsdatum - Het tijdsmoment waarop de dataserviced gewijzigd (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataservice.wijzigingsdatum)</mdcat.pattern.title.60>
+  <mdcat.pattern.title.61>Katalog Ressource (Quelle) - Referentie naar verbonden klasse. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#RelatieQualificatie.CatalogusResource(source))</mdcat.pattern.title.61>
+  <mdcat.pattern.title.62>Katalog Ressource (Ziel) - Referentie naar verbonden klasse. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#RelatieQualificatie.CatalogusResource(target))</mdcat.pattern.title.62>
+  <mdcat.pattern.title.63>Rol - De functie hoe de entiteiten zich tot elkaar verhouden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#RelatieQualificatie.rol)</mdcat.pattern.title.63>
+  <mdcat.pattern.title.64>Beschrijving - Een bondige tekstuele omschrijving van de
+standaard (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Standaard.beschrijving)</mdcat.pattern.title.64>
+  <mdcat.pattern.title.65>Publicatiedatum - De datum waarop de standaard
+gepubliceerd (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Standaard.publicatiedatum)</mdcat.pattern.title.65>
+  <mdcat.pattern.title.66>Bestimmte url - Een URL waarop men de specificatie kan
+vinden (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Standaard.spezifischeatieURL)</mdcat.pattern.title.66>
+  <mdcat.pattern.title.67>Titel - naam van de standaard (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Standaard.titel)</mdcat.pattern.title.67>
+  <mdcat.pattern.title.68>Typ - Een categorisatie van de standaard (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Standaard.type)</mdcat.pattern.title.68>
+  <mdcat.pattern.title.69>Versie - De versie van de standaard (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Standaard.versie)</mdcat.pattern.title.69>
+  <mdcat.pattern.title.7>Toegekend Tür - Link naar de agent die de identificator heeft uitgeven. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Identificator.toegekenddoor)</mdcat.pattern.title.7>
+  <mdcat.pattern.title.70>Voorkeurslabel - Een afkorting, of notatie waaronder de
+Das ist Standaard bekend. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Standaard.voorkeurslabel)</mdcat.pattern.title.70>
+  <mdcat.pattern.title.71>Relatie - een verband tussen twee Resources. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#CatalogusResource.relatie)</mdcat.pattern.title.71>
+  <mdcat.pattern.title.72>Uitgever - De uitgever, de entiteit die verantwoordelijk ist voor het beschikbaar stellen, van de Resources in de Catalogus. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#CatalogusResource.uitgever)</mdcat.pattern.title.72>
+  <mdcat.pattern.title.73>Alternatieve identificator - Een alternatieve identificator (dan de unieke identificator) voor een dataset kan hier beschreven wurden. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.alternatieveidentificator)</mdcat.pattern.title.73>
+  <mdcat.pattern.title.74>Beschrijving - Een bondige tekstuele omschrijving van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.beschrijving)</mdcat.pattern.title.74>
+  <mdcat.pattern.title.75>Konformieren - Een standaard, Schema, applicatieprofiel, vocabularium, CRS, ... waaraan de dataset voldoet. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.conform)</mdcat.pattern.title.75>
+  <mdcat.pattern.title.76>Kontaktinformatie - De relevante contactinformatie waarmee een eindgebruiker in contact kan treden met de verantwoordelijken van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.contactinformatie)</mdcat.pattern.title.76>
+  <mdcat.pattern.title.77>Creatiedatum - Het tijdsmoment waarop de dataset ontstaan ist. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.creatiedatum)</mdcat.pattern.title.77>
+  <mdcat.pattern.title.78>Distributie - Een beschikbare Distributie van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.distributie)</mdcat.pattern.title.78>
+  <mdcat.pattern.title.79>Eigenaar - de agent die de eigendomsrechten heeft (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.eigenaar)</mdcat.pattern.title.79>
+  <mdcat.pattern.title.8>Toegekend door (string) - Naam vd agent die de identificator heeft toegekend. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Identificator.toegekenddoor(String))</mdcat.pattern.title.8>
+  <mdcat.pattern.title.80>Geografische dekking - Het geografische gebied waarover de dataset informatie heeft. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.geografischedekking)</mdcat.pattern.title.80>
+  <mdcat.pattern.title.81>Herkomst - De ontstaansgeschiedenis van een dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.herkomst)</mdcat.pattern.title.81>
+  <mdcat.pattern.title.82>Landingspagina - Een algemene webpagina waarnaar kan wurde genavigeerd in een webbrowser, met algemene informatie over de dataset, zijn distributies en/of aanvullende informatie. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.landingspagina)</mdcat.pattern.title.82>
+  <mdcat.pattern.title.83>Publicatiedatum - Het tijdsmoment waarop de dataset werd gepubliceerd door de uitgever. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.publicatiedatum)</mdcat.pattern.title.83>
+  <mdcat.pattern.title.84>Statuut - Een aanduiding van op welke basis de Catalogusresource beschikbaar ist. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.statuut)</mdcat.pattern.title.84>
+  <mdcat.pattern.title.85>Thema - De hoofdcategorie waartoe de dataset behoort. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.thema)</mdcat.pattern.title.85>
+  <mdcat.pattern.title.86>Titel - De naam van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.titel)</mdcat.pattern.title.86>
+  <mdcat.pattern.title.87>Toegankelijkheid - De toegankelijkheid voor de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.toegankelijkheid)</mdcat.pattern.title.87>
+  <mdcat.pattern.title.88>Trefwoord - Een trefwoord des tag die de Ressource beschrijft. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.trefwoord)</mdcat.pattern.title.88>
+  <mdcat.pattern.title.89>Versie - Een unieke aanduiding van een Variante van de dataset door middel van een versienummer of -naam van de dataset. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.versie)</mdcat.pattern.title.89>
+  <mdcat.pattern.title.9>Toegekend op - Tijdstip waarop de identificator d uitgegeven. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Identificator.toegekendop)</mdcat.pattern.title.9>
+  <mdcat.pattern.title.90>Voorbeeldweergave - Een verkleinde weergave van een afbeelding die de dataset illustreert.? (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.voorbeeldweergave)</mdcat.pattern.title.90>
+  <mdcat.pattern.title.91>Wijzigingsdatum - Het tijdsmoment waarop de dataset werd geactualiseerd (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Dataset.wijzigingsdatum)</mdcat.pattern.title.91>
+  <mdcat.pattern.title.92>Plaatsnaam - een een eenduidige, beknopte beschrijving die de plaats benoemt. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Plaats.plaatsnaam)</mdcat.pattern.title.92>
+  <mdcat.pattern.title.93>Beschrijving - Een bondige tekstuele omschrijving van de afbeelding (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Voorbeeldweergave.beschrijving)</mdcat.pattern.title.93>
+  <mdcat.pattern.title.94>Downloadurl - De URL waar de afbeelding gedownload kan wurde. (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Voorbeeldweergave.downloadURL)</mdcat.pattern.title.94>
+  <mdcat.pattern.title.95>Mediatype - Het voorstellingsvorm van de afbeelding (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Voorbeeldweergave.mediatype)</mdcat.pattern.title.95>
+  <mdcat.pattern.title.96>Titel - naam van de afbeelding (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21#Voorbeeldweergave.titel)</mdcat.pattern.title.96>
 </strings>

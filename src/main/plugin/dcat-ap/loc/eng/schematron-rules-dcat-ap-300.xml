@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <schematron.title>DCAT-AP (v3.0.0)</schematron.title>
+  <dcat-ap-300.pattern.assert.1>Value does not satisfy the SHACL constraint (dct:language)</dcat-ap-300.pattern.assert.1>
+  <dcat-ap-300.pattern.assert.10>Value does not satisfy the SHACL constraint (dcat:catalog)</dcat-ap-300.pattern.assert.10>
+  <dcat-ap-300.pattern.assert.11>At most 1 value(s) are allowed (dct:creator)</dcat-ap-300.pattern.assert.11>
+  <dcat-ap-300.pattern.assert.12>Value does not satisfy the SHACL constraint (dcat:dataset)</dcat-ap-300.pattern.assert.12>
+  <dcat-ap-300.pattern.assert.13>Value must be a literal (dct:description)</dcat-ap-300.pattern.assert.13>
+  <dcat-ap-300.pattern.assert.14>Value must be a literal (dct:title)</dcat-ap-300.pattern.assert.14>
+  <dcat-ap-300.pattern.assert.15>At most 1 value(s) are allowed (foaf:homepage)</dcat-ap-300.pattern.assert.15>
+  <dcat-ap-300.pattern.assert.16>Value must be a literal (dcat:bbox)</dcat-ap-300.pattern.assert.16>
+  <dcat-ap-300.pattern.assert.17>Value must be a literal (dcat:centroid)</dcat-ap-300.pattern.assert.17>
+  <dcat-ap-300.pattern.assert.18>Value must be a literal (locn:geometry)</dcat-ap-300.pattern.assert.18>
+  <dcat-ap-300.pattern.assert.19>Value must be a literal (dct:title)</dcat-ap-300.pattern.assert.19>
+  <dcat-ap-300.pattern.assert.2>Value must be an IRI (dcat-ap:applicableLegislation)</dcat-ap-300.pattern.assert.2>
+  <dcat-ap-300.pattern.assert.20>Value must be a literal (dct:description)</dcat-ap-300.pattern.assert.20>
+  <dcat-ap-300.pattern.assert.21>Value must be a literal (skos:prefLabel)</dcat-ap-300.pattern.assert.21>
+  <dcat-ap-300.pattern.assert.22>Value must be a literal (dct:title)</dcat-ap-300.pattern.assert.22>
+  <dcat-ap-300.pattern.assert.23>Value must be an IRI (dcat-ap:applicableLegislation)</dcat-ap-300.pattern.assert.23>
+  <dcat-ap-300.pattern.assert.24>Value does not satisfy the SHACL constraint (dcat:contactPoint)</dcat-ap-300.pattern.assert.24>
+  <dcat-ap-300.pattern.assert.25>Value must be a literal (dct:description)</dcat-ap-300.pattern.assert.25>
+  <dcat-ap-300.pattern.assert.26>At most 1 value(s) are allowed (dct:accrualPeriodicity)</dcat-ap-300.pattern.assert.26>
+  <dcat-ap-300.pattern.assert.27>Value does not satisfy the SHACL constraint (dct:spatial)</dcat-ap-300.pattern.assert.27>
+  <dcat-ap-300.pattern.assert.28>Value must be a literal (dct:modified)</dcat-ap-300.pattern.assert.28>
+  <dcat-ap-300.pattern.assert.29>At most 1 value(s) are allowed (dct:publisher)</dcat-ap-300.pattern.assert.29>
+  <dcat-ap-300.pattern.assert.3>At most 1 value(s) are allowed (dct:license)</dcat-ap-300.pattern.assert.3>
+  <dcat-ap-300.pattern.assert.30>Value must be a literal (dct:issued)</dcat-ap-300.pattern.assert.30>
+  <dcat-ap-300.pattern.assert.31>Value does not satisfy the SHACL constraint (dct:temporal)</dcat-ap-300.pattern.assert.31>
+  <dcat-ap-300.pattern.assert.32>Value must be a literal (dct:title)</dcat-ap-300.pattern.assert.32>
+  <dcat-ap-300.pattern.assert.33>At most 1 value(s) are allowed (dct:accessRights)</dcat-ap-300.pattern.assert.33>
+  <dcat-ap-300.pattern.assert.34>Value must be an IRI (dcat-ap:applicableLegislation)</dcat-ap-300.pattern.assert.34>
+  <dcat-ap-300.pattern.assert.35>Value does not satisfy the SHACL constraint (dct:conformsTo)</dcat-ap-300.pattern.assert.35>
+  <dcat-ap-300.pattern.assert.36>Value does not satisfy the SHACL constraint (dcat:contactPoint)</dcat-ap-300.pattern.assert.36>
+  <dcat-ap-300.pattern.assert.37>Value must be a literal (dct:description)</dcat-ap-300.pattern.assert.37>
+  <dcat-ap-300.pattern.assert.38>At least 1 value(s) are required (dcat:endpointURL)</dcat-ap-300.pattern.assert.38>
+  <dcat-ap-300.pattern.assert.39>Value does not satisfy the SHACL constraint (dcat:endpointDescription)</dcat-ap-300.pattern.assert.39>
+  <dcat-ap-300.pattern.assert.4>Value does not satisfy the SHACL constraint (dct:spatial)</dcat-ap-300.pattern.assert.4>
+  <dcat-ap-300.pattern.assert.40>Value does not satisfy the SHACL constraint (dct:format)</dcat-ap-300.pattern.assert.40>
+  <dcat-ap-300.pattern.assert.41>Value must be a literal (dcat:keyword)</dcat-ap-300.pattern.assert.41>
+  <dcat-ap-300.pattern.assert.42>Value does not satisfy the SHACL constraint (dcat:landingPage)</dcat-ap-300.pattern.assert.42>
+  <dcat-ap-300.pattern.assert.43>At most 1 value(s) are allowed (dct:license)</dcat-ap-300.pattern.assert.43>
+  <dcat-ap-300.pattern.assert.44>At most 1 value(s) are allowed (dct:publisher)</dcat-ap-300.pattern.assert.44>
+  <dcat-ap-300.pattern.assert.45>Value does not satisfy the SHACL constraint (dcat:servesDataset)</dcat-ap-300.pattern.assert.45>
+  <dcat-ap-300.pattern.assert.46>Value must be an IRI (dcat:theme)</dcat-ap-300.pattern.assert.46>
+  <dcat-ap-300.pattern.assert.47>Value must be a literal (dct:title)</dcat-ap-300.pattern.assert.47>
+  <dcat-ap-300.pattern.assert.48>Value does not satisfy the SHACL constraint (dcat:accessService)</dcat-ap-300.pattern.assert.48>
+  <dcat-ap-300.pattern.assert.49>At least 1 value(s) are required (dcat:accessURL)</dcat-ap-300.pattern.assert.49>
+  <dcat-ap-300.pattern.assert.5>Value does not satisfy the SHACL constraint (dct:hasPart)</dcat-ap-300.pattern.assert.5>
+  <dcat-ap-300.pattern.assert.50>Value must be an IRI (dcat-ap:applicableLegislation)</dcat-ap-300.pattern.assert.50>
+  <dcat-ap-300.pattern.assert.51>At most 1 value(s) are allowed (dcat-ap:availability)</dcat-ap-300.pattern.assert.51>
+  <dcat-ap-300.pattern.assert.52>At most 1 value(s) are allowed (spdx:checksum)</dcat-ap-300.pattern.assert.52>
+  <dcat-ap-300.pattern.assert.53>At most 1 value(s) are allowed (dcat:compressFormat)</dcat-ap-300.pattern.assert.53>
+  <dcat-ap-300.pattern.assert.54>Value must be a literal (dct:description)</dcat-ap-300.pattern.assert.54>
+  <dcat-ap-300.pattern.assert.55>Value does not satisfy the SHACL constraint (foaf:page)</dcat-ap-300.pattern.assert.55>
+  <dcat-ap-300.pattern.assert.56>Value does not satisfy the SHACL constraint (dcat:downloadURL)</dcat-ap-300.pattern.assert.56>
+  <dcat-ap-300.pattern.assert.57>At most 1 value(s) are allowed (dct:format)</dcat-ap-300.pattern.assert.57>
+  <dcat-ap-300.pattern.assert.58>At most 1 value(s) are allowed (odrl:hasPolicy)</dcat-ap-300.pattern.assert.58>
+  <dcat-ap-300.pattern.assert.59>Value does not satisfy the SHACL constraint (dct:language)</dcat-ap-300.pattern.assert.59>
+  <dcat-ap-300.pattern.assert.6>At most 1 value(s) are allowed (dct:rights)</dcat-ap-300.pattern.assert.6>
+  <dcat-ap-300.pattern.assert.60>At most 1 value(s) are allowed (dct:license)</dcat-ap-300.pattern.assert.60>
+  <dcat-ap-300.pattern.assert.61>Value does not satisfy the SHACL constraint (dct:conformsTo)</dcat-ap-300.pattern.assert.61>
+  <dcat-ap-300.pattern.assert.62>At most 1 value(s) are allowed (dcat:mediaType)</dcat-ap-300.pattern.assert.62>
+  <dcat-ap-300.pattern.assert.63>At most 1 value(s) are allowed (dcat:packageFormat)</dcat-ap-300.pattern.assert.63>
+  <dcat-ap-300.pattern.assert.64>At most 1 value(s) are allowed (dct:rights)</dcat-ap-300.pattern.assert.64>
+  <dcat-ap-300.pattern.assert.65>At most 1 value(s) are allowed (adms:status)</dcat-ap-300.pattern.assert.65>
+  <dcat-ap-300.pattern.assert.66>Value must be a literal (dct:title)</dcat-ap-300.pattern.assert.66>
+  <dcat-ap-300.pattern.assert.67>At most 1 value(s) are allowed (dct:accessRights)</dcat-ap-300.pattern.assert.67>
+  <dcat-ap-300.pattern.assert.68>Value must be an IRI (dcat-ap:applicableLegislation)</dcat-ap-300.pattern.assert.68>
+  <dcat-ap-300.pattern.assert.69>Value does not satisfy the SHACL constraint (dct:conformsTo)</dcat-ap-300.pattern.assert.69>
+  <dcat-ap-300.pattern.assert.7>Value does not satisfy the SHACL constraint (dcat:record)</dcat-ap-300.pattern.assert.7>
+  <dcat-ap-300.pattern.assert.70>Value does not satisfy the SHACL constraint (dcat:contactPoint)</dcat-ap-300.pattern.assert.70>
+  <dcat-ap-300.pattern.assert.71>Value does not satisfy the SHACL constraint (dct:creator)</dcat-ap-300.pattern.assert.71>
+  <dcat-ap-300.pattern.assert.72>Value does not satisfy the SHACL constraint (dcat:distribution)</dcat-ap-300.pattern.assert.72>
+  <dcat-ap-300.pattern.assert.73>Value must be a literal (dct:description)</dcat-ap-300.pattern.assert.73>
+  <dcat-ap-300.pattern.assert.74>Value does not satisfy the SHACL constraint (foaf:page)</dcat-ap-300.pattern.assert.74>
+  <dcat-ap-300.pattern.assert.75>At most 1 value(s) are allowed (dct:accrualPeriodicity)</dcat-ap-300.pattern.assert.75>
+  <dcat-ap-300.pattern.assert.76>Value does not satisfy the SHACL constraint (dct:spatial)</dcat-ap-300.pattern.assert.76>
+  <dcat-ap-300.pattern.assert.77>Value does not satisfy the SHACL constraint (dct:hasVersion)</dcat-ap-300.pattern.assert.77>
+  <dcat-ap-300.pattern.assert.78>Value must be a literal (dct:identifier)</dcat-ap-300.pattern.assert.78>
+  <dcat-ap-300.pattern.assert.79>Value does not satisfy the SHACL constraint (dcat:inSeries)</dcat-ap-300.pattern.assert.79>
+  <dcat-ap-300.pattern.assert.8>Value does not satisfy the SHACL constraint (dcat:themeTaxonomy)</dcat-ap-300.pattern.assert.8>
+  <dcat-ap-300.pattern.assert.80>Value does not satisfy the SHACL constraint (dct:isReferencedBy)</dcat-ap-300.pattern.assert.80>
+  <dcat-ap-300.pattern.assert.81>Value must be a literal (dcat:keyword)</dcat-ap-300.pattern.assert.81>
+  <dcat-ap-300.pattern.assert.82>Value does not satisfy the SHACL constraint (dcat:landingPage)</dcat-ap-300.pattern.assert.82>
+  <dcat-ap-300.pattern.assert.83>Value does not satisfy the SHACL constraint (dct:language)</dcat-ap-300.pattern.assert.83>
+  <dcat-ap-300.pattern.assert.84>Value does not satisfy the SHACL constraint (adms:identifier)</dcat-ap-300.pattern.assert.84>
+  <dcat-ap-300.pattern.assert.85>Value does not satisfy the SHACL constraint (dct:provenance)</dcat-ap-300.pattern.assert.85>
+  <dcat-ap-300.pattern.assert.86>At most 1 value(s) are allowed (dct:publisher)</dcat-ap-300.pattern.assert.86>
+  <dcat-ap-300.pattern.assert.87>Value does not satisfy the SHACL constraint (prov:qualifiedAttribution)</dcat-ap-300.pattern.assert.87>
+  <dcat-ap-300.pattern.assert.88>Value does not satisfy the SHACL constraint (dcat:qualifiedRelation)</dcat-ap-300.pattern.assert.88>
+  <dcat-ap-300.pattern.assert.89>Value does not satisfy the SHACL constraint (dct:relation)</dcat-ap-300.pattern.assert.89>
+  <dcat-ap-300.pattern.assert.9>Value does not satisfy the SHACL constraint (dcat:service)</dcat-ap-300.pattern.assert.9>
+  <dcat-ap-300.pattern.assert.90>Value does not satisfy the SHACL constraint (adms:sample)</dcat-ap-300.pattern.assert.90>
+  <dcat-ap-300.pattern.assert.91>Value does not satisfy the SHACL constraint (dct:source)</dcat-ap-300.pattern.assert.91>
+  <dcat-ap-300.pattern.assert.92>Value does not satisfy the SHACL constraint (dct:temporal)</dcat-ap-300.pattern.assert.92>
+  <dcat-ap-300.pattern.assert.93>Value must be an IRI (dcat:theme)</dcat-ap-300.pattern.assert.93>
+  <dcat-ap-300.pattern.assert.94>Value must be a literal (dct:title)</dcat-ap-300.pattern.assert.94>
+  <dcat-ap-300.pattern.assert.95>Value does not satisfy the SHACL constraint (dct:type)</dcat-ap-300.pattern.assert.95>
+  <dcat-ap-300.pattern.assert.96>Value must be a literal (dcat:version)</dcat-ap-300.pattern.assert.96>
+  <dcat-ap-300.pattern.assert.97>Value must be a literal (adms:versionNotes)</dcat-ap-300.pattern.assert.97>
+  <dcat-ap-300.pattern.assert.98>Value does not satisfy the SHACL constraint (prov:wasGeneratedBy)</dcat-ap-300.pattern.assert.98>
+  <dcat-ap-300.pattern.assert.99>Value must be a literal (foaf:name)</dcat-ap-300.pattern.assert.99>
+  <dcat-ap-300.pattern.report.1>Value does not satisfy the SHACL constraint (dct:language)</dcat-ap-300.pattern.report.1>
+  <dcat-ap-300.pattern.report.10>Value does not satisfy the SHACL constraint (dcat:catalog)</dcat-ap-300.pattern.report.10>
+  <dcat-ap-300.pattern.report.11>At most 1 value(s) are allowed (dct:creator)</dcat-ap-300.pattern.report.11>
+  <dcat-ap-300.pattern.report.12>Value does not satisfy the SHACL constraint (dcat:dataset)</dcat-ap-300.pattern.report.12>
+  <dcat-ap-300.pattern.report.13>Value must be a literal (dct:description)</dcat-ap-300.pattern.report.13>
+  <dcat-ap-300.pattern.report.14>Value must be a literal (dct:title)</dcat-ap-300.pattern.report.14>
+  <dcat-ap-300.pattern.report.15>At most 1 value(s) are allowed (foaf:homepage)</dcat-ap-300.pattern.report.15>
+  <dcat-ap-300.pattern.report.16>Value must be a literal (dcat:bbox)</dcat-ap-300.pattern.report.16>
+  <dcat-ap-300.pattern.report.17>Value must be a literal (dcat:centroid)</dcat-ap-300.pattern.report.17>
+  <dcat-ap-300.pattern.report.18>Value must be a literal (locn:geometry)</dcat-ap-300.pattern.report.18>
+  <dcat-ap-300.pattern.report.19>Value must be a literal (dct:title)</dcat-ap-300.pattern.report.19>
+  <dcat-ap-300.pattern.report.2>Value must be an IRI (dcat-ap:applicableLegislation)</dcat-ap-300.pattern.report.2>
+  <dcat-ap-300.pattern.report.20>Value must be a literal (dct:description)</dcat-ap-300.pattern.report.20>
+  <dcat-ap-300.pattern.report.21>Value must be a literal (skos:prefLabel)</dcat-ap-300.pattern.report.21>
+  <dcat-ap-300.pattern.report.22>Value must be a literal (dct:title)</dcat-ap-300.pattern.report.22>
+  <dcat-ap-300.pattern.report.23>Value must be an IRI (dcat-ap:applicableLegislation)</dcat-ap-300.pattern.report.23>
+  <dcat-ap-300.pattern.report.24>Value does not satisfy the SHACL constraint (dcat:contactPoint)</dcat-ap-300.pattern.report.24>
+  <dcat-ap-300.pattern.report.25>Value must be a literal (dct:description)</dcat-ap-300.pattern.report.25>
+  <dcat-ap-300.pattern.report.26>At most 1 value(s) are allowed (dct:accrualPeriodicity)</dcat-ap-300.pattern.report.26>
+  <dcat-ap-300.pattern.report.27>Value does not satisfy the SHACL constraint (dct:spatial)</dcat-ap-300.pattern.report.27>
+  <dcat-ap-300.pattern.report.28>Value must be a literal (dct:modified)</dcat-ap-300.pattern.report.28>
+  <dcat-ap-300.pattern.report.29>At most 1 value(s) are allowed (dct:publisher)</dcat-ap-300.pattern.report.29>
+  <dcat-ap-300.pattern.report.3>At most 1 value(s) are allowed (dct:license)</dcat-ap-300.pattern.report.3>
+  <dcat-ap-300.pattern.report.30>Value must be a literal (dct:issued)</dcat-ap-300.pattern.report.30>
+  <dcat-ap-300.pattern.report.31>Value does not satisfy the SHACL constraint (dct:temporal)</dcat-ap-300.pattern.report.31>
+  <dcat-ap-300.pattern.report.32>Value must be a literal (dct:title)</dcat-ap-300.pattern.report.32>
+  <dcat-ap-300.pattern.report.33>At most 1 value(s) are allowed (dct:accessRights)</dcat-ap-300.pattern.report.33>
+  <dcat-ap-300.pattern.report.34>Value must be an IRI (dcat-ap:applicableLegislation)</dcat-ap-300.pattern.report.34>
+  <dcat-ap-300.pattern.report.35>Value does not satisfy the SHACL constraint (dct:conformsTo)</dcat-ap-300.pattern.report.35>
+  <dcat-ap-300.pattern.report.36>Value does not satisfy the SHACL constraint (dcat:contactPoint)</dcat-ap-300.pattern.report.36>
+  <dcat-ap-300.pattern.report.37>Value must be a literal (dct:description)</dcat-ap-300.pattern.report.37>
+  <dcat-ap-300.pattern.report.38>At least 1 value(s) are required (dcat:endpointURL)</dcat-ap-300.pattern.report.38>
+  <dcat-ap-300.pattern.report.39>Value does not satisfy the SHACL constraint (dcat:endpointDescription)</dcat-ap-300.pattern.report.39>
+  <dcat-ap-300.pattern.report.4>Value does not satisfy the SHACL constraint (dct:spatial)</dcat-ap-300.pattern.report.4>
+  <dcat-ap-300.pattern.report.40>Value does not satisfy the SHACL constraint (dct:format)</dcat-ap-300.pattern.report.40>
+  <dcat-ap-300.pattern.report.41>Value must be a literal (dcat:keyword)</dcat-ap-300.pattern.report.41>
+  <dcat-ap-300.pattern.report.42>Value does not satisfy the SHACL constraint (dcat:landingPage)</dcat-ap-300.pattern.report.42>
+  <dcat-ap-300.pattern.report.43>At most 1 value(s) are allowed (dct:license)</dcat-ap-300.pattern.report.43>
+  <dcat-ap-300.pattern.report.44>At most 1 value(s) are allowed (dct:publisher)</dcat-ap-300.pattern.report.44>
+  <dcat-ap-300.pattern.report.45>Value does not satisfy the SHACL constraint (dcat:servesDataset)</dcat-ap-300.pattern.report.45>
+  <dcat-ap-300.pattern.report.46>Value must be an IRI (dcat:theme)</dcat-ap-300.pattern.report.46>
+  <dcat-ap-300.pattern.report.47>Value must be a literal (dct:title)</dcat-ap-300.pattern.report.47>
+  <dcat-ap-300.pattern.report.48>Value does not satisfy the SHACL constraint (dcat:accessService)</dcat-ap-300.pattern.report.48>
+  <dcat-ap-300.pattern.report.49>At least 1 value(s) are required (dcat:accessURL)</dcat-ap-300.pattern.report.49>
+  <dcat-ap-300.pattern.report.5>Value does not satisfy the SHACL constraint (dct:hasPart)</dcat-ap-300.pattern.report.5>
+  <dcat-ap-300.pattern.report.50>Value must be an IRI (dcat-ap:applicableLegislation)</dcat-ap-300.pattern.report.50>
+  <dcat-ap-300.pattern.report.51>At most 1 value(s) are allowed (dcat-ap:availability)</dcat-ap-300.pattern.report.51>
+  <dcat-ap-300.pattern.report.52>At most 1 value(s) are allowed (spdx:checksum)</dcat-ap-300.pattern.report.52>
+  <dcat-ap-300.pattern.report.53>At most 1 value(s) are allowed (dcat:compressFormat)</dcat-ap-300.pattern.report.53>
+  <dcat-ap-300.pattern.report.54>Value must be a literal (dct:description)</dcat-ap-300.pattern.report.54>
+  <dcat-ap-300.pattern.report.55>Value does not satisfy the SHACL constraint (foaf:page)</dcat-ap-300.pattern.report.55>
+  <dcat-ap-300.pattern.report.56>Value does not satisfy the SHACL constraint (dcat:downloadURL)</dcat-ap-300.pattern.report.56>
+  <dcat-ap-300.pattern.report.57>At most 1 value(s) are allowed (dct:format)</dcat-ap-300.pattern.report.57>
+  <dcat-ap-300.pattern.report.58>At most 1 value(s) are allowed (odrl:hasPolicy)</dcat-ap-300.pattern.report.58>
+  <dcat-ap-300.pattern.report.59>Value does not satisfy the SHACL constraint (dct:language)</dcat-ap-300.pattern.report.59>
+  <dcat-ap-300.pattern.report.6>At most 1 value(s) are allowed (dct:rights)</dcat-ap-300.pattern.report.6>
+  <dcat-ap-300.pattern.report.60>At most 1 value(s) are allowed (dct:license)</dcat-ap-300.pattern.report.60>
+  <dcat-ap-300.pattern.report.61>Value does not satisfy the SHACL constraint (dct:conformsTo)</dcat-ap-300.pattern.report.61>
+  <dcat-ap-300.pattern.report.62>At most 1 value(s) are allowed (dcat:mediaType)</dcat-ap-300.pattern.report.62>
+  <dcat-ap-300.pattern.report.63>At most 1 value(s) are allowed (dcat:packageFormat)</dcat-ap-300.pattern.report.63>
+  <dcat-ap-300.pattern.report.64>At most 1 value(s) are allowed (dct:rights)</dcat-ap-300.pattern.report.64>
+  <dcat-ap-300.pattern.report.65>At most 1 value(s) are allowed (adms:status)</dcat-ap-300.pattern.report.65>
+  <dcat-ap-300.pattern.report.66>Value must be a literal (dct:title)</dcat-ap-300.pattern.report.66>
+  <dcat-ap-300.pattern.report.67>At most 1 value(s) are allowed (dct:accessRights)</dcat-ap-300.pattern.report.67>
+  <dcat-ap-300.pattern.report.68>Value must be an IRI (dcat-ap:applicableLegislation)</dcat-ap-300.pattern.report.68>
+  <dcat-ap-300.pattern.report.69>Value does not satisfy the SHACL constraint (dct:conformsTo)</dcat-ap-300.pattern.report.69>
+  <dcat-ap-300.pattern.report.7>Value does not satisfy the SHACL constraint (dcat:record)</dcat-ap-300.pattern.report.7>
+  <dcat-ap-300.pattern.report.70>Value does not satisfy the SHACL constraint (dcat:contactPoint)</dcat-ap-300.pattern.report.70>
+  <dcat-ap-300.pattern.report.71>Value does not satisfy the SHACL constraint (dct:creator)</dcat-ap-300.pattern.report.71>
+  <dcat-ap-300.pattern.report.72>Value does not satisfy the SHACL constraint (dcat:distribution)</dcat-ap-300.pattern.report.72>
+  <dcat-ap-300.pattern.report.73>Value must be a literal (dct:description)</dcat-ap-300.pattern.report.73>
+  <dcat-ap-300.pattern.report.74>Value does not satisfy the SHACL constraint (foaf:page)</dcat-ap-300.pattern.report.74>
+  <dcat-ap-300.pattern.report.75>At most 1 value(s) are allowed (dct:accrualPeriodicity)</dcat-ap-300.pattern.report.75>
+  <dcat-ap-300.pattern.report.76>Value does not satisfy the SHACL constraint (dct:spatial)</dcat-ap-300.pattern.report.76>
+  <dcat-ap-300.pattern.report.77>Value does not satisfy the SHACL constraint (dct:hasVersion)</dcat-ap-300.pattern.report.77>
+  <dcat-ap-300.pattern.report.78>Value must be a literal (dct:identifier)</dcat-ap-300.pattern.report.78>
+  <dcat-ap-300.pattern.report.79>Value does not satisfy the SHACL constraint (dcat:inSeries)</dcat-ap-300.pattern.report.79>
+  <dcat-ap-300.pattern.report.8>Value does not satisfy the SHACL constraint (dcat:themeTaxonomy)</dcat-ap-300.pattern.report.8>
+  <dcat-ap-300.pattern.report.80>Value does not satisfy the SHACL constraint (dct:isReferencedBy)</dcat-ap-300.pattern.report.80>
+  <dcat-ap-300.pattern.report.81>Value must be a literal (dcat:keyword)</dcat-ap-300.pattern.report.81>
+  <dcat-ap-300.pattern.report.82>Value does not satisfy the SHACL constraint (dcat:landingPage)</dcat-ap-300.pattern.report.82>
+  <dcat-ap-300.pattern.report.83>Value does not satisfy the SHACL constraint (dct:language)</dcat-ap-300.pattern.report.83>
+  <dcat-ap-300.pattern.report.84>Value does not satisfy the SHACL constraint (adms:identifier)</dcat-ap-300.pattern.report.84>
+  <dcat-ap-300.pattern.report.85>Value does not satisfy the SHACL constraint (dct:provenance)</dcat-ap-300.pattern.report.85>
+  <dcat-ap-300.pattern.report.86>At most 1 value(s) are allowed (dct:publisher)</dcat-ap-300.pattern.report.86>
+  <dcat-ap-300.pattern.report.87>Value does not satisfy the SHACL constraint (prov:qualifiedAttribution)</dcat-ap-300.pattern.report.87>
+  <dcat-ap-300.pattern.report.88>Value does not satisfy the SHACL constraint (dcat:qualifiedRelation)</dcat-ap-300.pattern.report.88>
+  <dcat-ap-300.pattern.report.89>Value does not satisfy the SHACL constraint (dct:relation)</dcat-ap-300.pattern.report.89>
+  <dcat-ap-300.pattern.report.9>Value does not satisfy the SHACL constraint (dcat:service)</dcat-ap-300.pattern.report.9>
+  <dcat-ap-300.pattern.report.90>Value does not satisfy the SHACL constraint (adms:sample)</dcat-ap-300.pattern.report.90>
+  <dcat-ap-300.pattern.report.91>Value does not satisfy the SHACL constraint (dct:source)</dcat-ap-300.pattern.report.91>
+  <dcat-ap-300.pattern.report.92>Value does not satisfy the SHACL constraint (dct:temporal)</dcat-ap-300.pattern.report.92>
+  <dcat-ap-300.pattern.report.93>Value must be an IRI (dcat:theme)</dcat-ap-300.pattern.report.93>
+  <dcat-ap-300.pattern.report.94>Value must be a literal (dct:title)</dcat-ap-300.pattern.report.94>
+  <dcat-ap-300.pattern.report.95>Value does not satisfy the SHACL constraint (dct:type)</dcat-ap-300.pattern.report.95>
+  <dcat-ap-300.pattern.report.96>Value must be a literal (dcat:version)</dcat-ap-300.pattern.report.96>
+  <dcat-ap-300.pattern.report.97>Value must be a literal (adms:versionNotes)</dcat-ap-300.pattern.report.97>
+  <dcat-ap-300.pattern.report.98>Value does not satisfy the SHACL constraint (prov:wasGeneratedBy)</dcat-ap-300.pattern.report.98>
+  <dcat-ap-300.pattern.report.99>Value must be a literal (foaf:name)</dcat-ap-300.pattern.report.99>
+  <dcat-ap-300.pattern.title.1>dct:language - constraint</dcat-ap-300.pattern.title.1>
+  <dcat-ap-300.pattern.title.10>dcat:catalog - constraint</dcat-ap-300.pattern.title.10>
+  <dcat-ap-300.pattern.title.11>dct:creator - maximum cardinality 1</dcat-ap-300.pattern.title.11>
+  <dcat-ap-300.pattern.title.12>dcat:dataset - constraint</dcat-ap-300.pattern.title.12>
+  <dcat-ap-300.pattern.title.13>dct:description - literal constraint</dcat-ap-300.pattern.title.13>
+  <dcat-ap-300.pattern.title.14>dct:title - literal constraint</dcat-ap-300.pattern.title.14>
+  <dcat-ap-300.pattern.title.15>foaf:homepage - maximum cardinality 1</dcat-ap-300.pattern.title.15>
+  <dcat-ap-300.pattern.title.16>dcat:bbox - literal constraint</dcat-ap-300.pattern.title.16>
+  <dcat-ap-300.pattern.title.17>dcat:centroid - literal constraint</dcat-ap-300.pattern.title.17>
+  <dcat-ap-300.pattern.title.18>locn:geometry - literal constraint</dcat-ap-300.pattern.title.18>
+  <dcat-ap-300.pattern.title.19>dct:title - literal constraint</dcat-ap-300.pattern.title.19>
+  <dcat-ap-300.pattern.title.2>dcat-ap:applicableLegislation - IRI constraint</dcat-ap-300.pattern.title.2>
+  <dcat-ap-300.pattern.title.20>dct:description - literal constraint</dcat-ap-300.pattern.title.20>
+  <dcat-ap-300.pattern.title.21>skos:prefLabel - literal constraint</dcat-ap-300.pattern.title.21>
+  <dcat-ap-300.pattern.title.22>dct:title - literal constraint</dcat-ap-300.pattern.title.22>
+  <dcat-ap-300.pattern.title.23>dcat-ap:applicableLegislation - IRI constraint</dcat-ap-300.pattern.title.23>
+  <dcat-ap-300.pattern.title.24>dcat:contactPoint - constraint</dcat-ap-300.pattern.title.24>
+  <dcat-ap-300.pattern.title.25>dct:description - literal constraint</dcat-ap-300.pattern.title.25>
+  <dcat-ap-300.pattern.title.26>dct:accrualPeriodicity - maximum cardinality 1</dcat-ap-300.pattern.title.26>
+  <dcat-ap-300.pattern.title.27>dct:spatial - constraint</dcat-ap-300.pattern.title.27>
+  <dcat-ap-300.pattern.title.28>dct:modified - literal constraint</dcat-ap-300.pattern.title.28>
+  <dcat-ap-300.pattern.title.29>dct:publisher - maximum cardinality 1</dcat-ap-300.pattern.title.29>
+  <dcat-ap-300.pattern.title.3>dct:license - maximum cardinality 1</dcat-ap-300.pattern.title.3>
+  <dcat-ap-300.pattern.title.30>dct:issued - literal constraint</dcat-ap-300.pattern.title.30>
+  <dcat-ap-300.pattern.title.31>dct:temporal - constraint</dcat-ap-300.pattern.title.31>
+  <dcat-ap-300.pattern.title.32>dct:title - literal constraint</dcat-ap-300.pattern.title.32>
+  <dcat-ap-300.pattern.title.33>dct:accessRights - maximum cardinality 1</dcat-ap-300.pattern.title.33>
+  <dcat-ap-300.pattern.title.34>dcat-ap:applicableLegislation - IRI constraint</dcat-ap-300.pattern.title.34>
+  <dcat-ap-300.pattern.title.35>dct:conformsTo - constraint</dcat-ap-300.pattern.title.35>
+  <dcat-ap-300.pattern.title.36>dcat:contactPoint - constraint</dcat-ap-300.pattern.title.36>
+  <dcat-ap-300.pattern.title.37>dct:description - literal constraint</dcat-ap-300.pattern.title.37>
+  <dcat-ap-300.pattern.title.38>dcat:endpointURL - minimum cardinality 1</dcat-ap-300.pattern.title.38>
+  <dcat-ap-300.pattern.title.39>dcat:endpointDescription - constraint</dcat-ap-300.pattern.title.39>
+  <dcat-ap-300.pattern.title.4>dct:spatial - constraint</dcat-ap-300.pattern.title.4>
+  <dcat-ap-300.pattern.title.40>dct:format - constraint</dcat-ap-300.pattern.title.40>
+  <dcat-ap-300.pattern.title.41>dcat:keyword - literal constraint</dcat-ap-300.pattern.title.41>
+  <dcat-ap-300.pattern.title.42>dcat:landingPage - constraint</dcat-ap-300.pattern.title.42>
+  <dcat-ap-300.pattern.title.43>dct:license - maximum cardinality 1</dcat-ap-300.pattern.title.43>
+  <dcat-ap-300.pattern.title.44>dct:publisher - maximum cardinality 1</dcat-ap-300.pattern.title.44>
+  <dcat-ap-300.pattern.title.45>dcat:servesDataset - constraint</dcat-ap-300.pattern.title.45>
+  <dcat-ap-300.pattern.title.46>dcat:theme - IRI constraint</dcat-ap-300.pattern.title.46>
+  <dcat-ap-300.pattern.title.47>dct:title - literal constraint</dcat-ap-300.pattern.title.47>
+  <dcat-ap-300.pattern.title.48>dcat:accessService - constraint</dcat-ap-300.pattern.title.48>
+  <dcat-ap-300.pattern.title.49>dcat:accessURL - minimum cardinality 1</dcat-ap-300.pattern.title.49>
+  <dcat-ap-300.pattern.title.5>dct:hasPart - constraint</dcat-ap-300.pattern.title.5>
+  <dcat-ap-300.pattern.title.50>dcat-ap:applicableLegislation - IRI constraint</dcat-ap-300.pattern.title.50>
+  <dcat-ap-300.pattern.title.51>dcat-ap:availability - maximum cardinality 1</dcat-ap-300.pattern.title.51>
+  <dcat-ap-300.pattern.title.52>spdx:checksum - maximum cardinality 1</dcat-ap-300.pattern.title.52>
+  <dcat-ap-300.pattern.title.53>dcat:compressFormat - maximum cardinality 1</dcat-ap-300.pattern.title.53>
+  <dcat-ap-300.pattern.title.54>dct:description - literal constraint</dcat-ap-300.pattern.title.54>
+  <dcat-ap-300.pattern.title.55>foaf:page - constraint</dcat-ap-300.pattern.title.55>
+  <dcat-ap-300.pattern.title.56>dcat:downloadURL - constraint</dcat-ap-300.pattern.title.56>
+  <dcat-ap-300.pattern.title.57>dct:format - maximum cardinality 1</dcat-ap-300.pattern.title.57>
+  <dcat-ap-300.pattern.title.58>odrl:hasPolicy - maximum cardinality 1</dcat-ap-300.pattern.title.58>
+  <dcat-ap-300.pattern.title.59>dct:language - constraint</dcat-ap-300.pattern.title.59>
+  <dcat-ap-300.pattern.title.6>dct:rights - maximum cardinality 1</dcat-ap-300.pattern.title.6>
+  <dcat-ap-300.pattern.title.60>dct:license - maximum cardinality 1</dcat-ap-300.pattern.title.60>
+  <dcat-ap-300.pattern.title.61>dct:conformsTo - constraint</dcat-ap-300.pattern.title.61>
+  <dcat-ap-300.pattern.title.62>dcat:mediaType - maximum cardinality 1</dcat-ap-300.pattern.title.62>
+  <dcat-ap-300.pattern.title.63>dcat:packageFormat - maximum cardinality 1</dcat-ap-300.pattern.title.63>
+  <dcat-ap-300.pattern.title.64>dct:rights - maximum cardinality 1</dcat-ap-300.pattern.title.64>
+  <dcat-ap-300.pattern.title.65>adms:status - maximum cardinality 1</dcat-ap-300.pattern.title.65>
+  <dcat-ap-300.pattern.title.66>dct:title - literal constraint</dcat-ap-300.pattern.title.66>
+  <dcat-ap-300.pattern.title.67>dct:accessRights - maximum cardinality 1</dcat-ap-300.pattern.title.67>
+  <dcat-ap-300.pattern.title.68>dcat-ap:applicableLegislation - IRI constraint</dcat-ap-300.pattern.title.68>
+  <dcat-ap-300.pattern.title.69>dct:conformsTo - constraint</dcat-ap-300.pattern.title.69>
+  <dcat-ap-300.pattern.title.7>dcat:record - constraint</dcat-ap-300.pattern.title.7>
+  <dcat-ap-300.pattern.title.70>dcat:contactPoint - constraint</dcat-ap-300.pattern.title.70>
+  <dcat-ap-300.pattern.title.71>dct:creator - constraint</dcat-ap-300.pattern.title.71>
+  <dcat-ap-300.pattern.title.72>dcat:distribution - constraint</dcat-ap-300.pattern.title.72>
+  <dcat-ap-300.pattern.title.73>dct:description - literal constraint</dcat-ap-300.pattern.title.73>
+  <dcat-ap-300.pattern.title.74>foaf:page - constraint</dcat-ap-300.pattern.title.74>
+  <dcat-ap-300.pattern.title.75>dct:accrualPeriodicity - maximum cardinality 1</dcat-ap-300.pattern.title.75>
+  <dcat-ap-300.pattern.title.76>dct:spatial - constraint</dcat-ap-300.pattern.title.76>
+  <dcat-ap-300.pattern.title.77>dct:hasVersion - constraint</dcat-ap-300.pattern.title.77>
+  <dcat-ap-300.pattern.title.78>dct:identifier - literal constraint</dcat-ap-300.pattern.title.78>
+  <dcat-ap-300.pattern.title.79>dcat:inSeries - constraint</dcat-ap-300.pattern.title.79>
+  <dcat-ap-300.pattern.title.8>dcat:themeTaxonomy - constraint</dcat-ap-300.pattern.title.8>
+  <dcat-ap-300.pattern.title.80>dct:isReferencedBy - constraint</dcat-ap-300.pattern.title.80>
+  <dcat-ap-300.pattern.title.81>dcat:keyword - literal constraint</dcat-ap-300.pattern.title.81>
+  <dcat-ap-300.pattern.title.82>dcat:landingPage - constraint</dcat-ap-300.pattern.title.82>
+  <dcat-ap-300.pattern.title.83>dct:language - constraint</dcat-ap-300.pattern.title.83>
+  <dcat-ap-300.pattern.title.84>adms:identifier - constraint</dcat-ap-300.pattern.title.84>
+  <dcat-ap-300.pattern.title.85>dct:provenance - constraint</dcat-ap-300.pattern.title.85>
+  <dcat-ap-300.pattern.title.86>dct:publisher - maximum cardinality 1</dcat-ap-300.pattern.title.86>
+  <dcat-ap-300.pattern.title.87>prov:qualifiedAttribution - constraint</dcat-ap-300.pattern.title.87>
+  <dcat-ap-300.pattern.title.88>dcat:qualifiedRelation - constraint</dcat-ap-300.pattern.title.88>
+  <dcat-ap-300.pattern.title.89>dct:relation - constraint</dcat-ap-300.pattern.title.89>
+  <dcat-ap-300.pattern.title.9>dcat:service - constraint</dcat-ap-300.pattern.title.9>
+  <dcat-ap-300.pattern.title.90>adms:sample - constraint</dcat-ap-300.pattern.title.90>
+  <dcat-ap-300.pattern.title.91>dct:source - constraint</dcat-ap-300.pattern.title.91>
+  <dcat-ap-300.pattern.title.92>dct:temporal - constraint</dcat-ap-300.pattern.title.92>
+  <dcat-ap-300.pattern.title.93>dcat:theme - IRI constraint</dcat-ap-300.pattern.title.93>
+  <dcat-ap-300.pattern.title.94>dct:title - literal constraint</dcat-ap-300.pattern.title.94>
+  <dcat-ap-300.pattern.title.95>dct:type - constraint</dcat-ap-300.pattern.title.95>
+  <dcat-ap-300.pattern.title.96>dcat:version - literal constraint</dcat-ap-300.pattern.title.96>
+  <dcat-ap-300.pattern.title.97>adms:versionNotes - literal constraint</dcat-ap-300.pattern.title.97>
+  <dcat-ap-300.pattern.title.98>prov:wasGeneratedBy - constraint</dcat-ap-300.pattern.title.98>
+  <dcat-ap-300.pattern.title.99>foaf:name - literal constraint</dcat-ap-300.pattern.title.99>
+</strings>

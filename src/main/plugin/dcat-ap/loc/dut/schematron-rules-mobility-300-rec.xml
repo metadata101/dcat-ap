@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <schematron.title>Mobility - Recommended (v3.0.0)</schematron.title>
+  <mobility-300-rec.pattern.assert.1>Het protocol van de toepassingslaag moet afkomstig zijn uit de gecontroleerde woordenschat en kan maximaal eenmaal verschijnen (  mobilitydcatap:applicationLayerProtocol  )</mobility-300-rec.pattern.assert.1>
+  <mobility-300-rec.pattern.assert.10>Tijdelijke dekking moet een blanco knooppunt zijn of IRI (  dct:temporal  )</mobility-300-rec.pattern.assert.10>
+  <mobility-300-rec.pattern.assert.11>Transportmodus moet afkomstig zijn van de gecontroleerde woordenschat (https://w3id.org/Mobilitydcat-ap/transport-mode/*) (  mobilitydcatap:transportMode  )</mobility-300-rec.pattern.assert.11>
+  <mobility-300-rec.pattern.assert.2>Beschrijving moet een geldig EU-taaltag hebben, kan niet leeg zijn, elke taal slechts één keer (  dct:description  )</mobility-300-rec.pattern.assert.2>
+  <mobility-300-rec.pattern.assert.3>Licentie moet een blanco node of IRI zijn en kan maximaal één keer verschijnen (  dct:license  )</mobility-300-rec.pattern.assert.3>
+  <mobility-300-rec.pattern.assert.4>Georeferencing methode moet afkomstig zijn van de gecontroleerde woordenschat (https://w3id.org/Mobilitydcat-ap/georeferencing-methode/*) (  mobilitydcatap:georeferencingMethod  )</mobility-300-rec.pattern.assert.4>
+  <mobility-300-rec.pattern.assert.5>Contactpunt moet een blanco knooppunt zijn of IRI (  dcat:contactPoint  )</mobility-300-rec.pattern.assert.5>
+  <mobility-300-rec.pattern.assert.6>Sleutelwoorden moeten geldige EU-taaltags hebben en mogen niet leeg zijn (  dcat:keyword  )</mobility-300-rec.pattern.assert.6>
+  <mobility-300-rec.pattern.assert.7>Netwerkdekking moet afkomstig zijn van de gecontroleerde woordenschat (https://w3id.org/Mobilitydcat-ap/network-coverage/*) (  mobilitydcatap:networkCoverage  )</mobility-300-rec.pattern.assert.7>
+  <mobility-300-rec.pattern.assert.8>Rechtenhouder moet een blanco knooppunt of IRI zijn (  dct:rightsHolder )</mobility-300-rec.pattern.assert.8>
+  <mobility-300-rec.pattern.assert.9>Thema moet afkomstig zijn van de woordenschat EU Data Thema's (http://publications.europa.eu/resource/authority/data-theme/*) (  dcat:theme  )</mobility-300-rec.pattern.assert.9>
+  <mobility-300-rec.pattern.report.1>Het protocol van de toepassingslaag moet afkomstig zijn uit de gecontroleerde woordenschat en kan maximaal eenmaal verschijnen (  mobilitydcatap:applicationLayerProtocol  )</mobility-300-rec.pattern.report.1>
+  <mobility-300-rec.pattern.report.10>Tijdelijke dekking moet een blanco knooppunt zijn of IRI (  dct:temporal  )</mobility-300-rec.pattern.report.10>
+  <mobility-300-rec.pattern.report.11>Transportmodus moet afkomstig zijn van de gecontroleerde woordenschat (https://w3id.org/Mobilitydcat-ap/transport-mode/*) (  mobilitydcatap:transportMode  )</mobility-300-rec.pattern.report.11>
+  <mobility-300-rec.pattern.report.2>Beschrijving moet een geldig EU-taaltag hebben, kan niet leeg zijn, elke taal slechts één keer (  dct:description  )</mobility-300-rec.pattern.report.2>
+  <mobility-300-rec.pattern.report.3>Licentie moet een blanco node of IRI zijn en kan maximaal één keer verschijnen (  dct:license  )</mobility-300-rec.pattern.report.3>
+  <mobility-300-rec.pattern.report.4>Georeferencing methode moet afkomstig zijn van de gecontroleerde woordenschat (https://w3id.org/Mobilitydcat-ap/georeferencing-methode/*) (  mobilitydcatap:georeferencingMethod  )</mobility-300-rec.pattern.report.4>
+  <mobility-300-rec.pattern.report.5>Contactpunt moet een blanco knooppunt zijn of IRI (  dcat:contactPoint  )</mobility-300-rec.pattern.report.5>
+  <mobility-300-rec.pattern.report.6>Sleutelwoorden moeten geldige EU-taaltags hebben en mogen niet leeg zijn (  dcat:keyword  )</mobility-300-rec.pattern.report.6>
+  <mobility-300-rec.pattern.report.7>Netwerkdekking moet afkomstig zijn van de gecontroleerde woordenschat (https://w3id.org/Mobilitydcat-ap/network-coverage/*) (  mobilitydcatap:networkCoverage  )</mobility-300-rec.pattern.report.7>
+  <mobility-300-rec.pattern.report.8>Rechtenhouder moet een blanco knooppunt of IRI zijn (  dct:rightsHolder )</mobility-300-rec.pattern.report.8>
+  <mobility-300-rec.pattern.report.9>Thema moet afkomstig zijn van de woordenschat EU Data Thema's (http://publications.europa.eu/resource/authority/data-theme/*) (  dcat:theme  )</mobility-300-rec.pattern.report.9>
+  <mobility-300-rec.pattern.title.1>Toepassingslaagprotocol - Het zendkanaal (Toepassingslaagprotocol) van de distributie (§4.11.2).</mobility-300-rec.pattern.title.1>
+  <mobility-300-rec.pattern.title.10>Tijdelijke dekking - Deze eigenschap verwijst naar een tijdsperiode, d.w.z. het begin en het einde, van de tijdreferentie van de geleverde inhoud (§4.10.2).</mobility-300-rec.pattern.title.10>
+  <mobility-300-rec.pattern.title.11>Vervoerswijze - Deze eigenschap beschrijft de vervoerswijze die wordt bestreken door de geleverde inhoud (§4.10.2).</mobility-300-rec.pattern.title.11>
+  <mobility-300-rec.pattern.title.2>Beschrijving - Een gratis tekst rekening van de Distributie. Mag worden herhaald voor parallelle taalversies (§4.11.2).</mobility-300-rec.pattern.title.2>
+  <mobility-300-rec.pattern.title.3>Licentie - De licentie waaronder de distributie ter beschikking wordt gesteld (§4.11.2).</mobility-300-rec.pattern.title.3>
+  <mobility-300-rec.pattern.title.4>Georeferencing methode - Deze eigenschap moet worden gebruikt om de georeferencing methode te specificeren die in de dataset wordt gebruikt (§4.10.2).</mobility-300-rec.pattern.title.4>
+  <mobility-300-rec.pattern.title.5>Contactpunt Deze eigenschap bevat contactgegevens die kunnen worden gebruikt voor communicatie met een bedrijf of persoon die verantwoordelijk is voor de dataset (§4.10.2).</mobility-300-rec.pattern.title.5>
+  <mobility-300-rec.pattern.title.6>Keyword / tag - Deze eigenschap bevat een trefwoord of tag die de Dataset beschrijft (§4.10.2).</mobility-300-rec.pattern.title.6>
+  <mobility-300-rec.pattern.title.7>Netwerkdekking - Deze eigenschap beschrijft het deel van het vervoersnetwerk dat wordt bestreken door de geleverde inhoud (§4.10.2).</mobility-300-rec.pattern.title.7>
+  <mobility-300-rec.pattern.title.8>Rechtenhouder - Deze eigenschap verwijst naar een entiteit die wettelijk eigenaar is van of de rechten bezit van de in een gegevensset verstrekte gegevens (§4.10.2).</mobility-300-rec.pattern.title.8>
+  <mobility-300-rec.pattern.title.9>Thema / categorie - Deze eigenschap verwijst naar het generieke thema (d.w.z. een specifiek onderwerp, categorie of type) van de geleverde inhoud. De categorie wordt beschreven via een gecontroleerde woordenschat "Data Themes" door het Bureau voor publicaties van de Europese Unie (§4.10.2).</mobility-300-rec.pattern.title.9>
+</strings>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <schematron.title>DCAT-AP (v3.0.0)</schematron.title>
+  <dcat-ap-300.pattern.assert.1>Waarde voldoet niet aan de SHACL-beperking (  dct:language  )</dcat-ap-300.pattern.assert.1>
+  <dcat-ap-300.pattern.assert.10>Waarde voldoet niet aan de SHACL-beperking (  dcat:catalog  )</dcat-ap-300.pattern.assert.10>
+  <dcat-ap-300.pattern.assert.11>Maximaal 1 waarde(s) is toegestaan (  dct:creator  )</dcat-ap-300.pattern.assert.11>
+  <dcat-ap-300.pattern.assert.12>Waarde voldoet niet aan de SHACL-beperking (  dcat:dataset  )</dcat-ap-300.pattern.assert.12>
+  <dcat-ap-300.pattern.assert.13>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-300.pattern.assert.13>
+  <dcat-ap-300.pattern.assert.14>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-300.pattern.assert.14>
+  <dcat-ap-300.pattern.assert.15>Maximaal 1 waarde(s) is toegestaan (  foaf:homepage  )</dcat-ap-300.pattern.assert.15>
+  <dcat-ap-300.pattern.assert.16>Waarde moet letterlijk zijn (  dcat:bbox  )</dcat-ap-300.pattern.assert.16>
+  <dcat-ap-300.pattern.assert.17>Waarde moet letterlijk zijn (  dcat:centroid  )</dcat-ap-300.pattern.assert.17>
+  <dcat-ap-300.pattern.assert.18>Waarde moet letterlijk zijn (  locn:geometry  )</dcat-ap-300.pattern.assert.18>
+  <dcat-ap-300.pattern.assert.19>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-300.pattern.assert.19>
+  <dcat-ap-300.pattern.assert.2>Waarde moet een IRI zijn (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.assert.2>
+  <dcat-ap-300.pattern.assert.20>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-300.pattern.assert.20>
+  <dcat-ap-300.pattern.assert.21>Waarde moet letterlijk zijn (  skos:prefLabel  )</dcat-ap-300.pattern.assert.21>
+  <dcat-ap-300.pattern.assert.22>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-300.pattern.assert.22>
+  <dcat-ap-300.pattern.assert.23>Waarde moet een IRI zijn (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.assert.23>
+  <dcat-ap-300.pattern.assert.24>Waarde voldoet niet aan de SHACL-beperking (  dcat:contactPoint  )</dcat-ap-300.pattern.assert.24>
+  <dcat-ap-300.pattern.assert.25>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-300.pattern.assert.25>
+  <dcat-ap-300.pattern.assert.26>Maximaal 1 waarde(s) is toegestaan (  dct:accrualPeriodicity  )</dcat-ap-300.pattern.assert.26>
+  <dcat-ap-300.pattern.assert.27>Waarde voldoet niet aan de SHACL-beperking (  dct:spatial  )</dcat-ap-300.pattern.assert.27>
+  <dcat-ap-300.pattern.assert.28>Waarde moet letterlijk zijn (  dct:modified  )</dcat-ap-300.pattern.assert.28>
+  <dcat-ap-300.pattern.assert.29>Maximaal 1 waarde(s) is toegestaan (  dct:publisher  )</dcat-ap-300.pattern.assert.29>
+  <dcat-ap-300.pattern.assert.3>Maximaal 1 waarde(s) is toegestaan (  dct:license  )</dcat-ap-300.pattern.assert.3>
+  <dcat-ap-300.pattern.assert.30>Waarde moet letterlijk zijn (  dct:issued  )</dcat-ap-300.pattern.assert.30>
+  <dcat-ap-300.pattern.assert.31>Waarde voldoet niet aan de SHACL-beperking (  dct:temporal  )</dcat-ap-300.pattern.assert.31>
+  <dcat-ap-300.pattern.assert.32>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-300.pattern.assert.32>
+  <dcat-ap-300.pattern.assert.33>Maximaal 1 waarde(s) is toegestaan (  dct:accessRights  )</dcat-ap-300.pattern.assert.33>
+  <dcat-ap-300.pattern.assert.34>Waarde moet een IRI zijn (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.assert.34>
+  <dcat-ap-300.pattern.assert.35>Waarde voldoet niet aan de SHACL-beperking (  dct:conformsTo  )</dcat-ap-300.pattern.assert.35>
+  <dcat-ap-300.pattern.assert.36>Waarde voldoet niet aan de SHACL-beperking (  dcat:contactPoint  )</dcat-ap-300.pattern.assert.36>
+  <dcat-ap-300.pattern.assert.37>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-300.pattern.assert.37>
+  <dcat-ap-300.pattern.assert.38>Ten minste 1 waarde(s) zijn vereist (  dcat:endpointURL )</dcat-ap-300.pattern.assert.38>
+  <dcat-ap-300.pattern.assert.39>Waarde voldoet niet aan de SHACL-beperking (  dcat:endpointDescription  )</dcat-ap-300.pattern.assert.39>
+  <dcat-ap-300.pattern.assert.4>Waarde voldoet niet aan de SHACL-beperking (  dct:spatial  )</dcat-ap-300.pattern.assert.4>
+  <dcat-ap-300.pattern.assert.40>Waarde voldoet niet aan de SHACL-beperking (  dct:format  )</dcat-ap-300.pattern.assert.40>
+  <dcat-ap-300.pattern.assert.41>Waarde moet letterlijk zijn (  dcat:keyword  )</dcat-ap-300.pattern.assert.41>
+  <dcat-ap-300.pattern.assert.42>Waarde voldoet niet aan de SHACL-beperking (  dcat:landingPage  )</dcat-ap-300.pattern.assert.42>
+  <dcat-ap-300.pattern.assert.43>Maximaal 1 waarde(s) is toegestaan (  dct:license  )</dcat-ap-300.pattern.assert.43>
+  <dcat-ap-300.pattern.assert.44>Maximaal 1 waarde(s) is toegestaan (  dct:publisher  )</dcat-ap-300.pattern.assert.44>
+  <dcat-ap-300.pattern.assert.45>Waarde voldoet niet aan de SHACL-beperking (  dcat:servesDataset  )</dcat-ap-300.pattern.assert.45>
+  <dcat-ap-300.pattern.assert.46>Waarde moet een IRI zijn (  dcat:theme  )</dcat-ap-300.pattern.assert.46>
+  <dcat-ap-300.pattern.assert.47>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-300.pattern.assert.47>
+  <dcat-ap-300.pattern.assert.48>Waarde voldoet niet aan de SHACL-beperking (  dcat:accessService  )</dcat-ap-300.pattern.assert.48>
+  <dcat-ap-300.pattern.assert.49>Ten minste 1 waarde(s) zijn vereist (  dcat:accessURL )</dcat-ap-300.pattern.assert.49>
+  <dcat-ap-300.pattern.assert.5>Waarde voldoet niet aan de SHACL-beperking (  dct:hasPart  )</dcat-ap-300.pattern.assert.5>
+  <dcat-ap-300.pattern.assert.50>Waarde moet een IRI zijn (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.assert.50>
+  <dcat-ap-300.pattern.assert.51>Maximaal 1 waarde(s) is toegestaan (  dcat-ap:availability  )</dcat-ap-300.pattern.assert.51>
+  <dcat-ap-300.pattern.assert.52>Maximaal 1 waarde(s) is toegestaan (  spdx:checksum  )</dcat-ap-300.pattern.assert.52>
+  <dcat-ap-300.pattern.assert.53>Maximaal 1 waarde(s) is toegestaan (  dcat:compressFormat  )</dcat-ap-300.pattern.assert.53>
+  <dcat-ap-300.pattern.assert.54>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-300.pattern.assert.54>
+  <dcat-ap-300.pattern.assert.55>Waarde voldoet niet aan de SHACL-beperking (  foaf:page  )</dcat-ap-300.pattern.assert.55>
+  <dcat-ap-300.pattern.assert.56>Waarde voldoet niet aan de SHACL-beperking (  dcat:downloadURL  )</dcat-ap-300.pattern.assert.56>
+  <dcat-ap-300.pattern.assert.57>Maximaal 1 waarde(s) is toegestaan (  dct:format  )</dcat-ap-300.pattern.assert.57>
+  <dcat-ap-300.pattern.assert.58>Maximaal 1 waarde(s) is toegestaan (  odrl:hasPolicy  )</dcat-ap-300.pattern.assert.58>
+  <dcat-ap-300.pattern.assert.59>Waarde voldoet niet aan de SHACL-beperking (  dct:language  )</dcat-ap-300.pattern.assert.59>
+  <dcat-ap-300.pattern.assert.6>Maximaal 1 waarde(s) is toegestaan (  dct:rights  )</dcat-ap-300.pattern.assert.6>
+  <dcat-ap-300.pattern.assert.60>Maximaal 1 waarde(s) is toegestaan (  dct:license  )</dcat-ap-300.pattern.assert.60>
+  <dcat-ap-300.pattern.assert.61>Waarde voldoet niet aan de SHACL-beperking (  dct:conformsTo  )</dcat-ap-300.pattern.assert.61>
+  <dcat-ap-300.pattern.assert.62>Maximaal 1 waarde(s) is toegestaan (  dcat:mediaType  )</dcat-ap-300.pattern.assert.62>
+  <dcat-ap-300.pattern.assert.63>Maximaal 1 waarde(s) is toegestaan (  dcat:packageFormat  )</dcat-ap-300.pattern.assert.63>
+  <dcat-ap-300.pattern.assert.64>Maximaal 1 waarde(s) is toegestaan (  dct:rights  )</dcat-ap-300.pattern.assert.64>
+  <dcat-ap-300.pattern.assert.65>Maximaal 1 waarde(s) is toegestaan (  adms:status  )</dcat-ap-300.pattern.assert.65>
+  <dcat-ap-300.pattern.assert.66>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-300.pattern.assert.66>
+  <dcat-ap-300.pattern.assert.67>Maximaal 1 waarde(s) is toegestaan (  dct:accessRights  )</dcat-ap-300.pattern.assert.67>
+  <dcat-ap-300.pattern.assert.68>Waarde moet een IRI zijn (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.assert.68>
+  <dcat-ap-300.pattern.assert.69>Waarde voldoet niet aan de SHACL-beperking (  dct:conformsTo  )</dcat-ap-300.pattern.assert.69>
+  <dcat-ap-300.pattern.assert.7>Waarde voldoet niet aan de SHACL-beperking (  dcat:record  )</dcat-ap-300.pattern.assert.7>
+  <dcat-ap-300.pattern.assert.70>Waarde voldoet niet aan de SHACL-beperking (  dcat:contactPoint  )</dcat-ap-300.pattern.assert.70>
+  <dcat-ap-300.pattern.assert.71>Waarde voldoet niet aan de SHACL-beperking (  dct:creator  )</dcat-ap-300.pattern.assert.71>
+  <dcat-ap-300.pattern.assert.72>Waarde voldoet niet aan de SHACL-beperking (  dcat:distribution  )</dcat-ap-300.pattern.assert.72>
+  <dcat-ap-300.pattern.assert.73>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-300.pattern.assert.73>
+  <dcat-ap-300.pattern.assert.74>Waarde voldoet niet aan de SHACL-beperking (  foaf:page  )</dcat-ap-300.pattern.assert.74>
+  <dcat-ap-300.pattern.assert.75>Maximaal 1 waarde(s) is toegestaan (  dct:accrualPeriodicity  )</dcat-ap-300.pattern.assert.75>
+  <dcat-ap-300.pattern.assert.76>Waarde voldoet niet aan de SHACL-beperking (  dct:spatial  )</dcat-ap-300.pattern.assert.76>
+  <dcat-ap-300.pattern.assert.77>Waarde voldoet niet aan de SHACL-beperking (  dct:hasVersion  )</dcat-ap-300.pattern.assert.77>
+  <dcat-ap-300.pattern.assert.78>Waarde moet letterlijk zijn (  dct:identifier  )</dcat-ap-300.pattern.assert.78>
+  <dcat-ap-300.pattern.assert.79>Waarde voldoet niet aan de SHACL-beperking (  dcat:inSeries  )</dcat-ap-300.pattern.assert.79>
+  <dcat-ap-300.pattern.assert.8>Waarde voldoet niet aan de SHACL-beperking (  dcat:themeTaxonomy  )</dcat-ap-300.pattern.assert.8>
+  <dcat-ap-300.pattern.assert.80>Waarde voldoet niet aan de SHACL-beperking (  dct:isReferencedBy  )</dcat-ap-300.pattern.assert.80>
+  <dcat-ap-300.pattern.assert.81>Waarde moet letterlijk zijn (  dcat:keyword  )</dcat-ap-300.pattern.assert.81>
+  <dcat-ap-300.pattern.assert.82>Waarde voldoet niet aan de SHACL-beperking (  dcat:landingPage  )</dcat-ap-300.pattern.assert.82>
+  <dcat-ap-300.pattern.assert.83>Waarde voldoet niet aan de SHACL-beperking (  dct:language  )</dcat-ap-300.pattern.assert.83>
+  <dcat-ap-300.pattern.assert.84>Waarde voldoet niet aan de SHACL-beperking (  adms:identifier  )</dcat-ap-300.pattern.assert.84>
+  <dcat-ap-300.pattern.assert.85>Waarde voldoet niet aan de SHACL-beperking (  dct:provenance  )</dcat-ap-300.pattern.assert.85>
+  <dcat-ap-300.pattern.assert.86>Maximaal 1 waarde(s) is toegestaan (  dct:publisher  )</dcat-ap-300.pattern.assert.86>
+  <dcat-ap-300.pattern.assert.87>Waarde voldoet niet aan de SHACL-beperking (  prov:qualifiedAttribution  )</dcat-ap-300.pattern.assert.87>
+  <dcat-ap-300.pattern.assert.88>Waarde voldoet niet aan de SHACL-beperking (  dcat:qualifiedRelation  )</dcat-ap-300.pattern.assert.88>
+  <dcat-ap-300.pattern.assert.89>Waarde voldoet niet aan de SHACL-beperking (  dct:relation  )</dcat-ap-300.pattern.assert.89>
+  <dcat-ap-300.pattern.assert.9>Waarde voldoet niet aan de SHACL-beperking (  dcat:service  )</dcat-ap-300.pattern.assert.9>
+  <dcat-ap-300.pattern.assert.90>Waarde voldoet niet aan de SHACL-beperking (  adms:sample  )</dcat-ap-300.pattern.assert.90>
+  <dcat-ap-300.pattern.assert.91>Waarde voldoet niet aan de SHACL-beperking (  dct:source  )</dcat-ap-300.pattern.assert.91>
+  <dcat-ap-300.pattern.assert.92>Waarde voldoet niet aan de SHACL-beperking (  dct:temporal  )</dcat-ap-300.pattern.assert.92>
+  <dcat-ap-300.pattern.assert.93>Waarde moet een IRI zijn (  dcat:theme  )</dcat-ap-300.pattern.assert.93>
+  <dcat-ap-300.pattern.assert.94>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-300.pattern.assert.94>
+  <dcat-ap-300.pattern.assert.95>Waarde voldoet niet aan de SHACL-beperking (  dct:type  )</dcat-ap-300.pattern.assert.95>
+  <dcat-ap-300.pattern.assert.96>Waarde moet letterlijk zijn (  dcat:version  )</dcat-ap-300.pattern.assert.96>
+  <dcat-ap-300.pattern.assert.97>Waarde moet letterlijk zijn (  adms:versionNotes  )</dcat-ap-300.pattern.assert.97>
+  <dcat-ap-300.pattern.assert.98>Waarde voldoet niet aan de SHACL-beperking (  prov:wasGeneratedBy  )</dcat-ap-300.pattern.assert.98>
+  <dcat-ap-300.pattern.assert.99>Waarde moet letterlijk zijn (  foaf:name  )</dcat-ap-300.pattern.assert.99>
+  <dcat-ap-300.pattern.report.1>Waarde voldoet niet aan de SHACL-beperking (  dct:language  )</dcat-ap-300.pattern.report.1>
+  <dcat-ap-300.pattern.report.10>Waarde voldoet niet aan de SHACL-beperking (  dcat:catalog  )</dcat-ap-300.pattern.report.10>
+  <dcat-ap-300.pattern.report.11>Maximaal 1 waarde(s) is toegestaan (  dct:creator  )</dcat-ap-300.pattern.report.11>
+  <dcat-ap-300.pattern.report.12>Waarde voldoet niet aan de SHACL-beperking (  dcat:dataset  )</dcat-ap-300.pattern.report.12>
+  <dcat-ap-300.pattern.report.13>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-300.pattern.report.13>
+  <dcat-ap-300.pattern.report.14>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-300.pattern.report.14>
+  <dcat-ap-300.pattern.report.15>Maximaal 1 waarde(s) is toegestaan (  foaf:homepage  )</dcat-ap-300.pattern.report.15>
+  <dcat-ap-300.pattern.report.16>Waarde moet letterlijk zijn (  dcat:bbox  )</dcat-ap-300.pattern.report.16>
+  <dcat-ap-300.pattern.report.17>Waarde moet letterlijk zijn (  dcat:centroid  )</dcat-ap-300.pattern.report.17>
+  <dcat-ap-300.pattern.report.18>Waarde moet letterlijk zijn (  locn:geometry  )</dcat-ap-300.pattern.report.18>
+  <dcat-ap-300.pattern.report.19>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-300.pattern.report.19>
+  <dcat-ap-300.pattern.report.2>Waarde moet een IRI zijn (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.report.2>
+  <dcat-ap-300.pattern.report.20>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-300.pattern.report.20>
+  <dcat-ap-300.pattern.report.21>Waarde moet letterlijk zijn (  skos:prefLabel  )</dcat-ap-300.pattern.report.21>
+  <dcat-ap-300.pattern.report.22>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-300.pattern.report.22>
+  <dcat-ap-300.pattern.report.23>Waarde moet een IRI zijn (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.report.23>
+  <dcat-ap-300.pattern.report.24>Waarde voldoet niet aan de SHACL-beperking (  dcat:contactPoint  )</dcat-ap-300.pattern.report.24>
+  <dcat-ap-300.pattern.report.25>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-300.pattern.report.25>
+  <dcat-ap-300.pattern.report.26>Maximaal 1 waarde(s) is toegestaan (  dct:accrualPeriodicity  )</dcat-ap-300.pattern.report.26>
+  <dcat-ap-300.pattern.report.27>Waarde voldoet niet aan de SHACL-beperking (  dct:spatial  )</dcat-ap-300.pattern.report.27>
+  <dcat-ap-300.pattern.report.28>Waarde moet letterlijk zijn (  dct:modified  )</dcat-ap-300.pattern.report.28>
+  <dcat-ap-300.pattern.report.29>Maximaal 1 waarde(s) is toegestaan (  dct:publisher  )</dcat-ap-300.pattern.report.29>
+  <dcat-ap-300.pattern.report.3>Maximaal 1 waarde(s) is toegestaan (  dct:license  )</dcat-ap-300.pattern.report.3>
+  <dcat-ap-300.pattern.report.30>Waarde moet letterlijk zijn (  dct:issued  )</dcat-ap-300.pattern.report.30>
+  <dcat-ap-300.pattern.report.31>Waarde voldoet niet aan de SHACL-beperking (  dct:temporal  )</dcat-ap-300.pattern.report.31>
+  <dcat-ap-300.pattern.report.32>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-300.pattern.report.32>
+  <dcat-ap-300.pattern.report.33>Maximaal 1 waarde(s) is toegestaan (  dct:accessRights  )</dcat-ap-300.pattern.report.33>
+  <dcat-ap-300.pattern.report.34>Waarde moet een IRI zijn (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.report.34>
+  <dcat-ap-300.pattern.report.35>Waarde voldoet niet aan de SHACL-beperking (  dct:conformsTo  )</dcat-ap-300.pattern.report.35>
+  <dcat-ap-300.pattern.report.36>Waarde voldoet niet aan de SHACL-beperking (  dcat:contactPoint  )</dcat-ap-300.pattern.report.36>
+  <dcat-ap-300.pattern.report.37>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-300.pattern.report.37>
+  <dcat-ap-300.pattern.report.38>Ten minste 1 waarde(s) zijn vereist (  dcat:endpointURL )</dcat-ap-300.pattern.report.38>
+  <dcat-ap-300.pattern.report.39>Waarde voldoet niet aan de SHACL-beperking (  dcat:endpointDescription  )</dcat-ap-300.pattern.report.39>
+  <dcat-ap-300.pattern.report.4>Waarde voldoet niet aan de SHACL-beperking (  dct:spatial  )</dcat-ap-300.pattern.report.4>
+  <dcat-ap-300.pattern.report.40>Waarde voldoet niet aan de SHACL-beperking (  dct:format  )</dcat-ap-300.pattern.report.40>
+  <dcat-ap-300.pattern.report.41>Waarde moet letterlijk zijn (  dcat:keyword  )</dcat-ap-300.pattern.report.41>
+  <dcat-ap-300.pattern.report.42>Waarde voldoet niet aan de SHACL-beperking (  dcat:landingPage  )</dcat-ap-300.pattern.report.42>
+  <dcat-ap-300.pattern.report.43>Maximaal 1 waarde(s) is toegestaan (  dct:license  )</dcat-ap-300.pattern.report.43>
+  <dcat-ap-300.pattern.report.44>Maximaal 1 waarde(s) is toegestaan (  dct:publisher  )</dcat-ap-300.pattern.report.44>
+  <dcat-ap-300.pattern.report.45>Waarde voldoet niet aan de SHACL-beperking (  dcat:servesDataset  )</dcat-ap-300.pattern.report.45>
+  <dcat-ap-300.pattern.report.46>Waarde moet een IRI zijn (  dcat:theme  )</dcat-ap-300.pattern.report.46>
+  <dcat-ap-300.pattern.report.47>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-300.pattern.report.47>
+  <dcat-ap-300.pattern.report.48>Waarde voldoet niet aan de SHACL-beperking (  dcat:accessService  )</dcat-ap-300.pattern.report.48>
+  <dcat-ap-300.pattern.report.49>Ten minste 1 waarde(s) zijn vereist (  dcat:accessURL )</dcat-ap-300.pattern.report.49>
+  <dcat-ap-300.pattern.report.5>Waarde voldoet niet aan de SHACL-beperking (  dct:hasPart  )</dcat-ap-300.pattern.report.5>
+  <dcat-ap-300.pattern.report.50>Waarde moet een IRI zijn (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.report.50>
+  <dcat-ap-300.pattern.report.51>Maximaal 1 waarde(s) is toegestaan (  dcat-ap:availability  )</dcat-ap-300.pattern.report.51>
+  <dcat-ap-300.pattern.report.52>Maximaal 1 waarde(s) is toegestaan (  spdx:checksum  )</dcat-ap-300.pattern.report.52>
+  <dcat-ap-300.pattern.report.53>Maximaal 1 waarde(s) is toegestaan (  dcat:compressFormat  )</dcat-ap-300.pattern.report.53>
+  <dcat-ap-300.pattern.report.54>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-300.pattern.report.54>
+  <dcat-ap-300.pattern.report.55>Waarde voldoet niet aan de SHACL-beperking (  foaf:page  )</dcat-ap-300.pattern.report.55>
+  <dcat-ap-300.pattern.report.56>Waarde voldoet niet aan de SHACL-beperking (  dcat:downloadURL  )</dcat-ap-300.pattern.report.56>
+  <dcat-ap-300.pattern.report.57>Maximaal 1 waarde(s) is toegestaan (  dct:format  )</dcat-ap-300.pattern.report.57>
+  <dcat-ap-300.pattern.report.58>Maximaal 1 waarde(s) is toegestaan (  odrl:hasPolicy  )</dcat-ap-300.pattern.report.58>
+  <dcat-ap-300.pattern.report.59>Waarde voldoet niet aan de SHACL-beperking (  dct:language  )</dcat-ap-300.pattern.report.59>
+  <dcat-ap-300.pattern.report.6>Maximaal 1 waarde(s) is toegestaan (  dct:rights  )</dcat-ap-300.pattern.report.6>
+  <dcat-ap-300.pattern.report.60>Maximaal 1 waarde(s) is toegestaan (  dct:license  )</dcat-ap-300.pattern.report.60>
+  <dcat-ap-300.pattern.report.61>Waarde voldoet niet aan de SHACL-beperking (  dct:conformsTo  )</dcat-ap-300.pattern.report.61>
+  <dcat-ap-300.pattern.report.62>Maximaal 1 waarde(s) is toegestaan (  dcat:mediaType  )</dcat-ap-300.pattern.report.62>
+  <dcat-ap-300.pattern.report.63>Maximaal 1 waarde(s) is toegestaan (  dcat:packageFormat  )</dcat-ap-300.pattern.report.63>
+  <dcat-ap-300.pattern.report.64>Maximaal 1 waarde(s) is toegestaan (  dct:rights  )</dcat-ap-300.pattern.report.64>
+  <dcat-ap-300.pattern.report.65>Maximaal 1 waarde(s) is toegestaan (  adms:status  )</dcat-ap-300.pattern.report.65>
+  <dcat-ap-300.pattern.report.66>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-300.pattern.report.66>
+  <dcat-ap-300.pattern.report.67>Maximaal 1 waarde(s) is toegestaan (  dct:accessRights  )</dcat-ap-300.pattern.report.67>
+  <dcat-ap-300.pattern.report.68>Waarde moet een IRI zijn (  dcat-ap:applicableLegislation  )</dcat-ap-300.pattern.report.68>
+  <dcat-ap-300.pattern.report.69>Waarde voldoet niet aan de SHACL-beperking (  dct:conformsTo  )</dcat-ap-300.pattern.report.69>
+  <dcat-ap-300.pattern.report.7>Waarde voldoet niet aan de SHACL-beperking (  dcat:record  )</dcat-ap-300.pattern.report.7>
+  <dcat-ap-300.pattern.report.70>Waarde voldoet niet aan de SHACL-beperking (  dcat:contactPoint  )</dcat-ap-300.pattern.report.70>
+  <dcat-ap-300.pattern.report.71>Waarde voldoet niet aan de SHACL-beperking (  dct:creator  )</dcat-ap-300.pattern.report.71>
+  <dcat-ap-300.pattern.report.72>Waarde voldoet niet aan de SHACL-beperking (  dcat:distribution  )</dcat-ap-300.pattern.report.72>
+  <dcat-ap-300.pattern.report.73>Waarde moet letterlijk zijn (  dct:description  )</dcat-ap-300.pattern.report.73>
+  <dcat-ap-300.pattern.report.74>Waarde voldoet niet aan de SHACL-beperking (  foaf:page  )</dcat-ap-300.pattern.report.74>
+  <dcat-ap-300.pattern.report.75>Maximaal 1 waarde(s) is toegestaan (  dct:accrualPeriodicity  )</dcat-ap-300.pattern.report.75>
+  <dcat-ap-300.pattern.report.76>Waarde voldoet niet aan de SHACL-beperking (  dct:spatial  )</dcat-ap-300.pattern.report.76>
+  <dcat-ap-300.pattern.report.77>Waarde voldoet niet aan de SHACL-beperking (  dct:hasVersion  )</dcat-ap-300.pattern.report.77>
+  <dcat-ap-300.pattern.report.78>Waarde moet letterlijk zijn (  dct:identifier  )</dcat-ap-300.pattern.report.78>
+  <dcat-ap-300.pattern.report.79>Waarde voldoet niet aan de SHACL-beperking (  dcat:inSeries  )</dcat-ap-300.pattern.report.79>
+  <dcat-ap-300.pattern.report.8>Waarde voldoet niet aan de SHACL-beperking (  dcat:themeTaxonomy  )</dcat-ap-300.pattern.report.8>
+  <dcat-ap-300.pattern.report.80>Waarde voldoet niet aan de SHACL-beperking (  dct:isReferencedBy  )</dcat-ap-300.pattern.report.80>
+  <dcat-ap-300.pattern.report.81>Waarde moet letterlijk zijn (  dcat:keyword  )</dcat-ap-300.pattern.report.81>
+  <dcat-ap-300.pattern.report.82>Waarde voldoet niet aan de SHACL-beperking (  dcat:landingPage  )</dcat-ap-300.pattern.report.82>
+  <dcat-ap-300.pattern.report.83>Waarde voldoet niet aan de SHACL-beperking (  dct:language  )</dcat-ap-300.pattern.report.83>
+  <dcat-ap-300.pattern.report.84>Waarde voldoet niet aan de SHACL-beperking (  adms:identifier  )</dcat-ap-300.pattern.report.84>
+  <dcat-ap-300.pattern.report.85>Waarde voldoet niet aan de SHACL-beperking (  dct:provenance  )</dcat-ap-300.pattern.report.85>
+  <dcat-ap-300.pattern.report.86>Maximaal 1 waarde(s) is toegestaan (  dct:publisher  )</dcat-ap-300.pattern.report.86>
+  <dcat-ap-300.pattern.report.87>Waarde voldoet niet aan de SHACL-beperking (  prov:qualifiedAttribution  )</dcat-ap-300.pattern.report.87>
+  <dcat-ap-300.pattern.report.88>Waarde voldoet niet aan de SHACL-beperking (  dcat:qualifiedRelation  )</dcat-ap-300.pattern.report.88>
+  <dcat-ap-300.pattern.report.89>Waarde voldoet niet aan de SHACL-beperking (  dct:relation  )</dcat-ap-300.pattern.report.89>
+  <dcat-ap-300.pattern.report.9>Waarde voldoet niet aan de SHACL-beperking (  dcat:service  )</dcat-ap-300.pattern.report.9>
+  <dcat-ap-300.pattern.report.90>Waarde voldoet niet aan de SHACL-beperking (  adms:sample  )</dcat-ap-300.pattern.report.90>
+  <dcat-ap-300.pattern.report.91>Waarde voldoet niet aan de SHACL-beperking (  dct:source  )</dcat-ap-300.pattern.report.91>
+  <dcat-ap-300.pattern.report.92>Waarde voldoet niet aan de SHACL-beperking (  dct:temporal  )</dcat-ap-300.pattern.report.92>
+  <dcat-ap-300.pattern.report.93>Waarde moet een IRI zijn (  dcat:theme  )</dcat-ap-300.pattern.report.93>
+  <dcat-ap-300.pattern.report.94>Waarde moet letterlijk zijn (  dct:title  )</dcat-ap-300.pattern.report.94>
+  <dcat-ap-300.pattern.report.95>Waarde voldoet niet aan de SHACL-beperking (  dct:type  )</dcat-ap-300.pattern.report.95>
+  <dcat-ap-300.pattern.report.96>Waarde moet letterlijk zijn (  dcat:version  )</dcat-ap-300.pattern.report.96>
+  <dcat-ap-300.pattern.report.97>Waarde moet letterlijk zijn (  adms:versionNotes  )</dcat-ap-300.pattern.report.97>
+  <dcat-ap-300.pattern.report.98>Waarde voldoet niet aan de SHACL-beperking (  prov:wasGeneratedBy  )</dcat-ap-300.pattern.report.98>
+  <dcat-ap-300.pattern.report.99>Waarde moet letterlijk zijn (  foaf:name  )</dcat-ap-300.pattern.report.99>
+  <dcat-ap-300.pattern.title.1> dct:language    - beperking</dcat-ap-300.pattern.title.1>
+  <dcat-ap-300.pattern.title.10> dcat:catalog    - beperking</dcat-ap-300.pattern.title.10>
+  <dcat-ap-300.pattern.title.11> dct:creator    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.11>
+  <dcat-ap-300.pattern.title.12> dcat:dataset    - beperking</dcat-ap-300.pattern.title.12>
+  <dcat-ap-300.pattern.title.13> dct:description    - letterlijke beperking</dcat-ap-300.pattern.title.13>
+  <dcat-ap-300.pattern.title.14> dct:title    - letterlijke beperking</dcat-ap-300.pattern.title.14>
+  <dcat-ap-300.pattern.title.15> foaf:homepage    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.15>
+  <dcat-ap-300.pattern.title.16> dcat:bbox    - letterlijke beperking</dcat-ap-300.pattern.title.16>
+  <dcat-ap-300.pattern.title.17> dcat:centroid    - letterlijke beperking</dcat-ap-300.pattern.title.17>
+  <dcat-ap-300.pattern.title.18> locn:geometry    - letterlijke beperking</dcat-ap-300.pattern.title.18>
+  <dcat-ap-300.pattern.title.19> dct:title    - letterlijke beperking</dcat-ap-300.pattern.title.19>
+  <dcat-ap-300.pattern.title.2> dcat-ap:applicableLegislation    - IRI beperking</dcat-ap-300.pattern.title.2>
+  <dcat-ap-300.pattern.title.20> dct:description    - letterlijke beperking</dcat-ap-300.pattern.title.20>
+  <dcat-ap-300.pattern.title.21> skos:prefLabel    - letterlijke beperking</dcat-ap-300.pattern.title.21>
+  <dcat-ap-300.pattern.title.22> dct:title    - letterlijke beperking</dcat-ap-300.pattern.title.22>
+  <dcat-ap-300.pattern.title.23> dcat-ap:applicableLegislation    - IRI beperking</dcat-ap-300.pattern.title.23>
+  <dcat-ap-300.pattern.title.24> dcat:contactPoint    - beperking</dcat-ap-300.pattern.title.24>
+  <dcat-ap-300.pattern.title.25> dct:description    - letterlijke beperking</dcat-ap-300.pattern.title.25>
+  <dcat-ap-300.pattern.title.26> dct:accrualPeriodicity    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.26>
+  <dcat-ap-300.pattern.title.27> dct:spatial    - beperking</dcat-ap-300.pattern.title.27>
+  <dcat-ap-300.pattern.title.28> dct:modified    - letterlijke beperking</dcat-ap-300.pattern.title.28>
+  <dcat-ap-300.pattern.title.29> dct:publisher    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.29>
+  <dcat-ap-300.pattern.title.3> dct:license    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.3>
+  <dcat-ap-300.pattern.title.30> dct:issued    - letterlijke beperking</dcat-ap-300.pattern.title.30>
+  <dcat-ap-300.pattern.title.31> dct:temporal    - beperking</dcat-ap-300.pattern.title.31>
+  <dcat-ap-300.pattern.title.32> dct:title    - letterlijke beperking</dcat-ap-300.pattern.title.32>
+  <dcat-ap-300.pattern.title.33> dct:accessRights    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.33>
+  <dcat-ap-300.pattern.title.34> dcat-ap:applicableLegislation    - IRI beperking</dcat-ap-300.pattern.title.34>
+  <dcat-ap-300.pattern.title.35> dct:conformsTo    - beperking</dcat-ap-300.pattern.title.35>
+  <dcat-ap-300.pattern.title.36> dcat:contactPoint    - beperking</dcat-ap-300.pattern.title.36>
+  <dcat-ap-300.pattern.title.37> dct:description    - letterlijke beperking</dcat-ap-300.pattern.title.37>
+  <dcat-ap-300.pattern.title.38> dcat:endpointURL    - minimale kardinaliteit 1</dcat-ap-300.pattern.title.38>
+  <dcat-ap-300.pattern.title.39> dcat:endpointDescription    - beperking</dcat-ap-300.pattern.title.39>
+  <dcat-ap-300.pattern.title.4> dct:spatial    - beperking</dcat-ap-300.pattern.title.4>
+  <dcat-ap-300.pattern.title.40> dct:format    - beperking</dcat-ap-300.pattern.title.40>
+  <dcat-ap-300.pattern.title.41> dcat:keyword    - letterlijke beperking</dcat-ap-300.pattern.title.41>
+  <dcat-ap-300.pattern.title.42> dcat:landingPage    - beperking</dcat-ap-300.pattern.title.42>
+  <dcat-ap-300.pattern.title.43> dct:license    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.43>
+  <dcat-ap-300.pattern.title.44> dct:publisher    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.44>
+  <dcat-ap-300.pattern.title.45> dcat:servesDataset    - beperking</dcat-ap-300.pattern.title.45>
+  <dcat-ap-300.pattern.title.46> dcat:theme    - IRI beperking</dcat-ap-300.pattern.title.46>
+  <dcat-ap-300.pattern.title.47> dct:title    - letterlijke beperking</dcat-ap-300.pattern.title.47>
+  <dcat-ap-300.pattern.title.48> dcat:accessService    - beperking</dcat-ap-300.pattern.title.48>
+  <dcat-ap-300.pattern.title.49> dcat:accessURL    - minimale kardinaliteit 1</dcat-ap-300.pattern.title.49>
+  <dcat-ap-300.pattern.title.5> dct:hasPart    - beperking</dcat-ap-300.pattern.title.5>
+  <dcat-ap-300.pattern.title.50> dcat-ap:applicableLegislation    - IRI beperking</dcat-ap-300.pattern.title.50>
+  <dcat-ap-300.pattern.title.51> dcat-ap:availability    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.51>
+  <dcat-ap-300.pattern.title.52> spdx:checksum    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.52>
+  <dcat-ap-300.pattern.title.53> dcat:compressFormat    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.53>
+  <dcat-ap-300.pattern.title.54> dct:description    - letterlijke beperking</dcat-ap-300.pattern.title.54>
+  <dcat-ap-300.pattern.title.55> foaf:page    - beperking</dcat-ap-300.pattern.title.55>
+  <dcat-ap-300.pattern.title.56> dcat:downloadURL    - beperking</dcat-ap-300.pattern.title.56>
+  <dcat-ap-300.pattern.title.57> dct:format    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.57>
+  <dcat-ap-300.pattern.title.58> odrl:hasPolicy    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.58>
+  <dcat-ap-300.pattern.title.59> dct:language    - beperking</dcat-ap-300.pattern.title.59>
+  <dcat-ap-300.pattern.title.6> dct:rights    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.6>
+  <dcat-ap-300.pattern.title.60> dct:license    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.60>
+  <dcat-ap-300.pattern.title.61> dct:conformsTo    - beperking</dcat-ap-300.pattern.title.61>
+  <dcat-ap-300.pattern.title.62> dcat:mediaType    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.62>
+  <dcat-ap-300.pattern.title.63> dcat:packageFormat    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.63>
+  <dcat-ap-300.pattern.title.64> dct:rights    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.64>
+  <dcat-ap-300.pattern.title.65> adms:status    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.65>
+  <dcat-ap-300.pattern.title.66> dct:title    - letterlijke beperking</dcat-ap-300.pattern.title.66>
+  <dcat-ap-300.pattern.title.67> dct:accessRights    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.67>
+  <dcat-ap-300.pattern.title.68> dcat-ap:applicableLegislation    - IRI beperking</dcat-ap-300.pattern.title.68>
+  <dcat-ap-300.pattern.title.69> dct:conformsTo    - beperking</dcat-ap-300.pattern.title.69>
+  <dcat-ap-300.pattern.title.7> dcat:record    - beperking</dcat-ap-300.pattern.title.7>
+  <dcat-ap-300.pattern.title.70> dcat:contactPoint    - beperking</dcat-ap-300.pattern.title.70>
+  <dcat-ap-300.pattern.title.71> dct:creator    - beperking</dcat-ap-300.pattern.title.71>
+  <dcat-ap-300.pattern.title.72> dcat:distribution    - beperking</dcat-ap-300.pattern.title.72>
+  <dcat-ap-300.pattern.title.73> dct:description    - letterlijke beperking</dcat-ap-300.pattern.title.73>
+  <dcat-ap-300.pattern.title.74> foaf:page    - beperking</dcat-ap-300.pattern.title.74>
+  <dcat-ap-300.pattern.title.75> dct:accrualPeriodicity    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.75>
+  <dcat-ap-300.pattern.title.76> dct:spatial    - beperking</dcat-ap-300.pattern.title.76>
+  <dcat-ap-300.pattern.title.77> dct:hasVersion    - beperking</dcat-ap-300.pattern.title.77>
+  <dcat-ap-300.pattern.title.78> dct:identifier    - letterlijke beperking</dcat-ap-300.pattern.title.78>
+  <dcat-ap-300.pattern.title.79> dcat:inSeries    - beperking</dcat-ap-300.pattern.title.79>
+  <dcat-ap-300.pattern.title.8> dcat:themeTaxonomy    - beperking</dcat-ap-300.pattern.title.8>
+  <dcat-ap-300.pattern.title.80> dct:isReferencedBy    - beperking</dcat-ap-300.pattern.title.80>
+  <dcat-ap-300.pattern.title.81> dcat:keyword    - letterlijke beperking</dcat-ap-300.pattern.title.81>
+  <dcat-ap-300.pattern.title.82> dcat:landingPage    - beperking</dcat-ap-300.pattern.title.82>
+  <dcat-ap-300.pattern.title.83> dct:language    - beperking</dcat-ap-300.pattern.title.83>
+  <dcat-ap-300.pattern.title.84> adms:identifier    - beperking</dcat-ap-300.pattern.title.84>
+  <dcat-ap-300.pattern.title.85> dct:provenance    - beperking</dcat-ap-300.pattern.title.85>
+  <dcat-ap-300.pattern.title.86> dct:publisher    - maximale kardinaliteit 1</dcat-ap-300.pattern.title.86>
+  <dcat-ap-300.pattern.title.87> prov:qualifiedAttribution    - beperking</dcat-ap-300.pattern.title.87>
+  <dcat-ap-300.pattern.title.88> dcat:qualifiedRelation    - beperking</dcat-ap-300.pattern.title.88>
+  <dcat-ap-300.pattern.title.89> dct:relation    - beperking</dcat-ap-300.pattern.title.89>
+  <dcat-ap-300.pattern.title.9> dcat:service    - beperking</dcat-ap-300.pattern.title.9>
+  <dcat-ap-300.pattern.title.90> adms:sample    - beperking</dcat-ap-300.pattern.title.90>
+  <dcat-ap-300.pattern.title.91> dct:source    - beperking</dcat-ap-300.pattern.title.91>
+  <dcat-ap-300.pattern.title.92> dct:temporal    - beperking</dcat-ap-300.pattern.title.92>
+  <dcat-ap-300.pattern.title.93> dcat:theme    - IRI beperking</dcat-ap-300.pattern.title.93>
+  <dcat-ap-300.pattern.title.94> dct:title    - letterlijke beperking</dcat-ap-300.pattern.title.94>
+  <dcat-ap-300.pattern.title.95> dct:type    - beperking</dcat-ap-300.pattern.title.95>
+  <dcat-ap-300.pattern.title.96> dcat:version    - letterlijke beperking</dcat-ap-300.pattern.title.96>
+  <dcat-ap-300.pattern.title.97> adms:versionNotes    - letterlijke beperking</dcat-ap-300.pattern.title.97>
+  <dcat-ap-300.pattern.title.98> prov:wasGeneratedBy    - beperking</dcat-ap-300.pattern.title.98>
+  <dcat-ap-300.pattern.title.99> foaf:name    - letterlijke beperking</dcat-ap-300.pattern.title.99>
+</strings>

@@ -1,7 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
-  <schematron.title>High Value Datasets - Mandatory</schematron.title>
-  <required.applicablelegislation.title>Required applicable legislation.</required.applicablelegislation.title>
-  <required.applicablelegislation.assert>ELI http://data.europa.eu/eli/reg_impl/2023/138/oj should be present.</required.applicablelegislation.assert>
-  <required.applicablelegislation.report>ELI http://data.europa.eu/eli/reg_impl/2023/138/oj is present.</required.applicablelegislation.report>
+  <schematron.title>High Value Datasets (v3.0.0)</schematron.title>
+  <dcat-ap-hvd.pattern.assert.1>The legislation that mandates the creation or management of the Distribution (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.assert.1>
+  <dcat-ap-hvd.pattern.assert.10>A statement that specifies rights associated with the Distribution. (dct:rights)</dcat-ap-hvd.pattern.assert.10>
+  <dcat-ap-hvd.pattern.assert.11>A licence under which the Distribution is made available. (dct:license)</dcat-ap-hvd.pattern.assert.11>
+  <dcat-ap-hvd.pattern.assert.12>A licence under which the Distribution is made available. (dct:license)</dcat-ap-hvd.pattern.assert.12>
+  <dcat-ap-hvd.pattern.assert.13>The applicable legislation must be set to the HVD IR ELI. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.assert.13>
+  <dcat-ap-hvd.pattern.assert.14>A Dataset that is part of the Catalogue. (dcat:dataset)</dcat-ap-hvd.pattern.assert.14>
+  <dcat-ap-hvd.pattern.assert.15>A Catalogue Record that is part of the Catalogue (dcat:record)</dcat-ap-hvd.pattern.assert.15>
+  <dcat-ap-hvd.pattern.assert.16>A Catalogue Record that is part of the Catalogue (dcat:record)</dcat-ap-hvd.pattern.assert.16>
+  <dcat-ap-hvd.pattern.assert.17>A Dataset that is part of the Catalogue. (dcat:dataset)</dcat-ap-hvd.pattern.assert.17>
+  <dcat-ap-hvd.pattern.assert.18>A site or end-point (Data Service) that is listed in the Catalogue. (dcat:service)</dcat-ap-hvd.pattern.assert.18>
+  <dcat-ap-hvd.pattern.assert.19>A site or end-point (Data Service) that is listed in the Catalogue. (dcat:service)</dcat-ap-hvd.pattern.assert.19>
+  <dcat-ap-hvd.pattern.assert.2>An established schema to which the described Distribution conforms. (dct:conformsTo)</dcat-ap-hvd.pattern.assert.2>
+  <dcat-ap-hvd.pattern.assert.20>The legislation that mandates the creation or management of the Dataset Series. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.assert.20>
+  <dcat-ap-hvd.pattern.assert.21>The legislation that mandates the creation or management of the Dataset Series. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.assert.21>
+  <dcat-ap-hvd.pattern.assert.22>The HVD category to which this Dataset belongs. (dcat-ap:hvdCategory)</dcat-ap-hvd.pattern.assert.22>
+  <dcat-ap-hvd.pattern.assert.23>The HVD category to which this Dataset belongs. (dcat-ap:hvdCategory)</dcat-ap-hvd.pattern.assert.23>
+  <dcat-ap-hvd.pattern.assert.24>The applicable legislation must be set to the HVD IR ELI. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.assert.24>
+  <dcat-ap-hvd.pattern.assert.25>A link to the Dataset, Data service or Catalog described in the record. (foaf:primaryTopic)</dcat-ap-hvd.pattern.assert.25>
+  <dcat-ap-hvd.pattern.assert.26>A link to the Dataset, Data service or Catalog described in the record. (foaf:primaryTopic)</dcat-ap-hvd.pattern.assert.26>
+  <dcat-ap-hvd.pattern.assert.27>The legislation that mandates the creation or management of the Data Service. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.assert.27>
+  <dcat-ap-hvd.pattern.assert.28>This property refers to a collection of data that this data service can distribute. (dcat:servesDataset)</dcat-ap-hvd.pattern.assert.28>
+  <dcat-ap-hvd.pattern.assert.29>The HVD category to which this Data Service belongs. (dcat-ap:hvdCategory)</dcat-ap-hvd.pattern.assert.29>
+  <dcat-ap-hvd.pattern.assert.3>A data service that gives access to the distribution of the dataset (dcat:accessService)</dcat-ap-hvd.pattern.assert.3>
+  <dcat-ap-hvd.pattern.assert.30>The root location or primary endpoint of the service (an IRI). (dcat:endpointURL)</dcat-ap-hvd.pattern.assert.30>
+  <dcat-ap-hvd.pattern.assert.31>The HVD category to which this Data Service belongs. (dcat-ap:hvdCategory)</dcat-ap-hvd.pattern.assert.31>
+  <dcat-ap-hvd.pattern.assert.32>A description of the services available via the end-points, including their operations, parameters etc. (dcat:endpointDescription)</dcat-ap-hvd.pattern.assert.32>
+  <dcat-ap-hvd.pattern.assert.33>A page that provides additional information about the Data Service. (foaf:page)</dcat-ap-hvd.pattern.assert.33>
+  <dcat-ap-hvd.pattern.assert.34>The legislation that mandates the creation or management of the Data Service. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.assert.34>
+  <dcat-ap-hvd.pattern.assert.35>Contact information that can be used for sending comments about the Data Service. (dcat:contactPoint)</dcat-ap-hvd.pattern.assert.35>
+  <dcat-ap-hvd.pattern.assert.36>A statement that specifies rights associated with the Distribution. (dct:rights)</dcat-ap-hvd.pattern.assert.36>
+  <dcat-ap-hvd.pattern.assert.37>A page that provides additional information about the Data Service. (foaf:page)</dcat-ap-hvd.pattern.assert.37>
+  <dcat-ap-hvd.pattern.assert.38>Contact information that can be used for sending comments about the Data Service. (dcat:contactPoint)</dcat-ap-hvd.pattern.assert.38>
+  <dcat-ap-hvd.pattern.assert.39>A statement that specifies rights associated with the Distribution. (dct:rights)</dcat-ap-hvd.pattern.assert.39>
+  <dcat-ap-hvd.pattern.assert.4>An established schema to which the described Distribution conforms. (dct:conformsTo)</dcat-ap-hvd.pattern.assert.4>
+  <dcat-ap-hvd.pattern.assert.40>This property refers to a collection of data that this data service can distribute. (dcat:servesDataset)</dcat-ap-hvd.pattern.assert.40>
+  <dcat-ap-hvd.pattern.assert.41>A licence under which the Data service is made available. (dct:license)</dcat-ap-hvd.pattern.assert.41>
+  <dcat-ap-hvd.pattern.assert.42>A description of the services available via the end-points, including their operations, parameters etc. (dcat:endpointDescription)</dcat-ap-hvd.pattern.assert.42>
+  <dcat-ap-hvd.pattern.assert.43>The root location or primary endpoint of the service (an IRI). (dcat:endpointURL)</dcat-ap-hvd.pattern.assert.43>
+  <dcat-ap-hvd.pattern.assert.44>A licence under which the Data service is made available. (dct:license)</dcat-ap-hvd.pattern.assert.44>
+  <dcat-ap-hvd.pattern.assert.45>The applicable legislation must be set to the HVD IR ELI. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.assert.45>
+  <dcat-ap-hvd.pattern.assert.46>A email address via which contact can be made. (vcard:hasEmail)</dcat-ap-hvd.pattern.assert.46>
+  <dcat-ap-hvd.pattern.assert.47>A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. (vcard:hasURL)</dcat-ap-hvd.pattern.assert.47>
+  <dcat-ap-hvd.pattern.assert.48>A email address via which contact can be made. (vcard:hasEmail)</dcat-ap-hvd.pattern.assert.48>
+  <dcat-ap-hvd.pattern.assert.49>A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. (vcard:hasURL)</dcat-ap-hvd.pattern.assert.49>
+  <dcat-ap-hvd.pattern.assert.5>A URL that gives access to a Distribution of the Dataset. (dcat:accessURL)</dcat-ap-hvd.pattern.assert.5>
+  <dcat-ap-hvd.pattern.assert.50>An implementing rule or other specification. (dct:conformsTo)</dcat-ap-hvd.pattern.assert.50>
+  <dcat-ap-hvd.pattern.assert.51>The legislation that mandates the creation or management of the Dataset. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.assert.51>
+  <dcat-ap-hvd.pattern.assert.52>An available Distribution for the Dataset. (dcat:distribution)</dcat-ap-hvd.pattern.assert.52>
+  <dcat-ap-hvd.pattern.assert.53>A dataset series of which the dataset is part. (dcat:inSeries)</dcat-ap-hvd.pattern.assert.53>
+  <dcat-ap-hvd.pattern.assert.54>The legislation that mandates the creation or management of the Dataset. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.assert.54>
+  <dcat-ap-hvd.pattern.assert.55>Contact information that can be used for sending comments about the Dataset. (dcat:contactPoint)</dcat-ap-hvd.pattern.assert.55>
+  <dcat-ap-hvd.pattern.assert.56>A dataset series of which the dataset is part. (dcat:inSeries)</dcat-ap-hvd.pattern.assert.56>
+  <dcat-ap-hvd.pattern.assert.57>The HVD category to which this Dataset belongs. (dcat-ap:hvdCategory)</dcat-ap-hvd.pattern.assert.57>
+  <dcat-ap-hvd.pattern.assert.58>The HVD category to which this Dataset belongs. (dcat-ap:hvdCategory)</dcat-ap-hvd.pattern.assert.58>
+  <dcat-ap-hvd.pattern.assert.59>Contact information that can be used for sending comments about the Dataset. (dcat:contactPoint)</dcat-ap-hvd.pattern.assert.59>
+  <dcat-ap-hvd.pattern.assert.6>The legislation that mandates the creation or management of the Distribution (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.assert.6>
+  <dcat-ap-hvd.pattern.assert.60>An implementing rule or other specification. (dct:conformsTo)</dcat-ap-hvd.pattern.assert.60>
+  <dcat-ap-hvd.pattern.assert.61>An available Distribution for the Dataset. (dcat:distribution)</dcat-ap-hvd.pattern.assert.61>
+  <dcat-ap-hvd.pattern.assert.62>The applicable legislation must be set to the HVD IR ELI. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.assert.62>
+  <dcat-ap-hvd.pattern.assert.7>A data service that gives access to the distribution of the dataset (dcat:accessService)</dcat-ap-hvd.pattern.assert.7>
+  <dcat-ap-hvd.pattern.assert.8>A statement that specifies rights associated with the Distribution. (dct:rights)</dcat-ap-hvd.pattern.assert.8>
+  <dcat-ap-hvd.pattern.assert.9>A URL that gives access to a Distribution of the Dataset. (dcat:accessURL)</dcat-ap-hvd.pattern.assert.9>
+  <dcat-ap-hvd.pattern.report.1>The legislation that mandates the creation or management of the Distribution (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.report.1>
+  <dcat-ap-hvd.pattern.report.10>A statement that specifies rights associated with the Distribution. (dct:rights)</dcat-ap-hvd.pattern.report.10>
+  <dcat-ap-hvd.pattern.report.11>A licence under which the Distribution is made available. (dct:license)</dcat-ap-hvd.pattern.report.11>
+  <dcat-ap-hvd.pattern.report.12>A licence under which the Distribution is made available. (dct:license)</dcat-ap-hvd.pattern.report.12>
+  <dcat-ap-hvd.pattern.report.13>The applicable legislation must be set to the HVD IR ELI. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.report.13>
+  <dcat-ap-hvd.pattern.report.14>A Dataset that is part of the Catalogue. (dcat:dataset)</dcat-ap-hvd.pattern.report.14>
+  <dcat-ap-hvd.pattern.report.15>A Catalogue Record that is part of the Catalogue (dcat:record)</dcat-ap-hvd.pattern.report.15>
+  <dcat-ap-hvd.pattern.report.16>A Catalogue Record that is part of the Catalogue (dcat:record)</dcat-ap-hvd.pattern.report.16>
+  <dcat-ap-hvd.pattern.report.17>A Dataset that is part of the Catalogue. (dcat:dataset)</dcat-ap-hvd.pattern.report.17>
+  <dcat-ap-hvd.pattern.report.18>A site or end-point (Data Service) that is listed in the Catalogue. (dcat:service)</dcat-ap-hvd.pattern.report.18>
+  <dcat-ap-hvd.pattern.report.19>A site or end-point (Data Service) that is listed in the Catalogue. (dcat:service)</dcat-ap-hvd.pattern.report.19>
+  <dcat-ap-hvd.pattern.report.2>An established schema to which the described Distribution conforms. (dct:conformsTo)</dcat-ap-hvd.pattern.report.2>
+  <dcat-ap-hvd.pattern.report.20>The legislation that mandates the creation or management of the Dataset Series. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.report.20>
+  <dcat-ap-hvd.pattern.report.21>The legislation that mandates the creation or management of the Dataset Series. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.report.21>
+  <dcat-ap-hvd.pattern.report.22>The HVD category to which this Dataset belongs. (dcat-ap:hvdCategory)</dcat-ap-hvd.pattern.report.22>
+  <dcat-ap-hvd.pattern.report.23>The HVD category to which this Dataset belongs. (dcat-ap:hvdCategory)</dcat-ap-hvd.pattern.report.23>
+  <dcat-ap-hvd.pattern.report.24>The applicable legislation must be set to the HVD IR ELI. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.report.24>
+  <dcat-ap-hvd.pattern.report.25>A link to the Dataset, Data service or Catalog described in the record. (foaf:primaryTopic)</dcat-ap-hvd.pattern.report.25>
+  <dcat-ap-hvd.pattern.report.26>A link to the Dataset, Data service or Catalog described in the record. (foaf:primaryTopic)</dcat-ap-hvd.pattern.report.26>
+  <dcat-ap-hvd.pattern.report.27>The legislation that mandates the creation or management of the Data Service. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.report.27>
+  <dcat-ap-hvd.pattern.report.28>This property refers to a collection of data that this data service can distribute. (dcat:servesDataset)</dcat-ap-hvd.pattern.report.28>
+  <dcat-ap-hvd.pattern.report.29>The HVD category to which this Data Service belongs. (dcat-ap:hvdCategory)</dcat-ap-hvd.pattern.report.29>
+  <dcat-ap-hvd.pattern.report.3>A data service that gives access to the distribution of the dataset (dcat:accessService)</dcat-ap-hvd.pattern.report.3>
+  <dcat-ap-hvd.pattern.report.30>The root location or primary endpoint of the service (an IRI). (dcat:endpointURL)</dcat-ap-hvd.pattern.report.30>
+  <dcat-ap-hvd.pattern.report.31>The HVD category to which this Data Service belongs. (dcat-ap:hvdCategory)</dcat-ap-hvd.pattern.report.31>
+  <dcat-ap-hvd.pattern.report.32>A description of the services available via the end-points, including their operations, parameters etc. (dcat:endpointDescription)</dcat-ap-hvd.pattern.report.32>
+  <dcat-ap-hvd.pattern.report.33>A page that provides additional information about the Data Service. (foaf:page)</dcat-ap-hvd.pattern.report.33>
+  <dcat-ap-hvd.pattern.report.34>The legislation that mandates the creation or management of the Data Service. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.report.34>
+  <dcat-ap-hvd.pattern.report.35>Contact information that can be used for sending comments about the Data Service. (dcat:contactPoint)</dcat-ap-hvd.pattern.report.35>
+  <dcat-ap-hvd.pattern.report.36>A statement that specifies rights associated with the Distribution. (dct:rights)</dcat-ap-hvd.pattern.report.36>
+  <dcat-ap-hvd.pattern.report.37>A page that provides additional information about the Data Service. (foaf:page)</dcat-ap-hvd.pattern.report.37>
+  <dcat-ap-hvd.pattern.report.38>Contact information that can be used for sending comments about the Data Service. (dcat:contactPoint)</dcat-ap-hvd.pattern.report.38>
+  <dcat-ap-hvd.pattern.report.39>A statement that specifies rights associated with the Distribution. (dct:rights)</dcat-ap-hvd.pattern.report.39>
+  <dcat-ap-hvd.pattern.report.4>An established schema to which the described Distribution conforms. (dct:conformsTo)</dcat-ap-hvd.pattern.report.4>
+  <dcat-ap-hvd.pattern.report.40>This property refers to a collection of data that this data service can distribute. (dcat:servesDataset)</dcat-ap-hvd.pattern.report.40>
+  <dcat-ap-hvd.pattern.report.41>A licence under which the Data service is made available. (dct:license)</dcat-ap-hvd.pattern.report.41>
+  <dcat-ap-hvd.pattern.report.42>A description of the services available via the end-points, including their operations, parameters etc. (dcat:endpointDescription)</dcat-ap-hvd.pattern.report.42>
+  <dcat-ap-hvd.pattern.report.43>The root location or primary endpoint of the service (an IRI). (dcat:endpointURL)</dcat-ap-hvd.pattern.report.43>
+  <dcat-ap-hvd.pattern.report.44>A licence under which the Data service is made available. (dct:license)</dcat-ap-hvd.pattern.report.44>
+  <dcat-ap-hvd.pattern.report.45>The applicable legislation must be set to the HVD IR ELI. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.report.45>
+  <dcat-ap-hvd.pattern.report.46>A email address via which contact can be made. (vcard:hasEmail)</dcat-ap-hvd.pattern.report.46>
+  <dcat-ap-hvd.pattern.report.47>A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. (vcard:hasURL)</dcat-ap-hvd.pattern.report.47>
+  <dcat-ap-hvd.pattern.report.48>A email address via which contact can be made. (vcard:hasEmail)</dcat-ap-hvd.pattern.report.48>
+  <dcat-ap-hvd.pattern.report.49>A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. (vcard:hasURL)</dcat-ap-hvd.pattern.report.49>
+  <dcat-ap-hvd.pattern.report.5>A URL that gives access to a Distribution of the Dataset. (dcat:accessURL)</dcat-ap-hvd.pattern.report.5>
+  <dcat-ap-hvd.pattern.report.50>An implementing rule or other specification. (dct:conformsTo)</dcat-ap-hvd.pattern.report.50>
+  <dcat-ap-hvd.pattern.report.51>The legislation that mandates the creation or management of the Dataset. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.report.51>
+  <dcat-ap-hvd.pattern.report.52>An available Distribution for the Dataset. (dcat:distribution)</dcat-ap-hvd.pattern.report.52>
+  <dcat-ap-hvd.pattern.report.53>A dataset series of which the dataset is part. (dcat:inSeries)</dcat-ap-hvd.pattern.report.53>
+  <dcat-ap-hvd.pattern.report.54>The legislation that mandates the creation or management of the Dataset. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.report.54>
+  <dcat-ap-hvd.pattern.report.55>Contact information that can be used for sending comments about the Dataset. (dcat:contactPoint)</dcat-ap-hvd.pattern.report.55>
+  <dcat-ap-hvd.pattern.report.56>A dataset series of which the dataset is part. (dcat:inSeries)</dcat-ap-hvd.pattern.report.56>
+  <dcat-ap-hvd.pattern.report.57>The HVD category to which this Dataset belongs. (dcat-ap:hvdCategory)</dcat-ap-hvd.pattern.report.57>
+  <dcat-ap-hvd.pattern.report.58>The HVD category to which this Dataset belongs. (dcat-ap:hvdCategory)</dcat-ap-hvd.pattern.report.58>
+  <dcat-ap-hvd.pattern.report.59>Contact information that can be used for sending comments about the Dataset. (dcat:contactPoint)</dcat-ap-hvd.pattern.report.59>
+  <dcat-ap-hvd.pattern.report.6>The legislation that mandates the creation or management of the Distribution (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.report.6>
+  <dcat-ap-hvd.pattern.report.60>An implementing rule or other specification. (dct:conformsTo)</dcat-ap-hvd.pattern.report.60>
+  <dcat-ap-hvd.pattern.report.61>An available Distribution for the Dataset. (dcat:distribution)</dcat-ap-hvd.pattern.report.61>
+  <dcat-ap-hvd.pattern.report.62>The applicable legislation must be set to the HVD IR ELI. (dcat-ap:applicableLegislation)</dcat-ap-hvd.pattern.report.62>
+  <dcat-ap-hvd.pattern.report.7>A data service that gives access to the distribution of the dataset (dcat:accessService)</dcat-ap-hvd.pattern.report.7>
+  <dcat-ap-hvd.pattern.report.8>A statement that specifies rights associated with the Distribution. (dct:rights)</dcat-ap-hvd.pattern.report.8>
+  <dcat-ap-hvd.pattern.report.9>A URL that gives access to a Distribution of the Dataset. (dcat:accessURL)</dcat-ap-hvd.pattern.report.9>
+  <dcat-ap-hvd.pattern.title.1>Applicable legislation - The legislation that mandates the creation or management of the Distribution (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.applicablelegislation)</dcat-ap-hvd.pattern.title.1>
+  <dcat-ap-hvd.pattern.title.10>Rights - A statement that specifies rights associated with the Distribution. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.rights)</dcat-ap-hvd.pattern.title.10>
+  <dcat-ap-hvd.pattern.title.11>Licence - A licence under which the Distribution is made available. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.licence)</dcat-ap-hvd.pattern.title.11>
+  <dcat-ap-hvd.pattern.title.12>Licence - A licence under which the Distribution is made available. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.licence)</dcat-ap-hvd.pattern.title.12>
+  <dcat-ap-hvd.pattern.title.13>The applicable legislation must be set to the HVD IR ELI. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.applicablelegislation)</dcat-ap-hvd.pattern.title.13>
+  <dcat-ap-hvd.pattern.title.14>Dataset - A Dataset that is part of the Catalogue. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.dataset)</dcat-ap-hvd.pattern.title.14>
+  <dcat-ap-hvd.pattern.title.15>Record - A Catalogue Record that is part of the Catalogue (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.record)</dcat-ap-hvd.pattern.title.15>
+  <dcat-ap-hvd.pattern.title.16>Record - A Catalogue Record that is part of the Catalogue (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.record)</dcat-ap-hvd.pattern.title.16>
+  <dcat-ap-hvd.pattern.title.17>Dataset - A Dataset that is part of the Catalogue. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.dataset)</dcat-ap-hvd.pattern.title.17>
+  <dcat-ap-hvd.pattern.title.18>Service - A site or end-point (Data Service) that is listed in the Catalogue. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.service)</dcat-ap-hvd.pattern.title.18>
+  <dcat-ap-hvd.pattern.title.19>Service - A site or end-point (Data Service) that is listed in the Catalogue. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Catalogue.service)</dcat-ap-hvd.pattern.title.19>
+  <dcat-ap-hvd.pattern.title.2>Linked schemas - An established schema to which the described Distribution conforms. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.linkedschemas)</dcat-ap-hvd.pattern.title.2>
+  <dcat-ap-hvd.pattern.title.20>Applicable legislation - The legislation that mandates the creation or management of the Dataset Series. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DatasetSeries.applicablelegislation)</dcat-ap-hvd.pattern.title.20>
+  <dcat-ap-hvd.pattern.title.21>Applicable legislation - The legislation that mandates the creation or management of the Dataset Series. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DatasetSeries.applicablelegislation)</dcat-ap-hvd.pattern.title.21>
+  <dcat-ap-hvd.pattern.title.22>Hvd category - The HVD category to which this Dataset belongs. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DatasetSeries.HVDCategory)</dcat-ap-hvd.pattern.title.22>
+  <dcat-ap-hvd.pattern.title.23>Hvd category - The HVD category to which this Dataset belongs. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DatasetSeries.HVDCategory)</dcat-ap-hvd.pattern.title.23>
+  <dcat-ap-hvd.pattern.title.24>The applicable legislation must be set to the HVD IR ELI. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DatasetSeries.applicablelegislation)</dcat-ap-hvd.pattern.title.24>
+  <dcat-ap-hvd.pattern.title.25>Primary topic - A link to the Dataset, Data service or Catalog described in the record. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#CatalogueRecord.primarytopic)</dcat-ap-hvd.pattern.title.25>
+  <dcat-ap-hvd.pattern.title.26>Primary topic - A link to the Dataset, Data service or Catalog described in the record. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#CatalogueRecord.primarytopic)</dcat-ap-hvd.pattern.title.26>
+  <dcat-ap-hvd.pattern.title.27>Applicable legislation - The legislation that mandates the creation or management of the Data Service. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.applicablelegislation)</dcat-ap-hvd.pattern.title.27>
+  <dcat-ap-hvd.pattern.title.28>Serves dataset - This property refers to a collection of data that this data service can distribute. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.servesdataset)</dcat-ap-hvd.pattern.title.28>
+  <dcat-ap-hvd.pattern.title.29>Hvd category - The HVD category to which this Data Service belongs. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.HVDcategory)</dcat-ap-hvd.pattern.title.29>
+  <dcat-ap-hvd.pattern.title.3>Access service - A data service that gives access to the distribution of the dataset (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.accessservice)</dcat-ap-hvd.pattern.title.3>
+  <dcat-ap-hvd.pattern.title.30>Endpoint url - The root location or primary endpoint of the service (an IRI). (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.endpointURL)</dcat-ap-hvd.pattern.title.30>
+  <dcat-ap-hvd.pattern.title.31>Hvd category - The HVD category to which this Data Service belongs. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.HVDcategory)</dcat-ap-hvd.pattern.title.31>
+  <dcat-ap-hvd.pattern.title.32>Endpoint description - A description of the services available via the end-points, including their operations, parameters etc. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.endpointdescription)</dcat-ap-hvd.pattern.title.32>
+  <dcat-ap-hvd.pattern.title.33>Documentation - A page that provides additional information about the Data Service. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.documentation)</dcat-ap-hvd.pattern.title.33>
+  <dcat-ap-hvd.pattern.title.34>Applicable legislation - The legislation that mandates the creation or management of the Data Service. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.applicablelegislation)</dcat-ap-hvd.pattern.title.34>
+  <dcat-ap-hvd.pattern.title.35>Contact point - Contact information that can be used for sending comments about the Data Service. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.contactpoint)</dcat-ap-hvd.pattern.title.35>
+  <dcat-ap-hvd.pattern.title.36>Rights - A statement that specifies rights associated with the Distribution. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.rights)</dcat-ap-hvd.pattern.title.36>
+  <dcat-ap-hvd.pattern.title.37>Documentation - A page that provides additional information about the Data Service. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.documentation)</dcat-ap-hvd.pattern.title.37>
+  <dcat-ap-hvd.pattern.title.38>Contact point - Contact information that can be used for sending comments about the Data Service. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.contactpoint)</dcat-ap-hvd.pattern.title.38>
+  <dcat-ap-hvd.pattern.title.39>Rights - A statement that specifies rights associated with the Distribution. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.rights)</dcat-ap-hvd.pattern.title.39>
+  <dcat-ap-hvd.pattern.title.4>Linked schemas - An established schema to which the described Distribution conforms. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.linkedschemas)</dcat-ap-hvd.pattern.title.4>
+  <dcat-ap-hvd.pattern.title.40>Serves dataset - This property refers to a collection of data that this data service can distribute. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.servesdataset)</dcat-ap-hvd.pattern.title.40>
+  <dcat-ap-hvd.pattern.title.41>Licence - A licence under which the Data service is made available. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.licence)</dcat-ap-hvd.pattern.title.41>
+  <dcat-ap-hvd.pattern.title.42>Endpoint description - A description of the services available via the end-points, including their operations, parameters etc. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.endpointdescription)</dcat-ap-hvd.pattern.title.42>
+  <dcat-ap-hvd.pattern.title.43>Endpoint url - The root location or primary endpoint of the service (an IRI). (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.endpointURL)</dcat-ap-hvd.pattern.title.43>
+  <dcat-ap-hvd.pattern.title.44>Licence - A licence under which the Data service is made available. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.licence)</dcat-ap-hvd.pattern.title.44>
+  <dcat-ap-hvd.pattern.title.45>The applicable legislation must be set to the HVD IR ELI. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#DataService.applicablelegislation)</dcat-ap-hvd.pattern.title.45>
+  <dcat-ap-hvd.pattern.title.46>Email - A email address via which contact can be made. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Kind.email)</dcat-ap-hvd.pattern.title.46>
+  <dcat-ap-hvd.pattern.title.47>Contact page - A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Kind.contactpage)</dcat-ap-hvd.pattern.title.47>
+  <dcat-ap-hvd.pattern.title.48>Email - A email address via which contact can be made. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Kind.email)</dcat-ap-hvd.pattern.title.48>
+  <dcat-ap-hvd.pattern.title.49>Contact page - A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Kind.contactpage)</dcat-ap-hvd.pattern.title.49>
+  <dcat-ap-hvd.pattern.title.5>Access url - A URL that gives access to a Distribution of the Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.accessURL)</dcat-ap-hvd.pattern.title.5>
+  <dcat-ap-hvd.pattern.title.50>Conforms to - An implementing rule or other specification. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.conformsto)</dcat-ap-hvd.pattern.title.50>
+  <dcat-ap-hvd.pattern.title.51>Applicable legislation - The legislation that mandates the creation or management of the Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.applicablelegislation)</dcat-ap-hvd.pattern.title.51>
+  <dcat-ap-hvd.pattern.title.52>Dataset distribution - An available Distribution for the Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.datasetdistribution)</dcat-ap-hvd.pattern.title.52>
+  <dcat-ap-hvd.pattern.title.53>In series - A dataset series of which the dataset is part. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.inseries)</dcat-ap-hvd.pattern.title.53>
+  <dcat-ap-hvd.pattern.title.54>Applicable legislation - The legislation that mandates the creation or management of the Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.applicablelegislation)</dcat-ap-hvd.pattern.title.54>
+  <dcat-ap-hvd.pattern.title.55>Contact point - Contact information that can be used for sending comments about the Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.contactpoint)</dcat-ap-hvd.pattern.title.55>
+  <dcat-ap-hvd.pattern.title.56>In series - A dataset series of which the dataset is part. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.inseries)</dcat-ap-hvd.pattern.title.56>
+  <dcat-ap-hvd.pattern.title.57>Hvd category - The HVD category to which this Dataset belongs. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.HVDCategory)</dcat-ap-hvd.pattern.title.57>
+  <dcat-ap-hvd.pattern.title.58>Hvd category - The HVD category to which this Dataset belongs. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.HVDCategory)</dcat-ap-hvd.pattern.title.58>
+  <dcat-ap-hvd.pattern.title.59>Contact point - Contact information that can be used for sending comments about the Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.contactpoint)</dcat-ap-hvd.pattern.title.59>
+  <dcat-ap-hvd.pattern.title.6>Applicable legislation - The legislation that mandates the creation or management of the Distribution (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.applicablelegislation)</dcat-ap-hvd.pattern.title.6>
+  <dcat-ap-hvd.pattern.title.60>Conforms to - An implementing rule or other specification. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.conformsto)</dcat-ap-hvd.pattern.title.60>
+  <dcat-ap-hvd.pattern.title.61>Dataset distribution - An available Distribution for the Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.datasetdistribution)</dcat-ap-hvd.pattern.title.61>
+  <dcat-ap-hvd.pattern.title.62>The applicable legislation must be set to the HVD IR ELI. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Dataset.applicablelegislation)</dcat-ap-hvd.pattern.title.62>
+  <dcat-ap-hvd.pattern.title.7>Access service - A data service that gives access to the distribution of the dataset (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.accessservice)</dcat-ap-hvd.pattern.title.7>
+  <dcat-ap-hvd.pattern.title.8>Rights - A statement that specifies rights associated with the Distribution. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.rights)</dcat-ap-hvd.pattern.title.8>
+  <dcat-ap-hvd.pattern.title.9>Access url - A URL that gives access to a Distribution of the Dataset. (https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#Distribution.accessURL)</dcat-ap-hvd.pattern.title.9>
 </strings>
