@@ -20,10 +20,16 @@
   <xs:import namespace="http://www.w3.org/ns/oa#" schemaLocation="oa.xsd"/>
 
   <xs:complexType name="QualityAnnotation">
-      <xs:sequence>
-        <xs:element ref="oa:hasBody"/>
-<!--     TODO   <xs:element ref="oa:hasTarget"/>-->
-      </xs:sequence>
+    <xs:sequence>
+      <xs:element name="QualityAnnotation" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="oa:hasBody"/>
+            <!-- TODO <xs:element ref="oa:hasTarget"/>-->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:element name="hasQualityAnnotation" type="dqv:QualityAnnotation"/>

@@ -648,6 +648,14 @@
     <description>Tooltip: geometry</description>
     <btnLabel>geometry</btnLabel>
   </element>
+  <element name="locn:address">
+    <label>Address</label>
+    <description>An "address representation" as conceptually defined by the INSPIRE Address Representation data type. The locn:addressId property may be used to link this locn:Address to other representations.</description>
+  </element>
+  <element name="locn:Address">
+    <label>Adres</label>
+    <description>An "address representation" as conceptually defined by the INSPIRE Address Representation data type. The locn:addressId property may be used to link this locn:Address to other representations.</description>
+  </element>
   <element name="skos:prefLabel" context="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:spatial/dct:Location/skos:prefLabel">
     <label>Geographic description</label>
     <description>Tooltip: Geographic description</description>
@@ -2279,6 +2287,10 @@
     <description>The results and outcomes from an assessment process by an external organisation, e.g., a National Body in the context of EU Delegated Regulations. EU Delegated Regulations require Member States to set up procedures to assess the compliance of the Delegated Regulations, e.g. regarding the provisioning of data via a NAP. These assessment processes are handled by National Bodies and installed individually in each Member State.
       The property may point to the most recent assessment procedure, including its date, its result as a free-text and/or a link referring to an assessment report online.</description>
   </element>
+  <element name="mobilitydcatap:Assessment">
+    <label>Bewertung</label>
+    <description>Ein Bewertungsverfahren durch eine externe Organisation.</description>
+  </element>
   <element name="mobilitydcatap:dataFormatNotes">
     <label>Data format notes</label>
     <description>Any additional information about the format of the delivered content within the distribution in a textual format.</description>
@@ -2288,8 +2300,12 @@
     <description>The result of the latest assessment procedure, in form of a URL linking to further details or results. Alternatively, textual information is provided using the Embedded Textual Body construction of the Web Annotation Data Model, which allows to specify text formats and languages which might be relevant for multilingual purposes.</description>
   </element>
   <element name="dqv:hasQualityAnnotation">
-    <label>Quality annotation</label>
-    <description>An annotation about any quality aspects regarding the delivered content, in particular methods, metrics/indicators and results of a quality assessment in the responsibility of the Data Owner.</description>
+    <label>Verfügt über eine hochwertige Annotation</label>
+    <description>Eine Anmerkung zu allen Qualitätsaspekten des gelieferten Inhalts, insbesondere zu Methoden, Kennzahlen/Indikatoren und Ergebnissen einer Qualitätsbewertung, die in der Verantwortung des Dateneigentümers liegt.</description>
+  </element>
+  <element name="dqv:QualityAnnotation">
+    <label>Qualitätsannotation</label>
+    <description>Stellt Qualitätsannotationen dar, darunter Bewertungen, Qualitätszertifikate oder Feedback, die Datensätzen oder Verteilungen zugeordnet werden können. Qualitätsannotationen müssen eine `oa:motivatedBy`-Anweisung mit einer Instanz von `oa:Motivation` (und `skos:Concept`) enthalten, die den Zweck einer Qualitätsbewertung widerspiegelt. Diese Instanz wird als `dqv:qualityAssessment` definiert.</description>
   </element>
   <element name="cnt:characterEncoding">
     <label>Character encoding</label>

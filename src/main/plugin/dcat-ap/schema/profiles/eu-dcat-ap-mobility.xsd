@@ -50,8 +50,14 @@
 
   <xs:complexType name="Assessment">
     <xs:sequence>
-      <xs:element ref="dct:issued"/>
-      <xs:element ref="oa:hasBody"/>
+      <xs:element name="Assessment" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="dct:issued"/>
+            <xs:element ref="oa:hasBody"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

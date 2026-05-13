@@ -33,16 +33,22 @@
 
   <xs:complexType name="Address">
     <xs:sequence>
-      <xs:element name="fullAddress" type="rdf:TypedLiteral" minOccurs="0" />
-      <xs:element name="poBox" type="rdf:TypedLiteral" minOccurs="0" />
-      <xs:element name="thoroughfare" type="rdf:TypedLiteral" minOccurs="0" />
-      <xs:element name="locatorDesignator" type="rdf:TypedLiteral" minOccurs="0" />
-      <xs:element name="locatorName" type="rdf:TypedLiteral" minOccurs="0" />
-      <xs:element name="addressArea" type="rdf:TypedLiteral" minOccurs="0" />
-      <xs:element name="postName" type="rdf:TypedLiteral" minOccurs="0" />
-      <xs:element name="postCode" type="rdf:TypedLiteral" minOccurs="0" />
-      <xs:element name="adminUnitL2" type="rdf:TypedLiteral" minOccurs="0" />
-      <xs:element name="adminUnitL1" type="rdf:TypedLiteral" minOccurs="0" />
+      <xs:element name="Address" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="fullAddress" type="rdf:TypedLiteral" minOccurs="0"/>
+            <xs:element name="poBox" type="rdf:TypedLiteral" minOccurs="0"/>
+            <xs:element name="thoroughfare" type="rdf:TypedLiteral" minOccurs="0"/>
+            <xs:element name="locatorDesignator" type="rdf:TypedLiteral" minOccurs="0"/>
+            <xs:element name="locatorName" type="rdf:TypedLiteral" minOccurs="0"/>
+            <xs:element name="addressArea" type="rdf:TypedLiteral" minOccurs="0"/>
+            <xs:element name="postName" type="rdf:TypedLiteral" minOccurs="0"/>
+            <xs:element name="postCode" type="rdf:TypedLiteral" minOccurs="0"/>
+            <xs:element name="adminUnitL2" type="rdf:TypedLiteral" minOccurs="0"/>
+            <xs:element name="adminUnitL1" type="rdf:TypedLiteral" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
 
