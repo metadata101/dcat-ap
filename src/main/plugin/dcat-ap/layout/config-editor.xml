@@ -67,12 +67,12 @@
         labelKey="dct:conformsTo"
       />
     </for>
-    <for name="dct:conformsTo" xpath="mobilitydcatap:mobilityDataStandard" use="thesaurus-list-picker">
+    <for name="mobilitydcatap:mobilityDataStandard" xpath="dcat:Distribution" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.mobility-data-standard"
         max="1"
-        xpath="/dct:conformsTo"
-        labelKey="dct:conformsTo"
+        xpath="/dcat:Distribution/mobilitydcatap:mobilityDataStandard"
+        labelKey="mobilitydcatap:mobilityDataStandard"
       />
     </for>
     <for name="dct:language" xpath="dcat:Catalog" use="thesaurus-list-picker">
@@ -589,6 +589,7 @@
     <name>spdx:checksum</name>
     <name>spdx:Checksum</name>
     <name>mobilitydcatap:mobilityDataStandard</name>
+    <name>mobilitydcatap:MobilityDataStandard</name>
     <name>mobilitydcatap:assessmentResult</name>
     <name>mobilitydcatap:Assessment</name>
     <name>dqv:hasQualityAnnotation</name>
