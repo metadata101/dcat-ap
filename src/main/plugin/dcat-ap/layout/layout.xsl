@@ -152,6 +152,7 @@
                                                 name() = 'dct:Standard' or
                                                 name() = 'dcat:Distribution' or
                                                 name() = 'dct:LicenseDocument' or
+                                                name() = 'locn:Address' or
                                                 name() = 'dct:RightsStatement' or
                                                 name() = 'foaf:Agent'"/>
     </xsl:call-template>

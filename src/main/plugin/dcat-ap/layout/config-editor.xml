@@ -67,12 +67,12 @@
         labelKey="dct:conformsTo"
       />
     </for>
-    <for name="dct:conformsTo" xpath="mobilitydcatap:mobilityDataStandard" use="thesaurus-list-picker">
+    <for name="mobilitydcatap:mobilityDataStandard" xpath="dcat:Distribution" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.mobility-data-standard"
         max="1"
-        xpath="/dct:conformsTo"
-        labelKey="dct:conformsTo"
+        xpath="/dcat:Distribution/mobilitydcatap:mobilityDataStandard"
+        labelKey="mobilitydcatap:mobilityDataStandard"
       />
     </for>
     <for name="dct:language" xpath="dcat:Catalog" use="thesaurus-list-picker">
@@ -589,10 +589,14 @@
     <name>spdx:checksum</name>
     <name>spdx:Checksum</name>
     <name>mobilitydcatap:mobilityDataStandard</name>
+    <name>mobilitydcatap:MobilityDataStandard</name>
     <name>mobilitydcatap:assessmentResult</name>
+    <name>mobilitydcatap:Assessment</name>
     <name>dqv:hasQualityAnnotation</name>
+    <name>dqv:QualityAnnotation</name>
     <name>geodcatap:referenceSystem</name>
     <name>locn:address</name>
+    <name>locn:Address</name>
   </fieldsWithFieldset>
 
   <multilingualFields>
@@ -629,6 +633,7 @@
       <name>dct:spatial</name>
       <name>dct:type</name>
       <name>dct:accrualPeriodicity</name>
+      <name>dqv:hasQualityAnnotation</name>
       <name>foaf:Agent</name>
       <name>foaf:Document</name>
       <name>foaf:primaryTopic</name>
@@ -641,11 +646,13 @@
       <name>skos:inScheme</name>
       <name>skos:notation</name>
       <name>mdcat:stars</name>
+      <name>mobilitydcatap:assessmentResult</name>
       <name>mobilitydcatap:mobilityDataStandard</name>
       <name>dcat:version</name>
       <name>dcat:hasVersion</name>
       <name>dcat:isVersionOf</name>
       <name>locn:address</name>
+      <name>locn:Address</name>
       <name>locn:fullAddress</name>
       <name>locn:poBox</name>
       <name>locn:thoroughfare</name>
@@ -1267,10 +1274,34 @@
           </action>
 
 
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:assessmentResult"
-                    or="assessmentResult" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dqv:hasQualityAnnotation"
-                    or="hasQualityAnnotation" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:assessmentResult"/>
+          <action type="add" or="assessmentResult" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:assessmentResult) = 0">
+            <template>
+              <snippet>
+                <mobilitydcatap:assessmentResult>
+                  <mobilitydcatap:Assessment>
+                    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"/>
+                    <oa:hasBody rdf:resource=""/>
+                  </mobilitydcatap:Assessment>
+                </mobilitydcatap:assessmentResult>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dqv:hasQualityAnnotation"/>
+          <action type="add" or="hasQualityAnnotation" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"
+                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dqv:hasQualityAnnotation) = 0">
+            <template>
+              <snippet>
+                <dqv:hasQualityAnnotation>
+                  <dqv:QualityAnnotation>
+                    <oa:hasBody rdf:resource=""/>
+                  </dqv:QualityAnnotation>
+                </dqv:hasQualityAnnotation>
+              </snippet>
+            </template>
+          </action>
         </section>
 
         <section name="extraInformation">
@@ -2236,7 +2267,8 @@
         <for name="foaf:Agent/foaf:firstName"/>
         <for name="foaf:Agent/foaf:surname"/>
         <for name="foaf:Agent/foaf:phone"/>
-        <for name="foaf:Agent/locn:address"/>
+        <for name="locn:address"/>
+        <for name="locn:Address"/>
         <for name="locn:fullAddress"/>
         <for name="locn:poBox"/>
         <for name="locn:thoroughfare"/>
@@ -2274,6 +2306,7 @@
         <for name="mobilitydcatap:mobilityDataStandard/dct:conformsTo"/>
         <for name="mobilitydcatap:mobilityDataStandard/mobilitydcatap:schema"/>
         <for name="mobilitydcatap:assessmentResult"/>
+        <for name="mobilitydcatap:Assessment"/>
         <for name="mobilitydcatap:dataFormatNotes"/>
         <for name="dqv:hasQualityAnnotation"/>
         <for name="geodcatap:referenceSystem"/>

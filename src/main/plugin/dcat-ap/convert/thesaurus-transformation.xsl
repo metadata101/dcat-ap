@@ -87,6 +87,18 @@
                 </dct:Standard>
               </dct:conformsTo>
             </xsl:when>
+            <xsl:when test="$wrapper = 'mobilitydcatap:mobilityDataStandard'">
+              <mobilitydcatap:mobilityDataStandard>
+                <mobilitydcatap:MobilityDataStandard rdf:about="{$rdfAbout}">
+                  <dct:identifier><xsl:value-of select="$rdfAbout"/></dct:identifier>
+                  <xsl:call-template name="build-element-from-concept">
+                    <xsl:with-param name="elementName" select="'dct:title'"/>
+                    <xsl:with-param name="listOfLanguage" select="$listOfLanguage"/>
+                    <xsl:with-param name="keyword" select="."/>
+                  </xsl:call-template>
+                </mobilitydcatap:MobilityDataStandard>
+              </mobilitydcatap:mobilityDataStandard>
+            </xsl:when>
             <xsl:otherwise>
               <xsl:element name="{$wrapper}">
                 <skos:Concept rdf:about="{$rdfAbout}">
