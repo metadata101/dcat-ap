@@ -382,6 +382,10 @@
     <label>Address</label>
     <description>An "address representation" as conceptually defined by the INSPIRE Address Representation data type. The locn:addressId property may be used to link this locn:Address to other representations.</description>
   </element>
+  <element name="locn:Address">
+    <label>Adres</label>
+    <description>An "address representation" as conceptually defined by the INSPIRE Address Representation data type. The locn:addressId property may be used to link this locn:Address to other representations.</description>
+  </element>
   <element name="locn:poBox">
     <label>PO Box</label>
     <description>The Post Office Box number. The domain of locn:poBox is locn:Address.</description>
@@ -1109,6 +1113,10 @@
     <description>The results and outcomes from an assessment process by an external organisation, e.g., a National Body in the context of EU Delegated Regulations. EU Delegated Regulations require Member States to set up procedures to assess the compliance of the Delegated Regulations, e.g. regarding the provisioning of data via a NAP. These assessment processes are handled by National Bodies and installed individually in each Member State.
       The property may point to the most recent assessment procedure, including its date, its result as a free-text and/or a link referring to an assessment report online.</description>
   </element>
+  <element name="mobilitydcatap:Assessment">
+    <label>Assessment</label>
+    <description>An assessment procedure by an external organisation.</description>
+  </element>
   <element name="mobilitydcatap:dataFormatNotes">
     <label>Data format notes</label>
     <description>Any additional information about the format of the delivered content within the distribution in a textual format.</description>
@@ -1118,8 +1126,12 @@
     <description>The result of the latest assessment procedure, in form of a URL linking to further details or results. Alternatively, textual information is provided using the Embedded Textual Body construction of the Web Annotation Data Model, which allows to specify text formats and languages which might be relevant for multilingual purposes.</description>
   </element>
   <element name="dqv:hasQualityAnnotation">
-    <label>Quality annotation</label>
+    <label>Has Quality Annotation</label>
     <description>An annotation about any quality aspects regarding the delivered content, in particular methods, metrics/indicators and results of a quality assessment in the responsibility of the Data Owner.</description>
+  </element>
+  <element name="dqv:QualityAnnotation">
+    <label>Quality annotation</label>
+    <description>Represents quality annotations, including ratings, quality certificates or feedback that can be associated to datasets or distributions. Quality annotations must have one oa:motivatedBy statement with an instance of oa:Motivation (and skos:Concept) that reflects a quality assessment purpose. We define this instance as dqv:qualityAssessment.</description>
   </element>
   <element name="cnt:characterEncoding">
     <label>Character encoding</label>

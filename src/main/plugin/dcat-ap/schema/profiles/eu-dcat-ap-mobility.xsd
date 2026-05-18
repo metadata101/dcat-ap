@@ -32,17 +32,38 @@
   <xs:element name="grammar" type="skos:Concept"/>
   <xs:element name="schema" type="rdf:ResourceRef"/>
   <xs:element name="dataFormatNotes" type="rdf:PlainLiteral"/>
-  <xs:element name="mobilityDataStandard" type="mobilitydcatap:DataStandard"/>
+  <xs:element name="mobilityDataStandard" type="mobilitydcatap:MobilityDataStandard"/>
 
-  <xs:complexType name="DataStandard">
+  <!--
+  Intended format:
+
+  <mobilitydcatap:mobilityDataStandard>
+    <mobilitydcatap:MobilityDataStandard rdf:about="https://w3id.org/mobilitydcat-ap/mobility-data-standard/siri">
+       <dct:identifier>https://w3id.org/mobilitydcat-ap/mobility-data-standard/siri</dct:identifier>
+       <dct:title xml:lang="nl">SIRI</dct:title>
+       <owl:versionInfo>versie</owl:versionInfo>
+       <mobilitydcatap:schema rdf:resource="schema" />
+    </mobilitydcatap:MobilityDataStandard>
+  </mobilitydcatap:mobilityDataStandard>
+  -->
+  <xs:complexType name="MobilityDataStandard">
     <xs:sequence>
-      <!--TODO Added in mobility DCAT 3
-      Broken link in the spec to the vocabulary
-      <xs:element ref="mobilitydcatap:specificContentModel" minOccurs="0"/>-->
-      <xs:element ref="dct:conformsTo" minOccurs="0"/><!-- is a skos:Concept in mobility dcat instead of dct:Standard -->
-      <!--TODO In mobility v1 was owl:versionInfo, is dcat:version in v3 -->
-      <xs:element ref="owl:versionInfo" minOccurs="0"/>
-      <xs:element ref="mobilitydcatap:schema" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="MobilityDataStandard" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <!--TODO Added in mobility DCAT 3
+            Broken link in the spec to the vocabulary
+            <xs:element ref="mobilitydcatap:specificContentModel" minOccurs="0"/>-->
+            <xs:element ref="dct:identifier" minOccurs="0"/>
+            <!-- dct:conformsTo is used when a custom type of MobilityDataStandard is used, in which case we can show commonalities here. Not applicable yet. -->
+            <!-- <xs:element ref="dct:conformsTo" minOccurs="0"/>-->
+            <!--TODO In mobility v1 was owl:versionInfo, is dcat:version in v3 -->
+            <xs:element ref="owl:versionInfo" minOccurs="0"/>
+            <xs:element ref="mobilitydcatap:schema" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+          <xs:attribute ref="rdf:about"/>
+        </xs:complexType>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
 
@@ -50,8 +71,14 @@
 
   <xs:complexType name="Assessment">
     <xs:sequence>
-      <xs:element ref="dct:issued"/>
-      <xs:element ref="oa:hasBody"/>
+      <xs:element name="Assessment" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="dct:issued"/>
+            <xs:element ref="oa:hasBody"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

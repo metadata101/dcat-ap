@@ -58,7 +58,7 @@
                          priority="4000"
                         match="*[(skos:Concept or @rdf:resource) and gn-fn-dcat-ap:getThesaurusConfig(name(), name(..))]|dcat:theme|
                                                   dcat:Dataset/dct:conformsTo|
-                                                  mobilitydcatap:mobilityDataStandard/dct:conformsTo|
+                                                  mobilitydcatap:mobilityDataStandard|
                                                   dct:rights/dct:RightsStatement/dct:type">
     <xsl:param name="config" required="no"/>
 
@@ -260,7 +260,7 @@
     <xsl:choose>
       <xsl:when test="$xpath = (
         './dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:rights/dct:RightsStatement/dct:type',
-        './dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/mobilitydcatap:mobilityDataStandard/dct:conformsTo'
+        './dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/mobilitydcatap:mobilityDataStandard'
         )">
         <xsl:value-of select="$xpath"/>
       </xsl:when>
