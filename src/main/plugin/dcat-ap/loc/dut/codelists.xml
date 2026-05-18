@@ -25,10 +25,15 @@
 
 <codelists>
   <codelist name="dcat:Resource" alias="associationType">
-    <entry>
+    <!--<entry>
       <code>nextResource</code>
-      <label>Volgende resource</label>
-      <description>Volgende resource in reeks</description>
+      <label>Volgende Resource</label>
+      <description>Volgende Resource in reeks</description>
+    </entry>-->
+    <entry>
+      <code>revisionOf</code>
+      <label>Vorherige Resource</label>
+      <description>Vorherige Resource in series</description>
     </entry>
   </codelist>
 </codelists>
