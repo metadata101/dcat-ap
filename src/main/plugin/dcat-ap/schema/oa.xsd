@@ -17,6 +17,6 @@
   <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
   <xs:import namespace="http://www.w3.org/2004/02/skos/core#" schemaLocation="skos.xsd"/>
 
-  <xs:element name="hasBody" type="rdf:ResourceRef"/>
+  <xs:element name="hasBody" type="rdf:LiteralOrResource"/>
   <xs:element name="motivatedBy" type="skos:Concept"/>
 </xs:schema>
