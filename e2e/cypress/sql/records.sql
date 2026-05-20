@@ -163,6 +163,9 @@ $$
         </dct:type>
       </foaf:Agent>
     </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:about="http://publications.europa.eu/resource/authority/country/BEL" />
+    </dct:spatial>
     <dct:title xml:lang="nl">Open Data Catalogus van My organization</dct:title>
     <foaf:homepage>
       <foaf:Document rdf:about="http://localhost:8080/srv/eng/">
