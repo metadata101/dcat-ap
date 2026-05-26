@@ -269,9 +269,10 @@
     <sch:title>$loc/strings/dcat-ap-vl-300.pattern.title.27</sch:title>
     <sch:rule context="//dcat:Dataset/dcat:inSeries">
       <sch:let name="resource" value="@rdf:resource"/>
+      <sch:let name="isIRI" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
       <sch:let name="validClass" value="count(dcat:DatasetSeries) = 1 or count(//dcat:DatasetSeries[@rdf:about = $resource]) = 1"/>
-      <sch:assert test="$validClass">$loc/strings/dcat-ap-vl-300.pattern.assert.27</sch:assert>
-      <sch:report test="$validClass">$loc/strings/dcat-ap-vl-300.pattern.report.27</sch:report>
+      <sch:assert test="$isIRI or $validClass">$loc/strings/dcat-ap-vl-300.pattern.assert.27</sch:assert>
+      <sch:report test="$isIRI or $validClass">$loc/strings/dcat-ap-vl-300.pattern.report.27</sch:report>
     </sch:rule>
   </sch:pattern>
   <sch:pattern name="identificator" id="_:n14f405c72961451c8f2eddfa3c5cb332b95">
