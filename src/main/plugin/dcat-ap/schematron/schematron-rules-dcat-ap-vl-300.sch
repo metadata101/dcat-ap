@@ -548,42 +548,6 @@
       <sch:report test="$validClass">$loc/strings/dcat-ap-vl-300.pattern.report.58</sch:report>
     </sch:rule>
   </sch:pattern>
-  <sch:pattern name="titel" id="_:n14f405c72961451c8f2eddfa3c5cb332b141">
-    <sch:title>$loc/strings/dcat-ap-vl-300.pattern.title.59</sch:title>
-    <sch:rule context="//dcat:Distribution/dct:title">
-      <sch:let name="isLiteral" value="normalize-space(.) != ''"/>
-      <sch:let name="hasLang" value="normalize-space(@xml:lang) != ''"/>
-      <sch:assert test="$isLiteral and $hasLang">$loc/strings/dcat-ap-vl-300.pattern.assert.59</sch:assert>
-      <sch:report test="$isLiteral and $hasLang">$loc/strings/dcat-ap-vl-300.pattern.report.59</sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern name="beschrijving" id="_:n14f405c72961451c8f2eddfa3c5cb332b142">
-    <sch:title>$loc/strings/dcat-ap-vl-300.pattern.title.60</sch:title>
-    <sch:rule context="//dcat:Distribution/dct:description">
-      <sch:let name="isLiteral" value="normalize-space(.) != ''"/>
-      <sch:let name="hasLang" value="normalize-space(@xml:lang) != ''"/>
-      <sch:assert test="$isLiteral and $hasLang">$loc/strings/dcat-ap-vl-300.pattern.assert.60</sch:assert>
-      <sch:report test="$isLiteral and $hasLang">$loc/strings/dcat-ap-vl-300.pattern.report.60</sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern name="downloadURL" id="_:n14f405c72961451c8f2eddfa3c5cb332b143">
-    <sch:title>$loc/strings/dcat-ap-vl-300.pattern.title.61</sch:title>
-    <sch:rule context="//dcat:Distribution/dcat:downloadURL">
-      <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="matches($resource, '^\w+:(/?/?)[^\s]+$')"/>
-      <sch:assert test="$validClass">$loc/strings/dcat-ap-vl-300.pattern.assert.61</sch:assert>
-      <sch:report test="$validClass">$loc/strings/dcat-ap-vl-300.pattern.report.61</sch:report>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern name="mediatype" id="_:n14f405c72961451c8f2eddfa3c5cb332b144">
-    <sch:title>$loc/strings/dcat-ap-vl-300.pattern.title.62</sch:title>
-    <sch:rule context="//dcat:Distribution/dcat:mediatype">
-      <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(skos:Concept) = 1 or count(//skos:Concept[@rdf:about = $resource]) = 1"/>
-      <sch:assert test="$validClass">$loc/strings/dcat-ap-vl-300.pattern.assert.62</sch:assert>
-      <sch:report test="$validClass">$loc/strings/dcat-ap-vl-300.pattern.report.62</sch:report>
-    </sch:rule>
-  </sch:pattern>
   <sch:pattern name="titel" id="_:n14f405c72961451c8f2eddfa3c5cb332b130">
     <sch:title>$loc/strings/dcat-ap-vl-300.pattern.title.63</sch:title>
     <sch:rule context="//dct:Standard/dct:title">
