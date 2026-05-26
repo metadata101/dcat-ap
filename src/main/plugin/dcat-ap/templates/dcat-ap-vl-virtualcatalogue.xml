@@ -17,7 +17,6 @@
   <dcat:Catalog rdf:about="https://metadata.vlaanderen.be/virtualcatalogtemplate">
     <dcat:record>
       <dcat:CatalogRecord>
-        <dct:modified>2025-06-18</dct:modified>
         <dct:conformsTo>
           <dct:Standard rdf:about="https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/200">
             <dct:identifier>https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe/release/200</dct:identifier>
