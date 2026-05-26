@@ -234,6 +234,9 @@
           </dct:type>
         </foaf:Agent>
       </dct:publisher>
+      <dct:spatial>
+        <dct:Location rdf:about="http://publications.europa.eu/resource/authority/country/BEL"/>
+      </dct:spatial>
       <foaf:homepage>
         <foaf:Document>
           <xsl:if test="normalize-space($serviceUrl) != ''">
