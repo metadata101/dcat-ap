@@ -103,7 +103,7 @@ $$
     <dcat:record>
       <dcat:CatalogRecord rdf:about="http://localhost:8080/srv/api/records/345f47ef-abd5-4f2f-9ab7-d723565cccea">
         <foaf:primaryTopic rdf:resource="http://localhost:8080/srv/resources/datasets/16752832-7ef7-4539-9869-5236400cf249" />
-        <dct:modified>2025-12-24</dct:modified>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-12-24</dct:modified>
         <dct:conformsTo>
           <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
             <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03</dct:identifier>
@@ -130,7 +130,7 @@ $$
     </dcat:record>
     <dct:description xml:lang="nl">Deze catalogus bevat datasets ontsloten door My organization</dct:description>
     <dct:identifier>eb248be8-549d-493f-b323-1dba08bb5417</dct:identifier>
-    <dct:issued>2019-09-01</dct:issued>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-09-01</dct:issued>
     <dct:language>
       <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
         <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem" />
@@ -441,7 +441,7 @@ $$
     </dcat:record>
     <dct:description xml:lang="en">Deze catalogus bevat datasets ontsloten door agentschap Digitaal Vlaanderen</dct:description>
     <dct:identifier>c678d0fb-894d-403f-b146-4b96706a1a16</dct:identifier>
-    <dct:issued>2019-09-01</dct:issued>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-09-01</dct:issued>
     <dct:language>
       <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
         <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem" />
@@ -474,6 +474,9 @@ $$
         </dct:type>
       </foaf:Agent>
     </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:about="http://publications.europa.eu/resource/authority/country/BEL" />
+    </dct:spatial>
     <dct:title xml:lang="en">Open Data Catalogus van agentschap Digitaal Vlaanderen</dct:title>
     <foaf:homepage>
       <foaf:Document rdf:about="http://localhost:8080/srv/dut/">
