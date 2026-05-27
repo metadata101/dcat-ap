@@ -22,9 +22,10 @@ The Resource Description Framework [RDF] is defined to have an extensible system
     </xs:simpleContent>
   </xs:complexType>
   <!-- rdfs:Resource or rdfs:Literal -->
-  <xs:simpleType name="LiteralOrResource">
-    <xs:union memberTypes="rdf:ResourceRef rdf:PlainLiteral"/>
-  </xs:simpleType>
+  <xs:complexType name="LiteralOrResource" mixed="true">
+    <xs:attribute ref="rdf:resource" use="optional"/>
+    <xs:attribute ref="xml:lang" use="optional"/>
+  </xs:complexType>
   <!-- rdf:typedLiteral -->
   <xs:complexType name="TypedLiteral">
     <xs:simpleContent>
