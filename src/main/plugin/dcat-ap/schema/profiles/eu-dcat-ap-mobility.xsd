@@ -55,6 +55,9 @@
             Broken link in the spec to the vocabulary
             <xs:element ref="mobilitydcatap:specificContentModel" minOccurs="0"/>-->
             <xs:element ref="dct:identifier" minOccurs="0"/>
+            <xs:element ref="dct:title" minOccurs="0"/>
+            <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dct:issued" minOccurs="0" maxOccurs="1"/>
             <!-- dct:conformsTo is used when a custom type of MobilityDataStandard is used, in which case we can show commonalities here. Not applicable yet. -->
             <!-- <xs:element ref="dct:conformsTo" minOccurs="0"/>-->
             <!--TODO In mobility v1 was owl:versionInfo, is dcat:version in v3 -->
