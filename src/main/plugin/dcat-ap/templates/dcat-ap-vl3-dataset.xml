@@ -10,7 +10,6 @@
   <dcat:Catalog>
     <dcat:record>
       <dcat:CatalogRecord>
-        <dct:modified>2020-06-09</dct:modified>
         <dct:conformsTo>
           <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2026-02-12">
             <dct:title xml:lang="nl">DCAT-AP Vlaanderen</dct:title>

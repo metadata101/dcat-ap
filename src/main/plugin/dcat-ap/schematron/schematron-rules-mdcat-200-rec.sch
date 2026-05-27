@@ -104,14 +104,6 @@
       <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;http://publications.europa.eu/resource/authority/file-type&gt; verwacht voor formaat (dct:format)</sch:report>
     </sch:rule>
   </sch:pattern>
-  <sch:pattern name="mediatype" id="https://data.vlaanderen.be/shacl/metadata_dcat#VoorbeeldWeergaveShape/91e8d1bb173f793bde16cb8a3dc8fde7844b5204">
-    <sch:title>Mediatype - Het voorstellingsvorm van de afbeelding (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#VoorbeeldWeergave%3Amediatype)</sch:title>
-    <sch:rule context="//dcat:Distribution/dcat:mediatype">
-      <sch:let name="hasValue" value="skos:Concept/skos:inScheme/@rdf:resource = 'https://www.iana.org/assignments/media-types/media-types.xhtml'"/>
-      <sch:assert test="$hasValue">Enkel waarden uit codelijst &lt;https://www.iana.org/assignments/media-types/media-types.xhtml&gt; verwacht voor mediatype (dcat:mediatype)</sch:assert>
-      <sch:report test="$hasValue">Enkel waarden uit codelijst &lt;https://www.iana.org/assignments/media-types/media-types.xhtml&gt; verwacht voor mediatype (dcat:mediatype)</sch:report>
-    </sch:rule>
-  </sch:pattern>
   <sch:pattern name="rol" id="https://data.vlaanderen.be/shacl/metadata_dcat#RelatieQualificatieShape/110bcc4a81256c6b4b080feb1fd85186147a7841">
     <sch:title>Rol - De functie hoe de entiteiten zich tot elkaar verhouden.  (https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22#RelatieQualificatie%3Arol)</sch:title>
     <sch:rule context="//dcat:Relationship/dcat:hadRole">

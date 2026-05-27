@@ -36,7 +36,7 @@
                 xmlns:gml="http://www.opengis.net/gml"
                 xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
-                xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+                xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 xmlns:saxon="http://saxon.sf.net/"
                 xmlns:uuid="java:java.util.UUID"

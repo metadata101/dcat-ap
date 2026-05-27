@@ -32,6 +32,7 @@
                 xmlns:dcatap="http://data.europa.eu/r5r/"
                 xmlns:dqv="http://www.w3.org/ns/dqv#"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
+                xmlns:oa="http://www.w3.org/ns/oa#"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
                 xmlns:schema="http://schema.org/"
                 xmlns:locn="http://www.w3.org/ns/locn#"
@@ -40,7 +41,7 @@
                 xmlns:dcatutil="java:org.fao.geonet.schema.dcatap.util.XslUtil"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
-                xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+                xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#"
                 xmlns:cnt="http://www.w3.org/2011/content#"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 xmlns:saxon="http://saxon.sf.net/"
@@ -234,6 +235,9 @@
           </dct:type>
         </foaf:Agent>
       </dct:publisher>
+      <dct:spatial>
+        <dct:Location rdf:about="http://publications.europa.eu/resource/authority/country/BEL"/>
+      </dct:spatial>
       <foaf:homepage>
         <foaf:Document>
           <xsl:if test="normalize-space($serviceUrl) != ''">
@@ -266,10 +270,10 @@
           <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
         </skos:Concept>
       </dct:language>
-      <dct:issued>
+      <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
         <xsl:value-of select="'2019-09-01'"/>
       </dct:issued>
-      <dct:modified>
+      <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
         <xsl:value-of select="'2019-09-01'"/>
       </dct:modified>
       <xsl:for-each select="/root/gui/thesaurus/thesauri/thesaurus">
@@ -306,14 +310,14 @@
           <dcat:record>
             <dcat:CatalogRecord>
               <xsl:call-template name="handle-record-id"/>
-              <dct:modified>
+              <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
                 <xsl:value-of select="
                 if (matches(/root/env/changeDate, '^\d{4}-\d{2}-\d{2}$')) then format-date(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
                   else if(/root/env/changeDate) then format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
                   else dct:modified"/>
               </dct:modified>
               <xsl:if test="/root/env/createDate">
-                <dct:created><xsl:value-of select="format-dateTime(/root/env/createDate,'[Y0001]-[M01]-[D01]')"/></dct:created>
+                <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="format-dateTime(/root/env/createDate,'[Y0001]-[M01]-[D01]')"/></dct:created>
               </xsl:if>
             </dcat:CatalogRecord>
           </dcat:record>
@@ -333,14 +337,14 @@
                                           )]" priority="2">
     <xsl:copy copy-namespaces="no">
       <xsl:call-template name="handle-record-id"/>
-      <dct:modified>
+      <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
         <xsl:value-of select="
         if (matches(/root/env/changeDate, '^\d{4}-\d{2}-\d{2}$')) then format-date(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
           else if(/root/env/changeDate) then format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
           else dct:modified"/>
       </dct:modified>
       <xsl:if test="not(dct:created) and /root/env/createDate">
-        <dct:created><xsl:value-of select="format-dateTime(/root/env/createDate,'[Y0001]-[M01]-[D01]')"/></dct:created>
+        <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="format-dateTime(/root/env/createDate,'[Y0001]-[M01]-[D01]')"/></dct:created>
       </xsl:if>
       <xsl:apply-templates select="* except (dct:identifier|dct:modified|foaf:primaryTopic)"/>
     </xsl:copy>
@@ -607,7 +611,7 @@
     <xsl:namespace name="dc" select="'http://purl.org/dc/elements/1.1/'"/>
     <xsl:namespace name="dcatap" select="'http://data.europa.eu/r5r/'"/>
     <xsl:namespace name="mdcat" select="'https://data.vlaanderen.be/ns/metadata-dcat#'"/>
-    <xsl:namespace name="mobilitydcatap" select="'https://w3id.org/mobilitydcat-ap'"/>
+    <xsl:namespace name="mobilitydcatap" select="'https://w3id.org/mobilitydcat-ap#'"/>
     <xsl:namespace name="geodcatap" select="'http://data.europa.eu/930/'"/>
     <xsl:namespace name="oa" select="'http://www.w3.org/ns/oa#'"/>
     <xsl:namespace name="dqv" select="'http://www.w3.org/ns/dqv#'"/>

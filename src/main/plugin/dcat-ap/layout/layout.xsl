@@ -38,7 +38,7 @@
                 xmlns:oa="http://www.w3.org/ns/oa#"
                 xmlns:dqv="http://www.w3.org/ns/dqv#"
                 xmlns:locn="http://www.w3.org/ns/locn#"
-                xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+                xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
                 xmlns:gn="http://www.fao.org/geonetwork"

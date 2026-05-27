@@ -10,7 +10,7 @@ $$
     INSERT INTO public.metadata (id, "data", changedate, createdate, displayorder, doctype, extra, popularity, rating, root,
                                  schemaid, title, istemplate, isharvested, harvesturi, harvestuuid, groupowner, "owner",
                                  "source", "uuid")
-    VALUES (_recordid, '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:spdx="http://spdx.org/rdf/terms#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:adms="http://www.w3.org/ns/adms#" xmlns:locn="http://www.w3.org/ns/locn#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:schema="http://schema.org/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcatap="http://data.europa.eu/r5r/" xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#" xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap" xmlns:geodcatap="http://data.europa.eu/930/" xmlns:oa="http://www.w3.org/ns/oa#" xmlns:dqv="http://www.w3.org/ns/dqv#" xmlns:cnt="http://www.w3.org/2011/content#">
+    VALUES (_recordid, '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:spdx="http://spdx.org/rdf/terms#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:adms="http://www.w3.org/ns/adms#" xmlns:locn="http://www.w3.org/ns/locn#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:schema="http://schema.org/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcatap="http://data.europa.eu/r5r/" xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#" xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#" xmlns:geodcatap="http://data.europa.eu/930/" xmlns:oa="http://www.w3.org/ns/oa#" xmlns:dqv="http://www.w3.org/ns/dqv#" xmlns:cnt="http://www.w3.org/2011/content#">
   <dcat:Catalog rdf:about="http://localhost:8080/geonetwork/srv/resources/catalogs/eb248be8-549d-493f-b323-1dba08bb5417">
     <dcat:contactPoint>
       <vcard:Organization>
@@ -103,7 +103,7 @@ $$
     <dcat:record>
       <dcat:CatalogRecord rdf:about="http://localhost:8080/srv/api/records/345f47ef-abd5-4f2f-9ab7-d723565cccea">
         <foaf:primaryTopic rdf:resource="http://localhost:8080/srv/resources/datasets/16752832-7ef7-4539-9869-5236400cf249" />
-        <dct:modified>2025-12-24</dct:modified>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-12-24</dct:modified>
         <dct:conformsTo>
           <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
             <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03</dct:identifier>
@@ -130,7 +130,7 @@ $$
     </dcat:record>
     <dct:description xml:lang="nl">Deze catalogus bevat datasets ontsloten door My organization</dct:description>
     <dct:identifier>eb248be8-549d-493f-b323-1dba08bb5417</dct:identifier>
-    <dct:issued>2019-09-01</dct:issued>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-09-01</dct:issued>
     <dct:language>
       <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
         <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem" />
@@ -163,6 +163,9 @@ $$
         </dct:type>
       </foaf:Agent>
     </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:about="http://publications.europa.eu/resource/authority/country/BEL" />
+    </dct:spatial>
     <dct:title xml:lang="nl">Open Data Catalogus van My organization</dct:title>
     <foaf:homepage>
       <foaf:Document rdf:about="http://localhost:8080/srv/eng/">
@@ -178,7 +181,7 @@ $$
     _recordid := _recordid+1;
     INSERT INTO public.metadata
     (id, "data", changedate, createdate, displayorder, doctype, extra, popularity, rating, root, schemaid, title, istemplate, isharvested, harvesturi, harvestuuid, groupowner, "owner", "source", "uuid")
-    VALUES(_recordid, '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:spdx="http://spdx.org/rdf/terms#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:adms="http://www.w3.org/ns/adms#" xmlns:locn="http://www.w3.org/ns/locn#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:schema="http://schema.org/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcatap="http://data.europa.eu/r5r/" xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#" xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap" xmlns:geodcatap="http://data.europa.eu/930/" xmlns:oa="http://www.w3.org/ns/oa#" xmlns:dqv="http://www.w3.org/ns/dqv#" xmlns:cnt="http://www.w3.org/2011/content#">
+    VALUES(_recordid, '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:spdx="http://spdx.org/rdf/terms#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:adms="http://www.w3.org/ns/adms#" xmlns:locn="http://www.w3.org/ns/locn#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:schema="http://schema.org/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcatap="http://data.europa.eu/r5r/" xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#" xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#" xmlns:geodcatap="http://data.europa.eu/930/" xmlns:oa="http://www.w3.org/ns/oa#" xmlns:dqv="http://www.w3.org/ns/dqv#" xmlns:cnt="http://www.w3.org/2011/content#">
   <dcat:Catalog rdf:about="https://localhost:8080/geonetwork/srv/resources/catalogs/c678d0fb-894d-403f-b146-4b96706a1a16">
     <dcat:contactPoint>
       <vcard:Organization>
@@ -438,7 +441,7 @@ $$
     </dcat:record>
     <dct:description xml:lang="en">Deze catalogus bevat datasets ontsloten door agentschap Digitaal Vlaanderen</dct:description>
     <dct:identifier>c678d0fb-894d-403f-b146-4b96706a1a16</dct:identifier>
-    <dct:issued>2019-09-01</dct:issued>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-09-01</dct:issued>
     <dct:language>
       <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
         <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem" />
@@ -471,6 +474,9 @@ $$
         </dct:type>
       </foaf:Agent>
     </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:about="http://publications.europa.eu/resource/authority/country/BEL" />
+    </dct:spatial>
     <dct:title xml:lang="en">Open Data Catalogus van agentschap Digitaal Vlaanderen</dct:title>
     <foaf:homepage>
       <foaf:Document rdf:about="http://localhost:8080/srv/dut/">

@@ -15,7 +15,7 @@
         xmlns:schema="http://schema.org/"
         xmlns:locn="http://www.w3.org/ns/locn#"
         xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
-        xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+        xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#"
         xmlns:geodcatap="http://data.europa.eu/930/"
         xmlns:oa="http://www.w3.org/ns/oa#"
         xmlns:cnt="http://www.w3.org/2011/content#"
@@ -25,6 +25,7 @@
   <fields>
     <for name="dct:description" use="textarea"/>
     <for name="adms:versionNotes" use="textarea"/>
+    <for name="oa:hasBody" use="textarea" xpath="dqv:QualityAnnotation"/>
     <for name="dcat:byteSize" use="number"/>
     <for name="mdcat:stars" use="number"/>
     <for name="dcat:spatialResolutionInMeters" use="number"/>
@@ -407,7 +408,7 @@
         </snippet>
       </template>
     </for>
-    <for name="oa:hasBody" templateModeOnly="true" forceLabel="true" label="key">
+    <for name="oa:hasBody" xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/mobilitydcatap:assessmentResult/mobilitydcatap:Assessment/oa:hasBody" templateModeOnly="true" forceLabel="true" label="key">
       <template>
         <values>
           <key label="key" xpath="@rdf:resource" tooltip="oa:hasBody" required="true"/>
@@ -848,6 +849,7 @@
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/adms:identifier/adms:Identifier"/>
           <!--
           TODO: This is a bit complicated, because GN does not support having 2 elements with same local-name.
+          TODO: Make adms:identifier deleteable: this is probably related
           Here we have dct:identifier and adms:identifier and it would require some changes to support that
           See 1049 of form-configurator.xsl:
           <action type="add"
@@ -1296,7 +1298,7 @@
               <snippet>
                 <dqv:hasQualityAnnotation>
                   <dqv:QualityAnnotation>
-                    <oa:hasBody rdf:resource=""/>
+                    <oa:hasBody/>
                   </dqv:QualityAnnotation>
                 </dqv:hasQualityAnnotation>
               </snippet>

@@ -23,7 +23,7 @@
   <sch:ns prefix="generiek" uri="https://data.vlaanderen.be/ns/generiek#"/>
   <sch:ns prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
   <sch:ns prefix="prov" uri="http://www.w3.org/ns/prov#"/>
-  <sch:ns prefix="mobilitydcatap" uri="https://w3id.org/mobilitydcat-ap"/>
+  <sch:ns prefix="mobilitydcatap" uri="https://w3id.org/mobilitydcat-ap#"/>
   <sch:ns prefix="cnt" uri="http://www.w3.org/2011/content#"/>
   <sch:ns prefix="odrl" uri="http://www.w3.org/ns/odrl/2/"/>
 
