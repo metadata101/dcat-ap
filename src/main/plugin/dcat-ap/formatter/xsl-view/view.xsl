@@ -469,7 +469,7 @@
   <xsl:template mode="render-field" match="dct:LicenseDocument/dct:identifier"/>
 
   <!-- Field with lang : display only field of current lang or first one if not exist -->
-  <xsl:template mode="render-field" match="dct:title|dct:description|foaf:name|adms:versionNotes|foaf:firstName|foaf:surname|cnt:characterEncoding|mobilitydcatap:dataFormatNotes">
+  <xsl:template mode="render-field" match="dct:title|dct:description|foaf:name|adms:versionNotes|foaf:firstName|foaf:surname|cnt:characterEncoding|mobilitydcatap:dataFormatNotes|oa:hasBody">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <xsl:variable name="name" select="name()"/>
@@ -587,7 +587,7 @@
 
   <!-- render the element name (key) and the @rdf:resource (value) -->
   <xsl:template mode="render-field"
-                match="dcat:accessURL|dcat:downloadURL|dcat:landingPage|foaf:mbox|foaf:phone|foaf:workplaceHomepage|vcard:hasEmail|vcard:hasURL">
+                match="dcat:accessURL|dcat:downloadURL|dcat:landingPage|foaf:mbox|foaf:phone|foaf:workplaceHomepage|vcard:hasEmail|vcard:hasURL|oa:hasBody[@rdf:resource]">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string(@rdf:resource)"/>
     <xsl:if test="normalize-space($stringValue) != ''">
@@ -638,25 +638,6 @@
           </td>
         </tr>
       </xsl:for-each-group>
-    </xsl:if>
-  </xsl:template>
-
-  <!-- element that include an ao:hasBody -->
-  <xsl:template mode="render-field" match="mobilitydcatap:assessmentResult|dqv:hasQualityAnnotation">
-    <xsl:param name="xpath"/>
-    <xsl:variable name="stringValue" select="string(oa:hasBody/@rdf:resource)"/>
-    <xsl:if test="normalize-space($stringValue) != ''">
-      <tr>
-        <th style="{$thStyle}">
-          <xsl:value-of select="gn-fn-metadata:getLabel($schema, name(.), $labels, name(..), '', gn-fn-dcat-ap:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)))/label" />
-        </th>
-        <td style="{$tdStyle}">
-          <xsl:apply-templates mode="render-url" select="oa:hasBody/@rdf:resource" />
-          <xsl:if test="dct:issued">
-            <br/>(<xsl:value-of select="gn-fn-metadata:getLabel($schema, 'dct:issued', $labels)/label "/><xsl:value-of select="' '"/><xsl:value-of select="dct:issued"/>)
-          </xsl:if>
-        </td>
-      </tr>
     </xsl:if>
   </xsl:template>
 
@@ -748,7 +729,7 @@
   </xsl:template>
 
   <!-- render nested content, but with the header above the table -->
-  <xsl:template mode="render-field" match="locn:address|dct:LicenseDocument|dct:RightsStatement|dct:rightsHolder|dct:Standard">
+  <xsl:template mode="render-field" match="locn:address|dct:LicenseDocument|dct:RightsStatement|dct:rightsHolder|dct:Standard|dqv:QualityAnnotation|mobilitydcatap:Assessment">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <!-- Special case for dct:license with an empty dct:LicenseDocument with only @rdf:about or for dcat:contactPoint with only vcard:hasEmail and vcard:hasURL-->
