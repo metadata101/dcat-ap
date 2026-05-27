@@ -610,7 +610,7 @@
     <xsl:namespace name="dc" select="'http://purl.org/dc/elements/1.1/'"/>
     <xsl:namespace name="dcatap" select="'http://data.europa.eu/r5r/'"/>
     <xsl:namespace name="mdcat" select="'https://data.vlaanderen.be/ns/metadata-dcat#'"/>
-    <xsl:namespace name="mobilitydcatap" select="'https://w3id.org/mobilitydcat-ap'"/>
+    <xsl:namespace name="mobilitydcatap" select="'https://w3id.org/mobilitydcat-ap#'"/>
     <xsl:namespace name="geodcatap" select="'http://data.europa.eu/930/'"/>
     <xsl:namespace name="oa" select="'http://www.w3.org/ns/oa#'"/>
     <xsl:namespace name="dqv" select="'http://www.w3.org/ns/dqv#'"/>

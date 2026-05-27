@@ -388,12 +388,6 @@
     <sch:param name="min" value="0"/>
     <sch:param name="max" value="n"/>
   </sch:pattern>
-  <sch:pattern is-a="CardinalityCheck" id="dcat_Distribution_dcat_downloadURL_nb197d44613ea4850a33e0687c6c79cb7b143">
-    <sch:param name="context" value="//dcat:Distribution"/>
-    <sch:param name="element" value="dcat:downloadURL"/>
-    <sch:param name="min" value="1"/>
-    <sch:param name="max" value="1"/>
-  </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="dcat_Distribution_dcat_mediatype_nb197d44613ea4850a33e0687c6c79cb7b144">
     <sch:param name="context" value="//dcat:Distribution"/>
     <sch:param name="element" value="dcat:mediatype"/>
@@ -715,8 +709,8 @@
   <sch:pattern is-a="CardinalityCheck" id="dcat_DatasetSeries_adms_identifier_nb197d44613ea4850a33e0687c6c79cb7b72">
     <sch:param name="context" value="//dcat:DatasetSeries"/>
     <sch:param name="element" value="adms:identifier"/>
-    <sch:param name="min" value="1"/>
-    <sch:param name="max" value="1"/>
+    <sch:param name="min" value="0"/>
+    <sch:param name="max" value="n"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="dcat_DatasetSeries_dct_publisher_nb197d44613ea4850a33e0687c6c79cb7b73">
     <sch:param name="context" value="//dcat:DatasetSeries"/>
