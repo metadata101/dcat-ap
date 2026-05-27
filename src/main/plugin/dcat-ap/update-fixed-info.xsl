@@ -269,10 +269,10 @@
           <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
         </skos:Concept>
       </dct:language>
-      <dct:issued>
+      <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
         <xsl:value-of select="'2019-09-01'"/>
       </dct:issued>
-      <dct:modified>
+      <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
         <xsl:value-of select="'2019-09-01'"/>
       </dct:modified>
       <xsl:for-each select="/root/gui/thesaurus/thesauri/thesaurus">
@@ -309,14 +309,14 @@
           <dcat:record>
             <dcat:CatalogRecord>
               <xsl:call-template name="handle-record-id"/>
-              <dct:modified>
+              <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
                 <xsl:value-of select="
                 if (matches(/root/env/changeDate, '^\d{4}-\d{2}-\d{2}$')) then format-date(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
                   else if(/root/env/changeDate) then format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
                   else dct:modified"/>
               </dct:modified>
               <xsl:if test="/root/env/createDate">
-                <dct:created><xsl:value-of select="format-dateTime(/root/env/createDate,'[Y0001]-[M01]-[D01]')"/></dct:created>
+                <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="format-dateTime(/root/env/createDate,'[Y0001]-[M01]-[D01]')"/></dct:created>
               </xsl:if>
             </dcat:CatalogRecord>
           </dcat:record>
@@ -336,14 +336,14 @@
                                           )]" priority="2">
     <xsl:copy copy-namespaces="no">
       <xsl:call-template name="handle-record-id"/>
-      <dct:modified>
+      <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
         <xsl:value-of select="
         if (matches(/root/env/changeDate, '^\d{4}-\d{2}-\d{2}$')) then format-date(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
           else if(/root/env/changeDate) then format-dateTime(/root/env/changeDate,'[Y0001]-[M01]-[D01]')
           else dct:modified"/>
       </dct:modified>
       <xsl:if test="not(dct:created) and /root/env/createDate">
-        <dct:created><xsl:value-of select="format-dateTime(/root/env/createDate,'[Y0001]-[M01]-[D01]')"/></dct:created>
+        <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="format-dateTime(/root/env/createDate,'[Y0001]-[M01]-[D01]')"/></dct:created>
       </xsl:if>
       <xsl:apply-templates select="* except (dct:identifier|dct:modified|foaf:primaryTopic)"/>
     </xsl:copy>

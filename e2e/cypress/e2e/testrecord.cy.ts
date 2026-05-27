@@ -24,8 +24,9 @@ describe('The test record', () => {
       expect(catalogUuid).to.have.length.of.at.least(5)
       const dummyCatalogUuid = 'dummy-catalog-uuid'
       return xml
+        .trim()
         // modified will depend on the day of the cypress run, remove the element
-        .replace(/<dct:modified>.+?<\/dct:modified>/g, '')
+        .replace(/<dct:modified.+?<\/dct:modified>/g, '')
         // each time geonetwork is regenerated, the catalog uuid changes... replace it by a dummy value so it's always the same
         .split(catalogUuid).join(dummyCatalogUuid)
     }
