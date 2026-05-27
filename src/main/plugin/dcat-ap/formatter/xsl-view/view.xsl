@@ -43,7 +43,7 @@
                 xmlns:spdx="http://spdx.org/rdf/terms#"
                 xmlns:schema="http://schema.org/"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
-                xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+                xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#"
                 xmlns:gn-fn-render="http://geonetwork-opensource.org/xsl/functions/render"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"

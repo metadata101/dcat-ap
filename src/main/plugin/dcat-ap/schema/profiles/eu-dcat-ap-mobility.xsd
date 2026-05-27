@@ -5,8 +5,8 @@
            xmlns:dct="http://purl.org/dc/terms/"
            xmlns:oa="http://www.w3.org/ns/oa#"
            xmlns:owl="http://www.w3.org/2002/07/owl#"
-           xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
-           targetNamespace="https://w3id.org/mobilitydcat-ap"
+           xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#"
+           targetNamespace="https://w3id.org/mobilitydcat-ap#"
            elementFormDefault="qualified"
            attributeFormDefault="qualified">
   <xs:annotation>

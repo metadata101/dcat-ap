@@ -40,7 +40,7 @@
                 xmlns:dcatutil="java:org.fao.geonet.schema.dcatap.util.XslUtil"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
-                xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+                xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#"
                 xmlns:cnt="http://www.w3.org/2011/content#"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 xmlns:saxon="http://saxon.sf.net/"
