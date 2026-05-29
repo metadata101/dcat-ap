@@ -74,7 +74,7 @@
     <sch:param name="context" value="//dcat:CatalogRecord"/>
     <sch:param name="element" value="dct:conformsTo"/>
     <sch:param name="min" value="0"/>
-    <sch:param name="max" value="1"/>
+    <sch:param name="max" value="n"/>
   </sch:pattern>
   <sch:pattern is-a="CardinalityCheck" id="dcat_CatalogRecord_dct_issued_nb1aa0e1638954c9095522a71d3fdefdfb6">
     <sch:param name="context" value="//dcat:CatalogRecord"/>
