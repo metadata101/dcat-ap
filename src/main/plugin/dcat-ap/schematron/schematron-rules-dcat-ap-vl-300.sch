@@ -941,15 +941,6 @@
       <sch:report test="$validClass">$loc/strings/dcat-ap-vl-300.pattern.report.107</sch:report>
     </sch:rule>
   </sch:pattern>
-  <sch:pattern name="belanghebbende wetgeving" id="_:n14f405c72961451c8f2eddfa3c5cb332b66">
-    <sch:title>$loc/strings/dcat-ap-vl-300.pattern.title.108</sch:title>
-    <sch:rule context="//dcat:DatasetSeries/dcatap:applicableLegislation">
-      <sch:let name="resource" value="@rdf:resource"/>
-      <sch:let name="validClass" value="count(eli:LegalResource) = 1 or count(//eli:LegalResource[@rdf:about = $resource]) = 1"/>
-      <sch:assert test="$validClass">$loc/strings/dcat-ap-vl-300.pattern.assert.108</sch:assert>
-      <sch:report test="$validClass">$loc/strings/dcat-ap-vl-300.pattern.report.108</sch:report>
-    </sch:rule>
-  </sch:pattern>
   <sch:pattern name="periodiciteit" id="_:n14f405c72961451c8f2eddfa3c5cb332b67">
     <sch:title>$loc/strings/dcat-ap-vl-300.pattern.title.109</sch:title>
     <sch:rule context="//dcat:DatasetSeries/dct:accrualPeriodicity">
