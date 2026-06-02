@@ -539,9 +539,19 @@
   </xsl:template>
 
   <!-- Add "mailto:" prefix on mail adresses -->
-  <xsl:template match="vcard:hasEmail[not(starts-with(@rdf:resource, 'mailto:')) and normalize-space(@rdf:resource) != '']" priority="10">
+  <xsl:template match="vcard:hasEmail[not(starts-with(@rdf:resource, 'mailto:')) and normalize-space(@rdf:resource) != ''] |
+                              foaf:mbox[not(starts-with(@rdf:resource, 'mailto:')) and normalize-space(@rdf:resource) != '']"
+                priority="10">
     <xsl:copy copy-namespaces="no">
       <xsl:attribute name="rdf:resource" select="concat('mailto:', @rdf:resource)"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <!-- Add "tel:" prefix on telephone numbers -->
+  <xsl:template match="foaf:phone[not(starts-with(@rdf:resource, 'tel:')) and normalize-space(@rdf:resource) != '']"
+                priority="10">
+    <xsl:copy copy-namespaces="no">
+      <xsl:attribute name="rdf:resource" select="concat('tel:', @rdf:resource)"/>
     </xsl:copy>
   </xsl:template>
 
