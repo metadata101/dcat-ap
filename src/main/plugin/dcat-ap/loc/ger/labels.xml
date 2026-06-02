@@ -2295,9 +2295,13 @@
     <label>Data format notes</label>
     <description>Any additional information about the format of the delivered content within the distribution in a textual format.</description>
   </element>
-  <element name="oa:hasBody">
-    <label>URL linking to further details or results</label>
-    <description>The result of the latest assessment procedure, in form of a URL linking to further details or results. Alternatively, textual information is provided using the Embedded Textual Body construction of the Web Annotation Data Model, which allows to specify text formats and languages which might be relevant for multilingual purposes.</description>
+  <element name="oa:hasBody" context="dqv:QualityAnnotation">
+    <label>Beschreibt alle Qualitätsaspekte des gelieferten Kontextes</label>
+    <description>Diese Eigenschaft kann verwendet werden, um Qualitätsaspekte des bereitgestellten Inhalts in Form einer URL zu beschreiben, die auf weitere Details oder Ergebnisse verweist. Alternativ können Textinformationen mithilfe der Konstruktion „Eingebetteter Textkörper“ des Web-Annotationsdatenmodells [Web-Annotation-Data-Model] bereitgestellt werden, die die Angabe von Textformaten und Sprachen ermöglicht, die für mehrsprachige Zwecke relevant sein können.</description>
+  </element>
+  <element name="oa:hasBody" context="mobilitydcatap:Assessment">
+    <label>Ergebnis des letzten Bewertungsverfahrens</label>
+    <description>Diese Eigenschaft kann verwendet werden, um das Ergebnis des letzten Bewertungsverfahrens in Form einer URL zu beschreiben, die zu weiteren Details oder Ergebnissen führt. Alternativ können Textinformationen mithilfe der Konstruktion „Eingebetteter Textkörper“ des Web-Annotationsdatenmodells [Web-Annotation-Data-Model] bereitgestellt werden, die es ermöglicht, Textformate und Sprachen anzugeben, die für mehrsprachige Zwecke relevant sein können.</description>
   </element>
   <element name="dqv:hasQualityAnnotation">
     <label>Verfügt über eine hochwertige Annotation</label>

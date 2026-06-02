@@ -1121,9 +1121,13 @@
     <label>Data format notes</label>
     <description>Any additional information about the format of the delivered content within the distribution in a textual format.</description>
   </element>
-  <element name="oa:hasBody">
-    <label>URL linking to further details or results</label>
-    <description>The result of the latest assessment procedure, in form of a URL linking to further details or results. Alternatively, textual information is provided using the Embedded Textual Body construction of the Web Annotation Data Model, which allows to specify text formats and languages which might be relevant for multilingual purposes.</description>
+  <element name="oa:hasBody" context="dqv:QualityAnnotation">
+    <label>Décrit tous les aspects qualitatifs relatifs au contexte livré</label>
+    <description>Cette propriété peut servir à décrire les aspects qualitatifs du contenu fourni, sous la forme d'une URL renvoyant à des informations ou résultats complémentaires. Il est également possible de fournir des informations textuelles en utilisant la construction « Embedded Textual Body » du modèle de données d'annotation Web [Web-Annotation-Data-Model], qui permet de spécifier les formats de texte et les langues pertinents pour un usage multilingue.</description>
+  </element>
+  <element name="oa:hasBody" context="mobilitydcatap:Assessment">
+    <label>Résultat de la dernière procédure d'évaluation</label>
+    <description>Cette propriété PEUT être utilisée pour décrire le résultat de la dernière procédure d'évaluation, sous la forme d'une URL renvoyant vers des informations ou des résultats complémentaires. Il est également possible de fournir des informations textuelles en utilisant la construction « Embedded Textual Body » du modèle de données d'annotation Web [Web-Annotation-Data-Model], qui permet de spécifier les formats de texte et les langues pouvant être pertinents pour un usage multilingue.</description>
   </element>
   <element name="dqv:hasQualityAnnotation">
     <label>Possède une annotation de qualité</label>
