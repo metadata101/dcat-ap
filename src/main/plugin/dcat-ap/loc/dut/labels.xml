@@ -1115,9 +1115,13 @@
     <label>Opmerkingen over dataformaat</label>
     <description>Aanvullende informatie over het formaat van de geleverde inhoud binnen de distributie, in tekstuele vorm.</description>
   </element>
-  <element name="oa:hasBody">
-    <label>URL die linkt naar verdere details of resultaten</label>
-    <description>Het resultaat van de meest recente beoordelingsprocedure, in de vorm van een URL die verwijst naar verdere details of resultaten. Als alternatief kan tekstuele informatie worden verstrekt via de Embedded Textual Body‑constructie van het Web Annotation Data Model, waarmee tekstformaten en talen kunnen worden gespecificeerd die relevant kunnen zijn voor meertalige doeleinden.</description>
+  <element name="oa:hasBody" context="dqv:QualityAnnotation">
+    <label>Beschrijft alle kwaliteitsaspecten met betrekking tot de geleverde context.</label>
+    <description>Deze eigenschap KAN worden gebruikt om kwaliteitsaspecten van de geleverde inhoud te beschrijven, in de vorm van een URL die linkt naar meer details of resultaten. Als alternatief KAN tekstuele informatie worden verstrekt met behulp van de Embedded Textual Body-constructie van het Web Annotation Data Model [Web-Annotation-Data-Model], waarmee tekstformaten en talen kunnen worden gespecificeerd die relevant kunnen zijn voor meertalige doeleinden.</description>
+  </element>
+  <element name="oa:hasBody" context="mobilitydcatap:Assessment">
+    <label>Resultaat van de meest recente beoordelingsprocedure</label>
+    <description>Deze eigenschap KAN worden gebruikt om het resultaat van de meest recente beoordelingsprocedure te beschrijven, in de vorm van een URL die linkt naar meer details of resultaten. Als alternatief KAN tekstuele informatie worden verstrekt met behulp van de Embedded Textual Body-constructie van het Web Annotation Data Model [Web-Annotation-Data-Model], waarmee tekstformaten en talen kunnen worden gespecificeerd die relevant kunnen zijn voor meertalige doeleinden.</description>
   </element>
   <element name="dqv:hasQualityAnnotation">
     <label>Heeft kwaliteitsannotatie</label>
