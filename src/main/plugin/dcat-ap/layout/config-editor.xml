@@ -832,7 +832,6 @@
                     <foaf:name/>
                     <dct:type>
                       <skos:Concept>
-                        <skos:prefLabel/>
                         <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
                       </skos:Concept>
                     </dct:type>
@@ -878,8 +877,7 @@
             <template>
               <snippet>
                 <mdcat:MAGDA-categorie>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
+                  <skos:Concept>
                     <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/MAGDA-categorie"/>
                   </skos:Concept>
                 </mdcat:MAGDA-categorie>
@@ -897,8 +895,7 @@
             <template>
               <snippet>
                 <mdcat:statuut>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
+                  <skos:Concept>
                     <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
                   </skos:Concept>
                 </mdcat:statuut>
@@ -1005,7 +1002,7 @@
             <template>
               <snippet>
                 <dct:accrualPeriodicity>
-                  <skos:Concept rdf:about="">
+                  <skos:Concept>
                     <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/frequency"/>
                   </skos:Concept>
                 </dct:accrualPeriodicity>
@@ -1039,8 +1036,7 @@
             <template>
               <snippet>
                 <dct:accessRights>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
+                  <skos:Concept>
                     <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
                   </skos:Concept>
                 </dct:accessRights>
@@ -1067,7 +1063,6 @@
                     <foaf:name/>
                     <dct:type>
                       <skos:Concept>
-                        <skos:prefLabel/>
                         <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
                       </skos:Concept>
                     </dct:type>
@@ -1146,8 +1141,8 @@
             <template>
               <snippet>
                 <dcatap:hvdCategory>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel xml:lang=""></skos:prefLabel>
+                  <skos:Concept>
+                    <skos:inScheme rdf:resource="http://data.europa.eu/bna/asd487ae75"/>
                   </skos:Concept>
                 </dcatap:hvdCategory>
               </snippet>
@@ -1180,8 +1175,7 @@
             <template>
               <snippet>
                 <mobilitydcatap:mobilityTheme>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel></skos:prefLabel>
+                  <skos:Concept>
                     <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/mobility-theme"/>
                   </skos:Concept>
                 </mobilitydcatap:mobilityTheme>
@@ -1199,8 +1193,7 @@
             <template>
               <snippet>
                 <mobilitydcatap:transportMode>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel></skos:prefLabel>
+                  <skos:Concept>
                     <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/transport-mode"/>
                   </skos:Concept>
                 </mobilitydcatap:transportMode>
@@ -1218,8 +1211,7 @@
             <template>
               <snippet>
                 <mobilitydcatap:networkCoverage>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel></skos:prefLabel>
+                  <skos:Concept>
                     <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
                   </skos:Concept>
                 </mobilitydcatap:networkCoverage>
@@ -1247,8 +1239,7 @@
             <template>
               <snippet>
                 <mobilitydcatap:georeferencingMethod>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel></skos:prefLabel>
+                  <skos:Concept>
                     <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
                   </skos:Concept>
                 </mobilitydcatap:georeferencingMethod>
@@ -1266,8 +1257,7 @@
             <template>
               <snippet>
                 <mobilitydcatap:intendedInformationService>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel></skos:prefLabel>
+                  <skos:Concept>
                     <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/intended-information-service"/>
                   </skos:Concept>
                 </mobilitydcatap:intendedInformationService>
@@ -1423,8 +1413,7 @@
                 <template>
                   <snippet>
                     <mobilitydcatap:applicationLayerProtocol>
-                      <skos:Concept rdf:about="">
-                        <skos:prefLabel></skos:prefLabel>
+                      <skos:Concept>
                         <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol"/>
                       </skos:Concept>
                     </mobilitydcatap:applicationLayerProtocol>
@@ -1442,8 +1431,7 @@
                 <template>
                   <snippet>
                     <mobilitydcatap:communicationMethod>
-                      <skos:Concept rdf:about="">
-                        <skos:prefLabel></skos:prefLabel>
+                      <skos:Concept>
                         <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/communication-method"/>
                       </skos:Concept>
                     </mobilitydcatap:communicationMethod>
@@ -1460,8 +1448,7 @@
                 <template>
                   <snippet>
                     <mobilitydcatap:grammar>
-                      <skos:Concept rdf:about="">
-                        <skos:prefLabel></skos:prefLabel>
+                      <skos:Concept>
                         <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/grammar"/>
                       </skos:Concept>
                     </mobilitydcatap:grammar>
@@ -1593,8 +1580,7 @@
             <template>
               <snippet>
                 <mdcat:MAGDA-categorie>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
+                  <skos:Concept>
                     <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/MAGDA-categorie"/>
                   </skos:Concept>
                 </mdcat:MAGDA-categorie>
@@ -1612,8 +1598,7 @@
             <template>
               <snippet>
                 <mdcat:statuut>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
+                  <skos:Concept>
                     <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
                   </skos:Concept>
                 </mdcat:statuut>
@@ -1631,8 +1616,7 @@
             <template>
               <snippet>
                 <mdcat:levensfase>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
+                  <skos:Concept>
                     <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/levensfase"/>
                   </skos:Concept>
                 </mdcat:levensfase>
@@ -1649,8 +1633,7 @@
             <template>
               <snippet>
                 <mdcat:ontwikkelingstoestand>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
+                  <skos:Concept>
                     <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/ontwikkelingstoestand"/>
                   </skos:Concept>
                 </mdcat:ontwikkelingstoestand>
@@ -1759,8 +1742,7 @@
             <template>
               <snippet>
                 <dct:accessRights>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
+                  <skos:Concept>
                     <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
                   </skos:Concept>
                 </dct:accessRights>
@@ -1820,8 +1802,8 @@
             <template>
               <snippet>
                 <dcatap:hvdCategory>
-                  <skos:Concept rdf:about="">
-                    <skos:prefLabel/>
+                  <skos:Concept>
+                    <skos:inScheme rdf:resource="http://data.europa.eu/bna/asd487ae75"/>
                   </skos:Concept>
                 </dcatap:hvdCategory>
               </snippet>
@@ -1903,7 +1885,6 @@
                     <foaf:name/>
                     <dct:type>
                       <skos:Concept>
-                        <skos:prefLabel/>
                         <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
                       </skos:Concept>
                     </dct:type>
@@ -1965,7 +1946,7 @@
             <template>
               <snippet>
                 <dct:accrualPeriodicity>
-                  <skos:Concept rdf:about="">
+                  <skos:Concept>
                     <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/frequency"/>
                   </skos:Concept>
                 </dct:accrualPeriodicity>
@@ -2373,7 +2354,6 @@
           <dct:LicenseDocument rdf:about="">
             <dct:type>
               <skos:Concept>
-                <skos:prefLabel/>
                 <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
               </skos:Concept>
             </dct:type>

@@ -1122,7 +1122,7 @@
     <description>Any additional information about the format of the delivered content within the distribution in a textual format.</description>
   </element>
   <element name="oa:hasBody" context="dqv:QualityAnnotation">
-    <label>Describes any quality aspects regarding the delivered context</label>
+    <label>Describes any quality aspects regarding the delivered content</label>
     <description>This property MAY be used to describe any quality aspects regarding the delivered content, in form of a URL linking to further details or results. Alternatively, textual information MAY be provided using the Embedded Textual Body construction of the Web Annotation Data Model [Web-Annotation-Data-Model], which allows to specify text formats and languages which might be relevant for multilingual purposes.</description>
   </element>
   <element name="oa:hasBody" context="mobilitydcatap:Assessment">
