@@ -808,7 +808,7 @@
     </span>
   </xsl:template>
 
-  <xsl:template mode="render-url" match="*[../name() = 'vcard:hasEmail']|@*[../name() = 'vcard:hasEmail']">
+  <xsl:template mode="render-url" match="*[../name() = ('vcard:hasEmail', 'foaf:mbox')]|@*[../name() = ('vcard:hasEmail', 'foaf:mbox')]">
     <xsl:choose>
       <xsl:when test="starts-with(normalize-space(.), 'mailto:')">
         <a href="{normalize-space(.)}" style="color:#06c; text-decoration: underline;">
@@ -817,6 +817,21 @@
       </xsl:when>
       <xsl:otherwise>
         <a href="{concat('mailto:', normalize-space(.))}" style="color:#06c; text-decoration: underline;">
+          <xsl:value-of select="." />
+        </a>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template mode="render-url" match="*[../name() = ('foaf:phone')]|@*[../name() = ('foaf:phone')]">
+    <xsl:choose>
+      <xsl:when test="starts-with(normalize-space(.), 'tel:')">
+        <a href="{normalize-space(.)}" style="color:#06c; text-decoration: underline;">
+          <xsl:value-of select="substring-after(normalize-space(.), 'tel:')" />
+        </a>
+      </xsl:when>
+      <xsl:otherwise>
+        <a href="{concat('tel:', normalize-space(.))}" style="color:#06c; text-decoration: underline;">
           <xsl:value-of select="." />
         </a>
       </xsl:otherwise>

@@ -2296,7 +2296,7 @@
     <description>Any additional information about the format of the delivered content within the distribution in a textual format.</description>
   </element>
   <element name="oa:hasBody" context="dqv:QualityAnnotation">
-    <label>Beschreibt alle Qualitätsaspekte des gelieferten Kontextes</label>
+    <label>Beschreibt alle Qualitätsaspekte des gelieferten Inhalts</label>
     <description>Diese Eigenschaft kann verwendet werden, um Qualitätsaspekte des bereitgestellten Inhalts in Form einer URL zu beschreiben, die auf weitere Details oder Ergebnisse verweist. Alternativ können Textinformationen mithilfe der Konstruktion „Eingebetteter Textkörper“ des Web-Annotationsdatenmodells [Web-Annotation-Data-Model] bereitgestellt werden, die die Angabe von Textformaten und Sprachen ermöglicht, die für mehrsprachige Zwecke relevant sein können.</description>
   </element>
   <element name="oa:hasBody" context="mobilitydcatap:Assessment">
