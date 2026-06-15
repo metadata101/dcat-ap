@@ -1,8 +1,6 @@
 ARG GN_VERSION=4.4.11
 FROM geonetwork:${GN_VERSION}
 
-USER jetty
-
 # Remove the existing vanilla GeoNetwork
 RUN rm -rf /opt/geonetwork/*
 
