@@ -55,7 +55,7 @@ services:
       timeout: 5s
       retries: 20
     environment:
-      WEBAPP_CONTEXT_PATH: /
+      WEBAPP_CONTEXT_PATH: /ROOT
       GEONETWORK_DB_TYPE: postgres
       GEONETWORK_DB_HOST: database
       GEONETWORK_DB_PORT: 5432
