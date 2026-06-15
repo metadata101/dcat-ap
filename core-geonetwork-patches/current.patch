@@ -385,13 +385,13 @@ index d720f9c..99e88df 100644
 --- a/web-ui/src/main/resources/catalog/locales/fr-admin.json
 +++ b/web-ui/src/main/resources/catalog/locales/fr-admin.json
 @@ -1638,5 +1638,8 @@
-     "anonymousAccessList": "Anonymous access list to unpublished records",
-     "anonymousAccessListDelete": "Revoke access",
-     "anonymousAccessListEmpty": "No anonymous access to display",
--    "anonymousAccessDeleted": "Anonymous access revoked"
+    "anonymousAccessList": "Liste des accès anonymes aux fiches non publiées",
+    "anonymousAccessListDelete": "Révoquer l'accès",
+    "anonymousAccessListEmpty": "Aucun accès anonyme à afficher",
+-    "anonymousAccessDeleted": "Accès anonyme révoqué"
 -}
 \ No newline at end of file
-+    "anonymousAccessDeleted": "Anonymous access revoked",
++    "anonymousAccessDeleted": "Accès anonyme révoqué",
 +    "==== DCAT custom ====": "",
 +    "resourceUriPattern": "Patterne de l'URI des resources",
 +    "resourceUriPatternHelp": "Patterne utilisé pour générer les URI des resources lors de l'export RDF. Exemple de valeur: https://metadata.vlaanderen.be/srv/resources/{resourceType}/{resourceUuid}"
