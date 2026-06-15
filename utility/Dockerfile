@@ -1,4 +1,4 @@
-ARG GN_VERSION=4.4.10
+ARG GN_VERSION=4.4.11
 FROM geonetwork:${GN_VERSION}
 
 USER jetty
