@@ -27,11 +27,14 @@ Stylesheet used to remove a reference to a parent record.
 -->
 <xsl:stylesheet version="2.0"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:dcatutil="java:org.fao.geonet.schema.dcatap.util.XslUtil"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:geonet="http://www.fao.org/geonetwork">
   <!-- Parent metadata record UUID -->
   <xsl:param name="parentUuid"/>
 
+  <xsl:variable name="seriesURI" select="dcatutil:getRecordResourceURI($parentUuid)"/>
 
   <!-- Do a copy of every nodes and attributes -->
   <xsl:template match="@*|node()">
@@ -41,5 +44,5 @@ Stylesheet used to remove a reference to a parent record.
   </xsl:template>
 
   <!-- Remove geonet:* elements or any DCAT inSeries reference. -->
-  <xsl:template match="geonet:*|dcat:inSeries" priority="2"/>
+  <xsl:template match="geonet:*|dcat:inSeries[@rdf:resource = $seriesURI]" priority="2"/>
 </xsl:stylesheet>

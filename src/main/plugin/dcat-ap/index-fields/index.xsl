@@ -307,6 +307,11 @@
             <xsl:value-of select="dcatutil:getUUIDByURI(normalize-space(@rdf:resource))"/>
           </nextUUIDInSeries>
         </xsl:for-each>
+        <xsl:for-each select="dcat:prev[normalize-space(@rdf:resource) != '']">
+          <previousUUIDInSeries>
+            <xsl:value-of select="dcatutil:getUUIDByURI(normalize-space(@rdf:resource))"/>
+          </previousUUIDInSeries>
+        </xsl:for-each>
         <!-- Index more fields in this element -->
         <xsl:apply-templates mode="index-extra-fields" select="."/>
       </doc>
@@ -366,8 +371,34 @@
     Keyword values are pulled from the thesaurus defined in the editor.
    -->
   <xsl:template mode="index-reference" match="dcat:Dataset|dcat:DataService|dcat:DatasetSeries|dcat:Catalog">
-    <xsl:for-each-group select="*[not(skos:Concept) and name() = $editorConfig/editor/fields/for[@use='thesaurus-list-picker']/@name]" group-by="name()">
-      <xsl:variable name="thesaurusId" select="$editorConfig/editor/fields/for[@name = name(current-group()[1])]/directiveAttributes/@thesaurus"/>
+    <!--
+    eg.
+    <for name="dcat:theme" use="thesaurus-list-picker">
+    <for name="dct:accessRights" xpath="dcat:Dataset" use="thesaurus-list-picker">
+    <for name="dct:conformsTo" xpath="dcat:Dataset" use="thesaurus-list-picker">
+    <for name="dct:conformsTo" xpath="mobilitydcatap:mobilityDataStandard" use="thesaurus-list-picker">
+    -->
+    <xsl:variable name="editorFieldsUsingThesaurusListPicker" select="$editorConfig/editor/fields/for[@use='thesaurus-list-picker']"/>
+    <xsl:variable name="separator" select="'/'"/>
+
+    <xsl:for-each-group select="*[not(skos:Concept) and name() = $editorFieldsUsingThesaurusListPicker/@name]"
+                        group-by="string-join((name(..), name()), $separator)">
+      <xsl:variable name="keyToken" select="tokenize(current-grouping-key(), $separator)"/>
+      <xsl:variable name="elementName" select="$keyToken[2]"/>
+      <xsl:variable name="parentName" select="$keyToken[1]"/>
+
+      <xsl:variable name="fieldConfigurationWithContext"
+                    select="$editorFieldsUsingThesaurusListPicker[
+                              @name = $elementName and @xpath = $parentName
+                              ]"/>
+      <xsl:variable name="fieldConfiguration"
+                    select="if ($fieldConfigurationWithContext) then $fieldConfigurationWithContext
+                            else $editorFieldsUsingThesaurusListPicker[@name = $elementName and not(@xpath)]"/>
+
+      <xsl:variable name="thesaurusId"
+                    select="$fieldConfiguration/directiveAttributes/@thesaurus"/>
+
+
       <xsl:variable name="key">
         <xsl:if test="$thesaurusId != ''">
           <xsl:value-of select="tokenize($thesaurusId[1], '\.')[last()]"/>
@@ -381,6 +412,7 @@
         [
         <xsl:for-each select="current-group()">
           <xsl:variable name="resourceUri" select="@rdf:resource"/>
+
           <xsl:variable name="defaultLabel" select="java:getKeywordValueByUri($resourceUri, $thesaurusId, $defaultMainLanguage2Char)"/>
           {
             "default": "<xsl:value-of select="util:escapeForJson($defaultLabel)"/>",

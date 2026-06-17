@@ -25,10 +25,15 @@
 
 <codelists>
   <codelist name="dcat:Resource" alias="associationType">
-    <entry>
+    <!--<entry>
       <code>nextResource</code>
-      <label>Ressource suivante</label>
+      <label>Version suivante</label>
       <description>Ressource suivante dans la série</description>
+    </entry>-->
+    <entry>
+      <code>revisionOf</code>
+      <label>Version précédente</label>
+      <description>Ressource précédente dans la série</description>
     </entry>
   </codelist>
 </codelists>
