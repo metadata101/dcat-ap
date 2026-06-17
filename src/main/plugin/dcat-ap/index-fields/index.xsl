@@ -307,6 +307,11 @@
             <xsl:value-of select="dcatutil:getUUIDByURI(normalize-space(@rdf:resource))"/>
           </nextUUIDInSeries>
         </xsl:for-each>
+        <xsl:for-each select="dcat:prev[normalize-space(@rdf:resource) != '']">
+          <previousUUIDInSeries>
+            <xsl:value-of select="dcatutil:getUUIDByURI(normalize-space(@rdf:resource))"/>
+          </previousUUIDInSeries>
+        </xsl:for-each>
         <!-- Index more fields in this element -->
         <xsl:apply-templates mode="index-extra-fields" select="."/>
       </doc>
