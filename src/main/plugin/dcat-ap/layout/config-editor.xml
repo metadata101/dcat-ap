@@ -1852,6 +1852,7 @@
       <tab id="tabDatasetSeries" default="true" mode="flat"
            displayIfRecord="count(//dcat:dataset/dcat:DatasetSeries) > 0" hideIfNotDisplayed="true">
         <section name="basicInformation">
+
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:title"/>
           <action type="add" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:title) = 0">
@@ -2017,7 +2018,7 @@
         </section>
 
         <section name="hvd-view">
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dcatap:hvdCategory"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dcatap:hvdCategory"/>
           <action type="add"
                   or="hvdCategory"
                   in="/rdf:RDF/dcat:Catalog/(dcat:dataset/dcat:Dataset|dcat:service/dcat:DataService|dcat:dataset/dcat:DatasetSeries)"
