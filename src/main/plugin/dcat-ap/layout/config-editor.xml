@@ -1852,6 +1852,7 @@
       <tab id="tabDatasetSeries" default="true" mode="flat"
            displayIfRecord="count(//dcat:dataset/dcat:DatasetSeries) > 0" hideIfNotDisplayed="true">
         <section name="basicInformation">
+
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:title"/>
           <action type="add" or="title" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
                   if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dct:title) = 0">
@@ -1900,18 +1901,6 @@
 
           <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/adms:identifier/adms:Identifier"/>
 
-
-          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dcatap:applicableLegislation"/>
-          <action type="add"
-                  or="applicableLegislation"
-                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries"
-                  if="count(rdf:RDF/dcat:Catalog/dcat:dataset/dcat:DatasetSeries/dcatap:applicableLegislation) = 0">
-            <template>
-              <snippet>
-                <dcatap:applicableLegislation rdf:resource=""/>
-              </snippet>
-            </template>
-          </action>
         </section>
 
         <section name="versionInformation">
@@ -2027,8 +2016,37 @@
             </template>
           </action>
         </section>
-      </tab>
 
+        <section name="hvd-view">
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dcatap:hvdCategory"/>
+          <action type="add"
+                  or="hvdCategory"
+                  in="/rdf:RDF/dcat:Catalog/(dcat:dataset/dcat:Dataset|dcat:service/dcat:DataService|dcat:dataset/dcat:DatasetSeries)"
+                  if="count(rdf:RDF/dcat:Catalog/*/*/dcatap:hvdCategory) = 0">
+            <template>
+              <snippet>
+                <dcatap:hvdCategory>
+                  <skos:Concept>
+                    <skos:inScheme rdf:resource="http://data.europa.eu/bna/asd487ae75"/>
+                  </skos:Concept>
+                </dcatap:hvdCategory>
+              </snippet>
+            </template>
+          </action>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dcatap:applicableLegislation"/>
+          <action type="add"
+                  or="applicableLegislation"
+                  in="/rdf:RDF/dcat:Catalog/(dcat:dataset/dcat:Dataset|dcat:service/dcat:DataService|dcat:dataset/dcat:DatasetSeries)"
+                  if="count(rdf:RDF/dcat:Catalog/*/*/dcatap:applicableLegislation) = 0">
+            <template>
+              <snippet>
+                <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+              </snippet>
+            </template>
+          </action>
+        </section>
+      </tab>
 
       <tab id="tabCatalog" default="true" mode="flat" displayIfRecord="count(rdf:RDF[not(//(dcat:Dataset|dcat:DataService|dcat:DatasetSeries))]/dcat:Catalog) > 0" hideIfNotDisplayed="true">
         <section name="catalogInformation">

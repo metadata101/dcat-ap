@@ -258,6 +258,9 @@
                 <xs:element ref="foaf:page" minOccurs="0" maxOccurs="unbounded"/>
                 <!-- <xs:element name="first" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/> -->
                 <!-- <xs:element name="last" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/> -->
+
+                <!-- Profile / DCAT-AP-HVD -->
+                <xs:element ref="dcatap:hvdCategory" minOccurs="0" maxOccurs="unbounded"/>
               </xs:sequence>
             </xs:extension>
           </xs:complexContent>
