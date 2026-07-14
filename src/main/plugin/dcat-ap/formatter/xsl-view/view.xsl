@@ -174,7 +174,7 @@
       <xsl:value-of select="(//dcat:Dataset/dct:description|//dcat:DataService/dct:description|//dcat:DatasetSeries/dct:description|//dcat:Catalog/dct:description)[1]"/>
     </div>
     <xsl:if test="$root = 'div'">
-      <div class="one-line-ellipsis" ng-if="user.isEditorOrMore()">
+      <div class="one-line-ellipsis" ng-if="user.isEditorOrMore() &amp;&amp; 'notshowingfor'==='vl'">
         <p>
           <span data-translate="">owner</span>: {{md.getOwnername()}}
         </p>
