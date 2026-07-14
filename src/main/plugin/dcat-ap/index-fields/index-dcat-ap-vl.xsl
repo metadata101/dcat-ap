@@ -46,8 +46,8 @@
   <xsl:import href="index-variables.xsl"/>
 
   <xsl:variable name="vlProfiles" select="(
-    'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03',
-    'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'
+    'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21',
+    'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21'
   )"/>
 
   <xsl:template mode="index-extra-fields" match="*[name() = ('dcat:Dataset', 'dcat:DataService') and $profile = $vlProfiles]" priority="10">
