@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
-  <schematron.title>DCAT-AP-Vlaanderen (2019-10-03) - Mandatory</schematron.title>
+  <schematron.title>DCAT-AP-Vlaanderen (2022-04-21) - Mandatory</schematron.title>
   <pattern.title.1>vcard:hasEmail is a URI with the mailto protocol.</pattern.title.1>
   <pattern.assert.1>vcard:hasEmail property is not a URI with the mailto: protocol.</pattern.assert.1>
   <pattern.report.1>vcard:hasEmail property is a URI with the mailto: protocol.</pattern.report.1>

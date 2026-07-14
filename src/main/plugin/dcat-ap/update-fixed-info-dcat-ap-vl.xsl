@@ -44,8 +44,8 @@
                 exclude-result-prefixes="#all"
                 version="2.0">
 
-  <xsl:variable name="dcatapvlURI" select="'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03'"/>
-  <xsl:variable name="metadatadcatURI" select="'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22'"/>
+  <xsl:variable name="dcatapvlURI" select="'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21'"/>
+  <xsl:variable name="metadatadcatURI" select="'https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21'"/>
 
 
   <!-- Rename dct:subject -->
@@ -59,8 +59,8 @@
 
   <!-- Ensure catalog record VL profile is correctly encoded. This overwrites what was set in the snippet list of config-editor.xml and ensures all languages are present. -->
   <xsl:template mode="update-fixed-info-profile" match="dcat:CatalogRecord/dct:conformsTo/dct:Standard[$profile = $dcatapvlURI]">
-    <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03">
-      <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2019-10-03</dct:identifier>
+    <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21">
+      <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21</dct:identifier>
       <dct:title xml:lang="nl">DCAT-AP Vlaanderen</dct:title>
       <dct:title xml:lang="fr">DCAT-AP Flandre</dct:title>
       <dct:title xml:lang="de">DCAT-AP Flandern</dct:title>
@@ -69,13 +69,13 @@
       <dct:description xml:lang="fr">Ce profil d'application décrit les catalogues de données ouvertes en Flandre. DCAT-AP Flandre (DCAT-AP VL) est une spécialisation supplémentaire de DCAT-AP. L'application concernée par ce profil est un portail de données ouvertes en Flandre. Les portails de données ouvertes sont des catalogues de jeux de données ouvertes. Leur objectif principal est de faciliter la découverte des données et ainsi de stimuler leur réutilisation. Ils jouent un rôle central dans la mission du gouvernement visant à garantir l'accessibilité des informations gouvernementales. Avec ce profil d'application, nous favorisons l'uniformité des informations disponibles entre les jeux de données. Nous simplifions également le processus d'agrégation de plusieurs catalogues de données ouvertes. Ce document contient les éléments obligatoires et les éléments supplémentaires sur lesquels DCAT-AP Flandre émet une déclaration. Les informations recommandées et facultatives pour lesquelles aucun accord supplémentaire n'existe dans le cadre de DCAT-AP Flandre ne sont pas incluses dans ce document. Pour cela, nous nous référons à la spécification DCAT-AP elle-même.</dct:description>
       <dct:description xml:lang="de">Dieses Anwendungsprofil beschreibt Open Data-Kataloge in Flandern. DCAT-AP Flandern (DCAT-AP VL) ist eine lokale Ableitung von DCAT-AP. Die Anwendung, auf die sich dieses Profil bezieht, ist ein Open Data-Portal in Flandern. Open Data-Portale sind Kataloge mit Open Data-Datensätzen. Ihr Hauptzweck besteht darin, Daten auffindbar zu machen und so ihre Wiederverwendung zu fördern. Open Data-Portale spielen eine zentrale Rolle beim Auftrag der Regierung, Zugang zu Regierungsinformationen erreichbar zu machen. Mit diesem Anwendungsprofil fördern wir die Einheitlichkeit der verfügbaren Informationen über alle Datensätze hinweg. Wir vereinfachen außerdem den Aggregationsprozess mehrerer Open Data-Kataloge. Dieses Dokument enthält die obligatorischen Elemente und zusätzliche Elemente, die spezifisch für DCAT-AP Flandern beschrieben werden. Empfohlene und optionale Informationen, für die im Rahmen von DCAT-AP Flandern keine zusätzlichen Vereinbarungen bestehen, sind in diesem Dokument nicht enthalten. Hierzu verweisen wir auf die DCAT-AP-Spezifikation selbst.</dct:description>
       <dct:description xml:lang="en">This application profile describes Open Data Catalogues in Flanders. DCAT-AP Flanders (DCAT-AP VL) is a further specialization of DCAT-AP. The application to which this profile relates is an Open Data Portal in Flanders. Open Data Portals are catalogs of Open Data datasets. Their main purpose is to make data discoverable and thus stimulate its reuse. Open Data Portals play a central role in the government's mission to achieve accessibility to government information. With this application profile, we promote the uniformity of available information across datasets. We also simplify the aggregation process of multiple Open Data Catalogs. This document contains the mandatory elements and additional elements on which DCAT-AP Flanders provides a statement. Recommended and optional information for which no additional agreements exist within the context of DCAT-AP Flanders are not included in this document. For this, we refer to the DCAT-AP specification itself.</dct:description>
-      <owl:versionInfo>2.0</owl:versionInfo>
+      <owl:versionInfo>2022-04-21</owl:versionInfo>
     </dct:Standard>
   </xsl:template>
 
   <xsl:template mode="update-fixed-info-profile" match="dcat:CatalogRecord/dct:conformsTo/dct:Standard[$profile = $metadatadcatURI]">
-    <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22">
-      <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22</dct:identifier>
+    <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21">
+      <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2022-04-21</dct:identifier>
       <dct:title xml:lang="nl">Metadata DCAT</dct:title>
       <dct:title xml:lang="fr">Metadata DCAT</dct:title>
       <dct:title xml:lang="de">Metadata DCAT</dct:title>
@@ -84,7 +84,7 @@
       <dct:description xml:lang="fr">Le profil d'application "Metadata DCAT". Ce profil d'application est basé sur DCAT et se concentre sur la collecte d'informations sur les jeux de données génériques, les distributions et les services mis à disposition par un gouvernement. Ces jeux de données et services comprennent des données et services publics et privés (développés dans et pour toute perspective technique). Le regroupement de toutes ces informations dans un catalogue facilite la découverte de ces jeux de données et services. Ce profil d'application constitue le profil de base générique. Des profils dérivés peuvent être créés pour des domaines ou des communautés spécifiques. Par exemple, DCAT-AP-VL est un tel profil d'application dérivé, spécifiquement destiné au domaine des données ouvertes et à la communauté qui lui est associée.</dct:description>
       <dct:description xml:lang="de">Das Anwendungsprofil „Metadata DCAT“. Dieses Anwendungsprofil basiert auf DCAT und konzentriert sich auf die Erfassung von Informationen über generische Datensätze, Repräsentanzen und Dienste, die von einer Regierung bereitgestellt werden. Die Datensätze und Dienste umfassen sowohl öffentlich zugängliche als auch private Daten und Dienste (entwickelt in und für beliebige technische Komponenten). Die Erfassung all dieser Informationen in einem Katalog erhöht die Auffindbarkeit dieser Datensätze und Dienste. Dieses Anwendungsprofil ist das generische Basisprofil. Abgeleitete Profile können selbstverständlich für spezifische Domänen oder Gemeinschaften erstellt werden. Beispielsweise ist DCAT-AP-VL ein solches abgeleitetes Anwendungsprofil speziell für den Open-Data-Bereich und die zugehörige Community.</dct:description>
       <dct:description xml:lang="en">The "Metadata DCAT" application profile. This application profile is based on DCAT and focuses on collecting information about generic datasets, distributions, and services made available by a government. The datasets and services include both publicly accessible and private data and services (developed in and for any technical perspective). Bringing all this information together in a catalog increases the discoverability of these datasets and services. This application profile is the generic base profile. Derived profiles can certainly be created for specific domains or communities. For example, DCAT-AP-VL is such a derived application profile, specifically for the Open Data domain and its associated community.</dct:description>
-      <owl:versionInfo>2.0</owl:versionInfo>
+      <owl:versionInfo>2022-04-21</owl:versionInfo>
     </dct:Standard>
   </xsl:template>
 
