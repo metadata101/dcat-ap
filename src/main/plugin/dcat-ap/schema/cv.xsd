@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+           xmlns:dct="http://purl.org/dc/terms/"
+           xmlns:foaf="http://xmlns.com/foaf/0.1/"
+           xmlns:cv="http://data.europa.eu/m8g/"
+           xmlns:time="http://www.w3.org/2006/time#"
+            xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+           targetNamespace="http://data.europa.eu/m8g/"
+           elementFormDefault="qualified"
+           attributeFormDefault="qualified">
+  <xs:annotation>
+    <xs:documentation xml:lang="en">
+      Core Public Organization Vocabulary (CPOV)
+      http://data.europa.eu/m8g/
+
+      This schema defines the ContactPoint class and related properties
+      used in the HealthDCAT-AP specification for describing contact information.
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
+  <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="dcterms.xsd"/>
+  <xs:import namespace="http://xmlns.com/foaf/0.1/" schemaLocation="foaf.xsd"/>
+  <xs:import namespace="http://www.w3.org/2006/time#" schemaLocation="time.xsd"/>
+  <xs:import namespace="http://www.w3.org/2004/02/skos/core#" schemaLocation="skos.xsd"/>
+
+  <!-- ContactPoint class - Core Public Organization Vocabulary -->
+  <xs:complexType name="ContactPoint">
+    <xs:sequence>
+      <xs:element name="ContactPoint">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="email" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="telephone" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="contactPage" type="foaf:Document" minOccurs="0" maxOccurs="1"/>
+            <!-- Time periods when the Contact Point is available (Temporal Entity) -->
+<!--            <xs:element name="openingHours" type="time:TemporalEntity" minOccurs="0" maxOccurs="unbounded"/>-->
+            <xs:element name="openingHours" type="TemporalEntity" minOccurs="0" maxOccurs="unbounded"/>
+            <!-- Time periods when the Contact Point is NOT available (Temporal Entity) -->
+<!--            <xs:element name="specialOpeningHoursSpecification" type="time:TemporalEntity" minOccurs="0" maxOccurs="unbounded"/>-->
+            <xs:element name="specialOpeningHoursSpecification" type="TemporalEntity" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+          <xs:attribute ref="rdf:about"/>
+          <xs:attribute ref="rdf:nodeID"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- TemporalEntity extension with frequency and description properties
+  TODO-HEALTH:
+  * this should be in time ns?
+  * Circular dependency? cv:openingHours > time:TemporalEntity > cv:frequency we can't use time:TemporalEntity as is
+  because it contains additional property which are defined in cv namespace?
+
+  ex:cp a cv:ContactPoint ;
+    cv:email "info@kadaster.nl" ;
+    cv:contactPage <https://www.kadaster.nl/contact> ;
+    cv:telephone "+32 257 25757" ;
+    cv:openingHours ex:oh ;
+    cv:specialOpeningHoursSpecification ex:sohs .
+
+  <https://www.kadaster.nl/contact> a foaf:Document .
+  <http://publications.europa.eu/resource/authority/frequency/DAILY> a dct:Frequency .
+  <http://publications.europa.eu/resource/authority/frequency/WEEKLY> a dct:Frequency .
+
+  ex:oh a time:TemporalEntity ;
+    dct:description "Every working day from 9 a.m. to 5 p.m."@en ;
+    cv:frequency <http://publications.europa.eu/resource/authority/frequency/DAILY>.
+  -->
+  <xs:complexType name="TemporalEntity">
+    <xs:sequence>
+      <xs:element name="TemporalEntity">
+        <xs:complexType>
+          <xs:sequence>
+            <!-- Human-readable description of the temporal period -->
+            <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
+            <!-- Frequency of the temporal entity (e.g., DAILY, WEEKLY) -->
+            <xs:element name="frequency" type="skos:Concept"/>
+            <!--  TODO-HEALTH <xs:element name="frequency" type="dct:Frequency" minOccurs="0" maxOccurs="1"/>-->
+          </xs:sequence>
+          <xs:attribute ref="rdf:about"/>
+          <xs:attribute ref="rdf:nodeID"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="contactPoint" type="cv:ContactPoint"/>
+  <xs:element name="email" type="xs:string"/>
+  <xs:element name="telephone" type="xs:string"/>
+  <xs:element name="contactPage" type="foaf:Document"/>
+  <xs:element name="openingHours" type="TemporalEntity"/>
+  <xs:element name="specialOpeningHoursSpecification" type="TemporalEntity"/>
+</xs:schema>
+
