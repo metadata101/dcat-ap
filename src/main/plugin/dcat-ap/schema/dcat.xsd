@@ -12,8 +12,10 @@
            xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
            xmlns:cnt="http://www.w3.org/2011/content#"
            xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
+           xmlns:dpv="https://w3id.org/dpv#"
            xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#"
            xmlns:geodcatap="http://data.europa.eu/930/"
+           xmlns:healthdcatap="http://healthdataportal.eu/ns/health#"
            xmlns:dqv="http://www.w3.org/ns/dqv#"
            targetNamespace="http://www.w3.org/ns/dcat#"
            elementFormDefault="qualified"
@@ -46,7 +48,9 @@
   <xs:import namespace="http://data.europa.eu/r5r/" schemaLocation="profiles/eu-dcat-ap-hvd.xsd"/>
   <xs:import namespace="https://w3id.org/mobilitydcat-ap#" schemaLocation="profiles/eu-dcat-ap-mobility.xsd"/>
   <xs:import namespace="http://www.w3.org/ns/dqv#" schemaLocation="dqv.xsd"/>
+  <xs:import namespace="https://w3id.org/dpv#" schemaLocation="dpv.xsd"/>
   <xs:import namespace="http://data.europa.eu/930/" schemaLocation="geodcatap.xsd"/>
+  <xs:import namespace="http://healthdataportal.eu/ns/health#" schemaLocation="profiles/eu-dcat-ap-health.xsd"/>
 
   <xs:element name="Catalog" type="dcat:Catalog_type"/>
   <xs:element name="CatalogRecord" type="dcat:CatalogRecord_type"/>
@@ -154,7 +158,7 @@
             <xs:extension base="rdf:Resource">
               <xs:sequence>
                 <!-- notes -->
-                <!-- prov:qualifiedAttribution / prov:wasGeneratedBy currently not in use, to be added when interest is there-->
+                <!-- prov:qualifiedAttribution currently not in use, to be added when interest is there-->
 
                 <!-- dcat -->
                 <xs:element name="contactPoint" type="vcard:Organization" minOccurs="0" maxOccurs="unbounded"/>
@@ -195,6 +199,7 @@
                 <xs:element name="inSeries" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="prev" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="next" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
+<!-- TODO-HEALTH               <xs:element ref="prov:wasGeneratedBy" minOccurs="0" maxOccurs="unbounded"/>-->
 
                 <!-- Profile / dcat-ap-vl & metadata-dcat -->
                 <xs:element ref="dct:created" minOccurs="0" maxOccurs="unbounded"/>
@@ -219,6 +224,30 @@
 
                 <!-- Profile / DCAT-AP-HVD -->
                 <xs:element ref="dcatap:hvdCategory" minOccurs="0" maxOccurs="unbounded"/>
+
+                <!-- Profile / GeoDCAT-AP -->
+                <xs:element ref="geodcatap:custodian" minOccurs="0" maxOccurs="unbounded"/>
+
+                <!-- Profile / HealthDCAT-AP -->
+                <xs:element ref="dct:alternative" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:healthCategory" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:healthTheme" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:hdab" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:hasStructuredData" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:analytics" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:hasCodeValues" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:hasCodingSystem" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:numberOfRecords" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:numberOfUniqueIndividuals" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:retentionPeriod" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:maxTypicalAge" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:minTypicalAge" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:hasVariables" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dpv:hasPersonalData" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:populationCoverage" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dpv:hasPurpose" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dpv:hasLegalBasis" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dqv:hasQualityAnnotation" minOccurs="0" maxOccurs="unbounded"/>
 
                 <!-- DCAT-AP v2 compatibility -->
                 <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="unbounded"/>
@@ -341,6 +370,7 @@
                 <xs:element name="endpointURL" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="keyword" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="landingPage" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="foaf:page" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="qualifiedRelation" type="dcat:Relationship_type" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="servesDataset" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dct:accessRights" minOccurs="0" maxOccurs="unbounded"/>
