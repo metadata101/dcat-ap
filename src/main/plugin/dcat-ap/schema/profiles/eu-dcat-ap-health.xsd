@@ -16,7 +16,6 @@
   <xs:import namespace="http://www.w3.org/2004/02/skos/core#" schemaLocation="../skos.xsd"/>
   <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="../dcterms.xsd"/>
   <xs:import namespace="http://xmlns.com/foaf/0.1/" schemaLocation="../foaf.xsd"/>
-  <xs:import namespace="http://data.europa.eu/m8g/" schemaLocation="../cv.xsd"/>
   <xs:import namespace="http://www.w3.org/ns/dcat#" schemaLocation="../dcat.xsd"/>
   <xs:import namespace="https://w3id.org/dpv#" schemaLocation="../dpv.xsd"/>
   <xs:import namespace="http://www.w3.org/ns/csvw#" schemaLocation="../csvw.xsd"/>
@@ -36,30 +35,5 @@
 
   <xs:element name="hasVariables" type="csvw:TableGroup_type"/>
 
-  <xs:element name="hdab" type="healthdcatap:HealthAgent_type"/>
-
-  <!-- HealthAgent extends FOAF Agent with HealthDCAT-AP specific properties -->
-  <xs:complexType name="HealthAgent_type">
-    <xs:complexContent>
-      <xs:extension base="foaf:Agent">
-        <xs:sequence>
-          <!-- Contact point for health data inquiries, access, or technical support -->
-          <!-- Uses Core Public Organization Vocabulary (CPOV) ContactPoint -->
-          <xs:element ref="cv:contactPoint" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-
-  <xs:complexType name="HealthPublisherAgent">
-    <xs:complexContent>
-      <xs:extension base="healthdcatap:HealthAgent_type">
-        <xs:sequence>
-          <!-- Provide specific details about the health publisher on the dataset. This field can be repeated for different language versions of the description. -->
-          <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
+  <xs:element name="hdab" type="foaf:HealthAgent"/>
 </xs:schema>
