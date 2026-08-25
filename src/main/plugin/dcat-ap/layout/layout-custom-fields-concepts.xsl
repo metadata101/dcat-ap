@@ -6,6 +6,7 @@
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#"
+                xmlns:healthdcatap="http://healthdataportal.eu/ns/health#"
                 xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
