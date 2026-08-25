@@ -39,6 +39,10 @@
                 xmlns:dqv="http://www.w3.org/ns/dqv#"
                 xmlns:locn="http://www.w3.org/ns/locn#"
                 xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#"
+                xmlns:healthdcatap="http://healthdataportal.eu/ns/health#"
+                xmlns:cv="http://data.europa.eu/m8g/"
+                xmlns:csvw="http://www.w3.org/ns/csvw#"
+                xmlns:dpv="https://w3id.org/dpv#"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:java="java:org.fao.geonet.util.XslUtil"
                 xmlns:gn="http://www.fao.org/geonetwork"
@@ -91,6 +95,7 @@
       <xsl:variable name="directive" select="gn-fn-metadata:getFieldAddDirective($editorConfig, $name)"/>
 
       <xsl:variable name="labelConfig" select="gn-fn-metadata:getLabel($schema, $name, $labels, name(..), '', $xpath)"/>
+
       <xsl:call-template name="render-element-to-add">
         <!-- TODO: add xpath and isoType to get label ? -->
         <xsl:with-param name="label" select="$labelConfig/label"/>
@@ -189,6 +194,15 @@
     </xsl:if>
   </xsl:template>
 
+
+  <!-- Those elements MUST be ignored in the editor layout -->
+  <xsl:template mode="mode-dcat-ap"
+                match="*[contains(name(), 'GROUP_ELEMENT')]"
+                priority="2000">
+    <xsl:apply-templates mode="mode-dcat-ap" select="*"/>
+  </xsl:template>
+
+
   <!-- Hide from the editor the dct:references pointing to uploaded files -->
   <xsl:template mode="mode-dcat-ap" priority="101"
                 match="*[(name(.) = 'dct:references' or
@@ -199,7 +213,7 @@
 
 
   <!-- the other elements in DC. -->
-  <xsl:template mode="mode-dcat-ap" priority="100" match="dc:*|dct:*|dcat:*|vcard:*|foaf:*|spdx:*|adms:*|owl:*|schema:*|skos:*|mdcat:*|cnt:*|oa:*|mobilitydcatap:*|locn:*">
+  <xsl:template mode="mode-dcat-ap" priority="100" match="dc:*|dct:*|dcat:*|vcard:*|foaf:*|spdx:*|adms:*|owl:*|schema:*|skos:*|mdcat:*|cnt:*|oa:*|mobilitydcatap:*|locn:*|healthdcatap:*|csvw:*|cv:*|dpv:*">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
     <xsl:param name="overrideLabel" select="''" required="no"/>

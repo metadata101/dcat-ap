@@ -16,6 +16,10 @@
         xmlns:locn="http://www.w3.org/ns/locn#"
         xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
         xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#"
+        xmlns:healthdcatap="http://healthdataportal.eu/ns/health#"
+        xmlns:cv="http://data.europa.eu/m8g/"
+        xmlns:csvw="http://www.w3.org/ns/csvw#"
+        xmlns:dpv="https://w3id.org/dpv#"
         xmlns:geodcatap="http://data.europa.eu/930/"
         xmlns:oa="http://www.w3.org/ns/oa#"
         xmlns:cnt="http://www.w3.org/2011/content#"
@@ -201,25 +205,28 @@
         thesaurus="external.theme.mobility-transport-mode"
         xpath="/mobilitydcatap:transportMode"/>
     </for>
-
     <for name="mobilitydcatap:networkCoverage" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.mobility-network-coverage"
         xpath="/mobilitydcatap:networkCoverage"/>
     </for>
-
     <for name="mobilitydcatap:georeferencingMethod" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.mobility-georeferencing-method"
         xpath="/mobilitydcatap:georeferencingMethod"/>
     </for>
-
     <for name="mobilitydcatap:intendedInformationService" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.mobility-intended-information-service"
         xpath="/mobilitydcatap:intendedInformationService"/>
     </for>
 
+    <for name="healthdcatap:healthCategory" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.health-healthcategory"
+        xpath="/healthdcatap:healthCategory"
+      />
+    </for>
 
     <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker">
       <directiveAttributes
@@ -598,6 +605,15 @@
     <name>geodcatap:referenceSystem</name>
     <name>locn:address</name>
     <name>locn:Address</name>
+    <name>healthdcatap:hasVariables</name>
+    <name>csvw:TableGroup</name>
+    <name>csvw:table</name>
+    <name>csvw:Table</name>
+    <name>csvw:column</name>
+    <name>csvw:Column</name>
+    <name>healthdcatap:hdab</name>
+    <name>cv:contactPoint</name>
+    <name>cv:ContactPoint</name>
   </fieldsWithFieldset>
 
   <multilingualFields>
@@ -669,6 +685,9 @@
       <name>owl:versionInfo</name>
       <name>dct:hasVersion</name>
       <name>dct:isVersionOf</name>
+
+      <!-- HEALTH -->
+      <name>csvw:dataType</name>
     </exclude>
   </multilingualFields>
 
@@ -766,6 +785,26 @@
             border-radius: 3px;
             font-size: 0.75rem;
             text-transform: uppercase;
+            }
+
+
+            /* gn-table classes have effect on the csvw:table element */
+            [ng-app="gn_editor"] form.gn-editor fieldset fieldset .table {
+              margin-bottom: unset;
+            }
+            .gn-table:not(.gn-table-label) div.gn-field label, .gn-table:not(.gn-table-label) div.gn-field .col-sm-1.gn-control {
+              display: unset;
+            }
+            .gn-table:not(.gn-table-label) div.gn-field .col-sm-9 {
+              width: 90%;
+            }
+            .gn-table .nopadding-in-table {
+              padding-right: 15px;
+              padding-left: 15px;
+            }
+            .gn-table:not(.gn-table-label) div.gn-field {
+              padding-top: 4px !important;
+              padding-bottom: 4px !important;
             }
           </style>
         </text>
@@ -1293,6 +1332,30 @@
               </snippet>
             </template>
           </action>
+        </section>
+
+        <section name="health-view">
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dct:alternative"
+                 or="alternative"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:healthCategory"
+                 or="healthCategory"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:healthTheme"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:hdab"
+                 or="hdab"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:hasStructuredData"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:hasCodeValues"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:hasCodingSystem"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:numberOfRecords"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:numberOfUniqueIndividuals"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:maxTypicalAge"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:minTypicalAge"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:retentionPeriod"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:populationCoverage"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dpv:hasPersonalData"/>
+          <section xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:hasVariables" or="hasVariables" in="/rdf:RDF/dcat:Catalog/*/*"/>
         </section>
 
         <section name="extraInformation">
@@ -2314,6 +2377,15 @@
         <for name="dct:temporal"/>
         <for name="dct:spatial"/>
         <for name="foaf:homepage"/>
+        <!-- Health -->
+        <for name="dct:alternative"/>
+        <for name="healthdcatap:hasVariables"/>
+        <for name="csvw:table"/>
+        <for name="csvw:column"/>
+        <for name="healthdcatap:hdab"/>
+        <for name="cv:contactPoint"/>
+        <for name="cv:openingHours"/>
+        <for name="cv:specialOpeningHoursSpecification"/>
       </flatModeExceptions>
     </view>
 
@@ -3001,6 +3073,16 @@
             <dct:title xml:lang="en">mobilityDCAT-AP 3.0.0</dct:title>
             <dct:description xml:lang="en">A mobility extension for the DCAT application profile for data portals in Europe</dct:description>
             <owl:versionInfo>3.0.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+      </snippet>
+      <snippet label="dcat-ap-health-700">
+        <dct:conformsTo>
+          <dct:Standard
+            rdf:about="https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-7/">
+            <dct:title xml:lang="en">HealthDCAT-AP</dct:title>
+            <dct:description xml:lang="en">The HealthDCAT Application Profile (HealthDCAT-AP) is a domain-specific metadata model designed to support the implementation of the secondary use framework under the European Health Data Space (EHDS).</dct:description>
+            <owl:versionInfo>7.0.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
