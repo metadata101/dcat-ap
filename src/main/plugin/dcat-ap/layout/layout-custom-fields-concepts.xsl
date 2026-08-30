@@ -15,6 +15,12 @@
 
   <xsl:include href="../process/process-utility.xsl"/>
 
+  <xsl:template mode="mode-dcat-ap"
+                priority="4001"
+                match="dct:accrualPeriodicity[dct:Frequency]">
+    <xsl:message>WARNING: Element <xsl:value-of select="name()"/> is not yet supported.</xsl:message>
+  </xsl:template>
+
   <xsl:variable name="dcatKeywordConfig">
     <xsl:for-each select="$editorConfig/editor/fields/for[@use='thesaurus-list-picker']">
       <xsl:copy-of select="gn-fn-dcat-ap:buildThesaurusConfiguration(.)"/>
