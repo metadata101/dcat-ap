@@ -106,15 +106,13 @@
   <add-crs-4258>ETRS89</add-crs-4258>
   <add-crs-5710>Ostend height (EPSG:5710)</add-crs-5710>
   <add-crs-anchor>Add your own CRS...</add-crs-anchor>
-
   <dcat-ap-200>DCAT-AP - 2.0.0</dcat-ap-200>
-  <dcat-ap-vl-200>DCAT-AP Flandres - 2019-10-03</dcat-ap-vl-200>
-  <metadata-dcat-200>Metadata DCAT - 2021-04-22</metadata-dcat-200>
+  <dcat-ap-vl-200>DCAT-AP Flandres - 2022-04-21</dcat-ap-vl-200>
+  <metadata-dcat-200>Metadata DCAT - 2022-04-21</metadata-dcat-200>
   <dcat-ap-300>DCAT-AP - 3.0.1</dcat-ap-300>
   <dcat-ap-vl-300>DCAT-AP Flandres - 2026-02-12</dcat-ap-vl-300>
   <dcat-ap-mobility-300>mobilityDCAT-AP - 3.0.0</dcat-ap-mobility-300>
   <dcat-ap-mobility-110>mobilityDCAT-AP - 1.1.0</dcat-ap-mobility-110>
-
   <hvd-dataservice-section>High Value Dataset (HVD)</hvd-dataservice-section>
   <hvd-dataservice-tab>Data Service</hvd-dataservice-tab>
   <hvd-dataset-section>High Value Dataset (HVD)</hvd-dataset-section>
