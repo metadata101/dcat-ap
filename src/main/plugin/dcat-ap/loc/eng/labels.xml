@@ -1237,4 +1237,9 @@
     <description>Rating of 1-5 stars</description>
     <btnLabel>Stars</btnLabel>
   </element>
+
+  <element name="healthdcatap:healthCategory">
+    <label>Health category</label>
+    <description>The health category to which this Dataset belongs.</description>
+  </element>
 </labels>

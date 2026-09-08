@@ -43,6 +43,10 @@
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#"
                 xmlns:cnt="http://www.w3.org/2011/content#"
+                xmlns:healthdcatap="http://healthdataportal.eu/ns/health#"
+                xmlns:cv="http://data.europa.eu/m8g/"
+                xmlns:csvw="http://www.w3.org/ns/csvw#"
+                xmlns:dpv="https://w3id.org/dpv#"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
                 xmlns:saxon="http://saxon.sf.net/"
                 xmlns:uuid="java:java.util.UUID"
@@ -626,5 +630,9 @@
     <xsl:namespace name="oa" select="'http://www.w3.org/ns/oa#'"/>
     <xsl:namespace name="dqv" select="'http://www.w3.org/ns/dqv#'"/>
     <xsl:namespace name="cnt" select="'http://www.w3.org/2011/content#'"/>
+    <xsl:namespace name="healthdcatap" select="'http://healthdataportal.eu/ns/health#'"/>
+    <xsl:namespace name="cv" select="'http://data.europa.eu/m8g/'"/>
+    <xsl:namespace name="csvw" select="'http://www.w3.org/ns/csvw#'"/>
+    <xsl:namespace name="dpv" select="'https://w3id.org/dpv#'"/>
   </xsl:template>
 </xsl:stylesheet>
