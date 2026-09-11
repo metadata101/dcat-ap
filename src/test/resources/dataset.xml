@@ -1,0 +1,384 @@
+<rdf:RDF xmlns:schema="http://schema.org/" xmlns:oa="http://www.w3.org/ns/oa#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dqv="http://www.w3.org/ns/dqv#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap"
+         xmlns:spdx="http://spdx.org/rdf/terms#"
+         xmlns:cnt="http://www.w3.org/2011/content#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:adms="http://www.w3.org/ns/adms#"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:locn="http://www.w3.org/ns/locn#"
+         xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:dct="http://purl.org/dc/terms/"
+         xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+         xmlns:geodcatap="http://data.europa.eu/930/"
+         xmlns:dcat="http://www.w3.org/ns/dcat#"
+         xmlns:dcatap="http://data.europa.eu/r5r/">
+  <dcat:Catalog rdf:about="http://localhost:8080/geonetwork/srv/resources/catalogs/87e5523d-6318-46d7-a3ad-0be13eb24913">
+    <dcat:contactPoint>
+      <vcard:Organization>
+        <vcard:organization-name>My organization</vcard:organization-name>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dcat:dataset>
+      <dcat:Dataset rdf:about="http://localhost:8080/geonetwork/srv/resources/datasets/bd0ee55e-f820-4a50-a388-c131b428be96">
+        <dcat:contactPoint>
+          <vcard:Organization>
+            <vcard:fn>Naam Contactpunt</vcard:fn>
+            <vcard:organization-name xml:lang="nl">Organisatienaam</vcard:organization-name>
+            <vcard:hasAddress>
+              <vcard:Address>
+                <vcard:street-address xml:lang="nl">Straat en huisnummer</vcard:street-address>
+                <vcard:locality xml:lang="nl">Gemeente</vcard:locality>
+                <vcard:postal-code>Postcode</vcard:postal-code>
+                <vcard:country-name xml:lang="nl">Land</vcard:country-name>
+              </vcard:Address>
+            </vcard:hasAddress>
+            <vcard:hasEmail rdf:resource="mailto:E-mail"/>
+            <vcard:hasURL rdf:resource="Contactpagina"/>
+            <vcard:hasTelephone>Telefoonnummer</vcard:hasTelephone>
+          </vcard:Organization>
+        </dcat:contactPoint>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="http://localhost:8080/geonetwork/srv/resources/distributions/f4013be6-636f-4192-8a98-1b4709195ee8">
+            <dcat:accessURL rdf:resource="http://distribution"/>
+            <dcat:downloadURL rdf:resource="http://distribution.download.ur"/>
+            <dct:conformsTo>
+              <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:GML">
+                <dct:identifier>https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:GML</dct:identifier>
+                <dct:title xml:lang="nl">GML</dct:title>
+                <dct:description xml:lang="nl">Geography Markup Language is een XML-grammatica voor het uitdrukken van geografische kenmerken.</dct:description>
+              </dct:Standard>
+            </dct:conformsTo>
+            <dct:description xml:lang="nl">Distributie Beschrijving</dct:description>
+            <dct:format>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/AAB">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
+                <skos:prefLabel xml:lang="nl">AAB</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type"/>
+              </skos:Concept>
+            </dct:format>
+            <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-19</dct:issued>
+            <dct:language>
+              <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/AFG">
+                <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+                <skos:prefLabel xml:lang="nl">Afghan Sign Language</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+              </skos:Concept>
+            </dct:language>
+            <dct:license>
+              <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0">
+                <dct:type>
+                  <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
+                    <skos:prefLabel xml:lang="nl">Werk in het publiek domein</skos:prefLabel>
+                    <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
+                  </skos:Concept>
+                </dct:type>
+                <dct:title xml:lang="nl">Creative Commons Zero verklaring</dct:title>
+                <dct:description xml:lang="nl">De instantie doet afstand van haar intellectuele eigendomsrechten voor zover dit wettelijk mogelijk is. Hierdoor kan de gebruiker de data hergebruiken voor eender welk doel, zonder een verplichting op naamsvermelding. Deze is de welbekende CC0 licentie.</dct:description>
+                <dct:identifier>https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0</dct:identifier>
+              </dct:LicenseDocument>
+            </dct:license>
+            <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-18</dct:modified>
+            <dct:rights>
+              <dct:RightsStatement>
+                <dct:title xml:lang="nl">distribution rechten title</dct:title>
+                <dct:description xml:lang="nl">distribution rechten Beschrijving</dct:description>
+              </dct:RightsStatement>
+            </dct:rights>
+            <dct:title xml:lang="nl">Distributie titel</dct:title>
+            <dct:identifier>f4013be6-636f-4192-8a98-1b4709195ee8</dct:identifier>
+            <mobilitydcatap:applicationLayerProtocol>
+              <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/application-layer-protocol/ftp">
+                <skos:prefLabel xml:lang="nl">FTP</skos:prefLabel>
+                <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol"/>
+              </skos:Concept>
+            </mobilitydcatap:applicationLayerProtocol>
+            <cnt:characterEncoding xml:lang="nl">UTF-8</cnt:characterEncoding>
+            <mobilitydcatap:communicationMethod>
+              <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/communication-method/push">
+                <skos:prefLabel xml:lang="nl">Push</skos:prefLabel>
+                <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/communication-method"/>
+              </skos:Concept>
+            </mobilitydcatap:communicationMethod>
+            <mobilitydcatap:dataFormatNotes xml:lang="nl">Opmerkingen over dataformaat</mobilitydcatap:dataFormatNotes>
+            <mobilitydcatap:grammar>
+              <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/grammar/other">
+                <skos:prefLabel xml:lang="nl">Other</skos:prefLabel>
+                <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/grammar"/>
+              </skos:Concept>
+            </mobilitydcatap:grammar>
+            <mobilitydcatap:mobilityDataStandard>
+              <dct:conformsTo>
+                <dct:Standard>
+                  <dct:identifier>Standaard</dct:identifier>
+                </dct:Standard>
+              </dct:conformsTo>
+              <owl:versionInfo>11</owl:versionInfo>
+            </mobilitydcatap:mobilityDataStandard>
+            <dct:temporal>
+              <dct:PeriodOfTime>
+                <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-05</dcat:startDate>
+                <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-06</dcat:endDate>
+              </dct:PeriodOfTime>
+            </dct:temporal>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:keyword xml:lang="nl">KEYWORD</dcat:keyword>
+        <dcat:landingPage rdf:resource="Landingspagina"/>
+        <dcat:theme>
+          <skos:Concept rdf:about="http://vocab.belgif.be/auth/datatheme/AGRI">
+            <skos:prefLabel xml:lang="nl">Landbouw, visserij, bosbouw en voeding</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://vocab.belgif.be/auth/datatheme"/>
+          </skos:Concept>
+        </dcat:theme>
+        <dcat:theme>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/AGRI">
+            <skos:prefLabel xml:lang="nl">Landbouw, visserij, bosbouw en voeding</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+          </skos:Concept>
+        </dcat:theme>
+        <adms:identifier>
+          <adms:Identifier>
+            <skos:notation>other identifier</skos:notation>
+          </adms:Identifier>
+        </adms:identifier>
+        <adms:versionNotes xml:lang="nl">Versie notas</adms:versionNotes>
+        <dct:accessRights>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">
+            <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+            <skos:prefLabel xml:lang="nl">publiek</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
+          </skos:Concept>
+        </dct:accessRights>
+        <dct:accrualPeriodicity>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/frequency/WEEKLY_3">
+            <rdf:type rdf:resource="http://purl.org/dc/terms/Frequency"/>
+            <skos:prefLabel xml:lang="nl">drie keer per week</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/frequency"/>
+          </skos:Concept>
+        </dct:accrualPeriodicity>
+        <dct:conformsTo>
+          <dct:Standard rdf:about="https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel">
+            <dct:identifier>https://data.vlaanderen.be/id/concept/StandaardType/Applicatieprofiel</dct:identifier>
+            <dct:title xml:lang="nl">Applicatieprofiel</dct:title>
+          </dct:Standard>
+        </dct:conformsTo>
+        <dct:description xml:lang="nl">DESCRIPTION</dct:description>
+        <dct:identifier>bd0ee55e-f820-4a50-a388-c131b428be96</dct:identifier>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-17</dct:issued>
+        <dct:language>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/ENG">
+            <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+            <skos:prefLabel xml:lang="nl">Engels</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+          </skos:Concept>
+        </dct:language>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-17</dct:modified>
+        <dct:publisher>
+          <foaf:Agent rdf:about="http://publisher.org">
+            <foaf:name xml:lang="nl">PUBISHER</foaf:name>
+            <dct:type>
+              <skos:Concept rdf:about="http://purl.org/adms/publishertype/Company">
+                <skos:prefLabel xml:lang="nl">Bedrijf</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
+              </skos:Concept>
+            </dct:type>
+            <foaf:workplaceHomepage rdf:resource="Workplace homepage"/>
+            <locn:address>
+              <locn:fullAddress>Full address</locn:fullAddress>
+              <locn:poBox>PO Box</locn:poBox>
+              <locn:thoroughfare>Thoroughfare</locn:thoroughfare>
+              <locn:locatorDesignator>Locator designator</locn:locatorDesignator>
+              <locn:locatorName>Locator name</locn:locatorName>
+              <locn:addressArea>Address area</locn:addressArea>
+              <locn:postName>Post name</locn:postName>
+              <locn:postCode>Post code</locn:postCode>
+              <locn:adminUnitL2>Admin unit L2</locn:adminUnitL2>
+              <locn:adminUnitL1>Admin unit L1</locn:adminUnitL1>
+            </locn:address>
+            <foaf:mbox rdf:resource="a@a.a"/>
+            <foaf:firstName xml:lang="nl">First name</foaf:firstName>
+            <foaf:surname xml:lang="nl">Surname</foaf:surname>
+            <foaf:phone rdf:resource="Phone"/>
+          </foaf:Agent>
+        </dct:publisher>
+        <dct:rights>
+          <dct:RightsStatement>
+            <dct:title xml:lang="nl">rechten Titel</dct:title>
+            <dct:description xml:lang="nl">rechten Beschrijving</dct:description>
+          </dct:RightsStatement>
+        </dct:rights>
+        <dct:spatial>
+          <dct:Location rdf:about="http://mir.geopunt.be/cl/Geopunt/VlaamseAdminRegios/Vlaanderen">
+            <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((2.53 50.67,2.53 51.51,5.92 51.51,5.92 50.67,2.53 50.67))</locn:geometry>
+            <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#gmlLiteral">&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;50.67 2.53 51.51 2.53 51.51 5.92 50.67 5.92 50.67 2.53&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;</locn:geometry>
+            <skos:prefLabel xml:lang="nl">Vlaams Gewest</skos:prefLabel>
+          </dct:Location>
+        </dct:spatial>
+        <dct:temporal>
+          <dct:PeriodOfTime>
+            <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-17</dcat:startDate>
+            <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-17</dcat:endDate>
+          </dct:PeriodOfTime>
+        </dct:temporal>
+        <dct:title xml:lang="nl">TITLE</dct:title>
+        <dcat:version>Versie</dcat:version>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-17</dct:created>
+        <dct:rightsHolder>
+          <foaf:Agent>
+            <foaf:name xml:lang="nl">Naam</foaf:name>
+            <dct:type>
+              <skos:Concept rdf:about="http://purl.org/adms/publishertype/Company">
+                <skos:prefLabel xml:lang="nl">Bedrijf</skos:prefLabel>
+                <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
+              </skos:Concept>
+            </dct:type>
+            <foaf:workplaceHomepage rdf:resource="Werkplek startpagina"/>
+            <foaf:mbox rdf:resource="a@a.a"/>
+            <foaf:firstName xml:lang="nl">Voornaam</foaf:firstName>
+            <foaf:surname xml:lang="nl">Achternaam</foaf:surname>
+            <foaf:phone rdf:resource="Telefoon"/>
+          </foaf:Agent>
+        </dct:rightsHolder>
+        <mdcat:MAGDA-categorie>
+          <skos:Concept rdf:about="https://data.vlaanderen.be/id/concept/MAGDA-categorie/Repertorium">
+            <skos:prefLabel xml:lang="nl">Repertorium</skos:prefLabel>
+            <skos:inScheme rdf:resource="https://data.vlaanderen.be/id/conceptscheme/MAGDA-categorie"/>
+          </skos:Concept>
+        </mdcat:MAGDA-categorie>
+        <mdcat:statuut>
+          <skos:Concept rdf:about="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA">
+            <skos:prefLabel xml:lang="nl">Vlaamse Open data</skos:prefLabel>
+            <skos:inScheme rdf:resource="https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden"/>
+          </skos:Concept>
+        </mdcat:statuut>
+        <mobilitydcatap:mobilityTheme>
+          <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/mobility-theme/address-identifiers">
+            <skos:prefLabel xml:lang="nl">Adresgegevens</skos:prefLabel>
+            <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/mobility-theme"/>
+          </skos:Concept>
+        </mobilitydcatap:mobilityTheme>
+        <mobilitydcatap:transportMode>
+          <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/transport-mode/car">
+            <skos:prefLabel xml:lang="nl">Auto</skos:prefLabel>
+            <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/transport-mode"/>
+          </skos:Concept>
+        </mobilitydcatap:transportMode>
+        <mobilitydcatap:networkCoverage>
+          <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/network-coverage/other-public-transport-network">
+            <skos:prefLabel xml:lang="nl">Andere openbaar vervoersnetwerk</skos:prefLabel>
+            <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+          </skos:Concept>
+        </mobilitydcatap:networkCoverage>
+        <mobilitydcatap:georeferencingMethod>
+          <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/georeferencing-method/geocoordinates">
+            <skos:prefLabel xml:lang="nl">Geocoördinaten</skos:prefLabel>
+            <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
+          </skos:Concept>
+        </mobilitydcatap:georeferencingMethod>
+        <mobilitydcatap:intendedInformationService>
+          <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/intended-information-service/dynamic-information-service">
+            <skos:prefLabel xml:lang="nl">Dynamic Information service</skos:prefLabel>
+            <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/intended-information-service"/>
+          </skos:Concept>
+        </mobilitydcatap:intendedInformationService>
+        <mobilitydcatap:assessmentResult>
+          <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-21</dct:issued>
+          <oa:hasBody rdf:resource="URL die linkt naar verdere details of resultaten"/>
+        </mobilitydcatap:assessmentResult>
+        <dqv:hasQualityAnnotation>
+          <oa:hasBody rdf:resource="URL die linkt naar verdere details of resultaten"/>
+        </dqv:hasQualityAnnotation>
+        <geodcatap:referenceSystem>
+          <dct:Standard>
+            <dct:identifier>https://www.opengis.net/def/crs/EPSG/0/31370</dct:identifier>
+            <dct:title xml:lang="nl">Belge 1972 / Belgian Lambert 72</dct:title>
+          </dct:Standard>
+        </geodcatap:referenceSystem>
+        <dcatap:hvdCategory>
+          <skos:Concept rdf:about="http://data.europa.eu/bna/c_9427236f">
+            <skos:prefLabel xml:lang="nl">Administratieve eenheden</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://data.europa.eu/bna/asd487ae75"/>
+          </skos:Concept>
+        </dcatap:hvdCategory>
+      </dcat:Dataset>
+    </dcat:dataset>
+    <dcat:record>
+      <dcat:CatalogRecord rdf:about="http://localhost:8080/geonetwork/srv/api/records/43a05289-d724-45e5-8be0-64853d5b3860">
+        <foaf:primaryTopic rdf:resource="http://localhost:8080/geonetwork/srv/resources/datasets/bd0ee55e-f820-4a50-a388-c131b428be96"/>
+        <dct:modified>2026-03-17</dct:modified>
+        <dct:conformsTo>
+          <dct:Standard rdf:about="https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/xxx">
+            <dct:identifier>https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/xxx</dct:identifier>
+            <dct:title xml:lang="nl">DCAT-AP Vlaanderen</dct:title>
+            <dct:description xml:lang="nl">Dit applicatieprofiel beschrijft Open Data Catalogi in Vlaanderen. DCAT-AP Vlaanderen (DCAT-AP VL) is een verdere specialisatie van DCAT-AP. De applicatie waarop dit profiel betrekking heeft is een Open Data Portaal in Vlaanderen. Open Data portalen zijn catalogussen van Open Data datasets. Ze hebben als belangrijkste doelstelling het vindbaar maken van data en hierdoor het hergebruik ervan te stimuleren. Open Data portalen vervullen een centrale rol in de overheidsopdracht om de toegankelijkheid tot overheidsinformatie te realiseren. Met dit applicatieprofiel bevorderen we de uniformiteit van de beschikbare informatie over datasets. Tevens vereenvoudigen we het aggregatie proces van meerdere Open Data Catalogi. Dit document bevat de verplichte elementen en bijkomende elementen waarover DCAT-AP Vlaanderen een uitspraak doet. Aanbevolen en optionele informatie waarvoor geen bijkomende afspraken in de context van DCAT-AP Vlaanderen zijn, zijn niet opgenomen in dit document. Hiervoor verwijzen we naar de DCAT-AP specificatie zelf.</dct:description>
+            <owl:versionInfo>3.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+        <dct:conformsTo>
+          <dct:Standard rdf:about="https://www.w3.org/mobility-ap/">
+            <dct:identifier>https://www.w3.org/mobility-ap/</dct:identifier>
+            <dct:title xml:lang="nl">mobilityDCAT-AP 3.0.0</dct:title>
+            <dct:description xml:lang="nl">A mobility extension for the DCAT application profile for data portals in Europe</dct:description>
+            <owl:versionInfo>3.0.0</owl:versionInfo>
+          </dct:Standard>
+        </dct:conformsTo>
+        <dct:language>
+          <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+            <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+            <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+          </skos:Concept>
+        </dct:language>
+        <dct:identifier>43a05289-d724-45e5-8be0-64853d5b3860</dct:identifier>
+        <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-17</dct:created>
+      </dcat:CatalogRecord>
+    </dcat:record>
+    <dct:description xml:lang="nl">Deze catalogus bevat datasets ontsloten door My organization</dct:description>
+    <dct:identifier>87e5523d-6318-46d7-a3ad-0be13eb24913</dct:identifier>
+    <dct:issued>2019-09-01</dct:issued>
+    <dct:language>
+      <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+        <skos:prefLabel xml:lang="nl">Nederlands</skos:prefLabel>
+        <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+      </skos:Concept>
+    </dct:language>
+    <dct:license>
+      <dct:LicenseDocument rdf:about="https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0">
+        <dct:type>
+          <skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
+            <skos:prefLabel xml:lang="nl">Werk in het publiek domein</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
+          </skos:Concept>
+        </dct:type>
+        <dct:title xml:lang="nl">Creative Commons Zero verklaring</dct:title>
+        <dct:description xml:lang="nl">De instantie doet afstand van haar intellectuele eigendomsrechten voor zover dit wettelijk mogelijk is. Hierdoor kan de gebruiker de data hergebruiken voor eender welk doel, zonder een verplichting op naamsvermelding. Deze is de welbekende CC0 licentie.</dct:description>
+        <dct:identifier>https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0</dct:identifier>
+      </dct:LicenseDocument>
+    </dct:license>
+    <dct:modified>2019-09-01</dct:modified>
+    <dct:publisher>
+      <foaf:Agent rdf:about="http://localhost:8080/geonetwork/srv/resources/organizations/My%20organization">
+        <foaf:name xml:lang="nl">My organization</foaf:name>
+        <dct:type>
+          <skos:Concept rdf:about="http://purl.org/adms/publishertype/LocalAuthority">
+            <skos:prefLabel xml:lang="nl">Lokaal bestuur</skos:prefLabel>
+            <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
+          </skos:Concept>
+        </dct:type>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:title xml:lang="nl">Open Data Catalogus van My organization</dct:title>
+    <foaf:homepage>
+      <foaf:Document rdf:about="http://localhost:8080/geonetwork/srv/dut/">
+        <foaf:name xml:lang="nl">My GeoNetwork catalogue</foaf:name>
+      </foaf:Document>
+    </foaf:homepage>
+  </dcat:Catalog>
+</rdf:RDF>
