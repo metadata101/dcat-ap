@@ -1242,4 +1242,197 @@
     <label>Health category</label>
     <description>The health category to which this Dataset belongs.</description>
   </element>
+  <element name="healthdcatap:hasVariables">
+    <label>Table group</label>
+    <description>Links the Dataset to a CSVW TableGroup that provides a machine-readable description of the data variables.</description>
+  </element>
+  <element name="healthdcatap:hasStructuredData">
+    <label>Has structured data</label>
+    <description>Indicates whether the Dataset contains structured data for which a machine-readable description of the data variables can be provided.</description>
+  </element>
+  <element name="healthdcatap:hdab">
+    <label>Health data access body</label>
+    <description>Member state-designated authority that facilitates the secondary use of electronic health data. HDABs assess the information provided by the health data applicant and decide on health data requests and access applications, authorise and issue data permits, obtain data from data holders and make data available in Secure Processing Environments. HDABs systematically track the data request and data access applications received and the data permits issued. As per Article 58 of the EHDS, HDABs are required to publicly list information on the data permits issued. (Article 55; Recital 52 of EHDS Regulation).</description>
+  </element>
+  <element name="healthdcatap:hasCodeValues">
+    <label>Code values</label>
+    <description>Use this field to describe, in free text, the code values of the coding systems used that apply to the dataset (e.g. U07.1, Y59.0). No controlled vocabulary is required at this stage.</description>
+  </element>
+  <element name="healthdcatap:hasCodingSystem">
+    <label>Coding system</label>
+    <description>This property allows you to specify the coding systems used within your dataset. For example, if a dataset uses ICD-10 for disease classification, this property allows data users to search for datasets with the same coding system. As a machine-actionable property, it also facilitates automated processes, making dataset discovery more efficient. Specify the standardised coding systems used in the dataset (e.g. ICD-10-CM, SNOMED-CT). The coding systems controlled vocabulary (https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/) MUST be used.</description>
+  </element>
+  <element name="healthdcatap:numberOfRecords">
+    <label>Number of records</label>
+    <description>Use this property to indicate the total number of records in the dataset, giving users an idea of the dataset's size and whether it suits their analysis or research needs. You can provide the exact count or an approximate average if the exact figure is unavailable. It reflects the total data entries (e.g., consultations, prescriptions, lab results, hospital admissions) according to the dataset's content.</description>
+  </element>
+  <element name="healthdcatap:numberOfUniqueIndividuals">
+    <label>Number of unique individuals</label>
+    <description>Use this property to indicate the number of unique individuals represented in the dataset. It helps users understand the dataset's scale and assess whether it meets their needs for secondary use. Provide the total or an approximate count of distinct individuals whose data is included.</description>
+  </element>
+  <element name="healthdcatap:minTypicalAge">
+    <label>Minimum typical age</label>
+    <description>The approximate minimum age of subjects in the dataset, if applicable. Approximate age is given to protect potentially sensitive information of subjects in the dataset.</description>
+  </element>
+  <element name="healthdcatap:maxTypicalAge">
+    <label>Maximum typical age</label>
+    <description>The approximate maximum age of subjects in the dataset, if applicable. Approximate age is given to protect potentially sensitive information of subjects in the dataset.</description>
+  </element>
+  <element name="healthdcatap:retentionPeriod">
+    <label>Retention period</label>
+    <description>This property makes use of the class dct:PeriodOfTime (more details on PeriodOfTime class tab). The start and end of the interval SHOULD be given by using properties dcat:startDate or time:hasBeginning, and dcat:endDate or time:hasEnd, respectively. The interval can also be open - i.e., it can have just a start or just an end</description>
+  </element>
+  <element name="healthdcatap:populationCoverage">
+    <label>Population coverage</label>
+    <description>This field is a free text description of the population covered in the dataset. For example, "Children under 12 years old with asthma treated in public hospitals in France between 2018 and 2023."</description>
+  </element>
+  <element name="healthdcatap:healthTheme">
+    <label>Health theme</label>
+    <description>A category of the Dataset or tag describing the Dataset.</description>
+  </element>
+  <element name="dpv:hasPersonalData">
+    <label>Personal data</label>
+    <description>This property is used to indicate the types of personal data contained in the dataset itself (i.e. the actual data, not the metadata record).
+      The Data Privacy Vocabulary for Personal Data at https://w3id.org/dpv/dpv-pd MUST be used for this property.
+
+      Examples of allowed values include:
+      Gender → https://w3id.org/dpv/dpv-pd#Gender
+      Age → https://w3id.org/dpv/dpv-pd#Age</description>
+  </element>
+
+  <element name="dct:alternative">
+    <label>Alternative title</label>
+    <description>An alternative name for the Dataset.</description>
+  </element>
+
+  <element name="dqv:hasQualityMeasurement">
+    <label>Quality measurement</label>
+    <description>A measurement of the quality of the Dataset.</description>
+  </element>
+  <element name="dqv:QualityMeasurement">
+    <label>Quality measurement</label>
+    <description>A measurement of the quality of the Dataset.</description>
+  </element>
+  <element name="dqv:isMeasurmentOf">
+    <label>Measurement</label>
+    <description></description>
+  </element>
+  <element name="dqv:computedOn">
+    <label>Computed on</label>
+    <description></description>
+  </element>
+  <element name="dqv:Metric">
+    <label>Metric</label>
+    <description></description>
+  </element>
+  <element name="dqv:value">
+    <label>Value</label>
+    <description></description>
+  </element>
+  <element name="dqv:expectedDataType">
+    <label>Expected data type</label>
+    <description></description>
+    <helper>
+      <option value="string">string</option>
+      <option value="number">number</option>
+      <option value="boolean">boolean</option>
+      <option value="date">date</option>
+      <option value="time">time</option>
+      <option value="datetime">datetime</option>
+    </helper>
+  </element>
+  <element name="dqv:inDimension">
+    <label>Dimension</label>
+    <description></description>
+  </element>
+  <element name="dqv:Dimension">
+    <label>Dimension</label>
+    <description></description>
+  </element>
+  <element name="dqv:inCategory">
+    <label>Category</label>
+    <description></description>
+  </element>
+  <element name="dqv:Category">
+    <label>Category</label>
+    <description></description>
+  </element>
+  <element name="skos:definition" context="dqv:Category">
+    <label>Definition</label>
+    <description></description>
+  </element>
+  <element name="skos:definition">
+    <label>Definition</label>
+    <description></description>
+  </element>
+
+  <element name="cv:contactPoint">
+    <label>Contact point (Health)</label>
+    <description>Information (e.g. e-mail address, telephone number) of a person or department through which the user can get in touch with.</description>
+  </element>
+  <element name="cv:ContactPoint">
+    <label>Contact point (Health)</label>
+    <description>Information (e.g. e-mail address, telephone number) of a person or department through which the user can get in touch with.</description>
+  </element>
+  <element name="cv:email">
+    <label>Email</label>
+    <description>The email address of the Contact Point.</description>
+  </element>
+  <element name="cv:contactPage">
+    <label>Contact page</label>
+    <description>The contact page of the Contact Point.</description>
+  </element>
+  <element name="cv:specialOpeningHoursSpecification">
+    <label>Special opening hours</label>
+    <description></description>
+  </element>
+  <element name="cv:openingHours">
+    <label>Opening hours</label>
+    <description>The time at which the Contact Point is normally available.</description>
+  </element>
+
+  <element name="csvw:TableGroup">
+    <label>Table Group</label>
+    <description>A table is a single CSV file within a CSVW Table Group.</description>
+  </element>
+  <element name="csvw:table">
+    <label>Table</label>
+    <description>Used to associate one or more tables with a table group. It holds all variable dictionary entries, using columns describing each variable.</description>
+  </element>
+  <element name="csvw:Table">
+    <label>Table</label>
+    <description>A table within a CSVW Table Group that represents a single CSV file with variable definitions.</description>
+  </element>
+  <element name="csvw:column">
+    <label>Column</label>
+    <description>Variable (column) defines metadata about one field in the CSV file.</description>
+  </element>
+  <element name="csvw:Column">
+    <label>Column</label>
+    <description>A column within a CSV table that represents a variable with its metadata and characteristics.</description>
+  </element>
+  <element name="csvw:url">
+    <label>URL</label>
+    <description>The URL should be a valid IRI and should point to the CSV file (synthetic, anonymized representation of the real data) for this table.</description>
+  </element>
+  <element name="csvw:name">
+    <label>Name</label>
+    <description>A Technical name given to the Variable as it appears in the CSV file.</description>
+  </element>
+  <element name="csvw:titles">
+    <label>Title</label>
+    <description>A Human-readable name given to the Variable.</description>
+  </element>
+  <element name="csvw:datatype">
+    <label>Datatype</label>
+    <description>Specifies the expected datatype of the values in the column.</description>
+    <helper>
+      <option value="string">string</option>
+      <option value="number">number</option>
+      <option value="boolean">boolean</option>
+      <option value="date">date</option>
+      <option value="time">time</option>
+      <option value="datetime">datetime</option>
+    </helper>
+  </element>
 </labels>
