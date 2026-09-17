@@ -36,23 +36,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:group name="AgentPropertyGroup">
-    <xs:sequence>
-      <!-- mandatory properties for foaf:Agent-->
-      <xs:element ref="foaf:name" minOccurs="1" maxOccurs="unbounded"/>
-      <!-- recommended properties for foaf:Agent-->
-      <xs:element ref="dct:type" minOccurs="0" maxOccurs="1"/>
-
-      <!-- Mobility DCAT-AP properties -->
-      <xs:element ref="foaf:workplaceHomepage" minOccurs="0" maxOccurs="1"/>
-      <xs:element ref="locn:address" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element ref="org:memberOf" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element ref="foaf:mbox" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element ref="foaf:firstName" minOccurs="0" maxOccurs="1"/>
-      <xs:element ref="foaf:surname" minOccurs="0" maxOccurs="1"/>
-      <xs:element ref="foaf:phone" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:group>
 
   <!-- foaf:Agent-->
   <xs:complexType name="Agent">
@@ -60,23 +43,23 @@
       <xs:element name="Agent">
         <xs:complexType>
           <xs:sequence>
-            <xs:group ref="foaf:AgentPropertyGroup"/>
-          </xs:sequence>
-          <xs:attribute ref="rdf:about"/>
-          <xs:attribute ref="rdf:nodeID"/>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
+            <!-- mandatory properties for foaf:Agent-->
+            <xs:element ref="foaf:name" minOccurs="1" maxOccurs="unbounded"/>
+            <!-- recommended properties for foaf:Agent-->
+            <xs:element ref="dct:type" minOccurs="0" maxOccurs="1"/>
 
-  <!-- HealthAgent: Extension of foaf:Agent with cv:contactPoint -->
-  <xs:complexType name="HealthAgent">
-    <xs:sequence>
-      <xs:element name="Agent">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:group ref="foaf:AgentPropertyGroup"/>
+            <!-- Mobility DCAT-AP properties -->
+            <xs:element ref="foaf:workplaceHomepage" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="locn:address" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="org:memberOf" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="foaf:mbox" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="foaf:firstName" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="foaf:surname" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="foaf:phone" minOccurs="0" maxOccurs="unbounded"/>
+
+            <!-- HEALTH DCAT-AP -->
             <xs:element ref="cv:contactPoint" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dct:description" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
           <xs:attribute ref="rdf:about"/>
           <xs:attribute ref="rdf:nodeID"/>

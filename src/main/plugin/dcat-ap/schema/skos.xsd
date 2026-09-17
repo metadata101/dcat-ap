@@ -41,4 +41,5 @@
   <!-- individual elements-->
   <xs:element name="notation" type="rdf:TypedLiteral"/>
   <xs:element name="prefLabel" type="rdf:PlainLiteral"/>
+  <xs:element name="definition" type="rdf:PlainLiteral"/>
 </xs:schema>
