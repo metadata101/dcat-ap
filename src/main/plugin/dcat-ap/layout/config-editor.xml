@@ -221,13 +221,6 @@
         xpath="/mobilitydcatap:intendedInformationService"/>
     </for>
 
-    <for name="healthdcatap:healthCategory" use="thesaurus-list-picker">
-      <directiveAttributes
-        thesaurus="external.theme.health-healthcategory"
-        xpath="/healthdcatap:healthCategory"
-      />
-    </for>
-
     <for name="mdcat:MAGDA-categorie" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.magda-domain"
@@ -544,6 +537,39 @@
         </snippet>
       </template>
     </for>
+
+
+    <!-- Health -->
+    <for name="healthdcatap:healthCategory" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.health-healthcategory"
+        xpath="/healthdcatap:healthCategory"
+      />
+    </for>
+    <for name="healthdcatap:healthTheme" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.health-theme"
+        xpath="/healthdcatap:healthTheme"
+      />
+    </for>
+    <for name="healthdcatap:hasCodingSystem" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.health-coding-system"
+        xpath="/healthdcatap:hasCodingSystem"
+      />
+    </for>
+    <for name="dpv:hasPersonalData" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.health-personal-data"
+        xpath="/dpv:hasPersonalData"
+      />
+    </for>
+    <for name="healthdcatap:hasStructuredData" use="checkbox"/>
+    <for name="healthdcatap:numberOfRecords" use="number"/>
+    <for name="healthdcatap:numberOfUniqueIndividuals" use="number"/>
+    <for name="healthdcatap:maxTypicalAge" use="number"/>
+    <for name="healthdcatap:minTypicalAge" use="number"/>
+    <for name="dqv:value" use="number"/>
   </fields>
 
   <!-- Complex fields. -->
@@ -602,6 +628,14 @@
     <name>mobilitydcatap:Assessment</name>
     <name>dqv:hasQualityAnnotation</name>
     <name>dqv:QualityAnnotation</name>
+    <name>dqv:hasQualityMeasurement</name>
+    <name>dqv:QualityMeasurement</name>
+    <name>dqv:isMeasurmentOf</name>
+    <name>dqv:Metric</name>
+    <name>dqv:inDimension</name>
+    <name>dqv:Dimension</name>
+    <name>dqv:inCategory</name>
+    <name>dqv:Category</name>
     <name>geodcatap:referenceSystem</name>
     <name>locn:address</name>
     <name>locn:Address</name>
@@ -614,6 +648,8 @@
     <name>healthdcatap:hdab</name>
     <name>cv:contactPoint</name>
     <name>cv:ContactPoint</name>
+    <name>cv:openingHours</name>
+    <name>cv:specialOpeningHoursSpecification</name>
   </fieldsWithFieldset>
 
   <multilingualFields>
@@ -687,7 +723,22 @@
       <name>dct:isVersionOf</name>
 
       <!-- HEALTH -->
-      <name>csvw:dataType</name>
+      <name>csvw:datatype</name>
+      <name>healthdcatap:hasStructuredData</name>
+      <name>dpv:hasPersonalData</name>
+      <name>dpv:PersonalData</name>
+      <name>healthdcatap:hasCodeValues</name>
+      <name>healthdcatap:numberOfRecords</name>
+      <name>healthdcatap:numberOfUniqueIndividuals</name>
+      <name>healthdcatap:minTypicalAge</name>
+      <name>healthdcatap:maxTypicalAge</name>
+      <name>dqv:value</name>
+      <name>dqv:isMeasurmentOf</name>
+      <name>dqv:Metric</name>
+      <name>dqv:inDimension</name>
+      <name>dqv:Dimension</name>
+      <name>dqv:inCategory</name>
+      <name>dqv:Category</name>
     </exclude>
   </multilingualFields>
 
@@ -826,6 +877,7 @@
         <thesaurus key="external.theme.ontwikkelingstoestand" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.high-value-data-set-category" maxtags="1" transformations="" fieldset="false"/>
         <thesaurus key="external.theme.eu-applicable-legislation" maxtags="1" transformations="" fieldset="false"/>
+        <thesaurus key="external.theme.health-personal-data" transformations="" fieldset="false"/>
       </thesaurusList>
 
       <tab id="tabDataset" default="true" mode="flat" displayIfRecord="count(//dcat:dataset/dcat:Dataset) > 0"
@@ -1335,27 +1387,59 @@
         </section>
 
         <section name="health-view">
-          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dct:alternative"
-                 or="alternative"
-                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
           <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:healthCategory"
                  or="healthCategory"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:healthTheme"/>
           <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:hdab"
                  or="hdab"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:hasStructuredData"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:hasCodeValues"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:hasCodingSystem"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:numberOfRecords"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:numberOfUniqueIndividuals"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:maxTypicalAge"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:minTypicalAge"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:retentionPeriod"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:populationCoverage"/>
-          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dpv:hasPersonalData"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:hasStructuredData"
+                 or="hasStructuredData"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+
           <section xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:hasVariables" or="hasVariables" in="/rdf:RDF/dcat:Catalog/*/*"/>
+
+          <!-- Mandatory for non public -->
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dct:provenance"
+                 or="provenance"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+        </section>
+
+        <section name="health-view-quantum" collapsed="true">
+          <!--<section name="dqv:hasQualityMeasurement"
+                   forEach="/rdf:RDF/dcat:Catalog/*/*/dqv:hasQualityMeasurement"
+                   del=".">
+            <field xpath="dqv:QualityMeasurement/dqv:isMeasurementOf/dqv:Metric/skos:definition"/>
+            <field xpath="dqv:QualityMeasurement/dqv:value"/>
+          </section>-->
+
+          <xsl xpath="/rdf:RDF/dcat:Catalog/*/*/dqv:hasQualityMeasurement[1]" mode="health-dcat-ap"/>
+
+          <action type="add" or="hasQualityMeasurement" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
+            <template>
+              <snippets name="health-dcat-ap-quality-measurements"/>
+            </template>
+          </action>
+        </section>
+
+        <section name="health-view-optional" collapsed="true">
+          <!-- Optional -->
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dct:alternative"
+                 or="alternative"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:healthTheme" or="healthTheme" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:hasCodeValues" or="hasCodeValues" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:hasCodingSystem" or="hasCodingSystem" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:numberOfRecords" or="numberOfRecords" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:numberOfUniqueIndividuals" or="numberOfUniqueIndividuals" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:minTypicalAge" or="minTypicalAge" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:maxTypicalAge" or="maxTypicalAge" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <!-- Requires changes for periodOfTime
+            <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:retentionPeriod" or="retentionPeriod" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+            -->
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:populationCoverage" or="populationCoverage" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+          <field xpath="/rdf:RDF/dcat:Catalog/*/*/dpv:hasPersonalData" or="hasPersonalData" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
 
         <section name="extraInformation">
@@ -2379,13 +2463,26 @@
         <for name="foaf:homepage"/>
         <!-- Health -->
         <for name="dct:alternative"/>
+        <for name="dct:provenance"/>
+        <for name="healthdcatap:hdab"/>
+        <for name="healthdcatap:hasStructuredData"/>
+        <for name="healthdcatap:healthTheme"/>
         <for name="healthdcatap:hasVariables"/>
+        <for name="healthdcatap:hasCodeValues"/>
+        <for name="healthdcatap:hasCodingSystem"/>
+        <for name="healthdcatap:maxTypicalAge"/>
+        <for name="healthdcatap:minTypicalAge"/>
+        <for name="healthdcatap:numberOfUniqueIndividuals"/>
+        <for name="healthdcatap:numberOfRecords"/>
+        <for name="healthdcatap:populationCoverage"/>
+        <for name="healthdcatap:retentionPeriod"/>
+        <for name="dpv:hasPersonalData"/>
         <for name="csvw:table"/>
         <for name="csvw:column"/>
-        <for name="healthdcatap:hdab"/>
         <for name="cv:contactPoint"/>
         <for name="cv:openingHours"/>
         <for name="cv:specialOpeningHoursSpecification"/>
+        <for name="dqv:hasQualityMeasurement"/>
       </flatModeExceptions>
     </view>
 
@@ -3159,6 +3256,241 @@
             <dct:title></dct:title>
           </dct:Standard>
         </geodcatap:referenceSystem>
+      </snippet>
+    </list>
+
+    <list name="health-dcat-ap-quality-measurements">
+      <snippet label="health-dcat-ap-quality-measurements-Accessibility_measurement1">
+        <dqv:hasQualityMeasurement>
+          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Accessibility_measurement1">
+            <dqv:computedOn rdf:resource=""/>
+            <dqv:isMeasurementOf>
+              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Accessibility_metric1">
+                <skos:definition xml:lang="en">Availability of a data access &amp; usage policy at the time of release of the dataset</skos:definition>
+                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Accessibility"/>
+              </dqv:Metric>
+            </dqv:isMeasurementOf>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
+          </dqv:QualityMeasurement>
+        </dqv:hasQualityMeasurement>
+      </snippet>
+      <snippet label="health-dcat-ap-quality-measurements-Accessibility_measurement2">
+        <dqv:hasQualityMeasurement>
+          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Accessibility_measurement2">
+            <dqv:computedOn rdf:resource=""/>
+            <dqv:isMeasurementOf>
+              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Accessibility_metric2">
+                <skos:definition xml:lang="en">Average time from data access application to data release for a specific dataset</skos:definition>
+                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Accessibility"/>
+              </dqv:Metric>
+            </dqv:isMeasurementOf>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
+          </dqv:QualityMeasurement>
+        </dqv:hasQualityMeasurement>
+      </snippet>
+      <snippet label="health-dcat-ap-quality-measurements-Population_coverage_measurement1">
+        <dqv:hasQualityMeasurement>
+          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Population_coverage_measurement1">
+            <dqv:computedOn rdf:resource=""/>
+            <dqv:isMeasurementOf>
+              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Population_coverage_metric1">
+                <skos:definition xml:lang="en">Coverage Rate (percentage of the eligible population represented in the
+                  dataset)
+                </skos:definition>
+                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Population_coverage"/>
+              </dqv:Metric>
+            </dqv:isMeasurementOf>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
+          </dqv:QualityMeasurement>
+        </dqv:hasQualityMeasurement>
+      </snippet>
+      <snippet label="health-dcat-ap-quality-measurements-Population_representativity_measurement1">
+        <dqv:hasQualityMeasurement>
+          <dqv:QualityMeasurement
+            rdf:about="http://quantumproject.eu/vocab-quantum/#Population_representativity_measurement1">
+            <dqv:computedOn rdf:resource=""/>
+            <dqv:isMeasurementOf>
+              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Population_representativity_metric1">
+                <skos:definition xml:lang="en">How closely does the observed population represent the expected population?
+                </skos:definition>
+                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Population_representativity"/>
+              </dqv:Metric>
+            </dqv:isMeasurementOf>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
+          </dqv:QualityMeasurement>
+        </dqv:hasQualityMeasurement>
+      </snippet>
+      <snippet label="health-dcat-ap-quality-measurements-Compliance_measurement1">
+        <dqv:hasQualityMeasurement>
+          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Compliance_measurement1">
+            <dqv:computedOn rdf:resource=""/>
+            <dqv:isMeasurementOf>
+              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Compliance_metric1">
+                <skos:definition xml:lang="en">Is there documentation of compliance with ethical standards, conventions,
+                  protocols or regulations?
+                </skos:definition>
+                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Compliance"/>
+              </dqv:Metric>
+            </dqv:isMeasurementOf>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
+          </dqv:QualityMeasurement>
+        </dqv:hasQualityMeasurement>
+      </snippet>
+      <snippet label="health-dcat-ap-quality-measurements-Data_provenance_measurement1">
+        <dqv:hasQualityMeasurement>
+          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Data_provenance_measurement1">
+            <dqv:computedOn rdf:resource=""/>
+            <dqv:isMeasurementOf>
+              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Data_provenance_metric1">
+                <skos:definition xml:lang="en">Is the source of the dataset documented?</skos:definition>
+                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Data_provenance"/>
+              </dqv:Metric>
+            </dqv:isMeasurementOf>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
+          </dqv:QualityMeasurement>
+        </dqv:hasQualityMeasurement>
+      </snippet>
+      <snippet label="health-dcat-ap-quality-measurements-Data_provenance_measurement2">
+        <dqv:hasQualityMeasurement>
+          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Data_provenance_measurement2">
+            <dqv:computedOn rdf:resource=""/>
+            <dqv:isMeasurementOf>
+              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Data_provenance_metric2">
+                <skos:definition xml:lang="en">Are the processes and operations on the data documented?</skos:definition>
+                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Data_provenance"/>
+              </dqv:Metric>
+            </dqv:isMeasurementOf>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</dqv:value>
+          </dqv:QualityMeasurement>
+        </dqv:hasQualityMeasurement>
+      </snippet>
+      <snippet label="health-dcat-ap-quality-measurements-Metadata_scope_measurement1">
+        <dqv:hasQualityMeasurement>
+          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Metadata_scope_measurement1">
+            <dqv:computedOn rdf:resource=""/>
+            <dqv:isMeasurementOf>
+              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Metadata_scope_metric1">
+                <skos:definition xml:lang="en">Existence of comprehensive standardised metadata</skos:definition>
+                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Metadata_scope"/>
+              </dqv:Metric>
+            </dqv:isMeasurementOf>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
+          </dqv:QualityMeasurement>
+        </dqv:hasQualityMeasurement>
+      </snippet>
+      <snippet label="health-dcat-ap-quality-measurements-Metadata_scope_measurement2">
+        <dqv:hasQualityMeasurement>
+          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Metadata_scope_measurement2">
+            <dqv:computedOn rdf:resource=""/>
+            <dqv:isMeasurementOf>
+              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Metadata_scope_metric2">
+                <skos:definition xml:lang="en">Existence of an exhaustive data dictionary at variable level
+                </skos:definition>
+                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Metadata_scope"/>
+              </dqv:Metric>
+            </dqv:isMeasurementOf>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</dqv:value>
+          </dqv:QualityMeasurement>
+        </dqv:hasQualityMeasurement>
+      </snippet>
+      <snippet label="health-dcat-ap-quality-measurements-Accuracy_measurement1">
+        <dqv:hasQualityMeasurement>
+          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Accuracy_measurement1">
+            <dqv:computedOn rdf:resource=""/>
+            <dqv:isMeasurementOf>
+              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Accuracy_metric1">
+                <skos:definition xml:lang="en">Is accuracy of the dataset documented?</skos:definition>
+                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Accuracy"/>
+              </dqv:Metric>
+            </dqv:isMeasurementOf>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
+          </dqv:QualityMeasurement>
+        </dqv:hasQualityMeasurement>
+      </snippet>
+      <snippet label="health-dcat-ap-quality-measurements-Coherence_measurement1">
+        <dqv:hasQualityMeasurement>
+          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Coherence_measurement1">
+            <dqv:computedOn rdf:resource=""/>
+            <dqv:isMeasurementOf>
+              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Coherence_metric1">
+                <skos:definition xml:lang="en">Is coherence of the dataset documented?</skos:definition>
+                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Coherence"/>
+              </dqv:Metric>
+            </dqv:isMeasurementOf>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</dqv:value>
+          </dqv:QualityMeasurement>
+        </dqv:hasQualityMeasurement>
+      </snippet>
+      <snippet label="health-dcat-ap-quality-measurements-Completeness_measurement1">
+        <dqv:hasQualityMeasurement>
+          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Completeness_measurement1">
+            <dqv:computedOn rdf:resource=""/>
+            <dqv:isMeasurementOf>
+              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Completeness_metric1">
+                <skos:definition xml:lang="en">Is completeness of the dataset documented?</skos:definition>
+                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Completeness"/>
+              </dqv:Metric>
+            </dqv:isMeasurementOf>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</dqv:value>
+          </dqv:QualityMeasurement>
+        </dqv:hasQualityMeasurement>
+      </snippet>
+      <snippet label="health-dcat-ap-quality-measurements-Consistency_measurement1">
+        <dqv:hasQualityMeasurement>
+          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Consistency_measurement1">
+            <dqv:computedOn rdf:resource=""/>
+            <dqv:isMeasurementOf>
+              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Consistency_metric1">
+                <skos:definition xml:lang="en">Is consistency of the dataset documented?</skos:definition>
+                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Consistency"/>
+              </dqv:Metric>
+            </dqv:isMeasurementOf>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
+          </dqv:QualityMeasurement>
+        </dqv:hasQualityMeasurement>
+      </snippet>
+      <snippet label="health-dcat-ap-quality-measurements-Precision_measurement1">
+        <dqv:hasQualityMeasurement>
+          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Precision_measurement1">
+            <dqv:computedOn rdf:resource=""/>
+            <dqv:isMeasurementOf>
+              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Precision_metric1">
+                <skos:definition xml:lang="en">Is precision of the dataset documented?</skos:definition>
+                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Precision"/>
+              </dqv:Metric>
+            </dqv:isMeasurementOf>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
+          </dqv:QualityMeasurement>
+        </dqv:hasQualityMeasurement>
+      </snippet>
+      <snippet label="health-dcat-ap-quality-measurements-Validity_measurement1">
+        <dqv:hasQualityMeasurement>
+          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Validity_measurement1">
+            <dqv:computedOn rdf:resource=""/>
+            <dqv:isMeasurementOf>
+              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Validity_metric1">
+                <skos:definition xml:lang="en">Availability of a conformance report for the data model</skos:definition>
+                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Validity"/>
+              </dqv:Metric>
+            </dqv:isMeasurementOf>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
+          </dqv:QualityMeasurement>
+        </dqv:hasQualityMeasurement>
       </snippet>
     </list>
   </snippets>
