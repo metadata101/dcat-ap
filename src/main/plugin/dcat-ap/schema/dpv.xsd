@@ -50,7 +50,17 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:element name="hasPersonalData" type="rdf:ResourceRef"/>
+  <xs:complexType name="PersonalData">
+    <xs:sequence>
+      <xs:element name="PersonalData">
+        <xs:complexType>
+          <xs:attribute ref="rdf:about"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="hasPersonalData" type="dpv:PersonalData"/>
   <xs:element name="hasLegalBasis" type="dpv:LegalBasisType"/>
   <xs:element name="hasPurpose" type="dpv:PurposeType"/>
 </xs:schema>
