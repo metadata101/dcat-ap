@@ -35,7 +35,7 @@
           <xs:sequence>
             <xs:element name="url" type="xs:anyURI" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dct:title" minOccurs="1" maxOccurs="unbounded"/>
-            <!--  TODO-HEALTH:    <xs:element ref="dcat:keyword" minOccurs="0" maxOccurs="unbounded"/>-->
+            <!--  TODO-HEALTH: Optional element <xs:element ref="dcat:keyword" minOccurs="0" maxOccurs="unbounded"/>-->
             <xs:element name="column" type="csvw:Column_type" minOccurs="1" maxOccurs="unbounded"/>
           </xs:sequence>
         </xs:complexType>

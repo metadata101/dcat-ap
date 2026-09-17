@@ -233,21 +233,22 @@
                 <xs:element ref="healthdcatap:healthCategory" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="healthdcatap:healthTheme" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="healthdcatap:hdab" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="healthdcatap:hasStructuredData" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:hasStructuredData" minOccurs="1" maxOccurs="1"/>
                 <xs:element ref="healthdcatap:analytics" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="healthdcatap:hasCodeValues" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="healthdcatap:hasCodingSystem" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="healthdcatap:numberOfRecords" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="healthdcatap:numberOfUniqueIndividuals" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="healthdcatap:retentionPeriod" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="healthdcatap:maxTypicalAge" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="healthdcatap:minTypicalAge" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="healthdcatap:numberOfRecords" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="healthdcatap:numberOfUniqueIndividuals" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="healthdcatap:retentionPeriod" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="healthdcatap:maxTypicalAge" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="healthdcatap:minTypicalAge" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="healthdcatap:hasVariables" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dpv:hasPersonalData" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="healthdcatap:populationCoverage" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dpv:hasPurpose" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dpv:hasLegalBasis" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dqv:hasQualityAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dqv:hasQualityMeasurement" minOccurs="0" maxOccurs="unbounded"/>
 
                 <!-- DCAT-AP v2 compatibility -->
                 <xs:element ref="owl:versionInfo" minOccurs="0" maxOccurs="unbounded"/>

@@ -35,5 +35,5 @@
 
   <xs:element name="hasVariables" type="csvw:TableGroup_type"/>
 
-  <xs:element name="hdab" type="foaf:HealthAgent"/>
+  <xs:element name="hdab" type="foaf:Agent"/>
 </xs:schema>
