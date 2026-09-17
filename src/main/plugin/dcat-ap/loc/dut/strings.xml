@@ -124,6 +124,24 @@
   <mobility-section>Mobiliteit</mobility-section>
   <mobility-tab>Mobiliteit</mobility-tab>
   <mobility-view>Mobiliteit</mobility-view>
+  <health-view>Health dataset</health-view>
+  <health-view-quantum>Health dataset (Quantum fields)</health-view-quantum>
+  <health-view-optional>Health dataset (optional)</health-view-optional>
+  <health-dcat-ap-quality-measurements-Accessibility_measurement1>Access and provision / Accessibility / Availability of a data access &amp; usage policy</health-dcat-ap-quality-measurements-Accessibility_measurement1>
+  <health-dcat-ap-quality-measurements-Accessibility_measurement2>Access and provision / Accessibility / Average time from data access application to data release</health-dcat-ap-quality-measurements-Accessibility_measurement2>
+  <health-dcat-ap-quality-measurements-Population_coverage_measurement1>Coverage / Popuplation coverage / Coverage Rate</health-dcat-ap-quality-measurements-Population_coverage_measurement1>
+  <health-dcat-ap-quality-measurements-Population_representativity_measurement1>Coverage / Population representativity</health-dcat-ap-quality-measurements-Population_representativity_measurement1>
+  <health-dcat-ap-quality-measurements-Compliance_measurement1>Data documentation / Compliance / Documentation of compliance</health-dcat-ap-quality-measurements-Compliance_measurement1>
+  <health-dcat-ap-quality-measurements-Data_provenance_measurement1>Data documentation / Data provenance / Dataset source documentation</health-dcat-ap-quality-measurements-Data_provenance_measurement1>
+  <health-dcat-ap-quality-measurements-Data_provenance_measurement2>Data documentation / Data provenance / Process and operation documentation</health-dcat-ap-quality-measurements-Data_provenance_measurement2>
+  <health-dcat-ap-quality-measurements-Metadata_scope_measurement1>Data documentation / Metadata scope / Existence of comprehensive standardised metadata</health-dcat-ap-quality-measurements-Metadata_scope_measurement1>
+  <health-dcat-ap-quality-measurements-Metadata_scope_measurement2>Data documentation / Metadata scope / Existence of an exhaustive data dictionary at variable level</health-dcat-ap-quality-measurements-Metadata_scope_measurement2>
+  <health-dcat-ap-quality-measurements-Accuracy_measurement1>Technical quality / Accuracy / Accuracy documentation</health-dcat-ap-quality-measurements-Accuracy_measurement1>
+  <health-dcat-ap-quality-measurements-Coherence_measurement1>Technical quality / Coherence / Coherence documentation</health-dcat-ap-quality-measurements-Coherence_measurement1>
+  <health-dcat-ap-quality-measurements-Completeness_measurement1>Technical quality / Completeness / Completeness documentation</health-dcat-ap-quality-measurements-Completeness_measurement1>
+  <health-dcat-ap-quality-measurements-Consistency_measurement1>Technical quality / Consistency / Consistency documentation</health-dcat-ap-quality-measurements-Consistency_measurement1>
+  <health-dcat-ap-quality-measurements-Precision_measurement1>Technical quality / Precision / Precision documentation</health-dcat-ap-quality-measurements-Precision_measurement1>
+  <health-dcat-ap-quality-measurements-Validity_measurement1>Technical quality / Validity / Confomance report for the data model</health-dcat-ap-quality-measurements-Validity_measurement1>
   <vl-view>Vlaanderen</vl-view>
   <vl-tab-service>Service</vl-tab-service>
   <vl-tab-dataset>Dataset</vl-tab-dataset>

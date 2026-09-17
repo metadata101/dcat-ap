@@ -213,7 +213,7 @@
 
 
   <!-- the other elements in DC. -->
-  <xsl:template mode="mode-dcat-ap" priority="100" match="dc:*|dct:*|dcat:*|vcard:*|foaf:*|spdx:*|adms:*|owl:*|schema:*|skos:*|mdcat:*|cnt:*|oa:*|mobilitydcatap:*|locn:*|healthdcatap:*|csvw:*|cv:*|dpv:*">
+  <xsl:template mode="mode-dcat-ap" priority="100" match="dc:*|dct:*|dcat:*|vcard:*|foaf:*|spdx:*|adms:*|owl:*|schema:*|skos:*|mdcat:*|cnt:*|oa:*|mobilitydcatap:*|locn:*|healthdcatap:*|csvw:*|cv:*|dpv:*|dqv:*">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
     <xsl:param name="overrideLabel" select="''" required="no"/>
