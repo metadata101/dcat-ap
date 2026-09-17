@@ -29,6 +29,7 @@
                 xmlns:dcatap="http://data.europa.eu/r5r/"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:healthdcatap="http://healthdataportal.eu/ns/health#"
+                xmlns:dpv="https://w3id.org/dpv#"
                 xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
@@ -88,6 +89,19 @@
                 </dct:Standard>
               </dct:conformsTo>
             </xsl:when>
+            <xsl:when test="$wrapper = 'healthdcatap:hasCodingSystem'">
+              <healthdcatap:hasCodingSystem>
+                <dct:Standard rdf:about="{$rdfAbout}">
+                  <dct:identifier><xsl:value-of select="$rdfAbout"/></dct:identifier>
+
+                  <xsl:call-template name="build-element-from-concept">
+                    <xsl:with-param name="elementName" select="'dct:title'"/>
+                    <xsl:with-param name="listOfLanguage" select="$listOfLanguage"/>
+                    <xsl:with-param name="keyword" select="."/>
+                  </xsl:call-template>
+                </dct:Standard>
+              </healthdcatap:hasCodingSystem>
+            </xsl:when>
             <xsl:when test="$wrapper = 'mobilitydcatap:mobilityDataStandard'">
               <mobilitydcatap:mobilityDataStandard>
                 <mobilitydcatap:MobilityDataStandard rdf:about="{$rdfAbout}">
@@ -99,6 +113,11 @@
                   </xsl:call-template>
                 </mobilitydcatap:MobilityDataStandard>
               </mobilitydcatap:mobilityDataStandard>
+            </xsl:when>
+            <xsl:when test="$wrapper = 'dpv:hasPersonalData'">
+              <dpv:hasPersonalData>
+                <dpv:PersonalData rdf:about="{$rdfAbout}"/>
+              </dpv:hasPersonalData>
             </xsl:when>
             <xsl:otherwise>
               <xsl:element name="{$wrapper}">
