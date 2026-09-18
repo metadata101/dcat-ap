@@ -29,6 +29,8 @@
             <xs:element ref="skos:definition" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="skos:prefLabel" minOccurs="1" maxOccurs="1"/>
           </xs:sequence>
+          <xs:attribute ref="rdf:about"/>
+          <xs:attribute ref="rdf:nodeID"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
@@ -43,6 +45,8 @@
             <xs:element ref="skos:prefLabel" minOccurs="1" maxOccurs="1"/>
             <xs:element name="inCategory" type="dqv:Category" minOccurs="1" maxOccurs="1"/>
           </xs:sequence>
+          <xs:attribute ref="rdf:about"/>
+          <xs:attribute ref="rdf:nodeID"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
@@ -53,10 +57,12 @@
       <xs:element name="Metric" minOccurs="1" maxOccurs="1">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="expectedDataType" type="xs:anySimpleType" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="inDimension" type="dqv:Dimension" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="skos:definition" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="expectedDataType" type="rdf:ResourceRef" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="inDimension" type="rdf:ResourceRef" minOccurs="1" maxOccurs="1"/>
           </xs:sequence>
+          <xs:attribute ref="rdf:about"/>
+          <xs:attribute ref="rdf:nodeID"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
@@ -67,11 +73,22 @@
       <xs:element name="QualityMeasurement" minOccurs="1" maxOccurs="1">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="isMeasurmentOf" type="dqv:Metric" minOccurs="1" maxOccurs="1"/>
-<!--            <xs:element name="dq:datasSet"/>-->
             <xs:element name="computedOn" type="rdf:ResourceRef" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="value" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="isMeasurementOf" type="dqv:Metric" minOccurs="1" maxOccurs="1"/>
+<!--            <xs:element name="dq:datasSet"/>-->
+            <xs:element name="value" minOccurs="1" maxOccurs="1">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:decimal">
+                    <xs:attribute ref="rdf:datatype"/>
+                    <xs:attribute ref="rdf:resource"/>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
           </xs:sequence>
+          <xs:attribute ref="rdf:about"/>
+          <xs:attribute ref="rdf:nodeID"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
