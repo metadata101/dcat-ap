@@ -4,6 +4,7 @@ This repository contains a [DCAT-AP](https://joinup.ec.europa.eu/collection/sema
 * DCAT-AP,
 * [DCAT-AP-HVD](https://semiceu.github.io/DCAT-AP/releases/2.2.0-hvd/),
 * [Mobility-DCAT](https://mobilitydcat-ap.github.io/mobilityDCAT-AP/releases/),
+* [Health-DCAT](https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-7/)
 * [DCAT-AP-VL](https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/)
 
 ## Reference documents
