@@ -1313,7 +1313,7 @@
     <label>Quality measurement</label>
     <description>A measurement of the quality of the Dataset.</description>
   </element>
-  <element name="dqv:isMeasurmentOf">
+  <element name="dqv:isMeasurementOf">
     <label>Measurement</label>
     <description></description>
   </element>

@@ -142,6 +142,7 @@
   <health-dcat-ap-quality-measurements-Consistency_measurement1>Technical quality / Consistency / Consistency documentation</health-dcat-ap-quality-measurements-Consistency_measurement1>
   <health-dcat-ap-quality-measurements-Precision_measurement1>Technical quality / Precision / Precision documentation</health-dcat-ap-quality-measurements-Precision_measurement1>
   <health-dcat-ap-quality-measurements-Validity_measurement1>Technical quality / Validity / Confomance report for the data model</health-dcat-ap-quality-measurements-Validity_measurement1>
+
   <vl-view>Flanders</vl-view>
   <vl-tab-service>Service</vl-tab-service>
   <vl-tab-dataset>Dataset</vl-tab-dataset>
