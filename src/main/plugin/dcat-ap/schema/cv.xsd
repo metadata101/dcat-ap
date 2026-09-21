@@ -32,9 +32,9 @@
         <xs:complexType>
           <xs:sequence>
             <!-- Email address as a URI reference (mailto:) -->
-            <xs:element name="email" type="rdf:ResourceRef" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="email" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="1"/>
             <!-- Telephone number as a URI reference (tel:) -->
-            <xs:element name="telephone" type="rdf:ResourceRef" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="telephone" type="rdf:PlainLiteral" minOccurs="0" maxOccurs="unbounded"/>
             <!-- Contact webpage as a URI reference -->
             <xs:element name="contactPage" type="rdf:ResourceRef" minOccurs="0" maxOccurs="1"/>
             <!-- Time periods when the Contact Point is available -->
@@ -63,8 +63,8 @@
   </xs:complexType>
 
   <xs:element name="contactPoint" type="cv:ContactPoint"/>
-  <xs:element name="email" type="rdf:ResourceRef"/>
-  <xs:element name="telephone" type="rdf:ResourceRef"/>
+  <xs:element name="email" type="rdf:PlainLiteral"/>
+  <xs:element name="telephone" type="rdf:PlainLiteral"/>
   <xs:element name="contactPage" type="rdf:ResourceRef"/>
   <xs:element name="openingHours" type="cv:TemporalEntity_type"/>
   <xs:element name="specialOpeningHoursSpecification" type="cv:TemporalEntity_type"/>
