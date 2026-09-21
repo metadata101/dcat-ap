@@ -1399,7 +1399,8 @@
           </action>
         </section>
 
-        <section name="health-view">
+        <section name="health-view"
+                 displayIfRecord="$p2 = ('HealthDCAT-AP')">
           <field xpath="/rdf:RDF/dcat:Catalog/*/*/healthdcatap:healthCategory"
                  or="healthCategory"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
@@ -1418,7 +1419,8 @@
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
 
-        <section name="health-view-quantum" collapsed="true">
+        <section name="health-view-quantum"
+                 displayIfRecord="$p2 = ('HealthDCAT-AP')">
           <!--<section name="dqv:hasQualityMeasurement"
                    forEach="/rdf:RDF/dcat:Catalog/*/*/dqv:hasQualityMeasurement"
                    del=".">
@@ -1435,7 +1437,8 @@
           </action>
         </section>
 
-        <section name="health-view-optional" collapsed="true">
+        <section name="health-view-optional"
+                 displayIfRecord="$p2 = ('HealthDCAT-AP')">
           <!-- Optional -->
           <field xpath="/rdf:RDF/dcat:Catalog/*/*/dct:alternative"
                  or="alternative"

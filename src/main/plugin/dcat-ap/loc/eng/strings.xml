@@ -126,6 +126,7 @@
   <health-view>Health dataset</health-view>
   <health-view-quantum>Health dataset (Quantum fields)</health-view-quantum>
   <health-view-optional>Health dataset (optional)</health-view-optional>
+  <dcat-ap-health-700>Health DCAT-AP - 7.0.0</dcat-ap-health-700>
   <health-dcat-ap-quality-measurements-Accessibility_measurement1>Access and provision / Accessibility / Availability of a data access &amp; usage policy</health-dcat-ap-quality-measurements-Accessibility_measurement1>
   <health-dcat-ap-quality-measurements-Accessibility_measurement2>Access and provision / Accessibility / Average time from data access application to data release</health-dcat-ap-quality-measurements-Accessibility_measurement2>
   <health-dcat-ap-quality-measurements-Population_coverage_measurement1>Coverage / Popuplation coverage / Coverage Rate</health-dcat-ap-quality-measurements-Population_coverage_measurement1>
