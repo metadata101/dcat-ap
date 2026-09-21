@@ -1378,6 +1378,10 @@
     <label>Email</label>
     <description>The email address of the Contact Point.</description>
   </element>
+  <element name="cv:telephone">
+    <label>Phone</label>
+    <description>The phone number of the Contact Point.</description>
+  </element>
   <element name="cv:contactPage">
     <label>Contact page</label>
     <description>The contact page of the Contact Point.</description>

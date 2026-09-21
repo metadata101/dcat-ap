@@ -2496,8 +2496,10 @@
         <for name="csvw:table"/>
         <for name="csvw:column"/>
         <for name="cv:contactPoint"/>
+        <!--Optional elements
         <for name="cv:email"/>
         <for name="cv:telephone"/>
+        -->
         <!--Unsupported optional elements
         <for name="cv:openingHours"/>
         <for name="cv:specialOpeningHoursSpecification"/>-->
