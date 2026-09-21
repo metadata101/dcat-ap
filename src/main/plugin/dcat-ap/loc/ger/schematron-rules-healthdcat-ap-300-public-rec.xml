@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+   <healthdcat-ap-300-public-rec.000000.schematron>HealthDCAT-AP (Public) - Recommended</healthdcat-ap-300-public-rec.000000.schematron>
+   <healthdcat-ap-300-public-rec.000001.title>Minimum cardinality of geodcatap:custodian in //dcat:Dataset.</healthdcat-ap-300-public-rec.000001.title>
+   <healthdcat-ap-300-public-rec.000002.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000002.assert>
+   <healthdcat-ap-300-public-rec.000003.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000003.report>
+   <healthdcat-ap-300-public-rec.000004.title>Minimum cardinality of dcat:contactPoint in //dcat:Dataset.</healthdcat-ap-300-public-rec.000004.title>
+   <healthdcat-ap-300-public-rec.000005.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000005.assert>
+   <healthdcat-ap-300-public-rec.000006.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000006.report>
+   <healthdcat-ap-300-public-rec.000007.title>Minimum cardinality of dcat:keyword in //dcat:Dataset.</healthdcat-ap-300-public-rec.000007.title>
+   <healthdcat-ap-300-public-rec.000008.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000008.assert>
+   <healthdcat-ap-300-public-rec.000009.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000009.report>
+   <healthdcat-ap-300-public-rec.000010.title>Minimum cardinality of adms:sample in //dcat:Dataset.</healthdcat-ap-300-public-rec.000010.title>
+   <healthdcat-ap-300-public-rec.000011.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000011.assert>
+   <healthdcat-ap-300-public-rec.000012.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000012.report>
+   <healthdcat-ap-300-public-rec.000013.title>Minimum cardinality of healthdcatap:analytics in //dcat:Dataset.</healthdcat-ap-300-public-rec.000013.title>
+   <healthdcat-ap-300-public-rec.000014.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000014.assert>
+   <healthdcat-ap-300-public-rec.000015.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000015.report>
+   <healthdcat-ap-300-public-rec.000016.title>Minimum cardinality of healthdcatap:hasCodeValues in //dcat:Dataset.</healthdcat-ap-300-public-rec.000016.title>
+   <healthdcat-ap-300-public-rec.000017.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000017.assert>
+   <healthdcat-ap-300-public-rec.000018.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000018.report>
+   <healthdcat-ap-300-public-rec.000019.title>Minimum cardinality of healthdcatap:hasCodingSystem in //dcat:Dataset.</healthdcat-ap-300-public-rec.000019.title>
+   <healthdcat-ap-300-public-rec.000020.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000020.assert>
+   <healthdcat-ap-300-public-rec.000021.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000021.report>
+   <healthdcat-ap-300-public-rec.000022.title>Minimum cardinality of healthdcatap:healthTheme in //dcat:Dataset.</healthdcat-ap-300-public-rec.000022.title>
+   <healthdcat-ap-300-public-rec.000023.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000023.assert>
+   <healthdcat-ap-300-public-rec.000024.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000024.report>
+   <healthdcat-ap-300-public-rec.000025.title>Minimum cardinality of dpv:hasLegalBasis in //dcat:Dataset.</healthdcat-ap-300-public-rec.000025.title>
+   <healthdcat-ap-300-public-rec.000026.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000026.assert>
+   <healthdcat-ap-300-public-rec.000027.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000027.report>
+   <healthdcat-ap-300-public-rec.000028.title>Minimum cardinality of healthdcatap:maxTypicalAge in //dcat:Dataset.</healthdcat-ap-300-public-rec.000028.title>
+   <healthdcat-ap-300-public-rec.000029.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000029.assert>
+   <healthdcat-ap-300-public-rec.000030.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000030.report>
+   <healthdcat-ap-300-public-rec.000031.title>Minimum cardinality of healthdcatap:minTypicalAge in //dcat:Dataset.</healthdcat-ap-300-public-rec.000031.title>
+   <healthdcat-ap-300-public-rec.000032.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000032.assert>
+   <healthdcat-ap-300-public-rec.000033.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000033.report>
+   <healthdcat-ap-300-public-rec.000034.title>Minimum cardinality of healthdcatap:numberOfRecords in //dcat:Dataset.</healthdcat-ap-300-public-rec.000034.title>
+   <healthdcat-ap-300-public-rec.000035.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000035.assert>
+   <healthdcat-ap-300-public-rec.000036.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000036.report>
+   <healthdcat-ap-300-public-rec.000037.title>Minimum cardinality of healthdcatap:numberOfUniqueIndividuals in //dcat:Dataset.</healthdcat-ap-300-public-rec.000037.title>
+   <healthdcat-ap-300-public-rec.000038.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000038.assert>
+   <healthdcat-ap-300-public-rec.000039.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000039.report>
+   <healthdcat-ap-300-public-rec.000040.title>Minimum cardinality of dpv:hasPersonalData in //dcat:Dataset.</healthdcat-ap-300-public-rec.000040.title>
+   <healthdcat-ap-300-public-rec.000041.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000041.assert>
+   <healthdcat-ap-300-public-rec.000042.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000042.report>
+   <healthdcat-ap-300-public-rec.000043.title>Minimum cardinality of healthdcatap:populationCoverage in //dcat:Dataset.</healthdcat-ap-300-public-rec.000043.title>
+   <healthdcat-ap-300-public-rec.000044.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000044.assert>
+   <healthdcat-ap-300-public-rec.000045.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000045.report>
+   <healthdcat-ap-300-public-rec.000046.title>Minimum cardinality of dpv:hasPurpose in //dcat:Dataset.</healthdcat-ap-300-public-rec.000046.title>
+   <healthdcat-ap-300-public-rec.000047.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000047.assert>
+   <healthdcat-ap-300-public-rec.000048.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000048.report>
+   <healthdcat-ap-300-public-rec.000049.title>Minimum cardinality of dqv:hasQualityAnnotation in //dcat:Dataset.</healthdcat-ap-300-public-rec.000049.title>
+   <healthdcat-ap-300-public-rec.000050.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000050.assert>
+   <healthdcat-ap-300-public-rec.000051.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000051.report>
+   <healthdcat-ap-300-public-rec.000052.title>Minimum cardinality of healthdcatap:retentionPeriod in //dcat:Dataset.</healthdcat-ap-300-public-rec.000052.title>
+   <healthdcat-ap-300-public-rec.000053.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-rec.000053.assert>
+   <healthdcat-ap-300-public-rec.000054.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-rec.000054.report>
+   <healthdcat-ap-300-public-rec.000055.title>Node kind constraint for //dcat:Catalog/dcat:themeTaxonomy.</healthdcat-ap-300-public-rec.000055.title>
+   <healthdcat-ap-300-public-rec.000056.assert>Nodekind should be IRI.</healthdcat-ap-300-public-rec.000056.assert>
+   <healthdcat-ap-300-public-rec.000057.report>Nodekind is IRI.</healthdcat-ap-300-public-rec.000057.report>
+   <healthdcat-ap-300-public-rec.000058.title>Value check for dcat:themeTaxonomy in //dcat:Catalog.</healthdcat-ap-300-public-rec.000058.title>
+   <healthdcat-ap-300-public-rec.000059.assert>Value http://publications.europa.eu/resource/authority/data-theme was not found.</healthdcat-ap-300-public-rec.000059.assert>
+   <healthdcat-ap-300-public-rec.000060.report>Value http://publications.europa.eu/resource/authority/data-theme was found.</healthdcat-ap-300-public-rec.000060.report>
+   <healthdcat-ap-300-public-rec.000061.title>Node kind constraint for //dcat:Catalog/dct:spatial.</healthdcat-ap-300-public-rec.000061.title>
+   <healthdcat-ap-300-public-rec.000062.assert>Nodekind should be IRI.</healthdcat-ap-300-public-rec.000062.assert>
+   <healthdcat-ap-300-public-rec.000063.report>Nodekind is IRI.</healthdcat-ap-300-public-rec.000063.report>
+   <healthdcat-ap-300-public-rec.000064.title>Node kind constraint for //dcat:Catalog/dct:publisher.</healthdcat-ap-300-public-rec.000064.title>
+   <healthdcat-ap-300-public-rec.000065.assert>Nodekind should be IRI.</healthdcat-ap-300-public-rec.000065.assert>
+   <healthdcat-ap-300-public-rec.000066.report>Nodekind is IRI.</healthdcat-ap-300-public-rec.000066.report>
+   <healthdcat-ap-300-public-rec.000067.title>Node kind constraint for //dcat:Distribution/dcat:packageFormat.</healthdcat-ap-300-public-rec.000067.title>
+   <healthdcat-ap-300-public-rec.000068.assert>Nodekind should be IRI.</healthdcat-ap-300-public-rec.000068.assert>
+   <healthdcat-ap-300-public-rec.000069.report>Nodekind is IRI.</healthdcat-ap-300-public-rec.000069.report>
+   <healthdcat-ap-300-public-rec.000070.title>Node kind constraint for //dcat:Distribution/dcat:compressFormat.</healthdcat-ap-300-public-rec.000070.title>
+   <healthdcat-ap-300-public-rec.000071.assert>Nodekind should be IRI.</healthdcat-ap-300-public-rec.000071.assert>
+   <healthdcat-ap-300-public-rec.000072.report>Nodekind is IRI.</healthdcat-ap-300-public-rec.000072.report>
+   <healthdcat-ap-300-public-rec.000073.title>Node kind constraint for //dcat:Distribution/dcat:mediaType.</healthdcat-ap-300-public-rec.000073.title>
+   <healthdcat-ap-300-public-rec.000074.assert>Nodekind should be IRI.</healthdcat-ap-300-public-rec.000074.assert>
+   <healthdcat-ap-300-public-rec.000075.report>Nodekind is IRI.</healthdcat-ap-300-public-rec.000075.report>
+   <healthdcat-ap-300-public-rec.000076.title>Node kind constraint for //dcat:Dataset/dct:type.</healthdcat-ap-300-public-rec.000076.title>
+   <healthdcat-ap-300-public-rec.000077.assert>Nodekind should be IRI.</healthdcat-ap-300-public-rec.000077.assert>
+   <healthdcat-ap-300-public-rec.000078.report>Nodekind is IRI.</healthdcat-ap-300-public-rec.000078.report>
+   <healthdcat-ap-300-public-rec.000079.title>Node kind constraint for //dcat:Dataset/dct:spatial.</healthdcat-ap-300-public-rec.000079.title>
+   <healthdcat-ap-300-public-rec.000080.assert>Nodekind should be IRI.</healthdcat-ap-300-public-rec.000080.assert>
+   <healthdcat-ap-300-public-rec.000081.report>Nodekind is IRI.</healthdcat-ap-300-public-rec.000081.report>
+</strings>
