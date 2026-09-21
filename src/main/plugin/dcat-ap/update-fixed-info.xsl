@@ -588,6 +588,12 @@
     </dct:title>
   </xsl:template>
 
+  <xsl:template match="dqv:hasQualityMeasurement/dqv:QualityMeasurement/dqv:computedOn" priority="10">
+    <xsl:copy>
+      <xsl:attribute name="rdf:resource" select="$resourceAbout"/>
+    </xsl:copy>
+  </xsl:template>
+
   <xsl:template name="handle-record-id">
     <xsl:apply-templates select="@*[name() != 'rdf:about']"/>
     <xsl:attribute name="rdf:about" select="$recordAbout"/>
