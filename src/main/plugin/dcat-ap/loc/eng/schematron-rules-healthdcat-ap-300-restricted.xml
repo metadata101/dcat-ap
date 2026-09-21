@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+   <healthdcat-ap-300-restricted.000000.schematron>HealthDCAT-AP (Restricted)</healthdcat-ap-300-restricted.000000.schematron>
+   <healthdcat-ap-300-restricted.000001.title>Class constraint for csvw:table in csvw:TableGroup</healthdcat-ap-300-restricted.000001.title>
+   <healthdcat-ap-300-restricted.000002.assert>Property csvw:table in context csvw:TableGroup should have class csvw:Table.</healthdcat-ap-300-restricted.000002.assert>
+   <healthdcat-ap-300-restricted.000003.report>Property csvw:table in context csvw:TableGroup has the right class csvw:Table.</healthdcat-ap-300-restricted.000003.report>
+   <healthdcat-ap-300-restricted.000004.title>Class constraint for healthdcatap:retentionPeriod in dcat:Dataset</healthdcat-ap-300-restricted.000004.title>
+   <healthdcat-ap-300-restricted.000005.assert>Property healthdcatap:retentionPeriod in context dcat:Dataset should have class dct:PeriodOfTime.</healthdcat-ap-300-restricted.000005.assert>
+   <healthdcat-ap-300-restricted.000006.report>Property healthdcatap:retentionPeriod in context dcat:Dataset has the right class dct:PeriodOfTime.</healthdcat-ap-300-restricted.000006.report>
+   <healthdcat-ap-300-restricted.000007.title>Class constraint for healthdcatap:hasCodingSystem in dcat:Dataset</healthdcat-ap-300-restricted.000007.title>
+   <healthdcat-ap-300-restricted.000008.assert>Property healthdcatap:hasCodingSystem in context dcat:Dataset should have class dct:Standard.</healthdcat-ap-300-restricted.000008.assert>
+   <healthdcat-ap-300-restricted.000009.report>Property healthdcatap:hasCodingSystem in context dcat:Dataset has the right class dct:Standard.</healthdcat-ap-300-restricted.000009.report>
+   <healthdcat-ap-300-restricted.000010.title>Class constraint for healthdcatap:hasVariables in dcat:Dataset</healthdcat-ap-300-restricted.000010.title>
+   <healthdcat-ap-300-restricted.000011.assert>Property healthdcatap:hasVariables in context dcat:Dataset should have class csvw:TableGroup.</healthdcat-ap-300-restricted.000011.assert>
+   <healthdcat-ap-300-restricted.000012.report>Property healthdcatap:hasVariables in context dcat:Dataset has the right class csvw:TableGroup.</healthdcat-ap-300-restricted.000012.report>
+   <healthdcat-ap-300-restricted.000013.title>Class constraint for dqv:hasQualityAnnotation in dcat:Dataset</healthdcat-ap-300-restricted.000013.title>
+   <healthdcat-ap-300-restricted.000014.assert>Property dqv:hasQualityAnnotation in context dcat:Dataset should have class dqv:QualityCertificate.</healthdcat-ap-300-restricted.000014.assert>
+   <healthdcat-ap-300-restricted.000015.report>Property dqv:hasQualityAnnotation in context dcat:Dataset has the right class dqv:QualityCertificate.</healthdcat-ap-300-restricted.000015.report>
+   <healthdcat-ap-300-restricted.000016.title>Class constraint for dpv:hasPersonalData in dcat:Dataset</healthdcat-ap-300-restricted.000016.title>
+   <healthdcat-ap-300-restricted.000017.assert>Property dpv:hasPersonalData in context dcat:Dataset should have class dpv:PersonalData.</healthdcat-ap-300-restricted.000017.assert>
+   <healthdcat-ap-300-restricted.000018.report>Property dpv:hasPersonalData in context dcat:Dataset has the right class dpv:PersonalData.</healthdcat-ap-300-restricted.000018.report>
+   <healthdcat-ap-300-restricted.000019.title>Class constraint for dpv:hasLegalBasis in dcat:Dataset</healthdcat-ap-300-restricted.000019.title>
+   <healthdcat-ap-300-restricted.000020.assert>Property dpv:hasLegalBasis in context dcat:Dataset should have class dpv:LegalBasis.</healthdcat-ap-300-restricted.000020.assert>
+   <healthdcat-ap-300-restricted.000021.report>Property dpv:hasLegalBasis in context dcat:Dataset has the right class dpv:LegalBasis.</healthdcat-ap-300-restricted.000021.report>
+   <healthdcat-ap-300-restricted.000022.title>Class constraint for healthdcatap:healthTheme in dcat:Dataset</healthdcat-ap-300-restricted.000022.title>
+   <healthdcat-ap-300-restricted.000023.assert>Property healthdcatap:healthTheme in context dcat:Dataset should have class skos:Concept.</healthdcat-ap-300-restricted.000023.assert>
+   <healthdcat-ap-300-restricted.000024.report>Property healthdcatap:healthTheme in context dcat:Dataset has the right class skos:Concept.</healthdcat-ap-300-restricted.000024.report>
+   <healthdcat-ap-300-restricted.000025.title>Class constraint for healthdcatap:healthCategory in dcat:Dataset</healthdcat-ap-300-restricted.000025.title>
+   <healthdcat-ap-300-restricted.000026.assert>Property healthdcatap:healthCategory in context dcat:Dataset should have class skos:Concept.</healthdcat-ap-300-restricted.000026.assert>
+   <healthdcat-ap-300-restricted.000027.report>Property healthdcatap:healthCategory in context dcat:Dataset has the right class skos:Concept.</healthdcat-ap-300-restricted.000027.report>
+   <healthdcat-ap-300-restricted.000028.title>Class constraint for healthdcatap:hdab in dcat:Dataset</healthdcat-ap-300-restricted.000028.title>
+   <healthdcat-ap-300-restricted.000029.assert>Property healthdcatap:hdab in context dcat:Dataset should have class foaf:Agent.</healthdcat-ap-300-restricted.000029.assert>
+   <healthdcat-ap-300-restricted.000030.report>Property healthdcatap:hdab in context dcat:Dataset has the right class foaf:Agent.</healthdcat-ap-300-restricted.000030.report>
+   <healthdcat-ap-300-restricted.000031.title>Class constraint for dpv:hasPurpose in dcat:Dataset</healthdcat-ap-300-restricted.000031.title>
+   <healthdcat-ap-300-restricted.000032.assert>Property dpv:hasPurpose in context dcat:Dataset should have class dpv:Purpose.</healthdcat-ap-300-restricted.000032.assert>
+   <healthdcat-ap-300-restricted.000033.report>Property dpv:hasPurpose in context dcat:Dataset has the right class dpv:Purpose.</healthdcat-ap-300-restricted.000033.report>
+   <healthdcat-ap-300-restricted.000034.title>Class constraint for healthdcatap:analytics in dcat:Dataset</healthdcat-ap-300-restricted.000034.title>
+   <healthdcat-ap-300-restricted.000035.assert>Property healthdcatap:analytics in context dcat:Dataset should have class dcat:Distribution.</healthdcat-ap-300-restricted.000035.assert>
+   <healthdcat-ap-300-restricted.000036.report>Property healthdcatap:analytics in context dcat:Dataset has the right class dcat:Distribution.</healthdcat-ap-300-restricted.000036.report>
+   <healthdcat-ap-300-restricted.000037.title>Class constraint for cv:frequency in time:TemporalEntity</healthdcat-ap-300-restricted.000037.title>
+   <healthdcat-ap-300-restricted.000038.assert>Property cv:frequency in context time:TemporalEntity should have class dct:Frequency.</healthdcat-ap-300-restricted.000038.assert>
+   <healthdcat-ap-300-restricted.000039.report>Property cv:frequency in context time:TemporalEntity has the right class dct:Frequency.</healthdcat-ap-300-restricted.000039.report>
+   <healthdcat-ap-300-restricted.000040.title>Node kind constraint for //time:TemporalEntity/cv:frequency.</healthdcat-ap-300-restricted.000040.title>
+   <healthdcat-ap-300-restricted.000041.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000041.assert>
+   <healthdcat-ap-300-restricted.000042.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000042.report>
+   <healthdcat-ap-300-restricted.000043.title>Node kind constraint for //time:TemporalEntity/dct:description.</healthdcat-ap-300-restricted.000043.title>
+   <healthdcat-ap-300-restricted.000044.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000044.assert>
+   <healthdcat-ap-300-restricted.000045.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000045.report>
+   <healthdcat-ap-300-restricted.000046.title>Node kind constraint for //dct:LicenseDocument/dct:type.</healthdcat-ap-300-restricted.000046.title>
+   <healthdcat-ap-300-restricted.000047.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000047.assert>
+   <healthdcat-ap-300-restricted.000048.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000048.report>
+   <healthdcat-ap-300-restricted.000049.title>Node kind constraint for //csvw:Table/csvw:column.</healthdcat-ap-300-restricted.000049.title>
+   <healthdcat-ap-300-restricted.000050.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000050.assert>
+   <healthdcat-ap-300-restricted.000051.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000051.report>
+   <healthdcat-ap-300-restricted.000052.title>Node kind constraint for //csvw:Table/dcat:keyword.</healthdcat-ap-300-restricted.000052.title>
+   <healthdcat-ap-300-restricted.000053.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000053.assert>
+   <healthdcat-ap-300-restricted.000054.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000054.report>
+   <healthdcat-ap-300-restricted.000055.title>Node kind constraint for //csvw:Table/dct:title.</healthdcat-ap-300-restricted.000055.title>
+   <healthdcat-ap-300-restricted.000056.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000056.assert>
+   <healthdcat-ap-300-restricted.000057.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000057.report>
+   <healthdcat-ap-300-restricted.000058.title>Node kind constraint for //csvw:Table/csvw:url.</healthdcat-ap-300-restricted.000058.title>
+   <healthdcat-ap-300-restricted.000059.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000059.assert>
+   <healthdcat-ap-300-restricted.000060.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000060.report>
+   <healthdcat-ap-300-restricted.000061.title>Class constraint for cv:specialOpeningHoursSpecification in cv:ContactPoint</healthdcat-ap-300-restricted.000061.title>
+   <healthdcat-ap-300-restricted.000062.assert>Property cv:specialOpeningHoursSpecification in context cv:ContactPoint should have class time:TemporalEntity.</healthdcat-ap-300-restricted.000062.assert>
+   <healthdcat-ap-300-restricted.000063.report>Property cv:specialOpeningHoursSpecification in context cv:ContactPoint has the right class time:TemporalEntity.</healthdcat-ap-300-restricted.000063.report>
+   <healthdcat-ap-300-restricted.000064.title>Node kind constraint for //cv:ContactPoint/cv:specialOpeningHoursSpecification.</healthdcat-ap-300-restricted.000064.title>
+   <healthdcat-ap-300-restricted.000065.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000065.assert>
+   <healthdcat-ap-300-restricted.000066.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000066.report>
+   <healthdcat-ap-300-restricted.000067.title>Class constraint for cv:openingHours in cv:ContactPoint</healthdcat-ap-300-restricted.000067.title>
+   <healthdcat-ap-300-restricted.000068.assert>Property cv:openingHours in context cv:ContactPoint should have class time:TemporalEntity.</healthdcat-ap-300-restricted.000068.assert>
+   <healthdcat-ap-300-restricted.000069.report>Property cv:openingHours in context cv:ContactPoint has the right class time:TemporalEntity.</healthdcat-ap-300-restricted.000069.report>
+   <healthdcat-ap-300-restricted.000070.title>Node kind constraint for //cv:ContactPoint/cv:openingHours.</healthdcat-ap-300-restricted.000070.title>
+   <healthdcat-ap-300-restricted.000071.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000071.assert>
+   <healthdcat-ap-300-restricted.000072.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000072.report>
+   <healthdcat-ap-300-restricted.000073.title>Node kind constraint for //cv:ContactPoint/cv:telephone.</healthdcat-ap-300-restricted.000073.title>
+   <healthdcat-ap-300-restricted.000074.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000074.assert>
+   <healthdcat-ap-300-restricted.000075.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000075.report>
+   <healthdcat-ap-300-restricted.000076.title>Node kind constraint for //cv:ContactPoint/cv:contactPage.</healthdcat-ap-300-restricted.000076.title>
+   <healthdcat-ap-300-restricted.000077.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000077.assert>
+   <healthdcat-ap-300-restricted.000078.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000078.report>
+   <healthdcat-ap-300-restricted.000079.title>Node kind constraint for //cv:ContactPoint/cv:email.</healthdcat-ap-300-restricted.000079.title>
+   <healthdcat-ap-300-restricted.000080.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000080.assert>
+   <healthdcat-ap-300-restricted.000081.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000081.report>
+   <healthdcat-ap-300-restricted.000082.title>Node kind constraint for //dcat:Catalog/dct:language.</healthdcat-ap-300-restricted.000082.title>
+   <healthdcat-ap-300-restricted.000083.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000083.assert>
+   <healthdcat-ap-300-restricted.000084.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000084.report>
+   <healthdcat-ap-300-restricted.000085.title>Node kind constraint for //vcard:Kind/vcard:hasEmail.</healthdcat-ap-300-restricted.000085.title>
+   <healthdcat-ap-300-restricted.000086.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000086.assert>
+   <healthdcat-ap-300-restricted.000087.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000087.report>
+   <healthdcat-ap-300-restricted.000088.title>Node kind constraint for //vcard:Kind/vcard:hasURL.</healthdcat-ap-300-restricted.000088.title>
+   <healthdcat-ap-300-restricted.000089.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000089.assert>
+   <healthdcat-ap-300-restricted.000090.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000090.report>
+   <healthdcat-ap-300-restricted.000091.title>Class constraint for csvw:column in csvw:Table</healthdcat-ap-300-restricted.000091.title>
+   <healthdcat-ap-300-restricted.000092.assert>Property csvw:column in context csvw:Table should have class csvw:Column.</healthdcat-ap-300-restricted.000092.assert>
+   <healthdcat-ap-300-restricted.000093.report>Property csvw:column in context csvw:Table has the right class csvw:Column.</healthdcat-ap-300-restricted.000093.report>
+   <healthdcat-ap-300-restricted.000094.title>Node kind constraint for //dcat:DatasetSeries/dcatap:applicableLegislation.</healthdcat-ap-300-restricted.000094.title>
+   <healthdcat-ap-300-restricted.000095.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000095.assert>
+   <healthdcat-ap-300-restricted.000096.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000096.report>
+   <healthdcat-ap-300-restricted.000097.title>Node kind constraint for //dcat:Distribution/dcatap:availability.</healthdcat-ap-300-restricted.000097.title>
+   <healthdcat-ap-300-restricted.000098.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000098.assert>
+   <healthdcat-ap-300-restricted.000099.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000099.report>
+   <healthdcat-ap-300-restricted.000100.title>Node kind constraint for //dcat:Distribution/adms:status.</healthdcat-ap-300-restricted.000100.title>
+   <healthdcat-ap-300-restricted.000101.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000101.assert>
+   <healthdcat-ap-300-restricted.000102.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000102.report>
+   <healthdcat-ap-300-restricted.000103.title>Node kind constraint for //dcat:Distribution/dct:language.</healthdcat-ap-300-restricted.000103.title>
+   <healthdcat-ap-300-restricted.000104.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000104.assert>
+   <healthdcat-ap-300-restricted.000105.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000105.report>
+   <healthdcat-ap-300-restricted.000106.title>Node kind constraint for //dcat:Distribution/dct:format.</healthdcat-ap-300-restricted.000106.title>
+   <healthdcat-ap-300-restricted.000107.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000107.assert>
+   <healthdcat-ap-300-restricted.000108.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000108.report>
+   <healthdcat-ap-300-restricted.000109.title>Node kind constraint for //time:TemporalEntity/cv:frequency.</healthdcat-ap-300-restricted.000109.title>
+   <healthdcat-ap-300-restricted.000110.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000110.assert>
+   <healthdcat-ap-300-restricted.000111.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000111.report>
+   <healthdcat-ap-300-restricted.000112.title>Node kind constraint for //dcat:Dataset/prov:wasGeneratedBy.</healthdcat-ap-300-restricted.000112.title>
+   <healthdcat-ap-300-restricted.000113.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000113.assert>
+   <healthdcat-ap-300-restricted.000114.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000114.report>
+   <healthdcat-ap-300-restricted.000115.title>Node kind constraint for //dcat:Dataset/healthdcatap:healthTheme.</healthdcat-ap-300-restricted.000115.title>
+   <healthdcat-ap-300-restricted.000116.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000116.assert>
+   <healthdcat-ap-300-restricted.000117.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000117.report>
+   <healthdcat-ap-300-restricted.000118.title>Node kind constraint for //dcat:Dataset/dct:conformsTo.</healthdcat-ap-300-restricted.000118.title>
+   <healthdcat-ap-300-restricted.000119.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000119.assert>
+   <healthdcat-ap-300-restricted.000120.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000120.report>
+   <healthdcat-ap-300-restricted.000121.title>Node kind constraint for //dcat:Dataset/healthdcatap:hasCodingSystem.</healthdcat-ap-300-restricted.000121.title>
+   <healthdcat-ap-300-restricted.000122.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000122.assert>
+   <healthdcat-ap-300-restricted.000123.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000123.report>
+   <healthdcat-ap-300-restricted.000124.title>Node kind constraint for //dcat:Dataset/healthdcatap:healthCategory.</healthdcat-ap-300-restricted.000124.title>
+   <healthdcat-ap-300-restricted.000125.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000125.assert>
+   <healthdcat-ap-300-restricted.000126.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000126.report>
+   <healthdcat-ap-300-restricted.000127.title>Node kind constraint for //dcat:Dataset/dct:accessRights.</healthdcat-ap-300-restricted.000127.title>
+   <healthdcat-ap-300-restricted.000128.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000128.assert>
+   <healthdcat-ap-300-restricted.000129.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000129.report>
+   <healthdcat-ap-300-restricted.000130.title>Value check for dcat:theme in //dcat:Dataset.</healthdcat-ap-300-restricted.000130.title>
+   <healthdcat-ap-300-restricted.000131.assert>Value http://publications.europa.eu/resource/authority/data-theme/HEAL was not found.</healthdcat-ap-300-restricted.000131.assert>
+   <healthdcat-ap-300-restricted.000132.report>Value http://publications.europa.eu/resource/authority/data-theme/HEAL was found.</healthdcat-ap-300-restricted.000132.report>
+   <healthdcat-ap-300-restricted.000133.title>Node kind constraint for //dcat:Dataset/dcat:theme.</healthdcat-ap-300-restricted.000133.title>
+   <healthdcat-ap-300-restricted.000134.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000134.assert>
+   <healthdcat-ap-300-restricted.000135.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000135.report>
+   <healthdcat-ap-300-restricted.000136.title>Node kind constraint for //dcat:Dataset/dct:language.</healthdcat-ap-300-restricted.000136.title>
+   <healthdcat-ap-300-restricted.000137.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000137.assert>
+   <healthdcat-ap-300-restricted.000138.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000138.report>
+   <healthdcat-ap-300-restricted.000139.title>Node kind constraint for //dcat:Dataset/dct:accrualPeriodicity.</healthdcat-ap-300-restricted.000139.title>
+   <healthdcat-ap-300-restricted.000140.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000140.assert>
+   <healthdcat-ap-300-restricted.000141.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000141.report>
+   <healthdcat-ap-300-restricted.000142.title>Node kind constraint for //dcat:Distribution/dcatap:applicableLegislation.</healthdcat-ap-300-restricted.000142.title>
+   <healthdcat-ap-300-restricted.000143.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000143.assert>
+   <healthdcat-ap-300-restricted.000144.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000144.report>
+   <healthdcat-ap-300-restricted.000145.title>Node kind constraint for //csvw:Column/csvw:propertyUrl.</healthdcat-ap-300-restricted.000145.title>
+   <healthdcat-ap-300-restricted.000146.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000146.assert>
+   <healthdcat-ap-300-restricted.000147.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000147.report>
+   <healthdcat-ap-300-restricted.000148.title>Node kind constraint for //csvw:Column/csvw:datatype.</healthdcat-ap-300-restricted.000148.title>
+   <healthdcat-ap-300-restricted.000149.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000149.assert>
+   <healthdcat-ap-300-restricted.000150.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000150.report>
+   <healthdcat-ap-300-restricted.000151.title>Node kind constraint for //csvw:Column/csvw:titles.</healthdcat-ap-300-restricted.000151.title>
+   <healthdcat-ap-300-restricted.000152.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000152.assert>
+   <healthdcat-ap-300-restricted.000153.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000153.report>
+   <healthdcat-ap-300-restricted.000154.title>Node kind constraint for //csvw:Column/dct:description.</healthdcat-ap-300-restricted.000154.title>
+   <healthdcat-ap-300-restricted.000155.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000155.assert>
+   <healthdcat-ap-300-restricted.000156.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000156.report>
+   <healthdcat-ap-300-restricted.000157.title>Node kind constraint for //csvw:Column/csvw:name.</healthdcat-ap-300-restricted.000157.title>
+   <healthdcat-ap-300-restricted.000158.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000158.assert>
+   <healthdcat-ap-300-restricted.000159.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000159.report>
+   <healthdcat-ap-300-restricted.000160.title>Node kind constraint for //dcat:Dataset/dct:alternative.</healthdcat-ap-300-restricted.000160.title>
+   <healthdcat-ap-300-restricted.000161.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000161.assert>
+   <healthdcat-ap-300-restricted.000162.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000162.report>
+   <healthdcat-ap-300-restricted.000163.title>Node kind constraint for //dcat:Dataset/healthdcatap:populationCoverage.</healthdcat-ap-300-restricted.000163.title>
+   <healthdcat-ap-300-restricted.000164.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000164.assert>
+   <healthdcat-ap-300-restricted.000165.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000165.report>
+   <healthdcat-ap-300-restricted.000166.title>Datatype constraint for //dcat:Dataset/healthdcatap:numberOfUniqueIndividuals (xs:nonNegativeInteger).</healthdcat-ap-300-restricted.000166.title>
+   <healthdcat-ap-300-restricted.000167.assert>The value should be castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000167.assert>
+   <healthdcat-ap-300-restricted.000168.report>The value is castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000168.report>
+   <healthdcat-ap-300-restricted.000169.title>Datatype constraint for //dcat:Dataset/healthdcatap:numberOfRecords (xs:nonNegativeInteger).</healthdcat-ap-300-restricted.000169.title>
+   <healthdcat-ap-300-restricted.000170.assert>The value should be castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000170.assert>
+   <healthdcat-ap-300-restricted.000171.report>The value is castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000171.report>
+   <healthdcat-ap-300-restricted.000172.title>Datatype constraint for //dcat:Dataset/healthdcatap:maxTypicalAge (xs:nonNegativeInteger).</healthdcat-ap-300-restricted.000172.title>
+   <healthdcat-ap-300-restricted.000173.assert>The value should be castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000173.assert>
+   <healthdcat-ap-300-restricted.000174.report>The value is castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000174.report>
+   <healthdcat-ap-300-restricted.000175.title>Datatype constraint for //dcat:Dataset/healthdcatap:minTypicalAge (xs:nonNegativeInteger).</healthdcat-ap-300-restricted.000175.title>
+   <healthdcat-ap-300-restricted.000176.assert>The value should be castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000176.assert>
+   <healthdcat-ap-300-restricted.000177.report>The value is castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000177.report>
+   <healthdcat-ap-300-restricted.000178.title>Node kind constraint for //dcat:Dataset/healthdcatap:hasCodingSystem.</healthdcat-ap-300-restricted.000178.title>
+   <healthdcat-ap-300-restricted.000179.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000179.assert>
+   <healthdcat-ap-300-restricted.000180.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000180.report>
+   <healthdcat-ap-300-restricted.000181.title>Node kind constraint for //dcat:Dataset/healthdcatap:hasCodeValues.</healthdcat-ap-300-restricted.000181.title>
+   <healthdcat-ap-300-restricted.000182.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000182.assert>
+   <healthdcat-ap-300-restricted.000183.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000183.report>
+   <healthdcat-ap-300-restricted.000184.title>Datatype constraint for //dcat:Dataset/healthdcatap:hasStructuredData (xs:boolean).</healthdcat-ap-300-restricted.000184.title>
+   <healthdcat-ap-300-restricted.000185.assert>The value should be castable to xs:boolean.</healthdcat-ap-300-restricted.000185.assert>
+   <healthdcat-ap-300-restricted.000186.report>The value is castable to xs:boolean.</healthdcat-ap-300-restricted.000186.report>
+   <healthdcat-ap-300-restricted.000187.title>Node kind constraint for //dcat:Dataset/healthdcatap:healthTheme.</healthdcat-ap-300-restricted.000187.title>
+   <healthdcat-ap-300-restricted.000188.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000188.assert>
+   <healthdcat-ap-300-restricted.000189.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000189.report>
+   <healthdcat-ap-300-restricted.000190.title>Value check for dct:accessRights in //dcat:Dataset.</healthdcat-ap-300-restricted.000190.title>
+   <healthdcat-ap-300-restricted.000191.assert>Value http://publications.europa.eu/resource/authority/access-right/RESTRICTED was not found.</healthdcat-ap-300-restricted.000191.assert>
+   <healthdcat-ap-300-restricted.000192.report>Value http://publications.europa.eu/resource/authority/access-right/RESTRICTED was found.</healthdcat-ap-300-restricted.000192.report>
+   <healthdcat-ap-300-restricted.000193.title>Node kind constraint for //dcat:Dataset/dcatap:applicableLegislation.</healthdcat-ap-300-restricted.000193.title>
+   <healthdcat-ap-300-restricted.000194.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000194.assert>
+   <healthdcat-ap-300-restricted.000195.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000195.report>
+   <healthdcat-ap-300-restricted.000196.title>Node kind constraint for //dcat:Dataset/dct:identifier.</healthdcat-ap-300-restricted.000196.title>
+   <healthdcat-ap-300-restricted.000197.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000197.assert>
+   <healthdcat-ap-300-restricted.000198.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000198.report>
+   <healthdcat-ap-300-restricted.000199.title>Node kind constraint for //dcat:Dataset/dct:publisher.</healthdcat-ap-300-restricted.000199.title>
+   <healthdcat-ap-300-restricted.000200.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000200.assert>
+   <healthdcat-ap-300-restricted.000201.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000201.report>
+   <healthdcat-ap-300-restricted.000202.title>Node kind constraint for //dcat:Dataset/dcat:theme.</healthdcat-ap-300-restricted.000202.title>
+   <healthdcat-ap-300-restricted.000203.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000203.assert>
+   <healthdcat-ap-300-restricted.000204.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000204.report>
+   <healthdcat-ap-300-restricted.000205.title>Node kind constraint for //dcat:Dataset/dpv:hasPurpose.</healthdcat-ap-300-restricted.000205.title>
+   <healthdcat-ap-300-restricted.000206.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000206.assert>
+   <healthdcat-ap-300-restricted.000207.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000207.report>
+   <healthdcat-ap-300-restricted.000208.title>Node kind constraint for //dcat:Dataset/healthdcatap:hdab.</healthdcat-ap-300-restricted.000208.title>
+   <healthdcat-ap-300-restricted.000209.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000209.assert>
+   <healthdcat-ap-300-restricted.000210.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000210.report>
+   <healthdcat-ap-300-restricted.000211.title>Node kind constraint for //dcat:Dataset/geodcatap:custodian.</healthdcat-ap-300-restricted.000211.title>
+   <healthdcat-ap-300-restricted.000212.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000212.assert>
+   <healthdcat-ap-300-restricted.000213.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000213.report>
+   <healthdcat-ap-300-restricted.000214.title>Node kind constraint for //dcat:Dataset/healthdcatap:healthCategory.</healthdcat-ap-300-restricted.000214.title>
+   <healthdcat-ap-300-restricted.000215.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000215.assert>
+   <healthdcat-ap-300-restricted.000216.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000216.report>
+   <healthdcat-ap-300-restricted.000217.title>Node kind constraint for //spdx:Checksum/spdx:algorithm.</healthdcat-ap-300-restricted.000217.title>
+   <healthdcat-ap-300-restricted.000218.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000218.assert>
+   <healthdcat-ap-300-restricted.000219.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000219.report>
+   <healthdcat-ap-300-restricted.000220.title>Node kind constraint for //dcat:Catalog/dcatap:applicableLegislation.</healthdcat-ap-300-restricted.000220.title>
+   <healthdcat-ap-300-restricted.000221.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000221.assert>
+   <healthdcat-ap-300-restricted.000222.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000222.report>
+   <healthdcat-ap-300-restricted.000223.title>Node kind constraint for //dcat:DataService/dct:format.</healthdcat-ap-300-restricted.000223.title>
+   <healthdcat-ap-300-restricted.000224.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000224.assert>
+   <healthdcat-ap-300-restricted.000225.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000225.report>
+   <healthdcat-ap-300-restricted.000226.title>Node kind constraint for //dcat:DataService/dct:accessRights.</healthdcat-ap-300-restricted.000226.title>
+   <healthdcat-ap-300-restricted.000227.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000227.assert>
+   <healthdcat-ap-300-restricted.000228.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000228.report>
+</strings>
