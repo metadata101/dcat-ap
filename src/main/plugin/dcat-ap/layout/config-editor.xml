@@ -733,15 +733,17 @@
       <name>dct:isVersionOf</name>
 
       <!-- HEALTH -->
-      <name>csvw:datatype</name>
       <name>healthdcatap:hasStructuredData</name>
-      <name>dpv:hasPersonalData</name>
-      <name>dpv:PersonalData</name>
       <name>healthdcatap:hasCodeValues</name>
       <name>healthdcatap:numberOfRecords</name>
       <name>healthdcatap:numberOfUniqueIndividuals</name>
       <name>healthdcatap:minTypicalAge</name>
       <name>healthdcatap:maxTypicalAge</name>
+      <name>csvw:datatype</name>
+      <name>cv:email</name>
+      <name>cv:telephone</name>
+      <name>dpv:hasPersonalData</name>
+      <name>dpv:PersonalData</name>
       <name>dqv:value</name>
       <name>dqv:isMeasurementOf</name>
       <name>dqv:Metric</name>
@@ -2491,6 +2493,8 @@
         <for name="csvw:table"/>
         <for name="csvw:column"/>
         <for name="cv:contactPoint"/>
+        <for name="cv:email"/>
+        <for name="cv:telephone"/>
         <!--Unsupported optional elements
         <for name="cv:openingHours"/>
         <for name="cv:specialOpeningHoursSpecification"/>-->
