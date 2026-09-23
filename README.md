@@ -4,6 +4,7 @@ This repository contains a [DCAT-AP](https://joinup.ec.europa.eu/collection/sema
 * DCAT-AP,
 * [DCAT-AP-HVD](https://semiceu.github.io/DCAT-AP/releases/2.2.0-hvd/),
 * [Mobility-DCAT](https://mobilitydcat-ap.github.io/mobilityDCAT-AP/releases/),
+* [Health-DCAT](https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-7/)
 * [DCAT-AP-VL](https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/)
 
 ## Reference documents
@@ -340,10 +341,23 @@ XSD is checking elements and types. Cardinalities and profiles' rules are checke
 
 Schematron rules can be enabled/disabled depending on the profile. See [configuring validation levels](https://docs.geonetwork-opensource.org/4.4/administrator-guide/managing-metadata-standards/configure-validation/).
 
-For example: enabling the DCAT-AP-VL validation based on the defined standard within the record can be configured as follows:
-- `admin console` > `metadata and templates` > `validation`
-- select one of the validation rulesets, e.g., `DCAT-AP-Vlaanderen - Recommended`
-- add a rule of type `XPATH` with the following XPath: `//dcat:CatalogRecord//dct:Standard[@rdf:about = 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21']`
+For example: 
+* enabling the DCAT-AP-VL validation based on the defined standard within the record can be configured as follows:
+  - `admin console` > `metadata and templates` > `validation`
+  - select one of the validation rulesets, e.g., `DCAT-AP-Vlaanderen - Recommended`
+  - add a rule of type `XPATH` with the following XPath: `//dcat:CatalogRecord//dct:Standard[@rdf:about = 'https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/erkendestandaard/2022-04-21']`
+
+* enabling Health DCAT-AP validation using the following XPath:
+
+```
+./dcat:Catalog[dcat:record/*/dct:conformsTo/*/@rdf:about = 'https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-7/' and dcat:dataset/*/dct:accessRights/*/@rdf:about = 'http://publications.europa.eu/resource/authority/access-right/PUBLIC']
+
+./dcat:Catalog[dcat:record/*/dct:conformsTo/*/@rdf:about = 'https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-7/' and dcat:dataset/*/dct:accessRights/*/@rdf:about = 'http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC']
+
+./dcat:Catalog[dcat:record/*/dct:conformsTo/*/@rdf:about = 'https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-7/' and dcat:dataset/*/dct:accessRights/*/@rdf:about = 'http://publications.europa.eu/resource/authority/access-right/RESTRICTED']
+```
+
+
 
 Validation is also taking care of checking the version of a profile as it does not always declare a new namespace for a new version.
 

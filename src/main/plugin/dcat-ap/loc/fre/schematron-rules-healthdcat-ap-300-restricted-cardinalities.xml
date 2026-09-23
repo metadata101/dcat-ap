@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+   <healthdcat-ap-300-restricted-cardinalities.000000.schematron>HealthDCAT-AP (Restricted) - Cardinalities</healthdcat-ap-300-restricted-cardinalities.000000.schematron>
+   <healthdcat-ap-300-restricted-cardinalities.000001.title>Minimum cardinality of dct:description in //time:TemporalEntity.</healthdcat-ap-300-restricted-cardinalities.000001.title>
+   <healthdcat-ap-300-restricted-cardinalities.000002.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000002.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000003.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000003.report>
+   <healthdcat-ap-300-restricted-cardinalities.000004.title>Minimum cardinality of csvw:column in //csvw:Table.</healthdcat-ap-300-restricted-cardinalities.000004.title>
+   <healthdcat-ap-300-restricted-cardinalities.000005.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000005.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000006.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000006.report>
+   <healthdcat-ap-300-restricted-cardinalities.000007.title>Minimum cardinality of dct:title in //csvw:Table.</healthdcat-ap-300-restricted-cardinalities.000007.title>
+   <healthdcat-ap-300-restricted-cardinalities.000008.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000008.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000009.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000009.report>
+   <healthdcat-ap-300-restricted-cardinalities.000010.title>Maximum cardinality of csvw:url in //csvw:Table.</healthdcat-ap-300-restricted-cardinalities.000010.title>
+   <healthdcat-ap-300-restricted-cardinalities.000011.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000011.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000012.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000012.report>
+   <healthdcat-ap-300-restricted-cardinalities.000013.title>Minimum cardinality of cv:email|cv:contactPage in //cv:ContactPoint.</healthdcat-ap-300-restricted-cardinalities.000013.title>
+   <healthdcat-ap-300-restricted-cardinalities.000014.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000014.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000015.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000015.report>
+   <healthdcat-ap-300-restricted-cardinalities.000016.title>Minimum cardinality of vcard:hasURL|vcard:hasEmail in //vcard:Kind.</healthdcat-ap-300-restricted-cardinalities.000016.title>
+   <healthdcat-ap-300-restricted-cardinalities.000017.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000017.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000018.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000018.report>
+   <healthdcat-ap-300-restricted-cardinalities.000019.title>Maximum cardinality of vcard:hasEmail in //vcard:Kind.</healthdcat-ap-300-restricted-cardinalities.000019.title>
+   <healthdcat-ap-300-restricted-cardinalities.000020.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000020.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000021.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000021.report>
+   <healthdcat-ap-300-restricted-cardinalities.000022.title>Maximum cardinality of vcard:hasURL in //vcard:Kind.</healthdcat-ap-300-restricted-cardinalities.000022.title>
+   <healthdcat-ap-300-restricted-cardinalities.000023.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000023.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000024.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000024.report>
+   <healthdcat-ap-300-restricted-cardinalities.000025.title>Minimum cardinality of dcatap:applicableLegislation in //dcat:DatasetSeries.</healthdcat-ap-300-restricted-cardinalities.000025.title>
+   <healthdcat-ap-300-restricted-cardinalities.000026.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000026.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000027.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000027.report>
+   <healthdcat-ap-300-restricted-cardinalities.000028.title>Minimum cardinality of dcat:theme in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000028.title>
+   <healthdcat-ap-300-restricted-cardinalities.000029.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000029.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000030.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000030.report>
+   <healthdcat-ap-300-restricted-cardinalities.000031.title>Minimum cardinality of dcatap:applicableLegislation in //dcat:Distribution.</healthdcat-ap-300-restricted-cardinalities.000031.title>
+   <healthdcat-ap-300-restricted-cardinalities.000032.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000032.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000033.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000033.report>
+   <healthdcat-ap-300-restricted-cardinalities.000034.title>Maximum cardinality of csvw:propertyUrl in //csvw:Column.</healthdcat-ap-300-restricted-cardinalities.000034.title>
+   <healthdcat-ap-300-restricted-cardinalities.000035.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000035.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000036.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000036.report>
+   <healthdcat-ap-300-restricted-cardinalities.000037.title>Maximum cardinality of csvw:datatype in //csvw:Column.</healthdcat-ap-300-restricted-cardinalities.000037.title>
+   <healthdcat-ap-300-restricted-cardinalities.000038.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000038.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000039.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000039.report>
+   <healthdcat-ap-300-restricted-cardinalities.000040.title>Minimum cardinality of csvw:datatype in //csvw:Column.</healthdcat-ap-300-restricted-cardinalities.000040.title>
+   <healthdcat-ap-300-restricted-cardinalities.000041.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000041.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000042.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000042.report>
+   <healthdcat-ap-300-restricted-cardinalities.000043.title>Minimum cardinality of csvw:titles in //csvw:Column.</healthdcat-ap-300-restricted-cardinalities.000043.title>
+   <healthdcat-ap-300-restricted-cardinalities.000044.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000044.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000045.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000045.report>
+   <healthdcat-ap-300-restricted-cardinalities.000046.title>Minimum cardinality of dct:description in //csvw:Column.</healthdcat-ap-300-restricted-cardinalities.000046.title>
+   <healthdcat-ap-300-restricted-cardinalities.000047.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000047.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000048.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000048.report>
+   <healthdcat-ap-300-restricted-cardinalities.000049.title>Minimum cardinality of csvw:name in //csvw:Column.</healthdcat-ap-300-restricted-cardinalities.000049.title>
+   <healthdcat-ap-300-restricted-cardinalities.000050.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000050.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000051.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000051.report>
+   <healthdcat-ap-300-restricted-cardinalities.000052.title>Maximum cardinality of healthdcatap:retentionPeriod in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000052.title>
+   <healthdcat-ap-300-restricted-cardinalities.000053.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000053.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000054.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000054.report>
+   <healthdcat-ap-300-restricted-cardinalities.000055.title>Maximum cardinality of healthdcatap:numberOfUniqueIndividuals in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000055.title>
+   <healthdcat-ap-300-restricted-cardinalities.000056.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000056.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000057.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000057.report>
+   <healthdcat-ap-300-restricted-cardinalities.000058.title>Maximum cardinality of healthdcatap:numberOfRecords in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000058.title>
+   <healthdcat-ap-300-restricted-cardinalities.000059.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000059.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000060.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000060.report>
+   <healthdcat-ap-300-restricted-cardinalities.000061.title>Maximum cardinality of healthdcatap:maxTypicalAge in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000061.title>
+   <healthdcat-ap-300-restricted-cardinalities.000062.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000062.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000063.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000063.report>
+   <healthdcat-ap-300-restricted-cardinalities.000064.title>Maximum cardinality of healthdcatap:minTypicalAge in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000064.title>
+   <healthdcat-ap-300-restricted-cardinalities.000065.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000065.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000066.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000066.report>
+   <healthdcat-ap-300-restricted-cardinalities.000067.title>Maximum cardinality of healthdcatap:hasStructuredData in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000067.title>
+   <healthdcat-ap-300-restricted-cardinalities.000068.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000068.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000069.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000069.report>
+   <healthdcat-ap-300-restricted-cardinalities.000070.title>Minimum cardinality of healthdcatap:hasStructuredData in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000070.title>
+   <healthdcat-ap-300-restricted-cardinalities.000071.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000071.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000072.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000072.report>
+   <healthdcat-ap-300-restricted-cardinalities.000073.title>Maximum cardinality of dct:accessRights in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000073.title>
+   <healthdcat-ap-300-restricted-cardinalities.000074.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000074.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000075.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000075.report>
+   <healthdcat-ap-300-restricted-cardinalities.000076.title>Minimum cardinality of dct:accessRights in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000076.title>
+   <healthdcat-ap-300-restricted-cardinalities.000077.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000077.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000078.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000078.report>
+   <healthdcat-ap-300-restricted-cardinalities.000079.title>Minimum cardinality of dcatap:applicableLegislation in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000079.title>
+   <healthdcat-ap-300-restricted-cardinalities.000080.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000080.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000081.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000081.report>
+   <healthdcat-ap-300-restricted-cardinalities.000082.title>Minimum cardinality of dcat:distribution in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000082.title>
+   <healthdcat-ap-300-restricted-cardinalities.000083.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000083.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000084.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000084.report>
+   <healthdcat-ap-300-restricted-cardinalities.000085.title>Minimum cardinality of dct:identifier in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000085.title>
+   <healthdcat-ap-300-restricted-cardinalities.000086.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000086.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000087.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000087.report>
+   <healthdcat-ap-300-restricted-cardinalities.000088.title>Maximum cardinality of dct:publisher in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000088.title>
+   <healthdcat-ap-300-restricted-cardinalities.000089.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000089.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000090.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000090.report>
+   <healthdcat-ap-300-restricted-cardinalities.000091.title>Minimum cardinality of dcat:theme in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000091.title>
+   <healthdcat-ap-300-restricted-cardinalities.000092.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000092.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000093.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000093.report>
+   <healthdcat-ap-300-restricted-cardinalities.000094.title>Maximum cardinality of healthdcatap:hdab in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000094.title>
+   <healthdcat-ap-300-restricted-cardinalities.000095.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000095.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000096.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000096.report>
+   <healthdcat-ap-300-restricted-cardinalities.000097.title>Minimum cardinality of healthdcatap:hdab in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000097.title>
+   <healthdcat-ap-300-restricted-cardinalities.000098.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000098.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000099.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000099.report>
+   <healthdcat-ap-300-restricted-cardinalities.000100.title>Maximum cardinality of geodcatap:custodian in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000100.title>
+   <healthdcat-ap-300-restricted-cardinalities.000101.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000101.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000102.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000102.report>
+   <healthdcat-ap-300-restricted-cardinalities.000103.title>Minimum cardinality of healthdcatap:healthCategory in //dcat:Dataset.</healthdcat-ap-300-restricted-cardinalities.000103.title>
+   <healthdcat-ap-300-restricted-cardinalities.000104.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000104.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000105.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000105.report>
+   <healthdcat-ap-300-restricted-cardinalities.000106.title>Minimum cardinality of csvw:table in //csvw:TableGroup.</healthdcat-ap-300-restricted-cardinalities.000106.title>
+   <healthdcat-ap-300-restricted-cardinalities.000107.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000107.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000108.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000108.report>
+   <healthdcat-ap-300-restricted-cardinalities.000109.title>Minimum cardinality of dcatap:applicableLegislation in //dcat:Catalog.</healthdcat-ap-300-restricted-cardinalities.000109.title>
+   <healthdcat-ap-300-restricted-cardinalities.000110.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000110.assert>
+   <healthdcat-ap-300-restricted-cardinalities.000111.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000111.report>
+</strings>
