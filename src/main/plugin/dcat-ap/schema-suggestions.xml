@@ -51,4 +51,8 @@ xmlns:schema="http://schema.org/">
     <suggest name="dct:conformsTo"/>
     <suggest name="adms:status"/>
   </field>
+
+  <field name="cv:ContactPoint">
+    <suggest name="cv:email"/>
+  </field>
 </fields>
