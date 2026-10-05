@@ -170,6 +170,12 @@
         thesaurus="external.theme.high-value-dataset-category"
         xpath="/dcatap:hvdCategory"/>
     </for>
+    <for name="dcatap:applicableLegislation" xpath="dcat:Distribution" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.eu-applicable-legislation"
+        xpath="/dcat:Distribution/dcatap:applicableLegislation"
+        useReference="true"/>
+    </for>
     <for name="dcatap:applicableLegislation" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.eu-applicable-legislation"
@@ -1635,6 +1641,8 @@
               <field xpath="dcat:Distribution/mobilitydcatap:dataFormatNotes"
                      or="dataFormatNotes" in="dcat:Distribution"/>
             </section>
+
+            <field xpath="dcat:Distribution/dcatap:applicableLegislation" or="applicableLegislation" in="dcat:Distribution"/>
           </section>
 
           <action type="add" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
@@ -2473,6 +2481,7 @@
         <for name="dct:LicenseDocument/dct:type"/>
         <for name="dct:rights"/>
         <for name="mdcat:stars"/>
+        <for name="dcatap:applicableLegislation"/>
         <!-- Mobility -->
         <for name="mobilitydcatap:communicationMethod"/>
         <for name="mobilitydcatap:mobilityDataStandard"/>
