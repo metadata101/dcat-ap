@@ -580,6 +580,13 @@
         </snippet>
       </template>
     </for>
+    <for name="dct:type" xpath="dcat:Dataset" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.dataset-type"
+        xpath="/dcat:Dataset/dct:type"
+        max="1"
+        labelKey="dcat.addType"/>
+    </for>
   </fields>
 
   <!-- Complex fields. -->
@@ -1416,6 +1423,10 @@
           <!-- Mandatory for non public -->
           <field xpath="/rdf:RDF/dcat:Catalog/*/*/dct:provenance"
                  or="provenance"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:type"
+                 or="type"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
 
@@ -2480,6 +2491,7 @@
         <!-- Health -->
         <for name="dct:alternative"/>
         <for name="dct:provenance"/>
+        <for name="dct:type"/>
         <for name="healthdcatap:hdab"/>
         <for name="healthdcatap:hasStructuredData"/>
         <for name="healthdcatap:healthTheme"/>
