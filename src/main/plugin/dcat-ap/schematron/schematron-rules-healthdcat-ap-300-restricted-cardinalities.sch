@@ -52,11 +52,11 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000004.title</title>
-    <rule context="//csvw:Table">
-      <assert test="count(csvw:column) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000005.assert, ('#occurrences'), (string(count(csvw:column))))" />
+    <rule context="//cv:ContactPoint">
+      <assert test="count(cv:email|cv:contactPage) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000005.assert, ('#occurrences'), (string(count(cv:email|cv:contactPage))))" />
       </assert>
-      <report test="count(csvw:column) >= 1">
+      <report test="count(cv:email|cv:contactPage) >= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000006.report, ('#min'), '1')" />
       </report>
     </rule>
@@ -64,10 +64,10 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000007.title</title>
     <rule context="//csvw:Table">
-      <assert test="count(dct:title) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000008.assert, ('#occurrences'), (string(count(dct:title))))" />
+      <assert test="count(csvw:column) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000008.assert, ('#occurrences'), (string(count(csvw:column))))" />
       </assert>
-      <report test="count(dct:title) >= 1">
+      <report test="count(csvw:column) >= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000009.report, ('#min'), '1')" />
       </report>
     </rule>
@@ -75,22 +75,22 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000010.title</title>
     <rule context="//csvw:Table">
-      <assert test="count(csvw:url) &lt;= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000011.assert, ('#occurrences'), (string(count(csvw:url))))" />
+      <assert test="count(dct:title) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000011.assert, ('#occurrences'), (string(count(dct:title))))" />
       </assert>
-      <report test="count(csvw:url) &lt;= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000012.report, ('#max'), '1')" />
+      <report test="count(dct:title) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000012.report, ('#min'), '1')" />
       </report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000013.title</title>
-    <rule context="//cv:ContactPoint">
-      <assert test="count(cv:email|cv:contactPage) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000014.assert, ('#occurrences'), (string(count(cv:email|cv:contactPage))))" />
+    <rule context="//csvw:Table">
+      <assert test="count(csvw:url) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000014.assert, ('#occurrences'), (string(count(csvw:url))))" />
       </assert>
-      <report test="count(cv:email|cv:contactPage) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000015.report, ('#min'), '1')" />
+      <report test="count(csvw:url) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000015.report, ('#max'), '1')" />
       </report>
     </rule>
   </pattern>
@@ -196,10 +196,10 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000043.title</title>
     <rule context="//csvw:Column">
-      <assert test="count(csvw:titles) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000044.assert, ('#occurrences'), (string(count(csvw:titles))))" />
+      <assert test="count(csvw:title) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000044.assert, ('#occurrences'), (string(count(csvw:title))))" />
       </assert>
-      <report test="count(csvw:titles) >= 1">
+      <report test="count(csvw:title) >= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000045.report, ('#min'), '1')" />
       </report>
     </rule>
@@ -218,32 +218,32 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000049.title</title>
     <rule context="//csvw:Column">
-      <assert test="count(csvw:name) >= 1">
+      <assert test="count(csvw:name) &lt;= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000050.assert, ('#occurrences'), (string(count(csvw:name))))" />
       </assert>
-      <report test="count(csvw:name) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000051.report, ('#min'), '1')" />
+      <report test="count(csvw:name) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000051.report, ('#max'), '1')" />
       </report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000052.title</title>
-    <rule context="//dcat:Dataset">
-      <assert test="count(healthdcatap:retentionPeriod) &lt;= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000053.assert, ('#occurrences'), (string(count(healthdcatap:retentionPeriod))))" />
+    <rule context="//csvw:Column">
+      <assert test="count(csvw:name) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000053.assert, ('#occurrences'), (string(count(csvw:name))))" />
       </assert>
-      <report test="count(healthdcatap:retentionPeriod) &lt;= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000054.report, ('#max'), '1')" />
+      <report test="count(csvw:name) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000054.report, ('#min'), '1')" />
       </report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000055.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(healthdcatap:numberOfUniqueIndividuals) &lt;= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000056.assert, ('#occurrences'), (string(count(healthdcatap:numberOfUniqueIndividuals))))" />
+      <assert test="count(healthdcatap:retentionPeriod) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000056.assert, ('#occurrences'), (string(count(healthdcatap:retentionPeriod))))" />
       </assert>
-      <report test="count(healthdcatap:numberOfUniqueIndividuals) &lt;= 1">
+      <report test="count(healthdcatap:retentionPeriod) &lt;= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000057.report, ('#max'), '1')" />
       </report>
     </rule>
@@ -251,10 +251,10 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000058.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(healthdcatap:numberOfRecords) &lt;= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000059.assert, ('#occurrences'), (string(count(healthdcatap:numberOfRecords))))" />
+      <assert test="count(healthdcatap:numberOfUniqueIndividuals) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000059.assert, ('#occurrences'), (string(count(healthdcatap:numberOfUniqueIndividuals))))" />
       </assert>
-      <report test="count(healthdcatap:numberOfRecords) &lt;= 1">
+      <report test="count(healthdcatap:numberOfUniqueIndividuals) &lt;= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000060.report, ('#max'), '1')" />
       </report>
     </rule>
@@ -262,10 +262,10 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000061.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(healthdcatap:maxTypicalAge) &lt;= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000062.assert, ('#occurrences'), (string(count(healthdcatap:maxTypicalAge))))" />
+      <assert test="count(healthdcatap:numberOfRecords) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000062.assert, ('#occurrences'), (string(count(healthdcatap:numberOfRecords))))" />
       </assert>
-      <report test="count(healthdcatap:maxTypicalAge) &lt;= 1">
+      <report test="count(healthdcatap:numberOfRecords) &lt;= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000063.report, ('#max'), '1')" />
       </report>
     </rule>
@@ -273,10 +273,10 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000064.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(healthdcatap:minTypicalAge) &lt;= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000065.assert, ('#occurrences'), (string(count(healthdcatap:minTypicalAge))))" />
+      <assert test="count(healthdcatap:maxTypicalAge) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000065.assert, ('#occurrences'), (string(count(healthdcatap:maxTypicalAge))))" />
       </assert>
-      <report test="count(healthdcatap:minTypicalAge) &lt;= 1">
+      <report test="count(healthdcatap:maxTypicalAge) &lt;= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000066.report, ('#max'), '1')" />
       </report>
     </rule>
@@ -284,10 +284,10 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000067.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(healthdcatap:hasStructuredData) &lt;= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000068.assert, ('#occurrences'), (string(count(healthdcatap:hasStructuredData))))" />
+      <assert test="count(healthdcatap:minTypicalAge) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000068.assert, ('#occurrences'), (string(count(healthdcatap:minTypicalAge))))" />
       </assert>
-      <report test="count(healthdcatap:hasStructuredData) &lt;= 1">
+      <report test="count(healthdcatap:minTypicalAge) &lt;= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000069.report, ('#max'), '1')" />
       </report>
     </rule>
@@ -295,32 +295,32 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000070.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(healthdcatap:hasStructuredData) >= 1">
+      <assert test="count(healthdcatap:hasStructuredData) &lt;= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000071.assert, ('#occurrences'), (string(count(healthdcatap:hasStructuredData))))" />
       </assert>
-      <report test="count(healthdcatap:hasStructuredData) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000072.report, ('#min'), '1')" />
+      <report test="count(healthdcatap:hasStructuredData) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000072.report, ('#max'), '1')" />
       </report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000073.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(dct:accessRights) &lt;= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000074.assert, ('#occurrences'), (string(count(dct:accessRights))))" />
+      <assert test="count(healthdcatap:hasStructuredData) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000074.assert, ('#occurrences'), (string(count(healthdcatap:hasStructuredData))))" />
       </assert>
-      <report test="count(dct:accessRights) &lt;= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000075.report, ('#max'), '1')" />
+      <report test="count(healthdcatap:hasStructuredData) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000075.report, ('#min'), '1')" />
       </report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000076.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(dct:accessRights) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000077.assert, ('#occurrences'), (string(count(dct:accessRights))))" />
+      <assert test="count(healthdcatap:healthCategory) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000077.assert, ('#occurrences'), (string(count(healthdcatap:healthCategory))))" />
       </assert>
-      <report test="count(dct:accessRights) >= 1">
+      <report test="count(healthdcatap:healthCategory) >= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000078.report, ('#min'), '1')" />
       </report>
     </rule>
@@ -328,21 +328,21 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000079.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(dcatap:applicableLegislation) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000080.assert, ('#occurrences'), (string(count(dcatap:applicableLegislation))))" />
+      <assert test="count(dct:accessRights) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000080.assert, ('#occurrences'), (string(count(dct:accessRights))))" />
       </assert>
-      <report test="count(dcatap:applicableLegislation) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000081.report, ('#min'), '1')" />
+      <report test="count(dct:accessRights) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000081.report, ('#max'), '1')" />
       </report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000082.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(dcat:distribution) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000083.assert, ('#occurrences'), (string(count(dcat:distribution))))" />
+      <assert test="count(dct:accessRights) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000083.assert, ('#occurrences'), (string(count(dct:accessRights))))" />
       </assert>
-      <report test="count(dcat:distribution) >= 1">
+      <report test="count(dct:accessRights) >= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000084.report, ('#min'), '1')" />
       </report>
     </rule>
@@ -350,10 +350,10 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000085.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(dct:identifier) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000086.assert, ('#occurrences'), (string(count(dct:identifier))))" />
+      <assert test="count(dcatap:applicableLegislation) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000086.assert, ('#occurrences'), (string(count(dcatap:applicableLegislation))))" />
       </assert>
-      <report test="count(dct:identifier) >= 1">
+      <report test="count(dcatap:applicableLegislation) >= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000087.report, ('#min'), '1')" />
       </report>
     </rule>
@@ -361,21 +361,21 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000088.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(dct:publisher) &lt;= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000089.assert, ('#occurrences'), (string(count(dct:publisher))))" />
+      <assert test="count(dcat:distribution) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000089.assert, ('#occurrences'), (string(count(dcat:distribution))))" />
       </assert>
-      <report test="count(dct:publisher) &lt;= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000090.report, ('#max'), '1')" />
+      <report test="count(dcat:distribution) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000090.report, ('#min'), '1')" />
       </report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000091.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(dcat:theme) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000092.assert, ('#occurrences'), (string(count(dcat:theme))))" />
+      <assert test="count(dct:identifier) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000092.assert, ('#occurrences'), (string(count(dct:identifier))))" />
       </assert>
-      <report test="count(dcat:theme) >= 1">
+      <report test="count(dct:identifier) >= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000093.report, ('#min'), '1')" />
       </report>
     </rule>
@@ -383,10 +383,10 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000094.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(healthdcatap:hdab) &lt;= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000095.assert, ('#occurrences'), (string(count(healthdcatap:hdab))))" />
+      <assert test="count(dct:publisher) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000095.assert, ('#occurrences'), (string(count(dct:publisher))))" />
       </assert>
-      <report test="count(healthdcatap:hdab) &lt;= 1">
+      <report test="count(dct:publisher) &lt;= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000096.report, ('#max'), '1')" />
       </report>
     </rule>
@@ -394,10 +394,10 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000097.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(healthdcatap:hdab) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000098.assert, ('#occurrences'), (string(count(healthdcatap:hdab))))" />
+      <assert test="count(dcat:theme) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000098.assert, ('#occurrences'), (string(count(dcat:theme))))" />
       </assert>
-      <report test="count(healthdcatap:hdab) >= 1">
+      <report test="count(dcat:theme) >= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000099.report, ('#min'), '1')" />
       </report>
     </rule>
@@ -405,10 +405,10 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000100.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(geodcatap:custodian) &lt;= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000101.assert, ('#occurrences'), (string(count(geodcatap:custodian))))" />
+      <assert test="count(healthdcatap:hdab) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000101.assert, ('#occurrences'), (string(count(healthdcatap:hdab))))" />
       </assert>
-      <report test="count(geodcatap:custodian) &lt;= 1">
+      <report test="count(healthdcatap:hdab) &lt;= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000102.report, ('#max'), '1')" />
       </report>
     </rule>
@@ -416,33 +416,66 @@
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000103.title</title>
     <rule context="//dcat:Dataset">
-      <assert test="count(healthdcatap:healthCategory) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000104.assert, ('#occurrences'), (string(count(healthdcatap:healthCategory))))" />
+      <assert test="count(healthdcatap:hdab) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000104.assert, ('#occurrences'), (string(count(healthdcatap:hdab))))" />
       </assert>
-      <report test="count(healthdcatap:healthCategory) >= 1">
+      <report test="count(healthdcatap:hdab) >= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000105.report, ('#min'), '1')" />
       </report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000106.title</title>
-    <rule context="//csvw:TableGroup">
-      <assert test="count(csvw:table) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000107.assert, ('#occurrences'), (string(count(csvw:table))))" />
+    <rule context="//dcat:Dataset">
+      <assert test="count(healthdcatap:hdabCoordinator) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000107.assert, ('#occurrences'), (string(count(healthdcatap:hdabCoordinator))))" />
       </assert>
-      <report test="count(csvw:table) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000108.report, ('#min'), '1')" />
+      <report test="count(healthdcatap:hdabCoordinator) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000108.report, ('#max'), '1')" />
       </report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000109.title</title>
+    <rule context="//dcat:Dataset">
+      <assert test="count(geodcatap:custodian) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000110.assert, ('#occurrences'), (string(count(geodcatap:custodian))))" />
+      </assert>
+      <report test="count(geodcatap:custodian) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000111.report, ('#max'), '1')" />
+      </report>
+    </rule>
+  </pattern>
+  <pattern>
+    <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000112.title</title>
+    <rule context="//csvw:TableGroup">
+      <assert test="count(dct:title) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000113.assert, ('#occurrences'), (string(count(dct:title))))" />
+      </assert>
+      <report test="count(dct:title) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000114.report, ('#min'), '1')" />
+      </report>
+    </rule>
+  </pattern>
+  <pattern>
+    <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000115.title</title>
+    <rule context="//csvw:TableGroup">
+      <assert test="count(csvw:table) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000116.assert, ('#occurrences'), (string(count(csvw:table))))" />
+      </assert>
+      <report test="count(csvw:table) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000117.report, ('#min'), '1')" />
+      </report>
+    </rule>
+  </pattern>
+  <pattern>
+    <title>$loc/strings/healthdcat-ap-300-restricted-cardinalities.000118.title</title>
     <rule context="//dcat:Catalog">
       <assert test="count(dcatap:applicableLegislation) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000110.assert, ('#occurrences'), (string(count(dcatap:applicableLegislation))))" />
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000119.assert, ('#occurrences'), (string(count(dcatap:applicableLegislation))))" />
       </assert>
       <report test="count(dcatap:applicableLegislation) >= 1">
-        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000111.report, ('#min'), '1')" />
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-restricted-cardinalities.000120.report, ('#min'), '1')" />
       </report>
     </rule>
   </pattern>
