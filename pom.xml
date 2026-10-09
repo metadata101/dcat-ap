@@ -40,6 +40,20 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
+      <groupId>org.geonetwork-opensource</groupId>
+      <artifactId>gn-core</artifactId>
+      <version>${project.version}</version>
+      <type>test-jar</type>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.geonetwork-opensource</groupId>
+      <artifactId>gn-domain</artifactId>
+      <version>${project.version}</version>
+      <type>test-jar</type>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>net.sf.saxon</groupId>
       <artifactId>saxon</artifactId>
     </dependency>
@@ -51,6 +65,20 @@
       <groupId>org.locationtech.jts</groupId>
       <artifactId>jts-core</artifactId>
       <version>${jts.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.geonetwork-opensource</groupId>
+      <artifactId>gn-services</artifactId>
+      <version>${project.version}</version>
+      <type>test-jar</type>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.geonetwork-opensource.schemas</groupId>
+      <artifactId>gn-schema-iso19115-3.2018</artifactId>
+      <version>${project.version}</version>
+      <type>test-jar</type>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
