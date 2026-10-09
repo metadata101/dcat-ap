@@ -328,6 +328,8 @@
         </xsl:otherwise>
       </xsl:choose>
       <xsl:apply-templates select="dcat:dataset|dcat:service"/>
+
+      <xsl:apply-templates select="dcatap:applicableLegislation"/>
     </dcat:Catalog>
   </xsl:template>
 

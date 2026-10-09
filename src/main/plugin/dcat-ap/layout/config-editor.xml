@@ -170,6 +170,12 @@
         thesaurus="external.theme.high-value-dataset-category"
         xpath="/dcatap:hvdCategory"/>
     </for>
+    <for name="dcatap:applicableLegislation" xpath="dcat:Distribution" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.eu-applicable-legislation"
+        xpath="/dcat:Distribution/dcatap:applicableLegislation"
+        useReference="true"/>
+    </for>
     <for name="dcatap:applicableLegislation" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.eu-applicable-legislation"
@@ -579,6 +585,13 @@
           <cv:email rdf:resource="{{key}}"/>
         </snippet>
       </template>
+    </for>
+    <for name="dct:type" xpath="dcat:Dataset" use="thesaurus-list-picker">
+      <directiveAttributes
+        thesaurus="external.theme.dataset-type"
+        xpath="/dcat:Dataset/dct:type"
+        max="1"
+        labelKey="dcat.addType"/>
     </for>
   </fields>
 
@@ -1421,6 +1434,10 @@
           <field xpath="/rdf:RDF/dcat:Catalog/*/*/dct:provenance"
                  or="provenance"
                  in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
+
+          <field xpath="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset/dct:type"
+                 or="type"
+                 in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset"/>
         </section>
 
         <section name="health-view-quantum"
@@ -1628,6 +1645,8 @@
               <field xpath="dcat:Distribution/mobilitydcatap:dataFormatNotes"
                      or="dataFormatNotes" in="dcat:Distribution"/>
             </section>
+
+            <field xpath="dcat:Distribution/dcatap:applicableLegislation" or="applicableLegislation" in="dcat:Distribution"/>
           </section>
 
           <action type="add" or="distribution" in="/rdf:RDF/dcat:Catalog/dcat:dataset/dcat:Dataset">
@@ -2466,6 +2485,7 @@
         <for name="dct:LicenseDocument/dct:type"/>
         <for name="dct:rights"/>
         <for name="mdcat:stars"/>
+        <for name="dcatap:applicableLegislation"/>
         <!-- Mobility -->
         <for name="mobilitydcatap:communicationMethod"/>
         <for name="mobilitydcatap:mobilityDataStandard"/>
@@ -2484,6 +2504,7 @@
         <!-- Health -->
         <for name="dct:alternative"/>
         <for name="dct:provenance"/>
+        <for name="dct:type"/>
         <for name="healthdcatap:hdab"/>
         <for name="healthdcatap:hasStructuredData"/>
         <for name="healthdcatap:healthTheme"/>
@@ -3285,210 +3306,6 @@
     </list>
 
     <list name="health-dcat-ap-quality-measurements">
-      <!--<snippet label="health-dcat-ap-quality-measurements">
-        <dqv:hasQualityMeasurement>
-          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Accessibility_measurement1">
-            <dqv:computedOn rdf:resource=""/>
-            <dqv:isMeasurementOf>
-              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Accessibility_metric1">
-                <skos:definition xml:lang="en">Availability of a data access &amp; usage policy at the time of release of the dataset</skos:definition>
-                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Accessibility"/>
-              </dqv:Metric>
-            </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
-          </dqv:QualityMeasurement>
-        </dqv:hasQualityMeasurement>
-        <dqv:hasQualityMeasurement>
-          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Accessibility_measurement2">
-            <dqv:computedOn rdf:resource=""/>
-            <dqv:isMeasurementOf>
-              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Accessibility_metric2">
-                <skos:definition xml:lang="en">Average time from data access application to data release for a specific dataset</skos:definition>
-                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Accessibility"/>
-              </dqv:Metric>
-            </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
-          </dqv:QualityMeasurement>
-        </dqv:hasQualityMeasurement>
-        <dqv:hasQualityMeasurement>
-          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Population_coverage_measurement1">
-            <dqv:computedOn rdf:resource=""/>
-            <dqv:isMeasurementOf>
-              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Population_coverage_metric1">
-                <skos:definition xml:lang="en">Coverage Rate (percentage of the eligible population represented in the
-                  dataset)
-                </skos:definition>
-                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Population_coverage"/>
-              </dqv:Metric>
-            </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
-          </dqv:QualityMeasurement>
-        </dqv:hasQualityMeasurement>
-        <dqv:hasQualityMeasurement>
-          <dqv:QualityMeasurement
-            rdf:about="http://quantumproject.eu/vocab-quantum/#Population_representativity_measurement1">
-            <dqv:computedOn rdf:resource=""/>
-            <dqv:isMeasurementOf>
-              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Population_representativity_metric1">
-                <skos:definition xml:lang="en">How closely does the observed population represent the expected population?
-                </skos:definition>
-                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Population_representativity"/>
-              </dqv:Metric>
-            </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
-          </dqv:QualityMeasurement>
-        </dqv:hasQualityMeasurement>
-        <dqv:hasQualityMeasurement>
-          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Compliance_measurement1">
-            <dqv:computedOn rdf:resource=""/>
-            <dqv:isMeasurementOf>
-              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Compliance_metric1">
-                <skos:definition xml:lang="en">Is there documentation of compliance with ethical standards, conventions,
-                  protocols or regulations?
-                </skos:definition>
-                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Compliance"/>
-              </dqv:Metric>
-            </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
-          </dqv:QualityMeasurement>
-        </dqv:hasQualityMeasurement>
-        <dqv:hasQualityMeasurement>
-          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Data_provenance_measurement1">
-            <dqv:computedOn rdf:resource=""/>
-            <dqv:isMeasurementOf>
-              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Data_provenance_metric1">
-                <skos:definition xml:lang="en">Is the source of the dataset documented?</skos:definition>
-                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Data_provenance"/>
-              </dqv:Metric>
-            </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
-          </dqv:QualityMeasurement>
-        </dqv:hasQualityMeasurement>
-        <dqv:hasQualityMeasurement>
-          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Data_provenance_measurement2">
-            <dqv:computedOn rdf:resource=""/>
-            <dqv:isMeasurementOf>
-              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Data_provenance_metric2">
-                <skos:definition xml:lang="en">Are the processes and operations on the data documented?</skos:definition>
-                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Data_provenance"/>
-              </dqv:Metric>
-            </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</dqv:value>
-          </dqv:QualityMeasurement>
-        </dqv:hasQualityMeasurement>
-        <dqv:hasQualityMeasurement>
-          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Metadata_scope_measurement1">
-            <dqv:computedOn rdf:resource=""/>
-            <dqv:isMeasurementOf>
-              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Metadata_scope_metric1">
-                <skos:definition xml:lang="en">Existence of comprehensive standardised metadata</skos:definition>
-                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Metadata_scope"/>
-              </dqv:Metric>
-            </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
-          </dqv:QualityMeasurement>
-        </dqv:hasQualityMeasurement>
-        <dqv:hasQualityMeasurement>
-          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Metadata_scope_measurement2">
-            <dqv:computedOn rdf:resource=""/>
-            <dqv:isMeasurementOf>
-              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Metadata_scope_metric2">
-                <skos:definition xml:lang="en">Existence of an exhaustive data dictionary at variable level
-                </skos:definition>
-                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Metadata_scope"/>
-              </dqv:Metric>
-            </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</dqv:value>
-          </dqv:QualityMeasurement>
-        </dqv:hasQualityMeasurement>
-        <dqv:hasQualityMeasurement>
-          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Accuracy_measurement1">
-            <dqv:computedOn rdf:resource=""/>
-            <dqv:isMeasurementOf>
-              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Accuracy_metric1">
-                <skos:definition xml:lang="en">Is accuracy of the dataset documented?</skos:definition>
-                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Accuracy"/>
-              </dqv:Metric>
-            </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
-          </dqv:QualityMeasurement>
-        </dqv:hasQualityMeasurement>
-        <dqv:hasQualityMeasurement>
-          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Coherence_measurement1">
-            <dqv:computedOn rdf:resource=""/>
-            <dqv:isMeasurementOf>
-              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Coherence_metric1">
-                <skos:definition xml:lang="en">Is coherence of the dataset documented?</skos:definition>
-                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Coherence"/>
-              </dqv:Metric>
-            </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</dqv:value>
-          </dqv:QualityMeasurement>
-        </dqv:hasQualityMeasurement>
-        <dqv:hasQualityMeasurement>
-          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Completeness_measurement1">
-            <dqv:computedOn rdf:resource=""/>
-            <dqv:isMeasurementOf>
-              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Completeness_metric1">
-                <skos:definition xml:lang="en">Is completeness of the dataset documented?</skos:definition>
-                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Completeness"/>
-              </dqv:Metric>
-            </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</dqv:value>
-          </dqv:QualityMeasurement>
-        </dqv:hasQualityMeasurement>
-        <dqv:hasQualityMeasurement>
-          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Consistency_measurement1">
-            <dqv:computedOn rdf:resource=""/>
-            <dqv:isMeasurementOf>
-              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Consistency_metric1">
-                <skos:definition xml:lang="en">Is consistency of the dataset documented?</skos:definition>
-                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Consistency"/>
-              </dqv:Metric>
-            </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
-          </dqv:QualityMeasurement>
-        </dqv:hasQualityMeasurement>
-        <dqv:hasQualityMeasurement>
-          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Precision_measurement1">
-            <dqv:computedOn rdf:resource=""/>
-            <dqv:isMeasurementOf>
-              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Precision_metric1">
-                <skos:definition xml:lang="en">Is precision of the dataset documented?</skos:definition>
-                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Precision"/>
-              </dqv:Metric>
-            </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
-          </dqv:QualityMeasurement>
-        </dqv:hasQualityMeasurement>
-        <dqv:hasQualityMeasurement>
-          <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Validity_measurement1">
-            <dqv:computedOn rdf:resource=""/>
-            <dqv:isMeasurementOf>
-              <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Validity_metric1">
-                <skos:definition xml:lang="en">Availability of a conformance report for the data model</skos:definition>
-                <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Validity"/>
-              </dqv:Metric>
-            </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
-          </dqv:QualityMeasurement>
-        </dqv:hasQualityMeasurement>
-      </snippet>-->
       <snippet label="health-dcat-ap-quality-measurements-Accessibility_measurement1">
         <dqv:hasQualityMeasurement>
           <dqv:QualityMeasurement rdf:about="http://quantumproject.eu/vocab-quantum/#Accessibility_measurement1">
@@ -3510,7 +3327,7 @@
             <dqv:computedOn rdf:resource=""/>
             <dqv:isMeasurementOf>
               <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Accessibility_metric2">
-                <skos:definition xml:lang="en">Average time from data access application to data release for a specific dataset</skos:definition>
+                <skos:definition xml:lang="">Average time from data access application to data release for a specific dataset</skos:definition>
                 <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Accessibility"/>
               </dqv:Metric>
@@ -3525,7 +3342,7 @@
             <dqv:computedOn rdf:resource=""/>
             <dqv:isMeasurementOf>
               <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Population_coverage_metric1">
-                <skos:definition xml:lang="en">Coverage Rate (percentage of the eligible population represented in the
+                <skos:definition xml:lang="">Coverage Rate (percentage of the eligible population represented in the
                   dataset)
                 </skos:definition>
                 <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
@@ -3543,7 +3360,7 @@
             <dqv:computedOn rdf:resource=""/>
             <dqv:isMeasurementOf>
               <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Population_representativity_metric1">
-                <skos:definition xml:lang="en">How closely does the observed population represent the expected population?
+                <skos:definition xml:lang="">How closely does the observed population represent the expected population?
                 </skos:definition>
                 <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Population_representativity"/>
@@ -3559,7 +3376,7 @@
             <dqv:computedOn rdf:resource=""/>
             <dqv:isMeasurementOf>
               <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Compliance_metric1">
-                <skos:definition xml:lang="en">Is there documentation of compliance with ethical standards, conventions,
+                <skos:definition xml:lang="">Is there documentation of compliance with ethical standards, conventions,
                   protocols or regulations?
                 </skos:definition>
                 <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
@@ -3576,7 +3393,7 @@
             <dqv:computedOn rdf:resource=""/>
             <dqv:isMeasurementOf>
               <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Data_provenance_metric1">
-                <skos:definition xml:lang="en">Is the source of the dataset documented?</skos:definition>
+                <skos:definition xml:lang="">Is the source of the dataset documented?</skos:definition>
                 <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Data_provenance"/>
               </dqv:Metric>
@@ -3591,7 +3408,7 @@
             <dqv:computedOn rdf:resource=""/>
             <dqv:isMeasurementOf>
               <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Data_provenance_metric2">
-                <skos:definition xml:lang="en">Are the processes and operations on the data documented?</skos:definition>
+                <skos:definition xml:lang="">Are the processes and operations on the data documented?</skos:definition>
                 <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Data_provenance"/>
               </dqv:Metric>
@@ -3606,7 +3423,7 @@
             <dqv:computedOn rdf:resource=""/>
             <dqv:isMeasurementOf>
               <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Metadata_scope_metric1">
-                <skos:definition xml:lang="en">Existence of comprehensive standardised metadata</skos:definition>
+                <skos:definition xml:lang="">Existence of comprehensive standardised metadata</skos:definition>
                 <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Metadata_scope"/>
               </dqv:Metric>
@@ -3621,7 +3438,7 @@
             <dqv:computedOn rdf:resource=""/>
             <dqv:isMeasurementOf>
               <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Metadata_scope_metric2">
-                <skos:definition xml:lang="en">Existence of an exhaustive data dictionary at variable level
+                <skos:definition xml:lang="">Existence of an exhaustive data dictionary at variable level
                 </skos:definition>
                 <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Metadata_scope"/>
@@ -3637,7 +3454,7 @@
             <dqv:computedOn rdf:resource=""/>
             <dqv:isMeasurementOf>
               <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Accuracy_metric1">
-                <skos:definition xml:lang="en">Is accuracy of the dataset documented?</skos:definition>
+                <skos:definition xml:lang="">Is accuracy of the dataset documented?</skos:definition>
                 <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Accuracy"/>
               </dqv:Metric>
@@ -3652,7 +3469,7 @@
             <dqv:computedOn rdf:resource=""/>
             <dqv:isMeasurementOf>
               <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Coherence_metric1">
-                <skos:definition xml:lang="en">Is coherence of the dataset documented?</skos:definition>
+                <skos:definition xml:lang="">Is coherence of the dataset documented?</skos:definition>
                 <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Coherence"/>
               </dqv:Metric>
@@ -3667,7 +3484,7 @@
             <dqv:computedOn rdf:resource=""/>
             <dqv:isMeasurementOf>
               <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Completeness_metric1">
-                <skos:definition xml:lang="en">Is completeness of the dataset documented?</skos:definition>
+                <skos:definition xml:lang="">Is completeness of the dataset documented?</skos:definition>
                 <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Completeness"/>
               </dqv:Metric>
@@ -3682,7 +3499,7 @@
             <dqv:computedOn rdf:resource=""/>
             <dqv:isMeasurementOf>
               <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Consistency_metric1">
-                <skos:definition xml:lang="en">Is consistency of the dataset documented?</skos:definition>
+                <skos:definition xml:lang="">Is consistency of the dataset documented?</skos:definition>
                 <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Consistency"/>
               </dqv:Metric>
@@ -3697,7 +3514,7 @@
             <dqv:computedOn rdf:resource=""/>
             <dqv:isMeasurementOf>
               <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Precision_metric1">
-                <skos:definition xml:lang="en">Is precision of the dataset documented?</skos:definition>
+                <skos:definition xml:lang="">Is precision of the dataset documented?</skos:definition>
                 <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Precision"/>
               </dqv:Metric>
@@ -3712,7 +3529,7 @@
             <dqv:computedOn rdf:resource=""/>
             <dqv:isMeasurementOf>
               <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Validity_metric1">
-                <skos:definition xml:lang="en">Availability of a conformance report for the data model</skos:definition>
+                <skos:definition xml:lang="">Availability of a conformance report for the data model</skos:definition>
                 <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Validity"/>
               </dqv:Metric>
