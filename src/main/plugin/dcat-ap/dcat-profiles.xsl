@@ -88,10 +88,10 @@
       <dcatVersion>2.0.0</dcatVersion>
     </profile>
 
-    <profile uri="https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-7/">
+    <profile uri="https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-8/">
       <alias>HealthDCAT-AP</alias>
       <description>The HealthDCAT Application Profile (HealthDCAT-AP) is a domain-specific metadata model designed to support the implementation of the secondary use framework under the European Health Data Space (EHDS).</description>
-      <versionInfo>7.0.0</versionInfo>
+      <versionInfo>8.0.0</versionInfo>
       <dcatVersion>3.0.0</dcatVersion>
     </profile>
 

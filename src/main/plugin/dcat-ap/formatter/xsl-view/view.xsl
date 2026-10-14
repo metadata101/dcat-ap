@@ -44,6 +44,9 @@
                 xmlns:schema="http://schema.org/"
                 xmlns:mdcat="https://data.vlaanderen.be/ns/metadata-dcat#"
                 xmlns:mobilitydcatap="https://w3id.org/mobilitydcat-ap#"
+                xmlns:healthdcatap="http://healthdataportal.eu/ns/health#"
+                xmlns:csvw="http://www.w3.org/ns/csvw#"
+                xmlns:dpv="https://w3id.org/dpv#"
                 xmlns:gn-fn-render="http://geonetwork-opensource.org/xsl/functions/render"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
@@ -365,13 +368,17 @@
     </xsl:variable>
 
     <xsl:variable name="name" select="name($nodes/*[1])"/>
+    <xsl:variable name="parentName" select="tokenize(@in, '/')[last()]"/>
+    <xsl:variable name="thesaurusConfigWithContext" select="$configuration/editor/fields/for[@name = $name and @xpath = $parentName]/directiveAttributes/@thesaurus"/>
+    <xsl:variable name="thesaurusConfigWithName" select="$configuration/editor/fields/for[@name = $name][1]/directiveAttributes/@thesaurus"/>
+    <xsl:variable name="thesaurusConfig" select="if (normalize-space($thesaurusConfigWithContext) != '') then $thesaurusConfigWithContext else $thesaurusConfigWithName"/>
     <xsl:variable name="thesaurusId">
       <xsl:choose>
         <xsl:when test="normalize-space(directiveAttributes/@thesaurus) != ''">
           <xsl:value-of select="normalize-space(directiveAttributes/@thesaurus)"/>
         </xsl:when>
-        <xsl:when test="normalize-space($configuration/editor/fields/for[@name = $name][1]/directiveAttributes/@thesaurus) != ''">
-          <xsl:value-of select="normalize-space($configuration/editor/fields/for[@name = $name][1]/directiveAttributes/@thesaurus)"/>
+        <xsl:when test="normalize-space($thesaurusConfig) != ''">
+          <xsl:value-of select="normalize-space($thesaurusConfig)"/>
         </xsl:when>
       </xsl:choose>
     </xsl:variable>
@@ -469,7 +476,8 @@
   <xsl:template mode="render-field" match="dct:LicenseDocument/dct:identifier"/>
 
   <!-- Field with lang : display only field of current lang or first one if not exist -->
-  <xsl:template mode="render-field" match="dct:title|dct:description|foaf:name|adms:versionNotes|foaf:firstName|foaf:surname|cnt:characterEncoding|mobilitydcatap:dataFormatNotes|oa:hasBody">
+  <xsl:template mode="render-field" match="dct:title|dct:description|dct:alternative|foaf:name|adms:versionNotes|foaf:firstName|foaf:surname|cnt:characterEncoding|mobilitydcatap:dataFormatNotes|oa:hasBody|
+                                            healthdcatap:populationCoverage|csvw:name|csvw:title|csvw:datatype">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <xsl:variable name="name" select="name()"/>
@@ -503,7 +511,8 @@
                                            *:endDate|vcard:street-address|vcard:locality|vcard:postal-code|vcard:country-name|
                                            vcard:hasTelephone|vcard:fn|vcard:organization-name|skos:prefLabel|dcat:version|
                                            adms:versionNotes|dcat:byteSize|dcat:hadRole|dcat:spatialResolutionInMeters|dcat:temporalResolution|mdcat:stars|owl:versionInfo|
-                                           locn:fullAddress|locn:poBox|locn:thoroughfare|locn:locatorDesignator|locn:locatorName|locn:postName|locn:postCode|locn:adminUnitL1|locn:adminUnitL2|locn:addressArea">
+                                           locn:fullAddress|locn:poBox|locn:thoroughfare|locn:locatorDesignator|locn:locatorName|locn:postName|locn:postCode|locn:adminUnitL1|locn:adminUnitL2|locn:addressArea|
+                                           healthdcatap:numberOfRecords|healthdcatap:numberOfUniqueIndividuals|healthdcatap:maxTypicalAge|healthdcatap:minTypicalAge">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <xsl:if test="normalize-space($stringValue) != ''">
@@ -557,27 +566,38 @@
   </xsl:template>
 
   <xsl:template mode="render-field"
-                match="dcatap:applicableLegislation">
+                match="dcatap:applicableLegislation|dcatap:hvdCategory|
+                       dpv:hasPersonalData|healthdcatap:hasCodingSystem|
+                       healthdcatap:healthTheme|healthdcatap:healthCategory|dcat:Dataset/dct:type"
+                priority="2">
     <xsl:param name="xpath"/>
     <xsl:variable name="elementName" select="name(.)"/>
-    <xsl:variable name="thesaurusId" select="$configuration/editor/fields/for[@name = $elementName]/directiveAttributes/@thesaurus"/>
-    <xsl:variable name="stringValue" select="string(@rdf:resource)"/>
+    <xsl:variable name="thesaurusId" select="($configuration/editor/fields/for[@name = $elementName]/directiveAttributes/@thesaurus)[1]"/>
+    <xsl:variable name="stringValue"
+                  select="if ($elementName = ('dpv:hasPersonalData', 'healthdcatap:hasCodingSystem', 'healthdcatap:healthTheme', 'healthdcatap:healthCategory', 'dcatap:hvdCategory', 'dct:type')) then */@rdf:about else string(@rdf:resource)"/>
+
     <xsl:if test="normalize-space($stringValue) != ''">
       <tr>
         <th style="{$thStyle}">
-          <xsl:value-of select="gn-fn-metadata:getLabel($schema, 'rdf:resource', $labels, name(.), '', concat(gn-fn-dcat-ap:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)), '/@rdf:resource'))/label" />
+          <xsl:variable name="fieldLabel"
+                        select="gn-fn-metadata:getLabel($schema, 'rdf:resource', $labels, name(.), '', concat(gn-fn-dcat-ap:concatXPaths($xpath, gn-fn-metadata:getXPath(.), name(.)), '/@rdf:resource'))/label" />
+          <xsl:variable name="thesaurusTitle"
+                        select="util:getThesaurusTitleByKey($thesaurusId)"/>
+          <xsl:value-of select="$thesaurusTitle"/>
         </th>
         <td style="{$tdStyle}">
           <xsl:variable name="defaultLabel" select="util:getKeywordValueByUri($stringValue, $thesaurusId, $defaultLang)"/>
+          <xsl:variable name="defaultLabelInEnglish" select="util:getKeywordValueByUri($stringValue, $thesaurusId, 'eng')"/>
+          <xsl:variable name="label" select="if (normalize-space($defaultLabel) != '') then $defaultLabel else $defaultLabelInEnglish"/>
           <xsl:choose>
-            <xsl:when test="normalize-space($defaultLabel)!=''">
+            <xsl:when test="normalize-space($label) != ''">
               <xsl:call-template name="render-url">
-                <xsl:with-param name="href" select="@rdf:resource"/>
-                <xsl:with-param name="label" select="$defaultLabel"/>
+                <xsl:with-param name="href" select="$stringValue"/>
+                <xsl:with-param name="label" select="$label"/>
               </xsl:call-template>
             </xsl:when>
             <xsl:otherwise>
-              <xsl:apply-templates mode="render-url" select="@rdf:resource" />
+              <xsl:apply-templates mode="render-url" select="$stringValue" />
             </xsl:otherwise>
           </xsl:choose>
         </td>
@@ -614,6 +634,7 @@
                                            mobilitydcatap:grammar">
     <xsl:param name="xpath"/>
     <xsl:variable name="name" select="name()"/>
+
     <xsl:if test="not(preceding-sibling::*[name(.) = $name and position()=1])">
       <xsl:for-each-group select="../*[name() = $name]" group-by="concat(name(), ' | ', skos:Concept/skos:inScheme/@rdf:resource)">
         <tr>
@@ -729,7 +750,8 @@
   </xsl:template>
 
   <!-- render nested content, but with the header above the table -->
-  <xsl:template mode="render-field" match="locn:address|dct:LicenseDocument|dct:RightsStatement|dct:rightsHolder|dct:Standard|dqv:QualityAnnotation|mobilitydcatap:Assessment">
+  <xsl:template mode="render-field" match="locn:address|dct:LicenseDocument|dct:RightsStatement|dct:rightsHolder|dct:Standard|dqv:QualityAnnotation|mobilitydcatap:Assessment|
+                                            healthdcatap:hasVariables|healthdcatap:hdab|csvw:TableGroup|csvw:table|csvw:column">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <!-- Special case for dct:license with an empty dct:LicenseDocument with only @rdf:about or for dcat:contactPoint with only vcard:hasEmail and vcard:hasURL-->
@@ -850,9 +872,14 @@
   </xsl:template>
 
   <xsl:template mode="render-concept" match="skos:Concept">
+    <xsl:param name="thesaurusId"/>
+
     <xsl:variable name="usedLang" select="if (normalize-space(skos:prefLabel[@xml:lang=$langId-2char][1]) != '')
                                           then $langId-2char
                                           else $defaultLang-2char"/>
+
+    <xsl:variable name="labelInEnglish" select="util:getKeywordValueByUri(@rdf:about, $thesaurusId, 'eng')"/>
+
     <xsl:choose>
       <xsl:when test="count(skos:prefLabel[@xml:lang=$usedLang]) > 0">
         <xsl:for-each select="skos:prefLabel[@xml:lang=$usedLang]">

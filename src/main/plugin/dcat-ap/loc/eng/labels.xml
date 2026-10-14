@@ -1423,7 +1423,7 @@
     <label>Name</label>
     <description>A Technical name given to the Variable as it appears in the CSV file.</description>
   </element>
-  <element name="csvw:titles">
+  <element name="csvw:title">
     <label>Title</label>
     <description>A Human-readable name given to the Variable.</description>
   </element>
