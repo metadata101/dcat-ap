@@ -575,21 +575,13 @@
     <for name="healthdcatap:numberOfUniqueIndividuals" use="number"/>
     <for name="healthdcatap:maxTypicalAge" use="number"/>
     <for name="healthdcatap:minTypicalAge" use="number"/>
+    <for name="healthdcatap:populationCoverage" use="textarea"/>
     <for name="dqv:value" use="number"/>
-    <for name="cv:email" templateModeOnly="true" forceLabel="true" label="key">
-      <template>
-        <values>
-          <key label="key" xpath="@rdf:resource" tooltip="cv:email"/>
-        </values>
-        <snippet>
-          <cv:email rdf:resource="{{key}}"/>
-        </snippet>
-      </template>
-    </for>
+
     <for name="dct:type" xpath="dcat:Dataset" use="thesaurus-list-picker">
       <directiveAttributes
         thesaurus="external.theme.dataset-type"
-        xpath="/dcat:Dataset/dct:type"
+        xpath="/dct:type"
         max="1"
         labelKey="dcat.addType"/>
     </for>
@@ -3215,13 +3207,13 @@
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
-      <snippet label="dcat-ap-health-700">
+      <snippet label="dcat-ap-health-800">
         <dct:conformsTo>
           <dct:Standard
-            rdf:about="https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-7/">
+            rdf:about="https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-8/">
             <dct:title xml:lang="en">HealthDCAT-AP</dct:title>
             <dct:description xml:lang="en">The HealthDCAT Application Profile (HealthDCAT-AP) is a domain-specific metadata model designed to support the implementation of the secondary use framework under the European Health Data Space (EHDS).</dct:description>
-            <owl:versionInfo>7.0.0</owl:versionInfo>
+            <owl:versionInfo>8.0.0</owl:versionInfo>
           </dct:Standard>
         </dct:conformsTo>
       </snippet>
@@ -3409,7 +3401,7 @@
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Data_provenance"/>
               </dqv:Metric>
             </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</dqv:value>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
           </dqv:QualityMeasurement>
         </dqv:hasQualityMeasurement>
       </snippet>
@@ -3440,7 +3432,7 @@
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Metadata_scope"/>
               </dqv:Metric>
             </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</dqv:value>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
           </dqv:QualityMeasurement>
         </dqv:hasQualityMeasurement>
       </snippet>
@@ -3470,7 +3462,7 @@
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Coherence"/>
               </dqv:Metric>
             </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</dqv:value>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
           </dqv:QualityMeasurement>
         </dqv:hasQualityMeasurement>
       </snippet>
@@ -3485,7 +3477,7 @@
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Completeness"/>
               </dqv:Metric>
             </dqv:isMeasurementOf>
-            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</dqv:value>
+            <dqv:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"></dqv:value>
           </dqv:QualityMeasurement>
         </dqv:hasQualityMeasurement>
       </snippet>
