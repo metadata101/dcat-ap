@@ -265,7 +265,8 @@
       <xsl:when test="$xpath = (
         './dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/dct:rights/dct:RightsStatement/dct:type',
         './dcat:Catalog/dcat:dataset/dcat:Dataset/dcat:distribution/dcat:Distribution/mobilitydcatap:mobilityDataStandard',
-        './dcat:Catalog/dcat:dataset/dcat:Dataset/dpv:hasPersonalData'
+        './dcat:Catalog/dcat:dataset/dcat:Dataset/dpv:hasPersonalData',
+        './dcat:Catalog/dcat:dataset/dcat:Dataset/healthdcatap:hasCodingSystem'
         )">
         <xsl:value-of select="$xpath"/>
       </xsl:when>
