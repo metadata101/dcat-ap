@@ -148,6 +148,16 @@
         </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
+    
+    <span
+      class="text-muted badge"
+      data-ng-class="{{
+              'text-success': mdView.current.record.mdStatus == 2,
+              'text-warning': mdView.current.record.mdStatus == 4
+              }}"
+      data-ng-if="user.isEditorOrMore()
+                      &amp;&amp; mdView.current.record.mdStatus &lt; 50
+                      &amp;&amp; isMdWorkflowEnable">{{('status-' + mdView.current.record.mdStatus) | translate}}</span>
   </xsl:template>
 
   <xsl:template name="renderTitleByLanguagePreference">
