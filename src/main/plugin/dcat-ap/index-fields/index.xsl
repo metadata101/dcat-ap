@@ -251,7 +251,8 @@
 
         <xsl:apply-templates mode="index-constraints" select="."/>
 
-        <xsl:apply-templates mode="index-distribution" select="."/>
+        <xsl:apply-templates mode="index-distribution" select="dcat:distribution"/>
+        <xsl:apply-templates mode="index-resource-link" select="."/>
 
         <xsl:for-each select="dcat:spatialResolutionInMeters[. castable as xs:decimal]">
           <resolutionScaleDenominator>
@@ -800,20 +801,20 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template mode="index-distribution" match="*[dcat:distribution]">
-    <xsl:for-each-group select="dcat:distribution/dcat:Distribution/dct:format" group-by="skos:Concept/@rdf:about">
+  <xsl:template mode="index-distribution" match="dcat:distribution">
+    <xsl:for-each-group select="dcat:Distribution/dct:format" group-by="skos:Concept/@rdf:about">
       <xsl:copy-of select="gn-fn-index:add-field('format', tokenize(current-grouping-key(), '/')[last()])"/>
     </xsl:for-each-group>
 
-    <xsl:for-each select="dcat:distribution/dcat:Distribution/dcat:accessURL">
+    <xsl:for-each select="dcat:Distribution/dcat:accessURL">
       <linkUrl>
         <xsl:value-of select="string(@rdf:resource)"/>
       </linkUrl>
     </xsl:for-each>
 
-    <xsl:apply-templates mode="index-protocol" select="dcat:distribution/dcat:Distribution/dct:conformsTo/dct:Standard"/>
+    <xsl:apply-templates mode="index-protocol" select="dcat:Distribution/dct:conformsTo/dct:Standard"/>
 
-    <xsl:for-each select="dcat:distribution/dcat:Distribution">
+    <xsl:for-each select="dcat:Distribution">
       <link type="object">
         {
         "protocol":
@@ -858,13 +859,12 @@
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template mode="index-distribution" match="*[dcat:endpointURL|dcat:endpointDescription|dcat:landingPage]">
+  <xsl:template mode="index-resource-link" match="*[dcat:endpointURL|dcat:endpointDescription|dcat:landingPage]">
     <xsl:for-each select="dcat:endpointURL|dcat:endpointDescription">
       <linkUrl>
         <xsl:value-of select="string(@rdf:resource)"/>
       </linkUrl>
     </xsl:for-each>
-
 
     <xsl:apply-templates mode="index-protocol" select="dct:conformsTo/dct:Standard"/>
 
