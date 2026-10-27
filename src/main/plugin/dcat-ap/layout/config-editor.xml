@@ -747,6 +747,7 @@
       <name>csvw:datatype</name>
       <name>cv:email</name>
       <name>cv:telephone</name>
+      <name>dct:ProvenanceStatement</name>
       <name>dpv:hasPersonalData</name>
       <name>dpv:PersonalData</name>
       <name>dqv:value</name>
