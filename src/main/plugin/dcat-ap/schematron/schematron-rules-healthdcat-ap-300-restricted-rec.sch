@@ -241,7 +241,7 @@
     <title>$loc/strings/healthdcat-ap-300-restricted-rec.000055.title</title>
     <rule context="//dcat:Catalog/dcat:themeTaxonomy">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000056.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000057.report</report>
     </rule>
@@ -258,7 +258,7 @@
     <title>$loc/strings/healthdcat-ap-300-restricted-rec.000061.title</title>
     <rule context="//dcat:Catalog/dct:spatial">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000062.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000063.report</report>
     </rule>
@@ -267,7 +267,7 @@
     <title>$loc/strings/healthdcat-ap-300-restricted-rec.000064.title</title>
     <rule context="//dcat:Catalog/dct:publisher">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000065.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000066.report</report>
     </rule>
@@ -276,7 +276,7 @@
     <title>$loc/strings/healthdcat-ap-300-restricted-rec.000067.title</title>
     <rule context="//dcat:Distribution/dcat:packageFormat">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000068.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000069.report</report>
     </rule>
@@ -285,7 +285,7 @@
     <title>$loc/strings/healthdcat-ap-300-restricted-rec.000070.title</title>
     <rule context="//dcat:Distribution/dcat:compressFormat">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000071.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000072.report</report>
     </rule>
@@ -294,7 +294,7 @@
     <title>$loc/strings/healthdcat-ap-300-restricted-rec.000073.title</title>
     <rule context="//dcat:Distribution/dcat:mediaType">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000074.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000075.report</report>
     </rule>
@@ -303,7 +303,7 @@
     <title>$loc/strings/healthdcat-ap-300-restricted-rec.000076.title</title>
     <rule context="//dcat:Dataset/dct:type">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000077.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000078.report</report>
     </rule>
@@ -312,7 +312,7 @@
     <title>$loc/strings/healthdcat-ap-300-restricted-rec.000079.title</title>
     <rule context="//dcat:Dataset/dct:spatial">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000080.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-restricted-rec.000081.report</report>
     </rule>
