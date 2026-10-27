@@ -32,6 +32,14 @@
             hergebruik van die gegevens
         </skos:scopeNote>
     </skos:Concept>
+    <skos:Concept rdf:about="http://data.europa.eu/eli/reg/2025/327/oj">
+        <skos:prefLabel xml:lang="en">2025/327 (EHDS Regulation)</skos:prefLabel>
+        <skos:prefLabel xml:lang="fr">2025/327 (EHDS Regulation)</skos:prefLabel>
+        <skos:prefLabel xml:lang="nl">2025/327 (EHDS Regulation)</skos:prefLabel>
+        <skos:scopeNote xml:lang="en"></skos:scopeNote>
+        <skos:scopeNote xml:lang="fr"></skos:scopeNote>
+        <skos:scopeNote xml:lang="nl"></skos:scopeNote>
+    </skos:Concept>
     <skos:Concept rdf:about="http://data.europa.eu/eli/reg/2013/1306/oj">
         <skos:prefLabel xml:lang="en">1306/2013</skos:prefLabel>
         <skos:prefLabel xml:lang="fr">1306/2013</skos:prefLabel>
