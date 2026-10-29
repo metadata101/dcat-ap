@@ -96,7 +96,7 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public-cardinalities.000016.title</title>
-    <rule context="//vcard:Kind">
+    <rule context="//vcard:Group|//vcard:Individual|//vcard:Kind|//vcard:Location|//vcard:Organization">
       <assert test="count(vcard:hasURL|vcard:hasEmail) >= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-non-public-cardinalities.000017.assert, ('#occurrences'), (string(count(vcard:hasURL|vcard:hasEmail))))" />
       </assert>
@@ -107,7 +107,7 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public-cardinalities.000019.title</title>
-    <rule context="//vcard:Kind">
+    <rule context="//vcard:Group|//vcard:Individual|//vcard:Kind|//vcard:Location|//vcard:Organization">
       <assert test="count(vcard:hasEmail) &lt;= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-non-public-cardinalities.000020.assert, ('#occurrences'), (string(count(vcard:hasEmail))))" />
       </assert>
@@ -118,7 +118,7 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public-cardinalities.000022.title</title>
-    <rule context="//vcard:Kind">
+    <rule context="//vcard:Group|//vcard:Individual|//vcard:Kind|//vcard:Location|//vcard:Organization">
       <assert test="count(vcard:hasURL) &lt;= 1">
         <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-non-public-cardinalities.000023.assert, ('#occurrences'), (string(count(vcard:hasURL))))" />
       </assert>
