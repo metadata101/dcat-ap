@@ -16,13 +16,13 @@
    <healthdcat-ap-300-restricted-cardinalities.000013.title>Maximum cardinality of csvw:url in //csvw:Table.</healthdcat-ap-300-restricted-cardinalities.000013.title>
    <healthdcat-ap-300-restricted-cardinalities.000014.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000014.assert>
    <healthdcat-ap-300-restricted-cardinalities.000015.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000015.report>
-   <healthdcat-ap-300-restricted-cardinalities.000016.title>Minimum cardinality of vcard:hasURL|vcard:hasEmail in //vcard:Kind.</healthdcat-ap-300-restricted-cardinalities.000016.title>
+   <healthdcat-ap-300-restricted-cardinalities.000016.title>Minimum cardinality of vcard:hasURL|vcard:hasEmail in //vcard:Group|//vcard:Individual|//vcard:Kind|//vcard:Location|//vcard:Organization.</healthdcat-ap-300-restricted-cardinalities.000016.title>
    <healthdcat-ap-300-restricted-cardinalities.000017.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000017.assert>
    <healthdcat-ap-300-restricted-cardinalities.000018.report>Minimum cardinality #min is respected.</healthdcat-ap-300-restricted-cardinalities.000018.report>
-   <healthdcat-ap-300-restricted-cardinalities.000019.title>Maximum cardinality of vcard:hasEmail in //vcard:Kind.</healthdcat-ap-300-restricted-cardinalities.000019.title>
+   <healthdcat-ap-300-restricted-cardinalities.000019.title>Maximum cardinality of vcard:hasEmail in //vcard:Group|//vcard:Individual|//vcard:Kind|//vcard:Location|//vcard:Organization.</healthdcat-ap-300-restricted-cardinalities.000019.title>
    <healthdcat-ap-300-restricted-cardinalities.000020.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000020.assert>
    <healthdcat-ap-300-restricted-cardinalities.000021.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000021.report>
-   <healthdcat-ap-300-restricted-cardinalities.000022.title>Maximum cardinality of vcard:hasURL in //vcard:Kind.</healthdcat-ap-300-restricted-cardinalities.000022.title>
+   <healthdcat-ap-300-restricted-cardinalities.000022.title>Maximum cardinality of vcard:hasURL in //vcard:Group|//vcard:Individual|//vcard:Kind|//vcard:Location|//vcard:Organization.</healthdcat-ap-300-restricted-cardinalities.000022.title>
    <healthdcat-ap-300-restricted-cardinalities.000023.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-restricted-cardinalities.000023.assert>
    <healthdcat-ap-300-restricted-cardinalities.000024.report>Maximum cardinality #max is respected.</healthdcat-ap-300-restricted-cardinalities.000024.report>
    <healthdcat-ap-300-restricted-cardinalities.000025.title>Minimum cardinality of dcatap:applicableLegislation in //dcat:DatasetSeries.</healthdcat-ap-300-restricted-cardinalities.000025.title>

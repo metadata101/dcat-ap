@@ -120,6 +120,10 @@
   <hvd-section>Hoogwaardige Dataset (HVD)</hvd-section>
   <hvd-tab>Hoogwaardige Dataset (HVD)</hvd-tab>
   <hvd-view>Hoogwaardige Dataset (HVD)</hvd-view>
+  <applicable-legislation-view>Applicable legislations</applicable-legislation-view>
+  <applicable-legislations-add-hvd>Add HVD legislation</applicable-legislations-add-hvd>
+  <applicable-legislations-add-ehds>Add EHDS regulation</applicable-legislations-add-ehds>
+  <applicable-legislations-add-other>Other</applicable-legislations-add-other>
   <mobility-section>Mobiliteit</mobility-section>
   <mobility-tab>Mobiliteit</mobility-tab>
   <mobility-view>Mobiliteit</mobility-view>

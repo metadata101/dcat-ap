@@ -131,6 +131,10 @@
   <hvd-dataset-section>Hochwertiger Datensatz (HVD)</hvd-dataset-section>
   <hvd-dataset-tab>Datensatz</hvd-dataset-tab>
   <hvd-view>Hochwertiger Datensatz</hvd-view>
+  <applicable-legislation-view>Applicable legislations</applicable-legislation-view>
+  <applicable-legislations-add-hvd>Add HVD legislation</applicable-legislations-add-hvd>
+  <applicable-legislations-add-ehds>Add EHDS regulation</applicable-legislations-add-ehds>
+  <applicable-legislations-add-other>Other</applicable-legislations-add-other>
   <mobility-section>Mobility</mobility-section>
   <mobility-tab>Mobility</mobility-tab>
   <mobility-view>Mobility</mobility-view>
