@@ -178,7 +178,7 @@
     <title>$loc/strings/healthdcat-ap-300-non-public.000046.title</title>
     <rule context="//time:TemporalEntity/cv:frequency">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000047.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000048.report</report>
     </rule>
@@ -195,7 +195,7 @@
     <title>$loc/strings/healthdcat-ap-300-non-public.000052.title</title>
     <rule context="//dct:LicenseDocument/dct:type">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000053.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000054.report</report>
     </rule>
@@ -213,7 +213,7 @@
     <title>$loc/strings/healthdcat-ap-300-non-public.000058.title</title>
     <rule context="//cv:ContactPoint/cv:specialOpeningHoursSpecification">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
       <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000059.assert</assert>
       <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000060.report</report>
@@ -232,7 +232,7 @@
     <title>$loc/strings/healthdcat-ap-300-non-public.000064.title</title>
     <rule context="//cv:ContactPoint/cv:openingHours">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
       <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000065.assert</assert>
       <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000066.report</report>
@@ -250,7 +250,7 @@
     <title>$loc/strings/healthdcat-ap-300-non-public.000070.title</title>
     <rule context="//cv:ContactPoint/cv:contactPage">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000071.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000072.report</report>
     </rule>
@@ -267,7 +267,7 @@
     <title>$loc/strings/healthdcat-ap-300-non-public.000076.title</title>
     <rule context="//dcat:Catalog/dct:language">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000077.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000078.report</report>
     </rule>
@@ -276,7 +276,7 @@
     <title>$loc/strings/healthdcat-ap-300-non-public.000079.title</title>
     <rule context="//csvw:Table/csvw:column">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
       <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000080.assert</assert>
       <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000081.report</report>
@@ -302,220 +302,220 @@
     <title>$loc/strings/healthdcat-ap-300-non-public.000088.title</title>
     <rule context="//csvw:Table/csvw:url">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000089.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000090.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000091.title</title>
-    <rule context="//vcard:Kind/vcard:hasEmail">
+    <rule context="//vcard:Kind/vcard:hasEmail|//vcard:Individual/vcard:hasEmail|//vcard:Organization/vcard:hasEmail|//vcard:Group/vcard:hasEmail|//vcard:Location/vcard:hasEmail">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000092.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000093.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000094.title</title>
-    <rule context="//vcard:Kind/vcard:hasURL">
+    <rule context="//vcard:Kind/vcard:hasURL|//vcard:Individual/vcard:hasURL|//vcard:Organization/vcard:hasURL|//vcard:Group/vcard:hasURL|//vcard:Location/vcard:hasURL">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000095.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000096.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000097.title</title>
-    <rule context="//csvw:Table/csvw:column">
-      <let name="resource" value="@rdf:resource" />
-      <let name="validClass" value="count(csvw:Column) = 1 or count((//csvw:Column)[@rdf:about = $resource]) = 1" />
-      <assert test="$validClass">$loc/strings/healthdcat-ap-300-non-public.000098.assert</assert>
-      <report test="$validClass">$loc/strings/healthdcat-ap-300-non-public.000099.report</report>
+    <rule context="//dcat:Dataset">
+      <let name="matches" value="(count(healthdcatap:hasVariables) >= 1 and count(healthdcatap:hasStructuredData[normalize-space(.) = ('true', '1')]) >= 1) or (count(healthdcatap:hasStructuredData[normalize-space(.) = ('false', '0')]) >= 1) or (count(healthdcatap:hasStructuredData) &lt;= 0)" />
+      <assert test="$matches">$loc/strings/healthdcat-ap-300-non-public.000098.assert</assert>
+      <report test="$matches">$loc/strings/healthdcat-ap-300-non-public.000099.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000100.title</title>
-    <rule context="//dcat:DatasetSeries/dcatap:applicableLegislation">
-      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
-      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000101.assert</assert>
-      <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000102.report</report>
+    <rule context="//csvw:Table/csvw:column">
+      <let name="resource" value="@rdf:resource" />
+      <let name="validClass" value="count(csvw:Column) = 1 or count((//csvw:Column)[@rdf:about = $resource]) = 1" />
+      <assert test="$validClass">$loc/strings/healthdcat-ap-300-non-public.000101.assert</assert>
+      <report test="$validClass">$loc/strings/healthdcat-ap-300-non-public.000102.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000103.title</title>
-    <rule context="//dcat:Distribution/dcatap:availability">
+    <rule context="//dcat:DatasetSeries/dcatap:applicableLegislation">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000104.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000105.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000106.title</title>
-    <rule context="//dcat:Distribution/adms:status">
+    <rule context="//dcat:Distribution/dcatap:availability">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000107.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000108.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000109.title</title>
-    <rule context="//dcat:Distribution/dct:language">
+    <rule context="//dcat:Distribution/adms:status">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000110.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000111.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000112.title</title>
-    <rule context="//dcat:Distribution/dct:format">
+    <rule context="//dcat:Distribution/dct:language">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000113.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000114.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000115.title</title>
-    <rule context="//time:TemporalEntity/cv:frequency">
+    <rule context="//dcat:Distribution/dct:format">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000116.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000117.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000118.title</title>
-    <rule context="//dcat:Dataset/dpv:hasPersonalData">
+    <rule context="//time:TemporalEntity/cv:frequency">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000119.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000120.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000121.title</title>
-    <rule context="//dcat:Dataset/prov:wasGeneratedBy">
+    <rule context="//dcat:Dataset/dpv:hasPersonalData">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
-      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
-      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000122.assert</assert>
-      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000123.report</report>
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000122.assert</assert>
+      <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000123.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000124.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:healthTheme">
+    <rule context="//dcat:Dataset/prov:wasGeneratedBy">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
-      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000125.assert</assert>
-      <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000126.report</report>
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
+      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000125.assert</assert>
+      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000126.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000127.title</title>
-    <rule context="//dcat:Dataset/dct:conformsTo">
+    <rule context="//dcat:Dataset/healthdcatap:healthTheme">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000128.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000129.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000130.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:hasCodingSystem">
+    <rule context="//dcat:Dataset/dct:conformsTo">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000131.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000132.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000133.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:healthCategory">
+    <rule context="//dcat:Dataset/healthdcatap:hasCodingSystem">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000134.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000135.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000136.title</title>
-    <rule context="//dcat:Dataset/dct:accessRights">
+    <rule context="//dcat:Dataset/healthdcatap:healthCategory">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000137.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000138.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000139.title</title>
-    <rule context="//dcat:Dataset">
-      <let name="hasValue" value="dcat:theme/skos:Concept/@rdf:about='http://publications.europa.eu/resource/authority/data-theme/HEAL'" />
-      <assert test="$hasValue">$loc/strings/healthdcat-ap-300-non-public.000140.assert</assert>
-      <report test="$hasValue">$loc/strings/healthdcat-ap-300-non-public.000141.report</report>
+    <rule context="//dcat:Dataset/dct:accessRights">
+      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000140.assert</assert>
+      <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000141.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000142.title</title>
-    <rule context="//dcat:Dataset/dcat:theme">
-      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
-      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000143.assert</assert>
-      <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000144.report</report>
+    <rule context="//dcat:Dataset">
+      <let name="hasValue" value="dcat:theme/skos:Concept/@rdf:about='http://publications.europa.eu/resource/authority/data-theme/HEAL'" />
+      <assert test="$hasValue">$loc/strings/healthdcat-ap-300-non-public.000143.assert</assert>
+      <report test="$hasValue">$loc/strings/healthdcat-ap-300-non-public.000144.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000145.title</title>
-    <rule context="//dcat:Dataset/dct:language">
+    <rule context="//dcat:Dataset/dcat:theme">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000146.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000147.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000148.title</title>
-    <rule context="//dcat:Dataset/dct:accrualPeriodicity">
+    <rule context="//dcat:Dataset/dct:language">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000149.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000150.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000151.title</title>
-    <rule context="//dcat:Distribution/dcatap:applicableLegislation">
+    <rule context="//dcat:Dataset/dct:accrualPeriodicity">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000152.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000153.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000154.title</title>
-    <rule context="//csvw:Column/csvw:propertyUrl">
+    <rule context="//dcat:Distribution/dcatap:applicableLegislation">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000155.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000156.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000157.title</title>
-    <rule context="//csvw:Column/csvw:datatype">
-      <let name="isLiteral" value="normalize-space(.) != ''" />
-      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000158.assert</assert>
-      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000159.report</report>
+    <rule context="//csvw:Column/csvw:propertyUrl">
+      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000158.assert</assert>
+      <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000159.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000160.title</title>
-    <rule context="//csvw:Column/csvw:title">
+    <rule context="//csvw:Column/csvw:datatype">
       <let name="isLiteral" value="normalize-space(.) != ''" />
       <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000161.assert</assert>
       <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000162.report</report>
@@ -523,7 +523,7 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000163.title</title>
-    <rule context="//csvw:Column/dct:description">
+    <rule context="//csvw:Column/csvw:title">
       <let name="isLiteral" value="normalize-space(.) != ''" />
       <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000164.assert</assert>
       <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000165.report</report>
@@ -531,7 +531,7 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000166.title</title>
-    <rule context="//csvw:Column/csvw:name">
+    <rule context="//csvw:Column/dct:description">
       <let name="isLiteral" value="normalize-space(.) != ''" />
       <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000167.assert</assert>
       <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000168.report</report>
@@ -539,19 +539,17 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000169.title</title>
-    <rule context="//dcat:Dataset/dct:provenance">
-      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
-      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
-      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000170.assert</assert>
-      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000171.report</report>
+    <rule context="//csvw:Column/csvw:name">
+      <let name="isLiteral" value="normalize-space(.) != ''" />
+      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000170.assert</assert>
+      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000171.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000172.title</title>
-    <rule context="//dcat:Dataset/dct:type">
+    <rule context="//dcat:Dataset/dct:provenance">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
       <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000173.assert</assert>
       <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000174.report</report>
@@ -559,33 +557,35 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000175.title</title>
-    <rule context="//dcat:Dataset/dcat:keyword">
-      <let name="isLiteral" value="normalize-space(.) != ''" />
-      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000176.assert</assert>
-      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000177.report</report>
+    <rule context="//dcat:Dataset/dct:type">
+      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
+      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000176.assert</assert>
+      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000177.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000178.title</title>
-    <rule context="//dcat:Dataset/dcat:contactPoint">
-      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
-      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
-      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000179.assert</assert>
-      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000180.report</report>
+    <rule context="//dcat:Dataset/dcat:keyword">
+      <let name="isLiteral" value="normalize-space(.) != ''" />
+      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000179.assert</assert>
+      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000180.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000181.title</title>
-    <rule context="//dcat:Dataset/dct:alternative">
-      <let name="isLiteral" value="normalize-space(.) != ''" />
-      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000182.assert</assert>
-      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000183.report</report>
+    <rule context="//dcat:Dataset/dcat:contactPoint">
+      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
+      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000182.assert</assert>
+      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000183.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000184.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:populationCoverage">
+    <rule context="//dcat:Dataset/dct:alternative">
       <let name="isLiteral" value="normalize-space(.) != ''" />
       <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000185.assert</assert>
       <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000186.report</report>
@@ -593,16 +593,15 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000187.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:numberOfUniqueIndividuals">
+    <rule context="//dcat:Dataset/healthdcatap:populationCoverage">
       <let name="isLiteral" value="normalize-space(.) != ''" />
-      <let name="castTest" value="normalize-space(.) castable as xs:integer" />
-      <assert test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-non-public.000188.assert</assert>
-      <report test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-non-public.000189.report</report>
+      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000188.assert</assert>
+      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000189.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000190.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:numberOfRecords">
+    <rule context="//dcat:Dataset/healthdcatap:numberOfUniqueIndividuals">
       <let name="isLiteral" value="normalize-space(.) != ''" />
       <let name="castTest" value="normalize-space(.) castable as xs:integer" />
       <assert test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-non-public.000191.assert</assert>
@@ -611,7 +610,7 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000193.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:maxTypicalAge">
+    <rule context="//dcat:Dataset/healthdcatap:numberOfRecords">
       <let name="isLiteral" value="normalize-space(.) != ''" />
       <let name="castTest" value="normalize-space(.) castable as xs:integer" />
       <assert test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-non-public.000194.assert</assert>
@@ -620,7 +619,7 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000196.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:minTypicalAge">
+    <rule context="//dcat:Dataset/healthdcatap:maxTypicalAge">
       <let name="isLiteral" value="normalize-space(.) != ''" />
       <let name="castTest" value="normalize-space(.) castable as xs:integer" />
       <assert test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-non-public.000197.assert</assert>
@@ -629,109 +628,108 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000199.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:hasCodingSystem">
-      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
-      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
-      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000200.assert</assert>
-      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000201.report</report>
+    <rule context="//dcat:Dataset/healthdcatap:minTypicalAge">
+      <let name="isLiteral" value="normalize-space(.) != ''" />
+      <let name="castTest" value="normalize-space(.) castable as xs:integer" />
+      <assert test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-non-public.000200.assert</assert>
+      <report test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-non-public.000201.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000202.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:hasCodeValues">
-      <let name="isLiteral" value="normalize-space(.) != ''" />
-      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000203.assert</assert>
-      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000204.report</report>
+    <rule context="//dcat:Dataset/healthdcatap:hasCodingSystem">
+      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
+      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000203.assert</assert>
+      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000204.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000205.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:hasStructuredData">
+    <rule context="//dcat:Dataset/healthdcatap:hasCodeValues">
       <let name="isLiteral" value="normalize-space(.) != ''" />
-      <let name="castTest" value="normalize-space(.) castable as xs:boolean" />
-      <assert test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-non-public.000206.assert</assert>
-      <report test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-non-public.000207.report</report>
+      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000206.assert</assert>
+      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000207.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000208.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:healthTheme">
-      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
-      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
-      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000209.assert</assert>
-      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000210.report</report>
+    <rule context="//dcat:Dataset/healthdcatap:hasStructuredData">
+      <let name="isLiteral" value="normalize-space(.) != ''" />
+      <let name="castTest" value="normalize-space(.) castable as xs:boolean" />
+      <assert test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-non-public.000209.assert</assert>
+      <report test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-non-public.000210.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000211.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:healthCategory">
+    <rule context="//dcat:Dataset/healthdcatap:healthTheme">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
-      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000212.assert</assert>
-      <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000213.report</report>
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
+      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000212.assert</assert>
+      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000213.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000214.title</title>
-    <rule context="//dcat:Dataset">
-      <let name="hasValue" value="dct:accessRights/skos:Concept/@rdf:about='http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC'" />
-      <assert test="$hasValue">$loc/strings/healthdcat-ap-300-non-public.000215.assert</assert>
-      <report test="$hasValue">$loc/strings/healthdcat-ap-300-non-public.000216.report</report>
+    <rule context="//dcat:Dataset/healthdcatap:healthCategory">
+      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000215.assert</assert>
+      <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000216.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000217.title</title>
-    <rule context="//dcat:Dataset/dcatap:applicableLegislation">
-      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
-      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000218.assert</assert>
-      <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000219.report</report>
+    <rule context="//dcat:Dataset">
+      <let name="hasValue" value="dct:accessRights/skos:Concept/@rdf:about='http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC'" />
+      <assert test="$hasValue">$loc/strings/healthdcat-ap-300-non-public.000218.assert</assert>
+      <report test="$hasValue">$loc/strings/healthdcat-ap-300-non-public.000219.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000220.title</title>
-    <rule context="//dcat:Dataset/dct:identifier">
-      <let name="isLiteral" value="normalize-space(.) != ''" />
-      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000221.assert</assert>
-      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000222.report</report>
+    <rule context="//dcat:Dataset/dcatap:applicableLegislation">
+      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000221.assert</assert>
+      <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000222.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000223.title</title>
-    <rule context="//dcat:Dataset/dct:publisher">
-      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
-      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
-      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000224.assert</assert>
-      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000225.report</report>
+    <rule context="//dcat:Dataset/dct:identifier">
+      <let name="isLiteral" value="normalize-space(.) != ''" />
+      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000224.assert</assert>
+      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000225.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000226.title</title>
-    <rule context="//dcat:Dataset/dcat:theme">
+    <rule context="//dcat:Dataset/dct:publisher">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
-      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000227.assert</assert>
-      <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000228.report</report>
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
+      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000227.assert</assert>
+      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000228.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000229.title</title>
-    <rule context="//dcat:Dataset/dpv:hasPurpose">
+    <rule context="//dcat:Dataset/dcat:theme">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
-      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
-      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000230.assert</assert>
-      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000231.report</report>
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000230.assert</assert>
+      <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000231.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000232.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:hdab">
+    <rule context="//dcat:Dataset/dpv:hasPurpose">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
       <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000233.assert</assert>
       <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000234.report</report>
@@ -739,9 +737,9 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000235.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:hdabCoordinator">
+    <rule context="//dcat:Dataset/healthdcatap:hdab">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
       <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000236.assert</assert>
       <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000237.report</report>
@@ -749,9 +747,9 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000238.title</title>
-    <rule context="//dcat:Dataset/geodcatap:custodian">
+    <rule context="//dcat:Dataset/healthdcatap:hdabCoordinator">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
       <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000239.assert</assert>
       <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000240.report</report>
@@ -759,46 +757,56 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000241.title</title>
-    <rule context="//csvw:TableGroup/dct:title">
-      <let name="isLiteral" value="normalize-space(.) != ''" />
-      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000242.assert</assert>
-      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000243.report</report>
+    <rule context="//dcat:Dataset/geodcatap:custodian">
+      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
+      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000242.assert</assert>
+      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-non-public.000243.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000244.title</title>
-    <rule context="//spdx:Checksum/spdx:algorithm">
-      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
-      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000245.assert</assert>
-      <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000246.report</report>
+    <rule context="//csvw:TableGroup/dct:title">
+      <let name="isLiteral" value="normalize-space(.) != ''" />
+      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000245.assert</assert>
+      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-non-public.000246.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000247.title</title>
-    <rule context="//dcat:Catalog/dcatap:applicableLegislation">
+    <rule context="//spdx:Checksum/spdx:algorithm">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000248.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000249.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000250.title</title>
-    <rule context="//dcat:DataService/dct:format">
+    <rule context="//dcat:Catalog/dcatap:applicableLegislation">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000251.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000252.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-non-public.000253.title</title>
-    <rule context="//dcat:DataService/dct:accessRights">
+    <rule context="//dcat:DataService/dct:format">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*://.*$')" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000254.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000255.report</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <title>$loc/strings/healthdcat-ap-300-non-public.000256.title</title>
+    <rule context="//dcat:DataService/dct:accessRights">
+      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000257.assert</assert>
+      <report test="$isIRI">$loc/strings/healthdcat-ap-300-non-public.000258.report</report>
     </rule>
   </pattern>
 </schema>
