@@ -350,11 +350,11 @@ For example:
 * enabling Health DCAT-AP validation using the following XPath:
 
 ```
-./dcat:Catalog[dcat:record/*/dct:conformsTo/*/@rdf:about = 'https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-7/' and dcat:dataset/*/dct:accessRights/*/@rdf:about = 'http://publications.europa.eu/resource/authority/access-right/PUBLIC']
+//dcat:Catalog[dcat:record/*/dct:conformsTo/*/@rdf:about = 'https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-8/' and (dcat:dataset/*/dct:accessRights/*/@rdf:about = 'http://publications.europa.eu/resource/authority/access-right/PUBLIC' or count(dcat:dataset/*/dct:accessRights) = 0)]
 
-./dcat:Catalog[dcat:record/*/dct:conformsTo/*/@rdf:about = 'https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-7/' and dcat:dataset/*/dct:accessRights/*/@rdf:about = 'http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC']
+./dcat:Catalog[dcat:record/*/dct:conformsTo/*/@rdf:about = 'https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-8/' and dcat:dataset/*/dct:accessRights/*/@rdf:about = 'http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC']
 
-./dcat:Catalog[dcat:record/*/dct:conformsTo/*/@rdf:about = 'https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-7/' and dcat:dataset/*/dct:accessRights/*/@rdf:about = 'http://publications.europa.eu/resource/authority/access-right/RESTRICTED']
+./dcat:Catalog[dcat:record/*/dct:conformsTo/*/@rdf:about = 'https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-8/' and dcat:dataset/*/dct:accessRights/*/@rdf:about = 'http://publications.europa.eu/resource/authority/access-right/RESTRICTED']
 ```
 
 
