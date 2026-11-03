@@ -329,7 +329,18 @@
       </xsl:choose>
       <xsl:apply-templates select="dcat:dataset|dcat:service"/>
 
-      <xsl:apply-templates select="dcatap:applicableLegislation"/>
+      <xsl:variable name="isHealthDataset"
+                    select="count(.[dcat:record/*/dct:conformsTo/*/@rdf:about = 'https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-8/']) = 1"/>
+      <xsl:choose>
+        <xsl:when test="$isHealthDataset">
+          <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg/2025/327/oj"/>
+          <xsl:apply-templates select="dcatap:applicableLegislation[@rdf:resource != 'http://data.europa.eu/eli/reg/2025/327/oj']"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="dcatap:applicableLegislation"/>
+        </xsl:otherwise>
+      </xsl:choose>
+
     </dcat:Catalog>
   </xsl:template>
 
