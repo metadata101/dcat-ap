@@ -47,6 +47,7 @@
                 xmlns:healthdcatap="http://healthdataportal.eu/ns/health#"
                 xmlns:csvw="http://www.w3.org/ns/csvw#"
                 xmlns:dpv="https://w3id.org/dpv#"
+                xmlns:cv="http://data.europa.eu/m8g/"
                 xmlns:gn-fn-render="http://geonetwork-opensource.org/xsl/functions/render"
                 xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
                 xmlns:gn-fn-dcat-ap="http://geonetwork-opensource.org/xsl/functions/profiles/dcat-ap"
@@ -66,6 +67,7 @@
   <xsl:include href="../../convert/functions.xsl" />
   <xsl:include href="../../layout/evaluate.xsl" />
   <xsl:include href="../../layout/utility-tpl.xsl" />
+  <xsl:include href="../../layout/layout-custom-fields-quantum.xsl" />
 
   <!-- The core formatter XSL layout based on the editor configuration -->
   <xsl:include href="sharedFormatterDir/xslt/render-layout.xsl" />
@@ -429,7 +431,7 @@
   <xsl:template mode="render-view" match="section[not(@xpath) and not(@forEach)]">
     <xsl:param name="base" select="$metadata"/>
     <xsl:variable name="sectionContent">
-      <xsl:apply-templates mode="render-view" select="section|field">
+      <xsl:apply-templates mode="render-view" select="section|field|xsl">
         <xsl:with-param name="base" select="$base"/>
       </xsl:apply-templates>
     </xsl:variable>
@@ -447,7 +449,7 @@
         </xsl:if>
 
         <xsl:choose>
-          <xsl:when test="$sectionContent/div/table">
+          <xsl:when test="$sectionContent/div/table or $sectionContent/div/div/table">
             <xsl:copy-of select="$sectionContent"/>
           </xsl:when>
           <xsl:otherwise>
@@ -522,7 +524,7 @@
                                            vcard:hasTelephone|vcard:fn|vcard:organization-name|skos:prefLabel|dcat:version|
                                            adms:versionNotes|dcat:byteSize|dcat:hadRole|dcat:spatialResolutionInMeters|dcat:temporalResolution|mdcat:stars|owl:versionInfo|
                                            locn:fullAddress|locn:poBox|locn:thoroughfare|locn:locatorDesignator|locn:locatorName|locn:postName|locn:postCode|locn:adminUnitL1|locn:adminUnitL2|locn:addressArea|
-                                           healthdcatap:numberOfRecords|healthdcatap:numberOfUniqueIndividuals|healthdcatap:maxTypicalAge|healthdcatap:minTypicalAge">
+                                           healthdcatap:numberOfRecords|healthdcatap:numberOfUniqueIndividuals|healthdcatap:maxTypicalAge|healthdcatap:minTypicalAge|healthdcatap:hasCodeValues|cv:email">
     <xsl:param name="xpath"/>
     <xsl:variable name="stringValue" select="string()"/>
     <xsl:if test="normalize-space($stringValue) != ''">
@@ -975,6 +977,27 @@
         <xsl:value-of select="$txt"/>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
 
+  <xsl:template name="render-form-field-control-remove">
+    <xsl:param name="editInfo"/>
+  </xsl:template>
+
+  <xsl:template mode="render-view" match="xsl[@xpath = '/rdf:RDF/dcat:Catalog/*/*/dqv:hasQualityMeasurement[1]']">
+    <xsl:param name="base" as="node()"/>
+    <xsl:variable name="originalNode"
+                  select="$base/dcat:Catalog/*/*/dqv:hasQualityMeasurement[1]"/>
+
+    <xsl:variable name="mode" select="@mode"/>
+
+    <xsl:for-each select="$originalNode">
+      <saxon:call-template name="{$mode}">
+        <xsl:with-param name="isViewMode" select="true()"/>
+      </saxon:call-template>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template mode="render-view" match="xsl">
+    <xsl:param name="base" as="node()"/>
   </xsl:template>
 </xsl:stylesheet>

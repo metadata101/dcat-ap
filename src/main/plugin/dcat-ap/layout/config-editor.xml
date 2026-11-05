@@ -3303,7 +3303,7 @@
             <dqv:computedOn rdf:resource=""/>
             <dqv:isMeasurementOf>
               <dqv:Metric rdf:about="http://quantumproject.eu/vocab-quantum/#Accessibility_metric1">
-                <skos:definition xml:lang="en">Availability of a data access &amp; usage policy at the time of release of the dataset</skos:definition>
+                <skos:definition xml:lang="">Availability of a data access &amp; usage policy at the time of release of the dataset</skos:definition>
                 <dqv:expectedDataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
                 <dqv:inDimension rdf:resource="http://quantumproject.eu/vocab-quantum/#Accessibility"/>
               </dqv:Metric>
