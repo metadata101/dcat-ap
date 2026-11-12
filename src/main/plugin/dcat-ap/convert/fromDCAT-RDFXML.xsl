@@ -54,7 +54,7 @@
           <xsl:copy-of select="$catalog/@*"/>
           <xsl:copy-of select="$catalog/*[not(self::dcat:record or self::dcat:dataset or self::dcat:service)]"/>
         </xsl:if>
-        <xsl:for-each select="$normalizedChildren//dcat:CatalogRecord|
+        <xsl:for-each select="$normalizedChildren//dcat:record/dcat:CatalogRecord|
                               $normalizedChildren//dcat:Dataset|
                               $normalizedChildren//dcat:DataService[not(ancestor::dcat:Distribution)]|
                               $normalizedChildren//dcat:DatasetSeries">
@@ -88,20 +88,27 @@
     <xsl:choose>
       <xsl:when test="$typePrefix and normalize-space($typeLocalName) != '' and $typeNamespace != $rdfType">
         <xsl:element name="{$typePrefix}:{$typeLocalName}" namespace="{$typeNamespace}">
-          <xsl:apply-templates mode="reorganize" select="@*|node()[not(self::rdf:type)]"/>
+          <xsl:apply-templates mode="copy" select="@*|node()[not(self::rdf:type)]"/>
         </xsl:element>
       </xsl:when>
       <xsl:otherwise>
         <xsl:copy copy-namespaces="no">
-          <xsl:apply-templates mode="reorganize" select="@*|node()"/>
+          <xsl:apply-templates mode="copy" select="@*|node()"/>
         </xsl:copy>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template mode="reorganize" match="foaf:isPrimaryTopicOf"/>
+  <!-- Ignore source document pointing to the ISO source -->
+  <xsl:template mode="copy" match="dct:source[dcat:CatalogRecord]|foaf:isPrimaryTopicOf" priority="2"/>
 
   <xsl:template mode="reorganize" match="*|@*|text()">
+    <xsl:copy copy-namespaces="no">
+      <xsl:apply-templates mode="reorganize" select="*|@*|text()"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template mode="copy" match="*|@*|text()">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates mode="reorganize" select="*|@*|text()"/>
     </xsl:copy>
