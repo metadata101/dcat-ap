@@ -233,7 +233,7 @@
                 <xs:element ref="healthdcatap:healthCategory" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="healthdcatap:healthTheme" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="healthdcatap:hdab" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="healthdcatap:hasStructuredData" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="healthdcatap:hasStructuredData" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="healthdcatap:analytics" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="healthdcatap:hasCodeValues" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="healthdcatap:hasCodingSystem" minOccurs="0" maxOccurs="unbounded"/>
