@@ -55,51 +55,51 @@
    <healthdcat-ap-300-non-public.000052.title>Node kind constraint for //dct:LicenseDocument/dct:type.</healthdcat-ap-300-non-public.000052.title>
    <healthdcat-ap-300-non-public.000053.assert>Nodekind should be IRI.</healthdcat-ap-300-non-public.000053.assert>
    <healthdcat-ap-300-non-public.000054.report>Nodekind is IRI.</healthdcat-ap-300-non-public.000054.report>
-   <healthdcat-ap-300-non-public.000055.title>Class constraint for cv:specialOpeningHoursSpecification in cv:ContactPoint</healthdcat-ap-300-non-public.000055.title>
-   <healthdcat-ap-300-non-public.000056.assert>Property cv:specialOpeningHoursSpecification in context cv:ContactPoint should have class time:TemporalEntity.</healthdcat-ap-300-non-public.000056.assert>
-   <healthdcat-ap-300-non-public.000057.report>Property cv:specialOpeningHoursSpecification in context cv:ContactPoint has the right class time:TemporalEntity.</healthdcat-ap-300-non-public.000057.report>
-   <healthdcat-ap-300-non-public.000058.title>Node kind constraint for //cv:ContactPoint/cv:specialOpeningHoursSpecification.</healthdcat-ap-300-non-public.000058.title>
-   <healthdcat-ap-300-non-public.000059.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-non-public.000059.assert>
-   <healthdcat-ap-300-non-public.000060.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-non-public.000060.report>
-   <healthdcat-ap-300-non-public.000061.title>Class constraint for cv:openingHours in cv:ContactPoint</healthdcat-ap-300-non-public.000061.title>
-   <healthdcat-ap-300-non-public.000062.assert>Property cv:openingHours in context cv:ContactPoint should have class time:TemporalEntity.</healthdcat-ap-300-non-public.000062.assert>
-   <healthdcat-ap-300-non-public.000063.report>Property cv:openingHours in context cv:ContactPoint has the right class time:TemporalEntity.</healthdcat-ap-300-non-public.000063.report>
-   <healthdcat-ap-300-non-public.000064.title>Node kind constraint for //cv:ContactPoint/cv:openingHours.</healthdcat-ap-300-non-public.000064.title>
-   <healthdcat-ap-300-non-public.000065.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-non-public.000065.assert>
-   <healthdcat-ap-300-non-public.000066.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-non-public.000066.report>
-   <healthdcat-ap-300-non-public.000067.title>Node kind constraint for //cv:ContactPoint/cv:telephone.</healthdcat-ap-300-non-public.000067.title>
-   <healthdcat-ap-300-non-public.000068.assert>Nodekind should be Literal.</healthdcat-ap-300-non-public.000068.assert>
-   <healthdcat-ap-300-non-public.000069.report>Nodekind is Literal.</healthdcat-ap-300-non-public.000069.report>
-   <healthdcat-ap-300-non-public.000070.title>Node kind constraint for //cv:ContactPoint/cv:contactPage.</healthdcat-ap-300-non-public.000070.title>
-   <healthdcat-ap-300-non-public.000071.assert>Nodekind should be IRI.</healthdcat-ap-300-non-public.000071.assert>
-   <healthdcat-ap-300-non-public.000072.report>Nodekind is IRI.</healthdcat-ap-300-non-public.000072.report>
-   <healthdcat-ap-300-non-public.000073.title>Node kind constraint for //cv:ContactPoint/cv:email.</healthdcat-ap-300-non-public.000073.title>
-   <healthdcat-ap-300-non-public.000074.assert>Nodekind should be Literal.</healthdcat-ap-300-non-public.000074.assert>
-   <healthdcat-ap-300-non-public.000075.report>Nodekind is Literal.</healthdcat-ap-300-non-public.000075.report>
-   <healthdcat-ap-300-non-public.000076.title>Node kind constraint for //dcat:Catalog/dct:language.</healthdcat-ap-300-non-public.000076.title>
-   <healthdcat-ap-300-non-public.000077.assert>Nodekind should be IRI.</healthdcat-ap-300-non-public.000077.assert>
-   <healthdcat-ap-300-non-public.000078.report>Nodekind is IRI.</healthdcat-ap-300-non-public.000078.report>
-   <healthdcat-ap-300-non-public.000079.title>Node kind constraint for //csvw:Table/csvw:column.</healthdcat-ap-300-non-public.000079.title>
-   <healthdcat-ap-300-non-public.000080.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-non-public.000080.assert>
-   <healthdcat-ap-300-non-public.000081.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-non-public.000081.report>
-   <healthdcat-ap-300-non-public.000082.title>Node kind constraint for //csvw:Table/dcat:keyword.</healthdcat-ap-300-non-public.000082.title>
-   <healthdcat-ap-300-non-public.000083.assert>Nodekind should be Literal.</healthdcat-ap-300-non-public.000083.assert>
-   <healthdcat-ap-300-non-public.000084.report>Nodekind is Literal.</healthdcat-ap-300-non-public.000084.report>
-   <healthdcat-ap-300-non-public.000085.title>Node kind constraint for //csvw:Table/dct:title.</healthdcat-ap-300-non-public.000085.title>
+   <healthdcat-ap-300-non-public.000055.title>Or constraint in //dcat:Dataset</healthdcat-ap-300-non-public.000055.title>
+   <healthdcat-ap-300-non-public.000056.assert>If healthdcatap:hasStructuredData is true, the dataset must include at least one healthdcatap:hasVariables.</healthdcat-ap-300-non-public.000056.assert>
+   <healthdcat-ap-300-non-public.000057.report>Conform to the given disjoint set of requirements.</healthdcat-ap-300-non-public.000057.report>
+   <healthdcat-ap-300-non-public.000058.title>Class constraint for cv:specialOpeningHoursSpecification in cv:ContactPoint</healthdcat-ap-300-non-public.000058.title>
+   <healthdcat-ap-300-non-public.000059.assert>Property cv:specialOpeningHoursSpecification in context cv:ContactPoint should have class time:TemporalEntity.</healthdcat-ap-300-non-public.000059.assert>
+   <healthdcat-ap-300-non-public.000060.report>Property cv:specialOpeningHoursSpecification in context cv:ContactPoint has the right class time:TemporalEntity.</healthdcat-ap-300-non-public.000060.report>
+   <healthdcat-ap-300-non-public.000061.title>Node kind constraint for //cv:ContactPoint/cv:specialOpeningHoursSpecification.</healthdcat-ap-300-non-public.000061.title>
+   <healthdcat-ap-300-non-public.000062.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-non-public.000062.assert>
+   <healthdcat-ap-300-non-public.000063.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-non-public.000063.report>
+   <healthdcat-ap-300-non-public.000064.title>Class constraint for cv:openingHours in cv:ContactPoint</healthdcat-ap-300-non-public.000064.title>
+   <healthdcat-ap-300-non-public.000065.assert>Property cv:openingHours in context cv:ContactPoint should have class time:TemporalEntity.</healthdcat-ap-300-non-public.000065.assert>
+   <healthdcat-ap-300-non-public.000066.report>Property cv:openingHours in context cv:ContactPoint has the right class time:TemporalEntity.</healthdcat-ap-300-non-public.000066.report>
+   <healthdcat-ap-300-non-public.000067.title>Node kind constraint for //cv:ContactPoint/cv:openingHours.</healthdcat-ap-300-non-public.000067.title>
+   <healthdcat-ap-300-non-public.000068.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-non-public.000068.assert>
+   <healthdcat-ap-300-non-public.000069.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-non-public.000069.report>
+   <healthdcat-ap-300-non-public.000070.title>Node kind constraint for //cv:ContactPoint/cv:telephone.</healthdcat-ap-300-non-public.000070.title>
+   <healthdcat-ap-300-non-public.000071.assert>Nodekind should be Literal.</healthdcat-ap-300-non-public.000071.assert>
+   <healthdcat-ap-300-non-public.000072.report>Nodekind is Literal.</healthdcat-ap-300-non-public.000072.report>
+   <healthdcat-ap-300-non-public.000073.title>Node kind constraint for //cv:ContactPoint/cv:contactPage.</healthdcat-ap-300-non-public.000073.title>
+   <healthdcat-ap-300-non-public.000074.assert>Nodekind should be IRI.</healthdcat-ap-300-non-public.000074.assert>
+   <healthdcat-ap-300-non-public.000075.report>Nodekind is IRI.</healthdcat-ap-300-non-public.000075.report>
+   <healthdcat-ap-300-non-public.000076.title>Node kind constraint for //cv:ContactPoint/cv:email.</healthdcat-ap-300-non-public.000076.title>
+   <healthdcat-ap-300-non-public.000077.assert>Nodekind should be Literal.</healthdcat-ap-300-non-public.000077.assert>
+   <healthdcat-ap-300-non-public.000078.report>Nodekind is Literal.</healthdcat-ap-300-non-public.000078.report>
+   <healthdcat-ap-300-non-public.000079.title>Node kind constraint for //dcat:Catalog/dct:language.</healthdcat-ap-300-non-public.000079.title>
+   <healthdcat-ap-300-non-public.000080.assert>Nodekind should be IRI.</healthdcat-ap-300-non-public.000080.assert>
+   <healthdcat-ap-300-non-public.000081.report>Nodekind is IRI.</healthdcat-ap-300-non-public.000081.report>
+   <healthdcat-ap-300-non-public.000082.title>Node kind constraint for //csvw:Table/csvw:column.</healthdcat-ap-300-non-public.000082.title>
+   <healthdcat-ap-300-non-public.000083.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-non-public.000083.assert>
+   <healthdcat-ap-300-non-public.000084.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-non-public.000084.report>
+   <healthdcat-ap-300-non-public.000085.title>Node kind constraint for //csvw:Table/dcat:keyword.</healthdcat-ap-300-non-public.000085.title>
    <healthdcat-ap-300-non-public.000086.assert>Nodekind should be Literal.</healthdcat-ap-300-non-public.000086.assert>
    <healthdcat-ap-300-non-public.000087.report>Nodekind is Literal.</healthdcat-ap-300-non-public.000087.report>
-   <healthdcat-ap-300-non-public.000088.title>Node kind constraint for //csvw:Table/csvw:url.</healthdcat-ap-300-non-public.000088.title>
-   <healthdcat-ap-300-non-public.000089.assert>Nodekind should be IRI.</healthdcat-ap-300-non-public.000089.assert>
-   <healthdcat-ap-300-non-public.000090.report>Nodekind is IRI.</healthdcat-ap-300-non-public.000090.report>
-   <healthdcat-ap-300-non-public.000091.title>Node kind constraint for //vcard:Kind/vcard:hasEmail|//vcard:Individual/vcard:hasEmail|//vcard:Organization/vcard:hasEmail|//vcard:Group/vcard:hasEmail|//vcard:Location/vcard:hasEmail.</healthdcat-ap-300-non-public.000091.title>
+   <healthdcat-ap-300-non-public.000088.title>Node kind constraint for //csvw:Table/dct:title.</healthdcat-ap-300-non-public.000088.title>
+   <healthdcat-ap-300-non-public.000089.assert>Nodekind should be Literal.</healthdcat-ap-300-non-public.000089.assert>
+   <healthdcat-ap-300-non-public.000090.report>Nodekind is Literal.</healthdcat-ap-300-non-public.000090.report>
+   <healthdcat-ap-300-non-public.000091.title>Node kind constraint for //csvw:Table/csvw:url.</healthdcat-ap-300-non-public.000091.title>
    <healthdcat-ap-300-non-public.000092.assert>Nodekind should be IRI.</healthdcat-ap-300-non-public.000092.assert>
    <healthdcat-ap-300-non-public.000093.report>Nodekind is IRI.</healthdcat-ap-300-non-public.000093.report>
-   <healthdcat-ap-300-non-public.000094.title>Node kind constraint for //vcard:Kind/vcard:hasURL|//vcard:Individual/vcard:hasURL|//vcard:Organization/vcard:hasURL|//vcard:Group/vcard:hasURL|//vcard:Location/vcard:hasURL.</healthdcat-ap-300-non-public.000094.title>
+   <healthdcat-ap-300-non-public.000094.title>Node kind constraint for //vcard:Group/vcard:hasEmail|//vcard:Individual/vcard:hasEmail|//vcard:Kind/vcard:hasEmail|//vcard:Location/vcard:hasEmail|//vcard:Organization/vcard:hasEmail.</healthdcat-ap-300-non-public.000094.title>
    <healthdcat-ap-300-non-public.000095.assert>Nodekind should be IRI.</healthdcat-ap-300-non-public.000095.assert>
    <healthdcat-ap-300-non-public.000096.report>Nodekind is IRI.</healthdcat-ap-300-non-public.000096.report>
-   <healthdcat-ap-300-non-public.000097.title>Or constraint in //dcat:Dataset</healthdcat-ap-300-non-public.000097.title>
-   <healthdcat-ap-300-non-public.000098.assert>If healthdcatap:hasStructuredData is true, the dataset must include at least one healthdcatap:hasVariables.</healthdcat-ap-300-non-public.000098.assert>
-   <healthdcat-ap-300-non-public.000099.report>Conform to the given disjoint set of requirements.</healthdcat-ap-300-non-public.000099.report>
+   <healthdcat-ap-300-non-public.000097.title>Node kind constraint for //vcard:Group/vcard:hasURL|//vcard:Individual/vcard:hasURL|//vcard:Kind/vcard:hasURL|//vcard:Location/vcard:hasURL|//vcard:Organization/vcard:hasURL.</healthdcat-ap-300-non-public.000097.title>
+   <healthdcat-ap-300-non-public.000098.assert>Nodekind should be IRI.</healthdcat-ap-300-non-public.000098.assert>
+   <healthdcat-ap-300-non-public.000099.report>Nodekind is IRI.</healthdcat-ap-300-non-public.000099.report>
    <healthdcat-ap-300-non-public.000100.title>Class constraint for csvw:column in csvw:Table</healthdcat-ap-300-non-public.000100.title>
    <healthdcat-ap-300-non-public.000101.assert>Property csvw:column in context csvw:Table should have class csvw:Column.</healthdcat-ap-300-non-public.000101.assert>
    <healthdcat-ap-300-non-public.000102.report>Property csvw:column in context csvw:Table has the right class csvw:Column.</healthdcat-ap-300-non-public.000102.report>
@@ -259,4 +259,13 @@
    <healthdcat-ap-300-non-public.000256.title>Node kind constraint for //dcat:DataService/dct:accessRights.</healthdcat-ap-300-non-public.000256.title>
    <healthdcat-ap-300-non-public.000257.assert>Nodekind should be IRI.</healthdcat-ap-300-non-public.000257.assert>
    <healthdcat-ap-300-non-public.000258.report>Nodekind is IRI.</healthdcat-ap-300-non-public.000258.report>
+   <healthdcat-ap-300-non-public.000259.title>Class constraint for cv:contactPoint in Health Agent</healthdcat-ap-300-non-public.000259.title>
+   <healthdcat-ap-300-non-public.000260.assert>Property cv:contactPoint in context Health Agent should have class cv:ContactPoint.</healthdcat-ap-300-non-public.000260.assert>
+   <healthdcat-ap-300-non-public.000261.report>Property cv:contactPoint in context Health Agent has the right class cv:ContactPoint.</healthdcat-ap-300-non-public.000261.report>
+   <healthdcat-ap-300-non-public.000262.title>Node kind constraint for //dcat:Dataset/dct:publisher/*/dct:description|//*[@rdf:about = //dcat:Dataset/dct:publisher/@rdf:resource]/dct:description.</healthdcat-ap-300-non-public.000262.title>
+   <healthdcat-ap-300-non-public.000263.assert>Nodekind should be Literal.</healthdcat-ap-300-non-public.000263.assert>
+   <healthdcat-ap-300-non-public.000264.report>Nodekind is Literal.</healthdcat-ap-300-non-public.000264.report>
+   <healthdcat-ap-300-non-public.000265.title>Class constraint for cv:contactPoint in Health Publisher Agent</healthdcat-ap-300-non-public.000265.title>
+   <healthdcat-ap-300-non-public.000266.assert>Property cv:contactPoint in context Health Publisher Agent should have class cv:ContactPoint.</healthdcat-ap-300-non-public.000266.assert>
+   <healthdcat-ap-300-non-public.000267.report>Property cv:contactPoint in context Health Publisher Agent has the right class cv:ContactPoint.</healthdcat-ap-300-non-public.000267.report>
 </strings>

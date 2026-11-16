@@ -523,4 +523,59 @@
       </report>
     </rule>
   </pattern>
+  <pattern>
+    <title>$loc/strings/healthdcat-ap-300-non-public-cardinalities.000133.title</title>
+    <rule context="//dcat:Dataset/geodcatap:custodian/*|//*[@rdf:about = //dcat:Dataset/geodcatap:custodian/@rdf:resource]|//dcat:Dataset/healthdcatap:hdab/*|//*[@rdf:about = //dcat:Dataset/healthdcatap:hdab/@rdf:resource]|//dcat:Dataset/healthdcatap:hdabCoordinator/*|//*[@rdf:about = //dcat:Dataset/healthdcatap:hdabCoordinator/@rdf:resource]">
+      <assert test="count(cv:contactPoint) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-non-public-cardinalities.000134.assert, ('#occurrences'), (string(count(cv:contactPoint))))" />
+      </assert>
+      <report test="count(cv:contactPoint) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-non-public-cardinalities.000135.report, ('#max'), '1')" />
+      </report>
+    </rule>
+  </pattern>
+  <pattern>
+    <title>$loc/strings/healthdcat-ap-300-non-public-cardinalities.000136.title</title>
+    <rule context="//dcat:Dataset/geodcatap:custodian/*|//*[@rdf:about = //dcat:Dataset/geodcatap:custodian/@rdf:resource]|//dcat:Dataset/healthdcatap:hdab/*|//*[@rdf:about = //dcat:Dataset/healthdcatap:hdab/@rdf:resource]|//dcat:Dataset/healthdcatap:hdabCoordinator/*|//*[@rdf:about = //dcat:Dataset/healthdcatap:hdabCoordinator/@rdf:resource]">
+      <assert test="count(cv:contactPoint) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-non-public-cardinalities.000137.assert, ('#occurrences'), (string(count(cv:contactPoint))))" />
+      </assert>
+      <report test="count(cv:contactPoint) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-non-public-cardinalities.000138.report, ('#min'), '1')" />
+      </report>
+    </rule>
+  </pattern>
+  <pattern>
+    <title>$loc/strings/healthdcat-ap-300-non-public-cardinalities.000139.title</title>
+    <rule context="//dcat:Dataset/dct:publisher/*|//*[@rdf:about = //dcat:Dataset/dct:publisher/@rdf:resource]">
+      <assert test="count(dct:description) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-non-public-cardinalities.000140.assert, ('#occurrences'), (string(count(dct:description))))" />
+      </assert>
+      <report test="count(dct:description) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-non-public-cardinalities.000141.report, ('#max'), '1')" />
+      </report>
+    </rule>
+  </pattern>
+  <pattern>
+    <title>$loc/strings/healthdcat-ap-300-non-public-cardinalities.000142.title</title>
+    <rule context="//dcat:Dataset/dct:publisher/*|//*[@rdf:about = //dcat:Dataset/dct:publisher/@rdf:resource]">
+      <assert test="count(cv:contactPoint) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-non-public-cardinalities.000143.assert, ('#occurrences'), (string(count(cv:contactPoint))))" />
+      </assert>
+      <report test="count(cv:contactPoint) &lt;= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-non-public-cardinalities.000144.report, ('#max'), '1')" />
+      </report>
+    </rule>
+  </pattern>
+  <pattern>
+    <title>$loc/strings/healthdcat-ap-300-non-public-cardinalities.000145.title</title>
+    <rule context="//dcat:Dataset/dct:publisher/*|//*[@rdf:about = //dcat:Dataset/dct:publisher/@rdf:resource]">
+      <assert test="count(cv:contactPoint) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-non-public-cardinalities.000146.assert, ('#occurrences'), (string(count(cv:contactPoint))))" />
+      </assert>
+      <report test="count(cv:contactPoint) >= 1">
+        <value-of select="geonet:replacePlaceholders($loc/strings/healthdcat-ap-300-non-public-cardinalities.000147.report, ('#min'), '1')" />
+      </report>
+    </rule>
+  </pattern>
 </schema>

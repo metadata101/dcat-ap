@@ -91,10 +91,10 @@
    <healthdcat-ap-300-restricted.000088.title>Node kind constraint for //csvw:Table/csvw:url.</healthdcat-ap-300-restricted.000088.title>
    <healthdcat-ap-300-restricted.000089.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000089.assert>
    <healthdcat-ap-300-restricted.000090.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000090.report>
-   <healthdcat-ap-300-restricted.000091.title>Node kind constraint for //vcard:Kind/vcard:hasEmail|//vcard:Individual/vcard:hasEmail|//vcard:Organization/vcard:hasEmail|//vcard:Group/vcard:hasEmail|//vcard:Location/vcard:hasEmail.</healthdcat-ap-300-restricted.000091.title>
+   <healthdcat-ap-300-restricted.000091.title>Node kind constraint for //vcard:Group/vcard:hasEmail|//vcard:Individual/vcard:hasEmail|//vcard:Kind/vcard:hasEmail|//vcard:Location/vcard:hasEmail|//vcard:Organization/vcard:hasEmail.</healthdcat-ap-300-restricted.000091.title>
    <healthdcat-ap-300-restricted.000092.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000092.assert>
    <healthdcat-ap-300-restricted.000093.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000093.report>
-   <healthdcat-ap-300-restricted.000094.title>Node kind constraint for //vcard:Kind/vcard:hasURL|//vcard:Individual/vcard:hasURL|//vcard:Organization/vcard:hasURL|//vcard:Group/vcard:hasURL|//vcard:Location/vcard:hasURL.</healthdcat-ap-300-restricted.000094.title>
+   <healthdcat-ap-300-restricted.000094.title>Node kind constraint for //vcard:Group/vcard:hasURL|//vcard:Individual/vcard:hasURL|//vcard:Kind/vcard:hasURL|//vcard:Location/vcard:hasURL|//vcard:Organization/vcard:hasURL.</healthdcat-ap-300-restricted.000094.title>
    <healthdcat-ap-300-restricted.000095.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000095.assert>
    <healthdcat-ap-300-restricted.000096.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000096.report>
    <healthdcat-ap-300-restricted.000097.title>Class constraint for csvw:column in csvw:Table</healthdcat-ap-300-restricted.000097.title>
@@ -169,72 +169,72 @@
    <healthdcat-ap-300-restricted.000166.title>Node kind constraint for //csvw:Column/csvw:name.</healthdcat-ap-300-restricted.000166.title>
    <healthdcat-ap-300-restricted.000167.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000167.assert>
    <healthdcat-ap-300-restricted.000168.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000168.report>
-   <healthdcat-ap-300-restricted.000169.title>Node kind constraint for //dcat:Dataset/dct:alternative.</healthdcat-ap-300-restricted.000169.title>
-   <healthdcat-ap-300-restricted.000170.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000170.assert>
-   <healthdcat-ap-300-restricted.000171.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000171.report>
-   <healthdcat-ap-300-restricted.000172.title>Node kind constraint for //dcat:Dataset/healthdcatap:populationCoverage.</healthdcat-ap-300-restricted.000172.title>
+   <healthdcat-ap-300-restricted.000169.title>Or constraint in //dcat:Dataset</healthdcat-ap-300-restricted.000169.title>
+   <healthdcat-ap-300-restricted.000170.assert>If healthdcatap:hasStructuredData is true, the dataset must include at least one healthdcatap:hasVariables.</healthdcat-ap-300-restricted.000170.assert>
+   <healthdcat-ap-300-restricted.000171.report>Conform to the given disjoint set of requirements.</healthdcat-ap-300-restricted.000171.report>
+   <healthdcat-ap-300-restricted.000172.title>Node kind constraint for //dcat:Dataset/dct:alternative.</healthdcat-ap-300-restricted.000172.title>
    <healthdcat-ap-300-restricted.000173.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000173.assert>
    <healthdcat-ap-300-restricted.000174.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000174.report>
-   <healthdcat-ap-300-restricted.000175.title>Datatype constraint for //dcat:Dataset/healthdcatap:numberOfUniqueIndividuals (xs:nonNegativeInteger).</healthdcat-ap-300-restricted.000175.title>
-   <healthdcat-ap-300-restricted.000176.assert>The value should be castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000176.assert>
-   <healthdcat-ap-300-restricted.000177.report>The value is castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000177.report>
-   <healthdcat-ap-300-restricted.000178.title>Datatype constraint for //dcat:Dataset/healthdcatap:numberOfRecords (xs:nonNegativeInteger).</healthdcat-ap-300-restricted.000178.title>
+   <healthdcat-ap-300-restricted.000175.title>Node kind constraint for //dcat:Dataset/healthdcatap:populationCoverage.</healthdcat-ap-300-restricted.000175.title>
+   <healthdcat-ap-300-restricted.000176.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000176.assert>
+   <healthdcat-ap-300-restricted.000177.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000177.report>
+   <healthdcat-ap-300-restricted.000178.title>Datatype constraint for //dcat:Dataset/healthdcatap:numberOfUniqueIndividuals (xs:nonNegativeInteger).</healthdcat-ap-300-restricted.000178.title>
    <healthdcat-ap-300-restricted.000179.assert>The value should be castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000179.assert>
    <healthdcat-ap-300-restricted.000180.report>The value is castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000180.report>
-   <healthdcat-ap-300-restricted.000181.title>Datatype constraint for //dcat:Dataset/healthdcatap:maxTypicalAge (xs:nonNegativeInteger).</healthdcat-ap-300-restricted.000181.title>
+   <healthdcat-ap-300-restricted.000181.title>Datatype constraint for //dcat:Dataset/healthdcatap:numberOfRecords (xs:nonNegativeInteger).</healthdcat-ap-300-restricted.000181.title>
    <healthdcat-ap-300-restricted.000182.assert>The value should be castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000182.assert>
    <healthdcat-ap-300-restricted.000183.report>The value is castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000183.report>
-   <healthdcat-ap-300-restricted.000184.title>Datatype constraint for //dcat:Dataset/healthdcatap:minTypicalAge (xs:nonNegativeInteger).</healthdcat-ap-300-restricted.000184.title>
+   <healthdcat-ap-300-restricted.000184.title>Datatype constraint for //dcat:Dataset/healthdcatap:maxTypicalAge (xs:nonNegativeInteger).</healthdcat-ap-300-restricted.000184.title>
    <healthdcat-ap-300-restricted.000185.assert>The value should be castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000185.assert>
    <healthdcat-ap-300-restricted.000186.report>The value is castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000186.report>
-   <healthdcat-ap-300-restricted.000187.title>Node kind constraint for //dcat:Dataset/healthdcatap:hasCodingSystem.</healthdcat-ap-300-restricted.000187.title>
-   <healthdcat-ap-300-restricted.000188.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000188.assert>
-   <healthdcat-ap-300-restricted.000189.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000189.report>
-   <healthdcat-ap-300-restricted.000190.title>Node kind constraint for //dcat:Dataset/healthdcatap:hasCodeValues.</healthdcat-ap-300-restricted.000190.title>
-   <healthdcat-ap-300-restricted.000191.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000191.assert>
-   <healthdcat-ap-300-restricted.000192.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000192.report>
-   <healthdcat-ap-300-restricted.000193.title>Datatype constraint for //dcat:Dataset/healthdcatap:hasStructuredData (xs:boolean).</healthdcat-ap-300-restricted.000193.title>
-   <healthdcat-ap-300-restricted.000194.assert>The value should be castable to xs:boolean.</healthdcat-ap-300-restricted.000194.assert>
-   <healthdcat-ap-300-restricted.000195.report>The value is castable to xs:boolean.</healthdcat-ap-300-restricted.000195.report>
-   <healthdcat-ap-300-restricted.000196.title>Node kind constraint for //dcat:Dataset/healthdcatap:healthTheme.</healthdcat-ap-300-restricted.000196.title>
-   <healthdcat-ap-300-restricted.000197.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000197.assert>
-   <healthdcat-ap-300-restricted.000198.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000198.report>
-   <healthdcat-ap-300-restricted.000199.title>Node kind constraint for //dcat:Dataset/healthdcatap:healthCategory.</healthdcat-ap-300-restricted.000199.title>
-   <healthdcat-ap-300-restricted.000200.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000200.assert>
-   <healthdcat-ap-300-restricted.000201.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000201.report>
-   <healthdcat-ap-300-restricted.000202.title>Value check for dct:accessRights in //dcat:Dataset.</healthdcat-ap-300-restricted.000202.title>
-   <healthdcat-ap-300-restricted.000203.assert>Value http://publications.europa.eu/resource/authority/access-right/RESTRICTED was not found.</healthdcat-ap-300-restricted.000203.assert>
-   <healthdcat-ap-300-restricted.000204.report>Value http://publications.europa.eu/resource/authority/access-right/RESTRICTED was found.</healthdcat-ap-300-restricted.000204.report>
-   <healthdcat-ap-300-restricted.000205.title>Node kind constraint for //dcat:Dataset/dcatap:applicableLegislation.</healthdcat-ap-300-restricted.000205.title>
-   <healthdcat-ap-300-restricted.000206.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000206.assert>
-   <healthdcat-ap-300-restricted.000207.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000207.report>
-   <healthdcat-ap-300-restricted.000208.title>Node kind constraint for //dcat:Dataset/dct:identifier.</healthdcat-ap-300-restricted.000208.title>
-   <healthdcat-ap-300-restricted.000209.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000209.assert>
-   <healthdcat-ap-300-restricted.000210.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000210.report>
-   <healthdcat-ap-300-restricted.000211.title>Node kind constraint for //dcat:Dataset/dct:publisher.</healthdcat-ap-300-restricted.000211.title>
-   <healthdcat-ap-300-restricted.000212.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000212.assert>
-   <healthdcat-ap-300-restricted.000213.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000213.report>
-   <healthdcat-ap-300-restricted.000214.title>Node kind constraint for //dcat:Dataset/dcat:theme.</healthdcat-ap-300-restricted.000214.title>
-   <healthdcat-ap-300-restricted.000215.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000215.assert>
-   <healthdcat-ap-300-restricted.000216.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000216.report>
-   <healthdcat-ap-300-restricted.000217.title>Node kind constraint for //dcat:Dataset/dpv:hasPurpose.</healthdcat-ap-300-restricted.000217.title>
-   <healthdcat-ap-300-restricted.000218.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000218.assert>
-   <healthdcat-ap-300-restricted.000219.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000219.report>
-   <healthdcat-ap-300-restricted.000220.title>Node kind constraint for //dcat:Dataset/healthdcatap:hdab.</healthdcat-ap-300-restricted.000220.title>
+   <healthdcat-ap-300-restricted.000187.title>Datatype constraint for //dcat:Dataset/healthdcatap:minTypicalAge (xs:nonNegativeInteger).</healthdcat-ap-300-restricted.000187.title>
+   <healthdcat-ap-300-restricted.000188.assert>The value should be castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000188.assert>
+   <healthdcat-ap-300-restricted.000189.report>The value is castable to xs:nonNegativeInteger.</healthdcat-ap-300-restricted.000189.report>
+   <healthdcat-ap-300-restricted.000190.title>Node kind constraint for //dcat:Dataset/healthdcatap:hasCodingSystem.</healthdcat-ap-300-restricted.000190.title>
+   <healthdcat-ap-300-restricted.000191.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000191.assert>
+   <healthdcat-ap-300-restricted.000192.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000192.report>
+   <healthdcat-ap-300-restricted.000193.title>Node kind constraint for //dcat:Dataset/healthdcatap:hasCodeValues.</healthdcat-ap-300-restricted.000193.title>
+   <healthdcat-ap-300-restricted.000194.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000194.assert>
+   <healthdcat-ap-300-restricted.000195.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000195.report>
+   <healthdcat-ap-300-restricted.000196.title>Datatype constraint for //dcat:Dataset/healthdcatap:hasStructuredData (xs:boolean).</healthdcat-ap-300-restricted.000196.title>
+   <healthdcat-ap-300-restricted.000197.assert>The value should be castable to xs:boolean.</healthdcat-ap-300-restricted.000197.assert>
+   <healthdcat-ap-300-restricted.000198.report>The value is castable to xs:boolean.</healthdcat-ap-300-restricted.000198.report>
+   <healthdcat-ap-300-restricted.000199.title>Node kind constraint for //dcat:Dataset/healthdcatap:healthTheme.</healthdcat-ap-300-restricted.000199.title>
+   <healthdcat-ap-300-restricted.000200.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000200.assert>
+   <healthdcat-ap-300-restricted.000201.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000201.report>
+   <healthdcat-ap-300-restricted.000202.title>Node kind constraint for //dcat:Dataset/healthdcatap:healthCategory.</healthdcat-ap-300-restricted.000202.title>
+   <healthdcat-ap-300-restricted.000203.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000203.assert>
+   <healthdcat-ap-300-restricted.000204.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000204.report>
+   <healthdcat-ap-300-restricted.000205.title>Value check for dct:accessRights in //dcat:Dataset.</healthdcat-ap-300-restricted.000205.title>
+   <healthdcat-ap-300-restricted.000206.assert>Value http://publications.europa.eu/resource/authority/access-right/RESTRICTED was not found.</healthdcat-ap-300-restricted.000206.assert>
+   <healthdcat-ap-300-restricted.000207.report>Value http://publications.europa.eu/resource/authority/access-right/RESTRICTED was found.</healthdcat-ap-300-restricted.000207.report>
+   <healthdcat-ap-300-restricted.000208.title>Node kind constraint for //dcat:Dataset/dcatap:applicableLegislation.</healthdcat-ap-300-restricted.000208.title>
+   <healthdcat-ap-300-restricted.000209.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000209.assert>
+   <healthdcat-ap-300-restricted.000210.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000210.report>
+   <healthdcat-ap-300-restricted.000211.title>Node kind constraint for //dcat:Dataset/dct:identifier.</healthdcat-ap-300-restricted.000211.title>
+   <healthdcat-ap-300-restricted.000212.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000212.assert>
+   <healthdcat-ap-300-restricted.000213.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000213.report>
+   <healthdcat-ap-300-restricted.000214.title>Node kind constraint for //dcat:Dataset/dct:publisher.</healthdcat-ap-300-restricted.000214.title>
+   <healthdcat-ap-300-restricted.000215.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000215.assert>
+   <healthdcat-ap-300-restricted.000216.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000216.report>
+   <healthdcat-ap-300-restricted.000217.title>Node kind constraint for //dcat:Dataset/dcat:theme.</healthdcat-ap-300-restricted.000217.title>
+   <healthdcat-ap-300-restricted.000218.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000218.assert>
+   <healthdcat-ap-300-restricted.000219.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000219.report>
+   <healthdcat-ap-300-restricted.000220.title>Node kind constraint for //dcat:Dataset/dpv:hasPurpose.</healthdcat-ap-300-restricted.000220.title>
    <healthdcat-ap-300-restricted.000221.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000221.assert>
    <healthdcat-ap-300-restricted.000222.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000222.report>
-   <healthdcat-ap-300-restricted.000223.title>Node kind constraint for //dcat:Dataset/healthdcatap:hdabCoordinator.</healthdcat-ap-300-restricted.000223.title>
+   <healthdcat-ap-300-restricted.000223.title>Node kind constraint for //dcat:Dataset/healthdcatap:hdab.</healthdcat-ap-300-restricted.000223.title>
    <healthdcat-ap-300-restricted.000224.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000224.assert>
    <healthdcat-ap-300-restricted.000225.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000225.report>
-   <healthdcat-ap-300-restricted.000226.title>Node kind constraint for //dcat:Dataset/geodcatap:custodian.</healthdcat-ap-300-restricted.000226.title>
+   <healthdcat-ap-300-restricted.000226.title>Node kind constraint for //dcat:Dataset/healthdcatap:hdabCoordinator.</healthdcat-ap-300-restricted.000226.title>
    <healthdcat-ap-300-restricted.000227.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000227.assert>
    <healthdcat-ap-300-restricted.000228.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000228.report>
-   <healthdcat-ap-300-restricted.000229.title>Node kind constraint for //csvw:TableGroup/dct:title.</healthdcat-ap-300-restricted.000229.title>
-   <healthdcat-ap-300-restricted.000230.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000230.assert>
-   <healthdcat-ap-300-restricted.000231.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000231.report>
-   <healthdcat-ap-300-restricted.000232.title>Or constraint in //dcat:Dataset</healthdcat-ap-300-restricted.000232.title>
-   <healthdcat-ap-300-restricted.000233.assert>If healthdcatap:hasStructuredData is true, the dataset must include at least one healthdcatap:hasVariables.</healthdcat-ap-300-restricted.000233.assert>
-   <healthdcat-ap-300-restricted.000234.report>Conform to the given disjoint set of requirements.</healthdcat-ap-300-restricted.000234.report>
+   <healthdcat-ap-300-restricted.000229.title>Node kind constraint for //dcat:Dataset/geodcatap:custodian.</healthdcat-ap-300-restricted.000229.title>
+   <healthdcat-ap-300-restricted.000230.assert>Nodekind should be IRI or BlankNode.</healthdcat-ap-300-restricted.000230.assert>
+   <healthdcat-ap-300-restricted.000231.report>Nodekind is IRI or BlankNode.</healthdcat-ap-300-restricted.000231.report>
+   <healthdcat-ap-300-restricted.000232.title>Node kind constraint for //csvw:TableGroup/dct:title.</healthdcat-ap-300-restricted.000232.title>
+   <healthdcat-ap-300-restricted.000233.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000233.assert>
+   <healthdcat-ap-300-restricted.000234.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000234.report>
    <healthdcat-ap-300-restricted.000235.title>Node kind constraint for //spdx:Checksum/spdx:algorithm.</healthdcat-ap-300-restricted.000235.title>
    <healthdcat-ap-300-restricted.000236.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000236.assert>
    <healthdcat-ap-300-restricted.000237.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000237.report>
@@ -247,4 +247,13 @@
    <healthdcat-ap-300-restricted.000244.title>Node kind constraint for //dcat:DataService/dct:accessRights.</healthdcat-ap-300-restricted.000244.title>
    <healthdcat-ap-300-restricted.000245.assert>Nodekind should be IRI.</healthdcat-ap-300-restricted.000245.assert>
    <healthdcat-ap-300-restricted.000246.report>Nodekind is IRI.</healthdcat-ap-300-restricted.000246.report>
+   <healthdcat-ap-300-restricted.000247.title>Class constraint for cv:contactPoint in Health Agent</healthdcat-ap-300-restricted.000247.title>
+   <healthdcat-ap-300-restricted.000248.assert>Property cv:contactPoint in context Health Agent should have class cv:ContactPoint.</healthdcat-ap-300-restricted.000248.assert>
+   <healthdcat-ap-300-restricted.000249.report>Property cv:contactPoint in context Health Agent has the right class cv:ContactPoint.</healthdcat-ap-300-restricted.000249.report>
+   <healthdcat-ap-300-restricted.000250.title>Node kind constraint for //dcat:Dataset/dct:publisher/*/dct:description|//*[@rdf:about = //dcat:Dataset/dct:publisher/@rdf:resource]/dct:description.</healthdcat-ap-300-restricted.000250.title>
+   <healthdcat-ap-300-restricted.000251.assert>Nodekind should be Literal.</healthdcat-ap-300-restricted.000251.assert>
+   <healthdcat-ap-300-restricted.000252.report>Nodekind is Literal.</healthdcat-ap-300-restricted.000252.report>
+   <healthdcat-ap-300-restricted.000253.title>Class constraint for cv:contactPoint in Health Publisher Agent</healthdcat-ap-300-restricted.000253.title>
+   <healthdcat-ap-300-restricted.000254.assert>Property cv:contactPoint in context Health Publisher Agent should have class cv:ContactPoint.</healthdcat-ap-300-restricted.000254.assert>
+   <healthdcat-ap-300-restricted.000255.report>Property cv:contactPoint in context Health Publisher Agent has the right class cv:ContactPoint.</healthdcat-ap-300-restricted.000255.report>
 </strings>

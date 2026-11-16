@@ -309,7 +309,7 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000091.title</title>
-    <rule context="//vcard:Kind/vcard:hasEmail|//vcard:Individual/vcard:hasEmail|//vcard:Organization/vcard:hasEmail|//vcard:Group/vcard:hasEmail|//vcard:Location/vcard:hasEmail">
+    <rule context="//vcard:Group/vcard:hasEmail|//vcard:Individual/vcard:hasEmail|//vcard:Kind/vcard:hasEmail|//vcard:Location/vcard:hasEmail|//vcard:Organization/vcard:hasEmail">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
       <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000092.assert</assert>
@@ -318,7 +318,7 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000094.title</title>
-    <rule context="//vcard:Kind/vcard:hasURL|//vcard:Individual/vcard:hasURL|//vcard:Organization/vcard:hasURL|//vcard:Group/vcard:hasURL|//vcard:Location/vcard:hasURL">
+    <rule context="//vcard:Group/vcard:hasURL|//vcard:Individual/vcard:hasURL|//vcard:Kind/vcard:hasURL|//vcard:Location/vcard:hasURL|//vcard:Organization/vcard:hasURL">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
       <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000095.assert</assert>
@@ -539,15 +539,15 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000169.title</title>
-    <rule context="//dcat:Dataset/dct:alternative">
-      <let name="isLiteral" value="normalize-space(.) != ''" />
-      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000170.assert</assert>
-      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000171.report</report>
+    <rule context="//dcat:Dataset">
+      <let name="matches" value="(count(healthdcatap:hasVariables) >= 1 and count(healthdcatap:hasStructuredData[normalize-space(.) = ('true', '1')]) >= 1) or (count(healthdcatap:hasStructuredData[normalize-space(.) = ('false', '0')]) >= 1) or (count(healthdcatap:hasStructuredData) &lt;= 0)" />
+      <assert test="$matches">$loc/strings/healthdcat-ap-300-restricted.000170.assert</assert>
+      <report test="$matches">$loc/strings/healthdcat-ap-300-restricted.000171.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000172.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:populationCoverage">
+    <rule context="//dcat:Dataset/dct:alternative">
       <let name="isLiteral" value="normalize-space(.) != ''" />
       <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000173.assert</assert>
       <report test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000174.report</report>
@@ -555,16 +555,15 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000175.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:numberOfUniqueIndividuals">
+    <rule context="//dcat:Dataset/healthdcatap:populationCoverage">
       <let name="isLiteral" value="normalize-space(.) != ''" />
-      <let name="castTest" value="normalize-space(.) castable as xs:integer" />
-      <assert test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-restricted.000176.assert</assert>
-      <report test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-restricted.000177.report</report>
+      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000176.assert</assert>
+      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000177.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000178.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:numberOfRecords">
+    <rule context="//dcat:Dataset/healthdcatap:numberOfUniqueIndividuals">
       <let name="isLiteral" value="normalize-space(.) != ''" />
       <let name="castTest" value="normalize-space(.) castable as xs:integer" />
       <assert test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-restricted.000179.assert</assert>
@@ -573,7 +572,7 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000181.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:maxTypicalAge">
+    <rule context="//dcat:Dataset/healthdcatap:numberOfRecords">
       <let name="isLiteral" value="normalize-space(.) != ''" />
       <let name="castTest" value="normalize-space(.) castable as xs:integer" />
       <assert test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-restricted.000182.assert</assert>
@@ -582,7 +581,7 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000184.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:minTypicalAge">
+    <rule context="//dcat:Dataset/healthdcatap:maxTypicalAge">
       <let name="isLiteral" value="normalize-space(.) != ''" />
       <let name="castTest" value="normalize-space(.) castable as xs:integer" />
       <assert test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-restricted.000185.assert</assert>
@@ -591,107 +590,106 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000187.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:hasCodingSystem">
-      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
-      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
-      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000188.assert</assert>
-      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000189.report</report>
+    <rule context="//dcat:Dataset/healthdcatap:minTypicalAge">
+      <let name="isLiteral" value="normalize-space(.) != ''" />
+      <let name="castTest" value="normalize-space(.) castable as xs:integer" />
+      <assert test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-restricted.000188.assert</assert>
+      <report test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-restricted.000189.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000190.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:hasCodeValues">
-      <let name="isLiteral" value="normalize-space(.) != ''" />
-      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000191.assert</assert>
-      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000192.report</report>
+    <rule context="//dcat:Dataset/healthdcatap:hasCodingSystem">
+      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
+      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000191.assert</assert>
+      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000192.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000193.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:hasStructuredData">
+    <rule context="//dcat:Dataset/healthdcatap:hasCodeValues">
       <let name="isLiteral" value="normalize-space(.) != ''" />
-      <let name="castTest" value="normalize-space(.) castable as xs:boolean" />
-      <assert test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-restricted.000194.assert</assert>
-      <report test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-restricted.000195.report</report>
+      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000194.assert</assert>
+      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000195.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000196.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:healthTheme">
-      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
-      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
-      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000197.assert</assert>
-      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000198.report</report>
+    <rule context="//dcat:Dataset/healthdcatap:hasStructuredData">
+      <let name="isLiteral" value="normalize-space(.) != ''" />
+      <let name="castTest" value="normalize-space(.) castable as xs:boolean" />
+      <assert test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-restricted.000197.assert</assert>
+      <report test="$isLiteral and $castTest">$loc/strings/healthdcat-ap-300-restricted.000198.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000199.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:healthCategory">
+    <rule context="//dcat:Dataset/healthdcatap:healthTheme">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
       <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
-      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000200.assert</assert>
-      <report test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000201.report</report>
+      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
+      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000200.assert</assert>
+      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000201.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000202.title</title>
-    <rule context="//dcat:Dataset">
-      <let name="hasValue" value="dct:accessRights/skos:Concept/@rdf:about='http://publications.europa.eu/resource/authority/access-right/RESTRICTED'" />
-      <assert test="$hasValue">$loc/strings/healthdcat-ap-300-restricted.000203.assert</assert>
-      <report test="$hasValue">$loc/strings/healthdcat-ap-300-restricted.000204.report</report>
+    <rule context="//dcat:Dataset/healthdcatap:healthCategory">
+      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000203.assert</assert>
+      <report test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000204.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000205.title</title>
-    <rule context="//dcat:Dataset/dcatap:applicableLegislation">
-      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
-      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000206.assert</assert>
-      <report test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000207.report</report>
+    <rule context="//dcat:Dataset">
+      <let name="hasValue" value="dct:accessRights/skos:Concept/@rdf:about='http://publications.europa.eu/resource/authority/access-right/RESTRICTED'" />
+      <assert test="$hasValue">$loc/strings/healthdcat-ap-300-restricted.000206.assert</assert>
+      <report test="$hasValue">$loc/strings/healthdcat-ap-300-restricted.000207.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000208.title</title>
-    <rule context="//dcat:Dataset/dct:identifier">
-      <let name="isLiteral" value="normalize-space(.) != ''" />
-      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000209.assert</assert>
-      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000210.report</report>
+    <rule context="//dcat:Dataset/dcatap:applicableLegislation">
+      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000209.assert</assert>
+      <report test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000210.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000211.title</title>
-    <rule context="//dcat:Dataset/dct:publisher">
-      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
-      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
-      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
-      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000212.assert</assert>
-      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000213.report</report>
+    <rule context="//dcat:Dataset/dct:identifier">
+      <let name="isLiteral" value="normalize-space(.) != ''" />
+      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000212.assert</assert>
+      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000213.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000214.title</title>
-    <rule context="//dcat:Dataset/dcat:theme">
+    <rule context="//dcat:Dataset/dct:publisher">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
       <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
-      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000215.assert</assert>
-      <report test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000216.report</report>
+      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
+      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000215.assert</assert>
+      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000216.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000217.title</title>
-    <rule context="//dcat:Dataset/dpv:hasPurpose">
+    <rule context="//dcat:Dataset/dcat:theme">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
       <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
-      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
-      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000218.assert</assert>
-      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000219.report</report>
+      <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000218.assert</assert>
+      <report test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000219.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000220.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:hdab">
+    <rule context="//dcat:Dataset/dpv:hasPurpose">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
       <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
@@ -701,7 +699,7 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000223.title</title>
-    <rule context="//dcat:Dataset/healthdcatap:hdabCoordinator">
+    <rule context="//dcat:Dataset/healthdcatap:hdab">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
       <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
@@ -711,7 +709,7 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000226.title</title>
-    <rule context="//dcat:Dataset/geodcatap:custodian">
+    <rule context="//dcat:Dataset/healthdcatap:hdabCoordinator">
       <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
       <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
@@ -721,18 +719,20 @@
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000229.title</title>
-    <rule context="//csvw:TableGroup/dct:title">
-      <let name="isLiteral" value="normalize-space(.) != ''" />
-      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000230.assert</assert>
-      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000231.report</report>
+    <rule context="//dcat:Dataset/geodcatap:custodian">
+      <let name="resource" value="(@rdf:resource, */@rdf:about)[1]" />
+      <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
+      <let name="isBlankNode" value="count(@rdf:resource) = 0 and count(@rdf:about) = 0" />
+      <assert test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000230.assert</assert>
+      <report test="$isIRI or $isBlankNode">$loc/strings/healthdcat-ap-300-restricted.000231.report</report>
     </rule>
   </pattern>
   <pattern>
     <title>$loc/strings/healthdcat-ap-300-restricted.000232.title</title>
-    <rule context="//dcat:Dataset">
-      <let name="matches" value="(count(healthdcatap:hasVariables) >= 1 and count(healthdcatap:hasStructuredData[normalize-space(.) = ('true', '1')]) >= 1) or (count(healthdcatap:hasStructuredData[normalize-space(.) = ('false', '0')]) >= 1) or (count(healthdcatap:hasStructuredData) &lt;= 0)" />
-      <assert test="$matches">$loc/strings/healthdcat-ap-300-restricted.000233.assert</assert>
-      <report test="$matches">$loc/strings/healthdcat-ap-300-restricted.000234.report</report>
+    <rule context="//csvw:TableGroup/dct:title">
+      <let name="isLiteral" value="normalize-space(.) != ''" />
+      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000233.assert</assert>
+      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000234.report</report>
     </rule>
   </pattern>
   <pattern>
@@ -769,6 +769,32 @@
       <let name="isIRI" value="matches($resource, '^[a-zA-Z][a-zA-Z0-9.+-]*:\S+$')" />
       <assert test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000245.assert</assert>
       <report test="$isIRI">$loc/strings/healthdcat-ap-300-restricted.000246.report</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <title>$loc/strings/healthdcat-ap-300-restricted.000247.title</title>
+    <rule context="//dcat:Dataset/geodcatap:custodian/*/cv:contactPoint|//*[@rdf:about = //dcat:Dataset/geodcatap:custodian/@rdf:resource]/cv:contactPoint|//dcat:Dataset/healthdcatap:hdab/*/cv:contactPoint|//*[@rdf:about = //dcat:Dataset/healthdcatap:hdab/@rdf:resource]/cv:contactPoint|//dcat:Dataset/healthdcatap:hdabCoordinator/*/cv:contactPoint|//*[@rdf:about = //dcat:Dataset/healthdcatap:hdabCoordinator/@rdf:resource]/cv:contactPoint">
+      <let name="resource" value="@rdf:resource" />
+      <let name="validClass" value="count(cv:ContactPoint) = 1 or count((//cv:ContactPoint)[@rdf:about = $resource]) = 1" />
+      <assert test="$validClass">$loc/strings/healthdcat-ap-300-restricted.000248.assert</assert>
+      <report test="$validClass">$loc/strings/healthdcat-ap-300-restricted.000249.report</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <title>$loc/strings/healthdcat-ap-300-restricted.000250.title</title>
+    <rule context="//dcat:Dataset/dct:publisher/*/dct:description|//*[@rdf:about = //dcat:Dataset/dct:publisher/@rdf:resource]/dct:description">
+      <let name="isLiteral" value="normalize-space(.) != ''" />
+      <assert test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000251.assert</assert>
+      <report test="$isLiteral">$loc/strings/healthdcat-ap-300-restricted.000252.report</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <title>$loc/strings/healthdcat-ap-300-restricted.000253.title</title>
+    <rule context="//dcat:Dataset/dct:publisher/*/cv:contactPoint|//*[@rdf:about = //dcat:Dataset/dct:publisher/@rdf:resource]/cv:contactPoint">
+      <let name="resource" value="@rdf:resource" />
+      <let name="validClass" value="count(cv:ContactPoint) = 1 or count((//cv:ContactPoint)[@rdf:about = $resource]) = 1" />
+      <assert test="$validClass">$loc/strings/healthdcat-ap-300-restricted.000254.assert</assert>
+      <report test="$validClass">$loc/strings/healthdcat-ap-300-restricted.000255.report</report>
     </rule>
   </pattern>
 </schema>
