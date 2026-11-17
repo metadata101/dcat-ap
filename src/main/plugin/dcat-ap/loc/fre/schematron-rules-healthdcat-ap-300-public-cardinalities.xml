@@ -121,4 +121,19 @@
    <healthdcat-ap-300-public-cardinalities.000118.title>Minimum cardinality of dcatap:applicableLegislation in //dcat:Catalog.</healthdcat-ap-300-public-cardinalities.000118.title>
    <healthdcat-ap-300-public-cardinalities.000119.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-cardinalities.000119.assert>
    <healthdcat-ap-300-public-cardinalities.000120.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-cardinalities.000120.report>
+   <healthdcat-ap-300-public-cardinalities.000121.title>Maximum cardinality of cv:contactPoint in //dcat:Dataset/geodcatap:custodian/*|//*[@rdf:about = //dcat:Dataset/geodcatap:custodian/@rdf:resource]|//dcat:Dataset/healthdcatap:hdab/*|//*[@rdf:about = //dcat:Dataset/healthdcatap:hdab/@rdf:resource]|//dcat:Dataset/healthdcatap:hdabCoordinator/*|//*[@rdf:about = //dcat:Dataset/healthdcatap:hdabCoordinator/@rdf:resource].</healthdcat-ap-300-public-cardinalities.000121.title>
+   <healthdcat-ap-300-public-cardinalities.000122.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-cardinalities.000122.assert>
+   <healthdcat-ap-300-public-cardinalities.000123.report>Maximum cardinality #max is respected.</healthdcat-ap-300-public-cardinalities.000123.report>
+   <healthdcat-ap-300-public-cardinalities.000124.title>Minimum cardinality of cv:contactPoint in //dcat:Dataset/geodcatap:custodian/*|//*[@rdf:about = //dcat:Dataset/geodcatap:custodian/@rdf:resource]|//dcat:Dataset/healthdcatap:hdab/*|//*[@rdf:about = //dcat:Dataset/healthdcatap:hdab/@rdf:resource]|//dcat:Dataset/healthdcatap:hdabCoordinator/*|//*[@rdf:about = //dcat:Dataset/healthdcatap:hdabCoordinator/@rdf:resource].</healthdcat-ap-300-public-cardinalities.000124.title>
+   <healthdcat-ap-300-public-cardinalities.000125.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-cardinalities.000125.assert>
+   <healthdcat-ap-300-public-cardinalities.000126.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-cardinalities.000126.report>
+   <healthdcat-ap-300-public-cardinalities.000127.title>Maximum cardinality of dct:description in //dcat:Dataset/dct:publisher/*|//*[@rdf:about = //dcat:Dataset/dct:publisher/@rdf:resource].</healthdcat-ap-300-public-cardinalities.000127.title>
+   <healthdcat-ap-300-public-cardinalities.000128.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-cardinalities.000128.assert>
+   <healthdcat-ap-300-public-cardinalities.000129.report>Maximum cardinality #max is respected.</healthdcat-ap-300-public-cardinalities.000129.report>
+   <healthdcat-ap-300-public-cardinalities.000130.title>Maximum cardinality of cv:contactPoint in //dcat:Dataset/dct:publisher/*|//*[@rdf:about = //dcat:Dataset/dct:publisher/@rdf:resource].</healthdcat-ap-300-public-cardinalities.000130.title>
+   <healthdcat-ap-300-public-cardinalities.000131.assert>Maximum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-cardinalities.000131.assert>
+   <healthdcat-ap-300-public-cardinalities.000132.report>Maximum cardinality #max is respected.</healthdcat-ap-300-public-cardinalities.000132.report>
+   <healthdcat-ap-300-public-cardinalities.000133.title>Minimum cardinality of cv:contactPoint in //dcat:Dataset/dct:publisher/*|//*[@rdf:about = //dcat:Dataset/dct:publisher/@rdf:resource].</healthdcat-ap-300-public-cardinalities.000133.title>
+   <healthdcat-ap-300-public-cardinalities.000134.assert>Minimum cardinality 1 is not respected, #occurrences occurrences were found.</healthdcat-ap-300-public-cardinalities.000134.assert>
+   <healthdcat-ap-300-public-cardinalities.000135.report>Minimum cardinality #min is respected.</healthdcat-ap-300-public-cardinalities.000135.report>
 </strings>
