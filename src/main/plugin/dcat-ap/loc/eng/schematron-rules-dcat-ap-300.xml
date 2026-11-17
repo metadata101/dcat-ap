@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
-  <schematron.title>DCAT-AP (3.0.0)</schematron.title>
+  <schematron.title>DCAT-AP (3.0.1)</schematron.title>
   <dcat-ap-300.pattern.assert.1>Value must be a literal (dct:title)</dcat-ap-300.pattern.assert.1>
   <dcat-ap-300.pattern.assert.10>At most 1 value(s) are allowed (dct:rights)</dcat-ap-300.pattern.assert.10>
   <dcat-ap-300.pattern.assert.11>Value does not satisfy the SHACL constraint (dcat:record)</dcat-ap-300.pattern.assert.11>
