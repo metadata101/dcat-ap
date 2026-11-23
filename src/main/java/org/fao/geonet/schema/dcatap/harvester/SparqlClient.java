@@ -1,14 +1,18 @@
 package org.fao.geonet.schema.dcatap.harvester;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.Base64;
+import java.util.Map;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryFactory;
@@ -25,6 +29,8 @@ import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
 
 class SparqlClient {
+    private static final ObjectMapper JSON = new ObjectMapper();
+    private static final int MAX_GET_URI_LENGTH = 4096;
     private final DcatApSparqlParams params;
     private final HttpClient http = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(30)).build();
 
@@ -41,12 +47,14 @@ class SparqlClient {
 
         String accept = (select ? "application/sparql-results+xml, application/sparql-results+json;q=0.9"
             : "application/rdf+xml, text/turtle;q=0.9, application/n-triples;q=0.8, application/ld+json;q=0.8") + ", */*;q=0.1";
-        var response = http.send(request().uri(new URIBuilder(params.url).setParameter("query", queryText).build())
-            .header("Accept", accept).GET().build(), HttpResponse.BodyHandlers.ofByteArray());
-        if (response.statusCode() == 405 || response.statusCode() == 414) {
-            response = http.send(request().uri(new URIBuilder(params.url).build()).header("Accept", accept)
-                .header("Content-Type", "application/sparql-query; charset=UTF-8")
-                .POST(HttpRequest.BodyPublishers.ofString(queryText)).build(), HttpResponse.BodyHandlers.ofByteArray());
+        URI getUri = new URIBuilder(params.url).setParameter("query", queryText).build();
+        boolean preferPost = getUri.toASCIIString().length() > MAX_GET_URI_LENGTH;
+        var response = preferPost ? postQuery(accept, queryText, select) : get(getUri, accept);
+        int status = response.statusCode();
+        if (preferPost && (status == 405 || status == 501)) {
+            response = get(getUri, accept);
+        } else if (!preferPost && (status == 405 || status == 414 || status == 431 || status == 501)) {
+            response = postQuery(accept, queryText, select);
         }
         if (response.statusCode() != 200) {
             throw new IOException("SPARQL endpoint returned HTTP " + response.statusCode());
@@ -81,6 +89,29 @@ class SparqlClient {
             }
         }
         return Xml.loadStream(new ByteArrayInputStream(xml.toByteArray()));
+    }
+
+    private HttpResponse<byte[]> get(URI uri, String accept) throws IOException, InterruptedException {
+        return http.send(request().uri(uri).header("Accept", accept).GET().build(), HttpResponse.BodyHandlers.ofByteArray());
+    }
+
+    private HttpResponse<byte[]> postQuery(String accept, String query, boolean select) throws IOException, InterruptedException {
+        var response = post(accept, "application/sparql-query; charset=UTF-8", query);
+        if (response.statusCode() == 415) {
+            response = post(accept, "application/x-www-form-urlencoded", "query=" + URLEncoder.encode(query, StandardCharsets.UTF_8));
+        }
+        if (response.statusCode() == 415) {
+            // OpenMetadata accepts an explicit response format in its JSON query envelope.
+            response = post("*/*", "application/json", JSON.writeValueAsString(
+                Map.of("query", query, "format", select ? "json" : "rdfxml")));
+        }
+        return response;
+    }
+
+    private HttpResponse<byte[]> post(String accept, String mediaType, String body) throws IOException, InterruptedException {
+        return http.send(request().uri(URI.create(params.url)).header("Accept", accept)
+            .header("Content-Type", mediaType).POST(HttpRequest.BodyPublishers.ofString(body)).build(),
+            HttpResponse.BodyHandlers.ofByteArray());
     }
 
     private HttpRequest.Builder request() {

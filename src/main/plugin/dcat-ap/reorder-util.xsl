@@ -19,6 +19,7 @@
     <xsl:variable name="typeName" select="concat(local-name(), '_type')"/>
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@rdf:about"/>
+      <xsl:copy-of select="@rdf:nodeID"/>
       <xsl:variable name="catalog" select="."/>
       <xsl:for-each select="$dcatSchema//xs:complexType[@name = $typeName]//xs:extension[@base = 'rdf:Resource']//xs:element">
         <xsl:variable name="elementName">
@@ -36,6 +37,7 @@
     <xsl:variable name="localName" select="local-name()"/>
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@rdf:about"/>
+      <xsl:copy-of select="@rdf:nodeID"/>
       <xsl:variable name="catalog" select="."/>
       <xsl:for-each select="$dcatSchema//xs:element[@name = $localName]//xs:extension[@base = 'rdf:Resource']//xs:element">
         <xsl:variable name="elementName">

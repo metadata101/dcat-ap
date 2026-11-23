@@ -26,12 +26,11 @@ final class SparqlRecords {
                                       Function<String, Path> resolveConversion) throws Exception {
         String mapping = params.getImportXslt();
         Path stylesheet = mapping == null || mapping.isBlank() || "none".equals(mapping)
-            ? schemaDir.resolve("convert/fromOpenMetadataSparql.xsl") : resolveConversion.apply(mapping);
+            ? schemaDir.resolve("convert/fromDcatSparql.xsl") : resolveConversion.apply(mapping);
         if (stylesheet == null || !Files.isRegularFile(stylesheet)) {
             throw new IOException("SPARQL mapping stylesheet not found: " + mapping);
         }
 
-        // shortcut: the query result is mapped as one batch. Use a bounded query for large endpoints.
         String query = params.query.isBlank() ? defaultQuery() : params.query;
         Element source = new SparqlClient(params).execute(query);
         Element output = Xml.transform(source, stylesheet, Map.of("catalogName", params.getName()));

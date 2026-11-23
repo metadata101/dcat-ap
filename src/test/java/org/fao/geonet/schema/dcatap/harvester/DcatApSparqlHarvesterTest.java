@@ -2,12 +2,14 @@ package org.fao.geonet.schema.dcatap.harvester;
 
 import static org.junit.Assert.*;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpServer;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -37,6 +39,7 @@ import org.springframework.core.io.FileSystemResource;
 
 public class DcatApSparqlHarvesterTest {
     private static final Path SCHEMA = Paths.get("src/main/plugin/dcat-ap").toAbsolutePath();
+    private static final Path QUERIES = Paths.get("src/main/resources/dcat-ap/harvesting/sparql");
     private static final String BASE = "https://example.org/entity/";
     private static final String PRODUCT = BASE + "dataProduct/00000000-0000-0000-0000-000000000001";
     private static final String DCAT = "http://www.w3.org/ns/dcat#";
@@ -50,6 +53,7 @@ public class DcatApSparqlHarvesterTest {
     private final AtomicInteger status = new AtomicInteger(200);
     private Lang graphFormat = Lang.RDFXML;
     private boolean postOnly;
+    private boolean jsonPostOnly;
     private String expectedAuthorization = "Bearer test-token";
 
     @Before
@@ -59,8 +63,15 @@ public class DcatApSparqlHarvesterTest {
         RDFDataMgr.read(fixture, "src/test/resources/sparql-default.ttl");
         server = HttpServer.create(new InetSocketAddress("127.0.0.1", 0), 0);
         server.createContext("/sparql", exchange -> {
-            if (postOnly && !"POST".equals(exchange.getRequestMethod())) {
-                exchange.sendResponseHeaders(405, -1);
+            boolean post = "POST".equals(exchange.getRequestMethod());
+            if ((postOnly || jsonPostOnly) && !post) {
+                exchange.sendResponseHeaders(jsonPostOnly ? 431 : 405, -1);
+                exchange.close();
+                return;
+            }
+            if (jsonPostOnly && !"application/json".equals(exchange.getRequestHeaders().getFirst("Content-Type"))) {
+                exchange.getRequestBody().readAllBytes();
+                exchange.sendResponseHeaders(415, -1);
                 exchange.close();
                 return;
             }
@@ -71,8 +82,11 @@ public class DcatApSparqlHarvesterTest {
                     parameters.put(p.getName(), p.getValue());
                 }
                 assertEquals(expectedAuthorization, exchange.getRequestHeaders().getFirst("Authorization"));
-                String queryText = postOnly
-                    ? new String(exchange.getRequestBody().readAllBytes(), StandardCharsets.UTF_8) : parameters.get("query");
+                String queryText = parameters.get("query");
+                if (post) {
+                    String body = new String(exchange.getRequestBody().readAllBytes(), StandardCharsets.UTF_8);
+                    queryText = jsonPostOnly ? new ObjectMapper().readTree(body).get("query").asText() : body;
+                }
                 ByteArrayOutputStream output = new ByteArrayOutputStream();
                 try (QueryExecution query = QueryExecutionFactory.create(queryText, fixture)) {
                     if (query.getQuery().isSelectType()) {
@@ -87,7 +101,10 @@ public class DcatApSparqlHarvesterTest {
                 }
                 response = output.toByteArray();
             } catch (Exception e) {
-                throw new IOException(e);
+                e.printStackTrace();
+                exchange.sendResponseHeaders(500, -1);
+                exchange.close();
+                return;
             }
             exchange.sendResponseHeaders(status.get(), response.length);
             try (java.io.OutputStream output = exchange.getResponseBody()) {
@@ -105,7 +122,7 @@ public class DcatApSparqlHarvesterTest {
 
     @Test
     public void mapsJsonRowsVocabularyContactsAndDeepVariablesWithoutDuplicatingDistributions() throws Exception {
-        Map<String, Element> records = fetch(params());
+        Map<String, Element> records = fetch(openMetadataParams());
         assertEquals(4, records.size());
         Model mapped = readRecord(records.get("00000000-0000-0000-0000-000000000001"));
         Resource dataset = mapped.getResource(PRODUCT);
@@ -131,7 +148,7 @@ public class DcatApSparqlHarvesterTest {
         assertEquals(4, mapped.listStatements(null, mapped.createProperty(CSVW + "name"), (String) null).toList().size());
         assertTrue(mapped.contains(null, mapped.createProperty(CSVW + "datatype"), "integer"));
         assertEquals(2, dataset.listProperties(mapped.createProperty(DCAT + "keyword")).toList().size());
-        Model again = readRecord(fetch(params()).get("00000000-0000-0000-0000-000000000001"));
+        Model again = readRecord(fetch(openMetadataParams()).get("00000000-0000-0000-0000-000000000001"));
         assertTrue(mapped.isIsomorphicWith(again));
         mapped.close();
         again.close();
@@ -140,7 +157,7 @@ public class DcatApSparqlHarvesterTest {
     @Test
     public void joinsCustomDistributionToAssetWhenUrlIsProjected() throws Exception {
         RDFDataMgr.read(fixture, "src/test/resources/sparql-default-with-asset-url.ttl");
-        Model mapped = readRecord(fetch(params()).get("00000000-0000-0000-0000-000000000001"));
+        Model mapped = readRecord(fetch(openMetadataParams()).get("00000000-0000-0000-0000-000000000001"));
         Resource dataset = mapped.getResource(PRODUCT);
         assertEquals(2, dataset.listProperties(mapped.createProperty(DCAT + "distribution")).toList().size());
         assertTrue(mapped.contains(mapped.getResource(PRODUCT + "/distribution/00000000-0000-0000-0000-000000000101"),
@@ -151,8 +168,8 @@ public class DcatApSparqlHarvesterTest {
     }
 
     @Test
-    public void validatesAllBundledQueryRecordsAgainstPluginSchema() throws Exception {
-        Map<String, Element> records = fetch(params());
+    public void validatesAllOpenMetadataSourceRecordsAgainstPluginSchema() throws Exception {
+        Map<String, Element> records = fetch(openMetadataParams());
         assertEquals(4, records.size());
         for (Element xml : records.values()) {
             Xml.validate(SCHEMA.resolve("schema.xsd"), xml);
@@ -199,6 +216,8 @@ public class DcatApSparqlHarvesterTest {
         distribution.addProperty(fixture.createProperty(DCAT + "accessURL"), fixture.createResource("https://example.org/data.csv"));
         first.addProperty(RDF.type, fixture.createResource(DCAT + "Dataset"))
             .addProperty(fixture.createProperty(DCT + "title"), "First dataset")
+            .addProperty(fixture.createProperty(DCAT + "theme"),
+                fixture.createResource("http://publications.europa.eu/resource/authority/data-theme/HEAL"))
             .addProperty(fixture.createProperty(DCAT + "distribution"), distribution)
             .addProperty(annotationProperty, annotation);
         second.addProperty(RDF.type, fixture.createResource(DCAT + "DatasetSeries"))
@@ -210,8 +229,6 @@ public class DcatApSparqlHarvesterTest {
             .addProperty(fixture.createProperty(DCAT + "dataset"), second);
 
         DcatApSparqlParams params = params();
-        params.query = "CONSTRUCT WHERE { ?s ?p ?o }";
-        params.setImportXslt("schema:dcat-ap:convert/fromDcatSparql");
         Map<String, Element> records = fetch(params);
         assertEquals(3, records.size());
         assertEquals(records.keySet(), fetch(params).keySet());
@@ -225,6 +242,8 @@ public class DcatApSparqlHarvesterTest {
                 assertEquals(1, (hasFirst ? 1 : 0) + (hasSecond ? 1 : 0) + (hasThird ? 1 : 0));
                 if (hasFirst) {
                     assertEquals("false", mapped.getResource(first.getURI()).getProperty(structured).getString());
+                    assertTrue(mapped.contains(mapped.getResource(first.getURI()), mapped.createProperty(DCAT + "theme"),
+                        mapped.createResource("http://publications.europa.eu/resource/authority/data-theme/HEAL")));
                     assertEquals(1, Xml.selectNodes(xml, ".//*[local-name()='hasQualityAnnotation']").size());
                 } else if (hasThird) {
                     assertEquals("true", mapped.getResource(third.getURI()).getProperty(structured).getString());
@@ -241,9 +260,34 @@ public class DcatApSparqlHarvesterTest {
     public void sendsBareJwtAsBearerAuthorization() throws Exception {
         String jwt = "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJ0ZXN0In0.signature";
         expectedAuthorization = "Bearer " + jwt;
-        DcatApSparqlParams params = params();
+        DcatApSparqlParams params = openMetadataParams();
         params.setApiKey(jwt);
         assertEquals(4, fetch(params).size());
+    }
+
+    @Test
+    public void harvestsCareDepartmentGraphUsingNativeFormatterAndJsonPost() throws Exception {
+        RDFDataMgr.read(fixture, "src/test/resources/sparql-care-department.ttl");
+        jsonPostOnly = true;
+        DcatApSparqlParams params = params();
+        params.query = Files.readString(QUERIES.resolve("om-care-department-to-dcat.rq"));
+        Map<String, Element> records = fetch(params);
+        assertEquals(java.util.Set.of("00000000-0000-0000-0000-000000000001"), records.keySet());
+        Element record = records.values().iterator().next();
+        Xml.validate(SCHEMA.resolve("schema.xsd"), record);
+        Model mapped = readRecord(record);
+        try {
+            Resource dataset = mapped.getResource(PRODUCT);
+            assertEquals(2, dataset.listProperties(mapped.createProperty(DCAT + "distribution")).toList().size());
+            assertEquals(2, dataset.listProperties(mapped.createProperty(DCAT + "keyword")).toList().size());
+            assertEquals(4, mapped.listStatements(null, mapped.createProperty(CSVW + "name"), (String) null).toList().size());
+            assertTrue(dataset.hasProperty(mapped.createProperty(DCT + "type")));
+            assertTrue(dataset.hasProperty(mapped.createProperty(DCT + "provenance")));
+            assertTrue(mapped.contains(null, mapped.createProperty(VCARD + "hasEmail"), mapped.createResource("mailto:mock@example.org")));
+            assertTrue(mapped.contains(null, mapped.createProperty(CV + "email"), "hdab@example.org"));
+        } finally {
+            mapped.close();
+        }
     }
 
     @Test
@@ -273,6 +317,13 @@ public class DcatApSparqlHarvesterTest {
         params.url = "http://127.0.0.1:" + server.getAddress().getPort() + "/sparql";
         params.setApiKey("Bearer test-token");
         params.setName("Mock catalogue");
+        return params;
+    }
+
+    private DcatApSparqlParams openMetadataParams() throws IOException {
+        DcatApSparqlParams params = params();
+        params.query = Files.readString(QUERIES.resolve("fetch-om-generic-data-product.rq"));
+        params.setImportXslt("schema:dcat-ap:convert/fromOpenMetadataSparql");
         return params;
     }
 

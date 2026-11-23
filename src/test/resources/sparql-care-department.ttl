@@ -1,0 +1,22 @@
+@base <https://example.org/entity/> .
+@prefix om: <https://open-metadata.org/ontology/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<dataProduct/00000000-0000-0000-0000-000000000001> om:visibility "PUBLIC" ;
+  om:hasTag <tag/access>, <tag/legislation>, <tag/category>, <tag/type> .
+
+<tag/health> skos:prefLabel "Health" .
+<tag/access> om:tagFQN "dct_accessRights.resource_authority_access-right_NON_PUBLIC" ;
+  skos:prefLabel "Non-public" .
+<tag/legislation> om:tagFQN "dcatap_applicableLegislation.EHDS" ;
+  dct:description "[Source](http://data.europa.eu/eli/reg/2025/327/oj)" .
+<tag/category> om:tagFQN "healthdcatap_healthCategory.PHDR" ;
+  skos:prefLabel "Population-based health data registries" ;
+  dct:description "[Source](https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/PHDR)" .
+<tag/type> om:tagFQN "dct_type.TEST_DATA" ;
+  skos:prefLabel "Test data" ;
+  dct:description "[Source](http://publications.europa.eu/resource/authority/dataset-type/TEST_DATA)" .
+
+<apiEndpoint/00000000-0000-0000-0000-000000000101>
+  om:hasEndpointURL <https://example.org/data.json> ; om:hasTag <tag/legislation> .

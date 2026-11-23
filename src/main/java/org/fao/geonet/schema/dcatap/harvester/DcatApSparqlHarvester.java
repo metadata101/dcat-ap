@@ -101,7 +101,7 @@ public class DcatApSparqlHarvester extends AbstractHarvester<HarvestResult, Dcat
                 addPrivileges(id, params.getPrivileges(), groups, context);
                 metadataIndexer.indexMetadata(id, true, IndexingMode.full);
             }
-            // shortcut: this first version inserts/updates only; deletion reconciliation is deferred.
+            // A custom query may return a partial snapshot, so absence does not imply deletion.
             dataMan.forceIndexChanges();
         }
     }

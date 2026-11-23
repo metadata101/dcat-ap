@@ -1,0 +1,246 @@
+# HealthDCAT-AP export for the Department of Care's OpenMetadata model.
+# Requires Apache Jena/Fuseki for apf:strSplit. The JSON patterns read the flat
+# table rows, string arrays and API schema fields emitted by this RDF projection.
+# Only products with the required metadata for their access level are exported.
+PREFIX om: <https://open-metadata.org/ontology/>
+PREFIX apf: <http://jena.apache.org/ARQ/property#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcatap: <http://data.europa.eu/r5r/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX cv: <http://data.europa.eu/m8g/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX health: <http://healthdataportal.eu/ns/health#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX access: <http://publications.europa.eu/resource/authority/access-right/>
+PREFIX theme: <http://publications.europa.eu/resource/authority/data-theme/>
+
+CONSTRUCT {
+  ?catalog a dcat:Catalog ;
+    dct:title ?catalogTitle ; dct:description ?catalogDescription ; dct:publisher ?publisher ;
+    dcatap:applicableLegislation ?catalogLegislation ; dcat:dataset ?product ; dcat:record ?record .
+  ?publisher a foaf:Agent ; foaf:name ?publisherName .
+  ?record a dcat:CatalogRecord ;
+    dct:identifier ?uuid ; dct:modified ?modified ; dct:conformsTo ?profile ; foaf:primaryTopic ?product .
+  ?profile a dct:Standard ; dct:identifier ?profileIdentifier .
+  ?product a dcat:Dataset ;
+    dct:title ?title ; dct:description ?description ; dct:identifier ?uuid ; dct:modified ?modified ;
+    dct:accessRights ?access ; dcatap:applicableLegislation ?law ; dcat:theme ?theme ;
+    health:healthCategory ?category ; health:hdab ?hdab ; health:hasStructuredData ?structured ;
+    dcat:distribution ?distribution ; dcat:contactPoint ?contact ; dcat:keyword ?keyword ;
+    dct:provenance ?provenance ; dct:type ?type ; health:hasVariables ?variables .
+  ?access a skos:Concept ; skos:prefLabel ?accessLabel ;
+    skos:inScheme <http://publications.europa.eu/resource/authority/access-right> .
+  ?theme a skos:Concept ; skos:prefLabel ?themeLabel ;
+    skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> .
+  ?category a skos:Concept ; skos:prefLabel ?categoryLabel ;
+    skos:inScheme ?categoryScheme .
+  ?categoryScheme a skos:ConceptScheme ; dct:title "Health categories"@en .
+  ?type a skos:Concept ; skos:prefLabel ?typeLabel ;
+    skos:inScheme <http://publications.europa.eu/resource/authority/dataset-type> .
+  ?hdab a foaf:Agent ; foaf:name ?hdabName ; cv:contactPoint ?hdabContact .
+  ?hdabContact a cv:ContactPoint ; cv:email ?hdabEmail ; cv:contactPage ?hdabPage .
+  ?contact a vcard:Organization ; vcard:fn ?contactName ; vcard:hasEmail ?contactEmail ; vcard:hasURL ?contactPage .
+  ?provenance a dct:ProvenanceStatement ; dct:description ?provenanceText .
+  ?distribution a dcat:Distribution ; dcat:accessURL ?accessUrl ; dcatap:applicableLegislation ?distributionLaw ;
+    dct:title ?distributionTitle ; dct:description ?distributionDescription .
+  ?variables a csvw:TableGroup ; dct:title ?variablesTitle ; csvw:table ?table .
+  ?table a csvw:Table ; dct:title ?tableTitle ; csvw:column ?column .
+  ?column a csvw:Column ; csvw:name ?columnName ; csvw:title ?columnTitle ;
+    dct:description ?columnDescription ; csvw:datatype ?columnDatatype .
+}
+WHERE {
+  # Set the publication identity and legislation for the catalogue receiving this feed.
+  VALUES (?catalog ?catalogTitle ?catalogDescription ?publisher ?publisherName ?catalogLegislation) {
+    (<urn:geonetwork:catalogue:departement-zorg> "Departement Zorg"@nl
+     "Gezondheidsdatasets van het Departement Zorg"@nl
+     <urn:geonetwork:publisher:departement-zorg> "Departement Zorg"@nl <http://data.europa.eu/eli/reg/2025/327/oj>)
+  }
+  BIND(<https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-8/> AS ?profile)
+  BIND(STR(?profile) AS ?profileIdentifier)
+  BIND(<https://hdeu-dcat.data.health.europa.eu/resource/authority/healthcategories> AS ?categoryScheme)
+
+  ?product a om:DataProduct ; om:visibility "PUBLIC" ; dct:description ?description ; dct:modified ?sourceModified ;
+    om:hasTag ?accessTag, ?themeTag, ?categoryTag, ?lawTag ;
+    om:hasExtension/om:hasExtensionProperty
+      [om:extensionKey "healthHasStructuredData" ; om:extensionValue ?structuredValue],
+      [om:extensionKey "healthHdab" ; om:extensionValue ?hdabJson] .
+  OPTIONAL { ?product skos:prefLabel ?preferredTitle . FILTER(REGEX(STR(?preferredTitle), '\\S')) }
+  OPTIONAL { ?product rdfs:label ?fallbackTitle }
+  BIND(COALESCE(?preferredTitle, ?fallbackTitle) AS ?title)
+  BIND(xsd:dateTime(STR(?sourceModified)) AS ?modified)
+  BIND(REPLACE(STR(?product), '^.*/', '') AS ?uuid)
+  FILTER(REGEX(STR(?title), '\\S') && REGEX(STR(?description), '\\S') && BOUND(?modified))
+  FILTER(REGEX(?uuid, '^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$'))
+  BIND(REPLACE(STR(?structuredValue), '^\\s*\\[\\s*"(true|false)"\\s*\\]\\s*$', '$1') AS ?structuredText)
+  FILTER(?structuredText IN ('true', 'false'))
+  BIND(xsd:boolean(?structuredText) AS ?structured)
+  BIND(IRI(CONCAT(STR(?product), '/record')) AS ?record)
+
+  # The approved tag defines access to the data itself, independently of product visibility.
+  VALUES (?accessCode ?access) {
+    ("dct_accessRights.resource_authority_access-right_PUBLIC" access:PUBLIC)
+    ("dct_accessRights.resource_authority_access-right_RESTRICTED" access:RESTRICTED)
+    ("dct_accessRights.resource_authority_access-right_NON_PUBLIC" access:NON_PUBLIC)
+  }
+  ?accessTag om:tagFQN ?accessCode ; (skos:prefLabel|rdfs:label) ?accessLabel .
+  FILTER NOT EXISTS {
+    ?product om:hasTag/om:tagFQN ?otherAccess .
+    FILTER(STRSTARTS(?otherAccess, 'dct_accessRights.') && ?otherAccess != ?accessCode)
+  }
+  ?themeTag om:tagFQN ?themeCode ; dct:description ?themeSource ; skos:prefLabel ?themeLabel .
+  ?categoryTag om:tagFQN ?categoryCode ; dct:description ?categorySource ; skos:prefLabel ?categoryLabel .
+  ?lawTag om:tagFQN ?lawCode ; dct:description ?lawSource .
+  FILTER(STRSTARTS(?themeCode, 'dcat_theme.') && STRSTARTS(?categoryCode, 'healthdcatap_healthCategory.') &&
+         STRSTARTS(?lawCode, 'dcatap_applicableLegislation.'))
+  BIND('\\[Source\\]\\((https?://[^\\s)]+)\\)' AS ?sourcePattern)
+  FILTER(REGEX(?themeSource, ?sourcePattern) && REGEX(?categorySource, ?sourcePattern) && REGEX(?lawSource, ?sourcePattern))
+  BIND(IRI(REPLACE(?themeSource, CONCAT('^.*?', ?sourcePattern, '.*$'), '$1', 's')) AS ?theme)
+  BIND(IRI(REPLACE(?lawSource, CONCAT('^.*?', ?sourcePattern, '.*$'), '$1', 's')) AS ?law)
+  BIND(REPLACE(?categorySource, CONCAT('^.*?', ?sourcePattern, '.*$'), '$1', 's') AS ?categorySourceIri)
+  BIND(IRI(REPLACE(?categorySourceIri, '^https://hdeu-dcat\\.acceptance\\.data\\.health\\.europa\\.eu/',
+                   'https://hdeu-dcat.data.health.europa.eu/')) AS ?category)
+  FILTER(STRSTARTS(STR(?category), CONCAT(STR(?categoryScheme), '/')))
+  FILTER EXISTS {
+    ?product om:hasTag [om:tagFQN ?healthThemeCode ; dct:description ?healthThemeSource] .
+    FILTER(STRSTARTS(?healthThemeCode, 'dcat_theme.') &&
+           CONTAINS(?healthThemeSource, CONCAT('[Source](', STR(theme:HEAL), ')')))
+  }
+
+  # The HDAB table must contain one row, with a name and at least one way to contact it.
+  BIND('\\{(?:[^{}"\\\\]|"(?:[^"\\\\]|\\\\.)*")*\\}' AS ?flatObject)
+  BIND(CONCAT('^.*?"rows"\\s*:\\s*\\[\\s*(', ?flatObject, ')\\s*\\].*$') AS ?hdabRowsPattern)
+  FILTER(REGEX(?hdabJson, ?hdabRowsPattern, 's'))
+  BIND(REPLACE(?hdabJson, ?hdabRowsPattern, '$1', 's') AS ?hdabRow)
+  BIND('^.*?"name"\\s*:\\s*"((?:[^"\\\\]|\\\\.)+)".*$' AS ?namePattern)
+  BIND('^.*?"email"\\s*:\\s*"([^"\\\\\\s]+@[^"\\\\\\s]+)".*$' AS ?emailPattern)
+  BIND('^.*?"contactpage"\\s*:\\s*"(https?://[^"\\\\\\s]+)".*$' AS ?pagePattern)
+  FILTER(REGEX(?hdabRow, ?namePattern, 's') && (REGEX(?hdabRow, ?emailPattern, 's') || REGEX(?hdabRow, ?pagePattern, 's')))
+  BIND(REPLACE(REPLACE(?hdabRow, ?namePattern, '$1', 's'), '\\\\"', '"') AS ?hdabName)
+  BIND(IF(REGEX(?hdabRow, ?emailPattern, 's'), REPLACE(?hdabRow, ?emailPattern, '$1', 's'), ?unbound) AS ?hdabEmail)
+  BIND(IF(REGEX(?hdabRow, ?pagePattern, 's'), IRI(REPLACE(?hdabRow, ?pagePattern, '$1', 's')), ?unbound) AS ?hdabPage)
+  BIND(IRI(CONCAT(STR(?product), '/hdab')) AS ?hdab)
+  BIND(IRI(CONCAT(STR(?hdab), '/contact')) AS ?hdabContact)
+
+  {
+    # Cells in healthDistributions contain JSON arrays serialized as strings.
+    ?product om:hasExtension/om:hasExtensionProperty
+      [om:extensionKey "healthDistributions" ; om:extensionValue ?distributionJson] .
+    BIND(REPLACE(?distributionJson, '(\\{(?:[^{}"\\\\]|"(?:[^"\\\\]|\\\\.)*")*\\})', '\t$1\t') AS ?distributionRows)
+    ?distributionRow apf:strSplit (?distributionRows '\t') .
+    BIND('^\\{.*?"accessURLs"\\s*:\\s*"((?:[^"\\\\]|\\\\.)+)".*\\}$' AS ?urlsPattern)
+    BIND('^\\{.*?"applicableLegislation"\\s*:\\s*"((?:[^"\\\\]|\\\\.)+)".*\\}$' AS ?lawsPattern)
+    FILTER(REGEX(?distributionRow, ?urlsPattern, 's') && REGEX(?distributionRow, ?lawsPattern, 's'))
+    BIND(REPLACE(REPLACE(?distributionRow, ?urlsPattern, '$1', 's'), '\\\\"', '"') AS ?urls)
+    BIND(REPLACE(REPLACE(?distributionRow, ?lawsPattern, '$1', 's'), '\\\\"', '"') AS ?laws)
+    BIND(REPLACE(?urls, '("(?:[^"\\\\]|\\\\.)*")', '\t$1\t') AS ?urlTokens)
+    BIND(REPLACE(?laws, '("(?:[^"\\\\]|\\\\.)*")', '\t$1\t') AS ?lawTokens)
+    ?urlToken apf:strSplit (?urlTokens '\t') .
+    ?lawToken apf:strSplit (?lawTokens '\t') .
+    FILTER(REGEX(?urlToken, '^"https?://[^"\\\\\\s]+"$') && REGEX(?lawToken, '^"https?://[^"\\\\\\s]+"$'))
+    BIND(IRI(SUBSTR(?urlToken, 2, STRLEN(?urlToken) - 2)) AS ?accessUrl)
+    BIND(IRI(SUBSTR(?lawToken, 2, STRLEN(?lawToken) - 2)) AS ?distributionLaw)
+    BIND(IRI(CONCAT(STR(?product), '/distribution/', SHA256(REPLACE(?urls, '\\s+', '')))) AS ?distribution)
+  } UNION {
+    # An asset can supply its own distribution when both its URL and legislation are projected.
+    ?asset om:hasDataProduct ?product ;
+      (om:hasEndpointURL|om:downloadLink|om:webViewLink|om:sourceUrl|dct:source) ?assetUrl ;
+      om:hasTag ?distributionLawTag .
+    ?distributionLawTag om:tagFQN ?distributionLawCode ; dct:description ?distributionLawSource .
+    FILTER(STRSTARTS(?distributionLawCode, 'dcatap_applicableLegislation.') &&
+           REGEX(?distributionLawSource, '\\[Source\\]\\((https?://[^\\s)]+)\\)') &&
+           REGEX(STR(?assetUrl), '^https?://\\S+$'))
+    BIND(IRI(STR(?assetUrl)) AS ?accessUrl)
+    BIND(IRI(REPLACE(?distributionLawSource, '^.*?\\[Source\\]\\((https?://[^\\s)]+)\\).*$',
+                     '$1', 's')) AS ?distributionLaw)
+    FILTER NOT EXISTS {
+      ?product om:hasExtension/om:hasExtensionProperty
+        [om:extensionKey "healthDistributions" ; om:extensionValue ?existingRows] .
+      FILTER(CONTAINS(?existingRows, CONCAT('\\"', STR(?accessUrl), '\\"')))
+    }
+    OPTIONAL { ?asset (skos:prefLabel|rdfs:label) ?distributionTitle }
+    OPTIONAL { ?asset dct:description ?distributionDescription }
+    BIND(IRI(CONCAT(STR(?product), '/distribution/', SHA256(STR(?accessUrl)))) AS ?distribution)
+  }
+
+  OPTIONAL {
+    ?product om:hasTag ?typeTag .
+    ?typeTag om:tagFQN ?typeCode ; dct:description ?typeSource ; skos:prefLabel ?typeLabel .
+    FILTER(STRSTARTS(?typeCode, 'dct_type.') && REGEX(?typeSource, '\\[Source\\]\\((https?://[^\\s)]+)\\)'))
+    BIND(IRI(REPLACE(?typeSource, '^.*?\\[Source\\]\\((https?://[^\\s)]+)\\).*$', '$1', 's')) AS ?type)
+  }
+  OPTIONAL {
+    ?product om:hasExtension/om:hasExtensionProperty
+      [om:extensionKey "healthKeywords" ; om:extensionValue ?keywordsJson] .
+    BIND(REPLACE(?keywordsJson, '("(?:[^"\\\\]|\\\\.)+")', '\t$1\t') AS ?keywordTokens)
+    ?keywordToken apf:strSplit (?keywordTokens '\t') .
+    FILTER(REGEX(?keywordToken, '^"(?:[^"\\\\]|\\\\.)+"$'))
+    BIND(REPLACE(SUBSTR(?keywordToken, 2, STRLEN(?keywordToken) - 2), '\\\\"', '"') AS ?keyword)
+  }
+  OPTIONAL {
+    ?product om:hasExtension/om:hasExtensionProperty
+      [om:extensionKey "healthProvenance" ; om:extensionValue ?provenanceText] .
+    FILTER(STRLEN(STR(?provenanceText)) > 0)
+    BIND(IRI(CONCAT(STR(?product), '/provenance')) AS ?provenance)
+  }
+  OPTIONAL {
+    ?product (om:hasOwner|om:hasExpert|om:hasReviewer) ?party .
+    OPTIONAL { ?party skos:prefLabel ?partyLabel }
+    OPTIONAL { ?party rdfs:label ?partyName }
+    OPTIONAL { ?party foaf:mbox ?mail . FILTER(REGEX(STR(?mail), '^(mailto:)?[^\\s@]+@[^\\s@]+$')) }
+    OPTIONAL {
+      ?party om:hasExtension/om:hasExtensionProperty
+        [om:extensionKey "contactPage" ; om:extensionValue ?page] .
+      FILTER(REGEX(STR(?page), '^https?://\\S+$'))
+      BIND(IRI(STR(?page)) AS ?contactPage)
+    }
+    FILTER(BOUND(?mail) || BOUND(?contactPage))
+    BIND(COALESCE(?partyLabel, ?partyName) AS ?contactName)
+    BIND(IRI(CONCAT('mailto:', REPLACE(STR(?mail), '^mailto:', ''))) AS ?contactEmail)
+    BIND(IRI(CONCAT(STR(?product), '/contact/', SHA256(STR(?party)))) AS ?contact)
+  }
+
+  OPTIONAL {
+    ?sourceTable om:hasDataProduct ?product ; rdfs:label ?tableName .
+    {
+      ?sourceTable om:hasResponseSchema ?responseSchema .
+      BIND(REPLACE(?responseSchema, '(\\{(?:[^{}"\\\\]|"(?:[^"\\\\]|\\\\.)*")*\\})', '\t$1\t') AS ?fieldRows)
+      ?fieldRow apf:strSplit (?fieldRows '\t') .
+      BIND('^\\{.*?"name"\\s*:\\s*"((?:[^"\\\\]|\\\\.)+)".*\\}$' AS ?columnNamePattern)
+      BIND('^\\{.*?"displayName"\\s*:\\s*"((?:[^"\\\\]|\\\\.)+)".*\\}$' AS ?columnTitlePattern)
+      BIND('^\\{.*?"description"\\s*:\\s*"((?:[^"\\\\]|\\\\.)+)".*\\}$' AS ?columnDescriptionPattern)
+      BIND('^\\{.*?"dataType"\\s*:\\s*"([A-Za-z][A-Za-z0-9_]*)".*\\}$' AS ?columnTypePattern)
+      FILTER(REGEX(?fieldRow, ?columnNamePattern, 's') && REGEX(?fieldRow, ?columnDescriptionPattern, 's') &&
+             REGEX(?fieldRow, ?columnTypePattern, 's'))
+      BIND(REPLACE(REPLACE(?fieldRow, ?columnNamePattern, '$1', 's'), '\\\\"', '"') AS ?columnName)
+      BIND(REPLACE(REPLACE(?fieldRow, ?columnDescriptionPattern, '$1', 's'), '\\\\"', '"') AS ?columnDescription)
+      BIND(REPLACE(?fieldRow, ?columnTypePattern, '$1', 's') AS ?sourceDatatype)
+      BIND(IF(REGEX(?fieldRow, ?columnTitlePattern, 's'),
+              REPLACE(REPLACE(?fieldRow, ?columnTitlePattern, '$1', 's'), '\\\\"', '"'), ?columnName) AS ?columnTitle)
+    } UNION {
+      ?sourceTable a om:Table ; om:hasColumn ?sourceColumn .
+      ?sourceColumn rdfs:label ?columnName ; dct:description ?columnDescription ; om:dataType ?sourceDatatype .
+      OPTIONAL { ?sourceColumn skos:prefLabel ?displayColumn }
+      BIND(COALESCE(?displayColumn, ?columnName) AS ?columnTitle)
+    }
+    VALUES (?supportedType ?columnDatatype) {
+      ("STRING" "string") ("VARCHAR" "string") ("CHAR" "string") ("TEXT" "string")
+      ("INT" "integer") ("INTEGER" "integer") ("BIGINT" "integer") ("SMALLINT" "integer") ("TINYINT" "integer")
+      ("DOUBLE" "double") ("FLOAT" "double") ("REAL" "double") ("DECIMAL" "decimal") ("NUMERIC" "decimal")
+      ("BOOLEAN" "boolean") ("DATE" "date") ("TIMESTAMP" "dateTime") ("DATETIME" "dateTime") ("TIME" "time")
+    }
+    FILTER(UCASE(STR(?sourceDatatype)) = ?supportedType)
+    BIND(IRI(CONCAT(STR(?product), '/variables/', SHA256(STR(?sourceTable)))) AS ?sourceTableIri)
+  }
+
+  FILTER(!?structured || BOUND(?sourceTableIri))
+  FILTER(?access != access:NON_PUBLIC || (BOUND(?contact) && BOUND(?keyword) && BOUND(?provenance) && BOUND(?type)))
+  BIND(IF(?structured, IRI(CONCAT(STR(?product), '/variables')), ?unbound) AS ?variables)
+  BIND(IF(?structured, CONCAT(STR(?title), ' variables'), ?unbound) AS ?variablesTitle)
+  BIND(IF(?structured, ?sourceTableIri, ?unbound) AS ?table)
+  BIND(IF(?structured, ?tableName, ?unbound) AS ?tableTitle)
+  BIND(IRI(CONCAT(STR(?table), '/', ENCODE_FOR_URI(STR(?columnName)))) AS ?column)
+}

@@ -15,12 +15,12 @@
       <label for="dcatapsparql-query">SPARQL query</label>
       <textarea id="dcatapsparql-query" class="form-control" rows="8" spellcheck="false"
                 data-ng-trim="false" data-ng-model="harvesterSelected.site.query"></textarea>
-      <p class="help-block">Use a SELECT, CONSTRUCT, or DESCRIBE query. Leave blank to use the bundled query.</p>
+      <p class="help-block">Leave blank to fetch DCAT datasets, dataset series, and data services. Use a custom stylesheet for SELECT results.</p>
     </div>
     <div class="form-group">
       <label data-translate="">applyXSLToRecord</label>
       <div data-gn-import-xsl="harvesterSelected.content.importxslt"></div>
-      <p class="help-block">Choose fromDcatSparql for an RDF graph that already uses DCAT. Leave blank to use the bundled mapping.</p>
+      <p class="help-block">Leave unset to format a DCAT graph for GeoNetwork. Choose a stylesheet when the query result needs a custom transformation.</p>
     </div>
     <div data-gn-harvester-account="harvesterSelected"></div>
     <div class="form-group">
