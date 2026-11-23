@@ -20,3 +20,15 @@
 
 <apiEndpoint/00000000-0000-0000-0000-000000000101>
   om:hasEndpointURL <https://example.org/data.json> ; om:hasTag <tag/legislation> .
+
+<dataProduct/00000000-0000-0000-0000-000000000002> om:visibility "PUBLIC" ;
+  om:hasTag <tag/access> ;
+  om:hasExtension <partial-product-extension> .
+
+<partial-product-extension> om:hasExtensionProperty <partial-hdab>, <partial-distribution> .
+<partial-hdab> om:extensionKey "healthHdab" ;
+  om:extensionValue '''{"rows":[{"contactpage":"https://example.org/partial-hdab"}]}''' .
+<partial-distribution> om:extensionKey "healthDistributions" ;
+  om:extensionValue '''{"rows":[{"applicableLegislation":"[\\"http://data.europa.eu/eli/reg/2025/327/oj\\"]"}]}''' .
+
+<dataProduct/00000000-0000-0000-0000-000000000003> om:visibility "PRIVATE" .

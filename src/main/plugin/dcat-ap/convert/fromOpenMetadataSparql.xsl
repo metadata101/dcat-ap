@@ -7,7 +7,6 @@
     xmlns:m="urn:geonetwork:openmetadata-mapping"
     xmlns:object="java:org.json.JSONObject"
     xmlns:array="java:org.json.JSONArray"
-    xmlns:tokener="java:org.json.JSONTokener"
     xmlns:dcat="http://www.w3.org/ns/dcat#"
     xmlns:dct="http://purl.org/dc/terms/"
     xmlns:dcatap="http://data.europa.eu/r5r/"
@@ -26,9 +25,6 @@
   <xsl:key name="assets" match="rdf:RDF/rdf:Description" use="om:hasDataProduct/@rdf:resource"/>
 
   <xsl:template match="/">
-    <xsl:if test="not(rdf:RDF)">
-      <xsl:message terminate="yes">The OpenMetadata graph mapping requires a CONSTRUCT or DESCRIBE result.</xsl:message>
-    </xsl:if>
     <records>
       <xsl:for-each select="rdf:RDF/rdf:Description[rdf:type/@rdf:resource = 'https://open-metadata.org/ontology/DataProduct']">
         <xsl:sort select="@rdf:about"/>
@@ -46,12 +42,9 @@
 
   <xsl:template name="product">
     <xsl:variable name="iri" select="string(@rdf:about)"/>
-    <xsl:variable name="id" select="replace($iri, '^.*/', '')"/>
+    <xsl:variable name="id" select="(replace($iri, '^.*/', '')[. != ''], $iri)[1]"/>
     <!-- The endpoint can also return a malformed xsd:dateTime literal carrying epoch milliseconds. -->
     <xsl:variable name="modified" select="dct:modified[. castable as xs:dateTime][1]"/>
-    <xsl:if test="not(contains($iri, '/entity/')) or $id = '' or not($modified)">
-      <xsl:message terminate="yes">Invalid OpenMetadata product URI or missing modification date: <xsl:value-of select="$iri"/></xsl:message>
-    </xsl:if>
     <xsl:variable name="extensions" select="m:extensions(.)"/>
     <xsl:variable name="assets" as="element()*">
       <xsl:perform-sort select="key('assets', $iri)">
@@ -59,12 +52,17 @@
       </xsl:perform-sort>
     </xsl:variable>
     <rdf:RDF>
-      <dcat:Catalog rdf:about="{substring-before($iri, '/entity/')}/catalog">
+      <dcat:Catalog>
+        <xsl:if test="contains($iri, '/entity/')">
+          <xsl:attribute name="rdf:about" select="concat(substring-before($iri, '/entity/'), '/catalog')"/>
+        </xsl:if>
         <dct:title><xsl:value-of select="$catalogName"/></dct:title>
         <dcat:record>
           <dcat:CatalogRecord rdf:about="{$iri}/record">
             <dct:identifier><xsl:value-of select="$id"/></dct:identifier>
-            <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"><xsl:value-of select="$modified"/></dct:modified>
+            <xsl:if test="$modified">
+              <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"><xsl:value-of select="$modified"/></dct:modified>
+            </xsl:if>
             <dct:conformsTo>
               <dct:Standard rdf:about="{$profile}">
                 <dct:identifier><xsl:value-of select="$profile"/></dct:identifier>
@@ -76,10 +74,14 @@
         </dcat:record>
         <dcat:dataset>
           <dcat:Dataset rdf:about="{$iri}">
-            <dct:title><xsl:value-of select="m:label(.)"/></dct:title>
+            <xsl:if test="m:label(.) != ''">
+              <dct:title><xsl:value-of select="m:label(.)"/></dct:title>
+            </xsl:if>
             <xsl:copy-of select="dct:description"/>
             <dct:identifier><xsl:value-of select="$id"/></dct:identifier>
-            <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"><xsl:value-of select="$modified"/></dct:modified>
+            <xsl:if test="$modified">
+              <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"><xsl:value-of select="$modified"/></dct:modified>
+            </xsl:if>
             <xsl:for-each select="m:linked(om:hasTag)">
               <xsl:call-template name="tag"/>
             </xsl:for-each>
@@ -106,17 +108,20 @@
               </dct:provenance>
             </xsl:if>
             <xsl:for-each select="m:members(m:property($extensions, 'healthHdab'), 'rows')">
+              <xsl:variable name="name" select="m:field(., 'name')"/>
+              <xsl:variable name="email" select="m:field(., 'email')"/>
+              <xsl:variable name="page" select="m:field(., 'contactpage')"/>
               <healthdcatap:hdab>
                 <foaf:Agent>
-                  <foaf:name><xsl:value-of select="m:field(., 'name')"/></foaf:name>
-                  <cv:contactPoint>
-                    <cv:ContactPoint>
-                      <xsl:variable name="email" select="m:field(., 'email')"/>
-                      <xsl:variable name="page" select="m:field(., 'contactpage')"/>
-                      <xsl:if test="$email != ''"><cv:email><xsl:value-of select="$email"/></cv:email></xsl:if>
-                      <xsl:if test="$page != ''"><cv:contactPage rdf:resource="{$page}"/></xsl:if>
-                    </cv:ContactPoint>
-                  </cv:contactPoint>
+                  <xsl:if test="$name != ''"><foaf:name><xsl:value-of select="$name"/></foaf:name></xsl:if>
+                  <xsl:if test="$email != '' or $page != ''">
+                    <cv:contactPoint>
+                      <cv:ContactPoint>
+                        <xsl:if test="$email != ''"><cv:email><xsl:value-of select="$email"/></cv:email></xsl:if>
+                        <xsl:if test="$page != ''"><cv:contactPage rdf:resource="{$page}"/></xsl:if>
+                      </cv:ContactPoint>
+                    </cv:contactPoint>
+                  </xsl:if>
                 </foaf:Agent>
               </healthdcatap:hdab>
             </xsl:for-each>
@@ -126,21 +131,12 @@
               <xsl:with-param name="rows" select="m:members(m:property($extensions, 'healthDistributions'), 'rows')"/>
             </xsl:call-template>
             <xsl:variable name="structured" select="normalize-space(m:property($extensions, 'healthHasStructuredData'))"/>
-            <xsl:variable name="value" as="xs:string">
-              <xsl:choose>
-                <xsl:when test="$structured = ''"><xsl:sequence select="'false'"/></xsl:when>
-                <xsl:when test="starts-with($structured, '[')">
-                  <xsl:variable name="values" select="array:new($structured)"/>
-                  <xsl:sequence select="if (array:length($values) = 1) then array:optString($values, 0) else ''"/>
-                </xsl:when>
-                <xsl:otherwise><xsl:sequence select="string(tokener:nextValue(tokener:new($structured)))"/></xsl:otherwise>
-              </xsl:choose>
-            </xsl:variable>
-            <xsl:if test="not($value = ('true', 'false'))">
-              <xsl:message terminate="yes">healthHasStructuredData must contain one boolean value.</xsl:message>
-            </xsl:if>
-            <healthdcatap:hasStructuredData><xsl:value-of select="$value"/></healthdcatap:hasStructuredData>
-            <xsl:if test="$value = 'true'">
+            <xsl:variable name="values" select="if (starts-with($structured, '[')) then m:strings($structured)
+              else replace($structured, '^&quot;(.*)&quot;$', '$1')[. != '']"/>
+            <xsl:for-each select="$values">
+              <healthdcatap:hasStructuredData><xsl:value-of select="."/></healthdcatap:hasStructuredData>
+            </xsl:for-each>
+            <xsl:if test="$values = 'true'">
               <xsl:call-template name="variables">
                 <xsl:with-param name="assets" select="$assets"/>
                 <xsl:with-param name="title" select="m:label(.)"/>
@@ -183,12 +179,9 @@
       <xsl:variable name="urls" as="xs:string*">
         <xsl:perform-sort select="m:strings(m:field(., 'accessURLs'))"><xsl:sort/></xsl:perform-sort>
       </xsl:variable>
-      <xsl:if test="empty($urls)">
-        <xsl:message terminate="yes">A healthDistributions row has no accessURLs.</xsl:message>
-      </xsl:if>
       <xsl:variable name="asset" select="$assets[m:access-url(.) = $urls][1]"/>
       <xsl:variable name="id" select="if ($asset) then replace($asset/@rdf:about, '^.*/', '')
-        else encode-for-uri(string-join($urls, '&#10;'))"/>
+        else if (exists($urls)) then encode-for-uri(string-join($urls, '&#10;')) else concat('row-', position())"/>
       <dcat:distribution>
         <dcat:Distribution rdf:about="{$iri}/distribution/{$id}">
           <xsl:for-each select="$urls"><dcat:accessURL rdf:resource="{.}"/></xsl:for-each>
@@ -320,7 +313,7 @@
     <xsl:if test="normalize-space($text) != ''">
       <xsl:variable name="values" select="array:new($text)"/>
       <xsl:for-each select="0 to (array:length($values) - 1)">
-        <xsl:sequence select="array:getString($values, .)"/>
+        <xsl:sequence select="string(array:optString($values, .))[. != '']"/>
       </xsl:for-each>
     </xsl:if>
   </xsl:function>

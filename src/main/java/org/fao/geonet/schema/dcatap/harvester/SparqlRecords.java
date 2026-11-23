@@ -25,7 +25,8 @@ final class SparqlRecords {
     static Map<String, Element> fetch(DcatApSparqlParams params, Path schemaDir,
                                       Function<String, Path> resolveConversion) throws Exception {
         String mapping = params.getImportXslt();
-        Path stylesheet = mapping == null || mapping.isBlank() || "none".equals(mapping)
+        boolean defaultMapping = mapping == null || mapping.isBlank() || "none".equals(mapping);
+        Path stylesheet = defaultMapping
             ? schemaDir.resolve("convert/fromDcatSparql.xsl") : resolveConversion.apply(mapping);
         if (stylesheet == null || !Files.isRegularFile(stylesheet)) {
             throw new IOException("SPARQL mapping stylesheet not found: " + mapping);
@@ -33,6 +34,9 @@ final class SparqlRecords {
 
         String query = params.query.isBlank() ? defaultQuery() : params.query;
         Element source = new SparqlClient(params).execute(query);
+        if (defaultMapping && !(source.getName().equals("RDF") && source.getNamespaceURI().equals(RDF.getURI()))) {
+            throw new IOException("Configure an import stylesheet for a SPARQL SELECT result.");
+        }
         Element output = Xml.transform(source, stylesheet, Map.of("catalogName", params.getName()));
         List<?> documents = output.getName().equals("records") && output.getNamespaceURI().isEmpty()
             ? output.getChildren() : List.of(output);

@@ -33,9 +33,6 @@
     return concat('../schema/', $name, '.xsd'))/xs:schema"/>
 
   <xsl:template match="/">
-    <xsl:if test="not(rdf:RDF)">
-      <xsl:message terminate="yes">The default DCAT transformation requires a CONSTRUCT or DESCRIBE result. Configure a stylesheet for SELECT results.</xsl:message>
-    </xsl:if>
     <records>
       <xsl:for-each select="rdf:RDF/rdf:Description[rdf:type/@rdf:resource = $resourceTypes]">
         <xsl:variable name="resource" select="."/>
@@ -89,8 +86,14 @@
 
   <xsl:template match="@rdf:about"><xsl:copy/></xsl:template>
 
-  <!-- The schema permits annotations in two positions. Reordering copies them to both. -->
-  <xsl:template match="dcat:Dataset/dqv:hasQualityAnnotation[preceding-sibling::healthdcatap:hasStructuredData]" mode="native-output"/>
+  <!-- Reordering copies each annotation into both positions listed in the schema. -->
+  <xsl:template match="dcat:Dataset" mode="native-output">
+    <xsl:variable name="annotations" select="dqv:hasQualityAnnotation"/>
+    <xsl:variable name="duplicates" select="$annotations[position() gt (count($annotations) idiv 2)]"/>
+    <xsl:copy>
+      <xsl:apply-templates select="@* | (node() except $duplicates)" mode="native-output"/>
+    </xsl:copy>
+  </xsl:template>
 
   <xsl:template match="dqv:QualityAnnotation/@rdf:nodeID | dqv:QualityAnnotation/@rdf:about" mode="native-output"/>
 
@@ -121,20 +124,17 @@
     <xsl:variable name="uri" select="replace(string($type), '^(.*[/#])[^/#]*$', '$1')"/>
     <xsl:variable name="local" select="substring-after($type, $uri)"/>
     <xsl:variable name="name" select="if (matches($local, '^[\i-[:]][\c-[:]]*$')) then m:name($local, $uri) else 'rdf:Description'"/>
-    <xsl:variable name="isDataset" select="$type = concat($dcat, 'Dataset')"/>
     <xsl:variable name="properties" select="if ($name = 'rdf:Description') then * else * except rdf:type[@rdf:resource = $type]"/>
     <xsl:element name="{$name}" namespace="{if ($name = 'rdf:Description') then namespace-uri(.) else $uri}">
       <xsl:copy-of select="@rdf:about | @rdf:nodeID"/>
-      <xsl:apply-templates select="$properties except healthdcatap:hasStructuredData[$isDataset]" mode="property">
+      <xsl:apply-templates select="$properties" mode="property">
         <xsl:with-param name="visited" select="($visited, @rdf:about/string(), @rdf:nodeID/string())" tunnel="yes"/>
       </xsl:apply-templates>
-      <xsl:if test="$isDataset">
-        <healthdcatap:hasStructuredData>
-          <xsl:value-of select="if (healthdcatap:hasStructuredData) then xs:boolean(healthdcatap:hasStructuredData)
-                                else exists(healthdcatap:hasVariables)"/>
-        </healthdcatap:hasStructuredData>
-      </xsl:if>
     </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="healthdcatap:hasStructuredData" mode="property">
+    <healthdcatap:hasStructuredData><xsl:value-of select="."/></healthdcatap:hasStructuredData>
   </xsl:template>
 
   <xsl:template match="*" mode="property">

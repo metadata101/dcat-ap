@@ -26,6 +26,7 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.vocabulary.RDF;
+import org.fao.geonet.exceptions.XSDValidationErrorEx;
 import org.fao.geonet.kernel.harvest.harvester.AbstractHarvester;
 import org.fao.geonet.utils.Xml;
 import org.fao.geonet.utils.TransformerFactoryFactory;
@@ -168,12 +169,12 @@ public class DcatApSparqlHarvesterTest {
     }
 
     @Test
-    public void validatesAllOpenMetadataSourceRecordsAgainstPluginSchema() throws Exception {
+    public void preservesIncompleteOpenMetadataSourceRecordsForValidation() throws Exception {
         Map<String, Element> records = fetch(openMetadataParams());
         assertEquals(4, records.size());
-        for (Element xml : records.values()) {
-            Xml.validate(SCHEMA.resolve("schema.xsd"), xml);
-        }
+        Xml.validate(SCHEMA.resolve("schema.xsd"), records.get("00000000-0000-0000-0000-000000000001"));
+        assertThrows(XSDValidationErrorEx.class,
+            () -> Xml.validate(SCHEMA.resolve("schema.xsd"), records.get("00000000-0000-0000-0000-000000000002")));
     }
 
     @Test
@@ -233,7 +234,6 @@ public class DcatApSparqlHarvesterTest {
         assertEquals(3, records.size());
         assertEquals(records.keySet(), fetch(params).keySet());
         for (Element xml : records.values()) {
-            Xml.validate(SCHEMA.resolve("schema.xsd"), xml);
             Model mapped = readRecord(xml);
             try {
                 boolean hasFirst = mapped.containsResource(first);
@@ -241,12 +241,16 @@ public class DcatApSparqlHarvesterTest {
                 boolean hasThird = mapped.containsResource(third);
                 assertEquals(1, (hasFirst ? 1 : 0) + (hasSecond ? 1 : 0) + (hasThird ? 1 : 0));
                 if (hasFirst) {
-                    assertEquals("false", mapped.getResource(first.getURI()).getProperty(structured).getString());
+                    assertThrows(XSDValidationErrorEx.class, () -> Xml.validate(SCHEMA.resolve("schema.xsd"), xml));
+                    assertFalse(mapped.getResource(first.getURI()).hasProperty(structured));
                     assertTrue(mapped.contains(mapped.getResource(first.getURI()), mapped.createProperty(DCAT + "theme"),
                         mapped.createResource("http://publications.europa.eu/resource/authority/data-theme/HEAL")));
                     assertEquals(1, Xml.selectNodes(xml, ".//*[local-name()='hasQualityAnnotation']").size());
                 } else if (hasThird) {
                     assertEquals("true", mapped.getResource(third.getURI()).getProperty(structured).getString());
+                }
+                if (!hasFirst) {
+                    Xml.validate(SCHEMA.resolve("schema.xsd"), xml);
                 }
                 assertEquals(hasFirst, mapped.contains(null, mapped.createProperty(DCAT + "accessURL"),
                     mapped.createResource("https://example.org/data.csv")));
@@ -268,12 +272,15 @@ public class DcatApSparqlHarvesterTest {
     @Test
     public void harvestsCareDepartmentGraphUsingNativeFormatterAndJsonPost() throws Exception {
         RDFDataMgr.read(fixture, "src/test/resources/sparql-care-department.ttl");
+        String incompleteId = "00000000-0000-0000-0000-000000000002";
+        fixture.removeAll(fixture.getResource(BASE + "dataProduct/" + incompleteId),
+            fixture.createProperty(DCT + "modified"), null);
         jsonPostOnly = true;
         DcatApSparqlParams params = params();
         params.query = Files.readString(QUERIES.resolve("om-care-department-to-dcat.rq"));
         Map<String, Element> records = fetch(params);
-        assertEquals(java.util.Set.of("00000000-0000-0000-0000-000000000001"), records.keySet());
-        Element record = records.values().iterator().next();
+        assertEquals(java.util.Set.of("00000000-0000-0000-0000-000000000001", incompleteId), records.keySet());
+        Element record = records.get("00000000-0000-0000-0000-000000000001");
         Xml.validate(SCHEMA.resolve("schema.xsd"), record);
         Model mapped = readRecord(record);
         try {
@@ -287,6 +294,26 @@ public class DcatApSparqlHarvesterTest {
             assertTrue(mapped.contains(null, mapped.createProperty(CV + "email"), "hdab@example.org"));
         } finally {
             mapped.close();
+        }
+        for (Element incomplete : List.of(records.get(incompleteId), fetch(openMetadataParams()).get(incompleteId))) {
+            assertThrows(XSDValidationErrorEx.class, () -> Xml.validate(SCHEMA.resolve("schema.xsd"), incomplete));
+            Model partial = readRecord(incomplete);
+            try {
+                Resource dataset = partial.getResource(BASE + "dataProduct/" + incompleteId);
+                assertFalse(dataset.hasProperty(partial.createProperty(DCT + "modified")));
+                assertFalse(dataset.hasProperty(partial.createProperty(HEALTH + "hasStructuredData")));
+                assertFalse(dataset.hasProperty(partial.createProperty(DCAT + "keyword")));
+                Resource distribution = dataset.getPropertyResourceValue(partial.createProperty(DCAT + "distribution"));
+                assertNotNull(distribution);
+                assertFalse(distribution.hasProperty(partial.createProperty(DCAT + "accessURL")));
+                assertTrue(distribution.hasProperty(partial.createProperty("http://data.europa.eu/r5r/applicableLegislation")));
+                Resource hdab = dataset.getPropertyResourceValue(partial.createProperty(HEALTH + "hdab"));
+                assertNotNull(hdab);
+                assertFalse(hdab.hasProperty(partial.createProperty("http://xmlns.com/foaf/0.1/name")));
+                assertTrue(hdab.hasProperty(partial.createProperty(CV + "contactPoint")));
+            } finally {
+                partial.close();
+            }
         }
     }
 
