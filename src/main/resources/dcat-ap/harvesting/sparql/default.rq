@@ -1,0 +1,39 @@
+PREFIX om: <https://open-metadata.org/ontology/>
+
+CONSTRUCT {
+  ?subject ?predicate ?object .
+}
+WHERE {
+  ?product a om:DataProduct .
+  {
+    {
+      ?product ?predicate ?object .
+      BIND (?product AS ?subject)
+    } UNION {
+      ?product om:hasExtension ?subject .
+      ?subject ?predicate ?object .
+    } UNION {
+      ?product om:hasExtension/om:hasExtensionProperty ?subject .
+      ?subject ?predicate ?object .
+    } UNION {
+      ?product om:hasTag ?subject .
+      ?subject ?predicate ?object .
+    } UNION {
+      # Include each contact, its extension, and the extension's entries.
+      ?product (om:hasOwner|om:hasExpert|om:hasReviewer) ?contact .
+      ?contact (om:hasExtension/om:hasExtensionProperty?)? ?subject .
+      ?subject ?predicate ?object .
+    } UNION {
+      ?subject om:hasDataProduct ?product ;
+               ?predicate ?object .
+    } UNION {
+      ?asset om:hasDataProduct ?product ;
+             om:belongsToService ?subject .
+      ?subject ?predicate ?object .
+    } UNION {
+      ?asset om:hasDataProduct ?product ;
+             om:hasTag ?subject .
+      ?subject ?predicate ?object .
+    }
+  }
+}

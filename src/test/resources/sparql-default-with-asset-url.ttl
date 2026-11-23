@@ -1,0 +1,2 @@
+<https://example.org/entity/apiEndpoint/00000000-0000-0000-0000-000000000101>
+    <https://open-metadata.org/ontology/hasEndpointURL> <https://example.org/data.json> .

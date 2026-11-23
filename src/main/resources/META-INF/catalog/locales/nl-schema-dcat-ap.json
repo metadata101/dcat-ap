@@ -1,0 +1,4 @@
+{
+  "harvester-dcatapsparql": "DCAT-ap SPARQL",
+  "harvester-dcatapsparqlHelp": "Oogst DCAT-AP-records met een SPARQL-query en een XSL-transformatie."
+}

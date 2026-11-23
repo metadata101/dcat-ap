@@ -1,0 +1,87 @@
+@base <https://example.org/entity/> .
+@prefix om: <https://open-metadata.org/ontology/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<dataProduct/00000000-0000-0000-0000-000000000001> a om:DataProduct ;
+  rdfs:label "Product 1" ;
+  dct:description "<p>Mock & example</p>" ;
+  dct:modified "1793810001660"^^xsd:dateTime, "2026-11-04T16:33:21.660Z"^^xsd:dateTime .
+
+<apiEndpoint/00000000-0000-0000-0000-000000000101> om:hasDataProduct <dataProduct/00000000-0000-0000-0000-000000000001> ;
+  rdfs:label "API 1" ;
+  om:belongsToService <apiService/mock> .
+
+<dataProduct/00000000-0000-0000-0000-000000000002> a om:DataProduct ;
+  rdfs:label "Product 2" ;
+  dct:description "<p>Mock & example</p>" ;
+  dct:modified "1793810001660"^^xsd:dateTime, "2026-11-04T16:33:21.660Z"^^xsd:dateTime .
+
+<apiEndpoint/00000000-0000-0000-0000-000000000102> om:hasDataProduct <dataProduct/00000000-0000-0000-0000-000000000002> ;
+  rdfs:label "API 2" ;
+  om:belongsToService <apiService/mock> .
+
+<dataProduct/00000000-0000-0000-0000-000000000003> a om:DataProduct ;
+  rdfs:label "Product 3" ;
+  dct:description "<p>Mock & example</p>" ;
+  dct:modified "1793810001660"^^xsd:dateTime, "2026-11-04T16:33:21.660Z"^^xsd:dateTime .
+
+<apiEndpoint/00000000-0000-0000-0000-000000000103> om:hasDataProduct <dataProduct/00000000-0000-0000-0000-000000000003> ;
+  rdfs:label "API 3" ;
+  om:belongsToService <apiService/mock> .
+
+<dataProduct/00000000-0000-0000-0000-000000000004> a om:DataProduct ;
+  rdfs:label "Product 4" ;
+  dct:description "<p>Mock & example</p>" ;
+  dct:modified "1793810001660"^^xsd:dateTime, "2026-11-04T16:33:21.660Z"^^xsd:dateTime .
+
+<apiEndpoint/00000000-0000-0000-0000-000000000104> om:hasDataProduct <dataProduct/00000000-0000-0000-0000-000000000004> ;
+  rdfs:label "API 4" ;
+  om:belongsToService <apiService/mock> .
+
+<dataProduct/00000000-0000-0000-0000-000000000001> om:hasOwner <team/contact> ;
+  om:hasTag <tag/health> ;
+  om:hasExtension <product-extension> .
+
+<team/contact> rdfs:label "Mock contact" ;
+  foaf:mbox "mock@example.org" ;
+  om:hasExtension <contact-extension> .
+
+<contact-extension> om:hasExtensionProperty <contact-page> .
+<contact-page> om:extensionKey "contactPage" ;
+  om:extensionValue "https://example.org/contact" .
+
+<tag/health> rdfs:label "Health" ;
+  dct:description "[Source](http://publications.europa.eu/resource/authority/data-theme/HEAL)" ;
+  om:tagFQN "dcat_theme.HEAL" .
+
+<product-extension> om:hasExtensionProperty
+  <keywords>, <structured>, <provenance>, <hdab>, <distributions> .
+
+<keywords> om:extensionKey "healthKeywords" ;
+  om:extensionValue '''["synthetic","health"]''' .
+<structured> om:extensionKey "healthHasStructuredData" ;
+  om:extensionValue '''["true"]''' .
+<provenance> om:extensionKey "healthProvenance" ;
+  om:extensionValue "Manually created test indicators" .
+<hdab> om:extensionKey "healthHdab" ;
+  om:extensionValue '''{"rows":[{"name":"Mock HDAB","email":"hdab@example.org","contactpage":"https://example.org/hdab"}]}''' .
+<distributions> om:extensionKey "healthDistributions" ;
+  om:extensionValue '''{"rows":[
+    {"accessURLs":"[\\"https://example.org/data.json\\"]","applicableLegislation":"[\\"http://data.europa.eu/eli/reg/2025/327/oj\\"]"},
+    {"accessURLs":"[\\"https://example.org/data.csv\\"]","applicableLegislation":"[\\"http://data.europa.eu/eli/reg/2025/327/oj\\"]"}
+  ]}''' .
+
+<apiEndpoint/00000000-0000-0000-0000-000000000105> om:hasDataProduct <dataProduct/00000000-0000-0000-0000-000000000001> ; rdfs:label "Alternative API" .
+<apiEndpoint/00000000-0000-0000-0000-000000000101> om:hasResponseSchema
+  '''{"schemaFields":[
+    {"name":"region","displayName":"Region","description":"Fictional region","dataType":"STRING"},
+    {"name":"count","displayName":"Count","description":"Synthetic count","dataType":"INT"}
+  ]}''' .
+<apiEndpoint/00000000-0000-0000-0000-000000000105> om:hasResponseSchema
+  '''{"schemaFields":[
+    {"name":"region","displayName":"Region","description":"Fictional region","dataType":"STRING"},
+    {"name":"count","displayName":"Count","description":"Synthetic count","dataType":"INT"}
+  ]}''' .

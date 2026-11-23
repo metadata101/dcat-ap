@@ -1,0 +1,4 @@
+{
+  "harvester-dcatapsparql": "DCAT-ap SPARQL",
+  "harvester-dcatapsparqlHelp": "Moissonner des notices DCAT-AP avec une requête SPARQL et une transformation XSL."
+}

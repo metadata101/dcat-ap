@@ -26,9 +26,17 @@
     xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:util="http://www.springframework.org/schema/util"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
   <!-- copies the DCAT-AP thesaurus files -->
+  <bean id="dcat-ap.sparql.startup"
+        class="org.fao.geonet.schema.dcatap.harvester.DcatApSparqlInitializer"/>
+
+  <bean id="dcatapsparql"
+        class="org.fao.geonet.schema.dcatap.harvester.DcatApSparqlHarvester"
+        scope="prototype"/>
+
   <bean id="dcat-ap.startup"
         class="org.fao.geonet.schema.dcatap.init.SchemaInitializerThesauri">
   </bean>

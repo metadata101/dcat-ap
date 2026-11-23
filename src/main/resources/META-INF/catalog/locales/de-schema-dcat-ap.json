@@ -1,0 +1,4 @@
+{
+  "harvester-dcatapsparql": "DCAT-ap SPARQL",
+  "harvester-dcatapsparqlHelp": "DCAT-AP-Datensätze mit einer SPARQL-Abfrage und einer XSL-Transformation übernehmen."
+}
